@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithme de Dijkstra</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Algorithme de Dijkstra</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/chemins-valuation-min/">Trouver des chemins dans un graphe</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/chemins-valuation-min/valuation-positive/">Graphes à valuations positives</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/chemins-valuation-min/valuation-positive/dijkstra/">Algorithme de Dijkstra</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d'un graphe orienté valué <strong>positivement</strong>, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée). Il cherche à créer un <strong><em>arborescence</em></strong> à partir d'un graphe initial $G$. Précisons cela.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une <strong><em>arborescence</em></strong> $T_{x} = (V', E')$ est un graphe tel que :</p>
+<ul>
+<li>$x \in V'$</li>
+<li>$V' \subseteq V$ et $E' \subseteq E$</li>
+<li>il existe un chemin $c^T_{xy}$ <strong>unique</strong> entre $x$ et $y$ dans $T_{x}$ pour tout sommet $y \in V'$</li>
+<li>pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est <strong>minimum</strong></li>
+</ul>
+</div></div>
+
+<p>Par exemple :</p>
+<p><img src="g_g_prim.png" alt="G et G'"></p>
+<p>La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets puisque $T_{x} = (\{x\}, \varnothing)$ en est une quelque soient $x$ et $G$.</p>
+<p>Enfin, la proposition suivant montre que l'on peut faire <em>grossir</em> les arborescences :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Et $T_x = (V', E')$ une de ses arborescence.</p>
+<p>Si :</p>
+<p>$$
+W = \{ uv \mid uv \in E, u \in V', v \in V \backslash V' \}
+$$</p>
+<p>N'est pas vide alors il existe un arc $u^\star v^\star \in W$ tel que :</p>
+<p>$$f(c^T_{xu}) + f(u^\star v^\star) = \min_{uv \in W}(f(c^T_{xu}) + f(uv))$$</p>
+<p>Et</p>
+<p>$$
+T' = (V' \cup \{v^\star\}, E' \cup \{ u^\star v^\star \})
+$$</p>
+<p>est également une arborescence de $G$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister qu'un seul chemin pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.</p>
+<p>Il nous reste à prouver que le chemin pour aller de $x$ à $v^\star$ dans $G''$ est bien un chemin de poids minimum dans $G$. Pour cela, supposons qu'il existe un autre chemin entre $x$ et $v^\star$ dans $G$. Comme $x \in V''$, on peut noter $w$ le premier sommet de ce chemin qui n'est pas dans $V'$. Comme $w \neq v^\star$ (sinon les deux chemins seraient identiques) on se retrouve dans le cas de la figure ci-dessous :</p>
+<p><img src="preuve_dijkstra.png" alt="preuve Dijkstra"></p>
+<p>Le poids du chemin en pointillé de $x$ à $w$ est par construction plus grand que le poids du chemin allant de $x$ à $v^\star$ (en trait plein). Comme les poids sont positifs, le chemin en pointillé de $x$ à $v^\star$ est donc de poids supérieur à celui en trait plein.</p>
+</div>
+</details>     
+</div>
+<p>Le principe de l'algorithme de Dijkstra qui cherche un plus court chemin entre deux sommets $x$ et $y$ d'un graphe orienté valué par une fonction positive $f$ est alors :</p>
+<ol>
+<li>partir de l’arborescence $T_{x} = (\{x\}, \varnothing)$</li>
+<li>tant que $W = \{ uv \mid uv \in E, u \in V', v \in V \backslash V' \}$ est non vide faire grossir l’arborescence</li>
+<li>si le dernier sommet ajouté est $y$, l'algorithme s'arrête et rend le chemin entre $x$ et $y$ dans l'arborescence</li>
+</ol>
+<p>Ne confondez pas Prim et Dijkstra :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Quelle est la différence entre Prim et Dijkstra ?</li>
+<li>Montrez que les problèmes qu'ils résolvent sont différents et en déduire que l'arborescence obtenue par l'algorithme de Dijkstra pour un graphe non orienté peut être différente de l'arbre de poids minimum obtenu par Prim</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le graphe suivant montre que l'arborescence de Dijkstra sera différente de l'arbre de poids minimum donné par Prim.</p>
+<p><img src="chemin_prim_vs_dijkstra.png" alt="Prim vs Dijkstra"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas les 2 problèmes !</p>
+</div></div>
+</div>
+</details></div>
+     
+
+<p>L'implémentation naïve de cet algorithme serait cependant d'une complexité importante car on recalculerait trop souvent les mêmes choses.</p>
+<h2><span id="implementation-Dijkstra"></span> Implémentation</h2>
+<p>L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent de façon optimale.</p>
+<h3>Pseudo-code</h3>
+<p>On cherche à trouver un plus court chemin entre deux sommets, nommées <code>départ</code> et <code>arrivé</code>, d'un graphe orienté $G$ valué par une fonction positive $f$.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">Entrées <span class="token punctuation">:</span></span>
+<span class="highlight-line">    Un graphe G<span class="token operator">=</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span>E<span class="token punctuation">)</span></span>
+<span class="highlight-line">    une fonction de coût f positive</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">Initialisation <span class="token punctuation">:</span></span>
+<span class="highlight-line">    prédécesseur<span class="token punctuation">[</span>départ<span class="token punctuation">]</span> <span class="token operator">=</span> départ  <span class="token comment"># pour retrouver les chemins</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    coût<span class="token punctuation">[</span>départ<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># distances</span></span>
+<span class="highlight-line">    coût<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span>∞ pour tous les autres sommets u</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    V_dijkstra <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">}</span>  <span class="token comment"># les sommets de l'arborescence</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    pivot <span class="token operator">=</span> départ  <span class="token comment"># pivot est le dernier élément ajouté à l'arborescence</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">Algorithme <span class="token punctuation">:</span></span>
+<span class="highlight-line">    tant que pivot ≠ arrivé <span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token comment"># mise à jour des coûts</span></span>
+<span class="highlight-line">        pour tous les voisins x de pivot dans G qui ne sont pas dans V_dijkstra <span class="token punctuation">:</span></span>
+<span class="highlight-line">            si coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span></span>
+<span class="highlight-line">                prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> pivot</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># ajout d'un élément à la structure</span></span>
+<span class="highlight-line">        soit u un élément de V \ V_dijkstra tel que coût<span class="token punctuation">[</span>u<span class="token punctuation">]</span> soit minimum</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        pivot <span class="token operator">=</span> u</span>
+<span class="highlight-line">        ajoute pivot à V_dijkstra</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment"># restitution du chemin (pivot = arrivé au départ)</span></span>
+<span class="highlight-line">    chemin <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    x <span class="token operator">=</span> pivot</span>
+<span class="highlight-line">    tant que x ≠ départ<span class="token punctuation">:</span></span>
+<span class="highlight-line">        ajoute x au début de chemin</span>
+<span class="highlight-line">        x <span class="token operator">=</span> prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">Retour <span class="token punctuation">:</span></span>
+<span class="highlight-line">    chemin</span>
+<span class="highlight-line"></span></code></pre>
+<p>A chaque étape on ajoute un nouveau sommet de la frontière (un sommet dont le coût est non infini, c'est à dire un sommet $y \notin V'$ tel qu'il existe $x \in V'$ et $xy \in E$) à la structure que l'on appelle <code class="language">pivot</code></p>
+<p>L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de les mettre à jour lorsque l'on ajoute un nouveau sommet dans la structure :</p>
+<p><img src="dijkstra_mise_a_jour.png" alt="mise à jour Dijkstra"></p>
+<h3><span id="implementation-Dijkstra-python"></span> Python</h3>
+<p>Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">dijkstra</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> f<span class="token punctuation">,</span> départ<span class="token punctuation">,</span> arrivé<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    prédécesseur <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">:</span> départ<span class="token punctuation">}</span></span>
+<span class="highlight-line">    coût <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span></span>
+<span class="highlight-line">    V_dijkstra <span class="token operator">=</span> <span class="token punctuation">{</span>départ<span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    pivot <span class="token operator">=</span> départ</span>
+<span class="highlight-line">    <span class="token keyword">while</span> pivot <span class="token operator">!=</span> arrivé<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">if</span> x <span class="token keyword">in</span> V_dijkstra<span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">continue</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">            <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> coût<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span></span>
+<span class="highlight-line">                coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">            <span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> coût<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>pivot<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">                prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> pivot</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        new <span class="token operator">=</span> <span class="token boolean">None</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">in</span> V_dijkstra<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> coût<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">continue</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">            <span class="token keyword">if</span> <span class="token punctuation">(</span>new <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>coût<span class="token punctuation">[</span>new<span class="token punctuation">]</span> <span class="token operator">></span> coût<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                new <span class="token operator">=</span> x</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        pivot <span class="token operator">=</span> new</span>
+<span class="highlight-line">        V_dijkstra<span class="token punctuation">.</span>add<span class="token punctuation">(</span>pivot<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    chemin <span class="token operator">=</span> <span class="token punctuation">[</span>arrivé<span class="token punctuation">]</span></span>
+<span class="highlight-line">    x <span class="token operator">=</span> arrivé</span>
+<span class="highlight-line">    <span class="token keyword">while</span> x <span class="token operator">!=</span> départ<span class="token punctuation">:</span></span>
+<span class="highlight-line">        x <span class="token operator">=</span> prédécesseur<span class="token punctuation">[</span>x<span class="token punctuation">]</span></span>
+<span class="highlight-line">        chemin<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
+<span class="highlight-line">    chemin<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> chemin</span></code></pre>
+<p>L'algorithme précédent peut être décomposé en plusieurs parties :</p>
+<ol>
+<li>initialisation (lignes 2 à 4) : <code class="language-">prédécesseur</code> et <code class="language-">coût_entrée</code> sont des dictionnaires et <code class="language-">V_dijkstra</code> un ensemble</li>
+<li>boucle principale, qui correspond au <code class="language-">while</code> (lignes 6 à 27). Cette boucle est composée de deux parties :
+<ol>
+<li>mise à jour (lignes 8 à 16) : on considère tous les voisins de <code class="language-">pivot</code> qui ne sont pas encore dans <code class="language-">V_dijkstra</code> (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (<code class="language-">x not in coût_entrée</code>) soit on à mieux (<code class="language-">coût_entrée[x] &gt; coût_entrée[pivot] + f[(pivot, x)]</code>)</li>
+<li>recherche d'un nouveau <code class="language-">pivot</code> (lignes 18 à 27) : on choisit un sommet non encore examiné de coût d'entrée le plus faible</li>
+<li>la boucle principale s'arrête une fois que l'on choisi l'arrivé comme <code class="language-">pivot</code></li>
+</ol>
+</li>
+<li>construction du chemin (lignes 29 à 34) : on remonte de prédécesseur en prédécesseur en partant de <code class="language-">arrivé</code> jusqu'à remonter en <code class="language-">départ</code>.</li>
+</ol>
+<h2>Déroulement de l'algorithme</h2>
+<p>Avant de voir comment il fonctionne, testez le. Le graphe ci-après représente les différents vols et leurs durées entre différentes villes d'Europe :</p>
+<p><img src="chemin_paris_rana.png" alt="Paris à Rana"></p>
+<p>Le codage en python est alors le suivant pour le graphe :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"Paris"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Hambourg"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Berlin"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Amsterdam"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Londres"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Édimbourg"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Stockholm"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Berlin"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Oslo"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Édimbourg"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"Rana"</span><span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Et la fonction de valuation positive :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">f <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Paris"</span><span class="token punctuation">,</span> <span class="token string">"Hambourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Stockholm"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Hambourg"</span><span class="token punctuation">,</span> <span class="token string">"Berlin"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Londres"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Hambourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Londres"</span><span class="token punctuation">,</span> <span class="token string">"Édimbourg"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Stockholm"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Stockholm"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Oslo"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Rana"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">"Édimbourg"</span><span class="token punctuation">,</span> <span class="token string">"Oslo"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans <code class="language-">V_dijkstra</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.</p>
+<ul>
+<li>La figure se lit de gauche à droite et de haut en bas.</li>
+<li>les sommets de <code class="language-">V_dijkstra</code> sont encadrés en vert</li>
+<li>en orange les valeurs de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code></li>
+<li>en magenta <code class="language-">pivot</code> et les modifications de <code class="language-">prédécesseur</code> et de <code class="language-">coût_entrée</code> s'il y en a</li>
+</ul>
+<p><img src="chemin_dijkstra_paris_rana.png" alt="Dijkstra Paris à Rana"></p>
+</div>
+</details>     
+</div>
+<h2><span id="preuve-Dijkstra"></span> Preuve</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ de $G$, l'algorithme de Dijkstra rend un chemin élémentaire de longueur minimum entre $a$ et $b$ (s'il existe).</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On montre par récurrence qu'à chaque étape le chemin de <code class="language-">départ</code> à <code class="language-">pivot</code> constitué en remontant les prédécesseurs de <code class="language-">pivot</code> jusqu'à arriver à <code class="language-">départ</code> est de longueur minimale et de coût <code class="language-">coût_entrée[pivot]</code>.</p>
+<p>Au départ <code class="language-">pivot = départ</code>, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans <code class="language-">V_dijkstra</code>). A l'étape $i+1$, on a choisi <code class="language-">pivot</code> qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans <code class="language-">V_dijkstra</code>.</p>
+<p>Comme tous les chemins alternatifs entre <code class="language-">départ</code> et <code class="language-">pivot</code> commencent en <code class="language-">départ</code>, il existe un arc de ce chemin dont le départ (disons $u$) est dans <code class="language-">V_dijkstra</code> et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
+<p>Par hypothèse de récurrence, <code class="language-">coût_entree[u]</code> est le coût minimum d'un chemin entre <code class="language-">départ</code> et $u$ et <code class="language-">coût_entree[v]</code> est donc plus grand que <code class="language-">coût_entree[u] + f[uv]</code> (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans <code class="language-">V_dijkstra</code>) et de <code class="language-">coût_entree[pivot]</code> (car c'est le min).</p>
+<p>De là, le coût du chemin alternatif est plus grand également que <code class="language-">coût_entree[pivot]</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
+</div>
+</details>     
+</div>
+<h2>Complexité</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de <code class="language-">pivot</code>. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme <code class="language-">pivot</code> est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.</p>
+<p>On prend ensuite le minimum parmi les éléments de <code class="language-">V_dijkstra</code>, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.</p>
+<p>La complexité totale est alors en :</p>
+<p>
+\[
+\mathcal{O}(\underbracket{\vert E\vert}_{\mbox{mises à jour du coût d'entrée}} + \underbracket{(\vert V \vert)^2}_{\vert V \vert \mbox{ choix de pivot}})
+\]
+<\p>
+</p></div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Clair puisque $\vert E \vert \leq \vert V \vert)^2$.</p>
+</div>
+</details>     
+</div>
+<p>On le voit dans la preuve de la proposition, le facteur limitant est la partie en $\mathcal{O}(\vert V \vert^2)$ qui n'est pas linéaire en la taille du graphe (en mémoire un graphe occupe de l'ordre de $\mathcal{O}(\vert E \vert + \vert V \vert)$ cases). Celle ci concerne le choix du nouveau pivot en cherchant un minimum de <code class="language-">coût_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme.</p>
+<p>Une optimisation classique est d'utiliser un <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">tas</a> pour trouver le min. On a alors que :</p>
+<ul>
+<li>une complexité de $\mathcal{O}(1)$ pour prendre un minimum</li>
+<li>une complexité de $\mathcal{O}(\log_2(M))$ où $M$ est le nombre d'éléments du tas pour mettre à jour la structure après chaque modification. Comme il va y a voir au maximum $V$ éléments dans ce tas, on peut borner cette complexité par $\mathcal{O}(\log_2(\vert V \vert))$</li>
+</ul>
+<p>Enfin :</p>
+<ul>
+<li>il y a de l'ordre de $\mathcal{O}(\vert V \vert)$ prise de minimum : à chaque choix de <code class="language-">pivot</code></li>
+<li>il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de <code class="language-">coût_entree</code></li>
+</ul>
+<p>On a donc une complexité de choix de <code class="language-">pivot</code> qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
+<ul>
+<li>S'il y a <strong>peu d'arcs</strong>, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, <strong>c'est beaucoup mieux</strong> puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$</li>
+<li>S'il y a <strong>beaucoup d'arcs</strong>, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est <strong>un peu moins bon</strong> puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$</li>
+</ul>
+<p>La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut souvent en algorithmie choisir l'algorithme ou l'implémentation de l'algorithme en fonction des données que l'on aura à traiter. Il n'y a que très rarement des solutions meilleurs dans tous les cas.</p>
+</div></div>
+
+<p>Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids min — pensez à google maps où il y a bien peu de routes par rapport aux nombre d'endroit où l'on peu aller — on utilise souvent cette implémentation.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.</p>
+</div></div>
+
+<h2><span id="arborescence"></span> Arborescence</h2>
+<p>On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans <code class="language-">V_dijkstra</code> et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans <code class="language-">V_dijkstra</code> ou que <code class="language-">V_dijkstra</code> soit égal à $V$.</p>
+<p><span id="preuve-Dijkstra-arborescence"></span></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans <code class="language-">V_dijkstra</code>, il n'existe pas de chemin entre <code class="language-">départ</code> et $x$ dans $G$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>A chaque fois que l'on ajoute un élément dans <code class="language-">V_dijkstra</code> on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :</p>
+<ul>
+<li>$\vert E' \vert = \vert V \vert -1$</li>
+<li>il existe un unique chemin entre $d$ et tout autre sommet</li>
+<li>le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.</p>
+</div>
+</details>     
+</div>
+<h2>Dijkstra et BFS</h2>
+<blockquote>
+<p>TBD montrer que Dijkstra = BFS + file de priorité
+TBD attention différent de Prim dans ses valuations</p>
+</blockquote>
+<h2>Chemin de poids minimum n'est pas équivalent à chemin de poids maximum</h2>
+<p>Penser que renverser les inégalités dans l'algorithme de Dijkstra (de rentrer dans la structure à chaque fois l'élément de plus grand coût), permet de trouver un chemin le plus long est une faute.</p>
+<p>Donnons un exemple. Le graphe suivant avec une valuation de 1 sur tous les arc :</p>
+<p><img src="chemin_pas_hamilton.png" alt="Dijkstra pas Hamilton"></p>
+<p>Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, <strong>mais</strong> il ne le trouvera pas si les sommets sont rentrés dans <code class="language-">V_dijkstra</code> dans l'ordre 1, 2, 3 (ce qui est possible).</p>
+<p>Même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
