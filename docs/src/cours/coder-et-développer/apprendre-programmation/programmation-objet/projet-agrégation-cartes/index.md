@@ -17,6 +17,8 @@ Nous allons ici continuer ce que nous avons commencé lors des précédents proj
 
 Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Carte`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obligé.e de l'utiliser.
 
+<!-- 
+
 {% details "**une implémentation de la classe `Carte`{.language-}**" %}
 
 fichier `carte.py`{.fichier} :
@@ -99,7 +101,8 @@ def test_comparaisons():
 ```
 
 {% enddetails %}
-
+ 
+ -->
 
 Le but des projets carters est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
 

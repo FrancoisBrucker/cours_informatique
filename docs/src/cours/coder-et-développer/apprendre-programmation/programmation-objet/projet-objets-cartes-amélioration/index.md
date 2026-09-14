@@ -15,6 +15,8 @@ eleventyComputed:
 
 Nous allons améliorer la classé que nous avions crée lors du projet précédent (en prérequis).
 
+<!-- 
+
 {% details "Un code possible d'une carte" %}
 
 Fichier `carte.py`{.fichier} :
@@ -79,7 +81,9 @@ def test_plus_grande_ou_égale_que():
 
 ```
 
-{% enddetails %}
+{% enddetails %} 
+
+-->
 
 ## Affichage d'une carte
 
