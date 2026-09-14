@@ -12,13 +12,13 @@ eleventyComputed:
 
 Explorer les propriétés et l'intérêt de l'arbre.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_arbre_** est un _graphe_ $T = (V, E)$ qui est :
 
 - [connexe](../../chemins-cycles-connexite/#définition-connexe){.interne}
 - [sans cycle](../../chemins-cycles-connexite/#définition-cycle){.interne}
 
-{% endnote %}
+{% endnote2 %}
 
 Par exemple, même si les deux graphes ci-dessous sont connexes, seul le graphe de droite est un arbre.
 
@@ -28,10 +28,36 @@ Par exemple, même si les deux graphes ci-dessous sont connexes, seul le graphe 
 
 Finissons cette partie par une définissions filant la métaphore botaniste :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un _graphe_ dont chaque partie connexe est un arbre est appelée une **_forêt_**.
 
-{% endnote %}
+{% endnote2 %}
+
+
+Les définitions précédentes concernaient les graphes, il existe un pendant pour les graphes orientés, les arborescences :
+
+{% note2 "**Définition**" %}
+Une _**arborescence**_ est un graphe orienté $G = (V, E)$ tel que :
+
+- le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre
+- tel qu'il existe un sommet $r$, appelé **_racine_** tel que pour tout $x \in V$ il existe un chemin allant de $r$ à $x$ dans $G$.
+
+{% endnote2 %}
+
+On a parfois envie que les chemin ailles vers la racine plutôt qu'en partent et a pour ça la notion d'arbre dirigé enraciné :
+
+{% note2 "**Définition**" %}
+Un _**arbre dirigé enraciné en $r$**_ est un graphe orienté $G = (V, E)$ tel que :
+
+- le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre
+- pour tout $x \in V$ il existe un chemin allant de $x$ à $r$ dans $G$.
+
+{% endnote2 %}
+
+Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence et celui de droite un arbre dirigé enraciné :
+
+![arbre et arborescence](./arbre-arbo.png)
+
 
 ## Propriétés fondamentales
 

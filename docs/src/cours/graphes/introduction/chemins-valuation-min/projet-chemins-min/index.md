@@ -2,8 +2,8 @@
 layout: layout/post.njk
 
 title: Projet recherche de chemin de poids minimum
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -96,8 +96,9 @@ Commençons par créer la structure de graphe et la valuation que nous allons ut
 {% faire %}
 En utilisant les données charges précédemment :
 
-* créez un graphe non orienté $G$ ([encodé par un dictionnaire](../encodage#dict){.interne}) dont les sommets sont les noms de villes et ses voisins, les voisins.
-* créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.
+- créez un graphe non orienté $G$ ([encodé par un dictionnaire](../../encodage#dict){.interne}) dont les sommets sont les noms de villes et ses voisins, les voisins.
+- créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.
+
 {% endfaire %}
 
 ### Représentation graphique
@@ -147,7 +148,7 @@ J'obtiens le graphe suivant :
 ## Algorithme Dijkstra
 
 {% faire %}
-Modifiez l'[algorithme du cours](../chemin-poids-min-positif#implementation-Dijkstra-python){.interne} pour qu'il puisse utiliser notre fonction de valuation.
+Modifiez l'[algorithme du cours](../valuation-positive#implementation-Dijkstra-python){.interne} pour qu'il puisse utiliser notre fonction de valuation.
 {% endfaire %}
 
 {% faire %}
@@ -168,7 +169,7 @@ Représentez graphiquement le chemin trouvé en rouge.
 ## $A^\star$ et distances
 
 {% faire %}
-Créez l'[algorithme $A^\star$](../chemin-poids-min-positif#a-star){.interne} pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
+Créez l'[algorithme $A^\star$](../valuation-positive#a-star){.interne} pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
 
 {% endfaire %}
 {% details "solution" %}
@@ -197,19 +198,19 @@ Pour les deux algorithmes j'obtiens le chemin :
 
 ```python
 [
-    'Marseille', 
-    'Avignon', 
-    'Saint-Etienne', 
-    'Clermont-Ferrand', 
-    'Limoges', 
-    'Niort', 
-    'Saint-Nazaire', 
-    'Lorient', 
+    'Marseille',
+    'Avignon',
+    'Saint-Etienne',
+    'Clermont-Ferrand',
+    'Limoges',
+    'Niort',
+    'Saint-Nazaire',
+    'Lorient',
     'Brest'
 ]
 ```
 
-* Pour Dijkstra j'ai 72 sommets dans $V'$
-* Pour $A^\star$ j'ai 18 sommets dans $V'$
+- Pour Dijkstra j'ai 72 sommets dans $V'$
+- Pour $A^\star$ j'ai 18 sommets dans $V'$
 
 {% enddetails %}

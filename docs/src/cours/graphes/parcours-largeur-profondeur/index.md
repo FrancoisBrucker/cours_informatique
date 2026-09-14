@@ -26,11 +26,6 @@ Permettent de :
 
 > TBD largeur et file
 
-{% lien %}
-
-[Parcours en largeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur)
-
-{% endlien %}
 
 > TBD application quand il faut parcourir de proche en proche
 
@@ -38,11 +33,6 @@ Permettent de :
 
 > TBD profondeur et pile
 
-{% lien %}
-
-[Parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
-
-{% endlien %}
 
 > TBD propriétés : <https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf>
 

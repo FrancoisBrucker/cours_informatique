@@ -37,7 +37,27 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 {% endaller %}
 
 
-> TD le reste est en chantier.
+> TBD le reste est en chantier.
+
+## En chantier
+
+### Euler et hamilton 
+
+
+> plus tard : graphe aléatoire + graphe Rado + isomorphisme
+> 2. distribution des degrés pairs ? Y'en a qui existent pas.
+>   1. formule générale + algo pour en trouver 1
+>   2. suite décroissantes -> graphes EUlérien et généraux
+>   3. les trouver tous ? Au moins aléatoirement.
+
+> TBD MCMC : <https://www.youtube.com/watch?v=nndtTssgtZE>
+
+> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+> TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
+> TBD on random des nombres dans une borne et on continue
+> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
+
+> postier chinois et chritofides après couplage.
 
 ### Chemins de longueur/poids minimum
 
@@ -89,23 +109,10 @@ Projets :
 
 ### Chemins de longueur/poids minimum
 
-#### <span id="chemin-problèmes"></span> Problème et algorithmes
-
 {% aller %}
 
-1. [Chemin de poids minimum](chemin-poids-min-problème){.interne}
-2. [Algorithme avec poids positifs (Dijkstra et $A^\star$)](chemin-poids-min-positif){.interne}
-3. [Algorithmes généraux (Bellman-Ford et Roy-Floyd-Warshall)](chemin-poids-min-cas-général){.interne}
-
-{% endaller %}
-
-#### <span id="projet-chemin-poids-min"></span> Projets
-
-{% aller %}
-
-1. [Projet chemins de poids minimum](projet-chemins-min){.interne}
-2. [Projet graphe géographique](projet-graphe-géographique){.interne}
-3. [Projet chemins avec hubs](projet-chemins-hub){.interne}
+1. [Projet graphe géographique](projet-graphe-géographique){.interne}
+2. [Projet chemins avec hubs](projet-chemins-hub){.interne}
 
 {% endaller %}
 

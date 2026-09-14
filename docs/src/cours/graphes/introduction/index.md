@@ -37,8 +37,18 @@ Les plus simples des graphes connexes :
 
 {% endaller %}
 
+## Aller d'un sommet à un autre
 
-## Graphes Eulérien
+{% aller %}
+
+[Chemin de valuation minimale dans un graphe](chemins-valuation-min){.interne}
+
+{% endaller %}
+
+## Parcourir tout le graphe
+
+### Graphes Eulérien
+
 
 L'origine de la théorie des graphe :
 
@@ -66,27 +76,16 @@ Codons tout ça :
 
 > ICI graphes eulériens.
 > 1. combien il y en a 
->   1. graphes :
->     1. nombre diff. à sommet fixer
->     2. pb de l'isomorphisme de graphe (aller plus loin dans une autre partie)
->   1. idée pour les trouver puis formules
->   2. générer un graphe aléatoire : Erdos reny. Intro + graphe Rado + isomorphisme
-> 2. distribution des degrés pairs ? Y'en a qui existent pas.
->   1. formule générale + algo pour en trouver 1
->   2. suite décroissantes -> graphes EUlérien et généraux
->   3. les trouver tous ? Au moins aléatoirement.
+>   1. graphes : nombre diff. à sommets fixés
+>   2. idée pour les trouver puis formules
+>   3. générer un graphe aléatoire : Erdos reny. Outils de preuve car  tout existe presque surement dans un graphe aléatoire.
 
-> TBD MCMC : <https://www.youtube.com/watch?v=nndtTssgtZE>
 
-> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
-> TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
-> TBD on random des nombres dans une borne et on continue
-> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
-
-## Graphes Hamiltoniens
+### Graphes Hamiltoniens
 
 > TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?
 
+> TBD ici pas approximation. Pas dans l'intro. Garder couplage pour pas dans l'intro.
 > TBD : 
 > 1. définition du problème.
 > 2. cas où on sait le faire :
@@ -98,10 +97,7 @@ Codons tout ça :
 >   1. pas simple : exhaustif avec backtrack + branch and bound
 >   2. approximation : 
 >     1. 2-opt 
->     2. performance garantie : 
->       1. algo + ALM
->       2. idée du couplage (avec performance garantie mais si on pouvait faire ça mieux ce serait bien !)
-> 4. couplage : ici juste complet avec méthode hongroise.
+>     2. performance garantie :  algo + ALM
 {% aller %}
 
 > TBD est-ce normal que l'on ne puisse pas trouver d'algo simple pour résoudre le pb ?

@@ -84,6 +84,13 @@ Coder les parcours eulérien et les mots de Bruijn.
 
 > TBD : graphes eulériens et conséquences.
 
+
+## Annales
+
+- [DS 24/25](./DS-24-25/ds.pdf)
+- [ET 24/25](./DS-24-25/et.pdf)
+- [DS 25/26](./DS-25-26/ds.pdf)
+- [ET 25/26](./ET-25-26/et.pdf)
 <!-- 
 
 Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graphes.
