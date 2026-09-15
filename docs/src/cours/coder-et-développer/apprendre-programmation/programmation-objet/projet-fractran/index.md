@@ -6,7 +6,7 @@ title:  "Projet : interpréteur fractran"
 
 
 
-Le but du sujet est de construire un interpréteur !
+Le but du sujet est de construire un interpréteur pour un langage [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) !
 
 
 On utilisera pour cela [le FRACTRAN](https://fr.wikipedia.org/wiki/FRACTRAN) qui est un langage de programmation inventé par John Conway (à qui l'on doit aussi le célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie)). Nous allons y aller pas à pas, il suffit de suivre les différentes étapes. Ne vous laissez pas méprendre par sa simplicité, il permet théoriquement de coder tout ce qu'on peut coder en python (mais avec un peu d'effort, je vous l'accorde).
