@@ -101,5 +101,9 @@ On implémente les exemples du cours :
 ## On s'entraîne
 
 {% aller %}
+[Créons un interpréteur du langage Fractran](projet-fractran){.interne}
+{% endaller %}
+
+{% aller %}
 [La bataille navale](projet-bataille-navale){.interne}
 {% endaller %}

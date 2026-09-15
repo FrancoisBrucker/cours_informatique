@@ -168,7 +168,6 @@ Vous rendrez un dossier contenant :
 2. [Des dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés/){.interne}
 {% endaller %}
 
-### A vous
 
 > 1h TP
 
@@ -178,17 +177,22 @@ Vous rendrez un dossier contenant :
 
 ### Rendre ses objets plus conviviaux
 
-> 1h CM / 1h TD
+> 1h CM
 
 {% aller %}
 
 1. [Améliorer ses objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/){.interne}
 2. [Des dés améliorés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne}
 
-
 {% endaller %}
 
-#### À rendre
+> 1h TP
+
+{% aller %}
+[Projet Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/){.interne}
+{% endaller %}
+
+### À rendre
 
 > 2h DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
@@ -198,7 +202,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 
 {% faire "**Travail à rendre** "%}
-[Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/){.interne}
+[Projet Fractran](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-fractran/){.interne}
 {% endfaire %}
 {% attention %}
  Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/09 à 8h00**.
@@ -215,8 +219,6 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/){.interne}
 {% endaller %}
 
-### À vous
-
 > 1h TP
 
 {% aller %}
@@ -232,10 +234,9 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 2. [Dés spécifiques](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 {% endaller %}
 
-#### À rendre
+### À rendre
 
 > 2h+ DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
-
 
 
 {% prerequis "**Travail préparatoire**" %}
@@ -244,10 +245,9 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 {% endprerequis %}
 
-
 {% faire %}
 
-Rendre le projet [Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}. 
+Rendre le projet [Bataille Navale](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-bataille-navale/){.interne}. 
 
 Les consignes sont :
 
