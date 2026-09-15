@@ -78,8 +78,9 @@ Codons tout ça :
 > 1. combien il y en a 
 >   1. graphes : nombre diff. à sommets fixés
 >   2. idée pour les trouver puis formules
->   3. générer un graphe aléatoire : Erdos reny. Outils de preuve car  tout existe presque surement dans un graphe aléatoire.
-
+>   3. générer des graphes eulérien :
+>     1. tous : tous les graphes à n-1 sommets 
+>     2. en piocher 1 : générer un graphe aléatoire : Erdos reny. Outils de preuve car  tout existe presque surement dans un graphe aléatoire.
 
 ### Graphes Hamiltoniens
 

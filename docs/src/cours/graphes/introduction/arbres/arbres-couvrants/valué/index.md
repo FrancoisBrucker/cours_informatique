@@ -158,6 +158,7 @@ Réalisez l'algorithme en entier sur le graphe précédent.
 
 ### Algorithme de Chu-Liu/Edmonds
 
+> 朱永津 (Zhū Yǒngjīn) et 刘振宏 (Liú Zhènhóng) en 1965 ; edmonds en 1967
 > TBD marche sur l'ensemble des éléments atteignables par r (via parcours)
 
 <https://fr.wikipedia.org/wiki/Algorithme_de_Chu-Liu/Edmonds>

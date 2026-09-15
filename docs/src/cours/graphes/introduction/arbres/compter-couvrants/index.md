@@ -11,18 +11,15 @@ eleventyComputed:
 ---
 
 
-## Nombre d'arbres couvrants
+## Compter les Nombre d'arborescences
 
 > TBD matrice tree. Un exemple d'utilisation de la matrice d'adjacence.
+> <https://arxiv.org/pdf/1904.12221>
+>
 
 ## Tirer un arbre couvrant au hasard
 
-### Graphe des arbres couvrants
+> TBD Guénoche
 
-> TBD markov simple
-
-### Amélioration
-
-> TBD markov sur arbre
-
+> TBD dire que plus tard on verra qu'on peut faire mieux !
 

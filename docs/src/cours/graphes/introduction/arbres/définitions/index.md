@@ -100,11 +100,28 @@ Le théorème précédent est important car il montre l'optimalité d'un arbre :
 
 De plus, cette optimalité minimale fait que nombre de problèmes compliqués (voir NP-complets) deviennent facile (polynomial et souvent linéaire) sur les arbres.
 
+{% note "**Théorème**" %}
+Les cinq propositions suivantes sont équivalentes :
+
+1. $G=(V, E)$ est une arborescence de racine $r$
+2. $G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet.
+3. $G=(V, E)$
+{% endnote %}
+
+{% details "preuve", "open" %}
+
+> TBD (mais clair)
+
+{% enddetails %}
+
 ## Sommets et feuilles
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_feuille_** d'un arbre $T = (V, E)$ est un sommet de degré 1. Un **_sommet interne_** est un sommet de degré strictement supérieur à 1.
-{% endnote %}
+{% endnote2 %}
+{% note2 "**Définition**" %}
+Une **_feuille_** d'une arborescence $T = (V, E)$ est un sommet de degré sortant 0. Un **_sommet interne_** est un sommet de degré sortant strictement supérieur à 0.
+{% endnote2 %}
 
 Commençons par une propriété sympathique des feuilles d'un arbre :
 
@@ -216,6 +233,15 @@ Le graphe est connexe.
 S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.
 {% enddetails %}
 
+{% note "**Corollaire**" %}
+
+Pour une arborescence de racine $r$, pour chaque sommet $x$ il existe un unique chemin allant $r$ à $x$.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD : clair car le graphe associé est un arbre.
+{% enddetails %}
 
 Enfin terminons cette partie par un petit exercice structurel qui introduit la notion de médiane dans les arbres :
 
@@ -240,3 +266,8 @@ Et $t$ est bien l'unique intersection des 3 chemins.
 Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian). Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)) en sont des exemples.
 {% endinfo %}
 
+## Encodage
+
+> TBD écrire propre
+
+Codage par parant pour les arborescence se dérive en un codage pour les arbre en choisissant une racine ($T[r] = r$ pour celle là)

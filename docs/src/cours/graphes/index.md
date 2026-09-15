@@ -41,8 +41,17 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## En chantier
 
+### générer des graphes
+
+- à sommets fixé
+
+- Markov sur graphes : 2 cas : graphe de sommets ou structure
+  - puis Markov sur euler
+  - toutes les arborescence avec Markov
+- 
 ### Euler et hamilton 
 
+> TBD degrés : euler clair pair / ham et degré. Prop de Chvatal.
 
 > plus tard : graphe aléatoire + graphe Rado + isomorphisme
 > 2. distribution des degrés pairs ? Y'en a qui existent pas.
@@ -59,6 +68,15 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 > postier chinois et chritofides après couplage.
 
+
+### Projet graphes d'intervalles
+
+1. meurtre
+2. caractérisation Gilmore–Hoffman, forme "ordre des sommets"
+
+Il existe n ordre linéaire entre les sommets te que x < y < z si xz est une arête alors xy aussi
+
+, l'ensemble de ses voisins situés après lui dans l'ordre forme un bloc consécutif d'indices.
 ### Chemins de longueur/poids minimum
 
 #### <span id="chemin-problèmes"></span> Problème et algorithmes
@@ -93,6 +111,21 @@ Projet :
 1. [Chemins de Taxis](projet-chemin-de-taxi){.interne}
 2. [Ordonnancement de tâches](parcours-ordonnancement){.interne}
 {% endaller %}
+
+
+## Markov sur graphes
+
+> TBD deux convergences possible si bi-parti ou pas.
+
+### Arbres couvrant
+
+> TBD compter arbres couvrant markov simple
+> TBD  Amélioration sur arbre avec Kirchoff sur graphe valué.
+
+### Markov eulérien à degré fixé.
+
+> TBD markov sur arbre
+
 
 ### Chemins le plus long
 
