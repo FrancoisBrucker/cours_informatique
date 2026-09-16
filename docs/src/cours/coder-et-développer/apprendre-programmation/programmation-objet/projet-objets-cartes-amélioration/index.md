@@ -108,13 +108,15 @@ On pourrait ainsi gérer les couleurs ainsi :
 ```python
 >>> from enum import Enum
 >>> couleur = Enum("Couleur", [("Pique", 4), ("Cœur", 3), ("Carreau", 2), ("Trèfle", 1)])
->>> print(couleur.pique.name)
+>>> print(couleur.Pique.name)
 pique
->>> print(couleur.pique.value)
+>>> print(couleur.Pique.value)
 4
->>> c = couleur.pique
->>> c
-<Couleur.pique: 4>
+>>> c = couleur.Pique
+>>> print(c)
+Couleur.Pique
+>>> print(repr(c))
+<Couleur.Pique: 4>
 >>> for c in couleur:
 ...     print(c)
 ...
@@ -125,17 +127,53 @@ Couleur.trèfle
 
 ```
 
+Le but est de pouvoir utiliser nos énum directement comme dans l'exemple.
+
 {% faire %}
-Utilisez des `Enum`{.language-} pour gérer les constantes `VALEURS`{.language-} et `COULEURS`{.language-}, puis supprimez les constantes relatives aux différentes valeurs et couleurs individuelles (on n'utilisera que les enum). 
+Remplacez les tests par le code suivant, qui utilise les Enum de python :
+
+```python
+from carte import Carte
+
+
+def test_constructeur():
+    assert isinstance(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle), Carte)
+
+
+def test_str():
+    assert str(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)) == "7♣︎"
+
+
+# def test_plus_grande_ou_égale_que():
+#     assert Carte(carte.AS, carte.TREFLE).plus_grande_ou_égale_que(Carte(carte.VALET, carte.PIQUE))
+#     assert Carte(carte.AS, carte.TREFLE).plus_grande_ou_égale_que(Carte(carte.AS, carte.TREFLE))
+#     assert Carte(carte.AS, carte.PIQUE).plus_grande_ou_égale_que(Carte(carte.AS, carte.TREFLE))
+#     assert not Carte(carte.VALET, carte.PIQUE).plus_grande_ou_égale_que(Carte(carte.AS, carte.TREFLE))
+
+```
 {% endfaire %}
+{% info %}
+Utiliser les `Enum`{.language-} va pour l'instant casser notre méthode `plus_grande_ou_égale_que`{.interne}, on commente donc **pour l'instant** le test. 
+{% endinfo %}
+
+À vous de modifier  le constructeur et la méthode `__str__()`{.language-} pour que les tests passent :
+
 {% faire %}
-Modifiez les tests en conséquence.
+
+1. Utilisez des `Enum`{.language-} pour gérer les constantes de classes `VALEURS`{.language-} et `COULEURS`{.language-}, puis supprimez les constantes relatives aux différentes valeurs et couleurs individuelles (on n'utilisera que les enum et leur valeur associée). 
+2. Pour le code de la méthode `__str__()`{.language-}, vous pourrez utiliser l'attribut `value`{.language-} d'un `Enum`{.language-} pour faire le bon choix de représentation textuelle.
 {% endfaire %}
 
 Cette technique est redoutable : elle est à la fois lisible, sans magic number et portable ! Utilisez-la dès que vous voulez gérer des énumérations.
 
 {% faire %}
-Profitez de cette restructuration du code pour implémentez la méthode spéciale `__repr__`{.language-} et restez là en utilisant la fonction `repr`{.language-}.
+Profitez de cette restructuration du code pour implémentez la méthode spéciale `__repr__`{.language-} et testez là en utilisant la fonction `repr`{.language-} :
+
+```python
+def test_repr():
+    assert repr(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)) == "Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)"
+
+```
 {% endfaire %}
 
 ## Comparaisons
@@ -151,6 +189,26 @@ Rendez les attributs valeurs et couleurs de chaque carte privé.
 {% note "**Méthode de conception**" %}
 Lorsque l'on crée un objet, si on a pas de raison particulière de le rendre modifiable on crée un **_value object_**. Cela évite les effets de bords (et rend la programmation concurrente et parallèle bien plus simple).
 {% endnote %}
+
+## Modification de la méthode `plus_grande_ou_égale_que`{.interne}
+
+Pour l'instant notre méthode `plus_grande_ou_égale_que`{.interne} et son test ne fonctionnent pas avec les `Enum`{.language-}. Corrigeons ça pour le test :
+
+```python
+def test_plus_grande_ou_égale_que():
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle).plus_grande_ou_égale_que(Carte(Carte.VALEURS.Valet, Carte.COULEURS.Pique))
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Pique).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
+    assert not Carte(Carte.VALEURS.Valet, Carte.COULEURS.Pique).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
+```
+
+À vous de changer son code :
+
+{% faire %}
+
+Faites fonctionner la méthode `plus_grande_ou_égale_que`{.interne}.
+
+{% endfaire %}
 
 ## Comparaisons de cartes
 

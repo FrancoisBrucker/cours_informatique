@@ -47,6 +47,11 @@ class Carte:
         ]
         return f"Carte({valeur[self._valeur.value - 7]}, {couleur[self._couleur.value - 1]})"
 
+    def plus_grande_ou_égale_que(self, other):
+        return (self._valeur.value > other._valeur.value) or (
+            (self._valeur.value == other._valeur.value) and (self._couleur.value >= other._couleur.value)
+        )
+    
     def __eq__(self, other):
         return (self._valeur == other._valeur) and (self._couleur == other._couleur)
 

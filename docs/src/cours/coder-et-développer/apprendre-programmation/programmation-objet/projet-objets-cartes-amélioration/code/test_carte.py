@@ -20,3 +20,9 @@ def test_operator():
     assert dix_cœur <= dix_cœur
     assert dix_cœur > dix_carreau
     assert dix_carreau < dix_cœur
+
+def test_plus_grande_ou_égale_que():
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle).plus_grande_ou_égale_que(Carte(Carte.VALEURS.Valet, Carte.COULEURS.Pique))
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
+    assert Carte(Carte.VALEURS.As, Carte.COULEURS.Pique).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
+    assert not Carte(Carte.VALEURS.Valet, Carte.COULEURS.Pique).plus_grande_ou_égale_que(Carte(Carte.VALEURS.As, Carte.COULEURS.Trèfle))
