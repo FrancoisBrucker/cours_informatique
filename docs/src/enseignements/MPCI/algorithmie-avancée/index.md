@@ -71,7 +71,7 @@ Un exposé du proof from the book
 
 {% aller %}
 
-1. [Cycles eulérien](/cours/graphes/introduction/parcours-eulériens/){.interne} :
+1. [Cycles eulérien](/cours/graphes/introduction/parcours-eulériens/){.interne}
 2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/projet-mots-bruijn/){.interne}
 
 {% endaller %}
@@ -79,6 +79,15 @@ Un exposé du proof from the book
 Coder les parcours eulérien et les mots de Bruijn.
 {% endfaire %}
 
+
+
+#### Cours 3 et cours 4
+
+{% aller %}
+
+[Arbres](/cours/graphes/introduction/arbres/){.interne}
+
+{% endaller %}
 
 #### Cours 3
 

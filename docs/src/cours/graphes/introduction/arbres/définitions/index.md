@@ -20,11 +20,11 @@ Un **_arbre_** est un _graphe_ $T = (V, E)$ qui est :
 
 {% endnote2 %}
 
-Par exemple, même si les deux graphes ci-dessous sont connexes, seul le graphe de droite est un arbre.
+Par exemple, seul le graphe du milieu est un arbre parmi les 3 graphes ci-dessous :
 
-| :-: | :-: |
-|![graphe A](./pas_arbre.png)|![graphe B](./arbre.png)|
-|A|B|
+| :-: | :-: | :-: |
+|![graphe A](./arbre-A.png)|![graphe B](./arbre-B.png)|![graphe C](./arbre-C.png)
+|graphe connexe mais contient des cycles|graphe connexe et sans cycle| graphe sans cycle mais pas connexe|
 
 Finissons cette partie par une définissions filant la métaphore botaniste :
 
@@ -39,6 +39,7 @@ Les définitions précédentes concernaient les graphes, il existe un pendant po
 {% note2 "**Définition**" %}
 Une _**arborescence**_ est un graphe orienté $G = (V, E)$ tel que :
 
+- si $xy \in E$ alors $yx \notin E$
 - le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre
 - tel qu'il existe un sommet $r$, appelé **_racine_** tel que pour tout $x \in V$ il existe un chemin allant de $r$ à $x$ dans $G$.
 
@@ -47,14 +48,11 @@ Une _**arborescence**_ est un graphe orienté $G = (V, E)$ tel que :
 On a parfois envie que les chemin ailles vers la racine plutôt qu'en partent et a pour ça la notion d'arbre dirigé enraciné :
 
 {% note2 "**Définition**" %}
-Un _**arbre dirigé enraciné en $r$**_ est un graphe orienté $G = (V, E)$ tel que :
-
-- le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre
-- pour tout $x \in V$ il existe un chemin allant de $x$ à $r$ dans $G$.
+Un _**arbre dirigé enraciné en $r$**_ (on dit aussi _**arbre dirigé planté en $r$**_) est un graphe orienté $G = (V, E)$ si et seulement le graphe $G' = (V, E')$ tel que $xy \in E'$ si et seulement si $yx \in E$ est une arborescence de racine $r$.
 
 {% endnote2 %}
 
-Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence et celui de droite un arbre dirigé enraciné :
+Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence avec le sommet rouge en racine et celui de droite un arbre dirigé enraciné en le sommet rouge :
 
 ![arbre et arborescence](./arbre-arbo.png)
 
@@ -101,11 +99,11 @@ Le théorème précédent est important car il montre l'optimalité d'un arbre :
 De plus, cette optimalité minimale fait que nombre de problèmes compliqués (voir NP-complets) deviennent facile (polynomial et souvent linéaire) sur les arbres.
 
 {% note "**Théorème**" %}
-Les cinq propositions suivantes sont équivalentes :
+Les trois propositions suivantes sont équivalentes :
 
 1. $G=(V, E)$ est une arborescence de racine $r$
-2. $G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet.
-3. $G=(V, E)$
+2. $G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet
+3. $G=(V, E)$ est connexe et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet
 {% endnote %}
 
 {% details "preuve", "open" %}

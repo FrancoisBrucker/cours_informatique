@@ -260,3 +260,11 @@ Les consignes sont :
 {% attention %}
  Le travail est à rendre **sur github** et en mettant le lien vers le dépôt [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/11 à 8h00**.
 {% endattention %}
+
+## Pour aller plus loin
+
+Vous l'avez sans doute vu, ce cours est une extraction d'un cours plus vaste sur le développement logiciel (mais parfois encore en bordel et toujours en chantier). Ce cours est vaste et part de zéro pour arriver plus loin, si vous voulez y jeter un œil, il est disponible ici :
+
+{% lien %}
+[Coder et développer](/cours/coder-et-développer/){.interne}
+{% endlien %}
