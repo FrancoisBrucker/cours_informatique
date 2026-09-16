@@ -318,7 +318,7 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 > TBD ajouter permutations ET MPCI 2025
 
-## <span id="partie-2"></span>Partie II : structures de données
+## <span id="partie-2"></span>Partie II : structures de données linéaires
 
 ### Matrices
 
@@ -466,36 +466,14 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 > 
 > TBD la parie C sera : avancé
 
-## <span id="partie-3"></span>Partie III : structures de données avancées
+## <span id="partie-3"></span>Partie III : structures de données arborées
+>TBD transférer ici de la partie graphe.
+> TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s> y sont.
+> 
 
-> TBD dire que en vrai lorsque l'on utilise la mémoire tout doit être fini. Donc plus d'entier mais des u8, u64, plus de réels mais des double ou float.
-> on peut expliciter une variable comme étant un lien vers la mémoire : pointeur
-> TBD ici parler de pointeurs et l'ajouter comme type de base. Distinguer l'objet de son adresse (ie. variable). Tout se passe comme si avant on avait que des pointeurs : un pointeur est comme un objet "variable" Fait pour gagner du temps : on met tout dans la pile par défaut. Cela accélère mais ajoute une complexité. Par défaut un tableau est constitué d'objets mis bout à bout. Permet d'avoir des tableaux de variables comme avant en utilisant des pointeurs.
->
-> cette architecture est préférée pour des raisons de rapidité : car :
->
-> - pas d'indirection
-> - les objets dans les tableaux sont côte à côte ce qui permet des gains avec la mémoire cache.
-> - objet mutable = pas d'allocation d'objet superflue
->
-> Mais est est plus complexe à mettre en œuvre côté algorithme et code car un objet devient mutable par défaut. Et on ne gagne rien avec les notation O.
-> TBD conséquence : supprimer les additions de la chaîne de caractère.
-> TBD vérifier que tout se passe bien pour le type matrice : ie. de taille fixe.
-> TBD ou alors en parler avec les structures ?
-> TBD ici faire comme en go lorsque tu passes un tableau en paramètre c'est tout le tableau que tu passes
-> TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
-> TBD faire un mix go : prendre une étoile devant les méthodes pour dire que c'est un pointeur qui est pris. Et notation flèche pour les attributs
+> TBD ICI parler pointeur. Faire commencer la partie B.
 
-> TBD <https://research.swtch.com/godata>
-> TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
-
-> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
-
-{% aller %}
-[Structures de données avancées](./structure-données-avancée){.interne}
-{% endaller %}
-
-## <span id="partie-4"></span>Partie IV : problèmes
+## <span id="problèmes"></span><span id="partie-4"></span>Partie IV : problèmes
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
@@ -549,6 +527,40 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 
 > TBD dire que complexité ce n'est pas tout. La constante devant est aussi importante !
 
+
+### Pseudo-code avec pointeur
+
+> TBD voir ce que l'on ne pourrait pas remonter dans NP/NPC : pointeurs et tailles
+
+> TBD dire que en vrai lorsque l'on utilise la mémoire tout doit être fini. Donc plus d'entier mais des u8, u64, plus de réels mais des double ou float.
+> on peut expliciter une variable comme étant un lien vers la mémoire : pointeur
+> TBD ici parler de pointeurs et l'ajouter comme type de base. Distinguer l'objet de son adresse (ie. variable). Tout se passe comme si avant on avait que des pointeurs : un pointeur est comme un objet "variable" Fait pour gagner du temps : on met tout dans la pile par défaut. Cela accélère mais ajoute une complexité. Par défaut un tableau est constitué d'objets mis bout à bout. Permet d'avoir des tableaux de variables comme avant en utilisant des pointeurs.
+>
+> cette architecture est préférée pour des raisons de rapidité : car :
+>
+> - pas d'indirection
+> - les objets dans les tableaux sont côte à côte ce qui permet des gains avec la mémoire cache.
+> - objet mutable = pas d'allocation d'objet superflue
+>
+> Mais est est plus complexe à mettre en œuvre côté algorithme et code car un objet devient mutable par défaut. Et on ne gagne rien avec les notation O.
+> TBD conséquence : supprimer les additions de la chaîne de caractère.
+> TBD vérifier que tout se passe bien pour le type matrice : ie. de taille fixe.
+> TBD ou alors en parler avec les structures ?
+> TBD ici faire comme en go lorsque tu passes un tableau en paramètre c'est tout le tableau que tu passes
+> TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
+> TBD faire un mix go : prendre une étoile devant les méthodes pour dire que c'est un pointeur qui est pris. Et notation flèche pour les attributs
+
+> TBD <https://research.swtch.com/godata>
+> TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
+
+> TBD reprendre les objets de base et dire tous de taille fixe. Idem tableau = n * taille du type de sa structure + 1 entier.
+> TBD dire entier = tableau de bits. Par défaut 26b = 2^64 entier. Par défaut on dira que pas de débordement. Parler des négatif avec le complément à 2. Dire qu'on verra ça précisément plus tard et juste donner les bornes
+
+> TDB ici
+> TBD parler de pointeur directement dans les structures.
+> TBD dire que pour python tout est pointeur.
+> TBD à refaire bien propre.
+
 ### Design d'algorithmes
 
 > TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.
@@ -567,6 +579,19 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
+{% endaller %}
+
+
+> TBD ICI Faire commencer la partie C. 
+> Structures compliquées et joli algorithmes.
+
+## <span id="partie-5"></span>Partie V : structures de données avancées
+
+
+
+
+{% aller %}
+[Structures de données avancées](./structure-données-avancée){.interne}
 {% endaller %}
 
 <!-- ### Jolis problèmes

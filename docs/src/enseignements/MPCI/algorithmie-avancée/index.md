@@ -75,24 +75,41 @@ Un exposé du proof from the book
 2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/projet-mots-bruijn/){.interne}
 
 {% endaller %}
+
+#### Cours 3
+
 {% faire %}
 Coder les parcours eulérien et les mots de Bruijn.
 {% endfaire %}
 
 
-
-#### Cours 3 et cours 4
+#### Cours 4
 
 {% aller %}
 
-[Arbres](/cours/graphes/introduction/arbres/){.interne}
+- [Arbres définition](/cours/graphes/introduction/arbres/définitions/){.interne}
+- [Compter et piocher un arbre](/cours/graphes/introduction/arbres/compter-arbres/){.interne}
 
 {% endaller %}
 
-#### Cours 3
+#### Cours 5
 
-> TBD : graphes eulériens et conséquences.
+{% aller %}
 
+- [Arbres couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+- [compter et piocher un arbre couvrant](/cours/graphes/introduction/arbres/compter-couvrants/){.interne}
+
+{% endaller %}
+
+
+#### Cours 6
+
+{% aller %}
+
+- [Chemin le plus long](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+- [Problèmes NPC](cours/algorithmie/#problèmes){.interne}
+
+{% endaller %}
 
 ## Annales
 

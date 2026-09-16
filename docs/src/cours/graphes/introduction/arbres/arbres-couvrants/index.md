@@ -57,22 +57,12 @@ Il n'y a pas unicité de l'arbre couvrant de poids minimum (_resp._ maximum) !
 Si par exemple la valuation est constante, tout arbre couvrant est minimum (ils ont tous même valuation).
 {% endattention %}
 
-Le problème de la recherche d'un arbre couvrant de poids minimum est lié à bon nombre de problèmes d'optimisation. Par exemple : on suppose que vous êtes chef d'un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous ne voulez pas payer trop cher (vous voulez être ré-élu et ça fait mauvais genre d'augmenter les impôts).
-
+Le problème de la recherche d'un arbre couvrant de poids minimum est lié à bon nombre de problèmes d'optimisation. Par exemple : on suppose que vous êtes chef d'un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous voulez que cela vous coûte le moins cher possible.
 Vous demandez donc à vos conseillers de créer un graphe dont les sommets correspondant à vos villes et dont les arêtes sont valuées par le coût de construction d'une route entre ces 2 villes. Ce graphe n'a pas forcément toutes les arêtes si le coût de construction est prohibitif par exemple.
 
-La solution la plus efficace consiste à trouver de ce graphe un arbre couvrant dont la somme des valuations est minimale parmi tous les arbres couvrant.
+La solution la plus efficace consiste à extraire de ce graphe un arbre couvrant dont la somme des valuations est minimale parmi tous les arbres couvrant puisqu'un arbre est la structure minimale en nombre d'arêtes qui garantie la connexité.
 
-{% exercice %}
-
-Pourquoi ?
-
-{% endexercice %}
-{% details "solution" %}
-Un arbre est la structure minimale en nombre d'arêtes qui garantie la connexité. Parmi tous les arbres couvrants du graphe, on peut prendre un de ceux qui ont une somme des valuations de ses arêtes minimale (il y en a un nombre fini, le min existe donc mais il peut y en avoir plusieurs). Si la valuation d'une arête représente le coût, un arbre couvrant de poids minimal représente une solution de coût minimal pour rendre connexe le territoire.
-{% enddetails %}
-
-Les deux cas sont intéressant et fournissent nombre de jolis algorithmes et d'applications surprenantes,
+Parmi tous les arbres couvrants du graphe (il y en a un nombre fini), on peut prendre un de ceux qui ont une somme des valuations de ses arêtes minimale (attention il peut y en avoir plusieurs).
 
 ## Cas non valué
 

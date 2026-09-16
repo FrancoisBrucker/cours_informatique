@@ -103,10 +103,22 @@ Déduire de l'exercice précédent que si $(G, f)$ est un graphe connexe valué,
 
 ## Algorithmes
 
-### Algorithme de Kruskal valué
+### Kruskal
 
-> TBD ajout valuation. Complexité ?
+> TBD sans valuation. Comme composantes connexes (sans ordre)
+>
+{% lien %}
+<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
+{% endlien %}
+
+> TBD Kruskal. On le fait :
 > 
+> 1. en ajoutant des arêtes en restant sans cycle : algo glouton. On prouve la minimalité par échange.
+> 2. on optimise en montrant que c'est de la connexité. si 2 composantes connexes arbre on peut les lier et on reste arbre
+> 3. on implémente çe avec des couleurs (attention à la mise à jour)
+> 4. calcul de complexité $\mathcal{O}(n^2\log(n))$ s'il faut trier, et $\mathcal{O}(n^2)$ sinon. Le calcul est tricky : que n mise à jour des couleurs.
+
+
 ### Algorithme de Prim
 
 > TBD algo et preuve sous la forme de propositions. Parler de glouton et faire les dessins. Glouton aussi et on grossi à chaque fois 1 unique arborescence.

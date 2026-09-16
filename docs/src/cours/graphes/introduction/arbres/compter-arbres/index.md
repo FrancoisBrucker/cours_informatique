@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Arbres de Cayley
+title: Compter et piocher un arbre
 
 eleventyComputed:
   eleventyNavigation:
@@ -159,6 +159,67 @@ Il est facile de voir que la première arête recodée est la première arête s
 
 Le fait que le codage/recodage de Prüfer soit une bijection montre que le nombre d'arbres que l'on peut créer à partir d'un ensemble $V$ à $n$ éléments correspond au nombre de choix de $n-2$ éléments parmi $n$ avec remise, c'est à dire $n^{n-2}$.
 
+## Ordonnancement des arbres
+
+La bijection du code de Prüfer nous permet d'ordonner, à sommets fixés, chaque arbre $T$ via l'ordre lexicographique de son encodage de Prüfer $P(T)$.
+
+On va considérer dans cette partie que l'ensemble de sommets considéré est : $V = \\{0, \dots, n-1\\}$ et que l'on cherche le $k$ème plus petit mot de longueur $m$.
+
+Pour des ordres lexicographique cette correspondance s'exprime bien avec la bijection suivante allant des suites de longueur $m$ de $\\{0, \dots, n-1\\}$ dans $[0 .. n^m[$ :
+
+<div>
+$$
+\sigma(c_1\dots c_m) \coloneqq \sum_{i = 1}^m c_i n^{m-i}
+$$
+</div>
+
+{% note "**Proposition**" %}
+La fonction $\sigma$ respecte l'ordre lexicographique :  si $c_1\dots c_m < c'_1\dots c'_m$ pour l'ordre lexicographique, alors $\sigma(c_1\dots c_m) < \sigma(c'_1\dots c'_m)$.
+{% endnote %}
+{% details "preuve", "open" %}
+Si $c_1\dots c_m < c'_1\dots c'_m$ alors il existe $k < m$ tel que :
+
+- $c_i = c'_i$ pour tout $1 \leq i < k$,
+- $c_k < c'_k$.
+
+De là :
+
+<div>
+$$
+\begin{array}{lclr}
+\sigma(c'_1\dots c'_m)- \sigma(c_1\dots c_m) & = & (c'_k - c_k)\cdot n^{m-k} + \sum_{i = k+1}^m (c'_i - c_i) n^{m-i}\\
+& \geq & n^{m-k} - (n-1)\cdot \sum_{i = 0}^{m-k-1}  n^{i}\\
+& \geq & n^{m-k} - (n-1) \frac{n^{m-k}-1}{n-1}&\text{série géométrique}\\
+& \geq & 1\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+{% note "**Corollaire**" %}
+La fonction $\sigma$ est une bijection des suites de longueur $m$ de $\\{0, \dots, n-1\\}$ dans $[0 .. n^m[$.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Comme $\sigma$ est une suite strictement croissante pour l'ordre lexicographique, que $\sigma(0 .. 0) = 0$ et que $\sigma(n-1 .. n-1) = n^m-1$, c'est bien une bijection des suites de longueur $m$ de $\\{0, \dots, n-1\\}$ dans $[0 .. n^m[$.
+
+{% enddetails %}
+
+On peut alors facilement en déduire son inverse :
+
+<div>
+$$
+\begin{cases}
+\sigma^{-1}(k) = c^k_1 \dots c^k_m\\
+c^k_i = \lfloor\frac{k}{n^{m-i}} \rfloor \bmod n
+\end{cases}
+$$
+</div>
+
+On peut alors ordonnancer les arbres via leur codage de Prüfer. Ce qui donne, pour les 16 arbres à 4 sommets :
+
+![arbre 4 ordonné](./arbres-4-ordonné.png)
+
 ## Tirage aléatoire d'un arbre
 
 Trouver un arbre aléatoire d'un ensemble $V$ à $n$ éléments revient à tirer avec remise $n-2$ fois parmi son ensemble de sommets.
@@ -166,3 +227,5 @@ Trouver un arbre aléatoire d'un ensemble $V$ à $n$ éléments revient à tirer
 {% attention %}
 On tire aléatoire un arbre à $V$ fixé, **pas** une forme d'arbre.
 {% endattention %}
+
+On peut également utiliser la partie précédente et commencer par tirer un entier uniformément entre 0 et $n^{n-2} - 1$ et retrouver le mot associé.
