@@ -293,7 +293,7 @@ AssertionError
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On peut utiliser des <code class="language-">assert</code> pour vérifier la validité d'un paramètre.</p>
+<p>On peut utiliser des <code class="language-">assert</code> pour vérifier la validité d'un paramètre dans le code des fonctions, pas seulement dans les tests.</p>
 </div></div>
 
 <h2>Attributs</h2>
@@ -468,8 +468,23 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Les <code class="language-">property</code> permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut.</p>
-<p>C'est le meilleur des deux mondes !</p>
+<p>Les <code class="language-">property</code> permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut, c'est le meilleur des deux mondes !</p>
+<p>Leur fonctionnement est le suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_attribut <span class="token operator">=</span> <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">accesseur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># ... </span>
+        
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_attribut
+
+    <span class="token keyword">def</span> <span class="token function">mutateur</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> attribut<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># ...</span>
+
+        self<span class="token punctuation">.</span>_attribut <span class="token operator">=</span> attribut
+
+    attribut <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span>accesseur<span class="token punctuation">,</span> mutateur<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>On n'a plus besoin d'utiliser directement des accesseurs/mutateur on peut les rendre privé :</p>
@@ -481,9 +496,6 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
 
     <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">_get_pas</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_pas
 
     <span class="token keyword">def</span> <span class="token function">_set_pas</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">assert</span> pas <span class="token operator">!=</span> <span class="token number">0</span>

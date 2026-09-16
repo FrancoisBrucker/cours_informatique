@@ -349,7 +349,11 @@
         self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span></code></pre>
-<p>On utilise le fait que si l'on ne donne qu'un seul argument à la fonction <code class="language-">property</code> on ne donne qu'un accesseur et le mutateur est interdit, et l'accesseur est décrit sous la forme d'<a href="../../concepts/fondements-programmation/%C3%A9crire-code/#lambda" class="interne">une fonction <code>lambda</code></a> de python très utiles pour ce genre de choses.</p>
+<p>On utilise ici deux choses :</p>
+<ul>
+<li>premièrement le fait que si l'on ne donne qu'un seul argument à la fonction <code class="language-">property</code> on ne donne qu'un accesseur et le mutateur est interdit,</li>
+<li>deuxièmement l'accesseur est décrit sous la forme d'<a href="../../concepts/fondements-programmation/%C3%A9crire-code/#lambda" class="interne">une fonction <code>lambda</code></a> de python très utiles pour ce genre de choses.</li>
+</ul>
 <p>Il faut aussi changer le test de <code class="language-">str</code>. On s'autorise à utiliser directement l'attribut <code class="language-">_valeur</code> car les tests font partie du code :</p>
 <p>Fichier <code class="fichier">test_dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
