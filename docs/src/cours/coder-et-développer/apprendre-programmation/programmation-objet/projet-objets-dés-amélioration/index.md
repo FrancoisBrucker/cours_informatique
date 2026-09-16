@@ -160,7 +160,10 @@ class Dé:
     # ...
 ```
 
-On utilise le fait que si l'on ne donne qu'un seul argument à la fonction `property`{.language-} on ne donne qu'un accesseur et le mutateur est interdit, et l'accesseur est décrit sous la forme d'[une fonction `lambda`](../../concepts/fondements-programmation/écrire-code/#lambda){.interne} de python très utiles pour ce genre de choses.
+On utilise ici deux choses :
+
+- premièrement le fait que si l'on ne donne qu'un seul argument à la fonction `property`{.language-} on ne donne qu'un accesseur et le mutateur est interdit,
+- deuxièmement l'accesseur est décrit sous la forme d'[une fonction `lambda`](../../concepts/fondements-programmation/écrire-code/#lambda){.interne} de python très utiles pour ce genre de choses.
 
 Il faut aussi changer le test de `str`{.language-}. On s'autorise à utiliser directement l'attribut `_valeur`{.language-} car les tests font partie du code :
 

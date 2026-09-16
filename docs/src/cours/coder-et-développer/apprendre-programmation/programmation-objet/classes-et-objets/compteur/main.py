@@ -1,8 +1,9 @@
 from compteur import Compteur
 
-c = Compteur()
+c1 = Compteur()
+c2 = Compteur()
+c1.incrémente()
+c2.incrémente()
+c1.incrémente()
 
-c.incrémente()
-print(c.donne_valeur())
-c.incrémente()
-print(c.donne_valeur())
+print(c1.valeur, c2.valeur)

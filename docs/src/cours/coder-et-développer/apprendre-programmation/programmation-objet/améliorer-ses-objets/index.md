@@ -216,7 +216,8 @@ def test_assertion():
 Le bloc `with`{.language-} va s'attendre à planter avec une erreur d'assertion. Le test va échouer si ce n'est pas le cas (changez le paramètre de `Compteur(0)`{.language-} dans le test pour le vérifier).
 
 {% attention2 "**À retenir**" %}
-On peut utiliser des `assert`{.language-} pour vérifier la validité d'un paramètre.
+On peut utiliser des `assert`{.language-} pour vérifier la validité d'un paramètre dans le code des fonctions, pas seulement dans les tests.
+
 {% endattention2 %}
 
 ## Attributs
@@ -401,9 +402,28 @@ c.set_pas(42)
 ```
 
 {% attention2 "**À retenir**" %}
-Les `property`{.language-} permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut.
+Les `property`{.language-} permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut, c'est le meilleur des deux mondes ! 
 
-C'est le meilleur des deux mondes !
+Leur fonctionnement est le suivant :
+
+```python
+class C:
+    def __init__(self):
+        self._attribut = # ...
+
+    def accesseur(self):
+        # ... 
+        
+        return self._attribut
+
+    def mutateur(self, attribut):
+        # ...
+
+        self._attribut = attribut
+
+    attribut = property(accesseur, mutateur)
+```
+
 {% endattention2 %}
 
 On n'a plus besoin d'utiliser directement des accesseurs/mutateur on peut les rendre privé :
@@ -417,9 +437,6 @@ class Compteur:
         self.valeur = valeur
 
     # ...
-
-    def _get_pas(self):
-        return self._pas
 
     def _set_pas(self, pas):
         assert pas != 0
