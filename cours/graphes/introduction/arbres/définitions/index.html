@@ -111,16 +111,18 @@
 </ul>
 </div></div>
 
-<p>Par exemple, même si les deux graphes ci-dessous sont connexes, seul le graphe de droite est un arbre.</p>
+<p>Par exemple, seul le graphe du milieu est un arbre parmi les 3 graphes ci-dessous :</p>
 <table>
 <tbody>
 <tr>
-<td style="text-align:center"><img src="pas_arbre.png" alt="graphe A"></td>
-<td style="text-align:center"><img src="arbre.png" alt="graphe B"></td>
+<td style="text-align:center"><img src="arbre-A.png" alt="graphe A"></td>
+<td style="text-align:center"><img src="arbre-B.png" alt="graphe B"></td>
+<td style="text-align:center"><img src="arbre-C.png" alt="graphe C"></td>
 </tr>
 <tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">B</td>
+<td style="text-align:center">graphe connexe mais contient des cycles</td>
+<td style="text-align:center">graphe connexe et sans cycle</td>
+<td style="text-align:center">graphe sans cycle mais pas connexe</td>
 </tr>
 </tbody>
 </table>
@@ -145,6 +147,7 @@
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>arborescence</strong></em> est un graphe orienté $G = (V, E)$ tel que :</p>
 <ul>
+<li>si $xy \in E$ alors $yx \notin E$</li>
 <li>le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre</li>
 <li>tel qu'il existe un sommet $r$, appelé <strong><em>racine</em></strong> tel que pour tout $x \in V$ il existe un chemin allant de $r$ à $x$ dans $G$.</li>
 </ul>
@@ -158,14 +161,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>arbre dirigé enraciné en $r$</strong></em> est un graphe orienté $G = (V, E)$ tel que :</p>
-<ul>
-<li>le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre</li>
-<li>pour tout $x \in V$ il existe un chemin allant de $x$ à $r$ dans $G$.</li>
-</ul>
+<p>Un <em><strong>arbre dirigé enraciné en $r$</strong></em> (on dit aussi <em><strong>arbre dirigé planté en $r$</strong></em>) est un graphe orienté $G = (V, E)$ si et seulement le graphe $G' = (V, E')$ tel que $xy \in E'$ si et seulement si $yx \in E$ est une arborescence de racine $r$.</p>
 </div></div>
 
-<p>Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence et celui de droite un arbre dirigé enraciné :</p>
+<p>Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence avec le sommet rouge en racine et celui de droite un arbre dirigé enraciné en le sommet rouge :</p>
 <p><img src="arbre-arbo.png" alt="arbre et arborescence"></p>
 <h2>Propriétés fondamentales</h2>
 <p>Nous allons montrer ici 5 propriétés équivalentes permettant de caractériser un arbre. Les propriétés sont intéressantes et la façon de les prouver également :</p>
@@ -250,11 +249,11 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Les cinq propositions suivantes sont équivalentes :</p>
+<p>Les trois propositions suivantes sont équivalentes :</p>
 <ol>
 <li>$G=(V, E)$ est une arborescence de racine $r$</li>
-<li>$G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet.</li>
-<li>$G=(V, E)$</li>
+<li>$G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet</li>
+<li>$G=(V, E)$ est connexe et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet</li>
 </ol>
 </div></div>
 
