@@ -96,12 +96,19 @@
     
   
 
-  <p>Algorithmes de recherche d'un arbre couvrant ou d'une arborescence</p>
-<h2>Parcours</h2>
-<blockquote>
-<p>Sert partout. On les reverra plus tard, ici juste définition et utilisation comme arbre couvrant /arborescence.</p>
-</blockquote>
-<h3>Largeur</h3>
+  <p>La recherche d'un arbre couvrant ou d'une arborescence d'un graphe non valué peut se faire en utilisant de algorithmes très généraux de parcours de graphes : les parcours en largeur et en profondeur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ces parcours servent <strong>beaucoup</strong>. On va les retrouver à plein d'endroit donc connaissez les : ils sont bien plus important qu'on ne le pense au départ.</p>
+</div></div>
+
+<p>Nous allons expliciter les deux parcours en supposant que les graphes ne sont pas forcément connexes, ils rendront ainsi plutôt une forêt couvrant qu'un arbre couvrant. Enfin, ces deux algorithmes fonctionnent sans soucis pour des graphes orientés ou non voir des multi-graphes.</p>
+<h2>Parcours en largeur</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -110,7 +117,39 @@
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur">Parcours en largeur</a></p>
 </div></div>
 
-<h3>Profondeur</h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
+    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>
+    var s<span class="token punctuation">:</span> Sommet
+    var E<span class="token punctuation">:</span> <span class="token punctuation">[</span>Arête<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    marque<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> F est non vide<span class="token punctuation">:</span>
+        s <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        Pour chaque v<span class="token punctuation">:</span> Sommet de G<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> v est non marqué <span class="token punctuation">:</span>
+                ajoute xv à E
+                marque<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+                F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
+<p>Le code précédent va rendre :</p>
+<ul>
+<li>un arbre couvrant de $G$ de la partie connexe de $G$ contenant $x$</li>
+<li>une arborescence de racine $x$ contenant tous les sommets atteignables par $x$ dans $G$</li>
+</ul>
+<p>Pour couvrir tout le graphe on recommence l'algorithme sur un sommet qui est dans le graphe mais pas dans l'arbre rendu par l'algorithme.</p>
+<h3>Preuve</h3>
+<blockquote>
+<p>TBD arborescence</p>
+</blockquote>
+<h3>Complexité</h3>
+<blockquote>
+<p>TBD linéaire $\mathcal{O}(\vert E\vert + \vert V\vert)$  si on peut marquer et prendre les voisins d'un sommet en $\mathcal{O}(1)$.</p>
+</blockquote>
+<blockquote>
+<p>TBD on l'écrit avec des entiers et tout ça.</p>
+</blockquote>
+<h2>Parcours en profondeur</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -119,26 +158,32 @@
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">Parcours en profondeur</a></p>
 </div></div>
 
-<h3>Kruskal</h3>
-<blockquote>
-<p>TBD sans valuation. Comme composantes connexes (sans ordre)</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal</a></p>
-</div></div>
+<p>Ce parcours s'écrit facilement de façon récursive :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
+    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>
+    var s<span class="token punctuation">:</span> Sommet
+    var E<span class="token punctuation">:</span> <span class="token punctuation">[</span>Arête<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
+    marque<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> F est non vide<span class="token punctuation">:</span>
+        s <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        Pour chaque v<span class="token punctuation">:</span> Sommet de G<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> v est non marqué <span class="token punctuation">:</span>
+                ajoute xv à E
+                marque<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+                F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
+<h3>Preuve</h3>
 <blockquote>
-<p>TBD Kruskal. On le fait :</p>
-<ol>
-<li>en ajoutant des arêtes en restant sans cycle : algo glouton. On prouve la minimalité par échange.</li>
-<li>on optimise en montrant que c'est de la connexité. si 2 composantes connexes arbre on peut les lier et on reste arbre</li>
-<li>on implémente çe avec des couleurs (attention à la mise à jour)</li>
-<li>calcul de complexité $\mathcal{O}(n^2\log(n))$ s'il faut trier, et $\mathcal{O}(n^2)$ sinon. Le calcul est tricky : que n mise à jour des couleurs.</li>
-</ol>
+<p>TBD arborescence</p>
+</blockquote>
+<h3>Complexité</h3>
+<blockquote>
+<p>TBD linéaire $\mathcal{O}(\vert E\vert + \vert V\vert)$  si on peut marquer et prendre les voisins d'un sommet en $\mathcal{O}(1)$.</p>
+</blockquote>
+<blockquote>
+<p>TBD on l'écrit avec des entiers et tout ça.</p>
 </blockquote>
 
 

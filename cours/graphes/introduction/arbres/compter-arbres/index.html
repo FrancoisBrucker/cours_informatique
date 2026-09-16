@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arbres de Cayley</title>
+    <title>Compter et piocher un arbre</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Arbres de Cayley</h1>
+  <h1>Compter et piocher un arbre</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/compter-arbres/">Arbres de Cayley</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/compter-arbres/">Compter et piocher un arbre</a>
 
 </div></div>
 
@@ -369,6 +369,103 @@ rendre E</code></pre>
 </details>     
 </div>
 <p>Le fait que le codage/recodage de Prüfer soit une bijection montre que le nombre d'arbres que l'on peut créer à partir d'un ensemble $V$ à $n$ éléments correspond au nombre de choix de $n-2$ éléments parmi $n$ avec remise, c'est à dire $n^{n-2}$.</p>
+<h2>Ordonnancement des arbres</h2>
+<p>La bijection du code de Prüfer nous permet d'ordonner, à sommets fixés, chaque arbre $T$ via l'ordre lexicographique de son encodage de Prüfer $P(T)$.</p>
+<p>On va considérer dans cette partie que l'ensemble de sommets considéré est : $V = \{0, \dots, n-1\}$ et que l'on cherche le $k$ème plus petit mot de longueur $m$.</p>
+<p>Pour des ordres lexicographique cette correspondance s'exprime bien avec la bijection suivante allant des suites de longueur $m$ de $\{0, \dots, n-1\}$ dans $[0 .. n^m[$ :</p>
+<div>
+$$
+\sigma(c_1\dots c_m) \coloneqq \sum_{i = 1}^m c_i n^{m-i}
+$$
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction $\sigma$ respecte l'ordre lexicographique :  si $c_1\dots c_m &lt; c'_1\dots c'_m$ pour l'ordre lexicographique, alors $\sigma(c_1\dots c_m) &lt; \sigma(c'_1\dots c'_m)$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $c_1\dots c_m &lt; c'_1\dots c'_m$ alors il existe $k &lt; m$ tel que :</p>
+<ul>
+<li>$c_i = c'_i$ pour tout $1 \leq i &lt; k$,</li>
+<li>$c_k &lt; c'_k$.</li>
+</ul>
+<p>De là :</p>
+<div>
+$$
+\begin{array}{lclr}
+\sigma(c'_1\dots c'_m)- \sigma(c_1\dots c_m) & = & (c'_k - c_k)\cdot n^{m-k} + \sum_{i = k+1}^m (c'_i - c_i) n^{m-i}\\
+& \geq & n^{m-k} - (n-1)\cdot \sum_{i = 0}^{m-k-1}  n^{i}\\
+& \geq & n^{m-k} - (n-1) \frac{n^{m-k}-1}{n-1}&\text{série géométrique}\\
+& \geq & 1\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction $\sigma$ est une bijection des suites de longueur $m$ de $\{0, \dots, n-1\}$ dans $[0 .. n^m[$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $\sigma$ est une suite strictement croissante pour l'ordre lexicographique, que $\sigma(0 .. 0) = 0$ et que $\sigma(n-1 .. n-1) = n^m-1$, c'est bien une bijection des suites de longueur $m$ de $\{0, \dots, n-1\}$ dans $[0 .. n^m[$.</p>
+</div>
+</details>     
+</div>
+<p>On peut alors facilement en déduire son inverse :</p>
+<div>
+$$
+\begin{cases}
+\sigma^{-1}(k) = c^k_1 \dots c^k_m\\
+c^k_i = \lfloor\frac{k}{n^{m-i}} \rfloor \bmod n
+\end{cases}
+$$
+</div>
+<p>On peut alors ordonnancer les arbres via leur codage de Prüfer. Ce qui donne, pour les 16 arbres à 4 sommets :</p>
+<p><img src="arbres-4-ordonn%C3%A9.png" alt="arbre 4 ordonné"></p>
 <h2>Tirage aléatoire d'un arbre</h2>
 <p>Trouver un arbre aléatoire d'un ensemble $V$ à $n$ éléments revient à tirer avec remise $n-2$ fois parmi son ensemble de sommets.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -379,6 +476,7 @@ rendre E</code></pre>
 <p>On tire aléatoire un arbre à $V$ fixé, <strong>pas</strong> une forme d'arbre.</p>
 </div></div>
 
+<p>On peut également utiliser la partie précédente et commencer par tirer un entier uniformément entre 0 et $n^{n-2} - 1$ et retrouver le mot associé.</p>
 
 
 </article>
