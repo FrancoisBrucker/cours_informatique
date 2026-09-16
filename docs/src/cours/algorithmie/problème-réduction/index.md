@@ -381,6 +381,7 @@ Montrer que 3-SUM = GEOBASE pour l'ordre des réductions linéaires.
 Clair puisque 3-SUM = 3-SUM' = GEOBASE
 {% enddetails %}
 
+> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness> Peut-on-ton le résoudre mieux que n^2 ?
 Si ce genre de problème de géométrie solvable algébriquement, n'hésitez pas à jeter un coup d'œil aux liens suivants :
 
 {% lien %}

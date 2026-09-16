@@ -292,6 +292,9 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}
 
+
+> TBD ici complexité amortie.
+
 ### On s'entraîne
 
 #### Complexité
@@ -319,6 +322,9 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 > TBD ajouter permutations ET MPCI 2025
 
 ## <span id="partie-2"></span>Partie II : structures de données linéaires
+
+> TBD renommer structures de données classiques. Séparées en linéaire/matricielles et arborées
+
 
 ### Matrices
 
@@ -496,7 +502,7 @@ Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexit
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
 > TBD aborder NP via les formules logique et les pbs de décision. existe-t-il < k ?
-> TBD fact est dans NP cap conp et donc prseque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>
+> TBD fact est dans NP cap conp et donc presque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>
 > 
 {% aller %}
 [Problèmes NP](./problèmes-NP){.interne}
@@ -508,6 +514,8 @@ Le problème SAT est notre exemple de problème NP-complet. On va le voir sous d
 [Problème SAT](./problème-SAT){.interne}
 {% endaller %}
 
+
+> 
 > TBD ici caser les formules logiques, voir les bdd
 > montrer formules logique = sat
 > dire que plus tard on verra algo = sat. Pour l'instant juste sur quelques exemples.
@@ -517,6 +525,10 @@ Le problème SAT est notre exemple de problème NP-complet. On va le voir sous d
 > TBD  le truc de Pascal avec les probas.
 > bus : <https://www.youtube.com/watch?v=hFWFN46kaOo> protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>
 
+
+> TBD NP complet = réduction poly puisque résoluble expo
+> P complet = reduction poly mais en espace logarithmique. <https://fr.wikipedia.org/wiki/P-complet> et <https://cs.stackexchange.com/questions/135088/why-does-lspacelog-space-complexity-class-exist-but-not-logtime> <https://cs.stackexchange.com/questions/44259/is-l-closed-under-linear-time-reductions> <https://en.wikipedia.org/wiki/Horn-satisfiability>
+> 
 ### Intermède : l'algorithme qui résout tout
 
 Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.

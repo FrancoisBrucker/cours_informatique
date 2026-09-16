@@ -122,6 +122,8 @@ Projet :
 > TBD compter arbres couvrant markov simple
 > TBD  Amélioration sur arbre avec Kirchoff sur graphe valué.
 
+> application : créer un labyrinthe : <https://weblog.jamisbuck.org/2011/1/17/maze-generation-aldous-broder-algorithm> <https://epubs.siam.org/doi/10.1137/0403039>
+> 
 ### Markov eulérien à degré fixé.
 
 > TBD markov sur arbre

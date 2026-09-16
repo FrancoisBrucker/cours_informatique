@@ -168,13 +168,6 @@ Réalisez l'algorithme en entier sur le graphe précédent.
 
 > TBD montrer que ça ne marche pas si arborescence. r -> A 3 r -> B 1 A->B 1
 
-### Algorithme de Chu-Liu/Edmonds
-
-> 朱永津 (Zhū Yǒngjīn) et 刘振宏 (Liú Zhènhóng) en 1965 ; edmonds en 1967
-> TBD marche sur l'ensemble des éléments atteignables par r (via parcours)
-
-<https://fr.wikipedia.org/wiki/Algorithme_de_Chu-Liu/Edmonds>
-> TBD <https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f18/www/scribes/lecture02.pdf>
 
 ## Application
 

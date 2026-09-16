@@ -84,16 +84,22 @@ Codons tout ça :
 
 ### Graphes Hamiltoniens
 
+> TBD parler de 2-opt (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.
 > TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?
 
-> TBD ici pas approximation. Pas dans l'intro. Garder couplage pour pas dans l'intro.
+> TBD garder juste dirac et tournois existencxe puis méthode probabiliste
+> TBD ajouter algo en $2^n$ qui est mieux que n!
+
+
+
+> TBD Garder couplage pour pas dans l'intro.
 > TBD : 
 > 1. définition du problème.
 > 2. cas où on sait le faire :
 >   1. tournoi + méthode probabiliste (cf ds 2026)
->   1. degrés
->   2. arbres + partie arbres (déf + ALM)
->   3. acyclique : et conséquence inattendue sr le BTP
+>   1. degrés dirac (déplacer ore dans les parties détaillées)
+>   2. arbres 
+>   3. acyclique pour chemin le plus long : et conséquence inattendue sr le BTP (pb d'ordonnancements. Aussi DFS !)
 > 3. cas général métrique et complet
 >   1. pas simple : exhaustif avec backtrack + branch and bound
 >   2. approximation : 

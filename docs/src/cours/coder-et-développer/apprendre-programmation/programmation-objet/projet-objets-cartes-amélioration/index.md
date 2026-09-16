@@ -127,7 +127,7 @@ Couleur.trèfle
 
 ```
 
-Le but est de pouvoir utiliser nos énum directement comme dans l'exemple.
+Le but est de pouvoir utiliser nos énums directement comme dans l'exemple.
 
 {% faire %}
 Remplacez les tests par le code suivant, qui utilise les Enum de python :

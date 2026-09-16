@@ -66,15 +66,25 @@ Parmi tous les arbres couvrants du graphe (il y en a un nombre fini), on peut pr
 
 ## Cas non valué
 
+
 {% aller %}
-[Arbre et arborescences](./non-valué){.interne}
+[Arbre couvrant et arborescences non valuées](./non-valué){.interne}
 {% endaller %}
+
 
 ## Cas valué
 
 {% aller %}
-[Arbre et arborescences de poids minimal](./valué){.interne}
+- [Arbres de poids minimal](./valué-arbre){.interne}
+- [Arborescences de poids minimal](./valué-arborescence){.interne}
 {% endaller %}
+
+## Compter et choisir
+
+{% aller %}
+[Compter et choisir un arbre ou une arborescence](./compter){.interne}
+{% endaller %}
+
 
 
 ## On s'entraîne
