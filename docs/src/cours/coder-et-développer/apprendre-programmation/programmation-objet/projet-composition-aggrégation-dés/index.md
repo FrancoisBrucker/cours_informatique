@@ -457,7 +457,6 @@ Le Memento est un outil formidable pour créer des undo/redo !
 Vous pourrez par exemple l'utiliser comme ça :
 
 ```python
-
 from dé import Dé, MementoDé
 
 dé = Dé()
@@ -521,22 +520,20 @@ def test_mementoTapisVert():
 Vous pourrez par exemple l'utiliser comme ça :
 
 ```python
-
-from dé import TapisVert, MementoDé, MementoTapisVert
+from dé import TapisVert, MementoTapisVert
 
 tapis = TapisVert()
-print(tapis)
+memento_liste = []
 
-memento_liste = [MementoTapisVert(tapis)]
-for _ in range(10):
-tapis.lancer()
-memento_liste.append = MementoTapisVert(tapis)
-print(tapis)
+print("0 :", tapis)
+for i in range(1, 10):
+    memento_liste.append(MementoTapisVert(tapis))
+    tapis.lancer()
+    print(i, ":", tapis)
 
 for _ in range(len(memento_liste)):
-print("avant restore :", tapis)
-memento_liste.pop().restore()
-print("après restore :", tapis)
+    memento_liste.pop().restore()
+    print(len(memento_liste), ":", tapis)
 
 ```
 
