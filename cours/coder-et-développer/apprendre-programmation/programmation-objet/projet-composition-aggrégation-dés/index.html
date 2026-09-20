@@ -691,8 +691,7 @@ tapis_vert <span class="token operator">=</span> TapisVert<span class="token pun
 </div>
 <p>Le Memento est un outil formidable pour créer des undo/redo !</p>
 <p>Vous pourrez par exemple l'utiliser comme ça :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
-<span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> MementoDé
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> MementoDé
 
 dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span>
@@ -759,22 +758,20 @@ memento<span class="token punctuation">.</span>restore<span class="token punctua
 </details>     
 </div>
 <p>Vous pourrez par exemple l'utiliser comme ça :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
-<span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert<span class="token punctuation">,</span> MementoDé<span class="token punctuation">,</span> MementoTapisVert
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert<span class="token punctuation">,</span> MementoTapisVert
 
 tapis <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>tapis<span class="token punctuation">)</span>
+memento_liste <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-memento_liste <span class="token operator">=</span> <span class="token punctuation">[</span>MementoTapisVert<span class="token punctuation">(</span>tapis<span class="token punctuation">)</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-tapis<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-memento_liste<span class="token punctuation">.</span>append <span class="token operator">=</span> MementoTapisVert<span class="token punctuation">(</span>tapis<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>tapis<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"0 :"</span><span class="token punctuation">,</span> tapis<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    memento_liste<span class="token punctuation">.</span>append<span class="token punctuation">(</span>MementoTapisVert<span class="token punctuation">(</span>tapis<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    tapis<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token string">":"</span><span class="token punctuation">,</span> tapis<span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>memento_liste<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"avant restore :"</span><span class="token punctuation">,</span> tapis<span class="token punctuation">)</span>
-memento_liste<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"après restore :"</span><span class="token punctuation">,</span> tapis<span class="token punctuation">)</span>
+    memento_liste<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>memento_liste<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">":"</span><span class="token punctuation">,</span> tapis<span class="token punctuation">)</span>
 </code></pre>
 <h2>Code final</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
