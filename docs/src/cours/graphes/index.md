@@ -47,26 +47,21 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 - Markov sur graphes : 2 cas : graphe de sommets ou structure
   - puis Markov sur euler
-  - toutes les arborescence avec Markov
-- 
+  - toutes les arborescence avec Markov 
+  
 ### Euler et hamilton 
 
 > TBD degrés : euler clair pair / ham et degré. Prop de Chvatal.
 
-> plus tard : graphe aléatoire + graphe Rado + isomorphisme
-> 2. distribution des degrés pairs ? Y'en a qui existent pas.
->   1. formule générale + algo pour en trouver 1
->   2. suite décroissantes -> graphes EUlérien et généraux
->   3. les trouver tous ? Au moins aléatoirement.
 
-> TBD MCMC : <https://www.youtube.com/watch?v=nndtTssgtZE>
 
-> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 > TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
 > TBD on random des nombres dans une borne et on continue
-> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
+le montre avec des matrices, nous juste avec un graphe.
 
 > postier chinois et chritofides après couplage.
+> TBD voir comment faire pour aller mieux -> pb du couplage.
+> TBD à la fin du couplage. Se poser la question de résolution exacte ? NP-complet. et on y va.
 
 
 ### Projet graphes d'intervalles
@@ -77,6 +72,7 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 Il existe n ordre linéaire entre les sommets te que x < y < z si xz est une arête alors xy aussi
 
 , l'ensemble de ses voisins situés après lui dans l'ordre forme un bloc consécutif d'indices.
+
 ### Chemins de longueur/poids minimum
 
 #### <span id="chemin-problèmes"></span> Problème et algorithmes
@@ -109,47 +105,60 @@ Projet :
 {% aller %}
 
 1. [Chemins de Taxis](projet-chemin-de-taxi){.interne}
-2. [Ordonnancement de tâches](parcours-ordonnancement){.interne}
+2. [cycle-chemin](projet-chemins-cycles){.interne}
 {% endaller %}
 
 
+## Graphe à degré fixé
+
+- [formule de Erdos-Gallai](https://www.sciencedirect.com/science/article/pii/S0012365X09004683?fr=RR-2&ref=pdf_download&rr=a3de998bcd180c79)
+- existence de graphes réguliers
+- connexités des graphes à sommets fixé preuve de Ryker sur les matrices 0/1
+
+> tous les graphes à suite de degré fixé Bender–Canfield 1978, affiné par McKay et McKay–Wormald
+> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> 
+> 
 ## Markov sur graphes
+> TBD MCMC : <https://www.youtube.com/watch?v=nndtTssgtZE>
 
 > TBD deux convergences possible si bi-parti ou pas.
 
-### Arbres couvrant
+> TBD markov sur graphe 2 critères de convergence :
+>   1. P^n > 0
+>   2. 1./p P^n pour graphe bi parti (ex arbre)
+
+> Utilisation pour tirer :
+>   - un graphe à sommet fixé aléatoire
+>   - trouverr une arborescence aléatoire : Aldous-Broder
 
 > TBD compter arbres couvrant markov simple
 > TBD  Amélioration sur arbre avec Kirchoff sur graphe valué.
 
 > application : créer un labyrinthe : <https://weblog.jamisbuck.org/2011/1/17/maze-generation-aldous-broder-algorithm> <https://epubs.siam.org/doi/10.1137/0403039>
 > 
-### Markov eulérien à degré fixé.
-
-> TBD markov sur arbre
 
 
-### Chemins le plus long
+## Chemins le plus long
 
-
-Projets :
+graphes-hamiltoniens
 
 > TBD à transformer en voyageur de commerce
 
-{% aller %}
+> Hamilton :
+> [hamiltonian ciruits in random graph](https://www.sciencedirect.com/science/article/pii/0012365X76900686?ref=pdf_download&fr=RR-2&rr=a3dea0291f060c79) (posa) et [Fast probabilistic algorithms for hamiltonian circuits and matchings](https://www.sciencedirect.com/science/article/pii/002200007990045X?ref=pdf_download&fr=RR-2&rr=a3dea07c28a50c79)
 
-1. 
 
-{% endaller %}
 
-### Chemins de longueur/poids minimum
+Projets chemin (mettre de l'ordre)
 
 {% aller %}
 
 1. [Projet graphe géographique](projet-graphe-géographique){.interne}
 2. [Projet chemins avec hubs](projet-chemins-hub){.interne}
+3. [Projet chemin le plus long](chemin-le-plus-long){.interne}
 
 {% endaller %}
+
 
 ## Arbres
 
@@ -216,6 +225,15 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 {% endaller %} -->
 
+
+## Graphes Planaires
+
+{% aller %}
+
+[Graphes planaires](./graphes-planaires){.interne}
+
+{% endaller %}
+
 ## Colorabilité d'un graphe
 
 {% aller %}
@@ -231,14 +249,6 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [projet _line graph_](./projet-line-graph){.interne}
 
 {% endaller %} -->
-
-## Graphes Planaires
-
-{% aller %}
-
-[Graphes planaires](./graphes-planaires){.interne}
-
-{% endaller %}
 
 <!-- 
 ## Graphes cordés

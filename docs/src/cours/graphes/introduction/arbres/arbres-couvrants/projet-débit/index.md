@@ -61,6 +61,8 @@ joignant $x$ et $y$ vaut $D(x, y)$ pour le réseau $G$.
 
 {% enddetails %}
 
+> TBD ici Prim = codage par
+
 {% exercice %}
 
 Quelle méthode peut-on appliquer pour déterminer, dans
@@ -70,8 +72,8 @@ sommets quelconques de $G$ ?
 {% endexercice %}
 {% details "solution" %}
 
-> TBD arbre  unique chemin entre deux sommets
-> TBD
+> TBD arbre unique chemin entre deux sommets. Prim nous donne un codage par paire.
+> TBD 
 
 {% enddetails %}
 

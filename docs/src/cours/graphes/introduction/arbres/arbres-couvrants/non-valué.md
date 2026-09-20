@@ -100,3 +100,8 @@ algorithme largeur(G: Graphe, x: Sommet): Graphe
 > TBD linéaire $\mathcal{O}(\vert E\vert + \vert V\vert)$  si on peut marquer et prendre les voisins d'un sommet en $\mathcal{O}(1)$.
 
 > TBD on l'écrit avec des entiers et tout ça.
+>
+
+## Parcours et arbre enracinés
+
+> TBD monter que largeur et profondeur peuvent encoder un arbre enraciné en temps linéaire.

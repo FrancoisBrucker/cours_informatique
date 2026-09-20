@@ -92,22 +92,27 @@ Coder les parcours eulérien et les mots de Bruijn.
 
 {% endaller %}
 
-#### Cours 5
+#### Cours 5 & 6
 
 {% aller %}
 
-- [Arbres couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+- [Arbres/arborescences couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
 - [compter et piocher un arbre couvrant](/cours/graphes/introduction/arbres/compter-couvrants/){.interne}
 
 {% endaller %}
 
 
-#### Cours 6
+#### Cours 7 & 8
 
 {% aller %}
 
-- [Chemin le plus long](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
-- [Problèmes NPC](cours/algorithmie/#problèmes){.interne}
+- [Chemin le plus long](/cours/graphes/introduction/parcours-hamiltoniens/){.interne}
+- [Problème d'ordonnancement](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+- réduction et [Problèmes NPC](cours/algorithmie/#problèmes){.interne}
+- problèmes de graphes NPC : 
+  - Clique/stable
+  - Hamilton (cycle et chemin)
+  - Coloration
 
 {% endaller %}
 

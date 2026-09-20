@@ -136,6 +136,9 @@ De là même manière, si $c=v_0 \dots v_p$ est un chemins non élémentaire, il
 La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou circuit) de longueur nulle ! Ce n'est pas le cas pour tous les autres cas.
 {% endattention %}
 
+
+> TBD on peut facilement calculer le nombre de pseudo-chemins entre deux sommets d'un graphe (orienté) via sa matrice d'adjacence.
+> 
 Pour tout $n$, il existe deux graphes représentant un chemin ert un cycle :
 
 {% note2 "**Définition**" %}

@@ -1,9 +1,7 @@
 ---
 layout: layout/post.njk
-title: Chemin et cycles Hamiltonien
 
-authors:
-  - François Brucker
+title: Chemin le plus long
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,142 +10,40 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<div id="definition-graphe-hamiltonien"></div>
-{% note "**Définition**" %}
-Un graphe (_resp._ graphe dirigé) admet un **_cycle_** (_resp._ **_circuit_**) **_hamiltonien_** s'il existe un cycle (_resp._ un circuit) élémentaire passant par tous les sommets.
+> TBD à réordonner.
 
-Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien.
-{% endnote %}
+## Ordonnancement
 
-On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton) qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game) qu'il commercialisera et correspond à l'exercice suivant :
+> TBD DFS et Problème d’ordonnancements
+>
+> TBD tri topologique dans un DAG avec un DFS + à la visite ajoute en fin de liste. Ensuite on regarde la liste à l'envers
 
-{% exercice "Jeu du dodécaèdre" %}
-Montrer que le graphe suivant possède un cycle hamiltonien
-![dodécaèdre](dodécaèdre.png)
-{% endexercice %}
-{% details "corrigé" %}
-![dodécaèdre](dodécaèdre_hamilton.png)
-{% enddetails %}
+Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement) peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
 
-La définition suivante est également très utilisée :
-
-{% note "**Définition**" %}
-Un graphe (_resp._ graphe dirigé) admet un **_chemin hamiltonien_** s'il existe un chemin élémentaire passant par tous les sommets.
-
-{% endnote %}
-
-Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen) (que l'on est amené à revoir), n'en possède pas :
-
-![graphe de Petersen](petersen.png)
-
-{% info "tiré de Wikipédia" %}
-Donald Knuth explique dans The Art of Computer Programming que le graphe de Petersen est _«une configuration remarquable qui sert de contre-exemple à de nombreuses prédictions optimistes sur ce qui devrait être vrai pour tous les graphes3 »_.
-{% endinfo %}
 {% exercice %}
-Montrez que le graphe de Petersen ne possède pas de cycle hamiltonien.
+Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?
 {% endexercice %}
-{% details "corrigé" %}
-S'il suffit d'exhiber un exemple pour montrer qu'un graphe est hamiltonien, pour montrer qu'il ne l'est pas il faut en démontrer l'impossibilité.
-
-On peut utiliser pour cela séparons les sommets du graphe en deux parties : les sommets rouges et les sommets verts :
-
-![graphe de Petersen](petersen2.png)
-
-Supposons qu'il existe un cycle hamiltonien $x_1\dots x_n$. Soit $x_ix_{i+1}$ est une arête dont les sommets sont de couleurs différentes. Si $j>i$ est le plus petit entier tel que $x_jx_{j+1}$ est une arête dont les sommets sont de couleurs différentes, alors la couleur de $x_{i+1}$ est identique à celle de $x_j$ et donc il ne peut y avoir qu'un nombre pair d'arêtes dont les sommets sont de couleurs différentes. Soit 0, 2 ou 4 arêtes ce qui, par symétrie, suppose qu'un des quatre graphes ci-après possède aussi un cycle hamiltonien avec les arêtes vertes (jonction entre couleur et sommets de degré 2), ce qui est impossible :
-
-| :-: | :-: |
-|![graphe A](./petersen-a.png)|![graphe B](./petersen-b.png)|
-|![graphe C](./petersen-c.png)|![graphe D](./petersen-d.png)|
-
+{% details "solution" %}
+Il est clair que s'il y a un cycle on ne peut réaliser le projet.
 {% enddetails %}
 
-Le problème du cycle pou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier [le problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
+Vous résolvez des problèmes d'ordonnancement tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)
 
-## Propriétés
+![habillage](chemin_habillage.png)
 
-Lorsque le graphe a beaucoup d'arêtes, il va être facile de trouver des chemin ou cycles/circuit hamiltonien.
-
-### Tournois
-
-Commençons par un résultat surprenant sur les graphes orientés. S'il est évident que les graphes complets ont tous des chemins hamiltoniens, c'est également le cas pour les tournois !
-
-<div id="tournoi-exercice"></div>
 {% exercice %}
-Montrez que tout [tournoi](../structure/#definition-tournoi) admet un chemin hamiltonien.
+Montrer que le tri topologique est une solution au problème d'ordonnancement. Appliquez le au problème de s'habiller le matin.
 {% endexercice %}
-{% details "corrigé" %}
-
-On peut le démontrer par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
-
-On prend $x$ un sommet de ce tournoi. Le graphe $T$ privé de $T$ est un tournoi à $n$ sommets. Il existe alors un chemin hamiltonien $c_0\dots c_{n-1}$ dans la restriction de $T$.
-
-Si $xc_{0}$ est un arc de $T$, alors $xc_0\dots c_{n-1}$ est un chemin hamiltonien. Sinon si $c_{n-1}x$ est un arc de $T$, alors $c_0\dots c_{n-1}x$ est un chemin hamiltonien.
-
-Si on est dans aucun des cas précédents, il existe $0 <i<n-1$ tel que $c_{i}x$ et $xc_{i+1}$ sont deux arcs de $T$ : $c_0\dots c_{i}xc_{i+1}\dots c_{n-1}x$ est un chemin hamiltonien de $T$.
-{% enddetails %}
-{% details "corrigé alternatif" %}
-Preuve un peu plus élégante que la précédente.
-
-On peut le démontrer par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
-
-On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que les restrictions de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
-
-Il existe alors :
-
-- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
-- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
-
-On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
-
+{% details "solution" %}
+De plus un tri topologique fait que lorsque l'on s'attelle à la tache $v_i$ on a déjà fait tous ses prédécesseurs (ses prés-requis).
 {% enddetails %}
 
-Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
+C'est encore un exemple où les contraintes sont locales et ou l'on cherche une solution globale.
 
-### Cycles et chemins
-
-Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales, en particulier lorsque l'on considère des graphes avec beaucoup d'arêtes.
-
-{% note "**Proposition (Dirac, 1952)**" %}
-Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ est hamiltonien (_ie._ admet un cycle Hamiltonien).
-{% endnote %}
-{% details "preuve", "open" %}
-
-Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser [cette propriété](../chemins-cycles-connexite/#prop-connexe){.interne} et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2>  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).
-
-Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cycle est hamiltonien. Sinon en effet, par connexité, il existerait une arête $yx_j$ avec $y\notin C$ et le chemin suivant serait strictement plus long que $C$ : $yx_j\dots x_kx_0\dots x_{j-1}$.
-
-On suppose alors que $x_0x_k \notin E$.
-
-Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.
-De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous les successeurs des voisins de $x_k$ (dont $x_k$ puisque $x_{k-1}x_k$) et il y en a au moins $\vert V \vert / 2$, plus tous les voisins de $x_0$, c'est à dire encore au moins $\vert V \vert / 2$ : $C$ posséderait au moins $\vert V \vert + 1$ élément, ce qui est impossible.
-
-Il existe donc $x_i$ ($0 < i <k$) tel que $x_ix_k \in E$ et a $x_{i+1}x_0 \in E$ : le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est un cycle hamiltonien.
-
-{% enddetails %}
-
-La propriété se généralise même :
-
-{% note "**Proposition (Ore, 1960)**" %}
-Si $G=(V, E)$ avec $\vert V \vert = n \geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ pour tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.
-{% endnote %}
-{% details "preuve", "open" %}
-
-On suppose que $G$ n'est pas hamiltonien. Comme le graphe complet est hamiltonien il va exister $G'=(V, E')$ tel que :
-
-- $E \subseteq E'$
-- $G'$ n'est pas hamiltonien (_ie._ pas de cycle hamiltonien)
-- si on ajoute l'arête $uv$ à $G'$ il devient hamiltonien.
-
-Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Pour tout $0\leq i<n-1$, on ne peut avoir $x_ix_k \in E'$ et $x_{i+1}x_0 \in E'$ sinon, tout comme la preuve précédente, on peut construire le cycle hamiltonien $x_0\dots x_ix_{n-1}\dots x_{i+1}x_0$.
-
-De là, $\delta(x_0) + \delta(x_{n-1}) < n$ dans $G'$ puisqu'au plus une des deux arêtes $x_ix_k$ ou $x_{i+1}x_0$ est dans $E'$ pour $0\leq i<n-1$.
-Or comme $E \subseteq E'$ on aurait également $\delta(x_0) + \delta(x_{n-1}) < n$ dans $G$, ce qui est impossible.
-
-{% enddetails %}
-
-On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cycle hamiltonien.
 
 ## NP-complétude
+
+> TBD Chemin le plus long ≥ chemin hamiltonien
 
 Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et non orienté :
 

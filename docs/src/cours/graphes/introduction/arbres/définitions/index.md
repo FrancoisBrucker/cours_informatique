@@ -112,6 +112,12 @@ Les trois propositions suivantes sont équivalentes :
 
 {% enddetails %}
 
+<!-- > TBD 
+> 
+> existence de la médiane
+ -->
+
+
 ## Sommets et feuilles
 
 {% note2 "**Définition**" %}
@@ -269,3 +275,15 @@ Cette notion d'intersection de chemins se généralise dans un type de graphes p
 > TBD écrire propre
 
 Codage par parant pour les arborescence se dérive en un codage pour les arbre en choisissant une racine ($T[r] = r$ pour celle là)
+
+> Trouver un encodage par racine peut se faire facilement avec un parcours.
+<!-- TBD
+
+> TBD une fois qu'on a un codage par père on peut trouve un chemin entre tout x et y en O(longueur du chemin).
+> On remonte de 1 étape en x et en y en marquant chaque père par la position trouvée (pas besoin de savoir lequel puisqu'on va le marquer par l'un et le retrouver par l'autre). Lorsqu'on trouve un élément déjà vu on s'arrête.
+> et on raboute les deux chemins jusqu'à la position du sommet marqué
+> ON peut faire une marque (x, y, position) comme ça on peut faire plusieurs chemins 
+>
+> On peut faire tout x et tout y et mettre l'élément en commun (la médiane) dans M[x, y] 
+
+-->

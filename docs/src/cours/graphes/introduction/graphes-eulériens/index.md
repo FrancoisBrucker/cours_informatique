@@ -103,7 +103,6 @@ Pour cela, comme le graphe est connexe il va exister deux cycles $C_1$ et $C_2$ 
 
 ## Trouver un cycle Eulérien
 
-
 On va se restreindre aux graphes non-orienté. Pour cela, notre codage par dictionnaire fonctionne tout à fait. Prenons par exemple le graphe :
 
 ![exemple Euler](./euler_exemple_1.png)
@@ -303,7 +302,6 @@ Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que 
 Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cycles-connexite/#exercice-circuit-oriente){.interne} montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.
 
 {% enddetails %}
-
 
 ### Graphes mixtes
 

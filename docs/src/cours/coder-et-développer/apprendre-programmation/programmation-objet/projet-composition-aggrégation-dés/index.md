@@ -115,9 +115,37 @@ Pour illustrer cette étape et progresser dans notre projet de jeu, faisons une 
 
 {% endnote %}
 
-{% faire %}
+{% exercice %}
 Créez la user story dans le fichier `story_jets.py`{.fichier}
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `story_jets.py`{.fichier} :
+
+```python
+from dé import Dé
+
+des_dés = []
+for _ in range(5):
+    des_dés.append(Dé())
+
+for d in des_dés:
+    d.lancer()
+
+for d in des_dés:
+    print(d)
+
+```
+
+On aurait aussi pu créer directement la liste et les dés en utilisant une liste comprehension : 
+
+```python
+des_dés = [Dé() for _ in range(5)]
+```
+
+Notez qu'il **faut** créer 5 dés différents.
+
+{% enddetails %}
 
 ## Composition
 
@@ -426,6 +454,22 @@ def test_mementoDé():
 
 Le Memento est un outil formidable pour créer des undo/redo !
 
+Vous pourrez par exemple l'utiliser comme ça :
+
+```python
+
+from dé import Dé, MementoDé
+
+dé = Dé()
+print(dé)
+memento = MementoDé(dé)
+dé.lancer()
+print(dé)
+memento.restore()
+print(dé)
+
+```
+
 ### Classe `MementoTapisVert`{.language-}
 
 Finissons par mettre en oeuvre un Memento pour les `TapisVert`{.language-} :
@@ -473,6 +517,28 @@ def test_mementoTapisVert():
 ```
 
 {% enddetails %}
+
+Vous pourrez par exemple l'utiliser comme ça :
+
+```python
+
+from dé import TapisVert, MementoDé, MementoTapisVert
+
+tapis = TapisVert()
+print(tapis)
+
+memento_liste = [MementoTapisVert(tapis)]
+for _ in range(10):
+tapis.lancer()
+memento_liste.append = MementoTapisVert(tapis)
+print(tapis)
+
+for _ in range(len(memento_liste)):
+print("avant restore :", tapis)
+memento_liste.pop().restore()
+print("après restore :", tapis)
+
+```
 
 ## Code final
 
