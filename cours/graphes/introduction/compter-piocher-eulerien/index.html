@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arbres et arborescences couvrants</title>
+    <title>Compter et piocher des circuits Eulériens</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Arbres et arborescences couvrants</h1>
+  <h1>Compter et piocher des circuits Eulériens</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/arbres-couvrants/">Arbres couvrants</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/arbres-couvrants/valué-arborescence/">Arbres et arborescences couvrants</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/compter-piocher-eulerien/">Compter et piocher des circuits Eulériens</a>
 
 </div></div>
 
@@ -96,21 +96,32 @@
     
   
 
-  <h3>Algorithme de Chu-Liu/Edmonds</h3>
+  <h2>Nombre de graphes eulériens</h2>
 <blockquote>
-<p>朱永津 (Zhū Yǒngjīn) et 刘振宏 (Liú Zhènhóng) en 1965 ; edmonds en 1967
-TBD marche sur l'ensemble des éléments atteignables par r (trouvé via parcours si nécessaire)</p>
+<ol>
+<li>graphes : nombre diff. à sommets fixés</li>
+<li>idée pour les trouver puis formules</li>
+<li>générer des graphes eulérien :</li>
+<li>tous : tous les graphes à n-1 sommets</li>
+<li>en piocher 1 : générer un graphe aléatoire : Erdos reny. Outils de preuve car  tout existe presque sûrement dans un graphe aléatoire.</li>
+</ol>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Chu-Liu/Edmonds">Algorithme de 朱-刘-Edmonds (Chu-Liu-Edmonds)</a></p>
-</div></div>
-
+<h2>Nombre de circuits eulériens</h2>
 <blockquote>
-<p>TBD <a href="https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f18/www/scribes/lecture02.pdf">https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f18/www/scribes/lecture02.pdf</a></p>
+<p>nombre de circuit eulériens d'un graphe : <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_BEST">https://fr.wikipedia.org/wiki/Théorème_de_BEST</a>
+permet d'en piocher un au hasard en ordonnant les permutations.</p>
+</blockquote>
+<blockquote>
+<p>algo en trouver 1 : algo <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Havel-Hakimi">https://fr.wikipedia.org/wiki/Algorithme_de_Havel-Hakimi</a>. Algo pour savoir si ça existe à degré fixé et en construire 1.
+Markov pour les trouver tous.</p>
+</blockquote>
+<h2>Nombre de cycles eulériens</h2>
+<blockquote>
+<p>orientation</p>
+</blockquote>
+<h2>Piocher un cycle eulérien</h2>
+<blockquote>
+<p>on commence par piocher une arborescence au hasard puis permutation au hasard.</p>
 </blockquote>
 
 

@@ -280,6 +280,10 @@
 </div>
 </details>     
 </div>
+<!-- > TBD 
+> 
+> existence de la médiane
+ -->
 <h2>Sommets et feuilles</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -600,6 +604,19 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <p>TBD écrire propre</p>
 </blockquote>
 <p>Codage par parant pour les arborescence se dérive en un codage pour les arbre en choisissant une racine ($T[r] = r$ pour celle là)</p>
+<blockquote>
+<p>Trouver un encodage par racine peut se faire facilement avec un parcours.</p>
+</blockquote>
+<!-- TBD
+
+> TBD une fois qu'on a un codage par père on peut trouve un chemin entre tout x et y en O(longueur du chemin).
+> On remonte de 1 étape en x et en y en marquant chaque père par la position trouvée (pas besoin de savoir lequel puisqu'on va le marquer par l'un et le retrouver par l'autre). Lorsqu'on trouve un élément déjà vu on s'arrête.
+> et on raboute les deux chemins jusqu'à la position du sommet marqué
+> ON peut faire une marque (x, y, position) comme ça on peut faire plusieurs chemins 
+>
+> On peut faire tout x et tout y et mettre l'élément en commun (la médiane) dans M[x, y] 
+
+-->
 
 
 </article>
