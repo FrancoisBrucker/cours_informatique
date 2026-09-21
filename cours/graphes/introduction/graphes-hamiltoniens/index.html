@@ -433,17 +433,20 @@ De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $C$ un circuit de taille maximum de $G$. Commençons par montrer que $l = v(G) \geq n/2 + 1$ (avec $n = v(G)$), en considérant un chemin $x_1\dots x_p$ le plus long dans $G$. Tous les voisins sortants de $x_p$ sont forcément sur ce chemin sinon il ne serait pas de longueur maximum et il y en a au moins $n/2$. le cycle $x_i \dots x_p x_i$ avec $x_i$ le plus petit successeur de x_p$ sur le chemin possède donc au moins $n/2 +1$ sommet.</p>
-<p>Soit maintenant $G'$ le graphe $G$ restreint aux sommets qui <strong>ne sont pas</strong> dans $C$ et $v_1\dots v_k$ un de ses chemin de longueur maximum. Comme $k + l \leq n$ on a que $k \leq n/2 -1$. Ceci implique que :</p>
+<p>Soit $C$ un circuit de taille maximum de $G$. Commençons par montrer que $l = v(G) \geq n/2 + 1$ (avec $n = v(G)$), en considérant un chemin $x_1\dots x_p$ le plus long dans $G$. Tous les voisins sortants de $x_p$ sont forcément sur ce chemin sinon il ne serait pas de longueur maximum et il y en a au moins $n/2$. le cycle $x_i \dots x_p x_i$ avec $x_i$ le plus petit successeur de $x_p$ sur le chemin possède donc au moins $n/2 +1$ sommet.</p>
+<p>Soit maintenant $G'$ le graphe $G$ restreint aux sommets qui <strong>ne sont pas</strong> dans $C$ et $L$ un de ses chemins de longueur maximum. Si $C$ n'est pas hamiltonien $L$ existe et en notant $1 \leq k = v(L)$,  on a que $k \leq n/2 -1$ puisque $k + l \leq n$. De plus, puisque $L$ est un chemin de longueur maximum dans $G'$ :</p>
 <ul>
-<li>l'ensemble $S$</li>
+<li>l'ensemble $N^-(v_1)$ dans $G$ est contenu dans l'union $V(L) \cup V(C)$ avec $v_1$ le premier sommet du chemin,</li>
+<li>l'ensemble $N^+(v_k)$ dans $G$ est contenu dans l'union $V(L) \cup V(C)$ avec $v_k$ le dernier sommet du chemin.</li>
 </ul>
+<p>On en conclut que les ensembles $S = N^-(v_1) \cap V(C)$ et $T = N^+(v_k) \cap V(C)$ contiennent chacun au moins $l - k + 1 &gt; 0$ éléments.</p>
+<p>Soient maintenant $s \in S$ et $t \in T$ :</p>
+<p><img src="Ghouila.png" alt="cycle et chemin"></p>
+<p>Le chemin allant de $s$ à $t$ dans $C$ possède au moins $k$ sommets différents de $s$ et de $t$ sinon il existerait un cycle strictement plus grand que $C$. Un sommet de $S$ bloque donc $k$ sommets pour les éléments de $T$. Le nombre minimal de sommet bloqué est atteint lorsque tous les sommets de $S$ se suivent sur $C$ et on bloque ainsi $\vert S\vert - 1 + k$ éléments pour $T$. On en déduit $\vert T\vert \leq l - (\vert S\vert - 1 + k) \leq l - (l-k+1 -1+k) = 0$ ce qui est impossible puisque $\vert T\vert&gt; 0$ : $L$ n'existe pas et $C$ est hamiltonien.</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD attention ce n'est ps une CNS : exemple du cycle. Juste que s'il y a beaucoup d'arêtes il en existe <strong>forcément</strong> un.</p>
-</blockquote>
+<p>Les deux propositions ne sont bien sur que des conditions suffisantes puisque $C_n$, le cycle/circuit à $n$ éléments, est un cycle/circuit hamiltonien est ne possède que $n$ arêtes/arc.</p>
 <h2>Tournois</h2>
 <p>Commençons par un résultat surprenant sur les graphes orientés. S'il est évident que les graphes complets ont tous des chemins hamiltoniens, c'est également le cas pour les tournois !</p>
 <div id="tournoi-exercice"></div>
@@ -506,10 +509,198 @@ De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C
 </div>
 </details>     
 </div>
-<p>Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considérer le tournoi $G = ({x_1,\dots, x_n}, E)$ avec $x_ix_j \in E$ si et seulement si $i&lt; j$. Ce tournoi ne peut clairement posséder aucun circuit.</p>
+<p>Ce résultat ne se généralise pas aux circuits hamiltonien. Il suffit de considérer le tournoi $G = ({x_1,\dots, x_n}, E)$ avec $x_ix_j \in E$ si et seulement si $i&lt; j$. Ce tournoi ne peut clairement posséder aucun circuit. On peut cependant caractériser les tournoi admettant un circuit hamiltonien :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Camion, 1959)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un tournoi admet un circuit hamiltonien si et seulement si il est fortement connexe.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il est clair que tout graphe orienté admettant un circuit hamiltonien est fortement connexe puisque qu'on peut faire le tour de ce circuit pour aller de $x$ à $y$ puis de $y$ à $x$ pour tous sommets $x$ et $y$.</p>
+<p>Réciproquement, soit $T$ un tournoi fortement connexe et supposons qu'il ne contienne pas de circuit hamiltonien. Soit alors $C = c_1\dots c_lc_1$ un circuit de longueur maximum et $v\notin V(C)$. Il y a plusieurs cas :</p>
+<ul>
+<li>il existe $x, y \in V(C)$ tels que $xv$ et $vy$ sont 2 arcs. On peut supposer sans perte de généralité que $x = c_1$ et $y = c_i$ et soit $c_j$ le plus petit élément tel que $c_jv \in E$. On a alors un cycle $c_1\dots c_{j-1}vc_{j}\dots c_l$ qui est strictement plus long que $C$ : contradiction.</li>
+<li>supposons qu'il n'existe pas $v\notin V(C)$ tel que $xv \in E$ avec $x \in V(C)$. Il est alors impossible d'atteindre un sommet du circuit à partir d'un sommet qui n'y est pas : contradiction puisque par hypothèse $T$ est fortement connexe</li>
+<li>le même argument nous montre qu'il est impossible que pour tout $v\notin V(C)$ $vx \in E$ avec $x \in V(C)$.</li>
+</ul>
+<p>Il existe donc :</p>
+<ul>
+<li>$v\notin V(C)$ tel que  $xv \in E$  pour tout $x \in V(C)$,</li>
+<li>$v'\notin V(C)$ tel que  $v'x \in E$  pour tout $x \in V(C)$.</li>
+</ul>
+<p>Or le tournoi est fortement connexe il existe donc un chemin $L$ de sommets non dans $V(C)$ qui rejoignent $v$ à $v'$. Ceci est cependant impossible puisque $c_1Lc_2\dots c_lc_a1$ forme un circuit strictement plus long que $C$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Moon-Moser, 1962)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre $t_n$ de tournois fortement connexe est :</p>
+<div>
+$$
+t_n = 2^{\binom{n}{2}} - \sum_{k=1}^{n-1}t_k\binom{n}{k}2^{\binom{n-k}{2}}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les composantes fortement connexes d'un graphe sont deux à deux disjointes. De plus pour un tournoi si $C_1$ et $C_2$ sont deux composantes connexes soit $xy \in E$ pour tout $x\in C_1$ et $y\in C_2$ soit $yx \in E$ pour tout $x\in C_1$ et $y\in C_2$ (sinon $C_1 \cup C_2$ formerait une composante connexe). De là, il existe forcément une composante connexe unique $C$ tel que pour toute autre composantes connexe $C'$, $xy \in E$ pour tout $x\in C$ et $y\in C'$.</p>
+<p>La taille de cette composante fortement connexe peut aller de 1 à $n-1$ et pour une taille $k$ il y en a : $\binom{n}{k}t_k$. Le reste du graphe est un tournoi quelconque à $n-k$ sommets, il y en a donc $2^{\binom{n-k}{2}}$. Il y a donc en tout :$\sum_{k=1}^{n-1}t_k\binom{n}{k}2^{\binom{n-k}{2}}$ tournois non transitifs à $n$ sommets et comme il y a en tout $2^{\binom{n}{2}}$ tournois à $n$ sommet on en déduit la formule attendue.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La suite $t_n$ est <a href="https://oeis.org/A054946">la suite A054946</a>.</p>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La probabilité qu'un tournoi aléatoire à $n$ sommets admette un circuit hamiltonien tend vers 1 lorsque $n$ tend vers l'infini.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La preuve de la proposition précédente montre qu'un tournoi $T$ n'est pas fortement connexe si et seulement si il existe un ensemble de sommets $A \subsetneq V(T)$ tel que $xy \in E(T)$ quelque soient $x\in A$ et $y\notin A$. Comme il y a $k \cdot(n-k)$ arcs entre $A$ et $V(T)\backslash A$ la probabilité qu'il existe un tel ensemble vaut :</p>
+<div>
+$$
+\frac{1}{2^{k \cdot(n-k)}}
+$$
+</div>
+<p>Comme il peut y avoir $\binom{n}{k}$ tels ensemble on a que la probabilité $\mathbb{P}_n$ qu'un tournoi à $n$ sommets ne soit pas fortement connexe est telle que  (les évènements ne sont pas indépendants) :</p>
+<div>
+$$
+\mathbb{P}_n \leq \sum_{k=1}^{n-1}\binom{n}{k}\frac{1}{2^{k \cdot(n-k)}}
+$$
+</div>
+<p>De là on peut continuer à approximer à la hache :</p>
+<div>
+$$
+\begin{cases}
+\mathbb{P}_n &\leq \sum_{k=1}^{n-1}n^k\frac{1}{2^{k \cdot(n-k)}}\\
+&\leq \sum_{k=1}^{n-1}n^k\frac{1}{2^{kn}}\\
+&\leq \sum_{k=1}^{n-1}(\frac{n}{2^{n}})^k\\
+&\leq \frac{n}{2^{n}}^n\\
+&\leq \frac{n^n}{2^{n^2}}\\
+&\leq \exp(n\ln(n)-\ln(2)n^2) \xrightarrow[n \to +\infty]{} 0\\
+\end{cases}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Si un tournoi est fortement connexe il admet au moins $n$ chemins hamiltonien. Par exemple pour le graphe ci-après ($231451$ est un circuit hamiltonien) :</p>
+<p><img src="tournoi-5.png" alt="tournoi à 5 sommets"></p>
+<p>Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste">la méthode probabiliste</a> développée par Erdös :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout $n$, il existe des tournois à $n$ sommets ayant plus de $\frac{n!}{2^{n-1}}$ chemins hamiltoniens.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La probabilité d'existence d'un chemin hamiltonien donné $C = x_1\dots x_n$ pour un tournoi donné à $n$ sommets est $\mathbb{P}(T \text{ admette } C \text{ comme chemin hamiltonien }) = 1/2^{n-1}$ (probabilité de $1/2$ pour chaque arc $x_ix_{i+1}$, $1\leq i &lt; n$).</p>
+<p>Numérotons tous les chemin hamiltoniens possibles de $C_1$ à $C_{n!}$.
+De là, l'espérance de la variable aléatoire $N$ comptant le nombre de chemins hamiltoniens $T$ dans un tournoi à $n$ sommets vaut :</p>
+<div>
+$$
+\begin{cases}
+E[N] & = \sum_{i} \mathbb{P}(T \text{ admette } C_i \text{ comme chemin hamiltonien })\\
+& = \sum_{i}1/2^{n-1}\\
+& = \frac{n!}{2^{n-1}}\\
+\end{cases}
+$$
+</div>
+<p>On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant.</p>
+</div>
+</details>     
+</div>
 <blockquote>
-<p>TBD il peut même y en avoir beaucoup ! Thm méthode probabiliste : premier exemple.
-TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <a href="https://www.youtube.com/watch?v=4weMmFZSBtI">https://www.youtube.com/watch?v=4weMmFZSBtI</a></p>
+<p>TBD trouver en 1 pour 5 sommets doit avoir au mins $5!/2^{4} = 15/2$ donc 8 chemins hamiltoniens.</p>
 </blockquote>
 <h2>Algorithme</h2>
 <p>On ne connaît pas d'algorithmes polynomiaux pour trouver un cycle hamiltonien.</p>
