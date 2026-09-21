@@ -684,21 +684,32 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>La probabilité d'existence d'un chemin hamiltonien donné $C = x_1\dots x_n$ pour un tournoi donné à $n$ sommets est $\mathbb{P}(T \text{ admette } C \text{ comme chemin hamiltonien }) = 1/2^{n-1}$ (probabilité de $1/2$ pour chaque arc $x_ix_{i+1}$, $1\leq i &lt; n$).</p>
-<p>Numérotons tous les chemin hamiltoniens possibles de $C_1$ à $C_{n!}$.
-De là, l'espérance de la variable aléatoire $N$ comptant le nombre de chemins hamiltoniens $T$ dans un tournoi à $n$ sommets vaut :</p>
+<p>Numérotons tous les chemins hamiltoniens possibles de $C_1$ à $C_{n!}$ et notons $N_i$ la variable aléatoire sur les tournois telle que $N_i(T) = 1$ si $T$ admet $C_i$ comme chemin hamiltonien et 0 sinon. Son espérance vaut :</p>
 <div>
 $$
 \begin{cases}
-E[N] & = \sum_{i} \mathbb{P}(T \text{ admette } C_i \text{ comme chemin hamiltonien })\\
-& = \sum_{i}1/2^{n-1}\\
+\mathbb{E}[N_i] &=\sum\limits_{k\geq 1} k \cdot \mathbb{P}(N_i = k) &\text{définition de l'espérance}\\
+ & = 1 \cdot \mathbb{P}(N_i = 1)\\
+&= 1/2^{n-1}& \text{remarque précédente}
+\end{cases}
+$$
+</div>
+<p>De là, l'espérance de la variable aléatoire $N(T) = \sum_i N_i(T)$ comptant le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets vaut :</p>
+<div>
+$$
+\begin{cases}
+\mathbb{E}[N] & = \mathbb{E}[\sum\limits_{i} N_i]\\
+ & = \sum\limits_{i}  \mathbb{E}[N_i] & \text{linéarité de l'espérance}\\
+& = \sum\limits_{i}1/2^{n-1}\\
 & = \frac{n!}{2^{n-1}}\\
 \end{cases}
 $$
 </div>
-<p>On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant.</p>
+<p>On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$</p>
 </div>
 </details>     
 </div>
+<p>Notez que la proposition précédente ne donne pas de preuve constructive d'un tel tournoi. Les preuves par la méthode probabiliste sont souvent existentielle on sait que ça existe mais c'est parfois dur à trouver. Faites en l'expérience avec l'exercice suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -828,8 +839,18 @@ $$
 <p>TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ? Voir la suite du cours (c'est un problème NP complet)</p>
 </blockquote>
 <h3>Exact</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Held–Karp_algorithm</a></p>
+</div></div>
+
+<p>Savoir si un graphe donné possède un chemin hamiltonien nécessite a priori de vérifier <strong>tous</strong> les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$</p>
+<p>L'algorithme de Bellman-Held-Karp permet de réduire cette complexité au prix d'un stockage intensif de résultats intermédiaires.</p>
 <blockquote>
-<p>TBD ajouter algo en $2^n2^n$ qui est mieux que n! <a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Held–Karp_algorithm</a></p>
+<p>TBD ajouter algo en $n^22^n$ qui est mieux que n!</p>
 </blockquote>
 <h3>Approché sans performance garantie</h3>
 <blockquote>
