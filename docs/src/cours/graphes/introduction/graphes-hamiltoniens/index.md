@@ -316,21 +316,36 @@ Pour tout $n$, il existe des tournois à $n$ sommets ayant plus de $\frac{n!}{2^
 {% details "preuve", "open" %}
 La probabilité d'existence d'un chemin hamiltonien donné $C = x_1\dots x_n$ pour un tournoi donné à $n$ sommets est $\mathbb{P}(T \text{ admette } C \text{ comme chemin hamiltonien }) = 1/2^{n-1}$ (probabilité de $1/2$ pour chaque arc $x_ix_{i+1}$, $1\leq i < n$).
 
-Numérotons tous les chemin hamiltoniens possibles de $C_1$ à $C_{n!}$.
-De là, l'espérance de la variable aléatoire $N$ comptant le nombre de chemins hamiltoniens $T$ dans un tournoi à $n$ sommets vaut :
+Numérotons tous les chemins hamiltoniens possibles de $C_1$ à $C_{n!}$ et notons $N_i$ la variable aléatoire sur les tournois telle que $N_i(T) = 1$ si $T$ admet $C_i$ comme chemin hamiltonien et 0 sinon. Son espérance vaut :
 
 <div>
 $$
 \begin{cases}
-E[N] & = \sum_{i} \mathbb{P}(T \text{ admette } C_i \text{ comme chemin hamiltonien })\\
-& = \sum_{i}1/2^{n-1}\\
+\mathbb{E}[N_i] &=\sum\limits_{k\geq 1} k \cdot \mathbb{P}(N_i = k) &\text{définition de l'espérance}\\
+ & = 1 \cdot \mathbb{P}(N_i = 1)\\
+&= 1/2^{n-1}& \text{remarque précédente}
+\end{cases}
+$$
+</div>
+
+De là, l'espérance de la variable aléatoire $N(T) = \sum_i N_i(T)$ comptant le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets vaut :
+
+<div>
+$$
+\begin{cases}
+\mathbb{E}[N] & = \mathbb{E}[\sum\limits_{i} N_i]\\
+ & = \sum\limits_{i}  \mathbb{E}[N_i] & \text{linéarité de l'espérance}\\
+& = \sum\limits_{i}1/2^{n-1}\\
 & = \frac{n!}{2^{n-1}}\\
 \end{cases}
 $$
 </div>
 
-On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant.
+On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$
 {% enddetails %}
+
+Notez que la proposition précédente ne donne pas de preuve constructive d'un tel tournoi. Les preuves par la méthode probabiliste sont souvent existentielle on sait que ça existe mais c'est parfois dur à trouver. Faites en l'expérience avec l'exercice suivant :
+
 
 {% exercice %}
 Trouvez un tournoi à 5 sommets ayant au moins $5!/2^{4} = 15/2$ chemins hamiltoniens.
@@ -392,7 +407,15 @@ On ne connaît pas d'algorithmes polynomiaux pour trouver un cycle hamiltonien.
 
 ### Exact
 
-> TBD ajouter algo en $2^n2^n$ qui est mieux que n! <https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm>
+{% lien %}
+<https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm>
+{% endlien %}
+
+Savoir si un graphe donné possède un chemin hamiltonien nécessite a priori de vérifier **tous** les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$
+
+L'algorithme de Bellman-Held-Karp permet de réduire cette complexité au prix d'un stockage intensif de résultats intermédiaires.
+
+> TBD ajouter algo en $n^22^n$ qui est mieux que n! 
 
 ### Approché sans performance garantie
 

@@ -97,7 +97,7 @@ Codons tout ça :
 
 > clique/stable
 > chemin le plus long
-> coloration
+> coloration (que sommet et laisser arête à plus tard)
 
 ## Graphes planaires
 
