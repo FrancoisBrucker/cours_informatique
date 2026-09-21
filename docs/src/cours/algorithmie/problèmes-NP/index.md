@@ -23,11 +23,11 @@ Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on p
 
 ### Résolution efficace
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un problème algorithmique est dit **_polynomial_** s'il existe un pseudo-code de complexité polynomiale en la taille de son entrée permettant de le résoudre.
 
 L'ensemble des problèmes polynomiaux est nommé $P$.
-{% endnote %}
+{% endnote2 %}
 
 On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :
 
@@ -53,13 +53,13 @@ Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiau
 
 <div id="définition-vérifieur"></div>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_vérifieur_** est un algorithme de :
 
 $$v: \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$$
 
 Il est dit **_efficace_** s'il est de complexité polynomiale.
-{% endnote %}
+{% endnote2 %}
 
 Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.
 
@@ -67,13 +67,13 @@ On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve ma
 
 Formalisons cette notion de vérification efficace :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
 
 - $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$
 - la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
 
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.
 {% endinfo %}
@@ -97,7 +97,7 @@ algorithme vérification_max(T: [entier], sol: entier) → booléen:
 Dans le cas d'algorithme de résolution linéaire (comme pour le problème de la recherche du maximum), cette approche est optimale. Mais pour des problèmes dont l'algorithme de résolution est non linéaire on peut souvent trouver un algorithme de vérification de complexité plus faible.
 
 {% exercice %}
-Montrez que le problème [3-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-3-SUM){.interne} admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).
+Montrez que le problème [3-SUM](../problème-réduction/#problème-3-SUM){.interne} admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).
 {% endexercice %}
 {% details "solution" %}
 
@@ -133,9 +133,9 @@ On peut alors pour une entrée donnée tester toutes les solutions possibles ce 
 
 Les problèmes utiles qui s'appellent en algorithmie les problèmes NP :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 **_Un problème algorithmique est dit_** $NP$ s'il existe un vérifieur efficace de ses solutions.
-{% endnote %}
+{% endnote2 %}
 
 Ce qui donne le schéma suivant :
 
@@ -199,13 +199,13 @@ Pour cela, commençons par définir un concept fondamental en logique la **_conj
 
 <div id="définition-clauses"></div>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
 - une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
-  {% endnote %}
+  {% endnote2 %}
 
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
 

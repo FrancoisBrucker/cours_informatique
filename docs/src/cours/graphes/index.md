@@ -29,19 +29,40 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## Introduction générale
 
-
 {% aller %}
 
 [Introduction](./introduction/){.interne}
 
 {% endaller %}
 
+## Cliques et stables maximum
+
+{% aller %}
+
+[cliques et stables](/cours/graphes/cliques-stables/){.interne}
+
+{% endaller %}
+
+## Colorabilité d'un graphe
+
+{% aller %}
+
+[Colorabilité](./colorabilité){.interne}
+
+{% endaller %}
+
+## Graphes Planaires
+
+{% aller %}
+
+[Graphes planaires](./graphes-planaires){.interne}
+
+{% endaller %}
+
 
 > TBD le reste est en chantier.
 
-## En chantier
-
-### générer des graphes
+## générer des graphes
 
 - à sommets fixé
 
@@ -225,22 +246,6 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 {% endaller %} -->
 
-
-## Graphes Planaires
-
-{% aller %}
-
-[Graphes planaires](./graphes-planaires){.interne}
-
-{% endaller %}
-
-## Colorabilité d'un graphe
-
-{% aller %}
-
-[Colorabilité](./colorabilité){.interne}
-
-{% endaller %}
 
 <!-- Passer d'une coloration des arêtes aux sommets via le line graph :
 

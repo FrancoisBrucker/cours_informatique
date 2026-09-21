@@ -107,11 +107,11 @@ Notez bien que comme on cherche à borner la complexité du problème $P_1$, tou
 
 {% note2 "**Définition**" %}
 
-Une **_réduction polynomiale_** du problème algorithmique $P_1$ au problème algorithmique $P_2$ est une réduction où les passages du problème $P_1$ au problème $P_2$ et du problème $P_2$ au problème $P_1$ sont polynomiales.
+Une **_réduction polynomiale_** du problème algorithmique $P_1$ au problème algorithmique $P_2$ est une réduction où les algorithmes $A_{1\rightarrow 2}$ (passage d'une entrée du problème $P_1$ à une entrée du problème $P_2$) et $A_{2\rightarrow 1}$ (passage d'une solution du problème $P_2$ à une solution du problème $P_1$) sont tous deux de complexité polynomiale.
 
 {% endnote2 %}
 
-On peut sur le même schéma définir une **_réduction linéaire_** (les passages sont de complexité linéaire), **_reduction logarithmique_** (les passages sont de complexité logarithmique par rapport à la aille de l'entrée), etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
+On peut sur le même schéma définir une **_réduction linéaire_** (les passages sont de complexité linéaire), **_reduction logarithmique_** (les passages sont de complexité logarithmique par rapport à la taille de l'entrée), etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
 
 {% exercice %}
 Donnez une réduction en temps constant du problème de recherche du maximum dans un tableau d'entiers au problème du tri d'un tableau d'entiers.
@@ -141,7 +141,11 @@ La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qu
 
 {% enddetails %}
 
-La proposition précédente donne le but de toute réduction. Si la complexité du problème $P_2$ est identique au type de réduction (polynomiale, linéaire, logarithmique, etc) **alors** la complexité du problème $P_1$ l'est aussi : c'est donc un outil de preuve de complexité puissant.
+La proposition précédente donne le but de toute réduction :
+
+{% attention2 "**À retenir**" %}
+Si la complexité du problème $P_2$ est identique au type de réduction (polynomiale, linéaire, logarithmique, etc) **alors** la complexité du problème $P_1$ l'est aussi : c'est donc un outil de preuve de complexité puissant.
+{% endattention2 %}
 
 Entraînons nous sur un petit exemple qui va nécessiter d'utiliser et la sortie de $P_2$ et l'entrée $E_1$ pour trouver $S_1$ :
 
@@ -187,27 +191,86 @@ La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et don
 
 {% enddetails %}
 
-### {2, 3}-SUM
+### 2-SUM
 
-Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tard. On reprend les problèmes [2-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-2-SUM){.interne} et [3-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-3-SUM){.interne} que l'on a déjà vu et on montre qu'ils sont équivalents à d'autres problèmes.
 
-#### 2-SUM = crédit
+<span id="problème-2-SUM"></span>
+
+{% note "Problème" %}
+
+- **nom** : 2-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il deux indices $i$ et $j$ (ils peuvent être égaux) tels que $T[i] + T[j] = 0$ ?
+{% endnote %}
+
+#### Résolution  
+
+Commençons par les résoudre :
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+> TBD : brute force avec 2 boucles imbriquées
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}\ln(T.\mbox{\small longueur}))$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+> TBD : avec un tri
+{% enddetails %}
+
+Un nouvel algorithme :
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
+
+Est-ce réaliste ?
+
+{% endexercice %}
+{% details "corrigé" %}
+> TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
+> TBD attention : même si on ne visite pas toutes les cases du tableau il faut les initialiser à 0 (le contenu de la mémoire est inconnu à l'affectation).
+
+> TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
+> TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
+> TBD : même si la complexité de créer un tableau de taille arbitraire est en  $\mathcal{O}(2)$, et que l'on ne fait de boucle que sur la taille du tableau, l'algorithme est tout de même en $\mathcal{O}(\max(T))$ car il faut initialiser les cases : à la création d'un tableau ses valeurs sont indéterminées.
+
+{% enddetails %}
+
+#### Réductions
 
 Un petit échauffement :
 
+{% note "Problème" %}
+
+- **nom** : Crédit
+- **données** : 
+  - Un tableau T d'entiers
+  - Un entier C
+- **question** : Existe-t-il deux indices $i$ et $j$ (ils peuvent être égaux) tels que $T[i] + T[j] = C$ ?
+{% endnote %}
+
 {% exercice %}
-Montrer que 2-SUM est équivalent [au problème crédit](../structure-dictionnaire/#problème-crédit){.interne} en prenant l'ordre des réductions linéaires
+Montrer que 2-SUM est équivalent en prenant l'ordre des réductions linéaires
 {% endexercice %}
 {% details "corrigé" %}
 
 - 2-SUM ≤ crédit : on prend C=0
-- crédit ≤ 2-SUM : on retranche C/2 à tous les prix
+- crédit ≤ 2-SUM : on multiplie tous les prix par 2 et on retranche C à tous les prix. 
 
 {% enddetails %}
 
-#### 2-SUM ≤ ÉGAL
-
-Commençons par le problème 2-SUM et regardons un problème qui lui ressemble :
+En deux temps. Regardons un problème qui lui ressemble :
 
 {% note "**Problème**" %}
 
@@ -229,34 +292,7 @@ On prend $T'$ le tableau tel que $T'[k] = -T[k]$ pour tout indice $k$
 
 {% enddetails %}
 
-#### 3-SUM ≤ 3-SUM'
-
-Continuons sur notre lancée avec 3-SUM en considérant le problème suivant :
-
-<span id="problème-3-SUM'"></span>
-{% note "**Problème**" %}
-
-- **Nom** : 3-SUM'
-- **Entrées** :
-  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
-- **Question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
-
-{% endnote %}
-
-Qui, selon toute logique doit être plus général que 3-SUM. Montrez le :
-
-{% exercice %}
-Montrer que 3-SUM ≤ 3-SUM' l'ordre des réductions linéaires
-{% endexercice %}
-{% details "corrigé" %}
-
-On prend $T = T'$ et $T''[x] = -T[x]$
-
-{% enddetails %}
-
-#### Problèmes équivalents ?
-
-Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine pour l'ordre des réductions linéaires. Ces réductions vont nécessiter un peu de travail.
+Et la réciproque, plus dure :
 
 {% exercice %}
 Montrer que ÉGAL ≤ 2-SUM
@@ -287,7 +323,76 @@ Si on prend $A = 2(\sum \vert T[i]\vert + \sum \vert T'[i]\vert) + 1$ cela va fo
 
 {% enddetails %}
 
-On peut ensuite utiliser la même astuce que précédemment pour résoudre :
+### <span id="problème-3-SUM"></span>3-SUM
+
+Une généralisation de 2-SUM qui, de façon surprenante se résout avec la même complexité !
+
+<span id="problème-3-SUM"></span>
+
+{% note "Problème" %}
+
+- **nom** : 3-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il trois indices $i$, $j$ et $k$ (ils peuvent être égaux) tel que $T[i] + T[j] + T[k] = 0$ ?
+{% endnote %}
+
+#### Résolution
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^3)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : brute force avec 3 boucle imbriquées
+
+{% enddetails %}
+
+
+Enfin, l'exercice dur qui montre que l'on peu résoudre 3-SUM plus efficacement avec un coût en mémoire :
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : un tri puis on cherche en $\mathcal{O}(T.\mbox{\small longueur})$ s'il existe i et j pour lesquels $T[i] + T[j] = -T[k]$ pour k allant de 0 à la taille du tableau ($\mathcal{O}(T.\mbox{\small longueur})$ boucles)
+
+{% enddetails %}
+
+#### Réductions
+
+Considérons le problème suivant :
+
+<span id="problème-3-SUM'"></span>
+{% note "**Problème**" %}
+
+- **Nom** : 3-SUM'
+- **Entrées** :
+  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
+- **Question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+
+{% endnote %}
+
+Qui, selon toute logique doit être plus général que 3-SUM. Montrez le :
+
+{% exercice %}
+Montrer que 3-SUM ≤ 3-SUM' l'ordre des réductions linéaires
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $T = T'$ et $T''[x] = -T[x]$
+
+{% enddetails %}
+
+Mais qui en fait est équivalent :
 
 {% exercice %}
 Montrer que 3-SUM' ≤ 3-SUM
@@ -308,7 +413,7 @@ Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que $T'''[i] + T''
 
 {% enddetails %}
 
-### 3-SUM et géométrie algébrique
+#### Problèmes de géométrie algébrique
 
 3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
 

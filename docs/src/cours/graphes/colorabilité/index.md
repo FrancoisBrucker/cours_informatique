@@ -23,6 +23,8 @@ eleventyComputed:
 
 ## Coloration des sommets
 
+> TBD découper
+
 {% aller %}
 [Coloration des sommets](coloration-sommets){.interne}
 {% endaller %}

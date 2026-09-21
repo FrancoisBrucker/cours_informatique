@@ -198,9 +198,10 @@ Fichier `dé.py`{.fichier} :
 
 class TapisVert:
     def __init__(self):
-        self.dés = []
-        for i in range(5):
-            self.dés.append(Dé())
+        dés = []
+        for _ in range(5):
+            dés.append(Dé())
+        self.dés = tuple(dés)
 
     def lancer(self):
         for dé in self.dés:
@@ -487,11 +488,11 @@ Fichier `dés.py`{.fichier} :
 class MementoTapisVert:
     def __init__(self, tapis_vert):
         self.tapis_vert = tapis_vert
-        self.valeur_sauvée = [dé.valeur for dé in tapis_vert.dés]
+        self.mémento_dés = [MementoDé(dé) for dé in tapis_vert.dés]
 
     def restore(self):
-        for dé, valeur_sauvée in zip(self.tapis_vert.dés, self.valeur_sauvée):
-            dé.valeur = valeur_sauvée
+        for m in self.mémento_dés:
+            m.restore()
 
 ```
 

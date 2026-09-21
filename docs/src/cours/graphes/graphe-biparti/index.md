@@ -19,15 +19,8 @@ C'est une classe de graphe importante à connaître car, parfois curieusement, i
 
 ### Bi-parti
 
-<span id="définition-biparti"></span>
+> TBD def dans colorabilité.
 
-{% note "**Définition**" %}
-Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#definition-stable){.interne}.
-{% endnote  %}
-
-Par exemple le graphe suivant :
-
-![exemple biparti](exemple-biparti.png)
 
 Les graphes bipartis sont une famille héréditaire, il est en effet clair que :
 
@@ -197,82 +190,7 @@ Ce qui est impossible.
 Les seuls graphes tripartis complets admettant un chemin eulériens sont donc les graphes $K_{1,1,2p}$
 {% enddetails %}
 
-## Reconnaissance
-
-Savoir si un graphe est biparti est _"facile"_ en utilisant un algorithme de marquage qui associe une couleur à chaque sommet.
-
-On considère que le graphe est connexe dans l'algorithme suivant. S'il ne l'est pas on le relance sur chacune des parties connexes.
-
-On retrouve un algorithme de marquage puis examen de sommets, comme [l'algorithme de recherche de chaîne augmentante de Ford et Fulkerson](../flots). Ce principe général permet de résoudre efficacement beaucoup de problèmes en théorie des graphes.
-
-```python
-Initialisation :
-
-    On possède deux couleurs.
-    Soit x un sommet du graphe que l'on marque avec une couleur
-
-Boucle principale :
-
-    tant qu'il existe x, un sommet marqué non examiné:
-
-        examiner x
-        pour chaque voisin y de x :
-            si y est marqué avec la couleur de x:
-                FIN : le graphe n'est pas biparti
-            sinon si y n'est pas marqué:
-                marquer y avec la couleur différente de celle de x
-    
-    FIN : le graphe est biparti et la couleur des sommets determine les 2 stables
-
-```
-
-> TBD à écrire propre
-
-1. on voit bien tous les sommets car connexe : on le fait par récurrence sur la longueur du chemin entre $x$ et $y$
-2. chaque couleur est obligatoire
-3. linéaire n+m si on utilise un parcours en profondeur (les éléments marqués sont dans une pile).
-
-L'algorithme fonctionne clairement si le graphe est bi-parti puisque par composante connexe il n'y a qu'une seule possibilité de bi-partition une fois 1 élément assigné :
-
-{% note "**Proposition**" %}
-Si le graphe est bi-parti, alors l'algorithme s'arrête en donnant une bipartition du graphe
-
-{% endnote %}
-
-La réciproque est également vraie :
-
-{% note "**Proposition**" %}
-Si l'algorithme donne une bipartition, le graphe est bi-parti.
-{% endnote %}
-{% details "preuve", "open" %}
-Si le graphe est connexe, chaque sommet sera marqué et examiné. Comme les couleurs ne sont jamais remise en cause et que l'on vérifie tous les voisins d'un sommet examiné on explorera toutes les arêtes du graphes et les sommets chacune d'elles seront de couleurs différentes.
-{% enddetails %}
-
-Si l'algorithme s'arrête en répondant NON, c'est qu'il existe un voisin $y$ du sommet examiné $x$ marqué avec la même couleur. Il existe donc un chemin entre le premier élément marqué de l'algorithme, disons $x_0$, et $x$ alternant de couleur en couleur :
-
-![reconnaissance fail](./reco-fail-1.png)
-
-Si $y$ est marqué c'est qu'on la déjà vu, disons en examinant le sommet $x' \neq x$. Il existe donc aussi un chemin alternant de couleurs entre $x_0$ et $x'$ qui est de couleur différente de $x$ :
-
-![reconnaissance fail](./reco-fail-2.png)
-
-On se trouve donc globalement dans une situation où il existe un chemin alternant les couleurs entre $x_0$ et un chemin alternant les couleurs entre $x$ et entre $x_0$ et $x'$. Ces deux chemins sont de parité différente puisque $x$ et $x'$ sont de couleurs différentes :
-
-![reconnaissance fail](./reco-fail-3.png)
-
-En remontant ces deux chemins jusqu'au premier élément en commun (il existe puisque $x_0$ fait parti des deux chemins) on obtiendra alors forcément un cycle de longueur impaire :
-
-![reconnaissance fail](./reco-fail.png)
-
-On en conclut :
-
-{% note "**Proposition**" %}
-Si l'algorithme s'arrête en répondant NON, alors le graphe possède un cycle de longueur impair.
-
-{% endnote %}
-{% note "**Corollaire**" %}
-Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.
-{% endnote %}
+> TBD reco dans coloration.
 
 ## Caractérisation
 

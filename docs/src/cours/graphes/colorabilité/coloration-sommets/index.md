@@ -241,15 +241,107 @@ Si l'on se donne une solution possible sous la forme d'une partition en $k$ clas
 
 {% enddetails %}
 
-Et il est clair que Le problème de la 2-colorabilité est donc Polynomial et même linéaire puisque :
+### 2-colorable
 
-{% note "**Corollaire**" %}
+Le problème de la 2-colorabilité définit une classe très importante de graphe, les graphes bi-partis :
+
+<span id="définition-biparti"></span>
+
+{% note2 "**Définition**" %}
+Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../introduction/structure/#definition-stable){.interne}.
+{% endnote2  %}
+
+Par exemple le graphe suivant :
+
+![exemple biparti](exemple-biparti.png)
+
+{% note "**Proposition**" %}
 Un graphe est 2-colorable si et seulement si il est bi-parti.
 {% endnote %}
+{% details "preuve", "open" %}
+Chaque couleur produit un stable et réciproquement, chaque stable produit une couleur.
+{% enddetails  %}
+
+
+Savoir si un graphe est 2-colorable est _"facile"_ en utilisant un algorithme de marquage qui associe une couleur à chaque sommet.
+
+On considère que le graphe est connexe dans l'algorithme suivant. S'il ne l'est pas on le relance sur chacune des parties connexes.
+
+
+```python
+Initialisation :
+
+    On possède deux couleurs.
+    Soit x un sommet du graphe que l'on marque avec une couleur
+
+Boucle principale :
+
+    tant qu'il existe x, un sommet marqué non examiné:
+
+        examiner x
+        pour chaque voisin y de x :
+            si y est marqué avec la couleur de x:
+                FIN : le graphe n'est pas biparti
+            sinon si y n'est pas marqué:
+                marquer y avec la couleur différente de celle de x
+    
+    FIN : le graphe est biparti et la couleur des sommets determine les 2 stables
+
+```
+
+> TBD à écrire propre
+
+1. on voit bien tous les sommets car connexe : on le fait par récurrence sur la longueur du chemin entre $x$ et $y$
+2. chaque couleur est obligatoire
+3. linéaire n+m si on utilise un parcours en profondeur (les éléments marqués sont dans une pile).
+
+L'algorithme fonctionne clairement si le graphe est bi-parti puisque par composante connexe il n'y a qu'une seule possibilité de bi-partition une fois 1 élément assigné :
+
+{% note "**Proposition**" %}
+Si le graphe est bi-parti, alors l'algorithme s'arrête en donnant une bipartition du graphe
+
+{% endnote %}
+
+La réciproque est également vraie :
+
+{% note "**Proposition**" %}
+Si l'algorithme donne une bipartition, le graphe est bi-parti.
+{% endnote %}
+{% details "preuve", "open" %}
+Si le graphe est connexe, chaque sommet sera marqué et examiné. Comme les couleurs ne sont jamais remise en cause et que l'on vérifie tous les voisins d'un sommet examiné on explorera toutes les arêtes du graphes et les sommets chacune d'elles seront de couleurs différentes.
+{% enddetails %}
+
+Si l'algorithme s'arrête en répondant NON, c'est qu'il existe un voisin $y$ du sommet examiné $x$ marqué avec la même couleur. Il existe donc un chemin entre le premier élément marqué de l'algorithme, disons $x_0$, et $x$ alternant de couleur en couleur :
+
+![reconnaissance fail](./reco-fail-1.png)
+
+Si $y$ est marqué c'est qu'on la déjà vu, disons en examinant le sommet $x' \neq x$. Il existe donc aussi un chemin alternant de couleurs entre $x_0$ et $x'$ qui est de couleur différente de $x$ :
+
+![reconnaissance fail](./reco-fail-2.png)
+
+On se trouve donc globalement dans une situation où il existe un chemin alternant les couleurs entre $x_0$ et un chemin alternant les couleurs entre $x$ et entre $x_0$ et $x'$. Ces deux chemins sont de parité différente puisque $x$ et $x'$ sont de couleurs différentes :
+
+![reconnaissance fail](./reco-fail-3.png)
+
+En remontant ces deux chemins jusqu'au premier élément en commun (il existe puisque $x_0$ fait parti des deux chemins) on obtiendra alors forcément un cycle de longueur impaire :
+
+![reconnaissance fail](./reco-fail.png)
+
+On en conclut :
+
+{% note "**Proposition**" %}
+Si l'algorithme s'arrête en répondant NON, alors le graphe possède un cycle de longueur impair.
+
+{% endnote %}
+{% note "**Corollaire**" %}
+Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.
+{% endnote %}
+
+
+### $k>2$-colorabilité
 
 Cela se gâte pour $k>2$. On va maintenant montrer la NP-complétude du problème de $k$-colorabilité pour $k>2$.
 
-### $k>2$-colorabilité
 
 On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes 2-colorable et pour les graphes 1-colorable (c'est le graphe discret). De plus, vous aller le montrer, on peut facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :
 

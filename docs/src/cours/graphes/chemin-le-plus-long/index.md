@@ -10,7 +10,18 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à réordonner.
+> TBD à réordonner. Mettre avec Hamilton 2 ?
+
+
+Ca où on sait faire :
+> - arbres 
+> - acyclique pour chemin le plus long : et conséquence inattendue sr le BTP (pb d'ordonnancements. Aussi DFS !)
+
+Cas particulier métrique et complet
+>   1. pas simple : exhaustif avec backtrack + branch and bound
+>   2. approximation : 
+>     1. 2-opt 
+>     2. performance garantie :  algo + ALM
 
 ## Ordonnancement
 

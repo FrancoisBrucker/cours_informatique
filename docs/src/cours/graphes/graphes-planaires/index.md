@@ -17,7 +17,7 @@ eleventyComputed:
 ## Problème
 
 {% aller %}
-[Problème de la coloration d'un graphe](./problème/){.interne}
+[Problème de la planarité d'un graphe](./problème/){.interne}
 {% endaller %}
 
 ## Caractérisation des graphes planaires
@@ -31,20 +31,6 @@ eleventyComputed:
 {% aller %}
 [Propriétés](./propriétés/){.interne}
 {% endaller %}
-
-## Algorithmes
-
-### Dessin
-
-> TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
-
-> TBD dessin sans courbure dans un triangle:
->   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
->   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
-
-### Reconnaissance
-
->  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
 
 ## Coloration de graphes planaires
 
@@ -65,7 +51,7 @@ eleventyComputed:
 
 > TBD pareil que colorier les faces.
  
-> TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf>
+> TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf> ds 26
 
 > TBD on en déduit que trouver les 4 couleurs aussi. Sinon on fait comme 3-col et le graphe est 4-plan-col avec le gadget. ce qui donne les 3 couleurs également.
 
@@ -75,16 +61,17 @@ eleventyComputed:
 > - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
 > - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
 
-### Algorithmes de coloration de listes
+### Applications 
 
-> 5 liste colorable.
+#### Dans des problèmes
 
-### Variantes
+3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
 
-> TBD pays non connexes
-> TBD colonies lunaires
+#### Coloration de cartes de géographie
 
-## Colorabilité et partage de secrets
+coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)
+ 
+#### Colorabilité et partage de secrets
 
 > TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
 
@@ -99,11 +86,33 @@ eleventyComputed:
 
 > [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
 
+### Algorithmes de coloration de listes
+
+> 5 liste colorable.
+
+### Variantes
+
+> TBD pays non connexes
+> TBD colonies lunaires
+
+## Algorithmes
+
+### Dessin
+
+> TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
+
+> TBD dessin sans courbure dans un triangle:
+>   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
+>   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
+
+### Reconnaissance
+
+>  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
+
+<!-- 
+
 ## Odds and ends
 
-> TBD
-
-- 3 coloriable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
 
 <!-- - Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). -->
 - isomorphisme de graphe planaire
@@ -117,4 +126,6 @@ eleventyComputed:
 
 <!-- 
 - <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> -->
+- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> --> 
+
+-->

@@ -35,7 +35,8 @@ On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cyc
 
 
 
-> TBD degrés : euler clair pair / ham et degré. Prop de Chvatal.
+> TBD degrés : euler clair pair / ham et degré. Prop de Chvatal-Erdos.
+> pour orienté : Woodall (1972) d^+(x) +d^+(y)≥n
 > TBD voir video de distel : <https://www.youtube.com/watch?v=xqdRiZzKhvM&list=PL_qO0UBYKVJ1myNZdh3j27fniqRtHYifm&index=25>
 
 > algorithmes randomisés.
