@@ -212,14 +212,14 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### Composition et agrégation
 
-> 2h cours
+> 1h45 cours
 
 {% aller %}
 1. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
 2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/){.interne}
 {% endaller %}
 
-> 1h TP
+> 1h15 TP
 
 {% aller %}
 [Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/){.interne}
@@ -227,16 +227,22 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### Héritage
 
-> 2h cours
+> 1h cours
 
 {% aller %}
 1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/){.interne}
 2. [Dés spécifiques](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 {% endaller %}
 
+> 1h TP
+
+{% aller %}
+[Projet héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-héritage/){.interne}
+{% endaller %}
+
 ### À rendre
 
-> 2h+ DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
+> 3h+ DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
 
 {% prerequis "**Travail préparatoire**" %}
