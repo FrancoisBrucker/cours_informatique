@@ -145,7 +145,7 @@ Les problèmes de recherche d'un chemin ou d'un cycle hamiltonien dans des graph
 
 Lorsque le graphe a beaucoup d'arêtes, il va être facile de trouver des chemin ou cycles/circuit hamiltonien.
 
-{% note "**Proposition (Dirac, 1952)**" %}
+{% note "**Théorème (Dirac, 1952)**" %}
 Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ est hamiltonien (_ie._ admet un cycle Hamiltonien).
 {% endnote %}
 {% details "preuve", "open" %}
@@ -165,7 +165,7 @@ Il existe donc $x_i$ ($0 < i <k$) tel que $x_ix_k \in E$ et a $x_{i+1}x_0 \in E$
 
 Et le pendant dirigé :
 
-{% note "**Proposition (Ghouila-Houri, 1960)**" %}
+{% note "**Théorème (Ghouila-Houri, 1960)**" %}
 Si $G=(V, E)$ est un graphe orienté tel que $\delta^+(x) + \delta^-(x) \geq \vert V \vert$ pour tout sommet $x\in V$, alors $G$ est hamiltonien (_ie._ admet un circuit Hamiltonien).
 {% endnote %}
 {% details "preuve", "open" %}
@@ -226,7 +226,7 @@ On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien da
 Ce résultat ne se généralise pas aux circuits hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit. On peut cependant caractériser les tournoi admettant un circuit hamiltonien :
 
 
-{% note "**Proposition (Camion, 1959)**" %}
+{% note "**Théorème (Camion, 1959)**" %}
 Un tournoi admet un circuit hamiltonien si et seulement si il est fortement connexe.
 {% endnote %}
 {% details "preuve", "open" %}
@@ -248,7 +248,7 @@ Or le tournoi est fortement connexe il existe donc un chemin $L$ de sommets non 
 {% enddetails %}
 
 
-{% note "**Proposition (Moon-Moser, 1962)**" %}
+{% note "**Théorème (Moon-Moser, 1962)**" %}
 Le nombre $t_n$ de tournois fortement connexe est :
 
 <div>
@@ -336,11 +336,54 @@ On conclut que pour réaliser cette espérance il doit exister un tournoi qui en
 Trouvez un tournoi à 5 sommets ayant au moins $5!/2^{4} = 15/2$ chemins hamiltoniens.
 {% endexercice %}
 {% details "corrigé" %}
-> TBD trouver en 1 pour 5 sommets doit avoir donc 8 chemins hamiltoniens.
+Le graphe ci après possède 8 chemins hamiltoniens :
+
+![8 chemins](./tournoi-5-8.png)
+
+1. 12345
+2. 23451
+3. 34512
+4. 45123
+5. 51234
+6. 23145
+7. 31245
+8. 12534
 
 {% enddetails %}
 
-> TBD enfin, il existe des tournois avec très peut de chemins hamiltoniens (1 seul).
+S'il existe des tournois avec de nombreux chemins hamiltoniens, il en existe aussi avec très peu :
+
+{% exercice %}
+Montrez que les tournois transitifs ($xy, yz \in E(T) \Rightarrow xz \in E(T)$) n'admettent qu'un seul chemin hamiltonien.
+{% endexercice %}
+{% details "corrigé" %}
+
+S'il existe un arc sortant et un arc entrant pour tout sommet, alors il existe un circuit et un circuit n'est pas transitif. Il existe donc un sommet ne possédant que des arcs entrant ou que des arcs sortants. Une récurrence immédiate nous montre ensuite que l'pn peut ordonner les sommets de tel sorte que si $i < j$ alors $x_ix_j |in E(T)$.
+
+Le seul chemin hamiltonien est donc cet ordre.
+{% enddetails %}
+
+{% exercice %}
+Montrez que pour tout tournoi $T$ sa restriction à un ensemble de sommet contenant exactement 1 sommet par composante fortement connexe est transitif.
+{% endexercice %}
+{% details "corrigé" %}
+
+La preuve du théorème de Moon-Moser nous montre qu'il existe une composante fortement connexe qui ne possède aucun arc entrant avec comme départ un sommet qui n'est pas dans cette composante. Une récurrence triviale nous montre alors que pour tout tournoi on peut ordonner ses $K$ composantes fortement connexes $C_1, \dots C_K$ de tel sorte que pour tout sommet $x \in C_i$ et tout sommet $y \in C_j$ avec $i < j$ alors $xy \in E(T)$.
+
+{% enddetails %}
+{% exercice %}
+Déduire que les seul tournoi n'ayant qu'u seul chemin hamiltonien sont les tournois transitifs.
+{% endexercice %}
+{% details "corrigé" %}
+
+La preuve de l'exercice précédent nous montre que l'on peut ordonner ses $K$ composantes fortement connexes $C_1, \dots C_K$ de tel sorte que pour tout sommet $x \in C_i$ et tout sommet $y \in C_j$ avec $i < j$ alors $xy \in E(T)$.
+
+Les seuls chemins hamiltoniens possibles sont alors ceux dont les éléments de $C_i$ forment des intervalles placés dans cet ordre et on en conclut qu'un tournoi a  autant de chemins hamiltoniens que le produit des cardinaux de ses parties fortement connexes. 
+
+On conclut en remarquant que s'il n'est pas transitif il existe une composante fortement connexe à 3 sommets ou plus ce qui conclut la preuve.
+
+{% enddetails %}
+
 
 ## Algorithme
 
