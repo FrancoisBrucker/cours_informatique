@@ -279,7 +279,7 @@ On peut utiliser deux astuces python. La première est de construire une liste a
 ['⚀', '⚀', '⚀', '⚀', '⚀']
 ```
 
-Puis utiliser la méthode `str.join`{.language-} de python qui est super utile pour concaténer des listes de chaînes de caractères :
+Puis utiliser la méthode `str.join(itérable)`{.language-} de python qui est super utile pour concaténer des listes de chaînes de caractères (la doc dit : "_Return a string which is the concatenation of the strings in iterable._") :
 
 ```python
 >>> l = ["coucou", "les", "amis"]

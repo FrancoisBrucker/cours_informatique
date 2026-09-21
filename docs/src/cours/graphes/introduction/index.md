@@ -93,3 +93,15 @@ Codons tout ça :
 > TBD est-ce normal que l'on ne puisse pas trouver d'algo simple pour résoudre le pb ?
 > TBD ci NP algo
 
+## Problèmes universels en théorie des graphes
+
+> clique/stable
+> chemin le plus long
+> coloration
+
+## Graphes planaires
+
+Finissons cette introduction par une classe intéressantes de graphes, ceux qu'on peut dessiner.
+
+> thm des 4 couleurs qui est le 1er théorème assisté par ordinateur (pas une IA, c'est la preuve qui est un algorithme)
+> tbd 
