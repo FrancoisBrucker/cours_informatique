@@ -332,8 +332,15 @@ $$
 On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant.
 {% enddetails %}
 
+{% exercice %}
+Trouvez un tournoi à 5 sommets ayant au moins $5!/2^{4} = 15/2$ chemins hamiltoniens.
+{% endexercice %}
+{% details "corrigé" %}
+> TBD trouver en 1 pour 5 sommets doit avoir donc 8 chemins hamiltoniens.
 
-> TBD trouver en 1 pour 5 sommets doit avoir au mins $5!/2^{4} = 15/2$ donc 8 chemins hamiltoniens.
+{% enddetails %}
+
+> TBD enfin, il existe des tournois avec très peut de chemins hamiltoniens (1 seul).
 
 ## Algorithme
 
