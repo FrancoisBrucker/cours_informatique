@@ -402,8 +402,7 @@ On conclut en remarquant que s'il n'est pas transitif il existe une composante f
 
 ## Algorithme
 
-On ne connaît pas d'algorithmes polynomiaux pour trouver un cycle hamiltonien.
-> TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ? Voir la suite du cours (c'est un problème NP complet)
+On ne connaît pas d'algorithmes polynomiaux pour trouver un chemin hamiltonien.
 
 ### Exact
 
@@ -411,11 +410,66 @@ On ne connaît pas d'algorithmes polynomiaux pour trouver un cycle hamiltonien.
 <https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm>
 {% endlien %}
 
-Savoir si un graphe donné possède un chemin hamiltonien nécessite a priori de vérifier **tous** les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$
+Savoir si un graphe donné possède un cycle hamiltonien nécessite a priori de vérifier **tous** les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$
 
 L'algorithme de Bellman-Held-Karp permet de réduire cette complexité au prix d'un stockage intensif de résultats intermédiaires.
 
-> TBD ajouter algo en $n^22^n$ qui est mieux que n! 
+Soit $G = ([1 .. n], E)$ un graphe orienté. On note $f_1(S, u)$ la fonction définie pour $S \subseteq [2 .. n]$ et $u \in S$ telle que : $f_1(S, u) = 1$ s'il existe un chemin hamiltonien entre 1 et $u$ pour $G$ restreint à $\\{1 \\} \cup S$. On a clairement la relation de récurrence suivante :
+
+<div>
+$$
+\begin{cases}
+f_1(S, u) = \bigvee\limits_{v \in S \backslash \{ u\}} (uv \in E(G)) \land f_1(S \backslash \{ u\}, v)\\
+f_1(\{u \}, u) = (1u \in E(G))
+\end{cases}
+$$
+</div>
+
+Et $G$ possède cycle hamiltonien si $f_1(S,u) = 1$ pour un des éléments de N^{-}(1)$.
+
+La fonction de récurrence donne un algorithme pour calculer $f_1(S,u)$ pour tout sous-ensemble S de [2 .. n] :
+
+```pseudocode
+pour tout x de [2 .. n]:
+  si 1u ∈ E:
+    f_1(\{u \}, u) ← 1
+  sinon:
+    f_1(\{u \}, u) ← 0
+
+pour tout k de [2 .. n-1]:
+  pour tout S sous-ensemble de taille k de [2 .. n]:
+    pour chaque x de S:
+        f_1(S, x) ← 0
+        pour chaque y de S \{x}:
+            si f_1(S\{x}, y) == 1 ET  yx ∈ E:
+               f_1(S, x) ← 1 
+               break
+```
+
+Cet algorithme doit stocker de complexité $\mathcal{O}(n2^n)$ valeurs de $f_1$ et nécessite $\mathcal{O}(n^22^n)$ opérations.
+
+On peut alors ensuite retrouver le cycle hamiltonien en "remontant" :
+
+```pseudocode
+
+S ← [2 .. n]
+Soit $x$ tel que f_1(S, x) == 1
+C = 1x
+
+tant que |S| ≥ 1:
+    S ← S \ {x}
+    Soit $x$ tel que f_1(S, x) == 1
+    C = C + x
+
+C = C + 1
+```
+
+La complexité de cet algorithme est négligeable devant celle du calcul de $f_1$ puisqu'il est en $\mathcal{O}(n^2)$
+
+Enfin il fonction que $G$ soit un graphe orienté ou non.
+
+La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling).
+
 
 ### Approché sans performance garantie
 
