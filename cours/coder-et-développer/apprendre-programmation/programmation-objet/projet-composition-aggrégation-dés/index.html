@@ -353,9 +353,10 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 
 <span class="token keyword">class</span> <span class="token class-name">TapisVert</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>dés <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>dés<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        dés <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            dés<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dés <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>dés<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> dé <span class="token keyword">in</span> self<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
@@ -732,11 +733,11 @@ memento<span class="token punctuation">.</span>restore<span class="token punctua
 <span class="token keyword">class</span> <span class="token class-name">MementoTapisVert</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> tapis_vert<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>tapis_vert <span class="token operator">=</span> tapis_vert
-        self<span class="token punctuation">.</span>valeur_sauvée <span class="token operator">=</span> <span class="token punctuation">[</span>dé<span class="token punctuation">.</span>valeur <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>mémento_dés <span class="token operator">=</span> <span class="token punctuation">[</span>MementoDé<span class="token punctuation">(</span>dé<span class="token punctuation">)</span> <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">]</span>
 
     <span class="token keyword">def</span> <span class="token function">restore</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> dé<span class="token punctuation">,</span> valeur_sauvée <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">,</span> self<span class="token punctuation">.</span>valeur_sauvée<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur_sauvée
+        <span class="token keyword">for</span> m <span class="token keyword">in</span> self<span class="token punctuation">.</span>mémento_dés<span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Fichier <code class="fichier">test_dés.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> TapisVert<span class="token punctuation">,</span> MementoDé<span class="token punctuation">,</span> MementoTapisVert

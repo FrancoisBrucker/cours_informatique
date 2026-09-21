@@ -110,7 +110,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="probl%C3%A8me/" class="interne">Problème de la coloration d'un graphe</a></p>
+<p><a href="probl%C3%A8me/" class="interne">Problème de la planarité d'un graphe</a></p>
 </div></div>
 
 <h2>Caractérisation des graphes planaires</h2>
@@ -131,22 +131,6 @@
 <p><a href="propri%C3%A9t%C3%A9s/" class="interne">Propriétés</a></p>
 </div></div>
 
-<h2>Algorithmes</h2>
-<h3>Dessin</h3>
-<blockquote>
-<p>TBD dessin avec 2-connexe <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf</a></p>
-</blockquote>
-<blockquote>
-<p>TBD dessin sans courbure dans un triangle:</p>
-<ul>
-<li>exemple <a href="https://ics.uci.edu/~eppstein/gina/schnyder/">https://ics.uci.edu/~eppstein/gina/schnyder/</a> ou <a href="https://ics.uci.edu/~eppstein/163/lecture10c.pdf">https://ics.uci.edu/~eppstein/163/lecture10c.pdf</a></li>
-<li>papier <a href="https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf">https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf</a></li>
-</ul>
-</blockquote>
-<h3>Reconnaissance</h3>
-<blockquote>
-<p>Fraysseix–Rosenstiehl et DFS <a href="https://en.wikipedia.org/wiki/Left-right_planarity_test">https://en.wikipedia.org/wiki/Left-right_planarity_test</a> ; papier <a href="https://arxiv.org/pdf/math/0610935">https://arxiv.org/pdf/math/0610935</a></p>
-</blockquote>
 <h2>Coloration de graphes planaires</h2>
 <h3>Théorème des 4 couleurs</h3>
 <blockquote>
@@ -165,7 +149,7 @@ TBD Une démo (fausse) du théorème des 4 couleurs par Kempe : <a href="https:/
 <p>TBD pareil que colorier les faces.</p>
 </blockquote>
 <blockquote>
-<p>TBD 3 colorable planaire np-complet : <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf</a></p>
+<p>TBD 3 colorable planaire np-complet : <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf</a> ds 26</p>
 </blockquote>
 <blockquote>
 <p>TBD on en déduit que trouver les 4 couleurs aussi. Sinon on fait comme 3-col et le graphe est 4-plan-col avec le gadget. ce qui donne les 3 couleurs également.</p>
@@ -178,16 +162,12 @@ TBD Une démo (fausse) du théorème des 4 couleurs par Kempe : <a href="https:/
 <li>4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <a href="https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf">https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf</a>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?</li>
 </ul>
 </blockquote>
-<h3>Algorithmes de coloration de listes</h3>
-<blockquote>
-<p>5 liste colorable.</p>
-</blockquote>
-<h3>Variantes</h3>
-<blockquote>
-<p>TBD pays non connexes
-TBD colonies lunaires</p>
-</blockquote>
-<h2>Colorabilité et partage de secrets</h2>
+<h3>Applications</h3>
+<h4>Dans des problèmes</h4>
+<p>3 colorable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
+<h4>Coloration de cartes de géographie</h4>
+<p>coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)</p>
+<h4>Colorabilité et partage de secrets</h4>
 <blockquote>
 <p>TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.</p>
 </blockquote>
@@ -208,13 +188,36 @@ TBD colonies lunaires</p>
 <blockquote>
 <p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry-Howard correspondance</a></p>
 </blockquote>
-<h2>Odds and ends</h2>
+<h3>Algorithmes de coloration de listes</h3>
 <blockquote>
-<p>TBD</p>
+<p>5 liste colorable.</p>
 </blockquote>
+<h3>Variantes</h3>
+<blockquote>
+<p>TBD pays non connexes
+TBD colonies lunaires</p>
+</blockquote>
+<h2>Algorithmes</h2>
+<h3>Dessin</h3>
+<blockquote>
+<p>TBD dessin avec 2-connexe <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf</a></p>
+</blockquote>
+<blockquote>
+<p>TBD dessin sans courbure dans un triangle:</p>
 <ul>
-<li>3 coloriable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></li>
+<li>exemple <a href="https://ics.uci.edu/~eppstein/gina/schnyder/">https://ics.uci.edu/~eppstein/gina/schnyder/</a> ou <a href="https://ics.uci.edu/~eppstein/163/lecture10c.pdf">https://ics.uci.edu/~eppstein/163/lecture10c.pdf</a></li>
+<li>papier <a href="https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf">https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf</a></li>
 </ul>
+</blockquote>
+<h3>Reconnaissance</h3>
+<blockquote>
+<p>Fraysseix–Rosenstiehl et DFS <a href="https://en.wikipedia.org/wiki/Left-right_planarity_test">https://en.wikipedia.org/wiki/Left-right_planarity_test</a> ; papier <a href="https://arxiv.org/pdf/math/0610935">https://arxiv.org/pdf/math/0610935</a></p>
+</blockquote>
+<!-- 
+
+## Odds and ends
+
+
 <!-- - Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). -->
 <ul>
 <li>isomorphisme de graphe planaire</li>
@@ -233,7 +236,8 @@ TBD colonies lunaires</p>
 
 <!-- 
 - <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> -->
+- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> --> 
+<p>--&gt;</p>
 
 
 </article>
