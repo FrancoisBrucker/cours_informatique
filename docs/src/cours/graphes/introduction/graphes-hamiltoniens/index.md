@@ -170,17 +170,24 @@ Si $G=(V, E)$ est un graphe orienté tel que $\delta^+(x) + \delta^-(x) \geq \ve
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $C$ un circuit de taille maximum de $G$. Commençons par montrer que $l = v(G) \geq n/2 + 1$ (avec $n = v(G)$), en considérant un chemin $x_1\dots x_p$ le plus long dans $G$. Tous les voisins sortants de $x_p$ sont forcément sur ce chemin sinon il ne serait pas de longueur maximum et il y en a au moins $n/2$. le cycle $x_i \dots x_p x_i$ avec $x_i$ le plus petit successeur de x_p$ sur le chemin possède donc au moins $n/2 +1$ sommet.
+Soit $C$ un circuit de taille maximum de $G$. Commençons par montrer que $l = v(G) \geq n/2 + 1$ (avec $n = v(G)$), en considérant un chemin $x_1\dots x_p$ le plus long dans $G$. Tous les voisins sortants de $x_p$ sont forcément sur ce chemin sinon il ne serait pas de longueur maximum et il y en a au moins $n/2$. le cycle $x_i \dots x_p x_i$ avec $x_i$ le plus petit successeur de $x_p$ sur le chemin possède donc au moins $n/2 +1$ sommet.
 
-Soit maintenant $G'$ le graphe $G$ restreint aux sommets qui **ne sont pas** dans $C$ et $v_1\dots v_k$ un de ses chemin de longueur maximum. Comme $k + l \leq n$ on a que $k \leq n/2 -1$. Ceci implique que :
+Soit maintenant $G'$ le graphe $G$ restreint aux sommets qui **ne sont pas** dans $C$ et $L$ un de ses chemins de longueur maximum. Si $C$ n'est pas hamiltonien $L$ existe et en notant $1 \leq k = v(L)$,  on a que $k \leq n/2 -1$ puisque $k + l \leq n$. De plus, puisque $L$ est un chemin de longueur maximum dans $G'$ : 
 
-- l'ensemble $S$
+- l'ensemble $N^-(v_1)$ dans $G$ est contenu dans l'union $V(L) \cup V(C)$ avec $v_1$ le premier sommet du chemin,
+- l'ensemble $N^+(v_k)$ dans $G$ est contenu dans l'union $V(L) \cup V(C)$ avec $v_k$ le dernier sommet du chemin.
 
+On en conclut que les ensembles $S = N^-(v_1) \cap V(C)$ et $T = N^+(v_k) \cap V(C)$ contiennent chacun au moins $l - k + 1 > 0$ éléments.
+
+Soient maintenant $s \in S$ et $t \in T$ :
+
+![cycle et chemin](./Ghouila.png)
+
+Le chemin allant de $s$ à $t$ dans $C$ possède au moins $k$ sommets différents de $s$ et de $t$ sinon il existerait un cycle strictement plus grand que $C$. Un sommet de $S$ bloque donc $k$ sommets pour les éléments de $T$. Le nombre minimal de sommet bloqué est atteint lorsque tous les sommets de $S$ se suivent sur $C$ et on bloque ainsi $\vert S\vert - 1 + k$ éléments pour $T$. On en déduit $\vert T\vert \leq l - (\vert S\vert - 1 + k) \leq l - (l-k+1 -1+k) = 0$ ce qui est impossible puisque $\vert T\vert> 0$ : $L$ n'existe pas et $C$ est hamiltonien.
 
 {% enddetails %}
 
-
-> TBD attention ce n'est ps une CNS : exemple du cycle. Juste que s'il y a beaucoup d'arêtes il en existe **forcément** un.
+Les deux propositions ne sont bien sur que des conditions suffisantes puisque $C_n$, le cycle/circuit à $n$ éléments, est un cycle/circuit hamiltonien est ne possède que $n$ arêtes/arc. 
 
 ## Tournois
 
@@ -216,10 +223,117 @@ On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien da
 
 {% enddetails %}
 
-Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
+Ce résultat ne se généralise pas aux circuits hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit. On peut cependant caractériser les tournoi admettant un circuit hamiltonien :
 
-> TBD il peut même y en avoir beaucoup ! Thm méthode probabiliste : premier exemple.
-> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+
+{% note "**Proposition (Camion, 1959)**" %}
+Un tournoi admet un circuit hamiltonien si et seulement si il est fortement connexe.
+{% endnote %}
+{% details "preuve", "open" %}
+Il est clair que tout graphe orienté admettant un circuit hamiltonien est fortement connexe puisque qu'on peut faire le tour de ce circuit pour aller de $x$ à $y$ puis de $y$ à $x$ pour tous sommets $x$ et $y$.
+
+Réciproquement, soit $T$ un tournoi fortement connexe et supposons qu'il ne contienne pas de circuit hamiltonien. Soit alors $C = c_1\dots c_lc_1$ un circuit de longueur maximum et $v\notin V(C)$. Il y a plusieurs cas :
+
+- il existe $x, y \in V(C)$ tels que $xv$ et $vy$ sont 2 arcs. On peut supposer sans perte de généralité que $x = c_1$ et $y = c_i$ et soit $c_j$ le plus petit élément tel que $c_jv \in E$. On a alors un cycle $c_1\dots c_{j-1}vc_{j}\dots c_l$ qui est strictement plus long que $C$ : contradiction.
+- supposons qu'il n'existe pas $v\notin V(C)$ tel que $xv \in E$ avec $x \in V(C)$. Il est alors impossible d'atteindre un sommet du circuit à partir d'un sommet qui n'y est pas : contradiction puisque par hypothèse $T$ est fortement connexe
+- le même argument nous montre qu'il est impossible que pour tout $v\notin V(C)$ $vx \in E$ avec $x \in V(C)$.
+
+Il existe donc :
+
+- $v\notin V(C)$ tel que  $xv \in E$  pour tout $x \in V(C)$,
+- $v'\notin V(C)$ tel que  $v'x \in E$  pour tout $x \in V(C)$.
+
+Or le tournoi est fortement connexe il existe donc un chemin $L$ de sommets non dans $V(C)$ qui rejoignent $v$ à $v'$. Ceci est cependant impossible puisque $c_1Lc_2\dots c_lc_a1$ forme un circuit strictement plus long que $C$.
+
+{% enddetails %}
+
+
+{% note "**Proposition (Moon-Moser, 1962)**" %}
+Le nombre $t_n$ de tournois fortement connexe est :
+
+<div>
+$$
+t_n = 2^{\binom{n}{2}} - \sum_{k=1}^{n-1}t_k\binom{n}{k}2^{\binom{n-k}{2}}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+Les composantes fortement connexes d'un graphe sont deux à deux disjointes. De plus pour un tournoi si $C_1$ et $C_2$ sont deux composantes connexes soit $xy \in E$ pour tout $x\in C_1$ et $y\in C_2$ soit $yx \in E$ pour tout $x\in C_1$ et $y\in C_2$ (sinon $C_1 \cup C_2$ formerait une composante connexe). De là, il existe forcément une composante connexe unique $C$ tel que pour toute autre composantes connexe $C'$, $xy \in E$ pour tout $x\in C$ et $y\in C'$.
+
+La taille de cette composante fortement connexe peut aller de 1 à $n-1$ et pour une taille $k$ il y en a : $\binom{n}{k}t_k$. Le reste du graphe est un tournoi quelconque à $n-k$ sommets, il y en a donc $2^{\binom{n-k}{2}}$. Il y a donc en tout :$\sum_{k=1}^{n-1}t_k\binom{n}{k}2^{\binom{n-k}{2}}$ tournois non transitifs à $n$ sommets et comme il y a en tout $2^{\binom{n}{2}}$ tournois à $n$ sommet on en déduit la formule attendue.
+
+{% enddetails %}
+{% info %}
+La suite $t_n$ est [la suite A054946](https://oeis.org/A054946).
+{% endinfo %}
+{% note "**Corollaire**" %}
+La probabilité qu'un tournoi aléatoire à $n$ sommets admette un circuit hamiltonien tend vers 1 lorsque $n$ tend vers l'infini.
+{% endnote %}
+{% details "preuve", "open" %}
+La preuve de la proposition précédente montre qu'un tournoi $T$ n'est pas fortement connexe si et seulement si il existe un ensemble de sommets $A \subsetneq V(T)$ tel que $xy \in E(T)$ quelque soient $x\in A$ et $y\notin A$. Comme il y a $k \cdot(n-k)$ arcs entre $A$ et $V(T)\backslash A$ la probabilité qu'il existe un tel ensemble vaut :
+
+<div>
+$$
+\frac{1}{2^{k \cdot(n-k)}}
+$$
+</div>
+
+Comme il peut y avoir $\binom{n}{k}$ tels ensemble on a que la probabilité $\mathbb{P}_n$ qu'un tournoi à $n$ sommets ne soit pas fortement connexe est telle que  (les évènements ne sont pas indépendants) :
+
+<div>
+$$
+\mathbb{P}_n \leq \sum_{k=1}^{n-1}\binom{n}{k}\frac{1}{2^{k \cdot(n-k)}}
+$$
+</div>
+
+De là on peut continuer à approximer à la hache :
+
+<div>
+$$
+\begin{cases}
+\mathbb{P}_n &\leq \sum_{k=1}^{n-1}n^k\frac{1}{2^{k \cdot(n-k)}}\\
+&\leq \sum_{k=1}^{n-1}n^k\frac{1}{2^{kn}}\\
+&\leq \sum_{k=1}^{n-1}(\frac{n}{2^{n}})^k\\
+&\leq \frac{n}{2^{n}}^n\\
+&\leq \frac{n^n}{2^{n^2}}\\
+&\leq \exp(n\ln(n)-\ln(2)n^2) \xrightarrow[n \to +\infty]{} 0\\
+\end{cases}
+$$
+</div>
+
+
+{% enddetails %}
+
+Si un tournoi est fortement connexe il admet au moins $n$ chemins hamiltonien. Par exemple pour le graphe ci-après ($231451$ est un circuit hamiltonien) :
+
+![tournoi à 5 sommets](./tournoi-5.png)
+
+Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste) développée par Erdös :
+
+{% note "**Proposition**" %}
+Pour tout $n$, il existe des tournois à $n$ sommets ayant plus de $\frac{n!}{2^{n-1}}$ chemins hamiltoniens.
+{% endnote %}
+{% details "preuve", "open" %}
+La probabilité d'existence d'un chemin hamiltonien donné $C = x_1\dots x_n$ pour un tournoi donné à $n$ sommets est $\mathbb{P}(T \text{ admette } C \text{ comme chemin hamiltonien }) = 1/2^{n-1}$ (probabilité de $1/2$ pour chaque arc $x_ix_{i+1}$, $1\leq i < n$).
+
+Numérotons tous les chemin hamiltoniens possibles de $C_1$ à $C_{n!}$.
+De là, l'espérance de la variable aléatoire $N$ comptant le nombre de chemins hamiltoniens $T$ dans un tournoi à $n$ sommets vaut :
+
+<div>
+$$
+\begin{cases}
+E[N] & = \sum_{i} \mathbb{P}(T \text{ admette } C_i \text{ comme chemin hamiltonien })\\
+& = \sum_{i}1/2^{n-1}\\
+& = \frac{n!}{2^{n-1}}\\
+\end{cases}
+$$
+</div>
+
+On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant.
+{% enddetails %}
+
+
+> TBD trouver en 1 pour 5 sommets doit avoir au mins $5!/2^{4} = 15/2$ donc 8 chemins hamiltoniens.
 
 ## Algorithme
 

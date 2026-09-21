@@ -107,14 +107,6 @@ Il existe n ordre linéaire entre les sommets te que x < y < z si xz est une ar�
 
 {% endaller %}
 
-## Cliques et stables
-
-{% aller %}
-
-[Cliques et stables d'un graphe](cliques-stables){.interne}
-
-{% endaller %}
-
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
@@ -236,6 +228,10 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
+
+## Graphes aléatoires
+
+> TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 <!-- carré latin. Avec preuve et code. -->
 
 <!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
