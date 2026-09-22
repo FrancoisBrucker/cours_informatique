@@ -89,14 +89,17 @@ Codons tout ça :
 
 {% endaller %}
 
-> TBD est-ce normal que l'on ne puisse pas trouver d'algo simple pour résoudre le pb ?
-> TBD ci NP algo
-
 ## Problèmes universels en théorie des graphes
 
-> clique/stable
-> chemin le plus long
-> coloration (que sommet et laisser arête à plus tard)
+> TBD prérequis NP algorithmie.
+
+{% aller %}
+
+1. [Cliques et stables maximaux](cliques-stables){.interne}
+2. Chemin le plus long
+3. coloration (que sommets et laisser arêtes à plus tard)
+
+{% endaller %}
 
 ## Graphes planaires
 

@@ -19,9 +19,6 @@ Ca où on sait faire :
 
 Cas particulier métrique et complet
 >   1. pas simple : exhaustif avec backtrack + branch and bound
->   2. approximation : 
->     1. 2-opt 
->     2. performance garantie :  algo + ALM
 
 ## Ordonnancement
 

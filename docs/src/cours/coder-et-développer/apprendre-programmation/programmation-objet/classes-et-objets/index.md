@@ -201,6 +201,8 @@ En python :
 
 De façon formelle :
 
+<div id="espace-nommage"></div>
+
 {% note2 "**Définition**" %}
 Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../concepts/utilisation-modules/#définition-espace-nommage){.interne}.
 

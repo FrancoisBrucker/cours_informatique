@@ -154,11 +154,11 @@ Le problème clique est NP-complet.
 {% details "preuve", "open" %}
 On va le montrer par réduction depuis [le problème SAT](/cours/algorithmie/problème-SAT/#3-sat){.interne}.
 
-Soit l'ensemble de clauses suivante, formant une entrée du problème 3-SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
+Soit l'ensemble de clauses suivantes formant une entrée du problème SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
 
 <div>
 $$
-\mathcal{C} = \land_{1\leq i \leq m}( l_i^1\lor \dots \lor l_i^{k_i})
+\mathcal{C} = \bigwedge_{1\leq i \leq m}( l_i^1\lor \dots \lor l_i^{k_i})
 $$
 </div>
 
@@ -173,7 +173,7 @@ On associe (polynomialement) à cette instance un graphe $G=(V, E)$ tel que :
 
 Et on cherche s'il existe une clique de taille supérieure ou égale à $m$.
 
-S'il existe une solution au problème 3-SAT alors il existe un littéral $l_i^{u_i}$ qui est vrai pour toute clause $1\leq i \leq m$. L'ensemble $\mathcal{C} = \\{ l_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
+S'il existe une solution au problème SAT alors il existe un littéral $l_i^{u_i}$ qui est vrai pour toute clause $1\leq i \leq m$. L'ensemble $\mathcal{C} = \\{ l_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
 
 Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de chaque clause, donc une clique de taille $K$ contient un littéral par clause que l'on peut positionner à vrai.
 {% enddetails %}
@@ -252,6 +252,17 @@ En déduire que le problème couverture est NP-complet
 {% enddetails %}
 
 ## Théorème de Ramsey
+
+> TBD problème clique ou stable de taille k pour un graphe qui est NP-complet
+> on en dérive le nombre de Ramsey
+> TBD méthode probabiliste.
+> TBD parler de haystack (retrouver le doc)
+
+> TBD ici introduire la méthode probabiliste.
+> <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
+> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+
+> TBD en faire un td avec calculs et code ? 
 
 {% lien  %}
 
@@ -386,9 +397,3 @@ En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on c
 
 Par exemple la majoration précédente donne $R(5, 5) = \binom{8}{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43).
 
-
-<!-- 
-> TBD ici introduire la méthode probabiliste.
-> <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
-> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
-> TBD en faire un td avec calculs et code ? -->

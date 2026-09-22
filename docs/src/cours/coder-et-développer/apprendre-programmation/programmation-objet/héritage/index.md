@@ -94,7 +94,7 @@ L'exemple du personnel de l'université a pour diagramme UML :
 
 ### Python
 
-L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant [un espace de nommage](../../bases-programmation/espace-nommage/){.interne}.
+L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant [un espace de nommage](../classes-et-objets/#espace-nommage){.interne}.
 
 En reprenant l'exemple du personnel de l'université, on peut d'ore et déjà écrire la classe mère :
 

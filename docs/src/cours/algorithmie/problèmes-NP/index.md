@@ -306,12 +306,12 @@ Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorith
 
 Le théorème de Cook et Leven stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.
 
-Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectation de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre, comme on peut transformer toute formule logique en une disjonction de clauses grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) (que nous étudierons un peu plus tard), ceci montre, au moins intuitivement qu'il y a équivalence entre programme et formule SAT.
+Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.
 
-Enfin, être dans NP signifie alors que la taille de cette formule associée au programme est de taille polynomiales par rapport à l'entrée. Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.
+Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.
 
 {% info %}
-Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.
+Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses, on se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.
 {% endinfo %}
 
 #### MAX
@@ -588,19 +588,13 @@ Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.
 
 {% endnote %}
 
-[Par Exemple](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description) :
+[Par Exemple](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description) : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$
 
-<div>
-$$
-(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
-$$
-</div>
+On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :
 
-On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante dites "_du petit train_" :
-
-- un literal -> 3 littéraux en ajoutant (x) -> (x ou z ou non z)
-- deux littéraux -> 3 littéraux (x ou y) -> (x ou y ou z) et (non z)
-- n > 3 littéraux (x1 ou ... xn) -> (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)
+- clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral
+- clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (\overline{\alpha} \lor \beta \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux
+- clause à $n > 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivante $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)
 
 
 Reprenons [l'exemple de SAT](./#exemple-SAT){.interne} et appliquons lui la transformation :
@@ -611,16 +605,23 @@ $$
 $$
 </div>
 
-> TBD ici
->
+Devient :
 
-La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.
+<div>
+$$
+(x_1 \lor {x_2} \lor \alpha) \land (\alpha \lor \beta \land \overline{\beta}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \gamma) \land (\overline{\gamma} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \delta) \land (\overline{\delta} \lor \overline{x_4} \lor {x_5})
+$$
+</div>
+
+
+La transformation est bien linéaire. et résoudre SAT implique résoudre 3-SAT car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT est satisfait alors on en déduit que SAT l'est aussi car dans les méta clauses, il y a forcément un des littéraux initiaux qui est vrai.
 
 On a trouvé un deuxième élément à la classe des problèmes NP-complets !
 
 ![décidable](./NP-NP-2b.png)
 
-> TBD le petit train ne fonctionne pas avec 2 sat (on y reviendra)
+Remarquez que notre transformation ne permet pas de passer de SAT à 2-SAT puisqu'il faut chaîner les clauses de strictement plus de 3 littéraux.
+
 
 ### Que signifie NP-complet
 
@@ -634,12 +635,21 @@ Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où
 
 {% endattention2 %}
 
+Comme tout problème est un cas particulier de n'importe lequel des problème NP-Complet on a aussi :
+
+{% attention2 "**À retenir**" %}
+
+Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes possibles.
+
+{% endattention2 %}
+
+
 ### P et NP
 
 Si les problèmes de $P$ sont inclus dans $NP$, on ne sait pas si l'inclusion est stricte. On a implicitement supposé que les problèmes NP-complets ne sont pas dans P, mais en vrai on en sait rien : la question est ouverte ! Certains se demandent même si cette question est décidable (_ie._ démontrable).
 
 {% info %}
-Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
+Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
 {% endinfo %}
 
 ![décidable](./NP-NP-3.png)
@@ -648,6 +658,28 @@ Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car si
 
 {% attention2 "**À retenir**" %}
 Même si la chose n'est pas démontrée on considérera que $P \neq NP$ dans toute la suite de ce cours (et notre vie). Prouver qu'un problème est NP-complet sera donc une garantie que l'on ne pourra pas le résoudre de façon efficace et que l'on peut chercher une solution approchée via un algorithme polynomial.
+{% endattention2 %}
+
+Mais imaginons un instant que SAT soit polynomial. Vous avez sûrement remarqué que tout problème transformé en une instance de SAT est symétrique ?:
+
+- si on fixe les entrées, la satisfiabilité de la formule donne sa sortie,
+- si on fixe la sortie, la satisfiabilité de la formule donne sen entrée !
+
+Par exemple pour notre addition :
+
+- si je donne les deux entrée la formule me donne leur somme
+- si je donne la sortie la formule me donne deux entiers dont la somme fait la sortie.
+
+Donc si je connais le pseudo-code de cet, je peux en écrire sa formule SAT associée et je peux déterminer ses entrées à partir d'une sortie en temps polynomial. Pour une addition cela ne porte pas vraiment à conséquence mais si l'algorithme en question est un chiffrement (comme le chiffrement RSA dont la base est la supposition qu'il est difficile de trouver le produit de deux nombres premiers) ?
+
+{% lien %}
+[Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question](https://www.youtube.com/watch?v=6OPsH8PK7xM)
+{% endlien %}
+
+Bref :
+
+{% attention2 "**À retenir**" %}
+P = NP ne ferait pas que des heureux.
 {% endattention2 %}
 
 ### Pas dans P ni NPC ?
