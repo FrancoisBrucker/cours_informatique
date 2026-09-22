@@ -694,7 +694,7 @@ $$
 \end{cases}
 $$
 </div>
-<p>De là, l'espérance de la variable aléatoire $N(T) = \sum_i N_i(T)$ comptant le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets vaut :</p>
+<p>De là, on note $N$ la variable aléatoire telle que $N(T) = \sum_i N_i(T)$, qui  compte le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets. On peut alors facilement calculer son espérance :</p>
 <div>
 $$
 \begin{cases}
@@ -705,7 +705,7 @@ $$
 \end{cases}
 $$
 </div>
-<p>On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$</p>
+<p>L'intérêt d'utiliser des $N_i$ est que la linéarité de l'espérance nous fait considérer chaque chemin indépendamment des autres.  On conclut la preuve en notant que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$.</p>
 </div>
 </details>     
 </div>
@@ -834,10 +834,7 @@ $$
 </details>     
 </div>
 <h2>Algorithme</h2>
-<p>On ne connaît pas d'algorithmes polynomiaux pour trouver un cycle hamiltonien.</p>
-<blockquote>
-<p>TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ? Voir la suite du cours (c'est un problème NP complet)</p>
-</blockquote>
+<p>On ne connaît pas d'algorithmes polynomiaux pour trouver un chemin hamiltonien.</p>
 <h3>Exact</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -847,14 +844,52 @@ $$
 <p><a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Held–Karp_algorithm</a></p>
 </div></div>
 
-<p>Savoir si un graphe donné possède un chemin hamiltonien nécessite a priori de vérifier <strong>tous</strong> les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$</p>
+<p>Savoir si un graphe donné possède un cycle hamiltonien nécessite a priori de vérifier <strong>tous</strong> les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$</p>
 <p>L'algorithme de Bellman-Held-Karp permet de réduire cette complexité au prix d'un stockage intensif de résultats intermédiaires.</p>
-<blockquote>
-<p>TBD ajouter algo en $n^22^n$ qui est mieux que n!</p>
-</blockquote>
+<p>Soit $G = ([1 .. n], E)$ un graphe orienté. On note $f_1(S, u)$ la fonction définie pour $S \subseteq [2 .. n]$ et $u \in S$ telle que : $f_1(S, u) = 1$ s'il existe un chemin hamiltonien entre 1 et $u$ pour $G$ restreint à $\{1 \} \cup S$. On a clairement la relation de récurrence suivante :</p>
+<div>
+$$
+\begin{cases}
+f_1(S, u) = \bigvee\limits_{v \in S \backslash \{ u\}} (uv \in E(G)) \land f_1(S \backslash \{ u\}, v)\\
+f_1(\{u \}, u) = (1u \in E(G))
+\end{cases}
+$$
+</div>
+<p>Et $G$ possède cycle hamiltonien si $f_1(S,u) = 1$ pour un des éléments de N^{-}(1)$.</p>
+<p>La fonction de récurrence donne un algorithme pour calculer $f_1(S,u)$ pour tout sous-ensemble S de [2 .. n] :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span> tout x de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+  <span class="token keyword">si</span> 1u ∈ E<span class="token punctuation">:</span>
+    f_1<span class="token punctuation">(</span>\<span class="token punctuation">{</span>u \<span class="token punctuation">}</span><span class="token punctuation">,</span> u<span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+  <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+    f_1<span class="token punctuation">(</span>\<span class="token punctuation">{</span>u \<span class="token punctuation">}</span><span class="token punctuation">,</span> u<span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+<span class="token keyword">pour</span> tout k de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  <span class="token keyword">pour</span> tout S sous<span class="token operator">-</span>ensemble de taille k de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> x de S<span class="token punctuation">:</span>
+        f_1<span class="token punctuation">(</span>S<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">pour chaque</span> y de S \<span class="token punctuation">{</span>x<span class="token punctuation">}</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> f_1<span class="token punctuation">(</span>S\<span class="token punctuation">{</span>x<span class="token punctuation">}</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token keyword">ET</span>  yx ∈ E<span class="token punctuation">:</span>
+               f_1<span class="token punctuation">(</span>S<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span> 
+               <span class="token keyword">break</span></code></pre>
+<p>Cet algorithme doit stocker de complexité $\mathcal{O}(n2^n)$ valeurs de $f_1$ et nécessite $\mathcal{O}(n^22^n)$ opérations.</p>
+<p>On peut alors ensuite retrouver le cycle hamiltonien en &quot;remontant&quot; :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
+S <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span>
+Soit $x$ tel que f_1<span class="token punctuation">(</span>S<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+C <span class="token operator">=</span> 1x
+
+<span class="token keyword">tant que</span> <span class="token operator">|</span>S<span class="token operator">|</span> <span class="token operator">≥</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    S <span class="token operator">←</span> S \ <span class="token punctuation">{</span>x<span class="token punctuation">}</span>
+    Soit $x$ tel que f_1<span class="token punctuation">(</span>S<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    C <span class="token operator">=</span> C <span class="token operator">+</span> x
+
+C <span class="token operator">=</span> C <span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>La complexité de cet algorithme est négligeable devant celle du calcul de $f_1$ puisqu'il est en $\mathcal{O}(n^2)$</p>
+<p>Enfin il fonction que $G$ soit un graphe orienté ou non.</p>
+<p>La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling">la formule de Stirling</a>.</p>
 <h3>Approché sans performance garantie</h3>
 <blockquote>
-<p>TBD parler de 2-opt (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.</p>
+<p>TBD parler de <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.</p>
 </blockquote>
 <h3>À performance garantie dans un cas particulier</h3>
 <blockquote>
