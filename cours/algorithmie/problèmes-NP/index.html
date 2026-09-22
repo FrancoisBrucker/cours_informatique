@@ -491,14 +491,14 @@ $$
 
 <h3>Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
-<p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectation de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre, comme on peut transformer toute formule logique en une disjonction de clauses grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> (que nous étudierons un peu plus tard), ceci montre, au moins intuitivement qu'il y a équivalence entre programme et formule SAT.</p>
-<p>Enfin, être dans NP signifie alors que la taille de cette formule associée au programme est de taille polynomiales par rapport à l'entrée. Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.</p>
+<p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.</p>
+<p>Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.</p>
+<p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses, on se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.</p>
 </div></div>
 
 <h4>MAX</h4>
@@ -769,17 +769,12 @@ $$
 </ul>
 </div></div>
 
-<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Par Exemple</a> :</p>
-<div>
-$$
-(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
-$$
-</div>
-<p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante dites &quot;<em>du petit train</em>&quot; :</p>
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Par Exemple</a> : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$</p>
+<p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :</p>
 <ul>
-<li>un literal -&gt; 3 littéraux en ajoutant (x) -&gt; (x ou z ou non z)</li>
-<li>deux littéraux -&gt; 3 littéraux (x ou y) -&gt; (x ou y ou z) et (non z)</li>
-<li>n &gt; 3 littéraux (x1 ou ... xn) -&gt; (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)</li>
+<li>clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral</li>
+<li>clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (\overline{\alpha} \lor \beta \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux</li>
+<li>clause à $n &gt; 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivante $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)</li>
 </ul>
 <p>Reprenons <a href="#exemple-SAT" class="interne">l'exemple de SAT</a> et appliquons lui la transformation :</p>
 <div>
@@ -787,15 +782,16 @@ $$
 (x_1 \lor {x_2}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})
 $$
 </div>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
-<p>La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.</p>
+<p>Devient :</p>
+<div>
+$$
+(x_1 \lor {x_2} \lor \alpha) \land (\alpha \lor \beta \land \overline{\beta}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \gamma) \land (\overline{\gamma} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \delta) \land (\overline{\delta} \lor \overline{x_4} \lor {x_5})
+$$
+</div>
+<p>La transformation est bien linéaire. et résoudre SAT implique résoudre 3-SAT car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT est satisfait alors on en déduit que SAT l'est aussi car dans les méta clauses, il y a forcément un des littéraux initiaux qui est vrai.</p>
 <p>On a trouvé un deuxième élément à la classe des problèmes NP-complets !</p>
 <p><img src="NP-NP-2b.png" alt="décidable"></p>
-<blockquote>
-<p>TBD le petit train ne fonctionne pas avec 2 sat (on y reviendra)</p>
-</blockquote>
+<p>Remarquez que notre transformation ne permet pas de passer de SAT à 2-SAT puisqu'il faut chaîner les clauses de strictement plus de 3 littéraux.</p>
 <h3>Que signifie NP-complet</h3>
 <p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
 <p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>
@@ -809,6 +805,17 @@ $$
 <p>Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut <em>a priori</em> tout vérifier car la solution peut se trouver n'importe où <em>a contrario</em> des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.</p>
 </div></div>
 
+<p>Comme tout problème est un cas particulier de n'importe lequel des problème NP-Complet on a aussi :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes possibles.</p>
+</div></div>
+
 <h3>P et NP</h3>
 <p>Si les problèmes de $P$ sont inclus dans $NP$, on ne sait pas si l'inclusion est stricte. On a implicitement supposé que les problèmes NP-complets ne sont pas dans P, mais en vrai on en sait rien : la question est ouverte ! Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -816,7 +823,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
+<p>Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 </div></div>
 
 <p><img src="NP-NP-3.png" alt="décidable"></p>
@@ -829,6 +836,36 @@ $$
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Même si la chose n'est pas démontrée on considérera que $P \neq NP$ dans toute la suite de ce cours (et notre vie). Prouver qu'un problème est NP-complet sera donc une garantie que l'on ne pourra pas le résoudre de façon efficace et que l'on peut chercher une solution approchée via un algorithme polynomial.</p>
+</div></div>
+
+<p>Mais imaginons un instant que SAT soit polynomial. Vous avez sûrement remarqué que tout problème transformé en une instance de SAT est symétrique ?:</p>
+<ul>
+<li>si on fixe les entrées, la satisfiabilité de la formule donne sa sortie,</li>
+<li>si on fixe la sortie, la satisfiabilité de la formule donne sen entrée !</li>
+</ul>
+<p>Par exemple pour notre addition :</p>
+<ul>
+<li>si je donne les deux entrée la formule me donne leur somme</li>
+<li>si je donne la sortie la formule me donne deux entiers dont la somme fait la sortie.</li>
+</ul>
+<p>Donc si je connais le pseudo-code de cet, je peux en écrire sa formule SAT associée et je peux déterminer ses entrées à partir d'une sortie en temps polynomial. Pour une addition cela ne porte pas vraiment à conséquence mais si l'algorithme en question est un chiffrement (comme le chiffrement RSA dont la base est la supposition qu'il est difficile de trouver le produit de deux nombres premiers) ?</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question</a></p>
+</div></div>
+
+<p>Bref :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>P = NP ne ferait pas que des heureux.</p>
 </div></div>
 
 <h3>Pas dans P ni NPC ?</h3>
