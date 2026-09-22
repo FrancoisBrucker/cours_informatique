@@ -267,7 +267,7 @@ La taille de cette composante fortement connexe peut aller de 1 à $n-1$ et pour
 La suite $t_n$ est [la suite A054946](https://oeis.org/A054946).
 {% endinfo %}
 {% note "**Corollaire**" %}
-La probabilité qu'un tournoi aléatoire à $n$ sommets admette un circuit hamiltonien tend vers 1 lorsque $n$ tend vers l'infini.
+La probabilité qu'un tournoi aléatoire (chaque arc ($xy$ ou $yx$) est tiré avec une probabilité indépendante de 1/2) à $n$ sommets admette un circuit hamiltonien tend vers 1 lorsque $n$ tend vers l'infini.
 {% endnote %}
 {% details "preuve", "open" %}
 La preuve de la proposition précédente montre qu'un tournoi $T$ n'est pas fortement connexe si et seulement si il existe un ensemble de sommets $A \subsetneq V(T)$ tel que $xy \in E(T)$ quelque soient $x\in A$ et $y\notin A$. Comme il y a $k \cdot(n-k)$ arcs entre $A$ et $V(T)\backslash A$ la probabilité qu'il existe un tel ensemble vaut :
