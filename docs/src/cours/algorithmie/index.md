@@ -511,7 +511,8 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
 
 {% aller %}
-[Problème SAT](./problème-SAT){.interne}
+1. [Problème SAT](./problème-SAT){.interne}
+2. [Problème CE](./problème-CE){.interne}
 {% endaller %}
 
 

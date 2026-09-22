@@ -32,9 +32,3 @@ eleventyComputed:
 [Arbres couvrants](arbres-couvrants){.interne}
 
 {% endaller %}
-
-{% aller %}
-
-[Piocher un arbre couvrant](./compter-couvrants){.interne}
-
-{% endaller %}

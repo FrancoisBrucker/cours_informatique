@@ -87,7 +87,7 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 
 ### Principe de conduite d'un projet informatique
 
-> 1h TD
+> 2h TD (1h en autonomie)
 
 Les deux principes fondamentaux lorsque l'on développe un projet informatique est de séparer le programme principal des fonctions et de conserver les tests qui nous on permis de vérifier qu'elles fonctionnent :
 
@@ -169,7 +169,7 @@ Vous rendrez un dossier contenant :
 {% endaller %}
 
 
-> 1h TP
+> 2h TP (1h en autonomie)
 
 {% aller %}
 [Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/){.interne}
@@ -212,14 +212,14 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### Composition et agrégation
 
-> 1h45 cours
+> 2h cours
 
 {% aller %}
 1. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
 2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/){.interne}
 {% endaller %}
 
-> 1h15 TP
+> 2h TP (1h en autonomie)
 
 {% aller %}
 [Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/){.interne}

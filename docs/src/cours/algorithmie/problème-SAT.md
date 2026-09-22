@@ -269,14 +269,8 @@ Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter d
 
 Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.
 
-### SAT ≤ 3-SAT
-
-- un literal -> 3 littéraux en ajoutant (x) -> (x ou z ou non z)
-- deux littéraux -> 3 littéraux (x ou y) -> (x ou y ou z) et (non z)
-- n > 3 littéraux (x1 ou ... xn) -> (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)
-
-La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.
-
+> On a déjà à vu SAT ≤ 3-SAT, montrons une variante
+> 
 ### 3-SAT ≤ NAE-3-SAT
 
 > TBD variante <https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability> semble plus comtrainte mais en fait non, c'est plus général.

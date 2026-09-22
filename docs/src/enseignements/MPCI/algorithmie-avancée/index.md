@@ -25,29 +25,32 @@ eleventyComputed:
 
 -->
 
-## Programme
+UEes En deux parties :
 
-En trois parties.
+- graphes
+- algorithmie
 
-> EN chantier.
-
-### Théorie des graphes
-
-> Semaine 1 à ...
-
-{% lien %}
-[Introduction à la théorie des graphes](/cours/graphes/introduction)
-{% endlien %}
+## Programme de la partie Graphe
 
 Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
 
 {% lien %}
+
 - [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf)
 - [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK)
 
 {% endlien %}
 
-#### Cours 1
+Nous allons suivre l'introduction du cours de graphes :
+
+{% aller %}
+
+[Théorie des graphes : introduction](/cours/graphes/introduction){.interne} :
+
+{% endaller %}
+
+
+### Cours 1
 
 {% aller %}
 
@@ -61,58 +64,96 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% endaller %}
 
-Pour la semaine prochaines, 2 exposés tiré du proofs from the book.
+Pour la semaine prochaines, 2 exposés tirés du proofs from the book.
 
-#### Cours 2
+### Cours 2
 
 {% attention %}
-Un exposé du proof from the book
+Un exposé du proof from the book.
 {% endattention %}
 
 {% aller %}
 
-1. [Cycles eulérien](/cours/graphes/introduction/parcours-eulériens/){.interne}
-2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/projet-mots-bruijn/){.interne}
+1. [Cycles eulérien](/cours/graphes/introduction/graphes-eulériens/){.interne}
+2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/mots-bruijn/){.interne}
 
 {% endaller %}
 
-#### Cours 3
+### Cours 3
+
+{% attention %}
+Un exposé du proof from the book.
+{% endattention %}
 
 {% faire %}
 Coder les parcours eulérien et les mots de Bruijn.
 {% endfaire %}
 
 
-#### Cours 4
+### Cours 4
+
+{% attention %}
+Un exposé du proof from the book.
+{% endattention %}
 
 {% aller %}
 
-- [Arbres définition](/cours/graphes/introduction/arbres/définitions/){.interne}
-- [Compter et piocher un arbre](/cours/graphes/introduction/arbres/compter-arbres/){.interne}
+1. [Arbres définition](/cours/graphes/introduction/arbres/définitions/){.interne}
+2. [Compter et piocher un arbre](/cours/graphes/introduction/arbres/compter-arbres/){.interne}
 
 {% endaller %}
 
-#### Cours 5 & 6
+### Cours 5 & 6
+
+{% attention %}
+Deux exposés du proof from the book.
+{% endattention %}
 
 {% aller %}
 
-- [Arbres/arborescences couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
-- [compter et piocher un arbre couvrant](/cours/graphes/introduction/arbres/compter-couvrants/){.interne}
+[Arbres/arborescences couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+
+{% endaller %}
+
+### Cours 7
+
+{% attention %}
+Un exposé du proof from the book.
+{% endattention %}
+
+{% aller %}
+
+[Graphes hamiltoniens](/cours/graphes/introduction/graphes-hamiltoniens/){.interne}
+
+{% endaller %}
+
+### Cours 8
+{% attention %}
+Un exposé du proof from the book.
+{% endattention %}
+
+{% aller %}
+
+1. [Rappels de complexité](/cours/algorithmie/complexité-calculs/importance/){.interne}
+2. [Réduction de Problèmes](/cours/algorithmie/problème-réduction/){.interne}
+3. [Classe de problème NP](/cours/algorithmie/problèmes-NP/){.interne}
 
 {% endaller %}
 
 
-#### Cours 7 & 8
+### Cours 9 & 10
+
+{% attention %}
+Deux exposés du proof from the book.
+{% endattention %}
 
 {% aller %}
 
-- [Chemin le plus long](/cours/graphes/introduction/parcours-hamiltoniens/){.interne}
-- [Problème d'ordonnancement](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
-- réduction et [Problèmes NPC](cours/algorithmie/#problèmes){.interne}
-- problèmes de graphes NPC : 
+- problèmes de graphes universels (_ie._ NP-Complets) : 
   - Clique/stable
   - Hamilton (cycle et chemin)
-  - Coloration
+  - Coloration de sommets
+- planarité
 
 {% endaller %}
 
@@ -377,12 +418,12 @@ $$
 
 Avec :
 
-- $DM$ devoir(s) maison ou exposé(s)
+- $DM$ devoir(s) maison et exposé(s)
 - $DS$ la note du devoir surveillé
 - $ET$ est l'examen terminal
 
 ### Rendus
 
-- un dm
-- une présentation d'une jolie démonstration du proof from the book.
+- deux dms
+- une présentation d'une jolie démonstration du proof from the book de 15min de présentation.
 - un ds de théorie des graphes

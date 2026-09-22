@@ -49,7 +49,6 @@ Les plus simples des graphes connexes :
 
 ### Graphes Eulérien
 
-
 L'origine de la théorie des graphe :
 
 {% aller %}
