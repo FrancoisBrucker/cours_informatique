@@ -328,7 +328,7 @@ $$
 $$
 </div>
 
-De là, l'espérance de la variable aléatoire $N(T) = \sum_i N_i(T)$ comptant le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets vaut :
+De là, on note $N$ la variable aléatoire telle que $N(T) = \sum_i N_i(T)$, qui  compte le nombre de chemins hamiltoniens dans un tournoi $T$ à $n$ sommets. On peut alors facilement calculer son espérance :
 
 <div>
 $$
@@ -341,7 +341,7 @@ $$
 $$
 </div>
 
-On conclut que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$
+L'intérêt d'utiliser des $N_i$ est que la linéarité de l'espérance nous fait considérer chaque chemin indépendamment des autres.  On conclut la preuve en notant que pour réaliser cette espérance il doit exister un tournoi qui en a au moins autant : il existe $T$ tel que $N(T) \geq \mathbb{E}[N] \geq \frac{n!}{2^{n-1}}$.
 {% enddetails %}
 
 Notez que la proposition précédente ne donne pas de preuve constructive d'un tel tournoi. Les preuves par la méthode probabiliste sont souvent existentielle on sait que ça existe mais c'est parfois dur à trouver. Faites en l'expérience avec l'exercice suivant :
@@ -473,7 +473,7 @@ La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plu
 
 ### Approché sans performance garantie
 
-> TBD parler de 2-opt (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.
+> TBD parler de [2-opt](https://fr.wikipedia.org/wiki/2-opt) (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.
 
 ### À performance garantie dans un cas particulier
 
