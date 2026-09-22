@@ -144,12 +144,10 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>vérifieur</em></strong> est un algorithme de :</p>
 <p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
-<p>Il est dit <strong><em>efficace</em></strong> s'il est de complexité polynomiale.</p>
 </div></div>
 
-<p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.</p>
-<p>On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
-<p>Formalisons cette notion de vérification efficace :</p>
+<p>On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée de l'exactitude d'une solution. Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.</p>
+<p>Mais pour que cette vérification puisse être utilisable en pratique il ne faut pas qu'elle dure trop longtemps : elle doit &quot;<em>efficace</em>&quot; (<em>ie.</em> polynomiale, donc pouvant être écrite puis lue par des humains). Formalisons cette notion de vérification efficace :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -172,9 +170,18 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.</p>
 </div></div>
 
-<p>Remarquez que l'on ne demande <strong>pas</strong> que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.</p>
-<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues.</p>
-<p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
+<p>Remarquez que l'on ne demande <strong>pas</strong> que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte. Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si un problème décidable admet un vérifieur efficace, la taille de la sortie est polynomiale par rapport à la taille de l'entrée.</p>
+</div></div>
+
+<p>Cette définition est réaliste puisque si l'on possède une solution potentielle on veut pouvoir vérifier de façon efficace (<em>ie.</em> polynomialement) que c'est bien une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <p>Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.</p>
 <p>Ainsi, pour <a href="../#probl%C3%A8me-max-tableau" class="interne">le problème MAX (trouver le maximum d'un tableau)</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_max<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
@@ -242,8 +249,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Tout problème admettant un vérifieur efficace est décidable car il n'y a qu'un nombre fini de l'ordre de $\mathcal{O}(2^{|e|^k})$ . En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$ (avec $k$ une constante), la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$.</p>
-<p>On peut alors pour une entrée donnée tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (puisque tester une entrée coûte $\mathcal{O}(|e|^k)$ opérations), ce qui est certes beaucoup mais reste fini.</p>
+<p>Tout problème admettant un vérifieur efficace est décidable car il n'y a qu'un nombre fini de l'ordre de $\mathcal{O}(2^{|e|^k})$ solutions possible pour une entrée donnée. En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$ (avec $k$ une constante), la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ donc $\mathcal{O}(2^{|e|^k})$ possibilités (0 ou 1 par bit).</p>
+<p>L'algorithme qui, pour une entrée $e$ donnée testes toutes les solutions possible et rend la première acceptée par le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$  (puisque tester une entrée coûte $\mathcal{O}(|e|^k)$ opérations et qu'il y en a $\mathcal{O}(2^{|e|^k})$), ce qui est certes beaucoup mais reste fini, qui résout le problème.</p>
 </div>
 </details>     
 </div>
@@ -264,7 +271,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>La définition ci-dessus appelle deux remarques :</p>
 <ul>
 <li>premièrement le nom a été très mal choisi. Il signifie <em>Non Déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.</li>
-<li>deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard lorsque l'on étudiera .</li>
+<li>deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard.</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -275,14 +282,14 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div><div class="pl-8 mr-8">
 <p>Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :</p>
 <ul>
-<li>On peut énumérer toutes les solutions possibles en temps fini, mais en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).</li>
-<li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.</li>
+<li>On peut énumérer toutes les solutions possibles en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible), donc fini.</li>
+<li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution en est réellement une.</li>
 </ul>
 </div></div>
 
 <p>On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.</p>
-<p>La seule façon d'obtenir une complexité spatiale supérieure à la complexité temporelle est d'allouer de la mémoire (en $\mathcal{O}(1)$) et de ne jamais allez y voir (puisque y aller va consommer une opération). Par exemple allouer un tableau de $2^n$ cases et n'en utiliser que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial. On gaspille un nombre exponentiel de mémoire.</p>
-<p>On peut cependant changer cde genre d'algorithme grâce àla proposition suivante :</p>
+<p>La seule façon d'obtenir une complexité spatiale supérieure à la complexité temporelle est d'allouer de la mémoire (en $\mathcal{O}(1)$) et de ne jamais aller y voir (puisque y aller va consommer une opération). Par exemple allouer un tableau de $2^n$ cases et n'en utiliser que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial. On gaspille un nombre exponentiel de mémoire.</p>
+<p>On peut cependant changer cde genre d'algorithme grâce à la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -314,8 +321,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il suffit pour cela de remplacer tous les tableaux utilisés par l'algorithme en dictionnaires.</p>
-<p>Ceci garantit que la complexité spatiale sera égale à la complexité du premier algo et que la complexité temporelle sera au pire au carré de la complexité initiale. En effet, chaque accès à un indice de tableau passe de $\mathcal{O}(1)$ (pour un tableau) à la taille des données (c'est à dire la complexité initiale) si on a pas de chance avec le dictionnaire (cependant, en moyenne ça ne change pas).</p>
+<p>Il suffit pour cela de remplacer tous les tableaux utilisés par l'algorithme en dictionnaires. Ceci garantit que la complexité spatiale sera égale à la complexité du premier algo et que la complexité temporelle sera au pire au carré de la complexité initiale.</p>
+<p>En effet, chaque accès à un indice de tableau passe de $\mathcal{O}(1)$ (pour un tableau) à la taille des données (c'est à dire la complexité initiale) si on a pas de chance avec le dictionnaire (même si en moyenne ça ne change pas).</p>
 </div>
 </details>     
 </div>
@@ -329,14 +336,12 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook">Cook &amp; Levin en 1971</a>)</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour tout problème $A$ de $NP$ il existe une <strong>réduction polynomiale</strong> de $A$ vers le problème SAT.</p>
+<p>Pour tout problème $A$ de $NP$ il existe une <strong>réduction polynomiale</strong> de $A$ vers le problème SAT : $A \leq SAT$</p>
 </div></div>
 
 <p>C'est en effet surprenant qu'il n'y ait pas plusieurs élément maximaux de l'ordre induit par la réduction polynomiale.</p>
 <h3><span id="SAT"></span>Le problème SAT</h3>
-<p>Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.</p>
-<h4>Définitions</h4>
-<p>Pour cela, commençons par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
+<p>Le problème SAT cherche à vérifier si une formule logique spéciale peut-être satisfaite. Formalisons ça en commençant par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
 <div id="définition-clauses"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -486,8 +491,16 @@ $$
 
 <h3>Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
-<p>Nous ne démontrerons pas ici ce théorème mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental.</p>
-<p>Nous allons aussi utiliser le fait que toute formule logique peut se mettre efficacement sous la forme d'une disjonction de clause grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> que nous étudierons un peut plus tard. Ceci nous permet d'uniquement chercher une formule logique, pas forcément une disjonction de clauses.</p>
+<p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectation de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre, comme on peut transformer toute formule logique en une disjonction de clauses grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> (que nous étudierons un peu plus tard), ceci montre, au moins intuitivement qu'il y a équivalence entre programme et formule SAT.</p>
+<p>Enfin, être dans NP signifie alors que la taille de cette formule associée au programme est de taille polynomiales par rapport à l'entrée. Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.</p>
+</div></div>
+
 <h4>MAX</h4>
 <p>Montrons que l'on peut le faire pour <a href="../#probl%C3%A8me-max-tableau" class="interne">le problème MAX (trouver le maximum d'un tableau)</a>. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
@@ -539,15 +552,6 @@ $$
 $$
 </div>
 <p>Puisque l'équation logique ci-dessus vérifie si $T[i]$ est le plus grand des éléments du tableaux pour tout $i$.</p>
-<p>A priori, ce n'est pas encore fini puisque la formule logique n'est pas sous la forme d'une conjonction de clause. Mais on sait que l'on peut utiliser <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> pour transformer cette formule logique en une conjonction de clauses ce qui montre que le problème MAX peut se résoudre via le problème SAT.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.</p>
-</div></div>
-
 <h4>Addition de 2 bits</h4>
 <p>L'exemple précédent était éclairant mais pas forcément bluffant : le problème MAX pouvant se représenter facilement comme une succession de tests logiques. Nous allons donc aller un peu plus loin et transformer un algorithme, la somme de deux nombres binaires en une conjonction de clause.</p>
 <p>Commençons par quelque chose de simple, l'addition de 2 bits :</p>
@@ -625,7 +629,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Peut-on trouver 2 bit dont l'addition donne $11$ ?</p>
+<p>Peut-on trouver 2 bits dont l'addition donne $11$ ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -662,10 +666,7 @@ $$
 </details>     
 </div>
 <h4>Addition de 2 entiers</h4>
-<p>Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaire en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :</p>
-<blockquote>
-<p>TBD on l'a déjà vu dans les exercices sur les complexités de problèmes mais à taille fixée. Ici on augmente la taille pour faire une vraie somme et on utilise un tableau de retenues par-ce qu'on va avoir besoin de n'utiliser les variables qu'une seule fois sans les réaffecter.</p>
-</blockquote>
+<p>Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaires en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :</p>
 <p><span id="algorithme-somme_binaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                          y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de même taille</span>
@@ -738,8 +739,6 @@ $$
 \end{array}
 $$
 </div>
-<h4>Algorithme et SAT</h4>
-<p>Levin et cook que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code en tenant en compte l'évolution des variables au cours des instructions, ce que nous n'avons pas eu besoin de faire dans nos deux exemples car chaque variable n'est assignée qu'une seule fois.</p>
 <h2>Problèmes NP-Complet</h2>
 <p>Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes <em>universels</em>, on les appelle <strong><em>NP-complet</em></strong>, dont tous les autres problèmes ne sont que des cas particuliers :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -754,9 +753,8 @@ $$
 
 <p>Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :</p>
 <p><img src="NP-NP-2a.png" alt="décidable"></p>
-<p>Fixons nous les idées en démontrant que le problème suivant est NP-complet.</p>
-<h3>Couverture Exacte est NP-complet</h3>
-<p><span id="problème-EC"></span><span id="problème-CE"></span></p>
+<p>Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.</p>
+<h3>3-SAT ≤ SAT</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -765,237 +763,39 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>Nom</strong> : Couverture Exacte (<em>exact cover</em>)</li>
-<li><strong>Entrée</strong> :
-<ul>
-<li>un ensemble fini $U$ d'éléments</li>
-<li>un ensemble $\mathcal{S}$ de sous-ensembles de $U$</li>
-</ul>
-</li>
-<li><strong>Sortie</strong> : Un ensemble $\mathcal{P} \subseteq \mathcal{S}$ formant une partition de $U$ (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
+<li><strong>Nom</strong> : 3-SAT</li>
+<li><strong>Entrée</strong> : $f$ une conjonction de clauses de taille 3 sur les variables $x_1$ à $x_n$</li>
+<li><strong>Sortie</strong> : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
 </ul>
 </div></div>
 
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Une partition $\mathcal{P}$ d'un ensemble $U$ est un ensemble de sous-ensembles de $U$ tel que :</p>
-<ul>
-<li>l'union des éléments de $\mathcal{P}$ vaut $U$,</li>
-<li>l'intersection de deux éléments différents de $\mathcal{P}$ est vide.</li>
-</ul>
-</div></div>
-
-<p>Illustrons ce problème en reprenant <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2">un exemple tiré de Wikipédia</a> :</p>
-<ul>
-<li>$U = \{1, 2, 3, 4, 5, 6, 7\}$</li>
-<li>$\mathcal{S} = \{ \{1, 4, 7\}, \{1, 4\}, \{4, 5, 7\},\{3, 5, 6\},\{2, 3, 6, 7\},\{2, 7\}  \}$</li>
-</ul>
-<p>Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\{1, 4, 7\}$ on ne peut plus mettre que la classe $\{3, 5, 6\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\{3, 5, 6\}$, ce qui empêche d'utiliser la classe $\{4, 5, 7\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que l'exemple possède une solution.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On prend les 3 classes :</p>
-<ul>
-<li>$\{1, 4\}$,</li>
-<li>$\{3, 5, 6\}$,</li>
-<li>$\{2, 7\}$</li>
-</ul>
-</div>
-</details>     
-</div>
-<p>Prouver que le problème de Couverture Exact (CE) est NP-Complet va être plus facile que celle du théorème de Cook/Levin. En effet, maintenant que l'ensemble des problème NP-complet est non vide (il y a au moins SAT dedans), pour montrer qu'un problème $A$ est NP-complet il nous suffit maintenant de :</p>
-<ol>
-<li>choisir un problème $B$ NP-complet</li>
-<li>montrer qu'il existe une réduction polynomiale $B \leq A$</li>
-</ol>
-<p>En effet, si $C$ est un problème quelconque de NP, on a $C\leq B$ (par définition de l'ensemble NP-complet) ce qui amène par transitivité de la réduction polynomiale à $C \leq A$.</p>
-<p>Pour l'instant nous ne connaissons qu'un problème NP-Complet : SAT. Montrons donc que $SAT \leq CE$.</p>
-<p>Les réductions pour montrer qu'un problème est NP-complet peuvent être étrange au premier regard. Elles nécessitent souvent des constructions baroques pour associer un problème à l'autre. On appelle ces constructions des <strong><em>gadget</em></strong>. Ceci est normal car on essaie de mettre en regard deux problèmes qui n'ont souvent rien à voir. On va le faire ici en mettant en parallèle un problème de logique SAT et un problème de recherche de sous-ensemble CE.</p>
-<h4>Gadget</h4>
-<p>On considère une instance de SAT que l'on va transformer polynomialement en une instance de CE. Posons ses paramètres :</p>
-<ul>
-<li>$x_1, \dots, x_n$ : les $n$ variables booléennes</li>
-<li>$c_1 \land \dots \land c_m$ : les $m$ conjonctions de clauses</li>
-<li>$c_i = l^1_i \lor \dots \lor l^{k_i}_i$ : les littéraux formant les clauses.</li>
-</ul>
-<p>On suppose de plus sans perte de généralité que :</p>
-<ol>
-<li>il n'existe pas de clause ayant à la fois $x_i$ et $\overline{x_i}$ comme littéral (sinon cette clause est trivialement toujours vérifiée)</li>
-<li>pour toute variable booléenne $x_i$ il existe une clause ayant $x_i$ comme littéral et une autre clause ayant $\overline{x_i}$ (sinon il suffit de mettre la modalité de $x_i$ à celle apparaissant dans les clauses pour les rendre trivialement vraies)</li>
-</ol>
-<p>Notez que l'on peut transformer toute instance de $SAT$ en une instance satisfaisant les deux conditions ci-dessus en supprimant les clauses satisfaisant la première condition et en supprimant la variable booléenne satisfaisant la seconde condition. Cette transformation se fait en temps polynomial par rapport à l'entrée de $SAT$.</p>
-<p>On peut maintenant transformer cette instance de $SAT$ en une instance de $CE$ ayant comme entrée :</p>
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Par Exemple</a> :</p>
 <div>
 $$
-\begin{array}{lll}
-U = &\{ x_i \vert 1 \leq i \leq n \} \cup&\text{variables booléenne}\\
-&\{ c_i \vert 1 \leq i \leq m \} \cup&\text{clauses}\\
-&\{ l_{i}^{j} \vert 1 \leq i \leq m, 1\leq j \leq k_i \}&\text{littéraux}\\
-\mathcal{S} = &(\cup_{1\leq i \leq n}[\{ x_i \} \cup \{ l_{j}^{k} \vert l_{j}^{k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux vrais pour }x_i\\
-&(\cup_{1\leq i \leq n}[\{ x_i\} \cup \{ l_{j}^{k} \vert l_{j}^{k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux faux pour }x_i\\
-&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ c_i, l_{i}^{k} \})) &\text{liens entre clauses et littéraux}\\
-&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ l_{i}^{k} \})) &\text{les littéraux}\\
-\end{array}
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
 $$
 </div>
-<p>L'ensemble de $CE$ couvre tous les éléments de $SAT$ : les variables booléennes, les clauses et les littéraux. Les classes forment les liens entre les différents éléments : pour chaque $x_i$ les littéraux valant $x_i$, pour chaque $x_i$ les littéraux valant $\overline{x_i}$ et pour chaque clause l'ensemble de ses littéraux. Cette construction est bien polynomiale par rapport à la taille de l'entrée du problème $SAT$.</p>
-<p>Notre gadget transforme <a href="#exemple-SAT" class="interne">L'instance exemple SAT</a> en une instance de $CE$.</p>
-<p>Formule SAT originelle :</p>
+<p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante dites &quot;<em>du petit train</em>&quot; :</p>
+<ul>
+<li>un literal -&gt; 3 littéraux en ajoutant (x) -&gt; (x ou z ou non z)</li>
+<li>deux littéraux -&gt; 3 littéraux (x ou y) -&gt; (x ou y ou z) et (non z)</li>
+<li>n &gt; 3 littéraux (x1 ou ... xn) -&gt; (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)</li>
+</ul>
+<p>Reprenons <a href="#exemple-SAT" class="interne">l'exemple de SAT</a> et appliquons lui la transformation :</p>
 <div>
 $$
-\underbracket{(x_1 \lor {x_2})}_{c_1 = l_1^1 \lor l_1^2} \land \underbracket{(\overline{x_1} \lor \overline{x_2} \lor \overline{x_3})}_{c_2 = l_2^1 \lor l_2^2 \lor l_2^3} \land \underbracket{(\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5})}_{c_3 = l_3^1 \lor l_3^2 \lor l_3^3 \lor l_3^4} \land \underbracket{({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})}_{c_4 = l_4^1 \lor l_4^2 \lor l_4^3 \lor l_4^3}
+(x_1 \lor {x_2}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})
 $$
 </div>
-<p>Entrée de CE associée :</p>
-<div>
-$$
-\begin{array}{ll}
-U = &\{ x_1, x_2, x_3, x_4, x_5, c_1, c_2, c_3, c_4, l_1^1, l_1^2, l_2^1, l_2^2, l_2^3, l_3^1, l_3^2, l_3^3, l_3^4, l_4^1, l_4^2, l_4^3, l_4^4\}\\
-\mathcal{S} = &\{\{x_1, l_1^1, l_4^1\}, \{x_2, l_1^2\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \{x_5, l_4^4\},\\
-& \{x_1, l_2^1, l_3^1\}, \{x_2, l_2^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_4^3\}, \{x_5, l_3^4\},\\
-& \{c_1, l_1^1\}, \{c_1, l_1^2\}, \{c_2, l_2^1\}, \{c_2, l_2^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_3, l_3^2\}, \{c_3, l_3^3\}, \{c_3, l_3^4\}, \{c_4, l_4^1\}, \{c_4, l_4^2\}, \{c_4, l_4^3\}, \{c_4, l_4^4\}\\
-& \{l_1^1\}, \{l_1^2\}, \{l_2^1\}, \{l_2^2\}, \{l_2^3\}, \{l_3^1\}, \{l_3^2\}, \{l_3^3\}, \{l_3^4\}, \{l_4^1\}, \{l_4^2\}, \{l_4^3\}, \{ l_4^4\}\}
-\end{array}
-$$
-</div>
-<p>Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même. Il faut faire deux choses :</p>
-<ol>
-<li>montrer que si le problème de CE admet une solution alors le problème SAT originel aussi</li>
-<li>montrer que si le problème de CE n'admet pas de solution alors le problème SAT originel non plus</li>
-</ol>
-<p>On montre très souvent la 2. condition par la réciproque (montrer que montrer que si le problème SAT originel admet une solution alors le problème CE aussi), ce qui permet d'être symétrique :</p>
-<ul>
-<li>Si CE à une solution alors SAT aussi</li>
-<li>Si SAT à une solution alors CE aussi</li>
-</ul>
-<h4>Solution de CE vers une solution de SAT</h4>
-<p>Pour comprendre comment une solution de CE permet de trouver une solution de SAT, reprenons notre exemple et cherchons une partition solution. Il en existe plusieurs, par exemple :</p>
-<div>
-$$
-\begin{array}{ll}
-\mathcal{P} = &\{ \{x_2, l_1^2\},  \{x_4, l_3^3\},\\
-& \{x_1, l_2^1, l_3^1\}, \{x_3, l_2^3, l_4^2\}, \{x_5, l_3^4\},\\
-& \{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\},\\
-&   \{l_3^2\}, \{l_3^4\}, \{ l_4^3\}, \{ l_4^4\} \}
-\end{array}
-$$
-</div>
-<p>Pour repasser de cette solution de CE à une solution de SAT, regardons comment elle est construite :</p>
-<ul>
-<li>il faut que la partition contienne les $c_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $c_i$ va également contenir 1 $l_i^j$.</li>
-<li>il faut que la partition contienne les $x_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $x_i$ va également contenir des $l_j^k$. Attention ces $l_j^k$ ne doivent pas être celui choisi dans la classe contenant $c_j$</li>
-<li>tous les autres littéraux pouvant être attribués comme on le souhaite on peut les <em>&quot;oublier&quot;</em>.</li>
-</ul>
-<p>Pour notre exemple ceci donne :</p>
-<div>
-$$
-\begin{array}{l}
-\{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\}\\
-\{x_1, l_2^1, l_3^1\}, \{x_2, l_1^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_3^3\}, \{x_5, l_3^4\}\\
-\end{array}
-$$
-</div>
-<p>Remarquez que le choix de la classe contenant la clause contraint la classe contenant la variable. En choisissant $\{c_1, l_1^1\}$ je force le choix de $\{x_1, l_2^1, l_3^1\}$ puisque $l_1^1 = x_1$. Vous venez de découvrir le gadget : la classe contenant $c_i$ force le choix pour $x_j$ en prenant le littéral opposé.</p>
-<p>Comme une solution de SAT doit avoir au moins 1 littéral de vrai par clause, regardons ce qu'il se passe si on suppose que c'est celui choisi dans la clause est vrai. Dans l'exemple :</p>
-<ul>
-<li>$l_1^1$ est vrai donc $x_1$ est vrai</li>
-<li>$l_2^2$ est vrai donc $\overline{x_2}$ est vrai</li>
-<li>$l_3^2$ est vrai donc ${x_3}$ est vrai</li>
-<li>$l_4^1$ est vrai donc ${x_1}$ est vrai</li>
-</ul>
-<p>On ne peut pas arriver àla conclusion qu'une variable booléenne est vrai <strong>et</strong> fausse, car sinon il est impossible de choisir une classe contenant cette variable : c'est le principe du gadget qui implique que ces choix sont cohérents avec les classes contenant les $x_i$ (qui correspondent aux littéraux faux).</p>
-<p>On sait déjà que $x_1$, $\overline{x_2}$ et ${x_3}$ sont vrais. Pour connaître la valeur des autres variables, on regarde les classes choisies :</p>
-<ul>
-<li>${x_1, l_2^1, l_3^1}$ donc $l_2^1 = \overline{x_1}$ et $l_3^1 = \overline{x_1}$ sont faux donc $x_1$ est vrai (ouf, c'est cohérent)</li>
-<li>${x_2, l_1^2}$ donc $l_1^2 = {x_2}$ est faux (c'est cohérent)</li>
-<li>${x_3, l_2^3, l_4^2}$ donc $l_2^3 = l_4^2 = \overline{x_3}$ est faux : $x_3$ est vrai (c'est cohérent)</li>
-<li>${x_4, l_3^3}$ donc $l_3^3 = {x_4}$ est faux. On ne le savait pas encore</li>
-<li>${x_5, l_3^4}$ donc $l_2^3 = l_3^4 = \overline{x_5}$ est faux : ${x_5}$ est vrai.</li>
-</ul>
-<p>Au final, avoir une partition nous garantit que le problème SAT originel a une solution et la donne !</p>
-<p>On reconstruit cette solution en temps (clairement) polynomial.</p>
-<h4>Solution de SAT vers une solution de CE</h4>
-<p>Il faut maintenant montrer que si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.</p>
-<p>Il suffit de faire la même chose que pour l'analyse précédente. Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :</p>
-<ul>
-<li>$\{c_i, l_i^{v(i)}\}$ pour tout $ 1\leq i \leq m$,</li>
-<li>Considérons ensuite chaque littéral $l_i^j$ avec $ j \neq v(i)$ pour la solution de SAT. On a deux cas :
-<ul>
-<li>soit $l_i^j$ est vrai et on ajoute $\{ l_i^j\}$ à la solution de $CE$</li>
-<li>soit $l_i^j$ est faux et on ajoute l'unique classe de $\mathcal{F}$ contenant $\{x_i, l_i^j\}$ à la solution de $CE$</li>
-</ul>
-</li>
-</ul>
-<p>De part nos hypothèses sur l'entrée de $SAT$ il est clair que cet ensemble de classes forme une solution à notre problème de $CE$. De plus, la construction de cette solution est bien polynomiale.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Donnez une solution de CE pour l'exemple différente de celle de l'exercice précédent et servez vous en pour reconstruire une solution du problème SAT initial.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On peut par exemple prendre :</p>
-<div>
-$$
-\begin{array}{ll}
-\mathcal{P} = &\{\{x_1, l_1^1, l_4^1\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \\
-& \{x_2, l_2^2\}, \{x_5, l_3^4\},\\
-& \{c_1, l_1^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_4, l_4^2\},\\
-& \{l_2^1\}, \{l_3^3\}, \{ l_4^3\}, \{ l_4^4\}\}
-\end{array}
-$$
-</div>
-<p>Ce qui donne comme solution de $SAT$ : $\overline{x_1} = {x_2} = \overline{x_3} = \overline{x_4} = x_5 = 1$</p>
-</div>
-</details>     
-</div>
-<h4>Conclusion</h4>
-<p>On vient de prouver $SAT\leq CE$ car :</p>
-<ol>
-<li>$CE$ est dans NP</li>
-<li>il existe une réduction polynomiale de SAT vers CE</li>
-</ol>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<p>La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.</p>
 <p>On a trouvé un deuxième élément à la classe des problèmes NP-complets !</p>
 <p><img src="NP-NP-2b.png" alt="décidable"></p>
+<blockquote>
+<p>TBD le petit train ne fonctionne pas avec 2 sat (on y reviendra)</p>
+</blockquote>
 <h3>Que signifie NP-complet</h3>
 <p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
 <p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>

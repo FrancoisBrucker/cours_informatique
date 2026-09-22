@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Problème CE</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Problème CE</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-CE/">Problème CE</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Nous allons montrer que le problème Couverture Exacte est NP-complet</p>
+<p><span id="problème-EC"></span><span id="problème-CE"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : Couverture Exacte (<em>exact cover</em>)</li>
+<li><strong>Entrée</strong> :
+<ul>
+<li>un ensemble fini $U$ d'éléments</li>
+<li>un ensemble $\mathcal{S}$ de sous-ensembles de $U$</li>
+</ul>
+</li>
+<li><strong>Sortie</strong> : Un ensemble $\mathcal{P} \subseteq \mathcal{S}$ formant une partition de $U$ (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une partition $\mathcal{P}$ d'un ensemble $U$ est un ensemble de sous-ensembles de $U$ tel que :</p>
+<ul>
+<li>l'union des éléments de $\mathcal{P}$ vaut $U$,</li>
+<li>l'intersection de deux éléments différents de $\mathcal{P}$ est vide.</li>
+</ul>
+</div></div>
+
+<p>Illustrons ce problème en reprenant <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2">un exemple tiré de Wikipédia</a> :</p>
+<ul>
+<li>$U = \{1, 2, 3, 4, 5, 6, 7\}$</li>
+<li>$\mathcal{S} = \{ \{1, 4, 7\}, \{1, 4\}, \{4, 5, 7\},\{3, 5, 6\},\{2, 3, 6, 7\},\{2, 7\}  \}$</li>
+</ul>
+<p>Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\{1, 4, 7\}$ on ne peut plus mettre que la classe $\{3, 5, 6\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\{3, 5, 6\}$, ce qui empêche d'utiliser la classe $\{4, 5, 7\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'exemple possède une solution.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On prend les 3 classes :</p>
+<ul>
+<li>$\{1, 4\}$,</li>
+<li>$\{3, 5, 6\}$,</li>
+<li>$\{2, 7\}$</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Prouver que le problème de Couverture Exact (CE) est NP-Complet va être plus facile que celle du théorème de Cook/Levin. En effet, maintenant que l'ensemble des problème NP-complet est non vide (il y a au moins SAT dedans), pour montrer qu'un problème $A$ est NP-complet il nous suffit maintenant de :</p>
+<ol>
+<li>choisir un problème $B$ NP-complet</li>
+<li>montrer qu'il existe une réduction polynomiale $B \leq A$</li>
+</ol>
+<p>En effet, si $C$ est un problème quelconque de NP, on a $C\leq B$ (par définition de l'ensemble NP-complet) ce qui amène par transitivité de la réduction polynomiale à $C \leq A$.</p>
+<p>Pour l'instant nous ne connaissons qu'un problème NP-Complet : SAT. Montrons donc que $SAT \leq CE$.</p>
+<p>Les réductions pour montrer qu'un problème est NP-complet peuvent être étrange au premier regard. Elles nécessitent souvent des constructions baroques pour associer un problème à l'autre. On appelle ces constructions des <strong><em>gadget</em></strong>. Ceci est normal car on essaie de mettre en regard deux problèmes qui n'ont souvent rien à voir. On va le faire ici en mettant en parallèle un problème de logique SAT et un problème de recherche de sous-ensemble CE.</p>
+<h2>Gadget</h2>
+<p>On considère une instance de SAT que l'on va transformer polynomialement en une instance de CE. Posons ses paramètres :</p>
+<ul>
+<li>$x_1, \dots, x_n$ : les $n$ variables booléennes</li>
+<li>$c_1 \land \dots \land c_m$ : les $m$ conjonctions de clauses</li>
+<li>$c_i = l^1_i \lor \dots \lor l^{k_i}_i$ : les littéraux formant les clauses.</li>
+</ul>
+<p>On suppose de plus sans perte de généralité que :</p>
+<ol>
+<li>il n'existe pas de clause ayant à la fois $x_i$ et $\overline{x_i}$ comme littéral (sinon cette clause est trivialement toujours vérifiée)</li>
+<li>pour toute variable booléenne $x_i$ il existe une clause ayant $x_i$ comme littéral et une autre clause ayant $\overline{x_i}$ (sinon il suffit de mettre la modalité de $x_i$ à celle apparaissant dans les clauses pour les rendre trivialement vraies)</li>
+</ol>
+<p>Notez que l'on peut transformer toute instance de $SAT$ en une instance satisfaisant les deux conditions ci-dessus en supprimant les clauses satisfaisant la première condition et en supprimant la variable booléenne satisfaisant la seconde condition. Cette transformation se fait en temps polynomial par rapport à l'entrée de $SAT$.</p>
+<p>On peut maintenant transformer cette instance de $SAT$ en une instance de $CE$ ayant comme entrée :</p>
+<div>
+$$
+\begin{array}{lll}
+U = &\{ x_i \vert 1 \leq i \leq n \} \cup&\text{variables booléenne}\\
+&\{ c_i \vert 1 \leq i \leq m \} \cup&\text{clauses}\\
+&\{ l_{i}^{j} \vert 1 \leq i \leq m, 1\leq j \leq k_i \}&\text{littéraux}\\
+\mathcal{S} = &(\cup_{1\leq i \leq n}[\{ x_i \} \cup \{ l_{j}^{k} \vert l_{j}^{k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux vrais pour }x_i\\
+&(\cup_{1\leq i \leq n}[\{ x_i\} \cup \{ l_{j}^{k} \vert l_{j}^{k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux faux pour }x_i\\
+&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ c_i, l_{i}^{k} \})) &\text{liens entre clauses et littéraux}\\
+&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ l_{i}^{k} \})) &\text{les littéraux}\\
+\end{array}
+$$
+</div>
+<p>L'ensemble de $CE$ couvre tous les éléments de $SAT$ : les variables booléennes, les clauses et les littéraux. Les classes forment les liens entre les différents éléments : pour chaque $x_i$ les littéraux valant $x_i$, pour chaque $x_i$ les littéraux valant $\overline{x_i}$ et pour chaque clause l'ensemble de ses littéraux. Cette construction est bien polynomiale par rapport à la taille de l'entrée du problème $SAT$.</p>
+<p>Notre gadget transforme <a href="#exemple-SAT" class="interne">L'instance exemple SAT</a> en une instance de $CE$.</p>
+<p>Formule SAT originelle :</p>
+<div>
+$$
+\underbracket{(x_1 \lor {x_2})}_{c_1 = l_1^1 \lor l_1^2} \land \underbracket{(\overline{x_1} \lor \overline{x_2} \lor \overline{x_3})}_{c_2 = l_2^1 \lor l_2^2 \lor l_2^3} \land \underbracket{(\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5})}_{c_3 = l_3^1 \lor l_3^2 \lor l_3^3 \lor l_3^4} \land \underbracket{({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})}_{c_4 = l_4^1 \lor l_4^2 \lor l_4^3 \lor l_4^3}
+$$
+</div>
+<p>Entrée de CE associée :</p>
+<div>
+$$
+\begin{array}{ll}
+U = &\{ x_1, x_2, x_3, x_4, x_5, c_1, c_2, c_3, c_4, l_1^1, l_1^2, l_2^1, l_2^2, l_2^3, l_3^1, l_3^2, l_3^3, l_3^4, l_4^1, l_4^2, l_4^3, l_4^4\}\\
+\mathcal{S} = &\{\{x_1, l_1^1, l_4^1\}, \{x_2, l_1^2\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \{x_5, l_4^4\},\\
+& \{x_1, l_2^1, l_3^1\}, \{x_2, l_2^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_4^3\}, \{x_5, l_3^4\},\\
+& \{c_1, l_1^1\}, \{c_1, l_1^2\}, \{c_2, l_2^1\}, \{c_2, l_2^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_3, l_3^2\}, \{c_3, l_3^3\}, \{c_3, l_3^4\}, \{c_4, l_4^1\}, \{c_4, l_4^2\}, \{c_4, l_4^3\}, \{c_4, l_4^4\}\\
+& \{l_1^1\}, \{l_1^2\}, \{l_2^1\}, \{l_2^2\}, \{l_2^3\}, \{l_3^1\}, \{l_3^2\}, \{l_3^3\}, \{l_3^4\}, \{l_4^1\}, \{l_4^2\}, \{l_4^3\}, \{ l_4^4\}\}
+\end{array}
+$$
+</div>
+<p>Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même. Il faut faire deux choses :</p>
+<ol>
+<li>montrer que si le problème de CE admet une solution alors le problème SAT originel aussi</li>
+<li>montrer que si le problème de CE n'admet pas de solution alors le problème SAT originel non plus</li>
+</ol>
+<p>On montre très souvent la 2. condition par la réciproque (montrer que montrer que si le problème SAT originel admet une solution alors le problème CE aussi), ce qui permet d'être symétrique :</p>
+<ul>
+<li>Si CE à une solution alors SAT aussi</li>
+<li>Si SAT à une solution alors CE aussi</li>
+</ul>
+<h2>Solution de CE vers une solution de SAT</h2>
+<p>Pour comprendre comment une solution de CE permet de trouver une solution de SAT, reprenons notre exemple et cherchons une partition solution. Il en existe plusieurs, par exemple :</p>
+<div>
+$$
+\begin{array}{ll}
+\mathcal{P} = &\{ \{x_2, l_1^2\},  \{x_4, l_3^3\},\\
+& \{x_1, l_2^1, l_3^1\}, \{x_3, l_2^3, l_4^2\}, \{x_5, l_3^4\},\\
+& \{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\},\\
+&   \{l_3^2\}, \{l_3^4\}, \{ l_4^3\}, \{ l_4^4\} \}
+\end{array}
+$$
+</div>
+<p>Pour repasser de cette solution de CE à une solution de SAT, regardons comment elle est construite :</p>
+<ul>
+<li>il faut que la partition contienne les $c_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $c_i$ va également contenir 1 $l_i^j$.</li>
+<li>il faut que la partition contienne les $x_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $x_i$ va également contenir des $l_j^k$. Attention ces $l_j^k$ ne doivent pas être celui choisi dans la classe contenant $c_j$</li>
+<li>tous les autres littéraux pouvant être attribués comme on le souhaite on peut les <em>&quot;oublier&quot;</em>.</li>
+</ul>
+<p>Pour notre exemple ceci donne :</p>
+<div>
+$$
+\begin{array}{l}
+\{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\}\\
+\{x_1, l_2^1, l_3^1\}, \{x_2, l_1^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_3^3\}, \{x_5, l_3^4\}\\
+\end{array}
+$$
+</div>
+<p>Remarquez que le choix de la classe contenant la clause contraint la classe contenant la variable. En choisissant $\{c_1, l_1^1\}$ je force le choix de $\{x_1, l_2^1, l_3^1\}$ puisque $l_1^1 = x_1$. Vous venez de découvrir le gadget : la classe contenant $c_i$ force le choix pour $x_j$ en prenant le littéral opposé.</p>
+<p>Comme une solution de SAT doit avoir au moins 1 littéral de vrai par clause, regardons ce qu'il se passe si on suppose que c'est celui choisi dans la clause est vrai. Dans l'exemple :</p>
+<ul>
+<li>$l_1^1$ est vrai donc $x_1$ est vrai</li>
+<li>$l_2^2$ est vrai donc $\overline{x_2}$ est vrai</li>
+<li>$l_3^2$ est vrai donc ${x_3}$ est vrai</li>
+<li>$l_4^1$ est vrai donc ${x_1}$ est vrai</li>
+</ul>
+<p>On ne peut pas arriver àla conclusion qu'une variable booléenne est vrai <strong>et</strong> fausse, car sinon il est impossible de choisir une classe contenant cette variable : c'est le principe du gadget qui implique que ces choix sont cohérents avec les classes contenant les $x_i$ (qui correspondent aux littéraux faux).</p>
+<p>On sait déjà que $x_1$, $\overline{x_2}$ et ${x_3}$ sont vrais. Pour connaître la valeur des autres variables, on regarde les classes choisies :</p>
+<ul>
+<li>${x_1, l_2^1, l_3^1}$ donc $l_2^1 = \overline{x_1}$ et $l_3^1 = \overline{x_1}$ sont faux donc $x_1$ est vrai (ouf, c'est cohérent)</li>
+<li>${x_2, l_1^2}$ donc $l_1^2 = {x_2}$ est faux (c'est cohérent)</li>
+<li>${x_3, l_2^3, l_4^2}$ donc $l_2^3 = l_4^2 = \overline{x_3}$ est faux : $x_3$ est vrai (c'est cohérent)</li>
+<li>${x_4, l_3^3}$ donc $l_3^3 = {x_4}$ est faux. On ne le savait pas encore</li>
+<li>${x_5, l_3^4}$ donc $l_2^3 = l_3^4 = \overline{x_5}$ est faux : ${x_5}$ est vrai.</li>
+</ul>
+<p>Au final, avoir une partition nous garantit que le problème SAT originel a une solution et la donne !</p>
+<p>On reconstruit cette solution en temps (clairement) polynomial.</p>
+<h2>Solution de SAT vers une solution de CE</h2>
+<p>Il faut maintenant montrer que si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.</p>
+<p>Il suffit de faire la même chose que pour l'analyse précédente. Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :</p>
+<ul>
+<li>$\{c_i, l_i^{v(i)}\}$ pour tout $ 1\leq i \leq m$,</li>
+<li>Considérons ensuite chaque littéral $l_i^j$ avec $ j \neq v(i)$ pour la solution de SAT. On a deux cas :
+<ul>
+<li>soit $l_i^j$ est vrai et on ajoute $\{ l_i^j\}$ à la solution de $CE$</li>
+<li>soit $l_i^j$ est faux et on ajoute l'unique classe de $\mathcal{F}$ contenant $\{x_i, l_i^j\}$ à la solution de $CE$</li>
+</ul>
+</li>
+</ul>
+<p>De part nos hypothèses sur l'entrée de $SAT$ il est clair que cet ensemble de classes forme une solution à notre problème de $CE$. De plus, la construction de cette solution est bien polynomiale.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez une solution de CE pour l'exemple différente de celle de l'exercice précédent et servez vous en pour reconstruire une solution du problème SAT initial.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut par exemple prendre :</p>
+<div>
+$$
+\begin{array}{ll}
+\mathcal{P} = &\{\{x_1, l_1^1, l_4^1\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \\
+& \{x_2, l_2^2\}, \{x_5, l_3^4\},\\
+& \{c_1, l_1^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_4, l_4^2\},\\
+& \{l_2^1\}, \{l_3^3\}, \{ l_4^3\}, \{ l_4^4\}\}
+\end{array}
+$$
+</div>
+<p>Ce qui donne comme solution de $SAT$ : $\overline{x_1} = {x_2} = \overline{x_3} = \overline{x_4} = x_5 = 1$</p>
+</div>
+</details>     
+</div>
+<h2>Conclusion</h2>
+<p>On vient de prouver $SAT\leq CE$ car :</p>
+<ol>
+<li>$CE$ est dans NP</li>
+<li>il existe une réduction polynomiale de SAT vers CE</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
