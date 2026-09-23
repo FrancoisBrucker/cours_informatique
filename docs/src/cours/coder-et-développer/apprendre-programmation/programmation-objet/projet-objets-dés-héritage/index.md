@@ -159,19 +159,24 @@ Commençons par créer une user story sur la fonctionnalité que l'on veut ajout
 
 {% exercice %}
 
-Codez la user story en utilisant uniquement la classe `Dé` dans le fichier `story_moyenne.py`{.fichier}.
+Codez la user story en utilisant uniquement la classe `Dé` dans le fichier `main.py`{.fichier}.
 
 {% endexercice %}
 {% details "corrigé" %}
 
-Fichier `story_moyenne.py`{.fichier} :
+Fichier `main.py`{.fichier} :
 
 ```python
 from dés import D6, D20
 
-
 d6 = D6()
 d20 = D20()
+
+print(d6.valeur, d20.valeur)
+d6.lancer()
+d20.lancer()
+print(d6.valeur, d20.valeur)
+
 
 for _ in range(1000):
     d6.lancer()
@@ -249,3 +254,10 @@ class DéGénérique(Stat):
 
 ```
 {% enddetails %}
+
+## Code final
+
+{% lien %}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code?filename=projet-compteur)
+{% endlien %}

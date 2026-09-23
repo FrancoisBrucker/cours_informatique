@@ -1,12 +1,16 @@
-from dé import Dé
+from dés import d6, d20
 
-liste_d = [Dé() for _ in range(5)]
 
-print(liste_d)
+d6 = d6()
+d20 = d20()
 
-for d in liste_d:
-    d.lancer()
+print(d6.valeur, d20.valeur)
+print(d6.lancer().valeur, d20.lancer().valeur)
 
-print(liste_d)
-liste_d.sort()
-print(liste_d)
+
+for _ in range(1000):
+    d6.lancer()
+    d20.lancer()
+
+print('1000 lancers :', d6.moyenne(), d20.moyenne())
+

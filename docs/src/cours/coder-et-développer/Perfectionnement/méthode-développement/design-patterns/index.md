@@ -24,7 +24,7 @@ Les design pattern sont très utilisés par les bibliothèques (par exemple [les
 
 Le site suivant contient une liste actualisée de design patterns :
 
-{% lien %}
+{% lien "Design et refactoring pattern" %}
 - [Refactoring GURU : design pattern](https://refactoring.guru/design-patterns)
 - [Refactoring GURU : refactoring pattern](https://refactoring.guru/refactoring)
 
@@ -32,232 +32,231 @@ Le site suivant contient une liste actualisée de design patterns :
 
 Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :
 
-{% lien %}
+{% lien "Anti pattern" %}
 - [Définition d'un anti-pattern](https://fr.wikipedia.org/wiki/Antipattern)
 - [Quelques anti-patterns classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
 {% endlien %}
 
-
-## Cas d'utilisation typique
-
-> TBD monsieur Jourdain des design patterns
-
-{% attention2 "**À retenir**" %}
-
-Il existe 3 grands types de _design pattern_ :
-
-- [**_creational_**](https://en.wikipedia.org/wiki/Creational_pattern) qui créent des objets.
-- [**_structural_**](https://en.wikipedia.org/wiki/Structural_pattern) qui mettent les objets en relation.
-- [**_behavioural_**](https://en.wikipedia.org/wiki/Behavioral_pattern) qui regroupent les objets ayant même comportement.
-
-{% endattention2 %}
-
-
-## On s'entraîne
-
-> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
-> TBD partir du dé avec héritage
-
-Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a utilisé intensivement dans [la partie consacrée à la programmation objet](../../../apprendre-programmation/programmation-objet/){.interne} et le desin-patterniser selon le problème posé.
-
-On va partir du [dé amélioré](../../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
+Nous allons utiliser la classe `Dé`{.language-} qui nous a accompagné tout au long du cours de programmation objet et lui ajouter quelques design pattern pour encore une fois l'améliorer.
 
 {% lien %}
+[Projet Dé héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
+{% endlien %}
+{% details "code", "open" %}
 
-- [Code initial du dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-dés)
+Fichier `dés.py`{.language}
+```python 
+from random import randrange
 
+import random
+
+class Stat:
+    def __init__(self):
+        self.valeur = 1
+        self.historique = []
+
+    def sauve(self):
+        self.historique.append(self.valeur)
+
+    def moyenne(self):
+        return sum(self.historique) / max(1, len(self.historique))
+
+class DéGénérique(Stat):
+    MIN_VALEUR = 1
+
+    def __init__(self, max, valeur=1):
+        super().__init__()
+
+        self.MAX_VALEUR = max
+        self.valeur = valeur
+
+    def lancer(self):
+        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.sauve()
+
+
+class D6(DéGénérique):
+    def __init__(self, valeur=1):
+        super().__init__(6, valeur)
+
+
+class D20(DéGénérique):
+    def __init__(self, valeur=1):
+        super().__init__(20, valeur)
+```
+
+Fichier `main.py`{.fichier} :
+
+```python 
+from dés import D6, D20
+
+d6 = D6()
+d20 = D20()
+
+print(d6.valeur, d20.valeur)
+d6.lancer()
+d20.lancer()
+print(d6.valeur, d20.valeur)
+
+
+for _ in range(1000):
+    d6.lancer()
+    d20.lancer()
+
+print('1000 lancers :', d6.moyenne(), d20.moyenne())
+```
+
+{% enddetails %}
+
+## Créer des objets grâce à une factory
+
+{% lien %}
+- [Pattern factory](https://refactoring.guru/design-patterns/factory-method)
+- [_Creational pattern_](https://en.wikipedia.org/wiki/Creational_pattern)
 {% endlien %}
 
-## Les bases
+Le pattern factory est un design pattern faisant parti des pattern de création d'objet. Il stipule que l'on doit créer des objets via des fonctions avec le moins de paramètres possible et avec un nom adapté plutôt qu'avec un constructeur possédant des milliers de paramètres.
 
-On se rappelle comment bien commencer un projet, avec trois fichiers :
+Dans notre cas ce pattern permet également de faire disparaître les deux classes qui n'existent que via leur constructeur :
 
-- le code
-- les tests
-- le programme
+```python 
+from random import randrange
 
-On commence avec les 3 fichiers du lien.
+import random
 
-{% faire %}
-1. copiez le dossier du code sur votre ordinateur 
-2. ouvrez ce dossier dans vscode, cela sera votre projet
-3. créez vous y un environnement virtuel
-4. exécutez les tests et le programme principal pour s'assurer que tout fonctionne.
-{% endfaire %}
+class Stat:
+    def __init__(self):
+        self.valeur = 1
+        self.historique = []
 
-### _Method chaining_
+    def sauve(self):
+        self.historique.append(self.valeur)
+
+    def moyenne(self):
+        return sum(self.historique) / max(1, len(self.historique))
+
+class DéGénérique(Stat):
+    MIN_VALEUR = 1
+
+    def __init__(self, max, valeur=1):
+        super().__init__()
+
+        self.MAX_VALEUR = max
+        self.valeur = valeur
+
+    def lancer(self):
+        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.sauve()
+
+
+def d6(valeur=1):
+    return DéGénérique(6, valeur)
+
+def d20(valeur=1):
+    return DéGénérique(20, valeur)
+
+```
+
+On peut alors utiliser directement les fonctions de création dans le fichier `main.py`{.fichier} :
+
+```python
+from dés import d6, d20
+
+
+d6 = d6()
+d20 = d20()
+
+print(d6.valeur, d20.valeur)
+d6.lancer()
+d20.lancer()
+print(d6.valeur, d20.valeur)
+
+for _ in range(1000):
+    d6.lancer()
+    d20.lancer()
+
+print('1000 lancers :', d6.moyenne(), d20.moyenne())
+
+```
+
+## Fluent interface
 
 {% lien %}
 [_Method chaining_](https://en.wikipedia.org/wiki/Method_chaining#Design_patterns)
 {% endlien %}
 
-On aimerait bien pouvoir chaîner les lancers de dés pour pouvoir par exemple écrire le test :
+Ce n'est pas un design pattern _stricto-sensu_, plutôt une règle de programmation : on essaie de rendre l'utilisation des méthodes fluide, chaînables sans avoir besoin de créer des variables intermédiaires.
+
+Dans notre cas, il pourrait être intéressant de connaître la valeur du dé directement après un lancer pour pourvoir par exemple remplacer les lignes suivantes dans le fichier `main.py`{.fichier} :
 
 ```python
-
-# ... 
-
-def test_lancer():
-    dé = Dé()
-    assert Dé.MIN_VALEUR <= dé.lancer().valeur <= Dé.MAX_VALEUR
-
-# ...
+d6.lancer()
+d20.lancer()
+print(d6.valeur, d20.valeur)
 ```
 
-L'idée est que les méthodes modifiant l'objet le rendent ! Ceci ne change pas le code existant on ne fait juste rien du résultat de la méthode mais permet le chaînage
-> TBD écrire le code 
-> TBD écrire le test plus cours en exercice.
-> TBD il faut que tout marche. Si une erreur au milieu foutu
-> TBD ecriture python avec les (). exemple des monolignes avec le replace.
-
-On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.
-
-Fichier `main.py`{.fichier} :
+par : 
 
 ```python
-from choice import Choice
-
-d6 = Choice(list(range(1, 7)))
-
-for etape in range(100):
-    print(d6.roll().get_position())
+print(d6.lancer().valeur, d20.lancer().valeur)
 ```
 
-Fichier `choices.py`{.fichier} :
+{% info %}
+Ok, ce n'est pas très impressionnant ici, mais si vous utilisez la bibliothèque pandas pour l'analyse ds données par exemple. vous verrez [la puissance de ce genre d'écriture](https://www.stat4decision.com/fr/method-chaining-avec-la-librairie-pandas/).
+{% endinfo %}
+
+Pour ceci il suffit de changer la méthode `Dé.lancer`{.language-} :
 
 ```python
-import random
 
+class DéGénérique(Stat):
 
-class Choice:
-    def __init__(self, choices):
-        self.choices = choices
-        self.position = choices[0]
+    # ...
 
-    def get_position(self):
-        return self.position
+    def lancer(self):
+        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.sauve()
 
-    def roll(self):
-        self.position = self.choices[random.randrange(len(self.choices))]
         return self
+
+    # ...
 ```
 
-{% exercice %}
-Regardez le code de la méthode `roll` pourquoi rendre `self` ?
-{% endexercice %}
-{% details "corrigé" %}
-Pour pouvoir chaîner nos opérations. En rendant self, on peut écrire des choses du genre :
+## Pattern observer
 
-```python
-choice = Choices([1, 2, 3, 4])
+{% lien %}
+- [Pattern observer](https://refactoring.guru/design-patterns/observer)
+- [_Behavioural pattern_](https://en.wikipedia.org/wiki/Behavioral_pattern)
+{% endlien %}
 
-print(choice.roll().get_position())
-```
-
-{% enddetails %}
-
-Fichier `tests.py`{.fichier} :
-
-```python
-from choice import Choice
+> TBD: base de la programmation évènementielle
+> savoir lorsqu'un dé change. S'abonner à la valeur ?
+> seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
+> https://en.wikipedia.org/wiki/Observer_pattern
 
 
-def test_init():
-    d1 = Choice([1])
-    assert d1.choices == [1]
+## Pattern composite
 
+{% lien %}
+- [Pattern composite](https://refactoring.guru/design-patterns/composite)
+- [_Structural pattern_](https://en.wikipedia.org/wiki/Structural_pattern)
+{% endlien %}
 
-def test_initial_position():
-    d1 = Choice([1, 2])
-    assert d1.get_position() == 1
+> TBD
+> TBD: https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)
+> enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/
 
+## On s'entraîne
 
-def test_roll():
-    d1 = Choice([1])
-    d1.roll()
-    assert d1.get_position() == 1
-```
+> TBD le faire avec TapisVert
+> plus un builder pour compter.
 
+> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
+> TBD partir du dé avec héritage
 
-### attention aux effets de bord !
-
-> TBD mettre une liste de possibilités pour rendre le tout générique puis value object.
-
-
-Choice prend l'objet `choices` et le garde. Cela pose plusieurs problèmes. En particulier :
-
-- si on modifie l'objet passé en paramètre, cela change le comportement de choice.
-- on expose l'attribut `choices` par un attribut public.
-
-Pour résoudre ces soucis on va copier l'objet `choices` et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.
-
-On commence par écrire un petit test :
-
-```python
-def test_copy_choices():
-    initial_list = ["a"]
-    d1 = Choice(initial_list)
-    initial_list[0] = "CHANGE"
-    d1.roll()
-    assert d1.get_position() == "a"
-```
-
-Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.
-
-Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut `choices` est non mutable. Il cherche à produire une erreur : modifier un élément [non mutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747).
-
-```python
-import pytest
-
-def test_no_modification():
-    d1 = Choice([1])
-    with pytest.raises(Exception):
-        d1.choices[0] = 2
-```
-
-La façon dont pytest gère les erreurs est décrite [ici](https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions) : le test précédent est vrai si le code plante et produit une erreur. essayer de comprendre la structure de ce test.
-
-## pattern factory
-
-[Le pattern factory](https://refactoring.guru/fr/design-patterns/factory-method) en est un exemple, il permet de créer des objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu'avec un constructeur avec des milliers de paramètres
-
-> TBD: faire avec les fonctions et constantes dans le fichier
-> en amélioration, mettre les constantes en attributs de classes (les valeurs des dés) et en méthodes de classes (les factory)
-> Un dé 6, un dé 20 et un dé avec ce qu'on veut.
-
-### Premières expérimentations
-
-Commencez par créer dans le fichier `main.py` un objet simulant 1 dé à six faces (dont les faces valent 1, 2, 3, 4, 5 ou 6). On ne va pas faire de test pour cela, car nos tests sont censés couvrir ce genre d'usage.
-
-En revanche, on peut calculer les probabilités d'apparitions de chaque face :
-
-1. lancez N fois le dé (N = 1000)
-2. comparez les probabilités d'apparition de chaque face par rapport à la théorie (1/6)
-
-Pour aller vite, on pourra utiliser la classe `Counter` du module `collections` de python (voir [la définition](https://docs.python.org/3.7/library/collections.html#collections.Counter), ou [des exemples](https://data-flair.training/blogs/python-counter/)). Le module [collections](https://docs.python.org/3.7/library/collections.html#module-collections) de python, c'est plein de bonnes choses.
-
-> N'hésitez pas à regarder les différents modules de la [bibliothèque standard](https://docs.python.org/3.7/library/index.html) de python avant de recoder la roue...
-
-{% info %}
-On prendra soin de créer une constante N, pour éviter l'anti-pattern "magic number"
-{% endinfo %}
-Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet `Choice`.
-
-### On place le tout dans le fichier de la classe
-
-Une fois que vous êtes satisfait de vos fonctions, ajoutez les dans le fichier `choices.py`, ce qui rajoutera des fonctions de créations d'objets et modifiez votre `main.py` pour utiliser ces nouvelles fonctions.
-
-Comme maintenant ce sont des fonctions de votre programme et non plus une utilisation de votre code, il faut ajouter des tests pour ces deux fonctions. Faites le.
-
-{% info %}
-Pour que vos tests ne soient pas trop fastidieux, vous pouvez vérifier que les possibilités correspondent aux comptes que vous avez effectués avec les objets Counter (du module collections).
-{% endinfo %}
 
 ## Composite
 
-> TBD: https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)
-> enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/
 
 ## Memento
 
@@ -266,44 +265,6 @@ Pour que vos tests ne soient pas trop fastidieux, vous pouvez vérifier que les 
 > behavioural pattern
 > un dé et une autre classe, la liste avec un save du test. . avec et sans
 
-### Adaptation des objets au pattern
-
-Le pattern memento nécessite de pouvoir changer la valeur de nos objets. On va donc rajouter une méthode `set_position` à nos objets choice.
-
-On sait maintenant comment faire :
-
-1. faites un test vérifiant que `set_position` existe et fonctionne,
-2. regardez le planter,
-3. ajouter une méthode `set_position` à `Choice`,
-4. regardez le test réussir.
-
-Pour l'instant, on fera une méthode `set_position` la plus simple possible car elle ne sera utilisée que pour le memento. En particulier, on ne vérifiera pas la validité de la valeur remise dans choice, ce n'est pas utile maintenant. Le coder serait du codage préventif et c'est [YAGNI](https://fr.wikipedia.org/wiki/YAGNI).
-
-Attention cependant. Pour respecter le [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas) la modification d'un attribut ne doit se faire qu'à un seul endroit : ici la méthode `set_position`. Il faut donc modifier la méthode `roll` pour qu'elle l'utilise.
-
-### Création d'un memento
-
-Créez la classe `Memento` dans le fichier `memento.py` et ses tests dans le fichier :`test_memento.py`.
-
-La classe Memento doit avoir :
-
-- un objet comme paramètre du constructeur ayant les méthodes `get_position` et `set_position`. Ici un `Choice`.
-- une méthode `restore()` qui permet à l'objet sauvé de reprendre la valeur qu'il avait à la création du memento.
-
-Vous pouvez par exemple transformer le code ci-après en test(s) :
-
-```python
-import choice
-
-dice = choice.dice()
-dice.set_position(2)
-
-memento = Memento(dice)
-dice.set_position(6)
-
-memento.restore()
-print(dice.get_position())  # doit valoir 2
-```
 
 ### Undo list
 
@@ -357,13 +318,6 @@ print(d.get_position())  # 1
 Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe `ChoiceUndo` qui hérite de `Choice` et qui ne diffère de celle-ci que par la méthode `set_position` (et le constructeur bien sûr).
 
 Faites le même essai avec 10 utilisations de la méthode `roll()`.
-
-## Observer
-
-> TBD: base de la programmation évènementielle
-> savoir lorsqu'un dé change. S'abonner à la valeur ?
-> seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
-> https://en.wikipedia.org/wiki/Observer_pattern
 
 ## Pour aller plus loin
 
