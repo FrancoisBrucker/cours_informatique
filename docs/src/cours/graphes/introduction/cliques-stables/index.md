@@ -12,7 +12,7 @@ eleventyComputed:
 
 <span id="definition-clique"></span>
 {% note "**Définitions**" %}
-Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
+Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
 {% endnote %}
 
 Un **_stable_** est l'opposé :
@@ -20,7 +20,7 @@ Un **_stable_** est l'opposé :
 <span id="definition-stable"></span>
 
 {% note "**Définitions**" %}
-Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.
+Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in S$, $xy \notin E$.
 {% endnote %}
 
 Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle **_clique maximale_** (_resp._ **_stable maximal_**) un ensemble maximal pour l'inclusion.
@@ -81,6 +81,30 @@ Montrez que pour le graphe $G$ précédent, l'algorithme peut, avec un même som
 Il suffit de prendre un des deux sommets rouge à l'intersection de la clique de taille 4 et du triangle rouge.
 {% enddetails %}
 
+Terminons par une petite propriété :
+
+{% note "**Proposition**" %}
+Pour tout graphe $G$ on a :
+
+<div>
+$$
+\alpha(G) + \omega(G) \leq v(G)
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $n - (\alpha(G) - 1) \geq \omega(G)$.
+{% enddetails %}
+
+{% exercice %}
+Montrez qu'il existe des graphes $G$ pour lesquels il y a égalité : $\alpha(G) + \omega(G) = v(G) + 1$
+{% endexercice %}
+{% details "corrigé" %}
+
+Si $S$ est un stable à $p$ sommets et Si $K_q$ la clique à $q$ sommets alors l$e graphe : $G = (V(S) \cup V(K_q), E(S) \cup E(K_q))$ est tel que : $\omega(G) = q$ et $\alpha(G) = p + 1$.
+
+{% enddetails %}
+
 ## Problème de la clique/stable maximum
 
 Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons les deux problèmes suivant :
@@ -109,26 +133,24 @@ Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons
 
 {% endnote %}
 
-### NP-complétude
-
-Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de vérifier toutes les paires de sommets) :
+Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de compter le nombre d'arêtes) :
 
 ```pseudocode
-algorithme vérification_clique_ou_stable(G: graphe<sommet>, A: {sommet}, clique: booléen):
+algorithme compte(G: graphe<sommet>, A: {sommet}, clique: booléen) → entier:
+  var m entier ← 0
+
   pour chaque x de A:
     pour chaque y de A:
         si x ≠ y:
-            si xy est une arête de G et non clique:
-              retourne Faux
-            si xy n'est pas une arête de G et clique:
-              retourne Faux
-  retourne Vrai
+            si xy est une arête de G:
+                m ← m+1
+  retourne m
 
-algorithme vérification_clique(G: graphe<sommet>, A: {sommet}):
-  retourne vérification_clique_ou_stable(G, A, Vrai)
+algorithme vérification_clique(G: graphe<sommet>, A: {sommet}) → booléen:
+  retourne |A| * (|A|-1) == 2 * compte(G, A)
 
-algorithme vérification_stable(G: graphe<sommet>, A: {sommet}):
-  retourne vérification_clique_ou_stable(G, A, Faux)
+algorithme vérification_stable(G: graphe<sommet>, A: {sommet}) → booléen:
+  retourne compte(G, A) == 0
 
 ```
 
@@ -203,10 +225,7 @@ Qui fixe 3 variables. On aura toutes les clauses de vérifiées quelques soient 
 
 Dans la plupart des exemples réels, il y aura plus de clauses que de variables mais la clique max sera toujours compatible, la variable apparaissant toujours de façon identique pour chaque littéral de la clique : comme chez nous il y a 2 fois $\overline{x_1}$.
 
-C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
-
-> TBD On a utilisé 3-sat pour illustrer un point crucial : la taille de la clique à trouver est de l'ordre du nombre de sommet divisé par 3. 
-> Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici la taille dépend directement de la taille du graphe ce qui en fait un problème dur. il faudrait ici O(n^{n/3}) opération avec l'algo naif
+C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres. Le fait que ce problème soit compliqué vient du fait que la taille de la clique à trouver dépend du no,bre de clauses. Si on a une instance de 3-SAT à $m$ clauses il faut trouver une clique de taille $m$ dans un graphe à $3m$ sommets. L'algorithme naïf cherchant une clique de taille $K$ dans un graphe de taille $n$ prenant $\mathcal{O}(n^K)$ opérations, si on l'utilisait ici il prendrait $\mathcal{O}((3m)^m) = \mathcal{O}(3^m \cdot m^m)$ opérations ce qui est clairement exponentiel.
 
 ## Exercice : problème de la couverture minimale
 
@@ -251,9 +270,38 @@ En déduire que le problème couverture est NP-complet
 > TBD on cherche un stable max (|V|-K) un stable
 {% enddetails %}
 
-## Théorème de Ramsey
+## Clique ou stable ?
 
-> TBD problème clique ou stable de taille k pour un graphe qui est NP-complet
+On peut combiner les problèmes de la clique et du stable de taille au moins $K$ en un seul problème :
+
+{% note "**Problème**" %}
+
+- **nom** : clique ou stable
+- **Entrée** :
+  - un graphe
+  - un entier $K$
+- **Question** : le graphe contient-il une clique ou un stable de taille supérieure ou égale à $K$ ?
+
+{% endnote %}
+
+Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes `vérification_clique(G: graphe<sommet>, A: {sommet})  → booléen`{.language-} et  `vérification_stable(G: graphe<sommet>, A: {sommet})  → booléen`{.language-} :
+
+```pseudocode
+algorithme vérification_clique_ou_stable(G: graphe<sommet>, A: {sommet})  → booléen:
+    rendre vérification_clique(G, A) OU vérification_stable(G, A)
+```
+À vous pour la partie NP-Complet !
+
+{% exercice %}
+Montrez que le problème "clique ou stable" est NP-complet.
+{% endexercice %}
+{% info %}
+Vous pourrez réduire clique à ce problème
+{% endinfo %}
+{% details "corrigé" %}
+> TBD 
+{% enddetails %}
+
 > on en dérive le nombre de Ramsey
 > TBD méthode probabiliste.
 > TBD parler de haystack (retrouver le doc)
