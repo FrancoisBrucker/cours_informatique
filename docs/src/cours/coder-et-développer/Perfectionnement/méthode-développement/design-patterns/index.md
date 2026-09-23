@@ -10,14 +10,7 @@ eleventyComputed:
 ---
 
 
-> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
-
-Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
-Il existe 3 grands types de _design pattern_, on en donnera un exemple pour chaque :
-
-- [**_creational_**](https://en.wikipedia.org/wiki/Creational_pattern) qui créent des objets.
-- [**_structural_**](https://en.wikipedia.org/wiki/Structural_pattern) qui mettent les objets en relation.
-- [**_behavioural_**](https://en.wikipedia.org/wiki/Behavioral_pattern) qui regroupent les objets ayant même comportement.
+Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les erreurs classiques.
 
 {% info %}
 Le terme de _design pattern_ a été initialement donné dans le livre [Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns) pour le langage C++.
@@ -40,8 +33,30 @@ Le site suivant contient une liste actualisée de design patterns :
 Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :
 
 {% lien %}
-[Quelques anti patterns](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
+- [Définition d'un anti-pattern](https://fr.wikipedia.org/wiki/Antipattern)
+- [Quelques anti-patterns classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
 {% endlien %}
+
+
+## Cas d'utilisation typique
+
+> TBD monsieur Jourdain des design patterns
+
+{% attention2 "**À retenir**" %}
+
+Il existe 3 grands types de _design pattern_ :
+
+- [**_creational_**](https://en.wikipedia.org/wiki/Creational_pattern) qui créent des objets.
+- [**_structural_**](https://en.wikipedia.org/wiki/Structural_pattern) qui mettent les objets en relation.
+- [**_behavioural_**](https://en.wikipedia.org/wiki/Behavioral_pattern) qui regroupent les objets ayant même comportement.
+
+{% endattention2 %}
+
+
+## On s'entraîne
+
+> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
+> TBD partir du dé avec héritage
 
 Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a utilisé intensivement dans [la partie consacrée à la programmation objet](../../../apprendre-programmation/programmation-objet/){.interne} et le desin-patterniser selon le problème posé.
 
