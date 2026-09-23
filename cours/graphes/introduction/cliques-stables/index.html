@@ -104,7 +104,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>clique</em></strong> $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.</p>
+<p>Une <strong><em>clique</em></strong> $C$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.</p>
 </div></div>
 
 <p>Un <strong><em>stable</em></strong> est l'opposé :</p>
@@ -116,7 +116,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>stable</em></strong> $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.</p>
+<p>Une <strong><em>stable</em></strong> $S$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in S$, $xy \notin E$.</p>
 </div></div>
 
 <p>Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle <strong><em>clique maximale</em></strong> (<em>resp.</em> <strong><em>stable maximal</em></strong>) un ensemble maximal pour l'inclusion.</p>
@@ -209,6 +209,70 @@ tant qu'il existe un sommet y de G \ C tel que C U <span class="token punctuatio
 </div>
 </details>     
 </div>
+<p>Terminons par une petite propriété :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ on a :</p>
+<div>
+$$
+\alpha(G) + \omega(G) \leq v(G)
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $n - (\alpha(G) - 1) \geq \omega(G)$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez qu'il existe des graphes $G$ pour lesquels il y a égalité : $\alpha(G) + \omega(G) = v(G) + 1$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $S$ est un stable à $p$ sommets et Si $K_q$ la clique à $q$ sommets alors l$e graphe : $G = (V(S) \cup V(K_q), E(S) \cup E(K_q))$ est tel que : $\omega(G) = q$ et $\alpha(G) = p + 1$.</p>
+</div>
+</details>     
+</div>
 <h2>Problème de la clique/stable maximum</h2>
 <p>Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons les deux problèmes suivant :</p>
 <p><span id="problème-clique"></span></p>
@@ -251,23 +315,22 @@ tant qu'il existe un sommet y de G \ C tel que C U <span class="token punctuatio
 </ul>
 </div></div>
 
-<h3>NP-complétude</h3>
-<p>Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de vérifier toutes les paires de sommets) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">,</span> clique<span class="token punctuation">:</span> <span class="token builtin">booléen</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<p>Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de compter le nombre d'arêtes) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">compte</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">,</span> clique<span class="token punctuation">:</span> <span class="token builtin">booléen</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+  var m <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+
   <span class="token keyword">pour chaque</span> x de A<span class="token punctuation">:</span>
     <span class="token keyword">pour chaque</span> y de A<span class="token punctuation">:</span>
         <span class="token keyword">si</span> x <span class="token operator">≠</span> y<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> xy est une arête de G <span class="token keyword">et</span> non clique<span class="token punctuation">:</span>
-              retourne <span class="token boolean">Faux</span>
-            <span class="token keyword">si</span> xy n'est pas une arête de G <span class="token keyword">et</span> clique<span class="token punctuation">:</span>
-              retourne <span class="token boolean">Faux</span>
-  retourne <span class="token boolean">Vrai</span>
+            <span class="token keyword">si</span> xy est une arête de G<span class="token punctuation">:</span>
+                m <span class="token operator">←</span> m<span class="token operator">+</span><span class="token number">1</span>
+  retourne m
 
-<span class="token builtin">algorithme</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-  retourne vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">,</span> <span class="token boolean">Vrai</span><span class="token punctuation">)</span>
+<span class="token builtin">algorithme</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+  retourne <span class="token operator">|</span>A<span class="token operator">|</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">|</span>A<span class="token operator">|</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">*</span> compte<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span>
 
-<span class="token builtin">algorithme</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-  retourne vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">,</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span>
+<span class="token builtin">algorithme</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+  retourne compte<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
 </code></pre>
 <p>Commençons par un petit échauffement :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -378,11 +441,7 @@ $$
 <li>$x_4 = 1$</li>
 </ul>
 <p>Dans la plupart des exemples réels, il y aura plus de clauses que de variables mais la clique max sera toujours compatible, la variable apparaissant toujours de façon identique pour chaque littéral de la clique : comme chez nous il y a 2 fois $\overline{x_1}$.</p>
-<p>C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.</p>
-<blockquote>
-<p>TBD On a utilisé 3-sat pour illustrer un point crucial : la taille de la clique à trouver est de l'ordre du nombre de sommet divisé par 3.
-Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici la taille dépend directement de la taille du graphe ce qui en fait un problème dur. il faudrait ici O(n^{n/3}) opération avec l'algo naif</p>
-</blockquote>
+<p>C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres. Le fait que ce problème soit compliqué vient du fait que la taille de la clique à trouver dépend du no,bre de clauses. Si on a une instance de 3-SAT à $m$ clauses il faut trouver une clique de taille $m$ dans un graphe à $3m$ sommets. L'algorithme naïf cherchant une clique de taille $K$ dans un graphe de taille $n$ prenant $\mathcal{O}(n^K)$ opérations, si on l'utilisait ici il prendrait $\mathcal{O}((3m)^m) = \mathcal{O}(3^m \cdot m^m)$ opérations ce qui est clairement exponentiel.</p>
 <h2>Exercice : problème de la couverture minimale</h2>
 <p><span id="problème-graphe-couverture"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -528,10 +587,70 @@ Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici 
 </div>
 </details>     
 </div>
-<h2>Théorème de Ramsey</h2>
+<h2>Clique ou stable ?</h2>
+<p>On peut combiner les problèmes de la clique et du stable de taille au moins $K$ en un seul problème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : clique ou stable</li>
+<li><strong>Entrée</strong> :
+<ul>
+<li>un graphe</li>
+<li>un entier $K$</li>
+</ul>
+</li>
+<li><strong>Question</strong> : le graphe contient-il une clique ou un stable de taille supérieure ou égale à $K$ ?</li>
+</ul>
+</div></div>
+
+<p>Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes <code class="language-">vérification_clique(G: graphe&lt;sommet&gt;, A: {sommet})  → booléen</code> et  <code class="language-">vérification_stable(G: graphe&lt;sommet&gt;, A: {sommet})  → booléen</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span> <span class="token keyword">OU</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span></code></pre>
+<p>À vous pour la partie NP-Complet !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que le problème &quot;clique ou stable&quot; est NP-complet.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez réduire clique à ce problème</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <blockquote>
-<p>TBD problème clique ou stable de taille k pour un graphe qui est NP-complet
-on en dérive le nombre de Ramsey
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>on en dérive le nombre de Ramsey
 TBD méthode probabiliste.
 TBD parler de haystack (retrouver le doc)</p>
 </blockquote>
