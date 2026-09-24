@@ -230,6 +230,7 @@ class DéGénérique(Stat):
 - [_Behavioural pattern_](https://en.wikipedia.org/wiki/Behavioral_pattern)
 {% endlien %}
 
+
 Le pattern observer est à la base de [la programmation évènementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) utilisée pour développer des interfaces graphique.
 
 Dans notre cas, il va être utile d'utiliser ce pattern pour supprimer l'héritage.
@@ -332,6 +333,10 @@ L'observateur découple l'objet qui fait et l'objet qui observe, ce qui est une 
 > TBD
 > TBD: https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)
 > enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/
+
+## Pattern Memento
+
+> TBD on l'a déjà vu, on le remets avec l'observer
 
 ## On s'entraîne
 
