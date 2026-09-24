@@ -167,7 +167,7 @@ On utilise ici deux choses :
 
 Il faut aussi changer le test de `str`{.language-}. On s'autorise à utiliser directement l'attribut `_valeur`{.language-} car les tests font partie du code :
 
-Fichier `test_dé.py`{.fichier} :
+On pourrait utiliser l'attribut privé directement:
 
 ```python
 # ...
@@ -183,8 +183,42 @@ def test_str():
 
 ```
 
-{% enddetails %}
+Mais ici on préfère utiliser un constructeur (fichier `test_dé.py`{.fichier}):
 
+```python
+# ...
+
+def test_str():
+    assert str(Dé()) == "⚀"
+    assert str(Dé(4)) == "⚃"
+
+
+# ...
+
+```
+
+Le test est plus clair et n'expose pas inutilement les tripes de la classe. C'est la solution à privilégier lorsque c'est possible.
+{% enddetails %}
+{% exercice %}
+Ajoutez un test pour confirmer que l'on ne peut pas modifier l'attribut `valeur`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+L'erreur produite lorsque l'on tente d'affecter l'attribut `valeur`{.language-} est un `AttributeError`{.language-} (il suffit de tester dans un interpréteur pour voir l'erreur), on ajoute donc le test suivant en n'oubliant pas également d'importer le module `pytest`{.language-} :
+
+```python
+import pytest
+
+# ... 
+
+def test_valeur_sans_setter():
+
+    with pytest.raises(AttributeError):
+        Dé().valeur = 1    
+
+```
+
+{% enddetails %}
 
 ## min et max dans classe
 

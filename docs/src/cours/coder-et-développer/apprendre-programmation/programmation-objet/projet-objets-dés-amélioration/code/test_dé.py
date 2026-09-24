@@ -1,3 +1,4 @@
+import pytest
 from dé import Dé
 
 
@@ -9,6 +10,10 @@ def test_valeur():
     assert Dé().valeur == 1
     assert Dé(valeur=4).valeur == 4
 
+def test_valeur_sans_setter():
+
+    with pytest.raises(AttributeError):
+        Dé().valeur = 1    
 
 def test_lancer():
     dé = Dé()
@@ -17,10 +22,8 @@ def test_lancer():
 
 
 def test_str():
-    dé = Dé()
-    assert str(dé) == "⚀"
-    dé._valeur = 4
-    assert str(dé) == "⚃"
+    assert str(Dé()) == "⚀"
+    assert str(Dé(4)) == "⚃"
 
 def test_repr():
     assert repr(Dé()) == "Dé(valeur=1)"

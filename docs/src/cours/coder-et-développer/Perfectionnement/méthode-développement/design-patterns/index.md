@@ -222,6 +222,11 @@ class DéGénérique(Stat):
     # ...
 ```
 
+## Setter et getter
+
+Il n'y a pour l'instant aucune raison de laisser l'utilisateur modifier les valeurs des dés directement, surtout que la valeur ne peut contenir que des entiers dans la limite des bornes du dé.
+
+Pour cela on utilise la méthode vue lorsque l'on [a amélioré nos objets](../../../apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 ## Pattern observer
 
 {% lien %}

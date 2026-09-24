@@ -26,12 +26,12 @@ class Dé:
     MAX_VALEUR = 6
 
     def __init__(self, valeur=1):
-        self.valeur = valeur
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
-
-        return self
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
 ```
 
@@ -90,10 +90,12 @@ class DéGénérique:
 
     def __init__(self, max, valeur=1):
         self.MAX_VALEUR = max
-        self.valeur = valeur
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
 
 class D6(DéGénérique):
@@ -211,7 +213,6 @@ Fichier `dé.py`{.fichier} :
 ```python
 class Stat:
     def __init__(self):
-        self.valeur = 1
         self.historique = []
 
     def sauve(self):
@@ -244,10 +245,13 @@ class DéGénérique(Stat):
         super().__init__()
 
         self.MAX_VALEUR = max
-        self.valeur = valeur
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
+
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
         self.sauve()
 
 

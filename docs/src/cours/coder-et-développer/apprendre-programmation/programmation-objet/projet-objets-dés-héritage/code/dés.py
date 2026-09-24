@@ -4,7 +4,6 @@ import random
 
 class Stat:
     def __init__(self):
-        self.valeur = 1
         self.historique = []
 
     def sauve(self):
@@ -20,10 +19,12 @@ class DéGénérique(Stat):
         super().__init__()
 
         self.MAX_VALEUR = max
-        self.valeur = valeur
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
         self.sauve()
 
 

@@ -32,10 +32,15 @@ class Dé:
     MAX_VALEUR = 6
 
     def __init__(self, valeur=1):
-        self.valeur = valeur
+        self._valeur = valeur
+
+    def __init__(self, valeur=1):
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
         return self
 
@@ -58,6 +63,7 @@ class Dé:
 fichier `test_dé.py`{.fichier} :
 
 ```python
+import pytest
 from dé import Dé
 
 
@@ -69,6 +75,10 @@ def test_valeur():
     assert Dé().valeur == 1
     assert Dé(valeur=4).valeur == 4
 
+def test_valeur_sans_setter():
+    with pytest.raises(AttributeError):
+        Dé().valeur = 1    
+
 
 def test_lancer():
     dé = Dé()
@@ -77,10 +87,8 @@ def test_lancer():
 
 
 def test_str():
-    dé = Dé()
-    assert str(dé) == "⚀"
-    dé.valeur = 4
-    assert str(dé) == "⚃"
+    assert str(Dé()) == "⚀"
+    assert str(Dé(4)) == "⚃"
 
 ```
 
@@ -391,9 +399,31 @@ class TapisVert:
         return self.nb_dés_valeurs_identiques(4)
 
 ```
-
 {% enddetails %}
 
+Pour tester nos méthodes fraichement ajoutée on a un soucis. Si l'on veut tester plusieurs possibilités, il faut que l'on puisse manuellement modifier la valeur d'un dé (on ne peut pas utiliser la méthode `lancer`{.language-} qui est non déterministe). On s'autorise donc à utiliser l'attribut privé `_valeur`{.language-}. Comme les classes `Dé`{.language-} et `TapisVert`{.language-}, cela fait partie des choses autorisées si on ne peut pas facilement faire autrement, ce qui est le cas ici. On pourrait donc par exmple implémenter dans le fichier `test_dé.py`{.fichier} les deux tests suivant :
+
+```python
+def test_tapis_vert_nombre_valeurs():
+    tapis_vert = TapisVert()
+
+    assert [0, 5, 0, 0, 0, 0, 0] == tapis_vert._nombre_valeurs()
+
+    tapis_vert.dés[2]._valeur = 4
+
+    assert [0, 4, 0, 0, 1, 0, 0] == tapis_vert._nombre_valeurs()
+
+
+def test_tapis_vert_nb_des_identiques():
+    tapis_vert = TapisVert()
+
+    assert tapis_vert.nb_dés_valeurs_identiques(5)
+    assert tapis_vert.nb_dés_valeurs_identiques(4)
+
+    tapis_vert.dés[2]._valeur = 4
+
+    assert not tapis_vert.nb_dés_valeurs_identiques(5)
+```
 
 ## Agrégation : Memento
 
@@ -425,10 +455,11 @@ class MementoDé:
         self.valeur_sauvée = dé.valeur
 
     def restore(self):
-        self.dé.valeur = self.valeur_sauvée
+        self.dé._valeur = self.valeur_sauvée
 
 ```
 
+Notez qu'il est nécessaire d'utiliser l'attribut privé `_valeur`{.language-} pour remettre la valeur en place. Comme les 2 classes sont dans le même module c'est une pratique autorisée.
 {% enddetails %}
 {% exercice %}
 Créez un test possible pour la classe `MementoDé`{.language-}.
@@ -443,13 +474,15 @@ from dé import Dé, TapisVert, MementoDé
 
 def test_mementoDé():
     dé = Dé()
-    dé.valeur = 5
+    dé._valeur = 5
     memento = MementoDé(dé)
-    dé.valeur = 1
+    dé._valeur = 1
     memento.restore()
     assert dé.valeur == 5
 
 ```
+
+Il est là aussi indispensable d'utiliser l'attribut privé dans nos tests.
 
 {% enddetails %}
 
@@ -506,10 +539,10 @@ from dé import Dé, TapisVert, MementoDé, MementoTapisVert
 def test_mementoTapisVert():
     tapis_vert = TapisVert()
     for dé in tapis_vert.dés:
-        dé.valeur = 5
+        dé._valeur = 5
     memento = MementoTapisVert(tapis_vert)
     for dé in tapis_vert.dés:
-        dé.valeur = 1
+        dé._valeur = 1
     memento.restore()
     for dé in tapis_vert.dés:
         assert dé.valeur == 5
