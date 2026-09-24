@@ -123,12 +123,12 @@
     MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
+
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> self<span class="token punctuation">:</span> self<span class="token punctuation">.</span>_valeur<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-        <span class="token keyword">return</span> self
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
 <p>fichier <code class="fichier">test_dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
@@ -192,10 +192,12 @@
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">=</span> <span class="token builtin">max</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
+
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> self<span class="token punctuation">:</span> self<span class="token punctuation">.</span>_valeur<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
 
 <span class="token keyword">class</span> <span class="token class-name">D6</span><span class="token punctuation">(</span>DéGénérique<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -355,7 +357,6 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
 <p>Fichier <code class="fichier">dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Stat</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>
         self<span class="token punctuation">.</span>historique <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     <span class="token keyword">def</span> <span class="token function">sauve</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -404,10 +405,13 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">=</span> <span class="token builtin">max</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
+
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> self<span class="token punctuation">:</span> self<span class="token punctuation">.</span>_valeur<span class="token punctuation">)</span>
+
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>sauve<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 

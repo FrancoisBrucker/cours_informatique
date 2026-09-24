@@ -355,7 +355,7 @@
 <li>deuxièmement l'accesseur est décrit sous la forme d'<a href="../../concepts/fondements-programmation/%C3%A9crire-code/#lambda" class="interne">une fonction <code>lambda</code></a> de python très utiles pour ce genre de choses.</li>
 </ul>
 <p>Il faut aussi changer le test de <code class="language-">str</code>. On s'autorise à utiliser directement l'attribut <code class="language-">_valeur</code> car les tests font partie du code :</p>
-<p>Fichier <code class="fichier">test_dé.py</code> :</p>
+<p>On pourrait utiliser l'attribut privé directement:</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -366,6 +366,53 @@
 
 
 <span class="token comment"># ...</span>
+</code></pre>
+<p>Mais ici on préfère utiliser un constructeur (fichier <code class="fichier">test_dé.py</code>):</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚀"</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚃"</span>
+
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Le test est plus clair et n'expose pas inutilement les tripes de la classe. C'est la solution à privilégier lorsque c'est possible.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez un test pour confirmer que l'on ne peut pas modifier l'attribut <code class="language-">valeur</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'erreur produite lorsque l'on tente d'affecter l'attribut <code class="language-">valeur</code> est un <code class="language-">AttributeError</code> (il suffit de tester dans un interpréteur pour voir l'erreur), on ajoute donc le test suivant en n'oubliant pas également d'importer le module <code class="language-">pytest</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pytest
+
+<span class="token comment"># ... </span>
+
+<span class="token keyword">def</span> <span class="token function">test_valeur_sans_setter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>AttributeError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>    
 </code></pre>
 </div>
 </details>     

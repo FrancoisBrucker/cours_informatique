@@ -147,10 +147,15 @@
     MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
+
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> self<span class="token punctuation">:</span> self<span class="token punctuation">.</span>_valeur<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
         <span class="token keyword">return</span> self
 
@@ -169,7 +174,8 @@
             <span class="token keyword">return</span> <span class="token string">"⚅"</span>
 </code></pre>
 <p>fichier <code class="fichier">test_dé.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pytest
+<span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -180,6 +186,10 @@
     <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span>
     <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">4</span>
 
+<span class="token keyword">def</span> <span class="token function">test_valeur_sans_setter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>AttributeError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>    
+
 
 <span class="token keyword">def</span> <span class="token function">test_lancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -188,10 +198,8 @@
 
 
 <span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚀"</span>
-    dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">4</span>
-    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚃"</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚀"</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚃"</span>
 </code></pre>
 </div>
 </details>     
@@ -604,6 +612,26 @@ tapis_vert <span class="token operator">=</span> TapisVert<span class="token pun
 </div>
 </details>     
 </div>
+<p>Pour tester nos méthodes fraichement ajoutée on a un soucis. Si l'on veut tester plusieurs possibilités, il faut que l'on puisse manuellement modifier la valeur d'un dé (on ne peut pas utiliser la méthode <code class="language-">lancer</code> qui est non déterministe). On s'autorise donc à utiliser l'attribut privé <code class="language-">_valeur</code>. Comme les classes <code class="language-">Dé</code> et <code class="language-">TapisVert</code>, cela fait partie des choses autorisées si on ne peut pas facilement faire autrement, ce qui est le cas ici. On pourrait donc par exmple implémenter dans le fichier <code class="fichier">test_dé.py</code> les deux tests suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_tapis_vert_nombre_valeurs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> tapis_vert<span class="token punctuation">.</span>_nombre_valeurs<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">4</span>
+
+    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> tapis_vert<span class="token punctuation">.</span>_nombre_valeurs<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_tapis_vert_nb_des_identiques</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> tapis_vert<span class="token punctuation">.</span>nb_dés_valeurs_identiques<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> tapis_vert<span class="token punctuation">.</span>nb_dés_valeurs_identiques<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+
+    tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">4</span>
+
+    <span class="token keyword">assert</span> <span class="token keyword">not</span> tapis_vert<span class="token punctuation">.</span>nb_dés_valeurs_identiques<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></code></pre>
 <h2>Agrégation : Memento</h2>
 <p>Nous Allons créer un nouvel objet appelé permettant de sauver la valeur d'un dé puis de le restaurer si besoin. On va utiliser pour cela <a href="https://refactoring.guru/fr/design-patterns">un patron de conception</a> nommé Memento</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -647,8 +675,9 @@ tapis_vert <span class="token operator">=</span> TapisVert<span class="token pun
         self<span class="token punctuation">.</span>valeur_sauvée <span class="token operator">=</span> dé<span class="token punctuation">.</span>valeur
 
     <span class="token keyword">def</span> <span class="token function">restore</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur_sauvée
+        self<span class="token punctuation">.</span>dé<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur_sauvée
 </code></pre>
+<p>Notez qu'il est nécessaire d'utiliser l'attribut privé <code class="language-">_valeur</code> pour remettre la valeur en place. Comme les 2 classes sont dans le même module c'est une pratique autorisée.</p>
 </div>
 </details>     
 </div>
@@ -681,12 +710,13 @@ tapis_vert <span class="token operator">=</span> TapisVert<span class="token pun
 
 <span class="token keyword">def</span> test_mementoDé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">5</span>
+    dé<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">5</span>
     memento <span class="token operator">=</span> MementoDé<span class="token punctuation">(</span>dé<span class="token punctuation">)</span>
-    dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>
+    dé<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">1</span>
     memento<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">5</span>
 </code></pre>
+<p>Il est là aussi indispensable d'utiliser l'attribut privé dans nos tests.</p>
 </div>
 </details>     
 </div>
@@ -747,10 +777,10 @@ memento<span class="token punctuation">.</span>restore<span class="token punctua
 <span class="token keyword">def</span> <span class="token function">test_mementoTapisVert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
-        dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">5</span>
+        dé<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">5</span>
     memento <span class="token operator">=</span> MementoTapisVert<span class="token punctuation">(</span>tapis_vert<span class="token punctuation">)</span>
     <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
-        dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>
+        dé<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">1</span>
     memento<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
         <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">5</span>
