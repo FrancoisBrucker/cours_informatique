@@ -52,7 +52,6 @@ import random
 
 class Stat:
     def __init__(self):
-        self.valeur = 1
         self.historique = []
 
     def sauve(self):
@@ -68,10 +67,12 @@ class DéGénérique(Stat):
         super().__init__()
 
         self.MAX_VALEUR = max
-        self.valeur = valeur
+        self._valeur = valeur
+    
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
         self.sauve()
 
 
@@ -222,11 +223,6 @@ class DéGénérique(Stat):
     # ...
 ```
 
-## Setter et getter
-
-Il n'y a pour l'instant aucune raison de laisser l'utilisateur modifier les valeurs des dés directement, surtout que la valeur ne peut contenir que des entiers dans la limite des bornes du dé.
-
-Pour cela on utilise la méthode vue lorsque l'on [a amélioré nos objets](../../../apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 ## Pattern observer
 
 {% lien %}
@@ -234,11 +230,97 @@ Pour cela on utilise la méthode vue lorsque l'on [a amélioré nos objets](../.
 - [_Behavioural pattern_](https://en.wikipedia.org/wiki/Behavioral_pattern)
 {% endlien %}
 
-> TBD: base de la programmation évènementielle
-> savoir lorsqu'un dé change. S'abonner à la valeur ?
-> seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
-> https://en.wikipedia.org/wiki/Observer_pattern
+Le pattern observer est à la base de [la programmation évènementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) utilisée pour développer des interfaces graphique.
 
+Dans notre cas, il va être utile d'utiliser ce pattern pour supprimer l'héritage.
+
+Commençons par préparer le pattern en ajoutant la méthode permettant d'ajouter un observateur et la notification :
+
+```python
+class DéGénérique(Stat):
+    # ...
+
+    def __init__(self, max, valeur=1):
+        # ...
+
+        self._observateurs = []
+            
+
+    # ...
+
+    def add(self, observateur):
+        self._observateurs.append(observateur)
+
+    def remove(self, observateur):
+        self._observateurs.remove(observateur)
+
+    def notify(self):
+        for o in self._observateurs:
+            o.update(self)
+
+```
+
+Et on peut supprimer la l'héritage pour placer la notification après lancé :
+
+```python
+class DéGénérique:
+    # ...
+
+    def lancer(self):
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.notify()
+
+        return self
+
+```
+
+On peut maintenant créer l'observateur qui va sauver nos jet et en calculer la moyenne :
+
+```python
+class Stat:
+    def __init__(self):
+        self.historique = []
+
+    def update(self, dé):
+        self.historique.append(dé.valeur)
+
+    def moyenne(self):
+        return sum(self.historique) / max(1, len(self.historique))
+
+```
+
+Et le `main.py`{.fichier} devient :
+
+```python
+from dés import d6, d20, Stat
+
+
+d6 = d6()
+d20 = d20()
+
+stat6 = Stat()
+d6.add(stat6)
+
+stat20 = Stat()
+d20.add(stat20)
+
+print(d6.valeur, d20.valeur)
+print(d6.lancer().valeur, d20.lancer().valeur)
+
+
+for _ in range(1000):
+    d6.lancer()
+    d20.lancer()
+
+print('1000 lancers :', stat6.moyenne(), stat20.moyenne())
+
+```
+
+L'observateur découple l'objet qui fait et l'objet qui observe, ce qui est une bonne chose. De plus il permet d'ajouter d'autre types d'observateurs sans effort comme vous allez le faire plus tard.
+
+{% lien %}
+[Couplage en informatique](https://fr.wikipedia.org/wiki/Couplage_(informatique))
+{% endlien %}
 
 ## Pattern composite
 
@@ -253,25 +335,20 @@ Pour cela on utilise la méthode vue lorsque l'on [a amélioré nos objets](../.
 
 ## On s'entraîne
 
-> TBD le faire avec TapisVert
-> plus un builder pour compter.
 
 > TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
-> TBD partir du dé avec héritage
 
 
-## Composite
+### Memento
 
-
-## Memento
-
-> TBD: https://refactoring.guru/fr/design-patterns/memento
+> reprendre le memento de la composition et le mettre dans un observer pour créer un undo (donner les specs)
+> attention : ne sauver QUE quand la valeur change (ie. différente du dernier élément stocké)
+> 
 > premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
 > behavioural pattern
-> un dé et une autre classe, la liste avec un save du test. . avec et sans
 
 
-### Undo list
+#### Undo list
 
 Nous pouvons maintenant créer une classe `Undo` (dans le fichier `undo.py`) qui va nous permettre de sauver des dés (et leurs valeurs) et de les restaurer à la demande. Cette classe doit pouvoir :
 
@@ -300,7 +377,7 @@ undo.restore()
 print(dice.get_position()) # vaut 5
 ```
 
-### Un undo dans dice
+#### Un undo dans dice
 
 Pour ne pas toujours avoir à sauver le dé avant un roll, on pourra utiliser une classe fille de `Choice` dont le `set_position` sauve l'état dans un undo avant de modifier la position. L'objet undo devant être unique dans le programme, il faudrait que le code suivant fonctionne :
 
@@ -323,6 +400,10 @@ print(d.get_position())  # 1
 Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe `ChoiceUndo` qui hérite de `Choice` et qui ne diffère de celle-ci que par la méthode `set_position` (et le constructeur bien sûr).
 
 Faites le même essai avec 10 utilisations de la méthode `roll()`.
+
+### TapisVert
+
+> méthode de comptage avec un builder
 
 ## Pour aller plus loin
 

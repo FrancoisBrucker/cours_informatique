@@ -12,17 +12,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD 
->
-> le go
->
-> - prérequis : git
-> - outils de la partie A : 
->   - dépendances
->   - débogueur
-> ajouter code coverage
-> 
-Dernière partie en python avant d'apprendre un nouveau langage. On montre comment développer du code au quotidien.
 
 ## TDD
 

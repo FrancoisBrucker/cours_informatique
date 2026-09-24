@@ -12,6 +12,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+## Méthodes de développement
+
+Dernière partie en python avant d'apprendre un nouveau langage. On montre comment développer du code au quotidien :
+
+{% aller %}
+[méthodes de développement](méthode-développement){.interne}
+{% endaller %}
+
+## Coder avec la mémoire
+
 > TBD 
 >
 > le go
@@ -25,11 +35,3 @@ eleventyComputed:
 > - profilage de code ?
 > - interfaces
 > - [mémoire](./données-mémoire/){.interne}
-
-## Méthodes de développement
-
-Dernière partie en python avant d'apprendre un nouveau langage. On montre comment développer du code au quotidien.
-
-{% aller %}
-[méthodes de développement](méthode-développement){.interne}
-{% endaller %}

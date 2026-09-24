@@ -4,11 +4,10 @@ import random
 
 class Stat:
     def __init__(self):
-        self.valeur = 1
         self.historique = []
 
-    def sauve(self):
-        self.historique.append(self.valeur)
+    def update(self, dé):
+        self.historique.append(dé.valeur)
 
     def moyenne(self):
         return sum(self.historique) / max(1, len(self.historique))
@@ -20,13 +19,27 @@ class DéGénérique(Stat):
         super().__init__()
 
         self.MAX_VALEUR = max
-        self.valeur = valeur
+        self._valeur = valeur
+
+        self._observateurs = []
+            
+    valeur = property(lambda self: self._valeur)
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
-        self.sauve()
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.notify()
 
         return self
+
+    def add(self, observateur):
+        self._observateurs.append(observateur)
+
+    def remove(self, observateur):
+        self._observateurs.remove(observateur)
+
+    def notify(self):
+        for o in self._observateurs:
+            o.update(self)
 
 
 def d6(valeur=1):
