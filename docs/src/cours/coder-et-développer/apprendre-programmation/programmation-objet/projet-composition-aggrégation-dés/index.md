@@ -31,8 +31,6 @@ class Dé:
     MIN_VALEUR = 1
     MAX_VALEUR = 6
 
-    def __init__(self, valeur=1):
-        self._valeur = valeur
 
     def __init__(self, valeur=1):
         self._valeur = valeur
