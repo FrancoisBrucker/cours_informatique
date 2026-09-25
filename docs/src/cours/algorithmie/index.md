@@ -92,6 +92,9 @@ Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas
 
 #### Pseudo code
 
+> TBD ici `nom x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
+> TBD tout est ue référence vers un objet en mémoire
+
 On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
 
 {% aller %}

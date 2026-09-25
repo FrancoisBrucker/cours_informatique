@@ -40,7 +40,7 @@ Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solut
 Nous allons utiliser la classe `Dé`{.language-} qui nous a accompagné tout au long du cours de programmation objet et lui ajouter quelques design pattern pour encore une fois l'améliorer.
 
 {% lien %}
-[Projet Dé héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
+[Projet Dé héritage](../../../apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 {% endlien %}
 {% details "code", "open" %}
 
@@ -91,20 +91,20 @@ Fichier `main.py`{.fichier} :
 ```python 
 from dés import D6, D20
 
-d6 = D6()
-d20 = D20()
+d_6 = D6()
+d_20 = D20()
 
-print(d6.valeur, d20.valeur)
-d6.lancer()
-d20.lancer()
-print(d6.valeur, d20.valeur)
+print(d_6.valeur, d_20.valeur)
+d_6.lancer()
+d_20.lancer()
+print(d_6.valeur, d_20.valeur)
 
 
 for _ in range(1000):
-    d6.lancer()
-    d20.lancer()
+    d_6.lancer()
+    d_20.lancer()
 
-print('1000 lancers :', d6.moyenne(), d20.moyenne())
+print('1000 lancers :', d_6.moyenne(), d_20.moyenne())
 ```
 
 {% enddetails %}
@@ -164,19 +164,19 @@ On peut alors utiliser directement les fonctions de création dans le fichier `m
 from dés import d6, d20
 
 
-d6 = d6()
-d20 = d20()
+d_6 = d6()
+d_20 = d20()
 
-print(d6.valeur, d20.valeur)
-d6.lancer()
-d20.lancer()
-print(d6.valeur, d20.valeur)
+print(d_6.valeur, d_20.valeur)
+d_6.lancer()
+d_20.lancer()
+print(d_6)
 
 for _ in range(1000):
-    d6.lancer()
-    d20.lancer()
+    d_6.lancer()
+    d_20.lancer()
 
-print('1000 lancers :', d6.moyenne(), d20.moyenne())
+print('1000 lancers :', d_6.moyenne(), d_20.moyenne())
 
 ```
 
@@ -191,15 +191,15 @@ Ce n'est pas un design pattern _stricto-sensu_, plutôt une règle de programmat
 Dans notre cas, il pourrait être intéressant de connaître la valeur du dé directement après un lancer pour pourvoir par exemple remplacer les lignes suivantes dans le fichier `main.py`{.fichier} :
 
 ```python
-d6.lancer()
-d20.lancer()
-print(d6.valeur, d20.valeur)
+d_6.lancer()
+d_20.lancer()
+print(d_6.valeur, d_20.valeur)
 ```
 
 par : 
 
 ```python
-print(d6.lancer().valeur, d20.lancer().valeur)
+print(d_6.lancer().valeur, d_20.lancer().valeur)
 ```
 
 {% info %}
@@ -296,22 +296,22 @@ Et le `main.py`{.fichier} devient :
 from dés import d6, d20, Stat
 
 
-d6 = d6()
-d20 = d20()
+d_6 = d6()
+d_20 = d20()
 
 stat6 = Stat()
-d6.add(stat6)
+d_6.add(stat6)
 
 stat20 = Stat()
-d20.add(stat20)
+d_20.add(stat20)
 
-print(d6.valeur, d20.valeur)
-print(d6.lancer().valeur, d20.lancer().valeur)
+print(d_6.valeur, d_20.valeur)
+print(d_6.lancer().valeur, d_20.lancer().valeur)
 
 
 for _ in range(1000):
-    d6.lancer()
-    d20.lancer()
+    d_6.lancer()
+    d_20.lancer()
 
 print('1000 lancers :', stat6.moyenne(), stat20.moyenne())
 
@@ -330,85 +330,201 @@ L'observateur découple l'objet qui fait et l'objet qui observe, ce qui est une 
 - [_Structural pattern_](https://en.wikipedia.org/wiki/Structural_pattern)
 {% endlien %}
 
-> TBD
-> TBD: https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)
-> enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/
+Le pattern composite permet de composer deux dés de façon à pouvoir :
 
-## Pattern Memento
+- les lancer simultanément
+- obtenir la somme de leurs valeurs respectives
 
-> TBD on l'a déjà vu, on le remets avec l'observer
-
-## On s'entraîne
-
-
-> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
-
-
-### Memento
-
-> reprendre le memento de la composition et le mettre dans un observer pour créer un undo (donner les specs)
-> attention : ne sauver QUE quand la valeur change (ie. différente du dernier élément stocké)
-> 
-> premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
-> behavioural pattern
-
-
-#### Undo list
-
-Nous pouvons maintenant créer une classe `Undo` (dans le fichier `undo.py`) qui va nous permettre de sauver des dés (et leurs valeurs) et de les restaurer à la demande. Cette classe doit pouvoir :
-
-- sauver un dé avec la méthode : `save(dice)` (un `Memento` sera créé dans la méthode `save` exemple comme ça : `Memento(dice)`)
-- restaurer la dernière valeur sauvée avec la méthode `restore()`
-- connaître le nombre d'items sauvegardés avec une méthode `nb_undos()`
-
-Bien sur vous créerez un fichier de tests `test_undo.py` qui testera les 3 fonctionnalités ci-dessus. Une façon d'utiliser les différents objets est décrite ci-après :
+Ceci doit être possible en utilisant une classe `Somme`{.interne} :
 
 ```python
-import choice
-from undo import Undo
+# ...
 
-dice = choice.dice()
+class Somme:
+    def __init__(self, gauche, droite):
+        self.gauche = gauche
+        self.droite = droite
 
-undo = Undo()
+    valeur = property(lambda self: self.gauche.valeur + self.droite.valeur)
 
-undo.save(dice)
-dice.set_position(5)
-print(dice.get_position()) # vaut 5
-undo.save(dice)
-dice.roll() # dès que l'on change la valeur (ici possiblement différent de 5)
+    def lancer(self):
+        self.gauche.lancer()
+        self.droite.lancer()
 
+        return self
 
-undo.restore()
-print(dice.get_position()) # vaut 5
+# ...
+
 ```
 
-#### Un undo dans dice
-
-Pour ne pas toujours avoir à sauver le dé avant un roll, on pourra utiliser une classe fille de `Choice` dont le `set_position` sauve l'état dans un undo avant de modifier la position. L'objet undo devant être unique dans le programme, il faudrait que le code suivant fonctionne :
+On peut l'utiliser ainsi, dans le fichier `main.py`{.fichier} :
 
 ```python
-from undo import Undo
-from choiceUndo import ChoiceUndo
+from dés import Somme
 
-undo = Undo()
+# ...
 
-d = ChoiceUndo(range(1, 7), undo)
+somme = Somme(d6(), d20())
 
-d.set_position(1)
-print(d.get_position())  # 1
-d.set_position(4)
-print(d.get_position())  # 4
-undo.restore()
-print(d.get_position())  # 1
+print(somme.valeur)
+print(somme.lancer().valeur)
+
 ```
 
-Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe `ChoiceUndo` qui hérite de `Choice` et qui ne diffère de celle-ci que par la méthode `set_position` (et le constructeur bien sûr).
+Il ne nous reste plus qu'à rendre cette classe transparente pour l'utilisateur en créant la somme de deux dés directement dans la classe `DéGénérique`{.language-} :
 
-Faites le même essai avec 10 utilisations de la méthode `roll()`.
+```python
+# ...
 
-### TapisVert
+class DéGénérique:
+    # ...
 
-> méthode de comptage avec un builder
+    def __add__(self, other):
+        return Somme(self, other)
+
+    # ...
+
+# ...
+
+```
+
+Modifions notre  `main.py`{.fichier} en conséquence :
+
+```python
+# ...
+
+somme = d6() + d20()
+
+# ...
+
+```
+
+Terminons le travail en permettant d'écrire `s = d6() + d6() + d20()`{.language-}. Le pattern composite rend ça trivial, il suffit de déclarer la somme dans la classe `Somme`{.language-} :
+
+```python
+# ...
+
+class Somme:
+    # ...
+
+    def __add__(self, other):
+        return Somme(self, other)
+
+# ...
+
+```
+
+
+Et le `main.py`{.fichier} mis à jour :
+
+```python
+# ...
+
+somme = d6() + d6() + d20()
+
+# ...
+
+```
+
+Continuons sur notre lancée. Un marteau enchanté fait : d6 + 4 dégâts. Il est pour l'instant impossible de gérer ceci avec nos objets, car un entier n'a pas d'attribut `valeur`{.language-} ni `lancer()`{.language-}.
+
+Une solution simple pour résoudre ce problème est de vérifier si un objet possède l'attribut demandé avant de l'utiliser. Pour cela on utilise [la fonction `hasattr`{.language-}](https://docs.python.org/fr/3.14/builtins/functions.html#hasattr) qui possède 2 paramètres :
+
+- le premier est l'objet pour lequel on veut faire la vérification
+- le second est le **nom** de l'attribut/méthode (donc une chaîne de caractères) dont on veut tester l'existence.
+
+Dans la somme cela donne :
+
+```python
+class Somme:
+    # ...
+
+    def lancer(self):
+        if hasattr(self.gauche, "lancer"):
+            self.gauche.lancer()
+        if hasattr(self.droite, "lancer"):
+            self.droite.lancer()
+
+        return self
+
+```
+
+On pourrait faire pareil pour l'attribut valeur, mais ici on va plutôt utiliser la fonction [`getattr`{.language-} de python](https://docs.python.org/fr/3.14/builtins/functions.html#getattr) qui rend une valeur par dévaut si l'attribut n;est pas trouvé. Dans notre cas on rend directement l'objet (qui doit être un entier)  :
+
+- le premier est l'objet pour lequel on veut faire la vérification
+- le second est le nom de l'attribut/méthode à récupérer
+- le troisième est le retour par défaut si l'attribut/méthode n'est pas trouvée.
+
+Dans notre cas pour la property valeur des `Somme`{.language-} cela donne :
+
+```python
+class Somme:
+    # ...
+
+    valeur = property(
+        lambda self: getattr(self.gauche, "valeur", self.gauche)
+                     + getattr(self.droite, "valeur", self.droite)
+    )
+
+```
+
+On peut maintenant modifier notre `main.py`{.language-} :
+
+```python
+somme = d6() + 4
+
+print(somme.valeur)
+print(somme.lancer().valeur)
+```
+
+## À vous
+
+### Le problème de la boule de feu
+
+Terminons la mise à jour de la classe Dé en lui permettant de résoudre le problème de la boule de feu qui fait `2d6 + 1` dégâts. On supposera que l'on ne peut multiplier que un entier à un dé ou une Somme (3d6 ou 4(d6 + 2d20)). On ne pourra jamais multiplier 2 dés ensemble (d6 * d20 est interdit).
+
+{% faire %}
+En implémentant une classe `Multiplication`{.language-} et en utilisant la méthode spéciale `rmul`{.language-} dans les dés. 
+{% endfaire %}
+{% info %}
+pour calculer `a * b`{.language-} python fait plusieurs essais :
+
+1. il essaye `A.__mul__(B)`{.language-}
+2. si l'expression précédente rend une erreur de type `TypeError`{.language-} alors python tente `B.__rmul__(A)`{.language-}
+{% endinfo %}
+
+### Undo
+
+On a déjà utilisé [le pattern memento](https://refactoring.guru/design-patterns/memento) lorsque l'on a fait de [la compositions et de l'agrégation de dés](../../../apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/#memento){.interne}, utilisez cette partie pour créer une liste de undo :
+
+{% faire %}
+En utilisant le design pattern memento et notre observer, créer une classe permettant de gérer les undo des dés
+{% endfaire %}
+{% info %}
+Vous ne stockerez dans vos undos que les changements de valeurs (si un lancer garde la même valeur de dé ce n'est pas la peine de l'ajouter aux undos).
+{% endinfo %}
+
+### Redo
+
+{% faire %}
+Ajoutez une classe permettant de gérer les redo.
+{% endfaire %}
+
+### Builder
+
+Lorsqu'on joue à un jeu de dés il y a toujours plein de règles différentes pour compter les points :
+
+{% faire %}
+Utilisez [le pattern Builder](https://refactoring.guru/design-patterns/builder) pour créer une façon de compter les points de jets de 5 dés où l'on veut être capable de reconnaître :
+
+- la somme des valeurs > 15
+- 5 valeurs identiques
+- les suites
+
+Et de créer des objets qui reconnaissent l'une, l'autre ou toute combinaison de ces 3 règles pour une liste de 5 dés.
+
+{% endfaire %}
+
 
 ## Pour aller plus loin
 

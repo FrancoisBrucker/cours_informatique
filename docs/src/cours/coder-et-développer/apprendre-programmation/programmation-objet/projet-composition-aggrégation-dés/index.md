@@ -157,7 +157,7 @@ Notez qu'il **faut** créer 5 dés différents.
 
 L'utilisation d'une liste permet de grouper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.
 
-### Classe `TapisVert`{.language-}
+### <span id="TapisVert"></span>Classe `TapisVert`{.language-}
 
 On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
@@ -423,7 +423,7 @@ def test_tapis_vert_nb_des_identiques():
     assert not tapis_vert.nb_dés_valeurs_identiques(5)
 ```
 
-## Agrégation : Memento
+## <span id="memento"></span>Agrégation : Memento
 
 Nous Allons créer un nouvel objet appelé permettant de sauver la valeur d'un dé puis de le restaurer si besoin. On va utiliser pour cela [un patron de conception](https://refactoring.guru/fr/design-patterns) nommé Memento
 
