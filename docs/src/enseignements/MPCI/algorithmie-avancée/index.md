@@ -137,6 +137,7 @@ Un exposé du proof from the book.
 1. [Rappels de complexité](/cours/algorithmie/complexité-calculs/importance/){.interne}
 2. [Réduction de Problèmes](/cours/algorithmie/problème-réduction/){.interne}
 3. [Classe de problème NP](/cours/algorithmie/problèmes-NP/){.interne}
+4. [CE est NP-C](/cours/algorithmie/problème-CE/){.interne}
 
 {% endaller %}
 

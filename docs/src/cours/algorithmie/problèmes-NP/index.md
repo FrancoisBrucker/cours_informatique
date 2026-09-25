@@ -592,9 +592,9 @@ Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.
 
 On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :
 
-- clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral
-- clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (\overline{\alpha} \lor \beta \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux
-- clause à $n > 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivante $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)
+- clause à $n > 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivantes $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)
+- clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (x \lor y \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral
+- clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \beta) \land (x \lor \alpha \lor \overline{\beta}) \land (x \lor \overline{\alpha} \lor \beta) \land (x \lor \overline{\alpha} \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux
 
 
 Reprenons [l'exemple de SAT](./#exemple-SAT){.interne} et appliquons lui la transformation :
@@ -609,7 +609,7 @@ Devient :
 
 <div>
 $$
-(x_1 \lor {x_2} \lor \alpha) \land (\alpha \lor \beta \land \overline{\beta}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \gamma) \land (\overline{\gamma} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \delta) \land (\overline{\delta} \lor \overline{x_4} \lor {x_5})
+(x_1 \lor {x_2} \lor \alpha) \land (x_1 \lor {x_2} \lor \overline{\alpha}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \beta) \land (\overline{\beta} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \gamma) \land (\overline{\gamma} \lor \overline{x_4} \lor {x_5})
 $$
 </div>
 
