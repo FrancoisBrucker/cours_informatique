@@ -283,7 +283,7 @@ des_dés <span class="token operator">=</span> <span class="token punctuation">[
 </div>
 <h2>Composition</h2>
 <p>L'utilisation d'une liste permet de grouper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.</p>
-<h3>Classe <code class="language-">TapisVert</code></h3>
+<h3><span id="TapisVert"></span>Classe <code class="language-">TapisVert</code></h3>
 <p>On aimerait avoir une structure, nommée <code class="language-">TapisVert</code>, qui :</p>
 <ul>
 <li>crée et stocke 5 dés</li>
@@ -630,7 +630,7 @@ tapis_vert <span class="token operator">=</span> TapisVert<span class="token pun
     tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>_valeur <span class="token operator">=</span> <span class="token number">4</span>
 
     <span class="token keyword">assert</span> <span class="token keyword">not</span> tapis_vert<span class="token punctuation">.</span>nb_dés_valeurs_identiques<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></code></pre>
-<h2>Agrégation : Memento</h2>
+<h2><span id="memento"></span>Agrégation : Memento</h2>
 <p>Nous Allons créer un nouvel objet appelé permettant de sauver la valeur d'un dé puis de le restaurer si besoin. On va utiliser pour cela <a href="https://refactoring.guru/fr/design-patterns">un patron de conception</a> nommé Memento</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

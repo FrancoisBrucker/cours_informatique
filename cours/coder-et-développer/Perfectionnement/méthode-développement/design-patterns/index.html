@@ -150,7 +150,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/" class="interne">Projet Dé héritage</a></p>
+<p><a href="../../../apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/" class="interne">Projet Dé héritage</a></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -212,20 +212,20 @@
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20
 
-d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 
 
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1000 lancers :'</span><span class="token punctuation">,</span> d6<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1000 lancers :'</span><span class="token punctuation">,</span> d_6<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -282,19 +282,19 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> d6<span class="token punctuation">,</span> d20
 
 
-d6 <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20 <span class="token operator">=</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_6 <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20 <span class="token operator">=</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1000 lancers :'</span><span class="token punctuation">,</span> d6<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1000 lancers :'</span><span class="token punctuation">,</span> d_6<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <h2>Fluent interface</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -307,11 +307,11 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
 
 <p>Ce n'est pas un design pattern <em>stricto-sensu</em>, plutôt une règle de programmation : on essaie de rendre l'utilisation des méthodes fluide, chaînables sans avoir besoin de créer des variables intermédiaires.</p>
 <p>Dans notre cas, il pourrait être intéressant de connaître la valeur du dé directement après un lancer pour pourvoir par exemple remplacer les lignes suivantes dans le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
 <p>par :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -394,22 +394,22 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> d6<span class="token punctuation">,</span> d20<span class="token punctuation">,</span> Stat
 
 
-d6 <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20 <span class="token operator">=</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_6 <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+d_20 <span class="token operator">=</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 stat6 <span class="token operator">=</span> Stat<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d6<span class="token punctuation">.</span>add<span class="token punctuation">(</span>stat6<span class="token punctuation">)</span>
+d_6<span class="token punctuation">.</span>add<span class="token punctuation">(</span>stat6<span class="token punctuation">)</span>
 
 stat20 <span class="token operator">=</span> Stat<span class="token punctuation">(</span><span class="token punctuation">)</span>
-d20<span class="token punctuation">.</span>add<span class="token punctuation">(</span>stat20<span class="token punctuation">)</span>
+d_20<span class="token punctuation">.</span>add<span class="token punctuation">(</span>stat20<span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 
 
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    d_20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1000 lancers :'</span><span class="token punctuation">,</span> stat6<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> stat20<span class="token punctuation">.</span>moyenne<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
@@ -434,71 +434,185 @@ d20<span class="token punctuation">.</span>add<span class="token punctuation">(<
 </ul>
 </div></div>
 
-<blockquote>
-<p>TBD
-TBD: <a href="https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)">https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)</a>
-enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/</p>
-</blockquote>
-<h2>Pattern Memento</h2>
-<blockquote>
-<p>TBD on l'a déjà vu, on le remets avec l'observer</p>
-</blockquote>
-<h2>On s'entraîne</h2>
-<blockquote>
-<p>TBD refactor <a href="design-patterns-old">old</a> et <a href="design-patterns-corrige">old corrigé</a></p>
-</blockquote>
-<h3>Memento</h3>
-<blockquote>
-<p>reprendre le memento de la composition et le mettre dans un observer pour créer un undo (donner les specs)
-attention : ne sauver QUE quand la valeur change (ie. différente du dernier élément stocké)</p>
-<p>premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
-behavioural pattern</p>
-</blockquote>
-<h4>Undo list</h4>
-<p>Nous pouvons maintenant créer une classe <code>Undo</code> (dans le fichier <code>undo.py</code>) qui va nous permettre de sauver des dés (et leurs valeurs) et de les restaurer à la demande. Cette classe doit pouvoir :</p>
+<p>Le pattern composite permet de composer deux dés de façon à pouvoir :</p>
 <ul>
-<li>sauver un dé avec la méthode : <code>save(dice)</code> (un <code>Memento</code> sera créé dans la méthode <code>save</code> exemple comme ça : <code>Memento(dice)</code>)</li>
-<li>restaurer la dernière valeur sauvée avec la méthode <code>restore()</code></li>
-<li>connaître le nombre d'items sauvegardés avec une méthode <code>nb_undos()</code></li>
+<li>les lancer simultanément</li>
+<li>obtenir la somme de leurs valeurs respectives</li>
 </ul>
-<p>Bien sur vous créerez un fichier de tests <code>test_undo.py</code> qui testera les 3 fonctionnalités ci-dessus. Une façon d'utiliser les différents objets est décrite ci-après :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice
-<span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+<p>Ceci doit être possible en utilisant une classe <code class="interne">Somme</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
-dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche <span class="token operator">=</span> gauche
+        self<span class="token punctuation">.</span>droite <span class="token operator">=</span> droite
 
-undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> self<span class="token punctuation">:</span> self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 
-undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
-dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span>
-undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
-dice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># dès que l'on change la valeur (ici possiblement différent de 5)</span>
+    <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
+        <span class="token keyword">return</span> self
 
-undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span></code></pre>
-<h4>Un undo dans dice</h4>
-<p>Pour ne pas toujours avoir à sauver le dé avant un roll, on pourra utiliser une classe fille de <code>Choice</code> dont le <code>set_position</code> sauve l'état dans un undo avant de modifier la position. L'objet undo devant être unique dans le programme, il faudrait que le code suivant fonctionne :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
-<span class="token keyword">from</span> choiceUndo <span class="token keyword">import</span> ChoiceUndo
+<span class="token comment"># ...</span>
+</code></pre>
+<p>On peut l'utiliser ainsi, dans le fichier <code class="fichier">main.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> Somme
 
-undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># ...</span>
 
-d <span class="token operator">=</span> ChoiceUndo<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> undo<span class="token punctuation">)</span>
+somme <span class="token operator">=</span> Somme<span class="token punctuation">(</span>d6<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-d<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
-d<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 4</span>
-undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span></code></pre>
-<p>Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe <code>ChoiceUndo</code> qui hérite de <code>Choice</code> et qui ne diffère de celle-ci que par la méthode <code>set_position</code> (et le constructeur bien sûr).</p>
-<p>Faites le même essai avec 10 utilisations de la méthode <code>roll()</code>.</p>
-<h3>TapisVert</h3>
-<blockquote>
-<p>méthode de comptage avec un builder</p>
-</blockquote>
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+</code></pre>
+<p>Il ne nous reste plus qu'à rendre cette classe transparente pour l'utilisateur en créant la somme de deux dés directement dans la classe <code class="language-">DéGénérique</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+    <span class="token comment"># ...</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Modifions notre  <code class="fichier">main.py</code> en conséquence :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
+
+somme <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Terminons le travail en permettant d'écrire <code class="language-">s = d6() + d6() + d20()</code>. Le pattern composite rend ça trivial, il suffit de déclarer la somme dans la classe <code class="language-">Somme</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Et le <code class="fichier">main.py</code> mis à jour :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
+
+somme <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> d20<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ...</span>
+</code></pre>
+<p>Continuons sur notre lancée. Un marteau enchanté fait : d6 + 4 dégâts. Il est pour l'instant impossible de gérer ceci avec nos objets, car un entier n'a pas d'attribut <code class="language-">valeur</code> ni <code class="language-">lancer()</code>.</p>
+<p>Une solution simple pour résoudre ce problème est de vérifier si un objet possède l'attribut demandé avant de l'utiliser. Pour cela on utilise <a href="https://docs.python.org/fr/3.14/builtins/functions.html#hasattr">la fonction <code class="language-">hasattr</code></a> qui possède 2 paramètres :</p>
+<ul>
+<li>le premier est l'objet pour lequel on veut faire la vérification</li>
+<li>le second est le <strong>nom</strong> de l'attribut/méthode (donc une chaîne de caractères) dont on veut tester l'existence.</li>
+</ul>
+<p>Dans la somme cela donne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">,</span> <span class="token string">"lancer"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>droite<span class="token punctuation">,</span> <span class="token string">"lancer"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> self
+</code></pre>
+<p>On pourrait faire pareil pour l'attribut valeur, mais ici on va plutôt utiliser la fonction <a href="https://docs.python.org/fr/3.14/builtins/functions.html#getattr"><code class="language-">getattr</code> de python</a> qui rend une valeur par dévaut si l'attribut n;est pas trouvé. Dans notre cas on rend directement l'objet (qui doit être un entier)  :</p>
+<ul>
+<li>le premier est l'objet pour lequel on veut faire la vérification</li>
+<li>le second est le nom de l'attribut/méthode à récupérer</li>
+<li>le troisième est le retour par défaut si l'attribut/méthode n'est pas trouvée.</li>
+</ul>
+<p>Dans notre cas pour la property valeur des <code class="language-">Somme</code> cela donne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+
+    valeur <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span>
+        <span class="token keyword">lambda</span> self<span class="token punctuation">:</span> <span class="token builtin">getattr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche<span class="token punctuation">,</span> <span class="token string">"valeur"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>gauche<span class="token punctuation">)</span>
+                     <span class="token operator">+</span> <span class="token builtin">getattr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>droite<span class="token punctuation">,</span> <span class="token string">"valeur"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>droite<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+</code></pre>
+<p>On peut maintenant modifier notre <code class="language-">main.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">somme <span class="token operator">=</span> d6<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">4</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
+<h2>À vous</h2>
+<h3>Le problème de la boule de feu</h3>
+<p>Terminons la mise à jour de la classe Dé en lui permettant de résoudre le problème de la boule de feu qui fait <code>2d6 + 1</code> dégâts. On supposera que l'on ne peut multiplier que un entier à un dé ou une Somme (3d6 ou 4(d6 + 2d20)). On ne pourra jamais multiplier 2 dés ensemble (d6 * d20 est interdit).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En implémentant une classe <code class="language-">Multiplication</code> et en utilisant la méthode spéciale <code class="language-">rmul</code> dans les dés.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>pour calculer <code class="language-">a * b</code> python fait plusieurs essais :</p>
+<ol>
+<li>il essaye <code class="language-">A.__mul__(B)</code></li>
+<li>si l'expression précédente rend une erreur de type <code class="language-">TypeError</code> alors python tente <code class="language-">B.__rmul__(A)</code></li>
+</ol>
+</div></div>
+
+<h3>Undo</h3>
+<p>On a déjà utilisé <a href="https://refactoring.guru/design-patterns/memento">le pattern memento</a> lorsque l'on a fait de <a href="../../../apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/#memento" class="interne">la compositions et de l'agrégation de dés</a>, utilisez cette partie pour créer une liste de undo :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant le design pattern memento et notre observer, créer une classe permettant de gérer les undo des dés</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous ne stockerez dans vos undos que les changements de valeurs (si un lancer garde la même valeur de dé ce n'est pas la peine de l'ajouter aux undos).</p>
+</div></div>
+
+<h3>Redo</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez une classe permettant de gérer les redo.</p>
+</div></div>
+
+<h3>Builder</h3>
+<p>Lorsqu'on joue à un jeu de dés il y a toujours plein de règles différentes pour compter les points :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez <a href="https://refactoring.guru/design-patterns/builder">le pattern Builder</a> pour créer une façon de compter les points de jets de 5 dés où l'on veut être capable de reconnaître :</p>
+<ul>
+<li>la somme des valeurs &gt; 15</li>
+<li>5 valeurs identiques</li>
+<li>les suites</li>
+</ul>
+<p>Et de créer des objets qui reconnaissent l'une, l'autre ou toute combinaison de ces 3 règles pour une liste de 5 dés.</p>
+</div></div>
+
 <h2>Pour aller plus loin</h2>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">MVC</a> ou <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation">MVP</a></li>
