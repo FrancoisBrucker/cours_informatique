@@ -772,9 +772,9 @@ $$
 <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Par Exemple</a> : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$</p>
 <p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :</p>
 <ul>
-<li>clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral</li>
-<li>clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (\overline{\alpha} \lor \beta \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux</li>
-<li>clause à $n &gt; 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivante $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)</li>
+<li>clause à $n &gt; 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivantes $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)</li>
+<li>clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (x \lor y \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral</li>
+<li>clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \beta) \land (x \lor \alpha \lor \overline{\beta}) \land (x \lor \overline{\alpha} \lor \beta) \land (x \lor \overline{\alpha} \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux</li>
 </ul>
 <p>Reprenons <a href="#exemple-SAT" class="interne">l'exemple de SAT</a> et appliquons lui la transformation :</p>
 <div>
@@ -785,7 +785,7 @@ $$
 <p>Devient :</p>
 <div>
 $$
-(x_1 \lor {x_2} \lor \alpha) \land (\alpha \lor \beta \land \overline{\beta}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \gamma) \land (\overline{\gamma} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \delta) \land (\overline{\delta} \lor \overline{x_4} \lor {x_5})
+(x_1 \lor {x_2} \lor \alpha) \land (x_1 \lor {x_2} \lor \overline{\alpha}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor \beta) \land (\overline{\beta} \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \gamma) \land (\overline{\gamma} \lor \overline{x_4} \lor {x_5})
 $$
 </div>
 <p>La transformation est bien linéaire. et résoudre SAT implique résoudre 3-SAT car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT est satisfait alors on en déduit que SAT l'est aussi car dans les méta clauses, il y a forcément un des littéraux initiaux qui est vrai.</p>
