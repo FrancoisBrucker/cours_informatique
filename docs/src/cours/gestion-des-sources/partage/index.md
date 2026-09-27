@@ -22,7 +22,7 @@ Si cette solution est idéal lorsque l'on est un unique développeur, elle devie
 
 Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants.
 
-Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
+Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le plus souvent possible pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
 
 {% attention2 "**À retenir**" %}
 
@@ -38,6 +38,8 @@ Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais n
 
 ### Projet : local et origine
 
+> <https://github.com/apps/desktop?locale=fr-fr>
+> 
 {% aller %}
 [Projet avec github desktop](./github-desktop){.interne}
 {% endaller %}

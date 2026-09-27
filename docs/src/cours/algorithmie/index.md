@@ -17,6 +17,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ajouter <https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html>
+
 <!-- TBD 
 
 Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.

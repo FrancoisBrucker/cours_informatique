@@ -7,7 +7,7 @@ authors:
   - François Brucker
 eleventyNavigation:
   prerequis:
-    - "/cours/système-et-réseau/bases-système/bases/fichiers-navigation/"
+    - "/cours/système/interagir-avec-système/fichiers-dossiers/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
 date: 2026-01-03
@@ -56,7 +56,7 @@ couper en parties
 
 ### <span id="dépot"></span>Dépôt des sources
 
-Déposer le code source pour qu'il puisse être utilisé par d'autres.
+Déposer le code source pour qu'il puisse être utilisé par d'autres. 
 
 {% aller %}
 [Dépôt des sources](./dépôt/){.interne}
