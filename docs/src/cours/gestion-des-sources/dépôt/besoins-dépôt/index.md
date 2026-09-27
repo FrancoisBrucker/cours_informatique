@@ -18,6 +18,13 @@ Supposons que notre projet soit de travailler sur un ensemble de documents (_e.g
 
 ![working directory](working_directory.png)
 
+Pour se fixer les idées :
+
+{% faire %}
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
+2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
+{% endfaire %}
+
 ## Snapshots
 
 Pour pouvoir modifier ses documents sans avoir peur de faire des erreurs, on peut épisodiquement sauvegarder tout le contenu du répertoire de travail (faire un _snapshot_) :
