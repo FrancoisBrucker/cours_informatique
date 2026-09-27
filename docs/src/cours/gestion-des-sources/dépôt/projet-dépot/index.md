@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Besoins
+title: "Projet : distribuer du code"
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,13 +10,62 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Examinons les besoins et les cas d'usage que devrait couvrir un SCM. De ces usages et besoins vont découler une architecture et des protocoles à mettre en place.
+Nous allons créer un projet sous github pour que le monde entier puisse l'utiliser s'il le désire.
 
-## Working directory
+{% info %}
+L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
+{% endinfo %}
 
-Supposons que notre projet soit de travailler sur un ensemble de documents (_e.g._ du code) regroupés au sein d'un répertoire de travail (_working directory_) dont le contenu évolue au cours du temps :
+## Le code
 
-![working directory](working_directory.png)
+Pour se fixer les idées utilisons ce projet :
+
+{% faire %}
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/besoins-d%C3%A9p%C3%B4t/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
+2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
+{% endfaire %}
+{% faire %}
+Une fois le fichier `main.py`{.fichier} exécuté, **remarquez** qu'un dossier `__pycache__`{.fichier} a été créé. Il correspond à l'import du module `num`{.language-} par le programme principal.
+{% endfaire %}
+
+
+
+
+
+## Créer un projet
+
+1. ![créer un projet](github-créer-un-projet-1.png)
+2. ![options du projet](github-créer-un-projet-2.png)
+
+
+> TBD un projet
+
+1. nouveau projet
+2. upload
+3. download zip
+4. versions :
+   1. mettre un tag : une release
+   2. mettre une nouvelle version avec upload (est-ce que ça marche ?)
+   3. faire une branche
+   4. voir les évolutions
+
+Ayez un `readme.md`{.fichier} comme page d'accueil
+
+> TBD attention à ne pas mettre dans le projet :
+>
+> - les fichiers de vscode
+> - l'environnement virtuel
+> - les fichiers qui ne sont pas des sources (test, pyc, etc)
+
+
+
+
+
+
+
+
+## Créer un projet
+
 
 ## Snapshots
 
