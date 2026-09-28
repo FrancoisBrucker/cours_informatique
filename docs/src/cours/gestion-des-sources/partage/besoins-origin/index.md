@@ -10,6 +10,23 @@ eleventyComputed:
 ---
 
 
+
+>  TBD placer une fois tout compris et qu'on bouge la head sur le projet.
+> 
+Enfin, si l'on change HEAD, les fichiers du commit sont placés dans l'index qui eux-même sont synchronisés avec l'index :
+
+![index revert commit](./index-revert-commit.png)
+
+Notez que comme `fichier2.txt` n'est pas dans l'index il n'est pas suivi par notre structure et n'est donc pas modifié dans le répertoire de travail.
+
+{% info %}
+Nous somme dans un cas où HEAD n'est pas associé à une branche, on dit qu'il est _branchless_.
+{% endinfo %}
+
+
+
+
+
 Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" de la structure de sauvegarde est appréciable. Parmi tous les avantages, on peut citer :
 
 - de synchroniser les changements lorsque l'on travaille en équipe,

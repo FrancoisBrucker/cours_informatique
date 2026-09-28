@@ -39,9 +39,16 @@ Pour cela on ajoute un _tampon_ entre la structure de sauvegarde et le répertoi
 
 ![index](./index.png)
 
-Après un commit, l'index contient l'ensemble des fichiers sauvé dans le commit. Si ce fichier est également dans le répertoire de travail, ils seront tous les 3 identiques. Tous les fichiers du répertoire de travail ne sont cependant pas forcément suivis :
+{% info %}
+Pour un projet github l'index correspond aux fichiers présent sur la page du projet
+{% endinfo %}
+
+Après un commit, l'index **contient l'ensemble des fichiers sauvé dans le commit**. Si ces fichiers sont également dans le répertoire de travail, ils seront tous les 3 identiques. Tous les fichiers du répertoire de travail ne sont cependant pas forcément suivis. Dans la figure ci-après seuls les fichiers fuchsia sont sauvés, les deux fichiers blancs sont uniquement dans le répertoire de travail :
 
 ![index post commit](./index-post-commit.png)
+
+
+>  TBD ici dire on ajoute un fichier.
 
 L'utilisateur continue de travailler sur son dossier de travail, les fichiers de l'index et du dossier de travail divergent (l'utilisateur travaille sur les fichiers `fichier1.txt` et `fichier2.txt`) :
 
@@ -62,15 +69,6 @@ On peut maintenant faire le commit, l'intégralité de l'index est commit :
 
 Et on se retrouve à nouveau dans la situation post-commit.
 
-Enfin, si l'on change HEAD, les fichiers du commit sont placés dans l'index qui eux-même sont synchronisés avec l'index :
-
-![index revert commit](./index-revert-commit.png)
-
-Notez que comme `fichier2.txt` n'est pas dans l'index il n'est pas suivi par notre structure et n'est donc pas modifié dans le répertoire de travail.
-
-{% info %}
-Nous somme dans un cas où HEAD n'est pas associé à une branche, on dit qu'il est _branchless_.
-{% endinfo %}
 
 ## Usage
 
