@@ -76,6 +76,8 @@ Gérer les évolutions de son code.
 [Partager du code source](./partage/){.interne}
 {% endaller %}
 
+> TBD ici projet git/vscode avec manipulation de branche : revert/reset.
+
 ### Bonnes pratiques
 
 {% aller %}

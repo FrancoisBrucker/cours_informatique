@@ -30,6 +30,11 @@ Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en v
 
 ## Projet 
 
+Un projet pour apprendre à créer un projet sous github :
+
+{% aller %}
+[Projet Numérologie](./projet-dépot/){.interne}
+{% endaller %}
 
 
 

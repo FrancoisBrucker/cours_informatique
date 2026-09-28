@@ -24,11 +24,6 @@ Pour pouvoir modifier ses documents sans avoir peur de faire des erreurs, on peu
 
 ![snapshots](snapshots.png)
 
-{% faire %}
-
-{% endfaire %}
-
-
 ## Tags
 
 Cette première organisation permet de faire une sauvegarde avant une modification, ou de garder des versions précédentes du projet. Le nom de la sauvegarde permet de tracer les étapes importantes du projet (`version1` par exemple dans la figure ci-dessus).
@@ -58,3 +53,12 @@ Formalisons ceci avec la notion de **_commit_**, qui est constitué :
 
 ![commit](./commits.png)
 
+Un tag est alors un nom de commit :
+
+{% note2 "**Définition**" %}
+Un **_tag_** est une référence vers un commit donné. Il est constitué :
+
+- d'un nom
+- d'un lien vers le commit qu'il référence
+
+{% endnote2 %}

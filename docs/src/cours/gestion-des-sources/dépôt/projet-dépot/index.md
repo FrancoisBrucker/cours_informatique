@@ -21,7 +21,7 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite 
 Pour se fixer les idées utilisons ce projet :
 
 {% faire %}
-1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/besoins-d%C3%A9p%C3%B4t/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
 2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
 {% endfaire %}
 {% faire %}
@@ -29,81 +29,148 @@ Une fois le fichier `main.py`{.fichier} exécuté, **remarquez** qu'un dossier `
 {% endfaire %}
 
 
-
-
-
-## Créer un projet
+## <span id="création"></span>Créer un projet
 
 1. ![créer un projet](github-créer-un-projet-1.png)
 2. ![options du projet](github-créer-un-projet-2.png)
 
+Résultat : ![options du projet](github-créer-un-projet-3.png)
 
-> TBD un projet
+Félicitation vous avez fait votre premier commit !
 
-1. nouveau projet
-2. upload
-3. download zip
-4. versions :
-   1. mettre un tag : une release
-   2. mettre une nouvelle version avec upload (est-ce que ça marche ?)
-   3. faire une branche
-   4. voir les évolutions
+Chaque **_commit_** est associé à une **_branche_** (ici `main`) et est obligatoirement constitué de :
 
-Ayez un `readme.md`{.fichier} comme page d'accueil
+- du nom de la personne qui a effectué le commit, ici `Test-cours-ecm`
+- du numéro du commit, ici `da919d7` (donné automatiquement).
+- d'un message (d'une ligne) décrivant le commit, ici `initial commit`
 
-> TBD attention à ne pas mettre dans le projet :
->
-> - les fichiers de vscode
-> - l'environnement virtuel
-> - les fichiers qui ne sont pas des sources (test, pyc, etc)
+### Fichier `readme.md`{.fichier}
 
+Le fichier n'est cependant pas celui qu'on veut :
 
+{% faire %}
+Éditez le fichier `README.md`{.fichier} :
 
+![éditer readme](./editer-readme.png)
 
+Puis cliquez sur le gros bouton vert `commit changes` pour voir apparaître cette fenêtre :
 
+![commit readme](./commit-readme.png)
 
+Puis cliquez sur `commit changes`.
+{% endfaire %}
 
+Un deuxième commit !
 
-## Créer un projet
+### Upload des fichiers
 
+Il nous reste à mettre les fichiers sur le dépôt :
 
-## Snapshots
+{% faire %}
+Sur la page de votre projet, à gauche du bouton vert `code`, il y a un menu déroulant `add file`. Cliquez dessus et uploadez les 3 fichiers pythons :
 
-Pour pouvoir modifier ses documents sans avoir peur de faire des erreurs, on peut épisodiquement sauvegarder tout le contenu du répertoire de travail (faire un _snapshot_) :
+![upload](./upload.png)
 
-![snapshots](snapshots.png)
+Puis commitez vos ajouts.
+{% endfaire %}
+{% attention %}
+Il e faut pas uploader le dossier `__pycache__`{.fichier} qui est créé à l'exécution : 
+
+**On ne met sur github que les fichiers sources de votre projet, pas les fichiers générés.**
+
+{% endattention %}
+
+Sur la page de votre projet, sur la droite, vous voyez un lien `activity`. En cliquant dessus vous voyez les différents commits effectués :
+
+![liste commis](./liste-commits.png)
+
+## Tag
+
+En cliquant sur le lien tag sur la fenêtre :
+
+![tag](./tag.png)
+
+On vous proposera de créer une nouvelle release. 
+
+{% faire %}
+1. commencez par créer un nouveau tag que vous nommerez `release`
+2. donnez un titre à notre release, par exemple `1.0`
+3. commitez votre release !
+
+{% endfaire %}
+{% info %}
+
+{% endinfo %}
+
+Ceci a créé une release, notre 1.0. Pour la voir, cliquez sur le lien release :
+
+![lien release](./lien-release.png)
+
+## V2
+
+Après quelque temps de travail, on est arrivé à une nouvelle version publiable :
+
+{% faire %}
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v2?filename=projet-numérologie-v2)
+2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
+{% endfaire %}
+
+Il nous faut mettre à jour le projet sur github :
+
+{% faire %}
+Ulpoadez les fichiers de la v2.
+{% endfaire %}
+
+La fenêtre principale de votre projet doit ressembler à quelque chose du type :
+
+![v2 upload](./upload-v2.png)
+
+Vous remarquerez que :
+
+- on a maintenant 4 commit
+- que le fichier `teste.json`{.fichier} a été ajouté
+- que le fichier `main.py`{.fichier} a été modifié
+- que les deux autres fichiers (`num.py`{.fichier} et `test_num.py`{.fichier}) n'ont pas changé entre les deux versions.
+
+Voyons ce qui a changé dans le fichier `main.py`{.fichier} :
 
 {% faire %}
 
+Cliquez sur le lien `main.py`{.fichier} depuis la fenêtre principale du projet :
+
+![main](./v2-main.png)
 {% endfaire %}
 
+Vous devriez voir le fichier `main.py`{.fichier} que vous avez uploadé.
+   
+{% faire %}
+Cliquez sur le lien history :
 
-## Tags
+![main](./v2-main-history.png)
+{% endfaire %}
 
-Cette première organisation permet de faire une sauvegarde avant une modification, ou de garder des versions précédentes du projet. Le nom de la sauvegarde permet de tracer les étapes importantes du projet (`version1` par exemple dans la figure ci-dessus).
+Vous devriez voir les différents commits où ce fichier a été modifié.
 
-Le nom du fichier de sauvegarde étant unique, il ne permet pas de stocker plus d'une information (la version `1.0` pouvant être la version courante du projet par exemple). Une première amélioration de notre structure est d'ajouter des **labels** (_tags_) qui permettent de caractériser, si besoin, des sauvegardes :
+{% faire %}
+Cliquez sur le numéro du dernier commit :
 
-![tags](tags.png)
+![main](./v2-main-commit.png)
+{% endfaire %}
+{% info %}
+Voir [ce doc](https://www.designveloper.com/blog/hash-values-sha-1-in-git/) pour voir comment git associe chaque commit à un sha pour le retrouver.
+{% endinfo %}
 
-La version `1.0` à son propre tag. Le tag `main` correspond à la version courante (par exemple une correction de bug de la `1.0`) et le tag `dev` àla version de développement avec des ajouts de fonctionnalités par rapport à la version courante.
 
-{% lien %}
-Numérotation standard des versions appelée [Gestion sémantique de version (_semver_)](https://semver.org/lang/fr/).
-{% endlien %}
+Vous devriez voir un "_diff_" entre la v1 et la v2 pour le commit :
 
-## Commits
+- en rouge ce qui a disparu
+- en vert ce qui a été ajouté
 
-En utilisant un dossier partagé (un drive par exemple) si le projet est effectué par plusieurs personnes, chaque snapshot du dossier est associé :
+Et ce pour chaque fichier mis à jour pour ce commit.
 
-- au moment où cette sauvegarde à été effectuée : QUAND
-- à l'utilisateur qui a sauvegardé le dossier : QUI
+On termine en faisant une seconde release :
 
-Formalisons ceci avec la notion de **_commit_**, qui est constitué :
-
-- d'une sauvegarde du répertoire de travail (un snapshot du working directory)
-- de QUI a effectué cette sauvegarde
-- de QUAND a été effectué cette sauvegarde
-
-![commit](./commits.png)
+{% faire %}
+Faite la release v2 du projet. Vous utiliserez le même tag que pour la v1, seul le titre (ici c'est la v2) doit changer.
+{% endfaire %}
 

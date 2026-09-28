@@ -11,6 +11,9 @@ eleventyComputed:
 ---
 
 
+> TBD commit = histoire du dev. 
+> TBD pour l'instant linéaire mais la def permet que deux personnes aient le même parent si on a plusieurs développement en parallèle
+> TBD puis branches et du coup DAG (ce qui, on va le voir permet aussi d'avoir plusieurs parents)
 
 ## DAG
 
@@ -29,15 +32,6 @@ Un **_commit_** d'un projet est constitué :
 
 {% endnote %}
 
-Et d'un tag :
-
-{% note "**Définition**" %}
-Un **_tag_** est une référence vers un commit donné. Il est constitué :
-
-- d'un nom
-- d'un lien vers le commit qu'il référence
-
-{% endnote %}
 
 On obtient alors une structure de sauvegarde sous la forme d'[un DAG](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique) avec le premier commit faisant office de **racine** (le seul élément du graphe des commit à ne pas avoir de parents).
 
@@ -94,6 +88,11 @@ Enfin, on peut déplacer le pointeur courant sur un commit particulier, par exem
 {% note "**Définition**" %}
 Le pointeur courant **_HEAD_** est une référence vers une branche ou un commit donné. Il permet de faire le lien entre commit et working directory.
 {% endnote %}
+
+
+
+
+
 
 
 
