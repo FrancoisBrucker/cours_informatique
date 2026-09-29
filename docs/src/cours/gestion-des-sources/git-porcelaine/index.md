@@ -16,30 +16,10 @@ eleventyComputed:
 >
 > TBD utiliser tous les usages vue dans les parties précédentes (même add/reset -p)
 
-> TBD utiliser gh pour s'autentifier et creer un repo git. <https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line>
+> TBD utiliser gh pour s'authentifier et créer un repo git. <https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line>
 >
 
 Comment fonctionne git et ses utilisations en ligne de commande.
-
-## Projet git
-
-{% aller %}
-
-[Créer un projet git](./projet-git){.interne}
-
-{% endaller %}
-
-Où l'on rentre quand même pas mal dans les détails pour comprendre comment fonctionne ce (merveilleux) outils.
-
-## Commandes indispensables
-
-{% aller %}
-
-[Description des principales commandes git](./commandes){.interne}
-
-{% endaller %}
-
-Les commandes indispensables à connaître pour gérer un projet `git` en lignes de commandes.
 
 ## Rebase en détails
 

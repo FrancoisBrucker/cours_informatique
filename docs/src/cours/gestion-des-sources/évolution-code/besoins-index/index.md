@@ -13,6 +13,8 @@ eleventyComputed:
 
 Les commits d'un projet ajoutent, modifient voir suppriment des fichiers à un projet. Ils montrent l'évolution temporelle du projet et son liées à l'état précédent du projet, appelé état parent, qu'ils modifient.
 
+<span id="déf-commit"></span>
+
 {% note2 "**Définition**" %}
 Un **_commit_** d'un projet est constitué :
 
@@ -43,41 +45,37 @@ Pour cela on ajoute un _tampon_ entre la structure de sauvegarde et le répertoi
 Pour un projet github l'index correspond aux fichiers présent sur la page du projet
 {% endinfo %}
 
-Après un commit, l'index **contient l'ensemble des fichiers sauvé dans le commit**. Si ces fichiers sont également dans le répertoire de travail, ils seront tous les 3 identiques. Tous les fichiers du répertoire de travail ne sont cependant pas forcément suivis. Dans la figure ci-après seuls les fichiers fuchsia sont sauvés, les deux fichiers blancs sont uniquement dans le répertoire de travail :
+Après un commit, l'index **contient l'ensemble des fichiers sauvé dans le commit**. Si ces fichiers sont également dans le répertoire de travail, ils seront tous les 3 identiques :
 
 ![index post commit](./index-post-commit.png)
 
-
->  TBD ici dire on ajoute un fichier.
-
-L'utilisateur continue de travailler sur son dossier de travail, les fichiers de l'index et du dossier de travail divergent (l'utilisateur travaille sur les fichiers `fichier1.txt` et `fichier2.txt`) :
+Lorsque l'on ajoute un fichier au projet, l'index et le dossier de travail divergent (l'utilisateur vient de créer `fichier2.txt`) :
 
 ![index travail commit](./index-travail-commit.png)
 
-Pour préparer le nouveau commit, l'utilisateur place dans l'index les fichiers modifiés qu'il veut sauvegarder (les autres sont déjà dans l'index), ici :
+Pour préparer le nouveau commit, l'utilisateur place dans l'index les fichiers modifiés qu'il veut sauvegarder (les autres sont déjà dans l'index), ici il ajoute  `fichier2.txt` :
 
-- il ajoute  `fichier1.txt`
-- il décide également d'ajouter  `fichier2.txt`
 
 ![index pré commit](./index-pre-commit.png)
 
 Remarquez qu'un fichier du dossier n'est toujours pas suivi.
 
-On peut maintenant faire le commit, l'intégralité de l'index est commit :
+On peut maintenant faire le commit, l'intégralité de l'index est commit (on a un commit de plus dans la chaîne) :
 
 ![index commit](./index-commit.png)
 
-Et on se retrouve à nouveau dans la situation post-commit.
+Et on se retrouve à nouveau dans la situation post-commit :
 
+![index commit](./index-2.png)
 
-## Usage
+## Diff
 
 L'index présente ce que vous allez sauver dans votre sauvegarde. À tout moment, il vous indique donc :
 
-- les différences entre le head de la sauvegarde et ce que vous aller ajouter
+- les différences entre votre sauvegarde actuelle et ce que vous aller ajouter
 - les différences et ce que vous aller sauver et votre travail actuel
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 On appelle **_`diff`_** les différences entre deux commits, entre le répertoire de travail et l'index ou encore entre deux fichiers.
 
 A savoir :
@@ -85,35 +83,37 @@ A savoir :
 - les fichiers présent dans un commit et pas dans un autre
 - les lignes différentes dans un fichier présent dans les deux commits
 
-{% endnote %}
+{% endnote2 %}
 
-### différence entre l'index et votre travail
+Attention cependant, ces diff ne sont que des constructions, ils ne sont pas stocké dans le système.
 
-Par défaut l'index contient l'ensemble des fichiers sauvegardés du head de la sauvegarde. Après travail ajout et modifications de fichiers le répertoire de travail va diverger de l'index :
+## Fichiers ignorés
 
-![diff index working directory](./index-diff-working-dir.png)
+Certains fichiers ne doivent pas être suivis. Par exemple :
 
-Connaître les différences entre l'index et le répertoire de travail permet de voir le travail effectué.
+- les fichiers que produisent votre code comme les fichiers compilés
+- les bibliothèques externe que vous ne faite qu'utiliser
+- ...
 
-### différence entre la sauvegarde et l'index
+Mais aussi vos propres fichiers qui risquent d'entrer en collision avec ceux des autres utilisateurs comme
 
-Pour mettre à jour la sauvegarde, on ajoute à l'index les nouveaux fichiers ou les fichiers modifiés :
+- la configuration de votre IDE pour le projet,
+- vos fichiers temporaires
+- ...
 
-![diff index sauve](./index-diff-sauvegarde.png)
+Et surtout les fichiers confidentiels que vous ne voulez surtout pas voir apparaître sur github :
 
-Dans la figure ci-dessus, l'index est maintenant égal au répertoire de travail et différent de la sauvegarde.
+- les mots de passe de votre base de donnée,
+- le dossier mac `.DS_Store`{.fichier} contenant tous les fichiers supprimés
+- ...
 
-Les différences entre l'index et le head de la sauvegarde donnera les modifications au projet que l'on va sauvegarder.
+Ces fichiers doivent être ajoutés à une liste de fichier à ignorer, sans ça vous devrez toujours faire attention lorsque vous regarderez les différences entre l'index et le répertoire de travail.
 
-L'index permet de ne pas avoir à tout sauvegarde en une fois. Par exemple dans le cas ci-dessous, il y a des différences :
+Par exemple, si le `fichier3.txt`{.fichier} n'est jamais à sauver, une fois ajoutée à la liste des fichiers à ignorer il n'apparaîtra pas comme une différence (mais on pourra toujours à tout moment l'ajouter) :
 
-- entre l'index et la sauvegarde (`fichier2.txt`{.fichier} a été modifié et un fichier ajouté au dossier)
-- entre l'index et le répertoire de travail (`fichier3.txt`{.fichier} a été créé)
+![ignore list](./index-ignorelist.png)
 
-![diff index sauve et  working directory](./index-diff-sauvegarde-work.png)
+{% attention2 "**À retenir**" %}
+La liste des fichier à ignorer est très pratique en code pour ignorer les environnements virtuels, les fichiers de configurations de l'IDE, les fichiers compilés, les bibliothèques partagées. Bref tout ce qui n'est pas _stricto sensu_ utile au code du projet.
+{% endattention2 %}
 
-
-
-
-> TBD voir les modif.
->

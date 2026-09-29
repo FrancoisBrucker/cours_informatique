@@ -36,27 +36,21 @@ Nous allons illustrer toutes les parties de ce cours avec un projet entièrement
 ## Index
 
 {% aller %}
-[Index et commits](./besoins-index){.interne}
+1. [Index et diffs](./besoins-index){.interne}
+2. [projets commits](./github-projet-commits){.interne}
 {% endaller %}
 
 ## Branches
 
-> TBD évolution divergentes du code
->
-## Merge et rebase
-
-> TBD synchronisation de code
-
-## Besoins pour une gestion des sources locale
-
-
 {% aller %}
-[Besoins](./besoins-gestion-sources){.interne}
+1. [Branches](./besoins-branches){.interne}
+2. [projets branches](./github-projet-branches){.interne}
 {% endaller %}
 
-## Projet : gestion des sources
+## Merge et rebase
 
 {% aller %}
-[Projet uniquement avec github](./github-projet){.interne}
+1. [Fusion de branches](./besoins-merge-rebase){.interne}
+2. [projets fusion de branches](./github-projet-merge-rebase){.interne}
 {% endaller %}
 

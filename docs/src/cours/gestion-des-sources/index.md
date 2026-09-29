@@ -39,19 +39,6 @@ Mais surtout : **ne pas avoir peur** de modifier, tester et expérimenter des no
 
 Ces bénéfices sont incommensurables lorsque l'on travaille à plusieurs sur un projet et sont très utiles même pour un projet solo.
 
-<!-- TBD 
-
-> TBD numéro de commit ?
-
-peut-être mettre le projet avant la théorie ? Ou en même temps ? 
-
-couper en parties
-
-1. terminal et rebase on pull
-2. git bisect
-3. interne
--->
-
 ## Principes 
 
 ### <span id="dépot"></span>Dépôt des sources
@@ -59,7 +46,7 @@ couper en parties
 Déposer le code source pour qu'il puisse être utilisé par d'autres. 
 
 {% aller %}
-[Dépôt des sources](./dépôt/){.interne}
+[Dépôt des sources](./besoins-dépôt/){.interne}
 {% endaller %}
 
 ### Gestion du code source
@@ -69,30 +56,55 @@ Gérer les évolutions de son code.
 {% aller %}
 [Gestion de l'évolution du code source](./évolution-code/){.interne}
 {% endaller %}
+ 
+## Git chez soit
 
-### Partager du code source
+{% lien %}
 
-{% aller %}
-[Partager du code source](./partage/){.interne}
-{% endaller %}
+- [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs)  (et le 11ème il s'est reposé)
+- [Une histoire de git en français](https://www.youtube.com/watch?v=LDy6Rv0kU1Q)
 
-> TBD ici projet git/vscode avec manipulation de branche : revert/reset.
+{% endlien %}
 
-### Bonnes pratiques
+Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :
 
-{% aller %}
+- utiliser git avec votre éditeur de texte comme vscode
+- ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations
 
-[Bonnes pratiques](./bonnes-pratiques){.interne}
-
-{% endaller %}
-
-## Outils
+Il vous faudra installer le programme `git` en ligne de commande qui est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer.
 
 {% aller %}
-
-[Outils](./outils){.interne}
+1. [Configurer et initialiser ses projets git](./git-init){.interne}
+2. [Projet git](./projet-git){.interne}
 
 {% endaller %}
+
+
+## Partager du code source
+
+{% aller %}
+1. [Partager du code source](./besoins-partage/){.interne}
+2. [Authentification à l'origine](./github-authentification){.interne}
+3. [Projet avec github desktop](./github-projet-remote){.interne}
+{% endaller %}
+
+## Résumé des commandes
+
+{% aller %}
+[principales commandes git](./commandes-git/){.interne}
+
+{% endaller %}
+
+## Misc
+
+{% aller %}
+
+1. [Outils](./outils){.interne}
+2. [Bonnes pratiques](./bonnes-pratiques){.interne}
+3. [Besoins de gestion de l'historique](./besoins-historique){.interne}
+
+{% endaller %}
+
 
 ## Pour aller plus loin
 
@@ -144,68 +156,20 @@ Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'
 
 {% endlien %}
 
-### Altération et modification de l'historique
 
-{% aller %}
-[Besoins de gestion de l'historique](./besoins-historique){.interne}
-{% endaller %}
+<!-- TBD 
 
-> TBD projet avec desktop voir <https://docs.github.com/en/desktop> partie managing commits.
+> TBD numéro de commit ?
 
-### Authentification
+peut-être mettre le projet avant la théorie ? Ou en même temps ? 
 
-{% aller %}
-[Authentification à l'origine](./github-authentification){.interne}
-{% endaller %}
+couper en parties
 
-### Github actions
+1. git bisect
+2. interne
+-->
 
-> TBD :
->
-> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
-> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
-
-## Git
-
-{% lien %}
-
-- [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs)  (et le 11ème il s'est reposé)
-- [Une histoire de git en français](https://www.youtube.com/watch?v=LDy6Rv0kU1Q)
-
-{% endlien %}
-
-Est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer. On verra aussi comment créer et cloner un projet pour github.
-
-### Connexion ssh à github
-
-Nous allons utiliser des clés ssh pour se connecter à github, donc si vous ne l'avez pas encore fait :
-
-{% aller %}
-[Créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
-{% endaller %}
-
-Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
-
-### Installation et configuration
-
-Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :
-
-- utiliser git avec votre éditeur de texte comme vscode
-- ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations
-
-Il vous faudra installer le programme `git` en ligne de commande.
-
-{% info %}
-L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.
-{% endinfo %}
-
-{% aller %}
-[Configurer et initialiser ses projets git](./git-init){.interne}
-{% endaller %}
-
-
-
-
+<!-- 
 
 ## Porcelaine et plomberie de git
 
@@ -230,6 +194,15 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 > TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d> et <https://graphite.dev/guides/git-hash>. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
+
+### Github actions
+
+> TBD :
+>
+> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
+> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk> 
+
+-->
 
 ## Bibliographie
 

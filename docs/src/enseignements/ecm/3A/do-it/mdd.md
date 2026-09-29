@@ -83,7 +83,7 @@ Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tes
 {% endlien %}
 
 
-Entrainez vous :
+Entraînez vous :
 
 {% faire %}
 
@@ -91,6 +91,8 @@ Entrainez vous :
 - [advent of code](https://adventofcode.com/)
 
 {% endfaire %}
+
+<!-- 
 
 Pour la prochaine fois, quatre groupes :
 
@@ -105,6 +107,8 @@ Pour la prochaine fois, quatre groupes :
 
 Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
 {% endattention %}
+
+ -->
 
 
 ## Partie III
@@ -125,18 +129,29 @@ On a vu le design pattern composite dans le projet TDD, il en existe de nombreux
 [Design pattern](/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/){.interne}
 {% endaller %}
 
-Pour la prochaine fois 2 groupes :
+<!-- 
 
+Pour la prochaine :
 
 {% faire %}
-Pour la prochaine fois, X groupes :
-
-- choisissez un design pattern que l'on a pas  vu à présenter
-- pour quelqu'un qui connaît `git`, comment s'en servir avec vscode.
+Pour la prochaine fois, tous : choisissez un design pattern que l'on a pas  vu à présenter
 
 Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
 
-{% endfaire %}
+{% endfaire %} 
+
+-->
+
+## Partie IV
+
+> 6h
+
+> gestion du code source
+
+
+{% aller %}
+[Gestion du code source](/cours/gestion-des-sources/){.interne}
+{% endaller %}
 
 <!-- 
 ## Outils python de gestion de package

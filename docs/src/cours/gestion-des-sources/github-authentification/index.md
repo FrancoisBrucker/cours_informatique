@@ -15,7 +15,7 @@ Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouv
 - via un web token
 - via une clé ssh
 
-L'accès à l'origin doit être authentifié. POur github cela peut prendre essentiellement deux formes :
+L'accès à l'origin doit être authentifié. Pour github cela peut prendre essentiellement deux formes :
 
 - une authentification via un navigateur (web token)
 - une authentification via une clé ssh
@@ -42,6 +42,8 @@ A priori se fait tout seul si vous utilisez l'application.
 
 ## Clés ssh
 
+Cette méthode est à utiliser de préférence. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
+
 Correspond à un clone en utilisant la méthode ssh :
 
 ![clone ssh](./github-clone-ssh.png)
@@ -55,4 +57,14 @@ La partie du fichier de configuration `.git/config`{.fichier} dédié à l'origi
 
 ```
 
-Cette méthode est à utiliser de préférence. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
+Nous allons utiliser des clés ssh pour se connecter à github, donc si vous ne l'avez pas encore fait :
+
+{% lien %}
+1. [Générer une clé ssh](https://docs.github.com/fr/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
+2. sous windows créez un agent au démarrage en copiant [les commandes de ce tutoriel](https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement#host-key-generation) dans un powershell **en mode administrateur**
+3. Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
+{% endlien %}
+{% info %}
+Pour une utilisation complète de ssh : [allez au cours dédié](/cours/réseau/ssh/){.interne}
+{% endinfo %}
+
