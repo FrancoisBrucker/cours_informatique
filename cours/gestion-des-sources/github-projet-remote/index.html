@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projet : remote github</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Projet : remote github</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-projet-remote/">Projet : remote github</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Nous allons créer un projet sur github puis le clone en local pour pouvoir y travailler. Comme nous allons utiliser une authentification ssh le plus simple est commencer par créer un projet sur github</p>
+<h2>Init du projet coté github</h2>
+<h3>Création sur github</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant si nécessaire <a href="../%C3%A9volution-code/github-projet-cr%C3%A9ation/" class="interne">un des projets précédent</a>, créez un nouveau projet github que vous nommerez <code>animaux</code>. Faites en sorte que ce projet :</p>
+<ul>
+<li>soit public</li>
+<li>contienne  un fichier readme</li>
+<li>ne contienne pas  de fichier <code class="fichier">.gitignore</code>.</li>
+</ul>
+</div></div>
+
+<h3>Ajout de collaborateurs</h3>
+<p>Vous pouvez ajouter d'autres personnes à votre projet :</p>
+<ol>
+<li><img src="github-ajout-1.png" alt="ajout-1"></li>
+<li><img src="github-ajout-2.png" alt="ajout-2"></li>
+<li>sur le compte invité, on peut accepter l'invitation : <img src="github-ajout-3.png" alt="ajout-3"></li>
+<li>de retour dans l'interface du projet, on voit les collaborateurs : <img src="github-ajout-4.png" alt="ajout-4"></li>
+</ol>
+<p>Toutes les personnes peuvent maintenant ajouter et modifier des fichiers.</p>
+<h2>Init du projet coté local</h2>
+<h3>Clone</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Clonez le projet en ssh. Pour cela :</p>
+<ol>
+<li>copiez la chaîne de caractère du clone ssh depuis la page du projet
+<img src="clone-ssh.png" alt="clone"></li>
+<li>dans un terminal placez vous dans un dossier pouvant contenir votre projet et tapez la commande : <code>git clone &lt;votre chaîne copiée&gt;</code></li>
+</ol>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On suppose que :</p>
+<ol>
+<li>vous avez lié votre clé publique ssh à votre compte github</li>
+<li>vous avez un agent en local qui tourne avec votre clé</li>
+</ol>
+</div></div>
+
+<p>Vous pouvez maintenant ouvrir ce dossier comme projet vscode.</p>
+<h3>Config</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vérifiez la configuration de votre projet (c'est le fichier <code class="fichier">.git/config</code>).</p>
+</div></div>
+
+<p>Vous devriez voir un champ réservé au serveur distant origin.</p>
+<h2>Ajout de fichiers</h2>
+<h3>Le fichier <code class="fichier">.gitignore</code></h3>
+<p>On commence toujours par ajouter un fichier <code class="fichier">.gitignore</code> au projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Créez un fichier <code class="fichier">.gitignore</code> et mettez-y le contenu du lien ci-après.</li>
+<li>Ajoutez le au projet et commitez le tout</li>
+</ol>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://gist.github.com/octocat/9257657">une liste de fichiers courant à ignorer</a></p>
+</div></div>
+
+<p>En faisant un <code>git status</code> vous devriez voir que vous êtes en avance de 1 commit sur l'origine :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean</code></pre>
+<p>Suivons les conseilles de git :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez la commande <code>git push</code> pour envoyer votre fichier <code class="fichier">.gitignore</code> sur github</p>
+</div></div>
+
+<p>Vérifiez que c'est ok !</p>
+<h3>Ajoutons d'autres fichiers</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+</div></div>
+
+<p>Ajoutons y 3 fichiers :</p>
+<ul>
+<li>
+<p><code class="fichier">poissons.txt</code></p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Anchois
+Sardine
+Requin
+</code></pre>
+</li>
+<li>
+<p><code class="fichier">mammifères.txt</code></p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Chat
+Homme
+Girafe
+</code></pre>
+</li>
+<li>
+<p><code class="fichier">oiseaux.txt</code></p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Pinson
+Mouette
+Goéland
+</code></pre>
+</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vérifiez (avec un <code>git status</code> qu'il y a bien 3 fichiers non suivi) puis :</p>
+<ol>
+<li>ajoutez les tous avec la commande <code>git add --all</code></li>
+<li>refaite un git status pour voir que nos 3 fichiers ont été rajoutés à l'index</li>
+<li>commit le tout avec la commande <code>git commit -m&quot;add 3 files&quot;</code></li>
+<li>push le tout sur l'origin</li>
+</ol>
+</div></div>
+
+<h2>Résolution de conflit</h2>
+<p>On va :</p>
+<ol>
+<li>modifier sur le site de github un fichier</li>
+<li>modifier le même fichier chez nous</li>
+<li>tenter de pousser nos modifications sur le serveur.</li>
+</ol>
+<h3>situation sur github</h3>
+<p>On modifie le fichier <code class="fichier">oiseaux.txt</code> sur <strong>github</strong> en remplaçant son contenu par :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Pinson du nord
+Mouette
+Gabian
+Hibou petit duc</code></pre>
+<p>Et on commit les changements :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B</code></pre>
+<h3>situation à la maison</h3>
+<p>On modifie le fichier <code class="fichier">oiseaux.txt</code> en <strong>local</strong> en remplaçant son contenu par la liste des oiseaux par ordre alphabétique :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Goéland
+Mouette
+Pinson
+</code></pre>
+<p>Et on commit les changements via la commande qui fait tout en une fois :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> commit -am<span class="token string">"modif oiseaux par ordre alphabetique"</span></code></pre>
+<p>On est dans la situation :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">local : A -> C</code></pre>
+<h3>Situation globale</h3>
+<p>On se retrouve dans la situation suivante, sur la même branche <code>main</code> :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
+          \
+local  :    -> C</code></pre>
+<p>Pour connaître l'état de l'origine par rapport à celui en local on utilise la commande : <code>git fetch</code>. On peut ensuite faire un <code>git status</code> pour voir ce qu'il en est :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+</code></pre>
+<p>Nos développements ont divergé : github et le local différent tous deux d'un commit.</p>
+<h3>Merge ou rebase Résolution du problème</h3>
+<p>Nous pourrions faire comme précédemment et faire un <em>merge</em> des deux histoires. On aurait du coup un historique comme ça :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B --> D
+          \     /
+nous   :    -> C</code></pre>
+<p>Mais notre nouvelle branche n'est pas informative. Elle ne correspond à rien d'un point de vue sémantique. C'est juste une façon de rabouter les deux main ensemble. Pour ce genre de cas (c'est à dire 90% du temps) on préfère une autre solution : le <strong>rebase</strong>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>A moins que les branches soient liées au <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">workflow</a>, on privilégiera toujours le rebase au merge</p>
+</div></div>
+
+<p>On va re-écrire notre histoire en fonction de l'origine, c'est à dire transformer ça :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
+          \
+nous   :    -> C</code></pre>
+<p>en ça :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
+               \
+nous   :         -> C'</code></pre>
+<p>Il faut transformer notre commit C en le commit C' qui pourra s'intégrer tout seul dans l'histoire de l'origine : cette opération s'appelle un rebase.</p>
+<p>Si vous avez suivi les instructions de configuration, c'est exactement ce que va faire un <code>git pull</code>.</p>
+<h3>Git rebase</h3>
+<p>Tentons de récupérer les infos de l'origin avec un <code>git pull</code> :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Auto-merging oiseaux.txt
+CONFLICT (content): Merge conflict in oiseaux.txt
+error: could not apply 6ae11b1... modif oiseaux par ordre alphabetique
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply 6ae11b1... # modif oiseaux par ordre alphabetique
+</conflicted_files></code></pre>
+<p>La fusion de branches automatique n'a pas fonctionné. Le fichier <code>oiseaux.txt</code> est devenu méconnaissable :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text"><<<<<<< HEAD
+Pinson du nord
+Mouette
+Gabian
+Hibou petit duc
+=======
+Goéland
+Mouette
+Pinson
+
+>>>>>>> 6ae11b1 (modif oiseaux par ordre alphabetique)</code></pre>
+<p>Mais on sait faire. Il suffit d'éditer le ficher dans vscode et de faire comme pour le merge dans le projet précédent. Le nouveau fichier <code>oiseaux.txt</code> devient :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Goéland
+Hibou petit duc
+Mouette
+Pinson du nord</code></pre>
+<p>On a réglé un problème dans le rebase. On peut maintenant finaliser notre mise à jour :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>on commit nos changements : <code>git commit -am&quot;oiseaux merge&quot;</code></li>
+<li>on poursuit le rebase : <code>git rebase --continue</code></li>
+<li>on git push pour envoyer notre mise à jour au serveur.</li>
+</ol>
+</div></div>
+
+<h2>log</h2>
+<p>Au final un git log nous donne tout ce qu'on a fait :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">commit 4ec6f84ece0572b7baf01ce3468db94c5ee79692 (HEAD -> main, origin/main, origin/HEAD)
+Author: François Brucker <francois.brucker@gmail.com>
+Date:   Tue Sep 29 15:44:56 2026 +0200
+
+    oiseaux merge
+
+commit 6a1378738a6b8e02767ddbfd36151a779333932c
+Author: François Brucker <francois.brucker@gmail.com>
+Date:   Tue Sep 29 15:34:11 2026 +0200
+
+    Update oiseaux.txt
+
+commit e176710577ec2fa64cbd4a5461cdfdb7c37c62c1
+Author: François Brucker <francois.brucker@gmail.com>
+Date:   Tue Sep 29 15:30:12 2026 +0200
+
+    add 3 files
+
+commit ce8401090639b72f3d78c5bca9f87982480fbd8e
+Author: François Brucker <francois.brucker@gmail.com>
+Date:   Tue Sep 29 15:20:07 2026 +0200
+
+    first commit
+
+commit 37357b1a27be5671fd2c0aa5be22b78e9e770c09
+Author: François Brucker <francois.brucker@gmail.com>
+Date:   Tue Sep 29 14:54:59 2026 +0200
+
+    Initial commit
+</francois.brucker@gmail.com></francois.brucker@gmail.com></francois.brucker@gmail.com></francois.brucker@gmail.com></francois.brucker@gmail.com></code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

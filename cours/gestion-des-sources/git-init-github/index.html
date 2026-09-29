@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-init/">Installation et configuration de Git</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-init-github/">Installation et configuration de Git</a>
 
 </div></div>
 
@@ -107,10 +107,9 @@
 
 
       <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/terminal/">Terminal</a>
-              </li></ul>
+            <li>
+              <a href="/cours_informatique/cours/système-et-réseau/bases-système/terminal/">/cours/système-et-réseau/bases-système/terminal/</a>
+            </li></ul>
       
 
 </div></div>
@@ -221,12 +220,6 @@
 </div></div>
 
 <p>Nous ne l'utiliserons pas ici, mais je vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.</p>
-<h3>Vscode</h3>
-<p>Il existe de nombreux plugins possibles pour <a href="https://code.visualstudio.com/">l'éditeur vscode</a>. Nous en utiliserons 2, en plus du plugin par défaut :</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">git history</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore">git ignore</a></li>
-</ul>
 <h2>Configuration</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -347,6 +340,208 @@
 <p>On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant l'argument de git <code>--no-pager</code>, par exemple :<code>git --no-pager log</code>. Notez que <code>--no-pager</code> est un argument de git, pas de sa commande <code>log</code>, il est donc placé avant celle-ci.</p>
 </div></div>
 
+<h2>Initialiser un projet pour github</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories">https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories</a></p>
+</div></div>
+
+<h3>Cloner un projet existant</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</a></p>
+</div></div>
+
+<p>le projet existe déjà sur github et je le <em>clone</em> chez moi C'est dans le menu déroulant <code>clone</code> sur la page github du projet. Par exemple pour le <a href="../github-desktop#nouveau-projet" class="interne">projet animaux</a> :
+<a href="clone-1.png">cloner un projet</a></p>
+<p>Il existe plusieurs façon de procéder :</p>
+<ul>
+<li>ssh</li>
+<li>https</li>
+<li>github CLI</li>
+</ul>
+<p>La différence entre ces trois modes est le moyen d’authentification entre votre ordinateur et github.</p>
+<p>Après chaque clonage vous aurez un dossier du nom de votre projet contenant :</p>
+<ul>
+<li>tous les fichiers de l'état du projet actuel</li>
+<li>un dossier caché <code class="fichier">.git</code> contenant :
+<ul>
+<li>l'historique complet du projet</li>
+<li>la configuration de <code>git</code> du projet</li>
+</ul>
+</li>
+</ul>
+<p>Lorsque je regarde tous les fichiers du dossier contenant le projet <code>animaux</code> j'obtiens par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+total <span class="token number">32</span>
+drwxr-xr-x   <span class="token number">7</span> fbrucker  staff  <span class="token number">224</span> <span class="token number">29</span> aoû 08:57 <span class="token builtin class-name">.</span>
+drwxr-xr-x   <span class="token number">3</span> fbrucker  staff   <span class="token number">96</span> <span class="token number">29</span> aoû 08:57 <span class="token punctuation">..</span>
+drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="token number">384</span> <span class="token number">29</span> aoû 08:57 .git
+-rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">66</span> <span class="token number">29</span> aoû 08:57 .gitattributes
+-rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">18</span> <span class="token number">29</span> aoû 08:57 mammifères.txt
+-rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">49</span> <span class="token number">29</span> aoû 08:57 oiseaux.txt
+-rw-r--r--   <span class="token number">1</span> fbrucker  staff   <span class="token number">23</span> <span class="token number">29</span> aoû 08:57 poissons.txt</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>J'ai utilisé le terminal pour le faire, mais vous pouvez très bien utiliser l'explorateur de fichier, à condition d'avoir activé <a href="/cours_informatique/cours_informatique/tutoriels/fichiers-navigation#fichier-cache">la vue des fichiers cachés</a></p>
+</div></div>
+
+<p>Selon la méthode de clonage utilisé, seule la méthode d'authentification dans le fichier de configuration changera.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre compte, donc  utilisez le clonage utilisant le protocole <code>ssh</code>.</p>
+</div></div>
+
+<h4>Clonage ssh</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.</p>
+<p>Sinon, vous pouvez ne pas utiliser cette méthode.</p>
+</div></div>
+
+<p>Montrons juste les différences de configuration entre les méthodes précédentes et celle-ci :</p>
+<ul>
+<li>
+<p>Commande de clonage : <code>git clone git@github.com:Test-cours-ecm/animaux.git</code></p>
+</li>
+<li>
+<p>Fichier de configuration :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">cat</span> .git/config
+<span class="token punctuation">[</span>core<span class="token punctuation">]</span>
+  repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
+  filemode <span class="token operator">=</span> <span class="token boolean">true</span>
+  bare <span class="token operator">=</span> <span class="token boolean">false</span>
+  logallrefupdates <span class="token operator">=</span> <span class="token boolean">true</span>
+  ignorecase <span class="token operator">=</span> <span class="token boolean">true</span>
+  precomposeunicode <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">[</span>remote <span class="token string">"origin"</span><span class="token punctuation">]</span>
+  url <span class="token operator">=</span> git@github.com:Test-cours-ecm/animaux.git
+  fetch <span class="token operator">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="token punctuation">[</span>branch <span class="token string">"main"</span><span class="token punctuation">]</span>
+  remote <span class="token operator">=</span> origin
+  merge <span class="token operator">=</span> refs/heads/main</code></pre>
+</li>
+</ul>
+<p>On voit que le protocole d’authentification n'est <strong>pas</strong> <code>https://</code>, il faut avoir lié une clé ssh à son compte github.</p>
+<h4>Clonage https</h4>
+<ol>
+<li>dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi <code class="fichier">~/Documents/git-projets/</code></li>
+<li>tapez la commande : <code>git clone [le nom du projet]</code>. Dans mon cas, le menu déroulant <em>&quot;clone&quot;</em> m'indique qu'il faut taper la commande : <code>git clone https://github.com/Test-cours-ecm/animaux.git</code></li>
+<li>j'ai maintenant un dossier animaux contenant la branche <code>main</code> du projet :</li>
+</ol>
+<p>Le dossier <code>.git</code> contient l'entièreté du projet, en particulier son fichier de configuration <code>.git/config</code></p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">cat</span> .git/config
+<span class="token punctuation">[</span>core<span class="token punctuation">]</span>
+  repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
+  filemode <span class="token operator">=</span> <span class="token boolean">true</span>
+  bare <span class="token operator">=</span> <span class="token boolean">false</span>
+  logallrefupdates <span class="token operator">=</span> <span class="token boolean">true</span>
+  ignorecase <span class="token operator">=</span> <span class="token boolean">true</span>
+  precomposeunicode <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">[</span>remote <span class="token string">"origin"</span><span class="token punctuation">]</span>
+  url <span class="token operator">=</span> https://github.com/Test-cours-ecm/animaux.git
+  fetch <span class="token operator">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="token punctuation">[</span>branch <span class="token string">"main"</span><span class="token punctuation">]</span>
+  remote <span class="token operator">=</span> origin
+  merge <span class="token operator">=</span> refs/heads/main</code></pre>
+<p>La seule chose à retenir ici est :</p>
+<ul>
+<li>github est identifié comme la branche <code>origin</code> et son protocole de communication est <code>https://</code></li>
+<li>la branche <code>main</code> est disponible sur l'origin.</li>
+</ul>
+<h4>Clonage github CLI</h4>
+<p>Il faut d'abord s'identifier (<code>gh auth login</code>) avant de pouvoir cloner le repo : <code>gh repo clone Test-cours-ecm/animaux</code>.</p>
+<p>Ensuite, tout se passe comme précédemment. L'intérêt d'utiliser le <code>github CLI</code> est de pouvoir gérer directement les spécificités de github comme les pull request par exemple.</p>
+<h3>Créer un nouveau projet et l'envoyer sur github</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line">https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line</a></p>
+</div></div>
+
+<p>Le projet existe en dehors de github et je veux le mettre sur github. Par exemple :</p>
+<ol>
+<li>un dossier <code class="fichier">planètes</code> contenant un fichier <code class="fichier">solaire.txt</code> :</li>
+</ol>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets » <span class="token function">ls</span> <span class="token parameter variable">-la</span> planètes
+total <span class="token number">8</span>
+drwxr-xr-x  <span class="token number">3</span> fbrucker  staff   <span class="token number">96</span> <span class="token number">29</span> aoû 09:44 <span class="token builtin class-name">.</span>
+drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="token number">128</span> <span class="token number">29</span> aoû 09:45 <span class="token punctuation">..</span>
+-rw-r--r--  <span class="token number">1</span> fbrucker  staff   <span class="token number">57</span> <span class="token number">29</span> aoû 09:44 solaire.txt</code></pre>
+<ol start="2">
+<li>on se place dans le dossier du projet <code>cd planètes</code></li>
+<li>on met en place le repo git avec la commande <code>git init --initial-branch=&quot;main&quot;</code></li>
+<li>on fait le premier commit pour initialiser le projet :
+<ol>
+<li><code>git add solaire.txt</code> (on ajoute tous les fichiers au stage, ici il n'y a en a qu'un)</li>
+<li><code>git commit -am&quot;initial commit&quot;</code> (on effectue le premier commit)</li>
+</ol>
+</li>
+</ol>
+<p>Si l'on regarde le fichier de configuration de git :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config
+<span class="token punctuation">[</span>core<span class="token punctuation">]</span>
+  repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
+  filemode <span class="token operator">=</span> <span class="token boolean">true</span>
+  bare <span class="token operator">=</span> <span class="token boolean">false</span>
+  logallrefupdates <span class="token operator">=</span> <span class="token boolean">true</span>
+  ignorecase <span class="token operator">=</span> <span class="token boolean">true</span>
+  precomposeunicode <span class="token operator">=</span> <span class="token boolean">true</span></code></pre>
+<p>Il manque la partie remote et branch. On pourrait très bien juste recopier ces parties dans le fichier de configuration, mais faisons le avec des commandes git :</p>
+<p>Ajout de github :</p>
+<ol>
+<li>Créer un projet github qui va contenir notre projet git. Sur github, allez dans le menu utilisateur (à droite) puis choisissez <em>&quot;your repositories&quot;</em>. Cliquez ensuite sur new pour créer un nouveau projet. Ne créez pas de fichiers <code class="fichier">readme</code> ou <code class="fichier">.gitignore</code>, il faut que ce projet soit vierge pour accueillir sans merge notre projet.</li>
+<li>sur notre ordinateur, on ajoute l'origin (suivez la doc). Dans mon cas : <code>git remote add origin https://github.com/Test-cours-ecm/planetes.git</code></li>
+<li>on envoie notre projet git sur github et on lui associe la branche main :<code>git push --set-upstream origin main</code>.</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'item 3 permet que la commande <code>git push</code> soit équivalente à la commande <code>git push origin main</code>.</p>
+</div></div>
+
+<p>A la fin, le fichier de config du projet ressemble à ca :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config
+<span class="token punctuation">[</span>core<span class="token punctuation">]</span>
+  repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
+  filemode <span class="token operator">=</span> <span class="token boolean">true</span>
+  bare <span class="token operator">=</span> <span class="token boolean">false</span>
+  logallrefupdates <span class="token operator">=</span> <span class="token boolean">true</span>
+  ignorecase <span class="token operator">=</span> <span class="token boolean">true</span>
+  precomposeunicode <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">[</span>remote <span class="token string">"origin"</span><span class="token punctuation">]</span>
+  url <span class="token operator">=</span> https://github.com/Test-cours-ecm/plan-tes.git
+  fetch <span class="token operator">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="token punctuation">[</span>branch <span class="token string">"main"</span><span class="token punctuation">]</span>
+  remote <span class="token operator">=</span> origin
+  merge <span class="token operator">=</span> refs/heads/main</code></pre>
 
 
 </article>
