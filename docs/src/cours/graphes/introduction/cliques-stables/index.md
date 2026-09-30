@@ -313,26 +313,39 @@ Cette combinaison de cliques et de stable a été étudiée par Ramsey au début
 Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables.
 
 {% note "**Théorème (Ramsey, 1930)**" %}
-Pour tout couple d'entiers $p, q$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) :
+Pour tout couple d'entiers $p, q$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) une clique à $p$ sommets soit un stable à $q$ sommets. De plus, on a l'inégalité :
 
-- une clique à $p$ sommets,
-- un stable à $q$ sommets.
+<div>
+$$
+R(p, q) \leq R(p-1, q) + R(p, q-1)
+$$
+</div>
 {% endnote %}
 {% details "preuve", "open" %}
 > TBD
 {% enddetails %}
 
+> TBD montrez que $R(p, q) = R(q, p)$ (on prend le graphe complémentaire)
+
 > TBD on étudie souvent $p = q$.
+
+> TBD R(3, 3) ?
 > 
-> on en dérive le nombre de Ramsey
-> TBD méthode probabiliste.
+> TBD méthode probabiliste. prop 1 et prop 2
+
+{% note2 "**Proposition**" %}
+
+{% endnote2 %}
+
 > TBD parler de haystack (retrouver le doc)
 
 > TBD ici introduire la méthode probabiliste.
 > <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
 > TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 
-> TBD en faire un td avec calculs et code ? 
+> TBD anectote erdos sur les aliens et ramsey
+
+> TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 
 {% lien  %}
 

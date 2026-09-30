@@ -99,6 +99,8 @@ Codons tout ça :
 2. Chemin le plus long
 3. coloration (que sommets et laisser arêtes à plus tard)
 
+> TBD 2-coloration = Ramsey !
+
 {% endaller %}
 
 ## Graphes planaires

@@ -134,7 +134,7 @@ Projet :
 
 > Utilisation pour tirer :
 >   - un graphe à sommet fixé aléatoire
->   - trouverr une arborescence aléatoire : Aldous-Broder
+>   - trouver une arborescence aléatoire : Aldous-Broder
 
 > TBD compter arbres couvrant markov simple
 > TBD  Amélioration sur arbre avec Kirchoff sur graphe valué.
@@ -223,7 +223,8 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 ## Graphes aléatoires
 
-> TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+>TBD Lemme local de Lovász
+
 <!-- carré latin. Avec preuve et code. -->
 
 <!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
