@@ -35,14 +35,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
-## Cliques et stables maximum
-
-{% aller %}
-
-[cliques et stables](/cours/graphes/cliques-stables/){.interne}
-
-{% endaller %}
-
 ## Colorabilité d'un graphe
 
 {% aller %}

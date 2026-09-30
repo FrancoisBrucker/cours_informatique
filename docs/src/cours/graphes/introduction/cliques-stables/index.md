@@ -299,9 +299,31 @@ Montrez que le problème "clique ou stable" est NP-complet.
 Vous pourrez réduire clique à ce problème
 {% endinfo %}
 {% details "corrigé" %}
-> TBD 
+> TBD on ajoute une grosse clique de taille n' connectée à tous les sommets de G. On cherche alors une clique ou stable de taille n'+k dans ce nouveau graphe qui ne peut être qu'une clique de taille k du graphe initial.
 {% enddetails %}
 
+Cette combinaison de cliques et de stable a été étudiée par Ramsey au début du vingtième siècle et l'est toujours...
+
+## Théorème de Ramsey
+
+{% lien %}
+[Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey)
+{% endlien %}
+
+Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables.
+
+{% note "**Théorème (Ramsey, 1930)**" %}
+Pour tout couple d'entiers $p, q$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) :
+
+- une clique à $p$ sommets,
+- un stable à $q$ sommets.
+{% endnote %}
+{% details "preuve", "open" %}
+> TBD
+{% enddetails %}
+
+> TBD on étudie souvent $p = q$.
+> 
 > on en dérive le nombre de Ramsey
 > TBD méthode probabiliste.
 > TBD parler de haystack (retrouver le doc)
