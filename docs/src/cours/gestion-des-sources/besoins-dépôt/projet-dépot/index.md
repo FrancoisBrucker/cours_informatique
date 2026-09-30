@@ -21,7 +21,7 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite 
 Pour se fixer les idées utilisons ce projet :
 
 {% faire %}
-1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
 2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
 {% endfaire %}
 {% faire %}
@@ -93,14 +93,11 @@ En cliquant sur le lien tag sur la fenêtre :
 On vous proposera de créer une nouvelle release. 
 
 {% faire %}
-1. commencez par créer un nouveau tag que vous nommerez `release`
+1. commencez par créer un nouveau tag que vous nommerez `release-1`
 2. donnez un titre à notre release, par exemple `1.0`
 3. commitez votre release !
 
 {% endfaire %}
-{% info %}
-
-{% endinfo %}
 
 Ceci a créé une release, notre 1.0. Pour la voir, cliquez sur le lien release :
 
@@ -111,7 +108,7 @@ Ceci a créé une release, notre 1.0. Pour la voir, cliquez sur le lien release 
 Après quelque temps de travail, on est arrivé à une nouvelle version publiable :
 
 {% faire %}
-1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v2?filename=projet-numérologie-v2)
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v2?filename=projet-numérologie-v2)
 2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
 {% endfaire %}
 
@@ -171,6 +168,6 @@ Et ce pour chaque fichier mis à jour pour ce commit.
 On termine en faisant une seconde release :
 
 {% faire %}
-Faite la release v2 du projet. Vous utiliserez le même tag que pour la v1, seul le titre (ici c'est la v2) doit changer.
+Faite la release v2 du projet. Vous utiliserez **un autre** tag que pour la v1 ainsi qu'un nouveau titre.
 {% endfaire %}
 
