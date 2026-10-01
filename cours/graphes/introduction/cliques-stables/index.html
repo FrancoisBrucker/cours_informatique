@@ -503,7 +503,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que le problème couverture est dans NP</p>
+<p>Montrez que le problème couverture est dans NP.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -523,9 +523,15 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD algo</p>
-</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_couverture<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">,</span> K<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+  <span class="token keyword">si</span> <span class="token operator">|</span>A<span class="token operator">|</span> <span class="token operator">></span> K<span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+  
+  <span class="token keyword">pour chaque</span> x<span class="token punctuation">,</span> y de E<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> x ∉ A <span class="token keyword">ET</span> y ∉ A<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+  
+  <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
 </div>
 </details>     
 </div>
@@ -552,9 +558,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD un stable</p>
-</blockquote>
+<p>C'est un stable !</p>
 </div>
 </details>     
 </div>
@@ -581,9 +585,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD on cherche un stable max (|V|-K) un stable</p>
-</blockquote>
+<p>L'exercice précédent montre que chercher une couverture de taille inférieure ou égale à $K$ est équivalent à trouver un stable de taille supérieure ou égale à $v(G) - K$.</p>
 </div>
 </details>     
 </div>
@@ -643,9 +645,13 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD on ajoute une grosse clique de taille n' connectée à tous les sommets de G. On cherche alors une clique ou stable de taille n'+k dans ce nouveau graphe qui ne peut être qu'une clique de taille k du graphe initial.</p>
-</blockquote>
+<p>On construit le graphe $G' = (V', E')$ tel que :</p>
+<ul>
+<li>$V' = V(G) \cup \{x_1, \dots, x_{v(G)} \}$</li>
+<li>$E' = E(G) \cup \{ x_iy \mid 1\leq i \leq v(G), y \in V(G) \in \in \}$</li>
+</ul>
+<p>De là trouver une clique de taille au moins $K$ dans $G$ est équivalent à trouver une clique ou un stable de taille au moins $v(G) + K$ dans $G'$.</p>
+<p>Toutes ces transformations étant polynomiales on a bien que le problème clique est plus simple que le problème clique ou stable.</p>
 </div>
 </details>     
 </div>
@@ -659,7 +665,7 @@ $$
 <p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey">Théorème de Ramsey</a></p>
 </div></div>
 
-<p>Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables.</p>
+<p>Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -667,7 +673,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème (Ramsey, 1930)</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour tout couple d'entiers $p, q$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) une clique à $p$ sommets soit un stable à $q$ sommets. De plus, on a l'inégalité :</p>
+<p>Pour tout couple d'entiers $p, q\geq 1$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) une clique à $p$ sommets soit un stable à $q$ sommets. De plus, pour $p, q\geq 2$ on a l'inégalité :</p>
 <div>
 $$
 R(p, q) \leq R(p-1, q) + R(p, q-1)
@@ -692,226 +698,230 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<blockquote>
-<p>TBD montrez que $R(p, q) = R(q, p)$ (on prend le graphe complémentaire)
-TBD cela montre qu'il y a toujours une structure.
-TBD on étudie souvent $p = q$.</p>
-</blockquote>
-<blockquote>
-<p>TBD R(3, 3) ?</p>
-<p>TBD méthode probabiliste. prop 1 et prop 2</p>
-</blockquote>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-</div></div>
-
-<blockquote>
-<p>TBD parler de haystack (retrouver le doc)
-trouver une clique ou stable de taille &gt;K est dur... Même si on sait qu;elle existe !</p>
-</blockquote>
-<blockquote>
-<p><a href="https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=2">https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=2</a>
-TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <a href="https://www.youtube.com/watch?v=4weMmFZSBtI">https://www.youtube.com/watch?v=4weMmFZSBtI</a>
-TBD existence de toute structure : cf prop 11.3.1 Diestel sur les graphes aléatoires.</p>
-</blockquote>
-<blockquote>
-<p>tBD R(5) inconnu, meme si borne. rop de graphe a verifier <a href="https://www.youtube.com/watch?v=LAxOhtTCPuI">https://www.youtube.com/watch?v=LAxOhtTCPuI</a>?
-TBD anectote erdos sur les aliens et ramsey</p>
-</blockquote>
-<blockquote>
-<p>TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <a href="https://www.youtube.com/watch?v=4weMmFZSBtI">https://www.youtube.com/watch?v=4weMmFZSBtI</a></p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
+<p>On prouve le résultat par récurrence sur $r = p + q \geq 2$.</p>
+<p>Comme on a clairement que $R(1, 1) = 1$ et $R(2, 1) = R(1, 2) = 2$ on a que le résultat est vrai pour tous $p, q\geq 1$ tels que $p +q = r = 2$. On suppose le résultat vrai pour $r\geq 2$ et soit $p, q\geq 1$ tels que $r+1 = p + q$.</p>
+<p>Comme $R(p-1, q)$ et $R(p, q-1)$ existent par hypothèse de récurrence, soit $G$ un graphe à $n = R(p-1, q) + R(p, q-1)$ sommets et $v$ un de ses sommets.</p>
+<p>De deux choses l'une :</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey">https://fr.wikipedia.org/wiki/Théorème_de_Ramsey</a></li>
-<li><a href="https://perso.ens-lyon.fr/thomas.budzinski/enseignement/Ramsey.pdf">https://perso.ens-lyon.fr/thomas.budzinski/enseignement/Ramsey.pdf</a></li>
+<li>soit $\delta(v)\geq R(p-1, q)$. On a alors 2 cas :
+<ul>
+<li>$G$ restreint aux voisins de $v$ contient un stable de taille $q$, donc $G$ également</li>
+<li>$G$ restreint aux voisins de $v$ contient une clique $C$ de taille $p-1$ : $C \cup \{v\}$ est une clique de taille $p$ dans $G$,</li>
 </ul>
-</div></div>
-
-<p>Le théorème de Ramsey est a priori surprenant. Il stipule que si le graphe est assez grand, il y aura toujours soit une clique soit un stable d'une taille donnée.</p>
-<h3>Exemple</h3>
-<p>Commençons par un exemple pour se fixer les idée.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Dessinez quelques graphes à 6 sommets.</p>
-<p>Remarquez qu'il existe toujours :</p>
+</li>
+<li>soit $\delta(v)\leq R(p-1, q) - 1$ et $n-1-\delta(v) \geq R(p-1, q) + R(p, q-1) - 1 -(R(p-1, q) - 1) \geq  R(p, q-1)$. De la même manière que précédemment soit :
 <ul>
-<li>soit un stable à 3 sommets (ou plus),</li>
-<li>soit une clique à 3 sommets (ou plus).</li>
-</ul>
-</div></div>
-
-<p>On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de ses sommets. On a deux cas (en utilisant le principes des tiroirs : 5 sommets à ranger dans 2 cases voisin ou pas voisin) :</p>
-<ol>
-<li>soit $x$ à au moins 3 voisins : le graphe $G$ restreint aux voisins de $G$ est soit discret et il existe un stable de taille 3, soit il contient une arête qui, ajoutée à x forme une clique de taille 3.</li>
-<li>soit $x$ à moins de 2 voisins : le graphe $G$ restreint aux voisins de $G$ est soit complet et il existe une clique de taille 3, soit il contient un couple sans arête qui, ajoutée à x forme un stable de taille 3.</li>
-</ol>
-<h3>Définition et existence</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On note $R(p, q)$ le plus petit entier $n$ tel qu'un graphe $n$ sommets ou plus contienne :</p>
-<ul>
-<li><strong>soit</strong> un stable de taille $p$</li>
-<li><strong>soit</strong> une clique de taille $q$</li>
-</ul>
-</div></div>
-
-<p>Avant de démontrer que cette définition fait sens (<em>ie</em> que ce nombre existe), faisons quelques remarques</p>
-<ul>
-<li>Premièrement, si $R(p, q)$ existe alors  $R(q, p) = R(p, q)$ puisque si un graphe a une clique de taille $k$ son complémentaire à un stable de taille $k$.</li>
-<li>Deuxièmement $R(1, k) = R(k, 1) = 1$ pour tout $k$ puisque un sommet est un stable et un clique.</li>
-<li>Troisièmement $R(2, k) = k$ pour tout $k$ puisque :
-<ul>
-<li>le graphe complet à $k-1$ élément ne contient ni de stable de taille 2 : $k-1 &lt; R(2, k)$</li>
-<li>si $\{x, y\}$ n'est pas une arête du graphe c'est un stable et tout graphe complet de plus de $k$ sommet contient une clique de taille $k$ : $R(2, k) \leq k$</li>
+<li>il existe une clique de taille $p$ dans le graphe $G$ restreint aux non-voisins de $v$, donc dans $G$ également</li>
+<li>il existe un stable $S$ de taille $q-1$ dans le graphe $G$ restreint aux non-voisins de $v$ : $S \cup \{v\}$ est un stable de taille $q$ dans $G$.</li>
 </ul>
 </li>
 </ul>
-<p>Avant de montrer l'existence de $R(p, q)$ pour tous $p$ et $q$ commençons par deux exercices préparatoires :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si $A + B = C + D + 1$ pour quatre entiers positifs, alors :</p>
-<ul>
-<li>soit $C \geq A$</li>
-<li>soit $D \geq B$</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si $C &lt; A$ et $D &lt; B$, alors $C + 1\leq A$ et $D + 1\leq B$ et on aurait $C + D + 2 \leq A + B$ donc $C + D + 1 &lt; A + B$ ce qui est impossible.</p>
 </div>
 </details>     
 </div>
-<p>En déduire l'exercice suivant :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si un graphe $G=(V, E)$ est tel que $|V| = A + B$ alors pour tout sommet $v$ :</p>
-<ul>
-<li>soit $\delta(v) \geq A$</li>
-<li>soit $|V\backslash \{v\} \backslash N(v)| \geq B$</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>En posant $C = \delta(v)$ et $D = |V\backslash \{v\} \backslash N(v)|$, on a $C + D + 1 = |V| = A + B$ et on est ramené au cas précédent.</p>
-</div>
-</details>     
-</div>
-<p>On peut maintenant passer aux choses sérieuses. On suppose que $R(p-1, q)$ et $R(p, q-1)$ existent et on considère un graphe $G=(V, E)$ à $R(p-1, q) + R(p, q-1)$ sommets. Les deux exercices précédent nous permettent de dire que pour tout sommet $v$ de $G$ :</p>
-<ol>
-<li>soit $\delta(v) \geq R(p, q-1)$</li>
-<li>soit $|V\backslash \{v\} \backslash N(v)| \geq R(p-1, q)$</li>
-</ol>
-<p>Dans le premier cas, le graphe $G'$, restriction de $G$ à $N(v)$ contient $R(p, q-1)$ sommet, donc :</p>
-<ul>
-<li>soit il contient un stable de taille $p$ et il existe un stable de taille $p$ dans $G$</li>
-<li>soit il contient une clique $C$ de taille $q-1$ et l'ensemble $C \cup \{v\}$ est une clique de taille $q$ de $G$.</li>
-</ul>
-<p>Dans le second cas, le graphe $G'$, restriction de $G$ à $V\backslash \{v\} \backslash N(v)$ contient $R(p-1, q)$ sommet, donc :</p>
-<ul>
-<li>soit il contient une clique $C$ de taille $q$ et il existe une clique de taille $q$ de $G$.</li>
-<li>soit il contient un stable $S$ de taille $p-1$ et l'ensemble $S \cup \{v\}$ est un stable de taille $p$ dans $G$</li>
-</ul>
-<p>Dans tous les cas $G$ contient :</p>
-<ul>
-<li>soit un stable de taille $p$</li>
-<li>soit une clique de taille $q$</li>
-</ul>
-<p>Son nombre de sommet est donc plus grand que $R(p, q)$ et on a :</p>
-<div>
-$$
-R(p, q) \leq R(p-1, q) + R(p, q-1)
-$$
-</div>
-<p>Comme $R(2, k) = R(k, 2) = k$, l'équation précédente montre l'existence de $R(3, k) = R(k, 3)$ pour tous $k$ et de proche en proche on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>$R(p, q)$ existe pour tout entiers $p$ et $q$.</p>
-<p>On a $R(2, k) = R(k, 2) = k$ pour tout entier $k$ et pour tous entiers $p, q \geq 3$ :</p>
-<div>
-$$
-R(p, q) \leq R(p-1, q) + R(p, q-1)
-$$
-</div>
-</div></div>
-
-<p>On peut alors montrer facilement par récurrence sur $k = p + q \geq 4$ et en utilisant la majoration précédente que :</p>
+<p>Pour tout couple d'entiers $p, q\geq 4$ on a :</p>
 <div>
 $$
 R(p, q) \leq \binom{p+q-2}{p-1}
 $$
 </div>
-<h3>Généralisation</h3>
-<p>On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9">la page Wikipédia dédiée au problème</a> pour en voir une formulation générale.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une récurrence triviale en utilisant la formule du <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal">triangle de Pascal</a>.</p>
+</div>
+</details>     
+</div>
+<p>Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans la rue, soit il existe un ensemble de $p$ personnes se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que pour tous $p, q\geq 1$, on a $R(p, q) = R(q, p)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $G$ un graphe à $R(p, q)$ sommets. Le graphe $\overline{G}$ à le même nombre de sommets que $G$ donc :</p>
+<ul>
+<li>il possède soit une clique de taille $p$ et $G$ possède un stable de taille $p$</li>
+<li>il possède soit un stable de taille $q$ et $G$ possède une clique de taille $q$</li>
+</ul>
+<p>On en déduit que $R(p, q) \leq R(q, p)$ pour tous $p$ et $q$ ils sont donc égaux (car on a alors aussi $R(q, p) \leq R(p, q)$)</p>
+</div>
+</details>     
+</div>
+<p>On prend souvent $p = q$ et on note $R(p) = R(p, p)$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que $R(3) = 6$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout d'abord $R(3)&gt; 5$ puisque le cycle $C_5$ ne contient que des cliques et des stables de taille 2.</p>
+<p>Soit alors un graphe $G$ à plus de 6 sommets et soit $v$ un de ses sommets. Si $\delta(v) \geq 3$ alors :</p>
+<ul>
+<li>soit le graphe $G$ restreint à $N(v)$ n'a pas d'arête et c'est un stable de taille au moins 3,</li>
+<li>soit le graphe $G$ restreint à $N(v)$ a une arête dont ses extrémités plus $v$ forment une clique de taille 3.</li>
+</ul>
+<p>Enfin, si $\delta(v) &lt; 3$ un raisonnement identique sur le complémentaire de $G$ donne que :</p>
+<ul>
+<li>soit $\overline{G}$ possède un stable de taille 3 et donc $G$ une clique de taille 3,</li>
+<li>soit $\overline{G}$ possède une clique de taille 3 et donc $G$ un stable de taille 3.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Continuons sur notre lancée :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que $R(3, 4) &gt; 8$</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser <a href="https://fr.wikipedia.org/wiki/Graphe_de_Wagner">le graphe de Wagner</a>.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le graphe de Wagner ne possède ni clique de taille 3 ni stable de taille 4.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En &quot;<em>déduire</em>&quot; que $R(3, 4) = 9$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'exercice précédent montre $R(3, 4) \geq 9$. Notre minoration donne $R(3, 4) \leq R(2, 4) + R(3, 3) \leq 10$ mais on peut la raffiner pour notre cas. Soit $v$ un sommet d'un graphe à 9 sommets. Si $\delta(v) \geq R(2, 4)$ alors le même raisonnement que pour le théorème nous permet de conclure. On suppose alors que $\delta(v) &lt; R(2, 4) = 4$. Mais si $\delta(v) = 3$, soit il n'y a pas d'arêtes dans le graphe restreint aux voisins de $v$ et il y a un stable de taille 3, soit il y a une arête et si on ajoute $v$ cela fait une clique de taille 3.</p>
+<p>On peut alors supposer que $\delta(v) &lt; 3$ et donc $9-\delta(v)&gt; 6$ : le graphe restreint aux non-voisins de $G$ contient soit une clique de taille 3 soit un stable de taille 3 qui adjoint à $v$ fait un stable de taille 4.</p>
+</div>
+</details>     
+</div>
+<p>Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et <a href="https://fr.wikipedia.org/wiki/Graphe_de_Paley">le graphe de Paley d'ordre 17</a> ne possède ni de clique ni se stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que
+$43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, on ne connaît pas d'algorithme efficace pour trouver une clique ou un stable de taille 5 : il faut tout essayer ce qui va prendre exponentiel lorsque la taille de la clique/stable à chercher augmente. On sait que ce cela existe mais c'est dur à trouver !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=4weMmFZSBtI">chercher une paille dans une meule de fois peut être aussi  dur que d'y trouver l'aiguille</a></p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Toutes les vidéos de cette chaîne Youtube sont très bonnes !</p>
+</div></div>
+
+<p>Terminons cette partie en calculant quelques bornes. On doit ces bornes à Erdős et vont nous permettre d'utiliser (et de voir la puissance de) la méthode probabiliste que nous n'avons pour l'instant qu'effleuré.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+</div></div>
+
 <blockquote>
-<p>TBD écrire et montrer un exemple</p>
+<p>TBD <a href="https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=3">https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=3</a>
+TBD <a href="https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf">https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf</a></p>
 </blockquote>
-<h3>Particularisation</h3>
-<p>En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.</p>
-<p>Par exemple la majoration précédente donne $R(5, 5) = \binom{8}{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43).</p>
 
 
 </article>
