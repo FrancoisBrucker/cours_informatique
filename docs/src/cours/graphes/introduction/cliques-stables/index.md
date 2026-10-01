@@ -252,22 +252,32 @@ Montrez que toute couverture de $K_n$ contient $n-1$ sommet.
 C'est vrai pour $n < 2$ et pour $n \geq 2$, s'il existait une couverture à strictement moins de $n-1$ éléments, il existerait $x$ et $y$, deux sommets différents qui n'y sont pas, ce qui n'est pas possible puisque $xy$ est une arête de $K_n$.
 {% enddetails %}
 {% exercice %}
-Montrez que le problème couverture est dans NP
+Montrez que le problème couverture est dans NP.
 {% endexercice %}
 {% details "corrigé" %}
-> TBD algo
+```pseudocode
+algorithme vérification_couverture(G: graphe<sommet>, A: {sommet}, K: entier) → booléen:
+  si |A| > K:
+    rendre Faux
+  
+  pour chaque x, y de E(G):
+    si x ∉ A ET y ∉ A:
+        rendre Faux
+  
+  rendre Vrai
+```
 {% enddetails %}
 {% exercice %}
 Si $C$ est une couverture d'un graphe $G$. Qu'est l'ensemble $V\backslash C$ ?
 {% endexercice %}
 {% details "corrigé" %}
-> TBD un stable
+C'est un stable !
 {% enddetails %}
 {% exercice %}
 En déduire que le problème couverture est NP-complet
 {% endexercice %}
 {% details "corrigé" %}
-> TBD on cherche un stable max (|V|-K) un stable
+L'exercice précédent montre que chercher une couverture de taille inférieure ou égale à $K$ est équivalent à trouver un stable de taille supérieure ou égale à $v(G) - K$.
 {% enddetails %}
 
 ## Clique ou stable ?
@@ -299,7 +309,14 @@ Montrez que le problème "clique ou stable" est NP-complet.
 Vous pourrez réduire clique à ce problème
 {% endinfo %}
 {% details "corrigé" %}
-> TBD on ajoute une grosse clique de taille n' connectée à tous les sommets de G. On cherche alors une clique ou stable de taille n'+k dans ce nouveau graphe qui ne peut être qu'une clique de taille k du graphe initial.
+On construit le graphe $G' = (V', E')$ tel que :
+
+- $V' = V(G) \cup \\{x_1, \dots, x_{v(G)} \\}$
+- $E' = E(G) \cup \\{ x_iy \mid 1\leq i \leq v(G), y \in V(G) \in \in \\}$
+
+De là trouver une clique de taille au moins $K$ dans $G$ est équivalent à trouver une clique ou un stable de taille au moins $v(G) + K$ dans $G'$.
+
+Toutes ces transformations étant polynomiales on a bien que le problème clique est plus simple que le problème clique ou stable.
 {% enddetails %}
 
 Cette combinaison de cliques et de stable a été étudiée par Ramsey au début du vingtième siècle et l'est toujours...
@@ -310,10 +327,10 @@ Cette combinaison de cliques et de stable a été étudiée par Ramsey au début
 [Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey)
 {% endlien %}
 
-Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables.
+Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables :
 
 {% note "**Théorème (Ramsey, 1930)**" %}
-Pour tout couple d'entiers $p, q$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) une clique à $p$ sommets soit un stable à $q$ sommets. De plus, on a l'inégalité :
+Pour tout couple d'entiers $p, q\geq 1$ il existe un entier $R(p, q)$ tel que tout graphe à plus de $R(p, q)$ sommets contienne soit (non exclusif) une clique à $p$ sommets soit un stable à $q$ sommets. De plus, pour $p, q\geq 2$ on a l'inégalité :
 
 <div>
 $$
@@ -322,163 +339,109 @@ $$
 </div>
 {% endnote %}
 {% details "preuve", "open" %}
-> TBD
+On prouve le résultat par récurrence sur $r = p + q \geq 2$.
+
+Comme on a clairement que $R(1, 1) = 1$ et $R(2, 1) = R(1, 2) = 2$ on a que le résultat est vrai pour tous $p, q\geq 1$ tels que $p +q = r = 2$. On suppose le résultat vrai pour $r\geq 2$ et soit $p, q\geq 1$ tels que $r+1 = p + q$.
+
+Comme $R(p-1, q)$ et $R(p, q-1)$ existent par hypothèse de récurrence, soit $G$ un graphe à $n = R(p-1, q) + R(p, q-1)$ sommets et $v$ un de ses sommets.
+
+De deux choses l'une :
+
+- soit $\delta(v)\geq R(p-1, q)$. On a alors 2 cas :
+  - $G$ restreint aux voisins de $v$ contient un stable de taille $q$, donc $G$ également
+  - $G$ restreint aux voisins de $v$ contient une clique $C$ de taille $p-1$ : $C \cup \\{v\\}$ est une clique de taille $p$ dans $G$,
+- soit $\delta(v)\leq R(p-1, q) - 1$ et $n-1-\delta(v) \geq R(p-1, q) + R(p, q-1) - 1 -(R(p-1, q) - 1) \geq  R(p, q-1)$. De la même manière que précédemment soit :
+  - il existe une clique de taille $p$ dans le graphe $G$ restreint aux non-voisins de $v$, donc dans $G$ également
+  - il existe un stable $S$ de taille $q-1$ dans le graphe $G$ restreint aux non-voisins de $v$ : $S \cup \\{v\\}$ est un stable de taille $q$ dans $G$.
+
 {% enddetails %}
-
-> TBD montrez que $R(p, q) = R(q, p)$ (on prend le graphe complémentaire)
-> TBD cela montre qu'il y a toujours une structure. 
-> TBD on étudie souvent $p = q$.
-
-> TBD R(3, 3) ?
-> 
-> TBD méthode probabiliste. prop 1 et prop 2
-
-{% note2 "**Proposition**" %}
-
-{% endnote2 %}
-
-> TBD parler de haystack (retrouver le doc)
-> trouver une clique ou stable de taille >K est dur... Même si on sait qu;elle existe !
-
-> <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
-> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
-> TBD existence de toute structure : cf prop 11.3.1 Diestel sur les graphes aléatoires.
-
-> tBD R(5) inconnu, meme si borne. rop de graphe a verifier <https://www.youtube.com/watch?v=LAxOhtTCPuI>?
-> TBD anectote erdos sur les aliens et ramsey
-
-> TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
-
-{% lien  %}
-
-- <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey>
-- <https://perso.ens-lyon.fr/thomas.budzinski/enseignement/Ramsey.pdf>
-
-{% endlien  %}
-
-Le théorème de Ramsey est a priori surprenant. Il stipule que si le graphe est assez grand, il y aura toujours soit une clique soit un stable d'une taille donnée.
-
-### Exemple
-
-Commençons par un exemple pour se fixer les idée.
-
-{% faire %}
-Dessinez quelques graphes à 6 sommets.
-
-Remarquez qu'il existe toujours :
-
-- soit un stable à 3 sommets (ou plus),
-- soit une clique à 3 sommets (ou plus).
-{% endfaire %}
-
-On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de ses sommets. On a deux cas (en utilisant le principes des tiroirs : 5 sommets à ranger dans 2 cases voisin ou pas voisin) :
-
-1. soit $x$ à au moins 3 voisins : le graphe $G$ restreint aux voisins de $G$ est soit discret et il existe un stable de taille 3, soit il contient une arête qui, ajoutée à x forme une clique de taille 3.
-2. soit $x$ à moins de 2 voisins : le graphe $G$ restreint aux voisins de $G$ est soit complet et il existe une clique de taille 3, soit il contient un couple sans arête qui, ajoutée à x forme un stable de taille 3.
-
-### Définition et existence
-
-{% note "**Définition**" %}
-On note $R(p, q)$ le plus petit entier $n$ tel qu'un graphe $n$ sommets ou plus contienne :
-
-- **soit** un stable de taille $p$
-- **soit** une clique de taille $q$
-{% endnote %}
-
-Avant de démontrer que cette définition fait sens (_ie_ que ce nombre existe), faisons quelques remarques
-
-- Premièrement, si $R(p, q)$ existe alors  $R(q, p) = R(p, q)$ puisque si un graphe a une clique de taille $k$ son complémentaire à un stable de taille $k$.
-- Deuxièmement $R(1, k) = R(k, 1) = 1$ pour tout $k$ puisque un sommet est un stable et un clique.
-- Troisièmement $R(2, k) = k$ pour tout $k$ puisque :
-  - le graphe complet à $k-1$ élément ne contient ni de stable de taille 2 : $k-1 < R(2, k)$
-  - si $\\{x, y\\}$ n'est pas une arête du graphe c'est un stable et tout graphe complet de plus de $k$ sommet contient une clique de taille $k$ : $R(2, k) \leq k$
-
-Avant de montrer l'existence de $R(p, q)$ pour tous $p$ et $q$ commençons par deux exercices préparatoires :
-
-{% exercice %}
-Montrez que si $A + B = C + D + 1$ pour quatre entiers positifs, alors :
-
-- soit $C \geq A$
-- soit $D \geq B$
-{% endexercice %}
-{% details "corrigé" %}
-
-Si $C < A$ et $D < B$, alors $C + 1\leq A$ et $D + 1\leq B$ et on aurait $C + D + 2 \leq A + B$ donc $C + D + 1 < A + B$ ce qui est impossible.
-{% enddetails %}
-
-En déduire l'exercice suivant :
-
-{% exercice %}
-Montrez que si un graphe $G=(V, E)$ est tel que $|V| = A + B$ alors pour tout sommet $v$ :
-
-- soit $\delta(v) \geq A$
-- soit $|V\backslash \\{v\\} \backslash N(v)| \geq B$
-{% endexercice %}
-{% details "corrigé" %}
-
-En posant $C = \delta(v)$ et $D = |V\backslash \\{v\\} \backslash N(v)|$, on a $C + D + 1 = |V| = A + B$ et on est ramené au cas précédent.
-{% enddetails %}
-
-On peut maintenant passer aux choses sérieuses. On suppose que $R(p-1, q)$ et $R(p, q-1)$ existent et on considère un graphe $G=(V, E)$ à $R(p-1, q) + R(p, q-1)$ sommets. Les deux exercices précédent nous permettent de dire que pour tout sommet $v$ de $G$ :
-
-1. soit $\delta(v) \geq R(p, q-1)$
-2. soit $|V\backslash \\{v\\} \backslash N(v)| \geq R(p-1, q)$
-
-Dans le premier cas, le graphe $G'$, restriction de $G$ à $N(v)$ contient $R(p, q-1)$ sommet, donc :
-
-- soit il contient un stable de taille $p$ et il existe un stable de taille $p$ dans $G$
-- soit il contient une clique $C$ de taille $q-1$ et l'ensemble $C \cup \\{v\\}$ est une clique de taille $q$ de $G$.
-
-Dans le second cas, le graphe $G'$, restriction de $G$ à $V\backslash \\{v\\} \backslash N(v)$ contient $R(p-1, q)$ sommet, donc :
-
-- soit il contient une clique $C$ de taille $q$ et il existe une clique de taille $q$ de $G$.
-- soit il contient un stable $S$ de taille $p-1$ et l'ensemble $S \cup \\{v\\}$ est un stable de taille $p$ dans $G$
-
-Dans tous les cas $G$ contient :
-
-- soit un stable de taille $p$
-- soit une clique de taille $q$
-
-Son nombre de sommet est donc plus grand que $R(p, q)$ et on a :
-
-<div>
-$$
-R(p, q) \leq R(p-1, q) + R(p, q-1)
-$$
-</div>
-
-Comme $R(2, k) = R(k, 2) = k$, l'équation précédente montre l'existence de $R(3, k) = R(k, 3)$ pour tous $k$ et de proche en proche on a :
-
-{% note "**Proposition**" %}
-$R(p, q)$ existe pour tout entiers $p$ et $q$.
-
-On a $R(2, k) = R(k, 2) = k$ pour tout entier $k$ et pour tous entiers $p, q \geq 3$ :
-
-<div>
-$$
-R(p, q) \leq R(p-1, q) + R(p, q-1)
-$$
-</div>
-
-{% endnote %}
-
-On peut alors montrer facilement par récurrence sur $k = p + q \geq 4$ et en utilisant la majoration précédente que :
+{% note "**Corollaire**" %}
+Pour tout couple d'entiers $p, q\geq 4$ on a :
 
 <div>
 $$
 R(p, q) \leq \binom{p+q-2}{p-1}
 $$
 </div>
+{% endnote %}
+{% details "preuve", "open" %}
+Une récurrence triviale en utilisant la formule du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal).
+{% enddetails %}
 
-### Généralisation
 
-On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir [la page Wikipédia dédiée au problème](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9) pour en voir une formulation générale.
+Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans la rue, soit il existe un ensemble de $p$ personnes se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.
 
-> TBD écrire et montrer un exemple
+{% exercice %}
+Montrez que pour tous $p, q\geq 1$, on a $R(p, q) = R(q, p)$
+{% endexercice %}
+{% details "corrigé" %}
+Soit $G$ un graphe à $R(p, q)$ sommets. Le graphe $\overline{G}$ à le même nombre de sommets que $G$ donc :
 
-### Particularisation
+- il possède soit une clique de taille $p$ et $G$ possède un stable de taille $p$
+- il possède soit un stable de taille $q$ et $G$ possède une clique de taille $q$
 
-En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.
+On en déduit que $R(p, q) \leq R(q, p)$ pour tous $p$ et $q$ ils sont donc égaux (car on a alors aussi $R(q, p) \leq R(p, q)$)
+{% enddetails %}
 
-Par exemple la majoration précédente donne $R(5, 5) = \binom{8}{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43).
+On prend souvent $p = q$ et on note $R(p) = R(p, p)$.
 
+{% exercice %}
+Montrez que $R(3) = 6$
+{% endexercice %}
+{% details "corrigé" %}
+
+Tout d'abord $R(3)> 5$ puisque le cycle $C_5$ ne contient que des cliques et des stables de taille 2.
+
+Soit alors un graphe $G$ à plus de 6 sommets et soit $v$ un de ses sommets. Si $\delta(v) \geq 3$ alors :
+
+- soit le graphe $G$ restreint à $N(v)$ n'a pas d'arête et c'est un stable de taille au moins 3,
+- soit le graphe $G$ restreint à $N(v)$ a une arête dont ses extrémités plus $v$ forment une clique de taille 3.
+
+Enfin, si $\delta(v) < 3$ un raisonnement identique sur le complémentaire de $G$ donne que :
+
+- soit $\overline{G}$ possède un stable de taille 3 et donc $G$ une clique de taille 3,
+- soit $\overline{G}$ possède une clique de taille 3 et donc $G$ un stable de taille 3.
+
+{% enddetails %}
+
+Continuons sur notre lancée :
+
+{% exercice %}
+Montrez que $R(3, 4) > 8$
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser [le graphe de Wagner](https://fr.wikipedia.org/wiki/Graphe_de_Wagner).
+{% endinfo %}
+{% details "corrigé" %}
+Le graphe de Wagner ne possède ni clique de taille 3 ni stable de taille 4.
+{% enddetails %}
+{% exercice %}
+En "_déduire_" que $R(3, 4) = 9$
+{% endexercice %}
+{% details "corrigé" %}
+L'exercice précédent montre $R(3, 4) \geq 9$. Notre minoration donne $R(3, 4) \leq R(2, 4) + R(3, 3) \leq 10$ mais on peut la raffiner pour notre cas. Soit $v$ un sommet d'un graphe à 9 sommets. Si $\delta(v) \geq R(2, 4)$ alors le même raisonnement que pour le théorème nous permet de conclure. On suppose alors que $\delta(v) < R(2, 4) = 4$. Mais si $\delta(v) = 3$, soit il n'y a pas d'arêtes dans le graphe restreint aux voisins de $v$ et il y a un stable de taille 3, soit il y a une arête et si on ajoute $v$ cela fait une clique de taille 3.
+
+On peut alors supposer que $\delta(v) < 3$ et donc $9-\delta(v)> 6$ : le graphe restreint aux non-voisins de $G$ contient soit une clique de taille 3 soit un stable de taille 3 qui adjoint à $v$ fait un stable de taille 4.
+
+{% enddetails %}
+
+Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et [le graphe de Paley d'ordre 17](https://fr.wikipedia.org/wiki/Graphe_de_Paley) ne possède ni de clique ni se stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que 
+$43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, on ne connaît pas d'algorithme efficace pour trouver une clique ou un stable de taille 5 : il faut tout essayer ce qui va prendre exponentiel lorsque la taille de la clique/stable à chercher augmente. On sait que ce cela existe mais c'est dur à trouver !
+
+
+{% lien %}
+[chercher une paille dans une meule de fois peut être aussi  dur que d'y trouver l'aiguille](https://www.youtube.com/watch?v=4weMmFZSBtI)
+{% endlien %}
+{% info %}
+Toutes les vidéos de cette chaîne Youtube sont très bonnes !
+{% endinfo %}
+
+Terminons cette partie en calculant quelques bornes. On doit ces bornes à Erdős et vont nous permettre d'utiliser (et de voir la puissance de) la méthode probabiliste que nous n'avons pour l'instant qu'effleuré.
+
+{% note "**Proposition**" %}
+
+{% endnote %}
+
+> TBD <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=3>
+> TBD <https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf>
+> 
