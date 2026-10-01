@@ -224,7 +224,8 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 ## Graphes aléatoires
 
 >TBD Lemme local de Lovász
-
+> <https://www.imo.universite-paris-saclay.fr/~nicolas.curien/cours/cours-RG.pdf>
+> <https://www.youtube.com/watch?v=LnApSsurrZU>
 <!-- carré latin. Avec preuve et code. -->
 
 <!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :

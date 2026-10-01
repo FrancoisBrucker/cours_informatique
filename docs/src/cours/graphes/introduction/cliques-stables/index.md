@@ -326,7 +326,7 @@ $$
 {% enddetails %}
 
 > TBD montrez que $R(p, q) = R(q, p)$ (on prend le graphe complémentaire)
-
+> TBD cela montre qu'il y a toujours une structure. 
 > TBD on étudie souvent $p = q$.
 
 > TBD R(3, 3) ?
@@ -338,11 +338,13 @@ $$
 {% endnote2 %}
 
 > TBD parler de haystack (retrouver le doc)
+> trouver une clique ou stable de taille >K est dur... Même si on sait qu;elle existe !
 
-> TBD ici introduire la méthode probabiliste.
 > <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
 > TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+> TBD existence de toute structure : cf prop 11.3.1 Diestel sur les graphes aléatoires.
 
+> tBD R(5) inconnu, meme si borne. rop de graphe a verifier <https://www.youtube.com/watch?v=LAxOhtTCPuI>?
 > TBD anectote erdos sur les aliens et ramsey
 
 > TBD Ramsey existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
