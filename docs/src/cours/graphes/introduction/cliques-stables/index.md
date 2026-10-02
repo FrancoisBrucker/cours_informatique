@@ -325,6 +325,7 @@ Cette combinaison de cliques et de stable a été étudiée par Ramsey au début
 
 {% lien %}
 [Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey)
+
 {% endlien %}
 
 Il existe plusieurs formulation de ce théorème et des problématiques qu'il traite. Nous allons ici le formuler avec des cliques et des stables :
@@ -355,6 +356,9 @@ De deux choses l'une :
   - il existe un stable $S$ de taille $q-1$ dans le graphe $G$ restreint aux non-voisins de $v$ : $S \cup \\{v\\}$ est un stable de taille $q$ dans $G$.
 
 {% enddetails %}
+
+<div id="R_majoration"></div>
+
 {% note "**Corollaire**" %}
 Pour tout couple d'entiers $p, q\geq 4$ on a :
 
@@ -369,7 +373,9 @@ Une récurrence triviale en utilisant la formule du [triangle de Pascal](https:/
 {% enddetails %}
 
 
-Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans la rue, soit il existe un ensemble de $p$ personnes se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.
+Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans une soirée, soit il existe un ensemble de $p$ d'invités se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.
+
+De façon plus profonde, ceci montre que le désordre total n'existe pas : lorsque le nombre de sommets devient grand il existera toujours des cliques ou des stables.
 
 {% exercice %}
 Montrez que pour tous $p, q\geq 1$, on a $R(p, q) = R(q, p)$
@@ -436,12 +442,149 @@ $43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, 
 Toutes les vidéos de cette chaîne Youtube sont très bonnes !
 {% endinfo %}
 
-Terminons cette partie en calculant quelques bornes. On doit ces bornes à Erdős et vont nous permettre d'utiliser (et de voir la puissance de) la méthode probabiliste que nous n'avons pour l'instant qu'effleuré.
+Terminons cette partie en exprimant un encadrement de $R(n)$. On commence par adapter [la borne précédente](./#R_majoration){.interne} pour trouver une majoration :
 
-{% note "**Proposition**" %}
+{% note "**Théorème (Szekeres, 1935)**" %}
+
+Pour tout $n\geq 1$, on a :
+
+<div>
+$$
+R(n) \leq (1 + o(1))\frac{4^{n-1}}{\sqrt{\pi \cdot n}}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+On utilise [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling#%C3%89quivalent_du_coefficient_binomial_central) : $\binom{2p}{p} \sim \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
+
+Il existe alors une fonction négligeable en 1 lorsque $n$ tend vers l'infini, notée $f(n)$, telle que : $\binom{2p}{p} = (1 + f(n)) \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
+En utilisant [la borne précédente](./#R_majoration){.interne} appliquée à $R(n,n)$ on a : $R(n, n) \leq \binom{2(n-1)}{n-1} = (1 + f(n)) \frac{4^{n-1}}{\sqrt{\pi \cdot (n-1)}}$ et comme $\frac{1}{\sqrt{n}} \sim \frac{1}{\sqrt{n-1}}$ en $+\infty$ on en déduit bien l'inégalité demandée.
+{% enddetails %}
+
+On doit la minoration à Erdős. Elle utilise, de façon magistrale, la méthode probabiliste (que nous n'avons pour l'instant qu'effleuré). 
+
+Mais commençons par un échauffement pour se rappeler la méthode probabiliste :
+
+{% exercice %}
+Pour tout $n\geq 1$ et tout $K$ tel que $\binom{K}{n} < {2^{n(n-1)/2 -1}}$, on a :
+
+<div>
+$$
+R(n) > K
+$$
+</div>
+
+{% endexercice %}
+{% info %}
+Vous pourrez calculer la probabilité qu'un graphe aléatoire à $n$ sommets (la probabilité qu'une arête $xy$ donnée existe soit $1/2$) soit une clique ou un stable, puis en déduire une majoration de la probabilité qu'un graphe quelconque à $N$ sommet contienne une clique ou un stable de taille $n$.
+{% endinfo %}
+{% details "corrigé" %}
+Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $(2 \cdot \frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$
+
+
+Si on a maintenant un graphe aléatoire$G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :
+
+<div>
+$$
+P_{n}(G) \leq \binom{K}{n} \cdot 2^{1-n(n-1)/2}
+$$
+<div>
+
+Si $\binom{K}{n} < {2^{n(n-1)/2 -1}}$, on a que $P_{n}(G) <1$ et donc il existe des graphes à $K$ sommets n'ayant ni clique ni stable à $n$ sommets, ce qui conclut la preuve.
+{% enddetails %}
+
+Cette minoration toute simple va vous permettre de minorer explicitement $R(n)$ :
+
+{% exercice "(Erdös, 1947)" %}
+Déduire de l'exercice précédent que :
+
+<div>
+$$
+R(n) > 2^{n/2}
+$$
+</div>
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser l'inégalité classique : pour tous $p\leq q$, on a $\binom{q}{p} < \frac{q^p}{p!}$
+{% endinfo %}
+{% details "corrigé" %}
+
+$K = 2^{n/2}$, alors : $\binom{K}{n} < \frac{K^n}{n!} < \frac{2^{n^2/2}}{n!}$ et de là, comme $n! > 2^{n/2 + 1}$ (par une récurrence triviale) on a : $\binom{K}{n} < \frac{2^{n^2/2}}{2^{n/2 + 1}}$. On se retrouve dans les hypothèses de l'exercice, ce qui nous permet de conclure.
+
+{% enddetails %}
+
+Maintenant qu'on est bien chaud on peut se concenter sur la proposition suivante, qui utilise une variation subtile de la méthode probabiliste pour améliorer la minoration précédente :
+
+{% note "**Théorème (Erdös, 1947)**" %}
+Pour tout $k, n \geq 1$ on a :
+
+<div>
+$$
+R(n) > k - \binom{k}{n} \cdot 2^{1-n(n-1)/2}
+$$
+</div>
 
 {% endnote %}
+{% details "preuve", "open" %}
+On va utiliser la méthode probabiliste mais de façon un peu plus subtile que dans l'exercice.
 
-> TBD <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=3>
-> TBD <https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf>
-> 
+Soit $G$ un graphe aléatoire à $k$ sommets. Soit $X(G)$ la variable aléatoire qui compte le nombre de clique et de stables de taille $n$ de $G$. On a :
+
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(X) &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr(A \text{soit une clique}) + \Pr(A \text{soit un stable}))\\
+&=& \sum\limits_{A \text{ ensemble de taille }n} 2 \cdot \frac{1}{2^{n(n-1)/2}}\\
+&=& \binom{k}{n} 2 \cdot {2^{1-n(n-1)/2}}\\
+\end{array}
+$$
+</div>
+
+Si l'on supprime du graphe un sommet (on peut supprimer plusieurs fois le même sommet) pour chacune de ses cliques et stable de taille $n$, le nouveau graphe ne contient plus ni clique ni stable de taille $n$ et aura au moins $k - X(G)$ sommets puisque l'on peut supprimer le même sommet plusieurs fois.
+
+De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}(N - X) = N - \mathbb{E}(X) = N - \binom{N}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.
+
+{% enddetails %}
+{% note "**Corollaire**" %}
+Pour tout $k, n \geq 1$ on a :
+
+<div>
+$$
+R(n) > (\frac{1}{e} + o(1))\cdot n\cdot 2^{n/2}
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+La proposition précédente étant vraie pour tout $k$. On peut alors prendre un $k$ qui nous arrange, par exemple : $k = \lfloor\frac{n}{e}\cdot 2^{n/2}\rfloor$. Ce $k$ est effectivement arrangeant car :
+
+- $\binom{k}{n} = \frac{k (k-1) \dots (k-n-1)}{n!} < \frac{k^n}{n!}$
+- $e^n \geq \frac{n^n}{n!}$, puisque $e^n = \sum_{i\geq 0}\frac{n^{i}}{i!}\geq \frac{n^n}{n!}$
+
+Et donc : $\binom{k}{n} \cdot {2^{1-n(n-1)/2}} \leq \frac{k^n}{n^n/e^n} \cdot  {2^{1-n(n-1)/2}}$
+
+En remplaçant $k$ par sa valeur on obtient $R(n) > \lfloor\frac{n}{e}\cdot 2^{n/2}\rfloor - 2\cdot 2^{}n/2 \geq \frac{n}{e}\cdot 2^{n/2} - 1 - 2\cdot 2^{}n/2 = (1/e + o(1))\cdot n\cdot 2^{n/2}$ ce qui conclut la preuve.
+
+{% enddetails %}
+
+On en déduit l'encadrement :
+
+{% attention2 "**À retenir**" %}
+<div>
+$$
+ (\frac{1}{e} + o(1))\cdot n\cdot 2^{n/2} < R(n) \leq  (1 + o(1))\frac{4^{n-1}}{\sqrt{\pi \cdot n}}
+$$
+</div>
+{% endattention2 %}
+
+C'est un encadrement très proche des bornes connues.
+
+{% lien %}
+
+[Des généralisations possibles](https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf)
+
+{% endlien %}
+
+

@@ -226,6 +226,8 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 >TBD Lemme local de Lovász
 > <https://www.imo.universite-paris-saclay.fr/~nicolas.curien/cours/cours-RG.pdf>
 > <https://www.youtube.com/watch?v=LnApSsurrZU>
+> TBD méthode proba (debut) utilisation pour affiner la minoration des nbs de ramsey et lemme local de Lovasz (fin de la video): <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=3>
+
 <!-- carré latin. Avec preuve et code. -->
 
 <!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
