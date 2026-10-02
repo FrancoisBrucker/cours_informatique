@@ -719,6 +719,7 @@ $$
 </div>
 </details>     
 </div>
+<div id="R_majoration"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -755,7 +756,8 @@ $$
 </div>
 </details>     
 </div>
-<p>Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans la rue, soit il existe un ensemble de $p$ personnes se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.</p>
+<p>Ceci montre que si vous prenez $R(p, q)$ personnes au hasard dans une soirée, soit il existe un ensemble de $p$ d'invités se connaissant mutuellement ; soit il existe un ensemble de $q$ personnes qui sont de parfait étrangers l'un pour l'autre.</p>
+<p>De façon plus profonde, ceci montre que le désordre total n'existe pas : lorsque le nombre de sommets devient grand il existera toujours des cliques ou des stables.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -908,20 +910,252 @@ $43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, 
 <p>Toutes les vidéos de cette chaîne Youtube sont très bonnes !</p>
 </div></div>
 
-<p>Terminons cette partie en calculant quelques bornes. On doit ces bornes à Erdős et vont nous permettre d'utiliser (et de voir la puissance de) la méthode probabiliste que nous n'avons pour l'instant qu'effleuré.</p>
+<p>Terminons cette partie en exprimant un encadrement de $R(n)$. On commence par adapter <a href="#R_majoration" class="interne">la borne précédente</a> pour trouver une majoration :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>Théorème (Szekeres, 1935)</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Pour tout $n\geq 1$, on a :</p>
+<div>
+$$
+R(n) \leq (1 + o(1))\frac{4^{n-1}}{\sqrt{\pi \cdot n}}
+$$
+</div>
 </div></div>
 
-<blockquote>
-<p>TBD <a href="https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=3">https://www.youtube.com/watch?v=dmOPl9RtG7o&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=3</a>
-TBD <a href="https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf">https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf</a></p>
-</blockquote>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling#%C3%89quivalent_du_coefficient_binomial_central">la formule de Stirling</a> : $\binom{2p}{p} \sim \frac{4^{n}}{\sqrt{\pi \cdot n}}$.</p>
+<p>Il existe alors une fonction négligeable en 1 lorsque $n$ tend vers l'infini, notée $f(n)$, telle que : $\binom{2p}{p} = (1 + f(n)) \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
+En utilisant <a href="#R_majoration" class="interne">la borne précédente</a> appliquée à $R(n,n)$ on a : $R(n, n) \leq \binom{2(n-1)}{n-1} = (1 + f(n)) \frac{4^{n-1}}{\sqrt{\pi \cdot (n-1)}}$ et comme $\frac{1}{\sqrt{n}} \sim \frac{1}{\sqrt{n-1}}$ en $+\infty$ on en déduit bien l'inégalité demandée.</p>
+</div>
+</details>     
+</div>
+<p>On doit la minoration à Erdős. Elle utilise, de façon magistrale, la méthode probabiliste (que nous n'avons pour l'instant qu'effleuré).</p>
+<p>Mais commençons par un échauffement pour se rappeler la méthode probabiliste :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Pour tout $n\geq 1$ et tout $K$ tel que $\binom{K}{n} &lt; {2^{n(n-1)/2 -1}}$, on a :</p>
+<div>
+$$
+R(n) > K
+$$
+</div>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez calculer la probabilité qu'un graphe aléatoire à $n$ sommets (la probabilité qu'une arête $xy$ donnée existe soit $1/2$) soit une clique ou un stable, puis en déduire une majoration de la probabilité qu'un graphe quelconque à $N$ sommet contienne une clique ou un stable de taille $n$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $(2 \cdot \frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$</p>
+<p>Si on a maintenant un graphe aléatoire$G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :</p>
+<div>
+$$
+P_{n}(G) \leq \binom{K}{n} \cdot 2^{1-n(n-1)/2}
+$$
+<div>
+<p>Si $\binom{K}{n} &lt; {2^{n(n-1)/2 -1}}$, on a que $P_{n}(G) &lt;1$ et donc il existe des graphes à $K$ sommets n'ayant ni clique ni stable à $n$ sommets, ce qui conclut la preuve.</p>
+</div>
+</div></div></details>     
+</div>
+<p>Cette minoration toute simple va vous permettre de minorer explicitement $R(n)$ :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p>(Erdös, 1947)</p>
+</div><div class="pl-8 mr-8">
+<p>Déduire de l'exercice précédent que :</p>
+<div>
+$$
+R(n) > 2^{n/2}
+$$
+</div>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser l'inégalité classique : pour tous $p\leq q$, on a $\binom{q}{p} &lt; \frac{q^p}{p!}$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>$K = 2^{n/2}$, alors : $\binom{K}{n} &lt; \frac{K^n}{n!} &lt; \frac{2^{n^2/2}}{n!}$ et de là, comme $n! &gt; 2^{n/2 + 1}$ (par une récurrence triviale) on a : $\binom{K}{n} &lt; \frac{2^{n^2/2}}{2^{n/2 + 1}}$. On se retrouve dans les hypothèses de l'exercice, ce qui nous permet de conclure.</p>
+</div>
+</details>     
+</div>
+<p>Maintenant qu'on est bien chaud on peut se concenter sur la proposition suivante, qui utilise une variation subtile de la méthode probabiliste pour améliorer la minoration précédente :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème (Erdös, 1947)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout $k, n \geq 1$ on a :</p>
+<div>
+$$
+R(n) > k - \binom{k}{n} \cdot 2^{1-n(n-1)/2}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On va utiliser la méthode probabiliste mais de façon un peu plus subtile que dans l'exercice.</p>
+<p>Soit $G$ un graphe aléatoire à $k$ sommets. Soit $X(G)$ la variable aléatoire qui compte le nombre de clique et de stables de taille $n$ de $G$. On a :</p>
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(X) &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr(A \text{soit une clique}) + \Pr(A \text{soit un stable}))\\
+&=& \sum\limits_{A \text{ ensemble de taille }n} 2 \cdot \frac{1}{2^{n(n-1)/2}}\\
+&=& \binom{k}{n} 2 \cdot {2^{1-n(n-1)/2}}\\
+\end{array}
+$$
+</div>
+<p>Si l'on supprime du graphe un sommet (on peut supprimer plusieurs fois le même sommet) pour chacune de ses cliques et stable de taille $n$, le nouveau graphe ne contient plus ni clique ni stable de taille $n$ et aura au moins $k - X(G)$ sommets puisque l'on peut supprimer le même sommet plusieurs fois.</p>
+<p>De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}(N - X) = N - \mathbb{E}(X) = N - \binom{N}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout $k, n \geq 1$ on a :</p>
+<div>
+$$
+R(n) > (\frac{1}{e} + o(1))\cdot n\cdot 2^{n/2}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La proposition précédente étant vraie pour tout $k$. On peut alors prendre un $k$ qui nous arrange, par exemple : $k = \lfloor\frac{n}{e}\cdot 2^{n/2}\rfloor$. Ce $k$ est effectivement arrangeant car :</p>
+<ul>
+<li>$\binom{k}{n} = \frac{k (k-1) \dots (k-n-1)}{n!} &lt; \frac{k^n}{n!}$</li>
+<li>$e^n \geq \frac{n^n}{n!}$, puisque $e^n = \sum_{i\geq 0}\frac{n^{i}}{i!}\geq \frac{n^n}{n!}$</li>
+</ul>
+<p>Et donc : $\binom{k}{n} \cdot {2^{1-n(n-1)/2}} \leq \frac{k^n}{n^n/e^n} \cdot  {2^{1-n(n-1)/2}}$</p>
+<p>En remplaçant $k$ par sa valeur on obtient $R(n) &gt; \lfloor\frac{n}{e}\cdot 2^{n/2}\rfloor - 2\cdot 2^{}n/2 \geq \frac{n}{e}\cdot 2^{n/2} - 1 - 2\cdot 2^{}n/2 = (1/e + o(1))\cdot n\cdot 2^{n/2}$ ce qui conclut la preuve.</p>
+</div>
+</details>     
+</div>
+<p>On en déduit l'encadrement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+ (\frac{1}{e} + o(1))\cdot n\cdot 2^{n/2} < R(n) \leq  (1 + o(1))\frac{4^{n-1}}{\sqrt{\pi \cdot n}}
+$$
+</div>
+</div></div>
+
+<p>C'est un encadrement très proche des bornes connues.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf">Des généralisations possibles</a></p>
+</div></div>
+
 
 
 </article>
