@@ -107,13 +107,11 @@
 <h2>Preuve d'un théorème de Jordan simplifié</h2>
 <blockquote>
 <p>TBD suffisant pour les graphes où les sommets sont dénombrables.
-TBD si courbe alors polygone alors droites</p>
+TBD si courbe alors polygone alors droites
+TBD Diesel théorème 4.1.1 (p83 et suivantes)</p>
 </blockquote>
-<h2>Caractérisation</h2>
-<blockquote>
-<p>TBD kuratoski 1930 (subdivision) et Wagner 1937 (mineurs).</p>
-</blockquote>
-<p>La caractérisation des graphes planaire de Kuratowski se fait par &quot;<em>mineur exclu</em>&quot;. C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire</p>
+<h2>Mineurs</h2>
+<p>La caractérisation des graphes planaire se fait par &quot;<em>mineur exclu</em>&quot;. C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -147,13 +145,12 @@ TBD si courbe alors polygone alors droites</p>
 <p><a href="https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)">https://fr.wikipedia.org/wiki/Mineur_(théorie_des_graphes)</a></p>
 </div></div>
 
-<blockquote>
-<p>TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.</p>
-</blockquote>
-<blockquote>
-<p>TBD rend compte de l'intrication locale de chemins entre sommets.</p>
-</blockquote>
-<h3>Planarité des Mineurs</h3>
+<p>La notion de mineur rend  compte de l'intrication locale de chemins entre sommets. Ils ont donné lieu à un des plus joli théorème de théorie des graphes (et pourtant il y en a !), <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour">le théorème de Roberston-Seymour</a>. Ce théorème indique en effet que :</p>
+<ul>
+<li>toute famille close par mineur peut être caractérisée par un nombre fini de mineurs exclu,</li>
+<li>Quelque soit le graphe $M$, il existe un algorithme en $\mathcal{O}(n^2)$ pour savoir si un graphe $G$ admet $M$ comme mineur.</li>
+</ul>
+<p>En revanche, le théorème ne caractérise pas les algorithmes et ils ont une constante multiplicatives exponentielle en la taille du mineur à rechercher. Il n'est donc pas utilisé en pratique, mais la planarité fait partie de ces familles puisque :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -190,7 +187,8 @@ TBD si courbe alors polygone alors droites</p>
 </div>
 </details>     
 </div>
-<p>On a donc déjà la proposition suivante :</p>
+<h2>Caractérisation</h2>
+<p>On a déjà établi la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -222,8 +220,19 @@ TBD si courbe alors polygone alors droites</p>
 </div>
 </details>     
 </div>
-<h3>Réciproque</h3>
-<p>La réciproque est également vraie et c'est cette partie qui va être plus difficile à démontrer.</p>
+<p>Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930 dans le cadre des subdivisions de graphes, il a été ré-ecrit par Wagner en 1937 avec les mineurs.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Voir <a href="https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner">la page Wikipedia</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD la démo.</p>
+</blockquote>
+<p>Les deux démonstrations sont</p>
 <ul>
 <li><a href="../../chemins-cycles-connexite/#2-connexit%C3%A9-cycle" class="interne">cycle et 2-connectivité</a></li>
 <li>relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f</li>
@@ -266,12 +275,6 @@ TBD si courbe alors polygone alors droites</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD caractérisation par mineur exclus gros théorème de Seymour.</p>
-</blockquote>
-<blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour">https://fr.wikipedia.org/wiki/Théorème_de_Robertson-Seymour</a></p>
-</blockquote>
 <ul>
 <li>
 <p>définitions et propriétés + Kuratowsky : <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf</a> ou <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf</a> On a besoin de :</p>
@@ -299,10 +302,6 @@ TBD si courbe alors polygone alors droites</p>
 </ul>
 </li>
 </ul>
-<h2>Caractérisation par mineur exclus</h2>
-<blockquote>
-<p>TBD <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour">https://fr.wikipedia.org/wiki/Théorème_de_Robertson-Seymour</a></p>
-</blockquote>
 
 
 </article>
