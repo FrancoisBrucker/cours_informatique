@@ -41,72 +41,6 @@ eleventyComputed:
 > TBD forcé : 2-connexe. Est-ce grave ?
 > TBD si on ne fait que refaire une représentation partielle ok. Pourquoi est-ce toujours le cas ?
 
-## Coloration de graphes planaires
-
-### Théorème des 4 couleurs
-
-> TBD 6 par notre algo de coloration
-> TBD 5 couleur : démonstration de Kempe.
->
-> Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
-> TBD Une démo (fausse) du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
->
-> TBD théorème des 4 couleurs :
->
-> - <https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html>
-> - 4 couleurs : <https://inria.hal.science/hal-04034866/document>
-
-### Colorable est NP-complet
-
-> TBD pareil que colorier les faces.
- 
-> TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf> ds 26
-
-> TBD on en déduit que trouver les 4 couleurs aussi. Sinon on fait comme 3-col et le graphe est 4-plan-col avec le gadget. ce qui donne les 3 couleurs également.
-
-### Algorithmes de coloration
-
-> - 6 coloration avec l'algo de coloration
-> - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
-> - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
-
-> TBD  algorithme en O(n^2) dans N. Robertson, D. P. Sanders, P. Seymour, R. Thomas, « The four-colour theorem », J. Combin. Theory Ser. B 70 (1997), 2–44.
-> Mais compliqué à mettre en oeuvre...
-> 
-### Applications 
-
-#### Dans des problèmes
-
-3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-
-#### Coloration de cartes de géographie
-
-coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)
- 
-#### Colorabilité et partage de secrets
-
-> TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
-
-> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
->
-{% lien %}
-
-- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
-- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
-
-{% endlien %}
-
-> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
-
-### Algorithmes de coloration de listes
-
-> 5 liste colorable.
-
-### Variantes
-
-> TBD pays non connexes
-> TBD colonies lunaires
-
 ## Algorithmes
 
 ### Dessin
@@ -121,14 +55,23 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)
 
 >  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
 
+
+## Coloration de graphes planaires
+
+{% aller %}
+[Coloration de graphes planaires](./coloration/){.interne}
+{% endaller %}
+
 <!-- 
 
 ## Odds and ends
 
 
-<!-- - Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). -->
+- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). 
 - isomorphisme de graphe planaire
-<!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
+> TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. 
+
+-->
 
 ## Références
 

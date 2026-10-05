@@ -67,3 +67,38 @@ Fonctionne en évitant les configuration impossible de Kempe :
 > TBD  algorithme en O(n^2) dans N. Robertson, D. P. Sanders, P. Seymour, R. Thomas, « The four-colour theorem », J. Combin. Theory Ser. B 70 (1997), 2–44.
 > Mais compliqué à mettre en oeuvre...
 > 
+
+## Applications 
+
+### Dans des problèmes
+
+3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+
+### Coloration de cartes de géographie
+
+coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)
+ 
+### Coloration et partage de secrets
+
+> TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
+
+> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
+>
+{% lien %}
+
+- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
+- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
+
+{% endlien %}
+
+> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
+
+### Algorithmes de coloration de listes
+
+> 5 liste colorable.
+
+### Variantes
+
+> TBD pays non connexes
+> TBD colonies lunaires
+
