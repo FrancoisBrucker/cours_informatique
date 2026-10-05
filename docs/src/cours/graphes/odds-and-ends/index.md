@@ -13,84 +13,10 @@ eleventyComputed:
 > TBD à recaser là où on en parle.
 
 
-## <span id="composition-graphes"></span>Composition de graphes
 
-Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.
 
-Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :
 
-{% note2 "**Définition**" %}
-Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :
 
-$$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$
-
-{% endnote2 %}
-{% exercice %}
-Que vaut :
-![g plus g](./g_plus_g.png)
-{% endexercice %}
-{% details "**Solution**" %}
-![g plus g solution](./g_plus_g_solution.png)
-{% enddetails %}
-
-On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les arêtes possibles entre les deux graphes :
-
-{% note2 "**Définition**" %}
-Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
-
-$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2})$$
-
-{% endnote2 %}
-{% exercice %}
-Que vaut :
-![g plus g](./g_V_g.png)
-{% endexercice %}
-{% details "**Solution**" %}
-![g plus g solution](./g_V_g_solution.png)
-{% enddetails %}
-
-Enfin, de façon plus subtile :
-
-{% note2 "**Définition**" %}
-Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \square G_2$ le **produit cartésien** entre $G_1$ et $G_2$. C'est le graphe :
-
-$$G_1 \square G_2 = (V_1 \times V_2, E)$$
-
-Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
-
-- $x_2 = y_2$ et $x_1y_1 \in E_1$
-- $x_1 = y_1$ et $x_2y_2 \in E_2$
-
-{% endnote2 %}
-{% exercice %}
-Que vaut :
-![g carré g](./g_carré_g.png)
-{% endexercice %}
-{% details "**Solution**" %}
-![g carré g solution](./g_carré_g_solution.png)
-{% enddetails %}
-
-On peut aussi chercher l'approche inverse qui consiste à décomposer un graphe donné. C'est très efficace sur les graphes _"en pattern"_ :
-
-{% exercice %}
-La grille 2D est le produit cartésien de deux graphes, lesquels ?
-![g carré g](./grille.png)
-{% endexercice %}
-{% details "**Solution**" %}
-![g carré g solution](./grille_solution.png)
-{% enddetails %}
-
-Ce n'est cependant pas toujours aussi simple :
-{% exercice %}
-Le graphe suivant est le produit cartésien de deux cycles de longueurs 3. Montrez-le.
-![g carré g](./quel_carré.png)
-{% endexercice %}
-{% details "**Solution**" %}
-![g carré g solution](./quel_carré_solution.png)
-
-> TBD montrer comment le prouve. On commence par un triangle qu'on note (1, 1), (2, 1) et (3, 1) puis on propage pour voir comment on peut associer un label à chaque sommet.
-
-{% enddetails %}
 
 ## Graphes dérivés
 
@@ -117,16 +43,6 @@ Aussi appelé line graph
 > TBD tout graphe n'est pas adjoint d'un autre (exemple ?)
 adjoint de adjoint = graphe
 
-### Mineurs
-
-{% lien %}
-<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
-{% endlien %}
-
-> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
-
-> TBD rend compte de l'intrication locale de chemins entre sommets.
->
 
 ## Morphismes de graphes
 

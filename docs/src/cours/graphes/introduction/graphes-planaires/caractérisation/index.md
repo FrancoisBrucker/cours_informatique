@@ -21,6 +21,8 @@ eleventyComputed:
 
 ## Caractérisation
 
+> TBD kuratoski 1930 (subdivision) et Wagner 1937 (mineurs). 
+> 
 La caractérisation des graphes planaire de Kuratowski se fait par "_mineur exclu_". C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire
 
 {% note "**Définition**" %}
@@ -37,6 +39,16 @@ Soit $G$ un graphe. Un graphe $H$ est un mineur de $G$ s'il peut être obtenu pa
 En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
 
 ![mineur exemple](./mineur-exemple.png)
+
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+{% endlien %}
+
+> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
+
+> TBD rend compte de l'intrication locale de chemins entre sommets.
+>
 
 ### Planarité des Mineurs
 
@@ -70,6 +82,8 @@ La réciproque est également vraie et c'est cette partie qui va être plus diff
 - [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
 
 Séparation par arêtes (déconnecte le graphe) ou par point d'articulation (via algorithme DFS et retour).
+
+> TBD composantes 2-connexes ~ arbre : il existe feuille.
 
 {% note "**Proposition**" %}
 Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont

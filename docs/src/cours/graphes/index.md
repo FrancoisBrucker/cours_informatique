@@ -35,19 +35,47 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
+## Problèmes de flots
+
+Problèmes de flots. Définition, algorithmes et applications
+
+### Principes et algorithmes
+
+{% aller %}
+
+1. [Les problèmes de flots](flots){.interne}
+2. [Exercices d'application](flots-exercices){.interne}
+
+{% endaller %}
+
+### <span id="projet-flots"></span> Modélisation
+
+{% aller %}
+
+1. [Deux problèmes de transports](projet-flots-modélisation){.interne}
+2. [bataille de la marne](projet-bataille-de-la-marne){.interne}
+3. [connectivité](connectivité){.interne}
+
+{% endaller %}
+
+<!-- > TBD en DM [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem). C'est des flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf> -->
+
+
+<!-- 
+
+## Planarité
+
+Montrer que K5 et K3,3 mineur est équivalent à K5 et K3,3 subdivision.
+Algo planaire :
+- dans le triangle
+- verticale
+Reconnaissance avec 2 dfs (freissex)
+
 ## Colorabilité d'un graphe
 
 {% aller %}
 
 [Colorabilité](./colorabilité){.interne}
-
-{% endaller %}
-
-## Graphes Planaires
-
-{% aller %}
-
-[Graphes planaires](./graphes-planaires){.interne}
 
 {% endaller %}
 
@@ -179,30 +207,6 @@ Projets chemin (mettre de l'ordre)
 > TBD c'est l'ET 2024-2025
 > TBD évolution arborée et distance d'évolution. Condition des 4-points.
 
-## Problèmes de flots
-
-Problèmes de flots. Définition, algorithmes et applications
-
-### Principes et algorithmes
-
-{% aller %}
-
-1. [Les problèmes de flots](flots){.interne}
-2. [Exercices d'application](flots-exercices){.interne}
-
-{% endaller %}
-
-### <span id="projet-flots"></span> Modélisation
-
-{% aller %}
-
-1. [Deux problèmes de transports](projet-flots-modélisation){.interne}
-2. [bataille de la marne](projet-bataille-de-la-marne){.interne}
-3. [connectivité](connectivité){.interne}
-
-{% endaller %}
-
-<!-- > TBD en DM [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem). C'est des flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf> -->
 
 ## Graphe biparti
 
@@ -227,6 +231,9 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 > <https://www.imo.universite-paris-saclay.fr/~nicolas.curien/cours/cours-RG.pdf>
 > <https://www.youtube.com/watch?v=LnApSsurrZU>
 > TBD méthode proba (debut) utilisation pour affiner la minoration des nbs de ramsey et lemme local de Lovasz (fin de la video): <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=3>
+
+
+ -->
 
 <!-- carré latin. Avec preuve et code. -->
 

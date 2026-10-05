@@ -14,12 +14,16 @@ eleventyComputed:
 [Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg)
 {% endlien %}
 
+
+> thm des 4 couleurs qui est le 1er théorème assisté par ordinateur (pas une IA, c'est la preuve qui est un algorithme)
+> tbd 3 colorable un graphe planaire NP-complet !
+
 ## Problème
 
 {% aller %}
 [Problème de la planarité d'un graphe](./problème/){.interne}
 {% endaller %}
-
+  
 ## Caractérisation des graphes planaires
 
 {% aller %}
@@ -31,6 +35,11 @@ eleventyComputed:
 {% aller %}
 [Propriétés](./propriétés/){.interne}
 {% endaller %}
+
+> TBD représentation graphique
+> TBD idée 
+> TBD forcé : 2-connexe. Est-ce grave ?
+> TBD si on ne fait que refaire une représentation partielle ok. Pourquoi est-ce toujours le cas ?
 
 ## Coloration de graphes planaires
 
@@ -61,6 +70,9 @@ eleventyComputed:
 > - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
 > - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
 
+> TBD  algorithme en O(n^2) dans N. Robertson, D. P. Sanders, P. Seymour, R. Thomas, « The four-colour theorem », J. Combin. Theory Ser. B 70 (1997), 2–44.
+> Mais compliqué à mettre en oeuvre...
+> 
 ### Applications 
 
 #### Dans des problèmes

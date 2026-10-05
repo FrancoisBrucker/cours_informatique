@@ -192,6 +192,9 @@ Soit $G = (V, E)$ un (multi-)graphe (non) orienté, $V' \subsetneq V$ et $E' \su
 
 Un cas d'intérêt particulier de sous-graphes induits pour les graphes sont les cliques et les stables :
 
+<div id="définition-clique"></div>
+<div id="définition-stable"></div>
+
 {% note2 "**Définitions**" %}
 Soit $G = (V, E)$ un graphe. L'ensemble $V' \subseteq V$ est dit être :
 

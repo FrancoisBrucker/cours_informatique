@@ -10,6 +10,22 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD monter que c'est un autre mot pour coloration.
+
+{% note "**Proposition**" %}
+Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.
+{% endnote %}
+
+On en déduit donc immédiatement :
+
+{% note "**Proposition**" %}
+Un graphe est $k$-colorable si et seulement si il est $k$-parti.
+{% endnote %}
+
+
+
+
+
 
 Les graphes biparti font parti de ces classes de graphes assez généraux pour être présent partout et assez spécifique pour que tous se passe bien (les principaux problèmes NP-complets dans le cas général deviennent polynomiaux voir triviaux).
 
@@ -194,6 +210,8 @@ Les seuls graphes tripartis complets admettant un chemin eulériens sont donc le
 
 ## Caractérisation
 
+
+> TBD voir avec coloration.
 Notre algorithme nous donne quasiment sans rien faire une caractérisation des graphes bi-parti :
 
 {% note "**Proposition**" %}

@@ -18,9 +18,9 @@ eleventyComputed:
 
 ## Graphes Eulérien
 
-On se concentre ici sur les graphes, on verra plus tard comment traiter (simplement) le cas des muli-graphes (orientés), en utilisant le graphe du cours comme exemple :
+On se concentre ici sur les graphes, on verra plus tard comment traiter (simplement) le cas des multi-graphes (orientés), en utilisant le graphe du cours comme exemple :
 
-![graphe](../parcours-eulériens/euler_exemple_1.png)
+![graphe](../graphes-eulériens/euler_exemple_1.png)
 
 Nous allons le coder ainsi :
 

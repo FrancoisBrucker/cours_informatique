@@ -71,6 +71,7 @@ Et une conséquence inattendue (exercice de modélisation) :
 
 {% endaller %}
 
+<!-- TBD
 
 Codons tout ça :
 
@@ -79,7 +80,7 @@ Codons tout ça :
 [Projet : Graphes eulérien](projet-graphes-eulerien){.interne}
 
 {% endaller %}
-
+ -->
 
 ### Graphes Hamiltoniens
 
@@ -91,21 +92,24 @@ Codons tout ça :
 
 ## Problèmes universels en théorie des graphes
 
-> TBD prérequis NP algorithmie.
+{% prerequis %}
+[Problèmes NP](/cours/algorithmie/problèmes-NP/){.interne}
+{% endprerequis %}
 
 {% aller %}
 
-1. [Cliques et stables maximaux](cliques-stables){.interne}
-2. Chemin le plus long
-3. coloration (que sommets et laisser arêtes à plus tard)
-
-> TBD 2-coloration = Ramsey !
+1. [Cliques et stables](cliques-stables){.interne}
+2. [Chemin le plus long](./chemin-le-plus-long/){.interne}
+3. [Coloration de sommets](./coloration-sommets/){.interne}
 
 {% endaller %}
-
+ 
 ## Graphes planaires
 
 Finissons cette introduction par une classe intéressantes de graphes, ceux qu'on peut dessiner.
 
-> thm des 4 couleurs qui est le 1er théorème assisté par ordinateur (pas une IA, c'est la preuve qui est un algorithme)
-> tbd 
+{% aller %}
+
+[Graphes planaires](./graphes-planaires/){.interne}
+
+{% endaller %}
