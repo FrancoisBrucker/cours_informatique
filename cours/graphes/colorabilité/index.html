@@ -113,18 +113,139 @@
 <p><a href="probl%C3%A8me/" class="interne">Problème de la coloration d'un graphe</a></p>
 </div></div>
 
-<h2>Coloration des sommets</h2>
+<h2>coloration sommets. Prop</h2>
+<p>Certainement la plus populaires des colorations de graphes.</p>
+<h3>Coloration et composition de graphes</h3>
+<h3>Colorabilité et isomorphisme de graphe</h3>
 <blockquote>
-<p>TBD découper</p>
+<p>TBD test heuristique d'isomorphisme de graphe <a href="https://en.wikipedia.org/wiki/Colour_refinement_algorithm">https://en.wikipedia.org/wiki/Colour_refinement_algorithm</a> et <a href="https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test">https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test</a></p>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="coloration-sommets" class="interne">Coloration des sommets</a></p>
+<h3>Algo exponentiel</h3>
+<p>Montrer algo exponentiel qui cherche toutes les possibilités pour 4-coloration planaire.</p>
+<h3>Welsch-Powell</h3>
+<p>On a une majoration plus fine que la majoration simple de welch-Powell.</p>
+<p>Pour le démontrer on aura besoin de la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe 2-connexe et $k$-régulier avec $3\leq k &lt; \vert V(G)\vert - 1$ admet trois sommets $u$ et $v$ et $w$  tels que :</p>
+<ul>
+<li>$vw$ n'est pas une arête de $G$,</li>
+<li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
+<li>supprimer $v$ et $w$ de $G$ ne le déconnecte pas.</li>
+</ul>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'existence de ces trois sommets est garantie car :</p>
+<ol>
+<li>comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête</li>
+<li>comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
+<ul>
+<li>$x'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
+<li>$z$ comme étant le sommet juste après $x'$ sur ce chemin.</li>
+</ul>
+</li>
+<li>On a alors $xz$ qui n'est pas une arête alors que $xx'$ et $x'z$ en sont.</li>
+</ol>
+<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in V_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \in V_i \backslash \{x_i\}$ tel que $y_ix$ ou $y_iz$ soit une arête de $G$. On en déduit que :</p>
+<ul>
+<li>$G$ privé de $x_1$ et $x_2$ est connexe</li>
+<li>$xx_1$ et $xx_2$ sont des arêtes de $G$.</li>
+</ul>
+<p>Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.</p>
+<blockquote>
+<p>TBD des dessins.</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>On peut maintenant démontrer le théorème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème (Brooks, 1941)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ qui n'est pas un graphe complets ni un cycle impair on a :</p>
+<div>
+$$
+\chi(G) \leq \Delta(G)
+$$
+</div>
+<p>Et $\chi(G) = \Delta(G) + 1$ pour les graphes complets et les cycles impairs.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il existe ne nombreuses preuves de cette proposition, nous en présentons une qui utilise un ordonnancement astucieux de l'algorithme glouton.</p>
+<p>La preuve est construite en examinant plusieurs cas :</p>
+<p><strong>Cas Zéro :</strong> $G$ est un cycle pair.</p>
+<p>La proposition est vérifiée puisque $G$ est bi-parti, donc 2-colorable.</p>
+<p><strong>Premier cas :</strong> Il existe $x^\star$ tel que $\delta(x^\star) &lt; \Delta(G)$.</p>
+<p>On ordonne alors les $n$ sommets du graphe de telle sorte que $x^\star = v_n$ et on ordonne en suivant l'algorithme :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">k = n
+i = n-1
+
+tant que i > 0:
+  si k > i et qu'il existe un voisin x de vk non encore placé alors:
+    vi = x
+    i = i- 1
+  sinon:
+    k = -1 </code></pre>
+<p>Si le graphe est connexe, il est clair que cet ordre va placer tous les sommets par ordre décroissant en commençant par tous les voisins de $x_n$, puis tous les voisins de $x_{n-1}$ non encore placés, et ainsi de suite jusqu'à avoir placé tout le monde.</p>
+<p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister pour tout $i$ un $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un nombre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
+<p><strong>Second cas :</strong> le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.</p>
+<p>En supprimant $x^\star$ de $G$ il y aura $p&gt;1$ composantes connexes $G_i = (V_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $V_i \cup \{x^\star\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.</p>
+<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$. On se retrouve dans le cadre de la proposition précédente (car on a forcément $k&gt;2$ puisque $G$ e peut être un cycle de longueur impair) et il existe $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
+<ul>
+<li>$vw$ n'est pas une arête de $G$,</li>
+<li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
+<li>supprimer $v$ et $w$ de $G$ ne le déconnecte pas.</li>
+</ul>
+<p>On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ et trouver les autres éléments en utilisant l'algorithme du cas 1.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD à séparer en plusieurs sous propositions et un exemple par cas.</p>
+</blockquote>
 <h2>Coloration des arêtes</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

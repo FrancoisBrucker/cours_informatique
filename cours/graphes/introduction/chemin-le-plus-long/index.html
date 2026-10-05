@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/chemin-le-plus-long/">Chemin le plus long</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/chemin-le-plus-long/">Chemin le plus long</a>
 
 </div></div>
 
@@ -96,32 +96,26 @@
     
   
 
-  <blockquote>
-<p>TBD à réordonner. Mettre avec Hamilton 2 ?</p>
-</blockquote>
-<p>Ca où on sait faire :</p>
-<blockquote>
+  <p>On a vu plusieurs algorithmes permettant de trouver un chemin le plus court entre 2 sommets mais aucun permettant de trouver le chemin élémentaire le plus long :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
-<li>arbres</li>
-<li>acyclique pour chemin le plus long : et conséquence inattendue sr le BTP (pb d'ordonnancements. Aussi DFS !)</li>
+<li><strong>Nom</strong> : chemin le plus long</li>
+<li><strong>Entrées</strong> : Un graphe (<em>resp.</em> graphe orienté) $G$</li>
+<li><strong>Sortie</strong> : Un chemin élémentaire le plus long possible.</li>
 </ul>
-</blockquote>
-<p>Cas particulier métrique et complet</p>
-<blockquote>
-<ol>
-<li>pas simple : exhaustif avec backtrack + branch and bound</li>
-</ol>
-</blockquote>
-<h2>Ordonnancement</h2>
-<blockquote>
-<p>TBD DFS et Problème d’ordonnancements</p>
-<p>TBD tri topologique dans un DAG avec un DFS + à la visite ajoute en fin de liste. Ensuite on regarde la liste à l'envers</p>
-</blockquote>
-<p>Un <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement">problème d'ordonnancement</a> peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.</p>
+</div></div>
+
+<p>Ce problème est clairement relié au problème du chemin hamiltonien :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?</p>
+<p>Montrer que le problème de la recherche d'un chemin hamiltonien est plus facile que la recherche d'un chemin le plus long.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -141,45 +135,13 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il est clair que s'il y a un cycle on ne peut réaliser le projet.</p>
+<p>Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.</p>
 </div>
 </details>     
 </div>
-<p>Vous résolvez des problèmes d'ordonnancement tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)</p>
-<p><img src="chemin_habillage.png" alt="habillage"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que le tri topologique est une solution au problème d'ordonnancement. Appliquez le au problème de s'habiller le matin.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>De plus un tri topologique fait que lorsque l'on s'attelle à la tache $v_i$ on a déjà fait tous ses prédécesseurs (ses prés-requis).</p>
-</div>
-</details>     
-</div>
-<p>C'est encore un exemple où les contraintes sont locales et ou l'on cherche une solution globale.</p>
-<h2>NP-complétude</h2>
-<blockquote>
-<p>TBD Chemin le plus long ≥ chemin hamiltonien</p>
-</blockquote>
-<p>Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et non orienté :</p>
+<p>Problème pour lequel on a pas non plus vu d'algorithme efficace (<em>ie.</em> polynomial), et pour cause... Ils sont NP-complets.</p>
+<h2>NP-complétude de la reconnaissance d'un graphe hamiltonien</h2>
+<p><a href="../graphes-hamiltoniens/#chemin-cycle" class="interne">On a déjà parlé de ces problèmes</a>, formalisons les :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -209,15 +171,20 @@
 </ul>
 </div></div>
 
-<p>Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de NP. Nous allons montrer qu'ils sont NP-complet par des réduction depuis <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat" class="interne">le problème 3-SAT</a>.</p>
-<h3>Chemin orienté hamiltonien</h3>
+<p>On a montré que la recherche d'un chemin  et un cycle (<em>resp.</em> d'un chemin orienté et d'un circuit) sont deux problèmes équivalents. Nous allons donc uniquement montrer la NP-complétude de la recherche de chemins orienté par une réduction depuis <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat" class="interne">le problème 3-SAT</a> et conclure en montrant une reduction de la recherche de chemins orientés vers la recherche  d'un chemin hamiltonien non orienté.</p>
+<h3>3-SAT ≤ Chemin orienté hamiltonien</h3>
 <p>Pour transformer une instance de 3-SAT en une instance de recherche d'un chemin hamiltonien dans un graphe, il faut :</p>
 <ul>
 <li>encoder les différentes variables dans leur état 1 ou 0</li>
 <li>gérer les clause pour que tout ne soit pas possible</li>
 <li>s'assurer qu'il n'existe de chemin hamiltonien que si et seulement si le système est satisfiable.</li>
 </ul>
-<p>Nous allons appliquer la réduction à <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple">l'exemple du problème 3-SAT</a>.</p>
+<p>Nous allons appliquer la réduction à <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple">l'exemple du problème 3-SAT</a> :</p>
+<div>
+$$
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
+$$
+</div>
 <h4>Encodage des variables</h4>
 <p>Chaque variable est encodé par le sous-graphe suivant :</p>
 <p><img src="NPC-dirig%C3%A9-variables.png" alt="encodage des variables"></p>
@@ -258,35 +225,34 @@
 <p>Le problème de recherche d'un chemin hamiltonien dans un graphe dirigé est NP-complet.</p>
 </div></div>
 
-<h3>Circuit orienté hamiltonien</h3>
-<p>La précédente preuve s'applique de manière identique pour la recherche d'un circuit hamiltonien en ajoutant un arc de $y_n$ à $y_0$. On en conclut :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le problème de recherche d'un circuit hamiltonien dans un graphe dirigé est NP-complet.</p>
-</div></div>
-
-<h3>Cycle et chemins hamiltonien</h3>
-<p>On va montrer ici que la recherche d'un chemin (<em>resp.</em> circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (<em>resp.</em> cycle) hamiltonien dans un graphe. Pour cela on va associer à tout graphe dirigé un graphe.</p>
-<p>On effectue la transformation suivante, pour chaque sommet du graphe orienté :</p>
-<p><img src="NPC-non-orient%C3%A91.png" alt="Arc orienté initial"></p>
-<p>On en associe 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :</p>
-<p><img src="NPC-non-orient%C3%A92.png" alt="Arêtes non orientées"></p>
-<p>Il est alors évident que si le graphe non orienté a un chemin (<em>resp.</em> cycle) hamiltonien, alors le graphe orienté possède également un chemin (<em>resp.</em> circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montre que les problèmes orientés ou non orientés sont équivalent.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+<h3>Circuit hamiltonien ≤ cycle hamiltonien</h3>
+<p>On doit cette réduction à Karp (1972).</p>
+<p>Soit $G = (V. E)$ un graphe orienté. On lui associe $G' = (V', E')$ le graphe (non orienté) suivant :</p>
+<ul>
+<li>$V' = \cup_{x \in V} \{ x, x^+, x^- \}$</li>
+<li>$E' = (\cup_{x \in V} \{ xx^+, xx^-\}) \cup (\cup_{xy \in E} \{ x^+y^- \})$</li>
+</ul>
+<p>Par exemple le graphe orienté suivant :</p>
+<p><img src="reduction-karp-1.png" alt="Karp orienté"></p>
+<p>Sera transformé dans ce graphe non orienté :</p>
+<p><img src="reduction-karp-2.png" alt="Karp non orienté"></p>
+<p>Notez que la transformation est bien polynomiale (elle est même linéaire). De plus, il est clair qu'il y a bijection entre :</p>
+<ul>
+<li>un chemin hamiltonien $x_1 \dots x_n$ dans le graphe orienté</li>
+<li>un chemin hamiltonien $x_1x^+x^-<em n-1="">2 \dots x^-</em>x_{n-1}x^+_{n-1}x^-_nx_n$ dans le graphe non orienté</li>
+</ul>
+<p>Ce qui montre que la recherche d'un chemin hamiltonien dans un graphe orienté est plus simple que la recherche un chemin hamiltonien dans un graphe non orienté et donc la NP-complétude de ce dernier.</p>
+<h2>Recherche Chemin le plus long</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=5SaQa_wlel8">exemple de la réduction</a></p>
+<p>Le problème de la recherche du chemin le plus long n'est <em>a priori</em> pas dans NP.</p>
 </div></div>
 
-<h3>Chemin le plus long</h3>
-<p>La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'il est illusoire de tenter de trouver un algorithme efficace pour résoudre le problème du chemin le plus long :</p>
+<p>Il est en effet impossible à partir d'une sortie de ce chemin de conclure polynomialement que c'est bien le plus grand possible sinon P = NP...</p>
+<p>En revanche, le problème suivant y est clairement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -295,42 +261,81 @@
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>Nom</strong> : chemin le plus long</li>
-<li><strong>Entrée</strong> : Un graphe (<em>resp.</em> graphe orienté) $G$</li>
-<li><strong>Sortie</strong> : Un chemin élémentaire le plus long possible.</li>
+<li><strong>Nom</strong> : chemin de longueur donné</li>
+<li><strong>Entrées</strong> :
+<ul>
+<li>Un graphe (<em>resp.</em> graphe orienté) $G$</li>
+<li>Un entier $K$</li>
+</ul>
+</li>
+<li><strong>Sortie</strong> : Un chemin élémentaire de longueur $K$.</li>
 </ul>
 </div></div>
 
-<p>Résoudre ce problème revient en effet clairement à résoudre le problème du chemin hamiltonien.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.</p>
+<p>Ce problème est même NP-complet puisque si $K$ vaut le nombre de sommets moins 1 c'est le problème chemin hamiltonien.</p>
+<p>De plus, il est facile (par dichotomie) de résoudre le chemin le plus long à partir d'un algorithme résolvant le problème &quot;chemin de longueur donné&quot; : ces deux problèmes sont donc à un facteur log prêt de même complexité :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un problème est dit <strong>NP-difficile</strong>. si son pendant à paramètre fixé est NP-Complet.</p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+<p>Trouver un plus long chemin  dans un graphe est donc un problème NP-difficile. Mais il existe des cas où sa résolution est toute simple ! On va en examiner deux.</p>
+<h3>Dans un arbre</h3>
+<blockquote>
+<p>TBD semble O(n^3) en première approche Mais un parcours permet de trouver le chemin le plus long depuis un sommet en O(n). Donc on a envie de dire O(n^2). Mais on peut le faire en O(n) avec 2 parcours.</p>
+</blockquote>
+<ol>
+<li>Premier parcours : Partez de n'importe quel nœud de l'arbre (appelons-le A) et cherchez le nœud le plus éloigné de lui. Soit B ce nœud.</li>
+<li>Second parcours : Partez maintenant du nœud B et cherchez le nœud le plus éloigné de lui. Soit C ce nœud.
+Le chemin entre B et C est le chemin le plus long de l'arbre, et sa longueur est le diamètre.</li>
+</ol>
+<p>On se trouve dans le cas suivant :</p>
+<p><img src="chemin-arbre.png" alt="chemin le plus long arbre"></p>
+<p>Avec :</p>
+<ul>
+<li>$a \leq b$ (car $b + c \geq b + c$)</li>
+<li>$b \leq c$ (car $a + b \geq a + c$)</li>
+</ul>
+<p>Donc $a \leq b \leq c$.</p>
+<p>Il y a 3 possibilités pour les autres sommets, résumés dans le diagramme ci-dessous :</p>
+<p><img src="chemin-arbre-2.png" alt="chemin le plus long arbre"></p>
+<p>Avec :</p>
+<ul>
+<li>$x \leq a'$</li>
+<li>$y \leq b'$</li>
+<li>$z \leq c'$</li>
+</ul>
+<p>De là :</p>
+<ul>
+<li>la longueur du chemin entre $X$ et $Y$ est plus petite que celle entre $A$ et $B$</li>
+<li>la longueur du chemin entre $X$ et $Z$ est plus petite que celle entre $A$ et $C$</li>
+<li>la longueur du chemin entre $Y$ et $Z$ est plus petite que celle entre $B$ et $C$</li>
+</ul>
+<p>Et si l'on prend deux sommets du même côté, par exemple (le raisonnement est identique pour les 2 autres cas) :</p>
+<p><img src="chemin-arbre-3.png" alt="chemin le plus long arbre"></p>
+<p>On a :</p>
+<ul>
+<li>$x' \leq b$ (car $B$ est plus loin de $A$ que $X''$)</li>
+<li>$x + a''-a' \leq c$ (car $C$ est plus loin de $B$ que $X'$)</li>
+</ul>
+<p>Donc la longueur du chemin entre $X$ et $X'$ est plus petite que la longueur du chemin entre $B$ et $C$.</p>
+<h3>Dans un DAG</h3>
+<p>Il existe un cas où trouver un chemin le plu long est facile : dans les graphes orientés qui ne contiennent pas de circuit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.</p>
-</div>
-</details>     
-</div>
-<p>Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.</p>
-<p>Il existe un cas où trouver un chemin le plu long est facile : dans les graphes orientés qui ne contiennent pas de circuit (souvent appelé <em>DAG</em>, <em>direct acyclic graph</em>).</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe orienté sans circuit est appelé DAG (<em>direct acyclic graph</em>)</p>
+</div></div>
+
 <p>On appelle <strong><em>tri topologique</em></strong> d'un graphe orienté $G = (V, E)$ un ordre total $&lt;$ sur les sommets du graphe tel que $xy \in E$ implique $x &lt; y$ dans l'ordre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -429,20 +434,73 @@ Retour :
 </div>
 </details>     
 </div>
-<h2>Applications</h2>
-<h3>Voyageur de commerce</h3>
-<p>Problème vu sous l'angle algorithmique dans le cours d'algorithmie :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<blockquote>
+<p>TBD tri topologique dans un DAG avec un DFS + à la visite ajoute en fin de liste. Ensuite on regarde la liste à l'envers A -&gt; B
+A -&gt; C -&gt; B
+Ordre d'ajout : B C A</p>
+</blockquote>
+<h2>Application : Ordonnancement</h2>
+<blockquote>
+<p>TBD DFS et Problème d’ordonnancements</p>
+</blockquote>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement">problème d'ordonnancement</a> peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-chemins-cycles" class="interne">Chemins et cycle</a></p>
+<p>Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?</p>
 </div></div>
 
-<blockquote>
-<p>TBD formaliser ça en graphe.</p>
-</blockquote>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il est clair que s'il y a un cycle on ne peut réaliser le projet.</p>
+</div>
+</details>     
+</div>
+<p>Vous résolvez des problèmes d'ordonnancement tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)</p>
+<p><img src="chemin_habillage.png" alt="habillage"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que le tri topologique est une solution au problème d'ordonnancement. Appliquez le au problème de s'habiller le matin.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>De plus un tri topologique fait que lorsque l'on s'attelle à la tache $v_i$ on a déjà fait tous ses prédécesseurs (ses prés-requis).</p>
+</div>
+</details>     
+</div>
+<p>C'est encore un exemple où les contraintes sont locales et ou l'on cherche une solution globale.</p>
 
 
 </article>
