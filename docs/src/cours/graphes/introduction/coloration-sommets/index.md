@@ -350,7 +350,7 @@ Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur
 
 {% enddetails %}
 
-> TBD dire que c'es des graphes très généraux (pas de cycle de longueurs imparis) et qu'on va les retrouver à de nombreux endroits.
+> TBD dire que c'es des graphes très généraux (pas de cycle de longueurs impairs) et qu'on va les retrouver à de nombreux endroits.
 > 
 ## Un algorithme glouton
 
@@ -508,14 +508,63 @@ En coloriant chaque partie connexe $G_i$ avec des entiers de 1 à $\chi(G_i)$, o
 
 Cet proposition toute simple montre que l'on peut parfois utiliser des colorations de sous-graphes pour trouver une solution sur le graphe tout entier.
 
-Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : il existe des graphes sans triangles (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !
+Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski) est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !
 
-> TBD théorème 8.6 <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>. prendre M4 et voir que sa coloration est grande. Dire qu'il en existe d'autres.
->
-> TBD [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski)
->
+{% note2 "**Définition**" %}
+**_Les graphes de Mycielski_**, notés $M_k = (V_k, E_k)$ pour tous $k\geq 2$ sont définis récursivement tels que $M_2 = (\\{u, v\\}, \\{uv \\})$ est le graphe complet à 2 sommets et $M_{k+1} = (V_{k+1}, E_{k+1})$ :
 
-> TBD <https://www.youtube.com/watch?v=Tnu_Ws7Llo4> sur <https://arxiv.org/pdf/1905.02167>
+<div>
+$$
+\begin{cases}
+V_{k+1} = V_{k} \cup V'_{k} \cup \{ x^\star \} & \text{avec }V'_k \text{ une copie de } V_k\\
+E_{k+1} = E_{k} \cup \{ x^\star y \mid y \in V'_k \} \cup \{ xy' \mid xy \in E_k, x \in V_k, y' \in V'_k \}
+\end{cases}
+$$
+</div>
+
+
+{% endnote2 %}
+
+La figure c-après montre les graphes $M_2$, $M_3$ et $M_4$ :
+
+![M234](./M234.png)
+
+Cette famille de graphe es sans triangle :
+
+{% note "**Proposition**" %}
+Pour tout $k$, $M_k$ est sans triangle.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Clair par récurrence sur $k$. On a bien que $M_2$ est sans triangle, puis :
+
+- deux sommets de $V'_k$ ne sont jamais lié par une arête, 
+- les seules arêtes liant 2 sommets de $V_k$ sont des arêtes de $M_{k-1}$ qui par hypothèse de récurrence ne contient pas de triangle.
+
+Les seuls triangles possible de $M_k$ on donc 2 sommets de $V_k$ et 1 sommet de ${V_k}'$ mais la méthode de construction impliquerait que ce triangle existe aussi dans $M_{k-1}$ ce qui est impossible par hypothèse de récurrence.
+{% enddetails %}
+
+On a donc $\omega(M_k) = 2$ pour tout $k$ mais :
+
+{% note "**Proposition**" %}
+Pour tout $k$, $\chi(M_k) = k$.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Par récurrence. On a bien $\chi(M_2) = 2$. Si $\chi(M_k) = k$ alors comme $M_k$ est un sous graphe de $M_{k+1}$ on a clairement $\chi(M_{k+1}) \geq \chi(M_{k}) = k$. Comme il est facile de vérifier que donner la même couleur qu'une coloration de $M_k$ aux sommets  $V_k$ et $V_{k+1}$ et une nouvelle couleur à $x^\star$, on a $\chi(M_{k+1}) \leq k+1$.
+
+Pour conclure on remarque que $\chi(M_{k+1}) \neq k$ car  sinon on pourrait supposer sans perte de généralité que la couleur de $x^\star$ soit $k$ et que par conséquent toutes les couleurs de ${V_k}'$ soient entre 1 et $k-1$. On peut alors recolorer les sommets $x$ de $V_k$ de couleur $k$ par la couleur de $x'$ de ${V_k}'$ dans la coloration de $M_{k+1}$. Cette coloration des sommets de $V_k$ donne une coloration acceptable de $M_{k}$ puisque tous les voisins de $x$ dans $M_{k}$ sont des voisins de $x'$ dans $M_{k+1}$.
+
+On a donc $k < \chi(M_{k+1}) \leq k+1$ ce qui conclut la preuve.
+{% enddetails %}
+
+{% exercice %}
+Donner une coloration optimale des graphes $M_2$, $M_3$ et $M_4$.
+{% endexercice %}
+{% details "corrigé" %}
+![M234](./M234-couleurs.png)
+{% enddetails %}
+
 
 Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.
 
@@ -526,7 +575,11 @@ Commençons par la plus simple, qui ne rajoute aucune arête entre les deux grap
 {% note2 "**Définition**" %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :
 
-$$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$
+<div>
+$$
+G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)
+$$
+</div>
 
 {% endnote2 %}
 
@@ -535,7 +588,7 @@ $$G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)$$
 Que vaut :
 ![g plus g](./g_plus_g.png)
 {% endexercice %}
-{% details "**Solution**" %}
+{% details "corrigé" %}
 ![g plus g solution](./g_plus_g_solution.png)
 {% enddetails %}
 
@@ -550,11 +603,19 @@ $$
 
 {% endnote %}
 {% details "preuve", "open" %}
-Les graphes $G_1$ et $G_2$ étant dans des parties connexes différentes de $G_1 + G_2$ la proposition es évidente.
+Les graphes $G_1$ et $G_2$ étant dans des parties connexes différentes de $G_1 + G_2$ la proposition est évidente.
 
 {% enddetails %}
 
-> TBD reprendre exemple.
+À vous pour le coloriage :
+
+{% exercice %}
+Donnez une coloration optimale de 
+![g plus g](./g_plus_g.png)
+{% endexercice %}
+{% details "corrigé" %}
+![g plus g couleurs](./g_plus_g_couleurs.png)
+{% enddetails %}
 
 ### $G_1 \vee G_2$
 
@@ -563,15 +624,19 @@ On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les a
 {% note2 "**Définition**" %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
 
-$$G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2})$$
+<div>
+$$
+G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2\})
+$$
+</div>
 
 {% endnote2 %}
 {% exercice %}
 Que vaut :
-![g plus g](./g_V_g.png)
+![g V g](./g_V_g.png)
 {% endexercice %}
-{% details "**Solution**" %}
-![g plus g solution](./g_V_g_solution.png)
+{% details "corrigé" %}
+![g V g solution](./g_V_g_solution.png)
 {% enddetails %}
 
 {% note "**Proposition**" %}
@@ -590,8 +655,15 @@ Comme tout sommet de $G_1$ est lié à tous les sommets de $G_2$ dans $G_1 \vee 
 
 {% enddetails %}
 
-> TBD prendre exemple
+À vous pour le coloriage :
 
+{% exercice %}
+Donnez une coloration optimale de 
+![g V g](./g_V_g.png)
+{% endexercice %}
+{% details "corrigé" %}
+![g V g couleurs](./g_V_g_couleurs.png)
+{% enddetails %}
 
 ### $G_1 \square G_2$
 
@@ -600,7 +672,11 @@ Enfin, de façon plus subtile :
 {% note2 "**Définition**" %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \square G_2$ le **produit cartésien** entre $G_1$ et $G_2$. C'est le graphe :
 
-$$G_1 \square G_2 = (V_1 \times V_2, E)$$
+<div>
+$$
+G_1 \square G_2 = (V_1 \times V_2, E)
+$$
+</div>
 
 Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
 
@@ -612,7 +688,7 @@ Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
 Que vaut :
 ![g carré g](./g_carré_g.png)
 {% endexercice %}
-{% details "**Solution**" %}
+{% details "corrigé" %}
 ![g carré g solution](./g_carré_g_solution.png)
 {% enddetails %}
 
@@ -620,14 +696,14 @@ Que vaut :
 {% note "**Proposition**" %}
 Pour deux graphes $G_1=(V_1, E_1)$ et $G_2=(V_2, E_2)$ on a :
 
-- $\chi(G_1 + G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
-- $\chi(G_1 \lor G_2) = \chi(G_1) + \chi(G_2)$
-- $\chi(G_1 \square G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
+<div>
+$$
+\chi(G_1 \square G_2) = \max(\{\chi(G_1), \chi(G_2) \})
+$$
+</div>
 {% endnote %}
 {% details "preuve", "open" %}
-Les deux premières propositions sont triviales.
-
-Pour montrer la troisième, soient $c_1$ et $c_2$ des colorations de $G_1$ et $G_2$ respectivement et on pose $m = \max(\\{\chi(G_1), \chi(G_2) \\})$.
+Soient $c_1$ et $c_2$ des colorations de $G_1$ et $G_2$ respectivement et on pose $m = \max(\\{\chi(G_1), \chi(G_2) \\})$.
 
 La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c_1(x) + c_2(y) \bmod m$ est une coloration de $G_1 \square G_2$. En effet si $\\{(x_1, y_1), (x_2, y_2)\\}$ est une arête de $G_1 \square G_2$ on a soit :
 
@@ -636,35 +712,67 @@ La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c
 
 {% enddetails %}
 
+À vous pour le coloriage :
+
+{% exercice %}
+Donnez une coloration optimale de 
+![g carré g](./g_carré_g.png)
+{% endexercice %}
+{% details "corrigé" %}
+![g carré g couleurs](./g_carré_g_couleurs.png)
+{% enddetails %}
+
+
 > TBD exemples du cours papier.
 > 
 
-Plus puissant que les deux compositions précédente, cette décomposition se révèle puissante :
-On peut aussi chercher l'approche inverse qui consiste à décomposer un graphe donné. C'est très efficace sur les graphes _"en pattern"_ :
+Cette décomposition se révèle puissante pour la coloration en décomposant un graphe donné en _"patterns"_. Commençons par un petit échauffement :
 
 {% exercice %}
 La grille 2D est le produit cartésien de deux graphes, lesquels ?
-![g carré g](./grille.png)
+![grille](./grille.png)
 {% endexercice %}
-{% details "**Solution**" %}
-![g carré g solution](./grille_solution.png)
+{% details "corrigé" %}
+![grille solution](./grille_solution.png)
+{% enddetails %}
+{% exercice %}
+En déduire une coloration optimale.
+{% endexercice %}
+{% details "corrigé" %}
+![grille couleurs](./grille_couleurs.png)
 {% enddetails %}
 
-> TBD puis donner couleurs
 
-Ce n'est cependant pas toujours aussi simple :
+Pour aborder une composition un peu plus dure :
+
 {% exercice %}
 Le graphe suivant est le produit cartésien de deux cycles de longueurs 3. Montrez-le.
 ![g carré g](./quel_carré.png)
 {% endexercice %}
-{% details "**Solution**" %}
+{% details "corrigé" %}
 ![g carré g solution](./quel_carré_solution.png)
 
-> TBD montrer comment le prouve. On commence par un triangle qu'on note (1, 1), (2, 1) et (3, 1) puis on propage pour voir comment on peut associer un label à chaque sommet.
+Pour le trouver on commence par prendre un triangle que l'on note (1, 1), (2, 1) et (3, 1). Puis on propage ensuite les notations pour voir comment on peut associer un label à chaque sommet.
 
 {% enddetails %}
 
- > TBD couleurs
+{% exercice %}
+Donnez une coloration optimale de 
+![g carré g](./quel_carré.png)
+{% endexercice %}
+{% details "corrigé" %}
+![g carré g couleurs](./quel_carré_couleurs.png)
+{% enddetails %}
+ 
+
+Pour finir, la composition $\times$ des graphes (le produit tensoriel) a fait l'objet d'une grosse conjecture qui est maintenant prouvée fausse :
+
+{% lien %}
+Conjecture de Hedetniemi :
+
+<https://www.youtube.com/watch?v=Tnu_Ws7Llo4> et <https://arxiv.org/pdf/1905.02167>
+
+{% endlien %}
 
 ## Applications
 

@@ -18,12 +18,12 @@ eleventyComputed:
 
 > TBD suffisant pour les graphes où les sommets sont dénombrables.
 > TBD si courbe alors polygone alors droites
+> TBD Diesel théorème 4.1.1 (p83 et suivantes)
 
-## Caractérisation
+## Mineurs
 
-> TBD kuratoski 1930 (subdivision) et Wagner 1937 (mineurs). 
-> 
-La caractérisation des graphes planaire de Kuratowski se fait par "_mineur exclu_". C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire
+
+La caractérisation des graphes planaire se fait par "_mineur exclu_". C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire
 
 {% note "**Définition**" %}
 Soit $G$ un graphe. Un graphe $H$ est un mineur de $G$ s'il peut être obtenu par un nombre quelconque des opérations suivantes :
@@ -45,12 +45,14 @@ En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
 <https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
 {% endlien %}
 
-> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
 
-> TBD rend compte de l'intrication locale de chemins entre sommets.
->
+La notion de mineur rend  compte de l'intrication locale de chemins entre sommets. Ils ont donné lieu à un des plus joli théorème de théorie des graphes (et pourtant il y en a !), [le théorème de Roberston-Seymour](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour). Ce théorème indique en effet que : 
 
-### Planarité des Mineurs
+- toute famille close par mineur peut être caractérisée par un nombre fini de mineurs exclu,
+- Quelque soit le graphe $M$, il existe un algorithme en $\mathcal{O}(n^2)$ pour savoir si un graphe $G$ admet $M$ comme mineur.
+
+En revanche, le théorème ne caractérise pas les algorithmes et ils ont une constante multiplicatives exponentielle en la taille du mineur à rechercher. Il n'est donc pas utilisé en pratique, mais la planarité fait partie de ces familles puisque :
+
 
 {% note "**Proposition**" %}
 Si est $G$ un graphe planaire alors tous ses mineurs le sont aussi.
@@ -64,7 +66,10 @@ Les trois opérations pour créer un mineur d'un graphe fonctionnent aussi sur s
 ![contraction](./contraciton-dessin.png)
 {% enddetails  %}
 
-On a donc déjà la proposition suivante :
+
+## Caractérisation
+
+On a déjà établi la proposition suivante :
 
 {% note "**Proposition**" %}
 Si $G$ est planaire, il ne peut avoir ni $K_5$ ni $K_{3,3}$ comme mineur
@@ -73,10 +78,15 @@ Si $G$ est planaire, il ne peut avoir ni $K_5$ ni $K_{3,3}$ comme mineur
 Clair puisque l'on a montré que ni $K_5$ ni $K_{3,3}$ ne peuvent être planaire.
 {% enddetails  %}
 
-### Réciproque
+Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930 dans le cadre des subdivisions de graphes, il a été ré-ecrit par Wagner en 1937 avec les mineurs. 
 
-La réciproque est également vraie et c'est cette partie qui va être plus difficile à démontrer.
+{% lien %}
+Voir [la page Wikipedia](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner)
+{% endlien %}
 
+> TBD la démo.
+
+Les deux démonstrations sont
 - [cycle et 2-connectivité](../../chemins-cycles-connexite/#2-connexité-cycle){.interne}
 - relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f
 - [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
@@ -97,10 +107,7 @@ Le graphe dont les sommet sont les composantes 2-connexe et une arête si connex
 
 {% enddetails  %}
 
-> TBD caractérisation par mineur exclus gros théorème de Seymour.
 
-> <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour>
-> 
 
 - définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf> ou <https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf> On a besoin de :
   - coloriabilité via le problème de la galerie d'art :
@@ -115,7 +122,3 @@ Le graphe dont les sommet sont les composantes 2-connexe et une arête si connex
   - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
   - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
   - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
-
-## Caractérisation par mineur exclus
-
-> TBD <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour>

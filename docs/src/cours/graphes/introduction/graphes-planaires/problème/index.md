@@ -77,7 +77,9 @@ On a alors clairement que :
 Soit $(f, g)$ un dessin planaire de $G$. Pour tout chemin $x_0\dots x_k$ de $G$, la courbe qui est la concaténation des courbes associée aux arêtes $x_ix_{i+1}$ est une courbe.
 {% endnote %}
 
-> TBD dessin
+Par exemple le cycle du graphe planaire suivant est une courbe fermée :
+
+![courbe fermée](./exemple-courbe-planaire.png)
 
 Cette définition apporte deux questions auquel on va répondre :
 
@@ -130,7 +132,7 @@ Le célèbre théorème associée aux courbes de Jordan est :
 {% note  "**Théorème**" %}
 Pour toute courbe de Jordan $\gamma$, il existe $\mathcal{P}_1$ et $\mathcal{P}_2$ deux sous-ensembles de $\mathbb{R}^2 \backslash \gamma([0, 1])$ tels que :
 
-- $\mathcal{P}_1 \cup \mathcal{P}_2 = mathbb{R}^2 \backslash \gamma([0, 1])$
+- $\mathcal{P}_1 \cup \mathcal{P}_2 = \mathbb{R}^2 \backslash \gamma([0, 1])$
 - quelle que soit la courbe $\gamma'$ telle que $\gamma'(0) \in \mathcal{P}_1$ et $\gamma'(1) \in \mathcal{P}_2$ alors $\gamma'([0, 1]) \cap \gamma([0, 1]) \neq \varnothing$
 {% endnote %}
 
