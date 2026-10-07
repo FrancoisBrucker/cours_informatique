@@ -149,6 +149,7 @@
 </div>
 </details>     
 </div>
+<p>Notez que l'on a déjà vu un problème de coloration. En effet <a href="../cliques-stables/#ramsey" class="interne">les nombres de Ramsey</a> correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.</p>
 <h2>Problème</h2>
 <p>Continuons notre exploration en essayant de chercher le nombre minimum de couleurs possible pour colorer les sommets d'un graphe. Les cycles paires admettent une 2-coloration (mais pas une 1-coloration puisqu'ils ont une arête) et les cycles impaires quant à eux uniquement une 3-coloration :</p>
 <p><img src="cycles-sommet.png" alt="cycles sommets"></p>
@@ -587,6 +588,7 @@ Boucle principale <span class="token punctuation">:</span>
 <p>Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.</p>
 </div></div>
 
+<p>Cette alternance de couleur est appelé <a href="https://en.wikipedia.org/wiki/Kempe_chain">chaîne de Kempe</a> et est un outil très puissant en coloration de graphe.</p>
 <p>Enfin l'algorithme nous donne une caractérisation des graphes bi-partis :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -862,11 +864,25 @@ $$
 </tbody>
 </table>
 <h3>Ordre aléatoire</h3>
-<p>Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger des exemples qui rendent une coloration non optimale. En revanche, on a un résultat curieux :</p>
-<p>Trouver le pire no,bre de couleur que va donner l'algorithme glouton est NP-difficile (Zaker, 2005) !</p>
-<blockquote>
-<p>TBD <a href="https://en.wikipedia.org/wiki/Grundy_number">grundy numbers</a></p>
-</blockquote>
+<p>Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger des exemples qui rendent une coloration non optimale. De là comme l'algorithme va vite utiliser plusieurs ordre aléatoire puis prendre le meillleur donne souvent de bon résultats.  Ceci est lié à un résultat curieux que nous ne démontrerons pas :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Zaker, 2005)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un graphe donné, trouver le pire nombre de couleur que va donner l'algorithme glouton est NP-difficile.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les pires nombre de couleurs sont appelé  les <a href="https://en.wikipedia.org/wiki/Grundy_number">&quot;<em>grundy numbers</em>&quot;</a>.</p>
+</div></div>
+
 <h2>Coloration par composition de graphes</h2>
 <p>La coloration des sommets d'un graphe étant lié aux arêtes voisines commençons par une proposition qui va nous permettre de ne considérer par la suite que des graphes connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1496,10 +1512,6 @@ $$
 <p>Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation et pour résoudre des problèmes ou l'on cherche à minimiser les incompatibilités.</p>
 </div></div>
 
-<h3>Ramsey</h3>
-<blockquote>
-<p>TBD 2-coloration d'un graphe complet = Ramsey !</p>
-</blockquote>
 <h3>Résoudre des sudoku</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

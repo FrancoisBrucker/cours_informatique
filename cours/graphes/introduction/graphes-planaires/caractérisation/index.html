@@ -108,7 +108,9 @@
 <blockquote>
 <p>TBD suffisant pour les graphes où les sommets sont dénombrables.
 TBD si courbe alors polygone alors droites
-TBD Diesel théorème 4.1.1 (p83 et suivantes)</p>
+TBD Diesel théorème 4.1.1 (p83 et suivantes)
+TBD <a href="https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf">https://minerve.ens-rennes.fr/images/Le_Théorème_de_Jordan_S.Quayle_V.Le_Gruiec..pdf</a>
+TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf">https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf</a></p>
 </blockquote>
 <h2>Mineurs</h2>
 <p>La caractérisation des graphes planaire se fait par &quot;<em>mineur exclu</em>&quot;. C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire</p>
@@ -183,7 +185,7 @@ TBD Diesel théorème 4.1.1 (p83 et suivantes)</p>
 <li>la suppression d'un sommet ou d'une arête ok</li>
 <li>la contraction d'un arête se fait en concaténant les courbes des arêtes supprimées, comme sur le dessin ci dessous.</li>
 </ul>
-<p><img src="contraciton-dessin.png" alt="contraction"></p>
+<p><img src="contraction-dessin.png" alt="contraction"></p>
 </div>
 </details>     
 </div>
@@ -229,12 +231,97 @@ TBD Diesel théorème 4.1.1 (p83 et suivantes)</p>
 <p>Voir <a href="https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner">la page Wikipedia</a></p>
 </div></div>
 
+<p>On va avoir besoin de quelques propriétés des graphes 2-connexes pour cette démonstration, donc commençons par ça.</p>
+<h3>2-connexité</h3>
+<p><span id="définition-k-connexité"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe est dit $k$-connexe si la suppression d'un ensemble quelconque de $k-1$ de ses sommets ne déconnecte pas $G$.</p>
+<p>On appelle <strong><em>connectivité</em></strong> de $G$ et la note $\kappa(G)$, le plus grand $k$ tel que $G$ soit $k$-connexe.</p>
+</div></div>
+
+<p>Par exemple :</p>
+<ul>
+<li>un chemin est 1-connexe, si on supprime un sommet qui n'est pas une de ses extrémités on le déconnecte,</li>
+<li>un cycle est 2-connexe puisque supprimer un de ses sommets le transforme en chemin.</li>
+</ul>
+<p>La $k$-connexité est bien une généralisation directe de la connexité puisqu'un graphe est connexe si et seulement si il est $1$-connexe.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que le degré d'un sommet d'un graphe $k$-connexe est forcément supérieur au égal à $k$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer tous ses voisin le déconnecterait du reste du graphe ce qui est impossible pour un graphe $k$-connexe.</p>
+</div>
+</details>     
+</div>
+<p>Nous aurons uniquement besoin ici de la 2-connexité et de cette propriété en particulier :</p>
+<p><span id="2-connexité-cycle"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Quels que soient $u \neq v$ deux de ses sommets, il existe un cycle élémentaire dans $G$ passant par $u$ et $v$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le graphe étant connexe, il existe un chemin élémentaire entre $u$ et $v$. Notons le $u = x_1\dots x_p = v$.</p>
+<p>Soit $x_i$ le plus grand $i\geq 1$ tel qu'il existe un cycle élémentaire contenant $x_1\dots x_i$. On a $1 &lt; i \leq p$ car le graphe est 2-connexe, il existe donc un chemin  $u = y_1\dots y_q = v$ entre $u$ et $v$ dans le graphe privé de $x_1$. En notant $y_j$ le premier élément de ce chemin qui soit dans l'ensemble $\{x_2, \dots x_p\}$ (comme $y_q = v$, $y_j$ existe), disons $y_j = x_k$, on a un cycle élémentaire $x_1\dots x_k y_{j-1} \dots y_1$.</p>
+<p>Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1&lt; i &lt; p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$</p>
+<p>En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle :</p>
+<p><img src="2-connexe-cycle.png" alt="2-connexe cycle"></p>
+<p>Comme $j&gt;i$ on a une contradiction.</p>
+</div>
+</details>     
+</div>
+<h3>Preuve</h3>
 <blockquote>
 <p>TBD la démo.</p>
 </blockquote>
 <p>Les deux démonstrations sont</p>
 <ul>
-<li><a href="../../chemins-cycles-connexite/#2-connexit%C3%A9-cycle" class="interne">cycle et 2-connectivité</a></li>
 <li>relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f</li>
 <li><a href="https://en.wikipedia.org/wiki/Biconnected_component">composantes 2-connexes</a></li>
 </ul>
@@ -275,32 +362,11 @@ TBD Diesel théorème 4.1.1 (p83 et suivantes)</p>
 </div>
 </details>     
 </div>
+<blockquote>
+<p>TBD preuve Kuratowski juste avec 2-connexité: <a href="https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf">https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf</a></p>
+</blockquote>
 <ul>
-<li>
-<p>définitions et propriétés + Kuratowsky : <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf</a> ou <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf</a> On a besoin de :</p>
-<ul>
-<li>coloriabilité via le problème de la galerie d'art :
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></li>
-<li>exercices : <a href="https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf">https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf</a></li>
-<li>TIPE : <a href="https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf">https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf</a></li>
-<li>théorème de Jordan : <a href="https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf">https://minerve.ens-rennes.fr/images/Le_Théorème_de_Jordan_S.Quayle_V.Le_Gruiec..pdf</a></li>
-</ul>
-</li>
-<li>k-connectivité</li>
-</ul>
-</li>
-<li>
-<p>preuve Kuratowski juste avec 2-connexité: <a href="https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf">https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf</a></p>
-</li>
-<li>
-<p>planaire et embedding : <a href="https://www.youtube.com/watch?v=MNgKx4A1pXM&amp;list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&amp;index=13">https://www.youtube.com/watch?v=MNgKx4A1pXM&amp;list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&amp;index=13</a></p>
-<ul>
-<li>topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf">https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf</a></li>
-<li>exercices : <a href="http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf">http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf</a></li>
-<li>preuve simple ? <a href="https://www.sciencedirect.com/science/article/pii/0012365X80901454">https://www.sciencedirect.com/science/article/pii/0012365X80901454</a></li>
-</ul>
-</li>
+<li>définitions et propriétés + Kuratowsky : <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf</a> ou <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf</a> On a besoin de :</li>
 </ul>
 
 
