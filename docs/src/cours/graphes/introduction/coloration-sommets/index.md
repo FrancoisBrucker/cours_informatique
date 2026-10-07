@@ -288,7 +288,6 @@ Boucle principale :
 
 ```
 
-> TBD à écrire propre
 
 1. on voit bien tous les sommets car connexe : on le fait par récurrence sur la longueur du chemin entre $x$ et $y$
 2. chaque couleur est obligatoire
@@ -350,8 +349,8 @@ Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur
 
 {% enddetails %}
 
-> TBD dire que c'es des graphes très généraux (pas de cycle de longueurs impairs) et qu'on va les retrouver à de nombreux endroits.
-> 
+Les graphes bi-parti sont une classe de graphes très générale. On les retrouve un peu partout dans des preuves, en support à des algorithmes généraux, etc car de nombreux problèmes NP-complets en général sont polynomiaux pour eux (par exemple la coloration...).
+
 ## Un algorithme glouton
 
 {% lien %}
@@ -722,10 +721,6 @@ Donnez une coloration optimale de
 ![g carré g couleurs](./g_carré_g_couleurs.png)
 {% enddetails %}
 
-
-> TBD exemples du cours papier.
-> 
-
 Cette décomposition se révèle puissante pour la coloration en décomposant un graphe donné en _"patterns"_. Commençons par un petit échauffement :
 
 {% exercice %}
@@ -777,37 +772,31 @@ Conjecture de Hedetniemi :
 ## Applications
 
 {% attention2 "**À retenir**" %}
-Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation.
+Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation et pour résoudre des problèmes ou l'on cherche à minimiser les incompatibilités.
 {% endattention2 %}
+
 
 
 ### Ramsey
 
 > TBD 2-coloration d'un graphe complet = Ramsey !
 
-### sommets
 
-Ces problèmes sont souvent liés à des problèmes d'incompatibilités.
-
-#### Résoudre des sudoku
+### Résoudre des sudoku
 
 {% lien %}
 [le graphe du sudoku](https://fr.wikipedia.org/wiki/Graphe_du_sudoku)
 {% endlien %}
 
-#### Faire des plan de table
+### Faire des plans de table
 
 > TBD ou résoudre des problèmes d'emploi du temps.
 > p45 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>
 
-#### Optimiser la compilation de programmes
+### Optimiser la compilation de programmes
 
 > p4 <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
 > et p49 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>
-
-#### Colorer des cartes de géographie
-
-> TBD on y reviendra.
 
 ### Attention
 

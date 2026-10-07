@@ -29,6 +29,9 @@ Attention : ne fonctionne pas pour 4 couleur à cause de
 > TBD Une démo (fausse) du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
 
 ## Théorème des 4 couleurs
+
+> thm des 4 couleurs qui est le 1er théorème assisté par ordinateur (pas une IA, c'est la preuve qui est un algorithme)
+
 >
 > TBD théorème des 4 couleurs :
 >
@@ -49,6 +52,8 @@ Fonctionne en évitant les configuration impossible de Kempe :
 
 {% lien %}
 <https://thomas.math.gatech.edu/FC/fourcolor.html>
+description de l'algorithmie ici : <https://thomas.math.gatech.edu/PAP/npfc.pdf>
+le papier complet : <https://thomas.math.gatech.edu/PAP/fc.pdf>
 {% endlien %}
 
 ## Colorable est NP-complet

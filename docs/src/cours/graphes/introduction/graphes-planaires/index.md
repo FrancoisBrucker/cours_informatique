@@ -14,10 +14,6 @@ eleventyComputed:
 [Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg)
 {% endlien %}
 
-
-> thm des 4 couleurs qui est le 1er théorème assisté par ordinateur (pas une IA, c'est la preuve qui est un algorithme)
-> tbd 3 colorable un graphe planaire NP-complet !
-
 ## Problème
 
 {% aller %}

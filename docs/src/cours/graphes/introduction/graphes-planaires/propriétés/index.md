@@ -43,6 +43,7 @@ La formule d'Euler montre que le nombre de faces ne dépend pas de son dessin ! 
 
 ![faces différentes](./faces-différentes.png)
 
+
 ## Degrés des graphes planaires
 
 La formule d'Euler permet de borner le nombres d'arêtes d'un graphe planaire :
@@ -80,6 +81,21 @@ Le nombre maximum d'arêtes pour un graphe planaire est m = 3n-6 dans ce cas la,
 Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !
 
 > TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
+
+> TBD si pas 4-coloriable min alors il est triangulé.
+
+> TBD quasi-triangulé si toutes les faces sauf la face infinie est triangulée.
+> TBD c'est ce que l'on fait avec les mesh : surfaces 
+## Cycles
+
+> TBD toute face peut être face extérieure 
+> TBD conséquence : tout sommet peut être sur la face infinie.
+
+## Connexité
+
+> TBD on peut se restreindre aux graphe 2-connexe. On supprime les feuilles.
+> TBD graphe planaire 3-connexe => une seule représentation graphique
+
 
 ## Nombre minimum de croisements de graphes non planaires
 
