@@ -19,7 +19,8 @@ eleventyComputed:
 > TBD suffisant pour les graphes où les sommets sont dénombrables.
 > TBD si courbe alors polygone alors droites
 > TBD Diesel théorème 4.1.1 (p83 et suivantes)
-
+> TBD <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
+> TBD - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
 ## Mineurs
 
 
@@ -63,7 +64,7 @@ Les trois opérations pour créer un mineur d'un graphe fonctionnent aussi sur s
 - la suppression d'un sommet ou d'une arête ok
 - la contraction d'un arête se fait en concaténant les courbes des arêtes supprimées, comme sur le dessin ci dessous.
 
-![contraction](./contraciton-dessin.png)
+![contraction](./contraction-dessin.png)
 {% enddetails  %}
 
 
@@ -84,10 +85,63 @@ Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930
 Voir [la page Wikipedia](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner)
 {% endlien %}
 
+On va avoir besoin de quelques propriétés des graphes 2-connexes pour cette démonstration, donc commençons par ça.
+
+### 2-connexité
+
+<span id="définition-k-connexité"></span>
+
+{% note2 "**Définition**" %}
+
+Un graphe est dit $k$-connexe si la suppression d'un ensemble quelconque de $k-1$ de ses sommets ne déconnecte pas $G$.
+
+On appelle **_connectivité_** de $G$ et la note $\kappa(G)$, le plus grand $k$ tel que $G$ soit $k$-connexe.
+
+{% endnote2 %}
+
+Par exemple :
+
+- un chemin est 1-connexe, si on supprime un sommet qui n'est pas une de ses extrémités on le déconnecte,
+- un cycle est 2-connexe puisque supprimer un de ses sommets le transforme en chemin.
+
+La $k$-connexité est bien une généralisation directe de la connexité puisqu'un graphe est connexe si et seulement si il est $1$-connexe.
+
+{% exercice %}
+Montrez que le degré d'un sommet d'un graphe $k$-connexe est forcément supérieur au égal à $k$
+{% endexercice %}
+{% details "corrigé" %}
+S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer tous ses voisin le déconnecterait du reste du graphe ce qui est impossible pour un graphe $k$-connexe.
+{% enddetails %}
+
+ Nous aurons uniquement besoin ici de la 2-connexité et de cette propriété en particulier :
+
+<span id="2-connexité-cycle"></span>
+
+{% note "**Proposition**" %}
+Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Quels que soient $u \neq v$ deux de ses sommets, il existe un cycle élémentaire dans $G$ passant par $u$ et $v$.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Le graphe étant connexe, il existe un chemin élémentaire entre $u$ et $v$. Notons le $u = x_1\dots x_p = v$.
+
+Soit $x_i$ le plus grand $i\geq 1$ tel qu'il existe un cycle élémentaire contenant $x_1\dots x_i$. On a $1 < i \leq p$ car le graphe est 2-connexe, il existe donc un chemin  $u = y_1\dots y_q = v$ entre $u$ et $v$ dans le graphe privé de $x_1$. En notant $y_j$ le premier élément de ce chemin qui soit dans l'ensemble $\\{x_2, \dots x_p\\}$ (comme $y_q = v$, $y_j$ existe), disons $y_j = x_k$, on a un cycle élémentaire $x_1\dots x_k y_{j-1} \dots y_1$.
+
+Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1< i < p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$
+
+En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle :
+
+![2-connexe cycle](./2-connexe-cycle.png)
+
+Comme $j>i$ on a une contradiction.
+
+{% enddetails %}
+
+
+### Preuve
+
 > TBD la démo.
 
 Les deux démonstrations sont
-- [cycle et 2-connectivité](../../chemins-cycles-connexite/#2-connexité-cycle){.interne}
 - relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f
 - [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
 
@@ -108,17 +162,9 @@ Le graphe dont les sommet sont les composantes 2-connexe et une arête si connex
 {% enddetails  %}
 
 
+> TBD preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
 
 - définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf> ou <https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf> On a besoin de :
-  - coloriabilité via le problème de la galerie d'art :
-    - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-    - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
-    - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>
-    - théorème de Jordan : <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
-  - k-connectivité
-- preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
-- planaire et embedding : <https://www.youtube.com/watch?v=MNgKx4A1pXM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=13>
 
-  - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
-  - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
-  - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
+
+  

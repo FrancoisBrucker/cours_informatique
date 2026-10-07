@@ -11,6 +11,13 @@ eleventyComputed:
 ---
 
 
+## Propriétés
+
+> TBD si sommets de degré ≤ 4 alors on peut restreindre
+> TBD si pas 4-coloriable min alors il est triangulé.
+> TBD si carré
+> TBD chaine de Kempe déjà utilisé en coloration.
+
 ## 6-colorable
 
 > TBD 6 par notre algo de coloration
@@ -107,3 +114,10 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?)
 > TBD pays non connexes
 > TBD colonies lunaires
 
+### Dans les démonstrations
+
+> TBD Coloriabilité via le problème de la galerie d'art :
+> 
+> - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+> - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
+> - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>

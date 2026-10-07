@@ -33,6 +33,8 @@ Si un graphe $G$ admet une **_$k$-coloration_** de ses sommets, il admet égalem
 Il suffit de remplacer une des couleurs par plusieurs autres.
 {% enddetails %}
 
+Notez que l'on a déjà vu un problème de coloration. En effet [les nombres de Ramsey](../cliques-stables/#ramsey){.interne} correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.
+
 ## Problème
 
 Continuons notre exploration en essayant de chercher le nombre minimum de couleurs possible pour colorer les sommets d'un graphe. Les cycles paires admettent une 2-coloration (mais pas une 1-coloration puisqu'ils ont une arête) et les cycles impaires quant à eux uniquement une 3-coloration :
@@ -335,6 +337,9 @@ Si l'algorithme s'arrête en répondant NON, alors le graphe possède un cycle d
 Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.
 {% endnote %}
 
+
+Cette alternance de couleur est appelé [chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain) et est un outil très puissant en coloration de graphe.
+
 Enfin l'algorithme nous donne une caractérisation des graphes bi-partis :
 
 {% note "**Proposition**" %}
@@ -486,12 +491,14 @@ Avec note exemple, l'ordre est encore différent :
 
 ### Ordre aléatoire
 
-Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger des exemples qui rendent une coloration non optimale. En revanche, on a un résultat curieux :
+Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger des exemples qui rendent une coloration non optimale. De là comme l'algorithme va vite utiliser plusieurs ordre aléatoire puis prendre le meillleur donne souvent de bon résultats.  Ceci est lié à un résultat curieux que nous ne démontrerons pas :
 
-Trouver le pire no,bre de couleur que va donner l'algorithme glouton est NP-difficile (Zaker, 2005) !
-
-> TBD [grundy numbers](https://en.wikipedia.org/wiki/Grundy_number)
-
+{% note "**Proposition (Zaker, 2005)**" %}
+Pour un graphe donné, trouver le pire nombre de couleur que va donner l'algorithme glouton est NP-difficile.
+{% endnote  %}
+{% info %}
+Les pires nombre de couleurs sont appelé  les ["_grundy numbers_"](https://en.wikipedia.org/wiki/Grundy_number).
+{% endinfo %}
 
 ## Coloration par composition de graphes
 
@@ -774,13 +781,6 @@ Conjecture de Hedetniemi :
 {% attention2 "**À retenir**" %}
 Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation et pour résoudre des problèmes ou l'on cherche à minimiser les incompatibilités.
 {% endattention2 %}
-
-
-
-### Ramsey
-
-> TBD 2-coloration d'un graphe complet = Ramsey !
-
 
 ### Résoudre des sudoku
 

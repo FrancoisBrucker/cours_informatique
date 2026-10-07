@@ -321,7 +321,7 @@ Toutes ces transformations étant polynomiales on a bien que le problème clique
 
 Cette combinaison de cliques et de stable a été étudiée par Ramsey au début du vingtième siècle et l'est toujours...
 
-## Théorème de Ramsey
+## <span id="ramsey"></span>Théorème de Ramsey
 
 {% lien %}
 [Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey)

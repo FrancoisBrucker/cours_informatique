@@ -82,7 +82,6 @@ Donc trianguler une représentation planaire triangule toutes les autres, même 
 
 > TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
 
-> TBD si pas 4-coloriable min alors il est triangulé.
 
 > TBD quasi-triangulé si toutes les faces sauf la face infinie est triangulée.
 > TBD c'est ce que l'on fait avec les mesh : surfaces 
@@ -96,7 +95,9 @@ Donc trianguler une représentation planaire triangule toutes les autres, même 
 > TBD on peut se restreindre aux graphe 2-connexe. On supprime les feuilles.
 > TBD graphe planaire 3-connexe => une seule représentation graphique
 
+## Inévitabilité
 
+> 
 ## Nombre minimum de croisements de graphes non planaires
 
 {% lien %}

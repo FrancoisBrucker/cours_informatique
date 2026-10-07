@@ -80,7 +80,8 @@ Reconnaissance avec 2 dfs (freissex)
 {% endaller %}
 
 
-> TBD le reste est en chantier.
+> TBD faire le losange de Kirshhoff
+> TBD faire bien le théorème des 4 couleurs avec décharge et tout ça.
 
 ## générer des graphes
 
