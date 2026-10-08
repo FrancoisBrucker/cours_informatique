@@ -180,7 +180,7 @@ Pour toute arête $xy$ d'un graphe il existe une unique composante 2-connexe con
 {% endnote %}
 {% details "preuve", "open" %}
 
-Comme $\\{x, y\\}$ est 2-connexe si $xy \in E(G)$ il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.
+Comme $\\{x, y\\}$ est 2-connexe si $xy \in E(G)$, il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.
 {% enddetails %}
 
 {% note2 "**Définition**" %}
@@ -207,43 +207,94 @@ De plus ce graphe est sans cycle car sinon le cycle dans $G'$ induirait un cycle
 Trouver les composantes 2-connexes d'un graphe peut se faire linéairement en utilisant un DFS astucieux. C'est l'algorithme de Hopcroft et Tarjan (1973).
 
 ```pseudocode
+fonction DFS(u: Sommet, t: entier, G: Graphe, 
+             pos: *[]Sommet, pred: *[]Sommet, low: *[]Sommet, P: *Pile<(Sommet, Sommet)>) → [:]{Sommet}:
+
+    pos[u] ← t
+    low[u] ← t
+
+    pour chaque voisin v de G[u]:
+        si pos[v] == -1:                             # première fois que l'on voit v : uv est dans l'arbre
+            pred[v] ← u
+            P.empile((u, v))
+            l ← DFS(v, t+1, G, &pos, &pred, &low, &P)
+
+            low[u] ← min(low[u], low[v])             # mise à jour (2)
+
+            si low[v] ≥ pos[u]:                      # on a trouvé une composante 2-connexe
+                var s {Sommet} ← {}
+                ajoute u et v à s
+
+                (x, y) ← P.dépile()
+                tant que (x, y) ≠ (u, v):
+                    ajoute x et y à s
+                    (x, y) ← P.dépile()
+                
+                ajoute s à la fin de l
+        sinon si v ≠ pred[u]:                        # uv est un arc retour
+            P.empile((u, v))
+            low[u] ← min(low[u], pos[v])             # mise à jour (1)
+
+    rendre l
+
+algorithme 2_connexe(G: Graphe, racine: Sommet):
+    
+    var pos []Sommet ← [-1 pour _ de [1 .. n]]
+    var pred []Sommet ← [-1 pour _ de [1 .. n]]
+    var low []Sommet ← [-1 pour _ de [1 .. n]]
+
+    var P Pile<(Sommet, Sommet)> ← Pile<(Sommet, Sommet)>{}
+
+    pred[racine] ← racine
+    rendre DFS(racine, 0, G, &pos, &pred, &low, &Pile)
+
 
 ```
 
-> TBD exemple du cours
-> 
+Tout d'abord, il est clair que le parcours est un DFS dont l'arbre associé est constitué des arêtes ($\\{x, pred[x]\\}$) et que la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$. Ensuite comme il n'y a qu'un seul nœud d'articulation entre deux composantes 2-connexes, les composantes 2 connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS.
+
+![composantes 2-connexes](./dfs-2-connexe.png)
+
+De part la structure d'un DFS les arcs retours $uv$ sont toujours tel que $v$ est sur le chemin entre $u$ et $r$ et donc les composantes 2-connexe contenant $x$ :
+
+- sont des sous arbre du DFS contenant $x$
+- toutes sauf 1 sont enracinées en $x$
+
+On en déduit des  remarques précédentes que pour qu'il existe un cycle élémentaire entre deux sommets $x$ et $y$ (donc qu'ils soient dans la même composante 2-connexe) on est dans une de ces 5 configurations :
+
+![xy cycle élémentaire](./dfs-2-connexe-xy.png)
+
+C'est exactement ce que note le tableau `low`{.language-}. On voit que la valeur `low[x]` est la position du plus haut sommet sur le chemin entre `x` et la racine pour lequel ils sont tous deux dans la même composante 2-connexe. En effet :
+
+- la mise à jour (1) trouve l'arête remontant la plus haute et est effectué avant toute mise à jour (2),
+- la mise à jour (2) gère les cycles après avoir examiné tout le sous-arbre planté en $v$. 
+
+Enfin, lorsque `low[v] >= low[u]` plus aucun autre élément ne peut-être ajouté à la composante 2-connexe contenant $u$ et $v$ (voir les différentes figures on doit pouvoir remonter au dessus de $u$ pour ajouter des éléments à la composante) et $u$ est le sommet le plus haut de cette composante : toutes les arête restant empilée font partie de celle-ci (on peut le prouver par récurrence).
+
+> TBD exemple du cours papier
+
+L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.
+
 ### Preuve
 
-> TBD la démo.
-
-Les deux démonstrations sont
-- relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f
-- [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
-
-
-> TBD composantes 2-connexes ~ arbre : il existe feuille.
-
+Commençons par nous restreindre aux graphes 2-connexes :
 
 {% note "**Proposition**" %}
-Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont
+Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont.
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD après effeuillage, on reconstruit le graphe en ajoutant une composante 2-connexe à la fois à un graphe de plus en plus gros, via un seul sommet d'articulation. 
-> On dessine la nouvelle composante connexe avec ce sommet d'articulation sur la face extérieure (on a vu qu'on peut toujours le faire) et on le recolle dans une face du graphe d'origine contenant le  sommet.
+Si le graphe est planaire toute restriction de celui-ci l'est : $G$ planaire implique que ses composantes 2-connexes le soient.
 
-> TBD exemple
-Les composantes 2-connexes sont liées uniquement par un sommet d'articulation ou une arêtes.
+Réciproquement on procède par récurrence sur le nombre de ses composantes 2-connexes. S'il y en a une c'est évident et s'il y en a plus, on peut décomposer le graphe en 2 :
 
-![composantes 2 connexes](./composantes-2-connexes.png)
+- un graphe qui est la restriction de $G$ à une  composantes qui est une feuille dans l'arbre des composantes 2-connexes,
+- un graphe qui est la restriction de $G$ à toutes les autres composantes
 
-Le graphe dont les sommet sont les composantes 2-connexe et une arête si connexion est un arbre (sinon il existe un cycle et du coup plus gros)
+Ces deux graphes sont planaires par hypothèse de récurrence et on un unique sommet en commun. On peut les recoller en un seul graphe planaire via celui-ci puisque l'on peut s'arranger pour qu'il soit sur la face infinie d'un des deux graphes et l'insérer dans une des faces le contenant dans l'autre.
 
 {% enddetails  %}
 
 > TBD preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
-
-- définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf> ou <https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf> On a besoin de :
-
 
   
