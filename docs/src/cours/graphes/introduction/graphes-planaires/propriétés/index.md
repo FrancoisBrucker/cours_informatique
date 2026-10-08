@@ -97,7 +97,6 @@ Donc trianguler une représentation planaire triangule toutes les autres, même 
 
 ## Inévitabilité
 
-> 
 ## Nombre minimum de croisements de graphes non planaires
 
 {% lien %}

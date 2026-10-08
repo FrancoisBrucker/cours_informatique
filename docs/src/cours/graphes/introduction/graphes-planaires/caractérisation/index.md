@@ -21,18 +21,19 @@ eleventyComputed:
 > TBD Diesel théorème 4.1.1 (p83 et suivantes)
 > TBD <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
 > TBD - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
+
 ## Mineurs
 
 
 La caractérisation des graphes planaire se fait par "_mineur exclu_". C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G$ un graphe. Un graphe $H$ est un mineur de $G$ s'il peut être obtenu par un nombre quelconque des opérations suivantes :
 
 - suppression d'un sommet sans voisin
 - suppression d'une arête
 - contraction d'un arête: on fusionne l'arête en un nouveau sommet $z$ dont les voisins sont les voisins des anciens sommets formant l'arête
-{% endnote %}
+{% endnote2 %}
 {% lien %}
 [mineurs de graphes](https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes))
 {% endlien %}
@@ -76,7 +77,11 @@ On a déjà établi la proposition suivante :
 Si $G$ est planaire, il ne peut avoir ni $K_5$ ni $K_{3,3}$ comme mineur
 {% endnote %}
 {% details "preuve", "open" %}
-Clair puisque l'on a montré que ni $K_5$ ni $K_{3,3}$ ne peuvent être planaire.
+Clair puisque l'on a montré que :
+
+- ni $K_5$ ni $K_{3,3}$ ne peuvent être planaire,
+- un graphe n'est planaire que si ses mineurs le sont.
+
 {% enddetails  %}
 
 Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930 dans le cadre des subdivisions de graphes, il a été ré-ecrit par Wagner en 1937 avec les mineurs. 
@@ -136,7 +141,77 @@ Comme $j>i$ on a une contradiction.
 
 {% enddetails %}
 
+Tout comme un graphe peut se décomposer en composantes connexes, on peut le décomposer en ses composantes 2-connexes
 
+{% note2 "**Définition**" %}
+Un ensemble de sommet d'un graphe est 2-connexe si la restriction du graphe à cet ensemble est 2-connexe.
+
+{% endnote2 %}
+{% note2 "**Définition**" %}
+Un ensemble de sommets d'un graphe est une composante 2-connexe si :
+
+- il est 2-connexe,
+- il est maximal pour l'inclusion
+
+{% endnote2 %}
+
+{% note "**Proposition**" %}
+Si $A$ et $B$ sont deux composantes 2-connexes d'un graphe connexe $G$, on a soit :
+
+- $A \cap B = \emptyset$ et il existe au plus un unique couple $(x, y) \in A \times B$ tel que $xy \in E(G)$
+- $\vert A \cap B \vert = 1$ et $xy \notin E(G)$ quelque soient $x \in A \backslash B$ et $y \in B \backslash A$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Comme $A$ et $B$ sont maximaux on peut supposer sans perte de généralité que $A \subsetneq A \cup B$. De là, si $\vert A \cap B \vert > 1$ alors $A \cup B$ serait connexe et supprimer n'importe quel élément de $A \cup B$ ne déconnecterait le graphe : $A$ n'est pas maximal ce qui est impossible.
+
+Le même raisonnement s'applique ($A\cup B$ serait 2-connexe) :
+
+- si $A \cap B = \emptyset$ et qu'il existait $x_1 \neq x_2$ tous deux dans $A$ avec chacun une arête vers un élément (pouvant être le même) de $B$
+- si $\vert A \cap B \vert = 1$ et qu'il existait $x \in A \backslash B$ et $y \in B \backslash A$ avec $xy \in E(G)$.
+
+
+{% enddetails %}
+
+{% note "**Corollaire**" %}
+Pour toute arête $xy$ d'un graphe il existe une unique composante 2-connexe contenant à la fois $x$ et $y$.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Comme $\\{x, y\\}$ est 2-connexe si $xy \in E(G)$ il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.
+{% enddetails %}
+
+{% note2 "**Définition**" %}
+On appelle **_nœud d'articulation_** d'un graphe les sommets à l'intersection de deux composantes 2-connexes.
+
+{% endnote2 %}
+
+
+{% note "**Proposition**" %}
+Soit $G$ un graphe connexe et $\mathcal{C}$ l'ensemble de ses composantes 2-connexes.
+
+Le graphe $G' = (\mathcal{C}, E)$ tel que $xy$ est une arête si $x\cap y \neq \emptyset$ est un arbre.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Tout d'abord le graphe $G'$ est connexe. En effet si $A$ et $B$ sont deux composantes 2-connexe et $x \in A$, $y \in B$ alors il existe un chemin entre $x$ et $y$ dans $G$ et chaque arête est dans une composante connexe. cette succession de composantes connexe forme un chemin dans $G'$. 
+
+De plus ce graphe est sans cycle car sinon le cycle dans $G'$ induirait un cycle dans $G$ dont les arêtes appartiendraient aux composantes 2-connexes du cycle de $G'$. Mais un cycle fait partie d'une unique composante 2-connexe ce qui est une contradiction puisque celle-ci aurait au moins 2 sommets en commun avec tous les éléments du cycle.
+
+{% enddetails %}
+
+
+
+Trouver les composantes 2-connexes d'un graphe peut se faire linéairement en utilisant un DFS astucieux. C'est l'algorithme de Hopcroft et Tarjan (1973).
+
+```pseudocode
+
+```
+
+> TBD exemple du cours
+> 
 ### Preuve
 
 > TBD la démo.
@@ -145,14 +220,19 @@ Les deux démonstrations sont
 - relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f
 - [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
 
-Séparation par arêtes (déconnecte le graphe) ou par point d'articulation (via algorithme DFS et retour).
 
 > TBD composantes 2-connexes ~ arbre : il existe feuille.
+
 
 {% note "**Proposition**" %}
 Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont
 {% endnote %}
 {% details "preuve", "open" %}
+
+> TBD après effeuillage, on reconstruit le graphe en ajoutant une composante 2-connexe à la fois à un graphe de plus en plus gros, via un seul sommet d'articulation. 
+> On dessine la nouvelle composante connexe avec ce sommet d'articulation sur la face extérieure (on a vu qu'on peut toujours le faire) et on le recolle dans une face du graphe d'origine contenant le  sommet.
+
+> TBD exemple
 Les composantes 2-connexes sont liées uniquement par un sommet d'articulation ou une arêtes.
 
 ![composantes 2 connexes](./composantes-2-connexes.png)
@@ -160,7 +240,6 @@ Les composantes 2-connexes sont liées uniquement par un sommet d'articulation o
 Le graphe dont les sommet sont les composantes 2-connexe et une arête si connexion est un arbre (sinon il existe un cycle et du coup plus gros)
 
 {% enddetails  %}
-
 
 > TBD preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
 
