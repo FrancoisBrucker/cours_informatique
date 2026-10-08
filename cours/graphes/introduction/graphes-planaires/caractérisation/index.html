@@ -412,7 +412,7 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme $\{x, y\}$ est 2-connexe si $xy \in E(G)$ il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.</p>
+<p>Comme $\{x, y\}$ est 2-connexe si $xy \in E(G)$, il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.</p>
 </div>
 </details>     
 </div>
@@ -460,22 +460,69 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </details>     
 </div>
 <p>Trouver les composantes 2-connexes d'un graphe peut se faire linéairement en utilisant un DFS astucieux. C'est l'algorithme de Hopcroft et Tarjan (1973).</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"></code></pre>
-<blockquote>
-<p>TBD exemple du cours</p>
-</blockquote>
-<h3>Preuve</h3>
-<blockquote>
-<p>TBD la démo.</p>
-</blockquote>
-<p>Les deux démonstrations sont</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">DFS</span><span class="token punctuation">(</span>u<span class="token punctuation">:</span> Sommet<span class="token punctuation">,</span> t<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> 
+             pos<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet<span class="token punctuation">,</span> pred<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet<span class="token punctuation">,</span> low<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet<span class="token punctuation">,</span> P<span class="token punctuation">:</span> <span class="token operator">*</span>Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span>Sommet<span class="token punctuation">,</span> Sommet<span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">{</span>Sommet<span class="token punctuation">}</span><span class="token punctuation">:</span>
+
+    pos<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> t
+    low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> t
+
+    <span class="token keyword">pour chaque</span> voisin v de G<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> pos<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>                             <span class="token comment"># première fois que l'on voit v : uv est dans l'arbre</span>
+            pred<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">←</span> u
+            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            l <span class="token operator">←</span> DFS<span class="token punctuation">(</span>v<span class="token punctuation">,</span> t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pred<span class="token punctuation">,</span> <span class="token operator">&amp;</span>low<span class="token punctuation">,</span> <span class="token operator">&amp;</span>P<span class="token punctuation">)</span>
+
+            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> low<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (2)</span>
+
+            <span class="token keyword">si</span> low<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">≥</span> pos<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>                      <span class="token comment"># on a trouvé une composante 2-connexe</span>
+                var s <span class="token punctuation">{</span>Sommet<span class="token punctuation">}</span> <span class="token operator">←</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+                ajoute u <span class="token keyword">et</span> v à s
+
+                <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">tant que</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    ajoute x <span class="token keyword">et</span> y à s
+                    <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                
+                ajoute s à la fin de l
+        <span class="token keyword">sinon si</span> v <span class="token operator">≠</span> pred<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>                        <span class="token comment"># uv est un arc retour</span>
+            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> pos<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (1)</span>
+
+    <span class="token keyword">rendre</span> l
+
+<span class="token builtin">algorithme</span> 2_connexe<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> racine<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    var pos <span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">pour</span> _ de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">]</span>
+    var pred <span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">pour</span> _ de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">]</span>
+    var low <span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">pour</span> _ de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+    var P Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span>Sommet<span class="token punctuation">,</span> Sommet<span class="token punctuation">)</span><span class="token operator">></span> <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span>Sommet<span class="token punctuation">,</span> Sommet<span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    pred<span class="token punctuation">[</span>racine<span class="token punctuation">]</span> <span class="token operator">←</span> racine
+    <span class="token keyword">rendre</span> DFS<span class="token punctuation">(</span>racine<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pred<span class="token punctuation">,</span> <span class="token operator">&amp;</span>low<span class="token punctuation">,</span> <span class="token operator">&amp;</span>Pile<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Tout d'abord, il est clair que le parcours est un DFS dont l'arbre associé est constitué des arêtes ($\{x, pred[x]\}$) et que la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$. Ensuite comme il n'y a qu'un seul nœud d'articulation entre deux composantes 2-connexes, les composantes 2 connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS.</p>
+<p><img src="dfs-2-connexe.png" alt="composantes 2-connexes"></p>
+<p>De part la structure d'un DFS les arcs retours $uv$ sont toujours tel que $v$ est sur le chemin entre $u$ et $r$ et donc les composantes 2-connexe contenant $x$ :</p>
 <ul>
-<li>relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f</li>
-<li><a href="https://en.wikipedia.org/wiki/Biconnected_component">composantes 2-connexes</a></li>
+<li>sont des sous arbre du DFS contenant $x$</li>
+<li>toutes sauf 1 sont enracinées en $x$</li>
 </ul>
+<p>On en déduit des  remarques précédentes que pour qu'il existe un cycle élémentaire entre deux sommets $x$ et $y$ (donc qu'ils soient dans la même composante 2-connexe) on est dans une de ces 5 configurations :</p>
+<p><img src="dfs-2-connexe-xy.png" alt="xy cycle élémentaire"></p>
+<p>C'est exactement ce que note le tableau <code class="language-">low</code>. On voit que la valeur <code>low[x]</code> est la position du plus haut sommet sur le chemin entre <code>x</code> et la racine pour lequel ils sont tous deux dans la même composante 2-connexe. En effet :</p>
+<ul>
+<li>la mise à jour (1) trouve l'arête remontant la plus haute et est effectué avant toute mise à jour (2),</li>
+<li>la mise à jour (2) gère les cycles après avoir examiné tout le sous-arbre planté en $v$.</li>
+</ul>
+<p>Enfin, lorsque <code>low[v] &gt;= low[u]</code> plus aucun autre élément ne peut-être ajouté à la composante 2-connexe contenant $u$ et $v$ (voir les différentes figures on doit pouvoir remonter au dessus de $u$ pour ajouter des éléments à la composante) et $u$ est le sommet le plus haut de cette composante : toutes les arête restant empilée font partie de celle-ci (on peut le prouver par récurrence).</p>
 <blockquote>
-<p>TBD composantes 2-connexes ~ arbre : il existe feuille.</p>
+<p>TBD exemple du cours papier</p>
 </blockquote>
+<p>L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.</p>
+<h3>Preuve</h3>
+<p>Commençons par nous restreindre aux graphes 2-connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -483,7 +530,7 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont</p>
+<p>Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -503,25 +550,19 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD après effeuillage, on reconstruit le graphe en ajoutant une composante 2-connexe à la fois à un graphe de plus en plus gros, via un seul sommet d'articulation.
-On dessine la nouvelle composante connexe avec ce sommet d'articulation sur la face extérieure (on a vu qu'on peut toujours le faire) et on le recolle dans une face du graphe d'origine contenant le  sommet.</p>
-</blockquote>
-<blockquote>
-<p>TBD exemple
-Les composantes 2-connexes sont liées uniquement par un sommet d'articulation ou une arêtes.</p>
-</blockquote>
-<p><img src="composantes-2-connexes.png" alt="composantes 2 connexes"></p>
-<p>Le graphe dont les sommet sont les composantes 2-connexe et une arête si connexion est un arbre (sinon il existe un cycle et du coup plus gros)</p>
+<p>Si le graphe est planaire toute restriction de celui-ci l'est : $G$ planaire implique que ses composantes 2-connexes le soient.</p>
+<p>Réciproquement on procède par récurrence sur le nombre de ses composantes 2-connexes. S'il y en a une c'est évident et s'il y en a plus, on peut décomposer le graphe en 2 :</p>
+<ul>
+<li>un graphe qui est la restriction de $G$ à une  composantes qui est une feuille dans l'arbre des composantes 2-connexes,</li>
+<li>un graphe qui est la restriction de $G$ à toutes les autres composantes</li>
+</ul>
+<p>Ces deux graphes sont planaires par hypothèse de récurrence et on un unique sommet en commun. On peut les recoller en un seul graphe planaire via celui-ci puisque l'on peut s'arranger pour qu'il soit sur la face infinie d'un des deux graphes et l'insérer dans une des faces le contenant dans l'autre.</p>
 </div>
 </details>     
 </div>
 <blockquote>
 <p>TBD preuve Kuratowski juste avec 2-connexité: <a href="https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf">https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf</a></p>
 </blockquote>
-<ul>
-<li>définitions et propriétés + Kuratowsky : <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf</a> ou <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2007/vincent-nivoliers.pdf</a> On a besoin de :</li>
-</ul>
 
 
 </article>
