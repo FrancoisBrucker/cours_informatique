@@ -607,9 +607,10 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 <li>seul le successeur $v$ y est également</li>
 </ul>
 <p>De là toutes les autres arêtes ajoutées et non encore supprimées après l'empilage de $(u, v)$ sont exactement toutes les arêtes de la composante 2-connexe.</p>
-<blockquote>
-<p>TBD exemple du cours papier</p>
-</blockquote>
+<p>En prenant l'exemple suivant :</p>
+<p><img src="algo-tarjan-1.png" alt="tarjan exemple"></p>
+<p>On obtient l'arbre suivant (l'ordre de passage va de gauche à droite) :</p>
+<p><img src="algo-tarjan-2.png" alt="tarjan exemple"></p>
 <p>L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -618,14 +619,20 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
-<p>TBD oreille</p>
-</blockquote>
+<p>Soit $G$ un graphe. Un chemin $P$ est une <strong><em>oreille</em></strong> de $G$ si :</p>
+<ul>
+<li>seules ses extrémités font partie de $G$,</li>
+<li>aucune arête de $P$ n'est dans $G$.</li>
+</ul>
 </div></div>
 
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
+<p>En prenant l'exemple suivant :</p>
+<p><img src="oreilles.png" alt="oreilles"></p>
+<ul>
+<li>le chemin $afcb$ est une oreille du graphe restreint à $\{a, b, e\}$,</li>
+<li>le chemin $be$ est une oreille du graphe restreint au cycle $\{a, b, c, d, e\}$,</li>
+<li>le chemin $be$ n'est <strong>pas</strong> une oreille du graphe restreint à $\{a, b, c, d, e\}$.</li>
+</ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -657,18 +664,35 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>un chemin $x^i_0\dots x^i_p$</p>
+<p>Soit $H$ un sous-graphe 2-connexe avec plus de 2 sommets d'un graphe 2-connexe $G$. On a deux cas :</p>
 <ul>
-<li>$E(P_i) \cap E(C) \cup_{j &lt; i} E(P_j) = \emptyset$</li>
-<li>$V(P_i) \cap V(C) \cup_{j &lt; i} V(P_j) = \{x^i_0, x^i_p\}$ (seuls les extrémités de $P_i$ sont dans l'union des graphes précédents)</li>
+<li>soit il existe une arête $xy$ de $G$ qui n'est pas dans $H$ mais dont les sommets y sont.</li>
+<li>soit il existe un $x$ sommet de $G$ qui n'est pas dans $H$.</li>
 </ul>
+<p>Dans le second cas, comme $G$ est 2-connexe il existe un cycle élémentaire dans $G$ reliant $x$ à un sommet de $G$. De là, on a à nouveau 2 cas :</p>
+<ul>
+<li>soit on peut en extraire une oreille en prenant les 2 premiers sommet de $H$ à gauche et à droite de $x$ dans le cycle :
+<img src="oreilles-1.png" alt="oreille recollage"></li>
+<li>soit tout les sommets du cycle sauf un, disons $y$ n'est pas dans $H$. Mais comme le graphe $G$ est 2-connexe et que $H$ a plus de 2 sommets, il existe un chemin entre $x$ et $y \neq y' \in V(H)$ que l'on peut rabouter en une oreille en allant à rebours de $y'$ au premier élément du cycle :
+<img src="oreilles-2.png" alt="oreille recollage"></li>
+</ul>
+<p>Le graphe $H$ auquel on ajoute ce chemin étant toujours 2-connexe, on peut continuer à ajouter des oreilles jusqu'à obtenir $G$.</p>
+<p>On conclut la preuve en remarquant que comme le graphe $G$ est 2-connexe, il existe un cycle $C$ dans celui-ci ce qui nous permet de commencer.</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD exemple du cours</p>
-</blockquote>
+<p>Par exemple la figure ci-dessous montre une décomposition en oreilles :</p>
+<p><img src="oreilles-3.png" alt="oreilles"></p>
+<p>On a commencé par le cycle noir, puis on a ajouté itérativement les chemins : vert, orange, violet, rouge et jaune.</p>
 <h2>Preuve de la réciproque</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf">https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf</a></p>
+</div></div>
+
 <p>Commençons par nous restreindre aux graphes 2-connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -707,9 +731,37 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD preuve Kuratowski juste avec 2-connexité: <a href="https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf">https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf</a></p>
-</blockquote>
+<p>Nous allons prouver la réciproque par l'absurde en cherchant un graphe non planaire n'ayant ni $K_5$ ni $K_{3, 3}$ comme mineurs. On suppose qu'il en existe et on en considère un, disons $G^\star$ avec :</p>
+<ol>
+<li>le nombre minimum de sommets : si on supprime un sommet de $G^\star$ il devient planaire</li>
+<li>parmi tous ceux ayant un nombre minimum de sommets, notre graphe à un nombre minimum d'arêtes : si on supprime une arête de $G^\star$ il devient planaire</li>
+</ol>
+<p>La proposition précédente nous montre alors que $G^\star$ est 2-connexe sinon il existerait une de ses composante 2-connexe non planaire et contredirait sa minimalité en nombre de sommets. De plus, tout sommet de $G^\star$ est de degré au moins 3 puisque :</p>
+<ul>
+<li>$G^\star$ est 2-connexe il ne peut donc avoir aucun sommet de degré 1 (supprimer son voisin déconnecterait le graphe),</li>
+<li>s'il existait un sommet de degré 2 on pourrait fusionner ses 2 arêtes et le graphe serait encore non planaire (et contredirait sa minimalité en nombre de sommets)</li>
+</ul>
+<p>De là, toute décomposition en oreilles de $G^\star$ va contenir au moins un chemin dont on pourra supprimer une arête, disons $uv$ sans perdre la 2-connectivité du graphe. En revanche le graphe résultant $G^\star - uv$ sera planaire.</p>
+<p>Comme $G^\star - uv$ est 2-connexe il existe des cycles élémentaires contenant $u$ et $v$. Notons $\mathcal{C}$ cet ensemble.
+Pour toute représentation planaire $P$ de $G^\star - uv$ on peut compter pour chaque cycle $C$ de $\mathcal{C}$ le nombre $N_P(C)$ de faces qu'il contient et on note $N(P) = \max(\{N_P(C) \mid C \in \mathcal{C}\})$. On choisi alors une représentation planaire $P^\star$ de $G^\star - uv$ qui réalise le maximum de $N(P)$ pour toutes les représentations planaires de $G^\star - uv$ et $C^\star$ un cycle de $\mathcal{C}$ tel que $N_{P^\star}(C^\star) = N(P^\star)$.</p>
+<p>Le choix de $G^\star - uv$, $P^\star$ et de $C^\star$ implique plusieurs choses. Premièrement $u$ et $v$ ne sont pas voisins dans $C^\star$ (l'arête $uv$ n'est pas dans le graphe). De là, il n'existe pas d'oreille de $C^\star$ dont les 2 sommets d'accroche sont entre $u$ et $v$ et le chemin à l'extérieur de $C^\star$ :</p>
+<p><img src="oreille-externe.png" alt="oreille externe"></p>
+<p>Car il existerait un cycle (le cycle rouge) qui aurait au moins une région de plus que $C^\star$ ce qui est impossible :</p>
+<p><img src="oreille-externe-non.png" alt="oreille externe non"></p>
+<p>On ne peut pas non plus ajouter l'arête $uv$ à $P^\star$ sans le rendre non planaire. Il existe donc deux oreilles reliant un arc entre $u$ et $v$ à l'autre, l'un interne (qui empêche de relier $u$ et $v$ par l'intérieur) l'autre externe (qui empêche de relier $u$ et $v$ par l'extérieur):</p>
+<p><img src="oreille-externe-interne-non.png" alt="oreille externe/interne"></p>
+<p>Examinons les différents cas possible. Tout d'abord pour que l'oreille extérieur ne soit pas d'un côté du cycle, il faut que ses accroches soient différentes de $u$ et $v$ :</p>
+<p><img src="cas-oreilles.png" alt="cas oreille 1"></p>
+<p>Pour l'oreille interne, regarde ses accroches. Si elles sont différentes de celles de l'oreille interne on est dans le cas suivant :</p>
+<p>, pour qu'il soit impossible de faire coller l'oreille interne à l'oreille extérieur sans casser la planarité :</p>
+<p><img src="cas-oreilles-1-1.png" alt="cas oreille 1"></p>
+<p>Il faut qu'on ne puisse pas la faire sortir, ce qui impose de l'attacher de :</p>
+<p><img src="cas-oreilles-1.png" alt="cas oreille 1"></p>
+<ul>
+<li>si seule était égales, comme il n'existe pas d'oreille reliant deux même côté du cycle on pourrait également faire passer l'oreille interne à extérieur sans casser la planarité :
+<img src="cas-oreilles-1-2.png" alt="cas oreille 1"></li>
+</ul>
+<p>Si les 2 oreilles sont disjointes intérieurement on forcément dans le cas où les extrémités égale;ent sont</p>
 
 
 </article>
