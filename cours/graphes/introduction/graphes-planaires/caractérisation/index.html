@@ -189,7 +189,6 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 </div>
 </details>     
 </div>
-<h2>Caractérisation</h2>
 <p>On a déjà établi la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -235,8 +234,8 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 <p>Voir <a href="https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner">la page Wikipedia</a></p>
 </div></div>
 
-<p>On va avoir besoin de quelques propriétés des graphes 2-connexes pour cette démonstration, donc commençons par ça.</p>
-<h3>2-connexité</h3>
+<p>La caractérisation des graphes planaire est tres liée à la notion de 2-connexité. On va donc commencer par définir ce que c'est et démontrer des propriétés qui vont se révéler utiles en général et pour notre caractérisation en particulier.</p>
+<h2>2-connexité</h2>
 <p><span id="définition-k-connexité"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -472,7 +471,7 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
             P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
             l <span class="token operator">←</span> DFS<span class="token punctuation">(</span>v<span class="token punctuation">,</span> t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pred<span class="token punctuation">,</span> <span class="token operator">&amp;</span>low<span class="token punctuation">,</span> <span class="token operator">&amp;</span>P<span class="token punctuation">)</span>
 
-            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> low<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (2)</span>
+            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> low<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (1)</span>
 
             <span class="token keyword">si</span> low<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">≥</span> pos<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>                      <span class="token comment"># on a trouvé une composante 2-connexe</span>
                 var s <span class="token punctuation">{</span>Sommet<span class="token punctuation">}</span> <span class="token operator">←</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -486,11 +485,11 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
                 ajoute s à la fin de l
         <span class="token keyword">sinon si</span> v <span class="token operator">≠</span> pred<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">:</span>                        <span class="token comment"># uv est un arc retour</span>
             P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> pos<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (1)</span>
+            low<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>low<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">,</span> pos<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">)</span>             <span class="token comment"># mise à jour (2)</span>
 
     <span class="token keyword">rendre</span> l
 
-<span class="token builtin">algorithme</span> 2_connexe<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> racine<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token builtin">algorithme</span> 2_connexe<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> r<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
     var pos <span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">pour</span> _ de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">]</span>
     var pred <span class="token punctuation">[</span><span class="token punctuation">]</span>Sommet <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">pour</span> _ de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">]</span>
@@ -498,30 +497,178 @@ TBD - topologie et courbe fermée Jordan  : <a href="https://pagesperso.g-scop.g
 
     var P Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span>Sommet<span class="token punctuation">,</span> Sommet<span class="token punctuation">)</span><span class="token operator">></span> <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span>Sommet<span class="token punctuation">,</span> Sommet<span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-    pred<span class="token punctuation">[</span>racine<span class="token punctuation">]</span> <span class="token operator">←</span> racine
-    <span class="token keyword">rendre</span> DFS<span class="token punctuation">(</span>racine<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pred<span class="token punctuation">,</span> <span class="token operator">&amp;</span>low<span class="token punctuation">,</span> <span class="token operator">&amp;</span>Pile<span class="token punctuation">)</span>
+    pred<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">←</span> r
+    <span class="token keyword">rendre</span> DFS<span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pred<span class="token punctuation">,</span> <span class="token operator">&amp;</span>low<span class="token punctuation">,</span> <span class="token operator">&amp;</span>Pile<span class="token punctuation">)</span>
 
 </code></pre>
-<p>Tout d'abord, il est clair que le parcours est un DFS dont l'arbre associé est constitué des arêtes ($\{x, pred[x]\}$) et que la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$. Ensuite comme il n'y a qu'un seul nœud d'articulation entre deux composantes 2-connexes, les composantes 2 connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS.</p>
+<p>Tout d'abord, il est clair que :</p>
+<ul>
+<li>le parcours est un DFS dont l'arbre associé est planté en $r$ et constitué des arêtes $\{ \{x, pred[x]\} \mid x \neq r\}$,</li>
+<li>la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$,</li>
+<li>toute arête du graphe est soit une arête de l'arbre soit une arête $xy$ avec $y$ sur le chemin entre $x$ et $r$ (on les appelle des <strong><em>arêtes retours</em></strong>)</li>
+<li><code class="language-">pos[x]</code> est la distance entre $x$ et $r$ sur l'arbre du DFS</li>
+</ul>
+<p>Commençons par caractériser les valeurs du tableau <code class="language-">low</code> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout sommet $s$, <code class="language-">low[s]</code> correspond à la plus petite valeur <code class="language">pos[x]</code> pour toute arête retour $xy$ avec :</p>
+<ul>
+<li>$x$ sur le chemin entre $s$ et $r$,</li>
+<li>$y$ dans le sous-arbre planté en $s$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>pour tout $u$ on modifie <code class="language-">low[u]</code> soit :</p>
+<ul>
+<li>en (2) lors de l'étude d'un arc retour partant de $u$</li>
+<li>en (1) après avoir examiné un de ses voisins pour la première fois.</li>
+</ul>
+<p>On peut alors faire une récurrence partant des feuilles de l'arbres. Elles ne possèdent que des arêtes retour et donc <code class="language-">low[u]</code> correspond au plus petit élément atteignable sur le chemin. Puis cette valeur est mise à jour après avoir examiné tout le sous arbre planté en $v$ qui est contenu dans le sous-arbre planté en $u$.</p>
+</div>
+</details>     
+</div>
+<p>La proposition précédente montre que le chemin allant de $x$ à l'élément $y$ sur le chemin allant de $x$ à $r$ tel que <code class="language-">pos[y] = low[x]</code> est dans la même composante 2-connexe puisqu'il existe un cycle élémentaire les reliant :</p>
+<p><img src="tarjan-1.png" alt="tarjan"></p>
+<p>Utilisons cette propriété pour caractériser les composantes 2-connexes vis à vis d'un arbre DFS :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Toute arête de $G$ est dans une unique composante 2-connexe. Cette arête est soit une arête de l'arbre DFS soit un arc retour et dans ce cas il forme un cycle avec le chemin allant d'une extrémité à l'autre dans le chemin. Dans les 2 cas, ceci prouve que tout le chemin allant d'une extrémité à l'autre de l'arête est dans la composante 2-connexe contenant l'arête.</p>
+<p>Si $x$ et $y$ sont dans une composante 2-connexe $C$, il existe un chemin $x = z_1 \dots z_k = y$ avec $z_i \in C$. Ce qui précède montre que le chemin allant de $z_i$ à $z_{i+1}$ dans l'arbre est également dans $C$ pour tout $i$ donc le chemin entre $x$ et $y$ également.</p>
+</div>
+</details>     
+</div>
+<p>Comme il n'y a qu'au plus seul sommet commun entre deux composantes 2-connexes, les composantes 2-connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS :</p>
 <p><img src="dfs-2-connexe.png" alt="composantes 2-connexes"></p>
-<p>De part la structure d'un DFS les arcs retours $uv$ sont toujours tel que $v$ est sur le chemin entre $u$ et $r$ et donc les composantes 2-connexe contenant $x$ :</p>
+<p>Mais pour que deux sommets qu ne sont pas sur le même chemin jusqu'à la racine puissent être dans une même composante connexe, il faut qu'ils soient liée par au dessus de leur jonction, par exemple comme une de ces façons :</p>
+<p><img src="tarjan-2.png" alt="tarjan"></p>
+<p>Il y en a d'autres, mais pour toutes on a <code>low[s] &lt; pos[s]</code>. Ces éléments ne peuvent donc faire partie que d'une composante 2-connexe planté strictement plus haut que $s$. Pour un nœud d'articulation $x$ on peut affiner la représentation :</p>
+<p><img src="dfs-2-connexe-2.png" alt="parties connexes"></p>
+<p>Seule la partie 2-connexe planté plus haut que $x$ peut être sur plusieurs branches, toutes les autres sont liées à $x$ par une seule arête. On a alors la proposition suivante qui fait fonctionner le tout :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Conséquence</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS. Si #u$ est la racine d'un tel sous-arbre , alors seule un de ses successeur y est également.</p>
+</div></div>
+
+<p>La conséquence précédente nous montre que l'algorithme fonctionne, si <code class="language-">low[v] ≥ pos[u]</code> :</p>
 <ul>
-<li>sont des sous arbre du DFS contenant $x$</li>
-<li>toutes sauf 1 sont enracinées en $x$</li>
+<li>$u$ est la racine d'une composante 2-connexe</li>
+<li>seul le successeur $v$ y est également</li>
 </ul>
-<p>On en déduit des  remarques précédentes que pour qu'il existe un cycle élémentaire entre deux sommets $x$ et $y$ (donc qu'ils soient dans la même composante 2-connexe) on est dans une de ces 5 configurations :</p>
-<p><img src="dfs-2-connexe-xy.png" alt="xy cycle élémentaire"></p>
-<p>C'est exactement ce que note le tableau <code class="language-">low</code>. On voit que la valeur <code>low[x]</code> est la position du plus haut sommet sur le chemin entre <code>x</code> et la racine pour lequel ils sont tous deux dans la même composante 2-connexe. En effet :</p>
-<ul>
-<li>la mise à jour (1) trouve l'arête remontant la plus haute et est effectué avant toute mise à jour (2),</li>
-<li>la mise à jour (2) gère les cycles après avoir examiné tout le sous-arbre planté en $v$.</li>
-</ul>
-<p>Enfin, lorsque <code>low[v] &gt;= low[u]</code> plus aucun autre élément ne peut-être ajouté à la composante 2-connexe contenant $u$ et $v$ (voir les différentes figures on doit pouvoir remonter au dessus de $u$ pour ajouter des éléments à la composante) et $u$ est le sommet le plus haut de cette composante : toutes les arête restant empilée font partie de celle-ci (on peut le prouver par récurrence).</p>
+<p>De là toutes les autres arêtes ajoutées et non encore supprimées après l'empilage de $(u, v)$ sont exactement toutes les arêtes de la composante 2-connexe.</p>
 <blockquote>
 <p>TBD exemple du cours papier</p>
 </blockquote>
 <p>L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.</p>
-<h3>Preuve</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<blockquote>
+<p>TBD oreille</p>
+</blockquote>
+</div></div>
+
+<blockquote>
+<p>TBD exemple</p>
+</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Whitney, 1932)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe est 2-connexe si et seulement si il est décomposable en oreilles, c'est à dire que $G = (V(C) \cup_i V(P_i), E(C) \cup_i E(P_i))$ avec:</p>
+<ul>
+<li>$C$ un cycle élémentaire,</li>
+<li>$P_i$ est une oreille de $G_i = (V(C) \cup_{j &lt;i} V(P_j), E(C) \cup_{j &lt;i} E(P_j))$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>un chemin $x^i_0\dots x^i_p$</p>
+<ul>
+<li>$E(P_i) \cap E(C) \cup_{j &lt; i} E(P_j) = \emptyset$</li>
+<li>$V(P_i) \cap V(C) \cup_{j &lt; i} V(P_j) = \{x^i_0, x^i_p\}$ (seuls les extrémités de $P_i$ sont dans l'union des graphes précédents)</li>
+</ul>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD exemple du cours</p>
+</blockquote>
+<h2>Preuve de la réciproque</h2>
 <p>Commençons par nous restreindre aux graphes 2-connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
