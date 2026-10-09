@@ -396,7 +396,7 @@ Réciproquement on procède par récurrence sur le nombre de ses composantes 2-c
 
 - un graphe qui est la restriction de $G$ à une  composantes qui est une feuille dans l'arbre des composantes 2-connexes,
 - un graphe qui est la restriction de $G$ à toutes les autres composantes
-
+ 
 Ces deux graphes sont planaires par hypothèse de récurrence et on un unique sommet en commun. On peut les recoller en un seul graphe planaire via celui-ci puisque l'on peut s'arranger pour qu'il soit sur la face infinie d'un des deux graphes et l'insérer dans une des faces le contenant dans l'autre.
 
 {% enddetails  %}
