@@ -68,9 +68,6 @@ Les trois opérations pour créer un mineur d'un graphe fonctionnent aussi sur s
 ![contraction](./contraction-dessin.png)
 {% enddetails  %}
 
-
-## Caractérisation
-
 On a déjà établi la proposition suivante :
 
 {% note "**Proposition**" %}
@@ -90,9 +87,9 @@ Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930
 Voir [la page Wikipedia](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner)
 {% endlien %}
 
-On va avoir besoin de quelques propriétés des graphes 2-connexes pour cette démonstration, donc commençons par ça.
+La caractérisation des graphes planaire est tres liée à la notion de 2-connexité. On va donc commencer par définir ce que c'est et démontrer des propriétés qui vont se révéler utiles en général et pour notre caractérisation en particulier.
 
-### 2-connexité
+## 2-connexité
 
 <span id="définition-k-connexité"></span>
 
@@ -219,7 +216,7 @@ fonction DFS(u: Sommet, t: entier, G: Graphe,
             P.empile((u, v))
             l ← DFS(v, t+1, G, &pos, &pred, &low, &P)
 
-            low[u] ← min(low[u], low[v])             # mise à jour (2)
+            low[u] ← min(low[u], low[v])             # mise à jour (1)
 
             si low[v] ≥ pos[u]:                      # on a trouvé une composante 2-connexe
                 var s {Sommet} ← {}
@@ -233,11 +230,11 @@ fonction DFS(u: Sommet, t: entier, G: Graphe,
                 ajoute s à la fin de l
         sinon si v ≠ pred[u]:                        # uv est un arc retour
             P.empile((u, v))
-            low[u] ← min(low[u], pos[v])             # mise à jour (1)
+            low[u] ← min(low[u], pos[v])             # mise à jour (2)
 
     rendre l
 
-algorithme 2_connexe(G: Graphe, racine: Sommet):
+algorithme 2_connexe(G: Graphe, r: Sommet):
     
     var pos []Sommet ← [-1 pour _ de [1 .. n]]
     var pred []Sommet ← [-1 pour _ de [1 .. n]]
@@ -245,37 +242,109 @@ algorithme 2_connexe(G: Graphe, racine: Sommet):
 
     var P Pile<(Sommet, Sommet)> ← Pile<(Sommet, Sommet)>{}
 
-    pred[racine] ← racine
-    rendre DFS(racine, 0, G, &pos, &pred, &low, &Pile)
+    pred[r] ← r
+    rendre DFS(r, 0, G, &pos, &pred, &low, &Pile)
 
 
 ```
 
-Tout d'abord, il est clair que le parcours est un DFS dont l'arbre associé est constitué des arêtes ($\\{x, pred[x]\\}$) et que la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$. Ensuite comme il n'y a qu'un seul nœud d'articulation entre deux composantes 2-connexes, les composantes 2 connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS.
+Tout d'abord, il est clair que :
+
+- le parcours est un DFS dont l'arbre associé est planté en $r$ et constitué des arêtes $\\{ \\{x, pred[x]\\} \mid x \neq r\\}$,
+- la complexité totale de l'algorithme est en $\mathcal{O}(v(G) + e(G))$, 
+- toute arête du graphe est soit une arête de l'arbre soit une arête $xy$ avec $y$ sur le chemin entre $x$ et $r$ (on les appelle des **_arêtes retours_**)
+- `pos[x]`{.language-} est la distance entre $x$ et $r$ sur l'arbre du DFS
+
+Commençons par caractériser les valeurs du tableau `low`{.language-} :
+
+{% note "**Proposition**" %}
+Pour tout sommet $s$, `low[s]`{.language-} correspond à la plus petite valeur `pos[x]`{.language} pour toute arête retour $xy$ avec :
+
+- $x$ sur le chemin entre $s$ et $r$,
+- $y$ dans le sous-arbre planté en $s$
+{% endnote %}
+{% details "preuve", "open" %}
+
+pour tout $u$ on modifie `low[u]`{.language-} soit :
+
+- en (2) lors de l'étude d'un arc retour partant de $u$
+- en (1) après avoir examiné un de ses voisins pour la première fois.
+
+On peut alors faire une récurrence partant des feuilles de l'arbres. Elles ne possèdent que des arêtes retour et donc `low[u]`{.language-} correspond au plus petit élément atteignable sur le chemin. Puis cette valeur est mise à jour après avoir examiné tout le sous arbre planté en $v$ qui est contenu dans le sous-arbre planté en $u$.
+
+{% enddetails %}
+
+La proposition précédente montre que le chemin allant de $x$ à l'élément $y$ sur le chemin allant de $x$ à $r$ tel que `pos[y] = low[x]`{.language-} est dans la même composante 2-connexe puisqu'il existe un cycle élémentaire les reliant :
+
+![tarjan](./tarjan-1.png)
+
+Utilisons cette propriété pour caractériser les composantes 2-connexes vis à vis d'un arbre DFS :
+
+{% note "**Proposition**" %}
+Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS
+{% endnote %}
+{% details "preuve", "open" %}
+Toute arête de $G$ est dans une unique composante 2-connexe. Cette arête est soit une arête de l'arbre DFS soit un arc retour et dans ce cas il forme un cycle avec le chemin allant d'une extrémité à l'autre dans le chemin. Dans les 2 cas, ceci prouve que tout le chemin allant d'une extrémité à l'autre de l'arête est dans la composante 2-connexe contenant l'arête.
+
+Si $x$ et $y$ sont dans une composante 2-connexe $C$, il existe un chemin $x = z_1 \dots z_k = y$ avec $z_i \in C$. Ce qui précède montre que le chemin allant de $z_i$ à $z_{i+1}$ dans l'arbre est également dans $C$ pour tout $i$ donc le chemin entre $x$ et $y$ également.
+{% enddetails %}
+
+Comme il n'y a qu'au plus seul sommet commun entre deux composantes 2-connexes, les composantes 2-connexes reliées à $x$ comme nœud d'articulation vont s'organiser comme dans la figure suivante dans l'arbre de DFS :
 
 ![composantes 2-connexes](./dfs-2-connexe.png)
 
-De part la structure d'un DFS les arcs retours $uv$ sont toujours tel que $v$ est sur le chemin entre $u$ et $r$ et donc les composantes 2-connexe contenant $x$ :
 
-- sont des sous arbre du DFS contenant $x$
-- toutes sauf 1 sont enracinées en $x$
+Mais pour que deux sommets qu ne sont pas sur le même chemin jusqu'à la racine puissent être dans une même composante connexe, il faut qu'ils soient liée par au dessus de leur jonction, par exemple comme une de ces façons :
 
-On en déduit des  remarques précédentes que pour qu'il existe un cycle élémentaire entre deux sommets $x$ et $y$ (donc qu'ils soient dans la même composante 2-connexe) on est dans une de ces 5 configurations :
+![tarjan](./tarjan-2.png)
 
-![xy cycle élémentaire](./dfs-2-connexe-xy.png)
+ Il y en a d'autres, mais pour toutes on a `low[s] < pos[s]`. Ces éléments ne peuvent donc faire partie que d'une composante 2-connexe planté strictement plus haut que $s$. Pour un nœud d'articulation $x$ on peut affiner la représentation :
 
-C'est exactement ce que note le tableau `low`{.language-}. On voit que la valeur `low[x]` est la position du plus haut sommet sur le chemin entre `x` et la racine pour lequel ils sont tous deux dans la même composante 2-connexe. En effet :
+![parties connexes](./dfs-2-connexe-2.png)
 
-- la mise à jour (1) trouve l'arête remontant la plus haute et est effectué avant toute mise à jour (2),
-- la mise à jour (2) gère les cycles après avoir examiné tout le sous-arbre planté en $v$. 
+Seule la partie 2-connexe planté plus haut que $x$ peut être sur plusieurs branches, toutes les autres sont liées à $x$ par une seule arête. On a alors la proposition suivante qui fait fonctionner le tout :
 
-Enfin, lorsque `low[v] >= low[u]` plus aucun autre élément ne peut-être ajouté à la composante 2-connexe contenant $u$ et $v$ (voir les différentes figures on doit pouvoir remonter au dessus de $u$ pour ajouter des éléments à la composante) et $u$ est le sommet le plus haut de cette composante : toutes les arête restant empilée font partie de celle-ci (on peut le prouver par récurrence).
+{% note "**Conséquence**" %}
+Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS. Si #u$ est la racine d'un tel sous-arbre , alors seule un de ses successeur y est également.
+{% endnote %}
+
+La conséquence précédente nous montre que l'algorithme fonctionne, si `low[v] ≥ pos[u]`{.language-} :
+
+- $u$ est la racine d'une composante 2-connexe
+- seul le successeur $v$ y est également
+
+De là toutes les autres arêtes ajoutées et non encore supprimées après l'empilage de $(u, v)$ sont exactement toutes les arêtes de la composante 2-connexe.
 
 > TBD exemple du cours papier
 
 L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.
 
-### Preuve
+{% note2 "**Définition**" %}
+
+> TBD oreille
+
+{% endnote2  %}
+
+> TBD exemple
+> 
+{% note "**Proposition (Whitney, 1932)**" %}
+Un graphe est 2-connexe si et seulement si il est décomposable en oreilles, c'est à dire que $G = (V(C) \cup_i V(P_i), E(C) \cup_i E(P_i))$ avec:
+
+- $C$ un cycle élémentaire,
+- $P_i$ est une oreille de $G_i = (V(C) \cup_{j <i} V(P_j), E(C) \cup_{j <i} E(P_j))$
+
+{% endnote  %}
+{% details "preuve", "open"%}
+
+un chemin $x^i_0\dots x^i_p$
+- $E(P_i) \cap E(C) \cup_{j < i} E(P_j) = \emptyset$
+- $V(P_i) \cap V(C) \cup_{j < i} V(P_j) = \\{x^i_0, x^i_p\\}$ (seuls les extrémités de $P_i$ sont dans l'union des graphes précédents)
+
+{% enddetails %}
+
+> TBD exemple du cours
+
+## Preuve de la réciproque
 
 Commençons par nous restreindre aux graphes 2-connexes :
 
