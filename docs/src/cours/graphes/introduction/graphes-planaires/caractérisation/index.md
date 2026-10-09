@@ -315,18 +315,33 @@ La conséquence précédente nous montre que l'algorithme fonctionne, si `low[v]
 
 De là toutes les autres arêtes ajoutées et non encore supprimées après l'empilage de $(u, v)$ sont exactement toutes les arêtes de la composante 2-connexe.
 
-> TBD exemple du cours papier
+En prenant l'exemple suivant :
+
+![tarjan exemple](./algo-tarjan-1.png)
+
+On obtient l'arbre suivant (l'ordre de passage va de gauche à droite) :
+
+![tarjan exemple](./algo-tarjan-2.png)
 
 L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.
 
 {% note2 "**Définition**" %}
 
-> TBD oreille
+Soit $G$ un graphe. Un chemin $P$ est une **_oreille_** de $G$ si :
+
+- seules ses extrémités font partie de $G$,
+- aucune arête de $P$ n'est dans $G$.
 
 {% endnote2  %}
 
-> TBD exemple
-> 
+En prenant l'exemple suivant :
+
+![oreilles](./oreilles.png)
+
+- le chemin $afcb$ est une oreille du graphe restreint à $\\{a, b, e\\}$,
+- le chemin $be$ est une oreille du graphe restreint au cycle $\\{a, b, c, d, e\\}$,
+- le chemin $be$ n'est **pas** une oreille du graphe restreint à $\\{a, b, c, d, e\\}$.
+
 {% note "**Proposition (Whitney, 1932)**" %}
 Un graphe est 2-connexe si et seulement si il est décomposable en oreilles, c'est à dire que $G = (V(C) \cup_i V(P_i), E(C) \cup_i E(P_i))$ avec:
 
@@ -336,15 +351,37 @@ Un graphe est 2-connexe si et seulement si il est décomposable en oreilles, c'e
 {% endnote  %}
 {% details "preuve", "open"%}
 
-un chemin $x^i_0\dots x^i_p$
-- $E(P_i) \cap E(C) \cup_{j < i} E(P_j) = \emptyset$
-- $V(P_i) \cap V(C) \cup_{j < i} V(P_j) = \\{x^i_0, x^i_p\\}$ (seuls les extrémités de $P_i$ sont dans l'union des graphes précédents)
+Soit $H$ un sous-graphe 2-connexe avec plus de 2 sommets d'un graphe 2-connexe $G$. On a deux cas :
+
+- soit il existe une arête $xy$ de $G$ qui n'est pas dans $H$ mais dont les sommets y sont.
+- soit il existe un $x$ sommet de $G$ qui n'est pas dans $H$.
+ 
+Dans le second cas, comme $G$ est 2-connexe il existe un cycle élémentaire dans $G$ reliant $x$ à un sommet de $G$. De là, on a à nouveau 2 cas :
+
+- soit on peut en extraire une oreille en prenant les 2 premiers sommet de $H$ à gauche et à droite de $x$ dans le cycle :
+  ![oreille recollage](./oreilles-1.png)
+- soit tout les sommets du cycle sauf un, disons $y$ n'est pas dans $H$. Mais comme le graphe $G$ est 2-connexe et que $H$ a plus de 2 sommets, il existe un chemin entre $x$ et $y \neq y' \in V(H)$ que l'on peut rabouter en une oreille en allant à rebours de $y'$ au premier élément du cycle :
+  ![oreille recollage](./oreilles-2.png)
+
+Le graphe $H$ auquel on ajoute ce chemin étant toujours 2-connexe, on peut continuer à ajouter des oreilles jusqu'à obtenir $G$.
+
+
+On conclut la preuve en remarquant que comme le graphe $G$ est 2-connexe, il existe un cycle $C$ dans celui-ci ce qui nous permet de commencer.
 
 {% enddetails %}
 
-> TBD exemple du cours
+
+Par exemple la figure ci-dessous montre une décomposition en oreilles :
+
+![oreilles](./oreilles-3.png)
+
+On a commencé par le cycle noir, puis on a ajouté itérativement les chemins : vert, orange, violet, rouge et jaune.
 
 ## Preuve de la réciproque
+
+{% lien %}
+<https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
+{% endlien %}
 
 Commençons par nous restreindre aux graphes 2-connexes :
 
@@ -364,6 +401,48 @@ Ces deux graphes sont planaires par hypothèse de récurrence et on un unique so
 
 {% enddetails  %}
 
-> TBD preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
+Nous allons prouver la réciproque par l'absurde en cherchant un graphe non planaire n'ayant ni $K_5$ ni $K_{3, 3}$ comme mineurs. On suppose qu'il en existe et on en considère un, disons $G^\star$ avec :
 
-  
+1. le nombre minimum de sommets : si on supprime un sommet de $G^\star$ il devient planaire
+2. parmi tous ceux ayant un nombre minimum de sommets, notre graphe à un nombre minimum d'arêtes : si on supprime une arête de $G^\star$ il devient planaire
+
+La proposition précédente nous montre alors que $G^\star$ est 2-connexe sinon il existerait une de ses composante 2-connexe non planaire et contredirait sa minimalité en nombre de sommets. De plus, tout sommet de $G^\star$ est de degré au moins 3 puisque :
+
+- $G^\star$ est 2-connexe il ne peut donc avoir aucun sommet de degré 1 (supprimer son voisin déconnecterait le graphe),
+- s'il existait un sommet de degré 2 on pourrait fusionner ses 2 arêtes et le graphe serait encore non planaire (et contredirait sa minimalité en nombre de sommets)
+
+De là, toute décomposition en oreilles de $G^\star$ va contenir au moins un chemin dont on pourra supprimer une arête, disons $uv$ sans perdre la 2-connectivité du graphe. En revanche le graphe résultant $G^\star - uv$ sera planaire.
+
+Comme $G^\star - uv$ est 2-connexe il existe des cycles élémentaires contenant $u$ et $v$. Notons $\mathcal{C}$ cet ensemble. 
+Pour toute représentation planaire $P$ de $G^\star - uv$ on peut compter pour chaque cycle $C$ de $\mathcal{C}$ le nombre $N_P(C)$ de faces qu'il contient et on note $N(P) = \max(\\{N_P(C) \mid C \in \mathcal{C}\\})$. On choisi alors une représentation planaire $P^\star$ de $G^\star - uv$ qui réalise le maximum de $N(P)$ pour toutes les représentations planaires de $G^\star - uv$ et $C^\star$ un cycle de $\mathcal{C}$ tel que $N_{P^\star}(C^\star) = N(P^\star)$.
+
+Le choix de $G^\star - uv$, $P^\star$ et de $C^\star$ implique plusieurs choses. Premièrement $u$ et $v$ ne sont pas voisins dans $C^\star$ (l'arête $uv$ n'est pas dans le graphe). De là, il n'existe pas d'oreille de $C^\star$ dont les 2 sommets d'accroche sont entre $u$ et $v$ et le chemin à l'extérieur de $C^\star$ :
+
+![oreille externe](./oreille-externe.png)
+
+Car il existerait un cycle (le cycle rouge) qui aurait au moins une région de plus que $C^\star$ ce qui est impossible :
+
+![oreille externe non](./oreille-externe-non.png)
+
+On ne peut pas non plus ajouter l'arête $uv$ à $P^\star$ sans le rendre non planaire. Il existe donc deux oreilles reliant un arc entre $u$ et $v$ à l'autre, l'un interne (qui empêche de relier $u$ et $v$ par l'intérieur) l'autre externe (qui empêche de relier $u$ et $v$ par l'extérieur):
+
+![oreille externe/interne](./oreille-externe-interne-non.png)
+
+Examinons les différents cas possible. Tout d'abord pour que l'oreille extérieur ne soit pas d'un côté du cycle, il faut que ses accroches soient différentes de $u$ et $v$ :
+
+![cas oreille 1](./cas-oreilles.png)
+
+Pour l'oreille interne, regarde ses accroches. Si elles sont différentes de celles de l'oreille interne on est dans le cas suivant :
+
+
+, pour qu'il soit impossible de faire coller l'oreille interne à l'oreille extérieur sans casser la planarité :
+
+![cas oreille 1](./cas-oreilles-1-1.png)
+
+Il faut qu'on ne puisse pas la faire sortir, ce qui impose de l'attacher de :
+
+![cas oreille 1](./cas-oreilles-1.png)
+- si seule était égales, comme il n'existe pas d'oreille reliant deux même côté du cycle on pourrait également faire passer l'oreille interne à extérieur sans casser la planarité :
+    ![cas oreille 1](./cas-oreilles-1-2.png)
+
+Si les 2 oreilles sont disjointes intérieurement on forcément dans le cas où les extrémités égale;ent sont 
