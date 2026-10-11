@@ -220,7 +220,7 @@ tant qu'il existe un sommet y de G \ C tel que C U <span class="token punctuatio
 <p>Pour tout graphe $G$ on a :</p>
 <div>
 $$
-\alpha(G) + \omega(G) \leq v(G)
+\alpha(G) + \omega(G) \leq v(G) + 1
 $$
 </div>
 </div></div>
@@ -242,7 +242,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $n - (\alpha(G) - 1) \geq \omega(G)$.</p>
+<p>Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $v(G) - (\alpha(G) - 1) \geq \omega(G)$.</p>
 </div>
 </details>     
 </div>
@@ -269,7 +269,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si $S$ est un stable à $p$ sommets et Si $K_q$ la clique à $q$ sommets alors l$e graphe : $G = (V(S) \cup V(K_q), E(S) \cup E(K_q))$ est tel que : $\omega(G) = q$ et $\alpha(G) = p + 1$.</p>
+<p>Le graphe complet ou discret sont deux exemples possibles.</p>
 </div>
 </details>     
 </div>
@@ -316,8 +316,8 @@ $$
 </div></div>
 
 <p>Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de compter le nombre d'arêtes) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">compte</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">,</span> clique<span class="token punctuation">:</span> <span class="token builtin">booléen</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-  var m <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">compte</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>Sommet<span class="token punctuation">,</span> clique<span class="token punctuation">:</span> <span class="token builtin">booléen</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+  ref m <span class="token operator">←</span> <span class="token number">0</span>
 
   <span class="token keyword">pour chaque</span> x de A<span class="token punctuation">:</span>
     <span class="token keyword">pour chaque</span> y de A<span class="token punctuation">:</span>
@@ -326,17 +326,17 @@ $$
                 m <span class="token operator">←</span> m<span class="token operator">+</span><span class="token number">1</span>
   retourne m
 
-<span class="token builtin">algorithme</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<span class="token builtin">algorithme</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>Sommet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   retourne <span class="token operator">|</span>A<span class="token operator">|</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">|</span>A<span class="token operator">|</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">*</span> compte<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span>
 
-<span class="token builtin">algorithme</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<span class="token builtin">algorithme</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>Sommet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   retourne compte<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
 </code></pre>
 <p>Commençons par un petit échauffement :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que en montrant que $\text{clique} \leq \text{stable}$ :</p>
+<p>Montrez que $\text{clique} \leq \text{stable}$ :</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -424,7 +424,13 @@ $$
 <p>Le problème stable est NP-complet.</p>
 </div></div>
 
-<p>En reprenant <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple" class="interne">l'exemple du problème 3-SAT</a> on obtient le graphe associé $G=(V, E)$ :</p>
+<p>En reprenant <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple" class="interne">l'exemple du problème 3-SAT</a> :</p>
+<div>
+$$
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
+$$
+</div>
+<p>On obtient le graphe associé $G=(V, E)$ :</p>
 <p><img src="3-sat-clique-reduction-1.png" alt="réduction"></p>
 <p>Ce graphe possède de multiples cliques de taille 4, comme par exemple :</p>
 <p><img src="3-sat-clique-reduction-2.png" alt="réduction"></p>
@@ -523,7 +529,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_couverture<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">,</span> K<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_couverture<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>Sommet<span class="token punctuation">,</span> K<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   <span class="token keyword">si</span> <span class="token operator">|</span>A<span class="token operator">|</span> <span class="token operator">></span> K<span class="token punctuation">:</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
   
@@ -610,8 +616,8 @@ $$
 </ul>
 </div></div>
 
-<p>Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes <code class="language-">vérification_clique(G: graphe&lt;sommet&gt;, A: {sommet})  → booléen</code> et  <code class="language-">vérification_stable(G: graphe&lt;sommet&gt;, A: {sommet})  → booléen</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> graphe<span class="token operator">&lt;</span>sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span>sommet<span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<p>Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes <code class="language-">vérification_clique(G: Graphe&lt;Sommet&gt;, A: {}Sommet)  → booléen</code> et  <code class="language-">vérification_stable(G: Graphe&lt;Sommet&gt;, A: {}Sommet)  → booléen</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_clique_ou_stable<span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">,</span> A<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>Sommet<span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
     <span class="token keyword">rendre</span> vérification_clique<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span> <span class="token keyword">OU</span> vérification_stable<span class="token punctuation">(</span>G<span class="token punctuation">,</span> A<span class="token punctuation">)</span></code></pre>
 <p>À vous pour la partie NP-Complet !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -987,8 +993,8 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $(2 \cdot \frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$</p>
-<p>Si on a maintenant un graphe aléatoire$G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :</p>
+<p>Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $2 \cdot (\frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$</p>
+<p>Si on a maintenant un graphe aléatoire $G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :</p>
 <div>
 $$
 P_{n}(G) \leq \binom{K}{n} \cdot 2^{1-n(n-1)/2}
