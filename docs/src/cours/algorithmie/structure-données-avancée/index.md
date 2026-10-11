@@ -14,7 +14,7 @@ eleventyComputed:
 
 
 
-
+> TBD <https://www.youtube.com/watch?v=TdtNViWk45I> implémentation go
 {% lien %}
 [Structures arborées](structures-arborées){.interne}
 {% endlien %}

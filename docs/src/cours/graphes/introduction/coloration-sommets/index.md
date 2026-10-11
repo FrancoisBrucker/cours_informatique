@@ -108,7 +108,7 @@ Le problème principal que l'on veut résoudre est celui-ci :
 
 {% note "**Problème**" %}
 
-- **Nom** : $k$-coloriable
+- **Nom** : $k$-colorable
 - **Entrée** : un graphe $G$
 - **Sortie** : $G$ admet-il une $k$-coloration ?
 
@@ -159,9 +159,20 @@ Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-colorable. Soit alors $G'
 
 {% enddetails %}
 
-### 3-coloriable est NP-Complet
+### <span id="3-col"></span>3-colorable est NP-Complet
 
-Pour terminer, il nous reste à montrer que `3-colorable` est NP-complet. Nous allons pour cela utiliser un gadget sous la forme du graphe ci-dessous :
+Pour terminer, il nous reste à montrer que `3-colorable` est NP-complet.
+
+{% note "**Problème**" %}
+
+- **Nom** : $3$-colorable
+- **Entrée** : un graphe $G$
+- **Sortie** : $G$ admet-il une $3$-coloration ?
+
+{% endnote %}
+
+
+Nous allons pour cela utiliser un gadget sous la forme du graphe ci-dessous :
 
 ![gadget](./gadget.png)
 
@@ -356,7 +367,7 @@ Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur
 
 Les graphes bi-parti sont une classe de graphes très générale. On les retrouve un peu partout dans des preuves, en support à des algorithmes généraux, etc car de nombreux problèmes NP-complets en général sont polynomiaux pour eux (par exemple la coloration...).
 
-## Un algorithme glouton
+## <span id="algorithme-glouton"></span>Un algorithme glouton
 
 {% lien %}
 

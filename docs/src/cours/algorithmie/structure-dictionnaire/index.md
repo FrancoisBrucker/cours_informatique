@@ -9,6 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
 Outre les les listes, la seconde structure dynamique la plus utilisée en code est sans conteste les dictionnaires, aussi appelés tableaux associatifs.
 
 Cette structure est basée sur les fonctions de hash (ou de hachage) qui assure une complexité en moyenne performante.

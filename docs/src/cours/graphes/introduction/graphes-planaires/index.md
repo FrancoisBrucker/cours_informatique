@@ -32,25 +32,16 @@ eleventyComputed:
 [Propriétés](./propriétés/){.interne}
 {% endaller %}
 
-> TBD représentation graphique
-> TBD idée 
-> TBD forcé : 2-connexe. Est-ce grave ?
-> TBD si on ne fait que refaire une représentation partielle ok. Pourquoi est-ce toujours le cas ?
 
-## Algorithmes
-
-### Dessin
+## Tracé planaire
 
 > TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
+> TBD donne aussi une reconnaissance.
+> TBD c'est une recomposition d'oreilles bien choisies.
 
-> TBD dessin sans courbure dans un triangle:
->   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
->   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
-
-### Reconnaissance
-
->  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
-
+> TBD représentation graphique
+> TBD idée 
+> TBD si on ne fait que refaire une représentation partielle ok. Pourquoi est-ce toujours le cas ?
 
 ## Coloration de graphes planaires
 
@@ -67,7 +58,6 @@ eleventyComputed:
 - isomorphisme de graphe planaire
 > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. 
 
--->
 
 ## Références
 
@@ -75,8 +65,9 @@ eleventyComputed:
 - <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>
 {% endlien %}
 
-<!-- 
-- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> --> 
 
--->
+- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
+- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> 
+- 
+- --> 
+

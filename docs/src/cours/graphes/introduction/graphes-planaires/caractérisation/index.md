@@ -432,17 +432,40 @@ Examinons les différents cas possible. Tout d'abord pour que l'oreille extérie
 
 ![cas oreille 1](./cas-oreilles.png)
 
-Pour l'oreille interne, regarde ses accroches. Si elles sont différentes de celles de l'oreille interne on est dans le cas suivant :
+Pour l'oreille interne, on regarde ses accroches. Si elles sont différentes de celles de l'oreille interne et de $u$ et $v$ on est dans le cas suivant :
 
+![cas oreille 1](./cas-oreilles-diff.png)
 
-, pour qu'il soit impossible de faire coller l'oreille interne à l'oreille extérieur sans casser la planarité :
+Or ce cas admet $K_{3,3}$ comme mineur :
+
+![cas oreille 1](./cas-oreilles-diff-mineur.png)
+
+Si une des oreilles est différente il faut que le cycle intérieur soit attaché de l'intérieur sinon comme il n'y a pas d'oreille sur la même face, on pourrait sortir l'oreille interne :
 
 ![cas oreille 1](./cas-oreilles-1-1.png)
 
-Il faut qu'on ne puisse pas la faire sortir, ce qui impose de l'attacher de :
+Mais un seul ancrage ne suffit pas :
 
-![cas oreille 1](./cas-oreilles-1.png)
-- si seule était égales, comme il n'existe pas d'oreille reliant deux même côté du cycle on pourrait également faire passer l'oreille interne à extérieur sans casser la planarité :
-    ![cas oreille 1](./cas-oreilles-1-2.png)
+![cas oreille 1](./cas-oreilles-1-2.png)
 
-Si les 2 oreilles sont disjointes intérieurement on forcément dans le cas où les extrémités égale;ent sont 
+Et pour qu'on ne se retrouve pas dans le cas précédent, cela nous force à avoir un ancrage en $u$ ou $v$ :
+
+![cas oreille 1](./cas-oreilles-1-3.png)
+
+Or ce cas admet $K_{3,3}$ comme mineur :
+
+![cas oreille 1](./cas-oreilles-1-mineur.png)
+
+Il nous reste un dernier cas à vérifier, celui où les 2 ancrages sont les même. Il faut là aussi rajouter des attaches pour éviter de pouvoir le placer à l'extérieur :
+
+![cas oreille 2](./cas-oreilles-2.png)
+
+Pour ne pas retomber dans les cas précédent on doit se retrouver dans cas suivant, les 2 nœuds blancs pouvant être identique :
+
+![cas oreille 2](./cas-oreilles-2-1.png)
+
+La encore, ce cas admet un mineur interdit, $K_5$ :
+
+![cas oreille 1](./cas-oreilles-2-mineur.png)
+
+On a examiné tous les cas, la réciproque est démontrée.

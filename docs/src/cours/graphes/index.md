@@ -66,10 +66,26 @@ Problèmes de flots. Définition, algorithmes et applications
 ## Planarité
 
 Montrer que K5 et K3,3 mineur est équivalent à K5 et K3,3 subdivision.
-Algo planaire :
-- dans le triangle
-- verticale
-Reconnaissance avec 2 dfs (freissex)
+
+> TBD dessin sans courbure dans un triangle:
+>   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
+>   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
+
+> TBD avec juste des angles droits.
+> 
+>  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
+
+
+> TBD compter avec les arbres SPQR et Hopcroft tarjan pour les composantes 3-connexes.
+Tout graphe planaire 4-connexe est hamiltonien.
+graphe de tutte qui montre que 3-connexe ne fonctionne pas.
+
+> TBD avec ajout ou suppression d'arêtes (or rester sur place) : random walk et convergence.
+> TBD triangulation sans triangle séparant est hamiltonien (whitney, 1931)
+
+> - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf> et update de A Linear-Time Algorithm for 4-Coloring Some Classes of
+Planar Graphs
+Zuosong Liang and Huandi Wei (claude dit pas forcément linéaire... A vérifier). Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
 
 ## Colorabilité d'un graphe
 

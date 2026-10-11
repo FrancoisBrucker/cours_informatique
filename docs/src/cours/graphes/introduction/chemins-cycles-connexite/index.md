@@ -154,6 +154,15 @@ Pur tout entier $n$ on note :
 
 Enfin, on dira qu'un chemin (_resp._ cycle) est induit pour graphe $G$ si la restriction de $G$ aux $n'$ sommets de ce chemin (_resp._ cycle) est $P_{n'}$ (_resp._ $C_{n'}).
 
+### <span id="induit"></span>Chemins et cycles induits
+
+{% note2 "**Définition**" %}
+Un chemin, cycle ou circuit est dit **_induit_** pour graphe $G$ s'ils sont des sous-graphes induits de $G$.
+{% endnote2 %}
+
+Les chemins ou cycle induits n'ont en particulier pas d'arêtes reliant des sommets qui ne sont pas voisins dans le chemin/cycle.
+
+> TBD exemple graphe avec corde
 ## Connexité
 
 <span id="définition-connexe"></span>
@@ -212,6 +221,15 @@ Soit $G$ un graphe connexe.
 
 Par exemple, dans des réseau routiers, les isthme et les nœuds n'articulations vont créer des bouchons s'ils sont saturés (le tunnel sous Fourvière par exemple).
 
+Plus généralement, on parlera d'ensemble séparant :
+
+<div id="séparateur"></div>
+
+{% note2 "**Définition**" %}
+Soit $G$ un graphe connexe. Un ensemble de sommets est dit être **_séparateur_** de $G$ si leur suppression de $G$ le déconnecte.
+
+Un sous graphe induit sera dit **_séparant_** si l'ensemble de ses sommets est un séparateur de $G$.
+{% endnote2 %}
 
 ## Propriétés fondamentales d'existence
 
