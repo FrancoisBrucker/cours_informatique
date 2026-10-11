@@ -272,7 +272,7 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>Nom</strong> : $k$-coloriable</li>
+<li><strong>Nom</strong> : $k$-colorable</li>
 <li><strong>Entrée</strong> : un graphe $G$</li>
 <li><strong>Sortie</strong> : $G$ admet-il une $k$-coloration ?</li>
 </ul>
@@ -359,8 +359,23 @@ $$
 </div>
 </details>     
 </div>
-<h3>3-coloriable est NP-Complet</h3>
-<p>Pour terminer, il nous reste à montrer que <code>3-colorable</code> est NP-complet. Nous allons pour cela utiliser un gadget sous la forme du graphe ci-dessous :</p>
+<h3><span id="3-col"></span>3-colorable est NP-Complet</h3>
+<p>Pour terminer, il nous reste à montrer que <code>3-colorable</code> est NP-complet.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : $3$-colorable</li>
+<li><strong>Entrée</strong> : un graphe $G$</li>
+<li><strong>Sortie</strong> : $G$ admet-il une $3$-coloration ?</li>
+</ul>
+</div></div>
+
+<p>Nous allons pour cela utiliser un gadget sous la forme du graphe ci-dessous :</p>
 <p><img src="gadget.png" alt="gadget"></p>
 <p>L'intérêt de ce graphe est qu'il est trois colorable, et de plein de façons différente :</p>
 <p><img src="gadget-2.png" alt="gadget"></p>
@@ -625,7 +640,7 @@ Boucle principale <span class="token punctuation">:</span>
 </details>     
 </div>
 <p>Les graphes bi-parti sont une classe de graphes très générale. On les retrouve un peu partout dans des preuves, en support à des algorithmes généraux, etc car de nombreux problèmes NP-complets en général sont polynomiaux pour eux (par exemple la coloration...).</p>
-<h2>Un algorithme glouton</h2>
+<h2><span id="algorithme-glouton"></span>Un algorithme glouton</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>

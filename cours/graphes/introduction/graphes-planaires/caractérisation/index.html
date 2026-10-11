@@ -752,16 +752,25 @@ Pour toute représentation planaire $P$ de $G^\star - uv$ on peut compter pour c
 <p><img src="oreille-externe-interne-non.png" alt="oreille externe/interne"></p>
 <p>Examinons les différents cas possible. Tout d'abord pour que l'oreille extérieur ne soit pas d'un côté du cycle, il faut que ses accroches soient différentes de $u$ et $v$ :</p>
 <p><img src="cas-oreilles.png" alt="cas oreille 1"></p>
-<p>Pour l'oreille interne, regarde ses accroches. Si elles sont différentes de celles de l'oreille interne on est dans le cas suivant :</p>
-<p>, pour qu'il soit impossible de faire coller l'oreille interne à l'oreille extérieur sans casser la planarité :</p>
+<p>Pour l'oreille interne, on regarde ses accroches. Si elles sont différentes de celles de l'oreille interne et de $u$ et $v$ on est dans le cas suivant :</p>
+<p><img src="cas-oreilles-diff.png" alt="cas oreille 1"></p>
+<p>Or ce cas admet $K_{3,3}$ comme mineur :</p>
+<p><img src="cas-oreilles-diff-mineur.png" alt="cas oreille 1"></p>
+<p>Si une des oreilles est différente il faut que le cycle intérieur soit attaché de l'intérieur sinon comme il n'y a pas d'oreille sur la même face, on pourrait sortir l'oreille interne :</p>
 <p><img src="cas-oreilles-1-1.png" alt="cas oreille 1"></p>
-<p>Il faut qu'on ne puisse pas la faire sortir, ce qui impose de l'attacher de :</p>
-<p><img src="cas-oreilles-1.png" alt="cas oreille 1"></p>
-<ul>
-<li>si seule était égales, comme il n'existe pas d'oreille reliant deux même côté du cycle on pourrait également faire passer l'oreille interne à extérieur sans casser la planarité :
-<img src="cas-oreilles-1-2.png" alt="cas oreille 1"></li>
-</ul>
-<p>Si les 2 oreilles sont disjointes intérieurement on forcément dans le cas où les extrémités égale;ent sont</p>
+<p>Mais un seul ancrage ne suffit pas :</p>
+<p><img src="cas-oreilles-1-2.png" alt="cas oreille 1"></p>
+<p>Et pour qu'on ne se retrouve pas dans le cas précédent, cela nous force à avoir un ancrage en $u$ ou $v$ :</p>
+<p><img src="cas-oreilles-1-3.png" alt="cas oreille 1"></p>
+<p>Or ce cas admet $K_{3,3}$ comme mineur :</p>
+<p><img src="cas-oreilles-1-mineur.png" alt="cas oreille 1"></p>
+<p>Il nous reste un dernier cas à vérifier, celui où les 2 ancrages sont les même. Il faut là aussi rajouter des attaches pour éviter de pouvoir le placer à l'extérieur :</p>
+<p><img src="cas-oreilles-2.png" alt="cas oreille 2"></p>
+<p>Pour ne pas retomber dans les cas précédent on doit se retrouver dans cas suivant, les 2 nœuds blancs pouvant être identique :</p>
+<p><img src="cas-oreilles-2-1.png" alt="cas oreille 2"></p>
+<p>La encore, ce cas admet un mineur interdit, $K_5$ :</p>
+<p><img src="cas-oreilles-2-mineur.png" alt="cas oreille 1"></p>
+<p>On a examiné tous les cas, la réciproque est démontrée.</p>
 
 
 </article>
