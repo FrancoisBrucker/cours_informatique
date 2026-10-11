@@ -152,10 +152,7 @@ Montrez que pour tout $k\geq 1$ on a : `k-colorable` $\leq$ `(k+1)-colorable`.
 {% endexercice %}
 {% details "solution" %}
 
-Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-colorable. Soit alors $G'=(V \cup \\{x\\}, E \cup \\{xy \vert y\in V\\})$. On a clairement (le seul stable contenant $x$ c'est lui-même) :
-
-- les stables de $G$ sont les stables de $G'$ privé du stable contenant uniquement $x$.
-- $G$ est $k$-colorable si et seulement si $G'$ est $(k+1)$-colorable
+Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-colorable. Soit alors $G'=(V \cup \\{x\\}, E \cup \\{xy \vert y\in V\\})$. Comme le nouveau sommet est relié à tous les autres sa couleur est forcément différente de toutes les autres : colorer $G'$ nécessite une couleur de plus que pour colorer $G$.
 
 {% enddetails %}
 
@@ -201,7 +198,7 @@ On part de 3-SAT. Soient :
 - $c_j = l_j^1 \lor l_j^2 \lor l_j^3$  pour $1\leq j \leq m$ les $m$ clauses formés des littéraux $l_j^k \in \\{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\\}$ pour $1\leq k \leq 3$ et $1\leq j \leq m$
 - $C = \land_{j} c_j$ la conjonction de clauses.
 
-On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3-parti si et seulement si la conjonction de clause $C$ est satisfiable.
+On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3 colorable si et seulement si la conjonction de clause $C$ est satisfiable.
 
 On commence par créer un graphe permettant de rendre compte de la véracité des variables : $G_1 = (V_1 \cup V_2, E)$ où :
 
@@ -211,13 +208,12 @@ On commence par créer un graphe permettant de rendre compte de la véracité de
 
 ![NPC-1](NPC-1.png)
 
-Le graphe $G_1$ est clairement 3-parti avec :
+Le graphe $G_1$ est clairement 3-colorable avec :
 
-- les 3 sommets $V$, $F$ et $?$ dans 3 stables différents,
-- les sommets $x_i$ et $\overline{x_i}$ sont dans le stable ne contenant pas $?$,
-- si $x_i$ est dans le stable contenant $V$ alors $\overline{x_i}$ est dans le stable contenant $F$ et réciproquement pour tout $1\leq i \leq n$.
+- les 3 sommets $V$, $F$ et $?$ de couleurs différentes,
+- si $x_i$ est de la couleur de $V$ alors $\overline{x_i}$ est de la couleurs de $F$ et réciproquement pour tout $1\leq i \leq n$.
 
-Il faut maintenant ajouter à ce graphes les clauses qui vont permettre de placer des valeurs de vérité aux variables via des stables (le stable de V ou le stable de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :
+Il faut maintenant ajouter à ce graphe les clauses qui vont permettre de placer des valeurs de vérité aux variables via des couleurs (celle de  V ou celle de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :
 
 - $V_j = \\{a_j, b_j, c_j, d_j, e_j \\}$
 - $V'_1 = \\{l^1_j, l^2_j, l^3_j \\} \subseteq V_1$

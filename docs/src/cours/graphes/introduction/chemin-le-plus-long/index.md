@@ -141,10 +141,10 @@ Sera transformé dans ce graphe non orienté :
 Notez que la transformation est bien polynomiale (elle est même linéaire). De plus, il est clair qu'il y a bijection entre :
 
 - un chemin hamiltonien $x_1 \dots x_n$ dans le graphe orienté
-- un chemin hamiltonien $x_1x^+x^-_2 \dots x^-_{n-1}x_{n-1}x^+_{n-1}x^-_nx_n$ dans le graphe non orienté
+- un chemin hamiltonien $x_1{x_1^+}{x_2}^- \dots x_{n-1}^-x_{n-1}{x_{n-1}}^+{x_n}^-x_n$ dans le graphe non orienté
 
 Ce qui montre que la recherche d'un chemin hamiltonien dans un graphe orienté est plus simple que la recherche un chemin hamiltonien dans un graphe non orienté et donc la NP-complétude de ce dernier.
-
+ 
 ## Recherche Chemin le plus long
 
 {% attention %}

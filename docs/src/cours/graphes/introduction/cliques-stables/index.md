@@ -88,12 +88,12 @@ Pour tout graphe $G$ on a :
 
 <div>
 $$
-\alpha(G) + \omega(G) \leq v(G)
+\alpha(G) + \omega(G) \leq v(G) + 1
 $$
 </div>
 {% endnote %}
 {% details "preuve", "open" %}
-Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $n - (\alpha(G) - 1) \geq \omega(G)$.
+Une clique et un stable ne peuvent partager qu'au plus 1 sommet donc $v(G) - (\alpha(G) - 1) \geq \omega(G)$.
 {% enddetails %}
 
 {% exercice %}
@@ -101,8 +101,7 @@ Montrez qu'il existe des graphes $G$ pour lesquels il y a égalité : $\alpha(G)
 {% endexercice %}
 {% details "corrigé" %}
 
-Si $S$ est un stable à $p$ sommets et Si $K_q$ la clique à $q$ sommets alors l$e graphe : $G = (V(S) \cup V(K_q), E(S) \cup E(K_q))$ est tel que : $\omega(G) = q$ et $\alpha(G) = p + 1$.
-
+Le graphe complet ou discret sont deux exemples possibles.
 {% enddetails %}
 
 ## Problème de la clique/stable maximum
@@ -136,8 +135,8 @@ Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons
 Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de compter le nombre d'arêtes) :
 
 ```pseudocode
-algorithme compte(G: graphe<sommet>, A: {sommet}, clique: booléen) → entier:
-  var m entier ← 0
+algorithme compte(G: Graphe<Sommet>, A: {}Sommet, clique: booléen) → entier:
+  ref m ← 0
 
   pour chaque x de A:
     pour chaque y de A:
@@ -146,10 +145,10 @@ algorithme compte(G: graphe<sommet>, A: {sommet}, clique: booléen) → entier:
                 m ← m+1
   retourne m
 
-algorithme vérification_clique(G: graphe<sommet>, A: {sommet}) → booléen:
+algorithme vérification_clique(G: Graphe<Sommet>, A: {}Sommet) → booléen:
   retourne |A| * (|A|-1) == 2 * compte(G, A)
 
-algorithme vérification_stable(G: graphe<sommet>, A: {sommet}) → booléen:
+algorithme vérification_stable(G: graphe<sommet>, A: {}Sommet) → booléen:
   retourne compte(G, A) == 0
 
 ```
@@ -157,7 +156,7 @@ algorithme vérification_stable(G: graphe<sommet>, A: {sommet}) → booléen:
 Commençons par un petit échauffement :
 
 {% exercice %}
-Montrez que en montrant que $\text{clique} \leq \text{stable}$ :
+Montrez que $\text{clique} \leq \text{stable}$ :
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -203,7 +202,16 @@ Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de 
 Le problème stable est NP-complet.
 {% endnote %}
 
-En reprenant [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} on obtient le graphe associé $G=(V, E)$ :
+En reprenant [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} :
+
+<div>
+$$
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
+$$
+</div>
+
+
+On obtient le graphe associé $G=(V, E)$ :
 
 ![réduction](3-sat-clique-reduction-1.png)
 
@@ -256,7 +264,7 @@ Montrez que le problème couverture est dans NP.
 {% endexercice %}
 {% details "corrigé" %}
 ```pseudocode
-algorithme vérification_couverture(G: graphe<sommet>, A: {sommet}, K: entier) → booléen:
+algorithme vérification_couverture(G: Graphe<Sommet>, A: {}Sommet, K: entier) → booléen:
   si |A| > K:
     rendre Faux
   
@@ -294,10 +302,10 @@ On peut combiner les problèmes de la clique et du stable de taille au moins $K$
 
 {% endnote %}
 
-Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes `vérification_clique(G: graphe<sommet>, A: {sommet})  → booléen`{.language-} et  `vérification_stable(G: graphe<sommet>, A: {sommet})  → booléen`{.language-} :
+Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes `vérification_clique(G: Graphe<Sommet>, A: {}Sommet)  → booléen`{.language-} et  `vérification_stable(G: Graphe<Sommet>, A: {}Sommet)  → booléen`{.language-} :
 
 ```pseudocode
-algorithme vérification_clique_ou_stable(G: graphe<sommet>, A: {sommet})  → booléen:
+algorithme vérification_clique_ou_stable(G: Graphe<Sommet>, A: {}Sommet)  → booléen:
     rendre vérification_clique(G, A) OU vérification_stable(G, A)
 ```
 À vous pour la partie NP-Complet !
@@ -480,10 +488,10 @@ $$
 Vous pourrez calculer la probabilité qu'un graphe aléatoire à $n$ sommets (la probabilité qu'une arête $xy$ donnée existe soit $1/2$) soit une clique ou un stable, puis en déduire une majoration de la probabilité qu'un graphe quelconque à $N$ sommet contienne une clique ou un stable de taille $n$.
 {% endinfo %}
 {% details "corrigé" %}
-Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $(2 \cdot \frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$
+Prenons un graphe aléatoire à $n$ sommets dont la probabilité qu'une arête $xy$ donnée existe soit $1/2$. La probabilité que ce graphe soit le stable à $p$ sommet est la même que ce graphe soit le graphe complet à $p$ sommet et vaut : $(\frac{1}{2})^{n(n-1)/2}$. Ainsi, la probabilité que ce graphe soit soit un stable soit une clique vaut  $2 \cdot (\frac{1}{2})^{n(n-1)/2} = 2^{1-n(n-1)/2}$
 
 
-Si on a maintenant un graphe aléatoire$G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :
+Si on a maintenant un graphe aléatoire $G$  à $K$ sommets. La probabilité $P_{n}(G)$ qu'il contienne soit un stable soit une clique à $n$ sommets est inférieure à la somme pour chaque sous-ensemble à $n$ sommets (il y en a $\binom{K}{n}$) de la probabilité qu'il soit une clique ou un stable (et qui vaut $2^{1-n(n-1)/2}$). On en déduit que :
 
 <div>
 $$
