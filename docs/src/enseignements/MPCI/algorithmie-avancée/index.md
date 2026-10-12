@@ -150,13 +150,15 @@ Deux exposés du proof from the book.
 
 {% aller %}
 
-1. problèmes de graphes universels (_ie._ NP-Complets) : 
-    1. [Cliques et stables](/cours/graphes/introduction/cliques-stables){.interne}
-    2. [Chemin le plus long](/cours/graphes/introduction/chemin-le-plus-long/){.interne}
-    3. [Coloration de sommets](/cours/graphes/introduction/coloration-sommets/){.interne}
-2. [Graphes planaires](/cours/graphes/introduction/graphes-planaires/){.interne}
+- [Coloration de sommets](/cours/graphes/introduction/coloration-sommets/){.interne}
+- [Graphes planaires](/cours/graphes/introduction/graphes-planaires/){.interne}
+
 {% endaller %}
 
+Pour aller plus loin :
+
+1. [Cliques et stables](/cours/graphes/introduction/cliques-stables){.interne}
+2. [Chemin le plus long](/cours/graphes/introduction/chemin-le-plus-long/){.interne}
 
 ## Annales
 
