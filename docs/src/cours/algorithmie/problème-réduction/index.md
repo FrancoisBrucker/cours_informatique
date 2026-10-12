@@ -232,7 +232,7 @@ Donnez une solution au problème 2-SUM avec comme complexité :
 Un nouvel algorithme :
 
 {% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
+Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T) + T.\mbox{\small longueur})$.
 
 Est-ce réaliste ?
 
