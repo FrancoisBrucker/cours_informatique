@@ -320,7 +320,7 @@ Vous pourrez réduire clique à ce problème
 On construit le graphe $G' = (V', E')$ tel que :
 
 - $V' = V(G) \cup \\{x_1, \dots, x_{v(G)} \\}$
-- $E' = E(G) \cup \\{ x_iy \mid 1\leq i \leq v(G), y \in V(G) \in \in \\}$
+- $E' = E(G) \cup \\{ x_iy \mid 1\leq i \leq v(G), xy \in E(G) \\}$
 
 De là trouver une clique de taille au moins $K$ dans $G$ est équivalent à trouver une clique ou un stable de taille au moins $v(G) + K$ dans $G'$.
 
@@ -439,7 +439,7 @@ On peut alors supposer que $\delta(v) < 3$ et donc $9-\delta(v)> 6$ : le graphe 
 
 {% enddetails %}
 
-Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et [le graphe de Paley d'ordre 17](https://fr.wikipedia.org/wiki/Graphe_de_Paley) ne possède ni de clique ni se stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que 
+Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et [le graphe de Paley d'ordre 17](https://fr.wikipedia.org/wiki/Graphe_de_Paley) ne possède ni de clique ni de stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que 
 $43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, on ne connaît pas d'algorithme efficace pour trouver une clique ou un stable de taille 5 : il faut tout essayer ce qui va prendre exponentiel lorsque la taille de la clique/stable à chercher augmente. On sait que ce cela existe mais c'est dur à trouver !
 
 
@@ -551,7 +551,7 @@ $$
 
 Si l'on supprime du graphe un sommet (on peut supprimer plusieurs fois le même sommet) pour chacune de ses cliques et stable de taille $n$, le nouveau graphe ne contient plus ni clique ni stable de taille $n$ et aura au moins $k - X(G)$ sommets puisque l'on peut supprimer le même sommet plusieurs fois.
 
-De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}(N - X) = N - \mathbb{E}(X) = N - \binom{N}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.
+De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}(N - X) = N - \mathbb{E}(X) = k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.
 
 {% enddetails %}
 {% note "**Corollaire**" %}
