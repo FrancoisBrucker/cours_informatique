@@ -96,9 +96,44 @@
     
   
 
-  <blockquote>
-<p>TBD ajouter le texte de Dijkstra : <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html">https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html</a></p>
-</blockquote>
+  <!-- TBD
+
+Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.
+
+
+Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
+
+Une variable vaut None lorsqu'elle est crée.
+Puis affectée à l'adresse d'un objet en mémoire explicitement. 
+
+- Il ne faut pas utiliser des variables non initialisées
+- None est réservé aux variables non initialisées (?)
+- un tableau est un objet composé de variables de même type.
+
+- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique. 
+
+
+
+- int et str pas de taille finies
+- dire mémoire = tableau avec indice
+- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
+- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
+- float est aussi fini : approximation d'un réel.
+- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
+- un tableau est un objet qui contient des variables :
+  - déclaré vaut None
+  - crée chaque case vaut None
+- toute variable déclarée doit être affectée.
+
+-->
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html">On the foolishness of &quot;<em>natural language programming</em>&quot;</a></p>
+</div></div>
+
 <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#d%C3%A9finition-r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">La définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <strong><em>pseudo-code</em></strong> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
 <p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
 <p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur. Il est communément admis que tout algorithme peut être écrit en <strong><em>pseudo-code</em></strong> :</p>

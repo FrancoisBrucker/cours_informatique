@@ -120,46 +120,10 @@
     
   
 
-  <blockquote>
-<p>TBD ajouter <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html">https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html</a></p>
-</blockquote>
-<!-- TBD 
-
-Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
-
-Une variable vaut None lorsqu'elle est crée.
-Puis affectée à une valeur explicitement. 
-
-- Il ne faut pas utiliser des variables non initialisé
-- None est réservé aux variables non initialisées (?)
-- un tableau est un objet composé de variables de même type.
-
-- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique.
-
-dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+  <!-- TBD 
 
 
 expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence> : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
-
-dans la partie 1 :
-
-- int et str pas de taille finies
-- dire mémoire = tableau avec indice
-- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
-- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
-- float est aussi fini : approximation d'un réel.
-- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
-- un tableau est un objet qui contient des variables :
-  - déclaré vaut None
-  - crée chaque case vaut None
-- toute variable déclarée doit être affectée.
-dans la partie 2 :
-- dire que struct défini un type
-- remplacer liste par slice
-- un tableau est un type []T 
-- type simple (ceux qu'on a vu + tableau), ce qui permet déjà de faire des matrices.
-- type composé (tuple et structure)
-- type générique
 
 Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
 
@@ -203,7 +167,7 @@ dans la partie 4 :
 
 <h4>Pseudo code</h4>
 <blockquote>
-<p>TBD ici <code class="language-">nom x type</code> ceci permettra de définir plus tard var avec les pointeurs.
+<p>TBD ici <code class="language-">ref x type</code> ceci permettra de définir plus tard var avec les pointeurs.
 TBD tout est ue référence vers un objet en mémoire</p>
 </blockquote>
 <p>On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :</p>
@@ -508,6 +472,18 @@ TBD tout est ue référence vers un objet en mémoire</p>
 <blockquote>
 <p>TBD renommer structures de données classiques. Séparées en linéaire/matricielles et arborées</p>
 </blockquote>
+<blockquote>
+<p>TBD ajouter plein d'exercices sir pile et file et listes chaînées.</p>
+</blockquote>
+<!-- 
+dans la partie 2 :
+- dire que struct défini un type
+- remplacer liste par slice
+- un tableau est un type []T 
+- type simple (ceux qu'on a vu + tableau), ce qui permet déjà de faire des matrices.
+- type composé (tuple et structure)
+- type générique
+ -->
 <h3>Matrices</h3>
 <p>Les matrices constituent le premier type composé que l'on peut utiliser sans définir d'autres éléments de pseudocode :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -755,6 +731,11 @@ P complet = reduction poly mais en espace logarithmique. <a href="https://fr.wik
 </blockquote>
 <h3>Pseudo-code avec pointeur</h3>
 <blockquote>
+<p>TBD</p>
+<p>Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.</p>
+<p>en machine un objet est stocké en mémoire à chaque appel une indirection. Ne change rien en complexité O mais double le temps réel d'exécution : tbd faire le dif avec python et go/rust
+, plus proche de la machine = structures de données et variables.
+Soit pile soit tas.</p>
 <p>TBD voir ce que l'on ne pourrait pas remonter dans NP/NPC : pointeurs et tailles</p>
 </blockquote>
 <blockquote>
@@ -789,6 +770,13 @@ TBD parler de pointeur directement dans les structures.
 TBD dire que pour python tout est pointeur.
 TBD à refaire bien propre.</p>
 </blockquote>
+<!-- TBD
+
+PArtie Iv = algo 2.
+Ajouter une partie pseudo-code réel.
+
+dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+ -->
 <h3>Design d'algorithmes</h3>
 <blockquote>
 <p>TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.</p>
@@ -1235,12 +1223,12 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 <p>Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'il peut simuler une machine de Turing. C'est ce qu'on appelle être Turing complet.</p>
 <h4>Turing complet</h4>
 <p>Grâce à la machine de Turing universelle, démontrer qu'un langage est <a href="https://fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un système est dit <a href="https:/fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> s'il permet de faire tout ce qu'une machine de Turing peut faire.</p>
 </div></div>
