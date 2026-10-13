@@ -116,7 +116,7 @@ Pour cela, il nous faut :
 
 L'ordre entre les tableau d'entier classique est l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique) :
 
-{% note "**définition**" %}
+{% note2 "**Définition**" %}
 L'***ordre lexicographique*** entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :
 
 - $T_1 = T_2$ si $|T_1| = |T_2|$ et $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$
@@ -125,7 +125,7 @@ L'***ordre lexicographique*** entra tableaux d'entiers est définit tel que si $
   - $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$ et $|T_1| < |T_2|$
 - $T_1 > T_2$ si $T_2 < T_1$
 
-{% endnote %}
+{% endnote2 %}
 
 Dans notre cas, nous ne considérons pas pas tous les tableaux d'entiers, uniquement toutes les permutations de $[0 .. n-1]$.
 

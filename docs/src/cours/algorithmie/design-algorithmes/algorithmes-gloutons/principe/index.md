@@ -315,9 +315,9 @@ Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer 
 
 <span id="définition-performance-garantie"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
-{% endnote %}
+{% endnote2 %}
 
 ### Problème du _bin packing_
 

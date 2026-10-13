@@ -198,10 +198,10 @@ Le même raisonnement implique que supprimer une arête d'un arbre produit une f
 
 Les deux exercices précédents nous permettent de conclure sur l'existence des **_ordres d'effeuillage_** pur tout arbre :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Pour tout arbre $T = (V, E)$, les ordres $x_1, \dots, x_n$ de ses sommets tels que $T \backslash \\{x_1, x_2, \dots x_i\\}$ est un arbre pour tout $1\leq i < \vert V \vert$ sont appelées **_ordre d'effeuillage_**.
-{% endnote %}
+{% endnote2 %}
 
 Les ordre d'effeuillage permettent tout un tas de raisonnements par récurrence et sont a la base de nombre d'algorithmes d'arbres car ils préserve la structure de l'arbre.
 

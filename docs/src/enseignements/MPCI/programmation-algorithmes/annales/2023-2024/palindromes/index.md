@@ -8,18 +8,18 @@ authors:
 
 Le but de ce projet est de trouver des palindromes dans un texte.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une chaîne de caractères $s$ de longueur $n > 0$ est un ***palindrome*** si : $s[i] = s[n-1-i]$ pour tout $0 \leq i < n$
-{% endnote %}
+{% endnote2 %}
 
 Par exemple `lol`, `elle` ou `snobons` sont des palindromes en Français. De façon plus générale, on appelle ***phrase palindrome***, les chaînes de caractères dont la concaténation de leurs lettres forme un palindrome :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $s$ une chaîne de caractères écrite en Français. On définit  $s^\star$ la sous-chaîne de $s$ ne contenant que les lettres de $s$ dont on a supprimé les accents et mis en majuscule.
 
 La chaîne $s$ est une ***phrase palindrome*** si $s^\star$ est un palindrome (donc également non vide).
 
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Par exemple, la chaîne $s=\text{"Zeus a été à Suez."}$ est une phrase palindrome puisque $s^\star = \text{"ZEUSAETEASUEZ"}$ qui est un palindrome.
 {% endinfo %}

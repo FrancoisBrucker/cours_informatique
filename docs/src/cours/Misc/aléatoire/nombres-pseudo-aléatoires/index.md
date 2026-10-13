@@ -33,19 +33,19 @@ En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'en
 
 ## Aléatoire
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est **_aléatoire_** si elle est constituée de nombres **_indépendants_** suivant une **_loi de distribution_**.
 
 - **_indépendance_** des données : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$
 - une **_loi de distribution_** pour un ensemble finie est l'ensemble des probabilités : $0\leq Pr[x_i = k] = p_k \leq 1$. On a de plus $0\leq k < m$ telle que $\sum_k p_k = 1$.
 
-{% endnote %}
+{% endnote2 %}
 
 Lorsque l'on parle d'aléatoire sans préciser la loi de distribution, on sous-entend qu'elle est **_uniforme_**, c'est à dire que tout évènement a la même probabilité de se produire :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une distribution de $m$ évènements $e_k$ est **_uniforme_** si $Pr[x = e_k] = \frac{1}{m}$ pour tout $0\leq k < m$.
-{% endnote %}
+{% endnote2 %}
 
 Savoir si une suite finie donnée est aléatoire est problématique, puisque chaque suite à une probabilité, même faible, d'exister. Une suite binaire de 1 million de 0 a autant de chance d'arriver qu'une suite alternant les 0 et les 1.
 
@@ -65,7 +65,7 @@ Un [test statistique](https://fr.wikipedia.org/wiki/Test_statistique) permet de 
 
 Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{0 \leq i < n}$, on peut bien sur mathématiquement les définir de façon plus générale.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_test statistique_** $T(X)$ sur une suite finie $X = (x_i)_{0 \leq i < n}$ peut prendre deux valeurs, vrai ou faux. On définit :
 
 - la **_probabilité d'acceptation_** comme probabilité que $T(X)$ soit vrai
@@ -77,7 +77,7 @@ Un test est créé à partir d'une **_hypothèse $H_0$_** (qui dépend du test) 
 - le **_risque de seconde espèce_** qui est la probabilité que $T(X)$ soit vrai alors alors $X$ ne satisfait pas $H_0$ (habituellement plus compliqué à déterminer).
 
 On paramètre le test selon un risque de première espèce que l'on considère acceptable acceptable, souvent 5%.
-{% endnote %}
+{% endnote2 %}
 
 O utilise alors un test comme suit :
 
@@ -204,12 +204,12 @@ Le risque de première espèce vaut $8 \cdot 10^{-12}$, on rejette l'hypothèse 
 
 Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait. De plus, on veut pouvoir générer des suite avec des algorithmes efficaces (_ie._ polynomiaux). On obtient alors la définition générale suivante :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire)_** si elle :
 
 - est générée par un algorithme polynomial à un paramètre, noté **_graine_** (**_seed_** en anglais)
 - elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.
-{% endnote %}
+{% endnote2 %}
 {% info %}
   On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
 {% endinfo %}

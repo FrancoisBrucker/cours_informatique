@@ -95,7 +95,7 @@ Tout code doit avoir une clé choisie uniformément et indépendante du message.
 
 <span id="confidentialité-parfaite"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un code $(E, D)$ assure une **_confidentialité parfaite_** si pour :
 
 - tous messages $m$ et $m'$ de même taille
@@ -110,7 +110,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Un code assurant une confidentialité parfaite ne doit donner aucune information sur $k$ ou $m$ en ne sachant que $E(k, m)$, ce qui se traduit par le fait que :
 

@@ -23,7 +23,7 @@ C'est [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano). 
 
 Elles sont définies à partir de trois fonctions de base :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Les _**fonctions récursives primitives de bases**_ sont :
 
@@ -59,7 +59,7 @@ Les _**fonctions récursives primitives de bases**_ sont :
     $$
     </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections. La fonction successeur l'est également, on l'a déjà rencontré :
 
@@ -96,7 +96,7 @@ La règle de composition est classique :
 
 <div id="composition"></div>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient :
 
 - $f: \mathbb{N}^n \to \mathbb{N}$
@@ -113,7 +113,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :
 
@@ -156,7 +156,7 @@ Par récurrence sur $k$. On a $f_0(x) = \pi^1_1$. Si on suppose que $f_k$ existe
 
 On ne peut utiliser que cette règle car elle ne permet pas de créer des fonctions toutes simples (et calculable) comme $\text{add}(x, y) = x + y$. On a besoin pour cela de pouvoir itérer le processus d'ajouter 1 un nombre quelconque de fois, bref de simuler une boucle. Pour cela, on utilise... la récursion :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit :
 
 - $f: \mathbb{N}^n \to \mathbb{N}$
@@ -175,7 +175,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Dans la définition de la récursion, la fonction $g$ fait office d'algorithme permettant d'ajouter par récurrence un paramètre à $f$.
 

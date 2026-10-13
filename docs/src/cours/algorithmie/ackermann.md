@@ -160,7 +160,7 @@ Donnons une valeur à la fonction d'Ackermann. On doit cette évaluation à [D. 
 
 On définit cette opération comme suit :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient $a$ et $b$ deux entiers strictement positif. On note :
 
 <div>
@@ -176,7 +176,7 @@ $$
 </div>
 
 On notera aussi le cas limite $a \uparrow^{(k)} 0 = 1$ pour tout entier $k$.
-{% endnote %}
+{% endnote2 %}
 
 C'est une notation extrêmement compacte pour écrire des monstres. Par exemple :
 

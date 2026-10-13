@@ -23,18 +23,18 @@ D'un point de vue graphe, tout revient à chercher un chemin dans le graphe orie
 
 ![chemin de taxi](./chemin-taxi-orienté.png)
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_chemin de taxi_** de taille $(n, m)$ est un chemin allant du sommet $(0, 0)$ au sommet $(n, m)$ sur la grille orientée de taille $(n + 1, m + 1)$.
 
-{% endnote %}
-{% note "**Définition**" %}
+{% endnote2 %}
+{% note2 "**Définition**" %}
 La **_grille orientée_** de taille $(n + 1, m + 1)$ est le graphe dont :
 
 - l'ensemble des sommets est l'ensemble des couples $(i, j)$ avec $0\leq i \leq m$ et $0\leq j \leq n$
 - l'ensemble des arcs :
   - $((i, j), (i + 1, j))$ pour $0\leq i < m$ et $0\leq j \leq n$
   - $((i, j), (i , j + 1))$ pour $0\leq i \leq m$ et $0\leq j < n$
-{% endnote %}
+{% endnote2 %}
 
 ## Longueur et nombres de chemins
 

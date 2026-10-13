@@ -641,7 +641,7 @@ On a choisi de fixer $x_1$, mais il est évident à une renumérotation prêt, q
 
 On peut ainsi fixer n'importe quel sous-ensemble de variables et toujours avoir à résoudre un problème de sac à dos.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).
 
 Une **_solution ouverte_** est une suite $y_i$ ($1\leq i \leq n$) telle que :
@@ -650,7 +650,7 @@ Une **_solution ouverte_** est une suite $y_i$ ($1\leq i \leq n$) telle que :
 - $\sum_{i \in I} y_i \cdot k_i \leq K$ avec $I$ l'ensemble des indices $i$ tels que $y_i \neq -1$
 
 Une solution ouverte permet de définir un **_sous-problème associé_** où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.
-{% endnote %}
+{% endnote2 %}
 
 Une solution ouverte ne possédant que des -1 correspond au problème général du sac à dos et les solutions ouvertes ayant des 0 et des 1 correspondent à un sous-problème.
 

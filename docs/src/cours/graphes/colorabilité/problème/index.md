@@ -18,9 +18,9 @@ Bien que ces deux façons de colorer des graphes soient liées, elles possèdent
 
 
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G=(V, E)$ un graphe. Une **_$k$-coloration des arêtes_** $G$ est une fonction $c: E \to \\{1,\dots, k\\}$ telle que pour triplet de sommets $x \neq y \neq z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.
-{% endnote %}
+{% endnote2 %}
 
 On peut tout de suite appliquer à la coloration des arêtes la propriété évidente de la coloration des sommets :
 
@@ -35,11 +35,11 @@ Et qu'il existe un minimum :
 
 <span id="définition-notation-coloration-arête-minimum"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Soit $G=(V, E)$ un graphe. On note $\chi'(G)$ le nombre minimum de couleurs qu'il faut pour colorier ses arêtes et on l'appelle **_index chromatique de $G$_**.
 
-{% endnote %}
+{% endnote2 %}
 
 Les cycles paires admettent une 2-coloration et les cycles impaires uniquement une 3-coloration de leurs arêtes :
 

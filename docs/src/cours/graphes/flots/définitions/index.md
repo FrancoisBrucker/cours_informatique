@@ -10,12 +10,12 @@ eleventyComputed:
 ---
 
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_réseau_** est un graphe (simple) orienté $G=(V, E)$ avec :
 
 - une **_capacité_** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
 - deux sommets spéciaux nommées **_source_** (noté $s$) et **_puits_** (noté $p$).
-  {% endnote %}
+  {% endnote2 %}
 
 exemple de réseau :
 
@@ -25,14 +25,14 @@ exemple de réseau :
 Notez que si on veut une capacité nulle, il suffit de supprimer l'arc
 {% endinfo %}
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_flot_** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
 
 - $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
 - pour tout sommet $x$ différent de $s$ et $p$, il y a **_conservation du flot_**, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
 
 On dit que pour un arc donné $u$ son **_flux_** est $f(u)$.
-{% endnote %}
+{% endnote2 %}
 
 Exemple de flot (nombres en bleu) :
 
@@ -40,9 +40,9 @@ Exemple de flot (nombres en bleu) :
 
 On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_coupe_** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$ est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
-{% endnote %}
+{% endnote2 %}
 
 Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :
 
@@ -50,12 +50,12 @@ Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de c
 - $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
 - $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La **_capacité d'une coupe_** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
 
 $$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$
 
-{% endnote %}
+{% endnote2 %}
 
 On note également pour une coupe $(S, \overline{S})$ les valeurs suivantes :
 

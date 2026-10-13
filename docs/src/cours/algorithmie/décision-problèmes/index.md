@@ -52,12 +52,12 @@ Ainsi, si un algorithme possède 2 paramètres valant `1001`, `001` par exemple,
 Au final on obtient qu'un algorithme est équivalent à un **_décideur_** :
 
 <div id="décideur"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_décideur_** est un algorithme de :
 
 $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1 \\}$$
 
-{% endnote %}
+{% endnote2 %}
 
 On peut représenter un algorithme sous 3 formes équivalentes :
 
@@ -84,23 +84,23 @@ D'un point de vue théorique on peut donc uniquement considérer la version déc
 Si on veut appliquer la notion de décideur à une machine de Turing, cela revient à ne considérer que la case du ruban sous le curseur lorsque la machine s'arrête. On dira alors :
 
 <div id="accepte-rejette"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $M$ une machine de Turing. Une entrée $E$ est :
 
 - **_acceptée_** par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 1
 - **_rejetée_** par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 0
-{% endnote %}
+{% endnote2 %}
 
 > TBD exemple avec accepte, rejette et infini.
 
 On peut alors chercher à connaître toutes les entrées acceptées par une machine :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $M$ une machine de Turing. Son **_langage_** $L$ est l'ensemble des entrées acceptées. On dira que :
 
 - $M$ **_reconnaît_** $L$ si elle n'accepte que les élément de $L$.
 - $M$ **_décide_** $L$ si elle si elle accepte les élément de $L$ et rejette tous les autres.
-{% endnote %}
+{% endnote2 %}
 
 Remarquez que dans la définition précédente, **_décider un langage_** est bien plus fort qu'uniquement **_reconnaître un langage_** puisque la machine ne bouclera jamais indéfiniment.
 
@@ -108,12 +108,12 @@ Remarquez que dans la définition précédente, **_décider un langage_** est bi
 
 Enfin, l'algorithmie peut être vu comme la reconnaissance des ensembles pouvant être un langage reconnaissable ou, mieux encore, décidable.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un ensemble de mots  $L \subset \\{0, 1\\}^\star$ est appelé un **_langage_**. Il est :
 
 - **_reconnaissable_** s'il existe une machine de Turing qui le reconnaît
 - **_décidable_** s'il existe une machine de Turing que le décide.
-{% endnote %}
+{% endnote2 %}
 
 > TBD exemple de langages reconnaissable et décidable.
 
@@ -122,9 +122,9 @@ Un ensemble de mots  $L \subset \\{0, 1\\}^\star$ est appelé un **_langage_**. 
 En conclusion, en utilisant les machines de Turing, on définit les problèmes algorithmiques comme étant des problèmes de décision associé à un langage décidable :
 
 <div id="algorithme-décision"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_problème de décision_** est un problème n'acceptant que deux réponses : OUI ou NON, et tel qu'il existe une machine de Turing décidant l'ensemble des entrées OUI du problème.
-{% endnote %}
+{% endnote2 %}
 
 Algorithme, décision et langages sont donc trois notions équivalentes : un algorithme est caractérisé par l'ensembles des mots qu'il décide.
 
@@ -132,10 +132,10 @@ Algorithme, décision et langages sont donc trois notions équivalentes : un alg
 
 La complexité d'un problème est la complexité la plus petite d'une machine de Turing qui le résout. Comme résoudre un problème de décision revient à trouver un décideur pour son langage on a :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La **_complexité d'un langage (décidable)_** est la complexité la plus faible d'une machine de Turing qui le décide.
 
-{% endnote %}
+{% endnote2 %}
 
 > TBD à re-écrire. Déjà mis dans la partie complexité. Dire ici que le nombre de lignes est remplacé par la case mémoire car curseur.
 
@@ -169,9 +169,9 @@ Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas b
 
 On peut maintenant redéfinir les classes $P$ et $NP$ grace aux langages. Commençons par la classe $P$ :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 **_Un langage est de la classe_** $P$ s'il existe une machine de Turing de complexité polynomiale qui le décide.
-{% endnote %}
+{% endnote2 %}
 
 Pour définir précisément ce qu'est la classe NP en revanche, il faut introduire un autre modèle de Machine de Turing, les machines non déterministes :
 
@@ -181,9 +181,9 @@ Pour définir précisément ce qu'est la classe NP en revanche, il faut introdui
 
 On a alors :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 **_Un langage est de la classe_** $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui le décide.
-{% endnote %}
+{% endnote2 %}
 
 La classe de problème $NP$ a été précédemment construite via l'existence d'un vérifieur polynomial qui vérifie si la solution est correcte ou pas.
 Avec cette nouvelle définition, le certificat est la suite de choix effectués par la machine de Turing non déterministe. Voyez ces choix comme un oracle (ou un prof) qui vous guide tout au long du déroulement de la machine. On peut s'en passer mais cela prendrait beaucoup de temps (faire tout les choix amène à une complexité exponentielle). Si on sait déjà ou aller en revanche, on peut trouver rapidement une solution (en temps polynomiale).

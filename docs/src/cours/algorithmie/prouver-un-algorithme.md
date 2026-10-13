@@ -11,7 +11,7 @@ eleventyComputed:
 
 Prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Prouver un algorithme $A$ c'est démontrer qu'il résout un problème $P$. Pour cela :
 
@@ -21,7 +21,7 @@ Prouver un algorithme $A$ c'est démontrer qu'il résout un problème $P$. Pour 
    - sa sortie
 2. on démontrera que le résultat de l'exécution de $A$ avec une instance d'entrées de $P$ est bien une réponse à $P$.
 
-{% endnote %}
+{% endnote2 %}
 
 A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :
 

@@ -44,9 +44,9 @@ L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètr
 
 <span id="définition-in-place"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Les algorithmes qui modifient leurs entrées sont appelés [**_in place_**](https://en.wikipedia.org/wiki/In-place_algorithm)
-{% endnote %}
+{% endnote2 %}
 
 ## <span id="fonctionnement-sélection"></span> Fonctionnement
 

@@ -11,7 +11,7 @@ eleventyComputed:
 
 [Les suite multiplicatives](../projet-exponentiation/étude-algorithmique/#suite-multiplicative){.interne} vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_suite additive pour $n$_** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
 
 - $a_0 = 1$
@@ -19,7 +19,7 @@ Une **_suite additive pour $n$_** est une suite finie d'entiers $(a_i)_{0\leq i 
 - $a_i = a_j + a_k$ avec $k \leq j < i$
 
 On note **_$l(n)$_** la longueur minimale d'une chaîne additive pour $n$.
-{% endnote %}
+{% endnote2 %}
 
 {% info %}
 Comme les exposants se composent de manière additive, les problèmes des suites additives et multiplicatives sont identiques.

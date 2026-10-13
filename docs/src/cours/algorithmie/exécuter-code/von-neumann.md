@@ -64,7 +64,7 @@ L'utilisation d'un pointeur d'instruction et le fait qu'il pointe sur l'instruct
 
 L'architecture de Von Neumann utilise le concept de [pile](https://fr.wikipedia.org/wiki/Pile_(informatique)) :
 
-{% note "**_Définition_**" %}
+{% note2 "**Définition**" %}
 Une **_pile_** est une structure de donnée qui comprend deux fonctions :
 
 - empile(d) : ajoute l'élément d à la pile et rend son indice de stockage
@@ -73,7 +73,7 @@ Une **_pile_** est une structure de donnée qui comprend deux fonctions :
 
 Le **premier** élément de la pile est le **dernier** empilé.
 
-{% endnote %}
+{% endnote2 %}
 
 Prenons l'exemple suivant :
 
@@ -127,9 +127,9 @@ C'est exactement ce qu'il faut pour gérer des variables !
 
 ### Usage
 
-{% note "**_Définition_**" %}
+{% note2 "**Définition**" %}
 Dans une architecture de de Von Neumann la pile contient les adresses des données stockées en mémoire : ce sont les variables du programme
-{% endnote %}
+{% endnote2 %}
 
 #### Stocker des variables
 

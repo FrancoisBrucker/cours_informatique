@@ -336,12 +336,12 @@ La proposition précédente montre deux choses :
 
 Pour pouvoir capter le pseudo-code que l'on écrit avec des boucles `tant que` il faut ajouter une opérations sur les fonctions récursives primitives.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 **_Les fonctions récursives_** sont toutes les fonctions que l'on peut obtenir en combinant les fonctions de base (zéro, projections et successeur) en utilisant les règles de composition, de récursion et de **_minimisation_**.
 
-{% endnote %}
+{% endnote2 %}
 <div id="minimisation"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $f: \mathbb{N}^{n+1} \to \mathbb{N}$. La **_minimisation_** de $f$ est notée $\mu^n(f)$ et vaut :
 
 <div>
@@ -353,7 +353,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Il est clair que s'il existe un algorithme pour créer $f$, l'algorithme suivant fonctionne pour créer la minimisation :
 

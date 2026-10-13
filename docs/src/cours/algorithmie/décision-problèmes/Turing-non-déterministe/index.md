@@ -17,12 +17,12 @@ Une machine de Turing non déterministe est un modèle abstrait  de machine ou i
 
 ## Définition
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_machine de Turing non déterministe_** $M$ est une machine de Turing  telle que :
 
 - à chaque transition $\delta(q, r)$ on a plusieurs choix possibles : la fonction de transition est définie sur $2^{Q \times \\{0, 1\\} \times \\{\leftarrow, \rightarrow\\}}$.
 - pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à [accepter $E$](../#accepte-rejette) (elle s'arrête pour $E$ et la case sous le ruban vaut 1), elle choisira une de ces successions de choix.
-{% endnote %}
+{% endnote2 %}
 
 Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \\{0, 1\\} \times \\{\leftarrow, \rightarrow\\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe. C'est la machine elle même qui fait les choix pour arriver, si c'est possible à un choix de 1. Si aucun choix ne fait arriver à 1, il est possible que parfois elle s'arrête sur 0 et parfois ne s'arrête pas.
 
@@ -45,9 +45,9 @@ Donc la sortie de $M(01) = 1$
 
 Avec une entrée vide en revanche, tous les choix mènent à une sortie en 0 ou une boucle infinie (faites le test) et donc $M()$ n'est pas déterminé.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_machine de Turing non déterministe polynomiale_** $M$ est une machine de Turing non déterministe qui s'arrête sur toutes les entrées $E$ quelques soient les transitions effectuées en $\mathcal{O}(\vert E \vert^k)$ opérations.
-{% endnote %}
+{% endnote2 %}
 
 Pour rendre notre machine de Turing déterministe précédente polynomiale, il faut lui interdire d'avoir des transitions infinies. Par exemple ne pas refaire boucler sur $\text{START}$. :
 

@@ -26,11 +26,11 @@ Notez que l'on sait déjà résoudre ce problème par une modélisation part flo
 
 On va généraliser ici [le théorème de König-Egerváry](../couplage-bi-parti/#König-Egerváry){.interne} pour montrer que couverture de poids minimal va être égal à couplage de poids maximal. Cette dualité rappelle la dualité coupe minimale et flot maximum.
 
-{% note "**définition**" %}
+{% note2 "**Définition**" %}
 Une **_couverture valuée_** d'un graphe $G=(V, E)$ valué par $p$ est une fonction $c:V\to \mathbb{R}^+$ telle que : $c(x) + c(y)\geq p(xy)$ pour tout $xy \in E$.
 
 Le **_coût_** d'une couverture valué est $c(V) = \sum_{x\in V}c(x)$.
-{% endnote %}
+{% endnote2 %}
 
 {% note "**Proposition**" %}
 Soit $G=(v, E)$ un graphe valué par $p$, $c$ une de ses couverture valuée et $M$ un de ses couplages. On a :

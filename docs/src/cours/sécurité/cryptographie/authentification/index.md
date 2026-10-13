@@ -32,14 +32,14 @@ Il faut trouver un moyen d'authentifier avec certitude le correspondant.
 
 Un moyen de parvenir à cela est la [cryptographie asymétrique](https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique) :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple $(k, k')$ de clés d'avoir les deux conditions d'intégrité suivante, de façon sécurisée :
 
 - $D(k', E(k, m)) = m$
 - $D(k, E(k', m)) = m$
 
 Enfin, la connaissance d'une des deux clés n'entraîne aucune information sur la seconde.
-{% endnote %}
+{% endnote2 %}
 
 Les fonction $E$ et $D$ étant connues, on a coutume d'uniquement s'échanger les clés. Chaque personne garde une clé pour elle, cette clé est appelée _clé privée_, et distribue l'autre, la _clé publique_, à tout le monde.
 

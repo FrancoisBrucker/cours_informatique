@@ -194,15 +194,15 @@ Ceci nous donne aussi une technique de preuve pour savoir si un graphe hamiltoni
 
 ### Faces
 
-{% note  "**Définition**" %}
+{% note2 "**Définition**" %}
 Un ensemble $A \subseteq \mathcal{R}^2$ est connexe si pour tous $x, y \in A$ il existe une courbe $\gamma$ telle que :
 
 - $\gamma(0) = x$, $\gamma(1) = y$
 - $\gamma([0, 1]) \subseteq A$
-{% endnote %}
-{% note  "**Définition**" %}
+{% endnote2 %}
+{% note2 "**Définition**" %}
 Les **_faces_** d'un dessin planaire $(f, g)$ d'un graphe connexe $G=(V, E)$ sont les régions connexes de $\mathcal{R}^2 \backslash (\cup_{xy \in E}g(xy)([0, 1]))$.
-{% endnote %}
+{% endnote2 %}
 
 Les faces sont bien ce que l'on pense qu'elles sont, si on n'oublie pas la face extérieur (infinie). Le graphe suivant à donc 3 faces :
 

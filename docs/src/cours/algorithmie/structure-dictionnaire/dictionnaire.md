@@ -235,9 +235,9 @@ $$
 
 En toute généralité on a :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$ définis pour tout entier $m$.
-{% endnote %}
+{% endnote2 %}
 
 ### Taille fixe
 

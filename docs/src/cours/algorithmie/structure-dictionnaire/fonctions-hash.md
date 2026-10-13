@@ -15,7 +15,7 @@ Le but d'une fonction de hachage est d'associer un entier borné à tout objet. 
 
 On peut définir [une fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_fonction de hachage_** est une fonction $f$ :
 
 <div>
@@ -25,26 +25,26 @@ $$
 </div>
 
 où $m$ est un entier positif.
-{% endnote %}
+{% endnote2 %}
 
 Une définition alternative, également souvent utilisée, est :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_fonction de hachage_** est une fonction $f$ qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$. Avec $k$ est un entier positif.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 On rappelle que que $\\{0, 1\\}^\star$ est l'ensemble des suites finies $s_0\dots s_n$ où $s_i \in \\{0, 1\\}$ pour tout $0\leq i \leq n$.
 {% endinfo %}
 
 Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_fonction de hachage_** est une fonction qui associe à tout **objet** soit :
 
 - un entier entre 0 et $m$
 - un mot de $\\{0, 1\\}^k$ ($k > 0$)
 
-{% endnote %}
+{% endnote2 %}
 
 En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
 
@@ -76,7 +76,7 @@ Une fonction de hachage permet de partitionner les entiers (_ie._ les objets) en
 
 <span id="définition-hachage-utile"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m[$ est **_utile_**, si elle est :
 
@@ -84,7 +84,7 @@ Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m[$ es
 2. **facilement calculable**
 3. **uniforme** : $\Pr[f(a) = i] = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i < m$
 
-{% endnote %}
+{% endnote2 %}
 
 Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.
 
@@ -265,9 +265,9 @@ Ceci assure :
 
 Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_collision_** pour une fonction de hachage $h$ est deux nombres $a$ et $b$ telle que $f(a) = f(b)$
-{% endnote %}
+{% endnote2 %}
 
 On va distinguer deux types de collisions :
 

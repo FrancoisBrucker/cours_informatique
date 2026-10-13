@@ -364,7 +364,7 @@ L'exponentiation indienne n'a donc pas exactement le nombre minimum de multiplic
 Sous l'angle du nombre de multiplications, le calcul d'une exponentielle $x^n$ peut s'écrire comme :
 
 <span id="suite-multiplicative"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 une **_suite multiplicative pour $x^n$_** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
@@ -372,7 +372,7 @@ une **_suite multiplicative pour $x^n$_** est une suite finie $(a_i)_{0\leq i \l
 - $a_r = x^n$
 - pour tout $i>0$, il existe $j$ et $k$ tels que $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
 
-{% endnote %}
+{% endnote2 %}
 
 Commençons par montrer que nos deux algorithmes peuvent s'écrire sous ce formalisme :
 

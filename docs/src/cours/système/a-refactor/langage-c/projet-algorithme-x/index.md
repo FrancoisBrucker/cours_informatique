@@ -38,7 +38,7 @@ Notez que l'on ne suppose pas qu'il existe une solution au problème.
 
 Informatiquement parlant, on préfère une formulation matricielle, utilisant des matrices binaires :
 
-{% note "**définition**" %}
+{% note2 "**Définition**" %}
 
 Une ***matrice binaire*** est une matrice à $n$ lignes et $m$ colonnes
 <div>
@@ -49,7 +49,7 @@ $$
 
 dont les éléments sont soient 0 soit 1 : $M[i][j] = m_{i,j} \in \\{0, 1\\}$ pour toutes ligne $i$ et colonne $j$.
 
-{% endnote %}
+{% endnote2 %}
 
 On peut alors définir le problème de la couverture exacte matricielle :
 

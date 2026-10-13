@@ -731,7 +731,7 @@ algorithme point_fixe(f: (entier) → entier, a1: entier)  # on suppose que a1 �
 
 On considérera toujours en algorithmie que lorsque l'on manipule des entiers les opérations de sommes et de multiplications sont en $\mathcal{O}(1)$ opérations. Si cette approximation fonctionne lorsque les nombres sont bornés (sur 64 bits usuellement), ce n'est bien sur pas possible si les nombres deviennent très grands où il faut considérer leur représentation interne.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On note $u$ la bijection $u: \\{0, 1\\}^\star \rightarrow \mathbb{N}$ telle que :
 
@@ -742,7 +742,7 @@ $$
 </div>
 
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
-{% endnote %}
+{% endnote2 %}
 
 Ainsi :
 

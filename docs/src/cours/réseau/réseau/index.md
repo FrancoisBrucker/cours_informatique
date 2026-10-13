@@ -37,14 +37,14 @@ Vous aurez besoin d'avoir la commande `ip` très utile en réseau. Ils font part
 
 La couche de transmission utilise pour cela la notion de [port](<https://fr.wikipedia.org/wiki/Port_(logiciel)>) :
 
-{% note "**definition**" %}
+{% note2 "**Définition**" %}
 Un **_port_** est un nombre entre 0 et $2^{16}-1 = 65535$ (codé sur 2B) associé à un système.
 
 Le système peut associer une application à un port particulier via une [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets), on dit que l'application **_écoute_** ce port.
 
 - du point de vue de l'application : cette socket est un fichier ouvert (il a un file descriptor)
 - du point de vue du système : toute communication réseau adressée à ce port est transmise en écriture au file descriptor de l'application.
-  {% endnote %}
+  {% endnote2 %}
 
 Au final, caractériser la destination d'une communication réseau nécessite :
 
@@ -247,7 +247,7 @@ netstat -s
 
 Il y a de très très nombreux protocoles applicatif. Chaque application peut avoir le sien. La très grande majorité d'entre eux sont organisés autour de la notion de client et de serveur :
 
-{% note "**definition**" %}
+{% note2 "**Définition**" %}
 Un [protocole client-serveur](https://fr.wikipedia.org/wiki/Client-serveur) permet à deux applications nommées ***client*** et ***serveur*** respectivement de communiquer par question-réponse.
 
 1. l'application ***cliente*** va faire une ***requête*** au serveur
@@ -258,7 +258,7 @@ Cette relation est éminemment dissymétrique :
 - le client demande le serveur répond
 - il y a un serveur et une multitude de client
 - la communication est initiée par la requête du client et terminée par la réponse du serveur.
-{% endnote %}
+{% endnote2 %}
 
 Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).
 

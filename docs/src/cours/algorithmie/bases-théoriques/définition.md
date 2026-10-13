@@ -16,9 +16,9 @@ On va montrer quelques propriétés générales d'un programme et d'un algorithm
 
 ## <span id="algorithme"></span> Algorithme ?
 
-{% note "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
+{% note2 "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
 Un **_algorithme_** est un ensemble des règles opératoires propres à un _calcul_.
-{% endnote %}
+{% endnote2 %}
 
 Qu'est-ce que ça veut dire ?
 

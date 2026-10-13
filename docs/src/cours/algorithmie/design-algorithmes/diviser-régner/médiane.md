@@ -23,13 +23,13 @@ Le problème est classique et joli. Il devient cependant de plus en plus diffici
 
 ## Définitions
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La **_médiane_** d'un ensemble fini d'entiers $E$ est un élément $m$ de cet ensemble tel que :
 
 - $\vert E \vert / 2$ éléments de $E$ sont plus petit ou égal à $m$
 - $\vert E \vert / 2$ éléments de $E$ sont plus grand ou égal à $m$
 
-{% endnote %}
+{% endnote2 %}
 
 Trouver la médiane d'un ensemble va se faire en utilisant un problème (algorithmique) a priori plus général, $k$-SELECT :
 

@@ -90,13 +90,13 @@ La question est délicate. Il faut se demander quel est le modèle sous-jacent �
 
 <span id="définition-modèle-tableau-aléatoire"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
 - on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
 - $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Dans un tableau aléatoire, toutes les valeurs sont différentes.
 {% endinfo %}

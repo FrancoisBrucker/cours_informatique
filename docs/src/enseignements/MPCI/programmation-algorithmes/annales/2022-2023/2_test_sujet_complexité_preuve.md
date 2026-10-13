@@ -12,13 +12,13 @@ Vous avez 15min pour faire le test.
 
 Le but de ce test est d'étudier les ***cols*** d'un tableau.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un ***col*** d'un tableau d'entiers $T$ de taille $n > 1$ est un indice $0 \leq i < n$ tel que :
 
 * soit $i = 0$ et $T[i] \leq T[1]$
 * soit $i = n-1$ et $T[i] \leq T[n-2]$
 * soit $0 < i < n-1$ et $T[i] \leq \min(T[i-1], T[i+1])$
-{% endnote %}
+{% endnote2 %}
 
 ## 1. Existence
 

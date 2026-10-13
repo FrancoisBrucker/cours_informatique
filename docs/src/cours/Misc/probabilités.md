@@ -35,18 +35,18 @@ Comme on est en informatique, on va considérer des ensembles finis ou au pire d
 
 ### Définitions
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 - **_univers_** : $\Omega$ un ensemble fini.
 - **_probabilité_** : $p : \Omega \rightarrow [0, 1]$ telle que $\sum_{x \in \Omega} p(x) = 1$.
 
-{% endnote %}
+{% endnote2 %}
 
 La probabilité $p$ est dite **_uniforme_** si $p(x) = \frac{1}{\vert \Omega \vert}$ pour tout $x \in \Omega$. Par défaut, toutes les probabilités seront uniforme.
 
 On étant la notion de probabilité aux ensembles :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un **_évènement_** $A \subseteq \Omega$ est de **_probabilité_** $\mathbb{P}(A)$ définie telle que :
 
@@ -56,11 +56,11 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Cette définition se généralise simplement aux ensembles dénombrables (ce qui est réaliste (à défaut d'être réel) en informatique) :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 - **_univers_** : $\Omega$ un ensemble dénombrable.
 - **_probabilité_** : $\mathbb{P} : \mathcal{P}(\Omega) \rightarrow [0, 1]$ telle que :
@@ -68,7 +68,7 @@ Cette définition se généralise simplement aux ensembles dénombrables (ce qui
   - Pour toute suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$, on a : $\mathbb{P}(\cup_n A_n) = \sum_n \mathbb{P}(A_n)$
 
 Le couple $(\Omega, \mathbb{P})$ est appelé **_espace probabilité_**.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Notez que la définition dénombrable généralise bien la définition du cas fini puisqu'une suite finie $(A_n)_{1\leq n \leq N}$ d'éléments deux à deux disjoints peut s'écrire comme une suite infinie où $A_n =\emptyset$ pour tout $n > N$.
 {% endinfo %}
@@ -92,7 +92,7 @@ On a :
 
 ### Conditionnement
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Soit $\mathbb{P}$ une probabilité sur $\Omega$. La **_probabilité de $A$ sachant $B$_** est définie (pour $A, B \subseteq \Omega$) telle que :
 
@@ -102,7 +102,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Cette probabilité décrit le fait que l'on ne considère que les évènements où $A$ est réalisé. C'est bien une probabilité :
 
@@ -128,7 +128,7 @@ Les événements se manifestent via des **_variable aléatoire_**. L'univers ét
 
 ### Définitions et notations
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :
 
@@ -137,25 +137,25 @@ Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow \math
 - $\mathbb{P}\\{X \in U \\, , \\, Y \in V\\} \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)
 
 On dira que $X(\omega) = u$ est une **_réalisation_** de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\\{X = u\\}$.
-{% endnote %}
+{% endnote2 %}
 {% attention %}
 Ne confondez pas la variable aléatoire et ses réalisations.
 {% endattention %}
 
 Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on utilisera souvent la notation suivante :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
 
 - prenant ses valeurs dans $\mathcal{U}$
 - suivant la loi de probabilité $\mathbb{P}$
 
-{% endnote %}
+{% endnote2 %}
 
 Ce qui nous permet d'écrire de façon synthétique :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 <div>
 $$
@@ -163,7 +163,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 S'il n'y a pas ambiguïté, on se permettra même d'écrire :
 
@@ -172,7 +172,7 @@ S'il n'y a pas ambiguïté, on se permettra même d'écrire :
  
 Nos notations permettent d'étendre le conditionnement aux variables aléatoires :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Pour deux expression $A$ et $B$ on définit le conditionnement come étant :
 <div>
@@ -181,20 +181,20 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 ### Uniformité et Indépendance
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Une variable aléatoire ets dite **_uniforme_** si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{U} \mathcal{U}$.
 
-{% endnote %}
+{% endnote2 %}
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Deux variables aléatoires $X : \Omega \rightarrow \mathcal{U}$ et $Y : \Omega \rightarrow \mathcal{U}'$ sur le même espace probabilisé sont **_indépendantes_** si les évènements qui les dirigent sont eux mêmes indépendants, c'est à dire que $X^{-1}(U) \cap Y^{-1}(U') = \varnothing$ quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$.
-{% endnote %}
+{% endnote2 %}
 
 Comme on a rarement accès à l'espace probabilisé sous-jacent, ce qui va nous intéresser lorsque deux variables aléatoires sont indépendantes c'est la conséquence suivante (triviale) :
 

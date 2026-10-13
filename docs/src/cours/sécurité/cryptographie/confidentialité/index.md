@@ -107,7 +107,7 @@ En gros, une fonction $f$ est à sens unique s'il est :
 
 Ce qui donne la définition suivante :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une fonction $f: \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $F$, la probabilité suivante est négligeable :
 <div>
 $$
@@ -115,15 +115,15 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 En utilisant les définitions de efficace et négligeable suivantes :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 - une fonction $f(n)$ est **_efficace_** si $f(n) = \mathcal{O}(n^d)$ pour **un** entier $d$.
 - une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour **tout** entier $d$.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en $+\infty$ pour tout $d$.
 {% endinfo %}

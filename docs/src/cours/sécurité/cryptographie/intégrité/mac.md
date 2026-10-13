@@ -156,7 +156,7 @@ Mais il y a des restrictions. Fonctionne si :
 
 On utilise alors souvent cette construction, plus complexe, mais sécurisée :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Le **_HMAC_** est définie à partir d'une fonction de hash $H$ telle que :
 
@@ -168,7 +168,7 @@ $$
 
 Avec `opad = 0x363636...3636` (outer) et `ipad = 0x5c5c5c...5c5c` (inner) deux constantes.
 
-{% endnote %}
+{% endnote2 %}
 
 On utilisera souvent la fonction SHA-256 pour les HMAC.
 

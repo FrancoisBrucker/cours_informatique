@@ -15,13 +15,13 @@ Pour cela, commençons par définir un concept fondamental en logique la **_conj
 
 <div id="définition-clauses"></div>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
 - une **_conjonction de clauses_** comme étant $f = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
-{% endnote %}
+{% endnote2 %}
 
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clauses est dite **_satisfiable_** :
 
@@ -35,7 +35,7 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 
 ## Formule logique et SAT
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 [Une formule logique](https://fr.wikipedia.org/wiki/Formule_logique) est soit :
 
 - une variable booléenne
@@ -48,7 +48,7 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 
 Deux formules sont **_égales_** si elles ont les même table de vérité.
 
-{% endnote %}
+{% endnote2 %}
 
 On peut se ramener aux formules sans implications ou équivalences en utilisant le fait que :
 

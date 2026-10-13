@@ -13,7 +13,7 @@ Une [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (Uniform Resou
 
 Pour ce qui nous concernent, ces deux notions permettent de retrouver une ressource. La force d'une d'URI est son [schéma](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI), très souple qui s'adapte à de nombreuses situation
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un [schéma d'URI](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI) est défini de la façon suivante :
 
 ```
@@ -25,18 +25,18 @@ Un [schéma d'URI](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI) est défin
 - requête et domaines sont facultatifs :
   - la **requête** est constitué d'éléments `clef=valeur` séparé par des `;`
   - le **fragment** est un mot
-    {% endnote %}
+    {% endnote2 %}
 
 Dans le web on parle plutôt d'url qui sont une sous-classe des uri :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une [url (Uniform Resource Locator)](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :
 
 ```shell
 <protocole>://<serveur>[:port]/<ressource>[ ? <requête> ] [#<lien>]
 ```
 
-{% endnote %}
+{% endnote2 %}
 
 Ce qui donne pour l'url <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator> :
 

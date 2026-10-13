@@ -761,9 +761,9 @@ Le but de cet série d'exercices est d'étudier les modifications d'une chaîne 
 
 Soient deux chaînes de caractères $S_1$ et $S_2$ de longueurs $n_1$ et $n_2$ respectivement.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La chaîne $S_2$ est **_une sous-séquence_** de $S_1$ si il existe une fonction strictement croissante $f: [0, n_2[ \to [0, n_1[$ telle que $S_1[f(j)] = S_2[j]$ pour tout $j$ de $[0, n_2[$.
-{% endnote %}
+{% endnote2 %}
 {% exercice %}
 Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_2$ est une sous-séquence de $S_1$.
 {% endexercice %}
@@ -792,10 +792,10 @@ Sa complexité est en $\mathcal{O}(\max(n_1, n_2))$. Cet algorithme est linéair
 
 Soient deux chaînes de caractères $S_1$ et $S_2$ de longueurs $n_1$ et $n_2$ respectivement.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La chaîne $S_2$ est un **_sous-mot_** de $S_1$ s'il existe un indice $i$ tel que $S_2[j] = S_1[i + j]$ pour tout $j$ de $[0, n_2[$.
 
-{% endnote %}
+{% endnote2 %}
 
 Être un sous-mot est plus restrictif qu'être une sous-séquence.
 

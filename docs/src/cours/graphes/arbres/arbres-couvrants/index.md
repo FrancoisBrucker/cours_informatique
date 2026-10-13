@@ -13,9 +13,9 @@ eleventyComputed:
 
 Un arbre couvrant est un sous graphe d'un graphe connexe :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_arbre couvrant d'un graphe connexe_** $G=(V, E)$  est un arbre $T=(V, E')$ tel que $E' \subseteq E$.
-{% endnote %}
+{% endnote2 %}
 
 Commencez par montrer que cette définition fait sens :
 {% exercice %}
@@ -32,9 +32,9 @@ Les arbres couvrant d'un graphe sont beaucoup utilisés en optimisation. Notez q
 
 Si [le graphe est valué](../../chemin-poids-min-problème/#graphe_valué){.interne}, on peut chercher **un** arbre couvrant de poids minimum :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_arbre couvrant de poids minimum (_resp._ maximum) d'un graphe connexe valué_** $(G, f)$  est un arbre couvrant $T=(V, E')$ tel que la somme de la valuation de ses arêtes est minimum (_resp._ maximum) parti tous les arbres couvrants de $G$.
-{% endnote %}
+{% endnote2 %}
 
 Cette définition aussi fait sens puisqu'il y a un nombre fini d'arbres couvrants différents d'un graphe connexe. Attention cependant :
 

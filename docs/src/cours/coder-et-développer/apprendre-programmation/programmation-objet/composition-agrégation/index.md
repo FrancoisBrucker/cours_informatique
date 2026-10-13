@@ -13,7 +13,7 @@ Composition et agrégation permettent de lier des classes entres elles et plus p
 
 Ce qui les distingue :
 
-{% note2 "**Définition** :" %}
+{% note2 "**Définition**" %}
 
 - **_agrégation_** : quand les objets utilisés sont créés en dehors de la classe,
 - **_composition_** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.

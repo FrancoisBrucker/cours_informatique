@@ -11,9 +11,9 @@ eleventyComputed:
 
 [Un problème algorithmique](../écrire-algorithmes/problème/){.interne} est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.
-{% endnote %}
+{% endnote2 %}
 
 Cette complexité existe toujours car :
 

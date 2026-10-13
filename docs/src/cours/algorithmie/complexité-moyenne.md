@@ -11,9 +11,9 @@ eleventyComputed:
 
 Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La **_complexité en moyenne_** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à toutes les entrées de mêmes paramètres.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.
 {% endinfo %}
@@ -31,7 +31,7 @@ Soit $A$ un algorithme dont on veut calculer sa complexité par rapport au param
 
 Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :
 
-{% note2 "**Définition**"%}
+{% note2 "**Définition**" %}
 La **_complexité en moyenne_** de l'algorithme $A$ pour une entrée de paramètre $n$ est :
 
 <div>

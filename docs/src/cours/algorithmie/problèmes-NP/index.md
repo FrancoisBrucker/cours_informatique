@@ -568,9 +568,9 @@ $$
 
 Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes _universels_, on les appelle **_NP-complet_**, dont tous les autres problèmes ne sont que des cas particuliers :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un problème $A$ de NP est NP-complet si $B \leq A$ pour tout problème $B$ de NP.
-{% endnote %}
+{% endnote2 %}
 
 Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :
 

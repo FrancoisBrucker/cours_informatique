@@ -29,12 +29,12 @@ Il faudra que vous créiez un site statique que vous pourrez voir soir sur votre
 
 ## Site statique
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un **_site statique_** est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé **_dossier racine_**. Le point d'entrée du site est le fichier `index.html`{.fichier} placé dans le dossier racine.
 
 A l'intérieur de ce site, l'accès aux fichiers se fait de façon **_relative_**.
-{% endnote %}
+{% endnote2 %}
 
 Par exemple :
 

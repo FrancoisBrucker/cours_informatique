@@ -20,7 +20,7 @@ Car les enfants de la racine ne sont pas placés de la même manière. En numér
 
 Pour éviter d'avoir des nœuds avec une même numérotations et avoir une définition formelle, on encode tout le chemin :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 L'ensemble des suites finies d'entiers strictement positifs ($\mathbb{N}^\star$) est noté $U$. On peut le définir tel que :
 
 <div>
@@ -30,14 +30,14 @@ $$
 </div>
 
 Avec $\epsilon$ la suite vide et $(\mathbb{N}^\star)^n = \mathbb{N}^\star \times \dots \times \mathbb{N}^\star$ le produit cartésien de taille $n$ de l'ensemble $\mathbb{N}^\star$ des entiers strictement positifs.
-{% endnote  %}
-{% note "**Définition**" %}
+{% endnote2  %}
+{% note2 "**Définition**" %}
 Un **_arbre planaire_** $\tau$ est un sous ensemble de $U$ tel que :
 
 - $\epsilon \in \tau$
 - quelles que soient $u, v \in U$, si $uv \in \tau$ alors $u \in \tau$
 - quelle que soit $u \in U$, si $u \in \tau$ alors il existe $M_u(\tau) \in \mathbb{N}$ tel que si $\in  \mathbb{N}$, $ui \in \tau$ si et seulement si $1\leq i \leq M_u(\tau)$.
-{% endnote  %}
+{% endnote2  %}
 
 En clair, un arbre planaire encode un nœud avec son chemin depuis la racine, et $M_u(\tau)$ est le nombre d'enfant du nœud $u$. Sous cette forme, l'arbre de gauche précédent s'écrit :
 
@@ -80,14 +80,14 @@ Les deux remarques sont fondamentales, puisque tout mot ayant les 2 propriétés
 
 On en déduit que ces mots de tailles $2p$ forment une bijection avec les arbres plantés à $p+1$ sommets. On se convaincra aisément que l'on peut aussi les décrire comme suit :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 On appelle **_chemin de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck)_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
 
 1. $u_i \in \\{-1, 1\\}$ pour tout $1\leq i \leq 2p$
 2. $\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$
 3. $\sum_{1\leq i \leq 2p} u_i = 0$
 
-{% endnote %}
+{% endnote2 %}
 {% info %}
 On ne l'utilisera pas ici, mais on appelle ;ot de Dyck des chemins de Dyk sans la troisième condition.
 {% endinfo %}

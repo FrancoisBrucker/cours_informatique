@@ -18,7 +18,7 @@ eleventyComputed:
 
 <span id="définition-fonction-booléenne"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_fonction booléenne_** est une fonction
 
 <div>
@@ -37,7 +37,7 @@ f: \{0, 1\}^n \rightarrow \{0, 1\}^m
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 > TBD exemple de la duplication
 
@@ -58,7 +58,7 @@ Il y a 4 fonctions différentes dont l'entrée est réduite à 1 bit :
 
 On les décrit avec leurs On les représentent via leurs [tables de vérité](https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9) :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On décrit les 3 fonctions $f: \\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ **_OU_**, **_ET_** **_OU exclusif_** comme étant :
 
@@ -71,7 +71,7 @@ x | y | OR(x, y) | AND(x, y) | XOR(x, y) |
 1 | 0 | 1 | 0 | 1 |
 1 | 1 | 1 | 1 | 0 |
 
-{% endnote %}
+{% endnote2 %}
 
 Nous n'en avons décrit que 3 parmi les 16 possibles car il est possible de toutes les obtenir en combinant les fonctions NON, OU et ET. Par exemple :
 
@@ -133,7 +133,7 @@ On a :
 
 Vous savez quoi, on peut même faire mieux en utilisant la fonction $\text{NAND}(x, y)$.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 La fonction $\text{NAND}(x, y)$ est définie telle que :
 
@@ -143,7 +143,7 @@ $$
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 On peut tout retrouver grâce à elle :
 
@@ -334,7 +334,7 @@ Pour éviter toute confusion entre les entiers on écrira :
 
 ### Booléen
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On note $b$ la bijection $b: \\{0, 1\\} \rightarrow \\{\text{Vrai}, \text{Faux}\\}$ telle que :
 
@@ -346,7 +346,7 @@ b(1) = \text{Vrai}\\
 \end{cases}
 $$
 </div>
-{% endnote %}
+{% endnote2 %}
 
 ### Entiers
 
@@ -361,7 +361,7 @@ Un tableau de bit pourra être interprété de deux façons complémentaires :
 > 
 On utilise la représentation binaire classique :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On note $u$ la bijection $u: \\{0, 1\\}^\star \rightarrow \mathbb{N}$ telle que :
 
@@ -372,7 +372,7 @@ $$
 </div>
 
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
-{% endnote %}
+{% endnote2 %}
 
 Ainsi :
 
@@ -490,7 +490,7 @@ Calculer l'opposé d'un tableau de bit se fait en temps linéaire uniquement ave
 
 On a tout en notre possession pour associer des entiers relatifs aux tableaux de bit :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 On note $i_n: \\{0, 1\\}^n \rightarrow  [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$ la bijection telle que :
 
@@ -504,7 +504,7 @@ u_{n-1}(x)\text{ si } x[-1] == 0\\
 $$
 </div>
 
-{% endnote %}
+{% endnote2 %}
 
 Il est clair que $i_n$ est une bijection puisque $u_{n-1}$ en est une de $\\{0, 1\\}^{n-1}$ dans $[0 \mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$. Le bit de poids fort des tableaux de bits est appelé **_bit de signe_** car $i_n(x) < 0$ s'il vaut 1. Elle est de plus compatible avec notre négation :
 
@@ -532,7 +532,7 @@ Remarquez deux choses :
 - Un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif
 - il ne suffit pas de changer le bit de signe pour avoir l'opposé d'un nombre.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un tableau de bit considéré comme :
 
@@ -540,7 +540,7 @@ Un tableau de bit considéré comme :
 - un entier relatif est dit **_signé_**
 
 Le bit de poids fort d'un tableau signé est appelé **_bit de signe_** (il ne vaut `1` `que si l'entier représenté est négatif).
-{% endnote %}
+{% endnote2 %}
 
 ### Réels
 

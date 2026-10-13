@@ -37,9 +37,9 @@ Le problème revient maintenant de trouver un cycle qui passe par toutes les ar�
 ## Problème de graphe
 
 <div id="definition-cycle-eulerien"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G= (V, E)$ un **multi-graphe non orienté**. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Comme les arêtes d'un cycle n'y apparaissent qu'une seule fois, un cycle eulérien passe exactement une fois par toutes les arêtes du graphe.
 {% endinfo %}
@@ -269,9 +269,9 @@ Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois 
 ### Chemin eulérien
 
 <div id="definition-chemin-eulerien"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **chemin eulérien entre $x$ et $y$** est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe
-{% endnote %}
+{% endnote2 %}
 
 Connaître les multigraphes qui possèdent un chemin eulérien est facile à partir de la caractérisation des graphes eulérien :
 
@@ -287,9 +287,9 @@ Un multi-graphe non orienté $G= (V, E)$ possède un chemin eulérien entre deux
 
 ### Graphes orientés
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe orienté. Un **circuit eulérien** de $G$ est un circuit passant par tous les arcs du graphe.
-{% endnote %}
+{% endnote2 %}
 
 La encore les multi-graphes orientés qui possèdent un circuit eulérien est facile à partir de la caractérisation des graphes eulérien :
 
@@ -307,9 +307,9 @@ Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cy
 
 Le cas d'intérêt pratique des circuit eulérien est lorsque l'on utilise des multi-graphes mixtes puisqu'ils permettent de modéliser un réseau routier avec des routes à sens unique ou à double sens et plusieurs routes menant à des mêmes croisements.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G= (V, E, A)$ un multi-graphe mixte. Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
-{% endnote %}
+{% endnote2 %}
 
 Ce qui est intéressant ici, c'est que la condition nécessaire et suffisante pour que le multi-graphe mixte soit eulérien n'est pas juste l'union des conditions pour les multi-graphes non orienté et orienté. S'il est clair que l'union de ces deux conditions fonctionne (tout se passe comme si on avait deux graphes disjoints que l'on raboute ensuite), la condition nécessaire et suffisante est plus générale comme le montre l'exemple suivant, qui fonctionne mais ne correspond pas à l'union des conditions orientées et non orientées :
 

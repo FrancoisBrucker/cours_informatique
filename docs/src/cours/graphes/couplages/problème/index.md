@@ -11,7 +11,7 @@ eleventyComputed:
 
 Le problème de couplage peut être défini ainsi :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G=(V, E)$ un graphe. Un **_couplage_** est un ensemble $M \subseteq E$ tel que si $xy, x'y' \in E$ alors $xy \cap x'y' = \varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).
 
 Un sommet $x$ est :
@@ -19,7 +19,7 @@ Un sommet $x$ est :
 - **_libre_** s'il n'est pas extrémité d'une arête de $M$.
 - **_couvert_** s'il est extrémité d'une arête de $M$.
 
-{% endnote %}
+{% endnote2 %}
 
 Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, le graphe ci-dessous :
 
@@ -32,17 +32,17 @@ Admet l'ensemble des arêtes rouges comme couplage :
 
 On définit plusieurs types de couplages selon le graphe :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G=(V, E)$ un graphe. Un **_couplage_** $M$ est dit :
 
 - **_maximal_** s'il n'existe pas de couplage $M'$ l'incluant (toute arête de $G$ possède une extrémité co;;une avec une arête de $M$)
 - **_maximum_** s'il n'existe pas de couplage $M'$ tels que $\vert M'\vert > \vert M\vert$
 - **_parfait_** si pour tout sommet de $V$ il existe une arête de $M$ l'ayant comme extrémité. Un couplage parfait ne peut exister que s'il y a un nombre pair de sommet et à forcément $\vert V \vert/2$ arêtes.
-{% endnote %}
-{% note "**Définition**" %}
+{% endnote2 %}
+{% note2 "**Définition**" %}
 Pour tout graphe $G=(V, E)$, on note $\nu(G)$ le nombre d'arête de ses couplages maximum.
 
-{% endnote %}
+{% endnote2 %}
 
 Les trois types de couplages sont bien distincts. Le couplage de la figure précédente était maximal (toute arête du graphe à un sommet commun avec une arête du couplage), mais il n'est pas maximum. Il possède en effet un couplage parfait :
 

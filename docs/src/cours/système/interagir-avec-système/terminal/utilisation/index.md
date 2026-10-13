@@ -155,7 +155,7 @@ franoisbruca7be\fbrucker
 
 Une ligne de commande sera toujours composée de mots séparé par des espaces :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Une **_ligne de commande_** est une chaîne de caractères composées de mots séparés par un ou plusieurs espaces tes que :
 
 - le premier mot est la commande et sera :
@@ -163,7 +163,7 @@ Une **_ligne de commande_** est une chaîne de caractères composées de mots s�
   - soit une instructions compréhensible par le terminal, comme `ls`{.language-} par exemple.
 - les mots suivants sont optionnels et sont les paramètres de la commande.
 
-{% endnote %}
+{% endnote2 %}
 
 ### Commande
 
