@@ -48,7 +48,7 @@ layout: layout/base.njk
     {% endchemin %}
 
     {% if eleventyNavigation.prerequis %}
-      {% prerequis "<b>Prérequis :</b>" %}
+      {% prerequis %}
       <ul>
         {%- for pre in eleventyNavigation.prerequis -%}
           {% set ok = false %}

@@ -16,7 +16,7 @@ Numérologie partie 3. On met en place une petite base de données en mémoire.
 
 <!-- fin résumé -->
 
-{% prerequis "**Prérequis** :" %}
+{% prerequis %}
 
 * [Projet numérologie / partie 2 serveur](../partie-2-serveur){.interne}
 * [données]({{ "/cours/web" | url }}#données){.interne}

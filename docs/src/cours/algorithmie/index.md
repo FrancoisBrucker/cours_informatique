@@ -43,8 +43,8 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 Tout ce que devrait connaître tout ingénieur de l'informatique.
 
-{% prerequis "**Prérequis**" %}
-[Bases de la programmation](/cours/coder-et-développer/bases-programmation/){.interne}
+{% prerequis %}
+[Bases de la programmation](/cours/coder-et-développer/apprendre-programmation/concepts/){.interne}
 {% endprerequis %}
 
 ### Algorithmes et programmes
@@ -319,7 +319,7 @@ Les matrices constituent le premier type composé que l'on peut utiliser sans d�
 
 ### Création de structures de données
 
-{% prerequis "**Prérequis**" %}
+{% prerequis %}
 [Programmation objet](/cours/coder-et-développer/programmation-objet/){.interne}
 {% endprerequis %}
 

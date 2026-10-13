@@ -167,7 +167,7 @@ Si les deux courbes étaient à l'intérieur ou à l'extérieur, on serait dans 
 
 Ce qui implique au moins une intersection.
 {% enddetails  %}
-
+ 
 Ceci nous suffit pour montrer que ni $K_{3, 3}$ (à gauche dans la figure ci-dessous) et ni $K_5$ (à droite dans la figure ci-dessous)ne peuvent être planaires ! En effet tout deux admettent des circuit hamiltoniens (en vert) :
 
 ![K5 K33](./k5-K33-1.png)

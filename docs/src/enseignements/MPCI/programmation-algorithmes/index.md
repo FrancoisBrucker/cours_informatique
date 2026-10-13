@@ -174,7 +174,7 @@ prog sur l'année en 4 séquences alternée :
 
 Il est **INDISPENSABLE** que vous ayez en tête ce que vous avez fait en développement au S1. Pour cela, suivez et faite la partie suivante du cours qui explicite les notions qui vous seront utiles pour débuter ce semestre :
 
-{% prerequis "**PRÉREQUIS**" %}
+{% prerequis %}
 1. [Utilisez le réseau EDUROAM](/enseignements/MPCI/outil-informatique/#eduroam){.interne}
 2. [Bases de programmation en python](/cours/coder-et-développer/bases-programmation/){.interne}
 {% endprerequis %}
