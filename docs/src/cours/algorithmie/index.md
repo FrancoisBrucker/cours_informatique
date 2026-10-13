@@ -17,46 +17,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD ajouter <https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html>
-
 <!-- TBD 
-
-Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
-
-Une variable vaut None lorsqu'elle est crée.
-Puis affectée à une valeur explicitement. 
-
-- Il ne faut pas utiliser des variables non initialisé
-- None est réservé aux variables non initialisées (?)
-- un tableau est un objet composé de variables de même type.
-
-- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique.
-
-dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
 
 
 expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence> : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
-
-dans la partie 1 :
-
-- int et str pas de taille finies
-- dire mémoire = tableau avec indice
-- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
-- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
-- float est aussi fini : approximation d'un réel.
-- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
-- un tableau est un objet qui contient des variables :
-  - déclaré vaut None
-  - crée chaque case vaut None
-- toute variable déclarée doit être affectée.
-dans la partie 2 :
-- dire que struct défini un type
-- remplacer liste par slice
-- un tableau est un type []T 
-- type simple (ceux qu'on a vu + tableau), ce qui permet déjà de faire des matrices.
-- type composé (tuple et structure)
-- type générique
 
 Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
 
@@ -95,7 +59,7 @@ Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas
 
 #### Pseudo code
 
-> TBD ici `nom x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
+> TBD ici `ref x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
 > TBD tout est ue référence vers un objet en mémoire
 
 On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
@@ -331,6 +295,19 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 > TBD renommer structures de données classiques. Séparées en linéaire/matricielles et arborées
 
+> TBD ajouter plein d'exercices sir pile et file et listes chaînées.
+
+
+<!-- 
+dans la partie 2 :
+- dire que struct défini un type
+- remplacer liste par slice
+- un tableau est un type []T 
+- type simple (ceux qu'on a vu + tableau), ce qui permet déjà de faire des matrices.
+- type composé (tuple et structure)
+- type générique
+ -->
+
 
 ### Matrices
 
@@ -485,6 +462,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 
 > TBD ICI parler pointeur. Faire commencer la partie B.
 
+
 ## <span id="problèmes"></span><span id="partie-4"></span>Partie IV : problèmes
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
@@ -549,6 +527,16 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 
 ### Pseudo-code avec pointeur
 
+> TBD 
+>
+> 
+> Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.
+> 
+> en machine un objet est stocké en mémoire à chaque appel une indirection. Ne change rien en complexité O mais double le temps réel d'exécution : tbd faire le dif avec python et go/rust
+> , plus proche de la machine = structures de données et variables.
+> Soit pile soit tas.
+>
+> 
 > TBD voir ce que l'on ne pourrait pas remonter dans NP/NPC : pointeurs et tailles
 
 > TBD dire que en vrai lorsque l'on utilise la mémoire tout doit être fini. Donc plus d'entier mais des u8, u64, plus de réels mais des double ou float.
@@ -580,6 +568,15 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 > TBD dire que pour python tout est pointeur.
 > TBD à refaire bien propre.
 
+<!-- TBD
+
+PArtie Iv = algo 2.
+Ajouter une partie pseudo-code réel.
+
+dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+ -->
+
+
 ### Design d'algorithmes
 
 > TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.
@@ -604,8 +601,8 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 > TBD ICI Faire commencer la partie C. 
 > Structures compliquées et joli algorithmes.
 
-## <span id="partie-5"></span>Partie V : structures de données avancées
 
+## <span id="partie-5"></span>Partie V : structures de données avancées
 
 
 
