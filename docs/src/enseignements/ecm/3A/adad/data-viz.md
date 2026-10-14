@@ -18,13 +18,13 @@ eleventyComputed:
 Le cours est basé sur le cours suivant :
 
 {% aller %}
-[Cours analyse des données](/cours/analyse-données){.interne}
+[Cours analyse des données](/cours/analyse-données)
 {% endaller %}
 
 Chaque semaine de cours, un travail est à rendre pour la semaine de cours prochaine (environ un mois après) les rendus sont à rendre sur moodle :
 
 {% attention %}
-[adresse des rendus moodle](https://moodle.centrale-med.fr/course/view.php?id=1221)
+[adresse des rendus moodle](https://moodle.centrale-med.fr/course/view.php?id=1221){.externe}
 {% endattention %}
 
 ## Semaine 1
@@ -32,7 +32,7 @@ Chaque semaine de cours, un travail est à rendre pour la semaine de cours proch
 Deux cours d'introductions aux méthodes d'analyse des données en python en utilisant la bibliothèque pandas.
 
 {% aller %}
-[la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}
+[la partie utilisation de Panda](/cours/analyse-données/#pandas)
 {% endaller %}
 
 ### Cours 1
@@ -50,8 +50,8 @@ On vérifie que l'on a les bases nécessaire en python :
 {% aller %}
 Vous serez amené à installer tout un tas de modules pour python. Donc ayez intégré comment on manipule un interpréteur :
 
-- [Installer un interpréteur python](/cours/coder-et-développer/installer-python/){.interne}
-- [travailler avec un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne}
+- [Installer un interpréteur python](/cours/coder-et-développer/installer-python/)
+- [travailler avec un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/)
 
 {% endaller %}
 
@@ -61,7 +61,7 @@ Pandas et les premières analyses.
 
 ### Rendu
 
-Basées sur les [à vous de la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}. Vous devrez rendre 2 notebooks :
+Basées sur les [à vous de la partie utilisation de Panda](/cours/analyse-données/#pandas). Vous devrez rendre 2 notebooks :
 
 1. **Premier notebook** : Utilisez un prénom que vous aimez (le votre ?) et procédez à cinq analyses similaires à celles du cours et la partie exercice. Vous devrez pour chaque analyse :
    1. explicitez clairement la question que vous cherchez à résoudre (_e.g._ combien de François par année ?)
@@ -85,7 +85,7 @@ Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
 Visualisation de cartes.
 
 {% aller %}
-[la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+[la partie visualisation de Panda](/cours/analyse-données/#data-viz).
 {% endaller %}
 
 ### Cours 2
@@ -94,24 +94,24 @@ Visualisation de cartes.
 
 Commencez par télécharger les différents notebooks puis on va créer un environnement virtuel.
 
-1. [création de l'environnement](/cours/coder-et-développer/environnements-virtuels/){.interne}
+1. [création de l'environnement](/cours/coder-et-développer/environnements-virtuels/)
 2. installation des modules classiques
 3. installation des modules de data-viz
 
 #### Cartes et CRS
 
-- [Qu'est-ce qu'une carte ? Qu'un CRS ?](/cours/analyse-données/#data-viz-bases){.interne}
+- [Qu'est-ce qu'une carte ? Qu'un CRS ?](/cours/analyse-données/#data-viz-bases)
 - A vous : [représenter graphiquement des données](1_4_a_vous_création_données_géographiques.ipynb){.fichier}
 
 #### Trouver des données cartographiques
 
-[Utilisation de requêtes OpenStreetMap pour trouver des données géographiques](/cours/analyse-données/#data-viz-OSM){.interne}.
+[Utilisation de requêtes OpenStreetMap pour trouver des données géographiques](/cours/analyse-données/#data-viz-OSM).
 
 ### Rendu 2
 
 Rendez :
 
-1. **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice){.interne} (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.
+1. **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice) (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.
 2. un fichier `requirement.txt` comme expliqué dans la partie création d'un environnement virtuel du cours.
 
 ## Semaine 3
@@ -119,7 +119,7 @@ Rendez :
 Autre représentations :
 
 {% aller %}
-[la partie autres représentations](/cours/analyse-données/#data-viz-2D){.interne}.
+[la partie autres représentations](/cours/analyse-données/#data-viz-2D).
 {% endaller %}
 
 ## Pour aller plus loin

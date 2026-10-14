@@ -27,7 +27,7 @@ La formalisation de cette opération s'appelle [une réduction](<https://fr.wiki
 2. calculer ou estimer des complexités
 
 {% info %}
-Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
+Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction){.externe}, trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)){.externe} dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
 Commençons par deux exemples.
@@ -57,7 +57,7 @@ On fait exactement la même chose.
 Cette procédure permet non seulement de résoudre un problème à partir d'un autre mais donne également des bornes sur la complexité du problème. Dans notre cas la complexité du problème $\min(T)$ est inférieure à la somme des complexités de :
 
 1. transformer le tableau $T$ et $E(T)$, ici $\mathcal{O}(\vert T \vert)$,
-2. la complexité du problèmes du maximum, ici encore $\mathcal{O}(\vert T \vert)$ ([on l'a vu](../complexité-problème/#problème-max-tableau-complexité){.interne}),
+2. la complexité du problèmes du maximum, ici encore $\mathcal{O}(\vert T \vert)$ ([on l'a vu](../complexité-problème/#problème-max-tableau-complexité)),
 3. la complexité du passage de la solution du second problème à une solution du premier problème, ici $\mathcal{O}(1)$.
 
 Comme la complexité de la recherche du minimum d'un tableau est au moins linéaire (il faut forcément regarder tous les éléments de $T$ avant de décider), on en déduit que sa complexité est bien linéaire.
@@ -415,7 +415,7 @@ Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que $T'''[i] + T''
 
 #### Problèmes de géométrie algébrique
 
-3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique){.externe}. Considérons par exemple le problème suivant :
 
 {% note "**Problème**" %}
 
@@ -486,12 +486,12 @@ Montrer que 3-SUM = GEOBASE pour l'ordre des réductions linéaires.
 Clair puisque 3-SUM = 3-SUM' = GEOBASE
 {% enddetails %}
 
-> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness> Peut-on-ton le résoudre mieux que n^2 ?
+> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness>{.externe} Peut-on-ton le résoudre mieux que n^2 ?
 Si ce genre de problème de géométrie solvable algébriquement, n'hésitez pas à jeter un coup d'œil aux liens suivants :
 
 {% lien %}
 
-- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
-- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>{.externe}
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>{.externe}
 
 {% endlien %}

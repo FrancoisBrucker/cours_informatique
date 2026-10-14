@@ -20,7 +20,7 @@ eleventyComputed:
 <!-- TBD 
 
 
-expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence> : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
+expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence>{.externe} : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
 
 Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
 
@@ -34,7 +34,7 @@ dans la partie 4 :
 Cours d'algorithmie.
 
 {% info %}
-_L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
+_L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra){.externe}
 {% endinfo %}
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
@@ -44,9 +44,9 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 Tout ce que devrait connaître tout ingénieur de l'informatique.
 
 {% prerequis %}
-[Bases de la programmation](/cours/coder-et-développer/apprendre-programmation/concepts/){.interne}
+[Bases de la programmation](/cours/coder-et-développer/apprendre-programmation/concepts/)
 {% endprerequis %}
-
+ 
 ### Algorithmes et programmes
 
 #### Définitions
@@ -54,7 +54,7 @@ Tout ce que devrait connaître tout ingénieur de l'informatique.
 Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas faire :
 
 {% aller %}
-[Bases théoriques](./bases-théoriques){.interne}
+[Bases théoriques](./bases-théoriques)
 {% endaller %}
 
 #### Pseudo code
@@ -65,12 +65,12 @@ Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas
 On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
 
 {% aller %}
-[Écrire les algorithmes en pseudo code](./pseudo-code){.interne}
+[Écrire les algorithmes en pseudo code](./pseudo-code)
 {% endaller %}
 
 #### Thèse de Church-Turing
 
-Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
+Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 
@@ -84,14 +84,14 @@ La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plus
 Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.
 {% endnote %}
 {% lien %}
-[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church).
+[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church){.externe}.
 {% endlien %}
 
 La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
 
 {% lien %}
 
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur à la problématique.
+Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws){.externe} pour une introduction en douceur à la problématique.
 
 {% endlien %}
 
@@ -100,7 +100,7 @@ Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQw
 Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres tous équivalent entre eux :
 
 {% aller %}
-[Autres modèles](./autres-modèles){.interne}
+[Autres modèles](./autres-modèles)
 {% endaller %}
 
 ### Problème algorithmique
@@ -128,7 +128,7 @@ Par exemple :
 
 {% endnote %}
 
-Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne}, ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
+Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov), ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11){.externe} ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4){.externe}), on se restreindra ici aux problèmes algorithmiques :
 
 <span id="problème-algorithmique"></span>
 
@@ -144,7 +144,7 @@ Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut 
 
 ### Preuve d'algorithme
 
-Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur _a priori_ qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
+Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice) on ne peut jamais être sur _a priori_ qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
 
 Par exemple l'algorithme suivant :
 
@@ -161,12 +161,12 @@ algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     rendre max(a, b)
 ```
 
-On peut facilement prouver qu'il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
+On peut facilement prouver qu'il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide). Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
 
 Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
-[Prouver des algorithmes](./prouver-un-algorithme){.interne}
+[Prouver des algorithmes](./prouver-un-algorithme)
 {% endaller %}
 
 ### <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
@@ -174,43 +174,43 @@ Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souve
 Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites.
 
 {% aller %}
-[Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif){.interne}
+[Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif)
 {% endaller %}
 
 Techniques à connaître pour la mise en oeuvre et l'utilisation d'algorithmes récursifs :
 
 {% aller %}
-[Projet : techniques de récursion](./projet-techniques-de-récursion){.interne}
+[Projet : techniques de récursion](./projet-techniques-de-récursion)
 {% endaller %}
 
 On vérifie qu'on sait faire :
 
 {% aller %}
-[exercices non corrigés](./exercices-itératif-récursif){.interne}
+[exercices non corrigés](./exercices-itératif-récursif)
 {% endaller %}
 
 ### Complexité d'un algorithme
 
 {% lien %}
-[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
+[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12){.externe}
 {% endlien %}
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme.
 
 {% aller %}
-[Calcul de complexité d'un algorithme](./complexité-calculs){.interne}
+[Calcul de complexité d'un algorithme](./complexité-calculs)
 {% endaller %}
 
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif){.interne} :
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif) :
 
 {% aller %}
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
+[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite)
 {% endaller %}
 
 On vérifie qu'on sait faire :
 
 {% aller %}
-[exercices non corrigés](./exercices-calculs-compexités){.interne}
+[exercices non corrigés](./exercices-calculs-compexités)
 {% endaller %}
 
 ### Complexité d'un problème
@@ -218,32 +218,32 @@ On vérifie qu'on sait faire :
 Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
 
 {% aller %}
-[Complexité d'un problème algorithmique](./complexité-problème){.interne}
+[Complexité d'un problème algorithmique](./complexité-problème)
 {% endaller %}
 
 Projets :
 
 {% aller %}
-1. [Calculer $x^n$](./projet-exponentiation){.interne}
-2. [Les suites additives](./projet-suite-additive){.interne}
+1. [Calculer $x^n$](./projet-exponentiation)
+2. [Les suites additives](./projet-suite-additive)
 {% endaller %}
 
 On s'entraîne :
 
 {% aller %}
-[Projet : calculs de complexités de problèmes algorithmiques](./projet-complexité-problème){.interne}
+[Projet : calculs de complexités de problèmes algorithmiques](./projet-complexité-problème)
 {% endaller %}
 
 On vérifie qu'on sait faire avec un projet sans corrigé :
 
 {% aller %}
-[exercices : problème du doublon](./exercices-problème-doublons){.interne}
+[exercices : problème du doublon](./exercices-problème-doublons)
 {% endaller %}
 
 ### Complexité en moyenne
 
 {% aller %}
-[Complexité en moyenne](./complexité-moyenne){.interne}
+[Complexité en moyenne](./complexité-moyenne)
 {% endaller %}
 
 <!-- TBD
@@ -259,7 +259,7 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 <!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
 
 {% aller %}
-[Problème du tri](./problème-tris){.interne}
+[Problème du tri](./problème-tris)
 {% endaller %}
 
 
@@ -274,17 +274,17 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 <span id="sommes-classiques"></span>
 
 {% aller %}
-[Calcul de sommes classiques](./projet-sommes-classiques/){.interne}
+[Calcul de sommes classiques](./projet-sommes-classiques/)
 {% endaller %}
 
 {% aller %}
-[Calcul d'équations classiques](./projet-équations-classiques/){.interne}
+[Calcul d'équations classiques](./projet-équations-classiques/)
 {% endaller %}
 
 #### Résolution d'algorithmes classiques
 
 {% aller %}
-[Algorithmes classiques](./projet-algorithmes-classiques){.interne}
+[Algorithmes classiques](./projet-algorithmes-classiques)
 {% endaller %}
 
 #### On vérifie qu'on sait faire
@@ -314,19 +314,19 @@ dans la partie 2 :
 Les matrices constituent le premier type composé que l'on peut utiliser sans définir d'autres éléments de pseudocode :
 
 {% aller %}
-[Matrices](structure-matricielle){.interne}
+[Matrices](structure-matricielle)
 {% endaller %}
 
 ### Création de structures de données
 
 {% prerequis %}
-[Programmation objet](/cours/coder-et-développer/programmation-objet/){.interne}
+[Programmation objet](/cours/coder-et-développer/programmation-objet/)
 {% endprerequis %}
 
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
 
 {% aller %}
-[Structures de données](structure-données){.interne}
+[Structures de données](structure-données)
 {% endaller %}
 
 Nous allons définir et utiliser dans la suite de cette partie les **_structures linéaires_**. Ce sont des structures qui, comme les tableaux, stockent des éléments suivant un ordre linéaire. Ces structures sont faites pour répondre de façon optimale à des problèmes courant en algorithmie.
@@ -336,7 +336,7 @@ Nous allons définir et utiliser dans la suite de cette partie les **_structures
 Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une. Les deux structures fondamentales utilisées pour cela sont les piles et les files :
 
 {% aller %}
-[Structure de pile et file](./structure-pile-file){.interne}
+[Structure de pile et file](./structure-pile-file)
 {% endaller %}
 
 
@@ -345,18 +345,18 @@ Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
 
 {% aller %}
-[Les listes chaînées](./structure-liste-chaînée){.interne}
+[Les listes chaînées](./structure-liste-chaînée)
 {% endaller %}
 
 
 ### Listes
 
-La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux) est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
 
 La liste est un compromis très efficace pour réaliser les deux opérations au prix d'un coût négligeable en complexité.
 
 {% aller %}
-[Structure de listes](./structure-liste){.interne}
+[Structure de listes](./structure-liste)
 {% endaller %}
 
 ### Complexité amortie
@@ -368,7 +368,7 @@ Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n
 C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en _"complexité amortie"_ pour les listes. Formalisons cette notion :
 
 {% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
+[Complexité amortie](./complexité-amortie)
 {% endaller %}
 
 ### Hash, dictionnaires et ensembles
@@ -376,13 +376,13 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 Si les listes permettent de supprimer la première contrainte de l'utilisation des tableaux qui est de déterminer leurs tailles à la création, elle ne permettent pas de pallier la seconde limitation qui est que l'accès aux éléments se fait _via_ des indices entiers. Cette contrainte peut être levée au prix d'une perte de complexité (on ne peut garantir que de bonnes complexités en moyenne et plus maximale) en utilisant des dictionnaires :
 
 {% aller %}
-[Structure de dictionnaires](./structure-dictionnaire){.interne}
+[Structure de dictionnaires](./structure-dictionnaire)
 {% endaller %}
 
 On s'entraîne :
 
 {% aller %}
-[Projet : listes et dictionnaires](./projet-liste-dictionnaire){.interne}
+[Projet : listes et dictionnaires](./projet-liste-dictionnaire)
 {% endaller %}
 
 ### Comparaisons des structures de conteneurs
@@ -390,7 +390,7 @@ On s'entraîne :
 On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'on veut en faire : on prendra celle de complexité minimale.
 
 {% aller %}
-[Comparaisons des complexités des structures](./structures-complexité){.interne}
+[Comparaisons des complexités des structures](./structures-complexité)
 {% endaller %}
 
 <!-- ### On vérifie qu-on a compris
@@ -409,7 +409,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 > TBD le faire avec des structures. et décomposer le gros pavé qui suit en petits bouts.
 
 {% aller %}
-[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
+[Problème de l'enveloppe convexe](./enveloppes-convexes)
 {% endaller %}
 
 <!-- 
@@ -434,7 +434,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 ## Autre structures
 
 - skip list
-- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>{.externe}
 
 
 
@@ -457,7 +457,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 
 ## <span id="partie-3"></span>Partie III : structures de données arborées
 >TBD transférer ici de la partie graphe.
-> TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s> y sont.
+> TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s>{.externe} y sont.
 > 
 
 > TBD ICI parler pointeur. Faire commencer la partie B.
@@ -467,36 +467,36 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
-On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité){.interne} (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance){.interne} le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.
+On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité) (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance) le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.
 
 ### Réductions : passer d'un problème à un autre
 
 Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexités pouvant être très différente, on se dote d'un ordre appelé _réduction_ permettant de hiérarchiser les problèmes :
 
 {% aller %}
-[Réduction de problèmes](./problème-réduction){.interne}
+[Réduction de problèmes](./problème-réduction)
 {% endaller %}
 
 ### Classes de problèmes
 
 {% lien %}
-<https://hardness.mit.edu/>
+<https://hardness.mit.edu/>{.externe}
 {% endlien %}
 
-Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
+Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris) est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation) est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
 > TBD aborder NP via les formules logique et les pbs de décision. existe-t-il < k ?
-> TBD fact est dans NP cap conp et donc presque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>
+> TBD fact est dans NP cap conp et donc presque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>{.externe}
 > 
 {% aller %}
-[Problèmes NP](./problèmes-NP){.interne}
+[Problèmes NP](./problèmes-NP)
 {% endaller %}
 
 Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
 
 {% aller %}
-1. [Problème SAT](./problème-SAT){.interne}
-2. [Problème CE](./problème-CE){.interne}
+1. [Problème SAT](./problème-SAT)
+2. [Problème CE](./problème-CE)
 {% endaller %}
 
 
@@ -508,18 +508,18 @@ Le problème SAT est notre exemple de problème NP-complet. On va le voir sous d
 > Ne donner qu'une idée du fait qu'une formule donnée est un sat. Dire qu'on le verra plus tard (partie assembleur)
 > 
 > TBD  le truc de Pascal avec les probas.
-> bus : <https://www.youtube.com/watch?v=hFWFN46kaOo> protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>
+> bus : <https://www.youtube.com/watch?v=hFWFN46kaOo>{.externe} protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>{.externe}
 
 
 > TBD NP complet = réduction poly puisque résoluble expo
-> P complet = reduction poly mais en espace logarithmique. <https://fr.wikipedia.org/wiki/P-complet> et <https://cs.stackexchange.com/questions/135088/why-does-lspacelog-space-complexity-class-exist-but-not-logtime> <https://cs.stackexchange.com/questions/44259/is-l-closed-under-linear-time-reductions> <https://en.wikipedia.org/wiki/Horn-satisfiability>
+> P complet = reduction poly mais en espace logarithmique. <https://fr.wikipedia.org/wiki/P-complet>{.externe} et <https://cs.stackexchange.com/questions/135088/why-does-lspacelog-space-complexity-class-exist-but-not-logtime>{.externe} <https://cs.stackexchange.com/questions/44259/is-l-closed-under-linear-time-reductions>{.externe} <https://en.wikipedia.org/wiki/Horn-satisfiability>{.externe}
 > 
 ### Intermède : l'algorithme qui résout tout
 
 Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
 
 {% aller %}
-[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
+[L'algorithme de la recherche universelle](./recherche-universelle)
 {% endaller %}
 
 > TBD dire que complexité ce n'est pas tout. La constante devant est aussi importante !
@@ -557,7 +557,7 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 > TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
 > TBD faire un mix go : prendre une étoile devant les méthodes pour dire que c'est un pointeur qui est pris. Et notation flèche pour les attributs
 
-> TBD <https://research.swtch.com/godata>
+> TBD <https://research.swtch.com/godata>{.externe}
 > TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
 
 > TBD reprendre les objets de base et dire tous de taille fixe. Idem tableau = n * taille du type de sa structure + 1 entier.
@@ -582,7 +582,7 @@ dans la deuxième partie partie faire le modèle classique de la mémoire avec p
 > TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.
 
 {% aller %}
-[Design d'algorithmes](./design-algorithmes){.interne}
+[Design d'algorithmes](./design-algorithmes)
 {% endaller %}
 
 ### Problèmes classiques
@@ -594,7 +594,7 @@ Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou n
 Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
 
 {% aller %}
-[Problème du sac à dos](./problème-sac-à-dos){.interne}
+[Problème du sac à dos](./problème-sac-à-dos)
 {% endaller %}
 
 
@@ -607,15 +607,15 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 
 
 {% aller %}
-[Structures de données avancées](./structure-données-avancée){.interne}
+[Structures de données avancées](./structure-données-avancée)
 {% endaller %}
 
 <!-- ### Jolis problèmes
 
 
-> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=3>
+> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=3>{.externe}
 
-> TBD strassen et fft <> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4>
+> TBD strassen et fft <> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4>{.externe}
 >
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
@@ -636,7 +636,7 @@ On place ici quelques problèmes requérant une bonne compréhension algorithmiq
 <!-- #### Résolution de problèmes algorithmiques classiques
 
 {% aller %}
-[Problèmes classiques](./projet-problemes-classiques){.interne}
+[Problèmes classiques](./projet-problemes-classiques)
 {% endaller %} -->
 
 <!--
@@ -658,13 +658,13 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 >
 > et piece dans le cas pas super croissant.
 > 
-> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
+> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>{.externe}
 
 ### autre bidules
 > TBD rendu de pièces par programmation dynamique
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
-> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
+> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>{.externe}
 
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
@@ -672,7 +672,7 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 
 #### SUBSET SUM
 
-> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
+> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>{.externe}
 
 Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
  en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
@@ -701,12 +701,12 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 
 > TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
 > TBd en déduire 3-SUM ≤ SUBSET-SUM
-> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
+> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition){.externe}
 
 > TBD à montrer.
 >
-> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
-> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
+> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>{.externe} -->
+> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88>{.externe} avec pointeurs
 
 > TBD ici commence la parie C : avancé
 
@@ -725,17 +725,17 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 #### Pseudo-code et données binaires
 
 {% aller %}
-[Fonctions booléennes et pseudo-code](./fonctions-booléennes){.interne}
+[Fonctions booléennes et pseudo-code](./fonctions-booléennes)
 {% endaller %}
 
 #### Pseudo-code et SAT
 
 {% aller %}
-[SAT et pseudo-code](pseudocode-SAT){.interne}
+[SAT et pseudo-code](pseudocode-SAT)
 {% endaller %}
 
 {% aller %}
-[SAT et les problèmes de NP](SAT-problème-NP){.interne}
+[SAT et les problèmes de NP](SAT-problème-NP)
 {% endaller %}
 
 #### Exécuter du pseudo-code
@@ -767,14 +767,14 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 > TBD Modèle de Von Neumann
 > modèle de Von Neumann qui est implémenté dans tous les ordinateurs
-> TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>
+> TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>{.externe}
 > TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
 > on accede jamais a un bit spécifique
 >
 > TBD monter que les opérations arithmétique peuvent être faite par morceau (de 64bit)
 
 {% aller %}
-[Exécuter du code](./exécuter-code){.interne}
+[Exécuter du code](./exécuter-code)
 {% endaller %}
 
 Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
@@ -791,7 +791,7 @@ Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut rés
 
 
 {% aller %}
-[problème SAT](./problème-SAT){.interne}
+[problème SAT](./problème-SAT)
 {% endaller %}
 
 ### Modèle fonctionnel
@@ -799,7 +799,7 @@ Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut rés
 On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons un peut cela en voyant quelles fonctions on peut effectivement calculer à l'aide d'un pseudo-code.
 
 {% aller %}
-[Algorithmes et fonctions](./fonctions-récursives){.interne}
+[Algorithmes et fonctions](./fonctions-récursives)
 {% endaller %}
 
 > TBD lambda calcul. Ironie, c'est le premier langage Le lisp.
@@ -814,16 +814,16 @@ On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons u
 Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.
 
 {% aller %}
-[Problèmes de décision](./décision-problèmes){.interne}
+[Problèmes de décision](./décision-problèmes)
 {% endaller %}
 
 > TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.
 
 {% aller %}
-[Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
+[Exemples de problèmes NP complets](./exemples-problèmes-NPC)
 {% endaller %}
 
-> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
+> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>{.externe}
 
 
 #### Chaînes de caractères
@@ -833,7 +833,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
 
 {% aller %}
-[Chaines de caractères](./structure-chaine-de-caractères){.interne}
+[Chaines de caractères](./structure-chaine-de-caractères)
 {% endaller %}
 
 #### Machine de Turing
@@ -848,7 +848,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > Turing. Equivalent. hiérarchie des complexité
 
 > TBD parler de NP et  co-NP factorisation et discrete log.
-> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>{.externe}
 
 > TBD dire que circuit = taille fixée (voir conversion vers sat d'un problème. Dépend de la taille.)
 > TBD ici uniquement partie code avec assembleur.
@@ -860,8 +860,8 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > TBD puis montrer que Turing = logique = sat.
 
 
-> TBD NP/coNP par factorisation et discrete log. Dire que prime is polynomial (<https://en.wikipedia.org/wiki/AKS_primality_test>).
-> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
+> TBD NP/coNP par factorisation et discrete log. Dire que prime is polynomial (<https://en.wikipedia.org/wiki/AKS_primality_test>{.externe}).
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>{.externe}
 > TBD SAT dire que raisonnable puisque fct booléenne finie = SAT. Le côté dur est de montrer que ça reste vrai si l'entrée bouge.
 > TBD fonction calculable = binaire + boucles = pseudo-code.
 > TBD reléguer Turing à un modèle et tout faire avec le pseudo-code.
@@ -883,7 +883,7 @@ Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne pe
 C'est ce que propose Turing avec sa célèbre Machine : une base théorique minimale de ce qu'est l'informatique :
 
 {% aller %}
-[Machine de Turing](./machine-turing){.interne}
+[Machine de Turing](./machine-turing)
 {% endaller %}
 
 Nous allons agrandir dans cette partie les différents modèles de création de programmes qui produisent des résultats équivalents. On sait déjà que les programmes crées en pseudo-codes sont équivalents à ceux crées en pseudo-assembleur, eux même équivalents à ceux que l'on peut exécuter sur un processeur suivant l'architecture de Von Neumann (tous les processeurs la suive). C'est aussi le cas pour les machines de Turing :
@@ -896,9 +896,9 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
 {% details "preuve", "open" %}
 
 - **On peut simuler une Machines de Turing avec du pseudo-assembleur** :
-  Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle en pseudo-code. Le site <https://turingmachine.io/> en est un exemple.
+  Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle en pseudo-code. Le site <https://turingmachine.io/>{.externe} en est un exemple.
 - **On peut simuler du pseudo-assembleur avec une Machines de Turing** :
-  1. les [compositions de machines](./machine-turing/composition){.interne} montrent que l'on peut avoir les mêmes structures de contrôle qu'en pseudo-assembleur (exécution séquentielle et saut conditionnels)
+  1. les [compositions de machines](./machine-turing/composition) montrent que l'on peut avoir les mêmes structures de contrôle qu'en pseudo-assembleur (exécution séquentielle et saut conditionnels)
   2. il est facile de faire une fonction de transition qui simule l'opération `NAND`{.language-}
   3. on peut avoir autant de ruban qu'on le veut et écrire où on veut en mémoire : on peut utiliser le modèle de von Neumann avec une machine de Turing
 
@@ -929,8 +929,8 @@ Le calcul est donc quelque chose d’éminemment local : une tête de lecture et
 
 {% lien %}
 
-- <https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>
-- <https://www.youtube.com/watch?v=jUnbX27jbvY>
+- <https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>{.externe}
+- <https://www.youtube.com/watch?v=jUnbX27jbvY>{.externe}
 
 {% endlien %}
 
@@ -940,7 +940,7 @@ Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'i
 
 #### Turing complet
 
-Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
+Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet){.externe} c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
 
 {% note2 "**Définition**" %}
 Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'une machine de Turing peut faire.
@@ -966,35 +966,35 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 
 ## <span id="partie-6"></span>Partie VI : aléatoire
 
-> TBD hasard et algorithmes randomisés <https://www.youtube.com/watch?v=NPUc93dnUh4&list=PL0YFU3y0Z_gap24B-pBob7qk4rsEclGU2>
-> TBD universal hashing et compagnie : <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
+> TBD hasard et algorithmes randomisés <https://www.youtube.com/watch?v=NPUc93dnUh4&list=PL0YFU3y0Z_gap24B-pBob7qk4rsEclGU2>{.externe}
+> TBD universal hashing et compagnie : <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->{.externe}
 > 
-> TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>
+> TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>{.externe}
 <!-- 
 {% aller %}
-[Mélanger un tableau](./projet-mélange){.interne}
+[Mélanger un tableau](./projet-mélange)
 {% endaller %} -->
 
-> TBD vérification probabiliste de la multiplication de 2 matrices : <https://fr.wikipedia.org/wiki/Algorithme_de_Freivalds>
+> TBD vérification probabiliste de la multiplication de 2 matrices : <https://fr.wikipedia.org/wiki/Algorithme_de_Freivalds>{.externe}
 > 
-> TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>
+> TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>{.externe}
 > TBD playlist sur algorithme randomisé :
-> - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
-> - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>
-> - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>
-> TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>
-> TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
+> - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>{.externe}
+> - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>{.externe}
+> - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>{.externe}
+> TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>{.externe}
+> TBD nombre aléatoires : <https://xkcd.com/221/>{.externe} et <https://imgur.com/random-number-generator-bwFWMqQ>{.externe}
 
-> TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf> <https://eranraviv.com/randomized-matrix-multiplication/> <https://en.wikipedia.org/wiki/Freivalds%27_algorithm> <https://www.youtube.com/watch?v=z0ykhV15wLw>
+> TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf>{.externe} <https://eranraviv.com/randomized-matrix-multiplication/>{.externe} <https://en.wikipedia.org/wiki/Freivalds%27_algorithm>{.externe} <https://www.youtube.com/watch?v=z0ykhV15wLw>{.externe}
 
-> TBD <https://www.youtube.com/watch?v=LUCvSsx6-EU> ?
+> TBD <https://www.youtube.com/watch?v=LUCvSsx6-EU>{.externe} ?
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
-> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
-> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
-> TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>
-> TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
+> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>{.externe}
+> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>{.externe}
+> TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>{.externe}
+> TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->{.externe}
 > space-time tradeoff : 
->   - <https://cusack.hope.edu/Algorithms/Content/Techniques/Space-Time%20Tradeoff.html?path=Problems/Foundational/Sorting>
+>   - <https://cusack.hope.edu/Algorithms/Content/Techniques/Space-Time%20Tradeoff.html?path=Problems/Foundational/Sorting>{.externe}
 >   - sac à dos avec prog dynamique
 >   - bucket sort
->   - <https://www.cs.helsinki.fi/u/mkhkoivi/publications/soda-2010.pdf>
+>   - <https://www.cs.helsinki.fi/u/mkhkoivi/publications/soda-2010.pdf>{.externe}

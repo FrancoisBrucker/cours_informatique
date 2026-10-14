@@ -101,7 +101,7 @@ def test_comparaisons():
 {% enddetails %}
 
 
-Le but des projets carters est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
+Le but des projets carters est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)){.externe} :
 
 {% note "**But**" %}
 
@@ -136,8 +136,8 @@ Implémentez la classe `Deck`{.language-} dans le fichier `deck.py`{.fichier}  e
 {% info %}
 Puisque l'attribut `cartes`{.language-} de la classe `Deck`{.language-} est une liste python, vous pourrez avantageusement utiliser :
 
-- les méthodes `list.append`{.language-} et `list.pop`{.language-} des list pur respectivement ajouter et supprimer une carte au deck (voir [la partie 5.1 du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists))
-- [la fonction `shuffle`{.language-} du module `random`{.language-}](https://docs.python.org/3/library/random.html#random.shuffle) pour mélanger les cartes
+- les méthodes `list.append`{.language-} et `list.pop`{.language-} des list pur respectivement ajouter et supprimer une carte au deck (voir [la partie 5.1 du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists){.externe})
+- [la fonction `shuffle`{.language-} du module `random`{.language-}](https://docs.python.org/3/library/random.html#random.shuffle){.externe} pour mélanger les cartes
 
 {% endinfo %}
 

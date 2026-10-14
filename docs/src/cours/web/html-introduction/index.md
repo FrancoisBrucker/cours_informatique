@@ -24,12 +24,12 @@ On ne traitera pas tous les détails. Il existe pleins de tutos pour apprendre l
 
 {% lien "**Tutoriels généraux sur html/css** :" %}
 
-* <https://internetingishard.netlify.app/>
-* <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
-* <https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css>
-* <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
-* le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
-* <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
+* <https://internetingishard.netlify.app/>{.externe}
+* <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>{.externe}
+* <https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css>{.externe}
+* <https://fr.learnlayout.com/>{.externe} petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
+* le <http://www.thenetninja.co.uk/>{.externe} a plein de tutos sur le web.
+* <http://www.w3schools.com/>{.externe} est le site de référence sur tout ce qui concerne html/css.
 
 {% endlien %}
 {% attention %}
@@ -78,11 +78,11 @@ Vous venez d'écrire votre 1er fichier html constitué :
 
 ## Balises html
 
-Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics), par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html){.interne}. Il en existe de nombreuses.
+Le html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics){.externe}, par exemple les balises `<head></head>`{.language-} ou encore `<body></body>`{.language-} de l'[exemple](./#premier-html). Il en existe de nombreuses.
 
 {% lien "**Balises html**" %}
 
-[La liste des balises html](https://www.w3schools.com/TAGS/default.asp)
+[La liste des balises html](https://www.w3schools.com/TAGS/default.asp){.externe}
 
 {% endlien %}
 
@@ -125,11 +125,11 @@ Il existe une autre forme de balise sans corps, la balise auto fermante :
 Notez le `/>` à la fin. Cette notation, bien que correcte, est non recommandée.
 
 {% endinfo %}
-Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html){.interne}. Son intérêt réside dans ses attributs.
+Cette balise n'a pas de contenu, comme la balise de nom `meta` de l'[exemple](./#premier-html). Son intérêt réside dans ses attributs.
 
 ### Attributs d'une balise
 
-En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html){.interne}, la balise de nom `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp) qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
+En plus de sa définition, une balise peut-être déclarée avec des attributs de la forme : `clé="valeur"`. Dans l'[exemple](./#premier-html), la balise de nom `meta` possède l'[attribut `charset="utf-8"`](https://www.w3schools.com/tags/att_meta_charset.asp){.externe} qui signifie que le texte est écrit en [utf-8](https://fr.wikipedia.org/wiki/UTF-8){.externe} (ce qui devrait être le cas si vous utilisez un éditeur de texte récent).
 
 {% attention %}
 L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas utiliser autre chose.
@@ -139,7 +139,7 @@ L'encodage utf-8 est l'encodage par défaut de tout texte, vous ne devriez pas u
 
 Un fichier html est toujours composé de deux objets :
 
-* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html){.interne} c'est `<!doctype html>`{.language-} : on écrit du html.
+* le doctype qui définit les balises que l'on peut utiliser. Dans l'[exemple](./#premier-html) c'est `<!doctype html>`{.language-} : on écrit du html.
 * la balise `<html></html>`{.language-} qui est la *racine* de notre document.
 
 Les balises d'un fichier html s'organisent en **arbre** avec :
@@ -148,7 +148,7 @@ Les balises d'un fichier html s'organisent en **arbre** avec :
 2. les balises composant le contenu de html comme ses enfants
 3. on progresse dans l'arbre récursivement.
 
-On appelle cette organisation [arbre DOM](https://fr.wikipedia.org/wiki/Document_Object_Model). Dans l'[exemple](./#premier-html){.interne} cet arbre correspond à :
+On appelle cette organisation [arbre DOM](https://fr.wikipedia.org/wiki/Document_Object_Model){.externe}. Dans l'[exemple](./#premier-html) cet arbre correspond à :
 
 ```
 html
@@ -168,7 +168,7 @@ On peut avoir plusieurs fois la même balise comme enfant. Il n'est pas rare d'a
 
 Un fichier html minimal est constitué :
 
-1. d'un [doctype](https://www.w3schools.com/tags/tag_doctype.asp) qui détermine les noms des balises utilisables
+1. d'un [doctype](https://www.w3schools.com/tags/tag_doctype.asp){.externe} qui détermine les noms des balises utilisables
 2. d'une balise balise `<html></html>`{.language-} ayant exactement deux enfants :
    1. une balise `<head></head>`{.language-}
    2. une balise `<body></body>`{.language-}
@@ -202,11 +202,11 @@ Il peut être compliqué d'écrire du html correct, c'est à dire :
 * sans erreur
 * respectant les préconisations, c'est à dire sans warning
 
-Vérifions que notre [exemple](./#premier-html){.interne} a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être. Pour cela on utilise le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options).
+Vérifions que notre [exemple](./#premier-html) a bien écrit du html correct. Il est en effet très (trop) facile d'écrire quelque chose qui *ressemble* à du html sans en être. Pour cela on utilise le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options){.externe}.
 
 {% faire %}
 
-Allez sur le site du [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options) et choisissez *"Validate by direct input"* et copiez/collez le code html. Puis cliquez sur "check".
+Allez sur le site du [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options){.externe} et choisissez *"Validate by direct input"* et copiez/collez le code html. Puis cliquez sur "check".
 {% endfaire %}
 
 Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit votre texte. Faisons le :
@@ -233,7 +233,7 @@ Tout devrait être ok.
 {% info %}
 Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !{% endinfo %}
 
-Souvent, il existe des plugins pour les éditeurs de texte qui valident automatiquement le html. C'est le cas par défaut avec [vscode](https://code.visualstudio.com/docs/languages/html) par exemple.
+Souvent, il existe des plugins pour les éditeurs de texte qui valident automatiquement le html. C'est le cas par défaut avec [vscode](https://code.visualstudio.com/docs/languages/html){.externe} par exemple.
 
 Le navigateur qui lit de l'à-peu-prêt-html ne peut pas l'interpréter directement, il est obligé de faire des suppositions sur ce que vous avez voulu dire.
 
@@ -277,20 +277,20 @@ Pour éviter cela, il faut **toujours** faire en sorte que votre html soit corre
 ## Balises classiques
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Web/HTML/Element>
+<https://developer.mozilla.org/fr/docs/Web/HTML/Element>{.externe}
 {% endlien %}
 
 Il existe de nombreuses balises html, qui structurent le texte en blocs. Citons en quelques unes parmi les plus couramment utilisées :
 
-* [titres](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements) : balises `<h1>[titre]</h1>`{.language-} à `<h6>[titre]</h6>`{.language-}
-* [paragraphes](https://developer.mozilla.org/fr/docs/Web/HTML/Element/p) : balise `<p>[texte]</p>`{.language-}
-* [liens](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a) : balise `<a href="[url du lien]">[texte du lien]</a>`{.language-}
-* [listes non ordonnées](https://developer.mozilla.org/fr/docs/Web/HTML/Element/ul) : balise `<ul><\ul>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
-* [listes ordonnées](https://developer.m{.language-}ozilla.org/fr/docs/Web/HTML/Element/ol) : balise `<ol><\ol>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
-* [image](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Img) : balise auto-fermante `<img src="[url de l'image]"/>`{.language-}
-* [tableaux](https://developer.mozilla.org/fr/docs/Web/HTML/Element/table) : plusieurs balises régissent la [création de tableaux en html](https://fr.w3docs.com/apprendre-html/les-tableaux-html.html).
+* [titres](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements){.externe} : balises `<h1>[titre]</h1>`{.language-} à `<h6>[titre]</h6>`{.language-}
+* [paragraphes](https://developer.mozilla.org/fr/docs/Web/HTML/Element/p){.externe} : balise `<p>[texte]</p>`{.language-}
+* [liens](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a){.externe} : balise `<a href="[url du lien]">[texte du lien]</a>`{.language-}
+* [listes non ordonnées](https://developer.mozilla.org/fr/docs/Web/HTML/Element/ul){.externe} : balise `<ul><\ul>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
+* [listes ordonnées](https://developer.m{.language-}ozilla.org/fr/docs/Web/HTML/Element/ol){.externe} : balise `<ol><\ol>`{.language-} pour déclarer la liste et chaque item est une balise `<li></li>`{.language-}
+* [image](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Img){.externe} : balise auto-fermante `<img src="[url de l'image]"/>`{.language-}
+* [tableaux](https://developer.mozilla.org/fr/docs/Web/HTML/Element/table){.externe} : plusieurs balises régissent la [création de tableaux en html](https://fr.w3docs.com/apprendre-html/les-tableaux-html.html){.externe}.
 
 D'autres balises permettent de mettre en lumière une partie d'un texte. Citons en deux fondamentaux :
 
-* [emphase](https://developer.mozilla.org/fr/docs/Web/HTML/Element/em) : balise `<em>[texte]</em>`{.language-} permet de mettre en valeur un élément du texte (italique par défaut)
-* [accentuation](https://developer.mozilla.org/fr/docs/Web/HTML/Element/strong) : balise `<strong>[texte]</strong>`{.language-} : permet d'accentuer un élément du texte
+* [emphase](https://developer.mozilla.org/fr/docs/Web/HTML/Element/em){.externe} : balise `<em>[texte]</em>`{.language-} permet de mettre en valeur un élément du texte (italique par défaut)
+* [accentuation](https://developer.mozilla.org/fr/docs/Web/HTML/Element/strong){.externe} : balise `<strong>[texte]</strong>`{.language-} : permet d'accentuer un élément du texte

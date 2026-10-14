@@ -30,7 +30,7 @@ Il est très facile de créer un serveur web en python. Il suffit de se placer d
 python -m http.server 3456
 ```
 
-Un serveur est crée à l'adresse <http://localhost:3456/> et il permet d'accéder aux fichiers via le protocole http.
+Un serveur est crée à l'adresse <http://localhost:3456/>{.externe} et il permet d'accéder aux fichiers via le protocole http.
 
 {% info %}
 
@@ -43,9 +43,9 @@ Il y a plusieurs intérêt à utiliser un serveur de site statique :
 
 1. voir comment ce sera sur le serveur de page perso
 2. s'assurer que tous vos fichiers sont accédés de façon relative
-3. éviter les problèmes [CORS](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing) lorsque l'on charge des fichiers depuis le site (on le verra lorsque l'on traitera de la gestion des donnée).
+3. éviter les problèmes [CORS](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing){.externe} lorsque l'on charge des fichiers depuis le site (on le verra lorsque l'on traitera de la gestion des donnée).
 
-Cette façon de procéder est utilisée massivement par les bibliothèques de création de site comme <https://react.dev/> ou <https://vuejs.org/>.
+Cette façon de procéder est utilisée massivement par les bibliothèques de création de site comme <https://react.dev/>{.externe} ou <https://vuejs.org/>{.externe}.
 
 {% faire %}
 Utilisez le site de la partie précédente (archive [mon_super_site.zip](./mon_super_site.zip)) pour créer un serveur de site statique sur le port 8080 de votre machine pour le servir.

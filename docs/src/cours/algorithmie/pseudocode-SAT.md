@@ -25,7 +25,7 @@ Le but de cette partie est de montrer que l'on peut "_compiler_" tout algorithme
 > TBD dire que l'on a un algo écrit en pseudo code avec fct booléenne que l'on peut écrire sous notre forme.
 > Donner la complexité nouvelle nouvelle par rapport à l'ancienne en temps : même O et en mêmoire du carré.
 
-On utilise une version épurée (mais équivalente) au [pseudo-code utilisant des opérations de fonctions booléennes](../fonctions-booléennes){.interne}.
+On utilise une version épurée (mais équivalente) au [pseudo-code utilisant des opérations de fonctions booléennes](../fonctions-booléennes).
 
 Soit $A$ un algorithme (il s'arrête pour toute entrée) écrit en pseudo-code. On peut supposer sans perte de généralité que :
 
@@ -312,7 +312,7 @@ Un pseudo-code utilisant une fonction booléenne peut s'écrire de deux façons 
 - `b ← f(x)`{.language} avec $x$ une variable de type `[bit]`{.language-} et $b$ de type `bit`{.language-}
 
 
-En utilisant le fait que [toute fonction booléenne peut s'écrire sous une forme normale conjonctive](../fonctions-booléennes/#){.interne}, on peut associer à toute opération `y ← f(x)`{.language} telle que `f(x:[bit:n]) → bit`{.language-} une formule normale conjonctive `F(x)`{.language-} telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.
+En utilisant le fait que [toute fonction booléenne peut s'écrire sous une forme normale conjonctive](../fonctions-booléennes/#), on peut associer à toute opération `y ← f(x)`{.language} telle que `f(x:[bit:n]) → bit`{.language-} une formule normale conjonctive `F(x)`{.language-} telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.
 
 > TBD montrer avec `b ← NAND(b', b'')`{.language-} où $b$, $b'$ et $b''$ sont des variables de type `bit`{.language-}
 >  et dire que ça suffit puisque tout fct booléenne est un gros `NAND`.
@@ -378,7 +378,7 @@ Grace à Tsteitin on peut l'écrire sous la forme CNF et donc :
 >
 > TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.
 > 
-> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>
+> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>{.externe}
 >
 >
 

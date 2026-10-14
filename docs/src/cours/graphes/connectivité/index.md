@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Utilisation des flots pour démontrer [les résultats de Menger](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Menger) sur la $k$-connectivité d'un graphe. Le but de ce projet est de répondre à question suivante :
+Utilisation des flots pour démontrer [les résultats de Menger](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Menger){.externe} sur la $k$-connectivité d'un graphe. Le but de ce projet est de répondre à question suivante :
 
 {% note "**Question**" %}
 Soient deux sommets $s$ et $p$ d'un graphe (orienté) $G = (V, E)$, combien de chemins deux à deux disjoints relient $s$ et $p$ ?
@@ -130,7 +130,7 @@ On considère le graphe ci-après :
 Quel est son arc connectivité ?
 {% endexercice %}
 {% details "solution" %}
-Ce graphe s'appelle le [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen)) graphe est 3 et 2 pour le second (il suffit de supprimer les arêtes rouges)
+Ce graphe s'appelle le [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe}) graphe est 3 et 2 pour le second (il suffit de supprimer les arêtes rouges)
 {% enddetails %}
 
 Et lui ?

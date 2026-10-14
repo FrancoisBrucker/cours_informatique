@@ -13,7 +13,7 @@ eleventyComputed:
 
 ---
 
-Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
+Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ){.externe} :
 
 > Ça, c'est mon ordi. Il y en a beaucoup comme ça, mais lui, c'est le mien. Mon ordi, c'est mon meilleur ami.
 
@@ -24,7 +24,7 @@ Le but de cette séance est de vous donner les connaissances nécessaires pour a
 Ceux ayant un portable AMU doivent installer un nouveau système. Rapprochez vous de vos professeur pour qu'on pusse vous le faire.
 
 {% lien %}
-[Distribution Zorin](https://zorin.com/)
+[Distribution Zorin](https://zorin.com/){.externe}
 {% endlien %}
 
 <!-- TBD
@@ -39,7 +39,7 @@ Ceux ayant un portable AMU doivent installer un nouveau système. Rapprochez vou
 
 ## <span id="eduroam"></span>Utiliser le réseau
 
-[Le réseau Éduroam](https://www.eduroam.fr/) est le réseau des universités européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
+[Le réseau Éduroam](https://www.eduroam.fr/){.externe} est le réseau des universités européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
 
 {% faire %}
 Connectez vous au  réseau WIFI éduroam : 
@@ -49,7 +49,7 @@ Connectez vous au  réseau WIFI éduroam :
 
 {% endfaire %}
 {% info %}
-Sous Linux suivez les instructions de <https://cat.eduroam.org/>
+Sous Linux suivez les instructions de <https://cat.eduroam.org/>{.externe}
 {% endinfo %}
 
 ## Connaissances minimales du système d'exploitation
@@ -57,9 +57,9 @@ Sous Linux suivez les instructions de <https://cat.eduroam.org/>
 Les bases nécessaire pour pouvoir appréhender le fonctionnement d'un ordinateur et pouvoir l'utiliser au quotidien :
 
 {% aller %}
-- [Bases d'un système d'exploitation](/cours/système/ordinateur-programmes-OS/){.interne}
-- [le terminal](/cours/système/interagir-avec-système/terminal/bases/){.interne}.
-- [gestionnaire de paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/){.interne}
+- [Bases d'un système d'exploitation](/cours/système/ordinateur-programmes-OS/)
+- [le terminal](/cours/système/interagir-avec-système/terminal/bases/).
+- [gestionnaire de paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/)
 {% endaller %}
 
 
@@ -70,7 +70,7 @@ On va lister ici des logiciels qui vous seront utiles en informatique, mais pas 
 ### spyder
 
 {% lien %}
-<https://www.spyder-ide.org/>
+<https://www.spyder-ide.org/>{.externe}
 {% endlien %}
 
 Le logiciel que vous utiliserez pour faire du python en S1.
@@ -81,7 +81,7 @@ Le logiciel que vous utiliserez pour faire du python en S1.
 Pour vérifier que ça fonctionne, lisez la partie du cours qui y est consacrée :
 
 {% aller %}
-[Éditeur Spyder](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/exécuter-code/#spyder){.interne}
+[Éditeur Spyder](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/exécuter-code/#spyder)
 {% endaller %}
 {% info %}
 Retrouvez sous windows et Linux comment suivre la visite guidée (pour l'instant il y a un TBD car je n'ai qu'un mac)
@@ -90,10 +90,10 @@ Retrouvez sous windows et Linux comment suivre la visite guidée (pour l'instant
 ### vscode
 
 {% lien %}
-<https://code.visualstudio.com/>
+<https://code.visualstudio.com/>{.externe}
 {% endlien %}
 {% info %}
-Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap) dans un terminal :
+Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap){.externe} dans un terminal :
 
 ```
 sudo snap install --classic code
@@ -103,13 +103,13 @@ sudo snap install --classic code
 
 
 {% aller %}
-[Prise en main de vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/){.interne}
+[Prise en main de vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/)
 {% endaller %}
 
 ### Interpréteur python
 
 {% aller %}
-[Installer un interpréteur Python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/interpréteur-installation/){.interne}
+[Installer un interpréteur Python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/interpréteur-installation/)
 {% endaller %}
 
 
@@ -127,8 +127,8 @@ Produire des documents scientifiques se fait difficilement avec Word, de part la
 Ne nécessite pas à proprement parler de logiciel, c'est une façon d'écrire du texte. 
 
 {% lien %}
-- [tutoriel markdown](https://grafikart.fr/tutoriels/markdown-377)
-- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+- [tutoriel markdown](https://grafikart.fr/tutoriels/markdown-377){.externe}
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){.externe}
 {% endlien %}
 
 #### Typst
@@ -137,9 +137,9 @@ L'outil actuel pour créer ses documents scientifiques.
 
 {% lien %}
 
-- [typst](https://typst.app/#start)
-- [installer typst chez vous](https://github.com/typst/typst)
-- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)
+- [typst](https://typst.app/#start){.externe}
+- [installer typst chez vous](https://github.com/typst/typst){.externe}
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist){.externe}
 {% endlien %}
 
 #### Latex
@@ -148,21 +148,21 @@ Le prédécesseur de typst.
 
 {% lien %}
 
-- [Page Wikipedia de $\LaTeX$](https://fr.wikipedia.org/wiki/LaTeX)
-- [Ressources sur Tex et Latex](https://www.tug.org/)
-- [latex en ligne](https://www.overleaf.com/)
-- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+- [Page Wikipedia de $\LaTeX$](https://fr.wikipedia.org/wiki/LaTeX){.externe}
+- [Ressources sur Tex et Latex](https://www.tug.org/){.externe}
+- [latex en ligne](https://www.overleaf.com/){.externe}
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop){.externe}
 
 {% endlien %}
 
-Latex est cependant un vieux programme, la gestion des packages à installer et les différentes étapes de *compilation* respirent les années 1980. Il vaut mieux installer le maximum de choses tout de suite histoire de ne pas avoir de paquets manquants. Ceci se fait en installant une [distribution](https://fr.wikipedia.org/wiki/Distribution#Informatique) Latex.
+Latex est cependant un vieux programme, la gestion des packages à installer et les différentes étapes de *compilation* respirent les années 1980. Il vaut mieux installer le maximum de choses tout de suite histoire de ne pas avoir de paquets manquants. Ceci se fait en installant une [distribution](https://fr.wikipedia.org/wiki/Distribution#Informatique){.externe} Latex.
 
 Installation de :
 
 {% details "sous Windows 11" %}
 Suivez la *easy install* de l'installation de la distribution TexLive :
 
-<https://www.tug.org/texlive/windows.html>
+<https://www.tug.org/texlive/windows.html>{.externe}
 
 {% enddetails %}
 
@@ -180,7 +180,7 @@ C'est long (plus de 5GB à télécharger)
 {% details "sous Macos" %}
 C'est la distribution MacTex qu'on installe. Deux possibilités pour le faire :
 
-- par téléchargement via le site : <https://www.tug.org/mactex/>
+- par téléchargement via le site : <https://www.tug.org/mactex/>{.externe}
 - via brew : `brew install --cask mactex`{.language-}
 
 {% enddetails %}
@@ -188,7 +188,7 @@ C'est la distribution MacTex qu'on installe. Deux possibilités pour le faire :
 Pour utiliser latex, rien de tel qu'un bon tuto :
 
 {% lien %}
-<https://www.tuteurs.ens.fr/logiciels/latex/>
+<https://www.tuteurs.ens.fr/logiciels/latex/>{.externe}
 {% endlien %}
 
 Il existe un plugin vscode :
@@ -202,19 +202,19 @@ Il existe un plugin vscode :
 Créer des graphiques scientifiques est une science, voir un art. Avoir de bons outils pour le faire aide grandement.
 
 {% lien %}
-<http://www.gnuplot.info/>
+<http://www.gnuplot.info/>{.externe}
 {% endlien %}
 
 Installation :
 
 {% details "sous Windows 11" %}
 
-1. allez dans le dossier contenant la dernière version de gnuplot sur [sourceforge](https://sourceforge.net/projects/gnuplot/files/gnuplot/). Chez moi c'est 5.4.8
+1. allez dans le dossier contenant la dernière version de gnuplot sur [sourceforge](https://sourceforge.net/projects/gnuplot/files/gnuplot/){.externe}. Chez moi c'est 5.4.8
 2. téléchargez le fichier `.exe`. Chez moi c'est `gp548-win64-mingw.exe`{.fichier}
 3. une fois téléchargé, vous pouvez cliquer dessus pour l'installer
 
 {% lien %}
-[un tuto](https://www.youtube.com/watch?v=GaXXpQXB4pg) d'utilisation de Latex.
+[un tuto](https://www.youtube.com/watch?v=GaXXpQXB4pg){.externe} d'utilisation de Latex.
 {% endlien %}
 {% enddetails %}
 
@@ -242,19 +242,19 @@ Une fois le la logiciel installé, vous pourrez tester s'il fonctionne en :
 3. vous pouvez quitter le programme en tapant la commande `quit`{.language-}
 
 {% lien %}
-[Un petit tutorial](https://www.cs.hmc.edu/~vrable/gnuplot/using-gnuplot.html) d'utilisation de gnuplot.
+[Un petit tutorial](https://www.cs.hmc.edu/~vrable/gnuplot/using-gnuplot.html){.externe} d'utilisation de gnuplot.
 {% endlien %}
 
 ### Mathématiques
 
 {% lien %}
-<https://www.geogebra.org/>
+<https://www.geogebra.org/>{.externe}
 {% endlien %}
 
-Vous pouvez utiliser les application directement sur le site en lançant l'application voulue depuis [le site](https://www.geogebra.org/download). Vous pouvez aussi l'installer :
+Vous pouvez utiliser les application directement sur le site en lançant l'application voulue depuis [le site](https://www.geogebra.org/download){.externe}. Vous pouvez aussi l'installer :
 
 {% details "sous Windows 11" %}
-Téléchargez l'application GeoAlgebra Classique 5 depuis [le site](https://www.geogebra.org/download).
+Téléchargez l'application GeoAlgebra Classique 5 depuis [le site](https://www.geogebra.org/download){.externe}.
 {% enddetails %}
 
 {% details "sous Linux/Ubuntu" %}
@@ -265,10 +265,10 @@ sudo apt install geogebra
 
 {% enddetails %}
 {% details "sous Macos" %}
-Téléchargez l'application GeoAlgebra Classique 5 depuis [leur site](https://www.geogebra.org/download)
+Téléchargez l'application GeoAlgebra Classique 5 depuis [leur site](https://www.geogebra.org/download){.externe}
 
 {% attention %}
-Comme Geogebra n'est pas une application signée, Macos ne vous laissera pas l'ouvrir automatiquement. Lors du premier lancement uniquement, vous devrez faire la procédure pour [Ouvrir une app Mac provenant d’un développeur non identifié](https://support.apple.com/fr-fr/guide/mac-help/mh40616/mac). Une fois cette manipulation effectuée, vous pourrez lancer l'application normalement.
+Comme Geogebra n'est pas une application signée, Macos ne vous laissera pas l'ouvrir automatiquement. Lors du premier lancement uniquement, vous devrez faire la procédure pour [Ouvrir une app Mac provenant d’un développeur non identifié](https://support.apple.com/fr-fr/guide/mac-help/mh40616/mac){.externe}. Une fois cette manipulation effectuée, vous pourrez lancer l'application normalement.
 {% endattention %}
 
 {% enddetails %}

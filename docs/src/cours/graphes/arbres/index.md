@@ -16,7 +16,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Définitions et premières propriétés](définitions){.interne}
+[Définitions et premières propriétés](définitions)
 
 {% endaller %}
 
@@ -24,7 +24,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Tracés d'arbre](tracés){.interne}
+[Tracés d'arbre](tracés)
 
 {% endaller %}
 
@@ -32,7 +32,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Arbres couvrants](arbres-couvrants){.interne}
+[Arbres couvrants](arbres-couvrants)
 
 {% endaller %}
 
@@ -40,19 +40,19 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Arbres de Cayley](cayley){.interne}
+[Arbres de Cayley](cayley)
 
 {% endaller %}
 
 ## Arbres plantés
 
 {% lien %}
-[Arbre pour l'algorithmique](https://chauvin.perso.math.cnrs.fr/book.pdf)
+[Arbre pour l'algorithmique](https://chauvin.perso.math.cnrs.fr/book.pdf){.externe}
 {% endlien %}
 
 {% aller %}
 
-[Arbres plantés](arbres-plantés){.interne}
+[Arbres plantés](arbres-plantés)
 
 {% endaller %}
 
@@ -60,7 +60,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Arbres planaires](arbres-planaires){.interne}
+[Arbres planaires](arbres-planaires)
 
 {% endaller %}
 
@@ -68,7 +68,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Arbres de Catalan](arbres-catalan){.interne}
+[Arbres de Catalan](arbres-catalan)
 
 {% endaller %}
 
@@ -76,7 +76,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 {% aller %}
 
-[Arbres de Galton-Watson](arbre-galton-watson){.interne}
+[Arbres de Galton-Watson](arbre-galton-watson)
 
 {% endaller %}
 
@@ -105,9 +105,9 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 >
 > isomorphisme Arbres planté :
 >
-> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
-> - <https://info.faidherbe.org/MPII/11.pdf>
+> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>{.externe}
+> - <https://info.faidherbe.org/MPII/11.pdf>{.externe}
 
 ### Arbres non plantés
 
-> TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf> on peut le faire de façon linéaire.
+> TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf>{.externe} on peut le faire de façon linéaire.

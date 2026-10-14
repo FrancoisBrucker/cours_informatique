@@ -11,7 +11,7 @@ eleventyComputed:
 
 ---
 
-Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/) pour ce projet. Commencez par l'installer :
+Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/){.externe} pour ce projet. Commencez par l'installer :
 
 ```
 python -m pip install pyglet
@@ -25,7 +25,7 @@ Une fois la bibliothèque installée, on peut créer notre projet :
 
 {% endfaire %}
 
-La [programmation événementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.
+La [programmation événementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle){.externe} est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.
 
 Le principe est le suivant :
 
@@ -34,18 +34,18 @@ Le principe est le suivant :
 
 Dans ce projet, les événements que nous aurons à manipuler seront les appuies sur les touches du clavier, le dessin de notre interface, la taille des fenêtres, etc, etc.
 
-Cette méthode de programmation est basée sur le patron de conception [observateur](https://refactoring.guru/fr/design-patterns/observer).
+Cette méthode de programmation est basée sur le patron de conception [observateur](https://refactoring.guru/fr/design-patterns/observer){.externe}.
 
-Nous allons utiliser [pyglet](http://pyglet.org/) qui est une bibliothèque permettant de créer des interfaces pour illustrer cela. Nous ne rentrerons pas dans tous les détails de son implémentation (utilisation d'[opengl](https://fr.wikipedia.org/wiki/OpenGL), la gestion du son, etc) mais nous utiliserons assez de ses fonctionnalités pour que vous puissiez aller plus loin de votre côté.
+Nous allons utiliser [pyglet](http://pyglet.org/){.externe} qui est une bibliothèque permettant de créer des interfaces pour illustrer cela. Nous ne rentrerons pas dans tous les détails de son implémentation (utilisation d'[opengl](https://fr.wikipedia.org/wiki/OpenGL){.externe}, la gestion du son, etc) mais nous utiliserons assez de ses fonctionnalités pour que vous puissiez aller plus loin de votre côté.
 
-La [documentation de pyglet](https://pyglet.readthedocs.io/en/latest/) est très bien faite et fourmille d'[exemples](https://github.com/pyglet/pyglet/tree/master/examples).
+La [documentation de pyglet](https://pyglet.readthedocs.io/en/latest/){.externe} est très bien faite et fourmille d'[exemples](https://github.com/pyglet/pyglet/tree/master/examples){.externe}.
 
 Nous allons placer les différents essais de pyglet dans un sous-dossier de notre projet. Créer un dossier `essais-pyglet`{.fichier}.
 
 ## Hello world
 
 {% lien %}
-Méthode [subclassing window](https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window)
+Méthode [subclassing window](https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window){.externe}
 {% endlien %}
 
 Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.
@@ -97,7 +97,7 @@ Notre classe `HelloWorldWindow`{.language-} commence par appeler le constructeur
 En pyglet, il est indispensable que ce soit la première ligne, car ce constructeur va gérer tout l'affichage de la fenêtre. Si vous ne faite pas cela, vous risquez d'avoir des erreurs de contexte opengl.
 {% endattention %}
 
-La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 [IPS](https://fr.wikipedia.org/wiki/Images_par_seconde) = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 [FPS](https://en.wikipedia.org/wiki/Frame_rate)). Son code stipule que pour dessiner la fenêtre :
+La méthode `on_draw`{.language-} sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 [IPS](https://fr.wikipedia.org/wiki/Images_par_seconde){.externe} = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 [FPS](https://en.wikipedia.org/wiki/Frame_rate){.externe}). Son code stipule que pour dessiner la fenêtre :
 
 1. on efface son contenu
 2. on dessine le label
@@ -127,7 +127,7 @@ Ajoutez au code de la méthode `HelloWorldWindow.on_draw()`{.language-} un `prin
 
 {% enddetails %}
 {% exercice %}
-En utilisant la fonction [`datetime.now()`{.language-}](https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now) du module [`datetime`{.language-}](https://docs.python.org/fr/3/library/datetime.html) :
+En utilisant la fonction [`datetime.now()`{.language-}](https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now){.externe} du module [`datetime`{.language-}](https://docs.python.org/fr/3/library/datetime.html){.externe} :
 
 ```python
 >>> from datetime import datetime
@@ -170,7 +170,7 @@ Lisez la documentation de la classe fenêtre de pyglet pour trouver comment cré
 
 {% endexercice %}
 {% lien %}
-[Classe fenêtre de pyglet](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window)
+[Classe fenêtre de pyglet](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window){.externe}
 {% endlien %}
 {% details "corrigé" %}
 C'est le paramètre `resizable`{.language-} qu'il faut positionner à `True`{.language-}.
@@ -242,7 +242,7 @@ Modifiez le code de la méthode `on_draw`{.language-} pour qu'il soit identique 
 ### Texte au milieu de la fenêtre
 
 {% lien %}
-[Labels](https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label)
+[Labels](https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label){.externe}
 {% endlien %}
 
 Un label est un objet non modifiable qui peut-être affiché (dans la méthode `on_draw`{.language-}).
@@ -295,7 +295,7 @@ class HelloWorldWindow(pyglet.window.Window):
 ## Gestion du clavier
 
 {% lien %}
-[Gestion du clavier sous pyglet](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html)
+[Gestion du clavier sous pyglet](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html){.externe}
 {% endlien %}
 
 On utilise deux événements pour gérer le clavier :
@@ -336,7 +336,7 @@ Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la 
 ### Flèches gauche et droite
 
 {% lien %}
-Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key).
+Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key){.externe}.
 {% endlien %}
 
 Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE`{.language-} correspond au nombre 32.
@@ -348,7 +348,7 @@ Vérifiez que lorsque vous appuyez sur la touche espace de votre clavier, c'est 
 Nous allons maintenant faire bouger d'un cran notre texte lorsque l'on appuie sur les touches "flèche gauche" et "flèche droite".
 
 {% exercice %}
-En utilisant le fait que les deux attributs `x`{.language-} et `y`{.language-} contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  `pyglet.window.key`{.language-} correspondant aux flèches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion)), le texte se déplace de 10 pixels vers la direction de la flèche.
+En utilisant le fait que les deux attributs `x`{.language-} et `y`{.language-} contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  `pyglet.window.key`{.language-} correspondant aux flèches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion){.externe}), le texte se déplace de 10 pixels vers la direction de la flèche.
 {% endexercice %}
 {% details "solution" %}
 
@@ -381,12 +381,12 @@ Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la tou
 
 ### Touches de modifications
 
-Les touches de modifications sont gérées par un [bit field](https://en.wikipedia.org/wiki/Bit_field) : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :
+Les touches de modifications sont gérées par un [bit field](https://en.wikipedia.org/wiki/Bit_field){.externe} : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :
 
 - de gérer plusieurs modificateurs avec un seul entier
 - de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.
 
-Les différents modificateurs [sont donnés](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers)
+Les différents modificateurs [sont donnés](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers){.externe}
  :
 
 ```python
@@ -405,7 +405,7 @@ Les différents modificateurs [sont donnés](https://pyglet.readthedocs.io/en/la
 Savoir si un modificateur particulier est appuyé se fait avec des conditions sur les bits comme `&`{.language-} ou `|`{.language-} par exemple.
 
 {% lien %}
-[opérateurs sur bits en python](https://wiki.python.org/moin/BitwiseOperators)
+[opérateurs sur bits en python](https://wiki.python.org/moin/BitwiseOperators){.externe}
 {% endlien %}
 
 {% faire %}
@@ -470,10 +470,10 @@ class HelloWorldWindow(pyglet.window.Window):
 ## Gestion du temps
 
 {% lien %}
-[Gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html)
+[Gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html){.externe}
 {% endlien %}
 
-[La gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html) se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :
+[La gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html){.externe} se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :
 
 ```python
 class HelloWorldWindow(pyglet.window.Window):
@@ -600,10 +600,10 @@ class HelloWorldWindow(pyglet.window.Window):
 ## Gestion de la souris
 
 {% lien %}
-[Gestion de la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html)
+[Gestion de la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html){.externe}
 {% endlien %}
 
-[Pour gérer la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html), comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements `on_mouse_press(x, y, button, modifiers)`{.language-} et `on_mouse_release(x, y, button, modifiers)`{.language-} :
+[Pour gérer la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html){.externe}, comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements `on_mouse_press(x, y, button, modifiers)`{.language-} et `on_mouse_release(x, y, button, modifiers)`{.language-} :
 
 ```python
 
@@ -676,7 +676,7 @@ class HelloWorldWindow(pyglet.window.Window):
 
 {% exercice %}
 
-En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)`{.language-} repérez quand la souris rentre et sort du label. N'hésitez pas à regarder [la documentation de l'événement](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion) pour comprendre la définition de chaque paramètre.
+En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)`{.language-} repérez quand la souris rentre et sort du label. N'hésitez pas à regarder [la documentation de l'événement](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion){.externe} pour comprendre la définition de chaque paramètre.
 
 {% endexercice %}
 {% details "solution" %}
@@ -708,7 +708,7 @@ class HelloWorldWindow(pyglet.window.Window):
 ## Dessiner des formes
 
 {% lien %}
-[Les formes](https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html)
+[Les formes](https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html){.externe}
 
 {% endlien %}
 
@@ -757,7 +757,7 @@ print("c'est fini !")
 Testez l'exemple ci-dessus et comprenez ce qu'il fait.
 {% endfaire %}
 
-Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) sous la forme de 3 entiers allant de 0 à 255 en base 10 :
+Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu){.externe} sous la forme de 3 entiers allant de 0 à 255 en base 10 :
 
 - le premier décrit la composante rouge
 - le second la composante verte
@@ -766,11 +766,11 @@ Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_
 On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre `#F58318`{.language-} correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu, les 3 nombres étant en codage hexadécimal. Ce qui en python donne avec un tuple de 3 coordonnées : `(0xF5, 0x83, 0x18)`{.language-}, ou `(245, 131, 24)`{.language-} en base 10 (un nombre écrit en hexadécimal en python commence par `0x`).
 
 {% info %}
-Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme [celle d'adobe](https://color.adobe.com/fr/create/color-wheel) par exemple.
+Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme [celle d'adobe](https://color.adobe.com/fr/create/color-wheel){.externe} par exemple.
 {% endinfo %}
 
 ## Code final
 
 {% aller %}
-[code pyglet du cours](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/principes/essais-pyglet)
+[code pyglet du cours](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/principes/essais-pyglet){.externe}
 {% endaller %}

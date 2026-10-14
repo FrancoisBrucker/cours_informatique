@@ -50,7 +50,7 @@ Il n'est pas bon d'avoir des fichiers de code trop gros, car :
 On a donc l'habitude de découper le code en unités fonctionnelles, compilées séparément en objet, puis assembler à la fin du processus de compilation. Ceci permet de ne compiler que le code ayant changé.
 
 {% aller %}
-[Compilation séparée](compilation-séparée){.interne}
+[Compilation séparée](compilation-séparée)
 {% endaller %}
 
 ## Gestion du build
@@ -58,5 +58,5 @@ On a donc l'habitude de découper le code en unités fonctionnelles, compilées 
 S'il est tout à fait possible de faire toute la compilation à la main lorsque l'on a 1 ou 2 fichiers, le process devient vite compliquer à gérer s'il on a plusieurs dizaine, voir plusieurs centaines de fichier à compiler. Il existe plusieurs utilitaire permettant d'automatiser le processus de compilation, nous allons montrer le plus simple : la commande `make` et son fichier de configuration `Makefile`{.fichier}.
 
 {% aller %}
-[Gestion du build avec `make` et `Makefile`{.fichier}](gestion-build){.interne}
+[Gestion du build avec `make` et `Makefile`{.fichier}](gestion-build)
 {% endaller %}

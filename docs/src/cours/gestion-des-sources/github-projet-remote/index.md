@@ -17,7 +17,7 @@ Nous allons créer un projet sur github puis le clone en local pour pouvoir y tr
 ### Création sur github
 
 {% faire %}
-En utilisant si nécessaire [un des projets précédent](../évolution-code/github-projet-création/){.interne}, créez un nouveau projet github que vous nommerez `animaux`. Faites en sorte que ce projet :
+En utilisant si nécessaire [un des projets précédent](../évolution-code/github-projet-création/), créez un nouveau projet github que vous nommerez `animaux`. Faites en sorte que ce projet :
 
 -  soit public
 -  contienne  un fichier readme
@@ -75,7 +75,7 @@ On commence toujours par ajouter un fichier `.gitignore`{.fichier} au projet.
 2. Ajoutez le au projet et commitez le tout
 {% endfaire %}
 {% lien %}
-[une liste de fichiers courant à ignorer](https://gist.github.com/octocat/9257657)
+[une liste de fichiers courant à ignorer](https://gist.github.com/octocat/9257657){.externe}
 {% endlien %}
 
 En faisant un `git status` vous devriez voir que vous êtes en avance de 1 commit sur l'origine :
@@ -226,7 +226,7 @@ nous   :    -> C
 Mais notre nouvelle branche n'est pas informative. Elle ne correspond à rien d'un point de vue sémantique. C'est juste une façon de rabouter les deux main ensemble. Pour ce genre de cas (c'est à dire 90% du temps) on préfère une autre solution : le **rebase**.
 
 {% note %}
-A moins que les branches soient liées au [workflow](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/), on privilégiera toujours le rebase au merge
+A moins que les branches soient liées au [workflow](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/){.externe}, on privilégiera toujours le rebase au merge
 {% endnote %}
 
 On va re-écrire notre histoire en fonction de l'origine, c'est à dire transformer ça :

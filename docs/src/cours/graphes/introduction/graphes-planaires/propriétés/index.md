@@ -55,7 +55,7 @@ La formule d'Euler montre que le nombre de faces ne dépend pas de son dessin ! 
 Une dernière propriété des faces qui montre que les graphes 3-connexes possèdent une unique représentation graphique. Commençons par une implication :
 
 {% exercice %}
-Montrer que [les cycles induits](../../chemins-cycles-connexite/#induit){.interne} et [non séparant](../../chemins-cycles-connexite/#sépararateur){.interne} d'un graphe sont des frontières de faces de ses représentations graphiques.
+Montrer que [les cycles induits](../../chemins-cycles-connexite/#induit) et [non séparant](../../chemins-cycles-connexite/#sépararateur) d'un graphe sont des frontières de faces de ses représentations graphiques.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -63,7 +63,7 @@ Si l'intérieur du cycle dans la représentation graphique contenait des sommets
 
 {% enddetails %}
 
-[La 3-connexité](../caractérisation/#définition-k-connexité){.interne} va impliquer la réciproque.
+[La 3-connexité](../caractérisation/#définition-k-connexité) va impliquer la réciproque.
 
 {% note  "**Proposition (Whitney, 1932)**" %}
 Si $G$ est un graphe planaire 3-connexe, l'ensemble de ses cycles induits $C$ non séparant est exactement l'ensemble des faces de ses représentations planaires.
@@ -131,11 +131,11 @@ Si tous les sommets avaient un degré strictement plus grand que 5 on aurait : $
 > TBD si toutes les faces sont des triangles alors.
 > TBD c'est facile à faire on triangule les faces des composantes 2-connexes. et ce sera tres utile ensuite. 
 
-> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
+> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>{.externe}
 
 Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !
 
-> TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
+> TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>{.externe}
 
 
 > TBD quasi-triangulé si toutes les faces sauf la face infinie est triangulée.
@@ -229,7 +229,7 @@ On utilise des graphe de degré minimal au moins 5 car cette technique a été d
 ## Nombre minimum de croisements de graphes non planaires
 
 {% lien %}
-<https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
+<https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>{.externe}
 {% endlien %}
 
 Enfin, une dernière propriété sur les graphes nom planaires.

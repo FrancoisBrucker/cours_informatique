@@ -19,7 +19,7 @@ En complément de :
 
 {% prerequis %}
 
-[Algorithmes de polynômes](../exercices-itératif-récursif/#polynômes){.interne}
+[Algorithmes de polynômes](../exercices-itératif-récursif/#polynômes)
 
 {% endprerequis %}
 
@@ -97,7 +97,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 ### Algorithme de Horner
 
 {% lien %}
-[Méthode de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner)
+[Méthode de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner){.externe}
 {% endlien %}
 
 ```pseudocode
@@ -203,14 +203,14 @@ Pour démontrer ce que fait recherche, il vous faudra également trouver et dém
 
 {% faire %}
 
-Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)). Quelle est sa complexité ?
+Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)){.externe}. Quelle est sa complexité ?
 
 {% endfaire %}
 
 
 ## <span id="triangle-de-pascal"></span>Triangle de Pascal
 
-Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal){.externe}, avec $1\leq k \leq n$ :
 
 <div>
 $$

@@ -14,13 +14,13 @@ eleventyComputed:
 
 
 {% aller %}
-[Fonctions récursives primitives](./récursive-primitive){.interne}
+[Fonctions récursives primitives](./récursive-primitive)
 {% endaller %}
 
 Nous avons vu que les fonctions primitives récursives étaient des fonctions calculable. Nous allons montrer ici qu'un modèle plus générale, les fonctions récursives, sont équivalentes au pseudo-code ! Ceci montre que l'algorithmie peut posséder de nombreuses formes, toutes équivalentes.
 
 {% aller %}
-[Fonctions récursives](./fonctions-récursives){.interne}
+[Fonctions récursives](./fonctions-récursives)
 {% endaller %}
 
 ## Ackermann le retour
@@ -99,7 +99,7 @@ Comme l'ensemble des fonctions récursives primitives est l'ensemble minimum des
 1. la propriété est vérifiée pour les fonctions primitives de base
 2. la propriété est conservée par composition et récursion
 
-Ce type de récurrence est nommée [récurrence structurelle](https://fr.wikipedia.org/wiki/Induction_structurelle)
+Ce type de récurrence est nommée [récurrence structurelle](https://fr.wikipedia.org/wiki/Induction_structurelle){.externe}
 
 La première partie de la preuve est claire puisque les fonctions zéros, projections et successeurs sont toutes plus petites que $\text{Ack}(0, \sum_{1\leq i \leq n}x_i) = \sum_{1\leq i \leq n}x_i + 1$
 
@@ -187,7 +187,7 @@ On voit que ce n'est pas une formulation récursive terminale à cause du troisi
 - on utilise la valeur de $A$ calculée en 3.1
 - on utilise la valeur que valait $m$ avant 3.1
 
-Il faut donc se rappeler de $m$ pour le calcul de 3.2 tout en utilisant la valeur de $A$ calculée précédemment. Pour ce genre de récursion, on peut utiliser une [TODO list](https://fr.wikipedia.org/wiki/To-do_list) qui nous permet de nous rappeler toutes les tâches à effectuer et des variables à sauvegarder :
+Il faut donc se rappeler de $m$ pour le calcul de 3.2 tout en utilisant la valeur de $A$ calculée précédemment. Pour ce genre de récursion, on peut utiliser une [TODO list](https://fr.wikipedia.org/wiki/To-do_list){.externe} qui nous permet de nous rappeler toutes les tâches à effectuer et des variables à sauvegarder :
 
 1. on commence avec une TODO liste vide
 2. positionner les variables $m$ et $n$ à leurs valeurs et $A$ à 0
@@ -256,13 +256,13 @@ def Ack(m, n):
 
 > 
 > truc à faire = empile
-> <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks>
+> <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks>{.externe}
 > 1. curryfication puis decurryfication
 > A(m, n) = A(0, n')
 > A'(s, n) = A'(s[:-1], A(s[-1], n))
 > A'([m], n) = A(m, n) par récurrence sur m+n = k
 >
-> TBD faire la preuve que c'est ok (voir <https://stackoverflow.com/a/54356919>)
+> TBD faire la preuve que c'est ok (voir <https://stackoverflow.com/a/54356919>{.externe})
 
 {% info %}
 Notez que tout algorithme récursif peut s'écrire de façon itérative avec une TODO-list (une pile).

@@ -10,10 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va continuer le refactoring des différents [exercices de code](../../../concepts/projet-codes/){.interne} entamé dans [la partie précédente](../projet-création-modules){.interne} en leur ajoutant des tests :
+On va continuer le refactoring des différents [exercices de code](../../../concepts/projet-codes/) entamé dans [la partie précédente](../projet-création-modules) en leur ajoutant des tests :
 
 {% prerequis "**Faites ce prérequis avant de passer aux exercices**" %}
-On reprends [les projets de la création de modules](../projet-création-modules){.interne}.
+On reprends [les projets de la création de modules](../projet-création-modules).
 
 {% endprerequis %}
 
@@ -33,7 +33,7 @@ Pour ma part, j'aime faire 3 types de tests pour mes fonctions :
 
 ## <span id="syracuse"></span>Syracuse
 
-On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#syracuse){.interne}. Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
+On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#syracuse). Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
 
 S'il s'avère que l'on trouve a posteriori un bug pas de problème on rajoute un test et on le corrige. Comme le test reste : le bug ne pourra jamais revenir après une modification du code.
 
@@ -87,7 +87,7 @@ Exécutez vos tests :
 - avec le terminal
 {% endfaire %}
 {% attention %}
-Rappelez vous qu'**il ne sert à rien** d'exécuter vos tests avec l'interpréteur, [il faut utiliser pytest](../tests-unitaires/#utilisation-pytest){.interne}.
+Rappelez vous qu'**il ne sert à rien** d'exécuter vos tests avec l'interpréteur, [il faut utiliser pytest](../tests-unitaires/#utilisation-pytest).
 {% endattention %}
 {% exercice %}
 Quels sont les tests qui vous permettraient d'avoir confiance dans le code de la fonction `suite`{.language-} ?
@@ -121,7 +121,7 @@ def test_suite_u_0_5():
 
 {% enddetails %}
 {% faire %}
-[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest) :
  
 
 - avec l'outils de vscode
@@ -130,7 +130,7 @@ def test_suite_u_0_5():
 
 ## <span id="pendu"></span>Jeu du pendu
 
-Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#pendu){.interne}. 
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#pendu). 
 {% exercice %}
 Que testeriez vous pour vérifier que la fonction `est_une_lettre`{.language-} fonctionne ? Implémentez ces tests.
 {% endexercice %}
@@ -197,7 +197,7 @@ def test_caractères():
 
 {% enddetails %}
 {% faire %}
-[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest) :
  
 
 - avec l'outils de vscode
@@ -232,7 +232,7 @@ def test_découvre():
 
 {% enddetails %}
 {% faire %}
-[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest) :
  
 
 - avec l'outils de vscode
@@ -264,7 +264,7 @@ def test_caché():
 
 {% enddetails %}
 {% faire %}
-[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest) :
  
 
 - avec l'outils de vscode
@@ -273,7 +273,7 @@ def test_caché():
 
 ## <span id="compte-caractère"></span>Le compte est bon
 
-Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#compte-caractère){.interne}. Exécutez vos tests le plus souvent possible.
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#compte-caractère). Exécutez vos tests le plus souvent possible.
 
 
 Notez qu'on ne teste jamais les programmes `main.py`{.fichier} car ils nécessitent un utilisateur et on veut que nos tests soient automatisés.

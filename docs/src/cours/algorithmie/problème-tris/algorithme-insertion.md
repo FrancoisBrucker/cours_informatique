@@ -11,7 +11,7 @@ eleventyComputed:
 
 Le tri par insertion est un exemple d'algorithmes dont les complexité minimum et maximum sont très différentes. Il est alors nécessaire de calculer la complexité en moyenne pour avoir une idée de la complexité attendu pour un tableau aléatoire (_ie_ inconnu).
 
-Cet algorithme est une extension de [l'algorithme `est_trie`{.language-}](../reconnaissance/#algorithme-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
+Cet algorithme est une extension de [l'algorithme `est_trie`{.language-}](../reconnaissance/#algorithme-est-trie). Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
 - `T[:i]`{.language-} est trié
 - et `T[i] < T[i-1]`{.language-}
@@ -45,10 +45,10 @@ algorithme insertion(T: [entier])  → ∅:
 
 L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-}, **modifie** le tableau passé en paramètre.
 
-Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 [la sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition).
+Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 [la sentinelle](https://en.wikipedia.org/wiki/Sentinel_value){.externe} `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition).
 
 {% attention2 "**À retenir**" %}
-La technique [des sentinelles](https://en.wikipedia.org/wiki/Sentinel_value) est très pratique, cela vaut le coup de la connaître.
+La technique [des sentinelles](https://en.wikipedia.org/wiki/Sentinel_value){.externe} est très pratique, cela vaut le coup de la connaître.
 {% endattention2 %}
 
 ## <span id="fonctionnement-insertion"></span> Fonctionnement
@@ -128,7 +128,7 @@ Comme $K_i$ n'est pas constant pour chaque itération de la boucle principale `p
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable
-2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=\mathcal{O}(n)$ pour tout $i$ dans le cas le moins favorable
+2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance) nous indique qu'on peut considérer que $K_i = K=\mathcal{O}(n)$ pour tout $i$ dans le cas le moins favorable
 
 Ce qui donne une complexité de :
 
@@ -160,13 +160,13 @@ Si les données sont équiprobables, la boucle tant que remontera en moyenne de 
 {% enddetails %}
 {% details "preuve" %}
 
-On suppose que le tableau en entrée suive [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas. Comme le nombre d'itération de la remonté dépend de la valeur de $T[i]$ par rapport aux éléments de $T[:i]$, l'algorithme fait :
+On suppose que le tableau en entrée suive [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire) et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas. Comme le nombre d'itération de la remonté dépend de la valeur de $T[i]$ par rapport aux éléments de $T[:i]$, l'algorithme fait :
 
 - $i$ remontée si $T[i]$ est le plus petit élément de $T[:i+1]$
 - ...
 - $0$ remontée si $T[i]$ est le plus grand élément de $T[:i+1]$
 
-La probabilité de faire $k$ remontée est donc égale à la probabilité que $T[i]$ soit le $i-k + 1$ ème plus petit élément de $T[:i+1]$. [Cette probabilité est toujours la même](../reconnaissance/#proba-k-tableau-aléatoire){.interne} et vaut $\frac{1}{i+1}$ puisque tout se passe comme si on avait une permutation d'un tableau de taille $i+1$ ($T[:i+1]$). Ce qui donne le calcul :
+La probabilité de faire $k$ remontée est donc égale à la probabilité que $T[i]$ soit le $i-k + 1$ ème plus petit élément de $T[:i+1]$. [Cette probabilité est toujours la même](../reconnaissance/#proba-k-tableau-aléatoire) et vaut $\frac{1}{i+1}$ puisque tout se passe comme si on avait une permutation d'un tableau de taille $i+1$ ($T[:i+1]$). Ce qui donne le calcul :
 
 <div>
 $$
@@ -179,7 +179,7 @@ $$
 </div>
 {% enddetails %}
 
-On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croître de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que :
+On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croître de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance) pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que :
 
 {% note "**Proposition**" %}
 La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
@@ -196,11 +196,11 @@ Ce calcul de complexité est à ramené à la proposition suivante, qui va se r�
 <span id="modèle-aléatoire-50"></span>
 
 {% note "**Proposition**" %}
-Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne}, il y a en moyenne 50% d'éléments de $T[1:]$ qui sont strictement plus grand que $T[0]$.
+Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire), il y a en moyenne 50% d'éléments de $T[1:]$ qui sont strictement plus grand que $T[0]$.
 
 {% endnote %}
 {% details "preuve", "open" %}
-Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne}.
+Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire).
 
 Comme ${\Pr}(T[0] > T[i]) = \frac{1}{2}$ pour tout $i < T.\mbox{\small longueur}$, l'espérance de $\vert \\{T[i] > T[0] \mid i > 0\\}$ vaut $T.\mbox{\small longueur}/2$.
 

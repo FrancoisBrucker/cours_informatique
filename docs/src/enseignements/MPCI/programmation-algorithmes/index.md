@@ -14,9 +14,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682)).
+Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120){.externe}). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682){.externe}).
 
-Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' 🙂) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
+Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme){.externe} devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' 🙂) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
 
 L'informatique est une science incarnée : elle nécessite à la fois de solides connaissances théoriques pour concevoir des algorithmes efficaces et des capacités d'expérimentation et de rigueur pour les mettre en oeuvre et les faire fonctionner sur un ordinateur.
 
@@ -108,7 +108,7 @@ Notions abordées :
 - ce que ne peut pas faire un algorithme
 
 {% aller %}
-[bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
+[bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques)
 {% endaller %}
 
 
@@ -135,22 +135,22 @@ Notions abordées :
 - prouver un algorithme
 
 {% aller %}
-1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code){.interne}
-2. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
+1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code)
+2. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/)
 {% endaller %}
   
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
+[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/)
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
 
-- [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
-- [Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
+- [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif)
+- [Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion)
 
 {% endaller %}
 
@@ -175,8 +175,8 @@ prog sur l'année en 4 séquences alternée :
 Il est **INDISPENSABLE** que vous ayez en tête ce que vous avez fait en développement au S1. Pour cela, suivez et faite la partie suivante du cours qui explicite les notions qui vous seront utiles pour débuter ce semestre :
 
 {% prerequis %}
-1. [Utilisez le réseau EDUROAM](/enseignements/MPCI/outil-informatique/#eduroam){.interne}
-2. [Bases de programmation en python](/cours/coder-et-développer/bases-programmation/){.interne}
+1. [Utilisez le réseau EDUROAM](/enseignements/MPCI/outil-informatique/#eduroam)
+2. [Bases de programmation en python](/cours/coder-et-développer/bases-programmation/)
 {% endprerequis %}
 
 #### Mercredi : projet de développement
@@ -194,15 +194,15 @@ Notions abordées :
 - écrire du code python utilisable et maintenable
 
 {% aller %}
-1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne}
-2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
-3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
+1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/)
+2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/)
+3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/)
 {% endaller %}
 
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[Tutorial matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+[Tutorial matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/)
 {% endaller %}
 
 <!-- TBD
@@ -216,9 +216,9 @@ Faire numpy
 > 2h
 
 {% aller %}
-1. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-2. [Développer un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
-3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+1. [tester son code](/cours/coder-et-développer/tests-unitaires/)
+2. [Développer un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/)
+3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages)
 {% endaller %}
 
 <!-- TBD
@@ -231,14 +231,14 @@ Supprimer le linter du cours, mais insister sur black.
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+[Petits programmes](/cours/coder-et-développer/projet-codes/) et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/)
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
-1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
-2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/)
+2. [déboguer son code](/cours/coder-et-développer/débogueur/)
 {% endaller %}
 
 ### Semaine 3
@@ -264,7 +264,7 @@ Notions abordées :
 
 {% aller %}
 
-[Complexité d'un algorithme](/cours/algorithmie/complexité-calculs/){.interne}
+[Complexité d'un algorithme](/cours/algorithmie/complexité-calculs/)
 
 {% endaller %}
 
@@ -274,7 +274,7 @@ Notions abordées :
 
 {% aller %}
 
-[Projet : calculs de complexité d'un algorithme](/cours/algorithmie/projet-calcul-complexite/){.interne}
+[Projet : calculs de complexité d'un algorithme](/cours/algorithmie/projet-calcul-complexite/)
 
 {% endaller %}
 
@@ -308,7 +308,7 @@ Notions abordées :
 
 {% aller %}
 
-[Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+[Complexité d'un problème](/cours/algorithmie/complexité-problème/)
 
 {% endaller %}
 
@@ -316,7 +316,7 @@ Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
 
-[Projet : Complexité d'un problème](/cours/algorithmie/projet-complexité-problème/){.interne}
+[Projet : Complexité d'un problème](/cours/algorithmie/projet-complexité-problème/)
 
 {% endaller %}
 
@@ -324,7 +324,7 @@ Pour aller plus loin :
 
 {% aller %}
 
-[exercices sur le problème du doublon](/cours/algorithmie/exercices-problème-doublons/){.interne}
+[exercices sur le problème du doublon](/cours/algorithmie/exercices-problème-doublons/)
 
 {% endaller %}
 
@@ -342,26 +342,26 @@ Pour aller plus loin :
 
 {% aller %}
 
-[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
+[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/)
 
 {% endaller %}
 
 Si on a le temps, on commencera le DM :
 
 {% faire %}
-DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/){.interne}
+DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/)
 
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation)
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation){.externe}
 {% endinfo %}
 
 
 Pour aller plus loin :
 
 {% aller %}
-[Suite additives](/cours/algorithmie/projet-suite-additive/){.interne}
+[Suite additives](/cours/algorithmie/projet-suite-additive/)
 {% endaller %}
 
 ### Semaine 5
@@ -380,12 +380,12 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% aller %}
 
-1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
-2. [Problème du tri](/cours/algorithmie/problème-tris/){.interne}
+1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/)
+2. [Problème du tri](/cours/algorithmie/problème-tris/)
 
 {% endaller %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris)
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris){.externe}
 {% endinfo %}
 
 <!-- TBD 2026/2027
@@ -424,8 +424,8 @@ Pour accélérer vos calculs de complexité :
 
 {% aller %}
 
-1. [Calculer des sommes pour la complexité d'algorithmes itératifs](/cours/algorithmie/projet-sommes-classiques/){.interne}
-2. [Calculer des équations pour la complexité d'algorithmes récursifs](/cours/algorithmie/projet-équations-classiques/){.interne}
+1. [Calculer des sommes pour la complexité d'algorithmes itératifs](/cours/algorithmie/projet-sommes-classiques/)
+2. [Calculer des équations pour la complexité d'algorithmes récursifs](/cours/algorithmie/projet-équations-classiques/)
 
 {% endaller %}
 
@@ -433,11 +433,11 @@ Pour vous entraîner sur des exercices classiques :
 
 {% aller %}
 
-[Algorithmes classiques](/cours/algorithmie/projet-algorithmes-classiques/){.interne}
+[Algorithmes classiques](/cours/algorithmie/projet-algorithmes-classiques/)
 
 {% endaller %}
 
-Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des années précédentes dans [les annales](./#annales){.interne}. Comme toujours, faites les exercices avant de regarder les corrigés et qui sait vous allez peut-être même y prendre du plaisir, certains exercices étant diablement jolis.
+Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des années précédentes dans [les annales](./#annales). Comme toujours, faites les exercices avant de regarder les corrigés et qui sait vous allez peut-être même y prendre du plaisir, certains exercices étant diablement jolis.
 
 
 ### Semaine 7
@@ -447,7 +447,7 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 
 
 {% faire %}
-DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/et-algo/){.interne}
+DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/et-algo/)
 
 {% endfaire %}
 {% info %}
@@ -461,9 +461,9 @@ DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal al
 
 {% aller %}
 
-1. [Tout est objet en python](/cours/coder-et-développer/programmation-objet/introduction/){.interne}
-2. [Créer ses classes et leurs objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
-3. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
+1. [Tout est objet en python](/cours/coder-et-développer/programmation-objet/introduction/)
+2. [Créer ses classes et leurs objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/)
+3. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/)
 
 {% endaller %}
 
@@ -473,23 +473,23 @@ DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal al
 >
 
 {% info %}
-Je vous conseille très fortement de faire la séance de code en [pair-programming](https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me). **Lisez** le lien ci-après avant vendredi.
+Je vous conseille très fortement de faire la séance de code en [pair-programming](https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me){.externe}. **Lisez** le lien ci-après avant vendredi.
 {% endinfo %}
 {% lien %}
-[comment coder en pair-programming](https://martinfowler.com/articles/on-pair-programming.html)
+[comment coder en pair-programming](https://martinfowler.com/articles/on-pair-programming.html){.externe}
 {% endlien %}
 
 Au programme :
 
 {% aller %}
 
-- [Des dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
-- [Jeu de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
+- [Des dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/)
+- [Jeu de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/)
 
 {% endaller %}
 {% note %}
-- [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code)
-- [corrigé projet cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code)
+- [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code){.externe}
+- [corrigé projet cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code){.externe}
 
 {% endnote %}
 
@@ -516,8 +516,8 @@ Test de 15min **sur papier** en début de cours sur les classes et les objets.
 Composer des objets entre-eux :
 
 {% aller %}
-1. [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
-2. [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation){.interne}
+1. [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/)
+2. [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation)
 
 {% endaller %}
 
@@ -528,12 +528,12 @@ Composer des objets entre-eux :
 
 {% aller %}
 
-1. [Améliorer les dés](projet-objets-dés-amélioration){.interne}
-2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés){.interne}
+1. [Améliorer les dés](projet-objets-dés-amélioration)
+2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés)
 {% endaller %}
 {% note %}
-- [corrigé d'amélioration des dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-dés-amélioration/code)
-- [corrigé composition de dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-dés/code)
+- [corrigé d'amélioration des dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-dés-amélioration/code){.externe}
+- [corrigé composition de dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-dés/code){.externe}
 
 {% endnote %}
 
@@ -541,13 +541,13 @@ Composer des objets entre-eux :
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-amélioration/){.interne}
-2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes){.interne}
+1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-amélioration/)
+2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes)
 
 {% endaller %}
 {% note %}
-- [corrigé d'amélioration des cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-amélioration/code)
-- [corrigé agrégation de cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agrégation-cartes/code)
+- [corrigé d'amélioration des cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-amélioration/code){.externe}
+- [corrigé agrégation de cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agrégation-cartes/code){.externe}
 
 {% endnote %}
 
@@ -568,7 +568,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Héritage](/cours/coder-et-développer/programmation-objet/héritage){.interne}
+[Héritage](/cours/coder-et-développer/programmation-objet/héritage)
 
 {% endaller %}
 
@@ -579,11 +579,11 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Projet héritage](/cours/coder-et-développer/programmation-objet/projet-héritage){.interne}
+[Projet héritage](/cours/coder-et-développer/programmation-objet/projet-héritage)
 
 {% endaller %}
 {% note %}
-[corrigé projet héritage](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
+[corrigé projet héritage](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage){.externe}
 
 {% endnote %}
 
@@ -599,11 +599,11 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}
+[Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale)
 
 {% endaller %}
 {% note %}
-[corrigé projet bataille navale](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code)
+[corrigé projet bataille navale](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code){.externe}
 
 {% endnote %}
 
@@ -612,7 +612,7 @@ Pour aller plus loin (à faire si vous êtes intéressés par les métiers du d�
 
 {% aller %}
 
-[Programmation Par les tests (_Test Driven Development_)](/cours/coder-et-développer/projet-TDD/){.interne}
+[Programmation Par les tests (_Test Driven Development_)](/cours/coder-et-développer/projet-TDD/)
 
 {% endaller %}
 
@@ -638,7 +638,7 @@ La séance du mardi 7 avril pour le groupe B est reportée au vendredi 10 à 8h.
 {% endattention %}
 
 {% faire %}
-DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal programmation 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf){.interne}
+DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal programmation 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf)
 
 {% endfaire %}
 
@@ -649,7 +649,7 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 
 {% aller %}
 
-[Structures matricielles](/cours/algorithmie/structure-matricielle/){.interne}
+[Structures matricielles](/cours/algorithmie/structure-matricielle/)
 
 {% endaller %}
 
@@ -661,9 +661,9 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 
 {% aller %}
 
-1. [Structures de données](/cours/algorithmie/structure-données/){.interne}
-2. [pile et files](/cours/algorithmie/structure-pile-file/){.interne}
-3. [listes chaînées](/cours/algorithmie/structure-liste-chaînée/){.interne}
+1. [Structures de données](/cours/algorithmie/structure-données/)
+2. [pile et files](/cours/algorithmie/structure-pile-file/)
+3. [listes chaînées](/cours/algorithmie/structure-liste-chaînée/)
 
 {% endaller %}
 
@@ -682,8 +682,8 @@ La séance facultative de correction du DM prévue le 17 avril (à 13h30) est an
 
 {% aller %}
 
-1. [Structures de liste](/cours/algorithmie/structure-liste/){.interne}
-2. [Complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
+1. [Structures de liste](/cours/algorithmie/structure-liste/)
+2. [Complexité amortie](/cours/algorithmie/complexité-amortie/)
 
 {% endaller %}
 
@@ -691,8 +691,8 @@ La séance facultative de correction du DM prévue le 17 avril (à 13h30) est an
 
 {% aller %}
 
-1. [Structures de dictionnaire](/cours/algorithmie/structure-dictionnaire/){.interne}
-2. [Comparaisons des complexités des structures](/cours/algorithmie/structures-complexité){.interne}
+1. [Structures de dictionnaire](/cours/algorithmie/structure-dictionnaire/)
+2. [Comparaisons des complexités des structures](/cours/algorithmie/structures-complexité)
 
 {% endaller %}
 
@@ -700,7 +700,7 @@ Si on a le temps, sinon à faire chez vous :
 
 {% aller %}
 
-[Projet Liste et dictionnaires](/cours/algorithmie/projet-liste-dictionnaire/){.interne}
+[Projet Liste et dictionnaires](/cours/algorithmie/projet-liste-dictionnaire/)
 
 {% endaller %}
 
@@ -727,12 +727,12 @@ Emportez votre ordinateur
 
 {% aller %}
 
-1. [gestion des dépendances](/cours/coder-et-développer/gestion-dépendances/){.interne}
-2. [gestion du code source](/cours/gestion-des-sources/){.interne}
-   1. [Dépôt](/cours/gestion-des-sources/dépôt/besoins-dépôt/){.interne}
-   2. [Gestion de l'évolution de son code source](/cours/gestion-des-sources/évolution-code/besoins-gestion-sources/){.interne}
-   3. [Partager du code source](/cours/gestion-des-sources/partage/besoins-origin/){.interne}
-   4. [Bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne} et [outils](/cours/gestion-des-sources/outils){.interne}
+1. [gestion des dépendances](/cours/coder-et-développer/gestion-dépendances/)
+2. [gestion du code source](/cours/gestion-des-sources/)
+   1. [Dépôt](/cours/gestion-des-sources/dépôt/besoins-dépôt/)
+   2. [Gestion de l'évolution de son code source](/cours/gestion-des-sources/évolution-code/besoins-gestion-sources/)
+   3. [Partager du code source](/cours/gestion-des-sources/partage/besoins-origin/)
+   4. [Bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/) et [outils](/cours/gestion-des-sources/outils)
 
 {% endaller %}
 
@@ -741,7 +741,7 @@ Emportez votre ordinateur
 
 {% aller %}
 
-1. Environnement virtuel. Vous allez utiliser [le TP de programmation évènementiel](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne} dont le code est là : [`Arkanoid.zip`{.fichier}](./Arkanoid.zip){.fichier}.
+1. Environnement virtuel. Vous allez utiliser [le TP de programmation évènementiel](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/) dont le code est là : [`Arkanoid.zip`{.fichier}](./Arkanoid.zip){.fichier}.
    1. dézippez le projet et créez-vous un environnement virtuel dans le dossier projet
    2. ajoutez les modules `pyglet` et `pytest` à cet environnement en utilisant `pip` basé sur l'interpréteur de votre environnement virtuel
    3. vérifiez que les tests passent et que le code fonctionne avec votre environnement
@@ -749,10 +749,10 @@ Emportez votre ordinateur
       - `requirements.txt`{.fichier} qui explicite les dépendances
       - `readme.md`{.fichier} qui explicite comment exécuter le programme et le lien vers le cours.
 2. Dépôt :
-   1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/){.interne} 
+   1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/) 
    2. projet mettez le projet en ligne sur github (ne mettez pas l'environnement virtuel ni le dossier `__pycache__`{.fichier} !)
-1. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/){.interne}
-2. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/){.interne}
+1. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/)
+2. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/)
 
 
 {% endaller %}
@@ -761,7 +761,7 @@ Si on a le temps et puisque c'est la dernière séance, suivez le cours suivant 
 
 {% aller %}
 
-[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/)
 
 {% endaller %}
 
@@ -769,7 +769,7 @@ Pour aller plus loin :
 
 {% aller %}
 
-Lisez la fin du cours de la [gestion du code source](/cours/gestion-des-sources/){.interne} pour pouvoir utiliser git en ligne de commande et comprendre son fonctionnement interne.
+Lisez la fin du cours de la [gestion du code source](/cours/gestion-des-sources/) pour pouvoir utiliser git en ligne de commande et comprendre son fonctionnement interne.
 
 {% endaller %}
 
@@ -781,19 +781,19 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 - complexité en moyenne
 
 
-- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>
-- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>
-- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>
-- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>
-- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>
-- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>
+- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>{.externe}
+- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>{.externe}
+- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>{.externe}
+- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>{.externe}
+- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>{.externe}
+- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>{.externe}
 
 {% info %}
-[Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
+[Suivre le tutoriel Markdown](/tutoriels/format-markdown/)
 {% endinfo %}
 
 -->
 
 ## <span id="annales"></span>Annales
 
-Les [annales des tests et contrôles](./annales){.interne} de ce cours
+Les [annales des tests et contrôles](./annales) de ce cours

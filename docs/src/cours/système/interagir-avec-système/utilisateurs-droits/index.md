@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Nous avons vu](../../ordinateur-programmes-OS/#kernel-user-mode){.interne} que le processeur d'un ordinateur peut être en 2 modes :
+[Nous avons vu](../../ordinateur-programmes-OS/#kernel-user-mode) que le processeur d'un ordinateur peut être en 2 modes :
 
 - _le kernel mode_ où l'on peut tout faire et qui est réservé au noyau,
 - _le user mode_ où l'on ne peut accéder qu'à une partie des instructions et doit effectuer des appels systèmes au noyaux pour effectuer les instructions critiques.
@@ -38,7 +38,7 @@ L'utilisateur qui se connecte à l'ordinateur au login est donc un parmi beaucou
 Un utilisateur peut utiliser uniquement les éléments (logiciel, fichier, dossier, ...) qui lui appartiennent ou qui appartiennent à ses groupes.
 {% endattention2 %}
 
-Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres ce qui est une nouvelle application du [TFIL](../../ordinateur-programmes-OS/#TFIL){.interne}
+Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres ce qui est une nouvelle application du [TFIL](../../ordinateur-programmes-OS/#TFIL)
 
 
 ![utilisateurs](utilisateurs.png)
@@ -46,7 +46,7 @@ Il existe de nombreux groupes et utilisateurs utilisés par le système pour seg
 ### Utilisateur `root`
 
 {% lien %}
-[Le super-utilisateur](https://fr.wikipedia.org/wiki/Utilisateur_root)
+[Le super-utilisateur](https://fr.wikipedia.org/wiki/Utilisateur_root){.externe}
 {% endlien %}
 
 {% note2 "**Définition**" %}
@@ -59,7 +59,7 @@ Le super-utilisateur a ainsi tous les droits (peut aller partout, réserver auta
 ### Groupe des administrateurs systèmes
 
 {% lien %}
-[L'administrateur système](https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me)
+[L'administrateur système](https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me){.externe}
 {% endlien %}
 
 {% note2 "**Définition**" %}
@@ -69,7 +69,7 @@ Le super-utilisateur a ainsi tous les droits (peut aller partout, réserver auta
 Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root. Par exemple :
 
 - en utilisant le paramètre _exécuter en tant qu'administrateur_ sous Windows,
-- en utilisant [la commande sudo](https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers) sous Linux/macos.
+- en utilisant [la commande sudo](https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers){.externe} sous Linux/macos.
 
 ### Utilisateurs et groupes spéciaux
 

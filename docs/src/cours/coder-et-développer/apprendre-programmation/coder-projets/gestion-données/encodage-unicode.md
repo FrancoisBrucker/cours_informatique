@@ -19,16 +19,16 @@ On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)
 
 ### ASCII et avatars
 
-Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII) dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1) où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.
+Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII){.externe} dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1){.externe} où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.
 
 Il y en a eu une foultitude d'autres jusqu'à arriver au standard actuel.
 
 A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères "j'écris en Français" se code :
 
-- `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1) aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.
-- `6A278E6372697320656E204672616E8D616973` dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman). Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichiers entre possesseurs de mac et de pc ?
-- `6A27C3A96372697320656E204672616EC3A7616973` dans le format [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Remarquez qu'il y a plus d'octets que de lettres.
-- `FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073` dans le format [utf-16 big endian](https://fr.wikipedia.org/wiki/UTF-16)
+- `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1){.externe} aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.
+- `6A278E6372697320656E204672616E8D616973` dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman){.externe}. Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichiers entre possesseurs de mac et de pc ?
+- `6A27C3A96372697320656E204672616EC3A7616973` dans le format [utf-8](https://fr.wikipedia.org/wiki/UTF-8){.externe}. Remarquez qu'il y a plus d'octets que de lettres.
+- `FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073` dans le format [utf-16 big endian](https://fr.wikipedia.org/wiki/UTF-16){.externe}
 
 Il n'y a aucun moyen a priori de savoir en quel format le texte est codé. Pour éviter des problèmes :
 
@@ -40,22 +40,22 @@ Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut
 
 Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.
 
-Pour rationaliser cela, le format [Unicode](https://fr.wikipedia.org/wiki/Unicode) a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [Klingon](<https://fr.wikipedia.org/wiki/Klingon_(langue)>) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans Unicode)
+Pour rationaliser cela, le format [Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe} a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar){.externe}, de [Klingon](<https://fr.wikipedia.org/wiki/Klingon_(langue)>) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul){.externe} dans Unicode)
 
 Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) près de 150000 caractères possibles. À chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
 
 {% note %}
 On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un code Unicode écrit en hexadécimal.
 
-Ainsi `U+1823` correspond à la lettre mongole o : ᠣ, retrouvez là dans la la liste des [différents codes](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html)
+Ainsi `U+1823` correspond à la lettre mongole o : ᠣ, retrouvez là dans la la liste des [différents codes](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html){.externe}
 {% endnote %}
 
-Les caractères sont organisés [en blocs](https://www.compart.com/fr/unicode/block), par exemple :
+Les caractères sont organisés [en blocs](https://www.compart.com/fr/unicode/block){.externe}, par exemple :
 
-- de [0 à 7F](https://www.compart.com/fr/unicode/block/U+0000) : Latin de base
-- de [80 à FF](https://www.compart.com/fr/unicode/block/U+0080) : supplément latin-1 : les accents
+- de [0 à 7F](https://www.compart.com/fr/unicode/block/U+0000){.externe} : Latin de base
+- de [80 à FF](https://www.compart.com/fr/unicode/block/U+0080){.externe} : supplément latin-1 : les accents
 - ...
-- de [4DC0 à 4DFF](https://www.compart.com/fr/unicode/block/U+4DC0) : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing) pour faire ses propres prédictions
+- de [4DC0 à 4DFF](https://www.compart.com/fr/unicode/block/U+4DC0){.externe} : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing){.externe} pour faire ses propres prédictions
 - ...
 
 {% note %}
@@ -70,12 +70,12 @@ On ne peut pas vraiment utiliser Unicode directement pour encoder les caractère
 
 On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format _utf_ (Unicode transformation format) et il permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.
 
-Il existe plusieurs format utf, mais c'est [utf-8](https://fr.wikipedia.org/wiki/UTF-8) qui s'est imposé.
+Il existe plusieurs format utf, mais c'est [utf-8](https://fr.wikipedia.org/wiki/UTF-8){.externe} qui s'est imposé.
 
 ### Organisation du code
 
 {% lien %}
-[Convertisseur utf8 vers hexadécimal](https://onlineutf8tools.com/convert-utf8-to-hexadecimal)
+[Convertisseur utf8 vers hexadécimal](https://onlineutf8tools.com/convert-utf8-to-hexadecimal){.externe}
 {% endlien %}
 
 Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour cela résoudre deux problèmes épineux :
@@ -83,7 +83,7 @@ Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour 
 - connaître le nombre d'octets nécessaires pour décoder un caractère
 - savoir si on est au début d'un caractère ou au milieu de son encodage
 
-Utf-8 résout ce problème de façon élégante (voir [la description de l'encodage](https://fr.wikipedia.org/wiki/UTF-8#Description)) :
+Utf-8 résout ce problème de façon élégante (voir [la description de l'encodage](https://fr.wikipedia.org/wiki/UTF-8#Description){.externe}) :
 
 - tout octet qui n'est pas un début d'encodage commencent par `10`
 - le nombre d'octets utilisés est encodé au début :
@@ -100,8 +100,8 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 
 1. code Unicode : `0xE9 = 233`. On l'obtient en python avec la commande `ord('é')`
 2. son code utf-8 est sur 2 octets. On l'obtient en convertissant la chaîne de caractères en utf-8 : `'é'.encode('utf8')`. Ce résultat donne : `b'\xc3\xa9'`. Le `b` avant la chaîne en python indique que ce n'est pas une chaîne de caractères, mais une successions d'octets (byte), valant C3 et A9 (`\x` signifie que ce qui suit est un nombre hexadécimal).
-3. les deux octets `0xC3` et `0xA9` (en python les nombres hexadécimaux sont écrit en commençant par `0x`. Écrire un nombre en hexadécimale se fait par la fonction [`hex`](https://docs.python.org/3/library/functions.html#hex)). correspondent à l'écriture binaire : `bin(0xC3)`qui rend '0b11000011' et `bin(0xA9)` qui rend '0b10101001'. Le nombre est ainsi codé en utf-8 avec les deux octets : `11000011 10101001`.
-4. en regardant le [code utf-8 sur 2 octets](https://fr.wikipedia.org/wiki/UTF-8#Description), on voit que le code Unicode est la concaténation des 5 derniers bits du premier octet (qui commence par `110`) et des 6 dernier bits du deuxième (qui commence par `10`). On obtient ainsi `00011101001` qui est : `int('00011101001', 2)` et vaut : 233. Ouf, la boucle est bouclée on retrouve bien le code Unicode de `é`.
+3. les deux octets `0xC3` et `0xA9` (en python les nombres hexadécimaux sont écrit en commençant par `0x`. Écrire un nombre en hexadécimale se fait par la fonction [`hex`](https://docs.python.org/3/library/functions.html#hex){.externe}). correspondent à l'écriture binaire : `bin(0xC3)`qui rend '0b11000011' et `bin(0xA9)` qui rend '0b10101001'. Le nombre est ainsi codé en utf-8 avec les deux octets : `11000011 10101001`.
+4. en regardant le [code utf-8 sur 2 octets](https://fr.wikipedia.org/wiki/UTF-8#Description){.externe}, on voit que le code Unicode est la concaténation des 5 derniers bits du premier octet (qui commence par `110`) et des 6 dernier bits du deuxième (qui commence par `10`). On obtient ainsi `00011101001` qui est : `int('00011101001', 2)` et vaut : 233. Ouf, la boucle est bouclée on retrouve bien le code Unicode de `é`.
 
 {% info "**En python**" %}
 
@@ -114,14 +114,14 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 ## Python et chaînes de caractères
 
 {% lien %}
-<https://docs.python.org/fr/3.13/howto/unicode.html>
+<https://docs.python.org/fr/3.13/howto/unicode.html>{.externe}
 {% endlien %}
 
 Une chaîne de caractères `s`{.language-} est de type `str`{.language-}. Elle peut être considérée comme un tableaux de `len(s)`{.language-} cases. Ces objets son **non modifiables**.
 
 En python, la concaténation est symbolisée par l'opérateur `+`{language-}.
 
-On peut faire de nombreuses choses avec des chaînes de caractères en python, n'hésitez pas à aller voir [la documentation](https://docs.python.org/3/library/stdtypes.html#textseq) si vous voulez faire une opération sur les chaînes, elle est souvent déjà implémentée.
+On peut faire de nombreuses choses avec des chaînes de caractères en python, n'hésitez pas à aller voir [la documentation](https://docs.python.org/3/library/stdtypes.html#textseq){.externe} si vous voulez faire une opération sur les chaînes, elle est souvent déjà implémentée.
 
 ### Texte vers types
 
@@ -151,7 +151,7 @@ re_x = x_en_byte.decode('utf8')
 
 Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des `byte` qu'il faudra re-écrire en `utf8`.
 
-Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings).
+Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings){.externe}.
 
 ## Supprimer les accents
 
@@ -166,30 +166,30 @@ Il est parfois utile de pouvoir transformer une chaîne Unicode en ASCII, ce qui
 La réponse la plus simple pour faire cela en python est d'utiliser un module qui fait cela pour nous :
 
 {% lien %}
-[Module unidecode](https://pypi.org/project/Unidecode/)
+[Module unidecode](https://pypi.org/project/Unidecode/){.externe}
 {% endlien %}
 
 ### Solution compliquée mais qui permet de comprendre des choses
 
 Une autre solution plus artisanale mais qui à l'intérêt de plonger un peu plus dans l'encodage Unicode est changer la façon dont est codé la chaîne.
 
-Prenons le cas du français comme exemple. On l'a vu, le caractère `é` Unicode  correspond à la glyphe numéro `U+00E9`. Mais on peut aussi voir ce caractère comme l'accentuation du caractère `e`. Dans ce cas, `é` n'est plus un unique caractère, mais il est formé de la combinaison de `e` (glyphe `U+0065`) et de `\'` (glyphe `U+0301`). On appelle ces caractères [diacritiques](https://www.cnrtl.fr/definition/diacritique). Il y a de multiples possibilités de combinaison :
+Prenons le cas du français comme exemple. On l'a vu, le caractère `é` Unicode  correspond à la glyphe numéro `U+00E9`. Mais on peut aussi voir ce caractère comme l'accentuation du caractère `e`. Dans ce cas, `é` n'est plus un unique caractère, mais il est formé de la combinaison de `e` (glyphe `U+0065`) et de `\'` (glyphe `U+0301`). On appelle ces caractères [diacritiques](https://www.cnrtl.fr/definition/diacritique){.externe}. Il y a de multiples possibilités de combinaison :
 
 {% lien %}
-[Combiner des caractères](https://en.wikipedia.org/wiki/Combining_character)
+[Combiner des caractères](https://en.wikipedia.org/wiki/Combining_character){.externe}
 {% endlien %}
 
 Unicode permet d'écrire selon l'un ou l'autre des formalismes (soit `é` soit `e\'`), et régule tout ceci selon des normes :
 
 {% lien %}
-- [Normalisation Unicode](https://fr.wikipedia.org/wiki/Normalisation_Unicode)
-- [Normalisation et python](https://xebia.com/blog/handling-encoding-issues-with-unicode-normalisation-in-python/)
+- [Normalisation Unicode](https://fr.wikipedia.org/wiki/Normalisation_Unicode){.externe}
+- [Normalisation et python](https://xebia.com/blog/handling-encoding-issues-with-unicode-normalisation-in-python/){.externe}
 
 {% endlien %}
 
 L'astuce est alors de :
 
-1. normaliser une chaîne Unicode selon [le format NFKD](https://fr.wikipedia.org/wiki/Normalisation_Unicode#NFKD) qui sépare les caractères (`é` sera écrit `e\'`)
+1. normaliser une chaîne Unicode selon [le format NFKD](https://fr.wikipedia.org/wiki/Normalisation_Unicode#NFKD){.externe} qui sépare les caractères (`é` sera écrit `e\'`)
 2. supprimer les caractères non ASCII de la chaîne obtenue
 3. retransformer la chaîne en Unicode
 

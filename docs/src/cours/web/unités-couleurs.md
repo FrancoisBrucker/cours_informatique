@@ -21,7 +21,7 @@ Quelles unités utiliser lorsque l'on fait du html et gestion de la couleur
 ## Unités
 
 {% lien %}
-<https://www.w3schools.com/cssref/css_units.asp>
+<https://www.w3schools.com/cssref/css_units.asp>{.externe}
 {% endlien %}
 
 * Toujours utiliser des unités relatives em et rem dans vos design.
@@ -30,10 +30,10 @@ Quelles unités utiliser lorsque l'on fait du html et gestion de la couleur
 ### `em`{.language-} et `rem`{.language-}
 
 {% lien %}
-<https://medium.com/codeshake/unit%C3%A9s-de-mesures-em-vs-rem-eac03dbcb9c7>
+<https://medium.com/codeshake/unit%C3%A9s-de-mesures-em-vs-rem-eac03dbcb9c7>{.externe}
 {% endlien %}
 
-En utilisant le fichier html exemple de [modèle de boites](../modèle-boites#exemple){.interne}
+En utilisant le fichier html exemple de [modèle de boites](../modèle-boites#exemple)
 
 ```html
 <style>
@@ -70,7 +70,7 @@ Si vous devez le faire, respectez les proportions de l'image.
 ## Couleurs
 
 {% lien %}
-<https://developer.mozilla.org/fr/docs/Web/CSS/color>
+<https://developer.mozilla.org/fr/docs/Web/CSS/color>{.externe}
 {% endlien %}
 
 Plusieurs façons de décrire les couleurs :
@@ -79,4 +79,4 @@ Plusieurs façons de décrire les couleurs :
 * rgb et rgba
 * formats
 
-Utilisez une [color wheel](https://color.adobe.com/fr) pour connaître le code RGB à utiliser et trouver des couleurs qui vont ensemble.
+Utilisez une [color wheel](https://color.adobe.com/fr){.externe} pour connaître le code RGB à utiliser et trouver des couleurs qui vont ensemble.

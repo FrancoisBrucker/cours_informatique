@@ -30,7 +30,7 @@ Il vous faudra peut-être cliquer-droit puis choisir `enregistrer le lien sous..
 
 ## <span id="données"></span> Données
 
-Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :
+Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation){.externe} et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :
 
 ```python
 {
@@ -85,7 +85,7 @@ for clé, valeur in villes["Marseille"].items():
     print(clé, valeur)
 ```
 
-On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir [la doc](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques))
+On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir [la doc](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques){.externe})
 
 {% enddetails %}
 
@@ -96,7 +96,7 @@ Commençons par créer la structure de graphe et la valuation que nous allons ut
 {% faire %}
 En utilisant les données charges précédemment :
 
-- créez un graphe non orienté $G$ ([encodé par un dictionnaire](../../encodage#dict){.interne}) dont les sommets sont les noms de villes et ses voisins, les voisins.
+- créez un graphe non orienté $G$ ([encodé par un dictionnaire](../../encodage#dict)) dont les sommets sont les noms de villes et ses voisins, les voisins.
 - créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.
 
 {% endfaire %}
@@ -148,7 +148,7 @@ J'obtiens le graphe suivant :
 ## Algorithme Dijkstra
 
 {% faire %}
-Modifiez l'[algorithme du cours](../valuation-positive#implementation-Dijkstra-python){.interne} pour qu'il puisse utiliser notre fonction de valuation.
+Modifiez l'[algorithme du cours](../valuation-positive#implementation-Dijkstra-python) pour qu'il puisse utiliser notre fonction de valuation.
 {% endfaire %}
 
 {% faire %}
@@ -169,7 +169,7 @@ Représentez graphiquement le chemin trouvé en rouge.
 ## $A^\star$ et distances
 
 {% faire %}
-Créez l'[algorithme $A^\star$](../valuation-positive#a-star){.interne} pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
+Créez l'[algorithme $A^\star$](../valuation-positive#a-star) pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.
 
 {% endfaire %}
 {% details "solution" %}

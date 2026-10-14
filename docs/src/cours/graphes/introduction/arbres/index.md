@@ -15,13 +15,13 @@ eleventyComputed:
 
 {% aller %}
 
-[Définitions](définitions){.interne}
+[Définitions](définitions)
 
 {% endaller %}
 
 {% aller %}
 
-[Compter les arbres](./compter-arbres){.interne}
+[Compter les arbres](./compter-arbres)
 
 {% endaller %}
 
@@ -29,6 +29,6 @@ eleventyComputed:
 
 {% aller %}
 
-[Arbres couvrants](arbres-couvrants){.interne}
+[Arbres couvrants](arbres-couvrants)
 
 {% endaller %}

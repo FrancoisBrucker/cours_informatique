@@ -13,7 +13,7 @@ eleventyComputed:
 Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :
 
 {% note2 "**Définition**" %}
-On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent)) :
+On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe}) :
 
 - **_complexité constante_** si $C(n) \sim_{+\infty} K$
 - **_complexité logarithmique_** si $C(n) \sim_{+\infty} K\cdot \ln(n)$
@@ -28,13 +28,13 @@ Les types de complexités ci-dessus sont rangés par ordre, de la moins grande �
 Remarquez que si $n$ représente la taille des données, un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :
 
 - trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme `recherche`{.language-},
-- trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique)
+- trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe}
 
 {% info %}
 Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.
 {% endinfo %}
 
-Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability). Ce qu'il faut retenir :
+Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability){.externe}. Ce qu'il faut retenir :
 
 {% note %}
 
@@ -88,14 +88,14 @@ Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en
 
 ## Le cas particulier de $n!$
 
-Souvent les étudiants veulent que leurs algorithmes soient de complexité $C(n) = n!$. Ce n'est **presque jamais exact** ! En effet, la [formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling) donne l'équivalent suivant pour $n!$ :
+Souvent les étudiants veulent que leurs algorithmes soient de complexité $C(n) = n!$. Ce n'est **presque jamais exact** ! En effet, la [formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling){.externe} donne l'équivalent suivant pour $n!$ :
 
 $$
 n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n
 $$
 
 {% info %}
-[une preuve de la formule](https://www.youtube.com/watch?v=Dgh8673ymdo)
+[une preuve de la formule](https://www.youtube.com/watch?v=Dgh8673ymdo){.externe}
 {% endinfo %}
 
 On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand que $2^{n}$ qui est déjà gigantesque.

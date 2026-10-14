@@ -24,7 +24,7 @@ Créez un nouveau projet sur le site de github que vous appellerez `hello-dev`.
 4. ![le résultat](github-ajout-fichier-3.png)
 
 {% info %}
-On a utilisé <https://gitmoji.dev/> pour le commit. Mettre un émoji en premier caractère du message permet de facilement identifier le but du commit.
+On a utilisé <https://gitmoji.dev/>{.externe} pour le commit. Mettre un émoji en premier caractère du message permet de facilement identifier le but du commit.
 {% endinfo %}
 
 ## Commits
@@ -37,7 +37,7 @@ En cliquant sur le numéro de commit, on voit le détail de celui-ci :
 
 ![historique](github-historique-main-détail.png)
 
-Nous rentrerons plus en détails dans ce que tout cela signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des [GNU `diffutils`](https://www.gnu.org/software/diffutils/manual/diffutils.html). Pour nous :
+Nous rentrerons plus en détails dans ce que tout cela signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des [GNU `diffutils`](https://www.gnu.org/software/diffutils/manual/diffutils.html){.externe}. Pour nous :
 
 1. on a modifié le fichier `programme.txt`{.fichier}
 2. `@@ -0,0 +1, 6 @@` : on a supprimé aucune ligne et on a ajouté les lignes 1 à 6.

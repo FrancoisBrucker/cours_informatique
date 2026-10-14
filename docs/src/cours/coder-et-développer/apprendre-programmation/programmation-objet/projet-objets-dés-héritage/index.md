@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Nous allons modifier notre classe dé pour pouvoir sereinement jouer à [Donjons et dragons](https://fr.wikipedia.org/wiki/Donjons_et_Dragons).
+Nous allons modifier notre classe dé pour pouvoir sereinement jouer à [Donjons et dragons](https://fr.wikipedia.org/wiki/Donjons_et_Dragons){.externe}.
 
 <span id="code-Dé"></span>
 
@@ -262,6 +262,6 @@ class DéGénérique(Stat):
 ## Code final
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code?filename=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/code?filename=projet-compteur){.externe}
 {% endlien %}

@@ -31,7 +31,7 @@ Un **_commit_** d'un projet est constitué :
 Lors d'un commit on a pas forcément envie de :
 
 - tout sauvegarder (par exemple des fichiers de mots de passe ou des fichiers de configurations)
-- sauvegarder tout en une fois (de faire plusieurs [commits atomiques](https://en.wikipedia.org/wiki/Atomic_commit) plutôt qu'un gros commit regroupant plusieurs modification)
+- sauvegarder tout en une fois (de faire plusieurs [commits atomiques](https://en.wikipedia.org/wiki/Atomic_commit){.externe} plutôt qu'un gros commit regroupant plusieurs modification)
 
 Enfin, il peut être difficile de comparer ce qui est sauvé de ce qui est nouveau.
 

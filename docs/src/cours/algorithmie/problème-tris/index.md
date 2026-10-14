@@ -14,14 +14,14 @@ eleventyComputed:
 
 Séparer versions naïves + TP des méthodes optimales +  TP
 
-voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>
+voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>{.externe}
 ajouter le bogus sort
 -->
 
 
 Étude du problème du tri et implémentation de quelques algorithmes pour _voir_ les différentes façon de trier et leurs complexités.
 
-Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
+Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri){.externe}. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
 
 {% info %}
 Les algorithmes de tri que nous verrons dans cette partie nous permettrons non seulement de mettre en oeuvre tout ce que nous avons vu sur les techniques de preuves et de calcul de complexités, mais également d'apprendre de nouveaux outils, comme le master theorem.
@@ -42,7 +42,7 @@ Commençons par définir le problème :
 Commençons par travailler sur un problème connexe au problème du tri, celui de savoir si un tableau d'entiers est trié ou non. Le problème du tri présuppose en effet que l'on sache ce qu'est un tableau trié et, en creux, qu'on puisse vérifier (rapidement) qu'un tableau est trié ou non.
 
 {% aller %}
-[Reconnaissance d'un tableau trié](./reconnaissance){.interne}
+[Reconnaissance d'un tableau trié](./reconnaissance)
 {% endaller %}
 
 Pouvoir vérifier qu'une solution à un problème en est vraiment une est un point crucial en algorithmie. Nous y reviendrons intensivement lorsque nous parlerons de classes de problèmes.
@@ -50,7 +50,7 @@ Pouvoir vérifier qu'une solution à un problème en est vraiment une est un poi
 ## Complexité du problème du tri
 
 {% aller %}
-[Complexité du problème](./complexité-problème){.interne}
+[Complexité du problème](./complexité-problème)
 {% endaller %}
 
 ## <span id="tris-simples"></span>Algorithmes Tris simples
@@ -62,7 +62,7 @@ Deux Algorithmes simples pour trier un tableau.
 Le plus simple des algorithmes de tri, pour s'échauffer.
 
 {% aller %}
-[Tri par sélection](./algorithme-sélection){.interne}
+[Tri par sélection](./algorithme-sélection)
 {% endaller %}
 
 ### Tri par insertion
@@ -70,7 +70,7 @@ Le plus simple des algorithmes de tri, pour s'échauffer.
 Son implémentation va nécessiter d'utiliser une nouvelle technique, le placement de sentinelles, et démontrer ses complexités va demander un peu de travail car son nombre d'instructions est très variable selon le tableau passé en paramètre.
 
 {% aller %}
-[Tri par insertion](./algorithme-insertion){.interne}
+[Tri par insertion](./algorithme-insertion)
 {% endaller %}
 
 ### Exercices : Variantes
@@ -78,7 +78,7 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 #### Tri à bulles
 
 {% lien %}
-[Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles)
+[Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles){.externe}
 {% endlien %}
 
 Le tri à bulles est très aimé des étudiants mais inefficace. Son procédé est similaire au tri par sélection dans le sen où au bout de la $i$ème itération les $i$ plus grandes valeurs du tableaux sont à leur place. C'est un tri **in place**. Pour obtenir cela il va procédé par une série d'inversions :
@@ -132,7 +132,7 @@ Proposez une amélioration de l'algorithme du tri à bulles pour que sa complexi
 
 Pour que la complexité minimale soit en $\mathcal{O}(T.\mbox{\small longueur})$ il faut que l'on ne fasse au mieux qu'un nombre constant de fois la boucle intérieure dans le meilleur des cas, qui semble ici le cas où le tableau est déjà trié puisqu'on a pas besoin de fire remonter des valeurs.
 
-Ceci est possible car un tableau est trié si et seulement si $T[i] \leq T[i+1]$ pour tout $0\leq i < T.\mbox{\small longueur}$ (on utilisé ceci pour [le problème de la reconnaissance](../reconnaissance){.interne}), c'est a dire que le tableau est trié si le test de la boucle intérieure a toujours été faux !
+Ceci est possible car un tableau est trié si et seulement si $T[i] \leq T[i+1]$ pour tout $0\leq i < T.\mbox{\small longueur}$ (on utilisé ceci pour [le problème de la reconnaissance](../reconnaissance)), c'est a dire que le tableau est trié si le test de la boucle intérieure a toujours été faux !
 
 On obtient alors l'algorithme suivant :
 
@@ -159,11 +159,11 @@ algorithme bulles_naif(T) → ∅:
 Finissons cette partie par une bizarrerie algorithmique comme on les aime.
 
 {% lien %}
-[The Simplest Sorting Algorithm](https://www.youtube.com/watch?v=_W0yUJlscRA)
+[The Simplest Sorting Algorithm](https://www.youtube.com/watch?v=_W0yUJlscRA){.externe}
 {% endlien %}
 {% info %}
 
-[La chaîne Youtube Polylog](https://www.youtube.com/@PolylogCS) est très bien ! Son niveau moyen est pour l'instant au-dessus de ce que l'on connaît ou que l'on sait faire, mais on abordera petit à petit toutes les notions qu'ils abordent et à l'issue du cours vous serez à l'aise avec son contenu.
+[La chaîne Youtube Polylog](https://www.youtube.com/@PolylogCS){.externe} est très bien ! Son niveau moyen est pour l'instant au-dessus de ce que l'on connaît ou que l'on sait faire, mais on abordera petit à petit toutes les notions qu'ils abordent et à l'issue du cours vous serez à l'aise avec son contenu.
 
 {% endinfo %}
 
@@ -259,12 +259,12 @@ A partir de la seconde boucle, chaque boucle va trier les i+1 premiers élément
 Le tri fusion utilise une technique de création d'algorithme classique nommée _diviser pour régner_ et nous utiliserons le très utile master Theorem pour en calculer la complexité.
 
 {% aller %}
-[Algorithme du tri fusion](./algorithme-fusion){.interne}
+[Algorithme du tri fusion](./algorithme-fusion)
 {% endaller %}
 
 ### Tri de python
 
-[L'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) est l'algorithme utilisé par python pour trier des listes :
+[L'algorithme timsort](https://en.wikipedia.org/wiki/Timsort){.externe} est l'algorithme utilisé par python pour trier des listes :
 
 ```python
 T = [1, 3, 2, 6, 4, 5]
@@ -276,7 +276,7 @@ print(T)
 Ce tri est **in place** et est un mix entre le tri fusion et le tri par insertion. C'est un tri très efficace puisque :
 
 {% note "**Complexités du timsort**" %}
-Pour un tableau de taille $n$, [l'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) a :
+Pour un tableau de taille $n$, [l'algorithme timsort](https://en.wikipedia.org/wiki/Timsort){.externe} a :
 
 - une complexité de $\mathcal{O}(n\ln(n))$
 - une complexité min de $\mathcal{O}(n)$ pour les tableaux (_presque_) trié
@@ -293,7 +293,7 @@ Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de 
 Le tri rapide est, malgré sa simplicité apparente, le plus difficile à implémenter proprement et pour en calculer la complexité. Il vous apprendra à avoir une intuition de la complexité d'un algorithme.
 
 {% aller %}
-[Algorithme du tri rapide](./algorithme-rapide){.interne}
+[Algorithme du tri rapide](./algorithme-rapide)
 {% endaller %}
 
 ## Implémentations
@@ -301,5 +301,5 @@ Le tri rapide est, malgré sa simplicité apparente, le plus difficile à implé
 Projet de développement pour voir les tris se trier.
 
 {% aller %}
-[Projet implémentation des algorithmes de tri](./projet-tris){.interne}
+[Projet implémentation des algorithmes de tri](./projet-tris)
 {% endaller %}

@@ -19,7 +19,7 @@ Linux et compagnie.
 
 {% lien %}
 
-Support de cours : [Le cours de système et réseau](/cours/système-et-réseau){.interne}.
+Support de cours : [Le cours de système et réseau](/cours/système-et-réseau).
 {% endlien %}
 
 ## Cours 1
@@ -29,14 +29,14 @@ Support de cours : [Le cours de système et réseau](/cours/système-et-réseau)
 Base de Linux
 
 - Ordinateur
-  - [partie matériel](/cours/système-et-réseau/architecture-ordinateur/){.interne}
-  - [partie logicielle](/cours/système-et-réseau/système-exploitation/){.interne}
-- [Base de Linux](/cours/système-et-réseau/linux/bases-linux/){.interne}
+  - [partie matériel](/cours/système-et-réseau/architecture-ordinateur/)
+  - [partie logicielle](/cours/système-et-réseau/système-exploitation/)
+- [Base de Linux](/cours/système-et-réseau/linux/bases-linux/)
 
 ### A faire pour la prochaine fois
 
 {% faire %}
-[Exercices dans le terminal](/cours/système-et-réseau/linux/bases-linux/exercices/){.interne}
+[Exercices dans le terminal](/cours/système-et-réseau/linux/bases-linux/exercices/)
 
 Et m'envoyer un compte rendu par mail.
 {% endfaire %}
@@ -47,10 +47,10 @@ Et m'envoyer un compte rendu par mail.
 
 Système Linux et connexions distantes
 
-- [ssh](/cours/système-et-réseau/ssh/){.interne} :
+- [ssh](/cours/système-et-réseau/ssh/) :
   - principe
   - connexion à aioli
-- [bases de réseau](/cours/système-et-réseau/réseau/){.interne}
+- [bases de réseau](/cours/système-et-réseau/réseau/)
 
 ### A faire pour la prochaine fois
 
@@ -63,13 +63,13 @@ Système Linux et connexions distantes
 
 ## Cours 3
 
-- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/){.interne}
-- [le shell](/cours/système-et-réseau/linux/shell/){.interne} :
+- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/)
+- [le shell](/cours/système-et-réseau/linux/shell/) :
   - sa configuration
   - scripting
 
 {% faire %}
-[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/){.interne}
+[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/)
 {% endfaire %}
 
 - mise en production :
@@ -96,10 +96,10 @@ Sur aioli
    2. node basique et vérifier que tout fonctionne
 3. survivre à la déconnexion :
    1. nohup
-   2. tmux <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html> ou screen `/usr/bin/screen -d -m -S node node exemple.js`
+   2. tmux <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html>{.externe} ou screen `/usr/bin/screen -d -m -S node node exemple.js`
 4. npm en front
 5. script d'installation :
    1. sur aioli
-   2. chez soit qui pousse le tout avec un scp/git et configure là-bas (<https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command>)
-   3. env dev et prod : <https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>
+   2. chez soit qui pousse le tout avec un scp/git et configure là-bas (<https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command>{.externe})
+   3. env dev et prod : <https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>{.externe}
 6. redirection de ports

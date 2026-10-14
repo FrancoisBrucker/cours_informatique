@@ -53,7 +53,7 @@ print(__file__)
 
 {% endfaire %}
 
-On n'a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
+On n'a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html){.externe} :
 
 {% faire %}
 Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de `__file__`{.language-} :
@@ -76,36 +76,36 @@ Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à
 Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaînes de caractères
 {% endnote %}
 
-On va voir deux façons de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
+On va voir deux façons de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html){.externe}, l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html){.externe}.
 
 ## Module `os.path`{.language-}
 
 On suppose que la variable `__file__`{.language-} corresponde au chemin `/Users/fbrucker/Documents/mon_projet/main.py`{.fichier} sur le disque dur. On suppose aussi que le module `os`{.language-} a été importé.
 
-* rendre le dossier où est `__file__`{.language-} avec [dirname](https://docs.python.org/fr/3/library/os.path.html#os.path.dirname) : `dossier = os.path.dirname(__file__)`{.language-}.
-* rendre le nom du fichier pointé par `__file__`{.language-} avec [basename](https://docs.python.org/fr/3/library/os.path.html#os.path.basename) : `nom_fichier = os.path.basename(__file__)`{.language-}
-* concaténer deux chemins avec [join](https://docs.python.org/fr/3/library/os.path.html#os.path.join) : `os.path.join("/Users/fbrucker", "Documents/mon_projet")`{.language-} rendra : `/Users/fbrucker/Documents/mon_projet`{.fichier}
+* rendre le dossier où est `__file__`{.language-} avec [dirname](https://docs.python.org/fr/3/library/os.path.html#os.path.dirname){.externe} : `dossier = os.path.dirname(__file__)`{.language-}.
+* rendre le nom du fichier pointé par `__file__`{.language-} avec [basename](https://docs.python.org/fr/3/library/os.path.html#os.path.basename){.externe} : `nom_fichier = os.path.basename(__file__)`{.language-}
+* concaténer deux chemins avec [join](https://docs.python.org/fr/3/library/os.path.html#os.path.join){.externe} : `os.path.join("/Users/fbrucker", "Documents/mon_projet")`{.language-} rendra : `/Users/fbrucker/Documents/mon_projet`{.fichier}
 * rendre le dossier parent : `os.path.join(dossier, "..")`{.language-}.
 * rendre le chemin absolu à partir d'un chemin relatif : `os.path.abspath(".")`{.language-}
 
 ## Module `pathlib`{.language-}
 
-Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet de la manipulation des fichiers.
+Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html){.externe} permet d'avoir une approche objet de la manipulation des fichiers.
 
 {% lien %}
-[Ce tutoriel](https://jefftriplett.com/2017/pathlib-is-wonderful/) est parfait pour vous montrer comment l'utiliser.
+[Ce tutoriel](https://jefftriplett.com/2017/pathlib-is-wonderful/){.externe} est parfait pour vous montrer comment l'utiliser.
 
 {% endlien %}
 
 ## <span id="fichiers-distants"></span>Fichiers distants
 
 {% lien %}
-[Module requests](https://requests.readthedocs.io/en/latest/)
+[Module requests](https://requests.readthedocs.io/en/latest/){.externe}
 {% endlien %}
 
-Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/) (`python -m pip install requests`).
+Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator){.externe}. On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/){.externe} (`python -m pip install requests`).
 
-Par exemple, le site <https://www.gutenberg.org> possède de nombreux livres au format utf-8 à télécharger. Par exemple <https://www.gutenberg.org/ebooks/14155> :
+Par exemple, le site <https://www.gutenberg.org>{.externe} possède de nombreux livres au format utf-8 à télécharger. Par exemple <https://www.gutenberg.org/ebooks/14155>{.externe} :
 
 ```python
 import requests
@@ -113,17 +113,17 @@ import requests
 page = requests.get("https://www.gutenberg.org/ebooks/14155.txt.utf-8")
 ```
 
-Le code précédent à téléchargé le fichier contenu dans l'url <https://www.gutenberg.org/ebooks/14155.txt.utf-8> dans la variable page.
+Le code précédent à téléchargé le fichier contenu dans l'url <https://www.gutenberg.org/ebooks/14155.txt.utf-8>{.externe} dans la variable page.
 
-Cette variable est un objet qui contient de [nombreux attributs](https://requests.readthedocs.io/en/latest/api/#requests.Response).
+Cette variable est un objet qui contient de [nombreux attributs](https://requests.readthedocs.io/en/latest/api/#requests.Response){.externe}.
 
-Le [texte](https://requests.readthedocs.io/en/latest/api/#requests.Response.text) qui a été téléchargé, au format Unicode :
+Le [texte](https://requests.readthedocs.io/en/latest/api/#requests.Response.text){.externe} qui a été téléchargé, au format Unicode :
 
 ```python
 page.text
 ```
 
-Un fichier téléchargé par internet l'a été octet par octet. Le type par défaut est donc le `bytes`{.language-} et le contenu brut est disponible avec l'attribut [content](https://requests.readthedocs.io/en/latest/api/#requests.Response.content) :
+Un fichier téléchargé par internet l'a été octet par octet. Le type par défaut est donc le `bytes`{.language-} et le contenu brut est disponible avec l'attribut [content](https://requests.readthedocs.io/en/latest/api/#requests.Response.content){.externe} :
 
 ```python
 type(page.content)
@@ -135,7 +135,7 @@ La bibliothèque fait une conversion pour rendre l'attribut text au format Unico
 La fonction `requests.get`{.language-} va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie car les accès réseau sont toujours lents par rapport aux fichiers sur le disque dur en local.
 {% endattention %}
 
-L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction [`os.path.exists`{.language-}](https://docs.python.org/fr/3/library/os.path.html#os.path.exists)), et sinon il le télécharge :
+L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction [`os.path.exists`{.language-}](https://docs.python.org/fr/3/library/os.path.html#os.path.exists){.externe}), et sinon il le télécharge :
 
 ```python
 import os.path

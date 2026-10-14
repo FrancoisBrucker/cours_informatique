@@ -14,12 +14,12 @@ eleventyComputed:
 ---
 
 {% lien %}
-<https://man.archlinux.org/man/file-hierarchy.7>
+<https://man.archlinux.org/man/file-hierarchy.7>{.externe}
 {% endlien %}
 
 ## Fichiers système
 
-En utilisant la commande [tree](https://man.archlinux.org/man/tree.1.fr) (souvent installé par défaut), on visualise tous les dossiers d'une distribution Ubuntu présent à la racine (`/`{.fichier}) du système :
+En utilisant la commande [tree](https://man.archlinux.org/man/tree.1.fr){.externe} (souvent installé par défaut), on visualise tous les dossiers d'une distribution Ubuntu présent à la racine (`/`{.fichier}) du système :
 
 ```shell
 $ tree -d -L 1 /
@@ -135,7 +135,7 @@ Mais vous retrouverez très souvent les même informations partout :
 - `/var`{.fichier} : fichiers variables (logs, cache…)
 
 {% info %}
-Les `->` signifient que ces dossiers sont [des liens symboliques](../../../bases-système/bases/fichiers-navigation/#liens){.interne} vers d'autres dossiers du système. On voit par exemple que sur un système Ubuntu (et tous les systèmes modernes) les executables et le bibliothèques partagées sont toutes placées dans le dossier `/usr`{.fichier}. Ne sont laissés à la racine que des liens permettant la compatibilité.
+Les `->` signifient que ces dossiers sont [des liens symboliques](../../../bases-système/bases/fichiers-navigation/#liens) vers d'autres dossiers du système. On voit par exemple que sur un système Ubuntu (et tous les systèmes modernes) les executables et le bibliothèques partagées sont toutes placées dans le dossier `/usr`{.fichier}. Ne sont laissés à la racine que des liens permettant la compatibilité.
 {% endinfo %}
 
 Dans un système de type Unix, (pratiquement) tout est fichier :
@@ -155,12 +155,12 @@ La liste des utilisateurs est disponible dans le fichier `/etc/passwd`{.fichier}
 Il contiendra :
 
 - ses fichiers
-- ses fichiers de configuration à lui (souvent appelés [dotfiles](https://wiki.archlinux.org/title/Dotfiles))
+- ses fichiers de configuration à lui (souvent appelés [dotfiles](https://wiki.archlinux.org/title/Dotfiles){.externe})
 - des programmes utiles à lui
 
 ### Opt
 
-`/opt` remplace petit à petit `/usr/local` qui était le dossier par défaut où étaient placés tous les programmes optionnels et machine dépendant. Sous mac c'est par exemple dans ce dossier que s'installe <https://brew.sh/>
+`/opt` remplace petit à petit `/usr/local` qui était le dossier par défaut où étaient placés tous les programmes optionnels et machine dépendant. Sous mac c'est par exemple dans ce dossier que s'installe <https://brew.sh/>{.externe}
 
 ## Fichiers spéciaux
 
@@ -168,7 +168,7 @@ Beaucoup d'autres dossiers de la racine ne contiennent des _pseudo-fichiers_ per
 
 ### `/proc`{.fichier}
 
-Le dossier `/proc`{.fichier} va donner des informations sur tous les processus lancés par la machine ainsi que des informations sur le processeur. Par exemple [le fichier `/proc/uptime`{.fichier}](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime) contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot). Par exemple, tapez dans un terminal la commande suivante pour afficher le contenu du fichier `/proc/uptime`{.fichier} avec [la commande `cat`](<https://fr.wikipedia.org/wiki/Cat_(Unix)>) :
+Le dossier `/proc`{.fichier} va donner des informations sur tous les processus lancés par la machine ainsi que des informations sur le processeur. Par exemple [le fichier `/proc/uptime`{.fichier}](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime){.externe} contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot). Par exemple, tapez dans un terminal la commande suivante pour afficher le contenu du fichier `/proc/uptime`{.fichier} avec [la commande `cat`](<https://fr.wikipedia.org/wiki/Cat_(Unix)>) :
 
 ```shell
 $ cat /proc/uptime
@@ -182,7 +182,7 @@ Le dossier `/dev`{.fichier} va contenir des fichiers correspondant aux entrées/
 - les sorties écran, audio
 - les entrées disques, claviers
 
-Il contient également des sorties plus spécifiques comme [le fichier `/dev/random/`{.file}](https://fr.wikipedia.org/wiki//dev/random) qui génère des nombres aléatoires. Par exemple la commande suivante (dont vous comprendrez la syntaxe plus tard) tapée dans un terminal lit 32 octet de `/dev/random/`{.fichier} (le fichier `/dev/random`{.fichier} est a priori de longueur infinie) et l'affiche à l'écran :
+Il contient également des sorties plus spécifiques comme [le fichier `/dev/random/`{.file}](https://fr.wikipedia.org/wiki//dev/random){.externe} qui génère des nombres aléatoires. Par exemple la commande suivante (dont vous comprendrez la syntaxe plus tard) tapée dans un terminal lit 32 octet de `/dev/random/`{.fichier} (le fichier `/dev/random`{.fichier} est a priori de longueur infinie) et l'affiche à l'écran :
 
 ```shell
 $ head -c 32  < /dev/random  | hexdump -ve '32/1 " %02x" "\n"'

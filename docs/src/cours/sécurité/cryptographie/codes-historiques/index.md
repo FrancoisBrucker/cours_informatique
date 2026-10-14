@@ -20,9 +20,9 @@ En analysant 3 codes historiques, on verra quelques concepts fondamentaux en cry
 <!-- TBD
 
 Ajouter code par permutation
-- <https://websites.nku.edu/~christensen/1402%20permutation%20ciphers.pdf>
-- <https://crypto.stackexchange.com/questions/15635/security-of-permutation-cipher>
-- <https://www.reddit.com/r/crypto/comments/1208h1b/is_permutationbased_crypto_not_catching_on_in_the/>
+- <https://websites.nku.edu/~christensen/1402%20permutation%20ciphers.pdf>{.externe}
+- <https://crypto.stackexchange.com/questions/15635/security-of-permutation-cipher>{.externe}
+- <https://www.reddit.com/r/crypto/comments/1208h1b/is_permutationbased_crypto_not_catching_on_in_the/>{.externe}
 
  -->
 
@@ -44,7 +44,7 @@ $$
 </div>
 
 {% info %}
-Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ (`A` est remplacé par `N`) est l'ancêtre du floutage NSFW.
+Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13){.externe}, César où $k=13$ (`A` est remplacé par `N`) est l'ancêtre du floutage NSFW.
 {% endinfo %}
 
 Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)
@@ -94,7 +94,7 @@ LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 ### <span id="César-analyse"></span>Cryptanalyse
 
 1. Ne résiste pas au calcul exhaustif des clés : 26
-2. Ne résiste pas à l'analyse en [fréquence de chaque lettre](https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d'apparition_des_lettres)
+2. Ne résiste pas à l'analyse en [fréquence de chaque lettre](https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d'apparition_des_lettres){.externe}
 
 "Longtemps je me suis couche de bonne heure.". les 4 premières fréquences:
 
@@ -117,7 +117,7 @@ U| 6.05|G| 1.10|W| 0.00|
 L| 5.89|F| 1.06|
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres>
+<https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres>{.externe}
 {% endlien %}
 
 La lettre arrivant le plus souvent dans le message chiffré, `r` a donc toute les chances d'être `e` ce qui donne le décalage.
@@ -153,7 +153,7 @@ Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW
 
 ### Algorithme
 
-[Cette implémentation en shell](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption) (la version ci-dessous est variante POSIX sh du script en lien) du chiffrement de Vigenère est tout simplement magnifique :
+[Cette implémentation en shell](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption){.externe} (la version ci-dessous est variante POSIX sh du script en lien) du chiffrement de Vigenère est tout simplement magnifique :
 
 {% raw %}
 ```shell
@@ -179,21 +179,21 @@ echo "$d"
 {% endraw %}
 
 {% info %}
-Il est tout à fait compréhensible en utilisant [cette remarque du thread](https://stackoverflow.com/a/50022917) et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02).
+Il est tout à fait compréhensible en utilisant [cette remarque du thread](https://stackoverflow.com/a/50022917){.externe} et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02){.externe}.
 {% endinfo %}
 
 ### <span id="Vigenère-analyse"></span>Chiffrement
 
 {% lien %}
-[Chiffre de Vigenère](https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re)
+[Chiffre de Vigenère](https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re){.externe}
 {% endlien %}
 
 1. Calcul exhaustif des clés : $26^p$, si $p \geq 30$ alors environ $2^{128}$ opérations, c'est safe.
 2. si la clé est choisie de façon aléatoire, par bloc cela semble sécurisé, chaque lettre peut équiprobablement être choisie. Mais :
    1. si on a la taille on refait de l'analyse par fréquence
-   2. [on peut trouver la taille](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/viganalyse)
+   2. [on peut trouver la taille](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/viganalyse){.externe}
 
-Pour retrouver la taille de la clé, on utilise [l'indice de coïncidence mutuelle](https://fr.wikipedia.org/wiki/Indice_de_co%C3%AFncidence), développé par Friedman dans les années 1920, qui calcule pour une langue donnée la probabilité que deux lettres choisie aléatoirement dans un texte soient égales.
+Pour retrouver la taille de la clé, on utilise [l'indice de coïncidence mutuelle](https://fr.wikipedia.org/wiki/Indice_de_co%C3%AFncidence){.externe}, développé par Friedman dans les années 1920, qui calcule pour une langue donnée la probabilité que deux lettres choisie aléatoirement dans un texte soient égales.
 
 Soit $T = c_1\dots c_n$ un texte de longueur $n>>1$ formé des 26 lettres de l'alphabet $\mathcal{A} = \\{a_1, \dots,. a_{26}\\}$. On suppose que la lettre $a_i$ apparaît $n_i$ fois dans $T$ ($\sum_i n_i = n$). On note :
 
@@ -240,7 +240,7 @@ Décrypte  LKXPTEMLC SE ME OERS COQMQE DE XYWNE HAEAE
 
 Il suffit ensuite d'affiner avec les mots reconnus ou de poursuivre les investigations sur les bouts de clés où les pourcentages sont trop proches. On trouve cependant la moitié des clés pour un texte devenu très petit. Plus le texte à chiffré est grand par rapport à la clé plus cette méthode devient efficace.
 
-En prenant [les premières phrases du roman](https://fr.wikipedia.org/wiki/Longtemps,_je_me_suis_couch%C3%A9_de_bonne_heure#Premier_chapitre) :
+En prenant [les premières phrases du roman](https://fr.wikipedia.org/wiki/Longtemps,_je_me_suis_couch%C3%A9_de_bonne_heure#Premier_chapitre){.externe} :
 
 ```
 Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte,
@@ -306,7 +306,7 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 On retrouve notre clé ! Le texte n'est de plus vraiment pas long.
 
 {% lien %}
-[Décrypter Vigenère](https://www.youtube.com/watch?v=yHXOnCKh4iE)
+[Décrypter Vigenère](https://www.youtube.com/watch?v=yHXOnCKh4iE){.externe}
 {% endlien %}
 
 On voit que le décryptage d'un texte peut prendre des voies détournées. Il ne faut **jamais** sous-estimer l'intelligence et l'inventivité de l'adversaire : il est nécessaire en sécurité et en cryptographie de se munir d'outils théorique permettant de garantir et de démontrer la sécurité d'un système de chiffrement.
@@ -317,13 +317,13 @@ L'idée est de faire un Vigenère avec comme taille de clé le message !
 
 C'est la technique du :
 {% lien %}
-[masque jetable](https://fr.wikipedia.org/wiki/Masque_jetable), *One Time Pad*.
+[masque jetable](https://fr.wikipedia.org/wiki/Masque_jetable){.externe}, *One Time Pad*.
 {% endlien %}
 
 Technique utilisée pour le téléphone rouge lors de la guerre froide.
 
 {% info %}
-[Chiffre du Che](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/che)
+[Chiffre du Che](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/che){.externe}
 {% endinfo %}
 
 Ce qui donne :

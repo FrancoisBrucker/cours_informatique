@@ -41,7 +41,7 @@ void matrice_show(int **matrice, size_t nombre_lignes, size_t nombre_colonnes);
 
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html) de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).
+Vous pourrez utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html){.externe} de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).
 {% endinfo %}
 
 Utilisons les matrices :
@@ -136,7 +136,7 @@ Pour que les utilisateurs ne puissent pas connaître le contenu de la structure 
 On appelle cette façon de faire :
 
 {% lien %}
-[Technique du pointeur opaque](https://interrupt.memfault.com/blog/opaque-pointers)
+[Technique du pointeur opaque](https://interrupt.memfault.com/blog/opaque-pointers){.externe}
 {% endlien %}
 
 Pour que la technique du pointeur opaque fonctionne, il faut séparer les déclarations des fonctions (les `.h`) et leurs implémentations (les `.c`) :

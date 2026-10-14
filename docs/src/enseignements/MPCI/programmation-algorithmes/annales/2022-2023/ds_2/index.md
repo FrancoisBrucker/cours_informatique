@@ -14,24 +14,24 @@ Le but de ce DS est de coder un Tetris.
 
 1. Faites les questions dans l'ordre
 2. n'inventez pas votre propre structure, suivez celle demandée
-3. rendez sur [Amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=2978329) un dossier contenant tout votre code ainsi qu'un fichier texte contenant les numéros des questions auxquelles vous avez répondu
+3. rendez sur [Amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=2978329){.externe} un dossier contenant tout votre code ainsi qu'un fichier texte contenant les numéros des questions auxquelles vous avez répondu
 
 {% endnote %}
 
-Vous aurez besoin de la bibliothèque [pyglet](https://pyglet.readthedocs.io/en/latest/) pour coder les fenêtres et de [pytest](https://docs.pytest.org/) pour tester les fonctions utilitaires.
+Vous aurez besoin de la bibliothèque [pyglet](https://pyglet.readthedocs.io/en/latest/){.externe} pour coder les fenêtres et de [pytest](https://docs.pytest.org/){.externe} pour tester les fonctions utilitaires.
 
 {% info %}
-Toutes les informations nécessaires pour ce DS ont été prises du site [hard drop](https://harddrop.com/wiki/Tetris_Wiki) qui contient toutes les ressources nécessaires pour comprendre et devenir meilleur à Tetris.
+Toutes les informations nécessaires pour ce DS ont été prises du site [hard drop](https://harddrop.com/wiki/Tetris_Wiki){.externe} qui contient toutes les ressources nécessaires pour comprendre et devenir meilleur à Tetris.
 {% endinfo %}
 
 
 ## Corrigé
 
-Le code complet est disponible [à cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2022-2023/ds_2/tetris)
+Le code complet est disponible [à cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2022-2023/ds_2/tetris){.externe}
 ## Question 1
 
 {% faire "**But**" %}
-Construire avec [pyglet](https://pyglet.readthedocs.io/en/latest/) une fenêtre qui doit être semblable à celle ci-dessous :
+Construire avec [pyglet](https://pyglet.readthedocs.io/en/latest/){.externe} une fenêtre qui doit être semblable à celle ci-dessous :
 
 ![fenêtre initiale](./fenêtre_1.png)
 
@@ -46,7 +46,7 @@ Informations :
 * les paramètres `x`{.language-} et `y`{.language-} du constructeur de `Grille`{.language-} correspondent à l'origine de la grille dans le repère de la fenêtre, ici (275, 50)
 * la méthode `on_draw()`{.language-} de la classe `Tetris`{.language-} exécute la méthode `draw()`{.language-} de son attribut `grille`{.language-}
 * la méthode `draw()`{.language-} de la classe `Grille`{.language-} exécute la méthode `draw()`{.language-} de chaque élément de son attribut `quadrillage`{.language-}
-* les éléments [Line](https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line) de l'attribut `quadrillage`{.language-} des objets de type `Grille`{.language-} permettent de dessiner le quadrillage de ceux-ci
+* les éléments [Line](https://pyglet.readthedocs.io/en/latest/modules/shapes.html?highlight=pyglet.Shapes.Line#pyglet.shapes.Line){.externe} de l'attribut `quadrillage`{.language-} des objets de type `Grille`{.language-} permettent de dessiner le quadrillage de ceux-ci
 
 Vous implémenterez :
 
@@ -56,7 +56,7 @@ Vous implémenterez :
 
 ## Question 2
 
-Avant de créer les [tetrominos](https://harddrop.com/wiki/Tetromino) proprement dit, on va commencer par les simuler par une grille.
+Avant de créer les [tetrominos](https://harddrop.com/wiki/Tetromino){.externe} proprement dit, on va commencer par les simuler par une grille.
 
 ### Question 2.1
 
@@ -195,7 +195,7 @@ Le déplacement horizontal étant une action, après un déplacement horizontal 
 ![fenêtre 3.2](./fenêtre_32.gif)
 
 {% info %}
-Remettre l'accumulateur à zéro après un déplacement horizontal réussi permet si on est assez rapide de se [déplacer indéfiniment](https://harddrop.com/wiki/Infinity) de gauche à droite sans jamais descendre. Prenez ça comme une feature plutôt qu'un bug.
+Remettre l'accumulateur à zéro après un déplacement horizontal réussi permet si on est assez rapide de se [déplacer indéfiniment](https://harddrop.com/wiki/Infinity){.externe} de gauche à droite sans jamais descendre. Prenez ça comme une feature plutôt qu'un bug.
 {% endinfo %}
 
 ### Question 3.3
@@ -251,7 +251,7 @@ class Grille:
 Chaque élément, noté `cases[ligne][colonne]`{.language-}, sera ensuite :
 
 * soit `None`{.language-} et la case est *libre*
-* soit un objet de type [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) remplissant la case et la case est *occupée*
+* soit un objet de type [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe} remplissant la case et la case est *occupée*
 
 Ajoutez la création de cet attribut à votre classe `Grille`{.language-} et mettez à jour les méthodes suivantes :
 
@@ -276,7 +276,7 @@ Modifiez la méthode `Tetris.nouveau_tetromino()`{.language-} pour que la grille
 ···
 ```
 
-Pour cela, dans la méthode `Tetris.nouveau_tetromino()`{.language-} et une fois la grille du tetromino créé, vous changerez dans les cases de son attribut `cases` qui doivent être occupées en leur affectant un [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle)
+Pour cela, dans la méthode `Tetris.nouveau_tetromino()`{.language-} et une fois la grille du tetromino créé, vous changerez dans les cases de son attribut `cases` qui doivent être occupées en leur affectant un [`pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe}
 
 ![fenêtre 4.1](./fenêtre_41.gif)
 
@@ -526,8 +526,8 @@ Faites en sorte que chaque nouveau tetromino soit tiré au hasard.
 ## Pour aller plus loin
 
 * implémentez la rotation à gauche sur la touche "Z" (qui correspond à la lettre "W" sur un clavier français) et réaffectez la rotation droite à la touche "X"
-* [stocker et reprendre](https://harddrop.com/wiki/Hold_piece) un tetromino en appuyant sur la touche "C"
-* faire un [*ghost*](https://harddrop.com/wiki/Shadow)
+* [stocker et reprendre](https://harddrop.com/wiki/Hold_piece){.externe} un tetromino en appuyant sur la touche "C"
+* faire un [*ghost*](https://harddrop.com/wiki/Shadow){.externe}
 * montrer les 4 prochains tetromino
-* le prochain tetromino [n'est pas complètement aléatoire](https://harddrop.com/wiki/Random_Generator)
-* [amélioration des rotations](https://harddrop.com/wiki/SRS#Wall_Kicks)
+* le prochain tetromino [n'est pas complètement aléatoire](https://harddrop.com/wiki/Random_Generator){.externe}
+* [amélioration des rotations](https://harddrop.com/wiki/SRS#Wall_Kicks){.externe}

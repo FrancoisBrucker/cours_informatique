@@ -101,7 +101,7 @@ Placez les différentes constantes relatives aux valeurs et aux couleur des cart
 
 {% endfaire %}
 
-Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition [les Enum](https://docs.python.org/fr/3/library/enum.html). 
+Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition [les Enum](https://docs.python.org/fr/3/library/enum.html){.externe}. 
 
 On pourrait ainsi gérer les couleurs ainsi :
 
@@ -215,7 +215,7 @@ Faites fonctionner la méthode `plus_grande_ou_égale_que`{.interne}.
 Ajoutez à votre classe carte les opérateurs de comparaisons :
 
 {% faire %}
-Codez et testez les [opérateurs de comparaisons](../améliorer-ses-objets#comparaison){.interne} :
+Codez et testez les [opérateurs de comparaisons](../améliorer-ses-objets#comparaison) :
 
 - `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
 - `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}

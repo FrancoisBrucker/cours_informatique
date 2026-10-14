@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Un problème algorithmique](../écrire-algorithmes/problème/){.interne} est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+[Un problème algorithmique](../écrire-algorithmes/problème/) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
 {% note2 "**Définition**" %}
 La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.
@@ -71,13 +71,13 @@ On va chercher à résoudre le problème suivant :
 {% info %}
 On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
 
-On appelle ce genre de problème des [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision) et ils sont très important en informatique théorique. On le verra (bien) plus tard.
+On appelle ce genre de problème des [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision){.externe} et ils sont très important en informatique théorique. On le verra (bien) plus tard.
 {% endinfo %}
 
 Ce qu'on peut déjà dire de notre problème :
 
 - une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne}) résout le problème
+- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche)) résout le problème
 
 ```pseudocode/
 algorithme recherche(T: [entier], x: entier) → booléen:
@@ -130,7 +130,7 @@ Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé 
 
 <span id="problème-max-tableau-complexité"></span>
 {% exercice %}
-Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau){.interne} est en $\Theta(n)$
+Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau) est en $\Theta(n)$
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -139,7 +139,7 @@ Il faut montrer deux choses :
 1. une borne minimale de la complexité de la recherche de $\Omega(n)$
 2. un algorithme qui résout le problème en $\mathcal{O}(n)$
 
-Pour le premier point on raisonne exactement comme pour le problème de la recherche. Pour le second point [on a déjà vu un algorithme](../projet-calcul-complexite/#algorithme-max-tableau-complexité){.interne} de ce type.
+Pour le premier point on raisonne exactement comme pour le problème de la recherche. Pour le second point [on a déjà vu un algorithme](../projet-calcul-complexite/#algorithme-max-tableau-complexité) de ce type.
 
 {% enddetails %}
 
@@ -163,7 +163,7 @@ Cependant on utilise souvent un autre algorithme : la recherche dichotomique.
 
 #### Algorithme de la recherche dichotomique
 
-Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
+Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entier trié.
 
 On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
 

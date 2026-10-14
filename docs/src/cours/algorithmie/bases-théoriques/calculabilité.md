@@ -11,11 +11,11 @@ eleventyComputed:
 
 On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombre.
 
-Cette introduction à ce l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9) en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
+Cette introduction à ce l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9){.externe} en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
 
 {% lien %}
 
-Vous pouvez [consulter ce lien](https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf) sur l'émergence en mathématiques de la notion de calculabilité.
+Vous pouvez [consulter ce lien](https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf){.externe} sur l'émergence en mathématiques de la notion de calculabilité.
 {% endlien %}
 
 ## Algorithmes et nombres
@@ -61,7 +61,7 @@ Tous les rationnels sont calculables.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Il suffit d'utiliser [l'algorithme de la division de deux entiers décimaux](https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux) appris en primaire.
+Il suffit d'utiliser [l'algorithme de la division de deux entiers décimaux](https://fr.wikipedia.org/wiki/Division#Algorithmes_de_la_division_de_nombres_d%C3%A9cimaux){.externe} appris en primaire.
 
 {% enddetails %}
 
@@ -76,7 +76,7 @@ Tous les réels ne sont pas calculables. Ceci est du au résultat suivant :
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.
 {% endnote %}
 {% details "preuve", "open" %}
-On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Elle est basée sur l'argument s'appelant [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
+On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor){.externe}. Elle est basée sur l'argument s'appelant [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els){.externe}.
 
 On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
@@ -93,7 +93,7 @@ Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0
 - $1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$
 - $2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$
 
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els), il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
+Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els){.externe}, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
 Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
@@ -107,15 +107,15 @@ Il existe des réels non calculables.
 
 {% endnote %}
 {% details "preuve", "open" %}
-On a vu [qu 'il existait au plus un nombre dénombrable de programmes](../définition/#proposition-nb-dénombrable-algorithmes){.interne}, donc au plus autant de programme que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.
+On a vu [qu 'il existait au plus un nombre dénombrable de programmes](../définition/#proposition-nb-dénombrable-algorithmes), donc au plus autant de programme que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.
 {% enddetails %}
 
 
 
-Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
+Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu){.externe}.
 
 {% info %}
-Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
+Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/){.externe}, très bien faite.
 {% endinfo %}
 
 Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
@@ -141,18 +141,18 @@ Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x
 
 {% enddetails %}
 
-La proposition ci-dessus permet de montrer que la plupart des réels connus sont calculables. Par exemple $\pi$ puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e).
+La proposition ci-dessus permet de montrer que la plupart des réels connus sont calculables. Par exemple $\pi$ puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e){.externe}.
 
 {% info %}
-Contrairement à une croyance largement rependue en europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathématicien chinois [刘徽](https://fr.wikipedia.org/wiki/Liu_Hui) en [proposait un algorithme](https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80) au troisième siècle.
+Contrairement à une croyance largement rependue en europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathématicien chinois [刘徽](https://fr.wikipedia.org/wiki/Liu_Hui){.externe} en [proposait un algorithme](https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80){.externe} au troisième siècle.
 
 {% endinfo %}
 
-**Attention cependant**, Il faut que **le même algorithme** soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker) par exemple.
+**Attention cependant**, Il faut que **le même algorithme** soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker){.externe} par exemple.
 
 {% lien %}
 
-[Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable), des nombres calculable.
+[Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable){.externe}, des nombres calculable.
 {% endlien %}
 
 En conclusion :
@@ -167,7 +167,7 @@ Attention cependant à ne pas confondre le réel en tant que tel (non calculable
 
 ## Algorithmes et fonctions
 
-On a vu qu'un algorithme et tout ce qu'il manipulait [pouvait être considéré comme une suite finie de 0 et de 1](../définition/#définition-algorithme-canonique){.interne}. On en déduit immédiatement la proposition suivante :
+On a vu qu'un algorithme et tout ce qu'il manipulait [pouvait être considéré comme une suite finie de 0 et de 1](../définition/#définition-algorithme-canonique). On en déduit immédiatement la proposition suivante :
 
 <span id="algorithme-fonction"></span>
 
@@ -213,7 +213,7 @@ Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que 
 
 {% endnote %}
 {% details "preuve", "open" %}
-La preuve est identique à celle du [Théorème montrant qu'il y a strictement plus de réels que d'entiers](../définition/#diagonale-cantor){.interne}.
+La preuve est identique à celle du [Théorème montrant qu'il y a strictement plus de réels que d'entiers](../définition/#diagonale-cantor).
 
 Comme les fonctions $\widetilde{k}: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $\widetilde{k}(x) = k$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
 On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ et les nombres entiers.
@@ -222,7 +222,7 @@ On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre
 
 {% enddetails %}
 
-Comme il existe [autant d'Algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes){.interne} :
+Comme il existe [autant d'Algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes) :
 
 {% attention2 "**À retenir**" %}
 Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
@@ -261,7 +261,7 @@ Si $a$ et $b$ sont deux entiers positifs et tel que $\min(a, b) > 0$ alors : $\m
 
 {% enddetails %}
 
-Un cas d'usage classique est une fonction qui admet [un développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries) comme quasi toutes les fonctions mathématiques usuelles (comme $x \mapsto \cos(x)$, $x \mapsto \sin(x)$, $x \mapsto \sqrt{x}$, etc)  :
+Un cas d'usage classique est une fonction qui admet [un développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries){.externe} comme quasi toutes les fonctions mathématiques usuelles (comme $x \mapsto \cos(x)$, $x \mapsto \sin(x)$, $x \mapsto \sqrt{x}$, etc)  :
 
 {% attention2 "**À retenir**" %}
 
@@ -292,7 +292,7 @@ Le texte ci-dessus n'est **pas** un programme car le "il existe" n'est pas une o
 
 Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.
 
-Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers)) et alors le programme devient l'algorithme ci-dessous :
+Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe}) et alors le programme devient l'algorithme ci-dessous :
 
 ```text
 Nom : 5-consécutifs
@@ -315,7 +315,7 @@ Programme :
         rendre 0
 ```
 
-Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
+Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe} et donc on ne sait pas lequel des deux algorithmes est le bon.
 
 {% attention2 "**À retenir**" %}
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
@@ -327,11 +327,11 @@ On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont pa
 
 <span id="fonction-Takeuchi"></span>
 
-La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
+La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi){.externe} est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
 
 {% note2 "**Définition**" %}
 
-La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) est définie pour tous entiers positifs $x$, $y$ et $z$ telle que :
+La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi){.externe} est définie pour tous entiers positifs $x$, $y$ et $z$ telle que :
 
 <div>
 $$
@@ -452,7 +452,7 @@ Nous allons donner un exemple de chaque ci-après.
 
 ### Un nombre non calculable : $\Omega$ de Chaitin
 
-Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin), lui aussi non dénombrable.
+Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin){.externe}, lui aussi non dénombrable.
 
 Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
 
@@ -461,13 +461,13 @@ Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
 - égale à 1 si le programme $P_i$ s'arrête
 - égale à 0 si le programme $P_i$ se s'arrête pas
 
-Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.
+Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice) serait décidable.
 
 
 ### <span id="complexité-Kolmogorov"></span> Une Fonction non calculable : la complexité de Kolmogorov
 
 {% lien %}
-[Complexité de Kolmogorov](https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_Kolmogorov)
+[Complexité de Kolmogorov](https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_Kolmogorov){.externe}
 {% endlien %}
 
 La complexité de Kolmogorov est un exemple classique de fonction non calculable.

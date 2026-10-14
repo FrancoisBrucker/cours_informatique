@@ -10,14 +10,14 @@ eleventyComputed:
 ---
 
 
-Les [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive) sont un cas particulier important des fonctions calculables. La plupart des fonction mathématiques usuelles en sont !
+Les [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive){.externe} sont un cas particulier important des fonctions calculables. La plupart des fonction mathématiques usuelles en sont !
 
-C'est [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano). Au départ on pensait que ça suffirait pour tout calculer.
+C'est [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano){.externe}. Au départ on pensait que ça suffirait pour tout calculer.
 
 {% lien %}
 
-- <https://www.andrew.cmu.edu/user/kk3n/recursionclass/chap2.pdf>
-- <https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5&index=1>
+- <https://www.andrew.cmu.edu/user/kk3n/recursionclass/chap2.pdf>{.externe}
+- <https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5&index=1>{.externe}
 
 {% endlien %}
 
@@ -64,7 +64,7 @@ Les _**fonctions récursives primitives de bases**_ sont :
 Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections. La fonction successeur l'est également, on l'a déjà rencontré :
 
 {% exercice %}
-Modifiez l'algorgithme [du compteur binaire](../../projet-algorithmes-classiques/compteur-binaire/){.interne} pour qu'il puisse rendre le successeur de tout entier passé en paramètre sous la forme d'un tableau de bits.
+Modifiez l'algorgithme [du compteur binaire](../../projet-algorithmes-classiques/compteur-binaire/) pour qu'il puisse rendre le successeur de tout entier passé en paramètre sous la forme d'un tableau de bits.
 {% endexercice %}
 {% details "corrigé" %}
 Il faut modifier l'algorithme de deux façons :
@@ -288,7 +288,7 @@ Comme toute composition finie d'algorithme reste un algorithme, on a la proposit
 Les fonctions récursives primitives sont calculables.
 {% endnote %}
 
-Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent de créer toutes les fonctions arithmétiques usuelles (voir [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano)) et ont été utilisées par Gödel pour montrer son [célèbre théorème d'incomplétude](https://perso.ens-lyon.fr/natacha.portier/enseign/logique/GoedelParAlex.pdf).
+Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent de créer toutes les fonctions arithmétiques usuelles (voir [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano){.externe}) et ont été utilisées par Gödel pour montrer son [célèbre théorème d'incomplétude](https://perso.ens-lyon.fr/natacha.portier/enseign/logique/GoedelParAlex.pdf){.externe}.
 
 {% attention2 "**À retenir**" %}
 Ce type de construction où l'on combine simplement des éléments basiques pour produire des choses complexes est l'essence même de l'informatique et de l'algorithmie.
@@ -330,8 +330,8 @@ Si ce genre d'exemples vous intéresse, allez jeter un œil au lien suivant :
 
 {% lien %}
 
-- [exemples de fonctions primitives récursives](https://www.michaelbeeson.com/teaching/StanfordLogic/Lecture4Slides.pdf)
-- [logique et fonctions primitives récursives](https://www.cs.utep.edu/vladik/cs5315.21/pr2.pdf)
+- [exemples de fonctions primitives récursives](https://www.michaelbeeson.com/teaching/StanfordLogic/Lecture4Slides.pdf){.externe}
+- [logique et fonctions primitives récursives](https://www.cs.utep.edu/vladik/cs5315.21/pr2.pdf){.externe}
 
 {% endlien %}
 

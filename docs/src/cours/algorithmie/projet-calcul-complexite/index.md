@@ -14,14 +14,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons reprendre les algorithmes que nous avons crée précédemment dans la partie [calcul et preuve d'algorithmes](../projet-itératif-récursif){.interne} en utilisant ceux proposés dans la correction.
+Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons reprendre les algorithmes que nous avons crée précédemment dans la partie [calcul et preuve d'algorithmes](../projet-itératif-récursif) en utilisant ceux proposés dans la correction.
 
 Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatisme.
 
 ## Maximum d'un tableau
 
 {% aller %}
-[Création et preuve de l'algorithme maximum récursif](../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}
+[Création et preuve de l'algorithme maximum récursif](../projet-itératif-récursif/#algorithme-max-tableau-rec)
 {% endaller %}
 
 <span id="algorithme-max-tableau-complexité"></span>
@@ -46,7 +46,7 @@ On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
 ## Concaténation
 
 {% aller %}
-[Création et preuve de l'algorithme concaténation](../projet-itératif-récursif/#algorithme-concaténation){.interne}
+[Création et preuve de l'algorithme concaténation](../projet-itératif-récursif/#algorithme-concaténation)
 {% endaller %}
 
 {% exercice %}
@@ -75,7 +75,7 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 ### Intersection non vide
 
 {% aller %}
-[Création et preuve de l'algorithme d'intersection non vide](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+[Création et preuve de l'algorithme d'intersection non vide](../projet-itératif-récursif/#algorithme-intersection-non-vide)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité min et max de l'algorithme `intersection_non_vide`{.language-} ?
@@ -90,7 +90,7 @@ Quelle est la complexité min et max de l'algorithme `intersection_non_vide`{.la
 ### Mêmes valeurs
 
 {% aller %}
-[Création et preuve de l'égalités des valeurs](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+[Création et preuve de l'égalités des valeurs](../projet-itératif-récursif/#algorithme-intersection-non-vide)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité min et max de l'algorithme `égalité_valeurs`{.language-} ?
@@ -106,7 +106,7 @@ Quelle est la complexité min et max de l'algorithme `égalité_valeurs`{.langua
 ### Permutations
 
 {% aller %}
-[Création et preuve de l'égalités des éléments](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+[Création et preuve de l'égalités des éléments](../projet-itératif-récursif/#algorithme-intersection-non-vide)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité min et max de l'algorithme `permutation`{.language-} ?
@@ -124,7 +124,7 @@ Quelle est la complexité min et max de l'algorithme `permutation`{.language-} ?
 ### Itératif
 
 {% aller %}
-[Création et preuve de l'algorithme suppression valeurs itératif](../projet-itératif-récursif/#suppression-valeur-itératif){.interne}
+[Création et preuve de l'algorithme suppression valeurs itératif](../projet-itératif-récursif/#suppression-valeur-itératif)
 {% endaller %}
 
 {% exercice %}
@@ -142,7 +142,7 @@ La complexité est donc en $\mathcal{O}(\mbox{T.longueur})$
 ### Récursif
 
 {% aller %}
-[Création et preuve de l'algorithme suppression valeurs récursif](../projet-itératif-récursif/#algorithme-suppression-valeur-récursif){.interne}
+[Création et preuve de l'algorithme suppression valeurs récursif](../projet-itératif-récursif/#algorithme-suppression-valeur-récursif)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité de l'algorithme `supprime_rec`{.language-} ?
@@ -211,7 +211,7 @@ Pour que les complexités soient comparables il faudrait pouvoir ajouter petit �
 ## Retournement d'un tableau
 
 {% aller %}
-[Création et preuve de l'algorithme retournement](../projet-itératif-récursif/#algorithme-retournement){.interne}
+[Création et preuve de l'algorithme retournement](../projet-itératif-récursif/#algorithme-retournement)
 {% endaller %}
 
 {% exercice %}
@@ -237,7 +237,7 @@ Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. Comme pour le ca
 ## McCarty
 
 {% aller %}
-[Définitions et propriétés de la fonction de McCarty](../projet-itératif-récursif/#fonction-McCarty){.interne}
+[Définitions et propriétés de la fonction de McCarty](../projet-itératif-récursif/#fonction-McCarty)
 {% endaller %}
 
 En utilisant uniquement la relation de récurrence, résolvez les exercices suivants (vous pourrez utiliser ce que l'on a démontré précédemment) :

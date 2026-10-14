@@ -15,7 +15,7 @@ eleventyComputed:
 ---
 
 
-Ce cours intitulé _Programmation_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682)).
+Ce cours intitulé _Programmation_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120){.externe}). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682){.externe}).
 
 Ce cours donnera les bases de développement d'un projet informatique en s'appuyant sur le langage python.
 
@@ -40,13 +40,13 @@ Avec :
 Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours, en particulier vos cours d'informatique du S1, en particulier avoir des bases de programmation python. Tout ce dont on aura besoin est disponible dans le cours cours ci-après :
 
 {% prerequis "**Acquis du S1**" %}
-[Fondements de la programmation (avec Python)](/cours/coder-et-développer/apprendre-programmation/concepts/){.interne}
+[Fondements de la programmation (avec Python)](/cours/coder-et-développer/apprendre-programmation/concepts/)
 {% endprerequis %}
 
 Programmer nécessite d'utiliser le web pour lire la doc, técharger des modules, etc. Configurez votre ordinateur pour qu'il puisse utiliser le réseau universitaire EDUROAM :
 
 {% lien %}
-[Utilisez le réseau EDUROAM](/enseignements/MPCI/outil-informatique/#eduroam){.interne}
+[Utilisez le réseau EDUROAM](/enseignements/MPCI/outil-informatique/#eduroam)
 {% endlien %}
 
 
@@ -58,10 +58,10 @@ Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque 
 
 ### Partie 0 : Vérification des acquis
 
-Utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou <[spyder](https://www.spyder-ide.org/)> pour vous rafraîchir la mémoire en python :
+Utilisez [un interpréteur en ligne](https://console.basthon.fr/){.externe} ou <[spyder](https://www.spyder-ide.org/){.externe}> pour vous rafraîchir la mémoire en python :
 
 {% aller %}
-[84 monolignes en python](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/){.interne}
+[84 monolignes en python](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/)
 {% endaller %}
 
 Vous devriez être capable de comprendre toutes les solutions et (dans le meilleur des cas) d'en faire une grande partie.
@@ -74,12 +74,12 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 
 {% aller %}
 1. Interagir avec le système :
-   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/){.interne}
-   2. [Terminal](/cours/système/interagir-avec-système/terminal/){.interne}
-2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
+   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/)
+   2. [Terminal](/cours/système/interagir-avec-système/terminal/)
+2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
 {% endaller %}
 {% info %}
-[Installer des paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/){.interne}
+[Installer des paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/)
 {% endinfo %}
 
 #### Principe de conduite d'un projet informatique
@@ -89,16 +89,16 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 Le premier principe fondamental est de séparer le programme principal des fonctions :
 
 {% aller %}
-1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
-2. On s'entraîne : [Projet : création de modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
+1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/)
+2. On s'entraîne : [Projet : création de modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/)
 
 {% endaller %}
 
 Le second principe fondamental est que les tests des fonctions fonts partie du projet :
 
 {% aller %}
-1. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
-2. [On s'entraîne à écrire des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
+1. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
+2. [On s'entraîne à écrire des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/)
 {% endaller %}
 
 #### À vous
@@ -106,20 +106,20 @@ Le second principe fondamental est que les tests des fonctions fonts partie du p
 > 2h TP
 
 {% aller %}
-[Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/){.interne}
+[Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/)
 {% endaller %}
 
 
 {% aller %}
-1. [Mise en œuvre d'un projet informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/){.interne}
-2. [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}
+1. [Mise en œuvre d'un projet informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/)
+2. [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/)
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
-1. [Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/){.interne}
-2. [exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
+1. [Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/)
+2. [exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/)
 {% endaller %}
 
 ### Partie II : Programmation Objet
@@ -127,7 +127,7 @@ Pour aller plus loin :
 La grosse partie de cette UE.
 
 {% prerequis "**À lire avant la séance**" %}
-[Tout est objet en python](/cours/coder-et-développer/apprendre-programmation/programmation-objet/introduction/){.interne}
+[Tout est objet en python](/cours/coder-et-développer/apprendre-programmation/programmation-objet/introduction/)
 {% endprerequis %}
 
 
@@ -136,25 +136,25 @@ La grosse partie de cette UE.
 > 2h cours
 
 {% aller %}
-1. [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
-2. [Des dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés/){.interne}
+1. [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/)
+2. [Des dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés/)
 {% endaller %}
 
 > 2h TP
 
 {% aller %}
-[Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/){.interne}
+[Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/)
 {% endaller %}
 
 #### DM 1 : améliorer ses objets
 
 {% prerequis "**TRavail préparatoire**" %}
-1. [Améliorer ses objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/){.interne}
-2. [Des dés améliorés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne}
+1. [Améliorer ses objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/)
+2. [Des dés améliorés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/)
 
 {% endprerequis %}
 {% faire %}
-[Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/){.interne}
+[Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/)
 {% endfaire %}
 
 #### Composition et agrégation
@@ -162,14 +162,14 @@ La grosse partie de cette UE.
 > 2h cours
 
 {% aller %}
-1. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
-2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/){.interne}
+1. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/)
+2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/)
 {% endaller %}
 
 > 2h TP
 
 {% aller %}
-[Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/){.interne}
+[Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/)
 {% endaller %}
 
 #### Héritage
@@ -177,33 +177,33 @@ La grosse partie de cette UE.
 > 2h cours
 
 {% aller %}
-1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/){.interne}
-2. [Dés spécifiques](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
+1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/)
+2. [Dés spécifiques](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/)
 {% endaller %}
 
 > 2h TP
 
 {% aller %}
-[Projet Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-héritage/){.interne}
+[Projet Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-héritage/)
 {% endaller %}
 
 #### DM 2
 
 {% prerequis "**Travail préparatoire**" %}
-1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/){.interne} pour ses projets
-2. mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
+1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/) pour ses projets
+2. mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/) sur github.
 
 {% endprerequis %}
 
 
 {% faire %}
 
-Rendre le projet [Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}. 
+Rendre le projet [Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale). 
 
 Les consignes sont :
 
 - le projet doit se trouver sur github
-- mettre de la couleur dans vos sorties en utilisant le module <https://github.com/termcolor/termcolor>
+- mettre de la couleur dans vos sorties en utilisant le module <https://github.com/termcolor/termcolor>{.externe}
 - il doit fonctionner avec un environnement virtuel : le fichier `requirements.txt`{.fichier} est requis
 
 

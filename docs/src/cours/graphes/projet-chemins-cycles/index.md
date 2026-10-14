@@ -11,5 +11,5 @@ eleventyComputed:
 
 Utilisation d'algorithmes gloutons pour résoudre des problèmes de cheminement.
 
-- [étude](./étude){.interne}
-- [Projet](./projet){.interne}
+- [étude](./étude)
+- [Projet](./projet)

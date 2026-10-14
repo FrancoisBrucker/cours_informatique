@@ -30,7 +30,7 @@ Si un graphe est connexe et n'est pas un arbre, alors il existe un cycle. En sup
 
 Les arbres couvrant d'un graphe sont beaucoup utilisés en optimisation. Notez que si le graphe $G$ n'est pas connexe, on peut itérer l'opération pour chaque partie connexe et trouver une **_forêt couvrante d'un graphe_**.
 
-Si [le graphe est valué](../../chemin-poids-min-problème/#graphe_valué){.interne}, on peut chercher **un** arbre couvrant de poids minimum :
+Si [le graphe est valué](../../chemin-poids-min-problème/#graphe_valué), on peut chercher **un** arbre couvrant de poids minimum :
 
 {% note2 "**Définition**" %}
 Un **_arbre couvrant de poids minimum (_resp._ maximum) d'un graphe connexe valué_** $(G, f)$  est un arbre couvrant $T=(V, E')$ tel que la somme de la valuation de ses arêtes est minimum (_resp._ maximum) parti tous les arbres couvrants de $G$.
@@ -151,7 +151,7 @@ Déduire de l'exercice précédent que si $(G, f)$ est un graphe connexe valué,
 ## Algorithme de Kruskal
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
+<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>{.externe}
 {% endlien %}
 
 > TBD Kruskal. On le fait :
@@ -198,7 +198,7 @@ Algorithme :
 2. Prouver que $T$ est **un arbre couvrant de poids minimal** pour $G$.
    {% endexercice %}
    {% details "solution" %}
-   Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim). Tout y est très bien expliqué.
+   Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim){.externe}. Tout y est très bien expliqué.
    {% enddetails %}
 
 Maintenant qu'on est sur que ça marche :

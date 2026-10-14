@@ -12,8 +12,8 @@ eleventyComputed:
 
 Nous avons déjà abordé la notion d'espace de nommage lorsque :
 
-- on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et de l'accès à leurs éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}
-- on a parlé des fonctions : [l'espace de nommage et fonctions](../creation-fonctions/#espace-nommage){.interne}
+- on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage) et de l'accès à leurs éléments via [la notation pointée](../principes/modules/#définition-notation-pointée)
+- on a parlé des fonctions : [l'espace de nommage et fonctions](../creation-fonctions/#espace-nommage)
 
 Les espaces de nommage permettent de lier variables et objets :
 
@@ -33,7 +33,7 @@ De façon formelle :
 {% note2 "**Définition**" %}
 Un **_espace de nommage_** est constitué de deux parties :
 
-- une table de correspondance ([un dictionnaire](../conteneurs/dictionnaires){.interne}) associant des noms (les clés) à des objets (les valeurs). 
+- une table de correspondance ([un dictionnaire](../conteneurs/dictionnaires)) associant des noms (les clés) à des objets (les valeurs). 
 - un lien vers un espace de nommage **_parent_** (qui peut être vide)
 {% endnote2 %}
 
@@ -119,7 +119,7 @@ Au démarrage d'une exécution d'un programme, l'espace des variables est créé
 
 Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par `__`{.language-}) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.
 
-Pour voir les noms définis dans l'espace de noms des variables, on utilise en python [la fonction `globals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#globals) qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
+Pour voir les noms définis dans l'espace de noms des variables, on utilise en python [la fonction `globals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#globals){.externe} qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
 
 ```python
 >>> type(globals())
@@ -135,7 +135,7 @@ On voit que des variables existent dès le démarrage de python. Ces variables n
 - `__builtins__`{.language-} est un module et contient toutes les fonctions de python (il contient les noms `print`, `input`, etc)
 
 {% info %}
-Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales, appelées _dunder_ et commençant et finissant par deux [underscores](https://fr.wikipedia.org/wiki/Tiret_bas).
+Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales, appelées _dunder_ et commençant et finissant par deux [underscores](https://fr.wikipedia.org/wiki/Tiret_bas){.externe}.
 
 {% endinfo %}
 
@@ -201,9 +201,9 @@ L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder
 
 ## <span id="espace-modules"></span> Espaces de nommage des modules
 
-On a vu qu'un module contenait [un espace de nommage](../principes/modules/#définition-espace-nommage){.interne} auquel on pouvait accéder via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}. Tout comme l'espace des variables, cet espace ne contient pas de parent.
+On a vu qu'un module contenait [un espace de nommage](../principes/modules/#définition-espace-nommage) auquel on pouvait accéder via [la notation pointée](../principes/modules/#définition-notation-pointée). Tout comme l'espace des variables, cet espace ne contient pas de parent.
 
-Tout comme la fonction `globals()`{.language-} permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet `o`{.language-} (en particulier d'un module) en utilisant [la fonction `vars(o)`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#vars).
+Tout comme la fonction `globals()`{.language-} permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet `o`{.language-} (en particulier d'un module) en utilisant [la fonction `vars(o)`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#vars){.externe}.
 
 Testons cela en regardant si `print`{.language-} est dans le module `__builtins__`{.language-} :
 
@@ -324,7 +324,7 @@ import mon_module
 mon_module.autre_variable = "quarante-deux"
 ```
 
-Il est bien sur non conseillé de le faire par ce qu'on peut **Tout modifier**. Par exemple se conformer à [une loi de l'Indiana](https://www.youtube.com/watch?v=1Bn50keR6UY) :
+Il est bien sur non conseillé de le faire par ce qu'on peut **Tout modifier**. Par exemple se conformer à [une loi de l'Indiana](https://www.youtube.com/watch?v=1Bn50keR6UY){.externe} :
 
 ```python
 
@@ -347,7 +347,7 @@ L'interpréteur possède à chaque instant **_un espace de nommage courant_**  q
 Par défaut l'espace de nommage courant est l'espace des variables.
 {% endnote2 %}
 
-Pour voir les noms définis dans l'espace de noms courant, on utilise en python [la fonction `locals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#locals) qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
+Pour voir les noms définis dans l'espace de noms courant, on utilise en python [la fonction `locals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#locals){.externe} qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
 
 Cet espace de nommage courant va changer au cours du temps selon le contexte :
 
@@ -405,7 +405,7 @@ On voit bien que :
 
 ### Espace créés pour les fonctions
 
-[Un espace de nommage est créé pour chaque fonction lors de son exécution](../creation-fonctions/#espace-nommage){.interne}, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :
+[Un espace de nommage est créé pour chaque fonction lors de son exécution](../creation-fonctions/#espace-nommage), on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :
 
 {% note2 "**Définition**" %}
 Un espace de nommage est crée lors de chaque **exécution** d'une fonction. 

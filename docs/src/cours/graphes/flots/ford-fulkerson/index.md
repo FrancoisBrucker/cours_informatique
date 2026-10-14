@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Algorithme de Ford et Fulkerson](https://fr.wikipedia.org/wiki/Algorithme_de_Ford-Fulkerson)
+[Algorithme de Ford et Fulkerson](https://fr.wikipedia.org/wiki/Algorithme_de_Ford-Fulkerson){.externe}
 {% endlien %}
 
 L'algorithme de Ford et Fulkerson (1955) est en trois parties :
@@ -455,7 +455,7 @@ Attention, la capacité d'une coupe peut être aussi grande que l'on veut et don
 
 Attention, l'algorithme ne converge que si les valeurs sont entières. Si les capacités sont réelles, l'algorithme peut ne jamais s'arrêter...
 
-L'exemple que nous allons prendre pour illustrer ce cas particulier est tiré de [l'article _"The Simplest and Smallest Network on Which the Ford-Fulkerson Maximum Flow Procedure May Fail to Terminate"_](https://www.jstage.jst.go.jp/article/ipsjjip/24/2/24_390/_pdf) qui fait une revue de plusieurs exemples pathologiques.
+L'exemple que nous allons prendre pour illustrer ce cas particulier est tiré de [l'article _"The Simplest and Smallest Network on Which the Ford-Fulkerson Maximum Flow Procedure May Fail to Terminate"_](https://www.jstage.jst.go.jp/article/ipsjjip/24/2/24_390/_pdf){.externe} qui fait une revue de plusieurs exemples pathologiques.
 
 On considère le graphe orienté et les capacités suivantes :
 
@@ -497,4 +497,4 @@ Ces 4 étapes nous ont fait augmenter le flot de $2(r^1+r^2)$. On peut refaire �
 | $sabcdp$    | $r-r^{n+3}$ | $1-r^{n+2}$ | $1-0$                          | $2(\sum_{0\leq i\leq n+1}r^i) -1+r^{n+2}$ |
 | $sdcbp$     | $r-r^{n+3}$ | $1-0$       | $1-r^{n+2}$                    | $2(\sum_{0\leq i\leq n+2}r^i)-1$          |
 
-On peut alors recommencer jusqu'à l'infini car $\sum_{0\leq i\leq n}r^i$ est [une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique) convergente : $\sum_{0\leq i\leq n}r^i \leq 1/(1-r)\leq 3$ pour tout $n$. Et donc la valeur du flot sera toujours inférieure à 5, donc à $M$ et pourra passer par tous les arcs.
+On peut alors recommencer jusqu'à l'infini car $\sum_{0\leq i\leq n}r^i$ est [une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique){.externe} convergente : $\sum_{0\leq i\leq n}r^i \leq 1/(1-r)\leq 3$ pour tout $n$. Et donc la valeur du flot sera toujours inférieure à 5, donc à $M$ et pourra passer par tous les arcs.

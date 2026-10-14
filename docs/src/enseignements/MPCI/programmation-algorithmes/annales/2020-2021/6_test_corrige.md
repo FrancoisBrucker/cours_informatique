@@ -8,7 +8,7 @@ authors:
 
 ## Introduction
 
-Cet exercice est classique et s'appelle le [sac à dos fractionnel](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues) (dans le test, les prix étaient déjà au kilo).
+Cet exercice est classique et s'appelle le [sac à dos fractionnel](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues){.externe} (dans le test, les prix étaient déjà au kilo).
 
 ### algorithme
 
@@ -37,7 +37,7 @@ On trie la liste dans le code. Comme le 1er élément de chaque liste est le pri
 
 **Remarques** :
 
-* Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique). Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)
+* Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique){.externe}. Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)
 * attention, les méthodes de liste `sort`{.language-} et `reverse`{.language-} ne rendent rien. Elles modifient la liste. De là `l.sort().reverse()`{.language-} **ne fonctionne pas** puisque cette commande signifie que l'on applique la méthode `reverse` à l'objet donné en retour de `l.sort()`{.language-}. Or comme `l.sort()`{.language-} ne rend rien elle retourne l'objet `None`{.language-} (l'objet *rien du tout* en python) qui ne possède pas de méthode `reverse`{.language-}. C'est ce que dit le message d'erreur quand on essaie de le faire : `AttributeError: 'NoneType' object has no attribute 'reverse'`{.language-}  (le type de l'objet `None`{.language-} (comme le tpe des entier est `int`{.language-} ou le type des réels est `float`{.language-}) est `NoneType`{.language-} (il a un type à lui)).
 
 #### preuve

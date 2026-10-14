@@ -12,16 +12,16 @@ eleventyComputed:
 ---
 
 
-Présentation succincte du module <https://matplotlib.org/>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <https://seaborn.pydata.org/>.
+Présentation succincte du module <https://matplotlib.org/>{.externe}  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <https://seaborn.pydata.org/>{.externe}.
 
 {% info %}
 Utilisez spyder pour ce tutoriel.
 
 {% endinfo %}
 
-Le module [matplotlib](https://matplotlib.org/) peut être une  difficile à utiliser, ses notations ne sont pas cohérentes entre-elles, les paramètres des fonctions sont souvent abscons et il y a toujours plusieurs façon d'arriver au même résultat. Bref, cela peut être très pénible de s'en sortir.
+Le module [matplotlib](https://matplotlib.org/){.externe} peut être une  difficile à utiliser, ses notations ne sont pas cohérentes entre-elles, les paramètres des fonctions sont souvent abscons et il y a toujours plusieurs façon d'arriver au même résultat. Bref, cela peut être très pénible de s'en sortir.
 
-Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de <https://matplotlib.org/> nous ne saurions trop vous conseiller de lui préférer <https://seaborn.pydata.org/> qui est une surcouche de <https://matplotlib.org/> qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.
+Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de <https://matplotlib.org/>{.externe} nous ne saurions trop vous conseiller de lui préférer <https://seaborn.pydata.org/>{.externe} qui est une surcouche de <https://matplotlib.org/>{.externe} qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.
 
 ## Écrire du code
 
@@ -94,7 +94,7 @@ Essayons de comprendre comment tout ça fonctionne :
 2. la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
     * On utilise ici `ax`{.language-} qui représente un dessin de 20 unités sur 5.
     * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique.
-3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html) demande d'avoir 2 tableaux $x$ et $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
+3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html){.externe} demande d'avoir 2 tableaux $x$ et $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
 
@@ -145,7 +145,7 @@ plt.show()
 
 {% enddetails %}
 
-Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html).
+Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html){.externe}.
 
 ## Sauver une figure
 
@@ -156,7 +156,7 @@ Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du 
 Il est tout à fait possible d'avoir plusieurs figures.
 
 {% lien "**Documentation**" %}
-<https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html>
+<https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html>{.externe}
 {% endlien %}
 
 {% exercice %}
@@ -220,7 +220,7 @@ fig, ax = plt.subplots(figsize=(20, 5), nrows=2, ncols=2)
 
 {% lien "**Documentation**" %}
 
-<https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar>
+<https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar>{.externe}
 {% endlien %}
 
 ```python
@@ -250,7 +250,7 @@ On a ajouté les attributs `ax.set_xticks`{.language-} et `ax.set_xticklabels`{.
 
 {% lien "**Documentation**" %}
 
-<https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html>
+<https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html>{.externe}
 {% endlien %}
 
 ```python
@@ -276,7 +276,7 @@ plt.show()
 Un bon point de départ pour explorer els diverses possibilités de `plot`{.language-} est de lire et faire le tutoriel :
 
 {% lien %}
-<https://matplotlib.org/stable/tutorials/introductory/pyplot.html>
+<https://matplotlib.org/stable/tutorials/introductory/pyplot.html>{.externe}
 {% endlien %}
 
 Faire une belle figure prend du temps.
@@ -293,7 +293,7 @@ Il pourra être nécessaire de modifier (ou de supprimer les limites des axes pa
 Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $x$ varie de $0$ à $100000$ par pas de $1000$.
 {% endfaire %}
 {% info %}
-Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)
+Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log){.externe}
 {% endinfo %}
 
 {% faire %}

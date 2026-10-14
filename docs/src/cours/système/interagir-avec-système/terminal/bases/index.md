@@ -14,7 +14,7 @@ Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.
 
 ## Introduction
 
-Le terminal est l'outil utilisé pour taper des commandes qui seront ensuite exécutées par votre ordinateur. On appelle ça le [CLI](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande).
+Le terminal est l'outil utilisé pour taper des commandes qui seront ensuite exécutées par votre ordinateur. On appelle ça le [CLI](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande){.externe}.
 
 Même si cela est intimidant, le CLI est le moyen le plus efficace d'interagir avec votre ordinateur car, contrairement aux applications :
 
@@ -27,7 +27,7 @@ Enfin, c'est souvent la seule façon d'interagir avec un ordinateur distant.
 Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L'interface graphique n'est qu'un ajout sympathique mais non indispensable à l'utilisation d'un ordinateur. Alors bien sur vous n'utiliserez pas le terminal tout le temps mais savoir s'en servir pourra vous faire gagner un temps fou lorsque vous faites de l'informatique.
 
 {% info %}
-Utiliser le terminal vous procure en plus ce petit sentiment grisant d'[être en prise directe avec la matrice](https://www.youtube.com/watch?v=MvEXkd3O2ow).
+Utiliser le terminal vous procure en plus ce petit sentiment grisant d'[être en prise directe avec la matrice](https://www.youtube.com/watch?v=MvEXkd3O2ow){.externe}.
 {% endinfo %}
 
 ## Accéder au terminal
@@ -43,12 +43,12 @@ Dans le menu démarrer choisissez `toutes les applications` en haut à droite de
 
 ![terminal sous windows](powershell-menu-démarrer.png)
 
-Le terminal s'appelle aussi parfois [powershell](https://learn.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.3), à ne pas confondre avec _l'invite de commande_ (commande `cmd`) qui est là pour des raisons de compatibilités mais qu'il ne faut jamais utiliser soit même.
+Le terminal s'appelle aussi parfois [powershell](https://learn.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.3){.externe}, à ne pas confondre avec _l'invite de commande_ (commande `cmd`) qui est là pour des raisons de compatibilités mais qu'il ne faut jamais utiliser soit même.
 
 {% enddetails %}
 {% details "sous Macos" %}
 
-[l'aide de Mac](https://support.apple.com/fr-fr/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) pour trouver le terminal.
+[l'aide de Mac](https://support.apple.com/fr-fr/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac){.externe} pour trouver le terminal.
 
 L'application se trouve dans le dossier `/Application/utilitaires`{.fichier} que l'on peut facilement atteindre avec le `finder` :
 
@@ -70,7 +70,7 @@ Vous pouvez aussi utiliser le raccourci clavier global `<CTRL> + <ALT> + T` :
 
 ### <span id="explorateur"></span>Via l'explorateur de fichier
 
-[L'explorateur de fichier](../../fichiers-dossiers/#explorateur){.interne} est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
+[L'explorateur de fichier](../../fichiers-dossiers/#explorateur) est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
 
 {% details "sous Windows 11" %}
 
@@ -97,10 +97,10 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 ### <span id="vscode"></span>Via vscode
 
-[Vscode](https://code.visualstudio.com/) est un IDE populaire et très utilisé pour le développement. Il possède son propre terminal auquel on peut très facilement accéder.
+[Vscode](https://code.visualstudio.com/){.externe} est un IDE populaire et très utilisé pour le développement. Il possède son propre terminal auquel on peut très facilement accéder.
 
 {% lien "**Documentation**" %}
-[Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal)
+[Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal){.externe}
 {% endlien %}
 
 #### Ouvrir ou créer un terminal
@@ -152,7 +152,7 @@ Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal :
 
 ![terminal](terminal.png)
 
-Vous êtes devant ce qu'on appelle [**_un prompt_**](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou **_invite de commande_**. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
+Vous êtes devant ce qu'on appelle [**_un prompt_**](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt){.externe}*, ou **_invite de commande_**. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
 
 {% note %}
 C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute.
@@ -167,7 +167,7 @@ Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` s
 
 ![terminal commande](terminal-2.png)
 
-[La commande `ls`](http://www.man-linux-magique.net/man1/ls.html) affiche les fichiers du dossier maison. En comparant avec un explorateur de fichier, on voit bien que les fichiers sont identiques :
+[La commande `ls`](http://www.man-linux-magique.net/man1/ls.html){.externe} affiche les fichiers du dossier maison. En comparant avec un explorateur de fichier, on voit bien que les fichiers sont identiques :
 
 ![terminal comparaison finder](terminal-finder.png)
 

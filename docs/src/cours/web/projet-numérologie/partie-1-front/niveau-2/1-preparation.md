@@ -20,7 +20,7 @@ Ajout d'outils de gestion de projet.
 
 ## Prérequis
 
-Suivez la partie [préparation du niveau 1](../../niveau-1/1-preparation){.interne} jusqu'à la fin.
+Suivez la partie [préparation du niveau 1](../../niveau-1/1-preparation) jusqu'à la fin.
 
 ## Code
 
@@ -34,7 +34,7 @@ Les outils de gestion de projet que l'on va voir ici sont destinés à être uti
 
 Lorsque l'on code un site, une page web ou n'importe quoi d'autre il faut que l'on sache comment ça va être utilisé.
 
-Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des [**user stories**](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l'assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs **tests fonctionnels** qui vont décrire précisément comment un
+Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des [**user stories**](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur){.externe} (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l'assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs **tests fonctionnels** qui vont décrire précisément comment un
 utilisateur va faire pour réaliser sa user story.
 
 {% info %}

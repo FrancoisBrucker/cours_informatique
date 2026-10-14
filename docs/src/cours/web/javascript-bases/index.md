@@ -22,20 +22,20 @@ On considère que vous savez déjà programmer en python, on ne traitera donc pa
 
 {% lien "**Tutoriels généraux sur javascript**" %}
 
-- Si vous ne deviez faire qu'un seul tutoriel : <https://developer.mozilla.org/fr/docs/Web/JavaScript> qui contient tout ce qu'il faut
-- <https://fr.javascript.info/>
-- <https://grafikart.fr/tutoriels/javascript> en revanche, je ne sais pas si tout est gratuit.
-- <https://www.tutorialspoint.com/javascript/index.htm>
+- Si vous ne deviez faire qu'un seul tutoriel : <https://developer.mozilla.org/fr/docs/Web/JavaScript>{.externe} qui contient tout ce qu'il faut
+- <https://fr.javascript.info/>{.externe}
+- <https://grafikart.fr/tutoriels/javascript>{.externe} en revanche, je ne sais pas si tout est gratuit.
+- <https://www.tutorialspoint.com/javascript/index.htm>{.externe}
 
 {% endlien %}
 {% attention %}
 Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.
 {% endattention %}
 
-[Javascript](https://fr.wikipedia.org/wiki/JavaScript) n'est **pas*- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dans le web :
+[Javascript](https://fr.wikipedia.org/wiki/JavaScript){.externe} n'est **pas*- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dans le web :
 
-- *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)) (c'est à dire celui qui qui exécute le navigateur).
-- *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique) qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <https://nodejs.org/> pour cela.
+- *côté front* : c'est le navigateur qui exécutera le code javascript de la page sur l'[ordinateur client](https://fr.wikipedia.org/wiki/Client_(informatique)){.externe} (c'est à dire celui qui qui exécute le navigateur).
+- *côté back* : C'est le [serveur](https://fr.wikipedia.org/wiki/Serveur_informatique){.externe} qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <https://nodejs.org/>{.externe} pour cela.
 
 {% note %}
 Ça n'a l'air de rien mais exécuter du code côté client et côté serveur ce n'est pas la même chose du tout. Dans un cas on a accès à l'ordinateur qui exécute le navigateur, dans l'autre à l'ordinateur qui possède le serveur sur lequel on va chercher les ressources.
@@ -45,23 +45,23 @@ Nous verrons ici ce que ça veut dire qu'exécuter du javascript et le strict n�
 
 ## L'interpréteur javascript
 
-Tout comme python, javascript est un [langage interprété](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)). Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :
+Tout comme python, javascript est un [langage interprété](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)){.externe}. Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :
 
 - votre navigateur web
-- celui de <https://nodejs.org/>
+- celui de <https://nodejs.org/>{.externe}
 
 ### Javascript dans un navigateur
 
 {% info %}
-La plupart du temps, c'est l'interpréteur de la [V8](https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)) qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé [ecmascript](https://fr.wikipedia.org/wiki/ECMAScript) (les évolutions de cette norme sont visible [là](https://www.w3schools.com/js/js_versions.asp) par exemple)
+La plupart du temps, c'est l'interpréteur de la [V8](https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)){.externe} qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé [ecmascript](https://fr.wikipedia.org/wiki/ECMAScript){.externe} (les évolutions de cette norme sont visible [là](https://www.w3schools.com/js/js_versions.asp){.externe} par exemple)
 {% endinfo %}
 
 #### Directement depuis la console
 
-L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux [outils de développement](../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
+L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux [outils de développement](../outils-de-développement/) (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
 
 {% lien %}
-[Console avec chrome](https://developer.chrome.com/docs/devtools/console/)
+[Console avec chrome](https://developer.chrome.com/docs/devtools/console/){.externe}
 {% endlien %}
 
 Il est indispensable de connaître cette méthode car elle permet d'accéder directement au javascript de la page pour analyse les composant de la page et/ou débeuguer son code.
@@ -91,7 +91,7 @@ Créez une fichier `hello_javascript.html`{.fichier} avec le contenu suivant :
 </html>
 ```
 
-Puis ouvrez [le](./hello_javascript){.interne}. Ouvrez le dans un navigateur.
+Puis ouvrez [le](./hello_javascript). Ouvrez le dans un navigateur.
 
 {% endfaire %}
 
@@ -99,7 +99,7 @@ Le fichier html précédent écrit dans la console javascript du navigateur. Vou
 
 En effet, le code est exécuté au **moment où il est lu**. Si vous le placer au début de votre page, il sera exécuté avant que le contenu de la page ne soit affiché.
 
-On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <https://tabulator.info/>, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :
+On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <https://tabulator.info/>{.externe}, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :
 
 ```html
 <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
@@ -146,19 +146,19 @@ Considérons le code suivant :
 
 Il est **indispensable** d'exécuter le code javascript dans un html avec les outils de développement pour savoir quand il y a eu une erreur. Sans ça, il est impossible de dire si tout s'est bien passé.
 
-Si vous tentez d'exécuter le code précédent dans un <https://nodejs.org/>, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur <https://nodejs.org/>.
+Si vous tentez d'exécuter le code précédent dans un <https://nodejs.org/>{.externe}, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur <https://nodejs.org/>{.externe}.
 
 {% attention %}
 l'utilisation de `window.alert`{.language-} est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`{.language-}.
 {% endattention %}
 
-### Javascript avec <https://nodejs.org/>
+### Javascript avec <https://nodejs.org/>{.externe}
 
 {% note "installation" %}
-Commencez par télécharger installer la version current de <https://nodejs.org/> : <https://nodejs.org/en/download/current>.
+Commencez par télécharger installer la version current de <https://nodejs.org/>{.externe} : <https://nodejs.org/en/download/current>{.externe}.
 {% endnote %}
 
-<https://nodejs.org/> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
+<https://nodejs.org/>{.externe} s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
 
 {% aller %}
 [Utilisation du terminal](/cours/coder-et-développer/ordinateur-développement/terminal/)
@@ -179,18 +179,18 @@ undefined
 ```
 
 {% info %}
-Pour quitter l'interpréteur <https://nodejs.org/> vous pouvez :
+Pour quitter l'interpréteur <https://nodejs.org/>{.externe} vous pouvez :
 
 - soit taper `ctrl+D`
 - soit exécuter la commande `.exit`{.language-}
 
 {% endinfo %}
-Tout comme l'interpréteur python, <https://nodejs.org/> exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :
+Tout comme l'interpréteur python, <https://nodejs.org/>{.externe} exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :
 
 1. `console.log("Bonjour de node")`{.language-}
 2. `x = 40 + 2`{.language-}
 
-A chaque fois l'interpréteur <https://nodejs.org/> exécute la commande :
+A chaque fois l'interpréteur <https://nodejs.org/>{.externe} exécute la commande :
 
 1. affiche à l'écran `"Bonjour de node"`
 2. affecte à la variable `x` la somme 40 plus 2
@@ -214,7 +214,7 @@ $ node exemple.js
 Bonjour de node
 ```
 
-Vous ne verrez ni `undefined` ni `42`. Dans le mode exécution de fichier, <https://nodejs.org/> exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.
+Vous ne verrez ni `undefined` ni `42`. Dans le mode exécution de fichier, <https://nodejs.org/>{.externe} exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.
 
 {% info %}
 L'interpréteur python fonctionne exactement de la même manière.
@@ -222,7 +222,7 @@ L'interpréteur python fonctionne exactement de la même manière.
 
 ## Langage
 
-Faites vos différents essais avec <https://nodejs.org/>
+Faites vos différents essais avec <https://nodejs.org/>{.externe}
 
 ### Variables et Fonctions
 
@@ -261,7 +261,7 @@ let pi = 3.14
 let pi = "trois virgule quatorze !"
 ```
 
-Enfin, [la portée](https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)) d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :
+Enfin, [la portée](https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)){.externe} d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :
 
 ```js
 let pi = 3.14
@@ -275,7 +275,7 @@ console.log(pi)
 La documentation ci-après explicite tout ce qu'il y a à savoir sur les variables :
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables>
+<https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables>{.externe}
 {% endlien %}
 
 {% faire %}
@@ -294,7 +294,7 @@ Testez les différents types d'objets suivant dans la console en les mettant dan
     - clés : `mon_dict["collègues"] (rend ["Pascal", "Manu", "Ronan"])`{.language-}
 
 {% note %}
-Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un [objet](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics). Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof) : `typeof {a:1}`.
+Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un [objet](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics){.externe}. Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof){.externe} : `typeof {a:1}`.
 {% endnote %}
 
 #### Constantes
@@ -306,7 +306,7 @@ Ceci est très pratique pour éviter les erreurs.
 #### Fonctions
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions>
+<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions>{.externe}
 {% endlien %}
 
 ```html
@@ -376,7 +376,7 @@ Beaucoup de choses en web sont asynchrones : on envoie une requête au serveur e
 #### Instructions conditionnelles
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles>
+<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles>{.externe}
 {% endlien %}
 
 javascript utilise deux forme d'égalité :
@@ -401,7 +401,7 @@ Rappelez vous que  `=` est une **affectation**.
 #### Les 2 types de boucles for et while
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration>
+<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration>{.externe}
 {% endlien %}
 
 Différence avec python :
@@ -412,4 +412,4 @@ Différence avec python :
 
 ### Fonctions anonymes
 
-En paramètres de fonctions et utilisées une seule fois. Très utiles pour la gestion des événements (on le verra) et les itérateurs [exemple](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+En paramètres de fonctions et utilisées une seule fois. Très utiles pour la gestion des événements (on le verra) et les itérateurs [exemple](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach){.externe}

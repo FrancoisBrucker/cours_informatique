@@ -17,7 +17,7 @@ Coder un jeu arkanoïd.
 
 <!-- end résumé -->
 
-Le but de ce projet est que vous créiez un jeu de type [Arkanoïd](https://fr.wikipedia.org/wiki/Arkanoid). De nombreuses parties d'Arkanoïd existent sur youtube, comme par exemple :
+Le but de ce projet est que vous créiez un jeu de type [Arkanoïd](https://fr.wikipedia.org/wiki/Arkanoid){.externe}. De nombreuses parties d'Arkanoïd existent sur youtube, comme par exemple :
 
 https://www.youtube.com/watch?v=Th-Z6QQ5AOQ
 
@@ -135,11 +135,11 @@ print("C'est fini !")
 
 ## Tâche 2
 
-- ajout du sol : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line) à hauteur $50$
-- ajout du plafond : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line) à hauteur $480-50$
+- ajout du sol : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line){.externe} à hauteur $50$
+- ajout du plafond : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line){.externe} à hauteur $480-50$
 - ajout du vaisseau :
   - doit être placé sur le sol
-  - sa forme est un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) (de hauteur 20 et de longueur 50) de couleur #47B6FF (il faudra faire une conversion pour correspondre au format de couleurs de pyglet)
+  - sa forme est un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe} (de hauteur 20 et de longueur 50) de couleur #47B6FF (il faudra faire une conversion pour correspondre au format de couleurs de pyglet)
 
 ![fenêtre aire de jeu](tache-2.png)
 
@@ -159,7 +159,7 @@ Création de la classe :
 
 - classe : `Vaisseau`{.language-} (dans le fichier `vaisseau.py`{.fichier})
 - attributs :
-  - `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre (cette forme sera crée dans le constructeur de la classe).
+  - `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe} de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre (cette forme sera crée dans le constructeur de la classe).
 - méthode :
   - `__init__(self, sol, largeur_fenetre)`{.language-} : position du sol et largeur de la fenêtre de jeu
   - `draw()`{.language-} : vous appellerez cette méthode depuis la méthode `draw`{.language-} de `Fenêtre`{.language-}
@@ -223,7 +223,7 @@ Création de la classe :
 
 - classe : `Bille`{.language-} (dans le fichier `bille.py`{.fichier)
 - attributs :
-  - `forme`{.language-} un [cercle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Circle) de rayon 5, initialement placé au centre de la fenêtre
+  - `forme`{.language-} un [cercle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Circle){.externe} de rayon 5, initialement placé au centre de la fenêtre
 - méthode :
   - `__init__(self, hauteur_sol, hauteur_plafond, largeur_fenetre)`{.language-} : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille
   - `draw()`{.language-}
@@ -331,7 +331,7 @@ Création de la classe :
 
 - classe : `Brique`{.language-} (dans le fichier `brique.py`{.fichier})
 - attributs :
-   `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 40, de hauteur 20
+   `forme`{.language-} un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe} de longueur 40, de hauteur 20
 - méthode :
   - `__init__(self, x, y)`{.language-} : création de la brique à la position `(x, y)`{.language-}
   - `draw()`{.language-}

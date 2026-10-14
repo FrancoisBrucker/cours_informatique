@@ -171,7 +171,7 @@ fonctionnement de la fonction :
 
 **Erreurs fréquentes :**
 
-* attention, l'usage des `break`{.language-} et `continue`{.language-} n'est pas triviale (voir le [tutoriel python](https://docs.python.org/fr/3.8/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops)). Vaut mieux s'en passer plutôt que de mal les utiliser
+* attention, l'usage des `break`{.language-} et `continue`{.language-} n'est pas triviale (voir le [tutoriel python](https://docs.python.org/fr/3.8/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops){.externe}). Vaut mieux s'en passer plutôt que de mal les utiliser
 * attention aux sentinelle pour vérifier que l'on peux décaler le barreau
 * comme on demande de ne pas modifier le barreau si on ne peut pas le déplacer, on sépare les 2 actions : 1- on vérifie que c'est bon 2- on modifie grille. C'est plus simple que remettre les valeurs d'origine si on se rend compte au milieu de l'algorithme que ça ne marche pas
 * on peut factoriser les 2 directions en une seule boucle

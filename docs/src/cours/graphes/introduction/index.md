@@ -16,8 +16,8 @@ eleventyComputed:
 
 {% aller %}
 
-1. [Structure d'un graphe](structure){.interne}
-2. [Encodage de graphes](encodage){.interne}
+1. [Structure d'un graphe](structure)
+2. [Encodage de graphes](encodage)
 
 {% endaller %}
 
@@ -25,7 +25,7 @@ Connexités :
 
 {% aller %}
 
-[Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
+[Chemins, cycle et connexité](chemins-cycles-connexite)
 
 {% endaller %}
 
@@ -33,7 +33,7 @@ Les plus simples des graphes connexes :
 
 {% aller %}
 
-[Les Arbres](arbres){.interne}
+[Les Arbres](arbres)
 
 {% endaller %}
 
@@ -41,7 +41,7 @@ Les plus simples des graphes connexes :
 
 {% aller %}
 
-[Chemin de valuation minimale dans un graphe](chemins-valuation-min){.interne}
+[Chemin de valuation minimale dans un graphe](chemins-valuation-min)
 
 {% endaller %}
 
@@ -53,7 +53,7 @@ L'origine de la théorie des graphe :
 
 {% aller %}
 
-[Chemins et cycles Eulérien](graphes-eulériens){.interne}
+[Chemins et cycles Eulérien](graphes-eulériens)
 
 {% endaller %}
 
@@ -61,13 +61,13 @@ Et une conséquence inattendue (exercice de modélisation) :
 
 {% aller %}
 
-[Mots de Bruijn](mots-bruijn){.interne}
+[Mots de Bruijn](mots-bruijn)
 
 {% endaller %}
 
 {% aller %}
 
-[Compter et piocher les graphes eulériens](compter-piocher-eulerien){.interne}
+[Compter et piocher les graphes eulériens](compter-piocher-eulerien)
 
 {% endaller %}
 
@@ -77,7 +77,7 @@ Codons tout ça :
 
 {% aller %}
 
-[Projet : Graphes eulérien](projet-graphes-eulerien){.interne}
+[Projet : Graphes eulérien](projet-graphes-eulerien)
 
 {% endaller %}
  -->
@@ -86,21 +86,21 @@ Codons tout ça :
 
 {% aller %}
 
-[Chemins et cycles Hamiltonien](graphes-hamiltoniens){.interne}
+[Chemins et cycles Hamiltonien](graphes-hamiltoniens)
 
 {% endaller %}
 
 ## Problèmes universels en théorie des graphes
 
 {% prerequis %}
-[Problèmes NP](/cours/algorithmie/problèmes-NP/){.interne}
+[Problèmes NP](/cours/algorithmie/problèmes-NP/)
 {% endprerequis %}
 
 {% aller %}
 
-1. [Cliques et stables](cliques-stables){.interne}
-2. [Chemin le plus long](./chemin-le-plus-long/){.interne}
-3. [Coloration de sommets](./coloration-sommets/){.interne}
+1. [Cliques et stables](cliques-stables)
+2. [Chemin le plus long](./chemin-le-plus-long/)
+3. [Coloration de sommets](./coloration-sommets/)
 
 {% endaller %}
  
@@ -110,6 +110,6 @@ Finissons cette introduction par une classe intéressantes de graphes, ceux qu'o
 
 {% aller %}
 
-[Graphes planaires](./graphes-planaires/){.interne}
+[Graphes planaires](./graphes-planaires/)
 
 {% endaller %}

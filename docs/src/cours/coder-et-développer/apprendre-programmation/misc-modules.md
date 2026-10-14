@@ -22,7 +22,7 @@ Quelques particularités sur les modules python :
 Pour exécuter un module python on peut utiliser l'option `-m` de l'interpréteur python.
 
 {% lien %}
-[Option `-m` de l'interpréteur Python](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m)
+[Option `-m` de l'interpréteur Python](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m){.externe}
 {% endlien %}
 
 On l'a déjà fait à de multiples reprises en utilisant le module pip :
@@ -69,7 +69,7 @@ Cette technique est très utilisée pour permettre d'effectuer des commandes dir
 Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?
 
 {% lien %}
-[`__name__`{.language-} et `__main__`{.language-} en python](https://docs.python.org/fr/3.12/library/__main__.html)
+[`__name__`{.language-} et `__main__`{.language-} en python](https://docs.python.org/fr/3.12/library/__main__.html){.externe}
 {% endlien %}
 
 Python distingue les deux types d'exécutions d'un programme via la variable spéciale `__name__`{.language-} :
@@ -98,10 +98,10 @@ if __name__ == "__main__":
 
 ## Package
 
-Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/>{.externe} pour être utilisés par d'autres.
 
 {% lien %}
-[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
+[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages){.externe}
 {% endlien %}
 
 Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.

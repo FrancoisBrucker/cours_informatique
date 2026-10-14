@@ -27,19 +27,19 @@ Certains processeurs possèdent également une carte graphique intégrée.
 Ces deux éléments communiquent via un bus permettant de transmettre 64b en parallèle (parfois plus).
 
 {% aller %}
-[Anatomie d'un bus](./bus){.interne}
+[Anatomie d'un bus](./bus)
 {% endaller %}
 
-Chaque [core](https://fr.wikipedia.org/wiki/Core_(microarchitecture)) est une unité de calcul dont le but est d'exécuter des instructions.
+Chaque [core](https://fr.wikipedia.org/wiki/Core_(microarchitecture)){.externe} est une unité de calcul dont le but est d'exécuter des instructions.
 
 {% aller %}
-[Anatomie d'un core](./core){.interne}
+[Anatomie d'un core](./core)
 {% endaller %}
 
 Les cores travaillent indépendamment mais nécessitent d'être au courant de ce que font les autres core pour que tout fonctionne :
 
 {% aller %}
-[Interaction entre cores](./plusieurs-cores){.interne}
+[Interaction entre cores](./plusieurs-cores)
 {% endaller %}
 
-> TBD redécouper [CPU](./CPU){.interne} ce qui précède.
+> TBD redécouper [CPU](./CPU) ce qui précède.

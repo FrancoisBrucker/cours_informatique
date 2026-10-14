@@ -28,7 +28,7 @@ arbre rouge/noir ; tas de Fibonacci ; ...
 - tas et file de priorité
 > TBD union find
 
-> TBD exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+> TBD exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>{.externe}
 
 > TBD la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1.
 > Sinon ce n'est pas vrai cf peigne (à dessiner)

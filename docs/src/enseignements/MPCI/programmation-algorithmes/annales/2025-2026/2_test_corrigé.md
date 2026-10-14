@@ -50,7 +50,7 @@ En 15 minutes :
 - médiane : 15/20 (5/7)
 
 
-Je suis globalement (**très**) satisfait de votre travail, vous avez travaillé et intégré le cours : c'est bien ([pourvu que ça dure](https://www.youtube.com/watch?v=Gjqe-n1rh0g) mais aussi [pourvu xa dure !](https://www.youtube.com/watch?v=vyk2MZoLST4&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=8)).
+Je suis globalement (**très**) satisfait de votre travail, vous avez travaillé et intégré le cours : c'est bien ([pourvu que ça dure](https://www.youtube.com/watch?v=Gjqe-n1rh0g){.externe} mais aussi [pourvu xa dure !](https://www.youtube.com/watch?v=vyk2MZoLST4&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=8){.externe}).
 
 
 ## Erreurs fréquemment rencontrées

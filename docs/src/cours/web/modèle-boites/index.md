@@ -19,7 +19,7 @@ Modèle de Boites positionnement et propriétés css.
 <!-- fin résumé -->
 
 {% lien "**Documentation**"%}
-<https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model>
+<https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model>{.externe}
 {% endlien %}
 
 Chaque balise html est une boite qu'il faut représenter à l'écran. Cette représentation est de cette forme :
@@ -79,9 +79,9 @@ Les outils de développement vous permettent de visualiser la boîte associée �
 
 {% lien "**Documentation**"%}
 
-* <https://developer.mozilla.org/fr/docs/Web/CSS/display>
-* <https://www.w3schools.com/html/html_blocks.asp>
-* <https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow>
+* <https://developer.mozilla.org/fr/docs/Web/CSS/display>{.externe}
+* <https://www.w3schools.com/html/html_blocks.asp>{.externe}
+* <https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow>{.externe}
 
 {% endlien %}
 
@@ -106,7 +106,7 @@ rechargez le fichier et voyez comment les éléments `<strong></strong>`{.langua
 Notez que si le display est placé à `none`{.language-}, l'élément est tout simplement ignoré. Ce n'est pas identique à : `visibility: hidden;`{.language-} qui ne fait que cacher l'élément (sa place est réservée). Testez la différence !
 {% endinfo %}
 
-Il existe [de nombreuses valeurs possibles](https://www.w3schools.com/cssref/pr_class_display.asp) à la propriété display. Nous allons en présenter trois ici.
+Il existe [de nombreuses valeurs possibles](https://www.w3schools.com/cssref/pr_class_display.asp){.externe} à la propriété display. Nous allons en présenter trois ici.
 
 ### `display: block`{.language-}
 
@@ -175,14 +175,14 @@ Voyez les différences de représentation en supprimant ou pas la propriété `d
 
 {% lien "**Documentation inline et block**"%}
 
-* <https://developer.mozilla.org/fr/docs/Web/CSS/width>
-* <https://developer.mozilla.org/fr/docs/Web/CSS/height>
+* <https://developer.mozilla.org/fr/docs/Web/CSS/width>{.externe}
+* <https://developer.mozilla.org/fr/docs/Web/CSS/height>{.externe}
 
 {% endlien %}
 
 Les propriétés `min-width`{.language-}, `max-width`{.language-}, `min-height`{.language-} et `max-height`{.language-} permettent de garder de la flexibilité dans la taille des boîtes tout en contrôlant le design.
 
-Attention aux effets de bord, si l'on donne une hauteur trop petite pour contenir l'élément, il va *déborder*. On peut utiliser la propriété [`overflow`{.language-}](https://developer.mozilla.org/fr/docs/Web/CSS/overflow) pour le gérer.
+Attention aux effets de bord, si l'on donne une hauteur trop petite pour contenir l'élément, il va *déborder*. On peut utiliser la propriété [`overflow`{.language-}](https://developer.mozilla.org/fr/docs/Web/CSS/overflow){.externe} pour le gérer.
 
 {% faire %}
 Choisissez une hauteur trop petite pour contenir les paragraphes et regardez les déborder.
@@ -194,25 +194,25 @@ Utilisez ensuite la propriété `overflow: hidden;` pour cachez le surplus.
 
 {% lien "**Tutoriel**" %}
 
-<http://css.mammouthland.net/border-css.php>
+<http://css.mammouthland.net/border-css.php>{.externe}
 
 {% endlien %}
 
-Il existe plein de propriétés css qui gèrent le bord. Elles commencent toutes par `border-`{.language-}. Elles peuvent être (presque) toutes agrégées dans la propriété [border](https://developer.mozilla.org/fr/docs/Web/CSS/border)
+Il existe plein de propriétés css qui gèrent le bord. Elles commencent toutes par `border-`{.language-}. Elles peuvent être (presque) toutes agrégées dans la propriété [border](https://developer.mozilla.org/fr/docs/Web/CSS/border){.externe}
 
 {% info %}
-On peut faire des choses assez jolies en utilisant [`border-radius`{.language-}](https://www.tutorialkart.com/css/css-border-radius/)
+On peut faire des choses assez jolies en utilisant [`border-radius`{.language-}](https://www.tutorialkart.com/css/css-border-radius/){.externe}
 {% endinfo %}
 
 ## margin
 
 {% lien "**Documentation**" %}
 
-<https://developer.mozilla.org/fr/docs/Web/CSS/margin>
+<https://developer.mozilla.org/fr/docs/Web/CSS/margin>{.externe}
 
 {% endlien %}
 
-Si deux éléments de display `block`{.language-} se suivent, la marge entre les deux block sera du maximum des deux marge et non la somme. C'est ce que l'on appelle : [fusion des marges](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing).
+Si deux éléments de display `block`{.language-} se suivent, la marge entre les deux block sera du maximum des deux marge et non la somme. C'est ce que l'on appelle : [fusion des marges](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing){.externe}.
 
 Les marges hautes et basses des éléments de display `inline`{.language-} ne sont pas prises en compte.
 
@@ -238,7 +238,7 @@ Vous pourrez par exemple utiliser cette image : `<img src="https://i-mom.unimedi
 
 {% lien "**Documentation**" %}
 
-<https://developer.mozilla.org/fr/docs/Web/CSS/padding>
+<https://developer.mozilla.org/fr/docs/Web/CSS/padding>{.externe}
 
 {% endlien %}
 

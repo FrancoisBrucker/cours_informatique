@@ -43,7 +43,7 @@ Il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les é
 
 Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas compte de l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
 
-Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection){.interne} (que l'on analysera plus tard) dont la complexité est en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier. On en conclut :
+Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection) (que l'on analysera plus tard) dont la complexité est en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier. On en conclut :
 
 {% note "**Proposition**" %}
 Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.
@@ -51,7 +51,7 @@ Une borne maximum de la complexité du problème du tri d'un tableau à $n$ él�
 
 ## Borne minimum
 
-En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n){.interne}, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n), on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
 {% note "**Proposition**" %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.
@@ -125,7 +125,7 @@ Cet equivalence nous donne finalement la borne minimum courante :
 Tout algorithme de tri d'une liste à $n$ éléments est en $\Omega(n\ln(n))$ opérations.
 {% endnote %}
 
-Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée. La partie suivante montrera qu'il existe des algorithmes de tri complexité $\mathcal{O}(n\ln(n))$ ([le tri fusion par exemple](../algorithme-fusion/){.interne}), on en conclut donc un peu en avance que :
+Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée. La partie suivante montrera qu'il existe des algorithmes de tri complexité $\mathcal{O}(n\ln(n))$ ([le tri fusion par exemple](../algorithme-fusion/)), on en conclut donc un peu en avance que :
 
 <div id="complexité-problème"></div>
 {% note "**Proposition**" %}

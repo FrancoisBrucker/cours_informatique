@@ -14,13 +14,13 @@ eleventyComputed:
 > Faire catalan et on les comptes, polya et on fair la bij d'isomorphisme et Galton-Watson.
 
 > TBD
-> - <https://herbach.perso.math.cnrs.fr/downloads/projet-galton-watson.pdf>
+> - <https://herbach.perso.math.cnrs.fr/downloads/projet-galton-watson.pdf>{.externe}
 > 
 
 Process simple. Contexte de l'époque et utilisation actuelle.
 
 > Compter.
-> catalan et chemins de Dyck pour les énumérer : <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
+> catalan et chemins de Dyck pour les énumérer : <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>{.externe}
 
-> TBD <https://www.numdam.org/article/AIHPB_1986__22_2_199_0.pdf>
-> <https://www.youtube.com/watch?v=YNgO2PhtndA>
+> TBD <https://www.numdam.org/article/AIHPB_1986__22_2_199_0.pdf>{.externe}
+> <https://www.youtube.com/watch?v=YNgO2PhtndA>{.externe}

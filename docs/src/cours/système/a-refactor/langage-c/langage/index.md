@@ -103,25 +103,25 @@ Tout ce qui est après `//` sur la même ligne est ignoré.
 ### Types de données
 
 {% aller %}
-[Types de données](types-base){.interne}
+[Types de données](types-base)
 {% endaller %}
 
 ### Fonctions
 
 {% aller %}
-[Fonctions](fonctions){.interne}
+[Fonctions](fonctions)
 {% endaller %}
 
 ### Structures de contrôle
 
 {% aller %}
-[Instructions de contrôle](instructions-contrôle){.interne}
+[Instructions de contrôle](instructions-contrôle)
 {% endaller %}
 
 ## Pointeurs
 
 {% aller %}
-[Pointeurs](pointeurs){.interne}
+[Pointeurs](pointeurs)
 {% endaller %}
 
 ## Types dérivés
@@ -131,38 +131,38 @@ Les types dérivés sont des collections de types de base (entier, réel, caract
 ### Tableaux
 
 {% aller %}
-[Tableaux](tableaux){.interne}
+[Tableaux](tableaux)
 {% endaller %}
 
 ### Chaînes de caractères
 
 {% aller %}
-[Chaînes de caractères](chaines-caractères){.interne}
+[Chaînes de caractères](chaines-caractères)
 {% endaller %}
 
 ### Structures
 
 {% aller %}
-[Structures](structures){.interne}
+[Structures](structures)
 {% endaller %}
 
 ### enum
 
-Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.php) pour gérer des modalités discrètes.
+Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.php){.externe} pour gérer des modalités discrètes.
 
 ## Types complexes
 
 {% lien %}
 
-- [règle de la spirale](https://c-faq.com/decl/spiral.anderson.html)
-- [comprendre les types alambiqués de C](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations)
+- [règle de la spirale](https://c-faq.com/decl/spiral.anderson.html){.externe}
+- [comprendre les types alambiqués de C](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations){.externe}
 
 {% endlien %}
 
 ## Gestion de la mémoire
 
 {% aller %}
-[Gestion du tas](gestion-tas){.interne}
+[Gestion du tas](gestion-tas)
 {% endaller %}
 
 ## Ligne de commande
@@ -190,7 +190,7 @@ Vous verrez aussi les signatures suivantes, équivalentes :
 - int main(int argc, char *argv[])
 - int main(int argc, char **argv)
 
-Obtenir les valeurs d'une variable d'environnement peut se faire avec la fonction [getenv](https://koor.fr/C/cstdlib/getenv.wp) de la libc (définie dans `<stdlib.h>`{.fichier}) :
+Obtenir les valeurs d'une variable d'environnement peut se faire avec la fonction [getenv](https://koor.fr/C/cstdlib/getenv.wp){.externe} de la libc (définie dans `<stdlib.h>`{.fichier}) :
 
 ```c
 #include <stdio.h>
@@ -209,16 +209,16 @@ printf("PATH :%s\n", (s != NULL) ? s : "pas de PATH défini");
 ```
 
 {% lien %}
-<https://www.thegeekstuff.com/2013/01/c-argc-argv/>
+<https://www.thegeekstuff.com/2013/01/c-argc-argv/>{.externe}
 {% endlien %}
 
 ## Règles
 
-Attention aux [Undefined Behavior (UB)](https://en.wikipedia.org/wiki/Undefined_behavior) résultant d'erreur de code qui font que :
+Attention aux [Undefined Behavior (UB)](https://en.wikipedia.org/wiki/Undefined_behavior){.externe} résultant d'erreur de code qui font que :
 
 - ces erreurs ne sont pas détectées à la compilation
 - elles produisent des résultats différents selon les fois, les gens ou les compilateurs.
 
-Voir par exemple [ce court tuto](https://www.youtube.com/watch?v=VONnWLo7abU) ou [celui-ci](https://www.youtube.com/watch?v=va_UZwTVR5g) (un peu plus long)
+Voir par exemple [ce court tuto](https://www.youtube.com/watch?v=VONnWLo7abU){.externe} ou [celui-ci](https://www.youtube.com/watch?v=va_UZwTVR5g){.externe} (un peu plus long)
 
 Cela rend le déboguage très difficile. Il faut donc toujours essayer d'être le plus explicite possible et surtout rester simple.

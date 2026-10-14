@@ -13,12 +13,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On montre ici la création de variables avec les shell de type `sh` qui sont très utilisés comme [bash](https://www.gnu.org/software/bash/) (le shell par défaut sous des distribution Linux comme Ubuntu ou Debian), [zsh](https://www.zsh.org/) (le shell par défaut sous mac) ou [ksh](http://www.kornshell.com/) (le shell par d´´faut d'OpenBSD).
+On montre ici la création de variables avec les shell de type `sh` qui sont très utilisés comme [bash](https://www.gnu.org/software/bash/){.externe} (le shell par défaut sous des distribution Linux comme Ubuntu ou Debian), [zsh](https://www.zsh.org/){.externe} (le shell par défaut sous mac) ou [ksh](http://www.kornshell.com/){.externe} (le shell par d´´faut d'OpenBSD).
 
 ## Création de variables
 
 {% lien %}
-[liste des variables](https://blog.roxing.net/bash-liste-des-variables)
+[liste des variables](https://blog.roxing.net/bash-liste-des-variables){.externe}
 {% endlien %}
 
 Il faut commencer par créer une variable :
@@ -28,7 +28,7 @@ var=valeur
 ```
 
 {% attention %}
-[Pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots)
+[Pas d'espace dans la déclaration de variable en shell](https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots){.externe}
 {% endattention %}
 
 Puis on peut l'afficher en précédant sont nom d'un ${} :
@@ -125,7 +125,7 @@ echo ${toto}
 
 ## Visualisation des variables
 
-Avec la commande shell [`set`](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html).
+Avec la commande shell [`set`](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html){.externe}.
 
 ## Existence d'une variable
 
@@ -133,7 +133,7 @@ Il n'y a pas de réel moyen de savoir si une variable existe ou pas. Par exemple
 
 ## Affecter une variable
 
-> <https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting>
+> <https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting>{.externe}
 
 ### Commande
 

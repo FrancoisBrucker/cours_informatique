@@ -15,7 +15,7 @@ Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque 
 Les explications ci-après sont **très simplifiées**. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.
 {% endattention %}
 
-On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en [octet](https://fr.wikipedia.org/wiki/Octet) (appelé _byte_ en anglais).
+On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en [octet](https://fr.wikipedia.org/wiki/Octet){.externe} (appelé _byte_ en anglais).
 
 ![mémoire](mémoire.png)
 
@@ -57,7 +57,7 @@ La façon courante de stocker des objets est d'utiliser des **références**. Ma
 
 ### Stockage de valeurs
 
-La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nombre entre 0 et 255 (ou -128, 127 s'il est [signé](https://en.wikipedia.org/wiki/Signed_number_representations)), il faut lui réserver plus d'une case.
+La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nombre entre 0 et 255 (ou -128, 127 s'il est [signé](https://en.wikipedia.org/wiki/Signed_number_representations){.externe}), il faut lui réserver plus d'une case.
 
 Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Par exemple :
 
@@ -183,7 +183,7 @@ Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après q
 
 {% lien %}
 
-[Pile et tas](https://www.youtube.com/watch?v=5OJRqkYbK-4)
+[Pile et tas](https://www.youtube.com/watch?v=5OJRqkYbK-4){.externe}
 
 {% endlien %}
 

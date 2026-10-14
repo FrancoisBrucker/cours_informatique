@@ -17,7 +17,7 @@ eleventyComputed:
 > TBD marche sur l'ensemble des éléments atteignables par r (trouvé via parcours si nécessaire)
 
 {% lien %}
-[Algorithme de 朱-刘-Edmonds (Chu-Liu-Edmonds)](https://fr.wikipedia.org/wiki/Algorithme_de_Chu-Liu/Edmonds)
+[Algorithme de 朱-刘-Edmonds (Chu-Liu-Edmonds)](https://fr.wikipedia.org/wiki/Algorithme_de_Chu-Liu/Edmonds){.externe}
 {% endlien %}
 
-> TBD <https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f18/www/scribes/lecture02.pdf>
+> TBD <https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f18/www/scribes/lecture02.pdf>{.externe}

@@ -92,5 +92,5 @@ Ce code est une hérésie :
 ## Corrigé
 
 {% lien %}
-[corrigé](../1_test_corrigé.pdf){.interne}
+[corrigé](../1_test_corrigé.pdf)
 {% endlien %}

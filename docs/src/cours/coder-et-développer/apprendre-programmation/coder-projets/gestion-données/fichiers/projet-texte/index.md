@@ -25,18 +25,18 @@ Mise en place de votre projet :
 Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et d'utiliser au maximum les méthodes de listes de python :
 
 {% lien %}
-[Méthodes de chaînes de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
+[Méthodes de chaînes de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods){.externe}
 {% endlien %}
 
 De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variables puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.
 
 ## Jouons sur les mots
 
-[Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
+[Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary){.externe} contient plusieurs fichiers csv contenant des mots français.
 
 {% faire %}
 
-1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv> (cliquez droit sur le lien puis téléchargez le sur votre ordinateur)
+1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>{.externe} (cliquez droit sur le lien puis téléchargez le sur votre ordinateur)
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
    {% endfaire %}
 
@@ -52,7 +52,7 @@ Le fichier contient une liste de mots, un mot par ligne.
 
 {% endfaire %}
 {% info %}
-Les caractères `"\n"`{.language-} sont des [retour à la ligne](https://www.dynamic-mess.com/php/signification-retours/) et permettre de délimiter les lignes d'un fichier texte.
+Les caractères `"\n"`{.language-} sont des [retour à la ligne](https://www.dynamic-mess.com/php/signification-retours/){.externe} et permettre de délimiter les lignes d'un fichier texte.
 
 {% endinfo %}
 
@@ -74,7 +74,7 @@ Vous avez du remarquer que l'affichage de la ligne 42 va 2 fois à la ligne. Cec
 
 Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de _nettoyer les données_, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères espaces `" "`{.language-} de début et de fin de ligne. Par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaîne `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin.
 
-Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères. Donc :
+Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip){.externe} des chaînes de caractères. Donc :
 
 {% faire %}
 Modifier votre liste `mots`{.language-} pour que chaque élément contienne la version _stripée_ de la ligne.
@@ -121,7 +121,7 @@ Utilisez python pour :
 
 {% faire %}
 
-Téléchargez [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt) et sauvez le sur votre disque dur.
+Téléchargez [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/17989/pg17989.txt){.externe} et sauvez le sur votre disque dur.
 
 {% endfaire %}
 {% attention %}
@@ -139,15 +139,15 @@ Avec cette chaîne de caractères :
 
 {% faire %}
 
-1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez-les.
-2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
+1. Comptez le nombre de caractères différents utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe}), et affichez-les.
+2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`{.language-}) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace){.externe})
 3. En déduire le nombre de mots utilisés dans le texte
 4. En déduire le nombre de mots **différents** utilisés dans le texte
 
 {% endfaire %}
 {% info %}
 
-- Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères pour découper le texte. Il ne faudra **pas** donner explicitement de séparateur. Pourquoi ?
+- Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split){.externe} des chaînes de caractères pour découper le texte. Il ne faudra **pas** donner explicitement de séparateur. Pourquoi ?
 - Si vous voulez des mots différents, les ensembles sont fait pour ça.
 
 {% endinfo %}

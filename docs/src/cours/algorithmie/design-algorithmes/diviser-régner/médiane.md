@@ -12,7 +12,7 @@ eleventyComputed:
 On va ici étudier un problème classique, le calcul de la médiane d'un tableau, en essayant de nombreuses techniques jusqu'à arriver à une solution optimale à la fois élégante et surprenante.
 
 {% info %}
-Pour s'éviter des nœuds au cerveau, on considérera que les tableaux sont en fait [des listes](../../structure-liste/){.interne} et qu'on peut donc :
+Pour s'éviter des nœuds au cerveau, on considérera que les tableaux sont en fait [des listes](../../structure-liste/) et qu'on peut donc :
 
 - ajouter un élément en fin de tableau en $\mathcal{O}(1)$
 - supprimer le dernier élément du tableau en $\mathcal{O}(1)$
@@ -53,7 +53,7 @@ Montrer que le problème de la médiane est un cas particulier du problème $k$-
 Puis que l'on peut effectivement résoudre le problème $k$-SELECT par un algorithme :
 
 {% faire %}
-Montrer que le problème $k$-SELECT est un problème algorithmique en modifiant l'algorithme du [tri par sélection](../../problème-tris/algorithme-sélection/){.interne} pour qu'il résolve $k$-SELECT.
+Montrer que le problème $k$-SELECT est un problème algorithmique en modifiant l'algorithme du [tri par sélection](../../problème-tris/algorithme-sélection/) pour qu'il résolve $k$-SELECT.
 
 {% endfaire %}
 {% faire %}
@@ -103,7 +103,7 @@ Les deux algorithmes précédents pour résoudre le problème de $k$-SELECT ont 
 
 Tentons une autre approche, encore une fois issue d'un algorithme de tri pour tenter d'accélérer l'exécution de notre algorithme au moins en moyenne.
 
-Pour cela, on reprend l'idée du pivot utilisée dans [l'algorithme du tri rapide](../../../problème-tris/algorithme-rapide/){.interne} :
+Pour cela, on reprend l'idée du pivot utilisée dans [l'algorithme du tri rapide](../../../problème-tris/algorithme-rapide/) :
 
 {% faire %}
 Donnez un algorithme `pivot(T: [entier], v: entier) → ([entier], [entier])`{.language-} de complexité égale à la taille du tableau en entrée qui rend deux tableaux $T_1$ et $T_2$ tels que :

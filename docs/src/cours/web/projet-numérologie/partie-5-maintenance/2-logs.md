@@ -17,7 +17,7 @@ Nous allons ajouter un gestionnaire de logs dans le projet
 <!-- fin résumé -->
 
 > TBD intro + reste niveau de logs + code + tail -f
-> log level : <https://wiki.archlinux.org/title/Systemd/Journal> <https://github.com/winstonjs/winston#logging>
+> log level : <https://wiki.archlinux.org/title/Systemd/Journal>{.externe} <https://github.com/winstonjs/winston#logging>{.externe}
 
 Les logs constituent des messages rendant compte des activités du serveur. Ces messages sont stockées dans un fichier ou affiché dans la console.
 
@@ -27,25 +27,25 @@ Pour toute application faisant de nombreuses chose et devant tourner 24h sur 24 
 2. savoir quand et pourquoi un crash est survenu (qui a — va savoir pourquoi — toujours lieu au milieu de la nuit)
 3. comprendre et corriger l'erreur
 
-Si l'application est grande et très utilisée, stocker toutes ses actions dans un fichier serait bien trop gourmand en place et surtout inefficace car les erreurs seraient noyées dans un flot d'actions réalisées sans encombre. Il est donc nécessaire d'ajouter un niveau de gravité de chaque action (couramment de 0 (urgence) à 7 (debug). Voir par exemple le [niveau de priorité de systemd](https://wiki.archlinux.org/title/Systemd/Journal#Priority_level) qui respecte la [RFC5424](https://www.rfc-editor.org/rfc/rfc5424)) et de ne stocker que les actions de niveau 4 ou inférieure (par exemple) en régime stable. Si bug il y a on peut le corriger en visualisant toutes les actions.
+Si l'application est grande et très utilisée, stocker toutes ses actions dans un fichier serait bien trop gourmand en place et surtout inefficace car les erreurs seraient noyées dans un flot d'actions réalisées sans encombre. Il est donc nécessaire d'ajouter un niveau de gravité de chaque action (couramment de 0 (urgence) à 7 (debug). Voir par exemple le [niveau de priorité de systemd](https://wiki.archlinux.org/title/Systemd/Journal#Priority_level){.externe} qui respecte la [RFC5424](https://www.rfc-editor.org/rfc/rfc5424){.externe}) et de ne stocker que les actions de niveau 4 ou inférieure (par exemple) en régime stable. Si bug il y a on peut le corriger en visualisant toutes les actions.
 
 ## Log front
 
 La console le fait déjà :
 
 {% lien %}
-<https://dev.to/ackshaey/level-up-your-javascript-browser-logs-with-these-console-log-tips-55o2>
+<https://dev.to/ackshaey/level-up-your-javascript-browser-logs-with-these-console-log-tips-55o2>{.externe}
 {% endlien %}
 
 ## Winston
 
 {% lien %}
-Logger [Winston](https://github.com/winstonjs/winston) pour nodejs
+Logger [Winston](https://github.com/winstonjs/winston){.externe} pour nodejs
 {% endlien %}
 
-Nous allons utiliser [Winston](https://github.com/winstonjs/winston) pour faire les logs de notre serveur car il est très versatile.
+Nous allons utiliser [Winston](https://github.com/winstonjs/winston){.externe} pour faire les logs de notre serveur car il est très versatile.
 
-Les [niveaux de log de Winston](https://github.com/winstonjs/winston) sont par défaut :
+Les [niveaux de log de Winston](https://github.com/winstonjs/winston){.externe} sont par défaut :
 
 ```js
 const levels = { 
@@ -65,7 +65,7 @@ En production on pourra par exemple utiliser le level 0, en développement le 2 
 
 Commençons par ajouter winston : `npm install --save winston`
 
-Et créons un logger. Pour cela, on va créer un fichier `logger.js`{.fichier} et mettre notre configuration winston à l'intérieur. Ce fichier sera ensuite importé dans tous les fichiers nécessitant des logs. Comme l'import est unique, ce sera le **même** logger qui sera utilisé partout (c'est ce qu'on appelle le [caching](https://nodejs.org/docs/latest/api/modules.html#modules_caching)).
+Et créons un logger. Pour cela, on va créer un fichier `logger.js`{.fichier} et mettre notre configuration winston à l'intérieur. Ce fichier sera ensuite importé dans tous les fichiers nécessitant des logs. Comme l'import est unique, ce sera le **même** logger qui sera utilisé partout (c'est ce qu'on appelle le [caching](https://nodejs.org/docs/latest/api/modules.html#modules_caching){.externe}).
 
 Fichier `logger.js`{.fichier} :
 
@@ -164,10 +164,10 @@ const sequelize = new Sequelize({
 
 ### Winston daily rotate
 
-[winston daily rotate](https://github.com/winstonjs/winston-daily-rotate-file) est un plugin winston qui permet de faire des log qui ne maintiennent qu'une durée fixe de log (une journée, semaine, etc) permettant ainsi aux logs de ne pas grossir indéfiniment.
+[winston daily rotate](https://github.com/winstonjs/winston-daily-rotate-file){.externe} est un plugin winston qui permet de faire des log qui ne maintiennent qu'une durée fixe de log (une journée, semaine, etc) permettant ainsi aux logs de ne pas grossir indéfiniment.
 
 {% info %}
-Il existe aussi des outils unix pour cela, comme [logrotate](https://doc.ubuntu-fr.org/logrotate) par exemple (voir [tuto](https://medium.com/techiee/log-rotation-with-forever-6d8a1797355b)).
+Il existe aussi des outils unix pour cela, comme [logrotate](https://doc.ubuntu-fr.org/logrotate){.externe} par exemple (voir [tuto](https://medium.com/techiee/log-rotation-with-forever-6d8a1797355b){.externe}).
 
 {% endinfo %}
 

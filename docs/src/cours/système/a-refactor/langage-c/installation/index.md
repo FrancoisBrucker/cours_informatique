@@ -14,7 +14,7 @@ eleventyComputed:
 
 Fonctionne pour une installation native ou sous wsl.
 
-Copiez coller les paquet à installer de la partie default package de la page : <https://apt.llvm.org/>. N'oubliez pas le `sudo` :
+Copiez coller les paquet à installer de la partie default package de la page : <https://apt.llvm.org/>{.externe}. N'oubliez pas le `sudo` :
 
 ```
 sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
@@ -24,7 +24,7 @@ Cela devrait installer tout les paquets nécessaires.
 
 ## Macos
 
-1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+1. installer [xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12){.externe}
 2. installez les _developper tools_ en tapant la commande `xcode-select --install` dans un terminal
 3. si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande `softwareupdate --install-rosetta`
 
@@ -34,12 +34,12 @@ Compilation sous windows. Cela va nécessiter quelques manipulations.
 
 ### Installation de visual studio
 
-La plus simple est de télécharger la version 2022 community de visual studio à partir d'ici : <https://visualstudio.microsoft.com/fr/>. Lors de l'installation, choisissez :
+La plus simple est de télécharger la version 2022 community de visual studio à partir d'ici : <https://visualstudio.microsoft.com/fr/>{.externe}. Lors de l'installation, choisissez :
 
 - `développement desktop en C++`
 - cochez également `Outils C++ Clang pour windows`
 
-Ceci installera l'ide visual studio qui permet de développer des projet en C/C++. Nous n'allons pas utiliser cet ide, on restera avec notre bon vieux visual studio code, mais on va utiliser des programmes que cet IDE installe, en particulier [le compilateur clang](https://clang.llvm.org/)  qui nous permettra de compiler nos programmes C directement avec la ligne de commande.
+Ceci installera l'ide visual studio qui permet de développer des projet en C/C++. Nous n'allons pas utiliser cet ide, on restera avec notre bon vieux visual studio code, mais on va utiliser des programmes que cet IDE installe, en particulier [le compilateur clang](https://clang.llvm.org/){.externe}  qui nous permettra de compiler nos programmes C directement avec la ligne de commande.
 
 ### Ajout du chemin vers le compilateur au path
 

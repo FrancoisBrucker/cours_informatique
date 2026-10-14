@@ -15,9 +15,9 @@ eleventyComputed:
 >
 > - Utilisées pour les problèmes de logarithmes discret
 > - Ils permettent d'avoir des clés bien plus petite.
-> <https://www.youtube.com/watch?v=A2KNrgiWquU&list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl>
-<https://martin.kleppmann.com/papers/curve25519.pdf>
-<https://rareskills.io/post/elliptic-curves-finite-fields>
+> <https://www.youtube.com/watch?v=A2KNrgiWquU&list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl>{.externe}
+<https://martin.kleppmann.com/papers/curve25519.pdf>{.externe}
+<https://rareskills.io/post/elliptic-curves-finite-fields>{.externe}
 L'équation générale d'une courbe elliptique :
 
 <div>
@@ -28,7 +28,7 @@ $$
 
 Avec les $a_i$ pris dans un corps.
 
-Si on utilise le corps des réels, on peut utiliser l'[équation de Weierstrass](https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass) pour simplifier
+Si on utilise le corps des réels, on peut utiliser l'[équation de Weierstrass](https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass){.externe} pour simplifier
 Forme de Weierstrass :
 
 <div>
@@ -40,9 +40,9 @@ $$
 > TBD forme de Weierstrass
 >
 
-> bernstein : <https://en.wikipedia.org/wiki/Montgomery_curve> bien pour doubler
+> bernstein : <https://en.wikipedia.org/wiki/Montgomery_curve>{.externe} bien pour doubler
 
-La courbe utilisée généralement en cryptographie est la [Curve25519](https://fr.wikipedia.org/wiki/Curve25519) :
+La courbe utilisée généralement en cryptographie est la [Curve25519](https://fr.wikipedia.org/wiki/Curve25519){.externe} :
 
 <div>
 $$
@@ -56,8 +56,8 @@ Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y
 
 > TBD : définition de l'addition sérieusement
 > on se place dans le groupe avec l'addition.
-> <https://repo.tzku.at/course/cryptography/CryptoAvancee.pdf>
-> <https://ritzenth.pages.math.cnrs.fr/web/teaching.html>
-> [compter les points d'une courbe elliptique](https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf)
+> <https://repo.tzku.at/course/cryptography/CryptoAvancee.pdf>{.externe}
+> <https://ritzenth.pages.math.cnrs.fr/web/teaching.html>{.externe}
+> [compter les points d'une courbe elliptique](https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf){.externe}
 
 > TBD bernstein [n]P pafile et c'est ce qu'on veut faire.

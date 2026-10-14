@@ -18,7 +18,7 @@ eleventyComputed:
 La méthode de développement des années 2000 qui était tellement en avance sur son temps qu'on a encore l'impression qu'elle est neuve :
 
 {% aller %}
-[Test Driven Development](./TDD/){.interne}
+[Test Driven Development](./TDD/)
 {% endaller %}
 
 ## Design pattern
@@ -26,7 +26,7 @@ La méthode de développement des années 2000 qui était tellement en avance su
 Algorithmie objet ou comment résoudre efficacement des problèmes de conception courant :
 
 {% aller %}
-[Design pattern](./design-patterns/){.interne}
+[Design pattern](./design-patterns/)
 {% endaller %}
 
 ## Couverture de code
@@ -34,5 +34,5 @@ Algorithmie objet ou comment résoudre efficacement des problèmes de conception
 La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
 
 {% aller %}
-[Couverture de code](couverture-de-code){.interne}
+[Couverture de code](couverture-de-code)
 {% endaller %}

@@ -25,32 +25,32 @@ On utilise au maximum le système existant, mac ou Windows 11. On arrive à une 
 ### WSL sous windows 11
 
 {% aller %}
-[Installation de WSL](./wsl){.interne}
+[Installation de WSL](./wsl)
 {% endaller %}
 
 ### Outils Linux sous Macos
 
-Macos est un système unix, mais ce n'est pas Linux. Son nom est [Darwin](https://fr.wikipedia.org/wiki/Darwin_(informatique)). La plupart des commandes et des façons de faire Linux fonctionneront, il est donc courant de ne pas avoir besoin de Linux lorsque l'on est sous mac.
+Macos est un système unix, mais ce n'est pas Linux. Son nom est [Darwin](https://fr.wikipedia.org/wiki/Darwin_(informatique)){.externe}. La plupart des commandes et des façons de faire Linux fonctionneront, il est donc courant de ne pas avoir besoin de Linux lorsque l'on est sous mac.
 
 Cependant :
 
 * certaines options de commandes seront parfois différentes
 * les applications traitant du système ne seront pas identiques (le dossier `/proc` n'existe pas sous Macos par exemple)
-* les exécutables sont au format [Mach-O](https://fr.wikipedia.org/wiki/Mach-O) et non [elf](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
+* les exécutables sont au format [Mach-O](https://fr.wikipedia.org/wiki/Mach-O){.externe} et non [elf](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format){.externe}
 * Les nouveau mac sont sous architecture ARM et non x86
 * le système est propriétaire, il est parfois difficile de
 * ...
 
-Ces petites différences ne sont pas gênantes du moment qu'on ne crée pas d'application systèmes. Il existe de plus un excellent gestionnaire de paquet permettant d'installer quasi tous les outils Linux disponible : [brew](https://brew.sh/index_fr), que vous avez déjà du installé si vous avez suivi le tutoriel [Ordinateur pour le développement](../../../Tutoriels/ordinateur-développement/){.interne}
+Ces petites différences ne sont pas gênantes du moment qu'on ne crée pas d'application systèmes. Il existe de plus un excellent gestionnaire de paquet permettant d'installer quasi tous les outils Linux disponible : [brew](https://brew.sh/index_fr){.externe}, que vous avez déjà du installé si vous avez suivi le tutoriel [Ordinateur pour le développement](../../../Tutoriels/ordinateur-développement/)
 
 ## Installation sur une machine virtuelle
 
 {% aller %}
-[Installation de Linux/Ubuntu sur une machine virtuelle](./VM){.interne}
+[Installation de Linux/Ubuntu sur une machine virtuelle](./VM)
 {% endaller %}
 
 ## Installation desktop
 
 {% aller %}
-[Installation de Linux/Ubuntu sur une machine](./desktop){.interne}
+[Installation de Linux/Ubuntu sur une machine](./desktop)
 {% endaller %}

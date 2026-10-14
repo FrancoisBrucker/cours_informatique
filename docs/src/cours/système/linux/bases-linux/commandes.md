@@ -13,8 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD [lire une page man](https://itsfoss.com/linux-man-page-guide/)
-> TBD  [liste des instructions courantes shell (bash)](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
+> TBD [lire une page man](https://itsfoss.com/linux-man-page-guide/){.externe}
+> TBD  [liste des instructions courantes shell (bash)](https://github.com/RehanSaeed/Bash-Cheat-Sheet){.externe}
 
 Les commandes sont les instructions que l'on exécute dans un shell. Elles sont faites pour être :
 
@@ -29,8 +29,8 @@ Elles sont exécutées :
 
 Une commande unix peut être utilisée de multiple manière. Le format d'utilisation standard est son nom suivi par des arguments séparées par des espaces. Par exemple :
 
-- `ls` : exécution de la commande [ls](https://linux.die.net/man/1/ls)
-- `ls ~` : exécution de la commande [ls](https://linux.die.net/man/1/ls) avec un paramètre
+- `ls` : exécution de la commande [ls](https://linux.die.net/man/1/ls){.externe}
+- `ls ~` : exécution de la commande [ls](https://linux.die.net/man/1/ls){.externe} avec un paramètre
 
 Les arguments d'une commande peuvent être :
 
@@ -40,7 +40,7 @@ Les arguments d'une commande peuvent être :
 L'exécution d'une commande par le shell se fait plaçant la commande, ses paramètres et ses options dans une liste où le 1er élément est la commande, suivie de ses arguments dans l'ordre d'entrée. Le premier élément de cette liste est exécuté et la liste est passée en paramètre de celle-ci.
 
 {% exercice %}
-La commande [echo](http://www.man-linux-magique.net/man1/echo.html) affiche ses paramètres séparés par un espace puis va à la ligne.
+La commande [echo](http://www.man-linux-magique.net/man1/echo.html){.externe} affiche ses paramètres séparés par un espace puis va à la ligne.
 
 Quel est le résultat de la commande `echo coucou      !` ?
 {% endexercice %}
@@ -64,14 +64,14 @@ L'intérêt des options courtes est qu'on peut les combiner en ne les faisant pr
 
 Enfin, certaines options nécessitent un paramètre qui doit être donné juste après celle ci. Exemple : `ls -hI "I*" ~` va fonctionner (on peut également les "coller" à l'option, comme ça : `ls -hI"I*" ~`) alors que `ls -Ih "I*" ~` non. Lorsque le paramètre Le paramètre des options longues peut être donné avec un `=`, par exemple : `ls ~ -h --ignore="I*"`
 
-La plupart des commandes fonctionnent sous différents systèmes unix (Linux, Macos, Bsd, ...). Le fonctionnement général de chaque commande est dicté par la norme [POSIX](https://fr.wikipedia.org/wiki/POSIX) mais des variations existent (en particulier les extensions à POSIX dépendent de l'implémentation de la commande et donc du système unix utilisé) il est crucial de se référer à l'aide de son système.
+La plupart des commandes fonctionnent sous différents systèmes unix (Linux, Macos, Bsd, ...). Le fonctionnement général de chaque commande est dicté par la norme [POSIX](https://fr.wikipedia.org/wiki/POSIX){.externe} mais des variations existent (en particulier les extensions à POSIX dépendent de l'implémentation de la commande et donc du système unix utilisé) il est crucial de se référer à l'aide de son système.
 
 {% note %}
 La commande `man paramètre` permet d’accéder au manuel du nom de la commande passée en paramètre.
 
 Par exemple `man ls`, ou encore `man man` pour accéder au manuel de `man`.
 
-Le synopsis de la commande permet de donner toutes ses utilisation possible. Son format est [déterminée par une norme POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) :
+Le synopsis de la commande permet de donner toutes ses utilisation possible. Son format est [déterminée par une norme POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html){.externe} :
 
 - **en gras** : doit être tapé exactement de la même manière
 - *en italique* : à remplacer par les bon arguments
@@ -110,7 +110,7 @@ Stopper une commande avec ctrl+C qui envoie le signal `SIGINT`
 Linux/Ubuntu possède une grande variété de commandes par défaut (tous les fichiers du dossier `/usr/bin`). Certaines demandent des droit d'administrations mais la plupart sont utilisables par tous les utilisateurs.
 
 {% lien %}
-<https://haydenjames.io/linux-commands-frequently-used-by-linux-sysadmins-part-1/>
+<https://haydenjames.io/linux-commands-frequently-used-by-linux-sysadmins-part-1/>{.externe}
 {% endlien %}
 
 ### Indispensables
@@ -161,10 +161,10 @@ ls: impossible d'accéder à '/usr/bin/cd': Aucun fichier ou dossier de ce type
 
 ### Utiles
 
-- [curl](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9)
-- [dd](https://www.youtube.com/watch?v=hsDxcJhCRLI)
-- [gzip et bzip2](https://www.computernetworkingnotes.com/linux-tutorials/how-to-use-gzip-and-bzip2-linux-commands-explained.html)
-- [jq](https://lzone.de/cheat-sheet/jq)
+- [curl](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9){.externe}
+- [dd](https://www.youtube.com/watch?v=hsDxcJhCRLI){.externe}
+- [gzip et bzip2](https://www.computernetworkingnotes.com/linux-tutorials/how-to-use-gzip-and-bzip2-linux-commands-explained.html){.externe}
+- [jq](https://lzone.de/cheat-sheet/jq){.externe}
 
 {% note %}
 Il est possible que certaines de ces commandes n'existent pas chez vous. Installez-les.
@@ -197,7 +197,7 @@ Le code de retour est déterminé dans le manuel.
 
 {% enddetails %}
 
-On peut utiliser ce mécanisme en utilisant les opérateurs logiques [`&&` et `||`](https://kyleshevlin.com/using-and-and-or-in-bash-scripts) :
+On peut utiliser ce mécanisme en utilisant les opérateurs logiques [`&&` et `||`](https://kyleshevlin.com/using-and-and-or-in-bash-scripts){.externe} :
 
 - ET logique : `commande1 && commande2` : la `commande2` ne sera exécutée que si le code de sortie de la `commande1` est un succès (vaut 0)
 - OU logique : `commande1 || commande2` : la `commande2` ne sera exécutée que si le code de sortie de la `commande1` est un échec (vaut >0)
@@ -237,7 +237,7 @@ Si truc existe et est un fichier. Il va cependant y avoir un soucis...
 ## Grouper des commandes
 
 {% lien %}
-[Grouper des commandes](https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html)
+[Grouper des commandes](https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html){.externe}
 {% endlien %}
 
 On peut grouper de commandes de deux façons :
@@ -266,7 +266,7 @@ La création d'un shell enfant pour exécuter des commandes est un principe fond
 ## <scan id="meta-caracteres"></span>Interactions avec le shell
 
 {% lien %}
-[Les métacaractères du shell](https://www.youtube.com/watch?v=4W5NG3jZXHU&list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl&index=6)
+[Les métacaractères du shell](https://www.youtube.com/watch?v=4W5NG3jZXHU&list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl&index=6){.externe}
 {% endlien %}
 
 Le shell va interpréter certains caractères, nommé ***métacaractères*** avant même que la commande ne soit exécuté. Vous en connaissez déjà au moins deux, l'espace qui sépare les arguments d'une commande et `$?`, mais il en existe une foules d'autres. Parmi eux, les plus courant sont :
@@ -276,7 +276,7 @@ Le shell va interpréter certains caractères, nommé ***métacaractères*** ava
   - `$?` : le code de sortie de la dernière commande
   - `$$` : le PID du shell courant
   - `$(expression)` : pour exécuter l'expression et donner son affichage comme argument. Par exemple `echo $(expr 3 + 4)`. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.
-  - `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic), par exemple `echo $((3+4))`
+  - `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic){.externe}, par exemple `echo $((3+4))`
   - `${variable}` : pour afficher le contenu d'une variable, par exemple `echo ${PAH}`
 - expression régulières pour les fichiers du dossiers courant (la fin de la vidéo introductive y est consacrée)
   - `*` : `echo .*` va afficher tous les fichier du dossier courant commençant par un `.`. Notez bien que ce remplacement est effectué avant l'exécution de `echo` qui ne voit qu'une suite de paramètres
@@ -313,8 +313,8 @@ J'ai tendance à préférer cette dernière notation qui est selon moi plus clai
 
 {% lien %}
 
-- <https://linuxhint.com/bash_stdin_stderr_stdout/>
-- <https://www.youtube.com/watch?v=zMKacHGuIHI>
+- <https://linuxhint.com/bash_stdin_stderr_stdout/>{.externe}
+- <https://www.youtube.com/watch?v=zMKacHGuIHI>{.externe}
 
 {% endlien %}
 
@@ -410,7 +410,7 @@ echo "toto" >> truc
 ls /truc 2>&1 | lolcat
 ```
 
-[tee](https://linuxize.com/post/linux-tee-command/) pour :
+[tee](https://linuxize.com/post/linux-tee-command/){.externe} pour :
 
 - sauver un résultat intermédiaire dans une chaîne
 - sauver et voir le stdout

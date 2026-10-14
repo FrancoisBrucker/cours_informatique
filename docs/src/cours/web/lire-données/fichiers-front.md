@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Pour qu'un code javascript puisse charger un fichier, il faut que l'utilisateur choisisse le fichier à charger via la balise [`<input>`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Element/input).
+Pour qu'un code javascript puisse charger un fichier, il faut que l'utilisateur choisisse le fichier à charger via la balise [`<input>`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Element/input){.externe}.
 
 Par exemple :
 
@@ -84,5 +84,5 @@ Il est possible de charger d'autres types de fichiers, comme une image par exemp
 Vous pouvez voir le résultat [ici](../code-fichiers-front/image).
 
 {% lien %}
-[Autres usages](https://developer.mozilla.org/fr/docs/Web/API/File_API/Using_files_from_web_applications)
+[Autres usages](https://developer.mozilla.org/fr/docs/Web/API/File_API/Using_files_from_web_applications){.externe}
 {% endlien %}

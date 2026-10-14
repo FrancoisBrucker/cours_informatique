@@ -46,7 +46,7 @@ La complexité "utile" en code est souvent la complexité en moyenne puisque nou
 
 Attention cependant, cette structure est mutable : on peut modifier les sommets et les voisins. donc pour copier un graphe il faudra non seulement faire un nouveau dictionnaire mais aussi des nouveaux ensembles de voisins !
 
-Pour tout copier en une seule fois on utilisera [le module copy](https://docs.python.org/fr/3.14/library/copy.html) de python :
+Pour tout copier en une seule fois on utilisera [le module copy](https://docs.python.org/fr/3.14/library/copy.html){.externe} de python :
 
 ```python
 import copy
@@ -56,7 +56,7 @@ G2 = copy.deepcopy(G)
 
 
 {% info %}
-On aurait pu faire la copie en une ligne avec les [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) de python : `G2 = {k: set(v) for k, v in G.items()}`{.language-}
+On aurait pu faire la copie en une ligne avec les [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions){.externe} de python : `G2 = {k: set(v) for k, v in G.items()}`{.language-}
 {% endinfo %}
 
 ### Algorithme de Hierholzer
@@ -109,21 +109,21 @@ plt.show()
 
 ### Bases
 
-- la bibliothèque : <https://networkx.org/documentation/stable/index.html>
-- tuto : <https://networkx.org/documentation/stable/tutorial.html#nx-guides> (notez que l'on peut produire facilement un graphe de Networkx avec notre structure : `Gnx = nx.Graph(G)`{.language-} fonctionne)
-- Dessiner : <https://networkx.org/documentation/stable/tutorial.html#drawing-graphs> et <https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html>
-- graphe aléatoire :<https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html>
+- la bibliothèque : <https://networkx.org/documentation/stable/index.html>{.externe}
+- tuto : <https://networkx.org/documentation/stable/tutorial.html#nx-guides>{.externe} (notez que l'on peut produire facilement un graphe de Networkx avec notre structure : `Gnx = nx.Graph(G)`{.language-} fonctionne)
+- Dessiner : <https://networkx.org/documentation/stable/tutorial.html#drawing-graphs>{.externe} et <https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html>{.externe}
+- graphe aléatoire :<https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html>{.externe}
 
 ### Euler
 
-<https://networkx.org/documentation/stable/reference/algorithms/euler.html>
+<https://networkx.org/documentation/stable/reference/algorithms/euler.html>{.externe}
 
 comparer avec votre implémentation ainsi que le temps mis pour résoudre.
 
 ## Mot de Bruijn
 
 {% lien %}
-[Mots de Bruijn](../mots-bruijn/){.interne}
+[Mots de Bruijn](../mots-bruijn/)
 {% endlien %}
 
 ### Toutes les suites
@@ -136,4 +136,4 @@ Codez un algorithme permettant de générer tous les mots de longueurs $p$ d'un 
 
 Utilisez networkx pour générer des mots de Bruijn.
 
-Attention, ce ne sont plus des graphes mais des multi-graphes orientés (des [`MultiDigraph`{.language-}](https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph)).
+Attention, ce ne sont plus des graphes mais des multi-graphes orientés (des [`MultiDigraph`{.language-}](https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph){.externe}).

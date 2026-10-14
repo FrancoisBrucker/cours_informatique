@@ -16,8 +16,8 @@ eleventyComputed:
 
 {% lien %}
 
-- <https://docs.python.org/fr/3.13/tutorial/venv.html#>
-- [Virtual environments](https://realpython.com/python-virtual-environments-a-primer/)
+- <https://docs.python.org/fr/3.13/tutorial/venv.html#>{.externe}
+- [Virtual environments](https://realpython.com/python-virtual-environments-a-primer/){.externe}
 
 {% endlien %}
 
@@ -29,7 +29,7 @@ Il est fortement recommandé de créer un environnement virtuel pour **chaque** 
 
 ## Environnement python
 
-[On a vu que l'interpréteur python était un fichier](../version-python/#interpréteur-emplacement){.interne} sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.
+[On a vu que l'interpréteur python était un fichier](../version-python/#interpréteur-emplacement) sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.
 
 ### Emplacement
 
@@ -68,7 +68,7 @@ Remarquez que :
 - un nouveau terminal a été crée par vscode pour ses exécutions
 - que le nom correspond à celui du bas.
 
-En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande [tree](https://en.wikipedia.org/wiki/Tree_(command)) dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :
+En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande [tree](https://en.wikipedia.org/wiki/Tree_(command)){.externe} dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :
 
 ```shell/
 ❯ tree -L 2 /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 
@@ -132,7 +132,7 @@ Les petites flèches que vous voyiez à côté de certains noms, par exemple la 
 │   ├── python3 -> python3.13
 ```
 
-Ceci correspond à [un lien symbolique](https://fr.wikipedia.org/wiki/Lien_symbolique) : le fichier `python3`{.fichier} correspond en fait au fichier `python3.13`{.fichier}. Ce mécanisme permet de conserver un même nom (`python3`) à plusieurs versions python.
+Ceci correspond à [un lien symbolique](https://fr.wikipedia.org/wiki/Lien_symbolique){.externe} : le fichier `python3`{.fichier} correspond en fait au fichier `python3.13`{.fichier}. Ce mécanisme permet de conserver un même nom (`python3`) à plusieurs versions python.
 
 Si je change d'interpréteur (en cliquant sur la ligne en bas de vscode) :
 
@@ -215,7 +215,7 @@ La solution utilisée par python est de permettre de créer facilement un enviro
 
 ## Création d'un environnement
 
-Nous utiliserons le module [`venv`](https://docs.python.org/fr/3/library/venv.html), qui doit normalement être disponible.
+Nous utiliserons le module [`venv`](https://docs.python.org/fr/3/library/venv.html){.externe}, qui doit normalement être disponible.
 
 {% details "installation du module venv sous Linux" %}
 Le module venv n'est habituellement pas installé sous Linux/Ubuntu. Il faut l'installer en plus avec la commande :
@@ -233,7 +233,7 @@ Par défaut, ce dossier s'appelle `.venv`{.fichier} (il est donc caché) et est 
 ### Avec vscode
 
 {% lien %}
-<https://code.visualstudio.com/docs/python/environments#_creating-environments>
+<https://code.visualstudio.com/docs/python/environments#_creating-environments>{.externe}
 {% endlien %}
 
 Lorsque l'on a changé d'environnement, on a vu que vscode propose de créer un nouvel environnement virtuel.
@@ -330,7 +330,7 @@ environnement : /Users/fbrucker/Documents/temp/virt-python/.venv
 ```
 
 {% attention "sous Windows" %}
-[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) sous windows.
+[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4){.externe} sous windows.
 
 Pour la connaître :
 
@@ -348,7 +348,7 @@ Set-ExecutionPolicy Unrestricted
 
 ### Activation
 
-On peut activer l'environnement virtuel à la main grace à [une commande qui dépend de votre environnement](https://docs.python.org/3/library/venv.html#how-venvs-work) :
+On peut activer l'environnement virtuel à la main grace à [une commande qui dépend de votre environnement](https://docs.python.org/3/library/venv.html#how-venvs-work){.externe} :
 
 - sous mac : `source venv/bin/activate`
 - sous windows : `venv\Scripts\Activate.ps1`
@@ -412,7 +412,7 @@ deactivate
 ### Partage des modules
 
 {% lien %}
-[Documentation de la commande `pip freeze`](https://pip.pypa.io/en/stable/cli/pip_freeze/)
+[Documentation de la commande `pip freeze`](https://pip.pypa.io/en/stable/cli/pip_freeze/){.externe}
 {% endlien %}
 
 Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.
@@ -443,7 +443,7 @@ Pour partager votre code, vous n'avez qu'à donner le fichier `requirements.txt`
 Le lien ci-dessous explicite le format du fichier `requirements.txt`{.fichier} :
 
 {% lien %}
-[Spécification des modules](https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers)
+[Spécification des modules](https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers){.externe}
 {% endlien %}
 
 ### uv
@@ -451,12 +451,12 @@ Le lien ci-dessous explicite le format du fichier `requirements.txt`{.fichier} :
 La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :
 
 {% lien %}
-<https://github.com/astral-sh/uv>
+<https://github.com/astral-sh/uv>{.externe}
 {% endlien %}
 
 > TBD un tuto à rendre plus digeste :
-> - <https://blog.stephane-robert.info/docs/developper/programmation/python/uv/> 
-> - <https://www.youtube.com/watch?v=AIYBol5HEog>
+> - <https://blog.stephane-robert.info/docs/developper/programmation/python/uv/>{.externe} 
+> - <https://www.youtube.com/watch?v=AIYBol5HEog>{.externe}
 
-Il en existent d'autre, comme [poetry](https://python-poetry.org/) par exemple.
+Il en existent d'autre, comme [poetry](https://python-poetry.org/){.externe} par exemple.
 

@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Définissions [le problème de décision](../../complexité-problème/#définition-problème-décision){.interne} associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :
+Définissions [le problème de décision](../../complexité-problème/#définition-problème-décision) associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :
 
 {% note "**Problème de décision**" %}
 
@@ -94,7 +94,7 @@ La question est délicate. Il faut se demander quel est le modèle sous-jacent �
 
 Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
-- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
+- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation){.externe} $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
 - $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
 {% endnote2 %}
 {% info %}
@@ -238,7 +238,7 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 $$
 </div>
 
-Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../projet-sommes-classiques/#problème-i/2^i){.interne}) donc :
+Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../projet-sommes-classiques/#problème-i/2^i)) donc :
 
 <div>
 $$
@@ -258,7 +258,7 @@ Ce résultat est remarquable :
 
 - Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !
 - Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
-- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est très utile pour démontrer qu'un algorithme est en temps constant.
+- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente){.externe} est très utile pour démontrer qu'un algorithme est en temps constant.
 
 {% endattention2 %}
 
@@ -288,7 +288,7 @@ C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \m
 $$
 </div>
 
-La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ ([$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$](https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re)) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$
+La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ ([$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$](https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re){.externe}) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$
 
 ##### Vérification expérimentale
 
@@ -327,7 +327,7 @@ print(max(nb))
 
 ## Complexité du problème de la reconnaissance
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la _"recherche"_](../../complexité-problème/#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème _"est trié ?"_ est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-} est de $\mathcal{O}(n)$. On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la _"recherche"_](../../complexité-problème/#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème _"est trié ?"_ est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-} est de $\mathcal{O}(n)$. On en conclut :
 
 {% note "**Proposition**" %}
 La complexité du problème _"est trié ?"_ est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.

@@ -12,15 +12,15 @@ eleventyComputed:
 
 Les fichiers html, css et js que vous avec créés forment un tout que l'on nomme **_le front_** (par opposé au _back_ que l'on verra plus tard) et qui est exécuté sur un navigateur. Tous les fichiers crées sont **_statiques_** car ils ne peuvent être modifiés : ils sont chargés tels quels par le navigateur via une url. Cette url peut utiliser le protocole :
 
-- [file](https://en.wikipedia.org/wiki/File_URI_scheme) si vous chargez un fichier de votre disque dur
-- [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) si vous utilisez votre page personnelle par exemple
+- [file](https://en.wikipedia.org/wiki/File_URI_scheme){.externe} si vous chargez un fichier de votre disque dur
+- [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol){.externe} si vous utilisez votre page personnelle par exemple
 
 ## Sujet
 
 Choisissez un sport parmi les 10 du décathlon :
 
 {% lien %}
-<https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf>
+<https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf>{.externe}
 {% endlien %}
 
 Et créez en un site !
@@ -67,11 +67,11 @@ Téléchargez le ficher [mon_super_site.zip](./mon_super_site.zip) qui contient 
 ## Dépendances
 
 {% aller %}
-[Gestion des dépendances](gestion-dépendances){.interne}
+[Gestion des dépendances](gestion-dépendances)
 {% endaller %}
 
 ## Serveur de fichiers statiques
 
 {% aller %}
-[Serveur de fichier statiques](serveur-statique){.interne}
+[Serveur de fichier statiques](serveur-statique)
 {% endaller %}

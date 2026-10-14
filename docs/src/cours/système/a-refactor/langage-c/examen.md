@@ -84,7 +84,7 @@ La taille du tableau n'est pas connue *a priori* et peut changer d'un appel à l
 1. `int donne_taille();`{.language-} qui renvoie la taille du tableau,
 2. `int donne_valeur(size_t i);`{.language-} qui donne l'élément d'index `i`{.language-} du tableau.
 
-Pour vos tests et pour le rendu, vous pourrez implémenter ces deux fonctions par des [*stubs*](https://en.wikipedia.org/wiki/Method_stub) (méthodes minimales pour répondre au problème) comme ceux-ci :
+Pour vos tests et pour le rendu, vous pourrez implémenter ces deux fonctions par des [*stubs*](https://en.wikipedia.org/wiki/Method_stub){.externe} (méthodes minimales pour répondre au problème) comme ceux-ci :
 
 ```c
 int donne_taille() {
@@ -166,7 +166,7 @@ Donnez la fonction `donne_tableau_v4`{.language-} qui :
 On vous demande d'implémenter l'encodage/décodage en Base16, variante de l'encodage/décodage en base64 :
 
 {% lien %}
-<https://en.wikipedia.org/wiki/Base64>
+<https://en.wikipedia.org/wiki/Base64>{.externe}
 {% endlien %}
 
 L'idée de ce type de codage est de convertir un flux de bytes (comme une image par exemple) en un flux de caractères ASCII. Le format texte étant plus facilement transportable via le web (ou le mail) qu'un flux binaire, ce moyen de transmission est encore très populaire.
@@ -205,7 +205,7 @@ Vous allez vous focaliser sur les chaînes de caractères qui sont, en utf-8, de
 
 En utf-8, certains caractères sont codés sur 7b (les caractères ASCII), donc 1 byte, par exemple 'A' qui vaut l'entier' 65 ; d'autres sur 16b, comme 'é' qui est codé sur le tableau de 2 bytes [195, 169] ; d'autres sur encore plus, comme '好' qui est encodé sur le tableau de 3 bytes [229, 165, 189].
 
-Vous pouvez vous en rendre compte en utilisant la fonction [`strlen`{.language-}](https://koor.fr/C/cstring/strlen.wp) :
+Vous pouvez vous en rendre compte en utilisant la fonction [`strlen`{.language-}](https://koor.fr/C/cstring/strlen.wp){.externe} :
 
 {% exercice %}
 Codez un programme qui rend le nombre de char de :
@@ -256,7 +256,7 @@ Par exemple le `char`{.language-} correspondant à 'A' vaut 65 en `char8_t`{.lan
 - ses 4 bits de poids faible valent : $0001$
 - ses 4 bits de poids fort valent : $0100$
 
-Prendre les 4 bits de poids fort et les 4 bits de poids faible d'un `char8_t`{.language-} peut se faire en utilisant des [comparateurs de bits](https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/) :
+Prendre les 4 bits de poids fort et les 4 bits de poids faible d'un `char8_t`{.language-} peut se faire en utilisant des [comparateurs de bits](https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/){.externe} :
 
 {% exercice %}
 
@@ -365,6 +365,6 @@ Vérifiez que votre codage/décodage fonctionne en :
 1. affichant la chaîne "je code et décode parfaitement !"
 2. affichant le codage de la chaîne "je code et décode parfaitement !"
 3. affichant le décodage du codage de la chaîne "je code et décode parfaitement !"
-4. en affichant le résultat de la comparaison des chaînes 1 et 3 en utilisant la fonction [`strcmp`{.language-}](https://fr.wikipedia.org/wiki/Strcmp).
+4. en affichant le résultat de la comparaison des chaînes 1 et 3 en utilisant la fonction [`strcmp`{.language-}](https://fr.wikipedia.org/wiki/Strcmp){.externe}.
 
 {% endexercice %}

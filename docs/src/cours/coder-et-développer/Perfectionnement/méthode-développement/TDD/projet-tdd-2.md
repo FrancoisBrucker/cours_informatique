@@ -37,7 +37,7 @@ Cela permet, en plus d'avoir un feedback immédiat en cas d'erreur (les tests ne
 ## Todo list et code
 
 {% lien %}
-[Code de la partie précédente](../projet-tdd-1/#fin){.interne}
+[Code de la partie précédente](../projet-tdd-1/#fin)
 {% endlien %}
 
 On reprend la todo list de la fin de la partie 1 :
@@ -440,14 +440,14 @@ Une fois l'utilisation des classes masquées dans les tests, on pourra les suppr
 Gommer supprimer l'utilisation des classes, on va utiliser un design pattern :
 
 {% note %}
-Un [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.
+Un [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception){.externe}, ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.
 
-Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
+Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html){.externe}, aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern){.externe}.
 {% endnote %}
 
 Le pattern que l'on va utiliser est appelé **factory**, puisqu'il utilise des fonctions pour créer des objets.
 
-{% note "**design pattern :** [factory](https://refactoring.guru/fr/design-patterns/factory-method)" %}
+{% note "**design pattern :** [factory](https://refactoring.guru/fr/design-patterns/factory-method){.externe}" %}
 
 On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu'avec le constructeur.
 
@@ -650,7 +650,7 @@ On est maintenant dans une meilleure position qu'au début pour notre projet d'u
 {% info %}
 Nos factory sont des fonctions du module python. Une autre solution possible (très utilisée en Java par exemple) est d'utiliser des méthodes de classes.
 
-En python, les méthodes de classes se définissent par le décorateur [`@classmethod`{.language-}](https://docs.python.org/3/library/functions.html#classmethod).
+En python, les méthodes de classes se définissent par le décorateur [`@classmethod`{.language-}](https://docs.python.org/3/library/functions.html#classmethod){.externe}.
 {% endinfo %}
 
 On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.
@@ -752,11 +752,11 @@ On peut maintenant travailler à faire monter les devise au niveau de la classe 
 
 ### <span id="faire-10.2"></span> Faire
 
-L'idée est ici de placer la bonne devise lors de la création de l'objet dans `Monnaie`{.language-}. Pour faire cela dans les règle de l'art on va utiliser un [pattern de refactoring](https://martinfowler.com/books/refactoring.html) qui permet de modifier le code sans problème.
+L'idée est ici de placer la bonne devise lors de la création de l'objet dans `Monnaie`{.language-}. Pour faire cela dans les règle de l'art on va utiliser un [pattern de refactoring](https://martinfowler.com/books/refactoring.html){.externe} qui permet de modifier le code sans problème.
 
 On va utiliser :
 
-{% note "**Refactoring pattern :** [Pull Up Field](https://refactoring.guru/fr/pull-up-field)" %}
+{% note "**Refactoring pattern :** [Pull Up Field](https://refactoring.guru/fr/pull-up-field){.externe}" %}
 
 Le but est de faire remonter un champ de sous-classes à la classe mère.
 
@@ -896,7 +896,7 @@ Et nos tests passent ! Félicitations, vous avez réussi votre premier refactori
 
 Pour supprimer les classes, il faut créer nos objets avec la classe `Monnaie`{.language-}. Notre problème est encore un problème de refactoring :
 
-{% note "**Refactoring pattern :** [Pull Up Method](https://refactoring.guru/fr/pull-up-method)" %}
+{% note "**Refactoring pattern :** [Pull Up Method](https://refactoring.guru/fr/pull-up-method){.externe}" %}
 
 Le but est de faire remonter une méthode de sous-classes à la classe mère.
 

@@ -106,7 +106,7 @@ Vous ferez en sorte que la probabilité $\Pr(T[i] =  x)$ soit de $1/(n-1)$ quelq
 
 
 {% info %}
-Vous pourrez utiliser [la méthode `randrange`{.language-} du module `random`{.language-} ](https://docs.python.org/fr/3.14/library/random.html#random.randrange)
+Vous pourrez utiliser [la méthode `randrange`{.language-} du module `random`{.language-} ](https://docs.python.org/fr/3.14/library/random.html#random.randrange){.externe}
 {% endinfo %}
 
 {% faire "**I.4.3 (sortie)**" %}
@@ -130,7 +130,7 @@ Créez un programme principal dans un fichier `main_I.py`{.fichier} permettant �
 
 
 {% info %}
-Vous pourrez utiliser [la technique présentée dans l'étude expérimentale du projet exponentiation](../projet-exponentiation/implémentation-code/#temporelle-comment-faire){.interne} pour mesurer le temps d'exécution de votre algorithme.
+Vous pourrez utiliser [la technique présentée dans l'étude expérimentale du projet exponentiation](../projet-exponentiation/implémentation-code/#temporelle-comment-faire) pour mesurer le temps d'exécution de votre algorithme.
 {% endinfo %}
 
 ## II. Une première borne
@@ -155,7 +155,7 @@ doppelganger_tri(T: [int]) → int
 Qui commence par trier la liste $T$ passée en entrée puis utilise votre algorithme du II.1.1 pour résoudre le problème.
 {% endfaire %}
 {% info %}
-Vous pourrez lire [technique de tri](https://docs.python.org/fr/3.14/howto/sorting.html) du tutoriel python pour savoir comment trier une liste en python.
+Vous pourrez lire [technique de tri](https://docs.python.org/fr/3.14/howto/sorting.html){.externe} du tutoriel python pour savoir comment trier une liste en python.
 {% endinfo %}
 
 {% faire "**II.1.3**" %}
@@ -257,7 +257,7 @@ Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible
 
 ## III. Interlude
 
-Nous allons montrer que notre problème est équivalent à celui de [la recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe){.interne} que nous avons déjà étudié.
+Nous allons montrer que notre problème est équivalent à celui de [la recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe) que nous avons déjà étudié.
 
 {% note2 "**Problème algorithmique**" %}
 
@@ -326,7 +326,7 @@ Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et compos�
 {% endfaire %}
 {% faire  "**III.3.2**" %}
 
-Codez l'algorithme `mu` de l'exercice [recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe-mu){.interne} pour nos fonctions. Cet algorithme devra être de signature :
+Codez l'algorithme `mu` de l'exercice [recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe-mu) pour nos fonctions. Cet algorithme devra être de signature :
 
 ```pseudocode
 mu(T: [entier]) -> entier
@@ -416,6 +416,6 @@ Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le c
 {% attention %}
 Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
 
-Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle) pour mélanger un tableau trié).
+Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle){.externe} pour mélanger un tableau trié).
 
 {% endattention %}

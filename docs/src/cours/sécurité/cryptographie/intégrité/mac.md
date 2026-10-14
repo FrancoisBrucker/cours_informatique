@@ -70,7 +70,7 @@ Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins 
 ### MAC pour message de taille fixe
 
 {% note "**MAC à taille fixe**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/chiffre-flux/#PRF){.interne}, alors :
+Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/chiffre-flux/#PRF), alors :
 
 - $S(k, m) = F(k, m)$
 - $V(k, m, t) = (F(k, m) = t)$
@@ -136,7 +136,7 @@ Clair si le hash est cryptographique.
 ## HMAC
 
 {% lien %}
-[Hash-based MAC](https://fr.wikipedia.org/wiki/HMAC)
+[Hash-based MAC](https://fr.wikipedia.org/wiki/HMAC){.externe}
 {% endlien %}
 
 La façon la plus simple de créer un mac est d'utiliser un hash :
@@ -175,17 +175,17 @@ On utilisera souvent la fonction SHA-256 pour les HMAC.
 ## One-time MAC
 
 {% info %}
-Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie [AEAD](../aead){.interne}).
+Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie [AEAD](../aead)).
 {% endinfo %}
 
 > TBD utilisé pour le AEAD de chacha20 avec poly1305
 
 Ces macs sont très simple à mettre en œuvre, mais ils sont, comme le code de Vernam très sensibles à la clé : il ne faut pas la réutiliser.
 
-Ils sont basés sur les [fonctions de hash universelles](https://fr.wikipedia.org/wiki/Hachage_universel), dont nous n'allons pas plus parler ici. Pour plus d'info :
+Ils sont basés sur les [fonctions de hash universelles](https://fr.wikipedia.org/wiki/Hachage_universel){.externe}, dont nous n'allons pas plus parler ici. Pour plus d'info :
 
 {% lien %}
-[Universal hash function](https://www.youtube.com/watch?v=z0lJ2k0sl1g)
+[Universal hash function](https://www.youtube.com/watch?v=z0lJ2k0sl1g){.externe}
 {% endlien %}
 
 Comme le message $m$ est une suite de 0 et de 1, on peut très bien le considérer comme un nombre. On va se placer dans le corps $\mathbb{Z}/p\mathbb{Z}$, avec $p$ premier.
@@ -242,13 +242,13 @@ $$
 </div>
 
 {% lien %}
-exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf)
+exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf){.externe}
 {% endlien %}
 
 ### Faire grossir un MAC à taille fixe
 
 {% info %}
-Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie [AEAD](../aead){.interne}).
+Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie [AEAD](../aead)).
 {% endinfo %}
 
 Cela semble la manière la plus naturelle et cependant c'est la plus risquée. Pour garantir la sécurité du MAC, il faut en effet utiliser 2 clés de chiffrement :

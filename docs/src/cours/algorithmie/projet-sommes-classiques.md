@@ -14,7 +14,7 @@ Lors de calculs de complexité, on va de nombreuses fois avoir les mêmes sommes
 Cette série d'exercice va vous montrer les plus classiques et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.
 
 {% lien %}
-[Séries](https://fr.wikipedia.org/wiki/S%C3%A9rie_(math%C3%A9matiques))
+[Séries](https://fr.wikipedia.org/wiki/S%C3%A9rie_(math%C3%A9matiques)){.externe}
 {% endlien %}
 
 ## Séries des premiers entiers
@@ -125,7 +125,7 @@ La première égalité est uniquement une application numérique et la seconde r
 
 {% enddetails %}
 {% info %}
-La seconde série a [une interprétation géométrique](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)
+La seconde série a [une interprétation géométrique](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF){.externe}
 {% endinfo %}
 
 Une variation classique de la série géométrique, vue par exemple dans le calcul du tri rapide pour $r=2$ est :
@@ -151,7 +151,7 @@ Vous pourrez utiliser le polynôme $P(x) = \sum_{i=1}^nx^i$ et le dériver.
 {% endinfo %}
 {% details "corrigé" %}
 
-On a : $S'_n = rP'(r)$ et donc e n utilisant [la formule explicite de $P(x) = \frac{1-x^{n+1}}{1-x}$](./#problème-r^i){.interne}, on a :
+On a : $S'_n = rP'(r)$ et donc e n utilisant [la formule explicite de $P(x) = \frac{1-x^{n+1}}{1-x}$](./#problème-r^i), on a :
 
 <div>
 $$
@@ -229,7 +229,7 @@ Surprenant, non ?
 
 ## Série harmonique
 
-On définie [la série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique) comme :
+On définie [la série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique){.externe} comme :
 
 <div>
 $$
@@ -269,7 +269,7 @@ Si $H(n)$ converge, alors toute suite extraite également. Cela n'est donc pas p
 
 {% enddetails %}
 
-Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique)).
+Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique){.externe}).
 
 Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on peut utiliser, on a pour tout entier $i> 1$ :
 
@@ -286,7 +286,7 @@ $$
 $$
 </div>
 
-On peut alors utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale) pour en déduire que pour tout $n> 0$ :
+On peut alors utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale){.externe} pour en déduire que pour tout $n> 0$ :
 
 {% exercice %}
 
@@ -318,21 +318,21 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 1$ [les deux fonctions sont donc équivalentes](https://fr.wikipedia.org/wiki/%C3%89quivalent) en $+\infty$ (ce qui est plus fort que ce qu'on demande)
+L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 1$ [les deux fonctions sont donc équivalentes](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe} en $+\infty$ (ce qui est plus fort que ce qu'on demande)
 {% enddetails %}
 
 ## <span id="problème-Bâle"></span>Problème de Bâle
 
 <!-- 
 
-> TBD <https://www.youtube.com/watch?v=CC2DG391HmA> en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
+> TBD <https://www.youtube.com/watch?v=CC2DG391HmA>{.externe} en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
 
-> TBD une démo <https://www.youtube.com/watch?v=JZiDuryIMQE>
+> TBD une démo <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
  -->
 
 
 {% lien %}
-[Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le)
+[Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le){.externe}
 {% endlien %}
 
 La somme suivante à un nom car le calcul exact de sa limite elle a résisté pendant plusieurs années avant qu'Euler n'en vienne à bout. Son résultat est diablement surprenant :
@@ -345,7 +345,7 @@ $$
 
 {% lien %}
 
-[5 preuves différentes du résultat](https://www.youtube.com/watch?v=1hJji-zgS00) et les détails dans [voyage en Analystan](https://math.univ-lyon1.fr/irem/IMG/pdf/analysie.pdf)
+[5 preuves différentes du résultat](https://www.youtube.com/watch?v=1hJji-zgS00){.externe} et les détails dans [voyage en Analystan](https://math.univ-lyon1.fr/irem/IMG/pdf/analysie.pdf){.externe}
 
 {% endlien %}
 
@@ -414,4 +414,4 @@ $$
 La série est croissante et bornée, elle converge.
 {% enddetails %}
 
-Classiquement en analyse on aurait aussi utilisé [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale) pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).
+Classiquement en analyse on aurait aussi utilisé [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale){.externe} pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).

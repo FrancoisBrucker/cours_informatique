@@ -11,7 +11,7 @@ eleventyComputed:
 
 Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le dictionnaire (_hash map_) aussi appelé le tableau associatif.
 
-Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fonctions-hash){.interne}.
+Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fonctions-hash).
 
 ## Fonction de hachage utilisée
 
@@ -28,7 +28,7 @@ Où $\mathcal{K}$ sera l'ensemble des objets de type $K$. Comme on va les utilis
 
 - d'être calculable : on peut leur associer un algorithme `f(d: K) → entier`{.language-},
 - d'être rapidement calculable : de complexité linéaire dans la taille de $d$.
-- d'être [utiles](../fonctions-hash/#définition-hachage-utile){.interne}.
+- d'être [utiles](../fonctions-hash/#définition-hachage-utile).
 
 
 {% info %}
@@ -62,7 +62,7 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
 En deux mots, un dictionnaire est une structure permettant accéder à des _valeurs_ via des _clés_. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.
 
 {% note %}
-On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
+On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter) : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
 {% endnote %}
 
 Enfin, Comme un dictionnaire est un type classique :
@@ -118,7 +118,7 @@ Il faut trouver un moyen de les gérer aux mieux (c'est à dire avec une complex
 Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilisé quotidiennement pas des millions de personnes ne fait pas de gestion de collision car les probabilités de collision sont trop faibles.
 {% endinfo %}
 
-Pour gérer les collisions, on utilise [le théorème fondamental du développement logiciel](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) :
+Pour gérer les collisions, on utilise [le théorème fondamental du développement logiciel](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering){.externe} :
 
 <span id="théorème-fondamental-développement-logiciel"></span>
 
@@ -215,9 +215,9 @@ La recherche et l'affectation dans un dictionnaire est en $\mathcal{O}$ du nombr
 
 ## Taille de la structure
 
-Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour [sipHash](https://en.wikipedia.org/wiki/SipHash), la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.
+Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour [sipHash](https://en.wikipedia.org/wiki/SipHash){.externe}, la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.
 
-Pour résoudre ce problème on va encore une fois utiliser [le TFDL](./#théorème-fondamental-développement-logiciel){.interne} et ajouter une indirection.
+Pour résoudre ce problème on va encore une fois utiliser [le TFDL](./#théorème-fondamental-développement-logiciel) et ajouter une indirection.
 
 On utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :
 
@@ -395,7 +395,7 @@ Cette complexité peut aller de :
 - cas le pire : $\mathcal{O}(\mbox{longueur})$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{longueur}$, le nombre d'éléments stockés.
 - cas moyen : $\mathcal{O}(\frac{\mbox{longueur}}{T.\mbox{\small capacité}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{longueur}}{T.\mbox{\small capacité}}$ éléments dans la liste $L[fa(f(c), m)]$.
 
-Comme $\frac{\mbox{longueur}}{T.\mbox{\small capacité}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne} montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{longueur})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
+Comme $\frac{\mbox{longueur}}{T.\mbox{\small capacité}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout) montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{longueur})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
 
 {% note "**Proposition**" %}
 La complexité **en moyenne** d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$

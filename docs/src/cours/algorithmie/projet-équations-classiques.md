@@ -165,7 +165,7 @@ C(n) &=& \mathcal{O}(n) + C(\frac{n}{2})\\
 $$
 </div>
 
-[On a vu précédemment](../projet-sommes-classiques/#problème-1/2^i){.interne} que la série $\sum\limits_{0\leq i < p}\frac{1}{2^i}$ était plus petite que 2, donc : $\mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^i}) = \mathcal{O}(n)$, ce qui simplifie beaucoup notre équation :
+[On a vu précédemment](../projet-sommes-classiques/#problème-1/2^i) que la série $\sum\limits_{0\leq i < p}\frac{1}{2^i}$ était plus petite que 2, donc : $\mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^i}) = \mathcal{O}(n)$, ce qui simplifie beaucoup notre équation :
 
 <div>
 $$

@@ -12,7 +12,7 @@ eleventyComputed:
 
 > TBD à faire bien : problème et structure de donnée solution
 
-- factorisation : <https://www.youtube.com/watch?v=9ONm1od1QZo>
+- factorisation : <https://www.youtube.com/watch?v=9ONm1od1QZo>{.externe}
 - pile/tas
 - tableau (évite la faute de cache)
   - temporalité spatiale

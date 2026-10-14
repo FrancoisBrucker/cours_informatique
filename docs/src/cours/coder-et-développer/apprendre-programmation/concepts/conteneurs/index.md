@@ -20,13 +20,13 @@ En plus des 6 types de bases, python met à notre disposition plusieurs objets q
 Parmi tous les conteneurs de python, la **_liste_** est certainement la plus utilisée.
 
 {% aller %}
-[Listes](listes){.interne}
+[Listes](listes)
 {% endaller %}
 
 La plupart des conteneurs possèdent deux formes : l'une mutable l'autre non mutable. Le tuple est la version non mutable des listes :
 
 {% aller %}
-[Tuples](tuples){.interne}
+[Tuples](tuples)
 {% endaller %}
 
 ## <span id="ensembles-dictionnaires"></span>Ensembles et dictionnaires
@@ -38,10 +38,10 @@ Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérable
 ### Ensembles
 
 {% aller %}
-[Ensembles](ensembles){.interne}
+[Ensembles](ensembles)
 {% endaller %}
 
-Le pendant non mutable d'un ensemble est le [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset). Par exemple :
+Le pendant non mutable d'un ensemble est le [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset){.externe}. Par exemple :
 
 ```python
 
@@ -54,7 +54,7 @@ qui transforme l'ensemble `{1, 2, 3}`{.language-} en un `frozenset`{.language-}.
 
 
 {% aller %}
-[Dictionnaires](dictionnaires){.interne}
+[Dictionnaires](dictionnaires)
 {% endaller %}
 
-Les dictionnaires possèdent [depuis python 3.15](https://docs.python.org/3.15/whatsnew/3.15.html#whatsnew315-frozendict) leur pendant non mutable sous la forme d'un `frozendict`{.language-}
+Les dictionnaires possèdent [depuis python 3.15](https://docs.python.org/3.15/whatsnew/3.15.html#whatsnew315-frozendict){.externe} leur pendant non mutable sous la forme d'un `frozendict`{.language-}

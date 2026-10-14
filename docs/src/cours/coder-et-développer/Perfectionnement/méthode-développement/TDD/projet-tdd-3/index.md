@@ -19,7 +19,7 @@ Troisième et dernière partie du projet TDD.
 ## Todo list et code
 
 {% lien %}
-[Code de la partie précédente](../projet-tdd-2/#fin){.interne}
+[Code de la partie précédente](../projet-tdd-2/#fin)
 {% endlien %}
 
 
@@ -159,7 +159,7 @@ class Monnaie:
 
 Notre implémentation de `+`{.language-} qui rend un objet de type `Monnaie`{.language-} ne sera pas tenable longtemps.
 
-En effet `$5 + 2.5CHF` **ne peut pas être** un objet de type `Monnaie`{.language-}. Ce sont en effet deux devises différentes dont la valeur va dépendre d'un cours [qui change au cours du temps](https://fr.tradingview.com/symbols/USDCHF/). La somme `$5 + 2.5CHF` peut ainsi valoir `$10` en 2022 et `$7` en 2034.
+En effet `$5 + 2.5CHF` **ne peut pas être** un objet de type `Monnaie`{.language-}. Ce sont en effet deux devises différentes dont la valeur va dépendre d'un cours [qui change au cours du temps](https://fr.tradingview.com/symbols/USDCHF/){.externe}. La somme `$5 + 2.5CHF` peut ainsi valoir `$10` en 2022 et `$7` en 2034.
 
 Il faut donc résoudre deux problèmes :
 
@@ -376,7 +376,7 @@ L'implémentation actuelle de la méthode `Banque.conversion`{.language-} — m�
 
 Lorsque l'on fait du développement objet, on aime pas trop que tous les objets connaissent les attributs de tout le monde. Cela couple les objets entre eux et le code en devient moins maniable (en changeant une classe, il faut changer toutes les autres...)
 
-{% note "**Principe de développement objet :** [loi de Déméter](https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter)" %}
+{% note "**Principe de développement objet :** [loi de Déméter](https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter){.externe}" %}
 
 Toute méthode `m`{.language-} d'un objet `o`{.language-} de classe `C`{.language-} ne peut invoquer que :
 
@@ -680,7 +680,7 @@ Pour finir, il nous reste à généraliser le tout. C'est à dire que l'on aimer
 
 Le design pattern utilisé pour cela est :
 
-{% note "**Design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite)" %}
+{% note "**Design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite){.externe}" %}
 
 Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.
 {% endnote %}

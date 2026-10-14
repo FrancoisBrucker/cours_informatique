@@ -15,19 +15,19 @@ eleventyComputed:
 - ajouter sub-keys avec acron2.
 `❯ echo "coucou" | openssl base64 | openssl base64 -d`
 
-- signature avec openssl <https://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl>
+- signature avec openssl <https://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl>{.externe}
  -->
 
-Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par [openSSL](https://www.openssl.org/) pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme [Gnupg](https://www.gnupg.org/), ci-après.
+Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par [openSSL](https://www.openssl.org/){.externe} pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme [Gnupg](https://www.gnupg.org/){.externe}, ci-après.
 
 Placez vous dans un dossier où vous pourrez placer tous les fichiers nécessaires
 
-> TBD <https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl>
+> TBD <https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl>{.externe}
 
 ## Installation
 
 {% lien %}
-<https://www.openssl.org/>
+<https://www.openssl.org/>{.externe}
 {% endlien %}
 
 On utilise la version 3 d'openssl :
@@ -51,33 +51,33 @@ OpenSSL 3.6.0 1 Oct 2025 (Library: OpenSSL 3.6.0 1 Oct 2025)
 
 ### Windows
 
-On utilise [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/), le gestionnaire de paquet de Windows 11.
+On utilise [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/){.externe}, le gestionnaire de paquet de Windows 11.
 
-1. recherche de openssl dans la liste des paquets disponibles : <https://winget.run/>
-2. on utilise le paquet [`OpenSSL.Light`](https://winget.run/pkg/ShiningLight/OpenSSL.Light)
+1. recherche de openssl dans la liste des paquets disponibles : <https://winget.run/>{.externe}
+2. on utilise le paquet [`OpenSSL.Light`](https://winget.run/pkg/ShiningLight/OpenSSL.Light){.externe}
 
 Une fois le parquet installé, il faut encore ajouter le chemin d'exécution. Pour cela :
 
 1. commencez par trouver l'endroit où est installé openssl (qui moi c'est`C:\Program Files\OpenSSL-Win64\bin\`{.fichier})
-2. utilisez [ce tutoriel](https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/) pour l'ajouter aux chemins d'exécution
+2. utilisez [ce tutoriel](https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/){.externe} pour l'ajouter aux chemins d'exécution
 
 ## Clés du chiffrement asymétrique
 
 {% lien %}
-[RSA openSSL](https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL)
+[RSA openSSL](https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL){.externe}
 {% endlien %}
 
 ```sh
 openssl genpkey -help
 ```
 
-On commence par [générer un couple de clés publique/privée](https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html) avec RSA :
+On commence par [générer un couple de clés publique/privée](https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html){.externe} avec RSA :
 
 ```sh
 openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
 ```
 
-Cette commande va produire un fichier `private_key.pem`{.fichier} au format [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail). Ce fichier va faire office de clé privée mais **il contient bien le couple des clés publique et privée** :
+Cette commande va produire un fichier `private_key.pem`{.fichier} au format [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail){.externe}. Ce fichier va faire office de clé privée mais **il contient bien le couple des clés publique et privée** :
 
 ```sh
 openssl rsa -in private_key.pem -text

@@ -64,7 +64,7 @@ Créez un fichier `javascript-dom.html`{.fichier} et copiez/collez le contenu su
 </html>
 ```
 
-Ouvrez [le](./javascript_dom){.interne} avec votre navigateur.
+Ouvrez [le](./javascript_dom) avec votre navigateur.
 {% endfaire %}
 {% attention %}
 On ne peut pas mettre le code avant la déclaration du div (ce n'est **pas** comme du css).
@@ -72,17 +72,17 @@ On ne peut pas mettre le code avant la déclaration du div (ce n'est **pas** com
 Testez le pour voir.
 {% endattention %}
 
-L'objet [`document`{.language}](https://developer.mozilla.org/fr/docs/Web/API/Document) est le point d'accès à l'arbre DOM. Il nous permet de récupérer les éléments de cet arbre.
+L'objet [`document`{.language}](https://developer.mozilla.org/fr/docs/Web/API/Document){.externe} est le point d'accès à l'arbre DOM. Il nous permet de récupérer les éléments de cet arbre.
 
-Dans notre cas, nous récupérons un [HTMLElement](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) qui hérite de [Element](https://developer.mozilla.org/fr/docs/Web/API/Element). Un `HTMLElement` possède de nombreux attributs auxquels on peut accéder, comme le [style](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style).
+Dans notre cas, nous récupérons un [HTMLElement](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement){.externe} qui hérite de [Element](https://developer.mozilla.org/fr/docs/Web/API/Element){.externe}. Un `HTMLElement` possède de nombreux attributs auxquels on peut accéder, comme le [style](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style){.externe}.
 
 On peut aussi accéder aux éléments par :
 
-* leur tag : [`document.getElementsByTagName("p")`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByTagName)
-* leurs classes : [`document.getElementsByClassName("milieu")`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByClassName) (on peut mettre plusieurs classes en les séparant par des espaces)
+* leur tag : [`document.getElementsByTagName("p")`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByTagName){.externe}
+* leurs classes : [`document.getElementsByClassName("milieu")`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByClassName){.externe} (on peut mettre plusieurs classes en les séparant par des espaces)
 
 {% info %}
-Seul la méthode [`document.getElementById`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById) rend directement un élément. Les autres méthodes rendent un conteneur de type [HTMLCollection](https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection) que l'on peut manipuler comme un tableau :
+Seul la méthode [`document.getElementById`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById){.externe} rend directement un élément. Les autres méthodes rendent un conteneur de type [HTMLCollection](https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection){.externe} que l'on peut manipuler comme un tableau :
 
 ```js
 let list = document.getElementsByTagName("p");
@@ -94,7 +94,7 @@ for (let i = 0; i < list.length; i++) {
 {% endinfo %}
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, accédez aux éléments par leur nom et leurs classes.
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), accédez aux éléments par leur nom et leurs classes.
 {% endfaire %}
 
 ## Naviguer dans l'arbre
@@ -102,45 +102,45 @@ Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom)
 > TBD : arbre DOM : Node -> element -> HTMLElement
 
 {% lien %}
-<https://fr.javascript.info/dom-navigation>
+<https://fr.javascript.info/dom-navigation>{.externe}
 {% endlien %}
 
-On peut naviguer dans l'arbre DOM en parcourant ses [nœuds](https://developer.mozilla.org/fr/docs/Web/API/Node).
+On peut naviguer dans l'arbre DOM en parcourant ses [nœuds](https://developer.mozilla.org/fr/docs/Web/API/Node){.externe}.
 
-Notez qu'un élément possède aussi un attribut [children](https://developer.mozilla.org/fr/docs/Web/API/Element/children). La différence tient au fait que children ne contient **que** les fils qui sont eux-même des éléments. Pas les champs texte par exemple.
+Notez qu'un élément possède aussi un attribut [children](https://developer.mozilla.org/fr/docs/Web/API/Element/children){.externe}. La différence tient au fait que children ne contient **que** les fils qui sont eux-même des éléments. Pas les champs texte par exemple.
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, Remarquez la différence entre `document.getElementsByTagName("p")[0].childNodes` et `document.getElementsByTagName("p")[0].children`
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), Remarquez la différence entre `document.getElementsByTagName("p")[0].childNodes` et `document.getElementsByTagName("p")[0].children`
 
 {% endfaire %}
 
 ## Modifier des éléments
 
 {% info %}
-Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des [`Element`](https://developer.mozilla.org/fr/docs/Web/API/Element) ou des [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement), elles permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.
+Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des [`Element`](https://developer.mozilla.org/fr/docs/Web/API/Element){.externe} ou des [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement){.externe}, elles permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.
 {% endinfo %}
 
 ### style
 
-Dans l'exemple précédent on a accédé au [style](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style) d'un `HTMLElement`{.language-}.
+Dans l'exemple précédent on a accédé au [style](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style){.externe} d'un `HTMLElement`{.language-}.
 
-On peut aussi directement accéder à n'importe quel attribut d'un `Element` avec les méthodes [`getAttribute`](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute) et [`setAttributes`](https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute) qui nous permettent de changer tous les attributs.
+On peut aussi directement accéder à n'importe quel attribut d'un `Element` avec les méthodes [`getAttribute`](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute){.externe} et [`setAttributes`](https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute){.externe} qui nous permettent de changer tous les attributs.
 
 ### classes
 
-`element.classList` qui rend une [liste](https://developer.mozilla.org/fr/docs/Web/API/DOMTokenList) permettant d'ajouter ou supprimer ue class
+`element.classList` qui rend une [liste](https://developer.mozilla.org/fr/docs/Web/API/DOMTokenList){.externe} permettant d'ajouter ou supprimer ue class
 
 ### texte
 
 Attribut innerHtml ou innerText
 
 {% faire %}
-Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom){.interne}, Remarquez la différence entre `document.getElementsByTagName("p")[0].innerText` et `document.getElementsByTagName("p")[0].innerHtml`
+Dans la console du fichier [`javascript_dom.html`{.language-}](./javascript_dom), Remarquez la différence entre `document.getElementsByTagName("p")[0].innerText` et `document.getElementsByTagName("p")[0].innerHtml`
 {% endfaire %}
 
 ## Créer des éléments
 
-On peut *facilement* ajouter des éléments  à l'arbre DOM grace à la fonction [document.createElement](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement) et à la méthode [appendChild](https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild) des éléments.
+On peut *facilement* ajouter des éléments  à l'arbre DOM grace à la fonction [document.createElement](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement){.externe} et à la méthode [appendChild](https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild){.externe} des éléments.
 
 {% faire %}
 Ajoutez au fichier `javascript_dom.html`{.fichier} le code ci-après pour ajouter une liste dans le div :

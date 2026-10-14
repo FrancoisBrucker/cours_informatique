@@ -11,12 +11,12 @@ eleventyComputed:
 ---
 
 {% lien %}
-[OpenPGP](https://fr.wikipedia.org/wiki/OpenPGP)
+[OpenPGP](https://fr.wikipedia.org/wiki/OpenPGP){.externe}
 {% endlien %}
 
 RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T < n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.
 
-On utilise alors une technique mixte, issue de [PGP](https://fr.wikipedia.org/wiki/Pretty_Good_Privacy), pour cela.
+On utilise alors une technique mixte, issue de [PGP](https://fr.wikipedia.org/wiki/Pretty_Good_Privacy){.externe}, pour cela.
 
 Supposons qu'Alice veut envoyer un message $m$ à Bob. Il faut de :
 
@@ -42,11 +42,11 @@ Bob peut alors :
 ## Avec openSSL
 
 {% aller %}
-[openssl](./openssl){.interne}
+[openssl](./openssl)
 {% endaller %}
 
 ## Avec GPG
 
 {% aller %}
-[gpg](./gpg){.interne}
+[gpg](./gpg)
 {% endaller %}

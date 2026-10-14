@@ -10,9 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<https://en.wikipedia.org/wiki/C_preprocessor>
-<https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html>
-<http://jhnet.co.uk/articles/cpp_magic>
+<https://en.wikipedia.org/wiki/C_preprocessor>{.externe}
+<https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html>{.externe}
+<http://jhnet.co.uk/articles/cpp_magic>{.externe}
 
 > TBD détailler les include, comment on fait etc.
 
@@ -34,8 +34,8 @@ int main(void) {
 
 Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :
 
-- [directives](https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html) à exécuter
-- [macros](https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1) à remplacer
+- [directives](https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html){.externe} à exécuter
+- [macros](https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1){.externe} à remplacer
 
 Lorsque le préprocesseur
 Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.

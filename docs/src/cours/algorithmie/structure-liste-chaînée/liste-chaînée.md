@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
+[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e){.externe}
 {% endlien %}
 
 Les **_listes chaînées_** sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer ou ajouter un élément quelconque de cette liste en temps constant.
@@ -94,7 +94,7 @@ On utilise les listes chaînées lorsque l'on doit très souvent insérer ou sup
 Les listes chaînées sont utilisées pour stocker des fichiers sur un disque physique.
 
 {% lien %}
-[Systèmes d'Allocation de fichiers FAT](https://fr.wikipedia.org/wiki/FAT32)
+[Systèmes d'Allocation de fichiers FAT](https://fr.wikipedia.org/wiki/FAT32){.externe}
 {% endlien %}
 
 <!-- TBD
@@ -110,7 +110,7 @@ Les listes chaînées sont utilisées pour stocker des fichiers sur un disque ph
 
 ### Algorithmes récursifs
 
-C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}, vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
+C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../../projet-itératif-récursif/#algorithme-max-tableau-rec), vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
 
 {% exercice %}
 Donnez un algorithme récursif et sa complexité de recherche de la valeur maximale dune liste chaînée d'entiers.

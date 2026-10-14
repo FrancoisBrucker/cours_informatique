@@ -37,7 +37,7 @@ En 2 heures :
 
 {% endnote %}
 
-Pour vous comparer, vous pouvez consulter : [rapport de l'épreuve 2024](https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf). Vous voyez qu'en moyenne les élèves ont répondus à plus de questions que vous (vous 9 questions et eux 11). Il faut donc que vous gagniez en rapidité, car vous avez été noté sur 25 et non sur 20.
+Pour vous comparer, vous pouvez consulter : [rapport de l'épreuve 2024](https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf){.externe}. Vous voyez qu'en moyenne les élèves ont répondus à plus de questions que vous (vous 9 questions et eux 11). Il faut donc que vous gagniez en rapidité, car vous avez été noté sur 25 et non sur 20.
 
 ### Ventilation des notes
 

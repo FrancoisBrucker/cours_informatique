@@ -31,29 +31,29 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 Différence entre exécuter un fichier soit et sur un serveur.
 
 {% aller %}
-[Bases de réseau](/cours/système-et-réseau/bases-réseau/){.interne}
+[Bases de réseau](/cours/système-et-réseau/bases-réseau/)
 {% endaller %}
 
 ## <span id="trinité"><span>  Trinité html/css/js
 
 ### Découverte d'html
 
-1. Introduction avec les [outils de développement](./outils-de-développement/){.interne}
-2. [Introduction à html](./html-introduction){.interne} chez soit dans un seul fichier
-3. [Projet html](./projet-html){.interne}
+1. Introduction avec les [outils de développement](./outils-de-développement/)
+2. [Introduction à html](./html-introduction) chez soit dans un seul fichier
+3. [Projet html](./projet-html)
 
 ### Découverte de css
 
-1. [Introduction à css](./css-introduction){.interne}
-2. [Unités et couleurs](./unités-couleurs){.interne}
-3. [Sélecteurs css](./sélecteurs-css){.interne}
-4. [modèle de boîtes](./modèle-boites){.interne}
-5. [balise anonymes](./balises-anonymes){.interne}
-6. [positionnement](./positionnement){.interne}
-7. [Projet css](./projet-css){.interne}
+1. [Introduction à css](./css-introduction)
+2. [Unités et couleurs](./unités-couleurs)
+3. [Sélecteurs css](./sélecteurs-css)
+4. [modèle de boîtes](./modèle-boites)
+5. [balise anonymes](./balises-anonymes)
+6. [positionnement](./positionnement)
+7. [Projet css](./projet-css)
 8. flex + grid (TBD)
 
-> - ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
+> - ajouter animations et fin css de ce cours <https://web.dev/learn/css/>{.externe}
 > - TBD à présenter :
 >   - flex + grid
 >   - bootstrap
@@ -61,7 +61,7 @@ Différence entre exécuter un fichier soit et sur un serveur.
 ### Gestion des fichiers
 
 {% lien %}
-<https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
+<https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>{.externe}
 {% endlien %}
 
 Ayez :
@@ -76,7 +76,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ### Bibliothèques css
 
-<https://getbootstrap.com/>
+<https://getbootstrap.com/>{.externe}
 
 Comment :
 
@@ -85,27 +85,27 @@ Comment :
 - node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
 Si vous avez des soucis avec l'exécution des scripts powershell :
-<https://www.it-connect.fr/autoriser-lexecution-de-scripts-powershell/>
+<https://www.it-connect.fr/autoriser-lexecution-de-scripts-powershell/>{.externe}
 
 Modifier votre page animal préféré avec bootstrap
 
 ### Découverte de Javascript
 
-1. [Bases de javascript](./javascript-bases){.interne}
-2. [Manipuler l'arbre DOM en javascript](./javascript-dom){.interne}
-3. [gestion des événements](./javascript-événements){.interne}
+1. [Bases de javascript](./javascript-bases)
+2. [Manipuler l'arbre DOM en javascript](./javascript-dom)
+3. [gestion des événements](./javascript-événements)
 
 {% faire %}
-[Projet Numérologie](./projet-numérologie){.interne}, faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/){.interne}.
+[Projet Numérologie](./projet-numérologie), faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/).
 {% endfaire %}
 
 > - à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
-> - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
+> - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>{.externe}
 
 ## Projet front
 
 {% aller %}
-[Projet front](projet-front){.interne}
+[Projet front](projet-front)
 {% endaller %}
 
 ## <span id="serveur"><span> Serveur web
@@ -115,17 +115,17 @@ Modifier votre page animal préféré avec bootstrap
 Avant de vous langer dans la création de serveurs web, commençons par dégrossir un peut la notion de réseau et de protocole.
 
 {% aller %}
-Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/système-et-réseau/réseau/){.interne}
+Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/système-et-réseau/réseau/)
 {% endaller %}
 
 {% faire %}
-Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wireshark.org/) et regardez le flux réseau sur le loopback.
+Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wireshark.org/){.externe} et regardez le flux réseau sur le loopback.
 {% endfaire %}
 
 ### Créer un serveur web
 
 {% aller %}
-[Serveur web](./serveur-web){.interne}
+[Serveur web](./serveur-web)
 {% endaller %}
 
 à faire : décathlon, faire un client/serveur : tous
@@ -137,39 +137,39 @@ Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wire
 La lecture de donnée est un processus asynchrone et doit être traité avec des promesses :
 
 {% aller %}
-[Lecture asynchrone de fichiers](./lire-données){.interne}
+[Lecture asynchrone de fichiers](./lire-données)
 {% endaller %}
 
 La suite du projet numérologie qui intègre une route et échange des données avec le serveur.
 
 {% faire %}
-[Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/){.interne}.
+[Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/).
 {% endfaire %}
 
 ### <span id="données"><span> Gestion de données Serveur
 
 {% aller %}
 
-[côté serveur](./gestion-données-serveur){.interne}
+[côté serveur](./gestion-données-serveur)
 
 {% endaller %}
 
 {% aller %}
 
-[utilisation de bases de données](./bases-de-données){.interne}
+[utilisation de bases de données](./bases-de-données)
 
 {% endaller %}
 
 {% faire %}
-[Projet Numérologie partie 3](./projet-numérologie/partie-3-données/){.interne}.
+[Projet Numérologie partie 3](./projet-numérologie/partie-3-données/).
 {% endfaire %}
 
 ### <span id="données"><span> Gestion de données Clients
 
 {% aller %}
 
-1. [côté client](./gestion-données-client){.interne}
-2. [cookies](./gestion-données-cookies){.interne}
+1. [côté client](./gestion-données-client)
+2. [cookies](./gestion-données-cookies)
 
 {% endaller %}
 
@@ -184,9 +184,9 @@ Les projets de cette partie ont vocation à :
 ### A vous : Décathlon
 
 - règles :
-  - sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
-  - en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
-- supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
+  - sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>{.externe}
+  - en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>{.externe}
+- supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>{.externe}
 
 Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
 Ne stockez pas de données côté serveur.
@@ -196,7 +196,7 @@ Certains présenteront la fois d'après.
 ### Numérologie
 
 {% aller %}
-[Projet Numérologie](projet-numérologie){.interne}
+[Projet Numérologie](projet-numérologie)
 {% endaller %}
 
 Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cours) vous montrent la création complète d'un petit site web avec une partie front, une partie back et des données.

@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Les suite multiplicatives](../projet-exponentiation/étude-algorithmique/#suite-multiplicative){.interne} vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
+[Les suite multiplicatives](../projet-exponentiation/étude-algorithmique/#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
 
 {% note2 "**Définition**" %}
 Une **_suite additive pour $n$_** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
@@ -78,7 +78,7 @@ Enfin, si $a[i] = a[j] + a[k]$ avec $k \leq j < i$ on a $a[i] \geq \max(a[j], a[
 {% faire %}
 Écrivez et testez une fonction qui rend la suite passée en paramètre triée et sans doublons. Attention, la suite passée en paramètre ne **doit pas** être modifiée
 
-Vous pourrez utiliser la fonction [`sorted`{.language-}](https://docs.python.org/3/library/functions.html#sorted) de python pour cela.
+Vous pourrez utiliser la fonction [`sorted`{.language-}](https://docs.python.org/3/library/functions.html#sorted){.externe} de python pour cela.
 
 Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit rendre `[1, 2, 3, 4, 8, 11]`{.language-} sans modifier la liste en entrée)
 {% endfaire %}
@@ -88,7 +88,7 @@ Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit 
 ### Suite additive naïve
 
 {% faire %}
-Adaptez [la suite multiplicative naïve](../projet-exponentiation/étude-algorithmique/#multiplicatif-naif){.interne} pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative naïve](../projet-exponentiation/étude-algorithmique/#multiplicatif-naif) pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 {% endfaire %}
@@ -96,7 +96,7 @@ Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 ### Suite additive indienne
 
 {% faire %}
-Adaptez [la suite multiplicative indienne](../projet-exponentiation/étude-algorithmique/#multiplicatif-indienne){.interne} pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative indienne](../projet-exponentiation/étude-algorithmique/#multiplicatif-indienne) pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=15 on obtienne : $[1, 2, 4, 8, 3, 7, 15]$
 {% endfaire %}

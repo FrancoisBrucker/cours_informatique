@@ -14,8 +14,8 @@ Les contraintes et choix matériels vont avoir des conséquence sur le code. En 
 
 ## Type de mémoire
 
-- DDR5 : <https://fr.wikipedia.org/wiki/DDR5_SDRAM>
-- fonctionnement : <https://fr.wikipedia.org/wiki/Double_data_rate>
+- DDR5 : <https://fr.wikipedia.org/wiki/DDR5_SDRAM>{.externe}
+- fonctionnement : <https://fr.wikipedia.org/wiki/Double_data_rate>{.externe}
 
 La vitesse d'accès et de transfert augmente.
 
@@ -41,7 +41,7 @@ Et si on lit par indice décroissant, on trouvera l'entier binaire : `1001000100
 L'unité fondamentale de lecture est **toujours** le byte, on inverse donc les bytes, pas les bits qui le compose.
 {% endattention %}
 
-Ceci est loin d'être anecdotique et s'appelle l'[Endianness](https://fr.wikipedia.org/wiki/Boutisme) :
+Ceci est loin d'être anecdotique et s'appelle l'[Endianness](https://fr.wikipedia.org/wiki/Boutisme){.externe} :
 
 - les processeurs ARM, tout comme les protocoles réseau ou PCIe sont dit *big endian* les bytes sont lu de droite à gauche (sens de lecture usuel)
 - les processeur intel sont dit *little endian* les byte sont lu de gauche à droite (sens non usuel)
@@ -87,13 +87,13 @@ lecture 1       : XXXXXXXX
 recollage bus   : 0000XXXX
 ```
 
-C'est ce que l'on appelle les [problèmes d'alignement](https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire). Il faut s'arranger pour que nos données soient alignées avec la mémoire pour que la lecture se fasse en 1 cycle et non 2.
+C'est ce que l'on appelle les [problèmes d'alignement](https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire){.externe}. Il faut s'arranger pour que nos données soient alignées avec la mémoire pour que la lecture se fasse en 1 cycle et non 2.
 
 Ceci se fait habituellement pour nous, les compilateurs vont s'arranger pour les stocker chaque donnée à des multiples de leur taille en mémoire quite à perdre un peu de place (c'est ce que l'on appelle le padding). Les données sont alors dites *bien alignées*.
 
 ## Adressage logique et physique
 
-Dans les OS actuels, la mémoire s'adresse sur 64b. C'est à dire qu'il est théoriquement possible d'adresser $2^{64}$ byte, c'est à dire 16[EiB](https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire#Tableaux_des_pr%C3%A9fixes_binaires_et_d%C3%A9cimaux) et donc 16777216 TiB.
+Dans les OS actuels, la mémoire s'adresse sur 64b. C'est à dire qu'il est théoriquement possible d'adresser $2^{64}$ byte, c'est à dire 16[EiB](https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire#Tableaux_des_pr%C3%A9fixes_binaires_et_d%C3%A9cimaux){.externe} et donc 16777216 TiB.
 
 Cette limite est actuellement inatteignable en pratique, c'est pourquoi pour limiter la complexité de l'adressage les processeurs actuels autorise moins d'adresse. Pour un (https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details) par exemple (pour un ARM, c'est pareil):
 

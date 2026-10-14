@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://www.youtube.com/watch?v=ENKT0Z3gldE>
+> TBD <https://www.youtube.com/watch?v=ENKT0Z3gldE>{.externe}
 
 Une chaîne de caractères est dans toute sa généralité définie comme un **_mot_** produit par un **_alphabet_** :
 
@@ -45,7 +45,7 @@ Nous verrons également comment passer d'un alphabet binaire à un alphabet quel
 >TBD : pas juste 1 nombre de taille fixe. On module la taille selon l'usage. Plus c'est utilisé plus c'est court. Comment faire ? C'est le principe de Unicode
 
 {% aller %}
-[encodage](./encodage){.interne}
+[encodage](./encodage)
 {% endaller %}
 
 ## Structure algorithmique
@@ -70,7 +70,7 @@ On appelle **_langage_** d'un décideur $d$ l'ensemble $d^{-1}(1)$.
 On dira qu'un décideur $d$ **_accepte le langage_** $L$ si $L = d^{-1}(1)$ et qu'un langage $L$ est **_décidable_** s'il existe un algorithme pour l'accepter.
 {% endnote2 %}
 
-Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../../bases-théoriques/arrêt-rice/#algorithme-STOP){.interne}). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
+Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../../bases-théoriques/arrêt-rice/#algorithme-STOP)). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
 
 {% exercice %}
 Montrez que l'ensemble des palindromes d'un alphabet $\mathcal{A}$ est décidable.
@@ -93,7 +93,7 @@ def palindrome(mot):
 ### Automates
 
 {% aller %}
-[Automates](./automates){.interne}
+[Automates](./automates)
 {% endaller %}
 
 ### Grammaires
@@ -105,7 +105,7 @@ def palindrome(mot):
 ### Recherche de sous-mots
 
 {% aller %}
-[Problème de la recherche de sous-mots](./recherche-sous-mots){.interne}
+[Problème de la recherche de sous-mots](./recherche-sous-mots)
 {% endaller %}
 
 ### Recherche de sous-séquences

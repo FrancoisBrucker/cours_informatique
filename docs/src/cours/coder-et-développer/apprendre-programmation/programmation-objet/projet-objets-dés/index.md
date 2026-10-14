@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Projet sur le codage d'objets en python. Notre but est de pouvoir créer des dés virtuels pour pouvoir [jouer au 421](https://fr.wikipedia.org/wiki/421_(jeu)).
+Projet sur le codage d'objets en python. Notre but est de pouvoir créer des dés virtuels pour pouvoir [jouer au 421](https://fr.wikipedia.org/wiki/421_(jeu)){.externe}.
 
 {% note "**Méthode de conception**" %}
 Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en sorte que le code l'utilise comme on le ferait dans la réalité.
@@ -54,7 +54,7 @@ On va créer tous les fichiers nécessaires dans le projet, mais avant de coder 
 Créez le fichier `dé.py`{.fichier} dans le projet et mettez uniquement les méthodes de la classe sans le code proprement dit. 
 {% endexercice %}
 {% info %}
-Pour que votre code soit du code python valide, il faut que chaque bloc ait au moins une instruction. Vous pourrez utiliser l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/) qui ne fait rien.
+Pour que votre code soit du code python valide, il faut que chaque bloc ait au moins une instruction. Vous pourrez utiliser l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/){.externe} qui ne fait rien.
 
 {% endinfo %}
 {% details "corrigé" %}
@@ -80,7 +80,7 @@ class Dé:
 
 {% endnote %}
 {% info %}
-En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration) (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée. Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
+En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration){.externe} (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée. Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/){.externe} de python.
 {% endinfo %}
 
 On a pas fini ! Il faut encore écrire les tests relatifs à notre classe. Pour l'instant on ne peut guère que vérifier que l'on crée bien un objet de la classe `Dé`{.language-}.
@@ -90,7 +90,7 @@ On a pas fini ! Il faut encore écrire les tests relatifs à notre classe. Pour 
 Créez le fichier `test_dé.py`{.fichier} et testez que le constructeur de la classe `Dé`{.language-} crée bien un objet de la classe `Dé`{.language-}.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [la fonction python `isinstance`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#isinstance)
+Vous pourrez utiliser [la fonction python `isinstance`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#isinstance){.externe}
 
 {% endinfo %}
 {% details "corrigé" %}
@@ -217,7 +217,7 @@ On a toutes les information nécessaire pour le faire :
 Implémentez la méthode `Dé.lancer()`{.language-}. et ses tests.
 {% endexercice %}
 {% info %}
-Utilisez [le module random](https://docs.python.org/fr/3.14/library/random.html) de python
+Utilisez [le module random](https://docs.python.org/fr/3.14/library/random.html){.externe} de python
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -259,7 +259,7 @@ def test_lancer():
 ## User stories
 
 {% note2 "**Définition**" %}
-Une [user story](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) est un récit qui nous permet de savoir comment et par qui va être utilisé notre code.
+Une [user story](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur){.externe} est un récit qui nous permet de savoir comment et par qui va être utilisé notre code.
 {% endnote2 %}
 
 L'idée est d'écrire une succession d'actions faites par un utilisateur typique afin de réaliser une tâche précise avec notre programme. Par exemple :
@@ -315,14 +315,14 @@ Au final :
 {% attention2 "**À retenir**" %}
 Un programme aura :
 
-- **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire) car ils garantissent que ce que vous avez codé est correct
-- **très souvent** des [tests fonctionnels](https://en.wikipedia.org/wiki/Functional_testing) car ils garantissent que ce que vous avez codé pourra être utile
+- **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire){.externe} car ils garantissent que ce que vous avez codé est correct
+- **très souvent** des [tests fonctionnels](https://en.wikipedia.org/wiki/Functional_testing){.externe} car ils garantissent que ce que vous avez codé pourra être utile
 
 On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que l'on modifie une fonction, les tests fonctionnels sont exécutés a chaque fois que l'on achève une fonctionnalité.
 
 {% endattention2 %}
 {% info %}
-Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../coder-projets/écrire-code/bonnes-pratiques/#YAGNI){.interne}.
+Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../coder-projets/écrire-code/bonnes-pratiques/#YAGNI).
 {% endinfo %}
 
 
@@ -416,6 +416,6 @@ print("Il a fallu : ", nombre_lancer, "lancers")
 ## Code Python de la classe Dé
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code?filename=projet-dé)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code?filename=projet-dé){.externe}
 {% endlien %}

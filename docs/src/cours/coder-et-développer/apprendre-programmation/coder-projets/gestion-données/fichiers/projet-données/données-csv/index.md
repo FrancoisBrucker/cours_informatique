@@ -14,7 +14,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Les fichiers [csv](https://fr.wikipedia.org/wiki/Comma-separated_values) sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.
+Les fichiers [csv](https://fr.wikipedia.org/wiki/Comma-separated_values){.externe} sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.
 
 <!-- fin résumé -->
 
@@ -53,7 +53,7 @@ Par exemple :
 
 - Le délimiteur est par défaut une `,`{.language-}, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
 - Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de `"`. Mais ce n'est pas toujours le cas
-- la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique), qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
+- la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique){.externe}, qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
 
 Enfin :
 
@@ -65,13 +65,13 @@ En python, tout ceci est bien sur paramétrable.
 {% note %}
 Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.
 
-Il en existe de nombreux. J'ai installé le tout simple [rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour rapidement connaître le format csv d'un fichier particulier.
+Il en existe de nombreux. J'ai installé le tout simple [rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv){.externe} pour rapidement connaître le format csv d'un fichier particulier.
 {% endnote %}
 
 ## Python et fichier csv
 
 {% lien %}
-[Documentation csv python](https://docs.python.org/fr/3/library/csv.html)
+[Documentation csv python](https://docs.python.org/fr/3/library/csv.html){.externe}
 {% endlien %}
 
 Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fichier `notes.csv`{.fichier} contenant :
@@ -105,11 +105,11 @@ Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il
 {% endattention %}
 
 1. `import csv`{.language-} pour pouvoir utiliser le module `csv`{.language-}
-2. ouvrir le fichier à lire avec [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open) avec une gestion de la fin de ligne.
+2. ouvrir le fichier à lire avec [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open){.externe} avec une gestion de la fin de ligne.
 3. placer ce fichier dans un `reader`{.language-} dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.
 4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
-Le _reader_ python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) permettant de gérer les multiples cas particuliers. Parmi les plus usités :
+Le _reader_ python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params){.externe} permettant de gérer les multiples cas particuliers. Parmi les plus usités :
 
 - `delimiter`{.language-}. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
 - `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`{.language-}.
@@ -133,7 +133,7 @@ for ligne in lecteur:    # continue la lecture
 ```
 
 {% info %}
-Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator). Il fonctionne donc aussi en remplaçant le fichier `f`{.language-} par une liste de chaînes de caractères par exemple.
+Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator){.externe}. Il fonctionne donc aussi en remplaçant le fichier `f`{.language-} par une liste de chaînes de caractères par exemple.
 {% endinfo %}
 
 ### Écrire des fichiers csv
@@ -156,7 +156,7 @@ with open('notes.csv', 'a', newline='') as f:
 ### Codes postaux
 
 {% faire %}
-Téléchargez la base officielle des codes postaux au format csv à partir de [cette page](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux).
+Téléchargez la base officielle des codes postaux au format csv à partir de [cette page](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux){.externe}.
 {%endfaire %}
 
 En utilisant ce fichier csv :
@@ -173,7 +173,7 @@ En utilisant ce fichier csv :
 ### Prénoms
 
 {% faire %}
-En utilisant [cette page](https://www.insee.fr/fr/statistiques/7633685), récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.
+En utilisant [cette page](https://www.insee.fr/fr/statistiques/7633685){.externe}, récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.
 {% endfaire %}
 
 En utilisant ce fichier :

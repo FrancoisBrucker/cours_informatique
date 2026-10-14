@@ -20,7 +20,7 @@ Une introduction au format markdown.
 
 <!-- fin résumé -->
 
-[Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
+[Markdown](https://fr.wikipedia.org/wiki/Markdown){.externe} est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
 
 L'intérêt de ce format de fichier texte est qu'il est parfaitement lisible dans tout éditeur de texte et qu'on peut de plus le *compiler* dans un autre format comme le pdf ou encore le html si on veut le partager.
 
@@ -61,7 +61,7 @@ On peut aussi écrire des blocs de code, comme :
 
 ### Balise à connaître
 
-Les principales fonctionnalités sont décrites dans [cette liste](https://www.markdownguide.org/cheat-sheet/#basic-syntax).
+Les principales fonctionnalités sont décrites dans [cette liste](https://www.markdownguide.org/cheat-sheet/#basic-syntax){.externe}.
 
 #### Sections
 
@@ -96,17 +96,17 @@ En markdown, un bloc commence et finit par une ligne vide.
 
 Plusieurs symboles peuvent être utilisées :
 
-- [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) :
+- [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks){.externe} :
 
     \`\`\`
     ls -la
     \`\`\`
 
-- [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1) :
+- [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1){.externe} :
 
     \> Pierre qui roule n'amasse pas mousse.
 
-- [latex](./#latex){.interne} :
+- [latex](./#latex) :
 
     \\$\\$ \\\frac\{1\}\{2\} \\$\\$
 
@@ -114,12 +114,12 @@ Plusieurs symboles peuvent être utilisées :
 
 Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :
 
-- [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut commencer par un `*`, un `-` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document :
+- [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists){.externe}. Chaque item peut commencer par un `*`, un `-` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document :
 
     \- premier élément
     \- deuxième élément
 
-- [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
+- [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists){.externe}
 
     1. on met le bon numéro
     2. on met le bon numéro
@@ -128,8 +128,8 @@ Comme chaque bloc, les listes commencent et finissent toujours par une ligne vid
 
 Il y a plusieurs possibilités :
 
-- via un nom : `[nom](lien)`{.language-}. Par exemple `[LMGTFY](https://www.google.fr)`{.language-} qui se compile en : [LMGTFY](https://www.google.fr)
-- lien direct : `<https://www.google.fr>`{.language-} qui se compile en : <https://www.google.fr>.
+- via un nom : `[nom](lien)`{.language-}. Par exemple `[LMGTFY](https://www.google.fr)`{.language-} qui se compile en : [LMGTFY](https://www.google.fr){.externe}
+- lien direct : `<https://www.google.fr>`{.language-} qui se compile en : <https://www.google.fr>{.externe}.
 
 On utilise les liens pour les images, il suffit de rajouter un `!` avant. Par exemple `![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)`{.language-} qui se compile en : ![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)
 
@@ -152,7 +152,7 @@ Qui se compile en :
 En markdown un tableau a forcément des noms de colonnes. Les deux premières lignes sont donc indispensables.
 
 {% info %}
-Il existe des extensions de markdown, comme [commonMark](https://spec.commonmark.org/) utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
+Il existe des extensions de markdown, comme [commonMark](https://spec.commonmark.org/){.externe} utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
 {% endinfo %}
 
 ## Code
@@ -198,10 +198,10 @@ Lorsque l'on écrit des textes scientifiques, vient inévitablement la question 
 
 ### <span id="latex"></span> Formules en Latex
 
-Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX) permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).
+Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX){.externe} permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).
 
 {% info %}
-L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
+L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX){.externe} : [Tex](https://fr.wikipedia.org/wiki/TeX){.externe}, a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth){.externe} par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming){.externe} en respectant une typographie correcte.
 {% endinfo %}
 
 Une fois ce langage appris, il est étonnement clair, même non compilé en *jolies formules*. Avec un peut d'habitude, on voit bien que : `$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$`{.language-} est égal à :
@@ -214,8 +214,8 @@ $$
 
 Quelques aides :
 
-- Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibilités
-- un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
+- Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf){.externe} des possibilités
+- un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/){.externe} Latex contenant aussi des instructions pour les équations.
 
 ### Formules en markdown
 
@@ -238,29 +238,29 @@ $$
 $$
 ```
 
-Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque [Mathjax](https://www.mathjax.org/).
+Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque [Mathjax](https://www.mathjax.org/){.externe}.
 
 ## Plugin Markdown vscode
 
-Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne} :
+Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/) :
 
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).
-- [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)
-- [Markdown+Math](https://marketplace.visualstudio.com/items?itemName=goessner.mdmath) pour gérer les maths avec Markdown
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode) pour la mise en forme du code.
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){.externe} qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).
+- [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint){.externe} qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)
+- [Markdown+Math](https://marketplace.visualstudio.com/items?itemName=goessner.mdmath){.externe} pour gérer les maths avec Markdown
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode){.externe} pour la mise en forme du code.
 
 ## Pour aller plus loin
 
 ### Guides
 
-- base markdown et latex : <https://ashki23.github.io/markdown-latex.html>
-- base markdown : <https://www.markdownguide.org/> par exemple
-- [Mathjax et latex](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
+- base markdown et latex : <https://ashki23.github.io/markdown-latex.html>{.externe}
+- base markdown : <https://www.markdownguide.org/>{.externe} par exemple
+- [Mathjax et latex](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference){.externe}
 
 ### Variantes de markdown
 
 Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses possibilités. Deux d'entre elles sont devenus des standard de fait :
 
-- [commonMark](https://spec.commonmark.org/) utilisé pour ce site.
-- [github flavored markdown](https://guides.github.com/features/mastering-markdown/).
-- [kramdown](https://kramdown.gettalong.org/documentation.html).
+- [commonMark](https://spec.commonmark.org/){.externe} utilisé pour ce site.
+- [github flavored markdown](https://guides.github.com/features/mastering-markdown/){.externe}.
+- [kramdown](https://kramdown.gettalong.org/documentation.html){.externe}.

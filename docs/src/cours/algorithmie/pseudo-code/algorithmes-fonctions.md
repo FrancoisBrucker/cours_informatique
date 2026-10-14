@@ -59,7 +59,7 @@ Le programme est un bloc. La definition du bloc (jusqu'aux `:`{.language-}) est 
 Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un `#`{.language-}.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doit suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrées.
 
 {% lien %}
-La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>
+La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>{.externe}
 {% endlien %}
 
 Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction `rendre`{.language-}. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra **toujours** 42 :

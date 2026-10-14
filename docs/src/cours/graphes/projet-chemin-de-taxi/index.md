@@ -11,13 +11,13 @@ eleventyComputed:
 ---
 
 > TBD à faire en vrai avec du code des exercices et tout ça.
-> TBD Voir <https://archipel.uqam.ca/8784/1/M14397.pdf> et <https://www.youtube.com/watch?v=C0sJycGTLTc>
+> TBD Voir <https://archipel.uqam.ca/8784/1/M14397.pdf>{.externe} et <https://www.youtube.com/watch?v=C0sJycGTLTc>{.externe}
 
 Un chemin de Taxi est un chemin sur une grille carré allant du sommet de coordonnée $(0, 0)$ au sommet de coordonnée $(n, m)$. Ce chemin doit de plus être de longueur minimale.
 
 ![chemin de taxi](./chemin-taxi.png)
 
-Les chemins de longueurs minimales sont tous de même longueur $n+m$ et ne font que monter ou aller à droite. Ils correspondent au chemins de longueur minimum pour [la distance de Manhattan](https://fr.wikipedia.org/wiki/Distance_de_Manhattan). Leur nom vient de là : les taxis cherchent leurs chemins entre les building de Manhattan !
+Les chemins de longueurs minimales sont tous de même longueur $n+m$ et ne font que monter ou aller à droite. Ils correspondent au chemins de longueur minimum pour [la distance de Manhattan](https://fr.wikipedia.org/wiki/Distance_de_Manhattan){.externe}. Leur nom vient de là : les taxis cherchent leurs chemins entre les building de Manhattan !
 
 D'un point de vue graphe, tout revient à chercher un chemin dans le graphe orienté où les arcs montent ou vont à droite :
 

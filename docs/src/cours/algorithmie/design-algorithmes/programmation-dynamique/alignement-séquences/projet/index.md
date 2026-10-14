@@ -25,8 +25,8 @@ On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star
 - chaque caractère de $a^\star$ et $b^\star$ est dans $\mathcal{A} \cup \{ - \}$
 - $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
-1. Représentez _graphiquement_ l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../étude/#distance-entre-chaines-){.interne})
-2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../étude/#évolution-dune-séquence-en-lautre){.interne}
+1. Représentez _graphiquement_ l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../étude/#distance-entre-chaines-))
+2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../étude/#évolution-dune-séquence-en-lautre)
 
 Pour cela :
 
@@ -140,7 +140,7 @@ Arrangez-vous pour conserver le plus de code possible entre les deux classes.
 ## Pour aller plus loin : étude biologique
 
 
-Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
+Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine){.externe} qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
 
 {% faire %}
 
@@ -149,7 +149,7 @@ Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la 
 
 {% endfaire %}
 
-La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM) :
+La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM){.externe} :
 
 ```python
 PROTEINS = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V", "B", "Z", "X"]

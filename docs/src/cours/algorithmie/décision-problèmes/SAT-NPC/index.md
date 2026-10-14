@@ -22,12 +22,12 @@ Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machi
 
 {% lien %}
 
-- <https://www.youtube.com/watch?v=0LZ39iyLMog>
-- <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>
+- <https://www.youtube.com/watch?v=0LZ39iyLMog>{.externe}
+- <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>{.externe}
 
 {% endlien %}
 
-Nous allons prendre comme exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} $M$ avec comme entrée $E=101$. Le nombre d'opération est linéaire et on peut montrer qu'il n'y aura jamais plus de $\vert E \vert + 1$ opérations.
+Nous allons prendre comme exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) $M$ avec comme entrée $E=101$. Le nombre d'opération est linéaire et on peut montrer qu'il n'y aura jamais plus de $\vert E \vert + 1$ opérations.
 
 ## Variables
 
@@ -58,7 +58,7 @@ R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge
 $$
 </div>
 
-En prenant [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} et l'entrée $E = 101$, il va y avoir au plus $4$ opérations et donc on a :
+En prenant [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) et l'entrée $E = 101$, il va y avoir au plus $4$ opérations et donc on a :
 
 <div>
 $$
@@ -98,7 +98,7 @@ Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
 
-Les états de [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} sont au nombre de 3 :
+Les états de [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) sont au nombre de 3 :
 
 - `START` qu'on nommera $q_0$
 - `STOP` qu'on nommera $q_1$
@@ -140,7 +140,7 @@ C^0 = c^0_{Kn^m} \land (\bigwedge_{j\neq Kn^m} \overline{c^0_j}))
 $$
 </div>
 
-Le curseur [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} peut être sur une des 8 cases du ruban :
+Le curseur [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) peut être sur une des 8 cases du ruban :
 
 <div>
 $$
@@ -167,7 +167,7 @@ $$
 
 Cependant sans contrôle de ces variables elles peuvent s'affecter comme on veut. C'est le but de la partie suivante.
 
-Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne}, comme on a déterminé qu'il ne pouvait pas y avoir plus de 8 instructions on aura :
+Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple), comme on a déterminé qu'il ne pouvait pas y avoir plus de 8 instructions on aura :
 
 <div>
 $$
@@ -223,7 +223,7 @@ I^k = \bigwedge_{i}(\overline{c_i^k} \land (r_i^k \Leftrightarrow r_i^{k+1})) = 
 $$
 </div>
 
-Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne}, le ruban possède 8 cases :
+Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple), le ruban possède 8 cases :
 
 <div>
 $$
@@ -261,7 +261,7 @@ Ceci fonctionne car une seule clause $p^k_i \land q^k_j \land c^k_{i, 0}$ est vr
 
 Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ et $T^k_{q_j, 0}$ qu'il y a de choix dans la transition.
 
-[La machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} a uniquement 5 transitions :
+[La machine non déterministe exemple](../Turing-non-déterministe/#exemple) a uniquement 5 transitions :
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------
@@ -320,7 +320,7 @@ Le système de clauses est satisfiable si et seulement si l'entrée est reconnue
 
 {% endnote %}
 
-Ce qui donne pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} a uniquement 5 transitions :
+Ce qui donne pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) a uniquement 5 transitions :
 
 <div>
 $$
@@ -330,7 +330,7 @@ $$
 
 ## Théorème de Cook-Levin
 
-On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook) :
+On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook){.externe} :
 
 {% note "**Théorème**" %}
 Pour problème de décision $D$ de la classe NP il existe une réduction polynomiale telle que $D \leq \text{SAT}$
@@ -355,7 +355,7 @@ Les problèmes NP-complets signifient qu'ils sont universels : les solutions peu
 
 On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.
 
-Pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} il faut ajouter un état non déterministe juste avant l'état `STOP` pour garantir qu'il existe toujours une exécution prenant 8 instructions et pouvant se terminer sur un `1`. Comme l'état `STOP` est atteint depuis `STEP` ou `START`, on ajouter une boucle non déterministe de taille 2 :
+Pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple) il faut ajouter un état non déterministe juste avant l'état `STOP` pour garantir qu'il existe toujours une exécution prenant 8 instructions et pouvant se terminer sur un `1`. Comme l'état `STOP` est atteint depuis `STEP` ou `START`, on ajouter une boucle non déterministe de taille 2 :
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------

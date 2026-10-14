@@ -110,7 +110,7 @@ Déduire des questions précédentes la complexité de ce nouvel algorithme par 
 ### 4 Pour aller plus loin un autre algorithme
 
 > TBD add en log n
-> TBD soustraction et division : <https://leria-info.univ-angers.fr/~jeanmichel.richer/ensl1i_base_de_l_info_1_sub_div.php>
+> TBD soustraction et division : <https://leria-info.univ-angers.fr/~jeanmichel.richer/ensl1i_base_de_l_info_1_sub_div.php>{.externe}
 > TBD mul plus long c;est pour ça qu'on considère plus gros.
 > TBD si taille fixe ok.
 >
@@ -121,7 +121,7 @@ Déduire des questions précédentes la complexité de ce nouvel algorithme par 
 > TBD Kolmogorov et Karatsuba.
 >
 > TBD pour aller plus loin et en faire un long exo
-> TBD <https://en.wikipedia.org/wiki/Karatsuba_algorithm>
+> TBD <https://en.wikipedia.org/wiki/Karatsuba_algorithm>{.externe}
 >
 > TBD pour ne pas conclure on ne sais pas jusqu'ou on peut aller. 
 

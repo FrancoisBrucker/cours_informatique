@@ -57,8 +57,8 @@ Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on
 
 {% lien %}
 
-- [liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/)
-- [Commandes terminal Linux courantes](https://blog.stephane-robert.info/docs/admin-serveurs/linux/commandes/)
+- [liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/){.externe}
+- [Commandes terminal Linux courantes](https://blog.stephane-robert.info/docs/admin-serveurs/linux/commandes/){.externe}
 
 {% endlien %}
 
@@ -77,12 +77,12 @@ Pour connaître le dossier courant d'un terminal, on utilise la commande `pwd`{.
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`pwd` du powershell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location) alias vers la commande `Get-Location`{.language-}
-- [`pwd` Linux](https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html)
+- [`pwd` du powershell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location){.externe} alias vers la commande `Get-Location`{.language-}
+- [`pwd` Linux](https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html){.externe}
 
 {% endlien %}
 
-Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../bases/#explorateur){.interne}.
+Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../bases/#explorateur).
 
 {% faire %}
 
@@ -121,8 +121,8 @@ Pour connaître l'utilisateur du terminal, on utilise la commande `whoami`{.lang
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`whoami` du powershell](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami)
-- [`whoami` Linux](https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html)
+- [`whoami` du powershell](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami){.externe}
+- [`whoami` Linux](https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -196,10 +196,10 @@ Dans la ligne de commande précédente on a :
 - ses paramètres : `mon_script.py` (que `mon_script.py`{.fichier} soit également un fichier n'a aucune importance ici)
 
 {% info %}
-Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html`{.language-} (tiré du [tutorial pandoc](/tutoriels/pandoc#pandoc-html){.interne})
+Les paramètres peuvent être très simple (comme ci-dessous) comme très compliqué. Par exemple : `pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html`{.language-} (tiré du [tutorial pandoc](/tutoriels/pandoc#pandoc-html))
 {% endinfo %}
 
-Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html) nous indique que le paramètre `mon_script.py`{.fichier} correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
+Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html){.externe} nous indique que le paramètre `mon_script.py`{.fichier} correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
 
 {% attention2 "**À retenir**" %}
 Pour que notre commande `python mon_script.py`{.language-} soit exécutée sans erreur il faut donc :
@@ -214,8 +214,8 @@ La commande exécutée d'une ligne de commande est un fichier présent dans une 
 
 {% note "**Commande**" %}
 
-- [`get-command`{.language-} du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2)
-- [`which`{.language-} Linux](https://manpages.debian.org/trixie/gnu-which/which.1.en.html)
+- [`get-command`{.language-} du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2){.externe}
+- [`which`{.language-} Linux](https://manpages.debian.org/trixie/gnu-which/which.1.en.html){.externe}
 
 {% endnote %}
 
@@ -260,8 +260,8 @@ On a déjà vu comment connaître [l'utilisateur](./#whoami) et [le dossier cour
 La commande `$> ls`{.language-} donne le contenu du dossier courant.{% endnote %}
 {% lien "**Manuel**" %}
 
-- [`ls` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
-- [`ls` Linux](https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html)
+- [`ls` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem){.externe} alias vers la commande `Get-ChildItem`{.language-}
+- [`ls` Linux](https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html){.externe}
 
 {% endlien %}
 {% faire %}
@@ -359,7 +359,7 @@ La commande `ls`{.language-} admet beaucoup de paramètres. Dans le monde du ter
 
 - afficher toutes les informations :
   - Linux/mac : `$ ls -l`{.language-}
-  - powershell : `> ls`{.language-}. L'instruction `ls`{.language-} sous powershell est équivalente à [`Get-ChildItem`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem)
+  - powershell : `> ls`{.language-}. L'instruction `ls`{.language-} sous powershell est équivalente à [`Get-ChildItem`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem){.externe}
 - voir les fichiers cachés :
   - Linux/mac : `$ ls -a`{.language-}
   - powershell : `> ls -Force`{.language-}
@@ -389,8 +389,8 @@ La commande `$> cd`{.language-} permet de changer le dossier courant du terminal
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`cd` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
-- [`cd` Linux](https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html)
+- [`cd` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem){.externe} alias vers la commande `Get-ChildItem`{.language-}
+- [`cd` Linux](https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html){.externe}
 
 {% endlien %}
 {% faire %}
@@ -451,8 +451,8 @@ La commande `$> mkdir <chemin absolu ou relatif vers le dossier à créer>`{.lan
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`mkdir` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-item) qui est un alias vers la commande `new-item`{.language-}
-- [`mkdir` Linux](https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html)
+- [`mkdir` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-item){.externe} qui est un alias vers la commande `new-item`{.language-}
+- [`mkdir` Linux](https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -470,8 +470,8 @@ $> cp <chemin absolu ou relatif du dossier ou fichier à copier> <chemin absolu 
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`cp` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/copy-item) qui est un alias vers la commande `copy-item`{.language-}
-- [`cp` Linux](https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html)
+- [`cp` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/copy-item){.externe} qui est un alias vers la commande `copy-item`{.language-}
+- [`cp` Linux](https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -501,8 +501,8 @@ $> mv <chemin absolu ou relatif du le fichier à déplacer> <chemin absolu ou re
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`mv` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/move-item) qui est un alias vers la commande `move-item`{.language-}
-- [`mv` Linux](https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html)
+- [`mv` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/move-item){.externe} qui est un alias vers la commande `move-item`{.language-}
+- [`mv` Linux](https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -522,8 +522,8 @@ $ rm -r <chemin absolu ou relatif vers le dossier à supprimer>
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`rm` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/remove-item) redirige vers la commande `remove-item`{.language-}
-- [`rm` Linux](https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html)
+- [`rm` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/remove-item){.externe} redirige vers la commande `remove-item`{.language-}
+- [`rm` Linux](https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -543,8 +543,8 @@ $> echo <chaîne de caractères>
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`echo` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/write-output) redirige vers la commande `write-output`{.language-}
-- [`echo` Linux](https://manpages.debian.org/trixie/manpages-fr/echo.1.fr.html)
+- [`echo` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/write-output){.externe} redirige vers la commande `write-output`{.language-}
+- [`echo` Linux](https://manpages.debian.org/trixie/manpages-fr/echo.1.fr.html){.externe}
 
 {% endlien %}
 
@@ -587,8 +587,8 @@ $> cat <chemin vers le fichier texte à afficher>
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`cat` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/get-content) redirige vers la commande `write-output`{.language-}
-- [`cat` Linux](https://man7.org/linux/man-pages/man1/cat.1.html)
+- [`cat` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/get-content){.externe} redirige vers la commande `write-output`{.language-}
+- [`cat` Linux](https://man7.org/linux/man-pages/man1/cat.1.html){.externe}
 
 {% endlien %}
 
@@ -628,10 +628,10 @@ Qui va ajouter la chaîne `du terminal` puis un retour à la ligne à la fin du 
 
 ## On vérifie qu'on a compris
 
-Faite le jeu ci-après (c'est un genre de [MUD](https://fr.wikipedia.org/wiki/Multi-user_dungeon) solitaire), fait pour comprendre et utiliser le terminal unix :
+Faite le jeu ci-après (c'est un genre de [MUD](https://fr.wikipedia.org/wiki/Multi-user_dungeon){.externe} solitaire), fait pour comprendre et utiliser le terminal unix :
 
 {% faire %}
-[Perdu dans un monde étrange](http://luffah.xyz/bidules/Terminus/)
+[Perdu dans un monde étrange](http://luffah.xyz/bidules/Terminus/){.externe}
 {% endfaire %}
 
 Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent, comme la commande `cat`{.language-} qui est la commande `Get-Content`{.language-} par exemple)
@@ -678,7 +678,7 @@ Par exemple, pour ajouter le dossier `/users/franc/bin`{.fichier} au début du p
 
 {% details "Système Unix" %}
 
-On suppose que le shell est celui par défaut ([bash](https://www.gnu.org/software/bash/) sous Linux/Ubuntu et [zsh](https://www.zsh.org/) sous Macos) :
+On suppose que le shell est celui par défaut ([bash](https://www.gnu.org/software/bash/){.externe} sous Linux/Ubuntu et [zsh](https://www.zsh.org/){.externe} sous Macos) :
 
 ```shell
 $ export PATH="/users/franc/bin:$PATH"
@@ -723,7 +723,7 @@ En cliquant sur `variables d'environnement` vous pourrez modifier la variable `P
 {% enddetails %}
 {% details "sous Macos" %}
 
-Par défaut le shell utilisé est [zsh](https://www.zsh.org/). Son fichier de configuration lu au login est un fichier nommé `.zprofile`{.fichier} qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+Par défaut le shell utilisé est [zsh](https://www.zsh.org/){.externe}. Son fichier de configuration lu au login est un fichier nommé `.zprofile`{.fichier} qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
 
 On peut aussi le faire directement avec la commande :
 
@@ -734,14 +734,14 @@ $ echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zprofile
 Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.zprofile`{.fichier} de la maison (remarquez les imbrications des doubles-quotes à l'intérieur des quotes pour éviter l'interprétation de la variable `PATH`).
 
 {% info %}
-<https://www.zerotohero.dev/zshell-startup-files/>
+<https://www.zerotohero.dev/zshell-startup-files/>{.externe}
 {% endinfo %}
 
 {% enddetails %}
 
 {% details "sous Linux/Ubuntu" %}
 
-Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/). Son fichier de configuration lu au login est un fichier nommé `.bash_profile{.fichier} qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
+Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/){.externe}. Son fichier de configuration lu au login est un fichier nommé `.bash_profile{.fichier} qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.
 
 On peut aussi le faire directement avec la commande :
 
@@ -753,8 +753,8 @@ Qui ajoute la ligne `$ export PATH="/users/franc/bin:$PATH"`{.language-} à la f
 
 {% info %}
 
-- <https://opensource.com/article/17/6/set-path-linux>
-- <http://mywiki.wooledge.org/DotFiles>
+- <https://opensource.com/article/17/6/set-path-linux>{.externe}
+- <http://mywiki.wooledge.org/DotFiles>{.externe}
 
 {% endinfo %}
 {% enddetails %}
@@ -763,8 +763,8 @@ Qui ajoute la ligne `$ export PATH="/users/franc/bin:$PATH"`{.language-} à la f
 
 {% lien %}
 
-- [tutoriel Linux/Ubuntu : terminal pour les débutants](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
-- [tutos windows powershell](https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1)
-- [propriétés du l'application terminal sous mac](https://support.apple.com/fr-fr/guide/terminal/welcome/mac)
+- [tutoriel Linux/Ubuntu : terminal pour les débutants](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview){.externe}
+- [tutos windows powershell](https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1){.externe}
+- [propriétés du l'application terminal sous mac](https://support.apple.com/fr-fr/guide/terminal/welcome/mac){.externe}
 
 {% endlien %}

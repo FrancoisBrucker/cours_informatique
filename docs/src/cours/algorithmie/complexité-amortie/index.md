@@ -12,12 +12,12 @@ eleventyComputed:
 
 L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécutions successives d'un même bloc de code va être de complexités différentes.
 
-Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour [les listes](../structure-liste){.interne} par exemple).
+Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour [les listes](../structure-liste) par exemple).
 
 Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)
 
 {% lien %}
-<https://www.youtube.com/watch?v=3MpzavN3Mco>
+<https://www.youtube.com/watch?v=3MpzavN3Mco>{.externe}
 {% endlien %}
 
 ## Définitions
@@ -37,17 +37,17 @@ Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $m$ fois 
 ## Méthodes d'analyse amortie
 
 {% aller %}
-[Analyse amortie](./analyses){.interne}
+[Analyse amortie](./analyses)
 {% endaller %}
 
 ## Complexité amortie
 
 {% aller %}
-[Complexité amortie](./complexité){.interne}
+[Complexité amortie](./complexité)
 {% endaller %}
 
 ## On s'entraîne
 
 {% aller %}
-[Projet : calculs de complexités amorties](./projet-complexité-amortie){.interne}
+[Projet : calculs de complexités amorties](./projet-complexité-amortie)
 {% endaller %}

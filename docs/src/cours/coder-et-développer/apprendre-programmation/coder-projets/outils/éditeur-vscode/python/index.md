@@ -10,24 +10,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Configuration de [visual studio code](https://code.visualstudio.com/) pour le développement en python.
+Configuration de [visual studio code](https://code.visualstudio.com/){.externe} pour le développement en python.
 
 {% lien %}
-<https://code.visualstudio.com/docs/python/python-tutorial>
+<https://code.visualstudio.com/docs/python/python-tutorial>{.externe}
 {% endlien %}
 
 ## Extension python pour vscode
 
 {% lien "**Documentation officielle de vscode consacrée à python**" %}
-<https://code.visualstudio.com/docs/languages/python>
+<https://code.visualstudio.com/docs/languages/python>{.externe}
 {% endlien %}
 
-La principale extension à installer lorsque l'on fait du python est [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) développée par microsoft. Il est également recommandé d'installer [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) (utilitaire puissant d'aide au code).
+La principale extension à installer lorsque l'on fait du python est [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python){.externe} développée par microsoft. Il est également recommandé d'installer [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance){.externe} (utilitaire puissant d'aide au code).
 
 Pour installer ces package :
 
 {% faire %}
-Rendez vous dans [la gestion des extensions de vscode](../prise-en-main#extensions){.interne}, puis tapez _python_ dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
+Rendez vous dans [la gestion des extensions de vscode](../prise-en-main#extensions), puis tapez _python_ dans la barre de recherche. Assurez vous d'installer les packages créés par microsoft.
 {% endfaire %}
 
 ## Premier programme
@@ -44,7 +44,7 @@ Ceci est important car cela permet à vscode de lier les fichiers du projet entr
 Créez un dossier nommé `hello-world-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (_menu Fichier > ouvrir le dossier..._) pour le considérer comme un projet.
 {% endfaire %}
 
-Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet _Welcome_. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
+Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet _Welcome_. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}.
 
 {% faire %}
 Créez un fichier `main.py`{.fichier} (_menu Fichier > nouveau fichier texte_ puis sauvez le immédiatement _menu Fichier > Enregistrer_).

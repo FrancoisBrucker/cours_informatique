@@ -55,7 +55,7 @@ On lui adjoint des informations utiles à l'OS comme :
 - un compteur du ombre de process ayant cette page
 - ...
 
-Pour amener à [une entrée sur 64b](https://www.geeksforgeeks.org/page-table-entries-in-page-table/) contenant :
+Pour amener à [une entrée sur 64b](https://www.geeksforgeeks.org/page-table-entries-in-page-table/){.externe} contenant :
 
 - l'adresse physique de la page (sur 40b)
 - 24 bit de contrôle
@@ -73,10 +73,10 @@ Le stockage par une structure arborée permet :
 - de ne stocker que ce qui est nécessaire
 - d'être efficace vide (peut de nœud) et plein (on accède à chaque nœud en log du nombre de nœuds)
 
-Cette structure possède un [Overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) faible en temps (en log) et en place (ajout des nœuds en plus des données)
+Cette structure possède un [Overhead](https://en.wikipedia.org/wiki/Overhead_(computing)){.externe} faible en temps (en log) et en place (ajout des nœuds en plus des données)
 {% endnote %}
 
-La structure est une [structure arborée multi-level](https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables), elle comporte 4 niveaux en 64b :
+La structure est une [structure arborée multi-level](https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables){.externe}, elle comporte 4 niveaux en 64b :
 
 - bit 0 à 11 : l'offset dans la page, 4096 possibilités
 - bit 12 à 20 : 4ème page, 512 possibilités
@@ -100,9 +100,9 @@ L'arbre est donc de racine une page de 512 entrée, initialement vide. Si u proc
    2. si non on crée une page vide à l'entrée C de la page 3 et on y va
 4. vérifie si la page 4 possède un enfant à l'entrée D.
    1. si oui on trouve l'adresse physique
-   2. si non lance une exception [page fault](https://fr.wikipedia.org/wiki/Erreur_de_page) pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)
+   2. si non lance une exception [page fault](https://fr.wikipedia.org/wiki/Erreur_de_page){.externe} pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)
 
-Seule les associations nécessaires sont stockées au prix d'un petit [overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) :
+Seule les associations nécessaires sont stockées au prix d'un petit [overhead](https://en.wikipedia.org/wiki/Overhead_(computing)){.externe} :
 
 - en mémoire : les pages
 - en temps : il faut parcourir les 4 pages pour chaque appel
@@ -112,10 +112,10 @@ Cette structure est stockée en mémoire et son emplacement est connue de la MMU
 ### Buffer dans la MMU
 
 {% lien %}
-<https://en.wikipedia.org/wiki/Translation_lookaside_buffer>
+<https://en.wikipedia.org/wiki/Translation_lookaside_buffer>{.externe}
 {% endlien %}
 
-POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la [TLB](https://fr.wikipedia.org/wiki/Translation_lookaside_buffer) qui possède habituellement 16 entrées, assez pour la plupart des process. Le [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture) possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.
+POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la [TLB](https://fr.wikipedia.org/wiki/Translation_lookaside_buffer){.externe} qui possède habituellement 16 entrées, assez pour la plupart des process. Le [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture){.externe} possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.
 
 ## Et le cache dans tout ça ?
 

@@ -18,13 +18,13 @@ Les variables dans un algorithme ou un programme sont souvent liées. Un nombre 
 Les tuples permettent de créer des types composés :
 
 {% aller %}
-[Tuples](./tuples){.interne}
+[Tuples](./tuples)
 {% endaller %}
 
 ## Structures
 
-Les tuples permettent de gérer des groupements informels d'objets en créant des types nouveaux par produit cartésien d'anciens types. Si l'on veut aller plus loin et créer des fonctions spécifiquement utilisable pour ces groupements, on utilise [une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es) :
+Les tuples permettent de gérer des groupements informels d'objets en créant des types nouveaux par produit cartésien d'anciens types. Si l'on veut aller plus loin et créer des fonctions spécifiquement utilisable pour ces groupements, on utilise [une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es){.externe} :
 
 {% aller %}
-[Créer une structure de données](./structures){.interne}
+[Créer une structure de données](./structures)
 {% endaller %}

@@ -12,7 +12,7 @@ eleventyComputed:
 Une machine de Turing non déterministe est un modèle abstrait  de machine ou il y a plusieurs possibilité par transition. On montre cependant ce que modèles est équivalent à une machine de Turing.
 
 {% lien %}
-<https://www.youtube.com/watch?v=5VRjCk7R-Xg>
+<https://www.youtube.com/watch?v=5VRjCk7R-Xg>{.externe}
 {% endlien %}
 
 ## Définition

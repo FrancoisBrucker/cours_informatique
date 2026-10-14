@@ -24,7 +24,7 @@ Les listes, ensembles et dictionnaires sont eux **modifiables** (python dira **_
 - `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
 - `e.add("un")`{.language-} modifiera l'ensemble `e`{.language-} en lui ajoutant un élément
 
-Il est **crucial** de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction [`id`{.language-}](https://docs.python.org/fr/3/library/functions.html#id).
+Il est **crucial** de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction [`id`{.language-}](https://docs.python.org/fr/3/library/functions.html#id){.externe}.
 
 Si on crée deux listes, elles seront différentes, donc leur `id`{.language-} le sera aussi, même si leur contenu est identique :
 
@@ -84,8 +84,8 @@ La remarque précédente montre tout l'intérêt d'utiliser des objets non mutab
 
 Il existe des objets non modifiable pouvant être utilisé à la place des listes et des ensembles :
 
-- un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]`{.language-} d'une liste par des `()`{.language-} : `(1, 2, 3)`{.language-} crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
-- un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
+- un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences){.externe} pour une liste. Elle se crée en remplaçant les `[]`{.language-} d'une liste par des `()`{.language-} : `(1, 2, 3)`{.language-} crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
+- un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset){.externe} sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
 
 {% info %}
 Il n'existe pas d'équivalent non mutable aux dictionnaires.

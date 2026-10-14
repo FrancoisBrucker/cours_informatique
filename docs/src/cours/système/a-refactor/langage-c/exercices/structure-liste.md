@@ -11,13 +11,13 @@ eleventyComputed:
 ---
 
 
-Une [structure de liste](/cours/algorithmie/structure-conteneurs/liste/){.interne} en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
+Une [structure de liste](/cours/algorithmie/structure-conteneurs/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
 
-En `C` on utilisera [les structures](../../langage/structures/){.interne} pour gérer des type composés comme les listes qui nécessitent à la fois un tableau, sa taille et le nombre actuel d'éléments présents.
+En `C` on utilisera [les structures](../../langage/structures/) pour gérer des type composés comme les listes qui nécessitent à la fois un tableau, sa taille et le nombre actuel d'éléments présents.
 
 ## Implémentation
 
-Vous utiliserez la compilation séparée vue dans la partie sur [la gestion du code source](../../gestion-code-source){.interne} :
+Vous utiliserez la compilation séparée vue dans la partie sur [la gestion du code source](../../gestion-code-source) :
 
 {% faire %}
 Créez le type `liste` associé à la structure `struct liste`{.language-} dans un fichier `liste.h` :
@@ -43,7 +43,7 @@ Dans un fichier `liste.c`, créez les fonctions :
 
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/) pour le dimensionnement du tableau lorsqu'il faut ajouter un élément à une liste pleine ou que l'on supprime un élément d'une liste dont le nombre d'éléments restant est deux fois plus petit que sa taille.
+Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/){.externe} pour le dimensionnement du tableau lorsqu'il faut ajouter un élément à une liste pleine ou que l'on supprime un élément d'une liste dont le nombre d'éléments restant est deux fois plus petit que sa taille.
 {% endinfo %}
 
 Quelques questions pour voir si vous avez compris (faites des tests et comprenez avant de regarder la réponse) :

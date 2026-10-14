@@ -158,7 +158,7 @@ Donnez le graphe de Bruijn $B(2, 3)$
 Codez l'algorithme qui crée le graphe $B(n, p)$.
 {% endexercice %}
 {% info %}
-Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
+Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences){.externe} et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
 {% endinfo %}
 
 ### Propriétés
@@ -179,10 +179,10 @@ Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous l
 que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères de l'autre.
 
 {% exercice %}
-Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-eulériens#principe-algorithme){.interne} en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
+Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-eulériens#principe-algorithme) en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
 
-- la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente){.interne}
-- la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime){.interne}) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
+- la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente)
+- la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime)) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
 
 {% endexercice %}
 

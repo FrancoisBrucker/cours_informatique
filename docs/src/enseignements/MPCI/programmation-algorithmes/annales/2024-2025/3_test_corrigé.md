@@ -60,7 +60,7 @@ On suppose que les entiers sont positifs.
 Cet algorithme doit vous rappeler très fortement l'algorithme de l'exponentiation rapide. Il est basé sur le même principe et tout ce qu'on a fait pour l'un (complexité et preuve) marche pour l'autre.
 
 {% lien %}
-L'algorithme est connu sous le nom de [multiplication russe, ou encore multiplication du paysan russe](https://fr.wikipedia.org/wiki/Technique_de_multiplication_dite_russe).
+L'algorithme est connu sous le nom de [multiplication russe, ou encore multiplication du paysan russe](https://fr.wikipedia.org/wiki/Technique_de_multiplication_dite_russe){.externe}.
 {% endlien %}
 
 #### 1.1
@@ -155,7 +155,7 @@ La complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur} \cdot Ty.\mbox{\tiny
 ### 4 Pour aller plus loin un autre algorithme
 
 > TBD add en log n
-> TBD soustraction et division : <https://leria-info.univ-angers.fr/~jeanmichel.richer/ensl1i_base_de_l_info_1_sub_div.php>
+> TBD soustraction et division : <https://leria-info.univ-angers.fr/~jeanmichel.richer/ensl1i_base_de_l_info_1_sub_div.php>{.externe}
 > TBD mul plus long c;est pour ça qu'on considère plus gros.
 > TBD si taille fixe ok.
 >
@@ -166,7 +166,7 @@ La complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur} \cdot Ty.\mbox{\tiny
 > TBD Kolmogorov et Karatsuba.
 >
 > TBD pour aller plus loin et en faire un long exo
-> TBD <https://en.wikipedia.org/wiki/Karatsuba_algorithm>
+> TBD <https://en.wikipedia.org/wiki/Karatsuba_algorithm>{.externe}
 >
 > TBD pour ne pas conclure on ne sais pas jusqu'ou on peut aller. 
 

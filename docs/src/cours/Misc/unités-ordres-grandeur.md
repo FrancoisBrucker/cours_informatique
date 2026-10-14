@@ -15,7 +15,7 @@ L'informatique traite en interne des suites finies de 0 ou de 1. Les longueur de
 ## Unités
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Unit%C3%A9_de_mesure_en_informatique>
+<https://fr.wikipedia.org/wiki/Unit%C3%A9_de_mesure_en_informatique>{.externe}
 {% endlien %}
 
 En informatique tout part du **_bit_**, d'abréviation `b` qui est l'unité fondamentale et permet de stocker 2 valeurs différentes (classiquement 0 ou 1).
@@ -40,9 +40,9 @@ Un byte ou une suite de byte peut être interprétée de multiples manières :
 
 - comme un entier positif,
 - comme un entier relatif,
-- [une couleur](https://fr.wikipedia.org/wiki/Rouge-vert-bleu),
-- [un caractère](https://fr.wikipedia.org/wiki/UTF-8),
-- [une instruction machine](https://fr.wikipedia.org/wiki/Langage_machine),
+- [une couleur](https://fr.wikipedia.org/wiki/Rouge-vert-bleu){.externe},
+- [un caractère](https://fr.wikipedia.org/wiki/UTF-8){.externe},
+- [une instruction machine](https://fr.wikipedia.org/wiki/Langage_machine){.externe},
 - ...
 
 {% attention2 "**À retenir**" %}
@@ -55,7 +55,7 @@ Si on les représente parfois directement par leur représentation binaire, leur
 - binaire : `101010`
 - hexadécimale : `2A`
 
-[La notation hexadécimale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal) est pratique car un byte est encodé par un nombre allant de 00 à FF, ce qui fait qu'une suite de byte est encodé par un nombre qui est la concaténation du nombre de chaque byte (si l'on représente chaque nombre par 2 chiffres allant de 0 à F). 
+[La notation hexadécimale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal){.externe} est pratique car un byte est encodé par un nombre allant de 00 à FF, ce qui fait qu'une suite de byte est encodé par un nombre qui est la concaténation du nombre de chaque byte (si l'on représente chaque nombre par 2 chiffres allant de 0 à F). 
 
 {% note "**Représentation par défaut**" %}
 Une suite de byte est représentée par défaut par sa représentation hexadécimale.
@@ -64,7 +64,7 @@ Une suite de byte est représentée par défaut par sa représentation hexadéci
 Lorsque la représentation par défaut est la représentation décimale :
 
 - on fera commencer la notation binaire d'un nombre par `0b`, par exemple `0b101010` représentera le nombre 42.
-- on fera commencer la notation hexadécimale d'un nombre par `0x` (dans les language de programmation) ou `#` (pour les couleurs), par exemple `0x2A` représentera le nombre 42 et `#BBAADD` [une couleur mauve](https://www.color-hex.com/color/bbaadd).
+- on fera commencer la notation hexadécimale d'un nombre par `0x` (dans les language de programmation) ou `#` (pour les couleurs), par exemple `0x2A` représentera le nombre 42 et `#BBAADD` [une couleur mauve](https://www.color-hex.com/color/bbaadd){.externe}.
 {% endinfo %}
 
 ## Multiples
@@ -86,7 +86,7 @@ On peut ainsi progresser dans les multiples :
 
 - un ***kibi byte***, KiB, qui vaut $2^{10} \cdot 2^{10} = 2^{2 \cdot 10} = 2^{20}$ byte
 - un ***mébi byte***, MiB, qui vaut $2^{10} \cdot 2^{10} = 2^{2 \cdot 10} = 2^{20}$ byte
-- un ***gibi byte***,GiB, qui vaut $2^{30}$ byte (attention, ne cofondez pas avec un [Gibi](https://www.youtube.com/watch?v=3EhIQSUU4Fk&list=PLsbtzZi9n5PtE3M1zlzwQByojW7xDhExY&index=70), ça n'a rien à voir)
+- un ***gibi byte***,GiB, qui vaut $2^{30}$ byte (attention, ne cofondez pas avec un [Gibi](https://www.youtube.com/watch?v=3EhIQSUU4Fk&list=PLsbtzZi9n5PtE3M1zlzwQByojW7xDhExY&index=70){.externe}, ça n'a rien à voir)
 - un ***tebi byte***, TiB, qui vaut $2^{40}$ byte
 
 ## Ordres de grandeur
@@ -115,6 +115,6 @@ Toutes les particules de l'univers peuvent être nommée par un suite de 256b.
 
 
 {% lien %}
-- <https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres#1039_%C3%A0_10100>
-- [Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk)
+- <https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres#1039_%C3%A0_10100>{.externe}
+- [Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk){.externe}
 {% endlien %}

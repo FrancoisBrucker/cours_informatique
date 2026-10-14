@@ -12,7 +12,7 @@ eleventyComputed:
 
 La fonction fetch de javascript permet de charger tout un tas de choses, bien plus que juste des fichiers json.
 
-La fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch) de javascript vous permet de récupérer des données et de les utiliser dans un script front.
+La fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch){.externe} de javascript vous permet de récupérer des données et de les utiliser dans un script front.
 
 ## Lecture de données distantes
 
@@ -54,9 +54,9 @@ Créez un fichier : `lire-données-url.html` est copiez/collez y le code suivant
 Exécutez le pour voir les réponses dans la console.
 {% endfaire %}
 {% info %}
-Si vous cherchez des coordonnées géographiques de la France, allez voir : <https://github.com/gregoiredavid/france-geojson>.
+Si vous cherchez des coordonnées géographiques de la France, allez voir : <https://github.com/gregoiredavid/france-geojson>{.externe}.
 
-Le format de données utilisés est le format [geojson](https://fr.wikipedia.org/wiki/GeoJSON) qui est un format de données json adaptés aux coordonnées géographique.
+Le format de données utilisés est le format [geojson](https://fr.wikipedia.org/wiki/GeoJSON){.externe} qui est un format de données json adaptés aux coordonnées géographique.
 {% endinfo %}
 
 Le code précédent explicite le faite que `fetch`{.language-} est une instruction asynchrone qui s'exécute sous la forme d'une promesse : le `console.log` de la fin de l'instruction `fetch`{.language-} (ligne 22) rend toujours null puisqu'elle elle est exécutée _avant_ la fin de l'instruction.
@@ -69,7 +69,7 @@ Essayer de faire en sorte que ces processus parallèles soient indépendants.
 
 ## Lecture d'un fichier json
 
-Les données sont reçues sous la forme d'un objet de type [Response](https://developer.mozilla.org/fr/docs/Web/API/Response). Lorsque nos données sont de type [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) — **ce qui devrait toujours être le cas** — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :
+Les données sont reçues sous la forme d'un objet de type [Response](https://developer.mozilla.org/fr/docs/Web/API/Response){.externe}. Lorsque nos données sont de type [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation){.externe} — **ce qui devrait toujours être le cas** — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :
 
 ```html
 <!DOCTYPE html>
@@ -166,7 +166,7 @@ for (x of data.features) {
 </html>
 ```
 
-Disponible [ici](./projet-fetch/lire-données-url-json-liste){.interne}
+Disponible [ici](./projet-fetch/lire-données-url-json-liste)
 {% enddetails %}
 
 ## Lecture d'un fichier texte
@@ -190,7 +190,7 @@ fetch("https://www.gutenberg.org/ebooks/14155.txt.utf-8", { method: "GET" })
 
 ## Fetch une image
 
-La réponse de fetch est un _stream_ c'est à dire un flux de données. Les données du flux sont récupérées par les commandes `.json()`{.language-} et `.texte()`{.language-} vues précédemment. Dans le cas où l'on récupère des fichiers non texte (une image, une vidéo, etc) on utilise [`.blob()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/blob)
+La réponse de fetch est un _stream_ c'est à dire un flux de données. Les données du flux sont récupérées par les commandes `.json()`{.language-} et `.texte()`{.language-} vues précédemment. Dans le cas où l'on récupère des fichiers non texte (une image, une vidéo, etc) on utilise [`.blob()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/blob){.externe}
 
 ```html
 <!DOCTYPE html>
@@ -232,7 +232,7 @@ Ceci ne peut marcher que pour des données que le serveur autorise à récupére
 Par défaut, un site n'autorise de récupérer des données par fetch que si la demande a été faite par un script issu du site lui-même.
 
 {% note %}
-Les règles de transmission de fichiers s'appellent : [CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)
+Les règles de transmission de fichiers s'appellent : [CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS){.externe}
 {% endnote %}
 
 {% faire %}

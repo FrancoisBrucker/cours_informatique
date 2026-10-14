@@ -30,7 +30,7 @@ git init
 ## le dossier `.git`{.fichier}
 
 {% lien "**Documentation**" %}
-<https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine>
+<https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine>{.externe}
 {% endlien %}
 
 La commande précédente a initialisé `git` en créant un dossier caché `.git`{.fichier}. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça :
@@ -149,10 +149,10 @@ Date:   Sat Sep 19 14:35:41 2020 +0200
 ### Les objets
 
 {% lien "**Documentation**" %}
-<https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git>
+<https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git>{.externe}
 {% endlien %}
 
-Git va tout (oui tout) stocker dans le dossier `.git/objects`{.fichiers} sous la forme d'un fichier compressé de nom égal à sa valeur de hash [SHA-1](https://fr.wikipedia.org/wiki/SHA-1) sur 40 octets.
+Git va tout (oui tout) stocker dans le dossier `.git/objects`{.fichiers} sous la forme d'un fichier compressé de nom égal à sa valeur de hash [SHA-1](https://fr.wikipedia.org/wiki/SHA-1){.externe} sur 40 octets.
 
 {% info %}
 Il est possible mais hautement improbable que 2 fichiers différents aient la même valeur de hash SHA-1. Dans ce cas là git sera perdu. Mais bon, que cela arrive c'st rare, et dans un même projet c'est encore plus rare.... Voir n'est pas encore arrivé.
@@ -316,13 +316,13 @@ diff avant le commit pour voir la diff avec ce qui a été enregistré.
 
 ### Historique
 
-Vous pouvez voir ce qu'il y avait dans chaque commit, [cette doc](https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations) vous montre plein de chouettes exemples.
+Vous pouvez voir ce qu'il y avait dans chaque commit, [cette doc](https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations){.externe} vous montre plein de chouettes exemples.
 
-En particulier : `git log -p` qui montre ce que l'on a fait avec chaque commit. Le [format de git diff](https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html) est un format étonnamment lisible qui montre distinctement les différences entre les versions.
+En particulier : `git log -p` qui montre ce que l'on a fait avec chaque commit. Le [format de git diff](https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html){.externe} est un format étonnamment lisible qui montre distinctement les différences entre les versions.
 
 ### Diff
 
-On peut également voir les différences entre le dernier commit et ce que l'on a fait en utilisant la commande [`git diff`](https://git-scm.com/docs/git-diff/fr).
+On peut également voir les différences entre le dernier commit et ce que l'on a fait en utilisant la commande [`git diff`](https://git-scm.com/docs/git-diff/fr){.externe}.
 
 Commençons par modifiez nos fichiers `main.css`{.fichier} et `index.html`{.fichier} :
 
@@ -412,7 +412,7 @@ La commande `git diff --cached` permet de faire le diff en prenant en compte l'i
 ### Modifier le dernier commit
 
 {% lien "**Documentation**" %}
-<https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique>
+<https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique>{.externe}
 {% endlien %}
 
 Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le `git status` n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument `--amend` à commit qui vous permet de modifier le dernier commit que vous avez fait.
@@ -426,9 +426,9 @@ Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Ce
 - les fichiers de bibliothèques, comme le dossier _node_modules_ lorsque l'on fait du web
 - ...
 
-Pour que git ignore ces fichiers on utilise un fichier _.gitignore_) qui liste ces fichiers. Son [format](https://git-scm.com/docs/gitignore) est à la fois simple et efficace. On peut même avoir un fichier _.gitignore_ par dossier du projet, donc utilisez le !
+Pour que git ignore ces fichiers on utilise un fichier _.gitignore_) qui liste ces fichiers. Son [format](https://git-scm.com/docs/gitignore){.externe} est à la fois simple et efficace. On peut même avoir un fichier _.gitignore_ par dossier du projet, donc utilisez le !
 
-Vous trouverez plein d'[exemples de `.gitignore`{.fichier}](https://github.com/github/gitignore), je vous conseille ne pas mettre plein de choses dont vous n'avez pas besoin. Ajoutez des lignes au `.gitignore`{.fichier} uniquement lorsque vous en avez besoin.
+Vous trouverez plein d'[exemples de `.gitignore`{.fichier}](https://github.com/github/gitignore){.externe}, je vous conseille ne pas mettre plein de choses dont vous n'avez pas besoin. Ajoutez des lignes au `.gitignore`{.fichier} uniquement lorsque vous en avez besoin.
 
 Par exemple, après avoir supprimé un fichier via le finder sur mon mac, `git status` me donne ça :
 
@@ -456,7 +456,7 @@ On fini par l'ajouter au projet par un commit : `git commit -m"add .gitignore"`.
 ## Branches
 
 {% lien "**Documentation**" %}
-<https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref>
+<https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref>{.externe}
 {% endlien %}
 
 Les branches de git permettent d'avoir plusieurs histoires possible de mon projet.
@@ -593,7 +593,7 @@ Et si l'on veut voir le graphe des dépendances on peut ajouter l'argument `--gr
 
 ### Réconcilier les branches
 
-Si l'on veut maintenant mettre notre branche expérimentale (`js`) dans la branche `main`, il va falloir réconcilier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du [rebase](https://www.miximum.fr/blog/git-rebase/)
+Si l'on veut maintenant mettre notre branche expérimentale (`js`) dans la branche `main`, il va falloir réconcilier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du [rebase](https://www.miximum.fr/blog/git-rebase/){.externe}
 
 Nous allons donc procéder comme suit :
 
@@ -737,7 +737,7 @@ Il arrive parfois qu'on a complètement raté un truc et que l'on veuille reveni
 Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.
 
 Je ne vais ici que résumer les possibilités. Allez voir sur
-[cette vidéo](https://www.youtube.com/watch?v=ZY5A7kUR0S4) pour avoir un aperçu de ce que l'on peut faire en situation.
+[cette vidéo](https://www.youtube.com/watch?v=ZY5A7kUR0S4){.externe} pour avoir un aperçu de ce que l'on peut faire en situation.
 
 Pour l'instant l'historique de notre projet est (`git log --oneline`) :
 
@@ -756,7 +756,7 @@ C'est quand on veut faire ce genre de chose ou que l'on cherche quand un bug a �
 
 {% endinfo %}
 
-Il y a 3 commandes git qui permettent de gérer l'historique [reset, restore et revert](https://git-scm.com/docs/git#_reset_restore_and_revert), chacune a ses spécificités et ses utilités.
+Il y a 3 commandes git qui permettent de gérer l'historique [reset, restore et revert](https://git-scm.com/docs/git#_reset_restore_and_revert){.externe}, chacune a ses spécificités et ses utilités.
 
 {% attention2 "**À retenir**" %}
 La commande `git reflog` montre tous les commits du projet. Cela peut être super utile si on a fait un `git reset` à un ancien commit et que l'on veut finalement revenir à un endroit dans le futur par rapport à ce commit.

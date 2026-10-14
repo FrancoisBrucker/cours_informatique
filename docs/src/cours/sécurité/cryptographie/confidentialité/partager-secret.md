@@ -10,10 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Comment se partager un secret alors que tout le monde nous espionne ? Le protocole [Diffie-Hellman](https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman) est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.
+Comment se partager un secret alors que tout le monde nous espionne ? Le protocole [Diffie-Hellman](https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman){.externe} est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.
 
 {% lien %}
-[le problème en quelques vidéos](https://www.youtube.com/watch?v=NmM9HA2MQGI&list=RDCMUC9-y-6csu5WGm29I7JiwpnA)
+[le problème en quelques vidéos](https://www.youtube.com/watch?v=NmM9HA2MQGI&list=RDCMUC9-y-6csu5WGm29I7JiwpnA){.externe}
 {% endlien %}
 
 ## Protocole Diffie-Hellman
@@ -36,9 +36,9 @@ Au final, Alice et Bob partagent un nombre $K$ compris entre $0$ et $p-1$.
 
 ## Pourquoi ça marche
 
-1. si $n$ est premier, [$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique](/cours/misc/corps-ZpZ/#groupe-cyclique){.interne}
-2. il est très facile de faire [l'exponentiation modulaire](/cours/misc/corps-ZpZ/#exponentiation-modulaire){.interne} dans le cas général et encore plus rapide en notation binaire
-3. [le logarithme discret](/cours/misc/corps-ZpZ/#logarithme-discret){.interne} est une opération coûteuse
+1. si $n$ est premier, [$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique](/cours/misc/corps-ZpZ/#groupe-cyclique)
+2. il est très facile de faire [l'exponentiation modulaire](/cours/misc/corps-ZpZ/#exponentiation-modulaire) dans le cas général et encore plus rapide en notation binaire
+3. [le logarithme discret](/cours/misc/corps-ZpZ/#logarithme-discret) est une opération coûteuse
 
 ### Existence
 
@@ -51,7 +51,7 @@ $ab$ permet bien d'obtenir tout nombre $q$ entre $0$ et $p-1$ car :
 
 ### Algorithme de transmission
 
-L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne} en utilisant le principe dit de "_square and multiply_" :
+L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/) en utilisant le principe dit de "_square and multiply_" :
 
 ```pseudocode
 algorithme expo(x: entier, y: entier) → entier:
@@ -68,7 +68,7 @@ algorithme expo(x: entier, y: entier) → entier:
 En supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$, la complexité de l'algorithme est en $\mathcal{O}(\log_2(y))$ qui correspond au nombre maximum d'itérations dans la boucle.
 
 {% info %}
-En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter [cette partie du cours](/cours/algorithmie/fonctions-booléennes/){.interne}
+En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter [cette partie du cours](/cours/algorithmie/fonctions-booléennes/)
 {% endinfo %}
 
 Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.
@@ -76,7 +76,7 @@ Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale pu
 ### Problème du logarithme discret
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Logarithme_discret>
+<https://fr.wikipedia.org/wiki/Logarithme_discret>{.externe}
 {% endlien %}
 
 Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :
@@ -94,7 +94,7 @@ est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la bou
 
 Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}(2^{log_2(p)}) = \mathcal{O}(2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.
 
-Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé [Baby step giant step](https://fr.wikipedia.org/wiki/Baby-step_giant-step) qui échange du temps contre de la mémoire.
+Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé [Baby step giant step](https://fr.wikipedia.org/wiki/Baby-step_giant-step){.externe} qui échange du temps contre de la mémoire.
 
 Son principe est simple.  
 
@@ -138,7 +138,7 @@ Pour ne pas favoriser une boucle plutôt qu'un autre on prend $m$ tel que $p/m =
 On obtient alors une complexité en moyenne et en mémoire de $\mathcal{O}(\sqrt{p})$
 
 {% attention2 "**À retenir**" %}
-La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé [compromis temps/mémoire](https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire) est une technique importante à connaître.
+La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé [compromis temps/mémoire](https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire){.externe} est une technique importante à connaître.
 
 Elle ne fera cependant pas de miracle puisqu'elle est bornée par la taille la mémoire disponible.
 {% endattention2  %}
@@ -146,10 +146,10 @@ Elle ne fera cependant pas de miracle puisqu'elle est bornée par la taille la m
 Et tout d'un coup avec notre clé de 64b, notre algorithme n'aura plus besoin que de $2^{32}$ opérations. À raison d'une opération par microseconde, il ne faudra plus que 5 millisecondes pour résoudre le problème !
 
 {% attention2 "**À retenir**" %}
-On considère actuellement que si le [nombre de possibilité à tester est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.
+On considère actuellement que si le [nombre de possibilité à tester est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack){.externe}, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.
 {% endattention2  %}
 {% info  %}
-[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
+[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/){.externe}
 {% endinfo  %}
 
 Pour une clé de 128bit et 1 opération par microsecondes :
@@ -163,7 +163,7 @@ Lorsque la puissance de calcul augmente, il suffit d'augmenter linéairement la 
 
 
 {% lien %}
-Voir <https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf> ou encore <https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf> pour d'autres algorithmes de résolution.
+Voir <https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf>{.externe} ou encore <https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf>{.externe} pour d'autres algorithmes de résolution.
 {% endlien %}
 
 
@@ -173,15 +173,15 @@ Il existe beaucoup de types d'attaques possibles. Explicitons-en quelques unes.
 
 ### Brute force
 
-La meilleure attaque connue est l'attaque brute force en utilisant [l'algorithme du crible général](https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes) qui est une méthode de factorisation.
+La meilleure attaque connue est l'attaque brute force en utilisant [l'algorithme du crible général](https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes){.externe} qui est une méthode de factorisation.
 
 {% lien %}
-<https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file>
+<https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file>{.externe}
 {% endlien %}
 
 Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.
 
-On préconise donc une taille de clé de 4096b actuellement. Voir [ce doc p35](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile).
+On préconise donc une taille de clé de 4096b actuellement. Voir [ce doc p35](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile){.externe}.
 
 ### Man in the middle
 
@@ -231,16 +231,16 @@ On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu
 ça a l'air de la science fiction mais c'est tout à fait possible, ne serait-ce qu'en mesurant le courant pris par le processeur !
 
 {% lien %}
-[Algorithmes et simple power analysis](https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf)
+[Algorithmes et simple power analysis](https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf){.externe}
 
 {% endlien %}
 
 {% lien %}
 
-- [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
-- [cours du MIT](https://www.youtube.com/watch?v=3v5Von-oNUg)
-- [exemples de side channel attack](https://www.youtube.com/watch?v=2-zQp26nbY8)
-- [channel attack autres exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU)
+- [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire){.externe}
+- [cours du MIT](https://www.youtube.com/watch?v=3v5Von-oNUg){.externe}
+- [exemples de side channel attack](https://www.youtube.com/watch?v=2-zQp26nbY8){.externe}
+- [channel attack autres exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU){.externe}
 
 {% endlien %}
 
@@ -251,10 +251,10 @@ Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous l
 
 > TBD à étoffer !
 
-> TBD <https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/>
+> TBD <https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/>{.externe}
 > TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
 > TDB exemple avec courbe elliptique.
-> <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
-> TBD taille clé 256b actuellement ([courbe de Bernstein](https://fr.wikipedia.org/wiki/Curve25519))
-> Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques){.interne}
+> <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>{.externe}
+> TBD taille clé 256b actuellement ([courbe de Bernstein](https://fr.wikipedia.org/wiki/Curve25519){.externe})
+> Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques)
 > pour la def et les propriétés basiques d'une courbe elliptique.

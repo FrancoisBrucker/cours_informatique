@@ -17,19 +17,19 @@ eleventyComputed:
 ## Carte mère
 
 {% aller %}
-[Carte mère](./carte-mère){.interne}
+[Carte mère](./carte-mère)
 {% endaller %}
 
 ## Mémoire
 
 {% aller %}
-[Mémoire](./mémoire){.interne}
+[Mémoire](./mémoire)
 {% endaller %}
 
 ## Processeur
 
 {% aller %}
-[Processeur](./processeur){.interne}
+[Processeur](./processeur)
 {% endaller %}
 
 ## Périphériques
@@ -47,7 +47,7 @@ Exemple du réseau :
 Les périphériques présents sur tous les ordinateurs sont les périphériques de stockage, dont nous allons parler plus précisément :
 
 {% aller %}
-[Disques durs et autres périphériques de stockage](./device-stockage){.interne}
+[Disques durs et autres périphériques de stockage](./device-stockage)
 {% endaller %}
 
 ## <span id="général"></span>Version détaillée

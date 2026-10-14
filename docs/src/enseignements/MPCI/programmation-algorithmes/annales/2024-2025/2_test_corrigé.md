@@ -218,7 +218,7 @@ def croissante_alternante_bis_bis(n, c):
     return s
 ```
 
-Et qui permet, en utilisant des list comprehension et la méthode [`join`{.language-}](https://docs.python.org/fr/3.13/library/stdtypes.html#str.join) des chaînes de caractères, de simplifier drastiquement le code en l'[unilignant](https://fr.wikipedia.org/wiki/Uniligne) :
+Et qui permet, en utilisant des list comprehension et la méthode [`join`{.language-}](https://docs.python.org/fr/3.13/library/stdtypes.html#str.join){.externe} des chaînes de caractères, de simplifier drastiquement le code en l'[unilignant](https://fr.wikipedia.org/wiki/Uniligne){.externe} :
 
 ```python
 def croissante_alternante_ultime(n, c):

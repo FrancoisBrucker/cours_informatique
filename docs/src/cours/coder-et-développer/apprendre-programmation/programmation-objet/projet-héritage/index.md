@@ -118,7 +118,7 @@ print(p.solde)
 
 ## Donjons et dragons
 
-En reprenant [le cours](../héritage#exemple-D&D){.interne}
+En reprenant [le cours](../héritage#exemple-D&D)
 
 ### Personnages
 
@@ -135,7 +135,7 @@ Créez (et testez) les classes personnage, magicien et guerrière.
 Créez un programme qui demande à l'utilisateur :
 
 - les caractéristiques d'une guerrière (points de vie, attaque et score de défense)
-- les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
+- les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin){.externe} (points de vie, attaque)
 - les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
 Puis, faites en sorte que la guerrière et le gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.

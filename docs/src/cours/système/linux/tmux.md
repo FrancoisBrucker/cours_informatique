@@ -12,33 +12,33 @@ eleventyComputed:
 
 {% lien %}
 
-[Tutorial](https://www.youtube.com/watch?v=Yl7NFenTgIo)
+[Tutorial](https://www.youtube.com/watch?v=Yl7NFenTgIo){.externe}
 
 {% endlien %}
 
 {% faire %}
 Créez le script final de la video suivante pour vos déploiement sur les serveurs de production :
 
-[tmux in 100 seconds](https://www.youtube.com/watch?v=vtB1J_zCv8I)
+[tmux in 100 seconds](https://www.youtube.com/watch?v=vtB1J_zCv8I){.externe}
 
 {% endfaire %}
 
 ## Signaux
 
-[Liste des signaux](https://fr.wikipedia.org/wiki/Signal_(informatique)#Liste_des_signaux).
+[Liste des signaux](https://fr.wikipedia.org/wiki/Signal_(informatique)#Liste_des_signaux){.externe}.
 
-- [SIGKILL (numéro POSIX 9)](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGKILL)
-- [SIGSTOP (numéro POSIX 19)](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGSTOP)
+- [SIGKILL (numéro POSIX 9)](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGKILL){.externe}
+- [SIGSTOP (numéro POSIX 19)](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGSTOP){.externe}
 
-<https://faculty.cs.niu.edu/~hutchins/csci480/signals.htm>
+<https://faculty.cs.niu.edu/~hutchins/csci480/signals.htm>{.externe}
 
 ### fg et bg
 
-<http://igm.univ-mlv.fr/~allali/enseignement/prog_unix/documents/Stage_Unix/Stage_Unix_processus.html>
+<http://igm.univ-mlv.fr/~allali/enseignement/prog_unix/documents/Stage_Unix/Stage_Unix_processus.html>{.externe}
 
 ### trap
 
-<https://www.learnlinux.org.za/courses/build/shell-scripting/ch12s03>
+<https://www.learnlinux.org.za/courses/build/shell-scripting/ch12s03>{.externe}
 
 #### rot13.sh
 
@@ -72,12 +72,12 @@ trap 'echo "je suis immourable ! MOUAHAHAHA"' SIGINT 15
 
 #### C'est aussi utile
 
-<https://quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/aspects-avanc%C3%A9s-de-la-programmation-shell/gestion-des-signaux/utiliser-trap-%C3%A0-partir-dun-script-shell>
+<https://quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/aspects-avanc%C3%A9s-de-la-programmation-shell/gestion-des-signaux/utiliser-trap-%C3%A0-partir-dun-script-shell>{.externe}
 
 ## Refactor
 
-> TBD signaux : <https://pauillac.inria.fr/~remy/poly/system/camlunix/sign.html>
-> TBD cours unix/caml : <https://pauillac.inria.fr/~remy/poly/system/camlunix/cours.pdf>
+> TBD signaux : <https://pauillac.inria.fr/~remy/poly/system/camlunix/sign.html>{.externe}
+> TBD cours unix/caml : <https://pauillac.inria.fr/~remy/poly/system/camlunix/cours.pdf>{.externe}
 >   p14 liens dur/symbolique et joli arborescence
 >   p17 droits
 >   p51 signaux

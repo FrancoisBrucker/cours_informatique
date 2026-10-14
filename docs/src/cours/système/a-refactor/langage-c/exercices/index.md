@@ -25,7 +25,7 @@ Déclarez bien vos variables dans une fonction (au pire dans la fonction main), 
 Chaque série d'exercice va vous apprendre une technique nouvelle de programmation en C. Ils sont pensés pour être de plus en plus spécifique, faites les donc dans l'ordre. Lorsque vous arriverez à tous les faire et que vous les avez compris, vous pourrez considérer que vous avez acquis les bases de programmation en C.
 
 {% info %}
-[corrigé des exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9).
+[corrigé des exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9){.externe}.
 
 Ne regardez la solution qu'**après avoir résolu l'exercice**. En C comme partout c'est se casser les dents sur un problème qui vous fait progresser. Pas juste passivement regarder la solution.
 {% endinfo %}
@@ -35,7 +35,7 @@ Ne regardez la solution qu'**après avoir résolu l'exercice**. En C comme parto
 Création de fonctions simples et compilation avec des bibliothèques annexes.
 
 {% aller %}
-[Nombre de chiffres d'un entier](./nb-chiffres){.interne}
+[Nombre de chiffres d'un entier](./nb-chiffres)
 {% endaller %}
 
 ## <span id="proba"></span> Retour de Pointeurs
@@ -43,15 +43,15 @@ Création de fonctions simples et compilation avec des bibliothèques annexes.
 On utilise des pointeurs comme retour de fonctions et on termine en créant un makefile.
 
 {% aller %}
-[Nombres aléatoires](./nb-aléatoires){.interne}
+[Nombres aléatoires](./nb-aléatoires)
 {% endaller %}
 
 ## <span id="liste"></span> Structure de liste
 
-Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](../langage/structures/){.interne}.
+Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](../langage/structures/).
 
 {% aller %}
-[Listes](./structure-liste){.interne}
+[Listes](./structure-liste)
 {% endaller %}
 
 ## <span id="matrice"></span>Structure de matrice
@@ -59,7 +59,7 @@ Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](
 On y apprend comment gérer des pointeurs de pointeurs et la technique du pointeur opaque.
 
 {% aller %}
-[Matrices](./matrices){.interne}
+[Matrices](./matrices)
 {% endaller %}
 
 ## Listes doublement chaînées
@@ -67,7 +67,7 @@ On y apprend comment gérer des pointeurs de pointeurs et la technique du pointe
 On y apprend à utiliser des données sans type prédéfinis et des pointeurs sur des fonctions.
 
 {% aller %}
-[Listes doublement chaînées](./listes-chaînées){.interne}
+[Listes doublement chaînées](./listes-chaînées)
 {% endaller %}
 
 ## Syracuse
@@ -75,5 +75,5 @@ On y apprend à utiliser des données sans type prédéfinis et des pointeurs su
 On personnalise notre exécutable avec des paramètres.
 
 {% aller %}
-[Syracuse](./syracuse){.interne}
+[Syracuse](./syracuse)
 {% endaller %}

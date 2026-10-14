@@ -17,7 +17,7 @@ Cette structure est basée sur les fonctions de hash (ou de hachage) qui assure 
 ## Fonctions de hash
 
 {% aller %}
-[Fonctions de hachage](fonctions-hash){.interne}
+[Fonctions de hachage](fonctions-hash)
 {% endaller %}
 
 ## Structure associée : le dictionnaire
@@ -25,10 +25,10 @@ Cette structure est basée sur les fonctions de hash (ou de hachage) qui assure 
 La fonction de hachage va permettre de rajouter une indirection au tableau de stockage des données de la structure et créer une structure de données fondamentale :
 
 {% aller %}
-[Dictionnaires](dictionnaire){.interne}
+[Dictionnaires](dictionnaire)
 {% endaller %}
 
-Cette structure est intensivement utilisé en code, [en particulier en python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires){.interne}.
+Cette structure est intensivement utilisé en code, [en particulier en python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires).
 
 ## Exercice : Structure Ensemble
 

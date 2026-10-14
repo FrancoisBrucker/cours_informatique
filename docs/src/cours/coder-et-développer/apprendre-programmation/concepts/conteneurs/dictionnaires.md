@@ -11,7 +11,7 @@ eleventyComputed:
 
 Les dictionnaires sont des structures de données très utiles si on sait les utiliser.
 
-Un dictionnaire, aussi appelé [tableau associatif](https://fr.wikipedia.org/wiki/Tableau_associatif) associe une clé à une valeur. On peut voir les listes comme un tableau associatif où les clés sont des entiers allant de 0 à la longueur de la liste moins 1.
+Un dictionnaire, aussi appelé [tableau associatif](https://fr.wikipedia.org/wiki/Tableau_associatif){.externe} associe une clé à une valeur. On peut voir les listes comme un tableau associatif où les clés sont des entiers allant de 0 à la longueur de la liste moins 1.
 
 Mais cela peut être bien plus général que ça :
 
@@ -24,8 +24,8 @@ Un ensemble peut être codé en utilisant la structure de dictionnaire en consid
 
 {% lien %}
 
-- <https://realpython.com/python-dicts/>
-- [`dict`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries)
+- <https://realpython.com/python-dicts/>{.externe}
+- [`dict`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries){.externe}
 
 {% endlien %}
 

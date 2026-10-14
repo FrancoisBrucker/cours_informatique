@@ -15,12 +15,12 @@ Nous allons voir deux types de données : les chaines de caractères et les fich
 ## Chaîne de caractères
 
 {% aller %}
-[Encodage Unicode](encodage-unicode){.interne}
+[Encodage Unicode](encodage-unicode)
 {% endaller %}
 
 ## Fichiers
 
 {% aller %}
-[Fichiers](fichiers){.interne}
+[Fichiers](fichiers)
 {% endaller %}
 

@@ -15,4 +15,4 @@ Faire une API avec son serveur.
 > TBD
 
 1. js (variables dans le code)
-2. [localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) entre les pages
+2. [localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage){.externe} entre les pages

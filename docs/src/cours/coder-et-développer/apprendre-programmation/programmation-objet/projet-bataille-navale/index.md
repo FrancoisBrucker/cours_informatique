@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)).
+Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)){.externe}.
 
 Nous allons travailler avec la boucle de programmation classique en développement :
 
@@ -29,7 +29,7 @@ Le fichier `main.py`{.fichier} contiendra le jeu en lui même.
 
 ### But
 
-Nous voulons coder un jeu de [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)). Nous n'allons pas coder le jeu à deux joueurs, mais créer une interface pour un joueur. Il faut donc avoir à notre disposition :
+Nous voulons coder un jeu de [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)){.externe}. Nous n'allons pas coder le jeu à deux joueurs, mais créer une interface pour un joueur. Il faut donc avoir à notre disposition :
 
 - une grille de C colonnes et L lignes représentant notre terrain. Il faut pouvoir
   - tirer sur une case de la grille

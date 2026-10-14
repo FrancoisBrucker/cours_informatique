@@ -18,7 +18,7 @@ Un graphe (_resp._ graphe dirigé) admet un **_cycle_** (_resp._ **_circuit_**) 
 Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien.
 {% endnote2 %}
 
-On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton) qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game) qu'il commercialisa et correspond à l'exercice suivant :
+On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton){.externe} qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game){.externe} qu'il commercialisa et correspond à l'exercice suivant :
 
 {% exercice "Jeu du dodécaèdre" %}
 Montrer que le graphe suivant possède un cycle hamiltonien
@@ -48,7 +48,7 @@ Un graphe (_resp._ graphe dirigé) admet un **_chemin hamiltonien_** s'il existe
 
 {% endnote2 %}
 
-Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen) (que l'on est amené à revoir), n'en possède pas :
+Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe} (que l'on est amené à revoir), n'en possède pas :
 
 ![graphe de Petersen](petersen.png)
 
@@ -73,7 +73,7 @@ Supposons qu'il existe un cycle hamiltonien $x_1\dots x_n$. Soit $x_ix_{i+1}$ es
 
 {% enddetails %}
 
-Le problème du cycle ou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier [le problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
+Le problème du cycle ou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier [le problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce){.externe} qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
 
 
 ## <span id="chemin-cycle"></span>Chemin et cycles
@@ -150,7 +150,7 @@ Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout
 {% endnote %}
 {% details "preuve", "open" %}
 
-Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser [cette propriété](../chemins-cycles-connexite/#prop-connexe){.interne} et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2>  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).
+Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser [cette propriété](../chemins-cycles-connexite/#prop-connexe) et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2>  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).
 
 Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cycle est hamiltonien. Sinon en effet, par connexité, il existerait une arête $yx_j$ avec $y\notin C$ et le chemin suivant serait strictement plus long que $C$ : $yx_j\dots x_kx_0\dots x_{j-1}$.
 
@@ -264,7 +264,7 @@ La taille de cette composante fortement connexe peut aller de 1 à $n-1$ et pour
 
 {% enddetails %}
 {% info %}
-La suite $t_n$ est [la suite A054946](https://oeis.org/A054946).
+La suite $t_n$ est [la suite A054946](https://oeis.org/A054946){.externe}.
 {% endinfo %}
 {% note "**Corollaire**" %}
 La probabilité qu'un tournoi aléatoire (chaque arc ($xy$ ou $yx$) est tiré avec une probabilité indépendante de 1/2) à $n$ sommets admette un circuit hamiltonien tend vers 1 lorsque $n$ tend vers l'infini.
@@ -308,7 +308,7 @@ Si un tournoi est fortement connexe il admet au moins $n$ chemins hamiltonien. P
 
 ![tournoi à 5 sommets](./tournoi-5.png)
 
-Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste) développée par Erdös :
+Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste){.externe} développée par Erdös :
 
 {% note "**Proposition**" %}
 Pour tout $n$, il existe des tournois à $n$ sommets ayant plus de $\frac{n!}{2^{n-1}}$ chemins hamiltoniens.
@@ -407,7 +407,7 @@ On ne connaît pas d'algorithmes polynomiaux pour trouver un chemin hamiltonien.
 ### Exact
 
 {% lien %}
-<https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm>
+<https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm>{.externe}
 {% endlien %}
 
 Savoir si un graphe donné possède un cycle hamiltonien nécessite a priori de vérifier **tous** les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$
@@ -468,12 +468,12 @@ La complexité de cet algorithme est négligeable devant celle du calcul de $f_1
 
 Enfin il fonction que $G$ soit un graphe orienté ou non.
 
-La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling).
+La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling){.externe}.
 
 
 ### Approché sans performance garantie
 
-> TBD parler de [2-opt](https://fr.wikipedia.org/wiki/2-opt) (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.
+> TBD parler de [2-opt](https://fr.wikipedia.org/wiki/2-opt){.externe} (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.
 
 ### À performance garantie dans un cas particulier
 

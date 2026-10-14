@@ -414,7 +414,7 @@ pour trouver le minimum global :
 
 ![solution moins bonne](./recuit-3.png)
 
-Il existe plusieurs techniques pour faire cela, la méthode du [recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9) accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d'itérations.
+Il existe plusieurs techniques pour faire cela, la méthode du [recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9){.externe} accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d'itérations.
 
 L'algorithme du recuit simulé appliqué au voyageur de commerce est alors (avec `P()`{.language-} un réel aléatoire entre 0 et 1) :
 

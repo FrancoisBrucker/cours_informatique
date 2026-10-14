@@ -62,7 +62,7 @@ Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tablea
 - le tableau des $3$ premiers entiers mélangé (choisissez une permutation)
 
 {% attention %}
-les deux fonctions [`sélection`{.language-}](../algorithme-sélection){.interne} et [`insertion`{.language-}](../algorithme-insertion){.interne} du cours sur les tris ne rendent rien. Elles **modifient** leurs paramètres. Pour tester de telles fonctions, il faut créer un objet dont on va tester s'il est bien modifié après être passé en paramètre de la fonction à tester. Le test suivant par exemple vérifie que la fonction `sélection`{.language-} trie bien un tableau trié par ordre décroissant :
+les deux fonctions [`sélection`{.language-}](../algorithme-sélection) et [`insertion`{.language-}](../algorithme-insertion) du cours sur les tris ne rendent rien. Elles **modifient** leurs paramètres. Pour tester de telles fonctions, il faut créer un objet dont on va tester s'il est bien modifié après être passé en paramètre de la fonction à tester. Le test suivant par exemple vérifie que la fonction `sélection`{.language-} trie bien un tableau trié par ordre décroissant :
 
 ```python
 def test_sélection_décroissant():
@@ -77,18 +77,18 @@ def test_sélection_décroissant():
 
 Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles des différents algorithmes de tri que vous avez codés.
 
-Pour faire cela, on utilisera ce que nous avons fait pendant [le projet exponentiation](../../projet-exponentiation/implémentation-code/){.interne}. Donc :
+Pour faire cela, on utilisera ce que nous avons fait pendant [le projet exponentiation](../../projet-exponentiation/implémentation-code/). Donc :
 
 {% aller %}
 
-Relisez [le projet exponentiation](../../projet-exponentiation/implémentation-code/){.interne} pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
+Relisez [le projet exponentiation](../../projet-exponentiation/implémentation-code/) pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
 
 {% endaller %}
 
 Maintenant que vous êtes prêt, on peut commencer :
 
 {% faire %}
-Créez un fichier `mesure.py`{.fichier} et recodez-y la fonction `donne_pas` de [la partie mesure du temps](../../projet-exponentiation/implémentation-code/#mesure-temps){.interne} (vous n'oublierez pas ses tests).
+Créez un fichier `mesure.py`{.fichier} et recodez-y la fonction `donne_pas` de [la partie mesure du temps](../../projet-exponentiation/implémentation-code/#mesure-temps) (vous n'oublierez pas ses tests).
 {% endfaire %}
 
 Pour étudier les complexités de ces deux tris, on va créer un fichier à part :
@@ -180,7 +180,7 @@ Pour connaître l'espérance de la complexité, il faut calculer la complexité 
 Créez dans le fichier `mesure.py`{.fichier} la fonction `tableau_aléatoire(n)`{.language-} qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/bases-programmation/conteneurs/listes/#listes-classiques){.interne} pour créer ces listes.
+Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/bases-programmation/conteneurs/listes/#listes-classiques) pour créer ces listes.
 {% endinfo %}
 
 Nous allons utiliser cette fonction pour mesurer le temps moyen du tri insertion :
@@ -196,7 +196,7 @@ Vérifiez que le rapport `mesures_temps_insertion_décroissant[i] / mesures_temp
 
 ### Graphiques
 
-Nous allons faire comme pour [le projet exponentiation](../../projet-exponentiation/implémentation-code/){.interne} et afficher nos mesures de temps. Si vous n'aviez pas fait la partie graphique de ce projet, commencez par lire [la partie consacré à Matplotlib](../../projet-exponentiation/implémentation-code/#Matplotlib){.interne} pour installer la bibliothèque et faire son tutoriel.
+Nous allons faire comme pour [le projet exponentiation](../../projet-exponentiation/implémentation-code/) et afficher nos mesures de temps. Si vous n'aviez pas fait la partie graphique de ce projet, commencez par lire [la partie consacré à Matplotlib](../../projet-exponentiation/implémentation-code/#Matplotlib) pour installer la bibliothèque et faire son tutoriel.
 
 {% exercice %}
 En utilisant le code du projet exponentiel, affichez sur un même graphique (l'abscisse est le tableau `taille_tableau`{.language-}) :
@@ -212,7 +212,7 @@ L'allure des 3 courbes est-elle conforme aux résultats théoriques de complexit
 ## Tri à bulles
 
 {% exercice %}
-Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) dans le fichier `tris.py`{.fichier} (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`{.fichier}.
+Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles){.externe} dans le fichier `tris.py`{.fichier} (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`{.fichier}.
 
 {% endexercice %}
 
@@ -337,5 +337,5 @@ Les complexités des tris rapide et fusion sont identiques en moyenne.
 En utilisant ce que vous avez appris avec les tris simples, vérifiez que les complexités en moyennes des tris rapide et fusion sont similaires et correspondent bien à $\mathcal{n\ln(n)}$ où $n$ est la taille du tableau.
 {% endexercice %}
 {% info %}
-Vous pouvez suivre [ce tutoriel](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursions dans `main_rapide.py`{.fichier}.
+Vous pouvez suivre [ce tutoriel](https://www.pythoncentral.io/resetting-the-recursion-limit/){.externe} qui vous explique comment faire pour augmenter le nombre limite de récursions dans `main_rapide.py`{.fichier}.
 {% endinfo %}

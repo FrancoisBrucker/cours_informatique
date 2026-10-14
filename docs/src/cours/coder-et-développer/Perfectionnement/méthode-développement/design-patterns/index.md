@@ -10,37 +10,37 @@ eleventyComputed:
 ---
 
 
-Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les erreurs classiques.
+Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception){.externe}, patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les erreurs classiques.
 
 {% info %}
-Le terme de _design pattern_ a été initialement donné dans le livre [Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns) pour le langage C++.
+Le terme de _design pattern_ a été initialement donné dans le livre [Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns){.externe} pour le langage C++.
 {% endinfo %}
 
-Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme [singleton](<https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)>) ne sont plus utilisés et d'autres, comme [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose.
+Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme [singleton](<https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)>) ne sont plus utilisés et d'autres, comme [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter){.externe} sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose.
 
 {% attention2 "**À retenir**" %}
-Les design pattern sont très utilisés par les bibliothèques (par exemple [les design pattern de react](https://refine.dev/blog/react-design-patterns/)), les reconnaître vous permettra 'aller vite dans la compréhension de celles-ci.
+Les design pattern sont très utilisés par les bibliothèques (par exemple [les design pattern de react](https://refine.dev/blog/react-design-patterns/){.externe}), les reconnaître vous permettra 'aller vite dans la compréhension de celles-ci.
 {% endattention2 %}
 
 Le site suivant contient une liste actualisée de design patterns :
 
 {% lien "Design et refactoring pattern" %}
-- [Refactoring GURU : design pattern](https://refactoring.guru/design-patterns)
-- [Refactoring GURU : refactoring pattern](https://refactoring.guru/refactoring)
+- [Refactoring GURU : design pattern](https://refactoring.guru/design-patterns){.externe}
+- [Refactoring GURU : refactoring pattern](https://refactoring.guru/refactoring){.externe}
 
 {% endlien %}
 
 Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :
 
 {% lien "Anti pattern" %}
-- [Définition d'un anti-pattern](https://fr.wikipedia.org/wiki/Antipattern)
-- [Quelques anti-patterns classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
+- [Définition d'un anti-pattern](https://fr.wikipedia.org/wiki/Antipattern){.externe}
+- [Quelques anti-patterns classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html){.externe}
 {% endlien %}
 
 Nous allons utiliser la classe `Dé`{.language-} qui nous a accompagné tout au long du cours de programmation objet et lui ajouter quelques design pattern pour encore une fois l'améliorer.
 
 {% lien %}
-[Projet Dé héritage](../../../apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
+[Projet Dé héritage](../../../apprendre-programmation/programmation-objet/projet-objets-dés-héritage/)
 {% endlien %}
 {% details "code", "open" %}
 
@@ -112,8 +112,8 @@ print('1000 lancers :', d_6.moyenne(), d_20.moyenne())
 ## Créer des objets grâce à une factory
 
 {% lien %}
-- [Pattern factory](https://refactoring.guru/design-patterns/factory-method)
-- [_Creational pattern_](https://en.wikipedia.org/wiki/Creational_pattern)
+- [Pattern factory](https://refactoring.guru/design-patterns/factory-method){.externe}
+- [_Creational pattern_](https://en.wikipedia.org/wiki/Creational_pattern){.externe}
 {% endlien %}
 
 Le pattern factory est un design pattern faisant parti des pattern de création d'objet. Il stipule que l'on doit créer des objets via des fonctions avec le moins de paramètres possible et avec un nom adapté plutôt qu'avec un constructeur possédant des milliers de paramètres.
@@ -183,7 +183,7 @@ print('1000 lancers :', d_6.moyenne(), d_20.moyenne())
 ## Fluent interface
 
 {% lien %}
-[_Method chaining_](https://en.wikipedia.org/wiki/Method_chaining#Design_patterns)
+[_Method chaining_](https://en.wikipedia.org/wiki/Method_chaining#Design_patterns){.externe}
 {% endlien %}
 
 Ce n'est pas un design pattern _stricto-sensu_, plutôt une règle de programmation : on essaie de rendre l'utilisation des méthodes fluide, chaînables sans avoir besoin de créer des variables intermédiaires.
@@ -203,7 +203,7 @@ print(d_6.lancer().valeur, d_20.lancer().valeur)
 ```
 
 {% info %}
-Ok, ce n'est pas très impressionnant ici, mais si vous utilisez la bibliothèque pandas pour l'analyse ds données par exemple. vous verrez [la puissance de ce genre d'écriture](https://www.stat4decision.com/fr/method-chaining-avec-la-librairie-pandas/).
+Ok, ce n'est pas très impressionnant ici, mais si vous utilisez la bibliothèque pandas pour l'analyse ds données par exemple. vous verrez [la puissance de ce genre d'écriture](https://www.stat4decision.com/fr/method-chaining-avec-la-librairie-pandas/){.externe}.
 {% endinfo %}
 
 Pour ceci il suffit de changer la méthode `Dé.lancer`{.language-} :
@@ -226,12 +226,12 @@ class DéGénérique(Stat):
 ## Pattern observer
 
 {% lien %}
-- [Pattern observer](https://refactoring.guru/design-patterns/observer)
-- [_Behavioural pattern_](https://en.wikipedia.org/wiki/Behavioral_pattern)
+- [Pattern observer](https://refactoring.guru/design-patterns/observer){.externe}
+- [_Behavioural pattern_](https://en.wikipedia.org/wiki/Behavioral_pattern){.externe}
 {% endlien %}
 
 
-Le pattern observer est à la base de [la programmation évènementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) utilisée pour développer des interfaces graphique.
+Le pattern observer est à la base de [la programmation évènementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle){.externe} utilisée pour développer des interfaces graphique.
 
 Dans notre cas, il va être utile d'utiliser ce pattern pour supprimer l'héritage.
 
@@ -320,14 +320,14 @@ print('1000 lancers :', stat6.moyenne(), stat20.moyenne())
 L'observateur découple l'objet qui fait et l'objet qui observe, ce qui est une bonne chose. De plus il permet d'ajouter d'autre types d'observateurs sans effort comme vous allez le faire plus tard.
 
 {% lien %}
-[Couplage en informatique](https://fr.wikipedia.org/wiki/Couplage_(informatique))
+[Couplage en informatique](https://fr.wikipedia.org/wiki/Couplage_(informatique)){.externe}
 {% endlien %}
 
 ## Pattern composite
 
 {% lien %}
-- [Pattern composite](https://refactoring.guru/design-patterns/composite)
-- [_Structural pattern_](https://en.wikipedia.org/wiki/Structural_pattern)
+- [Pattern composite](https://refactoring.guru/design-patterns/composite){.externe}
+- [_Structural pattern_](https://en.wikipedia.org/wiki/Structural_pattern){.externe}
 {% endlien %}
 
 Le pattern composite permet de composer deux dés de façon à pouvoir :
@@ -428,7 +428,7 @@ somme = d6() + d6() + d20()
 
 Continuons sur notre lancée. Un marteau enchanté fait : d6 + 4 dégâts. Il est pour l'instant impossible de gérer ceci avec nos objets, car un entier n'a pas d'attribut `valeur`{.language-} ni `lancer()`{.language-}.
 
-Une solution simple pour résoudre ce problème est de vérifier si un objet possède l'attribut demandé avant de l'utiliser. Pour cela on utilise [la fonction `hasattr`{.language-}](https://docs.python.org/fr/3.14/builtins/functions.html#hasattr) qui possède 2 paramètres :
+Une solution simple pour résoudre ce problème est de vérifier si un objet possède l'attribut demandé avant de l'utiliser. Pour cela on utilise [la fonction `hasattr`{.language-}](https://docs.python.org/fr/3.14/builtins/functions.html#hasattr){.externe} qui possède 2 paramètres :
 
 - le premier est l'objet pour lequel on veut faire la vérification
 - le second est le **nom** de l'attribut/méthode (donc une chaîne de caractères) dont on veut tester l'existence.
@@ -449,7 +449,7 @@ class Somme:
 
 ```
 
-On pourrait faire pareil pour l'attribut valeur, mais ici on va plutôt utiliser la fonction [`getattr`{.language-} de python](https://docs.python.org/fr/3.14/builtins/functions.html#getattr) qui rend une valeur par dévaut si l'attribut n;est pas trouvé. Dans notre cas on rend directement l'objet (qui doit être un entier)  :
+On pourrait faire pareil pour l'attribut valeur, mais ici on va plutôt utiliser la fonction [`getattr`{.language-} de python](https://docs.python.org/fr/3.14/builtins/functions.html#getattr){.externe} qui rend une valeur par dévaut si l'attribut n;est pas trouvé. Dans notre cas on rend directement l'objet (qui doit être un entier)  :
 
 - le premier est l'objet pour lequel on veut faire la vérification
 - le second est le nom de l'attribut/méthode à récupérer
@@ -495,7 +495,7 @@ pour calculer `a * b`{.language-} python fait plusieurs essais :
 
 ### Undo
 
-On a déjà utilisé [le pattern memento](https://refactoring.guru/design-patterns/memento) lorsque l'on a fait de [la compositions et de l'agrégation de dés](../../../apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/#memento){.interne}, utilisez cette partie pour créer une liste de undo :
+On a déjà utilisé [le pattern memento](https://refactoring.guru/design-patterns/memento){.externe} lorsque l'on a fait de [la compositions et de l'agrégation de dés](../../../apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/#memento), utilisez cette partie pour créer une liste de undo :
 
 {% faire %}
 En utilisant le design pattern memento et notre observer, créer une classe permettant de gérer les undo des dés
@@ -515,7 +515,7 @@ Ajoutez une classe permettant de gérer les redo.
 Lorsqu'on joue à un jeu de dés il y a toujours plein de règles différentes pour compter les points :
 
 {% faire %}
-Utilisez [le pattern Builder](https://refactoring.guru/design-patterns/builder) pour créer une façon de compter les points de jets de 5 dés où l'on veut être capable de reconnaître :
+Utilisez [le pattern Builder](https://refactoring.guru/design-patterns/builder){.externe} pour créer une façon de compter les points de jets de 5 dés où l'on veut être capable de reconnaître :
 
 - la somme des valeurs > 15
 - 5 valeurs identiques
@@ -528,7 +528,7 @@ Et de créer des objets qui reconnaissent l'une, l'autre ou toute combinaison de
 
 ## Pour aller plus loin
 
-- [MVC](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur) ou [MVP](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation)
-- [facade](https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception))
-- [pas singleton](https://www.emaxilde.net/posts/2025/02/10/le-singleton-l-anti-pattern-par-excellence.html) ou encore [Singleton: The Root of all Evil](https://maximilianocontieri.com/singleton-the-root-of-all-evil)
-- [Demeter law](https://en.wikipedia.org/wiki/Law_of_Demeter) voir aussi <https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324> ?
+- [MVC](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur){.externe} ou [MVP](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation){.externe}
+- [facade](https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception)){.externe}
+- [pas singleton](https://www.emaxilde.net/posts/2025/02/10/le-singleton-l-anti-pattern-par-excellence.html){.externe} ou encore [Singleton: The Root of all Evil](https://maximilianocontieri.com/singleton-the-root-of-all-evil){.externe}
+- [Demeter law](https://en.wikipedia.org/wiki/Law_of_Demeter){.externe} voir aussi <https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324>{.externe} ?

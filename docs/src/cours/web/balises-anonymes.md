@@ -38,8 +38,8 @@ Il existe deux balises anonymes :
 ## sélecteurs css { #sélecteur-css }
 
 Ces deux balises sont souvent utilisés avec des sélecteurs css de type
-[attribut `class`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/class) auquel on associe un style via le
-[sélecteur class](https://developer.mozilla.org/fr/docs/Web/CSS/Class_selectors).
+[attribut `class`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/class){.externe} auquel on associe un style via le
+[sélecteur class](https://developer.mozilla.org/fr/docs/Web/CSS/Class_selectors){.externe}.
 
 Très utile lorsque le même style sera appliqué à plusieurs balises.
 
@@ -47,8 +47,8 @@ Très utile lorsque le même style sera appliqué à plusieurs balises.
 L'attribut class n'est pas réservé aux balises anonymes, on peut l'utiliser avec toutes les balises.
 {% endinfo %}
 
-Un autre moyen d'adresser les éléments est d'utiliser l'[attribut `id`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/id) qui doit caractériser de façon **unique** une balise.
+Un autre moyen d'adresser les éléments est d'utiliser l'[attribut `id`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/id){.externe} qui doit caractériser de façon **unique** une balise.
 
 C'est utile pour la sélection d'éléments avec javascript ou la design de pages.
 
-On peut ensuite utiliser le [sélecteur css id](https://developer.mozilla.org/fr/docs/Web/CSS/ID_selectors) pour le caractériser.
+On peut ensuite utiliser le [sélecteur css id](https://developer.mozilla.org/fr/docs/Web/CSS/ID_selectors){.externe} pour le caractériser.

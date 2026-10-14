@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Un processeur possède plusieurs core qui s'exécutent de façon parallèle. Le l'[architecture ice lake (client)](https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)) possède 4 cœurs par exemple.
+Un processeur possède plusieurs core qui s'exécutent de façon parallèle. Le l'[architecture ice lake (client)](https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)){.externe} possède 4 cœurs par exemple.
 
 Pour que tout se passe au mieux, il faut garantir que les ressources partagées comme les disques et la mémoires soient parfaitement accessibles et cohérente pour chaque core.
 
@@ -36,7 +36,7 @@ Le cache L3 est partagé entre tous les cores. Il possède plusieurs accès rép
 
 La gestion des process multiples est essentiellement traitées par le noyau ou les thread eux-même.
 
-Pour éviter tout soucis de [race condition](https://en.wikipedia.org/wiki/Race_condition), il **faut** utiliser des mécanismes de protection des données partagées en écriture côté code.
+Pour éviter tout soucis de [race condition](https://en.wikipedia.org/wiki/Race_condition){.externe}, il **faut** utiliser des mécanismes de protection des données partagées en écriture côté code.
 
 Le processeur doit juste faire attention à la cohérence des données traitées par chaque core, c'est à dire essentiellement le cache. Ceci se fait habituellement :
 

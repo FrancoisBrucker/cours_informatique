@@ -17,7 +17,7 @@ Quelques exercices de base de scripting shell.
 
 ## Téléchargements de fichiers
 
-Le [projet Gutenberg](https://www.gutenberg.org/) contient de nombreux ouvrages libres de droits. Vous allez y récupérer des fichiers avec du scripting shell
+Le [projet Gutenberg](https://www.gutenberg.org/){.externe} contient de nombreux ouvrages libres de droits. Vous allez y récupérer des fichiers avec du scripting shell
 
 ### Récupération du fichier
 
@@ -26,10 +26,10 @@ Essayez de faire les différentes question de cette partie en une seule ligne de
 #### Url
 
 {% lien %}
-[Utiliser curl](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9)
+[Utiliser curl](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9){.externe}
 {% endlien %}
 
-En utilisant la commande `curl` (au pire installez là), téléchargez [le 1er tome du Comte de Monte-Cristo](https://www.gutenberg.org/ebooks/search/?query=Le+comte+de+Monte-Cristo) au format utf-8 (récupérez son adresse sur le site) et affichez le résultat dans stdout.
+En utilisant la commande `curl` (au pire installez là), téléchargez [le 1er tome du Comte de Monte-Cristo](https://www.gutenberg.org/ebooks/search/?query=Le+comte+de+Monte-Cristo){.externe} au format utf-8 (récupérez son adresse sur le site) et affichez le résultat dans stdout.
 
 #### Sauvegarde
 
@@ -55,7 +55,7 @@ en Utilisant `wc`, rendez le nombre de lignes, de mots et de caractères de ce f
 #### Marseille
 
 1. Quelle est la différence entre `grep` et `grep -E` ?
-2. En utilisant [la commande `grep -E`](https://www.redhat.com/sysadmin/find-text-files-using-grep), comptez le nombre de fois où l'on parle de Marseille ou de Marseillais dans ce Tome.
+2. En utilisant [la commande `grep -E`](https://www.redhat.com/sysadmin/find-text-files-using-grep){.externe}, comptez le nombre de fois où l'on parle de Marseille ou de Marseillais dans ce Tome.
 
 ### Stockage
 
@@ -111,6 +111,6 @@ La commande `rm` ne fait aucune sauvegarde d'un fichier avant de le supprimer. O
 
 {% lien %}
 
-Vous pourrez lire [ce tuto](https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/) pour gérer au mieux les options.
+Vous pourrez lire [ce tuto](https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/){.externe} pour gérer au mieux les options.
 
 {% endlien %}

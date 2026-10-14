@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[La file](https://fr.wikipedia.org/wiki/File_(structure_de_donn%C3%A9es))
+[La file](https://fr.wikipedia.org/wiki/File_(structure_de_donn%C3%A9es)){.externe}
 {% endlien %}
 
 La **_file_** est la structure de donnée idéale pour gérer un flux de donnée dont on doit conserver l'ordre. On appelle également cette structure **_FIFO_** pour _first in, first out_ : on rend toujours la donnée la plus anciennement stockée. La structure d'une file d'entiers sera alors :
@@ -31,7 +31,7 @@ La taille de la file doit être déterminée à la création. Comme la pile, son
 
 {% attention2 "**À retenir**" %}
 
-Une file est [un **_buffer_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_tampon) permettant de découpler l'arrivée du traitement de données temporelles.
+Une file est [un **_buffer_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_tampon){.externe} permettant de découpler l'arrivée du traitement de données temporelles.
 {% endattention2 %}
 
 ### <span id="structure"></span>Implémentation
@@ -249,7 +249,7 @@ $$
 Dans les cas réels, les données sont envoyés par _burst_ continu de $K$ entiers, puis des pauses permettant de lire la fin des données et de vider la file. Ceci permet d'avoir des tailles de buffer raisonnable même si la différence de lecture et d'écriture est grande.
 
 {% lien %}
-[Taille de la file selon le problème de transfert](https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf)
+[Taille de la file selon le problème de transfert](https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf){.externe}
 {% endlien %}
 
 ### Exemple : création des entiers binaires

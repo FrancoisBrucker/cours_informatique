@@ -38,7 +38,7 @@ Regardons où l’extension Français a été installé (ou comment l'installer)
 Les extensions vscode sont très pratiques. N'hésitez pas à en installer.
 {% endattention2 %}
 {% lien "**Documentation**" %}
-<https://code.visualstudio.com/docs/configure/extensions/extensions>
+<https://code.visualstudio.com/docs/configure/extensions/extensions>{.externe}
 {% endlien %}
 
 ## Workspace vscode
@@ -60,7 +60,7 @@ Pour ce tutoriel, vous allez :
 Vous devez obtenir quelque chose du style (pris sous mac mais ça devrait être quasi-pareil sous Linux et windows) :
 ![vsc-depart](premier-projet.png)
 
-Nous venons de créer un nouveau projet, que vscode appelle un [workspace](https://code.visualstudio.com/docs/editor/workspaces#_how-do-i-open-a-vs-code-workspace).
+Nous venons de créer un nouveau projet, que vscode appelle un [workspace](https://code.visualstudio.com/docs/editor/workspaces#_how-do-i-open-a-vs-code-workspace){.externe}.
 
 {% note %}
 Un *workspace* est un endroit pour lequel on peut avoir ses propres préférences et spécificités.
@@ -83,7 +83,7 @@ La barre d'activité de la fenêtre vscode (les icônes sur la gauche de la fen�
 - aux préférences de vscode
 
 {% info %}
-Les différentes parties de l'interface de la fenêtre vscode sont expliquées [dans la doc](https://code.visualstudio.com/docs/getstarted/userinterface).
+Les différentes parties de l'interface de la fenêtre vscode sont expliquées [dans la doc](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}.
 {% endinfo %}
 
 Vous devriez aussi avoir un onglet ouvert qui s'appelle *welcome*.
@@ -98,14 +98,14 @@ Fermez l'onglet *welcome* en cliquant sur la croix à droite de son nom.
 Créez un nouveau fichier *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"hello.txt"*.
 {% endfaire %}
 
-Vscode à compris que c'était du texte, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
+Vscode à compris que c'était du texte, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}).
 
 {% note %}
 La barre de statut est très utile, elle regroupe plein d'infos relative au fichier courant :
 
 - où on est : Ln 1; Col 1
-- l'[encodage des caractères](https://www.w3.org/International/questions/qa-what-is-encoding.fr) : [UTF-8](https://fr.wikipedia.org/wiki/UTF-8). Vous ne **devez jamais** avoir autre chose lorsque vous écrivez du texte.
-- l'[encodage des fin de ligne](https://fr.wikipedia.org/wiki/Fin_de_ligne) : LF (sous unix/mac) ou CRLF (sous windows). On ne s'en occupe pas trop, vscode gère tout ça pour nous
+- l'[encodage des caractères](https://www.w3.org/International/questions/qa-what-is-encoding.fr){.externe} : [UTF-8](https://fr.wikipedia.org/wiki/UTF-8){.externe}. Vous ne **devez jamais** avoir autre chose lorsque vous écrivez du texte.
+- l'[encodage des fin de ligne](https://fr.wikipedia.org/wiki/Fin_de_ligne){.externe} : LF (sous unix/mac) ou CRLF (sous windows). On ne s'en occupe pas trop, vscode gère tout ça pour nous
 - le langage : ici texte brut
 - d'autres trucs selon les extensions que vous avez ajouté.
 {% endnote %}
@@ -154,7 +154,7 @@ fichier non sauvé | fichier sauvé
 
 ### <span id="palette-de-commande"></span> Palette de commande
 
-Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à [la palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à [la palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette){.externe}.
 
 {% faire %}
 Invoquez la palette de commande : *menu Affichage >  Palette de commandes...*.
@@ -178,7 +178,7 @@ Taper *>spell* dans la palette de commande. Toutes les commandes commençant par
 
 ## les paramètres
 
-La [documentation de vscode sur les paramètres](https://code.visualstudio.com/docs/getstarted/settings) est très bien faite. On retiendra que l'on peut modifier les paramètres de deux façons :
+La [documentation de vscode sur les paramètres](https://code.visualstudio.com/docs/getstarted/settings){.externe} est très bien faite. On retiendra que l'on peut modifier les paramètres de deux façons :
 
 - par "Utilisateur" (*user*), ce sera les valeurs par défaut des paramètres
 - par "Espace de travail" (*workspace*), spécifiques au projet courant
@@ -188,7 +188,7 @@ Par défaut, modifiez les paramètres "Utilisateur".
 {% endnote %}
 
 {% info %}
-Le fichier stockant des paramètres utilisateurs [dépend du système d'exploitation](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations), si vous modifiez des préférences pour l'espace de travail, un dossier *".vscode"* sera créé à la racine de votre projet, et il contiendra un fichier *"settings.json"* contenant les différentes paramètres.
+Le fichier stockant des paramètres utilisateurs [dépend du système d'exploitation](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations){.externe}, si vous modifiez des préférences pour l'espace de travail, un dossier *".vscode"* sera créé à la racine de votre projet, et il contiendra un fichier *"settings.json"* contenant les différentes paramètres.
 {% endinfo %}
 
 Personnellement, s'il y a bien une chose qui m'ennuie c'est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c'est parce que j'en ai besoin je ne vois pas l'intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :

@@ -36,8 +36,8 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% lien %}
 
-- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf)
-- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK)
+- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf){.externe}
+- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK){.externe}
 
 {% endlien %}
 
@@ -45,7 +45,7 @@ Nous allons suivre l'introduction du cours de graphes :
 
 {% aller %}
 
-[Théorie des graphes : introduction](/cours/graphes/introduction){.interne} :
+[Théorie des graphes : introduction](/cours/graphes/introduction) :
 
 {% endaller %}
 
@@ -54,11 +54,11 @@ Nous allons suivre l'introduction du cours de graphes :
 
 {% aller %}
 
-1. [Graphes bases](/cours/graphes/introduction/structure){.interne} :
+1. [Graphes bases](/cours/graphes/introduction/structure) :
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
-2. Rappel : [encodage d'un graphe](/cours/graphes/introduction/encodage/){.interne}
-3. [chemins cycles et connexité](/cours/graphes/introduction/chemins-cycles-connexite/){.interne}
+2. Rappel : [encodage d'un graphe](/cours/graphes/introduction/encodage/)
+3. [chemins cycles et connexité](/cours/graphes/introduction/chemins-cycles-connexite/)
    1. chemin
    2. composante connexe
 
@@ -74,8 +74,8 @@ Un exposé du proof from the book.
 
 {% aller %}
 
-1. [Cycles eulérien](/cours/graphes/introduction/graphes-eulériens/){.interne}
-2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/mots-bruijn/){.interne}
+1. [Cycles eulérien](/cours/graphes/introduction/graphes-eulériens/)
+2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/mots-bruijn/)
 
 {% endaller %}
 
@@ -98,8 +98,8 @@ Un exposé du proof from the book.
 
 {% aller %}
 
-1. [Arbres définition](/cours/graphes/introduction/arbres/définitions/){.interne}
-2. [Compter et piocher un arbre](/cours/graphes/introduction/arbres/compter-arbres/){.interne}
+1. [Arbres définition](/cours/graphes/introduction/arbres/définitions/)
+2. [Compter et piocher un arbre](/cours/graphes/introduction/arbres/compter-arbres/)
 
 {% endaller %}
 
@@ -111,7 +111,7 @@ Deux exposés du proof from the book.
 
 {% aller %}
 
-[Arbres/arborescences couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/){.interne}
+[Arbres/arborescences couvrants](/cours/graphes/introduction/arbres/arbres-couvrants/)
 
 {% endaller %}
 
@@ -123,7 +123,7 @@ Un exposé du proof from the book.
 
 {% aller %}
 
-[Graphes hamiltoniens](/cours/graphes/introduction/graphes-hamiltoniens/){.interne}
+[Graphes hamiltoniens](/cours/graphes/introduction/graphes-hamiltoniens/)
 
 {% endaller %}
 
@@ -134,10 +134,10 @@ Un exposé du proof from the book.
 
 {% aller %}
 
-1. [Rappels de complexité](/cours/algorithmie/complexité-calculs/importance/){.interne}
-2. [Réduction de Problèmes](/cours/algorithmie/problème-réduction/){.interne}
-3. [Classe de problème NP](/cours/algorithmie/problèmes-NP/){.interne}
-4. [CE est NP-C](/cours/algorithmie/problème-CE/){.interne}
+1. [Rappels de complexité](/cours/algorithmie/complexité-calculs/importance/)
+2. [Réduction de Problèmes](/cours/algorithmie/problème-réduction/)
+3. [Classe de problème NP](/cours/algorithmie/problèmes-NP/)
+4. [CE est NP-C](/cours/algorithmie/problème-CE/)
 
 {% endaller %}
 
@@ -150,15 +150,15 @@ Deux exposés du proof from the book.
 
 {% aller %}
 
-- [Coloration de sommets](/cours/graphes/introduction/coloration-sommets/){.interne}
-- [Graphes planaires](/cours/graphes/introduction/graphes-planaires/){.interne}
+- [Coloration de sommets](/cours/graphes/introduction/coloration-sommets/)
+- [Graphes planaires](/cours/graphes/introduction/graphes-planaires/)
 
 {% endaller %}
 
 Pour aller plus loin :
 
-1. [Cliques et stables](/cours/graphes/introduction/cliques-stables){.interne}
-2. [Chemin le plus long](/cours/graphes/introduction/chemin-le-plus-long/){.interne}
+1. [Cliques et stables](/cours/graphes/introduction/cliques-stables)
+2. [Chemin le plus long](/cours/graphes/introduction/chemin-le-plus-long/)
 
 ## Annales
 
@@ -168,9 +168,9 @@ Pour aller plus loin :
 - [ET 25/26](./ET-25-26/et.pdf)
 <!-- 
 
-Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graphes.
-> <https://networkx.org/documentation/stable/reference/drawing.html>
-> <https://networkx.org/documentation/stable/auto_examples/index.html>
+Vous utiliserez la bibliothèque <<https://networkx.org>{.externe} pour dessiner des graphes.
+> <https://networkx.org/documentation/stable/reference/drawing.html>{.externe}
+> <https://networkx.org/documentation/stable/auto_examples/index.html>{.externe}
 
 
 
@@ -181,11 +181,11 @@ Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graph
 {% aller %}
 
 1. Rappels :
-   1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/){.interne}
-   2. [importance de la complexité polynomiale](/cours/algorithmie/complexité-calculs/importance/){.interne}
-2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
-3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
-4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
+   1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/)
+   2. [importance de la complexité polynomiale](/cours/algorithmie/complexité-calculs/importance/)
+2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/)
+3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/)
+4. [Le problème SAT](/cours/algorithmie/problème-SAT/)
 
 {% endaller %}
 
@@ -203,10 +203,10 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [Graphes bases](/cours/graphes/structure){.interne} :
+1. [Graphes bases](/cours/graphes/structure) :
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
-2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/){.interne}
+2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/)
 3. 
 
 {% endaller %}
@@ -215,14 +215,14 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
+1. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/)
    1. chemin
    2. composante connexe
-2. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
-3. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
+2. [Parcours eulériens](/cours/graphes/parcours-eulériens/)
+3. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/)
 4. applications :
-   - problème du [postier chinois](/cours/graphes/projet-postier-chinois/){.interne}
-   - problème du digicode aussi appelé [mots de Bruijin](/cours/graphes/projet-mots-bruijn/){.interne}
+   - problème du [postier chinois](/cours/graphes/projet-postier-chinois/)
+   - problème du digicode aussi appelé [mots de Bruijin](/cours/graphes/projet-mots-bruijn/)
 
 {% endaller %}
 
@@ -230,13 +230,13 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
-   - [définitions](/cours/graphes/arbres/définitions/){.interne}
-   - [tracés d'arbres](/cours/graphes/arbres/tracés/){.interne}
-2. [Arbres couvrants](/cours/graphes/arbres/arbres-couvrants/){.interne}
-3. [Cayley et Prüfer](/cours/graphes/arbres/cayley/){.interne}
-4. [Arbres planaires et chemins de Dyck](/cours/graphes/arbres/arbres-planaires/){.interne}
-5. [Arbres de Catalan](/cours/graphes/arbres/arbres-catalan/){.interne}
+1. [version théorie des graphes des arbres](/cours/graphes/arbres/)
+   - [définitions](/cours/graphes/arbres/définitions/)
+   - [tracés d'arbres](/cours/graphes/arbres/tracés/)
+2. [Arbres couvrants](/cours/graphes/arbres/arbres-couvrants/)
+3. [Cayley et Prüfer](/cours/graphes/arbres/cayley/)
+4. [Arbres planaires et chemins de Dyck](/cours/graphes/arbres/arbres-planaires/)
+5. [Arbres de Catalan](/cours/graphes/arbres/arbres-catalan/)
 
 {% endaller %}
 
@@ -244,7 +244,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 L'ET de l'année dernière :
 
-[ET 2024-2025](./ET/et.pdf){.interne}
+[ET 2024-2025](./ET/et.pdf)
 
 {% endfaire %}
 {% attention %}
@@ -255,7 +255,7 @@ L'ET de l'année dernière :
 
 {% aller %}
 
-[graphes bi-parti](/cours/graphes/graphe-biparti/){.interne}
+[graphes bi-parti](/cours/graphes/graphe-biparti/)
 
 {% endaller %}
 
@@ -263,25 +263,25 @@ L'ET de l'année dernière :
 
 {% aller %}
 
-1. rappel sur [les flots](/cours/graphes/flots/){.interne}
+1. rappel sur [les flots](/cours/graphes/flots/)
 2. couplage :
-    - [problème](/cours/graphes/couplages/problème/){.interne} et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/){.interne}
-    - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/){.interne} et idée de la [généralisation aux graphes quelconques](/cours/graphes/couplages/couplage-cas-général/){.interne}.
-    - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/){.interne} (si on a le temps)
-3. [colorabilité des sommets d'un graphe](/cours/graphes/colorabilité/coloration-sommets/){.interne}
-4. [graphes planaires](/cours/graphes/graphes-planaires/){.interne}
+    - [problème](/cours/graphes/couplages/problème/) et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/)
+    - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/) et idée de la [généralisation aux graphes quelconques](/cours/graphes/couplages/couplage-cas-général/).
+    - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/) (si on a le temps)
+3. [colorabilité des sommets d'un graphe](/cours/graphes/colorabilité/coloration-sommets/)
+4. [graphes planaires](/cours/graphes/graphes-planaires/)
 
 {% endaller %}
 
 ### DS
 
-[sujet du DS](./DS-25-26/ds.pdf){.interne}
+[sujet du DS](./DS-25-26/ds.pdf)
 
 ### Cryptographie
 
 {% aller %}
 
-[Sécurité](/cours/sécurité/){.interne}
+[Sécurité](/cours/sécurité/)
 
 {% endaller %}
 
@@ -318,20 +318,20 @@ L'ET de l'année dernière :
 
 #### Cours 1 : problèmes
 
-[Problème et résolutions flots](/cours/graphes/flots/){.interne}
+[Problème et résolutions flots](/cours/graphes/flots/)
 
 #### Cours 2 : applications
 
 Exercices sur les flots :
 
-1. [applications directs](/cours/graphes/flots-exercices/){.interne}
-2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
-3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
+1. [applications directs](/cours/graphes/flots-exercices/)
+2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/)
+3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/)
 
 ### Graphes biparti
 
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} bases
-2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/){.interne}
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/) bases
+2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/)
 
 ### DS
 
@@ -343,19 +343,19 @@ Temporellement placé juste après le cours 6.
 
 Cours 1 et 2
 
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} (fin) :
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/) (fin) :
    1. théorème de Graham-Pollack
    2. NP-complétude de la reconnaissance triparti
-2. [couplage](/cours/graphes/couplage/){.interne}
+2. [couplage](/cours/graphes/couplage/)
 3. Application : algorithme de Christofides
-4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/){.interne}
+4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/)
 
 ### Cryptographie
 
 Cours 1, 2 et 3
 
 {% aller %}
-[Cryptographie](/cours/sécurité/){.interne}
+[Cryptographie](/cours/sécurité/)
 {% endaller %}
 
 ### Colorabilité
@@ -373,7 +373,7 @@ Cours 1, 2 et 3
 ## Autre
 
 
-- [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
+- [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/)
 - révisoins
 
  ### C
@@ -383,19 +383,19 @@ Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
 
 N'hésitez pas à suivre et à faire également les exercices du cours suivant :
 
-<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>
+<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>{.externe}
 {% endlien %}
 
 1. Cours 1 : Système et consequences pour le code
-   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général){.interne}
+   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général)
    2. Mémoire :
-      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale){.interne}
+      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale)
       2. différence entre pile et tas
-   3. [cours de C](/cours/système-et-réseau/langage-c/){.interne} : survole tout jusqu'aux exercices. A préparer chez vous
-2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices){.interne}
+   3. [cours de C](/cours/système-et-réseau/langage-c/) : survole tout jusqu'aux exercices. A préparer chez vous
+2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices)
 
 {% faire "**DM**" %}
-Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
+Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet)
 
 A rendre pour le 18 octobre.
 {% endfaire %}
@@ -405,7 +405,7 @@ A rendre pour le 18 octobre.
 > 1. les faire préparer le cours :
 >    1. lire le cours : (pseudo-assembleur si pas préparé avant), von Neumann et C avant
 >    2. faire le premier exercice
-> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
+> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html){.externe} qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
 --> -->
 

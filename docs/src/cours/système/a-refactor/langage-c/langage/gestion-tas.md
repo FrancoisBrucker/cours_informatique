@@ -12,7 +12,7 @@ eleventyComputed:
 
 {% lien %}
 
-[gestion de la mémoire](https://www.youtube.com/watch?v=P0NWSHbNooA&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=26)
+[gestion de la mémoire](https://www.youtube.com/watch?v=P0NWSHbNooA&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=26){.externe}
 
 {% endlien %}
 
@@ -107,7 +107,7 @@ int main() {
 
 ### Fuite de mémoire
 
-Toute mémoire allouée l'est pour la durée du programme, le code suivant a une [fuite de mémoire](https://fr.wikipedia.org/wiki/Fuite_de_m%C3%A9moire), il est impossible de désallouer la mémoire après l'exécution de la fonction `alloue()`{.language-}
+Toute mémoire allouée l'est pour la durée du programme, le code suivant a une [fuite de mémoire](https://fr.wikipedia.org/wiki/Fuite_de_m%C3%A9moire){.externe}, il est impossible de désallouer la mémoire après l'exécution de la fonction `alloue()`{.language-}
 
 ```c
 #include <stdlib.h>
@@ -136,12 +136,12 @@ int main() {
 La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il est nécessaire car un programme `C` doit pouvoir tourner indéfiniment sans gaspiller de la mémoire.
 {% endattention %}
 
-> TBD : memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer> (<https://clang.llvm.org/docs/AddressSanitizer.html>) pour remplacer <https://valgrind.org/> qui ne marche pas sous ARM.
+> TBD : memory leak detection : <https://github.com/google/sanitizers/wiki/AddressSanitizer>{.externe} (<https://clang.llvm.org/docs/AddressSanitizer.html>{.externe}) pour remplacer <https://valgrind.org/>{.externe} qui ne marche pas sous ARM.
 
 ## Autres fonctions d'allocations
 
 {% lien %}
-[gestion mémoire en C](https://fr.wikipedia.org/wiki/Malloc)
+[gestion mémoire en C](https://fr.wikipedia.org/wiki/Malloc){.externe}
 {% endlien %}
 
 - `void *calloc(size_t nmemb, size_t size)`{.language-} : alloue `size * nmemb`{.language-} bytes contiguës en mémoire (`nmemb`{.language-} éléments de taille `size`{.language-}) et initialise la mémoire avec des `0`
@@ -150,12 +150,12 @@ La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il e
 ## Principe d'allocation
 
 {% lien %}
-<https://www.youtube.com/watch?v=UTii4dyhR5c&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=27>
+<https://www.youtube.com/watch?v=UTii4dyhR5c&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=27>{.externe}
 {% endlien %}
 
-> TBD en dessous de malloc, il y a brk. <https://www.youtube.com/watch?v=XV5sRaSVtXQ>
+> TBD en dessous de malloc, il y a brk. <https://www.youtube.com/watch?v=XV5sRaSVtXQ>{.externe}
 >
 > TBD on a vue dans la partie noyau que le tas n'est pas tout
-> TBD On peut se passer de malloc si on veut mais il faut gérer les allocation/dé-allocation de la mémoire (reprendre la vidéo du dessus et le faire) avec [brk](https://man7.org/linux/man-pages/man2/brk.2.html) pour augmenter le tas. Mais il faut gérer à la main les allocation/dé allocations. 
+> TBD On peut se passer de malloc si on veut mais il faut gérer les allocation/dé-allocation de la mémoire (reprendre la vidéo du dessus et le faire) avec [brk](https://man7.org/linux/man-pages/man2/brk.2.html){.externe} pour augmenter le tas. Mais il faut gérer à la main les allocation/dé allocations. 
 > 
 > TBD : en faire un exemple come dans la 2ne vidéo avec le brk qui bouge td avancé (après que les étudiants aient utilisé malloc) ?

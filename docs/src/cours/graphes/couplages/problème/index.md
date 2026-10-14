@@ -72,7 +72,7 @@ algorithme couplage_glouton(G: Graphe<Sommet>) → { {Sommet} }
 Cet algorithme est très simple et il est clair qu'il peut trouver un couplage maximum s'il prend les arêtes dans un _bon_ ordre. Mais même si l'ordre est quelconque il ne peut pas être si mauvais que ça :
 
 {% note "**Proposition**" %}
-L'algorithme précédent est à [performance garantie](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/#définition-performance-garantie){.interne} de $1/2$ (il a au pire 2 fois moins d'arêtes qu'un couplage maximum).
+L'algorithme précédent est à [performance garantie](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/#définition-performance-garantie) de $1/2$ (il a au pire 2 fois moins d'arêtes qu'un couplage maximum).
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -100,7 +100,7 @@ Cet algorithme glouton montre que si l'on cherche rapidement une solution (l'alg
 
 ## <span id="couverture"></span>Couplage et couvertures
 
-Couplage maximum et [couverture minimale](../../cliques-stables/#problème-graphe-couverture){.interne} sont deux problèmes intimement liés. En effet :
+Couplage maximum et [couverture minimale](../../cliques-stables/#problème-graphe-couverture) sont deux problèmes intimement liés. En effet :
 
 {% note "**Proposition**" %}
 Si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.
@@ -143,7 +143,7 @@ Alors :
 
 ### Trouver des binômes
 
-Dans les exercices de modélisation par des flots, [le problème du transport amoureux](../../projet-flots-modélisation/#transport-amoureux){.interne} permettait de résoudre un problème de couplage. Marier le plus de héros de roman revient à trouver un couplage maximum dans le graphe des affinités (une arête entre deux héros s'ils s'apprécient) :
+Dans les exercices de modélisation par des flots, [le problème du transport amoureux](../../projet-flots-modélisation/#transport-amoureux) permettait de résoudre un problème de couplage. Marier le plus de héros de roman revient à trouver un couplage maximum dans le graphe des affinités (une arête entre deux héros s'ils s'apprécient) :
 
 ![couplage transport amoureux 1](./couplage-transport-1.png)
 
@@ -158,7 +158,7 @@ On verra dans ce cours que c'est polynomialement facile à faire même si l'algo
 ### <span id="championnat-sport"></span>Championnat de sport
 
 {% lien %}
-[Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes)
+[Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes){.externe}
 {% endlien %}
 
 Dans un championnat de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.

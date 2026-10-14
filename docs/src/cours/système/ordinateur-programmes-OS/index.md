@@ -14,27 +14,27 @@ Nous allons présenter ici les principes d'un OS de bureau (W11, Linux Ubuntu, M
 
 ## Ordinateur
 
-Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur) est de permettre à des utilisateurs d'exécuter des applications :
+Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur){.externe} est de permettre à des utilisateurs d'exécuter des applications :
 
 {% note2 "**Définition**" %}
-Un **_ordinateur_** est composé de multiples composants physiques qui interagissent entre eux via [une carte mère](https://fr.wikipedia.org/wiki/Carte_m%C3%A8re) :
+Un **_ordinateur_** est composé de multiples composants physiques qui interagissent entre eux via [une carte mère](https://fr.wikipedia.org/wiki/Carte_m%C3%A8re){.externe} :
 
-- le [**_processeur_**](https://fr.wikipedia.org/wiki/Processeur) qui exécute des instructions sur des variables appelés **_registre_** pouvant contenir 64[bit](https://fr.wikipedia.org/wiki/Bit) d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).
+- le [**_processeur_**](https://fr.wikipedia.org/wiki/Processeur){.externe} qui exécute des instructions sur des variables appelés **_registre_** pouvant contenir 64[bit](https://fr.wikipedia.org/wiki/Bit){.externe} d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).
 - de la mémoire que l'on sépare en 2 grande catégories :
-  - [**_la mémoire vive_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive) : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1[Byte](https://fr.wikipedia.org/wiki/Byte) (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée _RAM_ (pour Random Access Memory)
-  - [**_la mémoire de masse_** ou de stockage](https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse), non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
+  - [**_la mémoire vive_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive){.externe} : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1[Byte](https://fr.wikipedia.org/wiki/Byte){.externe} (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée _RAM_ (pour Random Access Memory)
+  - [**_la mémoire de masse_** ou de stockage](https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse){.externe}, non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
     - disques durs : plus lent que la mémoire mais non volatile
     - USB : encore plus lent qu'un disque dur mais déplaçable facilement
-- [des **_périphériques_**](https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique), appelés **_device_**, qui composent tout les autres composants :
-  - [carte réseau](https://fr.wikipedia.org/wiki/Carte_r%C3%A9seau) : encore plus lent que l'USB mais accessible de partout
-  - [interfaces](https://fr.wikipedia.org/wiki/Interactions_homme-machine) :
+- [des **_périphériques_**](https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique){.externe}, appelés **_device_**, qui composent tout les autres composants :
+  - [carte réseau](https://fr.wikipedia.org/wiki/Carte_r%C3%A9seau){.externe} : encore plus lent que l'USB mais accessible de partout
+  - [interfaces](https://fr.wikipedia.org/wiki/Interactions_homme-machine){.externe} :
     - dont on peut uniquement lire des données (périphériques d'entrée) : clavier/souris
     - dont on peut uniquement envoyer des données (périphériques de sortie) : écran/imprimante
     - entrée/sortie : volant avec retour de force
 
 {% endnote2 %}
 {% info %}
-[Unités et ordres de grandeur en informatique](/cours/misc/unités-ordres-grandeur){.interne}
+[Unités et ordres de grandeur en informatique](/cours/misc/unités-ordres-grandeur)
 {% endinfo %}
 
 Le schéma (très) simplifié suivant décrit un ordinateur :
@@ -45,7 +45,7 @@ Ce schéma s'applique à une vaste gamme d'ordinateur : ordinateur fixe ou porta
 
 ## Programmes
 
-Un programme est une suite d'instructions exécutée l'une après l'autre par le processeur. Ce processus (dont nous verrons (bien) plus tard le fonctionnement détaillé nommé [_fetch-decode-execute_](https://en.wikipedia.org/wiki/Instruction_cycle#Summary_of_stages)) est contraint par le schéma de l'ordinateur :
+Un programme est une suite d'instructions exécutée l'une après l'autre par le processeur. Ce processus (dont nous verrons (bien) plus tard le fonctionnement détaillé nommé [_fetch-decode-execute_](https://en.wikipedia.org/wiki/Instruction_cycle#Summary_of_stages){.externe}) est contraint par le schéma de l'ordinateur :
 
 1. le seul endroit où peut être stocké un programme est en mémoire : chaque instruction du processeur doit être associé à un nombre binaire. 
 2. le processeur doit connaître la prochaine instruction qu'il doit exécuter : un de ses registres spécialisé nommé **_pointeur d'instruction_** (d’abréviation _IP_) contiendra toujours l'adresse en mémoire de la **prochaine** instruction à exécuter.
@@ -82,20 +82,20 @@ Il y a de la marge pour nos ordinateurs actuels...
 {% enddetails %}
 
 De plus, un programme doit être stocké en mémoire de l'ordinateur pour être exécuté : à chaque instruction est associée une suite finie de 0 et de 1 stockée en mémoire. Par exemple considérons l'instruction 
-valide pour un processeur x86 intel consistant à placer la constante 42 dans les 64bits du registre générique `RAX`. Elle s'écrit en [assembleur](https://fr.wikipedia.org/wiki/Assembleur) (le language des processeurs) ainsi  :
+valide pour un processeur x86 intel consistant à placer la constante 42 dans les 64bits du registre générique `RAX`. Elle s'écrit en [assembleur](https://fr.wikipedia.org/wiki/Assembleur){.externe} (le language des processeurs) ainsi  :
 
 ```
 MOV RAX, 42
 ```
 
-Et est codée en [langage machine](https://fr.wikipedia.org/wiki/Langage_machine) (l'encodage dans la mémoire) sur 10 bytes (on a utilisé ici la notation décimale, un byte correspondant aux entiers allant de 0 255) : $72\\;\\;184\\;\\;42\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0$ de valeurs binaires : 
+Et est codée en [langage machine](https://fr.wikipedia.org/wiki/Langage_machine){.externe} (l'encodage dans la mémoire) sur 10 bytes (on a utilisé ici la notation décimale, un byte correspondant aux entiers allant de 0 255) : $72\\;\\;184\\;\\;42\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0$ de valeurs binaires : 
 
 ```
 01001000  10111000  101010  00000000  00000000  00000000  00000000  00000000  00000000  00000000
 ```
 
 - $72\\;\\;184$ correspond au numéro de l'instruction : _"place un entier sur 64b dans le registre `RAX`"_ 
-- $42\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0$ correspond à l'entier $0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;42 = 42$ en notation [petit-boutisme](https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme) (on écrit les bytes d'un nombre de droite à gauche dans les processeurs intel)
+- $42\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0$ correspond à l'entier $0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;0\\;\\;42 = 42$ en notation [petit-boutisme](https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme){.externe} (on écrit les bytes d'un nombre de droite à gauche dans les processeurs intel)
 
 Si on reprend le cycle d'exécution de cette instruction :
 
@@ -165,12 +165,12 @@ Le but premier d'un système d'exploitation est de faire le lien entre la partie
 
 ### Drivers
 
-Lorsqu'un logiciel veut avoir accès à un périphérique (afficher une chaîne de caractère à l'écran, lire un fichier sur le disque dur, accéder au clavier, etc) il passe par l'intermédiaire du système d'exploitation via [un appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me) qui fait l'opération pour lui. Pour que ceci fonctionne il faut que le système connaisse le fonctionnement du matériel, il faut donc installer des programmes spécifiques à son matériel pour le système d'exploitation :
+Lorsqu'un logiciel veut avoir accès à un périphérique (afficher une chaîne de caractère à l'écran, lire un fichier sur le disque dur, accéder au clavier, etc) il passe par l'intermédiaire du système d'exploitation via [un appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me){.externe} qui fait l'opération pour lui. Pour que ceci fonctionne il faut que le système connaisse le fonctionnement du matériel, il faut donc installer des programmes spécifiques à son matériel pour le système d'exploitation :
 
 {% note2 "**Définition**" %}
-Chaque matériel vient avec un programme nommé [**_driver_**](https://fr.wikipedia.org/wiki/Pilote_informatique) (**_pilote_** en Français) devant être utilisé par le système d'exploitation pour y acceder.     
+Chaque matériel vient avec un programme nommé [**_driver_**](https://fr.wikipedia.org/wiki/Pilote_informatique){.externe} (**_pilote_** en Français) devant être utilisé par le système d'exploitation pour y acceder.     
 
-Un programme demande l'accès au matériel via un [appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me) unique pour une catégorie de périphérique donné.
+Un programme demande l'accès au matériel via un [appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me){.externe} unique pour une catégorie de périphérique donné.
 
 {% endnote2 %}
 
@@ -188,7 +188,7 @@ A --------------------------------> B
 A --------> Intermédiaire --------> B
 ```
 
-Ce principe universel est une instanciation de la [deuxième partie du discours de la méthode](https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie) : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément. D'un point de vue ingénierie, ceci permet en plus de clairement les responsabilités de chaque couche, une maintenance plus aisée et porte un nom c'est le [Théorème Fondamental de l’Ingénierie Logicielle](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) :
+Ce principe universel est une instanciation de la [deuxième partie du discours de la méthode](https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie){.externe} : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément. D'un point de vue ingénierie, ceci permet en plus de clairement les responsabilités de chaque couche, une maintenance plus aisée et porte un nom c'est le [Théorème Fondamental de l’Ingénierie Logicielle](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering){.externe} :
 
 
 <div id="TFIL"></div>
@@ -209,7 +209,7 @@ Si faire l'interface entre le logiciel et le matériel est le but premier d'un s
 
 Un système d'exploitation permet l'exécution de programmes :
 
-- de façon [concurrente](https://fr.wikipedia.org/wiki/Programmation_concurrente) (on peut écrire dans un gdoc tout en écoutant de la musique)
+- de façon [concurrente](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (on peut écrire dans un gdoc tout en écoutant de la musique)
 - de façon sécurisée : le gdoc ne peut accéder aux variables de l'application jouant de la musique
 
 {% endattention2 %}
@@ -225,7 +225,7 @@ Ne confondez par parallèle et concurrent :
 
 {% endinfo %}
 {% lien %}
-[Parallèle vs concurrent](https://www.youtube.com/watch?v=r2__Rw8vu1M) :
+[Parallèle vs concurrent](https://www.youtube.com/watch?v=r2__Rw8vu1M){.externe} :
 {% endlien %}
 
 Enfin, le système d'exploitation doit permettre aux programmes de communiquer entre eux via un protocole commun :
@@ -249,13 +249,13 @@ Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impr
 
 ### Noyau
 
-L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le [TFIL](./#TFIL){.interne} ces diverses responsabilités sont séparées en 3 couches :
+L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le [TFIL](./#TFIL) ces diverses responsabilités sont séparées en 3 couches :
 
 {% note2 "**Définition**" %}
 
 Un système d'exploitation est constitué de 3 couches :
 
-- **le** [noyau](https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation) qui est le cœur du système d'exploitation et est responsable de la gestion des appels systèmes et des interactions entre processus
+- **le** [noyau](https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation){.externe} qui est le cœur du système d'exploitation et est responsable de la gestion des appels systèmes et des interactions entre processus
 - **des** [interfaces logicielles](<https://en.wikipedia.org/wiki/Interface_(computing)#Software_interfaces>) qui permettent d'accéder aux devices (comme accéder à une clé usb)
 - **des** [démons](<https://fr.wikipedia.org/wiki/Daemon_(informatique)>) qui gèrent l'environnement (le fait de réagir à l'insertion d'une clé usb dans l'ordinateur par exemple)
 
@@ -269,11 +269,11 @@ Seul le noyau a accès au matériel et a un contrôle total de la machine.
 
 On distingue deux états d'une machine :
 
-- le [_kernel mode_](https://fr.wikipedia.org/wiki/Espace_noyau) : le noyau travail, il a accès à tout l'ordinateur
-- le [_user mode_](https://fr.wikipedia.org/wiki/Espace_utilisateur) : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
+- le [_kernel mode_](https://fr.wikipedia.org/wiki/Espace_noyau){.externe} : le noyau travail, il a accès à tout l'ordinateur
+- le [_user mode_](https://fr.wikipedia.org/wiki/Espace_utilisateur){.externe} : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
 {% endnote2 %}
 {% lien %}
-  [User et Kernel mode sous windows 11](https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)
+  [User et Kernel mode sous windows 11](https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode){.externe}
 {% endlien %}
 
 La machine doit tourner le plus souvent possible en _user mode_ car toute mauvaise action en kernel mode peut potentiellement être désastreux (plantage de la machine, effacement de données, etc). 
@@ -284,7 +284,7 @@ La machine doit tourner le plus souvent possible en _user mode_ car toute mauvai
 La distinction entre user et kernel mode se fait directement au démarrage de la machine :
 
 1. boot de l'ordinateur en kernel mode
-2. exécution d'un [chargeur d'amorçage (_bootloader_)](https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age)
+2. exécution d'un [chargeur d'amorçage (_bootloader_)](https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age){.externe}
 3. charge le noyau
    1. vérification du matériel
    2. vérification des sous-systèmes : réseau, ...

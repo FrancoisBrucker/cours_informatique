@@ -20,19 +20,19 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 <!-- TBD
 
-> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU> avec le xor pour expliquer diffie hellman.
+> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU>{.externe} avec le xor pour expliquer diffie hellman.
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
-> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
-> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
+> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>{.externe}
+> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU>{.externe} double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>{.externe}). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>{.externe}
 
 > Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
 > Ajourer des TPs.
 
 à lire :
 
-- <https://www.youtube.com/@yousrajaved/videos>
-- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
-- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
+- <https://www.youtube.com/@yousrajaved/videos>{.externe}
+- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>{.externe}
+- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>{.externe}
 
 Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)
 
@@ -42,7 +42,7 @@ Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que
 
 {% aller %}
 
-[Cryptographie](./cryptographie){.interne}
+[Cryptographie](./cryptographie)
 
 {% endaller %}
 
@@ -51,7 +51,7 @@ Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que
 ### key derivation
 
 {% aller %}
-[Key derivation](./key-derivation){.interne}
+[Key derivation](./key-derivation)
 {% endaller %}
 
 ### TLS
@@ -59,16 +59,16 @@ Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que
 Le protocole derrière toute communication sécurisée
 
 {% aller %}
-[Transport Layer Security](./tls){.interne}
+[Transport Layer Security](./tls)
 {% endaller %}
 
 ### https
 
 {% lien %}
-[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
+[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN){.externe}
 {% endlien %}
 
-[Certificats X.509](https://fr.wikipedia.org/wiki/X.509) :
+[Certificats X.509](https://fr.wikipedia.org/wiki/X.509){.externe} :
 
 1. certifiant (*issuer*) :
    1. nom
@@ -99,6 +99,6 @@ C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente s
 
 {% aller %}
 
-[OpenPGP](./openPGP){.interne}
+[OpenPGP](./openPGP)
 
 {% endaller %}

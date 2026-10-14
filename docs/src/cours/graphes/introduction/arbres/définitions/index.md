@@ -15,8 +15,8 @@ Explorer les propriétés et l'intérêt de l'arbre.
 {% note2 "**Définition**" %}
 Un **_arbre_** est un _graphe_ $T = (V, E)$ qui est :
 
-- [connexe](../../chemins-cycles-connexite/#définition-connexe){.interne}
-- [sans cycle](../../chemins-cycles-connexite/#définition-cycle){.interne}
+- [connexe](../../chemins-cycles-connexite/#définition-connexe)
+- [sans cycle](../../chemins-cycles-connexite/#définition-cycle)
 
 {% endnote2 %}
 
@@ -74,8 +74,8 @@ Les cinq propositions suivantes sont équivalentes :
 
 {% details "preuve", "open" %}
 - $1 \Rightarrow 2$ : par définition
-- $2 \Rightarrow 3$ : S'il existait un cycle, on pourrait en enlever une arête et $G$ resterait connexe. Or [on a vu](../../chemins-cycles-connexite/#prop-connexe-min){.interne} que tout graphe connexe possède au moins $\vert V \vert - 1$ arêtes ce qui apporte une contradiction
-- $3 \Rightarrow 4$ [On a vu](../../chemins-cycles-connexite/#prop-connexe-cycles){.interne} que tout graphe sans cycle possède au plus $\vert V \vert - 1$ arêtes
+- $2 \Rightarrow 3$ : S'il existait un cycle, on pourrait en enlever une arête et $G$ resterait connexe. Or [on a vu](../../chemins-cycles-connexite/#prop-connexe-min) que tout graphe connexe possède au moins $\vert V \vert - 1$ arêtes ce qui apporte une contradiction
+- $3 \Rightarrow 4$ [On a vu](../../chemins-cycles-connexite/#prop-connexe-cycles) que tout graphe sans cycle possède au plus $\vert V \vert - 1$ arêtes
 - $4 \Rightarrow 5$ Si le graphe n'était pas connexe, on pourrait ajouter une arête reliant deux de ses composantes connexes sans rajouter de cycle
 - $5 \Rightarrow 1$ Si le graphe possédait un cycle, on pourrait supprimer une arête de ce cycle sans déconnecter le graphe
 
@@ -90,7 +90,7 @@ Montrez que la proposition précédente permet de créer un algorithme en $\math
 {% endexercice %}
 {% details "solution" %}
 
-On commence par vérifier que le graphe a $\vert V \vert -1$ arêtes. Si c'est le cas, on utilise [l'algorithme de recherche des composantes connexes](../../chemins-cycles-connexite/#algorithme-connexe){.interne} qui est en $\mathcal{O}(\vert E \vert)$, donc en $\mathcal{O}(\vert V \vert)$ dans notre cas pour vérifier qu'il n'y a bien qu'une composante connexe.
+On commence par vérifier que le graphe a $\vert V \vert -1$ arêtes. Si c'est le cas, on utilise [l'algorithme de recherche des composantes connexes](../../chemins-cycles-connexite/#algorithme-connexe) qui est en $\mathcal{O}(\vert E \vert)$, donc en $\mathcal{O}(\vert V \vert)$ dans notre cas pour vérifier qu'il n'y a bien qu'une composante connexe.
 
 {% enddetails %}
 
@@ -267,7 +267,7 @@ Si $u_i = v_j$ alors $u_i \dots u_k = v_j \dots v_l$ car sinon, comme $u_k = v_l
 Et $t$ est bien l'unique intersection des 3 chemins.
 {% enddetails %}
 {% info %}
-Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian). Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)) en sont des exemples.
+Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian){.externe}. Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)){.externe} en sont des exemples.
 {% endinfo %}
 
 ## Encodage

@@ -16,11 +16,11 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Le but de ce tutoriel est d'installer une distribution python avec [anaconda](https://www.anaconda.com/) et l'IDE [pycharm](https://www.jetbrains.com/fr-fr/pycharm/). On suppose que vous avez déjà installé une distribution python avec anaconda.
+Le but de ce tutoriel est d'installer une distribution python avec [anaconda](https://www.anaconda.com/){.externe} et l'IDE [pycharm](https://www.jetbrains.com/fr-fr/pycharm/){.externe}. On suppose que vous avez déjà installé une distribution python avec anaconda.
 
 {% attention %}
 
-Ce tutoriel est **vieux**. Il n'est peut-être plus à jour. J'utilise [vsc](../vsc-installation-et-prise-en-main){.interne} maintenant pour mes développements python.
+Ce tutoriel est **vieux**. Il n'est peut-être plus à jour. J'utilise [vsc](../vsc-installation-et-prise-en-main) maintenant pour mes développements python.
 
 {% endattention %}
 
@@ -28,7 +28,7 @@ Ce tutoriel est **vieux**. Il n'est peut-être plus à jour. J'utilise [vsc](../
 
 ## Pycharm
 
-Commencez par [télécharger](https://www.jetbrains.com/fr-fr/pycharm/download) la version professionnels de *pycharm*. En temps qu'étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.
+Commencez par [télécharger](https://www.jetbrains.com/fr-fr/pycharm/download){.externe} la version professionnels de *pycharm*. En temps qu'étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.
 
 ### Lier anaconda et pycharm
 
@@ -73,7 +73,7 @@ Cela correspond à une configuration d'exécution. Ici *main* est le nom de la c
 
 PyCharm est un éditeur professionnel, c'est normal que la prise en main soit plus complexe qu'avec un éditeur moins performant (comme notepad++ voir Sublime Text) ou scolaire (comme *Spyder*). En revanche, bien l'utiliser permet d'une part des gains de productivité importants et d'autre part de coder plus agréablement.
 
-Le système d'aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l'éditeur : [aide Pycharm](https://www.jetbrains.com/help/pycharm/meet-pycharm.html).
+Le système d'aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l'éditeur : [aide Pycharm](https://www.jetbrains.com/help/pycharm/meet-pycharm.html){.externe}.
 
 #### Configurations d'exécution
 
@@ -90,7 +90,7 @@ Pour créer un nouvel environnement d'exécution :
 Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.
 {% endattention %}
 
-Pour plus d'informations, reportez vous à [la documentation de pycharm](https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run).
+Pour plus d'informations, reportez vous à [la documentation de pycharm](https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run){.externe}.
 
 #### L'interpréteur python d'un projet pycharm
 
@@ -146,7 +146,7 @@ Par exemple, sous unix :
 * Rechercher : *ctrl + F*
 * Exécuter la configuration d'exécution courante : *shift + F10*
 
-L'utilisation des raccourcis clavier est décrite dans  l'aide en ligne de pycharm sur les [keymap](https://www.jetbrains.com/help/pycharm/keymap.html).
+L'utilisation des raccourcis clavier est décrite dans  l'aide en ligne de pycharm sur les [keymap](https://www.jetbrains.com/help/pycharm/keymap.html){.externe}.
 Si une commande possède un raccourci clavier, il est montré à droite de son nom :
 
 ![commande rename](keymap/raccourci_clavier.png)
@@ -155,8 +155,8 @@ L'image ci-dessus montre la commande *Rename* et son raccourci clavier *shift + 
 
 Selon la plateforme, les raccourcis par défaut changent :
 
-* [Raccourcis par défaut unix](https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf)
-* [Raccourcis par défaut mac](https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf)
+* [Raccourcis par défaut unix](https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf){.externe}
+* [Raccourcis par défaut mac](https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf){.externe}
 
 Tous les raccourcis sont disponibles dans les préférences (menu *File > Settings...*) dans la partie keymap :
 

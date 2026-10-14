@@ -48,9 +48,9 @@ b'\xff\xd8\xff\xe0\x00\x14JFIF\x00\x01\x01\x01\x01,\x01,\x00\x00AMPF\xff\xe1\nbE
 
 Quand python affiche des suites d'octets, il essaie de les écrire en ASCII et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal `\xff` par exemple. De plus, il fait commencer l'affichage par un `b`  pour bien montrer que ce n'est **PAS** une chaîne de caractère.
 
-Ces premiers caractères sont significatifs des fichiers jpeg, comme l'atteste : [la liste de signatures de fichiers](https://en.wikipedia.org/wiki/List_of_file_signatures). Attention, cette liste n'est qu'une convention préférez utiliser des extensions de fichiers plutôt que de vous fier à ces signatures de façon aveugle.
+Ces premiers caractères sont significatifs des fichiers jpeg, comme l'atteste : [la liste de signatures de fichiers](https://en.wikipedia.org/wiki/List_of_file_signatures){.externe}. Attention, cette liste n'est qu'une convention préférez utiliser des extensions de fichiers plutôt que de vous fier à ces signatures de façon aveugle.
 
-Lorsque l'on manipule des fichiers binaires avec python, il est bien sur recommandé de ne pas les manipuler directement. Utilisez des bibliothèques faites pour cela. Pour les images, on recommande souvent d'utiliser [pillow](https://pillow.readthedocs.io/en/stable/) :
+Lorsque l'on manipule des fichiers binaires avec python, il est bien sur recommandé de ne pas les manipuler directement. Utilisez des bibliothèques faites pour cela. Pour les images, on recommande souvent d'utiliser [pillow](https://pillow.readthedocs.io/en/stable/){.externe} :
 
 ```python
 >>> from PIL import Image

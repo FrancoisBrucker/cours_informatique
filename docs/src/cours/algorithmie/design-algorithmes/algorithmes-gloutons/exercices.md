@@ -236,7 +236,7 @@ On a utilisé quelques astuces de programmation python :
 
 - `l[-1]`{.language-} rend le dernier élément d'une liste.
   boucle `for`{.language-}.
-- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
+- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions){.externe} qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
 - on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
 
 ```python
@@ -586,7 +586,7 @@ On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité :
 
 La encore, ce problème est :
 
-- [crucial en pratique](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge)
+- [crucial en pratique](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge){.externe}
 - NP-difficile
 
 {% exercice  "**Quelques propriétés**" %}
@@ -729,4 +729,4 @@ En utilisant la structure de l'algorithme glouton :
 {% enddetails %}
 
 Pour ne pas conclure, même si cet algorithme n'est ni optimal ni à performance garantie, il est très difficile de trouver (même s'il existe) u ordre où il ne va pas trouver de bonne solution.
- (Il est [NP-complet de trouver le plus mauvais ordonnancement de cet algorithme](https://fr.wikipedia.org/wiki/Coloration_gloutonne#Ordre_mauvais)).
+ (Il est [NP-complet de trouver le plus mauvais ordonnancement de cet algorithme](https://fr.wikipedia.org/wiki/Coloration_gloutonne#Ordre_mauvais){.externe}).

@@ -15,13 +15,13 @@ eleventyComputed:
 
 
 {% lien %}
-[breaking down how Linux file permissions work!](https://www.youtube.com/watch?v=q7kqrGC_sXE)
+[breaking down how Linux file permissions work!](https://www.youtube.com/watch?v=q7kqrGC_sXE){.externe}
 {% endlien %}
 
 > TBD user/groups et numéros : voir le fichier /etc/passwd
 
 {% lien %}
-<https://www.cekome.com/blog/permissions-utilisateurs-linux/>
+<https://www.cekome.com/blog/permissions-utilisateurs-linux/>{.externe}
 {% endlien %}
 
 Dans le système Linux, (pratiquement) tout ce que l'on manipule est un fichier. Cela comporte bien sur :
@@ -39,7 +39,7 @@ Mais également d'autre types de fichiers, parfois appelé pseudo-fichiers perme
 Le terme fichier regroupe ainsi tout objet à laquelle on peut accéder pour lire et/ou écrire des information de façon séquentielle.
 
 {% info %}
-Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs) dont le modo était :*everything is a file*.
+Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs){.externe} dont le modo était :*everything is a file*.
 {% endinfo %}
 
 L'accès à ces fichiers par un utilisateur est réglementé par des droits.
@@ -56,8 +56,8 @@ Les utilisateurs du système sont listés dans le fichier `/etc/passwd` (seuls l
 {% endnote %}
 {% info %}
 
-- [lister les utilisateurs](https://linuxize.com/post/how-to-list-users-in-linux/)
-- [lister les groupes](https://linuxize.com/post/how-to-list-groups-in-linux/)
+- [lister les utilisateurs](https://linuxize.com/post/how-to-list-users-in-linux/){.externe}
+- [lister les groupes](https://linuxize.com/post/how-to-list-groups-in-linux/){.externe}
 
 Attention, ce n'est pas pareil sous macos. Voir `man DirectoryService`
 {% endinfo %}
@@ -66,7 +66,7 @@ Chaque utilisateur et groupe est identifié par un numéro. Son UID. Seul `root`
 
 ### Voir la propriété
 
-On utilise l'option `-l` de [la commande `ls`](https://man7.org/linux/man-pages/man1/ls.1.html). Par exemple :
+On utilise l'option `-l` de [la commande `ls`](https://man7.org/linux/man-pages/man1/ls.1.html){.externe}. Par exemple :
 
 ```shell
 $ ls -l
@@ -93,13 +93,13 @@ Sous Linux, il existe souvent un groupe du même nom que l'utilisateur qui est l
 
 Si l'on est l'actuel propriétaire du fichier on peut en modifier :
 
-- son propriétaire avec [la commande `chown`](https://man7.org/linux/man-pages/man1/chown.1p.html)
-- son groupe avec [la commande `chgrp`](https://man7.org/linux/man-pages/man1/chgrp.1.html)
+- son propriétaire avec [la commande `chown`](https://man7.org/linux/man-pages/man1/chown.1p.html){.externe}
+- son groupe avec [la commande `chgrp`](https://man7.org/linux/man-pages/man1/chgrp.1.html){.externe}
 
 ## Droits
 
 {% lien %}
-<https://www.cekome.com/blog/permissions-utilisateurs-linux/>
+<https://www.cekome.com/blog/permissions-utilisateurs-linux/>{.externe}
 {% endlien %}
 
 L'accès à un fichier peut être de 3 sortes :
@@ -116,7 +116,7 @@ Ces droits peuvent être différents pour :
 
 ### Voir les droits
 
-On utilise l'option `-l` de [la commande `ls`](https://man7.org/linux/man-pages/man1/ls.1.html). Par exemple :
+On utilise l'option `-l` de [la commande `ls`](https://man7.org/linux/man-pages/man1/ls.1.html){.externe}. Par exemple :
 
 <!-- TBD 
 
@@ -168,7 +168,7 @@ chmod
 
 ### Droits par défaut
 
-> TBD droit par défaut [umask](https://en.wikipedia.org/wiki/Umask)
+> TBD droit par défaut [umask](https://en.wikipedia.org/wiki/Umask){.externe}
 
 ## Types de fichiers
 
@@ -186,7 +186,7 @@ donner un exemple et voir son type avec ls -l
 
 ## Droits spéciaux
 
-- [sticky bit](https://en.wikipedia.org/wiki/Sticky_bit) de `/tmp`
+- [sticky bit](https://en.wikipedia.org/wiki/Sticky_bit){.externe} de `/tmp`
 - setuid
 - setgid
 

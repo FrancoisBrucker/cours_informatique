@@ -15,7 +15,7 @@ Un exercice de modélisation complexe.
 
 <!-- end résumé -->
 
-On va optimiser l'arrivée des [taxis à la bataille de la marne de 1914](https://fr.wikipedia.org/wiki/Taxis_de_la_Marne).
+On va optimiser l'arrivée des [taxis à la bataille de la marne de 1914](https://fr.wikipedia.org/wiki/Taxis_de_la_Marne){.externe}.
 
 On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes), décrites dans un graphe non orienté $G$.
 
@@ -62,7 +62,7 @@ Le sommets spéciaux sont :
 On reprend le graphe des villes de plus de 10000 habitants en France métropolitaine, déjà utilisé lors du [projet : chemin de poids minimum](../projet-chemins-min/).
 
 {% faire %}
-Reprenez la [partie Données](../projet-chemins-min#données){.interne} du [projet : recherche de chemins de poids minimum](../projet-chemins-min/){.interne} et stockez :
+Reprenez la [partie Données](../projet-chemins-min#données) du [projet : recherche de chemins de poids minimum](../projet-chemins-min/) et stockez :
 
 * les données du fichier json dans la variable `villes`{.language-}
 * le graphe produit à partir des données brutes dans la variable `france`{.language-}
@@ -113,7 +113,7 @@ Créez une liste `distances_villes`{.language-} contenant tous les couples **uni
 {% faire %}
 Triez la liste `distances_villes`{.language-} par distance.
 
-Vous pourrez utiliser pour cela la fonction `d_GPS(uv)`{.language-} que vous avez créée et l'[attribut `key`{.language-}](https://docs.python.org/fr/3/howto/sorting.html#key-functions) de la méthode de liste `sort`{.language-}
+Vous pourrez utiliser pour cela la fonction `d_GPS(uv)`{.language-} que vous avez créée et l'[attribut `key`{.language-}](https://docs.python.org/fr/3/howto/sorting.html#key-functions){.externe} de la méthode de liste `sort`{.language-}
 {% endfaire %}
 
 Enfin :
@@ -140,7 +140,7 @@ Créez, à partir des données, un graphe $G$ et une capacité $c$ associée rep
 ## Résolution
 
 {% exercice %}
-Utilisez l'algorithme de [Ford et Fulkerson](../flots/#ford-fulkerson){.interne} pour résoudre le système. Quel pourcentage de Taxis a atteint la marne ? Faites plusieurs essais en fonction des villes de départ et du temps total $K$ alloué.
+Utilisez l'algorithme de [Ford et Fulkerson](../flots/#ford-fulkerson) pour résoudre le système. Quel pourcentage de Taxis a atteint la marne ? Faites plusieurs essais en fonction des villes de départ et du temps total $K$ alloué.
 {% endexercice %}
 
 ### Nombre de Taxis à un instant donné
@@ -231,7 +231,7 @@ ax.plot(
 ```
 
 {% faire %}
-En utilisant [les cercles en matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html) :
+En utilisant [les cercles en matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html){.externe} :
 
 ```python
 circle = plt.Circle((x, y), r)
@@ -242,7 +242,7 @@ Ajoutez à un instant donné les taxis. Sur le graphique.
 {% endfaire %}
 
 {% faire %}
-<https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation>
+<https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation>{.externe}
 
 Vous donne une idée d'animation de vos graphiques.
 

@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Théorème de Kuratowski](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner)
+[Théorème de Kuratowski](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner){.externe}
 {% endlien %}
 
 ## Preuve d'un théorème de Jordan simplifié
@@ -19,8 +19,8 @@ eleventyComputed:
 > TBD suffisant pour les graphes où les sommets sont dénombrables.
 > TBD si courbe alors polygone alors droites
 > TBD Diesel théorème 4.1.1 (p83 et suivantes)
-> TBD <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
-> TBD - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
+> TBD <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>{.externe}
+> TBD - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>{.externe}
 
 ## Mineurs
 
@@ -35,7 +35,7 @@ Soit $G$ un graphe. Un graphe $H$ est un mineur de $G$ s'il peut être obtenu pa
 - contraction d'un arête: on fusionne l'arête en un nouveau sommet $z$ dont les voisins sont les voisins des anciens sommets formant l'arête
 {% endnote2 %}
 {% lien %}
-[mineurs de graphes](https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes))
+[mineurs de graphes](https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)){.externe}
 {% endlien %}
 
 En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
@@ -44,11 +44,11 @@ En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
 
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>{.externe}
 {% endlien %}
 
 
-La notion de mineur rend  compte de l'intrication locale de chemins entre sommets. Ils ont donné lieu à un des plus joli théorème de théorie des graphes (et pourtant il y en a !), [le théorème de Roberston-Seymour](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour). Ce théorème indique en effet que : 
+La notion de mineur rend  compte de l'intrication locale de chemins entre sommets. Ils ont donné lieu à un des plus joli théorème de théorie des graphes (et pourtant il y en a !), [le théorème de Roberston-Seymour](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour){.externe}. Ce théorème indique en effet que : 
 
 - toute famille close par mineur peut être caractérisée par un nombre fini de mineurs exclu,
 - Quelque soit le graphe $M$, il existe un algorithme en $\mathcal{O}(n^2)$ pour savoir si un graphe $G$ admet $M$ comme mineur.
@@ -84,7 +84,7 @@ Clair puisque l'on a montré que :
 Il nous reste à faire la réciproque. Initialement faire par Kuratowski en 1930 dans le cadre des subdivisions de graphes, il a été ré-ecrit par Wagner en 1937 avec les mineurs. 
 
 {% lien %}
-Voir [la page Wikipedia](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner)
+Voir [la page Wikipedia](https://fr.wikipedia.org/wiki/Graphe_planaire#Caract%C3%A9risation_de_Kuratowski_et_de_Wagner){.externe}
 {% endlien %}
 
 La caractérisation des graphes planaire est tres liée à la notion de 2-connexité. On va donc commencer par définir ce que c'est et démontrer des propriétés qui vont se révéler utiles en général et pour notre caractérisation en particulier.
@@ -380,7 +380,7 @@ On a commencé par le cycle noir, puis on a ajouté itérativement les chemins :
 ## Preuve de la réciproque
 
 {% lien %}
-<https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
+<https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>{.externe}
 {% endlien %}
 
 Commençons par nous restreindre aux graphes 2-connexes :

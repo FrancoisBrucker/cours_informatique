@@ -21,19 +21,19 @@ C'est ce que nous voir maintenant en voyant les principes qui sous-tendent ces m
 ## Fichiers et dossiers
 
 {% aller %}
-[Fichiers et Dossiers](fichiers-dossiers){.interne}
+[Fichiers et Dossiers](fichiers-dossiers)
 {% endaller %}
 
 ## Utilisateurs et droits
 
 {% aller %}
-[Utilisateurs et droits d'utilisation](./utilisateurs-droits){.interne}
+[Utilisateurs et droits d'utilisation](./utilisateurs-droits)
 {% endaller %}
 
 ## Organisation disque dur système
 
 {% aller %}
-[Organisation d'un disque système](./disque-système){.interne}
+[Organisation d'un disque système](./disque-système)
 {% endaller %}
 
 ## Applications
@@ -45,13 +45,13 @@ D'un point de vue système, il existe des applications utiles à connaître pour
 Le terminal permet d'exécuter rapidement des commandes. Il est fondamental que vous sachiez vous en servir
 
 {% aller %}
-[Terminal](terminal){.interne}
+[Terminal](terminal)
 {% endaller %}
 
 ### Gestionnaire de paquet
 
 {% aller %}
-[Gestionnaire de paquets](gestionnaire-paquets){.interne}
+[Gestionnaire de paquets](gestionnaire-paquets)
 {% endaller %}
 
 ### Applications utiles
@@ -60,7 +60,7 @@ Quelques applications sont indispensables pour utiliser son ordinateur pour le d
 
 #### Un navigateur
 
-Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](<https://fr.wikipedia.org/wiki/Safari_(navigateur_web)>), [chrome](https://www.google.com/chrome/) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
+Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge){.externe}, [safari](<https://fr.wikipedia.org/wiki/Safari_(navigateur_web)>), [chrome](https://www.google.com/chrome/){.externe} ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox){.externe}).
 
 #### Un outil de compression/décompression de fichiers
 
@@ -73,12 +73,12 @@ On a souvent besoin de lire ou d'éditer un fichier texte rapidement, que ce soi
 Nous en donnons 3, un par système d'exploitation qui ont l'avantage d'être directement utilisable et qui possèdent une interface graphique.
 
 {% details "sous Windows 11" %}
-Je conseille d'installer [notepad++](https://notepad-plus-plus.org/)
+Je conseille d'installer [notepad++](https://notepad-plus-plus.org/){.externe}
 
 {% enddetails %}
 {% details "sous Macos" %}
 
-J'aime utiliser l'éditeur [coteditor](https://coteditor.com/) pour les petites manipulations de fichiers.
+J'aime utiliser l'éditeur [coteditor](https://coteditor.com/){.externe} pour les petites manipulations de fichiers.
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
@@ -88,13 +88,13 @@ Par défaut, Ubuntu installe l'application `Éditeur de texte` qui permet d'édi
 
 #### Un IDE générique
 
-Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) permet de créer rapidement des projets. Il en existe de nombreux, allant du très générique au très particulier.
+Un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement){.externe} permet de créer rapidement des projets. Il en existe de nombreux, allant du très générique au très particulier.
 
-Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/).
+Actuellement, l'éditeur générique en vogue est [vscode](https://code.visualstudio.com/){.externe}.
 
 ##  Bonus : Installation d'un nouveau système
 
 {% aller %}
-[Nouvelle installation d'un système](système-installation){.interne}
+[Nouvelle installation d'un système](système-installation)
 {% endaller %}
 

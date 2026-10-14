@@ -9,9 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans [l'algorithme de Ford et Fulkerson](../../flots/#ford-fulkerson){.interne}, par un algorithme de marquage examen qui va faire grossir des chemins alternants.
+Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans [l'algorithme de Ford et Fulkerson](../../flots/#ford-fulkerson), par un algorithme de marquage examen qui va faire grossir des chemins alternants.
 
-On verra qu'il est optimal pour [les graphes bi-partis](../../graphe-biparti/){.interne}.
+On verra qu'il est optimal pour [les graphes bi-partis](../../graphe-biparti/).
 
 ## Trouver un chemin augmentant
 
@@ -87,7 +87,7 @@ Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(e(G))$ opérati
 Cette complexité est identique à celle de la méthode utilisant les flot et l'algorithme de Ford et Fulkerson puisque la coupe contenant uniquement la source est de valuation bornée par $v(G)$ puisque toutes les capacités valent 1.
 {% endinfo %}
 
-Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm) qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
+Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm){.externe} qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
 
 ## Propriétés des couplage parfait et maximum dans un graphe biparti
 
@@ -199,7 +199,7 @@ Si l'on distribue un jeu de 52 cartes en 13 tas de 4 cartes, on peut toujours ch
 
 ### Couplage et couvertures
 
-La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver [la proposition générale](../problème/#couverture){.interne}, mais on peut faire bien mieux :
+La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver [la proposition générale](../problème/#couverture), mais on peut faire bien mieux :
 
 <div id="König-Egerváry"></div>
 
@@ -214,7 +214,7 @@ Soit $M$ un couplage maximum de $A$.
 
 Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.
 
-Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un [chemin alternant](../chemins-augmentant/#définition-chemin-alternant){.interne} (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :
+Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un [chemin alternant](../chemins-augmentant/#définition-chemin-alternant) (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :
 
 - $A' = A \cap C$
 - $B' = B \cap C$

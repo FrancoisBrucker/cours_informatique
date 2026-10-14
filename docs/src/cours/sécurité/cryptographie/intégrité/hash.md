@@ -16,8 +16,8 @@ eleventyComputed:
 
 {% lien %}
 
-- [Hash cryptographique](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)
-- [Hash propriétés et autres](https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf)
+- [Hash cryptographique](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique){.externe}
+- [Hash propriétés et autres](https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf){.externe}
 
 {% endlien %}
 
@@ -61,7 +61,7 @@ Rien n'empêche un attaquant de modifier et $m$ et son hash. Cette technique est
 ### Stockage sécurisé
 
 {% lien %}
-[stocker ses mots de passes](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/)
+[stocker ses mots de passes](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/){.externe}
 {% endlien %}
 
 Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un _sel_ aléatoire. Voyons pourquoi.
@@ -90,10 +90,10 @@ Deux types d'attaques génériques fonctionne bien pour des mot de passes non s�
 
 ##### Brute force
 
-L'attaque [Brute force si faible nombre de possibilités](https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque) fonctionne assez bien car :
+L'attaque [Brute force si faible nombre de possibilités](https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque){.externe} fonctionne assez bien car :
 
 - si uniquement des caractères minuscules $2^{128} = 26^x$ donne $x = 28$ ce qui est trop long
-- si uniquement des caractères minuscules et majuscule $2^{128} = 26^x$ donne $x = 23$ ce qui est trop long aussi, mais ok pour des [passphrase](https://fr.wikipedia.org/wiki/Phrase_secr%C3%A8te).
+- si uniquement des caractères minuscules et majuscule $2^{128} = 26^x$ donne $x = 23$ ce qui est trop long aussi, mais ok pour des [passphrase](https://fr.wikipedia.org/wiki/Phrase_secr%C3%A8te){.externe}.
 - si tout le clavier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.
 - si base 64, il faut $128/7 \simeq 18$ pour obtenir pour obtenir jun mot de passe sécurisé brute force.
 
@@ -110,7 +110,7 @@ Enfin, stocker les hash et pas les mots de passes en clair hash n'aide pas vraim
 - on peut utiliser des tables de hash déjà faites
 - si la base de mots de passes est grande on va retrouver plusieurs fois le même hash.
 
-Pour ne garder aucune trace statistique dans le fichier stocké [on utilise un sel](https://fr.wikipedia.org/wiki/Salage_(cryptographie)). On obtient le couple signature, vérification :
+Pour ne garder aucune trace statistique dans le fichier stocké [on utilise un sel](https://fr.wikipedia.org/wiki/Salage_(cryptographie)){.externe}. On obtient le couple signature, vérification :
 
 - $S(m) = SALT || H(SALT || m)$
 - $V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel
@@ -118,7 +118,7 @@ Pour ne garder aucune trace statistique dans le fichier stocké [on utilise un s
 Notez bien que le sel doit être différent pour chaque hash, sans quoi deux mots de passe identiques vont avoir le même hash et on est ramené au cas précédent : une attaque par dictionnaire va très bien fonctionner. Que le sel soit en clair n'est pas problématique, il est juste là pour rendre le hash unique.
 
 {% lien %}
-[argon2](https://www.youtube.com/watch?v=Sc3aHMCc4h0)
+[argon2](https://www.youtube.com/watch?v=Sc3aHMCc4h0){.externe}
 {% endlien %}
 
 ### Clés
@@ -126,7 +126,7 @@ Notez bien que le sel doit être différent pour chaque hash, sans quoi deux mot
 La non collision permet de rechercher les hash plutôt que les valeurs exactes dans une liste stockant toutes les données. C'est la technique utilisée par Git pour gérer les ajouts, suppressions et modifications de code dans un projet.
 
 {% info %}
-Git utilise par défaut la fonction de hash [SHA-1](https://fr.wikipedia.org/wiki/SHA-1).
+Git utilise par défaut la fonction de hash [SHA-1](https://fr.wikipedia.org/wiki/SHA-1){.externe}.
 {% endinfo %}
 
 ## Construction
@@ -134,7 +134,7 @@ Git utilise par défaut la fonction de hash [SHA-1](https://fr.wikipedia.org/wik
 Il existe de nombreux hash. Testez les différences pour voir :
 
 {% lien %}
-[exemples de hash](https://emn178.github.io/online-tools/sha1.html)
+[exemples de hash](https://emn178.github.io/online-tools/sha1.html){.externe}
 {% endlien %}
 
 Nous allons voir deux constructions. La première utilisée actuellement, la seconde qui vient.
@@ -144,15 +144,15 @@ Nous allons voir deux constructions. La première utilisée actuellement, la sec
 > TBD comme pour le chiffrement. Un bloc
 > puis on lie de façon sécurisée.
 
-Il faut pouvoir associer un hash a un bloc de taille fixe et lier chaque blocs pour faire un hash prenant en compte tout le message. On utilise pour cela un [une permutation pseudo-aléatoire sécurisée](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRP){.interne}, tout comme pour le chiffrement.
+Il faut pouvoir associer un hash a un bloc de taille fixe et lier chaque blocs pour faire un hash prenant en compte tout le message. On utilise pour cela un [une permutation pseudo-aléatoire sécurisée](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRP), tout comme pour le chiffrement.
 
 #### Hash de un bloc de donnée
 
 {% lien %}
-[Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer)
+[Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer){.externe}
 {% endlien %}
 
-On utilise la construction Davies–Meyer qui permet de transformer [une permutation pseudo-aléatoire sécurisée](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRP){.interne} $P : \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
+On utilise la construction Davies–Meyer qui permet de transformer [une permutation pseudo-aléatoire sécurisée](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRP) $P : \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
 
 ```
        iv   
@@ -199,7 +199,7 @@ Réciproquement, si l'on connaît $P(m, \text{iv}) \oplus \text{iv}$, trouver $m
 
 La preuve nécessite un PRP, mais comme on est pas sur que cela existe, les algorithmes mettant en oeuvre ce principe doivent être conçus pour très bien mélanger les bits tout en étant non prédictif (il faut le faire de façon "_compliquée_").
 
-Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées [shacal-1 et shacal-2](https://fr.wikipedia.org/wiki/Shacal). Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.
+Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées [shacal-1 et shacal-2](https://fr.wikipedia.org/wiki/Shacal){.externe}. Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.
 
 Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut **pas** échanger clé et message.
 
@@ -207,11 +207,11 @@ Pour cette construction à bloc unique, on peut très bien échanger clé et mes
 
 {% lien %}
 
-[Merkel Damgard preuve](https://www.youtube.com/watch?v=s7arHByjSOw)
+[Merkel Damgard preuve](https://www.youtube.com/watch?v=s7arHByjSOw){.externe}
 
 {% endlien %}
 
-On utilise la construction de [Construction de Merkel Damgard](https://fr.wikipedia.org/wiki/Construction_de_Merkle-Damg%C3%A5rd) pour étendre la portée du hash à taille fixe à des messages dont la taille est un multiple de $t$. POur cela, on commence par ajouter [un padding](https://fr.wikipedia.org/wiki/Remplissage_(cryptographie)) à la fin qui consiste en :
+On utilise la construction de [Construction de Merkel Damgard](https://fr.wikipedia.org/wiki/Construction_de_Merkle-Damg%C3%A5rd){.externe} pour étendre la portée du hash à taille fixe à des messages dont la taille est un multiple de $t$. POur cela, on commence par ajouter [un padding](https://fr.wikipedia.org/wiki/Remplissage_(cryptographie)){.externe} à la fin qui consiste en :
 
 <div>
 $$
@@ -278,10 +278,10 @@ On conclut la preuve en remarquant que si $H_{m-1}$ est différent de ${H'}_{m-1
 Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées sur ce principe.
 
 {% lien %}
-[L'algorithme sha2](https://www.youtube.com/watch?v=orIgy2MjqrA)
+[L'algorithme sha2](https://www.youtube.com/watch?v=orIgy2MjqrA){.externe}
 {% endlien %}
 
-> TBD <https://en.wikipedia.org/wiki/BLAKE_(hash_function)> et blake2 sont basés sur chacha20.
+> TBD <https://en.wikipedia.org/wiki/BLAKE_(hash_function)>{.externe} et blake2 sont basés sur chacha20.
 
 ```shell
 ❯ echo "coucou" | openssl dgst -blake2b512 -c
@@ -293,28 +293,28 @@ En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous a
 ### Construction en éponge
 
 {% info %}
-Les [sponge function](https://en.wikipedia.org/wiki/Sponge_function)
+Les [sponge function](https://en.wikipedia.org/wiki/Sponge_function){.externe}
 {% endinfo %}
 
 > TBD :
 >
-> - [fonctionnement de SHA-3](https://www.youtube.com/watch?v=fzlflyw7X2I)
-> - [sha 3 sponge function](https://www.youtube.com/watch?v=bTOJ9An9wpE)
-> - [sponge function thm](https://keccak.team/files/SpongeFunctions.pdf)
-> - <https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf>
+> - [fonctionnement de SHA-3](https://www.youtube.com/watch?v=fzlflyw7X2I){.externe}
+> - [sha 3 sponge function](https://www.youtube.com/watch?v=bTOJ9An9wpE){.externe}
+> - [sponge function thm](https://keccak.team/files/SpongeFunctions.pdf){.externe}
+> - <https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf>{.externe}
 
 ### Construction en arbre binaire
 
-> TBD blake3 <https://www.youtube.com/watch?v=nk4nefmguZk>
+> TBD blake3 <https://www.youtube.com/watch?v=nk4nefmguZk>{.externe}
 > TBD pour le parallélisme
-> TBD doc <https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html>
+> TBD doc <https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html>{.externe}
 
 ## Attaque
 
 {% lien %}
 
-- [Attaque des fonctions de hash](https://people.cs.uchicago.edu/~davidcash/284-autumn-21/12-hash.pdf)
-- [sha 1 collision](https://www.youtube.com/watch?v=Zl1TZJGfvPo)
+- [Attaque des fonctions de hash](https://people.cs.uchicago.edu/~davidcash/284-autumn-21/12-hash.pdf){.externe}
+- [sha 1 collision](https://www.youtube.com/watch?v=Zl1TZJGfvPo){.externe}
 
 {% endlien %}
 
@@ -322,7 +322,7 @@ Les [sponge function](https://en.wikipedia.org/wiki/Sponge_function)
 
 L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.
 
-Grace au [paradoxe des anniversaires](/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires){.interne}, on sait qu'il suffit de $2^{n/2}$ mots de $\\{0, 1\\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.
+Grace au [paradoxe des anniversaires](/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires), on sait qu'il suffit de $2^{n/2}$ mots de $\\{0, 1\\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.
 
 Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :
 
@@ -337,7 +337,7 @@ Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(
 {% endnote %}
 {% details "preuve", "open" %}
 
-C'est l'[algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue).
+C'est l'[algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue){.externe}.
 
 L'ensemble d'arrivée de $H$ étant fini, il va exister, pour tout $x$, un entier $p$ tels que $H^p(x) = H^q(x)$ avec $q > p$.
 
@@ -370,13 +370,13 @@ Il faut toujours modifier un peu un document que l'on signe, histoire que l'atta
 
 ### Brute force par Rainbow tables
 
-On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <https://en.wikipedia.org/wiki/Rainbow_table> (voir aussi <https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5>) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.
+On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <https://en.wikipedia.org/wiki/Rainbow_table>{.externe} (voir aussi <https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5>{.externe}) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.
 
 {% note "**À retenir**" %}
 Le compromis temps/mémoire est une technique importante en cryptanalyse mais aussi dans tout problème d'optimisation.
 {% endnote %}
 
-> [Cryptanalytic Time-Memory tradeof](https://www-ee.stanford.edu/~hellman/publications/36.pdf) et amélioration en rainbow table : [Making a Faster Cryptanalytic Time-Memory trdeof](https://infoscience.epfl.ch/server/api/core/bitstreams/37cd827e-c3a6-4ba3-b68f-8ab7669b4449/content)
+> [Cryptanalytic Time-Memory tradeof](https://www-ee.stanford.edu/~hellman/publications/36.pdf){.externe} et amélioration en rainbow table : [Making a Faster Cryptanalytic Time-Memory trdeof](https://infoscience.epfl.ch/server/api/core/bitstreams/37cd827e-c3a6-4ba3-b68f-8ab7669b4449/content){.externe}
 > TBD expliquer et faire exemple.
 >
 > TBD on est assuré que les chaines sont différentes. On ne va pas retomber sur des choses déjà vues.
@@ -412,7 +412,7 @@ On peut continuer le hash sans connaître le message initial.
 
 {% lien %}
 
-[differential analysis](https://en.wikipedia.org/wiki/Differential_cryptanalysis)
+[differential analysis](https://en.wikipedia.org/wiki/Differential_cryptanalysis){.externe}
 
 {% endlien %}
 
@@ -421,8 +421,8 @@ On peut continuer le hash sans connaître le message initial.
 <!-- TBD
 
 > :
-> - <https://antoine.delignat-lavaud.fr/doc/slides_md5.pdf>
-> <https://www.youtube.com/watch?v=GQX8W8zKf2Q>
-> - <https://crypto.stackexchange.com/questions/98092/what-is-a-differential-attack-on-a-hash-function-how-would-one-attack-a-sha-alg>
+> - <https://antoine.delignat-lavaud.fr/doc/slides_md5.pdf>{.externe}
+> <https://www.youtube.com/watch?v=GQX8W8zKf2Q>{.externe}
+> - <https://crypto.stackexchange.com/questions/98092/what-is-a-differential-attack-on-a-hash-function-how-would-one-attack-a-sha-alg>{.externe}
 
 -->

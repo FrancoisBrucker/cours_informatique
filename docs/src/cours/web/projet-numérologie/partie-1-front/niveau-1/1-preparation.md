@@ -24,12 +24,12 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 
 D'après les prérequis du projet, vous avez :
 
-* [vscode](https://code.visualstudio.com/)
-* [node](https://nodejs.org/en/) que vous pouvez exécuter dans [un terminal](/cours/coder-et-développer/ordinateur-développement/terminal/){.interne}
+* [vscode](https://code.visualstudio.com/){.externe}
+* [node](https://nodejs.org/en/){.externe} que vous pouvez exécuter dans [un terminal](/cours/coder-et-développer/ordinateur-développement/terminal/)
 
 ## Projet
 
-Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}. On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
+Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel](/cours/coder-et-développer/éditeur-vscode/prise-en-main/). On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
 
 Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
 
@@ -42,7 +42,7 @@ Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les n
 
 On va créer notre premier fichier javascript : *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom `mes_tests.js`{.fichier}.
 
-Vscode à compris que c'était du javascript, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)). Commençons notre voyage dans le monde merveilleux de la programmation web serveur, en écrivant notre premier programme javascript dans le fichier `numérologie/"mes_tests.js`{.fichier} :
+Vscode à compris que c'était du javascript, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}). Commençons notre voyage dans le monde merveilleux de la programmation web serveur, en écrivant notre premier programme javascript dans le fichier `numérologie/"mes_tests.js`{.fichier} :
 
 ```javascript
 let nom = "monde"
@@ -56,7 +56,7 @@ Puis sauvez le fichier (*menu Fichier > Enregistrer*).
 
 ### Exécution du code
 
-Tapez ">terminal" dans [la palette de commande](/cours/coder-et-développer/éditeur-vscode/prise-en-main/#palette-de-commande){.interne} (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
+Tapez ">terminal" dans [la palette de commande](/cours/coder-et-développer/éditeur-vscode/prise-en-main/#palette-de-commande) (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
 
 Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique non ?
 
@@ -64,4 +64,4 @@ Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique
 Vous pouvez maintenant exécuter votre fichier en tapant dans ce nouveau terminal : `node mes_tests.js`.
 {% endfaire %}
 
-N'oubliez pas non plus [le terminal de vscode](/cours/coder-et-développer/éditeur-vscode/terminal/){.interne}, ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment.
+N'oubliez pas non plus [le terminal de vscode](/cours/coder-et-développer/éditeur-vscode/terminal/), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment.

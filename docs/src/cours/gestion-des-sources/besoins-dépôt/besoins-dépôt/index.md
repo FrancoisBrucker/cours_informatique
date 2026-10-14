@@ -35,7 +35,7 @@ Le nom du fichier de sauvegarde étant unique, il ne permet pas de stocker plus 
 La version `1.0` à son propre tag. Le tag `main` correspond à la version courante (par exemple une correction de bug de la `1.0`) et le tag `dev` àla version de développement avec des ajouts de fonctionnalités par rapport à la version courante.
 
 {% lien %}
-Numérotation standard des versions appelée [Gestion sémantique de version (_semver_)](https://semver.org/lang/fr/).
+Numérotation standard des versions appelée [Gestion sémantique de version (_semver_)](https://semver.org/lang/fr/){.externe}.
 {% endlien %}
 
 ## Commits

@@ -15,15 +15,15 @@ Nous allons dans cette partie redéfinir la notion de problème algorithmique vi
 
 {% lien %}
 
-- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>
-- <https://www.youtube.com/watch?v=s9l6QTX9n0Q&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt>
-- <https://www.youtube.com/watch?v=KydXVE9Su5g&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH>
+- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>{.externe}
+- <https://www.youtube.com/watch?v=s9l6QTX9n0Q&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt>{.externe}
+- <https://www.youtube.com/watch?v=KydXVE9Su5g&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH>{.externe}
 
 {% endlien %}
 
 ## Décision et algorithmes
 
-Rappelons qu'un algorithme est [dans toute sa généralité](../bases-théoriques/calculabilité/#algorithme-fonction){.interne} une fonction qui prend et rend un mot de $\\{0, 1\\}$. On peut lui associer de façon équivalente la fonction $v_f : \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$ ci-dessous :
+Rappelons qu'un algorithme est [dans toute sa généralité](../bases-théoriques/calculabilité/#algorithme-fonction) une fonction qui prend et rend un mot de $\\{0, 1\\}$. On peut lui associer de façon équivalente la fonction $v_f : \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$ ci-dessous :
 
 $$
 v_f(n, m) = \left\\\{
@@ -76,8 +76,8 @@ D'un point de vue théorique on peut donc uniquement considérer la version déc
 
 {% lien %}
 
-- <https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf>
-- <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf>
+- <https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf>{.externe}
+- <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf>{.externe}
 
 {% endlien %}
 
@@ -141,8 +141,8 @@ La **_complexité d'un langage (décidable)_** est la complexité la plus faible
 
 Comme une machine de Turing prend en entrée un mot de $\\{0, 1\\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :
 
-- $C(\vert E \vert)$ sa [complexité](../complexité-calculs/définitions/#complexité){.interne}.
-- $S(\vert E \vert)$ sa [complexité spatiale](../complexité-calculs/définitions/#complexité-spatiale){.interne},
+- $C(\vert E \vert)$ sa [complexité](../complexité-calculs/définitions/#complexité).
+- $S(\vert E \vert)$ sa [complexité spatiale](../complexité-calculs/définitions/#complexité-spatiale),
 
 On sait que la complexité spatiale d'une machine de Turing est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :
 
@@ -176,7 +176,7 @@ On peut maintenant redéfinir les classes $P$ et $NP$ grace aux langages. Commen
 Pour définir précisément ce qu'est la classe NP en revanche, il faut introduire un autre modèle de Machine de Turing, les machines non déterministes :
 
 {% aller %}
-[Machines de Turing non déterministes](./Turing-non-déterministe){.interne}
+[Machines de Turing non déterministes](./Turing-non-déterministe)
 {% endaller %}
 
 On a alors :
@@ -195,13 +195,13 @@ Tout ceci fonctionne car le nombre d'état est une **constante**, il ne dépend 
 ## Cas du NON
 
 {% aller %}
-[co-NP](./co-NP){.interne}
+[co-NP](./co-NP)
 {% endaller %}
 
 ## SAT est NP-complet
 
 {% aller %}
-[SAT est un problème NP-complet](./SAT-NPC){.interne}
+[SAT est un problème NP-complet](./SAT-NPC)
 {% endaller %}
 
 On verra qu'il y en a beaucoup, beaucoup d'autres.
@@ -211,5 +211,5 @@ On verra qu'il y en a beaucoup, beaucoup d'autres.
 Terminons cette partie en montrant qu'il existe bien d'autres algorithmes que ceux de NP. On peut même trouver des problèmes de toute complexité.
 
 {% aller %}
-[Hiérarchie des complexités](hiérarchie-complexité){.interne}
+[Hiérarchie des complexités](hiérarchie-complexité)
 {% endaller %}

@@ -20,7 +20,7 @@ Rappelez vous qu'il y a 2 exemples de code :
 - les programmes dont le but est d'être exécuté via un éditeur et qui consisteront la grande majorité des exemples donnés.
 {% endinfo %}
 
-Python structure son code en [_blocs_ d'instructions](./#bloc){.interne} qui permettent diverses façon de [faire des tests](./#test){.interne} ou de [de répéter du code](./#boucle){.interne}.
+Python structure son code en [_blocs_ d'instructions](./#bloc) qui permettent diverses façon de [faire des tests](./#test) ou de [de répéter du code](./#boucle).
 
 
 ## <span id="bloc"></span> Bloc de code
@@ -95,7 +95,7 @@ while True:
 ## <span id="test"></span>Instructions conditionnelles
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>{.externe}
 {% endlien %}
 
 Permet d'exécuter un bloc si une condition logique est vraie :
@@ -121,7 +121,7 @@ else:
 Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
 
 {% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
 {% endexercice %}
 {% details "solution" %}
 
@@ -137,7 +137,7 @@ else:
 {% enddetails %}
 
 {% exercice %}
-Demandez à l'utilisateur de rentrer deux entiers au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}) et de d'afficher à l'écran si le deuxième est un diviseur du premier (vous pourrez utiliser les [opérateurs](../écrire-code/#opérateurs){.interne} de division entière)
+Demandez à l'utilisateur de rentrer deux entiers au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)) et de d'afficher à l'écran si le deuxième est un diviseur du premier (vous pourrez utiliser les [opérateurs](../écrire-code/#opérateurs) de division entière)
 {% endexercice %}
 {% details "solution" %}
 
@@ -155,7 +155,7 @@ else:
 
 {% enddetails %}
 {% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}) et de d'afficher à l'écran la saison associé au mois si l'entier est entre 1 et 12 et répondre que l'entrée est invalide sinon.
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)) et de d'afficher à l'écran la saison associé au mois si l'entier est entre 1 et 12 et répondre que l'entrée est invalide sinon.
 {% endexercice %}
 {% details "solution" %}
 
@@ -189,7 +189,7 @@ Deux types de boucles existent en python : les boucles _tant que_ (`while`{.lang
 ### <span id="while"></span>Bloc `while`{.language-} : boucle tant que
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement>{.externe}
 {% endlien %}
 
 ```python
@@ -221,7 +221,7 @@ qui va afficher :
 ```
 
 {% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}) tant que celui-ci n'est pas égal à 42.
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)) tant que celui-ci n'est pas égal à 42.
 {% endexercice %}
 {% details "solution" %}
 
@@ -263,7 +263,7 @@ print(factorielle)
 
 {% enddetails %}
 {% exercice %}
-Affichez tous les diviseurs d'un nombre demandé à un utilisateur (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}), et ne s'arrêter que lorsque
+Affichez tous les diviseurs d'un nombre demandé à un utilisateur (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)), et ne s'arrêter que lorsque
 {% endexercice %}
 {% details "solution" %}
 
@@ -282,7 +282,7 @@ while b < a:
 ### <span id="for"></span>Bloc `for`{.language-} : boucle pour chaque
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-for-statement>
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-for-statement>{.externe}
 {% endlien %}
 
 ```python
@@ -293,7 +293,7 @@ for <nom> in <itérable>:
     <instruction n>
 ```
 
-Le bloc sera exécuté pour chaque élément de l'_itérable_. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-}.Certaines fonctions vont créer des itérables, la plus connue étant certainement la fonction range que l'on va voir juste après, et certains objets également, comme les chaînes de caractères ([les objets conteneurs](../../conteneurs){.interne} comme les listes, les ensembles ou les dictionnaires que l'on verra plus tard fonctionnent également).
+Le bloc sera exécuté pour chaque élément de l'_itérable_. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-}.Certaines fonctions vont créer des itérables, la plus connue étant certainement la fonction range que l'on va voir juste après, et certains objets également, comme les chaînes de caractères ([les objets conteneurs](../../conteneurs) comme les listes, les ensembles ou les dictionnaires que l'on verra plus tard fonctionnent également).
 
 L'exécution du code suivant :
 
@@ -317,7 +317,7 @@ r
 La boucle for itère sur chaque caractère de la chaîne `"bonjour"`{.language-} et le place dans la variable nommée `c`{.language-}. La valeur de `c`{.language-} vaut donc successivement les caractères `"b"`{.language-}, `"o"`{.language-}, `"n"`{.language-}, `"j"`{.language-}, `"o"`{.language-}, `"u"`{.language-} et enfin `"r"`{.language-}.
 
 {% exercice %}
-Écrire un programme qui affiche un mot entrée par un utilisateur (en utilisant la [fonction `input`{.language-}](../écrire-code/#input){.interne}) à l'envers (vous pourrez utiliser le fait que l'[addition de deux chaînes de caractères](../écrire-code/#opérateurs-str){.interne} en python est la concaténation).
+Écrire un programme qui affiche un mot entrée par un utilisateur (en utilisant la [fonction `input`{.language-}](../écrire-code/#input)) à l'envers (vous pourrez utiliser le fait que l'[addition de deux chaînes de caractères](../écrire-code/#opérateurs-str) en python est la concaténation).
 
 {% endexercice %}
 {% details "solution" %}
@@ -339,7 +339,7 @@ print(s2)
 
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/stdtypes.html#range>
+<https://docs.python.org/fr/3/library/stdtypes.html#range>{.externe}
 {% endlien %}
 
 L'itérateur le plus utilisé pour les boucle `for`{.language-} est le résultat de la fonction `range`{.language-} qui crée un itérateur de nombres.
@@ -461,7 +461,7 @@ for x in range(5, -1, -1):
 {% enddetails %}
 
 {% exercice %}
-Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers.
+Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){.externe} pour les 100 premiers entiers.
 {% endexercice %}
 {% details "solution" %}
 

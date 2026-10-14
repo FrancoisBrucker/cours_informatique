@@ -124,12 +124,12 @@ Une classe :
 Un objet issu d'une certaine classe :
 
 - possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses **attributs**
-- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via [la notation pointée](../../concepts/utilisation-modules/#définition-notation-pointée){.interne} : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
+- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via [la notation pointée](../../concepts/utilisation-modules/#définition-notation-pointée) : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
 
 {% attention2 "**À retenir**" %}
 La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de _coder objet_ car :
 
-- cela favorise la factorisation du code ([on ne se répète pas](../../coder-projets/écrire-code/bonnes-pratiques#DRY){.interne}) : on ne définit ses méthodes qu'une seule fois dans les classes
+- cela favorise la factorisation du code ([on ne se répète pas](../../coder-projets/écrire-code/bonnes-pratiques#DRY)) : on ne définit ses méthodes qu'une seule fois dans les classes
 - lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
 - compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.
 - plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.
@@ -147,7 +147,7 @@ Voyons quelques exemple de classes python et leurs usages.
 
 ### Chaîne de caractères
 
-Les chaines de caractères sont des objets de la classe ([str](https://docs.python.org/fr/3/library/string.html)) :
+Les chaines de caractères sont des objets de la classe ([str](https://docs.python.org/fr/3/library/string.html){.externe}) :
 
 ```python
 >>> type("une chaîne")
@@ -203,14 +203,14 @@ coucou
 
 ```
 
-Enfin, une méthode peut avoir des paramètres  comme la méthode [`str.center`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.center) :
+Enfin, une méthode peut avoir des paramètres  comme la méthode [`str.center`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.center){.externe} :
 
 ```python
 >>> print(s.center(25, "*"))
 **********coucou*********
 ```
 
-Et même rendre autre chose que son type d'origine comme la méthode [`str.count`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count)  :
+Et même rendre autre chose que son type d'origine comme la méthode [`str.count`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count){.externe}  :
 
 ```python
 >>> print(s.count("c"))
@@ -278,7 +278,7 @@ Il existe tout un tas de méthodes spéciales et nous en verrons quelques unes t
 
 ### Listes
 
-Les entiers et les chaînes de caractères sont [des objets **_immutable_**](../../concepts/mutable-immutable){.interne} c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.
+Les entiers et les chaînes de caractères sont [des objets **_immutable_**](../../concepts/mutable-immutable) c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.
 
 ```python
 >>> l = [1, 2, 3]
@@ -288,7 +288,7 @@ Les entiers et les chaînes de caractères sont [des objets **_immutable_**](../
 
 ```
 
-La liste `l`{.language-} est **modifiée** par la méthode [`list.extend`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#list.extend). Le fait qu'une méthode modifie ou pas l'objet passé en paramètre n'est pas réglementé. Certaines le font d'autres non :
+La liste `l`{.language-} est **modifiée** par la méthode [`list.extend`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#list.extend){.externe}. Le fait qu'une méthode modifie ou pas l'objet passé en paramètre n'est pas réglementé. Certaines le font d'autres non :
 
 
 ```python
@@ -343,7 +343,7 @@ Que produit le code suivant :
 
 {% endexercice %}
 {% details "corrigé" %}
-Là ça marche car le résultat de [`str.split`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.split) est une liste :
+Là ça marche car le résultat de [`str.split`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.split){.externe} est une liste :
 
 ```python
 >>> [1, 2, 3] + "nous irons au bois".split()

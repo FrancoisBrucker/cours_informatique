@@ -10,22 +10,22 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD attaques : <https://sparkle-lwc.github.io/security>
+> TBD attaques : <https://sparkle-lwc.github.io/security>{.externe}
 
 Comme l'existence d'une PRP n'étant pas prouvée, il faut prendre toute proposition de chiffrement avec pincette. Il n'est pas improbable que l'on découvre des failles de sécurité et qu'il faille changer de méthode de chiffrement (c'est arrivé et ça arrivera encore) ou qu'il faille augmenter la taille de la clé pour maintenir la confidentialité que ce soit par le développement de nouveaux ordinateur de nouvelles attaques (c'est arrivé et ça arrivera encore).
 
 S'il faut retenir une chose c'est :
 
 {% note %}
-Utilisez des bibliothèques de chiffrement développés par des professionnels reconnus comme [openssl](https://fr.wikipedia.org/wiki/OpenSSL).
+Utilisez des bibliothèques de chiffrement développés par des professionnels reconnus comme [openssl](https://fr.wikipedia.org/wiki/OpenSSL){.externe}.
 {% endnote %}
 
 ### Nécessité de la non linéarité
 
-Pour éviter une attaque classique, nommée [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire), tous les PRP vont avoir à la fois des transformations linéaires $\oplus$, décalage ou circulation de bits ainsi que des choses non linéaire, souvent encapsulé dans des matrices de transformation appelées [S-box](https://fr.wikipedia.org/wiki/S-Box). Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
+Pour éviter une attaque classique, nommée [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire){.externe}, tous les PRP vont avoir à la fois des transformations linéaires $\oplus$, décalage ou circulation de bits ainsi que des choses non linéaire, souvent encapsulé dans des matrices de transformation appelées [S-box](https://fr.wikipedia.org/wiki/S-Box){.externe}. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
 
 {% info %}
-Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
+Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box){.externe} obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
 {% endinfo %}
 
 La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :
@@ -45,11 +45,11 @@ Chaque méthode de chiffrement intègre ainsi en son sein des transformations no
 ### Chacha20
 
 {% aller %}
-[Algorithme chacha20](chacha20){.interne}
+[Algorithme chacha20](chacha20)
 {% endaller %}
 
 ### AES
 
 {% aller %}
-[Algorithme AES](aes){.interne}
+[Algorithme AES](aes)
 {% endaller %}

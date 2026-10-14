@@ -14,11 +14,11 @@ eleventyComputed:
 La plus simple des structures, la composition de tableaux :
 
 {% aller %}
-[Types matriciels](./matrices){.interne}
+[Types matriciels](./matrices)
 {% endaller %}
 
 On s'entraîne :
 
 {% aller %}
-[Projet matrices](./projet-matrices){.interne}
+[Projet matrices](./projet-matrices)
 {% endaller %}

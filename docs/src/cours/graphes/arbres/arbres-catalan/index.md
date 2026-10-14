@@ -46,7 +46,7 @@ Que l'on écrira souvent en abrégé, en ne gardant que le dernier élément com
 ## Parcours
 
 {% info %}
-Les [parcours d'arbres de Catalan](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/) pour la résoudre de façon optimale en nombre d'opérations.
+Les [parcours d'arbres de Catalan](https://fr.wikipedia.org/wiki/Arbre_syntaxique){.externe} sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/){.externe} pour la résoudre de façon optimale en nombre d'opérations.
 {% endinfo %}
 
 Les parcours en largeur et en profondeur des graphes peuvent s'utiliser tel quel pour les arbres de Catalan en partant de la racine (le nœud $\epsilon$) mais on a coutume d'en utiliser trois en algorithmie dont les deux premiers correspondent respectivement au parcours en largeur et en profondeur.
@@ -113,7 +113,7 @@ Si la racine existe:
 
 ## Bijection entre les arbres planaires et ceux de Catalan
 
-Les arbres de Catalan sont en bijection avec de nombreuses structures combinatoires. Commençons par la plus célèbre [les arbres planaires](../arbres-planaires/){.interne}.
+Les arbres de Catalan sont en bijection avec de nombreuses structures combinatoires. Commençons par la plus célèbre [les arbres planaires](../arbres-planaires/).
 
 Montrons la bijection en action. La transformation d'un arbre planaire en arbre de Catalan :
 
@@ -141,10 +141,10 @@ $$
 </div>
 {% endnote %}
 {% note2 "**Définition**" %}
-Les $C_n$ sont appelé [nombres de catalan](https://fr.wikipedia.org/wiki/Nombre_de_Catalan)
+Les $C_n$ sont appelé [nombres de catalan](https://fr.wikipedia.org/wiki/Nombre_de_Catalan){.externe}
 {% endnote2 %}
 {% info %}
-Le Catalan dont on parle est [Eugène Charles Catalan](https://fr.wikipedia.org/wiki/Eug%C3%A8ne_Charles_Catalan), mathématicien Franco-Belge, et ses nombres se retrouvent partout en combinatoire.
+Le Catalan dont on parle est [Eugène Charles Catalan](https://fr.wikipedia.org/wiki/Eug%C3%A8ne_Charles_Catalan){.externe}, mathématicien Franco-Belge, et ses nombres se retrouvent partout en combinatoire.
 {% endinfo %}
 
 La figure ci-après montre les arbres de Catalan de taille 0 à 4 :
@@ -164,12 +164,12 @@ On a bien :
 Nous allons maintenant montrer une méthode alternative pour calculer les valeurs de $C_n$. Cette méthode très générale permet de calculer nombre d'objets combinatoire et s'appelle méthode symbolique. Nous allons donner juste assez de matière pour pouvoir l'utiliser ici. Mais si le sujet vous intéresse, n'hésitez pas à aller jeter un coup d'œil au livre en lien ci-dessous :
 
 {% lien %}
-[Analytic Combinatorics](https://algo.inria.fr/flajolet/Publications/book.pdf)
+[Analytic Combinatorics](https://algo.inria.fr/flajolet/Publications/book.pdf){.externe}
 {% endlien %}
 
 La méthode symbolique repose sur deux outils :
 
-- une [série formelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle) représentant les éléments de l'ensemble à compter
+- une [série formelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle){.externe} représentant les éléments de l'ensemble à compter
 - une équation récursive permettant de décrire l'ensemble à compter.
 
 Pour cela, on va noter $\mathcal{C}$ des arbres de Catalan et $C_n$ le nombre d'arbres de Catalan à $n$ nœuds. La série formelle représentant ces nombres s'écrit :
@@ -180,7 +180,7 @@ C(z) \coloneqq \sum_{n\geq 0}C_nz^n
 $$
 </div>
 
-Une série formelle n'est **pas** [une série entière](https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re), c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$ : une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :
+Une série formelle n'est **pas** [une série entière](https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re){.externe}, c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$ : une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :
 
 <div>
 $$
@@ -236,7 +236,7 @@ Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs série
 {% info %}
 On utilise la définition $\sum_{n\geq 0}A_nz^n \times \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}C_nz^n$ avec $C_n = \sum_{0\leq k \leq n}A_kB_{n-k}$.
 
-Notez que cette formule est uniquement l'application aux séries formelles du [Produit de Cauchy](https://fr.wikipedia.org/wiki/Produit_de_Cauchy) pour les séries convergentes.
+Notez que cette formule est uniquement l'application aux séries formelles du [Produit de Cauchy](https://fr.wikipedia.org/wiki/Produit_de_Cauchy){.externe} pour les séries convergentes.
 {% endinfo %}
 {% details "preuve", "open" %}
 
@@ -281,7 +281,7 @@ C(z) = \frac{1 - \sqrt{1-4z}}{2z}
 $$
 </div>
 
-Cette fonction se [développe en série entière](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries) avec de rayon de convergence de $\frac{1}{4}$ puisque $\sqrt{1+x} = \sum_{n\geq 0}\frac{(-1)^{n+1}}{2n-1}\frac{\binom{2n}{n}}{2^{2n}}x^n$ pour $x\in [-1, 1]$. Les coefficients de cette série sont égaux aux $C_n$.
+Cette fonction se [développe en série entière](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries){.externe} avec de rayon de convergence de $\frac{1}{4}$ puisque $\sqrt{1+x} = \sum_{n\geq 0}\frac{(-1)^{n+1}}{2n-1}\frac{\binom{2n}{n}}{2^{2n}}x^n$ pour $x\in [-1, 1]$. Les coefficients de cette série sont égaux aux $C_n$.
 
 On pourrait s'arrêter là puisqu'on connaît déjà la valeur des $C_n$ ($C_n = \frac{1}{n+1}\binom{2n}{n}$), mais pour la complétion, retrouvons le résultat attendu.
 

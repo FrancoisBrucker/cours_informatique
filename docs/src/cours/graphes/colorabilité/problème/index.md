@@ -95,7 +95,7 @@ $$
 </div>
 {% endnote %}
 {% info %}
-Pour un graphe $G$, $\Delta(G)$ est [la valeur du plus grand degré](../../structure/#degré-max-min-graphe){.interne}.
+Pour un graphe $G$, $\Delta(G)$ est [la valeur du plus grand degré](../../structure/#degré-max-min-graphe).
 {% endinfo %}
 
 {% details "preuve", "open" %}
@@ -117,11 +117,11 @@ Ces problèmes sont souvent liés à des problèmes de couplages.
 
 On l'a déjà vu dans la partie couplage, mais le problème des championnats de sport s'explicite plus joliment sous la forme d'un problème de coloration d'arêtes car il incorpore directement toutes les contraintes.
 
-L'algorithme qui explicite directement le problème est appelé [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling). Noter qu'il est différent de celui utilisé pour le couplage. Pour $K_6$ ceci donne :
+L'algorithme qui explicite directement le problème est appelé [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling){.externe}. Noter qu'il est différent de celui utilisé pour le couplage. Pour $K_6$ ceci donne :
 
 ![round robin](./round-robin-6.png)
 
 #### Affectation de ressources
 
-> p3 <https://www.gerad.ca/~alainh/Chapitre5.pdf>
+> p3 <https://www.gerad.ca/~alainh/Chapitre5.pdf>{.externe}
 

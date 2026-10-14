@@ -96,7 +96,7 @@ Il va nous falloir manipuler 5 dés ensemble pour atteindre le but de notre proj
 
 {% note "**But du projet**" %}
 
-Jouer au [poker d'as](https://fr.wikipedia.org/wiki/Poker_d%27as).
+Jouer au [poker d'as](https://fr.wikipedia.org/wiki/Poker_d%27as){.externe}.
 
 {% endnote %}
 
@@ -425,10 +425,10 @@ def test_tapis_vert_nb_des_identiques():
 
 ## <span id="memento"></span>Agrégation : Memento
 
-Nous Allons créer un nouvel objet appelé permettant de sauver la valeur d'un dé puis de le restaurer si besoin. On va utiliser pour cela [un patron de conception](https://refactoring.guru/fr/design-patterns) nommé Memento
+Nous Allons créer un nouvel objet appelé permettant de sauver la valeur d'un dé puis de le restaurer si besoin. On va utiliser pour cela [un patron de conception](https://refactoring.guru/fr/design-patterns){.externe} nommé Memento
 
 {% lien %}
-[Patron de conception Memento](https://refactoring.guru/fr/design-patterns/memento)
+[Patron de conception Memento](https://refactoring.guru/fr/design-patterns/memento){.externe}
 {% endlien %}
 
 ### Classe `MementoDé`{.language-}
@@ -572,6 +572,6 @@ for _ in range(len(memento_liste)):
 ## Code final
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/code?filename=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/code){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/code?filename=projet-compteur){.externe}
 {% endlien %}

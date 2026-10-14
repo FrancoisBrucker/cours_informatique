@@ -12,7 +12,7 @@ eleventyComputed:
 
 
 {% lien %}
-[protocole UDP](https://fr.wikipedia.org/wiki/User_Datagram_Protocol)
+[protocole UDP](https://fr.wikipedia.org/wiki/User_Datagram_Protocol){.externe}
 {% endlien %}
 
 Communication simple entre deux sockets. Le header du packet est de taille 8B et contient :
@@ -22,7 +22,7 @@ Communication simple entre deux sockets. Le header du packet est de taille 8B et
 - la longueur du message (2B)
 - un checksum du message (2B)
 
-Il n'y a aucune garantie de réception du message, mais si le message arrive à destination le [checksum](http://profesores.elo.utfsm.cl/~agv/elo322/UDP_Checksum_HowTo.html) garantit son exactitude. Si le checksum de l'entête ne correspond pas au checksum du message reçu, le paquet est éliminé (*discard*).
+Il n'y a aucune garantie de réception du message, mais si le message arrive à destination le [checksum](http://profesores.elo.utfsm.cl/~agv/elo322/UDP_Checksum_HowTo.html){.externe} garantit son exactitude. Si le checksum de l'entête ne correspond pas au checksum du message reçu, le paquet est éliminé (*discard*).
 
 {% faire %}
 Créez dans un terminal une socket qui écoute en udp avec la commande `nc` : `nc -u -p 5050 -l -s localhost`. Dans un autre terminal, entamez une connexion avec `nc -u localhost 5050`.

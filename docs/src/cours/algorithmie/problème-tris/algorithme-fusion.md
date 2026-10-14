@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme [de diviser pour régner](<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>) :
+Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion){.externe} est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme [de diviser pour régner](<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>) :
 
 Un algorithme de la forme **_diviser pour régner_** fonctionne en deux parties :
 
@@ -162,7 +162,7 @@ C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)
 $$
 </div>
 
-Pour connaître la valeur de la complexité on peut utiliser [le master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs (on le verra lorsque l'on étudiera en détail [les algorithmes de type diviser pour régner](../../design-algorithmes/diviser-régner/){.interne}). Mais ici pas besoin d'invoquer l'artillerie lourde, on peut aisément calculer la complexité à la main :
+Pour connaître la valeur de la complexité on peut utiliser [le master theorem](https://fr.wikipedia.org/wiki/Master_theorem){.externe} qui est **LE** théorème des complexités pour les algorithmes récursifs (on le verra lorsque l'on étudiera en détail [les algorithmes de type diviser pour régner](../../design-algorithmes/diviser-régner/)). Mais ici pas besoin d'invoquer l'artillerie lourde, on peut aisément calculer la complexité à la main :
 
 {% note "**Proposition**" %}
 La complexité de l'algorithme `fusion`{.language-} est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée

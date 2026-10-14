@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[La pile](https://fr.wikipedia.org/wiki/Pile_(informatique))
+[La pile](https://fr.wikipedia.org/wiki/Pile_(informatique)){.externe}
 {% endlien %}
 
 La pile est une structure de donnée extrêmement utilisée. Elle permet de traiter en priorité la donnée **la plus récemment stockée**. On appelle également cette structure **_LIFO_** pour _last in, first out_ : on rend toujours la donnée la plus récemment stockée. La structure d'une pile de type `T`{.language-} sera alors :
@@ -180,7 +180,7 @@ Faisons l'expérience avec l'expression `1 + 2 - (3+4) * (5 + 6)` qui devient le
 
 Le résultat final est le seul élément restant dans la pile, - 74, que l'on dépile à la fin
 
-Plus besoin de parenthèses ! Cette notation est appelée [_notation polonaise inverse_](https://fr.wikipedia.org/wiki/Notation_polonaise_inverse) et est due à Hamblin. C'est le premier à utiliser directement la notion de pile, inventée par Turing.
+Plus besoin de parenthèses ! Cette notation est appelée [_notation polonaise inverse_](https://fr.wikipedia.org/wiki/Notation_polonaise_inverse){.externe} et est due à Hamblin. C'est le premier à utiliser directement la notion de pile, inventée par Turing.
 
 C'est ensuite Dijkstra qui se rendra compte que la pile permet non seulement de stocker des variables mais également de gérer les appels de fonctions (on appelle cela _la pile d'appels_) et qui permet d'exécuter des fonctions (récursives ou non). On généralise à cette époque la notion de pile et de tas pour gérer les variables, les objets et les appels de fonctions de façon sous-jacente dans tout language de programmation.
 
@@ -188,15 +188,15 @@ C'est ensuite Dijkstra qui se rendra compte que la pile permet non seulement de 
 
 L'histoire de la Pile et de ses multiples usages vaut le détour :
 
-- [Histoire de la pile en texte](https://www.sigcis.org/files/A%20brief%20history.pdf)
-- [Histoire de La pile en vidéo](https://www.youtube.com/watch?v=2vBVvQTTdXg)
+- [Histoire de la pile en texte](https://www.sigcis.org/files/A%20brief%20history.pdf){.externe}
+- [Histoire de La pile en vidéo](https://www.youtube.com/watch?v=2vBVvQTTdXg){.externe}
 
 {% endlien %}
 
 ### Exemple fondamental : décurryfication d'un algorithme récursif
 
 {% lien %}
-[Passer de récursif à itératif avec une pile](https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks)
+[Passer de récursif à itératif avec une pile](https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks){.externe}
 {% endlien %}
 
 La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !

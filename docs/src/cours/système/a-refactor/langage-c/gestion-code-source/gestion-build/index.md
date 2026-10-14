@@ -15,7 +15,7 @@ eleventyComputed:
 
 {% lien %}
 
-[Introduction à make](https://www.youtube.com/watch?v=a8mPKBxQ9No)
+[Introduction à make](https://www.youtube.com/watch?v=a8mPKBxQ9No){.externe}
 
 {% endlien %}
 
@@ -73,7 +73,7 @@ $ make
 clang -Wall -Wextra -pedantic -std=c2x main.o celcius.o
 ```
 
-Seule la règle main a été exécutée. Ceci est normal car [une règle](https://www.gnu.org/software/make/manual/html_node/Rule-Syntax.html) est définie :
+Seule la règle main a été exécutée. Ceci est normal car [une règle](https://www.gnu.org/software/make/manual/html_node/Rule-Syntax.html){.externe} est définie :
 
 ```
 noms : prérequis
@@ -118,7 +118,7 @@ $ ./a.out
 Grace aux variables, il n'est pas nécessaire d'expliciter toutes les règles :
 
 {% lien %}
-[variables de make](https://www.youtube.com/watch?v=G5dNorAoeCM)
+[variables de make](https://www.youtube.com/watch?v=G5dNorAoeCM){.externe}
 {% endlien %}
 
 On obtient le fichier `Makefile`{.fichier} suivant, bien plus simple et portable :
@@ -151,6 +151,6 @@ Il suffit de renseigner :
 
 Ce qu'on a appris devrait suffire pour 99.9% de vos besoins, mais au cas ou :
 
-- [documentation de make](https://www.gnu.org/software/make/manual/)
-- [Analyse d'un makefile](https://www.youtube.com/watch?v=l5KqE0DMG-Q)
-- [Guide du makefile](https://makefiletutorial.com/#top)
+- [documentation de make](https://www.gnu.org/software/make/manual/){.externe}
+- [Analyse d'un makefile](https://www.youtube.com/watch?v=l5KqE0DMG-Q){.externe}
+- [Guide du makefile](https://makefiletutorial.com/#top){.externe}

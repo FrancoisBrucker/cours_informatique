@@ -18,9 +18,9 @@ eleventyComputed:
 
 - "Serious cryptography de Jean-Philippe Aumasson" (la version anglaise, la traduction française est un scandale)
 - "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
-- <https://www.youtube.com/@meichlseder/playlists>
-- <https://cryptobook.nakov.com/>
-- [arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1)
+- <https://www.youtube.com/@meichlseder/playlists>{.externe}
+- <https://cryptobook.nakov.com/>{.externe}
+- [arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1){.externe}
 
 {% endlien %}
 
@@ -53,25 +53,25 @@ L'usage (depuis "applied cryptography" ?) est de personifier les différentes pa
   - Niveau 2 : Mallory. Il peut en plus modifier tout ce qui est public : messages et paramètres public du protocole
 - Les **_tiers de confiance_** (arbitres incorruptibles), non impliquées dans l'échange du message mais nécessaires au bon fonctionnement du protocole (tous les protocoles ne nécessitent pas de tiers de confiance)
 
-On supposera de plus toujours que le protocole, les algorithmes utilisés et leurs implémentations effectives sont connus de tous, joueurs et adversaires. La confidentialité ne devant être garantie que via un paramètre du protocole nommé **_clé_**, uniquement connu des joueurs. Cette hypothèse est connue sous le nom du [principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs).
+On supposera de plus toujours que le protocole, les algorithmes utilisés et leurs implémentations effectives sont connus de tous, joueurs et adversaires. La confidentialité ne devant être garantie que via un paramètre du protocole nommé **_clé_**, uniquement connu des joueurs. Cette hypothèse est connue sous le nom du [principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs){.externe}.
 
 Enfin, on considérera que les adversaires ne sont pas stupides et ont à leur disposition des outils modernes et performants.
 
 ## Cryptologie
 
 {% lien %}
-[Introduction à la cryptologie (ANSSI)](https://www.ssi.gouv.fr/particulier/bonnes-pratiques/crypto-le-webdoc/cryptologie-art-ou-science-du-secret/)
+[Introduction à la cryptologie (ANSSI)](https://www.ssi.gouv.fr/particulier/bonnes-pratiques/crypto-le-webdoc/cryptologie-art-ou-science-du-secret/){.externe}
 {% endlien %}
 
 La cryptologie, ou science du secret est l'étude des protocoles de sécurités. Elle possède deux branches :
 
-- la [cryptographie](https://fr.wikipedia.org/wiki/Cryptographie) qui crée les algorithmes et protocoles de sécurité
-- la [cryptanalyse](https://fr.wikipedia.org/wiki/Cryptanalyse) qui attaque ces algorithmes pour tester leurs robustesse
+- la [cryptographie](https://fr.wikipedia.org/wiki/Cryptographie){.externe} qui crée les algorithmes et protocoles de sécurité
+- la [cryptanalyse](https://fr.wikipedia.org/wiki/Cryptanalyse){.externe} qui attaque ces algorithmes pour tester leurs robustesse
 
 À moins d'être un professionnel du domaine, ne créez pas votre propre protocole ni n'implémentez vous même les algorithmes de cryptographies qui les composent. Utilisez les protocoles connus via des bibliothèques reconnues, cela vous évitera de vous croire en sécurité alors que vous ne l'êtes pas (il vaut mieux pas de sécurité qu'une mauvaise sécurité).
 
 {% lien %}
-[Site de l'ANSSI](https://cyber.gouv.fr/)
+[Site de l'ANSSI](https://cyber.gouv.fr/){.externe}
 {% endlien %}
 
 ### Cryptographie
@@ -143,7 +143,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 ### Codes historiques
 
 {% aller %}
-[Codes historiques](codes-historiques){.interne}
+[Codes historiques](codes-historiques)
 {% endaller %}
 
 ### Chiffre de Vernam
@@ -151,7 +151,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 Formalise le One Time Pad pour un usage informatique.
 
 {% aller %}
-[Chiffre de Vernam](chiffre-vernam){.interne}
+[Chiffre de Vernam](chiffre-vernam)
 {% endaller %}
 
 On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidentialité, intégrité et authentification sont important et peuvent être adressés indépendamment :
@@ -170,22 +170,22 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
  -->
 
 {% aller %}
-[Confidentialité](./confidentialité){.interne}
+[Confidentialité](./confidentialité)
 {% endaller %}
 {% aller %}
-[Codes actuels](./codes-actuels){.interne}
+[Codes actuels](./codes-actuels)
 {% endaller %}
 
 ## Intégrité
 
 {% aller %}
-[Intégrité](./intégrité){.interne}
+[Intégrité](./intégrité)
 {% endaller %}
 
 ## Authentification
 
 {% aller %}
-[Authentification](./authentification){.interne}
+[Authentification](./authentification)
 {% endaller %}
 
 ### Codes actuels
@@ -198,9 +198,9 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
 
 ## Bibliographie
 
-- [_Applied Cryptography, protocols algorithms and source code in C_ de Bruce Schneier](https://www.amazon.fr/Applied-Cryptography-Protocols-Algorithms-Source/dp/1119096723). Un peu vieux maintenant concernant les algorithmes, mais toujours utile pour une description des protocoles (qui eux sont toujours utilisés)
-- [_Serious Cryptography: A Practical Introduction to Modern Encryption_, Jean-Philippe Aumasson](https://www.amazon.fr/Serious-Cryptography-Practical-Introduction-Encryption/dp/1593278268) Très bonne introduction aux méthodes actuelles de cryptographie
-- [_pgp & gpg assurer la confidentialité de ses e-mails et fichiers_](https://www.amazon.fr/PGP-GPG-confidentialit%C3%A9-mails-fichiers/dp/221212001X) pour l'utilisation de GPG
-- [_A Graduate Course in Applied Cryptography_ de Dan Boneh et Victor Shoup](https://toc.cryptobook.us/) cours détaillé donné à Standford
-- [ANSSI](https://www.ssi.gouv.fr/)
-- [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1)
+- [_Applied Cryptography, protocols algorithms and source code in C_ de Bruce Schneier](https://www.amazon.fr/Applied-Cryptography-Protocols-Algorithms-Source/dp/1119096723){.externe}. Un peu vieux maintenant concernant les algorithmes, mais toujours utile pour une description des protocoles (qui eux sont toujours utilisés)
+- [_Serious Cryptography: A Practical Introduction to Modern Encryption_, Jean-Philippe Aumasson](https://www.amazon.fr/Serious-Cryptography-Practical-Introduction-Encryption/dp/1593278268){.externe} Très bonne introduction aux méthodes actuelles de cryptographie
+- [_pgp & gpg assurer la confidentialité de ses e-mails et fichiers_](https://www.amazon.fr/PGP-GPG-confidentialit%C3%A9-mails-fichiers/dp/221212001X){.externe} pour l'utilisation de GPG
+- [_A Graduate Course in Applied Cryptography_ de Dan Boneh et Victor Shoup](https://toc.cryptobook.us/){.externe} cours détaillé donné à Standford
+- [ANSSI](https://www.ssi.gouv.fr/){.externe}
+- [proof in cryptography](https://www.youtube.com/watch?v=Js9dCUFjAhc&list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&index=1){.externe}

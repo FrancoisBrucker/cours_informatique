@@ -43,13 +43,13 @@ Ne recommencez pas à coder avant d'avoir compris sinon les incompréhensions vo
 ## <span id="installation-développement"></span> Outils de développement
 
 {% aller %}
-[Installer les Outils de développement](./outils/){.interne}
+[Installer les Outils de développement](./outils/)
 {% endaller %}
 
 ## Écrire du code
 
 {% aller %}
-[Écrire du code](./écrire-code/){.interne}
+[Écrire du code](./écrire-code/)
 {% endaller %}
 
 ## <span id="texte-fichiers"></span>Texte et fichiers texte
@@ -57,7 +57,7 @@ Ne recommencez pas à coder avant d'avoir compris sinon les incompréhensions vo
 Maintenant que l'on connaît la façon de procéder, il nous reste à voir comment faire en sorte que nos programmes soient utiles en créant/gérant/stockant des données sous la forme de fichiers texte :
 
 {% aller %}
-[Gestion des données](gestion-données){.interne}
+[Gestion des données](gestion-données)
 {% endaller %}
 
 ## On s'entraîne
@@ -65,7 +65,7 @@ Maintenant que l'on connaît la façon de procéder, il nous reste à voir comme
 ### Un projet complet
 
 {% aller %}
-[Code de césar](projet-code-césar){.interne}
+[Code de césar](projet-code-césar)
 {% endaller %}
 
 ### On vérifie qu'on sait faire
@@ -73,5 +73,5 @@ Maintenant que l'on connaît la façon de procéder, il nous reste à voir comme
 Une série d'exercices classique en développement. Certains sont simple d'autre beaucoup (beaucoup) moins, mais c'est un bon indicateur de votre niveau en développement :
 
 {% aller %}
-[exercices](exercices-tests){.interne}
+[exercices](exercices-tests)
 {% endaller %}

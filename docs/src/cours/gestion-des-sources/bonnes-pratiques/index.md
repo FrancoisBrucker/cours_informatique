@@ -41,7 +41,7 @@ Il vous est facile d'avoir une identité par défaut (liée à votre compte) et 
 
 ### Message de commits
 
-Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit. Par défaut c'est [vi](https://fr.wikipedia.org/wiki/Vi), éditeur historique et présent sur toute machine unix qui est utilisé, mais qui n'est pas forcément votre éditeur de prédilection.
+Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit. Par défaut c'est [vi](https://fr.wikipedia.org/wiki/Vi){.externe}, éditeur historique et présent sur toute machine unix qui est utilisé, mais qui n'est pas forcément votre éditeur de prédilection.
 
 Un message de commit contient forcément **1 ligne** décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).
 
@@ -60,8 +60,8 @@ La syntaxe des fichiers `.gitignore`{.fichier} est simple à comprendre mais je 
 
 {% lien %}
 
-- [la documentation](https://git-scm.com/docs/gitignore#_pattern_format)
-- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
+- [la documentation](https://git-scm.com/docs/gitignore#_pattern_format){.externe}
+- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI){.externe}
 
 {% endlien %}
 
@@ -71,7 +71,7 @@ La syntaxe des fichiers `.gitignore`{.fichier} est simple à comprendre mais je 
 
 - commitez souvent pour pouvoir revenir en arrière si nécessaire
 - créez des branches temporaires locales pour vos expérimentations et n'hésitez pas à revenir en arrière
-- utilisez un [fichier `.gitignore`](https://docs.github.com/en/get-started/git-basics/ignoring-files) pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.
+- utilisez un [fichier `.gitignore`](https://docs.github.com/en/get-started/git-basics/ignoring-files){.externe} pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.
 
 ### Récupérer l'état de l'origine
 
@@ -95,7 +95,7 @@ N'ayez pas peur de gérer les conflits. Une fois qu'on a l'habitude cela se fait
 ## Nommer ses commits
 
 {% lien "**Documentation**"  %}
-<https://www.conventionalcommits.org/en/v1.0.0/>
+<https://www.conventionalcommits.org/en/v1.0.0/>{.externe}
 {% endlien %}
 
 La forme du nom de ses commits est aussi important, même si on est l'unique développeur de son projet. Une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.
@@ -121,7 +121,7 @@ Message de commit :
 - corps du message : à n'utiliser que si vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare.
 
 {% lien "**Documentation**"  %}
-<https://gitmoji.dev/>
+<https://gitmoji.dev/>{.externe}
 {% endlien %}
 
 Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.
@@ -139,7 +139,7 @@ Exemple de commits:
   - :rotating_light: fix: compiler problems
 
 {% lien %}
-Le tableau [ici](https://gist.github.com/parmentf/035de27d6ed1dce0b36a) vous aide à trouver l'émoji associé au commit que vous souhaitez.
+Le tableau [ici](https://gist.github.com/parmentf/035de27d6ed1dce0b36a){.externe} vous aide à trouver l'émoji associé au commit que vous souhaitez.
 {% endlien %}
 
 Vous pouvez vous même rédiger votre tableau dans votre **CONTRIBUTING** ! (On en parle plus bas)
@@ -155,10 +155,10 @@ Chacune à ses pour et ses contre et viennent avec leurs propre contraintes. A v
 
 ### Feature branching
 
-La première idée est de consacrer une branche par feature à développer. Une fois cette branche terminée elle s'intègre à la branche principale par un merge. Cette méthode, appelé **_feature branching_** peut générer de nombreuses branches si l'équipe de développement est importante. C'est pourquoi, certaines adaptations ont vu le jour comme [Git flow](https://leanpub.com/git-flow/read) (si vous utilisez cette méthode, il existe [un plugin git](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html)) ou encore [Github flow](https://githubflow.github.io/) (qui préconise de n'avoir qu'une unique branche de développement pour une synchronisation plus claire entre les développeurs) pour préciser et nommer les différentes branches d'un projet.
+La première idée est de consacrer une branche par feature à développer. Une fois cette branche terminée elle s'intègre à la branche principale par un merge. Cette méthode, appelé **_feature branching_** peut générer de nombreuses branches si l'équipe de développement est importante. C'est pourquoi, certaines adaptations ont vu le jour comme [Git flow](https://leanpub.com/git-flow/read){.externe} (si vous utilisez cette méthode, il existe [un plugin git](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html){.externe}) ou encore [Github flow](https://githubflow.github.io/){.externe} (qui préconise de n'avoir qu'une unique branche de développement pour une synchronisation plus claire entre les développeurs) pour préciser et nommer les différentes branches d'un projet.
 
 {% lien %}
-[Présentation concise des deux méthodes](https://www.youtube.com/watch?v=hG_P6IRAjNQ) (2min08 et 4min38)
+[Présentation concise des deux méthodes](https://www.youtube.com/watch?v=hG_P6IRAjNQ){.externe} (2min08 et 4min38)
 {% endlien %}
 
 Un projet sous le git workflow va se représenter de cette façon :
@@ -185,7 +185,7 @@ La continuous integration prend le contre-pied des méthodes précédentes et pr
 Cette méthode, très prisée actuellement, fonctionne. Le lien suivant décrit l'idée :
 
 {% lien %}
-[CI workflow](https://www.youtube.com/watch?v=v4Ijkq6Myfc)
+[CI workflow](https://www.youtube.com/watch?v=v4Ijkq6Myfc){.externe}
 {% endlien %}
 
 On a cependant rien sans rien. Le workflow CI s'appuie sur de nombreux tests automatisés pour vérifier que tout se passe bien et est construite pour que tout puisse aller vite en production...et être corrigé rapidement si nécessaire.
@@ -207,7 +207,7 @@ Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compré
 #### Readme
 
 {% lien "**Documentation**" %}
-<https://www.makeareadme.com/>
+<https://www.makeareadme.com/>{.externe}
 {% endlien %}
 
 C'est le fichier `README.md`{.fichier} visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.
@@ -219,7 +219,7 @@ On y retrouve en général :
 - son utilisation
 - des visuels
 
-Vous pouvez vous inspirer du [readme d'Atom](https://github.com/atom/atom#readme)
+Vous pouvez vous inspirer du [readme d'Atom](https://github.com/atom/atom#readme){.externe}
 
 #### <span id="contributing"></span> Contributing
 
@@ -230,17 +230,17 @@ Il est d'usage aussi de réaliser un fichier markdown `CONTRIBUTING.md`{.fichier
 - un "template" pour les issues
 - un "template" pour les pull requests
 
-Vous pouvez vous inspirer du **CONTRIBUTING** de [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md), ainsi que celui de [GodotEngine](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md) (Moteur de jeux open-source).
+Vous pouvez vous inspirer du **CONTRIBUTING** de [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md){.externe}, ainsi que celui de [GodotEngine](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md){.externe} (Moteur de jeux open-source).
 
 Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.
 
-[Atom_contributing](https://github.com/atom/atom/blob/master/CONTRIBUTING.md)
-[Godot_contributing](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md)
+[Atom_contributing](https://github.com/atom/atom/blob/master/CONTRIBUTING.md){.externe}
+[Godot_contributing](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md){.externe}
 
 ### Versioning - sémantique des versions
 
 {% lien "**Documentation**" %}
-<https://semver.org/lang/fr/>
+<https://semver.org/lang/fr/>{.externe}
 {% endlien %}
 
 Pour les versions de votre projet il existe une sémantique précise.

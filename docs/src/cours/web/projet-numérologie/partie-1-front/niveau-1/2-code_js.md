@@ -20,21 +20,21 @@ Code de la *logique métier* du projet.
 
 ## <span id="tache-1"></span> Tâche 1 : Unicode d'un caractère
 
-Chaque caractère est associé à un nombre (les ordinateurs ne comprennent que les entiers). Le codage de caractère utilisé est [Unicode](https://fr.wikipedia.org/wiki/Unicode). Il est fait pour pouvoir écrire toutes les langues du monde.
+Chaque caractère est associé à un nombre (les ordinateurs ne comprennent que les entiers). Le codage de caractère utilisé est [Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}. Il est fait pour pouvoir écrire toutes les langues du monde.
 
 {% info %}
-L'[ensemble des caractères Unicode](https://unicode-table.com/fr/)
+L'[ensemble des caractères Unicode](https://unicode-table.com/fr/){.externe}
 {% endinfo %}
 
-Comme cela fait beaucoup de caractères, on utilise des encodages à tailles variables pour que le moindre bout de texte ne fasse des mégaoctets. Le standard est l'encodage [utf-8](https://fr.wikipedia.org/wiki/UTF-8) (on peut aussi le noter "utf8") : tous vos textes doivent être encodés en utf-8 (sinon c'est *bad karma*).
+Comme cela fait beaucoup de caractères, on utilise des encodages à tailles variables pour que le moindre bout de texte ne fasse des mégaoctets. Le standard est l'encodage [utf-8](https://fr.wikipedia.org/wiki/UTF-8){.externe} (on peut aussi le noter "utf8") : tous vos textes doivent être encodés en utf-8 (sinon c'est *bad karma*).
 
 {% note %}
-Ne confondez pas utf8 et Unicode. Même s'ils sont liés ce n'est pas la même chose. En particulier il existe d'autres façon d'encoder l’Unicode comme l'[utf-16](https://fr.wikipedia.org/wiki/UTF-16) par exemple.
+Ne confondez pas utf8 et Unicode. Même s'ils sont liés ce n'est pas la même chose. En particulier il existe d'autres façon d'encoder l’Unicode comme l'[utf-16](https://fr.wikipedia.org/wiki/UTF-16){.externe} par exemple.
 {% endnote %}
 
-Notez que l'usage veut que les nombre associé à chaque caractères soient écrit en [hexadécimal]((https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal)) sur 4 digit précédé de `U+` pour indiquer que c'est un code Unicode : [U+00E9](https://unicode-table.com/fr/00E9/) correspond ainsi à 'é' et au nombre décimal 233.
+Notez que l'usage veut que les nombre associé à chaque caractères soient écrit en [hexadécimal]((https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal)) sur 4 digit précédé de `U+` pour indiquer que c'est un code Unicode : [U+00E9](https://unicode-table.com/fr/00E9/){.externe} correspond ainsi à 'é' et au nombre décimal 233.
 
-On utilise la méthode [`charCodeAt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt).
+On utilise la méthode [`charCodeAt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt){.externe}.
 
 On va commencer par faire des petits tests en js pour voir comment on peut résoudre notre tâche (trouver les bonnes méthodes à utiliser), puis un codera la fonction proprement dite.
 
@@ -60,10 +60,10 @@ Vous êtes dans l'interpréteur node et vous pouvez directement taper des instru
 
 Le programme ci-dessus cherche le code Unicode de 'o' et de '你'. Est-ce correct ?
 
-Pour cela il faut encore convertir notre nombre décimal en nombre [hexadécmal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal).
+Pour cela il faut encore convertir notre nombre décimal en nombre [hexadécmal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal){.externe}.
 
 {% faire %}
-Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt) pour convertir une chaîne de caractères en nombre (`parseInt("4F60", 16)` par exemple) et la méthode des nombres [`toString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString) qui fait le contraire (`(20320).toString(16)` par exemple).
+Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt){.externe} pour convertir une chaîne de caractères en nombre (`parseInt("4F60", 16)` par exemple) et la méthode des nombres [`toString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString){.externe} qui fait le contraire (`(20320).toString(16)` par exemple).
 {% endfaire %}
 
 ## <span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères
@@ -73,7 +73,7 @@ Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaSc
 Fort de nos expérimentations, on peut maintenant écrire un fichier `numérologie/numérologie.js`{.fichier} qui va rendre la somme de tous les code Unicode de ses caractères le constituant.
 
 {% info %}
-Je jette ici un voile pudique sur ce qu'est un "caractère" dans une chaîne Unicode. Cela peut vite être [très compliqué](https://fr.wikipedia.org/wiki/%C3%89quivalence_Unicode).
+Je jette ici un voile pudique sur ce qu'est un "caractère" dans une chaîne Unicode. Cela peut vite être [très compliqué](https://fr.wikipedia.org/wiki/%C3%89quivalence_Unicode){.externe}.
 {% endinfo %}
 
 Fichier `numérologie/numérologie.js`{.fichier} :
@@ -90,7 +90,7 @@ function nombre(chaîne) {
 
 ### test js de `nombre(chaîne)`{.language-}
 
-Pour l'instant, on va tester cette fonction *à la sauvage*, c'est à dire en ajoutant du code à la fin de `numérologie.js`{.fichier} et en affichant le résultat à l'écran grâce à la fonction [`console.log`](https://nodejs.org/api/console.html#console_console_log_data_args).  
+Pour l'instant, on va tester cette fonction *à la sauvage*, c'est à dire en ajoutant du code à la fin de `numérologie.js`{.fichier} et en affichant le résultat à l'écran grâce à la fonction [`console.log`](https://nodejs.org/api/console.html#console_console_log_data_args){.externe}.  
 
 On peut alors ajouter le code suivant (que l'on commentera pour le conserver) à la fin de  `numérologie/numérologie.js`{.fichier} :
 
@@ -114,10 +114,10 @@ Les commentaires en javascript se font en mettant des `//`{.language-} : le rest
 Pour trouver ce raccourci, je suis allé dans la palette de commande et j'ai tapé *comment* pour voir mes possibilités.
 {% endinfo %}
 
-Il existe en javascript [deux façons de commenter du code](https://www.w3schools.com/js/js_comments.asp), le commentaire de bloc et le commentaire de lignes. Je préfère toujours utiliser le commentaire de ligne car c'est d'une part plus visible (chaque ligne est commentée) et on peut plus facilement dé-commenter un bout du commentaire. Comme en plus c'est faisable avec un unique raccourci clavier, c'est efficace.
+Il existe en javascript [deux façons de commenter du code](https://www.w3schools.com/js/js_comments.asp){.externe}, le commentaire de bloc et le commentaire de lignes. Je préfère toujours utiliser le commentaire de ligne car c'est d'une part plus visible (chaque ligne est commentée) et on peut plus facilement dé-commenter un bout du commentaire. Comme en plus c'est faisable avec un unique raccourci clavier, c'est efficace.
 
 {% info %}
-Plutôt qu'utiliser la [façon standard de faire des boucles en javascript](https://www.w3schools.com/js/js_loop_for.asp) qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé [une façon de faire des boucle qui ressemble au python](https://www.w3schools.com/js/js_loop_forof.asp) que je préfère.
+Plutôt qu'utiliser la [façon standard de faire des boucles en javascript](https://www.w3schools.com/js/js_loop_for.asp){.externe} qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé [une façon de faire des boucle qui ressemble au python](https://www.w3schools.com/js/js_loop_forof.asp){.externe} que je préfère.
 {% endinfo %}
 
 ## <span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre
@@ -163,7 +163,7 @@ Comment marche le code de `somme(nombre)`{.language-} ?
 
 Plutôt que de réfléchir des heures pour tenter de comprendre, rien de tel qu'utiliser le code pour voir. Ca va bien plus vite et au moins on est sur du résultat.
 
-Pour l'instant, on va utiliser ce code *à la sauvage*, c'est à dire en ajoutant du code à la fin de `numérologie.js`{.fichier} et en affichant le résultat à l'écran grâce à la fonction [`console.log`](https://nodejs.org/api/console.html#console_console_log_data_args).  
+Pour l'instant, on va utiliser ce code *à la sauvage*, c'est à dire en ajoutant du code à la fin de `numérologie.js`{.fichier} et en affichant le résultat à l'écran grâce à la fonction [`console.log`](https://nodejs.org/api/console.html#console_console_log_data_args){.externe}.  
 
 On peut alors ajouter le code suivant (qu'on enlèvera ensuite ou que l'on commentera pour le conserver) à la fin de `numérologie/numérologie.js`{.fichier} :
 

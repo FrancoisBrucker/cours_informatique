@@ -220,7 +220,7 @@ L'algorithme de la question 1.3.2 résoud le problème de la recherche d'un él�
 
 > Donnez le nom d'un algorithme de tri ayant une complexité de $\mathcal{O}(n\ln(n))$ avec $n$ la taille du tableau à trier. Vous expliciterez son fonctionnement en quelques phrases.
 
-L'algorithme vu en cours qui a cette complexité est [le tri fusion](/cours/algorithmie/problème-tris/algorithme-fusion){.interne} il utilise le principe algorithmique _diviser pour régner_. L'idée est de composer une liste triée à partir de deux listes elles même triées. L'algorithme est le suivant :
+L'algorithme vu en cours qui a cette complexité est [le tri fusion](/cours/algorithmie/problème-tris/algorithme-fusion) il utilise le principe algorithmique _diviser pour régner_. L'idée est de composer une liste triée à partir de deux listes elles même triées. L'algorithme est le suivant :
 
 1. on scinde la liste en 2 parties égale que l'on trie en utilisant la récursion
 2. on crée une liste triée à partir des deux sous-listes triées (ceci peut se faire en $\mathcal{O}(n)$ opérations)
@@ -279,7 +279,7 @@ Sa complexité est ramené à la complexité du tri plus une fois la complexité
 
 > Expliciter le principe algorithmique de _diviser pour régner_
 
-Le principe algorithmique _diviser pour régner_ est décrit dans le cours [ici](/cours/algorithmie/problème-tris/algorithme-fusion/#diviser-pour-régner){.interne} :
+Le principe algorithmique _diviser pour régner_ est décrit dans le cours [ici](/cours/algorithmie/problème-tris/algorithme-fusion/#diviser-pour-régner) :
 
 Un algorithme de la forme **_diviser pour régner_** fonctionne en deux parties :
 

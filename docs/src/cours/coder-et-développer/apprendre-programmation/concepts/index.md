@@ -18,7 +18,7 @@ En tout état de cause, ce sont des langages idéals pour commencer à programme
 ## Fondements
 
 {% aller %}
-[Fondements de la programmation (avec python)](fondements-programmation){.interne}
+[Fondements de la programmation (avec python)](fondements-programmation)
 {% endaller %}
 
 ## Conteneurs et mutabilité
@@ -26,7 +26,7 @@ En tout état de cause, ce sont des langages idéals pour commencer à programme
 Les conteneurs sont des objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
 
 {% aller %}
-[Conteneurs](conteneurs){.interne}
+[Conteneurs](conteneurs)
 {% endaller %}
 
 Les conteneurs sont liés à une notion fondamentale en python et dans tous les langages objets qu'est la mutabilité.
@@ -35,7 +35,7 @@ Les conteneurs sont liés à une notion fondamentale en python et dans tous les 
 La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.
 {% endattention %}
 {% aller %}
-[Objets mutables et non mutables](mutable-immutable){.interne}
+[Objets mutables et non mutables](mutable-immutable)
 {% endaller %}
 
 ## Chaines de caractères
@@ -43,16 +43,16 @@ La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du c
 Les chaines de caractères ne sont pas _sticto sensu_ des conteneurs puisqu'elles sont composés de caractères et par de variables, mais elles  partagent de nombreuses propriétés avec les listes comme on va le voir. Elles sont très utilisés lorsqu'un programme doit communiquer avec son utilisateur et python permet de faire beaucoup de choses avec elles :
 
 {% aller %}
-[Chaînes de caractères](chaines-caractères){.interne}
+[Chaînes de caractères](chaines-caractères)
 {% endaller %}
 
 
 ## <span id="modules"></span>Modules et espace de nommage
 
-Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont des regroupement de fonctions utiles. 
+Les [modules](https://docs.python.org/fr/3/tutorial/modules.html){.externe} pythons sont des regroupement de fonctions utiles. 
 
 {% aller %}
-[Modules et espace de nommages python](utilisation-modules){.interne}
+[Modules et espace de nommages python](utilisation-modules)
 {% endaller %}
 
 Il existe quelques modules externes à python très utilisés. Ils ne sont pas présent par défaut lorsque l'on installe un nouvel interpréteur mais de nombreuses solutions les intègrent par défaut. C'est le cas de spyder, vous pouvez donc faire les deux tutoriaux suivant sans avoir à installer quoi que ce soit.
@@ -62,7 +62,7 @@ Il existe quelques modules externes à python très utilisés. Ils ne sont pas p
 Python vient avec tout un tas de modules très utiles. Ils sont décrit dans le document ci-après :
 
 {% lien %}
-[La bibliothèque standard de Python](https://docs.python.org/fr/3.14/library/index.html)
+[La bibliothèque standard de Python](https://docs.python.org/fr/3.14/library/index.html){.externe}
 {% endlien %}
 
 Il n'est pas nécessaire de les connaître tous par cœur, mais avant de coder quelque chose, vérifiez que ce n'est pas déjà présent.
@@ -73,17 +73,17 @@ Il n'est pas nécessaire de les connaître tous par cœur, mais avant de coder q
 Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
 
 {% aller %}
-[Tutoriel Matplotlib](tutoriel-matplotlib){.interne}
+[Tutoriel Matplotlib](tutoriel-matplotlib)
 {% endaller %}
 
-Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
+Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/){.externe} pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
 ### module `numpy`{.language-}
 
 Le module numpy est très utilisé pour les calculs scientifique, en particulier matriciels.
 
 {% aller %}
-[Tutoriel Numpy](tutoriel-numpy){.interne}
+[Tutoriel Numpy](tutoriel-numpy)
 {% endaller %}
 
 
@@ -92,16 +92,16 @@ Le module numpy est très utilisé pour les calculs scientifique, en particulier
 Terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu, parfois de façon plus détaillée :
 
 {% lien %}
-<https://docs.python.org/fr/3/tutorial/index.html>
+<https://docs.python.org/fr/3/tutorial/index.html>{.externe}
 {% endlien %}
 
 ## <span id='exercices-fin'></span>On vérifie qu'on a compris
 
 {% aller %}
-[Petits projets de code](projet-codes){.interne}
+[Petits projets de code](projet-codes)
 {% endaller %}
 {% aller %}
-[mono-lignes en python](./mono-lignes){.interne}
+[mono-lignes en python](./mono-lignes)
 {% endaller %}
 
 

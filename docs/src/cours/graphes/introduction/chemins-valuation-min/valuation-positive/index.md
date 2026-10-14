@@ -13,7 +13,7 @@ eleventyComputed:
 ---
 
 
-Dans le cas là où les valuation sont positives trouver un chemin de poids minimum ou un [chemin élémentaire](../../chemins-cycles-connexite#définition-élémentaire){.interne} de poids minimum sont deux problème équivalents :
+Dans le cas là où les valuation sont positives trouver un chemin de poids minimum ou un [chemin élémentaire](../../chemins-cycles-connexite#définition-élémentaire) de poids minimum sont deux problème équivalents :
 
 {% note "**Proposition**" %}
 S'il existe un chemin entre $a$ et $b$ dans un graphe orienté $G$, alors **il existe** un pseudo-chemin de longueur minimum. De plus, un pseudo-chemin de longueur minimum est nécessairement **élémentaire**.
@@ -60,7 +60,7 @@ S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids
 
 {% aller %}
 
-[Algorithme de Dijkstra](./dijkstra/){.interne}
+[Algorithme de Dijkstra](./dijkstra/)
 
 {% endaller %}
 
@@ -68,6 +68,6 @@ S'il existait un chemin $c'' = w_0 \dots w_{k'-1}$ entre $v_i$ et $v_j$ de poids
 
 {% aller %}
 
-[Algorithme $A^\star$](./A-étoile/){.interne}
+[Algorithme $A^\star$](./A-étoile/)
 
 {% endaller %}

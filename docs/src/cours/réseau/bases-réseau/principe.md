@@ -12,7 +12,7 @@ eleventyComputed:
 
 Le but d'un réseau est de faire communiquer deux applications situées sur deux ordinateurs différents. Cette tâche est effectuée en appliquant le théorème fondamentale de l’ingénierie logiciel : l'indirection.
 
-L'indirection étant ici matérialisée par des [couches](https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet). Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :
+L'indirection étant ici matérialisée par des [couches](https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet){.externe}. Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :
 
 ```
 application  : navigateur -------------------------------- serveur
@@ -46,10 +46,10 @@ liaisons     :    |__________________________________________|
 
 A chaque couche est associé un protocole dont le but est de résoudre la tâche qui lui est assignée. Dans le cas de notre exemple ces protocoles sont :
 
-- application : [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
-- transmission : [TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol)
-- routage : [IP](https://fr.wikipedia.org/wiki/Internet_Protocol)
-- liaisons : [Ethernet](https://fr.wikipedia.org/wiki/Ethernet)
+- application : [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol){.externe}
+- transmission : [TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol){.externe}
+- routage : [IP](https://fr.wikipedia.org/wiki/Internet_Protocol){.externe}
+- liaisons : [Ethernet](https://fr.wikipedia.org/wiki/Ethernet){.externe}
 
 Chaque couche encapsule le message de la couche précédente en ajoutant son header en début de message.
 
@@ -57,7 +57,7 @@ Chaque couche encapsule le message de la couche précédente en ajoutant son hea
 Cette séparation en quatre couches est appelé **_modèle TCP/IP_**.
 {% endattention %}
 {% info %}
-Vous verrez aussi un modèle plus ancien (et moins adapté au réseau moderne) appelé [modèle OSI](https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI) qui sépare le réseau en 7 couches ([TCP/IP vs OSI](https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet#Couches_TCP/IP)).
+Vous verrez aussi un modèle plus ancien (et moins adapté au réseau moderne) appelé [modèle OSI](https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI){.externe} qui sépare le réseau en 7 couches ([TCP/IP vs OSI](https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet#Couches_TCP/IP){.externe}).
 {% endinfo %}
 
 A l'arrivée c'est le contraire, chaque couche supprime son header avant de passer le message à la couche suivante. Ce principe général de transmission en couches permet de faire communiquer plusieurs machines entre-elles quelques soient leurs emplacement dans le réseau (deux machines éloignées de plusieurs milliers de kilomètres ou deux fois la même machine) du moment que la machine appelante connaisse l'adresse dans le réseau de la machine appelée.
@@ -72,13 +72,13 @@ Une communication réseau :
 
 ## Adresse
 
-L'adresse d'une machine sur le réseau est géré par la couche de routage, c'est un nombre sur 128 bits (avec le protocole [IPv6](https://fr.wikipedia.org/wiki/IPv6)) qui permet d'adresser plus de $10^{38}$ machines. On ne manipulera (presque) jamais directement ce nombre car un autre protocole (le [protocole DNS](https://fr.wikipedia.org/wiki/Domain_Name_System)) associe de façon unique un nom à ce numéro.
+L'adresse d'une machine sur le réseau est géré par la couche de routage, c'est un nombre sur 128 bits (avec le protocole [IPv6](https://fr.wikipedia.org/wiki/IPv6){.externe}) qui permet d'adresser plus de $10^{38}$ machines. On ne manipulera (presque) jamais directement ce nombre car un autre protocole (le [protocole DNS](https://fr.wikipedia.org/wiki/Domain_Name_System){.externe}) associe de façon unique un nom à ce numéro.
 
 {% attention "À retenir" %}
 Chaque machine sur le réseau est identifiée par un nom.
 {% endattention %}
 
-Sous Linux on utilise [la commande `dig`](https://fr.wikipedia.org/wiki/Dig_(programme_informatique)) pour connaître le numéro IP associé à un nom. Par exemple la machine `www.google.fr` :
+Sous Linux on utilise [la commande `dig`](https://fr.wikipedia.org/wiki/Dig_(programme_informatique)){.externe} pour connaître le numéro IP associé à un nom. Par exemple la machine `www.google.fr` :
 
 ```shell
 ❯ dig AAAA sas1.ec-m.fr +short
@@ -117,7 +117,7 @@ Chaque machine possède des points d'entrées, appelés [ports](<https://fr.wiki
 1. en fonctionnement
 2. est associée au port $p$
 
-Sous Linux on utilise [la commande `nmap`](https://nmap.org/book/man.html) pour connaître l'état d'un port,  ouvert (c'est à dire qu'une application écoute ce port) ou non. Par exemple :
+Sous Linux on utilise [la commande `nmap`](https://nmap.org/book/man.html){.externe} pour connaître l'état d'un port,  ouvert (c'est à dire qu'une application écoute ce port) ou non. Par exemple :
 
 ```shell
 ❯ nmap -p 443 www.google.com
@@ -155,7 +155,7 @@ Un port sur une machine à 3 états :
 
 - ouvert : une application écoute ce port et peut être appelée
 - fermé : aucune application n'écoute ce port
-- filtré: le statut du port est inconnu, souvent à cause d'un [firewall](https://fr.wikipedia.org/wiki/Pare-feu_(informatique)) dont le but est de bloquer la communication des ports non ouvert.
+- filtré: le statut du port est inconnu, souvent à cause d'un [firewall](https://fr.wikipedia.org/wiki/Pare-feu_(informatique)){.externe} dont le but est de bloquer la communication des ports non ouvert.
 
 {% attention "À retenir" %}
 
@@ -168,14 +168,14 @@ Pour entamer une communication réseau avec une application il faut posséder 2 
 {% info %}
 Il existe des ports par défaut pour certains types d'applications. Par exemple le port part défaut des serveurs web https est 443. C'est pourquoi lorsque l'on communique avec google les deux urls suivantes sot équivalentes (faites l'expérience) :
 
-- <https://www.google.com>
-- <https://www.google.com:443>
+- <https://www.google.com>{.externe}
+- <https://www.google.com:443>{.externe}
 
 {% endinfo %}
 
 ## Socket
 
-Une fois la machine à appeler trouvée sur le réseau la communication effective entre deux ordinateurs se fait via un tuyau appelé [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets) qui relie le port appelé de la machine distante à un port de l'ordinateur appelant :
+Une fois la machine à appeler trouvée sur le réseau la communication effective entre deux ordinateurs se fait via un tuyau appelé [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets){.externe} qui relie le port appelé de la machine distante à un port de l'ordinateur appelant :
 
 ```
                socket
@@ -193,10 +193,10 @@ Les ports sont répartis en trois catégories, selon leurs usages :
 
 - de 0 à 1023 : **_system ports_** (aussi appelés _well known ports_) qui sont utilisés par le système (22 pour ssh, 443 pour https, 80 pour http, ...)
 - de 1024 à 49151 : **_user ports_** (aussi appelés **_registered ports_**) sont utilisés soit par des protocoles utilisateurs (ces protocoles peuvent être connus comme bittorrent, des ports 6881 à 6999 ou des ports de tests comme 8080 qui est souvent utilisé pour des serveurs web locaux)
-- de 49152 à 65535 : [**_Ephemeral port_**](https://en.wikipedia.org/wiki/Ephemeral_port) (aussi appelés **_private ports_**) utilisés par le système le temps d'une connexion.
+- de 49152 à 65535 : [**_Ephemeral port_**](https://en.wikipedia.org/wiki/Ephemeral_port){.externe} (aussi appelés **_private ports_**) utilisés par le système le temps d'une connexion.
 
 {% lien %}
-[Liste des ports communément utilisés](https://fr.wikipedia.org/wiki/Liste_de_ports_logiciels)
+[Liste des ports communément utilisés](https://fr.wikipedia.org/wiki/Liste_de_ports_logiciels){.externe}
 {% endlien %}
 
 Les ports systèmes étant réservés à des protocoles connus, si l'on ne précise pas le port lors d'une connexion. c'est le port par défaut qui est utilisé. Par exemple pour une connexion de notre ordinateur sur le site de google avec le protocole https :

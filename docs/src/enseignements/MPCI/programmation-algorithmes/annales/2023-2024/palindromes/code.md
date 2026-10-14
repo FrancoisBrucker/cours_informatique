@@ -50,12 +50,12 @@ Pour traiter des phrases palindromes à partir d'un texte en français, il faut 
 
 Créez une fonction `prétraitement(s: str) -> str` qui effectue le prétraitement d'une chaîne de caractères. Pour cela vous pourrez utiliser, dans l'ordre :
 
-1. le module [`unidecode`{.language-}](https://pypi.org/project/Unidecode/) (qu'il vous faudra installer avec `pip`) qui permet de supprimer les accents des caractères
-2. [la méthode `upper`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.upper) des chaînes de caractères qui majuscule les lettres
-3. l'instruction `re.sub("[^A-Za-z]","",s)`{'.language-} (`sub`{.language-} est une fonction [du module `re`](https://docs.python.org/fr/3/library/re.html) de python) qui rend une chaîne ne possédant que les caractères alphabétiques de `s`{.language-}.
+1. le module [`unidecode`{.language-}](https://pypi.org/project/Unidecode/){.externe} (qu'il vous faudra installer avec `pip`) qui permet de supprimer les accents des caractères
+2. [la méthode `upper`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.upper){.externe} des chaînes de caractères qui majuscule les lettres
+3. l'instruction `re.sub("[^A-Za-z]","",s)`{'.language-} (`sub`{.language-} est une fonction [du module `re`](https://docs.python.org/fr/3/library/re.html){.externe} de python) qui rend une chaîne ne possédant que les caractères alphabétiques de `s`{.language-}.
    {% endfaire %}
    {% info %}
-   [le module `re`](https://docs.python.org/fr/3/library/re.html) de python permet de filtrer une chaîne de caractères selon [une expression régulière](https://fr.wikipedia.org/wiki/Expression_régulière). Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots `re.sub("[^A-Z]","",s)`{'.language-} va rendre une nouvelle chaîne de caractères en :
+   [le module `re`](https://docs.python.org/fr/3/library/re.html){.externe} de python permet de filtrer une chaîne de caractères selon [une expression régulière](https://fr.wikipedia.org/wiki/Expression_régulière){.externe}. Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots `re.sub("[^A-Z]","",s)`{'.language-} va rendre une nouvelle chaîne de caractères en :
 
    1. regardant caractère par caractère le troisième paramètre (ici `s`{.language-}).
    2. elle ne conservera que les éléments décrits par le premier paramètre (ici `"[^A-Z]"`{.language-} qui signifie toutes les lettres en majuscules)
@@ -77,7 +77,7 @@ On peut très facilement lire un fichier texte en python en utilisant l'instruct
 s = open(nom_du_fichier, encoding="utf-8").read()
 ```
 
-Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [`perec.txt`{.fichier}](../perec.txt){.fichier} (cliquez droit sur le lien et choisissez de le télécharger) est une phrase palindrome. On le doit à [Georges Perec](https://fr.wikipedia.org/wiki/Georges_Perec) écrivain et poète Français.
+Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [`perec.txt`{.fichier}](../perec.txt){.fichier} (cliquez droit sur le lien et choisissez de le télécharger) est une phrase palindrome. On le doit à [Georges Perec](https://fr.wikipedia.org/wiki/Georges_Perec){.externe} écrivain et poète Français.
 
 ## Sous-palindrome
 
@@ -96,9 +96,9 @@ Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [
 Créez un programme principal nommé `main-sous-palindrome.py`{.fichier} qui demande à l'utilisateur de donner une chaîne de caractères et le programme : écrit la phrase entrée en écrivant en rouge le plus grand sous-palindrome.
 {% endfaire %}
 {% info %}
-Pour changer de couleur dans un affichage à l'écran, il vous faudra utiliser un module que vous devrez installer. Vous pourrez utiliser [le module `pytermgui`{.language-}](https://pypi.org/project/PyTermGUI/) par exemple qui permet de faire plein de choses.
+Pour changer de couleur dans un affichage à l'écran, il vous faudra utiliser un module que vous devrez installer. Vous pourrez utiliser [le module `pytermgui`{.language-}](https://pypi.org/project/PyTermGUI/){.externe} par exemple qui permet de faire plein de choses.
 
-En lisant [la documentation de son sous-module tim](https://ptg.bczsalba.com/tim/) vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.
+En lisant [la documentation de son sous-module tim](https://ptg.bczsalba.com/tim/){.externe} vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.
 {% endinfo %}
 
 ### Fichier texte
@@ -112,10 +112,10 @@ Créez un programme principal nommé `main-sous-palindrome-fichier.py`{.fichier}
 4. représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédant et le succédant (écrits de façon normale).
    {% endfaire %}
 
-Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <https://www.gutenberg.org/>. Choisissez toujours la version texte brute (_plain text_) en utf-8.
+Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <https://www.gutenberg.org/>{.externe}. Choisissez toujours la version texte brute (_plain text_) en utf-8.
 
 {% info %}
-Pour les fleurs du mal de Baudelaire c'est là : <https://www.gutenberg.org/ebooks/6099>
+Pour les fleurs du mal de Baudelaire c'est là : <https://www.gutenberg.org/ebooks/6099>{.externe}
 {% endinfo %}
 
 ### Amélioration

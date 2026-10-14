@@ -14,7 +14,7 @@ eleventyComputed:
 
 Création des premiers serveurs web.
 
-1. [serveur web minimal](./minimal){.interne}
-2. [gestion des routes](./routes){.interne}
-3. [serveur web avec express](./express){.interne}
-4. [routes spéciales](./routes-paramètres){.interne}
+1. [serveur web minimal](./minimal)
+2. [gestion des routes](./routes)
+3. [serveur web avec express](./express)
+4. [routes spéciales](./routes-paramètres)

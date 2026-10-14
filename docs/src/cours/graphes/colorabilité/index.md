@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[cours sur la coloration](https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf)
+[cours sur la coloration](https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf){.externe}
 
 {% endlien %}
 
@@ -20,7 +20,7 @@ eleventyComputed:
 ## Problème
 
 {% aller %}
-[Problème de la coloration d'un graphe](./problème/){.interne}
+[Problème de la coloration d'un graphe](./problème/)
 {% endaller %}
 
 ## coloration sommets. Prop
@@ -37,7 +37,7 @@ Certainement la plus populaires des colorations de graphes.
 
 ### Colorabilité et isomorphisme de graphe
 
-> TBD test heuristique d'isomorphisme de graphe <https://en.wikipedia.org/wiki/Colour_refinement_algorithm> et <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
+> TBD test heuristique d'isomorphisme de graphe <https://en.wikipedia.org/wiki/Colour_refinement_algorithm>{.externe} et <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>{.externe}
 
 ### Algo exponentiel
 
@@ -144,12 +144,12 @@ On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ e
 ## Coloration des arêtes
 
 {% aller %}
-[Coloration des arêtes](coloration-arêtes){.interne}
+[Coloration des arêtes](coloration-arêtes)
 {% endaller %}
 
 ## Coloration totale
 
-> TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf> p22
+> TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>{.externe} p22
 
 ## Coloration par liste
 

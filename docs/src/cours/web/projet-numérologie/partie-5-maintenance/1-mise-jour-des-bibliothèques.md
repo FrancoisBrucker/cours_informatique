@@ -26,7 +26,7 @@ Mettre à jour les packages.
 
 ## Mise à jour
 
-En reprenant le code de la [partie 4](../../partie-4-jardinage/4-structures){.interne}, on voit que certains packages ont été mis à jour.
+En reprenant le code de la [partie 4](../../partie-4-jardinage/4-structures), on voit que certains packages ont été mis à jour.
 
 `package.json`{.fichier} :
 
@@ -53,7 +53,7 @@ En reprenant le code de la [partie 4](../../partie-4-jardinage/4-structures){.in
 
 ```
 
-Voir les [packages mis à jour](https://docs.npmjs.com/cli/v8/commands/npm-outdated) avec :
+Voir les [packages mis à jour](https://docs.npmjs.com/cli/v8/commands/npm-outdated){.externe} avec :
 
 ```
 » npm outdated                     
@@ -64,7 +64,7 @@ sqlite3      5.1.2   5.1.6   5.1.6  node_modules/sqlite3    numérologie
 
 On voit de plus que la version installée de `sequelize` était plus la minimum demandée. Voir `package-lock.json`{.fichier} pour avoir les version effectivement installées de tous les packages.
 
-[Mise à jour](https://docs.npmjs.com/cli/v8/commands/npm-update) des packages installées (`package-lock.json`{.fichier}) :
+[Mise à jour](https://docs.npmjs.com/cli/v8/commands/npm-update){.externe} des packages installées (`package-lock.json`{.fichier}) :
 
 ```
 npm update
@@ -79,7 +79,7 @@ npm install [nom package]@latest --save
 {% lien %}
 Voir :
 
-<https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365>
+<https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365>{.externe}
 
 Attention, la question est vielle, donc les premières réponses ne sont plus exactes.
 
@@ -87,7 +87,7 @@ Attention, la question est vielle, donc les premières réponses ne sont plus ex
 
 On peut aussi changer le `package.json`{.fichier} pour qu'il ait toujours la dernière version d'installée (mais attention aux incompatibilités de versions) :
 
-Dans le fichier `package.json`{.fichier} (voir [doc](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) ):
+Dans le fichier `package.json`{.fichier} (voir [doc](https://docs.npmjs.com/cli/v8/configuring-npm/package-json){.externe} ):
 
 ```json
 ... 

@@ -18,7 +18,7 @@ eleventyComputed:
 > mersenne twister de python
 
 
-D. Knuth cite dans le volume 2 de [Art of computer programming](https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/) près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de [générateurs aléatoires physiques](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel) ou encore l'utilisation de [tables](https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires), l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.
+D. Knuth cite dans le volume 2 de [Art of computer programming](https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/){.externe} près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de [générateurs aléatoires physiques](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel){.externe} ou encore l'utilisation de [tables](https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires){.externe}, l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.
 
 Si un algorithme ne ne peut "créer" de nombres aléatoires, le relancer avec les mêmes paramètres redonnera exactement les mêmes résultats, on peut cependant des nombres ayant _l'air_ d'être aléatoire. Ces nombres sont alors appelés **_nombres pseudo-aléatoires_**.
 
@@ -61,7 +61,7 @@ Déterminer si une suite est aléatoire ne peut se faire que via des tests stati
 
 ### Test statistique
 
-Un [test statistique](https://fr.wikipedia.org/wiki/Test_statistique) permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.
+Un [test statistique](https://fr.wikipedia.org/wiki/Test_statistique){.externe} permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.
 
 Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{0 \leq i < n}$, on peut bien sur mathématiquement les définir de façon plus générale.
 
@@ -93,7 +93,7 @@ L'outil principal utilisé pour vérifier l'adéquation d'une siute de nombres f
 #### Test du chi2
 
 {% lien %}
-[test du chi2](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2)
+[test du chi2](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2){.externe}
 {% endlien %}
 
 Si l'on possède une loi de distribution discrète sur $m$ éléments $e_i$ ($0\leq i < m$), telle que $Pr(x=e_i) = p_i$ et une suite finie $X=(x_i)_{0 \leq i < N}$, le $\chi^2$ est un réel valant :
@@ -120,7 +120,7 @@ On a alors le test statistique suivant :
 
 #### Chi2 en python
 
-On installe la bibliothèque [scipy](https://scipy.org/) :
+On installe la bibliothèque [scipy](https://scipy.org/){.externe} :
 
 ```shell
 python -m pip install scipy
@@ -154,7 +154,7 @@ for x in X:
 print(O)  # [111, 103, 103, 101, 87, 77, 110, 97, 115, 96]
 ```
 
-Il nous reste à calculer le risque de première espèce du test du $\chi^2$ en utilisant [`scipy.stats.chisquare`{.language-}](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy-stats-chisquare). On veut un risque inférieure à 5% de rejeter l'uniformité alors qu'elle est vraie :
+Il nous reste à calculer le risque de première espèce du test du $\chi^2$ en utilisant [`scipy.stats.chisquare`{.language-}](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy-stats-chisquare){.externe}. On veut un risque inférieure à 5% de rejeter l'uniformité alors qu'elle est vraie :
 
 ```python
 print(scipy.stats.chisquare(O, E))  # Power_divergenceResult(statistic=11.88, pvalue=0.22015919911793527)
@@ -174,7 +174,7 @@ Refaite cette exercice et vérifiez que cela fonctionne aussi pour votre python.
 Terminons cette partie avec un petit exercice où, normalement, vous devriez rejeter l'hypothèse :
 
 {% exercice %}
-En utilisant la fonction [`random.random()`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) générez 1000 entiers valant :
+En utilisant la fonction [`random.random()`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random){.externe} générez 1000 entiers valant :
 
 - 0 avec une probabilité .6
 - 1 avec une probabilité .4
@@ -205,7 +205,7 @@ Le risque de première espèce vaut $8 \cdot 10^{-12}$, on rejette l'hypothèse 
 Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait. De plus, on veut pouvoir générer des suite avec des algorithmes efficaces (_ie._ polynomiaux). On obtient alors la définition générale suivante :
 
 {% note2 "**Définition**" %}
-Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire)_** si elle :
+Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire){.externe}_** si elle :
 
 - est générée par un algorithme polynomial à un paramètre, noté **_graine_** (**_seed_** en anglais)
 - elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.
@@ -239,7 +239,7 @@ print(random.random())
 
 La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.
 
-On peut la réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed).
+On peut la réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed){.externe}.
 
 Le code suivant doit donner deux fois le même rel :
 
@@ -262,7 +262,7 @@ Le système utilise une méthode mixte pour générer des nombres aléatoires.
 Il utilise une méthode purement aléatoire pour générer une graine, heure courante, nombre de fichiers ouverts, température, etc, puis utilise un algorithme pseudo-aléatoire pour générer une séquence de nombres.
 
 {% lien %}
-[Générateur de Linux : `/dev/random`{.fichier}](https://en.wikipedia.org/wiki//dev/random)
+[Générateur de Linux : `/dev/random`{.fichier}](https://en.wikipedia.org/wiki//dev/random){.externe}
 {% endlien %}
 
 ## Générateurs de nombres pseudo-aléatoires
@@ -289,11 +289,11 @@ On utilise un registre à décalage pour générer une suite de bits.
 
 > TBD : Mersenne twister
 
-[Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
+[Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf){.externe}
 
 - différence entre
   - aléatoire physique
   - aléatoire cryptographique
 - entropie ?
 
-[Registre à décalage](https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire)
+[Registre à décalage](https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire){.externe}

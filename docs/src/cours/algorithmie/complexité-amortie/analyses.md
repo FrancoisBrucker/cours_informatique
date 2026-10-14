@@ -16,7 +16,7 @@ Nous allons illustrer chaque méthode en utilisant l'algorithme `tous`{.language
 
 ## Exemple du compteur binaire
 
-Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$. L'algorithme suivant est la variante itérative de [l'algorithme vu en exercice](../../projet-algorithmes-classiques/#algorithme-compteur-binaire-rec){.interne}
+Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$. L'algorithme suivant est la variante itérative de [l'algorithme vu en exercice](../../projet-algorithmes-classiques/#algorithme-compteur-binaire-rec)
 
 <span id="algorithme-compteur-binaire"></span>
 
@@ -68,7 +68,7 @@ def tous(n):
 
 À un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
 
-[On a déjà étudié les complexités de l'algorithme `successeur(N)`{.language-}](../../projet-algorithmes-classiques/#compteur-binaire){.interne}. Ici c'est l'exécution de `tous(n)`{.language-} qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.
+[On a déjà étudié les complexités de l'algorithme `successeur(N)`{.language-}](../../projet-algorithmes-classiques/#compteur-binaire). Ici c'est l'exécution de `tous(n)`{.language-} qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.
 
 {% note "**Problème**" %}
 Trouver la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.
@@ -140,7 +140,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 $$
 </div>
 
-On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../projet-sommes-classiques/#problème-r^i){.interne}), ce qui permet d'obtenir :
+On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../projet-sommes-classiques/#problème-r^i)), ce qui permet d'obtenir :
 
 <div>
 $$

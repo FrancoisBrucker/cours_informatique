@@ -23,17 +23,17 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 > TBD ajouter rendu de pièces comme sac à dos particulier dans étude.
 
 
-> TBD temps / mémoire tradeof : [Cryptanalytic Time-Memory tradeof](https://www-ee.stanford.edu/~hellman/publications/36.pdf)
+> TBD temps / mémoire tradeof : [Cryptanalytic Time-Memory tradeof](https://www-ee.stanford.edu/~hellman/publications/36.pdf){.externe}
 ## Étude
 
 {% aller %}
-[Étude](./étude){.interne}
+[Étude](./étude)
 {% endaller %}
 
 ## Projet
 
 {% aller %}
-[Projet](./projet){.interne}
+[Projet](./projet)
 {% endaller %}
 
 ## Pour aller plus loin

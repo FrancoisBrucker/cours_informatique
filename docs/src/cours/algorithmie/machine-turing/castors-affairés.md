@@ -9,10 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous en donnons une ici, la plus célèbre des fonction non calculable : [les castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (_busy beavers_ dans la version originale).
+Nous en donnons une ici, la plus célèbre des fonction non calculable : [les castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9){.externe} (_busy beavers_ dans la version originale).
 
 {% lien %}
-L'[article](https://www.gwern.net/docs/cs/1962-rado.pdf) de Tibor Radò où les busy beavers sont définis.
+L'[article](https://www.gwern.net/docs/cs/1962-rado.pdf){.externe} de Tibor Radò où les busy beavers sont définis.
 {% endlien %}
 
 On a pas pu la donner avant car elle dépend intrinsèquement de la notion de machine de Turing.
@@ -69,7 +69,7 @@ Programme :
         i = i + 1
 ```
 
-Comme l'entrée de $F$ est un nombre écrit en [système unaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire) ($n$ est composée de n $1$ consécutifs) on peut également construire la machine $M$ :
+Comme l'entrée de $F$ est un nombre écrit en [système unaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire){.externe} ($n$ est composée de n $1$ consécutifs) on peut également construire la machine $M$ :
 
 ```text
 Nom : M

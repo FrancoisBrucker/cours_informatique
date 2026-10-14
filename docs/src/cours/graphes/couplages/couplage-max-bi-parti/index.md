@@ -24,7 +24,7 @@ Notez que l'on sait déjà résoudre ce problème par une modélisation part flo
 
 ## Dualité couverture/couplage
 
-On va généraliser ici [le théorème de König-Egerváry](../couplage-bi-parti/#König-Egerváry){.interne} pour montrer que couverture de poids minimal va être égal à couplage de poids maximal. Cette dualité rappelle la dualité coupe minimale et flot maximum.
+On va généraliser ici [le théorème de König-Egerváry](../couplage-bi-parti/#König-Egerváry) pour montrer que couverture de poids minimal va être égal à couplage de poids maximal. Cette dualité rappelle la dualité coupe minimale et flot maximum.
 
 {% note2 "**Définition**" %}
 Une **_couverture valuée_** d'un graphe $G=(V, E)$ valué par $p$ est une fonction $c:V\to \mathbb{R}^+$ telle que : $c(x) + c(y)\geq p(xy)$ pour tout $xy \in E$.
@@ -94,8 +94,8 @@ Tout ce fait de façon polynomiale puisque :
 
 {% lien %}
 
-- [Méthode hongroise](https://www.youtube.com/watch?v=fMAmtE0UyzI)
-- [Algorithme hongrois](https://fr.wikipedia.org/wiki/Algorithme_hongrois)
+- [Méthode hongroise](https://www.youtube.com/watch?v=fMAmtE0UyzI){.externe}
+- [Algorithme hongrois](https://fr.wikipedia.org/wiki/Algorithme_hongrois){.externe}
 
 {% endlien %}
 
@@ -113,7 +113,7 @@ Si l'on cherche à maximiser des préférences rangées dans une matrice $n \tim
 
 {% info %}
 
-On reprend ici [l'algorithme décrit ici](https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf).
+On reprend ici [l'algorithme décrit ici](https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf){.externe}.
 
 {% endinfo %}
 

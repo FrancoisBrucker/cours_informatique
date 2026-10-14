@@ -14,10 +14,10 @@ Nous allons voir les besoins minimum pour stocker et distribuer un code source. 
 
 ## Création d'un compte github
 
-Nous avons chois d'utiliser la plateforme [github](https://github.com/), donc commençons par nous y créer un compte :
+Nous avons chois d'utiliser la plateforme [github](https://github.com/){.externe}, donc commençons par nous y créer un compte :
 
 {% aller %}
-[Création d'un compte github](./github-compte){.interne}
+[Création d'un compte github](./github-compte)
 {% endaller %}
 
 Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
@@ -25,7 +25,7 @@ Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en v
 ## Besoins pour un dépôt
 
 {% aller %}
-[Besoins](./besoins-dépôt/){.interne}
+[Besoins](./besoins-dépôt/)
 {% endaller %}
 
 ## Projet 
@@ -33,7 +33,7 @@ Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en v
 Un projet pour apprendre à créer un projet sous github :
 
 {% aller %}
-[Projet Numérologie](./projet-dépot/){.interne}
+[Projet Numérologie](./projet-dépot/)
 {% endaller %}
 
 

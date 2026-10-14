@@ -25,7 +25,7 @@ A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci.
 ### Graphe complémentaire
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>
+<https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>{.externe}
 {% endlien %}
 
 complémentaire de complémentaire = graphe
@@ -35,7 +35,7 @@ complémentaire de complémentaire = graphe
 ### Graphe adjoint
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Line_graph>
+<https://fr.wikipedia.org/wiki/Line_graph>{.externe}
 {% endlien %}
 Aussi appelé line graph
 
@@ -72,13 +72,13 @@ Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes.  Une fonction $f: V\to V'$ 
 > TBD exemple.
 
 {% lien %}
-<https://www.bourbaki.fr/TEXTES/1125.pdf>
+<https://www.bourbaki.fr/TEXTES/1125.pdf>{.externe}
 {% endlien %}
 
 ### Reconnaissance
 
 {% lien %}
-<https://perso.ens-lyon.fr/eric.thierry/Graphes2009/jonas-lefevre.pdf>
+<https://perso.ens-lyon.fr/eric.thierry/Graphes2009/jonas-lefevre.pdf>{.externe}
 {% endlien %}
 
 Définissons le problème algorithmique associé :
@@ -93,5 +93,5 @@ Définissons le problème algorithmique associé :
 
 Si on se donne une fonction $f$ allant de l'ensemble des sommets d'un graphe à un autre, il est facile de vérifier si c'est un isomorphisme entre les deux graphes ou non : le problème de l'isomorphisme de graphe est donc clairement dans NP.
 
-En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem) est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.
+En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem){.externe} est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.
 

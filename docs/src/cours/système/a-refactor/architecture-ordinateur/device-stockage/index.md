@@ -30,26 +30,26 @@ eleventyComputed:
 
 C'est plus lent que la mémoire. Hiérarchie des vitesses.
 
-<https://wiki.archlinux.org/title/Advanced_Format>
+<https://wiki.archlinux.org/title/Advanced_Format>{.externe}
 
 ## Organisation logique
 
-Un disque dur est organisé en partitions suivant la structure [GPT](https://en.wikipedia.org/wiki/GUID_Partition_Table).
+Un disque dur est organisé en partitions suivant la structure [GPT](https://en.wikipedia.org/wiki/GUID_Partition_Table){.externe}.
 
 {% lien %}
-<https://doc.ubuntu-fr.org/uuid_et_label>
+<https://doc.ubuntu-fr.org/uuid_et_label>{.externe}
 {% endlien %}
 
 {% attention %}
 Vous verrez encore des vieux tutos parler de MBR, ils sont obsolètes.
 {% endattention %}
 
-A chaque partition est associée deux [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) :
+A chaque partition est associée deux [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier){.externe} :
 
 - son type
-- son [identifiant](https://wiki.archlinux.org/title/Persistent_block_device_naming)
+- son [identifiant](https://wiki.archlinux.org/title/Persistent_block_device_naming){.externe}
 
-<https://wiki.archlinux.org/title/Partitioning>
+<https://wiki.archlinux.org/title/Partitioning>{.externe}
 
 ### File system
 
@@ -67,8 +67,8 @@ Il existe d'autres type de partitions que celles utilisées pour stocker les don
 
 Partition de démarrage.
 
-<https://en.wikipedia.org/wiki/EFI_system_partition>
+<https://en.wikipedia.org/wiki/EFI_system_partition>{.externe}
 
 #### swap
 
-Le [swap](https://fr.wikipedia.org/wiki/Swap) étend les possibilités de la mémoire virtuelle
+Le [swap](https://fr.wikipedia.org/wiki/Swap){.externe} étend les possibilités de la mémoire virtuelle

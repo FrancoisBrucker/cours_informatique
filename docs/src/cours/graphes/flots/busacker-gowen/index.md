@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Algorithme de Busacker et Gowen](https://fr.wikipedia.org/wiki/Algorithme_de_Busacker_et_Gowen)
+[Algorithme de Busacker et Gowen](https://fr.wikipedia.org/wiki/Algorithme_de_Busacker_et_Gowen){.externe}
 {% endlien %}
 
 {% attention %}
@@ -41,7 +41,7 @@ Ce qui est surprenant, c'est que ceci peut se faire aisément en modifiant l'alg
 - si $xy$ est un arc de $G$ on le coût de l'arc dans le graphe d'écart est l'opposé du coût dans le graphe d'origine puisque si cet arc est choisi on va diminuer le flot passant par lui
 
 {% attention %}
-Comme les poids peuvent être négatifs, il faut utiliser [l'algorithme de Belman-ford](../../chemin-poids-min-cas-général/){.interne} de complexité $\mathcal{O}(e(G) \cdot v(G))$ pour trouver un chemin de longueur minimum entre $s$ et $t$.
+Comme les poids peuvent être négatifs, il faut utiliser [l'algorithme de Belman-ford](../../chemin-poids-min-cas-général/) de complexité $\mathcal{O}(e(G) \cdot v(G))$ pour trouver un chemin de longueur minimum entre $s$ et $t$.
 {% endattention %}
 
 Enfin, il faut partir du flot nul pour que l'optimalité soit garantie.
@@ -68,4 +68,4 @@ Comme on augmente un flot de coût minimum, on a plus de garantie de polynomiali
 La complexité de l'algorithme de Buscker-Gowen est en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.
 {% endnote %}
 
-Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de [programmation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire), mais ceci sort du cadre d'un court de graphe.
+Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de [programmation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire){.externe}, mais ceci sort du cadre d'un court de graphe.

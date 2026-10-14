@@ -17,7 +17,7 @@ eleventyComputed:
 Dernière partie en python avant d'apprendre un nouveau langage. On montre comment développer du code au quotidien :
 
 {% aller %}
-[méthodes de développement](méthode-développement){.interne}
+[méthodes de développement](méthode-développement)
 {% endaller %}
 
 ## Coder avec la mémoire
@@ -34,7 +34,7 @@ Dernière partie en python avant d'apprendre un nouveau langage. On montre comme
 > - programmation parallèle
 > - profilage de code ?
 > - interfaces
-> - [mémoire](./données-mémoire/){.interne}
+> - [mémoire](./données-mémoire/)
 > aussi cache et bus pour les transferts. On doit pouvoir controler le tout.
 > qu'est un entier python sous cette nomenclature ? Un tableau d'int64 
 > sauf que longueur au max int64. Si on veut plus = liste chaînée int64 = taille et si taille = max, le prochain int64 est l'adresse du suivant.

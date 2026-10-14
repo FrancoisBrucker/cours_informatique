@@ -27,7 +27,7 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 
 ## <span id="syracuse"></span>Syracuse
 
-On essaye d'écrire un programme qui teste la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour des entiers.
+On essaye d'écrire un programme qui teste la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){.externe} pour des entiers.
 
 ### Questions
 
@@ -58,7 +58,7 @@ def syracuse(x):
 Vérifiez que le code fonctionne en demandant à l'utilisateur de taper un nombre et rend la suite de Syracuse de ce nombre.
 
 - vous supposerez que l'utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)
-- vous utiliserez [la fonction `input()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#input) qui rend une chaîne de caractères tapée par l'utilisateur
+- vous utiliserez [la fonction `input()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#input){.externe} qui rend une chaîne de caractères tapée par l'utilisateur
 - `int(x)`{.language-} est l'entier représenté par la chaîne de caractère `x`{.language-}.
 
 {% endexercice %}
@@ -114,7 +114,7 @@ def suite(u_0):
 Écrivez le programme qui demande à l'utilisateur de taper un nombre et rend la suite de Syracuse de ce nombre.
 
 - vous supposerez que l'utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)
-- vous utiliserez [la fonction `input()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#input) qui rend une chaîne de caractères tapée par l'utilisateur
+- vous utiliserez [la fonction `input()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#input){.externe} qui rend une chaîne de caractères tapée par l'utilisateur
 - `int(x)`{.language-} est l'entier représenté par la chaîne de caractère `x`{.language-}.
 
 {% endexercice %}
@@ -156,7 +156,7 @@ Ne faites **PAS** de conversion de type dans vos fonctions. Si elles demandent d
 
 ## <span id="pendu"></span>Jeu du pendu
 
-On essaye d'écrire un programme qui joue au [jeu du pendu](https://fr.wikipedia.org/wiki/Pendu_(jeu)).
+On essaye d'écrire un programme qui joue au [jeu du pendu](https://fr.wikipedia.org/wiki/Pendu_(jeu)){.externe}.
 
 ### Questions
 
@@ -418,9 +418,9 @@ Le programme consiste à demander à l'utilisateur une chaîne de caractères et
 
 Créer un programme permettant d'exécuter les 4 étapes de l'algorithme suivant :
 
-1. Demander à l'utilisateur une chaîne de caractères que l'on nommera `chaîne_entrée`{.language-} (en utilisant [la fonction `input([prompt: str]) -> str`{.language-}](https://docs.python.org/fr/3/library/functions.html#input))
+1. Demander à l'utilisateur une chaîne de caractères que l'on nommera `chaîne_entrée`{.language-} (en utilisant [la fonction `input([prompt: str]) -> str`{.language-}](https://docs.python.org/fr/3/library/functions.html#input){.externe})
 2. Demander à l'utilisateur un caractère que l'on nommera `caractère_entrée`{.language-} (vous ne ferez aucune vérification de type)
-3. Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find) des chaînes de caractères)
+3. Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find){.externe} des chaînes de caractères)
 4. Retournez à l'étape 1. de cet algorithme à part si `chaîne_entrée`{.language-} valait `"sortie"`{.language-}
 
 
@@ -471,7 +471,7 @@ Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction 
 {% info %}
 L'étape 3. du programme principal sera alors constitué de deux actions :
 
-- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find) des chaînes de caractères) (***question 1***)
+- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find){.externe} des chaînes de caractères) (***question 1***)
 - Afficher si `caractère_entrée`{.language-} est présent plus d'une fois dans `chaîne_entrée`{.language-} (***question 2***)
 {% endinfo %}
 
@@ -527,7 +527,7 @@ Dans l'étape 3. du programme, **utilisez la fonction que vous venez de coder** 
 {% info %}
 L'étape 3. du programme sera alors constitué de trois actions :
 
-- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find) des chaînes de caractères) (***question 1***)
+- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find){.externe} des chaînes de caractères) (***question 1***)
 - Afficher à l'écran si `caractère_entrée`{.language-} est présent plus d'une fois dans `chaîne_entrée`{.language-} (***question 2***)
 - Afficher à l'écran le nombre de fois où  `caractère_entrée`{.language-} apparaît dans `chaîne_entrée`{.language-} (***question 3***)
 {% endinfo %}
@@ -579,7 +579,7 @@ Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction 
 {% info %}
 L'étape 3. du programme principal sera alors constitué de quatre actions :
 
-- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find) des chaînes de caractères) (***question 1***)
+- Afficher à l'écran le plus petit indice (ou -1) de `chaîne_entrée`{.language-} valant `caractère_entrée`{.language-} (vous pourrez utiliser [la méthode `find`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.find){.externe} des chaînes de caractères) (***question 1***)
 - Afficher à l'écran si `caractère_entrée`{.language-} est présent plus d'une fois dans `chaîne_entrée`{.language-} (***question 2***)
 - Afficher à l'écran le nombre de fois où  `caractère_entrée`{.language-} apparaît dans `chaîne_entrée`{.language-} (***question 3***)
 - Afficher à l'écran  le nombre maximum de répétition d'un caractère, et affichez un message de victoire si `caractère_entrée`{.language-} réalise ce maximum. (***question 4***)

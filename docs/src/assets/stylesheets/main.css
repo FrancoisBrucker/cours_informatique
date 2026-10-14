@@ -57,7 +57,7 @@
 @layer components {
   a:not([class]),
   a:not([class]):visited {
-    @apply underline decoration-emerald-500 text-emerald-800 decoration-2 hover:text-emerald-500 hover:decoration-emerald-800 active:decoration-4;
+    @apply underline decoration-purple-500 text-purple-800 decoration-2 hover:text-purple-500 hover:decoration-purple-800 active:decoration-4;
   }
 }
 
@@ -85,6 +85,13 @@ a.interne:visited,
 .interne a,
 .interne a:visited {
   @apply underline decoration-purple-500 text-purple-800 decoration-2 hover:text-purple-500 hover:decoration-purple-800 active:decoration-4;
+}
+
+a.externe,
+a.externe:visited,
+.externe a,
+.externe a:visited {
+  @apply underline decoration-emerald-500 text-emerald-800 decoration-2 hover:text-emerald-500 hover:decoration-emerald-800 active:decoration-4;
 }
 
 a.fichier,

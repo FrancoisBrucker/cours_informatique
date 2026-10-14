@@ -33,7 +33,7 @@ printf("%s\n", s);
 En utilisant la chaîne de caractères définie dans le code précédent :
 
 - quel est la taille de `s` ?
-- en utilisant la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp) déterminez la taille de la chaîne de caractères contenue dans `s`
+- en utilisant la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp){.externe} déterminez la taille de la chaîne de caractères contenue dans `s`
 {% endexercice %}
 {% details "solution" %}
 
@@ -60,7 +60,7 @@ printf("%s\n", s);
 En utilisant la chaîne de caractères définie dans le code précédent :
 
 - quel est la taille de `s` ?
-- en utilisant la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp) déterminez la taille de la chaîne de caractères contenue dans `s`
+- en utilisant la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp){.externe} déterminez la taille de la chaîne de caractères contenue dans `s`
 - comment afficher la seconde chaîne de caractères ?
 {% endexercice %}
 {% details "solution" %}
@@ -71,7 +71,7 @@ En utilisant la chaîne de caractères définie dans le code précédent :
 
 Il faut cependant faire très attention, si on oublie d'ajouter `\0` à la fin du tableau, le comportement est UB (et résultera dans le meilleur des cas à un crash).
 
-Pour éviter ceci, `C` fournit l'outil des [*strings literals*](https://learn.microsoft.com/fr-fr/cpp/c-language/c-string-literals?view=msvc-170) :
+Pour éviter ceci, `C` fournit l'outil des [*strings literals*](https://learn.microsoft.com/fr-fr/cpp/c-language/c-string-literals?view=msvc-170){.externe} :
 
 en écrivant `"une chaîne"`, le compilateur `C` crée dans la partie data du code (même une partie en lecture seule) un tableau contenant toute la chaîne suivie du caractère `\0`. Il est alors possible d'accéder à cette chaîne via un pointeur, comme le montre le code suivant :
 
@@ -113,7 +113,7 @@ Son fonctionnement est le suivant :
 2. lors de l'exécution, à la création du tableau, les caractères de la strings literal sont copiés dans le tableau (et donc la pile), ce qui permet de les modifier.
 
 {% aller %}
-Ce [tutoriel](https://www.codingninjas.com/studio/library/whats-the-difference-between-char-s-and-char-s-in-c) résume les différences dans ces deux modes de création.
+Ce [tutoriel](https://www.codingninjas.com/studio/library/whats-the-difference-between-char-s-and-char-s-in-c){.externe} résume les différences dans ces deux modes de création.
 
 {% endaller %}
 
@@ -155,7 +155,7 @@ printf("%lu\n", sizeof(s3));
 {% endexercice %}
 
 La `libc` de possède de nombreuses fonctions permettant de gérer les chaînes de caractères. Elles sont majoritairement définies dans [`string.h`]
-(https://www.w3schools.com/c/c_strings_functions.php). Vous connaissez déjà [`strlen`](https://koor.fr/C/cstring/strlen.wp) mais il y en a de nombreuses autres :
+(https://www.w3schools.com/c/c_strings_functions.php). Vous connaissez déjà [`strlen`](https://koor.fr/C/cstring/strlen.wp){.externe} mais il y en a de nombreuses autres :
 
 - comparer deux chaînes de caractères
 - copier une chaîne dans une autre
@@ -181,16 +181,16 @@ printf envoie les caractères lues sur stdout. Si l'encodage des caractères est
 
 ### stdin
 
-Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce [tutoriel](https://www.scaler.com/topics/c/c-string-input-output-function/) explique certaines techniques pour le faire.
+Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce [tutoriel](https://www.scaler.com/topics/c/c-string-input-output-function/){.externe} explique certaines techniques pour le faire.
 
 {% aller %}
-<https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/>
+<https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/>{.externe}
 {% endaller %}
 
 ## Unicode
 
 {% lien %}
-<https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html>
+<https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html>{.externe}
 {% endlien %}
 
 On rappelle qu'un `char` en `C` est le plus petit adressage possible. Sur (quasi) toutes les architectures, ce type est composé de 1 byte.
@@ -199,13 +199,13 @@ L'encodage par défaut de toute chaîne de caractère est actuellement utf-8.
 
 {% lien %}
 
-[utf8](https://fr.wikipedia.org/wiki/UTF-8)
+[utf8](https://fr.wikipedia.org/wiki/UTF-8){.externe}
 
 {% endlien %}
 
-Cet encodage est une façon de représenter des [*codepoint* Unicode](https://fr.wikipedia.org/wiki/Unicode) par un ou plusieurs byte. Il est donc tout à fait raisonnable d'utiliser des suite de char pour représenter une chaîne de caractères encodée en utf8.
+Cet encodage est une façon de représenter des [*codepoint* Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe} par un ou plusieurs byte. Il est donc tout à fait raisonnable d'utiliser des suite de char pour représenter une chaîne de caractères encodée en utf8.
 
-Il faut cependant faire attention si l'on cherche à représenter ou afficher un caractère Unicode encodé en utf8, car les seuls caractères Unicode représentés par un unique byte (1 `char`{.language-}) sont ceux de [la table ASCII](https://en.wikipedia.org/wiki/ASCII), de code allant de 1 à 127 (le code 0 étant égal à la fin de la chaîne).
+Il faut cependant faire attention si l'on cherche à représenter ou afficher un caractère Unicode encodé en utf8, car les seuls caractères Unicode représentés par un unique byte (1 `char`{.language-}) sont ceux de [la table ASCII](https://en.wikipedia.org/wiki/ASCII){.externe}, de code allant de 1 à 127 (le code 0 étant égal à la fin de la chaîne).
 
 Le code suivant fonctionne donc uniquement avec des caractères de la table ASCII :
 
@@ -294,7 +294,7 @@ Il existe aussi l'encodage utf16, sur 2 bytes mais je ne vois aucune raison rais
 ### Conversion
 
 {% lien %}
-[Conversion `char`{.language-} vers `wchar_t`{.language-}](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/les-caracteres-larges/)
+[Conversion `char`{.language-} vers `wchar_t`{.language-}](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/les-caracteres-larges/){.externe}
 {% endlien %}
 
 {% attention "**Danger !**" %}

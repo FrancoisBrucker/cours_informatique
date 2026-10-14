@@ -19,11 +19,11 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de [commonMark](https://spec.commonmark.org/) (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.
+Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de [commonMark](https://spec.commonmark.org/){.externe} (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.
 
 <!-- fin résumé -->
 
-Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/cours_informatique/refs/heads/main/docs/src/tutoriels/possibilite-markdown-site/index.md).
+Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/cours_informatique/refs/heads/main/docs/src/tutoriels/possibilite-markdown-site/index.md){.externe}.
 
 ## titre `##`
 
@@ -35,9 +35,9 @@ Comparer le résultat au [code source](https://raw.githubusercontent.com/Francoi
 
 ## liens
 
-* [post 2 chemin relatif](../post-2){.interne}
+* [post 2 chemin relatif](../post-2)
 * [post 2 chemin absolu]({{ "/blog/post-2" | url }}){.interne}
-* [post 2 chemin relatif avec une ancre](../post-2#images){.interne}
+* [post 2 chemin relatif avec une ancre](../post-2#images)
 * [post 2 chemin absolu avec une ancre]({{ "/blog/post-2" | url }}#images){.interne}
 
 {% attention %}
@@ -279,7 +279,7 @@ Un texte après.
 
 ## Tables
 
-On utilise les possibilités de [multimarkdown](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html)
+On utilise les possibilités de [multimarkdown](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html){.externe}
 
 ### Tables de base
 

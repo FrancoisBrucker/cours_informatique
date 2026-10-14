@@ -48,5 +48,5 @@ Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 
 > TBD uniforme pas suffisant : 0000000111111111 est bien uniforme
 > TBD xi > x(i+1) : théorique
 
-> 1. faire avec des modulo [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator). Voir aussi <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/>
-> Utiliser des merserne prime pour les [Lehmer LCG](https://en.wikipedia.org/wiki/Lehmer_random_number_generator)
+> 1. faire avec des modulo [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator){.externe}. Voir aussi <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/>{.externe}
+> Utiliser des merserne prime pour les [Lehmer LCG](https://en.wikipedia.org/wiki/Lehmer_random_number_generator){.externe}

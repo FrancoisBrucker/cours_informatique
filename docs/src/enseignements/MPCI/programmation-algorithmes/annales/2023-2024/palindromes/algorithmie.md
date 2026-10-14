@@ -123,7 +123,7 @@ Le but de la fin de la partie algorithmique de cette étude est de montrer que l
 
 ### Résolution par matrice interposée du problème des sous-palindromes
 
-On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une [une matrice carrée triangulaire supérieure](https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_supérieures) qui va expliciter si le mot $s[i:j+1]$ est un sous-palindrome ou pas :
+On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une [une matrice carrée triangulaire supérieure](https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_supérieures){.externe} qui va expliciter si le mot $s[i:j+1]$ est un sous-palindrome ou pas :
 
 {% note2 "**Définition**" %}
 Soit $M_s$ une matrice carrée à $n$ lignes ($M_s[i]$, $0 \leq i < n$, est un tableau représentant la ligne $i$ et $M_s[i][j]$, $0 \leq i, j < n$, correspond à la case de ligne $i$ et colonne $j$ de $M_s$) et $s$ une chaîne de caractères de longueur $n$.

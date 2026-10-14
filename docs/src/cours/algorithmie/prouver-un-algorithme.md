@@ -181,7 +181,7 @@ Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou ré
 2. une équation de récurrence plus une condition d'arrêt pour prouver :
    - un algorithme récursif
    - une boucle itérative pouvant être écrite sous forme récursive
-3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithmes itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle){.externe} pour des algorithmes itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
 {% endattention2 %}
 
@@ -396,7 +396,7 @@ def factorielle_variante(n):
 Vous allez démontrer que cet algorithme calcule également la factorielle.
 
 {% exercice %}
-Démontrez la finitude du [programme `factorielle_variante`{.language-}](./#algo-factorielle_variante){.interne}.
+Démontrez la finitude du [programme `factorielle_variante`{.language-}](./#algo-factorielle_variante).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -406,7 +406,7 @@ Si $i$ est un nombre  qui décroît de 1 à chaque itération : à une itératio
 Pour démontrer la correction du l'algorithme, on utilise un invariant de boucle.
 
 {% exercice %}
-Montrez que la boucle `tant que`{.language-} de [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante){.interne} admet l'invariant de boucle suivant :
+Montrez que la boucle `tant que`{.language-} de [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante) admet l'invariant de boucle suivant :
 
 > **Invariant de boucle :**  À la fin d'une itération de la boucle `tant que`{.language-} : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n = n!/i!$
 
@@ -423,7 +423,7 @@ Montrez que la boucle `tant que`{.language-} de [l'algorithme `factorielle_varia
 {% enddetails %}
 
 {% exercice %}
-Déduire de l'exercice précédent que [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante){.interne} calcule bien la factorielle de son entrée.
+Déduire de l'exercice précédent que [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante) calcule bien la factorielle de son entrée.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -545,7 +545,7 @@ Cette partie là est facile si on a le bon invariant. Il suffit de regarder la v
 Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne.
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) et prouver qu'il fonctionne.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -586,7 +586,7 @@ Montrez que l'algorithme récursif précédent calcule bien le pgcd de eux entie
 
 - terminaison : La condition de terminaison est `a == b`{.language-}. Si `a < b`{.language-}, chaque itération va diminuer strictement la quantité $\vert\\, a = b \\,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.
 
-- correction : si `a == b`{.language-}, son pgcd est bien a (ou b) et sinon on respecte [la définition d'Euclide du pgcd](../bases-théoriques/calculabilité/#algorithme-euclide){.interne}.
+- correction : si `a == b`{.language-}, son pgcd est bien a (ou b) et sinon on respecte [la définition d'Euclide du pgcd](../bases-théoriques/calculabilité/#algorithme-euclide).
 
 {% enddetails %}
 
@@ -621,7 +621,7 @@ def division_euclidienne(a, b):
     return (q, r)
 ```
 
-Le retour de la fonction python est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifier)
+Le retour de la fonction python est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences){.externe} à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifier)
 {% enddetails %}
 
 Le retour de notre algorithme est un tableau à deux éléments.

@@ -62,7 +62,7 @@ $$
 ## Calcul de complexité amortie
 
 {% lien %}
-C'est l'exercice 4 de [cette planche d'exercices](https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf)
+C'est l'exercice 4 de [cette planche d'exercices](https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf){.externe}
 {% endlien %}
 
 On calcule la complexité amortie de $m$ exécutions successives exécutions de l'algorithme $A$. On note $c(i)$ la complexité de la $i$ ème exécution.
@@ -134,12 +134,12 @@ C = \sum_{0\leq k \leq \log_2(m)}\frac{m}{2^k}\cdot k
 $$
 </div>
 
-Comme $\sum_{0\leq k \leq n}\frac{k}{2^k} \leq 2$ ([on l'a vu](../projet-sommes-classiques/){.interne}), on a $C \leq 2m$ et la complexité amortie est en $\mathcal{O}(1)$
+Comme $\sum_{0\leq k \leq n}\frac{k}{2^k} \leq 2$ ([on l'a vu](../projet-sommes-classiques/)), on a $C \leq 2m$ et la complexité amortie est en $\mathcal{O}(1)$
 {% enddetails %}
 
 ## File et pile
 
-On reprend l'exercice de construction d'[une file avec deux piles](../structure-pile-file/#file-avec-pile){.interne}
+On reprend l'exercice de construction d'[une file avec deux piles](../structure-pile-file/#file-avec-pile)
 
 {% exercice %}
 
@@ -156,7 +156,7 @@ On obtient la même fonction de coût et donc la même complexité amortie : $\m
 
 ## <span id="exercice-liste-suppression-ajout"></span> Ajout et suppression dans une liste
 
-> TBD faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf> avec comptage et potentiel pour l'ajout simple.
+> TBD faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf>{.externe} avec comptage et potentiel pour l'ajout simple.
 > TBD voir aussi le poly de pascal.
 > TBD à faire (dire que c'est dur)
 

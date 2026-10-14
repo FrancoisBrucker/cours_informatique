@@ -18,7 +18,7 @@ Codage de la page web.
 
 <!-- fin résumé -->
 
-Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez [le cours de web](../../../../){.interne}
+Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez [le cours de web](../../../../)
 
 ## <span id="tache-1"></span> Tâche 1 : squelette de la page html
 
@@ -46,7 +46,7 @@ Créez un fichier `numérologie/index.html`{.fichier} :
 Petite analyse de ce qu'est un fichier html :
 
 * des balises l'une ouvrante et l'autre fermante (le même nom avec un `/`{.language-} avant, comme html) pour une balise donnée.
-* Tout ce qui est à l'intérieur d'une balise sont ses *enfants*. L'élément le plus *ancien*, aussi appelé *racine* est la balise `<html></html>`{.language-}, Cette structure crée ce que l'on appelle [l'arbre DOM](https://la-cascade.io/le-dom-cest-quoi-exactement/).
+* Tout ce qui est à l'intérieur d'une balise sont ses *enfants*. L'élément le plus *ancien*, aussi appelé *racine* est la balise `<html></html>`{.language-}, Cette structure crée ce que l'on appelle [l'arbre DOM](https://la-cascade.io/le-dom-cest-quoi-exactement/){.externe}.
 * certaines balises sont *auto-fermante* (elles ne nécessitent pas de balise fermante), comme `<input />`{.language-} par exemple (la balise est fermée avec le `/`{.language-} après l'ouverture).
 * on appelle attribut de la balise ce qui est à l'intérieur de la balise ouvrante, la structure d'un attribut est `nom="valeur"`{.language-} (les `"`{.language-} sont obligatoires pour délimiter les valeurs des attributs.
 
@@ -76,7 +76,7 @@ La plupart des balises peuvent être en plusieurs exemplaires, comme plusieurs p
 
 ## <span id="tache-2"></span> Tâche 2 : css
 
-Le [css](https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps) est un langage déclaratif permettant d'associer un style à une balise. Donnons un peu de style à notre page html.
+Le [css](https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps){.externe} est un langage déclaratif permettant d'associer un style à une balise. Donnons un peu de style à notre page html.
 
 {% info %}
 Notez que la page, même moche a déjà du style. Le paragraphe par exemple n'est pas collé au formulaire et le texte a une police de caractère. Toutes ces styles par défaut sont donné parle navigateur.
@@ -150,7 +150,7 @@ Il n'est pas nécessaire de mettre la balise `<style></style>`{.language-} dans 
 a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si vous mettez du style pour un paragraphe après celui-ci, il ne sera pas reconnu.
 {% endinfo %}
 
-Les possibilités de style sont [très nombreuses](https://developer.mozilla.org/fr/docs/Web/CSS/Reference).
+Les possibilités de style sont [très nombreuses](https://developer.mozilla.org/fr/docs/Web/CSS/Reference){.externe}.
 
 ### <span id="tache-2.2"></span> Feuille de style séparée du html
 
@@ -177,7 +177,7 @@ p {
 }
 ```
 
-Et on modifie le fichier `numérologie/index.html`{.fichier} pour qu'il puisse lire le fichier de style grâce à la balise [`<link />`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Element/link):
+Et on modifie le fichier `numérologie/index.html`{.fichier} pour qu'il puisse lire le fichier de style grâce à la balise [`<link />`{.language-}](https://developer.mozilla.org/fr/docs/Web/HTML/Element/link){.externe}:
 
 ```html
 <!doctype html>
@@ -206,7 +206,7 @@ La balise `<link>`{.language-} qui va chercher le fichier css. L'emplacement du 
 
 ## <span id="tache-3"></span> Tâche 3 : bibliothèque css
 
-On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <https://purecss.io/>
+On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <https://purecss.io/>{.externe}
 
 Sur son site, on voit commet l'utiliser : il suffit de la récupérer via une balise link. Notez qu'ici le lien n'est pas sur notre disque dur mais sur le réseau puisque c'est une [url]({{ "/cours/web/anatomie-url"  }}) qui est utilisée.
 
@@ -247,7 +247,7 @@ Re-modifions le fichier `numérologie/index.html`{.fichier} pour y inclure un li
 </html>
 ```
 
-Une fois <https://purecss.io/> chargé, on peut utiliser les classes qu'elle a définie (qui commencent toutes par `pure-`). On a utilisé le layout en [grids](https://purecss.io/grids/) et des modifications du formulaire et du bouton.
+Une fois <https://purecss.io/>{.externe} chargé, on peut utiliser les classes qu'elle a définie (qui commencent toutes par `pure-`). On a utilisé le layout en [grids](https://purecss.io/grids/){.externe} et des modifications du formulaire et du bouton.
 
 {% info %}
 Notez que l'on met **toujours** ses propres css à la fin, car les propriétés sont appliquées dans l'ordre où elles sont lues, les nôtres seront donc toujours appliquées, car en dernier.

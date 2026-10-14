@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wikipedia.org/wiki/Anneau_unitaire#D%C3%A9finition) commutatif tel que :
+On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wikipedia.org/wiki/Anneau_unitaire#D%C3%A9finition){.externe} commutatif tel que :
 
 - les éléments de l'anneau sont des entiers allant de 0 à $n-1$
 - l'addition est l'addition usuelle modulo $n$
@@ -33,17 +33,17 @@ Si $p$ est premier, $(\mathbb{Z}/p\mathbb{Z}, +, \cdot)$ est un corps commutatif
 {% enddetails %}
 
 {% info %}
-[théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn) montre que tout corps fini est commutatif.
+[théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn){.externe} montre que tout corps fini est commutatif.
 {% endinfo %}
 
 ## <span id="groupe-cyclique"></span>Groupe cyclique
 
-Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un [groupe cyclique](https://fr.wikipedia.org/wiki/Groupe_cyclique), c'est à dire qu'il existe un entier $1\leq g\leq p-1$ tel que pour tout en entier $0\leq b\leq p-1$, il existe $k$ tel que $b = g^k \bmod p$.
+Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un [groupe cyclique](https://fr.wikipedia.org/wiki/Groupe_cyclique){.externe}, c'est à dire qu'il existe un entier $1\leq g\leq p-1$ tel que pour tout en entier $0\leq b\leq p-1$, il existe $k$ tel que $b = g^k \bmod p$.
 
 ## <span id="exponentiation-modulaire">Exponentiation modulaire
 
 {% lien %}
-[square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk)
+[square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk){.externe}
 {% endlien %}
 
 L'exponentiation dans l'anneau $\mathbb{Z}/n\mathbb{Z}$ se fait mathématiquement très bien en utilisant l'exponentiation indienne, cependant le nombre de bits des nombres calculés deviennent vite non tractable en pratique surtout qu'à la fin on refait un modulo de tout ça.
@@ -65,7 +65,7 @@ expo(x, y):
 
 On peut même stocker les valeurs des exposants trouvés dans un dictionnaire pour ne pas avoir à recalculer deux fois la même chose.
 
-Lorsque les nombres sont stockés sur $k$ bits, [la complexité totale de cet algo est donc $\mathcal{O}(k^3)$](../nombres#exponentiation){.interne}.
+Lorsque les nombres sont stockés sur $k$ bits, [la complexité totale de cet algo est donc $\mathcal{O}(k^3)$](../nombres#exponentiation).
 
 {% note "**Proposition**" %}
 Si $p$ est premier : $a^{p-1} = 1 \bmod p$.
@@ -76,13 +76,13 @@ Si $p$ est premier : $a^{p-1} = 1 \bmod p$.
 
 {% enddetails %}
 {% lien %}
-Cette propriété est connue sous le nom de [petit théorème de Fermat](https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat)
+Cette propriété est connue sous le nom de [petit théorème de Fermat](https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat){.externe}
 {% endlien %}
 
 ## <span id="logarithme-discret"></span>Logarithme discret
 
 {% lien %}
-[Logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret)
+[Logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret){.externe}
 {% endlien %}
 
 On ne connaît pas d'algorithme efficace pour trouver $x$ tel que $g^x =y \bmod n$.
@@ -114,11 +114,11 @@ Si $p$ est premier, $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est cyclique.
 
 ### Corps $(\\{0, 1\\}, \oplus, \land)$
 
-Le couple $(\\{0, 1\\}, \oplus, \land)$ est un [corps](https://fr.wikipedia.org/wiki/Corps_(math%C3%A9matiques)) où chaque élément est son opposé.
+Le couple $(\\{0, 1\\}, \oplus, \land)$ est un [corps](https://fr.wikipedia.org/wiki/Corps_(math%C3%A9matiques)){.externe} où chaque élément est son opposé.
 
 
 >TBD : anneau commutatif intègre $(\mathbb{Z}/n\mathbb{Z}, +, *)$
 >TBD : cas particulier l'anneau $(\mathbb{Z}/2\mathbb{Z}, +, *)$ est un corps.
 
 
-<https://maths-olympiques.fr/wp-content/uploads/2017/09/arith_zn.pdf>
+<https://maths-olympiques.fr/wp-content/uploads/2017/09/arith_zn.pdf>{.externe}

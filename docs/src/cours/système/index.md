@@ -20,22 +20,22 @@ Cours de système.
 ## Partie I : Ordinateur, programmes et OS
 
 {% aller %}
-[Ordinateur, programmes et OS](ordinateur-programmes-OS){.interne}
+[Ordinateur, programmes et OS](ordinateur-programmes-OS)
 {% endaller %}
 
 ## Partie II : Interagir avec le système
 
 
 {% aller %}
-[Interagir avec le système](interagir-avec-système){.interne}
+[Interagir avec le système](interagir-avec-système)
 {% endaller %}
 
 ## Partie III : Système Linux
 
 
 {% aller %}
-[Linux](linux){.interne}
+[Linux](linux)
 {% endaller %}
 
 
-> TBD [refactor](./a-refactor/){.interne}
+> TBD [refactor](./a-refactor/)

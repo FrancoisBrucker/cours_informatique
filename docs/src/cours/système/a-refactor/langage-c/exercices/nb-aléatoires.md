@@ -28,8 +28,8 @@ permettant de rendre un entier aléatoire entre `min`{.language-} et `max`{.lang
 
 Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.fichier} :
 
-- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction `main`{.language-}, au tout début.
-- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
+- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp){.externe} dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction `main`{.language-}, au tout début.
+- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp){.externe} qui rend un entier aléatoire entre 0 et et RAND_MAX
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}
@@ -45,7 +45,7 @@ Créez une fonction de signature :
 int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de `nombre`{.language-} entiers `int`{.language-} avec une [allocation dans le tas](../../langage/gestion-tas/){.interne}.
+Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de `nombre`{.language-} entiers `int`{.language-} avec une [allocation dans le tas](../../langage/gestion-tas/).
 
 {% endfaire %}
 {% faire %}
@@ -87,7 +87,7 @@ Testez la fonction précédente en tirant une liste de taille 100 avec une proba
 
 ## Compilation séparée
 
-En utilisant la partie sur [la gestion du code source](../../gestion-code-source){.interne} :
+En utilisant la partie sur [la gestion du code source](../../gestion-code-source) :
 
 {% faire %}
 Décomposez le code en deux unités fonctionnelles :

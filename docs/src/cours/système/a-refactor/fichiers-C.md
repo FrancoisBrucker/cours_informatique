@@ -23,8 +23,8 @@ Les fichiers `<unistd.h>`{.fichier} et `<sys/stat.h>`{.fichier} définissent des
 
 Certaines fonctions permettent de controller le dossier courant du programme **C** :
 
-- le connaître avec [`getcwd`{.language-}](https://koor.fr/C/unistd.h/getcwd.wp)
-- le changer avec [`chdir`{.language-}](https://koor.fr/C/unistd.h/chdir.wp)
+- le connaître avec [`getcwd`{.language-}](https://koor.fr/C/unistd.h/getcwd.wp){.externe}
+- le changer avec [`chdir`{.language-}](https://koor.fr/C/unistd.h/chdir.wp){.externe}
 
 > TBD getcwd : comment est stocké le résultat et le type de retour.
 
@@ -46,7 +46,7 @@ Un fichier "*régulier*"
 
 {% lien %}
 
-[Utiliser FILE pour gérer ses fichiers](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20)
+[Utiliser FILE pour gérer ses fichiers](https://www.youtube.com/watch?v=bOF-SpEAYgk&list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&index=20){.externe}
 
 {% endlien %}
 
@@ -62,11 +62,11 @@ Bufferisé pour la rapidité : attention au flush.
 > test avec un PID dun autre process et envoie du texte dans le stdin d'au autre process
 > faire avec 1 fichier C et une commande, puis avec 2 fichiers C.
 
-[stdin/out](https://stackoverflow.com/questions/15883568/reading-from-stdin)
+[stdin/out](https://stackoverflow.com/questions/15883568/reading-from-stdin){.externe}
 
 ## TBD
 
-aussi [`getwchar`{.language-}](https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin) ?
+aussi [`getwchar`{.language-}](https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin){.externe} ?
 
 ```c
 

@@ -13,17 +13,17 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Configuration et utilisation de l'éditeur de texte [visual studio code (vsc)](https://code.visualstudio.com/).
+Configuration et utilisation de l'éditeur de texte [visual studio code (vsc)](https://code.visualstudio.com/){.externe}.
 
 ## Installation
 
 Si vous ne l'avez pas déjà fait :
 
 {% faire %}
-Téléchargez [vscode](https://code.visualstudio.com/) et installez le.
+Téléchargez [vscode](https://code.visualstudio.com/){.externe} et installez le.
 {% endfaire %}
 {% info %}
-Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap) dans un terminal :
+Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap){.externe} dans un terminal :
 
 ```
 sudo snap install --classic code
@@ -36,19 +36,19 @@ sudo snap install --classic code
 Commençons par faire le tour du propriétaire :
 
 {% aller %}
-[Prise en main](prise-en-main){.interne}
+[Prise en main](prise-en-main)
 {% endaller %}
 
 ## vscode et python
 
 {% aller %}
-[vscode et python](python){.interne}
+[vscode et python](python)
 {% endaller %}
 
 ## Terminal vscode et python
 
 {% aller %}
-[Terminal vscode](terminal-vscode){.interne}
+[Terminal vscode](terminal-vscode)
 {% endaller %}
 
 ## Préférences
@@ -58,6 +58,6 @@ Vscode possède une foultitude de préférences qui le rendent très modulable e
 Je vous conseille très fortement d'aller y jeter un coup d'œil :
 
 {% lien %}
-[préférences vscode](https://code.visualstudio.com/docs/getstarted/settings)
+[préférences vscode](https://code.visualstudio.com/docs/getstarted/settings){.externe}
 
 {% endlien %}

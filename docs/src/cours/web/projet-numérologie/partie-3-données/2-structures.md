@@ -41,4 +41,4 @@ Ni le dossier `node_modules` ni les fichiers `package-lock.json`{.fichier} et `b
 
 ## Projet final
 
-Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-3-donn%C3%A9es/num%C3%A9rologie).
+Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-3-donn%C3%A9es/num%C3%A9rologie){.externe}.

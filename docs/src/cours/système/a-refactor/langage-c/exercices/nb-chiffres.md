@@ -44,7 +44,7 @@ Rangez vos trois valeurs de test (123456, 0 et -1) dans un tableau d'entiers et 
 ## V2
 
 {% faire %}
-Utilisez la fonction `log10` définie dans [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h) pour coder cette fonction.
+Utilisez la fonction `log10` définie dans [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h){.externe} pour coder cette fonction.
 
 ```c
 int nb_chiffre_v2(int i);
@@ -53,7 +53,7 @@ int nb_chiffre_v2(int i);
 {% endfaire %}
 {% info %}
 
-- vous pourrez aussi être amené à utiliser la fonction [`ceil`{.language-}](https://en.cppreference.com/w/c/numeric/math/ceil) de [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h)
+- vous pourrez aussi être amené à utiliser la fonction [`ceil`{.language-}](https://en.cppreference.com/w/c/numeric/math/ceil){.externe} de [`<math.h>`{.fichier}](https://fr.wikipedia.org/wiki/Math.h){.externe}
 - Il vous faudra sûrement inclure la bibliothèque math (`-lm`) lors de la compilation (pour la phase de l'édition de lien)
 
 {% endinfo %}
@@ -61,7 +61,7 @@ int nb_chiffre_v2(int i);
 ## V3
 
 {% faire %}
-Utilisez la fonction [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm) définie dans `<stdlib.h>`{.fichier} et la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp#google_vignette) définie dans `<string.h>`{.fichier}  pour coder cette fonction.
+Utilisez la fonction [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm){.externe} définie dans `<stdlib.h>`{.fichier} et la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp#google_vignette){.externe} définie dans `<string.h>`{.fichier}  pour coder cette fonction.
 
 ```c
 int nb_chiffre_v3(int i);
@@ -70,7 +70,7 @@ int nb_chiffre_v3(int i);
 {% endfaire %}
 {% info %}
 
-Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle ne renvoie rien. Elle modifie le contenu du pointeur de chaîne de caractères placée n premier paramètre.
+Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm){.externe}, elle ne renvoie rien. Elle modifie le contenu du pointeur de chaîne de caractères placée n premier paramètre.
 
 Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant soit avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}), par exemple 100.
 {% endinfo %}
@@ -79,6 +79,6 @@ Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclar
 
 {% faire %}
 
-Demandez à l'utilisateur de rentrer un entier relatif (vous utiliserez la fonction [`scanf`{.language-}](../../langage/pointeurs/#scanf){.interne}) dont vous donnerez également le nombre de chiffres.
+Demandez à l'utilisateur de rentrer un entier relatif (vous utiliserez la fonction [`scanf`{.language-}](../../langage/pointeurs/#scanf)) dont vous donnerez également le nombre de chiffres.
 
 {% endfaire %}

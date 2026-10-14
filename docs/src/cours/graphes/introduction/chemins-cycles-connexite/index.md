@@ -90,7 +90,7 @@ de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0
 Terminons cette partie par un petit exercice :
 
 {% exercice %}
-Montrer qu'[un tournoi](../structure/#definition-tournoi){.interne} $G = (V, E)$ n'admet pas de cycle si et seulement si la relation $xRy \Leftrightarrow xy \in E$ est transitive.
+Montrer qu'[un tournoi](../structure/#definition-tournoi) $G = (V, E)$ n'admet pas de cycle si et seulement si la relation $xRy \Leftrightarrow xy \in E$ est transitive.
 {% endexercice %}
 {% details "solution" %}
 Si la relation n'est pas transitive il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$, ce qui implique que $xyzx$ est un cycle.
@@ -340,7 +340,7 @@ Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forc�
 
 S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
 
-Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est une propriété qu'on vient de voire](./#prop-cycles-graphe){.interne}) : notre hypothèse était fausse.
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est une propriété qu'on vient de voire](./#prop-cycles-graphe)) : notre hypothèse était fausse.
 {% enddetails %}
 
 Enfin, on peut garantir la connexité si le graphe a assez d'arêtes :
@@ -406,7 +406,7 @@ G = {
 ```
 
 {% note %}
-L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../encodage#dict){.interne}.
+L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../encodage#dict).
 {% endnote %}
 
 ### <span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe
@@ -450,10 +450,10 @@ def composante_connexe(G, origine):
 
 On utilise :
 
-- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists){.externe} :
   - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
   - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
-- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe} :
   - création avec les accolades
   - méthode `add`{.language-} qui ajoute un élément à l'ensemble
 
@@ -525,7 +525,7 @@ def les_composantes(G):
     return composantes
 ```
 
-Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops).
+Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops){.externe}.
 
 {% enddetails %}
 
@@ -558,11 +558,11 @@ def chemin(G, a, b):
 
 On utilise :
 
-- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists){.externe} :
   - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
   - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
   - le fait quel'on puisse accéder au dernier élément d'une liste avec un indice de `-1`{.language-}
-- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe} :
   - création avec les accolades
   - méthode `add`{.language-} qui ajoute un élément à l'ensemble
   - la soustraction de deux ensembles qui rend un nouvel ensemble contenant les éléments du premier ensemble non présent dans le second.
@@ -614,7 +614,7 @@ Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ n
 
 ### Trouver un circuit ou un cycle
 
-Pour trouver un cycle, on se place dans le cadre de la [proposition sur les degrés](./#prop-cycles-graphe){.interne}, en partant d'un sommet $a$ donné.
+Pour trouver un cycle, on se place dans le cadre de la [proposition sur les degrés](./#prop-cycles-graphe), en partant d'un sommet $a$ donné.
 
 {% attention %}
 L'algorithme ne fonctionne que dans le cadre de la proposition.

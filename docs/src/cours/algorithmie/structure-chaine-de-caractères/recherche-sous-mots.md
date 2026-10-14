@@ -206,7 +206,7 @@ En effet, la complexité de l'égalité entre deux liste est égale à la taille
 
 La boucle en $j$ (lignes 4-6) de l'algorithme `sous_chaine_naif`{.language-} pourrait être améliorée en l'arrêtant dès que `trouvé`{.language-} est mis à `False`.
 
-On peut pour cela utiliser l'instruction `break`{.language-} qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la [documentation](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops) à ce sujet, elle est éclairante.
+On peut pour cela utiliser l'instruction `break`{.language-} qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la [documentation](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops){.externe} à ce sujet, elle est éclairante.
 
 On a alors l'algorithme suivant :
 
@@ -646,7 +646,7 @@ C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, M
 
 ## Algorithme de Knuth-Morris-Pratt
 
-L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.
+L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt){.externe} publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.
 
 Nous allons procéder par étape pour essayer de le comprendre.
 
@@ -858,9 +858,9 @@ La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ 
 
 Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
-- [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
+- [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp){.externe}. Cet algorithme est intéressant car :
   - plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
-  - la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable.
-- [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
-- [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leur propre algorithme).
+  - la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin){.externe}) est très facilement itérativement calculable.
+- [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool){.externe}. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
+- [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore){.externe}. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf){.externe} (oui oui, c'est dans le même article où ils présentent leur propre algorithme).
 

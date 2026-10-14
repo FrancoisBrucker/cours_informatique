@@ -22,7 +22,7 @@ Pour pouvoir être inclues dans notre programme, il faut que la bibliothèque so
   - les fichiers d'entêtes `.h`{.fichier} sont eux dans le dossier `/usr/include`{.fichier}
 - dans un dossier connu si on veut l'inclure de façon statique dans notre code.
 
-Nous allons utiliser la bibliothèque [openssl](https://www.openssl.org/) qui permet le cryptage/décryptage de données. Cette bibliothèque est souvent installée par défaut sur un système car elle est utilisée par de nombreux programmes, mais il manque souvent les fichiers de headers qui ne sont utiles que si on peut programmer avec. C'est pourquoi il y a deux paquets à installer :
+Nous allons utiliser la bibliothèque [openssl](https://www.openssl.org/){.externe} qui permet le cryptage/décryptage de données. Cette bibliothèque est souvent installée par défaut sur un système car elle est utilisée par de nombreux programmes, mais il manque souvent les fichiers de headers qui ne sont utiles que si on peut programmer avec. C'est pourquoi il y a deux paquets à installer :
 
 - `sudo apt install libssl` qui installe la bibliothèque openssl (devrait déjà être sur votre système).
 - `sudo apt install libssl-dev` qui installe les fichiers `.h`{.language-}
@@ -33,7 +33,7 @@ Si vous êtes sous mac, tout est installé avec la commande `brew install openss
 
 ## Code
 
-Nous allons utiliser les fonctions [EVP](https://www.openssl.org/docs/man3.1/man7/evp.html) pour encoder et décoder une chaîne de caractères au format [base64](https://fr.wikipedia.org/wiki/Base64)
+Nous allons utiliser les fonctions [EVP](https://www.openssl.org/docs/man3.1/man7/evp.html){.externe} pour encoder et décoder une chaîne de caractères au format [base64](https://fr.wikipedia.org/wiki/Base64){.externe}
 
 Fichier `base64.c`{.fichier} :
 
@@ -80,9 +80,9 @@ int main() {
 
 Plusieurs options de `clang` contrôlent l'inclusion de celles-ci :
 
-- [`-I`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir) chemin vers les fichiers d'entêtes
-- [`-L`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir) chemin vers la bibliothèque à inclure
-- [`-l`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-l-arg) nom de la bibliothèque à inclure
+- [`-I`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir){.externe} chemin vers les fichiers d'entêtes
+- [`-L`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir){.externe} chemin vers la bibliothèque à inclure
+- [`-l`](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-l-arg){.externe} nom de la bibliothèque à inclure
 
 Sous Linux/Ubuntu où les headers et les bibliothèques sont toutes installées dans le même dossier système, il suffit de renseigner la bibliothèque où sont définies les fonctions utilisées, ici c'est crypto :
 
@@ -107,7 +107,7 @@ clang base64.c -I/opt/homebrew/include/ -L/opt/homebrew/lib -lcrypto
 
 {% endinfo %}
 
-Il se peut que les bibliothèques ajoutée ne soient pas trouvées par le système à l'exécution. Ceci arrive lorsqu'elles ne sont pas dans des endroits système reconnu. VOus pouvez ajouter des dossiers de recherche vec la variable d'environnement [`LD_LIBRARY_PATH`](https://linuxhint.com/what-is-ld-library-path/).
+Il se peut que les bibliothèques ajoutée ne soient pas trouvées par le système à l'exécution. Ceci arrive lorsqu'elles ne sont pas dans des endroits système reconnu. VOus pouvez ajouter des dossiers de recherche vec la variable d'environnement [`LD_LIBRARY_PATH`](https://linuxhint.com/what-is-ld-library-path/){.externe}.
 
 ## Makefile
 

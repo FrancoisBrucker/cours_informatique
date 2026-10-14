@@ -71,7 +71,7 @@ Dans le dossier `numérologie`{.fichier} :
 
 ## Routes
 
-On reprend le code de la partie [server express](../../serveur-web/express){.interne} pour notre site, uniquement en front pour l'instant :
+On reprend le code de la partie [server express](../../serveur-web/express) pour notre site, uniquement en front pour l'instant :
 
 ```javascript
 import { fileURLToPath } from 'url';

@@ -9,12 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On doit cet algorithme à [Léonid Levin](https://fr.wikipedia.org/wiki/Leonid_Levin).
+On doit cet algorithme à [Léonid Levin](https://fr.wikipedia.org/wiki/Leonid_Levin){.externe}.
 
 L'algorithme de recherche universelle est un algorithme permettant de résoudre tout problème de NP, de manière optimale du moment qu'on ait un vérifieur pour lui.
 
 {% lien %}
-[Une vidéo de l'excellence chaîne polylog](https://www.youtube.com/watch?v=9ONm1od1QZo)
+[Une vidéo de l'excellence chaîne polylog](https://www.youtube.com/watch?v=9ONm1od1QZo){.externe}
 {% endlien %}
 
 ## Principe
@@ -243,12 +243,12 @@ Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui 
 
 > écrire les programmes en brainfuck car essence d'un algorithme. C'est équivalent à un pseudocode. On le prouvera plus tard.
 > 
-<https://fr.wikipedia.org/wiki/Brainfuck> et <https://brainfuck.org/>
+<https://fr.wikipedia.org/wiki/Brainfuck>{.externe} et <https://brainfuck.org/>{.externe}
 
 > TBD tuto :
 >
-> - <https://gist.github.com/roachhd/dce54bec8ba55fb17d3a>
-> - <http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml>
-> <https://esolangs.org/wiki/Brainfuck_algorithms>
-> interpréteur : <https://www.dcode.fr/langage-brainfuck>
+> - <https://gist.github.com/roachhd/dce54bec8ba55fb17d3a>{.externe}
+> - <http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml>{.externe}
+> <https://esolangs.org/wiki/Brainfuck_algorithms>{.externe}
+> interpréteur : <https://www.dcode.fr/langage-brainfuck>{.externe}
 > taille de la mémoire pour 1 variable. Usage = 8b mais peut être aussi petit/grand qu'on veut.

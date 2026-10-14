@@ -13,7 +13,7 @@ eleventyComputed:
 ## Principe
 
 {% aller %}
-[Principe](./principe){.interne}
+[Principe](./principe)
 {% endaller %}
 
 ## Élément majoritaire
@@ -21,7 +21,7 @@ eleventyComputed:
 > TBD
 > naif
 > comme fusion
-> vérification à la fin : <https://perso.ens-lyon.fr/frederic.vivien/Enseignement/Algo-2001-2002/Corrige-TD04.pdf>
+> vérification à la fin : <https://perso.ens-lyon.fr/frederic.vivien/Enseignement/Algo-2001-2002/Corrige-TD04.pdf>{.externe}
 
 
 ## Exemple du calcul de la médiane
@@ -29,5 +29,5 @@ eleventyComputed:
 Un calcul optimal en temps linéaire. Fait parti selon moi des résultats les plus surprenant (et beau) en algorithmie.
 
 {% aller %}
-[Calcul de la médiane](./médiane){.interne}
+[Calcul de la médiane](./médiane)
 {% endaller %}

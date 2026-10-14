@@ -60,11 +60,11 @@ La partie du fichier de configuration `.git/config`{.fichier} dédié à l'origi
 Nous allons utiliser des clés ssh pour se connecter à github, donc si vous ne l'avez pas encore fait :
 
 {% lien %}
-1. [Générer une clé ssh](https://docs.github.com/fr/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
-2. sous windows créez un agent au démarrage en copiant [les commandes de ce tutoriel](https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement#host-key-generation) dans un powershell **en mode administrateur**
-3. Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
+1. [Générer une clé ssh](https://docs.github.com/fr/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key){.externe}
+2. sous windows créez un agent au démarrage en copiant [les commandes de ce tutoriel](https://learn.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement#host-key-generation){.externe} dans un powershell **en mode administrateur**
+3. Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys){.externe}.
 {% endlien %}
 {% info %}
-Pour une utilisation complète de ssh : [allez au cours dédié](/cours/réseau/ssh/){.interne}
+Pour une utilisation complète de ssh : [allez au cours dédié](/cours/réseau/ssh/)
 {% endinfo %}
 

@@ -26,15 +26,15 @@ Le but de ce cours est que vous puissiez :
 
 - comprendre la problématique de la gestion des sources
 - gérer efficacement un projet à plusieurs
-- contribuer [au parcours Do_It](https://francoisbrucker.github.io/do-it/)
+- contribuer [au parcours Do_It](https://francoisbrucker.github.io/do-it/){.externe}
 
 ### Comment
 
-On utilise git et github pour montrer comment tout ça fonctionne. On fera ça sur un projet existant : [le projet do-it](https://github.com/FrancoisBrucker/do-it).
+On utilise git et github pour montrer comment tout ça fonctionne. On fera ça sur un projet existant : [le projet do-it](https://github.com/FrancoisBrucker/do-it){.externe}.
 
-1. [création d'un compte github](/cours/gestion-des-sources#compte-github){.interne}
+1. [création d'un compte github](/cours/gestion-des-sources#compte-github)
 2. Ajout en tant que collaborateur
-3. utilisation de l'[application desktop](/cours/gestion-des-sources/projet-github-desktop/){.interne} pour [télécharger le projet](/cours/gestion-des-sources/projet-github-desktop/#récupérer-projet){.interne}.
+3. utilisation de l'[application desktop](/cours/gestion-des-sources/projet-github-desktop/) pour [télécharger le projet](/cours/gestion-des-sources/projet-github-desktop/#récupérer-projet).
 4. Analyse du projet :
    1. fichiers
    2. compilation
@@ -62,11 +62,11 @@ On utilise git et github pour montrer comment tout ça fonctionne. On fera ça s
 
 ## À faire chez soit
 
-1. suivre le cours desktop pour [faire un nouveau projet](/cours/gestion-des-sources/projet-github-desktop/#nouveau-projet){.interne} ce qui vous apprendra les principales actions de la gestion des sources.
+1. suivre le cours desktop pour [faire un nouveau projet](/cours/gestion-des-sources/projet-github-desktop/#nouveau-projet) ce qui vous apprendra les principales actions de la gestion des sources.
 2. ajouter ses pok et mon du temps 1.
 
 {% info %}
-[Aide markdown du site Do_It](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/)
+[Aide markdown du site Do_It](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/){.externe}
 {% endinfo %}
 
 ## Pour aller plus loin
@@ -74,7 +74,7 @@ On utilise git et github pour montrer comment tout ça fonctionne. On fera ça s
 Continuez le cours suivant, au moins la partie où l'on crée et gère des projets uniquement avec le site github :
 
 {% aller %}
-[Cours Gestion des sources](/cours/gestion-des-sources/){.interne}
+[Cours Gestion des sources](/cours/gestion-des-sources/)
 {% endaller %}
 
 Et si vous voulez faire de l'informatique, faites la suite du cours et faite toute la gestion de projet git au terminal. Vous aurez plus de contrôle sur ce que vous faites.

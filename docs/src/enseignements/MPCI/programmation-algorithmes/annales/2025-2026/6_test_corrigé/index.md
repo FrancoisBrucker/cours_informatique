@@ -24,5 +24,5 @@ J'ai enlevé 25\% des points lorsque vous n'avez pas utilisé de nom de variable
 ## Corrigé
 
 {% lien %}
-[code corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2025-2026/6_test_corrig%C3%A9/code)
+[code corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2025-2026/6_test_corrig%C3%A9/code){.externe}
 {% endlien %}

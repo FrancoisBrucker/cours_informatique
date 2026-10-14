@@ -16,7 +16,7 @@ Le principe qui nous a fait séparer nos routes nous fait également séparer le
 
 ## Injection de dépendances
 
-La différence par rapport aux routes est que l'on a besoin de la base de donnée (`sequelize`) pour définir le modèle. La solution élégante à ce problème est d'utiliser [l'injection de dépendance](https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances) : **on va donner notre base de donnée à l'import du modèle**.
+La différence par rapport aux routes est que l'on a besoin de la base de donnée (`sequelize`) pour définir le modèle. La solution élégante à ce problème est d'utiliser [l'injection de dépendance](https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances){.externe} : **on va donner notre base de donnée à l'import du modèle**.
 
 Ceci peut se faire simplement en javascript en important une fonction et non plus des objets.
 

@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+[Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A){.externe}
 {% endlien %}
 
 Comparons l'usage les différentes structures de stockage de données en notre possession :
@@ -82,7 +82,7 @@ On prend ici l'exemple de python et on analyse la complexité de quelques struct
 
 ### Listes
 
-Le langage python ne connaît pas les tableaux. Il utilise la [liste](https://docs.python.org/fr/3/tutorial/introduction.html#lists) à la place. On a donc comme complexité :
+Le langage python ne connaît pas les tableaux. Il utilise la [liste](https://docs.python.org/fr/3/tutorial/introduction.html#lists){.externe} à la place. On a donc comme complexité :
 
 - **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
 - **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations

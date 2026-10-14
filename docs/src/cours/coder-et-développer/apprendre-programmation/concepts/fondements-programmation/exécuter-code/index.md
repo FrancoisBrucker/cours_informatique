@@ -19,7 +19,7 @@ Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur ch
 
 - convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit **_langages compilés_** et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).
 - convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit **_langages interprétés_**, ou encore **_langages de script_** et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)
-- méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé [bytecode](https://fr.wikipedia.org/wiki/Bytecode). Le java ou le C# sont des langages appliquant cette stratégie.
+- méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé [bytecode](https://fr.wikipedia.org/wiki/Bytecode){.externe}. Le java ou le C# sont des langages appliquant cette stratégie.
 
 {% endnote2 %}
 
@@ -30,10 +30,10 @@ Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langage
   - **inconvénients** : l'étape de compilation est à faire après toute modification du code source et le programme compilé ne fonctionne que sur un système et un processeur donné.
 - langages interprété :
   - **avantages** : il n'y a pas de différence entre le code source et le programme à exécuter. On peut modifier puis exécuter rapidement du code
-  - **inconvénients** : nécessite un programme, appelé [interpréteur](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_%28informatique%29), qui fait la transcription instruction par instruction
+  - **inconvénients** : nécessite un programme, appelé [interpréteur](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_%28informatique%29){.externe}, qui fait la transcription instruction par instruction
 - bytecode : combine les avantage/inconvénient des deux 
   - **avantages** : le bytecode est portable (indépendant du système et du processeur) et l'étape de compilation permet d'optimiser le code presque autant qu'avec un langage compilé.
-  - **inconvénients** : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau)
+  - **inconvénients** : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau){.externe}
 
 
 {% attention2 "**À retenir**" %}
@@ -60,7 +60,7 @@ Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera _mutat
 
 ## Exécuter du code python avec un interpréteur
 
-L'utilisation d'un interpréteur pour exécuter du code est une application directe du [TFIL](/cours/système/ordinateur-programmes-OS/#TFIL){.interne} : on ajoute une indirection entre le code et son exécution.
+L'utilisation d'un interpréteur pour exécuter du code est une application directe du [TFIL](/cours/système/ordinateur-programmes-OS/#TFIL) : on ajoute une indirection entre le code et son exécution.
 
 
 
@@ -90,9 +90,9 @@ Il y a plusieurs façon d'exécuter du code python, celle qui montre le plus exp
 
 {% faire %}
 
-Allez sur le site <https://basthon.fr/> et choisissez *menu console > python*.
+Allez sur le site <https://basthon.fr/>{.externe} et choisissez *menu console > python*.
 
-Vous allez vous retrouver sur le site <https://console.basthon.fr/>
+Vous allez vous retrouver sur le site <https://console.basthon.fr/>{.externe}
 {% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
@@ -155,7 +155,7 @@ Retenez donc le point essentiel :
 L'interpréteur python reste présent tout au long de l'exécution des instructions.
 {% endattention2  %}
 
-On n'est pas obligé de taper une instruction après l'autre, on peut en envoyer une série qui seront exécutées l'une à la suite de l'autre. Avec <https://console.basthon.fr/>, ceci se fait sur la fenêtre de gauche où on peut écrire nos différentes instructions :
+On n'est pas obligé de taper une instruction après l'autre, on peut en envoyer une série qui seront exécutées l'une à la suite de l'autre. Avec <https://console.basthon.fr/>{.externe}, ceci se fait sur la fenêtre de gauche où on peut écrire nos différentes instructions :
 
 ![console python](console-5.1.png)
 
@@ -170,13 +170,13 @@ Remarquez que ceci ne change pas fondamentalement le fonctionnement de l'interpr
 
 ## Spyder
 
-L'utilisation de <https://basthon.fr/> nous permet de voire le fonctionnement d'un interpréteur python mais n'est pas très pratique pour nos tests.  La façon classique d'exécuter du code python est d'utiliser un programme faisant l'intermédiaire entre l'interpréteur et son code. Le plus simple d'entre eux est certainement :
+L'utilisation de <https://basthon.fr/>{.externe} nous permet de voire le fonctionnement d'un interpréteur python mais n'est pas très pratique pour nos tests.  La façon classique d'exécuter du code python est d'utiliser un programme faisant l'intermédiaire entre l'interpréteur et son code. Le plus simple d'entre eux est certainement :
 
 {% faire %}
 Téléchargez et exécutez le logiciel Spyder qui se trouve à l'adresse suivante :
 {% endfaire %}
 {% lien %}
-<https://www.spyder-ide.org/>
+<https://www.spyder-ide.org/>{.externe}
 {% endlien %}
 
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Nous allons utiliser ce logiciel dans cette partie puis, lorsque nous commencerons à progresser, nous changerons de logiciel pour quelque chose de plus utile en développement. Commençons par comprendre  son fonctionnement.
@@ -197,7 +197,7 @@ La visite guidée vous a donné les fonctions de différentes fenêtres :
 
 ![spyder](spyder-2.1.png)
 
-La console est différente de celle de <https://basthon.fr/>, c'est une console [Ipython](https://ipython.org/) qui possède plus de fonctionnalités mais dont le but est identique.
+La console est différente de celle de <https://basthon.fr/>{.externe}, c'est une console [Ipython](https://ipython.org/){.externe} qui possède plus de fonctionnalités mais dont le but est identique.
 
 {% faire %}
 Cliquez sur le bouton _variable explorer_.
@@ -223,7 +223,7 @@ Supprimez ces lignes elles n'apportent rien.
 
 {% endfaire %}
 {% info %}
-- les lignes qui commencent par `#` sont des commentaires en python. Ici =on indique que l'encodage du fichier texte est [utf-8](https://fr.wikipedia.org/wiki/UTF-8), qui est le format par défaut de tout fichier texte donc on peut le supprimer c'est une information inutile.
+- les lignes qui commencent par `#` sont des commentaires en python. Ici =on indique que l'encodage du fichier texte est [utf-8](https://fr.wikipedia.org/wiki/UTF-8){.externe}, qui est le format par défaut de tout fichier texte donc on peut le supprimer c'est une information inutile.
 - les entre `"""`{.language-} dans un fichier python font office d'information pur le lecteur. Ici on dit que c'est un fichier temporaire : c'est aussi une information inutile...
 {% endinfo %}
 

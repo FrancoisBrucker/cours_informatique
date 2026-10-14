@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-L'[Architecture de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann) est une façon d'unifier code et donnée. Il est basé sur deux notions supplémentaire au pseudo-assembleur :
+L'[Architecture de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann){.externe} est une façon d'unifier code et donnée. Il est basé sur deux notions supplémentaire au pseudo-assembleur :
 
 - Unification du code et des données
 - Utilisation de la pile pour gérer la portée des variables et les appels de fonctions
@@ -29,7 +29,7 @@ Où `OP` est le nom de l'instruction et `#1`, `#2` et `#3` des registres ou des 
 
 Comme on a un nombre fini d'opérations et de registres, on peut associer :
 
-- un nombre, on dit [OPCODE](https://fr.wikipedia.org/wiki/Code_op%C3%A9ration), à chaque opération
+- un nombre, on dit [OPCODE](https://fr.wikipedia.org/wiki/Code_op%C3%A9ration){.externe}, à chaque opération
 - un nombre à chaque registre.
 
 L'instruction précédente peut alors être associé à un quadruplet d'entiers $(o, r_1, r_2, r_3)$.
@@ -62,7 +62,7 @@ L'utilisation d'un pointeur d'instruction et le fait qu'il pointe sur l'instruct
 
 ## Variable et pile
 
-L'architecture de Von Neumann utilise le concept de [pile](https://fr.wikipedia.org/wiki/Pile_(informatique)) :
+L'architecture de Von Neumann utilise le concept de [pile](https://fr.wikipedia.org/wiki/Pile_(informatique)){.externe} :
 
 {% note2 "**Définition**" %}
 Une **_pile_** est une structure de donnée qui comprend deux fonctions :
@@ -89,7 +89,7 @@ print(accès(0))  # rendra 1
 La pile est une structure fondamentale en algorithmie (on y reviendra) et permet de résoudre efficacement tout un tas de problèmes lié au stockage de données. Le modèle de Von Neumann l'utilise pour gérer efficacement les variables et les appels de fonctions.
 
 {% lien %}
-La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette [vidéo qui détaille l'invention et les diverses utilisations de la pile](https://www.youtube.com/watch?v=2vBVvQTTdXg).
+La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette [vidéo qui détaille l'invention et les diverses utilisations de la pile](https://www.youtube.com/watch?v=2vBVvQTTdXg){.externe}.
 {% endlien %}
 
 ### Implémentation et fonctionnement
@@ -200,7 +200,7 @@ L'usage veut que l'on supprime tout le frame. Pour ne pas avoir à garder toutes
 Ce n'est pas Von Neumann mais Dijkstra qui a a proposé cette façon de faire (utiliser la pile pour appeler des fonctions et stocker les variables locales), toujours utilisée dans nos ordinateurs actuels.
 
 Le, célèbre article où il présente cette idée est là :
-[Recursive programming](https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf)
+[Recursive programming](https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf){.externe}
 {% endlien %}
 
 Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :
@@ -215,7 +215,7 @@ Le pseudo-assembleur gère les deux cas précédent en :
 
 Si le deuxième point est géré de la même manière par le modèle de Von Neumann (_ie._ c'est au développeur de faire attention), l'adresse de retour, les paramètres et les variables locales sont gérées par la pile, en associant à chaque fonction sa **_frame de pile**_.
 
-Nous allons montrer ici une façon générale de procéder mais il n'existe en pratique plein d'implémentation différente de ce principe général (voir par exemple [les conventions d'appels pour les processeurs x64 Linux](https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame) où certains paramètres sont passés par des registres pour aller plus vite).
+Nous allons montrer ici une façon générale de procéder mais il n'existe en pratique plein d'implémentation différente de ce principe général (voir par exemple [les conventions d'appels pour les processeurs x64 Linux](https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame){.externe} où certains paramètres sont passés par des registres pour aller plus vite).
 
 1. paramètres de la fonction : empile les paramètres
 2. saut vers la fonction :

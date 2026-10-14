@@ -37,8 +37,8 @@ On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cyc
 
 > TBD degrés : euler clair pair / ham et degré. Prop de Chvatal-Erdos.
 > pour orienté : Woodall (1972) d^+(x) +d^+(y)≥n
-> TBD voir video de distel : <https://www.youtube.com/watch?v=xqdRiZzKhvM&list=PL_qO0UBYKVJ1myNZdh3j27fniqRtHYifm&index=25>
+> TBD voir video de distel : <https://www.youtube.com/watch?v=xqdRiZzKhvM&list=PL_qO0UBYKVJ1myNZdh3j27fniqRtHYifm&index=25>{.externe}
 
 > algorithmes randomisés.
-> [hamiltonian ciruits in random graph](https://www.sciencedirect.com/science/article/pii/0012365X76900686?ref=pdf_download&fr=RR-2&rr=a3dea0291f060c79) (posa) et [Fast probabilistic algorithms for hamiltonian circuits and matchings](https://www.sciencedirect.com/science/article/pii/002200007990045X?ref=pdf_download&fr=RR-2&rr=a3dea07c28a50c79)
+> [hamiltonian ciruits in random graph](https://www.sciencedirect.com/science/article/pii/0012365X76900686?ref=pdf_download&fr=RR-2&rr=a3dea0291f060c79){.externe} (posa) et [Fast probabilistic algorithms for hamiltonian circuits and matchings](https://www.sciencedirect.com/science/article/pii/002200007990045X?ref=pdf_download&fr=RR-2&rr=a3dea07c28a50c79){.externe}
 

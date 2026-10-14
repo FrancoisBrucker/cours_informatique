@@ -12,7 +12,7 @@ eleventyComputed:
 > TBD changer les exemple de SAT à autre chose.
 
 {% lien %}
-[Classe co-NP](https://fr.wikipedia.org/wiki/Co-NP)
+[Classe co-NP](https://fr.wikipedia.org/wiki/Co-NP){.externe}
 {% endlien %}
 
 Un problème de décision est dans NP si on peut vérifier facilement qu'il ne répond pas OUI à tord et à travers. On ne lui demande rien s'il répond NON.
@@ -65,7 +65,7 @@ Entrée : un entier n
 Question : n est-il composé ?
 ```
 
-est dans NP. Son complémentaire, le langage composé des nombres premiers est dans co-NP. Comme le problème de décision [premier est dans $P$](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf) ceci est clair puisque l'on a clairement que :
+est dans NP. Son complémentaire, le langage composé des nombres premiers est dans co-NP. Comme le problème de décision [premier est dans $P$](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf){.externe} ceci est clair puisque l'on a clairement que :
 
 {% note "**Proposition**" %}
 
@@ -127,5 +127,5 @@ On a finalement trois cas possible :
 ![npc et conpc](npc-conpc.png)
 
 {% lien %}
-[np et co-np](https://www.youtube.com/watch?v=Hx6sfus7PIk&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH&index=46)
+[np et co-np](https://www.youtube.com/watch?v=Hx6sfus7PIk&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH&index=46){.externe}
 {% endlien %}

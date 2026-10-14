@@ -69,7 +69,7 @@ Faisons le :
 
 {% endfaire %}
 
-Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
+Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}).
 
 {% info %}
 
@@ -96,7 +96,7 @@ print("bonjour les gens !")
 {% endfaire %}
 
 {% faire %}
-[Exécutez le code avec vscode](../../outils/éditeur-vscode/python/){.interne} de deux manières différentes :
+[Exécutez le code avec vscode](../../outils/éditeur-vscode/python/) de deux manières différentes :
 
 - avec le terminal
 - avec le petit triangle vert
@@ -112,15 +112,15 @@ Un projet informatique doit avoir une documentation qui permettent aux utilisate
 
 {% endnote2 %}
 {% info %}
-[Ce que doit contenir un fichier readme selon github](https://docs.github.com/fr/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes).
+[Ce que doit contenir un fichier readme selon github](https://docs.github.com/fr/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes){.externe}.
 {% endinfo %}
 
-[Le markdown](https://fr.wikipedia.org/wiki/Markdown) est un format d'écriture de fichier texte très facile à lire et peut être aisément transformé en html, pdf, etc. Nous n'allons pas ici détaillé trop ce format lisez les doc suivantes elles sont super utiles :
+[Le markdown](https://fr.wikipedia.org/wiki/Markdown){.externe} est un format d'écriture de fichier texte très facile à lire et peut être aisément transformé en html, pdf, etc. Nous n'allons pas ici détaillé trop ce format lisez les doc suivantes elles sont super utiles :
 
 {% lien %}
-- <https://www.markdownguide.org/>
-- [cheat sheet](https://gist.github.com/cuonggt/9b7d08a597b167299f0d)
-- [documentation (avancée) en Français](https://blog.stephane-robert.info/docs/developper/autres-langages/markdown/)
+- <https://www.markdownguide.org/>{.externe}
+- [cheat sheet](https://gist.github.com/cuonggt/9b7d08a597b167299f0d){.externe}
+- [documentation (avancée) en Français](https://blog.stephane-robert.info/docs/developper/autres-langages/markdown/){.externe}
 {% endlien %}
 
 Notre fichier `README.md`{.fichier} :
@@ -138,10 +138,10 @@ Exécutez le fichier `main.py`.
 
 ```
 
-Vscode possède une série d'extensions permettant d'ajouter des fonctionnalités. Il existe de nombreuses extensions pour gérer le markdown et vous aller installer [Markdown all in one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
+Vscode possède une série d'extensions permettant d'ajouter des fonctionnalités. Il existe de nombreuses extensions pour gérer le markdown et vous aller installer [Markdown all in one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){.externe}.
 
 {% faire %}
-En relisant si nécessaire [la partie extension du cours sur vscode](../../outils/éditeur-vscode/prise-en-main/#extensions){.interne}, installer l'extension  "Markdown all in one".
+En relisant si nécessaire [la partie extension du cours sur vscode](../../outils/éditeur-vscode/prise-en-main/#extensions), installer l'extension  "Markdown all in one".
 {% endfaire %}
 
 Cette extension fourni de nombreux utilitaires comme l'autocompletion ou encore vous permett de compiler du markdown en html.
@@ -151,14 +151,14 @@ Cette extension fourni de nombreux utilitaires comme l'autocompletion ou encore 
 Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règles de style dans le lien ci-après qu'il est bon de suivre :
 
 {% lien %}
-[la PEP8](https://www.python.org/dev/peps/pep-0008/).
+[la PEP8](https://www.python.org/dev/peps/pep-0008/){.externe}.
 {% endlien %}
 
-Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black) par exemple. Ca tombe bien il existe une extension vscode pour lui :
+Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black){.externe} par exemple. Ca tombe bien il existe une extension vscode pour lui :
 
 
 {% faire %}
-En relisant si nécessaire [la partie extension du cours sur vscode](../../outils/éditeur-vscode/prise-en-main/#extensions){.interne}, installer l'extension "_black formatter_" développé par microsoft.
+En relisant si nécessaire [la partie extension du cours sur vscode](../../outils/éditeur-vscode/prise-en-main/#extensions), installer l'extension "_black formatter_" développé par microsoft.
 {% endfaire %}
 
 Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vscode. Testons le.
@@ -261,7 +261,7 @@ Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il 
 
 Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter **tous les tests** pour vérifier que notre programme fonctionne aussi bien qu'avant.
 
-On reprend [ce que l'on a déjà vu](../tests-unitaires/){.interne} pour finaliser notre projet :
+On reprend [ce que l'on a déjà vu](../tests-unitaires/) pour finaliser notre projet :
 
 
 {% attention2 "**À retenir**" %}

@@ -10,26 +10,26 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD comme <https://www.youtube.com/watch?v=76acHVJfziw&t=23s>, utiliser radar2 pour voir comment ça marche en mémoire. Pile et tas.
-> TBD <https://computergoblin.com/blog/everyone-should-learn-c-pt-1/>
+> TBD comme <https://www.youtube.com/watch?v=76acHVJfziw&t=23s>{.externe}, utiliser radar2 pour voir comment ça marche en mémoire. Pile et tas.
+> TBD <https://computergoblin.com/blog/everyone-should-learn-c-pt-1/>{.externe}
 
-Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il :
+Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M){.externe}. Son but est de créer des systèmes d'exploitation. Il :
 
 - est très proche de la machine
 - fait confiance au développeur et n'effectue aucune vérification
 
-Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)) dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.
+Le but est de ne pas avoir d'[overhead](https://en.wikipedia.org/wiki/Overhead_(computing)){.externe} dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.
 
-Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : [gcc](https://gcc.gnu.org/) et [llvm](https://llvm.org/). Nous utiliserons ce dernier dans ce cours.
+Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : [gcc](https://gcc.gnu.org/){.externe} et [llvm](https://llvm.org/){.externe}. Nous utiliserons ce dernier dans ce cours.
 
 C n'a cessé d'évoluer au cours du temps. La norme actuelle date de 2023 (dite `c23`), c'est elle que nous utiliserons et qui remplace la dernière spécification datant de 2017 (la `c17`).
 
 ## Installation llvm
 
-Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt.llvm.org/) pour ce cours.
+Il existe plusieurs compilateurs de `C`. Nous allons utiliser [llvm](https://apt.llvm.org/){.externe} pour ce cours.
 
 {% aller %}
-[Installation du compilateur](installation){.interne}
+[Installation du compilateur](installation)
 {% endaller %}
 
 ## Premier programme
@@ -81,7 +81,7 @@ Si vous ne spécifiez pas le type de la chaîne de caractère son type est indé
 
 ### Exécution
 
-On utilise le compilateur [clang](https://clang.llvm.org/), fait pour compiler de nombreux langages, dont le C.
+On utilise le compilateur [clang](https://clang.llvm.org/){.externe}, fait pour compiler de nombreux langages, dont le C.
 
 ```
 clang hello.c
@@ -128,31 +128,31 @@ En ajoutant l'option `-v`, verbose, clang détaille ses opérations. N'hésitez 
 Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étapes pour le transformer en exécutable (le fichier `a.out`{.fichier})
 
 {% aller %}
-[La compilation](compilation){.interne}
+[La compilation](compilation)
 {% endaller %}
 
 ## Éléments de langage
 
 {% aller %}
-[Langage C](langage){.interne}
+[Langage C](langage)
 {% endaller %}
 
 ## Gestion des sources
 
 {% aller %}
-[Gestion du code source](gestion-code-source){.interne}
+[Gestion du code source](gestion-code-source)
 {% endaller %}
 
 ## Gestion des erreurs
 
 {% aller %}
-[Gestion des erreurs](gestion-erreurs){.interne}
+[Gestion des erreurs](gestion-erreurs)
 {% endaller %}
 
 ## Bibliothèques
 
 {% aller %}
-[Ajout de bibliothèques](ajout-bibliothèques){.interne}
+[Ajout de bibliothèques](ajout-bibliothèques)
 {% endaller %}
 
 ## Exercices
@@ -160,47 +160,47 @@ Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étap
 Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, nous vous en avons concocté 3 séries ci-après qui mobilisent tout ce qu'on a vu.
 
 {% aller %}
-[Exercices](./exercices){.interne}
+[Exercices](./exercices)
 {% endaller %}
 
 {% aller %}
-[Projet : Algorithme X](./projet-algorithme-x){.interne}
+[Projet : Algorithme X](./projet-algorithme-x)
 {% endaller %}
 
 {% aller %}
-[Examen](./examen){.interne}
+[Examen](./examen)
 {% endaller %}
 
 {% lien %}
 Autres exercices (liste non exhaustive) :
 
-- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
-- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
+- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>{.externe}
+- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>{.externe}
 
 {% endlien %}
 
 ## C art
 
-- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint)
-- [poème et ASCII art en C](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars)
-- [encore un poème en C](https://code-poetry.com/water)
+- [une histoire d'amour à sens unix](https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint){.externe}
+- [poème et ASCII art en C](https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars){.externe}
+- [encore un poème en C](https://code-poetry.com/water){.externe}
 
 ## TBD
 
 > TBD liste de sujets non traité. Peut-être à ajouter plus tard.
 
-- [python et C](https://www.youtube.com/watch?v=l8dRF_AnFE0)
-- Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b) avec ar
-- [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)
-- fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>
-- complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
-- [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html)
+- [python et C](https://www.youtube.com/watch?v=l8dRF_AnFE0){.externe}
+- Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b){.externe} avec ar
+- [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone){.externe}
+- fork/clone : avec strace : <https://www.youtube.com/watch?v=uRYyj8tcDTE&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=17>{.externe}
+- complet : [C et segments mémoires utilisées](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4){.externe}
+- [timer](https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html){.externe}
 
 ## Bibliographie
 
-- <https://learncodethehardway.org/c/>
-- [effective C](https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/)
-- [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/)
-- [cours OpenClassroom](https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c)
-- [C programming a modern approach](https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf)
-- [playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl)
+- <https://learncodethehardway.org/c/>{.externe}
+- [effective C](https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/){.externe}
+- [modern C](https://gustedt.gitlabpages.inria.fr/modern-c/){.externe}
+- [cours OpenClassroom](https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c){.externe}
+- [C programming a modern approach](https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf){.externe}
+- [playlist sur la mémoire](https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl){.externe}

@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Dans les exercices de modélisation par des flots, [le problème du transport amoureux](../../projet-flots-modélisation/#transport-amoureux){.interne} permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :
+Dans les exercices de modélisation par des flots, [le problème du transport amoureux](../../projet-flots-modélisation/#transport-amoureux) permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :
 
 - têtes bêches de la source au puits
 - les arcs allant vers le puits sont de flot 0 et peuvent être augmentés
@@ -40,7 +40,7 @@ Dans notre graphe de couplage ceci s'écrit comme un chemin de longueur impaire 
 Soit $G=(V, E)$ un graphe et $M$ un de ses couplages.
 
 - **_Un chemin alternant_** $x_0\dots x_k$ est tel que :
-  - $x_0\dots x_k$ est un [chemin élémentaire](../../chemins-cycles-connexite/#définition-élémentaire){.interne} de $G$
+  - $x_0\dots x_k$ est un [chemin élémentaire](../../chemins-cycles-connexite/#définition-élémentaire) de $G$
   - si $x_{i-1}x_{i} \in M$ alors $x_{i}x_{i+1} \notin M$ pour tout $i$
   - si $x_{i-1}x_{i} \notin M$ alors $x_{i}x_{i+1} \in M$ pour tout $i$
 - **_Un chemin augmentant_** $x_0\dots x_k$ est un chemin alternant qui commence ($x_0$) et termine ($x_k$) par deux sommets libres.
@@ -114,7 +114,7 @@ Les algorithmes permettant de trouver des couplages maximaux vont chercher à pr
 
 ## Trouver un chemin augmentant
 
-La première idée pour trouver un chemin augmentant est de mimer [l'algorithme de recherche de chaîne augmentante](../../flots/#ford-fulkerson){.interne} des flots.
+La première idée pour trouver un chemin augmentant est de mimer [l'algorithme de recherche de chaîne augmentante](../../flots/#ford-fulkerson) des flots.
 
 ### Algorithme
 

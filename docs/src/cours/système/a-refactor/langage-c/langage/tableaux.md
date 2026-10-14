@@ -420,5 +420,5 @@ int main() {
 
 {% aller %}
 Ce genre de typage peut vite devenir très complexe. Heureusement, il n'y a que très peu de chance que vous tombiez sur un tel
-[exemple bien complexe](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#right_left_rule).
+[exemple bien complexe](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#right_left_rule){.externe}.
 {% endaller %}

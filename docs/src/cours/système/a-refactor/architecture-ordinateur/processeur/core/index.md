@@ -15,40 +15,40 @@ eleventyComputed:
 
 Chaque core est une unité de calcul dont le but est d'exécuter des instructions.
 
-Sont architecture suit un modèle dit : [modèle de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann) :
+Sont architecture suit un modèle dit : [modèle de Von Neumann](https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann){.externe} :
 
 ![core](core.png)
 
 Le principe est le suivant :
 
-1. l'instruction a exécuter est lue en mémoire par la [MMU (Memory Management Unit)](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire) sous la forme d'un (ou plusieurs) entier de 64bit arrivant par le bus
+1. l'instruction a exécuter est lue en mémoire par la [MMU (Memory Management Unit)](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire){.externe} sous la forme d'un (ou plusieurs) entier de 64bit arrivant par le bus
 2. cet entier est passé à l'unité de contrôle qui la décode pour trouver l'instruction à réaliser
 3. cette instruction est réalisée par l'unité de calcul dans une de ses sous-unités :
-   - l'[ALU](https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique) pour les opérations logique et arithmétiques sur les entiers
-   - la [FPU](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante) pour les calculs sur les flottants
-   - la [VPU](https://en.wikipedia.org/wiki/Vector_processor) pour les opérations vectorielles
+   - l'[ALU](https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique){.externe} pour les opérations logique et arithmétiques sur les entiers
+   - la [FPU](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante){.externe} pour les calculs sur les flottants
+   - la [VPU](https://en.wikipedia.org/wiki/Vector_processor){.externe} pour les opérations vectorielles
 4. si besoin, la MMU cherchera une donnée en mémoire pour effectuer l'opération ou enverra en mémoire son résultat.
 
 {% lien %}
-Architecture du [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram) des architectures Ice lake d'intel.
+Architecture du [sunny cove core](https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram){.externe} des architectures Ice lake d'intel.
 {% endlien %}
 
 {% attention %}
 
 - Les cores 64b d'Intel s'appellent x86-64 ou encore x64. Le mode x86 peut vouloir dire 32b : faites attention.
-- le mode des core x64, celui que nous décrivons ici, est le [long mode](https://en.wikipedia.org/wiki/Long_mode). Le Protected mode est un mode 32b, donc obsolete.
+- le mode des core x64, celui que nous décrivons ici, est le [long mode](https://en.wikipedia.org/wiki/Long_mode){.externe}. Le Protected mode est un mode 32b, donc obsolete.
 
 {% endattention %}
 
 ## Instructions
 
 {% aller %}
-[Instructions d'un core](./instructions){.interne}
+[Instructions d'un core](./instructions)
 {% endaller %}
 
 ## Protection ring
 
-Une instruction du core a un niveau d'accessibilité, appelé [cercles de protection](https://en.wikipedia.org/wiki/Protection_ring). Les core x64 en proposent 4, mais seuls deux sont utilisés :
+Une instruction du core a un niveau d'accessibilité, appelé [cercles de protection](https://en.wikipedia.org/wiki/Protection_ring){.externe}. Les core x64 en proposent 4, mais seuls deux sont utilisés :
 
 - kernel (ring 0)
 - user (ring 3)
@@ -68,31 +68,31 @@ Il y a deux appels possibles, comme on l'a vu dans la partie OS :
 
 ### Interruptions
 
-Une interruption est une demande d'action initiée par un matériel. Le core gère les interruptions en associant à chaque interruption une [Table des interruptions](https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64) de 16B qui détermine l'action à mener (essentiellement l'adresse de la fonction du noyau qui va la gérer).
+Une interruption est une demande d'action initiée par un matériel. Le core gère les interruptions en associant à chaque interruption une [Table des interruptions](https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64){.externe} de 16B qui détermine l'action à mener (essentiellement l'adresse de la fonction du noyau qui va la gérer).
 
-Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16B = $ \text{KiB}$, nommé [Interrupt vector table](https://en.wikipedia.org/wiki/Interrupt_vector_table) stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.
+Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16B = $ \text{KiB}$, nommé [Interrupt vector table](https://en.wikipedia.org/wiki/Interrupt_vector_table){.externe} stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.
 
 ### Appel système
 
-Un appel système est initié par l'instruction [`syscall`](https://www.felixcloutier.com/x86/syscall.html) sur les cores x64. Cette instruction est un appel d'une fonction du noyau (stockée dans un registre spécialisé).
+Un appel système est initié par l'instruction [`syscall`](https://www.felixcloutier.com/x86/syscall.html){.externe} sur les cores x64. Cette instruction est un appel d'une fonction du noyau (stockée dans un registre spécialisé).
 
 {% lien %}
-Les différents paramètres de la fonction `syscall` permettent de faire plus de 300 appels différents. Voir la liste des paramètres là : <https://x64.syscall.sh/>
+Les différents paramètres de la fonction `syscall` permettent de faire plus de 300 appels différents. Voir la liste des paramètres là : <https://x64.syscall.sh/>{.externe}
 {% endlien %}
 
 ## Caches
 
 Le core passe son temps à demander des valeurs à la mémoire, que ce soit la prochaine instruction à exécuter ou le stockages des données d'un process. L'accès mémoire étant lent par rapport à la vitesse du core, une technique de contournement a été mis en œuvre :
 {% aller %}
-[Le cache](./cache){.interne}
+[Le cache](./cache)
 {% endaller %}
 
 ## Adresse logique vs adresse physique
 
 {% aller %}
-[Adresse logique et physique](./mémoire-virtuelle){.interne}
+[Adresse logique et physique](./mémoire-virtuelle)
 {% endaller %}
 
 ## Hyper Threading
 
-Un core ne peut théoriquement exécuter qu'un seul thread. L'[hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading) permet d'exécuter deux threads en concurrence, en profitant des blocages dues aux attentes des entrées/sorties. Ceci est possible lorsque l'on exécutes deux thread d'un même process, puisqu'ils se partagent tout sauf les registres et presque toute la mémoire (sauf leurs piles).
+Un core ne peut théoriquement exécuter qu'un seul thread. L'[hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading){.externe} permet d'exécuter deux threads en concurrence, en profitant des blocages dues aux attentes des entrées/sorties. Ceci est possible lorsque l'on exécutes deux thread d'un même process, puisqu'ils se partagent tout sauf les registres et presque toute la mémoire (sauf leurs piles).

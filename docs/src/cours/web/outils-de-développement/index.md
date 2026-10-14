@@ -28,8 +28,8 @@ On utilisera chrome pour ce tuto. Ils existent cependant pour quasi tous les nav
 
 {% lien %}
 
-* [navigateur chrome](https://www.google.com/chrome/fr/download-chrome/)
-* [outils de développement](https://developer.chrome.com/docs/devtools/)
+* [navigateur chrome](https://www.google.com/chrome/fr/download-chrome/){.externe}
+* [outils de développement](https://developer.chrome.com/docs/devtools/){.externe}
 
 {% endlien %}
 
@@ -44,8 +44,8 @@ On trouve les Outils de développement dans :
 
 {% lien %}
 
-* [navigateur safari](https://www.apple.com/fr/safari/)
-* [outils de développement](https://support.apple.com/fr-fr/guide/safari/sfri20948/mac)
+* [navigateur safari](https://www.apple.com/fr/safari/){.externe}
+* [outils de développement](https://support.apple.com/fr-fr/guide/safari/sfri20948/mac){.externe}
 
 {% endlien %}
 
@@ -53,8 +53,8 @@ On trouve les Outils de développement dans :
 
 {% lien %}
 
-* [navigateur Firefox](https://www.mozilla.org/fr/firefox/new/)
-* [outils de développement](https://developer.mozilla.org/fr/docs/Learn/Common_questions/What_are_browser_developer_tools)
+* [navigateur Firefox](https://www.mozilla.org/fr/firefox/new/){.externe}
+* [outils de développement](https://developer.mozilla.org/fr/docs/Learn/Common_questions/What_are_browser_developer_tools){.externe}
 
 {% endlien %}
 
@@ -63,18 +63,18 @@ On trouve les Outils de développement dans :
 On va regarder et utiliser les différents onglets des outils de développements.
 
 {% info %}
-Pour accéder aux outils de développement, suivez la doc : <https://developer.chrome.com/docs/devtools/open/>.
+Pour accéder aux outils de développement, suivez la doc : <https://developer.chrome.com/docs/devtools/open/>{.externe}.
 {% endinfo %}
 
 ### Le menu *Elements*
 
 Le rendu d'une page web est faite en combinant trois parties :
 
-* le fond, la structure : elle est décrite en utilisant le langage [html](https://fr.wikipedia.org/wiki/HTML5)
-* la forme, la position : elle est décrite en utilisant le langage [css](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)
-* les interactions qui sont décrites avec le langage [javascript](https://fr.wikipedia.org/wiki/JavaScript)
+* le fond, la structure : elle est décrite en utilisant le langage [html](https://fr.wikipedia.org/wiki/HTML5){.externe}
+* la forme, la position : elle est décrite en utilisant le langage [css](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade){.externe}
+* les interactions qui sont décrites avec le langage [javascript](https://fr.wikipedia.org/wiki/JavaScript){.externe}
 
-Pour un même fond, la forme peut changer radicalement. Le site <http://www.csszengarden.com/> en montre un effet extrême. Tout en bas de la page, vous pouvez changer le css pour changer la présentation.
+Pour un même fond, la forme peut changer radicalement. Le site <http://www.csszengarden.com/>{.externe} en montre un effet extrême. Tout en bas de la page, vous pouvez changer le css pour changer la présentation.
 
 {% faire %}
 Testez vous-même les différences.en changeant de design (l'emplacement des liens va changer selon le design bien sur...)
@@ -84,7 +84,7 @@ Testez vous-même les différences.en changeant de design (l'emplacement des lie
 
 On va utiliser l'onglet *éléments* des outils de développement.
 
-1. aller sur le site : <http://www.csszengarden.com/>
+1. aller sur le site : <http://www.csszengarden.com/>{.externe}
 2. ouvrez les outils de Développement
 
 Vous devriez avoir quelque chose de ce type :
@@ -106,7 +106,7 @@ On verra plus tard la signification précise de tout cela, mais pour l'instant o
 #### Expérimentation
 
 {% lien "**Documentation**" %}
-<https://developer.chrome.com/docs/devtools/#css>
+<https://developer.chrome.com/docs/devtools/#css>{.externe}
 {% endlien %}
 
 Lorsque l'on crée des pages, il faut **toujours** voir le rendu le plus souvent possible. En effet, il n'y a pas de compilation du html/css donc les erreurs sont nombreuses. Avoir un moyen de voir rapidement où se situent les soucis et quelles sont les propriétés utilisées est cruciale.
@@ -135,12 +135,12 @@ Modifions tout ça :
 * le css :
 
   * il est chargé au début du html, dans la balise `<head></head>`, à la ligne commençant par `<link ...`. Changez le nom du fichier (pour que chrome ne le trouve plus), et voir ce que donne le html sans css. `ctrl-z` pour le remettre.
-  * <http://www.csszengarden.com/> est le site fait pour montrer l'importance du css. En bas de page vous pouvez changer de css pour changer dramatiquement de présentation.
+  * <http://www.csszengarden.com/>{.externe} est le site fait pour montrer l'importance du css. En bas de page vous pouvez changer de css pour changer dramatiquement de présentation.
   * re-sélectionnez le paragraphe que l'on a modifié et scrollez dans la partie css jusqu'à voir une propriété `color` (elle devrait être tout en bas de la partie css)
   
   ![partie css du paragraph la couleur](./utilisation_elements_4.png)
 
-  * en cliquant sur la couleur, vous pouvez la modifier. Le nombre est le code [RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) associé à la couleur.
+  * en cliquant sur la couleur, vous pouvez la modifier. Le nombre est le code [RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu){.externe} associé à la couleur.
 
   ![en rouge](./utilisation_elements_5.png)
 
@@ -159,7 +159,7 @@ Cela n'a en revanche pas affecté les titres. En cliquant sur un titre on voit q
 
 ![couleur du body non utilisée](./utilisation_elements_6.png)
 
- Elle est surchargée par la propriété color associé à `h3`, plus précise car le bloc `h3` est à l'intérieur du bloc `body` (correspond à un [titre](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements) de moyenne importance). S'il n'y avait pas eu de propriété css associé à `h3`, la couleur du titre aurait également été rouge :
+ Elle est surchargée par la propriété color associé à `h3`, plus précise car le bloc `h3` est à l'intérieur du bloc `body` (correspond à un [titre](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements){.externe} de moyenne importance). S'il n'y avait pas eu de propriété css associé à `h3`, la couleur du titre aurait également été rouge :
 
 ```css
 h3 {
@@ -175,10 +175,10 @@ h3 {
 ![couleur du h3](./utilisation_elements_7.png)
 
 {% faire %}
-Allez sur le site du [monde](https://www.lemonde.fr/) :
+Allez sur le site du [monde](https://www.lemonde.fr/){.externe} :
 
-* Changez la couleur des titres En mettant un vert qui pète ! Si vous voulez facilement voir les couleurs et leurs nombres associé, allez faire un tour du côté de <https://color.adobe.com>.
-* Changez les titres du <https://www.lemonde.fr/> en quelque chose de plus joyeux. Et changez la couleur.  
+* Changez la couleur des titres En mettant un vert qui pète ! Si vous voulez facilement voir les couleurs et leurs nombres associé, allez faire un tour du côté de <https://color.adobe.com>{.externe}.
+* Changez les titres du <https://www.lemonde.fr/>{.externe} en quelque chose de plus joyeux. Et changez la couleur.  
 
 {% endfaire %}
 
@@ -186,22 +186,22 @@ Allez sur le site du [monde](https://www.lemonde.fr/) :
 
 ### Le menu *sources*
 
-tout les fichiers utilisés pour créer la page, réparties par [urls](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator).
+tout les fichiers utilisés pour créer la page, réparties par [urls](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator){.externe}.
 
-* depuis le site <http://www.csszengarden.com/> :
+* depuis le site <http://www.csszengarden.com/>{.externe} :
   * `index` : qui est le départ de tout site. Ce fichier (html) charge le reste des données. En particulier le fichier css (ligne 7)
-  * le fichier css, qui est situé sur le site <http://www.csszengarden.com/> et dans un répertoire 214. Il est nommé `214.css?v=8may2013`
+  * le fichier css, qui est situé sur le site <http://www.csszengarden.com/>{.externe} et dans un répertoire 214. Il est nommé `214.css?v=8may2013`
   * des images (elles ne sont pas vides. Il y a des lignes dans une image transparente. Ouvrez par exemple `contour-opaque.png` dans une nouvelle fenêtre en cliquant droit dessus, vous verrez sur fond noir des formes)
 * depuis un autre site (ici google) : une fonte google est chargée (en ligne 66 du css principal) : son css (`fonts.googleapi.com`) et les images associées (depuis `fonts.gstatic.com`))
 
 {% faire %}
-Que charge le site du <https://www.lemonde.fr/> ?
+Que charge le site du <https://www.lemonde.fr/>{.externe} ?
 {% endfaire %}
 
 ### le menu *network*
 
 {% lien "**Documentation**" %}
-<https://developer.chrome.com/docs/devtools/#network>
+<https://developer.chrome.com/docs/devtools/#network>{.externe}
 {% endlien %}
 
 Montre tous les appels réseaux de la page web (ce qui correspond peu ou prou aux fichiers chargés) et le temps. C'est très utile pour déterminer la charge réseau de son site, en particulier lorsque l'on crée son propre site avec de grosses images, de la vidéo, *etc** et que tout devient lent une fois mis sur un site distant.
@@ -210,36 +210,36 @@ Montre tous les appels réseaux de la page web (ce qui correspond peu ou prou au
 Il ne faut **jamais** oublier que le réseau, même avec la fibre, ça ralenti le chargement.
 {% endattention %}
 
-Pour le site <http://www.csszengarden.com/>, voilà ce que donne l'onglet network :
+Pour le site <http://www.csszengarden.com/>{.externe}, voilà ce que donne l'onglet network :
 
 ![network](./network_1.png)
 
-* l'appel à <http://www.csszengarden.com> a rendu un status de 200, c'était un document de 5kb et la durée entre l'appel et la réception du document a duré 235ms.
+* l'appel à <http://www.csszengarden.com>{.externe} a rendu un status de 200, c'était un document de 5kb et la durée entre l'appel et la réception du document a duré 235ms.
 * la feuille de style `214.css?v=8may2013` a également rendu un status de 200 et c'était une feuille de style css (*stylesheet*)
 
 #### statut d'une requête
 
-Le status est le résultat de l'appel en utilisant le protocole http : <https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP>. `200` correspond à un succès de la requête :
+Le status est le résultat de l'appel en utilisant le protocole http : <https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP>{.externe}. `200` correspond à un succès de la requête :
 
-* le navigateur a fait une requête au serveur web situé à l'adresse <http://www.csszengarden.com/>
+* le navigateur a fait une requête au serveur web situé à l'adresse <http://www.csszengarden.com/>{.externe}
 * le serveur lui a répondu en lui envoyant des données (le fichier index) et un status de 200.
 
-Si on demande à chrome de chercher un site qui n'existe pas sur <http://www.csszengarden.com/>, comme <http://www.csszengarden.com/mon_truc_en_plume/> : on rendra un statut de 404 : le serveur situé à <http://www.csszengarden.com/> ne sait pas quoi faire avec la demande.
+Si on demande à chrome de chercher un site qui n'existe pas sur <http://www.csszengarden.com/>{.externe}, comme <http://www.csszengarden.com/mon_truc_en_plume/>{.externe} : on rendra un statut de 404 : le serveur situé à <http://www.csszengarden.com/>{.externe} ne sait pas quoi faire avec la demande.
 
-* si on cherche un site qui n'existe pas (ce qui est assez dur...) comme <https://www.zglup.com/> le status est curieusement de `200`. C'est du au fait que comme le serveur n'existe pas c'est chrome lui-même qui affiche une page. Le résultat est donc non pas la réponse du serveur (il ne peut pas répondre, il n'existe pas) mais celle de chrome. Dans le cas de <http://www.csszengarden.com/mon_truc_en_plume/>, c'est le serveur de <http://www.csszengarden.com> qui répondait.
-* En cliquant sur une requête serveur, on voit les entêtes d'appels et de réponses (voir <https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol> pour une réponse détaillée).
+* si on cherche un site qui n'existe pas (ce qui est assez dur...) comme <https://www.zglup.com/>{.externe} le status est curieusement de `200`. C'est du au fait que comme le serveur n'existe pas c'est chrome lui-même qui affiche une page. Le résultat est donc non pas la réponse du serveur (il ne peut pas répondre, il n'existe pas) mais celle de chrome. Dans le cas de <http://www.csszengarden.com/mon_truc_en_plume/>{.externe}, c'est le serveur de <http://www.csszengarden.com>{.externe} qui répondait.
+* En cliquant sur une requête serveur, on voit les entêtes d'appels et de réponses (voir <https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol>{.externe} pour une réponse détaillée).
 
 {% info %}
-Pour apprendre facilement les statuts http, rien de tel que : <https://http.cat/>
+Pour apprendre facilement les statuts http, rien de tel que : <https://http.cat/>{.externe}
 {% endinfo %}
 
 {% faire %}
-Essayez sur le site du <https://www.lemonde.fr/>.
+Essayez sur le site du <https://www.lemonde.fr/>{.externe}.
 {% endfaire %}
 
 ### Le menu *Application*
 
-Montre toutes les choses stockées sur votre ordinateur par le site, comme les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) par exemple.
+Montre toutes les choses stockées sur votre ordinateur par le site, comme les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)){.externe} par exemple.
 
 {% attention %}
 Les cookies ne sont pas tous mauvais. Ils sont la seule façon pour un site de se rappeler de vous.

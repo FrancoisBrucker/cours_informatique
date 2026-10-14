@@ -10,10 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Pour gérer les dépendances de votre site front (les bibliothèques css ou javascript utilisées), on a jusqu'à présent utilisé des [CDN](https://fr.wikipedia.org/wiki/R%C3%A9seau_de_diffusion_de_contenu). Mais lorsque l'on veut :
+Pour gérer les dépendances de votre site front (les bibliothèques css ou javascript utilisées), on a jusqu'à présent utilisé des [CDN](https://fr.wikipedia.org/wiki/R%C3%A9seau_de_diffusion_de_contenu){.externe}. Mais lorsque l'on veut :
 
 1. contrôlez totalement ce qui est utilisé pour votre site
-2. utiliser des outils comme [scss](https://sass-lang.com/) pour compiler notre css.
+2. utiliser des outils comme [scss](https://sass-lang.com/){.externe} pour compiler notre css.
 
 Il est conseillé de télécharger directement les bibliothèque chez soit.
 
@@ -23,9 +23,9 @@ Ceci pose cependant des problèmes de gestion des dépendances :
 - on doit pouvoir gérer les versions des bibliothèques installées
 - on doit pouvoir uniquement gérer le projet de notre code (avec git par exemple) sans avoir besoin de sauvegarder le code de personnes tierces.
 
-On utilise pour cela un outil de gestion de dépendances. Nous allons utiliser celui de <https://nodejs.org/>, nommé [npm](https://www.npmjs.com/).
+On utilise pour cela un outil de gestion de dépendances. Nous allons utiliser celui de <https://nodejs.org/>{.externe}, nommé [npm](https://www.npmjs.com/){.externe}.
 
-## Projet <https://nodejs.org/>
+## Projet <https://nodejs.org/>{.externe}
 
 Dans un terminal, placer-vous dans le dossier contenant votre site puis créez un projet node avec la commande :
 
@@ -50,7 +50,7 @@ Une fois que vous avez répondu aux questions (en appuyant juste sur la touche e
 
 ```
 
-On peut maintenant installer un package javascript, comme <https://tabulator.info/> pour rendre notre table plus jolie :
+On peut maintenant installer un package javascript, comme <https://tabulator.info/>{.externe} pour rendre notre table plus jolie :
 
 ```shell
 npm install tabulator-tables
@@ -64,17 +64,17 @@ Le fichier `package.json` a maintenant changé, il contient les trois lignes sui
   }
 ```
 
-Ainsi qu'un fichier [`package-lock.json`{.fichier}](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json) qui contient un descriptif détaillé des bibliothèques installées.
+Ainsi qu'un fichier [`package-lock.json`{.fichier}](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json){.externe} qui contient un descriptif détaillé des bibliothèques installées.
 
 Enfin, les bibliothèques téléchargées l'on été dans le dossier `node_modules/`{.fichier} lui aussi nouveau. Dans notre cas, seulement trois bibliothèques ont été installées avec une seule commandes, mais cela peut être beaucoup plus.
 
-Pour utiliser tabulator comme dans l'exemple [tables html](https://tabulator.info/docs/5.5/data#table), il faut avoir accès :
+Pour utiliser tabulator comme dans l'exemple [tables html](https://tabulator.info/docs/5.5/data#table){.externe}, il faut avoir accès :
 
 - à la bibliothèque css qui est dans le dossier `node_modules/tabulator-tables/dist/css/tabulator.min.css`{.fichier}
 - à la bibliothèque javascript qui est dans le dossier `node_modules/tabulator-tables/dist/js/tabulator.min.js`{.fichier}
 
 {% info %}
-Il n'y a pas de règle pour savoir quoi récupérer. Mais normalement, vous devriez trouver ce qu'il faut dans les dossiers js ou css et prenez les fichiers [minifiés](https://www.cloudflare.com/fr-fr/learning/performance/why-minify-javascript-code/) (moins lisible pour un humains mais plus léger pour traverser le réseau).
+Il n'y a pas de règle pour savoir quoi récupérer. Mais normalement, vous devriez trouver ce qu'il faut dans les dossiers js ou css et prenez les fichiers [minifiés](https://www.cloudflare.com/fr-fr/learning/performance/why-minify-javascript-code/){.externe} (moins lisible pour un humains mais plus léger pour traverser le réseau).
 
 Parfois, la bibliothèque vient également avec son code source, vous avez alors deux dossiers, `src/`{.fichier} pour les sources et `dist`{.fichier} pour les fichiers utilisables.
 
@@ -160,7 +160,7 @@ Si vous n'installez pas les dépendance, le site ne peut fonctionner puisqu'il n
 On conserve également parfois le fichier `package-lock.json`{.fichier} dans la distribution d'un projet node. Vois le lien suivant pour le pourquoi de son existence et son utilisation courante :
 
 {% lien %}
-[gestion du fichier](https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable)
+[gestion du fichier](https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable){.externe}
 {% endlien %}
 
 ## Compiler un site statique

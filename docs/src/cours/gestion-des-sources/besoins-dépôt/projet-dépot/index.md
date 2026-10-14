@@ -13,7 +13,7 @@ eleventyComputed:
 Nous allons créer un projet sous github pour que le monde entier puisse l'utiliser s'il le désire.
 
 {% info %}
-L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
+L'[aide de github](https://docs.github.com/en/get-started){.externe} est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
 ## Le code
@@ -21,7 +21,7 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite 
 Pour se fixer les idées utilisons ce projet :
 
 {% faire %}
-1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1)
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v1?filename=projet-numérologie-v1){.externe}
 2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
 {% endfaire %}
 {% faire %}
@@ -108,7 +108,7 @@ Ceci a créé une release, notre 1.0. Pour la voir, cliquez sur le lien release 
 Après quelque temps de travail, on est arrivé à une nouvelle version publiable :
 
 {% faire %}
-1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v2?filename=projet-numérologie-v2)
+1. Téléchargez le dossier suivant contenant un projet python de 3 fichiers : [le projet Numérologie](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/gestion-des-sources/besoins-d%C3%A9p%C3%B4t/projet-d%C3%A9pot/num%C3%A9rologie/num%C3%A9rologie-v2?filename=projet-numérologie-v2){.externe}
 2. Créez un projet vscode avec ces différents fichiers et exécutez le fichier `main.py`{.fichier}
 {% endfaire %}
 
@@ -154,7 +154,7 @@ Cliquez sur le numéro du dernier commit :
 ![main](./v2-main-commit.png)
 {% endfaire %}
 {% info %}
-Voir [ce doc](https://www.designveloper.com/blog/hash-values-sha-1-in-git/) pour voir comment git associe chaque commit à un sha pour le retrouver.
+Voir [ce doc](https://www.designveloper.com/blog/hash-values-sha-1-in-git/){.externe} pour voir comment git associe chaque commit à un sha pour le retrouver.
 {% endinfo %}
 
 

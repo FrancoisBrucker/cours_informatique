@@ -15,7 +15,7 @@ La programmation dynamique est un principe de création d'algorithme très gén�
 ## Principe
 
 {% aller %}
-[Principe](./principe){.interne}
+[Principe](./principe)
 {% endaller %}
 
 ## Exemple de l'alignement de séquences
@@ -23,5 +23,5 @@ La programmation dynamique est un principe de création d'algorithme très gén�
 Le problème de l'alignement de séquences et l'utilisation de la programmation dynamique pour le résoudre est un classique indémodable.
 
 {% aller %}
-[Alignement de séquences](./alignement-séquences){.interne}
+[Alignement de séquences](./alignement-séquences)
 {% endaller %}

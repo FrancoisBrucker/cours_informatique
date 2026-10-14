@@ -20,8 +20,8 @@ Positionnement des balises html.
 
 {% lien "**Documentation**" %}
 
-* <https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Positioning>
-* <https://www.alsacreations.com/tuto/lire/608-initiation-au-positionnement-css-partie-2.html>
+* <https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Positioning>{.externe}
+* <https://www.alsacreations.com/tuto/lire/608-initiation-au-positionnement-css-partie-2.html>{.externe}
 
 {% endlien %}
 

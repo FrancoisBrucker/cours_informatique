@@ -31,7 +31,7 @@ Le projet ressemble maintenant à ça, en excluant le dossier `node_modules`{.fi
     └── numérologie.js
 ```
 
-Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format [json](https://www.json.org/json-fr.html) qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.
+Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format [json](https://www.json.org/json-fr.html){.externe} qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.
 
 Dans cette partie, retenez donc juste que l'on transfère (via le format json) des dictionnaires depuis le serveur vers le client.
 
@@ -39,7 +39,7 @@ Dans cette partie, retenez donc juste que l'on transfère (via le format json) d
 
 Pour passer les données au serveur, nous allons utiliser les [routes avec query du cours]({{ "/cours/web/serveur-web/routes-paramètres" | url }}#query). Pour notre projet, on veut qu'une fois que l'utilisateur a rempli le formulaire il appuie sur le bouton d'envoi qui demande au serveur le numéro associé au prénom. Une fois que l'on a reçu la réponse du serveur on met à jour la page.
 
-Commençons par traiter le plus simple, la réponse du serveur. Il doit répondre à la requête avec paramètres (<http://127.0.0.1:3000/chaine/François> ou <http://localhost:3000/prenom?valeur=françois> selon la méthode choisie) par un dictionnaire contenant les réponses :
+Commençons par traiter le plus simple, la réponse du serveur. Il doit répondre à la requête avec paramètres (<http://127.0.0.1:3000/chaine/François>{.externe} ou <http://localhost:3000/prenom?valeur=françois>{.externe} selon la méthode choisie) par un dictionnaire contenant les réponses :
 
 ```json
 {
@@ -52,7 +52,7 @@ On va procéder en 2 temps. On commence par créer la route, puis on va y intég
 
 ### Route
 
-Ce dictionnaire est envoyé au client sous la forme d'un objet objet [json](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON). Avant de donner une véritable valeur en utilisant `numérologie.js`{.fichier} occupons nous d'envoyer notre dictionnaire au format json. Nous avons chois d'utiliser la méthode avec query :
+Ce dictionnaire est envoyé au client sous la forme d'un objet objet [json](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON){.externe}. Avant de donner une véritable valeur en utilisant `numérologie.js`{.fichier} occupons nous d'envoyer notre dictionnaire au format json. Nous avons chois d'utiliser la méthode avec query :
 
 ```javascript
 // ...
@@ -112,7 +112,7 @@ export default {
 A à la fin du module, on décrit ce que l'on veut exporter. Ici un dictionnaire qui va associer la fonction `chiffreAssocie`{.language-} au nom `chiffre`{.language-}
 
 {% lien %}
-[Documentation sur les modules](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules)
+[Documentation sur les modules](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules){.externe}
 {% endlien %}
 
 Lorsque l'on `import toto from './titi.js'`{.language-}, on rend l'objet `export default`{.language-} du fichier `titi.js`{.fichier} et on l'appelle `toto`{.language-}. Pour `numérologie.js`{.fichier}, j'exporte un objet qui a un attribut `chiffre`{.language-} associé à la fonction chiffreAssocie.
@@ -148,7 +148,7 @@ Les imports qui sont des fichiers à nous sont décrit par leur chemin relatif, 
 
 Pour récupérer les données côté client, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.
 
-Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch), très pratique, qui permet de récupérer des choses sur internet avec des [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises) :
+Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch){.externe}, très pratique, qui permet de récupérer des choses sur internet avec des [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises){.externe} :
 
 ```javascript
 document.querySelector("#form-button").addEventListener("click", (event) => {
@@ -229,12 +229,12 @@ On a aussi supprimé l'appel au fichier `numérologie.js`{.fichier} qui est main
 
 Vous avez sûrement remarqué que nos routes ne sont pas du vrai français :
 
-1. <http://localhost:3000/chaine/françois> à la place de <http://localhost:3000/chaîne/françois>
-2. <http://localhost:3000/prenom?valeur=françois> à la place de <http://localhost:3000/prénom?valeur=françois>
+1. <http://localhost:3000/chaine/françois>{.externe} à la place de <http://localhost:3000/chaîne/françois>{.externe}
+2. <http://localhost:3000/prenom?valeur=françois>{.externe} à la place de <http://localhost:3000/prénom?valeur=françois>{.externe}
 
-Ceci est du au fait que lorsque l'on tape des urls en utf8, celles ci sont encodés en transformant les caractères non ASCII par des nombres précédés d'un `%`{.language-} : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent).
+Ceci est du au fait que lorsque l'on tape des urls en utf8, celles ci sont encodés en transformant les caractères non ASCII par des nombres précédés d'un `%`{.language-} : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent){.externe}.
 
-On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François> qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`.
+On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François>{.externe} qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`.
 
 Les paramètres (`françois`{.language-} dans le premier cas et `valeur=françois`{.language-} dans le second) sont automatiquement transformés en utf8 par node, mais **pas** l'url de la route :
 
@@ -242,7 +242,7 @@ Les paramètres (`françois`{.language-} dans le premier cas et `valeur=françoi
 Une route qui aura comme base : `'/chaîne/:prenom'`{.language-} donnera tout le temps un 404. C'est la route `cha%C3%AEne/:prenom`{.language-} qui sera reconnue.
 {% endattention %}
 
-Pour ne pas à avoir à se rappeler des encodages, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) pour simplifier l'écriture d'url en utf8. Ainsi, dans notre cas, on aurait pu écrire :
+Pour ne pas à avoir à se rappeler des encodages, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI){.externe} et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI){.externe} pour simplifier l'écriture d'url en utf8. Ainsi, dans notre cas, on aurait pu écrire :
 
 ```javascript
 // ...

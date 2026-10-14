@@ -32,7 +32,7 @@ Créez un fichier `fractionnel.py`{.fichier} où vous écrirez le code de l'algo
 Vous testerez votre code dans le fichier `test_fractionnel.py`{.fichier}
 {% endfaire %}
 {% info %}
-N'oubliez pas qu'il ne faut **jamais** tester directement des réels. On utilise [`approx`{.language-} de pytest](https://docs.pytest.org/en/7.1.x/reference/reference.html#pytest-approx) pour vérifier qu'ils sont à peu prêt égaux.
+N'oubliez pas qu'il ne faut **jamais** tester directement des réels. On utilise [`approx`{.language-} de pytest](https://docs.pytest.org/en/7.1.x/reference/reference.html#pytest-approx){.externe} pour vérifier qu'ils sont à peu prêt égaux.
 {% endinfo %}
 
 

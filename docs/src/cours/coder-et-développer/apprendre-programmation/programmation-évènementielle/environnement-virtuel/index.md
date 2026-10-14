@@ -19,7 +19,7 @@ Environnement virtuel :
 2. ajoutez les modules `pyglet` et `pytest` à cet environnement en utilisant `pip` basé sur l'interpréteur de votre environnement virtuel
 3. Vérifiez que tout fonctionne en :
    1. mettez une image dans le dossier du projet,
-   2. créez un fichier `main.py`{.fichier} ou vous placerez le code ([issu de la documentation](https://pyglet.readthedocs.io/en/latest/programming_guide/quickstart.html#image-viewer)):
+   2. créez un fichier `main.py`{.fichier} ou vous placerez le code ([issu de la documentation](https://pyglet.readthedocs.io/en/latest/programming_guide/quickstart.html#image-viewer){.externe}):
     ```python 
       import pyglet
 

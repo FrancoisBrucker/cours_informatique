@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Page Wikipedia sur la programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique)
+[Page Wikipedia sur la programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique){.externe}
 {% endlien %}
 
 Le principe de la programmation dynamique est simple :
@@ -39,7 +39,7 @@ En effet, s'il existait par exemple un chemin plus rapide entre A et C (le chemi
 
 Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.
 
-Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien [Richard Bellman](https://fr.wikipedia.org/wiki/Richard_Bellman).
+Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien [Richard Bellman](https://fr.wikipedia.org/wiki/Richard_Bellman){.externe}.
 
 Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulés ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution _brut force_ (énumérer et analyser tous les cas possibles).
 
@@ -64,7 +64,7 @@ Enfin, la programmation dynamique nous assure de trouver **un** chemin optimal. 
 
 ## Stockage des résultats intermédiaires
 
-Il existe deux approches pour le stockage des résultats intermédiaires : [**_l'approche bottom-up_**](https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante) et la [**_mémoïsation_**](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation). Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :
+Il existe deux approches pour le stockage des résultats intermédiaires : [**_l'approche bottom-up_**](https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante){.externe} et la [**_mémoïsation_**](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation){.externe}. Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :
 
 $$
 F(n) = F(n-1) + F(n-2)
@@ -104,7 +104,7 @@ La complexité est maintenant linéaire et ne sont stockés que les éléments n
 
 ### Mémoïsation
 
-La mémoïsation est le fait de stocker les résultats d'une fonction pour ne pas avoir à la rappeler plus tard et utiliser directement le résultat. C'est ce qui est mis en oeuvre dans les techniques de cache comme [le cache web](https://fr.wikipedia.org/wiki/Cache_web) ou encore [la mémoire cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache).
+La mémoïsation est le fait de stocker les résultats d'une fonction pour ne pas avoir à la rappeler plus tard et utiliser directement le résultat. C'est ce qui est mis en oeuvre dans les techniques de cache comme [le cache web](https://fr.wikipedia.org/wiki/Cache_web){.externe} ou encore [la mémoire cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache){.externe}.
 
 C'est très utile si on a une équation de récurrence compliquée ou qu'on ne contrôle pas ce que l'on cherche.
 
@@ -146,7 +146,7 @@ Notez qu'il faut initialiser le cache et donc avoir une opération préalable de
 ### Déplacement optimaux
 
 {% lien %}
-[Nombre de chemins (exercice 7)](https://www.mathly.fr/prog_dyn.pdf)
+[Nombre de chemins (exercice 7)](https://www.mathly.fr/prog_dyn.pdf){.externe}
 {% endlien %}
 
 On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).
@@ -251,7 +251,7 @@ Il faut parcours la matrice N créé par l'algorithme de la question précédent
 ### Découpage d'un câble
 
 {% lien %}
-[Découper un cable](https://www.youtube.com/watch?v=tufup6HlwWg)
+[Découper un cable](https://www.youtube.com/watch?v=tufup6HlwWg){.externe}
 {% endlien %}
 
 Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.
@@ -367,7 +367,7 @@ Trouver le nombre de duplications nécessaires pour chaque composant afin de cr�
 ### Sous-suite croissante maximum
 
 {% lien %}
-[Problème de la sous-suite croissante maximum](https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante)
+[Problème de la sous-suite croissante maximum](https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante){.externe}
 {% endlien %}
 
 Le problème est le suivant :

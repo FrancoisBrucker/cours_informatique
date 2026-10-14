@@ -69,25 +69,25 @@ sélecteur {
 }
 ```
 
-Un [sélecteur](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors) peut être beaucoup de choses, le plus simple étant le nom d'une balise. Dans l'exemple précédent :
+Un [sélecteur](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors){.externe} peut être beaucoup de choses, le plus simple étant le nom d'une balise. Dans l'exemple précédent :
 
 - le sélecteur est l'élément (`<p></p>`{.language-}) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
 - on modifie deux propriétés pour ce sélecteur :
-  - la propriété [color](https://www.w3schools.com/cssref/pr_text_color.asp) qui correspond à la couleur du texte
-  - la propriété [background-color](https://www.w3schools.com/cssref/pr_background-color.asp) qui change la couleur du fond de l'élément.
+  - la propriété [color](https://www.w3schools.com/cssref/pr_text_color.asp){.externe} qui correspond à la couleur du texte
+  - la propriété [background-color](https://www.w3schools.com/cssref/pr_background-color.asp){.externe} qui change la couleur du fond de l'élément.
 
 ## Propriétés css
 
 Il existe de nombreuses propriétés, vous pouvez retrouver les principales :
 
-- [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference)
-- ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css).
+- [ici](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Properties_Reference){.externe}
+- ou encore [là](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css){.externe}.
 
 ### Propriété simple
 
 Un attribut et une valeur.
 
-Peut être du texte, comme pour la [justification d'un texte](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align) :
+Peut être du texte, comme pour la [justification d'un texte](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align){.externe} :
 
 ```css
 p {
@@ -95,7 +95,7 @@ p {
 }
 ```
 
-Ou un [nombre avec son unité](https://www.w3schools.com/cssref/css_units.php), comme pour la taille de la police de caractère  :
+Ou un [nombre avec son unité](https://www.w3schools.com/cssref/css_units.php){.externe}, comme pour la taille de la police de caractère  :
 
 ```css
 p {
@@ -105,7 +105,7 @@ p {
 
 ### propriétés combinée
 
-Beaucoup de commandes peuvent se combiner. Par exemple [les fontes](https://www.w3schools.com/css/css_font.asp) ont de nombreuses sous-propriétés qui [peuvent se combiner](https://www.w3schools.com/css/css_font_shorthand.asp) en une seule directive css :
+Beaucoup de commandes peuvent se combiner. Par exemple [les fontes](https://www.w3schools.com/css/css_font.asp){.externe} ont de nombreuses sous-propriétés qui [peuvent se combiner](https://www.w3schools.com/css/css_font_shorthand.asp){.externe} en une seule directive css :
 
 ```css
 p {
@@ -115,8 +115,8 @@ p {
 
 {% lien %}
 
-- [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/)
-- [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started)
+- [fond d'un élément](https://www.codeur.com/tuto/css/proprietes-css-background/){.externe}
+- [changez de police de caractères](https://developers.google.com/fonts/docs/getting_started){.externe}
 
 {% endlien %}
 
@@ -124,7 +124,7 @@ p {
 
 {% lien "**Documentation**" %}
 
-<https://www.w3schools.com/css/css_howto.asp>
+<https://www.w3schools.com/css/css_howto.asp>{.externe}
 
 {% endlien %}
 

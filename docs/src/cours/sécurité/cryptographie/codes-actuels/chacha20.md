@@ -13,7 +13,7 @@ eleventyComputed:
 
 
 {% lien %}
-<https://loup-vaillant.fr/tutorials/chacha20-design>
+<https://loup-vaillant.fr/tutorials/chacha20-design>{.externe}
 {% endlien %}
 
 > TBD pas de mot secret ni de S-box
@@ -21,20 +21,20 @@ eleventyComputed:
 > la constante est la pour permettre des clés valant 0 par exemple.
 >
 > 
-> TBD <https://crypto.stackexchange.com/questions/77628/is-the-chacha20-block-function-reversible-using-known-plaintext>
+> TBD <https://crypto.stackexchange.com/questions/77628/is-the-chacha20-block-function-reversible-using-known-plaintext>{.externe}
 >
 > 
 > TBD :
-> - <https://www.youtube.com/watch?v=G0O0VHVtNuM>
-> - <https://www.youtube.com/watch?v=UeIpq-C-GSA>
-> - <https://www.youtube.com/watch?v=Xw9lBsCc_Qk>
+> - <https://www.youtube.com/watch?v=G0O0VHVtNuM>{.externe}
+> - <https://www.youtube.com/watch?v=UeIpq-C-GSA>{.externe}
+> - <https://www.youtube.com/watch?v=Xw9lBsCc_Qk>{.externe}
 > 
 > TBD : dire qu'on ne présente que le bloc principal. Ensuite il s'imbrique dans la suite du cours (taille quelconque et intégrité)
 
 {% lien %}
 
-- [Fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
-- [RFC](https://datatracker.ietf.org/doc/html/rfc8439)
+- [Fonctionnement et origine](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant){.externe}
+- [RFC](https://datatracker.ietf.org/doc/html/rfc8439){.externe}
 
 {% endlien %}
 
@@ -42,8 +42,8 @@ eleventyComputed:
 
 {% lien %}
 
-- [design](https://loup-vaillant.fr/tutorials/chacha20-design)
-- [spec et implémentations](https://cr.yp.to/chacha.html)
+- [design](https://loup-vaillant.fr/tutorials/chacha20-design){.externe}
+- [spec et implémentations](https://cr.yp.to/chacha.html){.externe}
 
 {% endlien %}
 
@@ -54,10 +54,10 @@ eleventyComputed:
 
 ### Nécessité de la non linéarité
 
-Pour éviter une attaque classique, nommée [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire), tous les PRP vont avoir à la fois des transformations linéaires $\oplus$, décalage ou circulation de bits ainsi que des choses non linéaire, souvent encapsulé dans des matrices de transformation appelées [S-box](https://fr.wikipedia.org/wiki/S-Box). Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
+Pour éviter une attaque classique, nommée [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire){.externe}, tous les PRP vont avoir à la fois des transformations linéaires $\oplus$, décalage ou circulation de bits ainsi que des choses non linéaire, souvent encapsulé dans des matrices de transformation appelées [S-box](https://fr.wikipedia.org/wiki/S-Box){.externe}. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
 
 {% info %}
-Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
+Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box){.externe} obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
 {% endinfo %}
 
 La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :

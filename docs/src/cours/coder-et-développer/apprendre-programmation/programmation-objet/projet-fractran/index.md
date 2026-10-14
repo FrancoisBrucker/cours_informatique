@@ -6,10 +6,10 @@ title:  "Projet : interpréteur fractran"
 
 
 
-Le but du sujet est de construire un interpréteur pour un langage [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) !
+Le but du sujet est de construire un interpréteur pour un langage [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet){.externe} !
 
 
-On utilisera pour cela [le FRACTRAN](https://fr.wikipedia.org/wiki/FRACTRAN) qui est un langage de programmation inventé par John Conway (à qui l'on doit aussi le célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie)). Nous allons y aller pas à pas, il suffit de suivre les différentes étapes. Ne vous laissez pas méprendre par sa simplicité, il permet théoriquement de coder tout ce qu'on peut coder en python (mais avec un peu d'effort, je vous l'accorde).
+On utilisera pour cela [le FRACTRAN](https://fr.wikipedia.org/wiki/FRACTRAN){.externe} qui est un langage de programmation inventé par John Conway (à qui l'on doit aussi le célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie){.externe}). Nous allons y aller pas à pas, il suffit de suivre les différentes étapes. Ne vous laissez pas méprendre par sa simplicité, il permet théoriquement de coder tout ce qu'on peut coder en python (mais avec un peu d'effort, je vous l'accorde).
 
 
 {% attention2 "**À retenir**" %}
@@ -153,7 +153,7 @@ Ajoutez le code de la classe dans le fichier `fractran.py`{.fichier} et impléme
 
 ## Programme Principal
 
-Montrons un peu que le Fractran est un vrai langage de programmation en exhibant les programmes qui permettent de calculer [la somme](https://fr.wikipedia.org/wiki/FRACTRAN#Addition) et [le produit](https://fr.wikipedia.org/wiki/FRACTRAN#Multiplication) de deux entiers.
+Montrons un peu que le Fractran est un vrai langage de programmation en exhibant les programmes qui permettent de calculer [la somme](https://fr.wikipedia.org/wiki/FRACTRAN#Addition){.externe} et [le produit](https://fr.wikipedia.org/wiki/FRACTRAN#Multiplication){.externe} de deux entiers.
 
 ### Calcul de la somme et du produit
 
@@ -184,7 +184,7 @@ somme_3_4 = Fractran(somme).run(facteurs.nombre([3, 4]))
 Ajoutez au fichier `main.py`{.fichier} une partie où vous calculerez les produits $i * j$ de tous les entiers $1\leq i, j \leq 10$.
 {% endfaire %}
 {% info %}
-Le code Fractran du produit est [décrit ici](https://fr.wikipedia.org/wiki/FRACTRAN#Multiplication).
+Le code Fractran du produit est [décrit ici](https://fr.wikipedia.org/wiki/FRACTRAN#Multiplication){.externe}.
 {% endinfo %}
 
 
@@ -207,7 +207,7 @@ Par exemple si $P = [\frac{3}{10}, \frac{4}{3}]$ et $n=15$ :
 - si $N \geq 4$ la méthode va rendre $[15, 20, 6, 8]$ 
 - si $N = 2$ la méthode va rendre $[15, 20]$ 
 
-Cette nouvelle méthode va nous permettre de générer [la suite de Fibonacci](https://fr.wikipedia.org/wiki/FRACTRAN#Suite_de_Fibonacci) ou encore [tous les nombres premiers](https://fr.wikipedia.org/wiki/FRACTRAN#Algorithme_de_Conway_des_nombres_premiers) en filtrant la liste sortie par l'algorithme.
+Cette nouvelle méthode va nous permettre de générer [la suite de Fibonacci](https://fr.wikipedia.org/wiki/FRACTRAN#Suite_de_Fibonacci){.externe} ou encore [tous les nombres premiers](https://fr.wikipedia.org/wiki/FRACTRAN#Algorithme_de_Conway_des_nombres_premiers){.externe} en filtrant la liste sortie par l'algorithme.
 
 ### Suite de Fibonacci
 
@@ -241,5 +241,5 @@ Ajoutez dans le programme principal le code permettant de rendre tous les nombre
 
 {% endfaire %}
 {% info %}
-Le code Fractran du produit est [décrit ici](https://fr.wikipedia.org/wiki/FRACTRAN#Algorithme_de_Conway_des_nombres_premiers) (tout comme pour la suite de fibonnaci il faut filtrer la sortie pour ne garder que les nombres premiers)
+Le code Fractran du produit est [décrit ici](https://fr.wikipedia.org/wiki/FRACTRAN#Algorithme_de_Conway_des_nombres_premiers){.externe} (tout comme pour la suite de fibonnaci il faut filtrer la sortie pour ne garder que les nombres premiers)
 {% endinfo %}

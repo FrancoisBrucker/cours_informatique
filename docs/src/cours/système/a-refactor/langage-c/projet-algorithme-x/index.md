@@ -25,7 +25,7 @@ Le projet doit contenir :
 
 ## Problème
 
-L'algorithme X permet de résoudre optimalement un problème NP-complet nommé [problème de la couverture exacte](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte). Il admet une formulation ensembliste et une formulation matricielle.
+L'algorithme X permet de résoudre optimalement un problème NP-complet nommé [problème de la couverture exacte](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte){.externe}. Il admet une formulation ensembliste et une formulation matricielle.
 
 {% note "**formulation ensembliste**" %}
 
@@ -66,12 +66,12 @@ Vous allez créez une unité fonctionnelle dont le but est de générer des inst
 
 Vous créerez également un fichier `main_instance.c`{.fichier} (avec une règle spéciale dans la `Makefile`) permettant de créer un exécutable qui affiche le résultat de chacune de vos fonctions de créations d'instances.
 
-Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour avoir des choses à générer mais assez petite pour tenir sur un écran). Vous utiliserez l'implémentation sous la forme d'un pointeur opaque de l'[exercice matrice](../exercices/#matrice){.interne}
+Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour avoir des choses à générer mais assez petite pour tenir sur un écran). Vous utiliserez l'implémentation sous la forme d'un pointeur opaque de l'[exercice matrice](../exercices/#matrice)
 
 ### Instances quelconques
 
 {% faire %}
-En utilisant la fonction crée dans l'[exercice sur les nombres aléatoires](../exercices/#proba){.interne}, créez une fonction permettant de créer une instance du problème. Sa signature doit être :
+En utilisant la fonction crée dans l'[exercice sur les nombres aléatoires](../exercices/#proba), créez une fonction permettant de créer une instance du problème. Sa signature doit être :
 
 ```c
 matrice_t instance_quelconque(size_t nombre_ligne, size_t nombre_colonnes, double proba)
@@ -121,12 +121,12 @@ matrice_t instance_solution(k, m)
 Qui crée une matrice carrée $M$ avec les $m_k$ pris aléatoirement entre $1$ et $m$
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercices/#proba){.interne} pour vous aider. En particulier :
+Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercices/#proba) pour vous aider. En particulier :
 
 - la fonction `int aleatoire_int(int min, int max)`{.language-} pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.
 - la fonction `int *aléatoire_01_tab(double proba)`{.language-} pour générer les lignes strictement plus grandes que $k$
 
-Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter [l'algorithme de Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates) pour trouver une permutation des lignes et/ou des colonnes).
+Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter [l'algorithme de Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates){.externe} pour trouver une permutation des lignes et/ou des colonnes).
 
 {% endinfo %}
 
@@ -189,7 +189,7 @@ Créez 3 exécutables prenant chacun un paramètre :
 A partir de quelle taille, le temps mis pour résoudre le problème devient trop grand ?
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/) pour mesurer le temps sous unix, ou [measure-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4) sous windows.
+Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/){.externe} pour mesurer le temps sous unix, ou [measure-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4){.externe} sous windows.
 {% endinfo %}
 
 ## Amélioration
@@ -197,7 +197,7 @@ Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-
 Notre algorithme est une variante grossière d'un algorithme de Knuth pour résoudre le problème :
 
 {% lien %}
-[Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth)
+[Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth){.externe}
 {% endlien %}
 
 ### Colonne min

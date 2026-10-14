@@ -25,7 +25,7 @@ Donnez et prouvez **un algorithme itératif** de signature :
 palindrome(T: [entier]) → booléen
 ```
 
-Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome).
+Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome){.externe}.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -113,7 +113,7 @@ algorithme maximum(T: [entier]) → entier
 ## <span id="récursion-terminale"></span>Récursion terminale
 
 {% lien %}
-[Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale)
+[Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale){.externe}
 {% endlien %}
 
 Soit l'algorithme `f`{.language-} suivant où `c: A → Booléen`{.language-}, `g: A → B`{.language-} et `h: A → A`{.language-} sont trois fonctions parfaitement définies :
@@ -169,7 +169,7 @@ algorithme palindrome_pas_rec(T: [entier], i: entier) → booléen
 
 {% exercice %}
 
-L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} [que l'on a déjà vu](../projet-itératif-récursif/#algorithme-retournement){.interne} est sous forme terminale, transformez le en programme itératif.
+L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} [que l'on a déjà vu](../projet-itératif-récursif/#algorithme-retournement) est sous forme terminale, transformez le en programme itératif.
 
 En déduire un algorithme itératif permettant de retourner un tableau.
 {% endexercice %}
@@ -197,7 +197,7 @@ algorithme retournement(t: [entier], i: entier) → ∅
 
 {% enddetails %}
 
-Notez que l'opération consistant à transformer un algorithme récursif sous forme terminale en algorithme itératif est exactement l'opération inverse que l'on a faite pour prouver certains algorithmes itératifs, [comme la factorielle](../prouver-un-algorithme/#facto-iter){.interne}. On retrouve encore une fois que recursion et itération sont deux faces d'une même pièce.
+Notez que l'opération consistant à transformer un algorithme récursif sous forme terminale en algorithme itératif est exactement l'opération inverse que l'on a faite pour prouver certains algorithmes itératifs, [comme la factorielle](../prouver-un-algorithme/#facto-iter). On retrouve encore une fois que recursion et itération sont deux faces d'une même pièce.
 
 ### Construire un algorithme sous forme terminale
 
@@ -283,7 +283,7 @@ Enfin, `acc`{.language-} va contenir la factorielle comme le prouve une récursi
 
 {% enddetails %}
 
-La récursion terminale est un moyen efficace d'implémenter des [suites arithmétiques](https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique) ou [géométriques](https://fr.wikipedia.org/wiki/Suite_g%C3%A9om%C3%A9trique). Montrez le :
+La récursion terminale est un moyen efficace d'implémenter des [suites arithmétiques](https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique){.externe} ou [géométriques](https://fr.wikipedia.org/wiki/Suite_g%C3%A9om%C3%A9trique){.externe}. Montrez le :
 
 {% exercice %}
 

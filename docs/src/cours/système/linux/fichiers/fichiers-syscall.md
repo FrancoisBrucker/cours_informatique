@@ -11,17 +11,17 @@ eleventyComputed:
 ---
 
 
-> TBD commencer par un [strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM) et voir que c'est open qui est utilisé.
+> TBD commencer par un [strace fopen](https://www.youtube.com/watch?v=-gP58pozNuM){.externe} et voir que c'est open qui est utilisé.
 
 {% lien %}
-[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ)
+[fopen vs open](https://www.youtube.com/watch?v=BQJBe4IbsvQ){.externe}
 {% endlien %}
 
 > TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.
 
 
 {% lien %}
-[fichiers et appels systèmes](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20)
+[fichiers et appels systèmes](https://www.youtube.com/watch?v=ayMPFUGE_b4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=20){.externe}
 {% endlien %}
 
 La création et gestion des fichiers est du ressort du noyau. Il faut donc faire un appel système à chaque manipulation.
@@ -30,13 +30,13 @@ La gestion effective des fichiers lorsque l'on code en **C** se fait souvent via
 
 Les cinq principaux appels systèmes pour gérer un fichier sont :
 
-- [open](https://man7.org/linux/man-pages/man2/open.2.html) : ouvre un fichier et rend un file descriptor
-- [close](https://man7.org/linux/man-pages/man2/close.2.html) : ferme un fichier via son file descriptor
-- [read](https://man7.org/linux/man-pages/man2/read.2.html) : lit du fichier
-- [write](https://man7.org/linux/man-pages/man2/write.2.html) : écrit dans un fichier
-- [lseek](https://man7.org/linux/man-pages/man2/lseek.2.html) : se positionne dans un fichier, si disponible
+- [open](https://man7.org/linux/man-pages/man2/open.2.html){.externe} : ouvre un fichier et rend un file descriptor
+- [close](https://man7.org/linux/man-pages/man2/close.2.html){.externe} : ferme un fichier via son file descriptor
+- [read](https://man7.org/linux/man-pages/man2/read.2.html){.externe} : lit du fichier
+- [write](https://man7.org/linux/man-pages/man2/write.2.html){.externe} : écrit dans un fichier
+- [lseek](https://man7.org/linux/man-pages/man2/lseek.2.html){.externe} : se positionne dans un fichier, si disponible
 
-Il en existe d'autres, comme [dup](https://man7.org/linux/man-pages/man2/dup.2.html) dont le but est de dupliquer des file descriptors.
+Il en existe d'autres, comme [dup](https://man7.org/linux/man-pages/man2/dup.2.html){.externe} dont le but est de dupliquer des file descriptors.
 
 {% info %}
 La section 2 de la commande `man` renseigne sur les appels systèmes. Faites l'essai pour les 5 fonctions ci-dessus
@@ -47,7 +47,7 @@ La section 2 de la commande `man` renseigne sur les appels systèmes. Faites l'e
 ## Gestion des fichiers
 
 {% lien %}
-[file descriptor en C](https://www.youtube.com/watch?v=tKvm_qOeRpU)
+[file descriptor en C](https://www.youtube.com/watch?v=tKvm_qOeRpU){.externe}
 {% endlien %}
 
 > TBD ici. faire les programmes et expliquer. Puis strace/ltrace après chacun.
@@ -114,15 +114,15 @@ On voit qu'il y en à 3 : `open`, `printf` et `close`. Ils correspondent à des 
 
 {% lien %}
 
-[strace ouverture de fichiers](https://www.youtube.com/watch?v=mBfurelWwPQ)
+[strace ouverture de fichiers](https://www.youtube.com/watch?v=mBfurelWwPQ){.externe}
 
 {% endlien %}
 
 {% lien %}
 
-- [strace et ltrace](https://www.youtube.com/watch?v=2AmP7Pse4U0)
-- [appels systèmes fichiers avec strace](https://www.youtube.com/watch?v=-gP58pozNuM)
-- [playlist `strace`](https://www.youtube.com/watch?v=j_w-vQ3UriM&list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf)
+- [strace et ltrace](https://www.youtube.com/watch?v=2AmP7Pse4U0){.externe}
+- [appels systèmes fichiers avec strace](https://www.youtube.com/watch?v=-gP58pozNuM){.externe}
+- [playlist `strace`](https://www.youtube.com/watch?v=j_w-vQ3UriM&list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf){.externe}
 
 {% endlien %}
 
@@ -188,15 +188,15 @@ C'est un write dans stdout (de file descriptor 1).
 
 ## Autre
 
-- [dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/)
-- [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/)
-- [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I)
+- [dup et dup2](https://www.delftstack.com/fr/howto/c/dup2-in-c/){.externe}
+- [Créer des fifo](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/){.externe}
+- [popen : fifo](https://www.youtube.com/watch?v=8AXEHrQTf3I){.externe}
 
 > TBD lseek et monter ce que ça donne sur un fichier ?
-> adapter  [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4)
+> adapter  [fseek](https://www.youtube.com/watch?v=EA2MVIgu7Q4){.externe}
 
 ## Buffers
 
 {% attention %}
-[N'oubliez pas le buffer](https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html)
+[N'oubliez pas le buffer](https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html){.externe}
 {% endattention %}

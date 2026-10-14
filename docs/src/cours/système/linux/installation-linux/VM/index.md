@@ -14,14 +14,14 @@ Installation d'une distribution Linux/Ubuntu sur une machine virtuelle
 
 ## Machine Virtuelle
 
-Une [Machine Virtuelle (*VM*, Virtual Machine)](https://fr.wikipedia.org/wiki/Machine_virtuelle) permet de simuler un ordinateur complet.
+Une [Machine Virtuelle (*VM*, Virtual Machine)](https://fr.wikipedia.org/wiki/Machine_virtuelle){.externe} permet de simuler un ordinateur complet.
 
 C'est très utile pour essayer de nouveaux systèmes (un Linux et un Mac par exemple) ou avoir plusieurs systèmes identiques (plusieurs versions de noyaux Linux). On peut modifier un système installé sur une machine virtuelle sans alterer le système d'exploitation principal.
 
 Il existe de nombreuses applications de machines virtuelles, gratuit ou payante. Nous allons en utiliser deux :
 
-* <https://www.parallels.com/> : payant ais le seul utilisable (pour l'instant) sur un mac avec u processeur ARM.
-* <https://www.virtualbox.org/> : gratuit et utilisable sur une machine x86, sous windows ou Linux.
+* <https://www.parallels.com/>{.externe} : payant ais le seul utilisable (pour l'instant) sur un mac avec u processeur ARM.
+* <https://www.virtualbox.org/>{.externe} : gratuit et utilisable sur une machine x86, sous windows ou Linux.
 
 Les machines virtuelles partageront souvent les périphériques USB, réseau, clavier/souris de la machine hôte, mais ce n'est pas une obligation. Tout peut être simulé si besoin.
 
@@ -116,15 +116,15 @@ L'ordre est :
 ## Installation de Linux/Ubuntu
 
 {% lien %}
-Suivre le tutoriel officiel :  <https://doc.ubuntu-fr.org/tutoriel/amorcer_sur_cd_ubuntu>
+Suivre le tutoriel officiel :  <https://doc.ubuntu-fr.org/tutoriel/amorcer_sur_cd_ubuntu>{.externe}
 
 {% endlien %}
 
-On va utiliser une [image disque](https://fr.wikipedia.org/wiki/Image_disque) de ubuntu disponible sur le site. Prenez la version [LTS (Long Time Support)](https://doc.ubuntu-fr.org/lts), la 22.04.3 à l'heure où je tape ces caractères (août 2023) et l'image fait 5Go.
+On va utiliser une [image disque](https://fr.wikipedia.org/wiki/Image_disque){.externe} de ubuntu disponible sur le site. Prenez la version [LTS (Long Time Support)](https://doc.ubuntu-fr.org/lts){.externe}, la 22.04.3 à l'heure où je tape ces caractères (août 2023) et l'image fait 5Go.
 
-Les différentes images des [versions](https://wiki.ubuntu.com/Releases) sont également disponibles à l'adresse suivante (utile si vous n'avez pas un x86, mais un mac ARM par exemple) :
+Les différentes images des [versions](https://wiki.ubuntu.com/Releases){.externe} sont également disponibles à l'adresse suivante (utile si vous n'avez pas un x86, mais un mac ARM par exemple) :
 
-<https://cdimage.ubuntu.com/jammy/daily-live/current/>
+<https://cdimage.ubuntu.com/jammy/daily-live/current/>{.externe}
 
 Une fois l'image téléchargée, on va démarrer sur le lecteur d dvd de la machine virtuelle et suivre les instructions.
 

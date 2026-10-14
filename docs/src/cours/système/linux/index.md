@@ -16,53 +16,53 @@ eleventyComputed:
 {% info %}
 Merci à :
 
-- Naïs et Florian pour [la prise de notes du premier cours](https://docs.google.com/document/d/1kUSi4F8JdOgSZs_eNxCWOhEjxX-D8YjmCUm_bdmrolM/edit?tab=t.0)
+- Naïs et Florian pour [la prise de notes du premier cours](https://docs.google.com/document/d/1kUSi4F8JdOgSZs_eNxCWOhEjxX-D8YjmCUm_bdmrolM/edit?tab=t.0){.externe}
 
 {% endinfo %}
 
 <!-- 
 
-> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>
-> TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
+> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>{.externe}
+> TBD <https://tuteurs.ens.fr/unix/>{.externe} et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>{.externe}
 > TBD découper en parties plus digeste
-> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
-> TBD opérateurs shell <https://quennec.fr/book/export/html/272>
-> TBD fibo en sh : <https://quennec.fr/node/640>
+> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>{.externe}
+> TBD opérateurs shell <https://quennec.fr/book/export/html/272>{.externe}
+> TBD fibo en sh : <https://quennec.fr/node/640>{.externe}
 
-shell intro <https://www.youtube.com/watch?v=hV3_XZXeDQo>
-> TBD <https://labex.io/linuxjourney>
-> outil shell <https://www.youtube.com/watch?v=yTkygli1OeE>
-> <https://www.youtube.com/watch?v=SU7i3P62cm0&list=PL0ibd6OZI4XIJzwFC6XtsgZEcjEb4J-g->
+shell intro <https://www.youtube.com/watch?v=hV3_XZXeDQo>{.externe}
+> TBD <https://labex.io/linuxjourney>{.externe}
+> outil shell <https://www.youtube.com/watch?v=yTkygli1OeE>{.externe}
+> <https://www.youtube.com/watch?v=SU7i3P62cm0&list=PL0ibd6OZI4XIJzwFC6XtsgZEcjEb4J-g->{.externe}
 > 
  -->
 
 {% lien %}
 
-- [Philosophie d'Unix (featuring Kernighan avec les pieds sur le bureau)](https://www.youtube.com/watch?v=tc4ROCJYbm0)
-- [histoire des termes informatiques](https://www.youtube.com/watch?v=qgwrt7vYY4U)
+- [Philosophie d'Unix (featuring Kernighan avec les pieds sur le bureau)](https://www.youtube.com/watch?v=tc4ROCJYbm0){.externe}
+- [histoire des termes informatiques](https://www.youtube.com/watch?v=qgwrt7vYY4U){.externe}
 
 {% endlien %}
 {% lien %}
 
-- [The Linux Command Line](https://www.amazon.fr/Linux-Command-Line-2nd-Introduction/dp/1593279523/) (W. Shotts) et [Classic Shell  Scripting](https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954/) : Ce sont les « bibles » pour Linux. Il faut les lire si on veut faire du Linux de manière plus approfondie.
-- [How Linux Works](https://www.amazon.fr/How-Linux-Works-Brian-Ward/dp/1718500408/r) : donne une compréhension globale de comment marche un système.
+- [The Linux Command Line](https://www.amazon.fr/Linux-Command-Line-2nd-Introduction/dp/1593279523/){.externe} (W. Shotts) et [Classic Shell  Scripting](https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954/){.externe} : Ce sont les « bibles » pour Linux. Il faut les lire si on veut faire du Linux de manière plus approfondie.
+- [How Linux Works](https://www.amazon.fr/How-Linux-Works-Brian-Ward/dp/1718500408/r){.externe} : donne une compréhension globale de comment marche un système.
 - expression régulières :
-  - [Mastering Regular Expressions](https://www.amazon.fr/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/) : ce qu’on /peut faire ou non dans une expression régulière.  
-  - [Sed & Awk (O'Reilly)](https://www.amazon.fr/sed-awk-Pocket-Reference-2e/dp/0596003528/) et : [Grep Pocket Reference](https://www.amazon.fr/grep-Pocket-Reference-John-Bambenek/dp/0596153600/) apprendre à manipuler les fichiers texte.
+  - [Mastering Regular Expressions](https://www.amazon.fr/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/){.externe} : ce qu’on /peut faire ou non dans une expression régulière.  
+  - [Sed & Awk (O'Reilly)](https://www.amazon.fr/sed-awk-Pocket-Reference-2e/dp/0596003528/){.externe} et : [Grep Pocket Reference](https://www.amazon.fr/grep-Pocket-Reference-John-Bambenek/dp/0596153600/){.externe} apprendre à manipuler les fichiers texte.
 
 {% endlien %}
 
 Histoire d'Unix :
 
-- [frise historique](https://www.youtube.com/watch?v=AEsdyAeumVQ)
-- les [débuts d'Unix](https://www.youtube.com/watch?v=boahlBmc-NY)
-- [Ken Thompson interviewed by Brian Kernighan](https://www.youtube.com/watch?v=EY6q5dv_B-o)
+- [frise historique](https://www.youtube.com/watch?v=AEsdyAeumVQ){.externe}
+- les [débuts d'Unix](https://www.youtube.com/watch?v=boahlBmc-NY){.externe}
+- [Ken Thompson interviewed by Brian Kernighan](https://www.youtube.com/watch?v=EY6q5dv_B-o){.externe}
 
 Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions aux variantes et aux extensions à POSIX qui sont système dépendant)
 
 ## Pourquoi connaître Linux
 
-La majorité des serveurs dans le monde tournent sous Linux. Linux est libre, gratuit et puissant. Contrairement à Windows/macOS, tout peut être contrôlé par ligne de commande et est le système utilisé par les méthodes de conteneurisation comme [Docker](https://www.docker.com/).
+La majorité des serveurs dans le monde tournent sous Linux. Linux est libre, gratuit et puissant. Contrairement à Windows/macOS, tout peut être contrôlé par ligne de commande et est le système utilisé par les méthodes de conteneurisation comme [Docker](https://www.docker.com/){.externe}.
 
 {% attention2 "**À retenir**" %}
 Comprendre les mécanismes d'un OS de type Unix est fondamental pour déboguer, administrer ou optimiser ses services web ou ses conteneurs.
@@ -74,8 +74,8 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 {% aller %}
 
-1. [Installation Linux](installation-linux){.interne}
-2. [Paquets utiles à installer](post-installation){.interne}
+1. [Installation Linux](installation-linux)
+2. [Paquets utiles à installer](post-installation)
 
 {% endaller %}
 
@@ -86,20 +86,20 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 ### Bases
 
 {% aller %}
-[Base Linux](bases-linux){.interne}
+[Base Linux](bases-linux)
 {% endaller %}
 
 ### Shell
 
-[Shell](shell){.interne}
+[Shell](shell)
 
 ## TBD refactor
 
-> TBD [shell script et paramètres (getopts)](https://www.youtube.com/watch?v=5O4SLIDSMqg)
+> TBD [shell script et paramètres (getopts)](https://www.youtube.com/watch?v=5O4SLIDSMqg){.externe}
 
-1. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
-2. [Fichiers unix](fichiers){.interne}
-3. [tmux](tmux){.interne}
+1. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux)
+2. [Fichiers unix](fichiers)
+3. [tmux](tmux)
 
 ```shell
 socat \
@@ -114,14 +114,14 @@ socat \
     "
 ```
 
-> TBD [gros serveur](https://gist.github.com/ascopes/8c86413a3976975e7e958be5f49db2f2)
+> TBD [gros serveur](https://gist.github.com/ascopes/8c86413a3976975e7e958be5f49db2f2){.externe}
 
-> TBD file descriptor redirection `>&1` : <https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean>
+> TBD file descriptor redirection `>&1` : <https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean>{.externe}
 > 
-> TBD <https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs>
+> TBD <https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs>{.externe}
 
-> TBD signaux : <https://pauillac.inria.fr/~remy/poly/system/camlunix/sign.html>
-> TBD cours unix/caml : <https://pauillac.inria.fr/~remy/poly/system/camlunix/cours.pdf>
+> TBD signaux : <https://pauillac.inria.fr/~remy/poly/system/camlunix/sign.html>{.externe}
+> TBD cours unix/caml : <https://pauillac.inria.fr/~remy/poly/system/camlunix/cours.pdf>{.externe}
 >   p14 liens dur/symbolique et joli arborescence
 >   p17 droits
 >   p51 signaux

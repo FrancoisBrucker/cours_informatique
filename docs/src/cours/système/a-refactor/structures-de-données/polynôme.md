@@ -53,7 +53,7 @@ En déduire une méthode d'évaluation de polynômes moins gourmande en multipli
 
 ## réponses
 
-L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
+L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me){.externe}.
 
 Un polynôme est défini mathématiquement par la fonction :
 
@@ -127,7 +127,7 @@ En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multipl
 
 ## Méthode de Horner
 
-L'optimisation proposée est dite [de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point). Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i < j$.
+L'optimisation proposée est dite [de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point){.externe}. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i < j$.
 
 En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 i

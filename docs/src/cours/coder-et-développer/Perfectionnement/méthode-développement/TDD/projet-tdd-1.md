@@ -420,7 +420,7 @@ Ce test n'est cependant pas vraiment satisfaisant pour au moins deux raisons :
 La seconde raison est de loin la plus importante. Notre code est étrange et peu lisible (bref, *ça ne sent pas bon*). C'est souvent le signe qu'il se passe quelque chose de mal.
 
 {% note %}
-Le **[code smell](https://en.wikipedia.org/wiki/Code_smell)** est la capacité qu'à un bon développeur de reconnaître un soucis profond juste en lisant l'organisation ou l'utilisation d'un code.
+Le **[code smell](https://en.wikipedia.org/wiki/Code_smell){.externe}** est la capacité qu'à un bon développeur de reconnaître un soucis profond juste en lisant l'organisation ou l'utilisation d'un code.
 
 Le *code smell* s'acquiert avec le temps, mais vous pouvez accélérer son acquisition en lisant du bon code
 {% endnote %}
@@ -428,7 +428,7 @@ Le *code smell* s'acquiert avec le temps, mais vous pouvez accélérer son acqui
 Une façon simple et élégante de régler notre soucis est d'utiliser des objet qui ne peuvent être modifiés.
 
 {% note2 "**Définition**" %}
-Un objet non modifiable est appelé [**value object**](https://martinfowler.com/bliki/ValueObject.html).
+Un objet non modifiable est appelé [**value object**](https://martinfowler.com/bliki/ValueObject.html){.externe}.
 {% endnote2 %}
 
 C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.
@@ -438,7 +438,7 @@ Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils
 {% info %}
 En python, de nombreux objet sont des values object. On peut citer les chaines de caractères, les entiers, les réels ou encore le booléens.
 
-De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les [tuples](https://docs.python.org/fr/3/library/stdtypes.html) pour les listes ou les [frozenset](https://docs.python.org/fr/3/library/stdtypes.html) pour les ensembles.
+De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les [tuples](https://docs.python.org/fr/3/library/stdtypes.html){.externe} pour les listes ou les [frozenset](https://docs.python.org/fr/3/library/stdtypes.html){.externe} pour les ensembles.
 {% endinfo %}
 
 Pour un *value object*, à la place de modifier un objet il faut en rendre un nouveau : la méthode `fois`{.language-} doit rendre un objet. Modifions notre test  :
@@ -644,9 +644,9 @@ On va pas s'embêter avec ça pour l'instant, mais on va tout de même le rajout
 
 ## 4 - `__mul__`{.language-}
 
-La méthode `__eq__`{.language-} n'est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en [existe beaucoup d'autres](https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/). Notre objet `Dollar`{.language-} devant se comporter plus ou moins comme un nombre, on peut implémenter les [méthodes spéciales utiles pour ressembler à des nombres](https://spaneintopython3.net/special-method-names.html#acts-like-number).
+La méthode `__eq__`{.language-} n'est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en [existe beaucoup d'autres](https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/){.externe}. Notre objet `Dollar`{.language-} devant se comporter plus ou moins comme un nombre, on peut implémenter les [méthodes spéciales utiles pour ressembler à des nombres](https://spaneintopython3.net/special-method-names.html#acts-like-number){.externe}.
 
-Commençons par implémenter [`__mul__`{.language-}](https://docs.python.org/3/library/operator.html#operator.__mul__).
+Commençons par implémenter [`__mul__`{.language-}](https://docs.python.org/3/library/operator.html#operator.__mul__){.externe}.
 
 ### <span id="todo-list-4.1"></span> Todo list
 

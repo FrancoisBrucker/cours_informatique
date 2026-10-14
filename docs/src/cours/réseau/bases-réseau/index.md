@@ -14,13 +14,13 @@ eleventyComputed:
 ## Principes
 
 {% aller %}
-[Principes](./principe){.interne}
+[Principes](./principe)
 {% endaller %}
 
 ## URL
 
 {% aller %}
-[Anatomie d'une URL](./anatomie-url/){.interne}
+[Anatomie d'une URL](./anatomie-url/)
 {% endaller %}
 
 ## Serveur web
@@ -36,4 +36,4 @@ eleventyComputed:
 ![Web local](./web-local.png)
 
 > TBD avec python et http pour un serveur bête en localhost
-> TBD <https://realpython.com/python-http-server/>
+> TBD <https://realpython.com/python-http-server/>{.externe}

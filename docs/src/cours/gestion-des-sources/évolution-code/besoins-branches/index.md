@@ -28,7 +28,7 @@ Et tout ça grace à un outil très puissant : les branches.
 
 On a vu que la structure de sauvegarde est organisée autour [des commits](../besoins-index/#déf-commit), chaque commit possédant un parent qui le rattache à la structure le tout commençant par le commit initial qui crée le projet (le seul commit sans parent). 
 
-La structure de sauvegarde s'organise sous la forme d'[un DAG](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique), le premier commit faisant office de **racine** (le seul élément du graphe des commit à ne pas avoir de parents). UN DAG permet d'avoir ce genre de structure :
+La structure de sauvegarde s'organise sous la forme d'[un DAG](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique){.externe}, le premier commit faisant office de **racine** (le seul élément du graphe des commit à ne pas avoir de parents). UN DAG permet d'avoir ce genre de structure :
 
 ![DAG](./dag.png)
 

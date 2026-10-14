@@ -12,7 +12,7 @@ eleventyComputed:
 
 ## Projet node
 
-Commençons par créer un projet <https://nodejs.org/> :
+Commençons par créer un projet <https://nodejs.org/>{.externe} :
 
 1. créez un dossier `fichier-node`{.fichier} où vous allez mettre les fichiers de votre projet,
 2. dans un terminal et dans ce dossier, initialisez votre projet avec la commande `npm init`
@@ -33,7 +33,7 @@ Vous devriez maintenant avoir un fichier nommé `package.json`{.fichier} qui con
 }
 ```
 
-Nous allons utiliser des bibliothèques pour notre projet, bibliothèques qu'il va falloir importer. Node utilise par défaut un mode d'import nommé [commonjs](https://nodejs.org/api/modules.html#modules-commonjs-modules), alors que javascript en utilise une autre basée sur la norme [ES6 modules](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules).
+Nous allons utiliser des bibliothèques pour notre projet, bibliothèques qu'il va falloir importer. Node utilise par défaut un mode d'import nommé [commonjs](https://nodejs.org/api/modules.html#modules-commonjs-modules){.externe}, alors que javascript en utilise une autre basée sur la norme [ES6 modules](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules){.externe}.
 
 Nous allons dire à node que nous allons utiliser la gestion javascript des modules en ajoutant la ligne `"type": "module",`{.language-} dans le fichier de configuration `package.json`{.fichier}, juste en-dessous de la ligne 5. A la fin de cette opération, vous devriez avoir le fichier un fichier nommé `package.json`{.fichier} qui contient la configuration minimale d'un projet utilisant node :
 
@@ -143,10 +143,10 @@ console.log(__dirname)
 ```
 
 {% info %}
-Si vous avez une version très récente de node, il existe [une alternative](https://nodejs.org/api/esm.html#no-__filename-or-__dirname).
+Si vous avez une version très récente de node, il existe [une alternative](https://nodejs.org/api/esm.html#no-__filename-or-__dirname){.externe}.
 {% endinfo %}
 
-On peut ensuite toutes nos lectures de fichier au dossier `__dirname`{.language-} en utilisant la fonction [`path.join`{.language-}](https://nodejs.org/api/path.html#pathjoinpaths) qui colle des chemins entre eux.
+On peut ensuite toutes nos lectures de fichier au dossier `__dirname`{.language-} en utilisant la fonction [`path.join`{.language-}](https://nodejs.org/api/path.html#pathjoinpaths){.externe} qui colle des chemins entre eux.
 
 On obtient alors le code final suivant :
 
@@ -237,7 +237,7 @@ Vous pouvez vérifier que la lecture du fichier n'est pas immédiate en ajoutant
 
 ### Promesses
 
-Le mécanisme à l'œuvre ici est appelé [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises).
+Le mécanisme à l'œuvre ici est appelé [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises){.externe}.
 
 Le retour de la fonction `fs.readFile`{.language-} est une promesse qui possède une méthode `then`{.language-} dont le paramètre est une fonction à un paramètre qui est exécutée à la fin de la promesse si la fonction s'est terminé sans erreur. Le retour est passé en paramètre du paramètre de `then`{.language-}
 
@@ -271,7 +271,7 @@ promesse
   })
 ```
 
-Le côté sympathique des promesses c'est qu'elle [peuvent s'enchaîner](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining) si le retour de `then`{.language-} est aussi une promesse :
+Le côté sympathique des promesses c'est qu'elle [peuvent s'enchaîner](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining){.externe} si le retour de `then`{.language-} est aussi une promesse :
 
 ```javascript
 promesse
@@ -319,7 +319,7 @@ let localisation_fichier = path.join(__dirname,  "./fichier-texte.txt");
 let contenu = await fs.readFile(localisation_fichier, {encoding:'utf8'})
 ```
 
-On ne peut cependant pas utiliser `await`{.language-} partout. On ne peut le faire que dans le corps du programme ou à l'intérieur d'une fonction taguée [`async`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+On ne peut cependant pas utiliser `await`{.language-} partout. On ne peut le faire que dans le corps du programme ou à l'intérieur d'une fonction taguée [`async`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function){.externe}.
 
 Dans notre cas, si on voulait déporter la lecture de notre fichier dans une fonction séparée il faudrait l'écrire de cette façon :
 

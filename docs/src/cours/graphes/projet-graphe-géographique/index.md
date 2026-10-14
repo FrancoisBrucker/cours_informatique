@@ -20,8 +20,8 @@ On utilise un fichier de données pour créer un graphe de proximité géographi
 
 Nous allons dans ce projet utiliser deux bibliothèques d'analyse des données très utilisées :
 
-* [pandas](https://pandas.pydata.org/) pour la gestion des données sous forme de matrices nommées [dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
-* [geopandas](https://geopandas.org/en/stable/) qui ajoute à pandas la gestion de données géographiques
+* [pandas](https://pandas.pydata.org/){.externe} pour la gestion des données sous forme de matrices nommées [dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html){.externe}
+* [geopandas](https://geopandas.org/en/stable/){.externe} qui ajoute à pandas la gestion de données géographiques
 
 Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèques mais j'espère que le fait de les utiliser vous donnera envie d'en savoir plus.
 
@@ -41,7 +41,7 @@ Nous utilisons le fichier [`villes_france_30000.csv`](./villes_france_30000.csv)
 {% faire %}
 Téléchargez le fichier [`villes_france_30000.csv`](./villes_france_30000.csv){.fichier} et placez le dans votre projet.
 
-Vous pouvez regarder le fichier dans vscode (Installez le plugin [Rainbow csv](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) pour visualiser plus facilement les fichiers csv)
+Vous pouvez regarder le fichier dans vscode (Installez le plugin [Rainbow csv](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv){.externe} pour visualiser plus facilement les fichiers csv)
 {% endfaire %}
 
 {% attention %}
@@ -84,7 +84,7 @@ df = pd.read_csv("./villes_france_30000.csv", skipinitialspace=True)
 {% note %}
 On a créé un *dataframe* pandas qui contient nos données.
 
-On a utilisé le paramètre `skipinitialspace`{.language-}  de la méthode [`read_csv`{.language-} de pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) pour avoir bien des villes qui ne commencent pas par des espaces.
+On a utilisé le paramètre `skipinitialspace`{.language-}  de la méthode [`read_csv`{.language-} de pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html){.externe} pour avoir bien des villes qui ne commencent pas par des espaces.
 {% endnote %}
 
 #### Aperçu du contenu
@@ -124,7 +124,7 @@ dtype: object
 
 {% info %}
 
-Le [code INSEE](https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique) n'est pas le code postal. Voir [ce lien](http://www.bevernage.com/curiosites/cp_insee.htm) par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).
+Le [code INSEE](https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique){.externe} n'est pas le code postal. Voir [ce lien](http://www.bevernage.com/curiosites/cp_insee.htm){.externe} par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).
 
 {% endinfo %}
 
@@ -156,11 +156,11 @@ Nos données contiennent à la fois des données :
 * *normales* comme le nom u la population pour chaque ville
 * géographes avec la latitude et la longitude
 
-Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque [Shapely](https://shapely.readthedocs.io/). Citons en 3 parmi le plus utilisées :
+Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque [Shapely](https://shapely.readthedocs.io/){.externe}. Citons en 3 parmi le plus utilisées :
 
-* [des points](https://shapely.readthedocs.io/en/stable/manual.html#points) pour nos coordonnées GPS
-* [des Polygones](https://shapely.readthedocs.io/en/stable/manual.html#polygons) pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des [collections de polygone](https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons))
-* [lignes](https://shapely.readthedocs.io/en/stable/manual.html#linestrings) pour des chemins.
+* [des points](https://shapely.readthedocs.io/en/stable/manual.html#points){.externe} pour nos coordonnées GPS
+* [des Polygones](https://shapely.readthedocs.io/en/stable/manual.html#polygons){.externe} pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des [collections de polygone](https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons){.externe})
+* [lignes](https://shapely.readthedocs.io/en/stable/manual.html#linestrings){.externe} pour des chemins.
 
 De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.
 
@@ -171,7 +171,7 @@ On va créer un *GeoDataFrame* qui contient nos données.
 La différence avec un DataFrame pandas est l'ajout d'une colonne `geometry` (**obligatoire** en geopandas) qui contient... La géométrie de nos données. Dans notre cas :
 
 * géométrie est un point (longitude, latitude)
-* le système de coordonnée est le système gps : <https://epsg.io/4326>
+* le système de coordonnée est le système gps : <https://epsg.io/4326>{.externe}
 
 Faisons ça :
 
@@ -183,7 +183,7 @@ villes.set_crs("EPSG:4326")
 ```
 
 {% attention %}
-Il est crucial de toujours bien renseigner le système de coordonnées ([CRS](https://www.youtube.com/watch?v=xJyJlKbZFlc&list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&index=8) pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.
+Il est crucial de toujours bien renseigner le système de coordonnées ([CRS](https://www.youtube.com/watch?v=xJyJlKbZFlc&list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&index=8){.externe} pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.
 {% endattention %}
 
 ### Représentation graphique
@@ -238,7 +238,7 @@ On le voit sur la représentation graphique, l'île de France regroupe trop de g
 Pour cela, commençons par trouver l'île de France.
 
 {% exercice %}
-Utilisez [cet outil](http://norbertrenner.de/osm/bbox.html) pour déterminer un rectangle (une *bounding box*) englobant l'île de France
+Utilisez [cet outil](http://norbertrenner.de/osm/bbox.html){.externe} pour déterminer un rectangle (une *bounding box*) englobant l'île de France
 
 {% endexercice %}
 {% details "solution" %}
@@ -249,7 +249,7 @@ En très gros grain j'obtiens un polygone (avant dernier résultat) valant : `2.
 
 {% enddetails %}
 
-Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser [`shapely.geometry.box`{.language-}](https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box) dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :
+Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser [`shapely.geometry.box`{.language-}](https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box){.externe} dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :
 
 ```python
 import shapely.geometry
@@ -257,11 +257,11 @@ import shapely.geometry
 île_de_France = shapely.geometry.box(2.02, 48.7, 2.72, 48.98)
 ```
 
-On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe [`GeoSeries`{.language-}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries) qui correspond à la colonne geometry.
+On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe [`GeoSeries`{.language-}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries){.externe} qui correspond à la colonne geometry.
 
 {% exercice %}
 
-En utilisant la méthode [`GeoSeries.within()`](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html), déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre *bounding box*).
+En utilisant la méthode [`GeoSeries.within()`](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html){.externe}, déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre *bounding box*).
 {% endexercice %}
 {% details "solution" %}
 
@@ -336,7 +336,7 @@ Récupérer une ligne se fait avec les 2 méthodes :
 {% note %}
 On voit qu'en pandas et geoPandas, on peut accéder aux données en utilisant des crochets `[]`{.language-} de plusieurs manières. Supposons que l'on ait un dataFrame nommée `df`{.language-} :
 
-* `df[nom]`{.language-} rend la colonne (qui est de type [Series](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) ou [GeoSeries](https://geopandas.org/en/stable/docs/reference/geoseries.html) si c'est une géométrie) de nom `nom`{.language-}.
+* `df[nom]`{.language-} rend la colonne (qui est de type [Series](https://pandas.pydata.org/docs/reference/api/pandas.Series.html){.externe} ou [GeoSeries](https://geopandas.org/en/stable/docs/reference/geoseries.html){.externe} si c'est une géométrie) de nom `nom`{.language-}.
 * `df.nom`{.language-} où nom est un nom de colonne fonctionne aussi, même si je suis moins fan de cette notation.
 * `df.loc[index]`{.language-} rend la ligne d'index `index`{.language-}
 * `df.iloc[i]`{.language-} rend la $i$ème ligne du dataFrame
@@ -484,7 +484,7 @@ J'obtiens ce graphe là (essayez d'obtenir le même) :
 {% faire %}
 Ce graphe est-il connexe ?
 
-Vous utiliserez l'algorithme [connexité](../chemins-cycles-connexite#algorithme-connexe-toutes){.interne} du cours pour déterminer les composantes connexes.
+Vous utiliserez l'algorithme [connexité](../chemins-cycles-connexite#algorithme-connexe-toutes) du cours pour déterminer les composantes connexes.
 {% endfaire %}
 {% details "solution" %}
 Non, la corse n'est pas attachée au continent avec une distance de 2. Les deux composantes connexes que l'on obtient sont :

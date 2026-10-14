@@ -156,7 +156,7 @@ Ajout/suppression de sommets/arcs :
   * complexité : $\mathcal{O}(n)$. Si on veut supprimer l'arc $(i, j)$  il faut supprimer $j$ dans $E[i]$ ce qui prend $\delta^+(i) < n$ opérations (il faut supprimer un élément quelconque d'une liste)
 
 {% info %}
-On utilise souvent une variante de cette structure qui utilise des [tableaux associatifs](https://fr.wikipedia.org/wiki/Tableau_associatif) à la place des listes. Voir par exemple [l'implémentation en python](https://www.python.org/doc/essays/graphs/). On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.
+On utilise souvent une variante de cette structure qui utilise des [tableaux associatifs](https://fr.wikipedia.org/wiki/Tableau_associatif){.externe} à la place des listes. Voir par exemple [l'implémentation en python](https://www.python.org/doc/essays/graphs/){.externe}. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.
 {% endinfo %}
 
 ### <span id="prop-liste-adj"></span> Opérations
@@ -235,7 +235,7 @@ L'intérêt de cette encodage est que le fait de savoir si un arête est présen
 
 ## <span id="dict"></span> Encodage par dictionnaire
 
-C'est le [codage canonique des graphes en python](https://www.python.org/doc/essays/graphs/). Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.
+C'est le [codage canonique des graphes en python](https://www.python.org/doc/essays/graphs/){.externe}. Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.
 
 ### <span id="exemple-dict"></span> Construction
 
@@ -249,7 +249,7 @@ G = {
 }
 ```
 
-On utilise à la fois un [dictionnaire](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries) pour stocker le voisinage de chaque éléments, lui même codé sous la forme d'un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets).
+On utilise à la fois un [dictionnaire](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries){.externe} pour stocker le voisinage de chaque éléments, lui même codé sous la forme d'un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe}.
 
 {% note %}
 On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.
@@ -352,4 +352,4 @@ Dans la suite de ce cours on utilisera toujours cet encodage par défaut car ell
 
 ## Bibliothèques
 
-Il existe plusieurs bibliothèques de gestion de graphes en python. [Cette page](https://wiki.python.org/moin/PythonGraphLibraries) en cite trois, activement maintenues.
+Il existe plusieurs bibliothèques de gestion de graphes en python. [Cette page](https://wiki.python.org/moin/PythonGraphLibraries){.externe} en cite trois, activement maintenues.

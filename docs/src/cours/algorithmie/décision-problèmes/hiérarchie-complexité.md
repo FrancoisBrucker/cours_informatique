@@ -25,7 +25,7 @@ On suppose sans perte de généralité que nos programmes sont écrits en pseudo
 3. encore moins souvent ce texte, privé des derniers retours à la ligne est un programme écrit en pseudo-code.
 4. et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.
 
-Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code){.interne} et ceci est possible avec un [analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale) de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).
+Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code) et ceci est possible avec un [analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale){.externe} de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).
 
 Le décideur $d(e)$ est ainsi décidable avec une complexité $\mathcal{O}(\vert e \vert^2)$.
 
@@ -150,7 +150,7 @@ La proposition précédente montre qu'il existe des langages de complexité auss
 Pour toute fonction calculable $f$, il existe des problèmes de décision de complexité $\Omega(f(n))$.
 {% endnote %}
 
-Comme $2^n$, $n!$ voir la [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann) sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !
+Comme $2^n$, $n!$ voir la [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann){.externe} sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !
 
 {% attention "**À retenir**"%}
 Il existe des problèmes algorithmiques de complexités aussi grande ou aussi petite que l'on veut.

@@ -12,7 +12,7 @@ eleventyComputed:
 ## Principe
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>
+<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>{.externe}
 {% endlien %}
 
 Le principe du design diviser pour régner consiste à découper le problème initial en sous-problèmes que l'on peut résoudre puis, si nécessaire, les recombiner en une solution du problème initial.
@@ -33,7 +33,7 @@ algorithme diviser(données):
 
 On restreint nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.
 
-On a utilisé ce principe dans [la dichotomie](../../../projet-algorithmes-classiques/#dichotomie){.interne} par exemple.
+On a utilisé ce principe dans [la dichotomie](../../../projet-algorithmes-classiques/#dichotomie) par exemple.
 
 {% attention2 "**À retenir**" %}
 On utilise le design **diviser** que lorsqu'il est _facile_ (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.
@@ -55,7 +55,7 @@ algorithme diviser_puis_combiner(données):
     rendre solution
 ```
 
-On a déjà vu ce design lorsque l'on a étudié [le tri fusion](../../problème-tris/algorithme-fusion/){.interne} ou [le tri rapide](../../problème-tris/algorithme-rapide/){.interne}.
+On a déjà vu ce design lorsque l'on a étudié [le tri fusion](../../problème-tris/algorithme-fusion/) ou [le tri rapide](../../problème-tris/algorithme-rapide/).
 
 {% attention2 "**À retenir**" %}
 On utilise le design **diviser pour régner** que lorsqu'il est _facile_ (et rapide) algorithmiquement de combiner des solutions partielles en une solution globale.
@@ -80,7 +80,7 @@ Pour connaître la complexité d'un algorithme sous la forme diviser pour régne
 - le nombre d'appels récursifs
 - le coût de la combinaison des solutions partielles en une solution globale
 
-La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le **[Master theorem](https://fr.wikipedia.org/wiki/Master_theorem)**. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :
+La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le **[Master theorem](https://fr.wikipedia.org/wiki/Master_theorem){.externe}**. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :
 
 <span id="master-theorem"></span>
 {% note "**Forme O du Master Theorem**" %}
@@ -223,7 +223,7 @@ Utiliser la méthode diviser pour régner pour créer un algorithme de complexit
 
 ### Multiplication de matrices
 
-[L'algorithme de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen) pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.
+[L'algorithme de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen){.externe} pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.
 
 On suppose pour cet exercice que l'on cherche à multiplier deux matrices carrées (de dimension $n$) $A$ et $B$, avec $n$ une puissance de 2.
 
@@ -344,8 +344,8 @@ Vous voyez que gagner 1 multiplication de matrice fait gagner beaucoup en comple
 
 {% lien %}
 
-- [Les méthodes de multiplications de matrices](https://www.youtube.com/watch?v=DruwS2_cVys) par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$
-- [Multiplication de matrices algorithme actuel](https://www.youtube.com/watch?v=HdysaWNs1g8)  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel
+- [Les méthodes de multiplications de matrices](https://www.youtube.com/watch?v=DruwS2_cVys){.externe} par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$
+- [Multiplication de matrices algorithme actuel](https://www.youtube.com/watch?v=HdysaWNs1g8){.externe}  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel
 
 {% endlien %}
 
@@ -353,10 +353,10 @@ Vous voyez que gagner 1 multiplication de matrice fait gagner beaucoup en comple
 
 On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
 
-Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
+Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion){.externe}. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
-En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion) et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
+En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion){.externe} et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -376,10 +376,10 @@ Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{
 
 On suppose que l'on possède un algorithme de multiplication de matrices carrées à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
 
-Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
+Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices){.externe}. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
-En utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices) et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
+En utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices){.externe} et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -399,8 +399,8 @@ Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{
 
 ### Pavage incomplet du plan
 
-> TBD exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
+> TBD exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>{.externe}
 
 ### Nombre d'inversions
 
-> TBD exo 4 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
+> TBD exo 4 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>{.externe}

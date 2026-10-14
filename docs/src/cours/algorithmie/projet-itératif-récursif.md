@@ -29,7 +29,7 @@ Une fois un algorithme créé, on le teste toujours sur de petites instances en 
 
 ## Maximum d'un tableau
 
-On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorithme/#algorithme-max-tableau-iter){.interne}, voyons (ou plutôt voyez) comme en faire un version recursive :
+On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorithme/#algorithme-max-tableau-iter), voyons (ou plutôt voyez) comme en faire un version recursive :
 
 <span id="algorithme-max-tableau-rec"></span>
 
@@ -224,7 +224,7 @@ algorithme permutation(T1: [entier], T2: [entier]) → booléen
 Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small longueur}[$ (on a pas besoin de la donner).
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} qu'on a déjà étudié.
+Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) qu'on a déjà étudié.
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -256,7 +256,7 @@ supprime(T: [entier], v: entier) → [entier]
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
 {% info %}
-Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne}.
+Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences).
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -299,7 +299,7 @@ supprime_rec(T: [entier], v: entier) → [entier]
 Qui rend **un nouveau tableau** contenant la restriction de `T`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [l'algorithme `concaténation`{.language-}](./#algorithme-concaténation){.interne} de la question précédente.
+Vous pourrez utiliser [l'algorithme `concaténation`{.language-}](./#algorithme-concaténation) de la question précédente.
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -385,10 +385,10 @@ algorithme retournement(T: [entier]) → ∅
 
 ## <span id="fonction-McCarty"></span>Fonction 91 de McCarty
 
-Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy), informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran).
+Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy){.externe}, informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp){.externe} en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation){.externe} au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran){.externe}.
 
 {% lien %}
-[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) :
+[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy){.externe} :
 {% endlien %}
 
 Définition :
@@ -535,6 +535,6 @@ algorithme M(n: entier) → entier:
         rendre 91
 ```
 
-Dans le même ordre d'idée que [la fonction de Takeuchi](../bases-théoriques/calculabilité/#fonction-Takeuchi){.interne}, c'est un leurre.
+Dans le même ordre d'idée que [la fonction de Takeuchi](../bases-théoriques/calculabilité/#fonction-Takeuchi), c'est un leurre.
 
 {% enddetails %}

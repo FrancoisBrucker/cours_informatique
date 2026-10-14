@@ -68,21 +68,21 @@ Parmi tous les arbres couvrants du graphe (il y en a un nombre fini), on peut pr
 
 
 {% aller %}
-[Arbre couvrant et arborescences non valuées](./non-valué){.interne}
+[Arbre couvrant et arborescences non valuées](./non-valué)
 {% endaller %}
 
 
 ## Cas valué
 
 {% aller %}
-- [Arbres de poids minimal](./valué-arbre){.interne}
-- [Arborescences de poids minimal](./valué-arborescence){.interne}
+- [Arbres de poids minimal](./valué-arbre)
+- [Arborescences de poids minimal](./valué-arborescence)
 {% endaller %}
 
 ## Compter et choisir
 
 {% aller %}
-[Compter et choisir un arbre ou une arborescence](./compter){.interne}
+[Compter et choisir un arbre ou une arborescence](./compter)
 {% endaller %}
 
 
@@ -90,5 +90,5 @@ Parmi tous les arbres couvrants du graphe (il y en a un nombre fini), on peut pr
 ## On s'entraîne
 
 {% aller %}
-[Projet : débit](./projet-débit){.interne}
+[Projet : débit](./projet-débit)
 {% endaller %}

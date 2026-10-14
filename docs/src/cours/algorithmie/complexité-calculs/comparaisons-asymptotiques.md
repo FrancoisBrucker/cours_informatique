@@ -75,7 +75,7 @@ La fonction $\Omega$ rend compte de fonctions aux allures similaires :
 $f(N) = \Theta(g(N)) \Rightarrow g(N) = \Theta(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Clair grace à [la propriété précédente](./#omega-GO){.interne} qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
+Clair grace à [la propriété précédente](./#omega-GO) qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
 
 - <span>$f'(N)$</span> est en $\Omega(f(N))$
 - <span>$f'(N)$</span> est en $\mathcal{O}(f(N))$
@@ -93,13 +93,13 @@ Commençons par deux règles liant les 3 fonctions :
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \Omega(g(N)) \text{ et } g(N) = \Omega(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO){.interne}.
+Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
 {% enddetails  %}
 {% note "**Proposition**" %}
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \mathcal{O}(g(N)) \text{ et } g(N) = \mathcal{O}(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO){.interne}.
+Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
 
 {% enddetails  %}
 

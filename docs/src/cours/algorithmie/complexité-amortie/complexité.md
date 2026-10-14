@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../../complexité-moyenne){.interne} qui est une moyenne probabiliste.
+La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../../complexité-moyenne) qui est une moyenne probabiliste.
 
 De plus, lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
@@ -31,7 +31,7 @@ La complexité amortie est un concept avancé, utilisée dans deux cas principal
 
 ## Exemple 1 : structure de compteur
 
-Pour illustrer le concept de complexité amortie dans le cadre [du compteur binaire](../analyses/#algorithme-compteur-binaire){.interne}, calculer la complexité amortie de l'algorithme `tous`{.language-} ou de la a fonction `successeur`{.language-} n'a pas vraiment de sens :
+Pour illustrer le concept de complexité amortie dans le cadre [du compteur binaire](../analyses/#algorithme-compteur-binaire), calculer la complexité amortie de l'algorithme `tous`{.language-} ou de la a fonction `successeur`{.language-} n'a pas vraiment de sens :
 
 - l'algorithme `tous`{.language-} a toujours la même complexité à chaque appel,
 - la fonction `successeur`{.language-} a bien des complexités différentes selon ses paramètres, mais plusieurs appels successifs peuvent tous avoir la complexité maximale (on prend $N = [1, ..., 1]$ comme paramètre à chaque fois) et la complexité amorties sera égale à la complexité maximale
@@ -75,7 +75,7 @@ Va afficher à l'écran les valeurs de N suivantes après chaque itération (on 
 
 ```
 
-On voit clairement $N[i]$ est parcouru par la méthode `suivant`{.language-} toutes les $2^i$ itérations. [L'analyse par agrégat](../analyses/#méthode-agrégat){.interne} nous indique alors que la complexité des $m$ itérations est :
+On voit clairement $N[i]$ est parcouru par la méthode `suivant`{.language-} toutes les $2^i$ itérations. [L'analyse par agrégat](../analyses/#méthode-agrégat) nous indique alors que la complexité des $m$ itérations est :
 
 <div>
 $$
@@ -103,7 +103,7 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 
 ## Exemple 2 : la pile
 
-On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile){.interne} pour y ajouter la méthode suivante: `k-dépile(k: entier) → Type`{.language-} :
+On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile) pour y ajouter la méthode suivante: `k-dépile(k: entier) → Type`{.language-} :
 
 ```pseudocode
 méthode (p: Pile<T>) k-dépile(k: entier) → T:
@@ -132,7 +132,7 @@ On le démontrera précisément ci-après, mais on peut intuitivement voir que c
 - Pour que `k-dépile`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `empile`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-dépile`{.language-} avec cette grande complexité.
 - Après une exécution de `k-dépile`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-dépile`{.language-} seront de complexité très faible.
 
-Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant [la méthode comptable](../analyses/#méthode-comptable){.interne}.
+Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant [la méthode comptable](../analyses/#méthode-comptable).
 
 La complexité de `k-dépile`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
 

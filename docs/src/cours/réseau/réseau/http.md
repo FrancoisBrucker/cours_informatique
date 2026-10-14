@@ -14,14 +14,14 @@ Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 en
 
 {% lien %}
 
-- [Aperçu du protocole http](https://developer.mozilla.org/fr/docs/Web/HTTP/Overview)
-- [différentes version de http](https://www.youtube.com/watch?v=UMwQjFzTQXw)
+- [Aperçu du protocole http](https://developer.mozilla.org/fr/docs/Web/HTTP/Overview){.externe}
+- [différentes version de http](https://www.youtube.com/watch?v=UMwQjFzTQXw){.externe}
 
 {% endlien %}
 
-Avec le protocole http le client est souvent un navigateur web, par exemple [chrome](https://fr.wikipedia.org/wiki/Google_Chrome), qui accède à l'application serveur via une [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) comme <http://www.google.fr>, qui lie le nom de la machine qui héberge le serveur (ici `www.google.fr`) et le protocole (http) : il n'y a qu'un seul serveur et de multiples clients.
+Avec le protocole http le client est souvent un navigateur web, par exemple [chrome](https://fr.wikipedia.org/wiki/Google_Chrome){.externe}, qui accède à l'application serveur via une [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator){.externe} comme <http://www.google.fr>{.externe}, qui lie le nom de la machine qui héberge le serveur (ici `www.google.fr`) et le protocole (http) : il n'y a qu'un seul serveur et de multiples clients.
 
-Exemple de requête et de réponse en utilisant la commande [`curl`](https://curl.se/) :
+Exemple de requête et de réponse en utilisant la commande [`curl`](https://curl.se/){.externe} :
 
 ```shell
 $ curl http://www.google.fr 

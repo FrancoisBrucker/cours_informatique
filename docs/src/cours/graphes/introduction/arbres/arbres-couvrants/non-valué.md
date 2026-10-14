@@ -23,7 +23,7 @@ Nous allons expliciter les deux parcours en supposant que les graphes ne sont pa
 
 {% lien %}
 
-[Parcours en largeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur)
+[Parcours en largeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur){.externe}
 
 {% endlien %}
 
@@ -67,7 +67,7 @@ Pour couvrir tout le graphe on recommence l'algorithme sur un sommet qui est dan
 
 {% lien %}
 
-[Parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
+[Parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur){.externe}
 
 {% endlien %}
 

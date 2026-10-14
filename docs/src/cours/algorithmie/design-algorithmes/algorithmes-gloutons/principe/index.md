@@ -18,7 +18,7 @@ L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les
 ## Définition
 
 {% note %}
-Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
+Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton){.externe} choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
 {% endnote %}
 
 Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée _algorithmes gloutons_.
@@ -67,7 +67,7 @@ Ce type d'algorithme est très utilisé pour :
 
 {% endattention2 %}
 
-Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique) utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
+Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique){.externe} utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
 
 ## Comment concevoir un algorithme glouton
 
@@ -159,7 +159,7 @@ Remarques :
 - cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
 {% info %}
-Le cas général est un problème [du sac à dos](../../problème-sac-à-dos){.interne} (le _"prix"_ de chaque pièce vaut 1 et leur _"volume"_ est leur valeur).
+Le cas général est un problème [du sac à dos](../../problème-sac-à-dos) (le _"prix"_ de chaque pièce vaut 1 et leur _"volume"_ est leur valeur).
 {% endinfo %}
 
 ## Optimalité d'un algorithme glouton
@@ -183,7 +183,7 @@ On va itérativement transformer une solution optimale initiale inconnue en notr
 Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.
 {% endattention2 %}
 
-Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est [un matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde), dont la principale propriété est d'être stable par échange.
+Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est [un matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde){.externe}, dont la principale propriété est d'être stable par échange.
 
 ### Schéma de preuve d'optimalité par construction
 
@@ -321,7 +321,7 @@ Un algorithme est **_à performance garantie_** si sa solution est plus grande q
 
 ### Problème du _bin packing_
 
-Pour illustrer cette problématique on va utiliser [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing) :
+Pour illustrer cette problématique on va utiliser [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing){.externe} :
 
 {% note "**Problème**" %}
 
@@ -497,13 +497,13 @@ En examinant les caisses alternativement de volume 1 et $K/2$, et en supposant q
 L'exercice précédent montre que selon l'ordre dans lequel on examine les éléments on peut obtenir une no;bre de boite allant du simple au double !
 
 {% info %}
-On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant **par volume décroissant**. [Il a en effet été prouvé](https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis) que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.
+On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant **par volume décroissant**. [Il a en effet été prouvé](https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis){.externe} que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.
 
 {% endinfo %}
 
 ## Heuristique gloutonne
 
-Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme [une heuristique](https://fr.wikipedia.org/wiki/Heuristique).
+Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme [une heuristique](https://fr.wikipedia.org/wiki/Heuristique){.externe}.
 
 ### Méthode de design d'un algorithme glouton comme heuristique
 
@@ -519,7 +519,7 @@ On voit que pour que cela fonctionne il faut :
 
 ### Problème de la chaîne de montage
 
-Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer [le problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/).
+Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer [le problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/){.externe}.
 
 Pour créer une voiture on la déplace sur une chaîne de montage pour qu'elle puisse passer par chaque atelier. La figure suivante montre le schéma :
 
@@ -548,7 +548,7 @@ Le problème à résoudre est donc trouver un ordre de construction des voitures
 - **Sortie** : un ordonnancement de $V$ minimisant : $\sum_{0\leq j < m}\sum_{0\leq i < n-T[j]}\max(0, \sum_{i \leq k < i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)
 {% endnote %}
 
-Prenons l'exemple donné dans [la description du problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/). La chaîne de montage est de ce type :
+Prenons l'exemple donné dans [la description du problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/){.externe}. La chaîne de montage est de ce type :
 
 ![chaîne de montage exemple](./chaine-montage-exemple.png)
 

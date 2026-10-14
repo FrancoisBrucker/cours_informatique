@@ -29,20 +29,20 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 - injection
 - surjection
 - bijection
-- cardinal d'un ensemble infini p20 <https://www-lisic.univ-littoral.fr/~verel/TEACHING/13-14/IASF-M1app/cm01.pdf>
+- cardinal d'un ensemble infini p20 <https://www-lisic.univ-littoral.fr/~verel/TEACHING/13-14/IASF-M1app/cm01.pdf>{.externe}
 - dénombrable
 - autres infinis
 
 ## Probabilités discrètes
 
 {% aller %}
-[Go](golang){.interne}
+[Go](golang)
 {% endaller %}
 
 ## Probabilités discrètes
 
 {% aller %}
-[Probabilités](probabilités){.interne}
+[Probabilités](probabilités)
 {% endaller %}
 
 ## Entiers
@@ -61,19 +61,19 @@ $n$ est grand. Même si $\mathcal{O}(1)$ pour des mot sur 64b, comme n>64, c'est
 C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction de $n$, le nombre de bit des paramètres et de $B$, la base de calcul (64b pour nous actuellement). Nous ne nous embêterons pas ici avec ça et donnerons les complexités uniquement en fonction de $n$.
 
 {% aller %}
-[Arithmétique entière](nombres){.interne}
+[Arithmétique entière](nombres)
 {% endaller %}
 
 ## Corps Z/pZ
 
 {% aller %}
-[Corps $\mathbb{Z}/p\mathbb{Z}$](corps-ZpZ){.interne}
+[Corps $\mathbb{Z}/p\mathbb{Z}$](corps-ZpZ)
 {% endaller %}
 
 ## Courbes elliptiques
 
 {% aller %}
-[Courbes elliptiques](courbes-elliptiques){.interne}
+[Courbes elliptiques](courbes-elliptiques)
 {% endaller %}
 
 ## Méthode symbolique
@@ -97,18 +97,18 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 >TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$
 
 - series formelles :
-  - <https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle>
-  - <https://arxiv.org/pdf/2205.00879>
-- Analyse combinatoire : <https://algo.inria.fr/flajolet/Publications/book.pdf>
+  - <https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle>{.externe}
+  - <https://arxiv.org/pdf/2205.00879>{.externe}
+- Analyse combinatoire : <https://algo.inria.fr/flajolet/Publications/book.pdf>{.externe}
 
 ## TBD
 
 - crypto dépend beaucoup :
   - division euclidienne et le modulo pour contrôler les sorties
   - la primalité pour garantir la bijectivité
-  - [corps finis](https://en.wikipedia.org/wiki/Finite_field_arithmetic) est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR
+  - [corps finis](https://en.wikipedia.org/wiki/Finite_field_arithmetic){.externe} est l'objet qui fait marcher le tout. Surtout pour les binaires ou addition = soustraction = XOR
 
-- [arithmétique dans corps](https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28)
+- [arithmétique dans corps](https://stackoverflow.com/questions/70261458/how-to-perform-addition-and-multiplication-in-f-28){.externe}
 
 - faire une partie anneau/corps z/pz
 - importance d'Euclide et Euclide étendu
@@ -134,13 +134,13 @@ un problème est la négation de l'autre.
 Il existe de plus un algorithme polynomial permettant de savoir un nombre est premier, mais sa preuve dépasse le cadre de ce cours.
 
 {% lien %}
-[Article montrant que le problème PRIME est polynomial](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf).
+[Article montrant que le problème PRIME est polynomial](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf){.externe}.
 {% endlien %}
 
 Cet algorithme ne permet cependant pas de déterminer les facteurs dont il est composé (problème FACTORS). On a cependant clairement COMPOSITE ≤ FACTOR.
 
 {% exercice %}
-Montrez que [l'algorithme du crible d'Ératosthène](https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne) n'est pas polynomial.
+Montrez que [l'algorithme du crible d'Ératosthène](https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne){.externe} n'est pas polynomial.
 {% endexercice %}
 {% details "corrigé" %}
 

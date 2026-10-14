@@ -31,7 +31,7 @@ La règle d'airain en développement et dans la vie est que l'on ne va pas faire
 En revanche, on trouvera facilement des excuses pour expliquer pourquoi on ne teste pas :
 
 {% note "**aucune de ces excuses ne sont valables**" %}
-<https://softwareengineering.stackexchange.com/questions/322256/time-difference-between-developing-with-unit-tests-vs-no-tests>
+<https://softwareengineering.stackexchange.com/questions/322256/time-difference-between-developing-with-unit-tests-vs-no-tests>{.externe}
 {% endnote %}
 
 On doit donc :
@@ -44,7 +44,7 @@ On doit donc :
   - automatiquement nous dire s'il rate et pourquoi
   - passer rapidement s'il réussi
 
-Enfin, une fois qu'on a mis tout ça en place nos test doivent suivre la règle [FIRST](https://medium.com/@chapuyj/5-principes-pour-guider-l-ecriture-des-tests-unitaires-be25cda2652) pour être maintenable et aider au code :
+Enfin, une fois qu'on a mis tout ça en place nos test doivent suivre la règle [FIRST](https://medium.com/@chapuyj/5-principes-pour-guider-l-ecriture-des-tests-unitaires-be25cda2652){.externe} pour être maintenable et aider au code :
 
 - rapides : on doit pouvoir exécuter tous les tests rapidement
 - isolé : on ne doit pas chaîner les tests, si un test dépend d'un autre si l'un rate on ne sais pas si c'est la faute de l'autre ou pas
@@ -62,7 +62,7 @@ Il n'y a pas de bonne réponse à : quoi tester ? Et quand s'arrêter ? Il faut 
 
 ### Quand tester
 
-Juste Après avoir écrit sa fonction/méthode ! Voir même on l'écrit juste avant de coder si on suit le [TDD](https://fr.wikipedia.org/wiki/Test_driven_development) (ce qui est bien et vous fera énormément progresser !)
+Juste Après avoir écrit sa fonction/méthode ! Voir même on l'écrit juste avant de coder si on suit le [TDD](https://fr.wikipedia.org/wiki/Test_driven_development){.externe} (ce qui est bien et vous fera énormément progresser !)
 
 Si on attend trop longtemps :
 
@@ -74,6 +74,6 @@ Si on attend trop longtemps :
 
 Nous allons voir plusieurs aspects des tests :
 
-1. [tests js avec jest](./js-jest){.interne}
-2. [routes](./tests-routes){.interne}
-3. [test de bases de données](./tests-db){.interne}
+1. [tests js avec jest](./js-jest)
+2. [routes](./tests-routes)
+3. [test de bases de données](./tests-db)

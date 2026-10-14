@@ -23,10 +23,10 @@ L'organisation de cette structure est différente selon les OS mais on retrouver
 
 ## Bootloader et partitions
 
-Lorsque l'on démarre un ordinateur, il faut commencer par trouver le noyau du système d'exploitation appelé **_bootloader_**. Le bootloader et le noyau se trouvent dans [une partition spéciale](https://fr.wikipedia.org/wiki/Partition_(informatique)) du disque dur de démarrage.
+Lorsque l'on démarre un ordinateur, il faut commencer par trouver le noyau du système d'exploitation appelé **_bootloader_**. Le bootloader et le noyau se trouvent dans [une partition spéciale](https://fr.wikipedia.org/wiki/Partition_(informatique)){.externe} du disque dur de démarrage.
 
 {% note2 "**Définition**" %}
-[Une **_partition_**](https://fr.wikipedia.org/wiki/Partition_(informatique)) est une partie d'un disque dur. 
+[Une **_partition_**](https://fr.wikipedia.org/wiki/Partition_(informatique)){.externe} est une partie d'un disque dur. 
 {% endnote2 %}
 
 Un disque dur système possédera toujours au moins 2 partitions :
@@ -49,7 +49,7 @@ Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au 
 
 - les fichiers de configurations
 - les applications système (comme systemd sous linux par exemple)
-- [les bibliothèques dynamiques](https://fr.wikipedia.org/wiki/Dynamic_Link_Library)
+- [les bibliothèques dynamiques](https://fr.wikipedia.org/wiki/Dynamic_Link_Library){.externe}
 
 ### Applications
 

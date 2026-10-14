@@ -10,14 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La version informatisée du [OTP](../codes-historiques){.interne} est appelée [chiffre de Vernam](https://www.cryptage.org/vernam.html).
+La version informatisée du [OTP](../codes-historiques) est appelée [chiffre de Vernam](https://www.cryptage.org/vernam.html){.externe}.
 
 Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et on a, avec $\oplus$ le ou exclusif binaire.
 
 {% lien %}
 Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :
 
-<https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
+<https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>{.externe}
 
 {% endlien %}
 
@@ -91,7 +91,7 @@ Tout code doit avoir une clé choisie uniformément et indépendante du message.
 
 {% endattention2 %}
 
-[Claude Shannon](https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory), dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :
+[Claude Shannon](https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory){.externe}, dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :
 
 <span id="confidentialité-parfaite"></span>
 
@@ -181,7 +181,7 @@ On utilise les propriétés suivantes, en particulier les 2 dernières :
 Qui sont évidentes mais est à la base de nombres d'astuces potentiellement dévastatrice pour le secret. voir le lien ci-dessous pour quelques exemples :
 
 {% lien %}
-<https://florian.github.io/xor-trick/>
+<https://florian.github.io/xor-trick/>{.externe}
 {% endlien %}
 
 ### Ne répétez pas la clé
@@ -220,7 +220,7 @@ Et petit à petit on casse le chiffre....
 
 {% info %}
 C'est arrivé en vrai.
-[Projet Venona](https://fr.wikipedia.org/wiki/Projet_Venona)
+[Projet Venona](https://fr.wikipedia.org/wiki/Projet_Venona){.externe}
 
 {% endinfo %}
 

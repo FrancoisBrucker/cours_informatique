@@ -23,7 +23,7 @@ On redirige le file descriptor 2 (stderr) vers le fichier `/dev/null`{.fichier}.
 ## Créer ses file descriptors
 
 {% lien %}
-[file descriptor en Bash](https://www.youtube.com/watch?v=FuiLk7uH9Jw)
+[file descriptor en Bash](https://www.youtube.com/watch?v=FuiLk7uH9Jw){.externe}
 {% endlien %}
 
 Bash permet d'ouvrir/créer des fichiers et de leurs associer des file descriptor très facilement.
@@ -68,5 +68,5 @@ ls: impossible d'accéder à '/proc/704757/fd/42': Aucun fichier ou dossier de c
 
 {% attention %}
 
-[N'oubliez pas le buffer](https://eklitzke.org/stdout-buffering)
+[N'oubliez pas le buffer](https://eklitzke.org/stdout-buffering){.externe}
 {% endattention %}

@@ -17,7 +17,7 @@ eleventyComputed:
 Nous allons améliorer la classé que nous avions crée lors du projet précédent (en prérequis).
 
 {% lien %}
-[Code de la classe Dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code)
+[Code de la classe Dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code){.externe}
 
 {% endlien %}
 
@@ -163,7 +163,7 @@ class Dé:
 On utilise ici deux choses :
 
 - premièrement le fait que si l'on ne donne qu'un seul argument à la fonction `property`{.language-} on ne donne qu'un accesseur et le mutateur est interdit,
-- deuxièmement l'accesseur est décrit sous la forme d'[une fonction `lambda`](../../concepts/fondements-programmation/écrire-code/#lambda){.interne} de python très utiles pour ce genre de choses.
+- deuxièmement l'accesseur est décrit sous la forme d'[une fonction `lambda`](../../concepts/fondements-programmation/écrire-code/#lambda) de python très utiles pour ce genre de choses.
 
 Il faut aussi changer le test de `str`{.language-}. On s'autorise à utiliser directement l'attribut `_valeur`{.language-} car les tests font partie du code :
 
@@ -222,7 +222,7 @@ def test_valeur_sans_setter():
 
 ## min et max dans classe
 
-Notre classe `Dé`{.language-} contient 2 [magic numbers](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es) qui sont les bornes du lancé. Supprimons-les :
+Notre classe `Dé`{.language-} contient 2 [magic numbers](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es){.externe} qui sont les bornes du lancé. Supprimons-les :
 
 {% exercice %}
 Créez deux attributs de classes `MIN_VALEUR`{.language-} et `MAX_VALEUR`{.language-} qui vont permettre de supprimer les magics numbers de la méthode `Dé.lancer()`{.language-}
@@ -306,6 +306,6 @@ print(liste_d)
 ## Code final
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-compteur){.externe}
 {% endlien %}

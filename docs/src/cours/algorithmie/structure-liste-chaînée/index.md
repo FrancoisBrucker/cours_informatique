@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
+[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e){.externe}
 {% endlien %}
 
 
@@ -32,7 +32,7 @@ faire un compilateur lisp ?
 Très utilisé en programmation fonctionnelle, la liste chaînée est une structure pouvant théoriquement ˆ´tre de taille infinie :
 
 {% aller %}
-[La liste chaînée](liste-chaînée){.interne}
+[La liste chaînée](liste-chaînée)
 {% endaller %}
 
 
@@ -41,12 +41,12 @@ Très utilisé en programmation fonctionnelle, la liste chaînée est une struct
 En algorithmie, on utilise souvent une variante de la liste chaînée, la liste doublement chaînée :
 
 {% aller %}
-[La liste doublement chaînée](liste-doublement-chaînée){.interne}
+[La liste doublement chaînée](liste-doublement-chaînée)
 {% endaller %}
 
 
 ## On s'entraîne
 
 {% aller %}
-[Projet : listes chaînées](./projet-listes-chaînées){.interne}
+[Projet : listes chaînées](./projet-listes-chaînées)
 {% endaller %}

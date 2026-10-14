@@ -16,13 +16,13 @@ Nous sommes actuellement (janvier 2025) à la version 3.13 de python. Il n'est s
 Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
 {% endnote %}
 
-Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://semver.org/) :
+Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://semver.org/){.externe} :
 
 1. **MAJOR** : pour nous sera 3.
 2. **MINOR** : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.
 3. **PATCH** : correctifs.
 
-Chaque année sort une nouvelle version de python (voir les différentes [versions de python](https://devguide.python.org/versions/#versions)), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolètes. Chaque version vient avec son [changelog](https://fr.wikipedia.org/wiki/Changelog), qui donne ses nouveautés et changements par rapport à la version précédente (voir le [changelog des différentes versions de python](https://docs.python.org/fr/3/whatsnew/changelog.html#changelog))
+Chaque année sort une nouvelle version de python (voir les différentes [versions de python](https://devguide.python.org/versions/#versions){.externe}), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolètes. Chaque version vient avec son [changelog](https://fr.wikipedia.org/wiki/Changelog){.externe}, qui donne ses nouveautés et changements par rapport à la version précédente (voir le [changelog des différentes versions de python](https://docs.python.org/fr/3/whatsnew/changelog.html#changelog){.externe})
 
 {% info %}
 La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
@@ -30,7 +30,7 @@ La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant
 
 ## <span id="quel-python-jai"></span> J'ai quoi comme python ?
 
-Pour connaître la version spécifique de python, on peut utiliser [la constante `version`du module `sys`de python](https://docs.python.org/fr/3/library/sys.html#sys.version) :
+Pour connaître la version spécifique de python, on peut utiliser [la constante `version`du module `sys`de python](https://docs.python.org/fr/3/library/sys.html#sys.version){.externe} :
 
 ```python
 import sys
@@ -43,7 +43,7 @@ qui rend chez moi :
 3.13.1 (main, Dec  3 2024, 17:59:52) [Clang 16.0.0 (clang-1600.0.26.4)]
 ```
 
-C'est à dire que j'utilise la version 3.13.1 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
+C'est à dire que j'utilise la version 3.13.1 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/){.externe} (c'est sur un mac).
 
 On peut aussi le faire sur uN terminal :
 
@@ -58,7 +58,7 @@ Python 3.13.1
 ```
 
 {% info %}
-Pour connaître tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html), soit taper : `python --help`
+Pour connaître tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html){.externe}, soit taper : `python --help`
 {% endinfo %}
 
 ## Et python 2 ?

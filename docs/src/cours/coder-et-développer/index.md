@@ -20,33 +20,33 @@ eleventyComputed:
 
 Ce cours est en 3 parties :
 
-- Apprendre : qui donne tout ce qu'[un honnête-homme](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) doit savoir en informatique
+- Apprendre : qui donne tout ce qu'[un honnête-homme](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme){.externe} doit savoir en informatique
 - Se perfectionner : connaissances utiles aux personne voulant coder au quotidien
 - Se spécialiser : pour aller plus loin
 
 On utilisera un langage d'application pour chaque partie :
 
-- Apprendre et [python](https://www.python.org/)
-- Perfectionnement et [go](https://go.dev/)
-- Spécialisation et [rust](https://rust-lang.org/fr/)
+- Apprendre et [python](https://www.python.org/){.externe}
+- Perfectionnement et [go](https://go.dev/){.externe}
+- Spécialisation et [rust](https://rust-lang.org/fr/){.externe}
 
 ## Partie A : Apprendre
 
 {% aller %}
-[Apprendre à coder en python et développer de (petits) projets informatique](apprendre-programmation){.interne}
+[Apprendre à coder en python et développer de (petits) projets informatique](apprendre-programmation)
 {% endaller %}
 
 
 ## Partie B : Se perfectionner
 
 {% aller %}
-[Apprendre à coder en go et développer des projets _au long cours_ en informatique](Perfectionnement){.interne}
+[Apprendre à coder en go et développer des projets _au long cours_ en informatique](Perfectionnement)
 {% endaller %}
 
 
 ## Partie C : Se spécialiser
 
 {% aller %}
-[Spécialisation](Spécialisation){.interne}
+[Spécialisation](Spécialisation)
 {% endaller %}
 

@@ -17,7 +17,7 @@ Dans un système unix ce sont les process qui ouvrent des fichiers, mais le noya
 
 Chaque process doit garder une liste des fichiers qu'il a ouvert et peut donc utiliser.
 
-A chaque fichier ouvert est associé un numéro nommé Un [descripteur de fichier (*file descriptor*)](https://fr.wikipedia.org/wiki/Descripteur_de_fichier). Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs `/proc`{.fichier} :
+A chaque fichier ouvert est associé un numéro nommé Un [descripteur de fichier (*file descriptor*)](https://fr.wikipedia.org/wiki/Descripteur_de_fichier){.externe}. Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs `/proc`{.fichier} :
 
 ```shell
 ls -la /proc/$$/fd
@@ -30,7 +30,7 @@ Tout process a toujours 3 file descriptors :
 - 2 qui est stderr
 - 255 uniquement si vous utilisez bash (utilisé pour ses besoins internes)
 
-Ces fichiers ouverts sont des redirections vers le [fichier tty](https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/) correspondant.
+Ces fichiers ouverts sont des redirections vers le [fichier tty](https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/){.externe} correspondant.
 
 {% exercice %}
 Les fichiers `stdin`{.fichier}, `stdout`{.fichier} et `stderr`{.fichier}  présent dans `/dev/`{.fichier} sont des liens.
@@ -74,7 +74,7 @@ ls -la /proc/$$/fdinfo/1
 ### Fichiers ouverts
 
 {% lien %}
-[Commande lsof](https://www.youtube.com/watch?v=Gr2IbTZdnvI)
+[Commande lsof](https://www.youtube.com/watch?v=Gr2IbTZdnvI){.externe}
 {% endlien %}
 
 Si vous utilisez la commande `lsof -p $$` vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :
@@ -111,7 +111,7 @@ Il y a :
 
 {% endfaire %}
 
-On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande [`fuser`](https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command) :
+On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande [`fuser`](https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command){.externe} :
 
 ```shell
 $ fuser -v /usr/bin/bash
@@ -149,7 +149,7 @@ Vous pouvez aussi utiliser la commande : `ulimit -a` et ses différentes options
 ## Noyau
 
 {% lien %}
-[FD et FT](https://www.youtube.com/watch?v=rW_NV6rf0rM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=21)
+[FD et FT](https://www.youtube.com/watch?v=rW_NV6rf0rM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=21){.externe}
 {% endlien %}
 
 Le noyau maintient à jour une table globale contenant tous les fichiers ouverts par tous les process. Cette table, nommé ***file table*** contient :

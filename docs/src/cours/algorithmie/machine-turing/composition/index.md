@@ -12,7 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer comment combiner plusieurs machines entres-elles afin de réaliser des machines de plus en plus complexe et aura les mêmes structures de contrôle que le [pseudo-assembleur](../../../exécuter-code/pseudo-assembleur/){.interne} :
+Nous allons montrer comment combiner plusieurs machines entres-elles afin de réaliser des machines de plus en plus complexe et aura les mêmes structures de contrôle que le [pseudo-assembleur](../../../exécuter-code/pseudo-assembleur/) :
 
 1. exécution séquentielle
 2. saut
@@ -21,7 +21,7 @@ Nous allons montrer comment combiner plusieurs machines entres-elles afin de ré
 
 ## Exécution séquentielle de machines
 
-Nous formalisons ici l'[addition](../définitions/#addition-turing){.interne} vue dans la partie entrée.
+Nous formalisons ici l'[addition](../définitions/#addition-turing) vue dans la partie entrée.
 
 <span id="exécution-séquentielle"></span>
 {% note2 "**Définition**" %}

@@ -18,17 +18,17 @@ On utilise le module express pour gérer plus élégamment notre site.
 
 <!-- fin résumé -->
 
-Le module node [express](https://expressjs.com/) permet une gestion efficace et apaisée des site web.
+Le module node [express](https://expressjs.com/){.externe} permet une gestion efficace et apaisée des site web.
 
-Pour installer des packages node, on peut utiliser [npm](https://www.npmjs.com/) (**n**ode **p**ackage **m**anager) qui est livré avec node.
+Pour installer des packages node, on peut utiliser [npm](https://www.npmjs.com/){.externe} (**n**ode **p**ackage **m**anager) qui est livré avec node.
 
 {% info "Tutoriel :" %}
-Un [tutoriel pour utiliser npm](https://www.digitalocean.com/community/tutorials/how-to-use-node-js-modules-with-npm-and-package-json-fr)
+Un [tutoriel pour utiliser npm](https://www.digitalocean.com/community/tutorials/how-to-use-node-js-modules-with-npm-and-package-json-fr){.externe}
 {% endinfo %}
 
 ### <span id="npm-init"></spana>`npm init`
 
-Comme fait [précédemment](../minimal/){.interne} on prépare le projet en créant un fichier `package.json`{.fichier}.
+Comme fait [précédemment](../minimal/) on prépare le projet en créant un fichier `package.json`{.fichier}.
 
 {% faire %}
 
@@ -58,7 +58,7 @@ A la fin de cette opération, vous devriez avoir le fichier un fichier nommé `p
 Il ne contient pour l'instant que des informations générales quant au projet. Nous allons bientôt y ajouter des modules.
 
 {% note %}
-Le [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) est un format texte pour sauvegarder des données structurée. C'est un format génial qui sert tout autant pour les fichiers de configurations que le transfert de données par le web.
+Le [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation){.externe} est un format texte pour sauvegarder des données structurée. C'est un format génial qui sert tout autant pour les fichiers de configurations que le transfert de données par le web.
 {% endnote %}
 
 ### Ajout d'un module
@@ -98,7 +98,7 @@ Le dossier `node_modules`{.fichier} n'est pas un module à sauver, on peut insta
 
 ## Routes
 
-Le module [express](https://expressjs.com/) va nous permettre de créer nos routes (les urls que le serveur connaît) simplement.
+Le module [express](https://expressjs.com/){.externe} va nous permettre de créer nos routes (les urls que le serveur connaît) simplement.
 
 Avant d'utiliser le module, penchons nous un peut sur que l'on veut :
 
@@ -121,7 +121,7 @@ Le projet ressemble maintenant à ça, en excluant le dossier `node_modules`{.fi
 ```
 
 {% info %}
-On a utilisé la commande unix [tree](https://linux.die.net/man/1/tree) (`tree -I node_modules`) pour réaliser le dessin ci-dessus.
+On a utilisé la commande unix [tree](https://linux.die.net/man/1/tree){.externe} (`tree -I node_modules`) pour réaliser le dessin ci-dessus.
 {% endinfo %}
 
 ### Notre site en express
@@ -165,7 +165,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 Tout se passe _via_ l'objet `app`{.language-}, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
 
 {% note %}
-Express appelle ces bouts de codes qui interceptent une requête un [middleware](https://expressjs.com/fr/guide/using-middleware.html)
+Express appelle ces bouts de codes qui interceptent une requête un [middleware](https://expressjs.com/fr/guide/using-middleware.html){.externe}
 {% endnote %}
 
 Pour chaque appel de app (dans notre cas on en a 2 `app.use`{.language-} et `app.get`{.language-}) :
@@ -191,7 +191,7 @@ Dans notre cas l'enchaînement de route est ainsi :
 Le dernier appel de `app`{.language-} doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.
 {% endnote %}
 
-Pour plus d'informations sur le routage express, n'hésitez pas à [consulter la documentation](https://expressjs.com/fr/guide/routing.html)
+Pour plus d'informations sur le routage express, n'hésitez pas à [consulter la documentation](https://expressjs.com/fr/guide/routing.html){.externe}
 
 ### Fonction `next()`{.language-}
 

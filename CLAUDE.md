@@ -79,12 +79,12 @@ All are paired shortcodes (content between open/close tags, rendered as markdown
 | `{% chemin %}...{% endchemin %}` | File path display |
 | `{% aller %}...{% endaller %}` | Navigation link |
 
-### Internal links
+### Links
 
-Use `.interne` class to mark links as internal (styled differently):
+Internal links need no class; use the `.externe` class to mark external links (styled differently):
 
 ```markdown
-[Some page](/cours/some-topic/){.interne}
+[Some site](https://example.com/){.externe}
 ```
 
 ### Code blocks

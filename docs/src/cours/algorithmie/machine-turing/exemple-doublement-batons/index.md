@@ -12,7 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Faire de l'arithmétique avec une machine de Turing. Comme on ne peut qu'écrire des 0 ou des 1, la façon la plus simple d'écrire les nombres est d'utiliser un [système unaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire) : chaque entier $n$ est représenté par $n$ 1 successifs sur la machine.
+Faire de l'arithmétique avec une machine de Turing. Comme on ne peut qu'écrire des 0 ou des 1, la façon la plus simple d'écrire les nombres est d'utiliser un [système unaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire){.externe} : chaque entier $n$ est représenté par $n$ 1 successifs sur la machine.
 
 ## Problème
 
@@ -272,7 +272,7 @@ ce qui donne comme exécution complète en 25 opérations :
 Et maintenant le code :
 
 {% exercice %}
-Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/> et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.
+Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/>{.externe} et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.
 {% endexercice %}
 {% details "solution" %}
 

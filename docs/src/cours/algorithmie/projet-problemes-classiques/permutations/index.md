@@ -12,6 +12,6 @@ eleventyComputed:
 
 > TBD : ET 2025 :
 >
-> 1. par successeur : généralisation du compteur <https://www.mbillaud.fr/notes/permutation-suivante.html>
+> 1. par successeur : généralisation du compteur <https://www.mbillaud.fr/notes/permutation-suivante.html>{.externe}
 > 2. via génération aléatoire
-> 3. heap : <https://fr.wikipedia.org/wiki/Algorithme_de_Heap>
+> 3. heap : <https://fr.wikipedia.org/wiki/Algorithme_de_Heap>{.externe}

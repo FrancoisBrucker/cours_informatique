@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Sous-système Windows pour Linux (WSL, Windows System for Linux)](https://learn.microsoft.com/fr-fr/windows/wsl/) est un moyen simple d'installer Linux sur un ordinateur disposant de Windows 11, car il permet de faire cohabiter les deux systèmes en une même session.
+[Sous-système Windows pour Linux (WSL, Windows System for Linux)](https://learn.microsoft.com/fr-fr/windows/wsl/){.externe} est un moyen simple d'installer Linux sur un ordinateur disposant de Windows 11, car il permet de faire cohabiter les deux systèmes en une même session.
 
 Si vous voulez apprendre ou utiliser Linux à son plein potentiel il est mieux d'installer Linux/Ubuntu sur un système à part, mais pour débuter ; se familiariser avec les commandes ou créer des applications Linux c'est un bon point de départ.
 
@@ -64,7 +64,7 @@ Sur l'onglet terminal épinglé, en choisissant la ligne `ubuntu` :
 
 A priori, les applications graphiques (X11) de Linux sont directement utilisables avec la WSL.
 
-Vous pouvez suivre [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps) pour vérifier que tout est ok, mais ça devrait être le cas par défaut.
+Vous pouvez suivre [ce tutoriel](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/gui-apps){.externe} pour vérifier que tout est ok, mais ça devrait être le cas par défaut.
 
 ## Vscode et wsl
 
@@ -73,13 +73,13 @@ Vous pouvez configurer vscode pour qu'il puisse utiliser la wsl plutôt que le s
 Une fois wsl installé, si vous exécutez vscode, il vous demandera s'il doit installer des choses, dites oui.
 
 {% lien %}
-[vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode)
+[vscode et wsl](https://learn.microsoft.com/fr-fr/windows/wsl/tutorials/wsl-vscode){.externe}
 {% endlien %}
 
 ## Fichiers wsl et windows 11
 
 {% lien %}
-[documentation Microsoft](https://learn.microsoft.com/fr-fr/windows/wsl/filesystems)
+[documentation Microsoft](https://learn.microsoft.com/fr-fr/windows/wsl/filesystems){.externe}
 {% endlien %}
 
 Il est tout à fait possible d'accéder aux fichiers de la wsl sous Windows 11. Lorsque vous ouvrez un explorateur, il suffit d'aller dans la partie Linux puis de choisir le lecteur Ubuntu :

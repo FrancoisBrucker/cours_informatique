@@ -18,11 +18,11 @@ eleventyComputed:
 Enveloppes convexes :
 
 {% aller %}
-[Problème de l'enveloppe convexe](/cours/algorithmie/enveloppes-convexes/){.interne}
+[Problème de l'enveloppe convexe](/cours/algorithmie/enveloppes-convexes/)
 {% endaller %}
 
 Partie code :
 
 {% aller %}
-[Coder et développer en python](/cours/coder-et-développer){.interne}
+[Coder et développer en python](/cours/coder-et-développer)
 {% endaller %}

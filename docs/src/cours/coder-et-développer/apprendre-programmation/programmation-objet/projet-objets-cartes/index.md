@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Encore un projet d'initiation dans le codage des objets. Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
+Encore un projet d'initiation dans le codage des objets. Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object){.externe} :
 
 {% note2 "**Définition**" %}
 Un **_value object_** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
@@ -25,7 +25,7 @@ Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu a
 
 ### But et User stories
 
-Le but des projets carters est de pouvoir jouer à [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)).
+Le but des projets carters est de pouvoir jouer à [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)){.externe}.
 
 Le projet nécessite de faire plein de choses. Pour vous aider à réaliser ce but, on va se placer des objectifs intermédiaires, sous la forme de user stories.
 
@@ -265,7 +265,7 @@ Enfin, pour grouper ces constantes, vous pourrez :
 
 {% faire %}
 
-Créer deux autres constantes (on utilise donc [des tuples](../..//bases-programmation/conteneurs/tuples/){.interne}), qui rassemblent les couleurs et les valeurs entre elles :
+Créer deux autres constantes (on utilise donc [des tuples](../..//bases-programmation/conteneurs/tuples/)), qui rassemblent les couleurs et les valeurs entre elles :
 
 - `VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)`{.language-}
 - `COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)`{.language-}

@@ -20,7 +20,7 @@ Comment gérer l'évolution de son code source au quotidien, sans avoir peur de 
 - comment ajouter des membres à un projet
 
 {% info %}
-L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
+L'[aide de github](https://docs.github.com/en/get-started){.externe} est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
 
@@ -29,28 +29,28 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite 
 Nous allons illustrer toutes les parties de ce cours avec un projet entièrement sous github.
 
 {% aller %}
-[Création du projet](./github-projet-création){.interne}
+[Création du projet](./github-projet-création)
 {% endaller %}
 
 
 ## Index
 
 {% aller %}
-1. [Index et diffs](./besoins-index){.interne}
-2. [projets commits](./github-projet-commits){.interne}
+1. [Index et diffs](./besoins-index)
+2. [projets commits](./github-projet-commits)
 {% endaller %}
 
 ## Branches
 
 {% aller %}
-1. [Branches](./besoins-branches){.interne}
-2. [projets branches](./github-projet-branches){.interne}
+1. [Branches](./besoins-branches)
+2. [projets branches](./github-projet-branches)
 {% endaller %}
 
 ## Merge et rebase
 
 {% aller %}
-1. [Fusion de branches](./besoins-merge-rebase){.interne}
-2. [projets fusion de branches](./github-projet-merge-rebase){.interne}
+1. [Fusion de branches](./besoins-merge-rebase)
+2. [projets fusion de branches](./github-projet-merge-rebase)
 {% endaller %}
 

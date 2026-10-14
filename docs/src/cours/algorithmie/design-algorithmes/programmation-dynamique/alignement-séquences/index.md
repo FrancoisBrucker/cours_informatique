@@ -10,18 +10,18 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 {% lien %}
-[Page Wikipedia](https://fr.wikipedia.org/wiki/Alignement_de_s%C3%A9quences)
+[Page Wikipedia](https://fr.wikipedia.org/wiki/Alignement_de_s%C3%A9quences){.externe}
 {% endlien %}
 
 ## Étude algorithmique du problème
 
 {% aller %}
-[Étude](./étude){.interne}
+[Étude](./étude)
 {% endaller %}
 
 ## Projet de code
 
 {% aller %}
-[Projet](./projet){.interne}
+[Projet](./projet)
 {% endaller %}
 

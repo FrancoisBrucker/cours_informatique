@@ -17,10 +17,10 @@ eleventyComputed:
 
 Ce cours est dédié au code informatique. _Coder_, c'est passer d'un _algorithme papier_ (pseudo-code ou idées) à un programme informatique, appelé **code**. Par extension, on inclura dans cette partie la modification d'un code existant. Le **but** d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.
 
-Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation). Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
+Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}. Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
 
 {% info %}
-Nous utilisons ici [le python](https://www.python.org/) car notre but est ici :
+Nous utilisons ici [le python](https://www.python.org/){.externe} car notre but est ici :
 
 - de coder des algorithmes classiques et python est très proche du pseudo-code.
 - d'apprendre les bonnes pratiques de développement et python est un langage qui permet de les apprendre simplement
@@ -61,13 +61,13 @@ Pour cela :
 Les différents concepts de la programmation avec des objets. On apprendra tout ça avec python, mais cela vous aidera dans tous les langages, en particulier ceux à objets.
 
 {% aller %}
-[Concepts de programmation et application en python](./concepts){.interne}
+[Concepts de programmation et application en python](./concepts)
 {% endaller %}
  
 Avant de passer à la partie II, vérifiez bien que vous avez acquis les concepts en faisant [les exercices finaux de la partie I](./concepts/#exercices-fin){.language-}. 
 
 {% attention %}
-Ne passez pas à la partie suivante sans avoir fait **et compris** [les 84 mono-lignes en python](./concepts/mono-lignes/){.interne}, on est parfois surpris de voir qu'on ne maîtrise finalement pas ce que l'on croyait savoir...
+Ne passez pas à la partie suivante sans avoir fait **et compris** [les 84 mono-lignes en python](./concepts/mono-lignes/), on est parfois surpris de voir qu'on ne maîtrise finalement pas ce que l'on croyait savoir...
 {% endattention %}
 
 ## Partie II : Développement d'un projet
@@ -75,7 +75,7 @@ Ne passez pas à la partie suivante sans avoir fait **et compris** [les 84 mono-
 La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers.
 
 {% aller %}
-[Coder des projets en python](./coder-projets){.interne}
+[Coder des projets en python](./coder-projets)
 {% endaller %}
 
 ## Partie III : Programmation objet
@@ -85,7 +85,7 @@ La programmation objet est un principe de programmation utilisé par la quasi-to
 Nous allons dans cette partie du cours nous atteler à montrer ces principes et leur utilité dans le cadre du langage python.
 
 {% aller %}
-[Programmation objet](programmation-objet){.interne}
+[Programmation objet](programmation-objet)
 {% endaller %}
 
 ## Partie IV : <span id="gestion-dépendances"></span>Gestion des dépendances
@@ -93,15 +93,15 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 La plupart des  projets informatiques ont besoin de modules extérieurs pour leur fonctionnement et ce quelque soit le langage de programmation. Nous allons voir comment gérer ces dépendances en python mais le principe est général :
 
 {% aller %}
-[Gestion des dépendances](gestion-dépendances){.interne}
+[Gestion des dépendances](gestion-dépendances)
 {% endaller %}
 
 ### Partie V : Programmation évènementielle
 
-La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique){.externe}. Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
 
 {% aller %}
-[Programmation évènementielle](programmation-évènementielle){.interne}
+[Programmation évènementielle](programmation-évènementielle)
 {% endaller %}
 
 
@@ -112,7 +112,7 @@ La programmation évènementielle est un principe de développement très utilis
 Curiosités et propriétés des modules python :
 
 {% aller %}
-[Odds and ends sur les modules python](misc-modules){.interne}
+[Odds and ends sur les modules python](misc-modules)
 {% endaller %}
 
 ### Anatomie d'un espace de nommage
@@ -120,6 +120,6 @@ Curiosités et propriétés des modules python :
 La base de cette séparation en unités fonctionnelles séparée est l'espace de nommage. Nous l'avons déjà entre-aperçu lorsque l'on a parlé de modules et de fonctions, nous allons ici rentrer dans les détails et expliciter comment python trouve un objet associé à un nom.
 
 {% aller %}
-[Anatomie d'un espace de nommage](anatomie-espace-nommage){.interne}
+[Anatomie d'un espace de nommage](anatomie-espace-nommage)
 {% endaller %}
 

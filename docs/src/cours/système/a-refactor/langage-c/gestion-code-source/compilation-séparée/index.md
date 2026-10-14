@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Reprenons [le code vu précédemment](../#code){.interne} et séparons le code du fichier `degres.c`{.fichiers} en unités fonctionnelles :
+Reprenons [le code vu précédemment](../#code) et séparons le code du fichier `degres.c`{.fichiers} en unités fonctionnelles :
 
 1. un fichier `main.c`{.fichier} qui regroupera uniquement le programme principal
 2. un fichier `celcius.c`{.fichier} qui regroupera uniquement les fonctions de conversions
@@ -137,7 +137,7 @@ return 0;
 
 Qui inclut bien deux fois dans le même fichier le fichier `celcius.h`{.fichier}.
 
-POur éviter ceci on ajoute [une astuce](https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html) qui utilise le préprocesseur. Le fichier `celcius.h`{.fichier} sera écrit :
+POur éviter ceci on ajoute [une astuce](https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html){.externe} qui utilise le préprocesseur. Le fichier `celcius.h`{.fichier} sera écrit :
 
 ```c
 #ifndef FILE_CELCIUS

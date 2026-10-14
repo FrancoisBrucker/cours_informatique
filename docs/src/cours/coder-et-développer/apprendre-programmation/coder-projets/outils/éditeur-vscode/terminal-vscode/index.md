@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/) avec python. [On a déjà vu](/cours/système/interagir-avec-système/terminal/bases/#vscode){.interne} rapidement comment utiliser le terminal dans vscode, nous allons voir ici comment l'utiliser pour exécuter du code python.
+Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/){.externe} avec python. [On a déjà vu](/cours/système/interagir-avec-système/terminal/bases/#vscode) rapidement comment utiliser le terminal dans vscode, nous allons voir ici comment l'utiliser pour exécuter du code python.
 
 
 ## Exécuter du python via le terminal
@@ -18,10 +18,10 @@ Différentes manières d'utiliser un terminal avec [visual studio code](https://
 Vous pouvez utiliser le terminal pour exécuter vos programmes python.
 
 {% faire %}
-Ouvrez ou refaite [le projet d'introduction vscode et python](../python){.interne}
+Ouvrez ou refaite [le projet d'introduction vscode et python](../python)
 {% endfaire %}
 
-Remarquez que lorsque [vous exécutez le code](../éditeur-vscode/python/#exécuter-programme){.interne}, vscode exécute une ligne de commande dans le terminal :
+Remarquez que lorsque [vous exécutez le code](../éditeur-vscode/python/#exécuter-programme), vscode exécute une ligne de commande dans le terminal :
 
 ```txt
 <nom du programme python> <fichier à exécuter>
@@ -62,7 +62,7 @@ Déterminer votre `nom-du-programme-python`, puis exécutez le dans un autre ter
 
 ![interpréteur](python-interpreteur.png)
 
-Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)) :
+Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande){.externe}) :
 
 {% faire %}
 Tapez :
@@ -98,4 +98,4 @@ Exécutez le fichier `main.py`{.language-} via le terminal en respectant la form
 
 ## Palette de commande
 
-Si vous tapez `>terminal` dans [la palette de commande](../éditeur-vscode/prise-en-main#palette-de-commande){.interne}, vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : _Open New External Terminal_ qui ouvre un terminal dans le dossier de votre projet.
+Si vous tapez `>terminal` dans [la palette de commande](../éditeur-vscode/prise-en-main#palette-de-commande), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : _Open New External Terminal_ qui ouvre un terminal dans le dossier de votre projet.

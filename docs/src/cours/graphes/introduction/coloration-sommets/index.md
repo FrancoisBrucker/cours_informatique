@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[cours sur la coloration](https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf)
+[cours sur la coloration](https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf){.externe}
 {% endlien %}
 
 Commençons par définir ce que l'on cherche à faire :
@@ -33,7 +33,7 @@ Si un graphe $G$ admet une **_$k$-coloration_** de ses sommets, il admet égalem
 Il suffit de remplacer une des couleurs par plusieurs autres.
 {% enddetails %}
 
-Notez que l'on a déjà vu un problème de coloration. En effet [les nombres de Ramsey](../cliques-stables/#ramsey){.interne} correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.
+Notez que l'on a déjà vu un problème de coloration. En effet [les nombres de Ramsey](../cliques-stables/#ramsey) correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.
 
 ## Problème
 
@@ -100,7 +100,7 @@ $$
 </div>
 {% endnote %}
 {% info %}
-Pour un graphe $G$, $\omega(G)$ est [la taille de sa plus grande clique](../cliques-stables/#définition-notation-clique-stable-maximum){.interne}.
+Pour un graphe $G$, $\omega(G)$ est [la taille de sa plus grande clique](../cliques-stables/#définition-notation-clique-stable-maximum).
 {% endinfo %}
 
 
@@ -227,7 +227,7 @@ On en conclut donc que le graphe $G = (V_1 \cup V_2 \cup (\cup_j V_j), E \cup (\
 
 {% enddetails %}
 
-La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, [Le gadget utilisé](https://fr.wikipedia.org/wiki/Gadget_(informatique)) n'étant pas trivial. Montrons ce qu'il donne sur [notre exemple fil rouge des réduction depuis 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} :
+La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, [Le gadget utilisé](https://fr.wikipedia.org/wiki/Gadget_(informatique)){.externe} n'étant pas trivial. Montrons ce qu'il donne sur [notre exemple fil rouge des réduction depuis 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple) :
 
 <div>
 $$
@@ -257,7 +257,7 @@ Le problème de la 2-colorabilité définit une classe très importante de graph
 <span id="définition-biparti"></span>
 
 {% note2 "**Définition**" %}
-Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#définition-stable){.interne}.
+Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#définition-stable).
 {% endnote2  %}
 
 Par exemple le graphe suivant :
@@ -345,7 +345,7 @@ Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.
 {% endnote %}
 
 
-Cette alternance de couleur est appelé [chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain) et est un outil très puissant en coloration de graphe.
+Cette alternance de couleur est appelé [chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain){.externe} et est un outil très puissant en coloration de graphe.
 
 Enfin l'algorithme nous donne une caractérisation des graphes bi-partis :
 
@@ -367,8 +367,8 @@ Les graphes bi-parti sont une classe de graphes très générale. On les retrouv
 
 {% lien %}
 
-- [Algorithme glouton](https://fr.wikipedia.org/wiki/Coloration_gloutonne)
-- [Algorithme glouton en action](https://www.youtube.com/watch?v=L2csXWQMsNg)
+- [Algorithme glouton](https://fr.wikipedia.org/wiki/Coloration_gloutonne){.externe}
+- [Algorithme glouton en action](https://www.youtube.com/watch?v=L2csXWQMsNg){.externe}
 
 {% endlien %}
 
@@ -448,7 +448,7 @@ Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles im
 ### Algorithme de Welch-Powel
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell>
+<https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell>{.externe}
 {% endlien %}
 
 L'algorithme de Welch-Powel choisi pour l'ordre celui du nombre de degré décroissants. Avec cet ordre on cherche à minimiser $\min(\{\delta(v_i), i-1\}$ : 
@@ -474,7 +474,7 @@ On prend $C_6$ et comme tous les sommets ont même degré on peut les prendre da
 ### Algorithme DSATUR
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/DSATUR>
+<https://fr.wikipedia.org/wiki/DSATUR>{.externe}
 {% endlien %}
 
 L'algorithme DSATUR est une optimisation de l'algorithme de Welch-Powel. Il choisi à chaque étape le sommet le plus contraint.
@@ -504,7 +504,7 @@ Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger
 Pour un graphe donné, trouver le pire nombre de couleur que va donner l'algorithme glouton est NP-difficile.
 {% endnote  %}
 {% info %}
-Les pires nombre de couleurs sont appelé  les ["_grundy numbers_"](https://en.wikipedia.org/wiki/Grundy_number).
+Les pires nombre de couleurs sont appelé  les ["_grundy numbers_"](https://en.wikipedia.org/wiki/Grundy_number){.externe}.
 {% endinfo %}
 
 ## Coloration par composition de graphes
@@ -521,7 +521,7 @@ En coloriant chaque partie connexe $G_i$ avec des entiers de 1 à $\chi(G_i)$, o
 
 Cet proposition toute simple montre que l'on peut parfois utiliser des colorations de sous-graphes pour trouver une solution sur le graphe tout entier.
 
-Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski) est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !
+Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski){.externe} est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !
 
 {% note2 "**Définition**" %}
 **_Les graphes de Mycielski_**, notés $M_k = (V_k, E_k)$ pour tous $k\geq 2$ sont définis récursivement tels que $M_2 = (\\{u, v\\}, \\{uv \\})$ est le graphe complet à 2 sommets et $M_{k+1} = (V_{k+1}, E_{k+1})$ :
@@ -779,7 +779,7 @@ Pour finir, la composition $\times$ des graphes (le produit tensoriel) a fait l'
 {% lien %}
 Conjecture de Hedetniemi :
 
-<https://www.youtube.com/watch?v=Tnu_Ws7Llo4> et <https://arxiv.org/pdf/1905.02167>
+<https://www.youtube.com/watch?v=Tnu_Ws7Llo4>{.externe} et <https://arxiv.org/pdf/1905.02167>{.externe}
 
 {% endlien %}
 
@@ -792,23 +792,23 @@ Cette modélisation est très pratique lorsque l'on a des ressources partagées 
 ### Résoudre des sudoku
 
 {% lien %}
-[le graphe du sudoku](https://fr.wikipedia.org/wiki/Graphe_du_sudoku)
+[le graphe du sudoku](https://fr.wikipedia.org/wiki/Graphe_du_sudoku){.externe}
 {% endlien %}
 
 ### Faire des plans de table
 
 > TBD ou résoudre des problèmes d'emploi du temps.
-> p45 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>
+> p45 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>{.externe}
 
 ### Optimiser la compilation de programmes
 
-> p4 <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
-> et p49 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>
+> p4 <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>{.externe}
+> et p49 <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>{.externe}
 
 ### Attention
 
 > TBD à ne pas tout modéliser par des couleurs.
-> à 5min45 <https://www.youtube.com/watch?v=y4RAYQjKb5Y>
+> à 5min45 <https://www.youtube.com/watch?v=y4RAYQjKb5Y>{.externe}
 >
 > On le verra le problème général de la coloration est NP-complet donc ne modélisez pas par un problème NP-complet un problème simple. Les taxis, on l'a vu se résolvent facilement par un algorithme glouton !
 > Ca arrive plus souvent qu'pon ne le pense, doc faite attention lorsque vous modélisez votre problème : essayez d'être le plus précis possible.

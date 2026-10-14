@@ -13,17 +13,17 @@ eleventyComputed:
 
 
 1. Système
-   1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
-   2. [Système d'exploitation](./système-exploitation){.interne}
-   3. [Structures de données utiles](./structures-données){.interne} et [Structures de données système](./structures-données-système){.interne}
+   1. [Architecture d'un ordinateur](./architecture-ordinateur)
+   2. [Système d'exploitation](./système-exploitation)
+   3. [Structures de données utiles](./structures-données) et [Structures de données système](./structures-données-système)
    4. [concurrence](./concurrence) et 
 2. Langages
-    1. [langage **C**](./langage-c){.interne}
+    1. [langage **C**](./langage-c)
     2. assembleur
     3. ABI
 3. Gestion des fichiers
-   1. [Fichiers en **C**](fichiers-C){.interne}
-   2. [Memory mapping](memory-mapping){.interne}
+   1. [Fichiers en **C**](fichiers-C)
+   2. [Memory mapping](memory-mapping)
 4. Gestion des process
    1. signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal
    2. [fork](./fork)

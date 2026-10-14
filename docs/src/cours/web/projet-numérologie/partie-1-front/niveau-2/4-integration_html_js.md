@@ -52,7 +52,7 @@ Jouer avec la touche entrée, est peut-être un peu compliqué. On va donc ajout
 ## Tache 1 : cliquer sur le bouton
 
 {% note %}
-On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-1){.interne}.
+On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-1).
 {% endnote %}
 
 * [X] associer un chiffre à un nom
@@ -106,7 +106,7 @@ Puis occupons nous en, car c'est nécessaire à la suite.
 * [X] utiliser le code `numérologie.js`{.fichier} dans le html
 
 {% note %}
-On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-2){.interne}.
+On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-2).
 {% endnote %}
 
 ## <span id="tache-3"></span> Tâche 3 : modification du html
@@ -127,7 +127,7 @@ On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-
 * [X] ~~utiliser le code `numérologie.js`{.fichier} dans le html~~
 
 {% note %}
-On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-3){.interne}.
+On procède comme pour le [niveau 1](../../niveau-1/4-integration_html_js#tache-3).
 {% endnote %}
 
 ## Tâche 3.5 : la touche entrée

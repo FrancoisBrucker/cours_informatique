@@ -232,7 +232,7 @@ class Panier:
 
 #### Rendre le stock non mutable.
 
-On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
+On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python){.externe} qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
 
 ```python
 class Panier:
@@ -301,6 +301,6 @@ def test_supprime_dans_panier():
 ## Code Python de la classe Panier
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code?filename=projet-panier)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code?filename=projet-panier){.externe}
 {% endlien %}

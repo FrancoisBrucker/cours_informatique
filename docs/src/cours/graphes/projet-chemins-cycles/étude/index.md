@@ -17,7 +17,7 @@ Les algorithmes présentés sont de plus pas forcément les meilleurs en terme d
 
 Le problème que nous voulons résoudre est la création d'un réseau ferré. On reprend les notations utilisées lors de la partie consacrée à la programmation dynamique :
 {% aller %}
-[Données du réseau ferré](/cours/algorithmie/programmation-dynamique/principe/#données){.interne}
+[Données du réseau ferré](/cours/algorithmie/programmation-dynamique/principe/#données)
 {% endaller %}
 
 Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.
@@ -51,7 +51,7 @@ Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nou
 
 ![100 villes](100_points.png)
 {% details "code python" %}
-Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire){.interne} :
+Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire) :
 
 ```python
 import random
@@ -104,7 +104,7 @@ plt.show()
 Pour ce qui va suivre, une hypothèse souvent utilisée est :
 
 {% note %}
-L'ensemble des points est en [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale), c'est à dire que **3 points ne sont jamais alignés**.
+L'ensemble des points est en [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale){.externe}, c'est à dire que **3 points ne sont jamais alignés**.
 {% endnote %}
 
 Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nulle (si on tire au hasard des coordonnées réelles aux points), et – même si ça arrivait – il suffirait de déplacer un des trois points d'epsilon pour que ça n'arrive plus.
@@ -128,7 +128,7 @@ Un réseau ferré de villes est **_connexe_** si quelque soient deux villes $x$ 
 
 On reprend la relation $C$ du deuxième exemple de la partie consacrée à la programmation dynamique :
 {% aller %}
-[La relation *chemin*](/cours/algorithmie/programmation-dynamique/principe/#relation-C){.interne}
+[La relation *chemin*](/cours/algorithmie/programmation-dynamique/principe/#relation-C)
 {% endaller %}
 
 Le fait que la relation *chemin*  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).
@@ -258,7 +258,7 @@ L'analyse préliminaire précédente nous permet d'aborder sereinement ce probl�
 
 Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.
 
-Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal) :
+Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal){.externe} :
 
 ```text#
 pour chaque ville v : R(v) = v
@@ -281,10 +281,10 @@ Pour nos 100 villes, on trouve :
 
 On suppose que l'algorithme de Kruskal nous rend une liste `tronçons`{.language-} dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.
 
-Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la [fonction `plot`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html).
+Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la [fonction `plot`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html){.externe}.
 
 {% info %}
-On en a aussi profité pour changer de couleur en utilisant [cette documentation](https://matplotlib.org/stable/gallery/color/named_colors.html)
+On en a aussi profité pour changer de couleur en utilisant [cette documentation](https://matplotlib.org/stable/gallery/color/named_colors.html){.externe}
 {% endinfo %}
 
 ```python
@@ -407,7 +407,7 @@ Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution o
 
 ![croisement](./croisement-segment.png)
 
-Avec $uxvy$ qui forme un [quadrilatère](https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re) convexe.
+Avec $uxvy$ qui forme un [quadrilatère](https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re){.externe} convexe.
 
 En supprimant le segment $(x, y)$ du réseau on déconnecte $x$ de $y$. Les deux villes $u$ et $v$ se retrouvent alors dans la même composante connexe, disons celle de $y$. En supprimant ensuite le segment $(u, v)$ on déconnecte $u$ de $v$ et on peut supposer sans perte de généralité que $y$ se retrouve dans la composante connexe de $v$.
 
@@ -427,10 +427,10 @@ Le quadrilatère $uxvy$ étant convexe, on a que $d(x, y) + d(u, v) > d(x, v) + 
 
 Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.
 
-L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur). Il est très efficace et utilisé dans de nombreuses occasions.
+L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur){.externe}. Il est très efficace et utilisé dans de nombreuses occasions.
 
 {% exercice %}
-En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.
+En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking){.externe} (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.
 
 Cet algorithme doit être récursif. Il doit parcourir toutes les tronçons et se relancer dès qu'il trouve un tronçon permettant de progresser, c'est à dire un tronçon dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.
 
@@ -578,7 +578,7 @@ Le réseau ferré de coût de construction minimum est parfait pour relier les v
 
 L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.
 
-Ce problème est cependant souvent vu sous un autre angle, celui d'un [voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) voulant visiter toutes les villes :
+Ce problème est cependant souvent vu sous un autre angle, celui d'un [voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce){.externe} voulant visiter toutes les villes :
 
 {% note "**Problème du voyageur de commerce**" %}
 Étant donné un ensemble de villes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.
@@ -618,7 +618,7 @@ On va de plus considérer des cycles objectivement mauvais car ayant des croisem
 Un cycle optimal est composé de chemins optimaux.
 {% endnote %}
 
-Cette constatation nous incite à utiliser le principe de la [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.
+Cette constatation nous incite à utiliser le principe de la [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique){.externe} pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.
 
 Dans le cas de notre problème du voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$, on peut construire un algorithme de programmation dynamique en remarquant que :
 
@@ -700,7 +700,7 @@ La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2)
 
 {% enddetails %}
 
-Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexités/max-min/#n_factoriel){.interne}) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles ([$2^n$ est très petit devant $n!$](../complexités/max-min/#n_factoriel)) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
 
 {% info %}
 Trouver la solution optimale pour un ensemble de ville de 100 est impossible avec un unique ordinateur personnel. Nous ne sommes donc pas en mesure de donner le coût minimum pour notre exemple fil rouge.
@@ -708,7 +708,7 @@ Trouver la solution optimale pour un ensemble de ville de 100 est impossible ave
 
 ### Algorithme glouton
 
-Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet) (plus précisément NP-difficile, mais ne chipotons pas).
+Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet){.externe} (plus précisément NP-difficile, mais ne chipotons pas).
 
 Couramment, l'algorithme glouton utilisé pour approximer ce problème est :
 
@@ -754,7 +754,7 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 
 {% enddetails %}
 
-C'est l'idée sous-jacente de la méthode d'optimisation [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
+C'est l'idée sous-jacente de la méthode d'optimisation [2-opt](https://fr.wikipedia.org/wiki/2-opt){.externe} :
 
 1. trouver un cycle potentiel
 2. chercher un croisement et le supprimer
@@ -815,7 +815,7 @@ $$
 [1, 2, 3, 4, 5, 6]
 $$
 
-Remarquez que c'est l'[algorithme du parcours en profondeur](./#profondeur){.interne} qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.
+Remarquez que c'est l'[algorithme du parcours en profondeur](./#profondeur) qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.
 
 Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :
 
@@ -837,10 +837,10 @@ Ce qui après optimisation (100 passes) devient :
 
 ### Algorithme de Christofides
 
-L'[algorithme de Christofides](https://fr.wikipedia.org/wiki/Algorithme_de_Christofides) est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.
+L'[algorithme de Christofides](https://fr.wikipedia.org/wiki/Algorithme_de_Christofides){.externe} est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.
 
 C'est de plus la meilleure approximation connue. Son étude nécessite cependant des connaissance en théorie des graphes que nous n'avons (pour l'instant) pas.
 
 ## Autre parcours 
 
-> cycle bitonique exo 9 <https://wkerl.me/cours/ouv_td.pdf>
+> cycle bitonique exo 9 <https://wkerl.me/cours/ouv_td.pdf>{.externe}

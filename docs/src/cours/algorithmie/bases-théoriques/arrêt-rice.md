@@ -11,7 +11,7 @@ eleventyComputed:
 
 La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.
 
-[La définition d'un algorithme](../définition/#définition-règles-générales){.interne} stipule qu'un algorithme doit respecter 4 propriétés. Les 3 premières sont faciles à vérifier, il suffit que :
+[La définition d'un algorithme](../définition/#définition-règles-générales) stipule qu'un algorithme doit respecter 4 propriétés. Les 3 premières sont faciles à vérifier, il suffit que :
 
 - la description de chaque instruction et leurs enchaînements soient compréhensible s'il doit être exécuté par un humain
 - le code soit syntaxiquement correct s'il est écrit sous la forme d'un programme.
@@ -19,7 +19,7 @@ La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un ca
 Mais quand est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelque soit son entrée ? On verra que cette question est cruciale et... compliquée. Commençons par définir un algorithme qui ne fini pas forcément :
 
 {% note2 "**Définition**" %}
-On appelle **_programme_** un texte respectant les trois premières propriétés de [la définition d'un algorithme](../définition/#définition-règles-générales){.interne} :
+On appelle **_programme_** un texte respectant les trois premières propriétés de [la définition d'un algorithme](../définition/#définition-règles-générales) :
 
 1. il est constitué d'un **suite fini d'instructions**, chacune décrite avec **un nombre fini de symboles**
 2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
@@ -30,7 +30,7 @@ On appelle **_programme_** un texte respectant les trois premières propriétés
 C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujours se poser la question de la terminaison de votre programme.
 
 {% attention %}
-On va se placer ici, [sans perte de généralité](../définition/#définition-algorithme-canonique){.interne}, dans le cadre des programmes prenant en paramètre (au plus) un entier et rendant un entier (par défaut `0`).
+On va se placer ici, [sans perte de généralité](../définition/#définition-algorithme-canonique), dans le cadre des programmes prenant en paramètre (au plus) un entier et rendant un entier (par défaut `0`).
 
 Un algorithme est alors un programme qui s'arrête pour tout entier passé en paramètre.
 {% endattention %}
@@ -65,7 +65,7 @@ Programme :
 ```
 
 
-Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
+Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){.externe} :
 
 ```text
 Nom : syracuse
@@ -86,8 +86,8 @@ On ne sait pas (on a pas de démonstration) s'il s'arrête quelque soit $n$ ou p
 
 De nombreux travaux ont été fait pour connaître mieux ce problème. Vous pouvez allez jeter un coup d'œil aux liens suivant pour (beaucoup) plus d'informations :
 
-- <https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf>
-- <https://hal.science/hal-01593181v3/document>
+- <https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf>{.externe}
+- <https://hal.science/hal-01593181v3/document>{.externe}
 
 {% endlien %}
 
@@ -100,12 +100,12 @@ Le problème de l'arrêt d'un programme est donc une notion qui peut-être compl
 
 {% lien %}
 Un algorithme physique de division qui ne s'arrête pas tout le temps :
-[Une calculatrice ancienne tente de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg)
+[Une calculatrice ancienne tente de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg){.externe}
 {% endlien %}
 
 Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.
 
-Supposons que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le `stop`{.language-}. Il prend en paramètre un entier représentant un programme ([on sait qu'on peut le faire](../définition/#proposition-encodage-algorithme){.interne}):
+Supposons que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le `stop`{.language-}. Il prend en paramètre un entier représentant un programme ([on sait qu'on peut le faire](../définition/#proposition-encodage-algorithme)):
 
 <div id="algorithme-STOP"></div>
 
@@ -118,7 +118,7 @@ Sortie :
     rend 0 sinon
 ```
 
-Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide pas car si ce dernier ne s'arrête pas `stop`{.language-} ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est [Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing) lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est [le problème de l'arrêt de la machine de Turing](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt)) :
+Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide pas car si ce dernier ne s'arrête pas `stop`{.language-} ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est [Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing){.externe} lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est [le problème de l'arrêt de la machine de Turing](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt){.externe}) :
 
 {% note "**Théorème**" %}
 L'algorithme `stop`{.language-} n'existe pas.
@@ -154,7 +154,7 @@ Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'ar
 ## Que calcule un algorithme
 
 {% lien %}
-Cette partie est consacrée au [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice)
+Cette partie est consacrée au [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice){.externe}
 {% endlien %}
 
 S'il est impossible de savoir a priori si un programme s'arrête ou pas, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une _propriété_ donnée, et ce, quelque soit celle-ci.
@@ -175,7 +175,7 @@ La notion de propriété permet de rendre compte du sens des algorithmes, de ce 
 Par exemples :
 
 - l'ensemble des algorithmes calculant le double d'un entier passé en paramètre est une propriété :
-  - il existe des algorithme permettant de le faire (par exemple [cet algorithme](https://fr.wikipedia.org/wiki/Technique_de_l%27addition))
+  - il existe des algorithme permettant de le faire (par exemple [cet algorithme](https://fr.wikipedia.org/wiki/Technique_de_l%27addition){.externe})
   - il existe des algorithmes qui ne calculent pas le carré de leur entrée
 - l'ensemble des algorithmes de valeurs bornées par $K$ est une propriété :
   - l'algorithme constant rendant $K$ satisfait la propriété

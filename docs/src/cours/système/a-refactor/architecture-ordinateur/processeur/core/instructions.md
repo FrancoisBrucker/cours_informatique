@@ -15,8 +15,8 @@ eleventyComputed:
 
 Les instructions que peuvent exécuter un core vont dépendre de son modèle. Il existe deux grandes familles qui se distinguent par le choix des opérations qu'elles permettent :
 
-- [architecture CISC](https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu) (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.
-- [architecture RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit) (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en [pipeline](https://en.wikipedia.org/wiki/Classic_RISC_pipeline) permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.
+- [architecture CISC](https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu){.externe} (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.
+- [architecture RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit){.externe} (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en [pipeline](https://en.wikipedia.org/wiki/Classic_RISC_pipeline){.externe} permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.
 
 On s'accorde à dire que le RISC est plus rapide mais consomme plus que le RISC :
 
@@ -27,21 +27,21 @@ Les développement récents tendent à brouiller un peu ces différences, chaque
 
 De nombreuses personnes pensent que l'avenir est aux puces RISC et que leur utilisation dans les devices mobiles n'est que le début. Par exemple apple et ses nouvelles puces M pour toutes leurs machines, ou encore Angelina Jolie et sa phrase mythique :
 
-> [*"RISC architecture is gonna change everything"*](https://www.youtube.com/watch?v=yVo9_h3-zwQ) (Angelina Jolie parlant de son portable dans [Hackers (1995)](https://en.wikipedia.org/wiki/Hackers_(film))).
+> [*"RISC architecture is gonna change everything"*](https://www.youtube.com/watch?v=yVo9_h3-zwQ){.externe} (Angelina Jolie parlant de son portable dans [Hackers (1995)](https://en.wikipedia.org/wiki/Hackers_(film)){.externe}).
 
 {% aller %}
-[RISK vs CISC](https://www.youtube.com/watch?v=a4kgtygCZBc) et [ARM vs x86](https://www.youtube.com/watch?v=AADZo73yrq4). Et une comparaison avec le petit dernier [RISC-V](https://www.youtube.com/watch?v=Ps0JFsyX2fU)
+[RISK vs CISC](https://www.youtube.com/watch?v=a4kgtygCZBc){.externe} et [ARM vs x86](https://www.youtube.com/watch?v=AADZo73yrq4){.externe}. Et une comparaison avec le petit dernier [RISC-V](https://www.youtube.com/watch?v=Ps0JFsyX2fU){.externe}
 {% endaller %}
 
-Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture [x86-64](https://en.wikipedia.org/wiki/X86-64), donc CISC car la majorité des pc en sont équipés.
+Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture [x86-64](https://en.wikipedia.org/wiki/X86-64){.externe}, donc CISC car la majorité des pc en sont équipés.
 
 {% lien %}
-[Instructions x86_64](https://www.felixcloutier.com/x86/)
+[Instructions x86_64](https://www.felixcloutier.com/x86/){.externe}
 {% endlien %}
 
 ## Registres
 
-Les [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur) sont la mémoire dont dispose un core. Cette mémoire est très rapide, donc très chère : il n'y en a que peu.
+Les [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur){.externe} sont la mémoire dont dispose un core. Cette mémoire est très rapide, donc très chère : il n'y en a que peu.
 
 Un registre est un espace mémoire de 64b ou le core stocke les paramètres et les résultats de ses instructions.
 
@@ -70,10 +70,10 @@ ADD RAX, [RDX]
 Qui va ajouter la valeur (64bits) à l'adresse du registre `RDX` à la valeur du registre `RAX` puis placer le résultat dans le registre `RAX`.
 
 {% lien %}
-Toutes les façons de faire ADD : [la commande ADD](https://www.felixcloutier.com/x86/add).
+Toutes les façons de faire ADD : [la commande ADD](https://www.felixcloutier.com/x86/add){.externe}.
 {% endlien %}
 
-Il y a un petit nombre de [registres x86-64](https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture). Les registres 64b commencent par `R`.
+Il y a un petit nombre de [registres x86-64](https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture){.externe}. Les registres 64b commencent par `R`.
 
 ### Registres généraux
 
@@ -116,13 +116,13 @@ Deux registres de gestion de la pile :
 
 ### Registre d'états (flag)
 
-Le registre [RFLAGS](https://en.wikipedia.org/wiki/FLAGS_register) est un registre d'états qui permet de rendre compte d'*états* arrivant en plus de l'instruction.
+Le registre [RFLAGS](https://en.wikipedia.org/wiki/FLAGS_register){.externe} est un registre d'états qui permet de rendre compte d'*états* arrivant en plus de l'instruction.
 
-C'est une structure de donnée de type [bit field](https://en.wikipedia.org/wiki/Bit_field) : chaque état est codé par un bit du registre : si l'état est présent ce bit vaut 1, sinon il vaut 0.
+C'est une structure de donnée de type [bit field](https://en.wikipedia.org/wiki/Bit_field){.externe} : chaque état est codé par un bit du registre : si l'état est présent ce bit vaut 1, sinon il vaut 0.
 
-Par exemple si le résultat de l'opération précédente vaut 0, le 6ème bit de ce registre vaut 1 (c'est le [zéro flag](https://en.wikipedia.org/wiki/Zero_flag)).
+Par exemple si le résultat de l'opération précédente vaut 0, le 6ème bit de ce registre vaut 1 (c'est le [zéro flag](https://en.wikipedia.org/wiki/Zero_flag){.externe}).
 
-Ces états permettent de faire les instructions if/then/else en laguage machine en utilisant des [instructions de saut conditionnels](https://www.felixcloutier.com/x86/jcc).
+Ces états permettent de faire les instructions if/then/else en laguage machine en utilisant des [instructions de saut conditionnels](https://www.felixcloutier.com/x86/jcc){.externe}.
 
 ### Autre registres
 
@@ -133,21 +133,21 @@ Il existe également des registres de segments :
 
 ## opcode
 
-Chaque instruction possède un code permettant de l'identifier de façon unique. On appelle ceci l'opcode. Il diffère non seulement pour chaque commande mais également pour chaque usage de la commande (chaque usage de la [commande ADD](https://www.felixcloutier.com/x86/add) aura un opcode différent).
+Chaque instruction possède un code permettant de l'identifier de façon unique. On appelle ceci l'opcode. Il diffère non seulement pour chaque commande mais également pour chaque usage de la commande (chaque usage de la [commande ADD](https://www.felixcloutier.com/x86/add){.externe} aura un opcode différent).
 
 Le passage d'une instruction assembleur à l'opcode n'est pas triviale :
 
 {% lien %}
 
-- [Construire l'opcode d'une instruction](https://wiki.osdev.org/X86-64_Instruction_Encoding)
-- liste de [toutes les instructions x86-64](http://ref.x86asm.net/)
+- [Construire l'opcode d'une instruction](https://wiki.osdev.org/X86-64_Instruction_Encoding){.externe}
+- liste de [toutes les instructions x86-64](http://ref.x86asm.net/){.externe}
 
 {% endlien %}
 
 Heureusement, il existe des site pour nous aider :
 
 {% faire %}
-Utilisez [ce site](https://defuse.ca/online-x86-assembler.htm) ci-après pour connaître l'opcode de l'instruction `ADD RAX, 42` :
+Utilisez [ce site](https://defuse.ca/online-x86-assembler.htm){.externe} ci-après pour connaître l'opcode de l'instruction `ADD RAX, 42` :
 
 Attention au fait qu'il faut que vous soyez en x64, RAX n'étant pas défini en 32bits.
 {% endfaire %}

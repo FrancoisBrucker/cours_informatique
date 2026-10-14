@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit [au format Markdown](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax). Pour que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
+Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit [au format Markdown](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax){.externe}. Pour que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
 
 ## Modification du fichier readme
 

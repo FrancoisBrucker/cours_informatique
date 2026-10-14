@@ -10,7 +10,7 @@ authors:
 ## Sujet 
 
 {% aller %}
-[Sujet](./sujet){.interne}
+[Sujet](./sujet)
 {% endaller %}
 
 ## Barême
@@ -49,5 +49,5 @@ Pour ceux qui ont travaillé sérieusement sans réussir, ne perdez pas espoir. 
 Le code est disponible là :
 
 {% aller %}
-[Code du corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-2/2048)
+[Code du corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-2/2048){.externe}
 {% endaller %}

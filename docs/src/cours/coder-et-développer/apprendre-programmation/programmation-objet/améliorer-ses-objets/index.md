@@ -12,7 +12,7 @@ eleventyComputed:
 Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur.
 
 {% lien %}
-[Code actuel de la classe Compteur](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
+[Code actuel de la classe Compteur](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur){.externe}
 {% endlien %}
 
 
@@ -87,7 +87,7 @@ Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, 
 
 ### Paramètre par défaut
 
-Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
+Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values){.externe}.
 
 En python cela donne (fichier `compteur.py`{.fichier}) :
 
@@ -358,7 +358,7 @@ Si vous ne savez pas si c'est l'attribut de classe ou d'objet que vous appelez v
 ### property
 
 {% lien %}
-<https://realpython.com/python-property/>
+<https://realpython.com/python-property/>{.externe}
 {% endlien %}
 
 Les attributs de classes ont un effet de bord sympathique en python qui permet d'utiliser des mutateurs et des accesseur comme si on accédais a un attribut. Rien de tel qu'un exemple pour comprendre. Considérez l'amélioration suivante du `Compteur`{.language-} :
@@ -466,7 +466,7 @@ def test_accesseur_mutateur():
 Pour rendre l'utilisation des objets pus agréable et intuitive, python va associer des méthodes spécifiques à des actions spécifiques. Ces méthodes sont appelées méthodes spéciales :
 
 {% note2 "**Définition**" %}
-**_Les méthodes spéciales_** de python se présentent sous la forme `__nom_de_la_méthode__`{.language-} et sont utilisés par python dans des cas spécifiques. [La documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names) les liste. Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).
+**_Les méthodes spéciales_** de python se présentent sous la forme `__nom_de_la_méthode__`{.language-} et sont utilisés par python dans des cas spécifiques. [La documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names){.externe} les liste. Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).
 {% endnote2 %}
 
 On a déjà vu une méthode spéciale : `__init__`{.language-} qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.
@@ -489,7 +489,7 @@ Vous devriez obtenir quelque chose comme :
 
 Dans les projets dés et cartes on a créé une méthode `texte()`{.language-} qui rendait une chaîne de caractères pour ce genre de choses, mais python offre une possibilité plus simple en utilisant méthodes spéciales.
 
-Ainsi, La méthode spéciale `__str__`{.language-} est utilisée lorsque l'on cherche à transformer un objet en chaîne de caractère avec [la fonction `str()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#str).
+Ainsi, La méthode spéciale `__str__`{.language-} est utilisée lorsque l'on cherche à transformer un objet en chaîne de caractère avec [la fonction `str()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#str){.externe}.
 
 Ainsi si on défini :
 
@@ -527,7 +527,7 @@ La méthode `__str__`{.language-} permet :
 ### <span id="repr"></span>Représentation de l'objet
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/3/library/functions.html#repr>
+<https://docs.python.org/3/library/functions.html#repr>{.externe}
 {% endlien %}
 
 Si la représentation sous forme d'un texte permet à un utilisateur de "lire" l'objet, plusieurs objets de pas différents vont avoir la même représentation. Pour associer à chaque objet une représentation sans ambiguïté et destiné et destiné aux développeurs python fourni la fonction `repr`{.language} qui utilise la méthode spéciale `__repr__`{.language-}.
@@ -539,7 +539,7 @@ La méthode `__repr__`{.language-} permet :
 - on a coutume de représenter une chaîne de caractère permettant de recréer l'appel au constructeur permettant de recréer l'objet.
 {% endattention2 %}
 
-C'est ce que l'on appelle [sérialisation](https://en.wikipedia.org/wiki/Serialization) :
+C'est ce que l'on appelle [sérialisation](https://en.wikipedia.org/wiki/Serialization){.externe} :
 
 {% note2 "**Définition**" %}
 La sérialisation d'un objet est sa transformation sous une forme textuelle permettant de le reconstituer.
@@ -637,7 +637,7 @@ class Compteur:
 ```
 
 {% lien %}
-Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__).
+Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__){.externe}.
 
 {% endlien %}
 
@@ -663,6 +663,6 @@ def test_comparaisons():
 Notre compteur a bien évolué depuis sa première mouture. Il permet maintenant d'être utilisé de façon bien plus intuitive.
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur?filename=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur?filename=projet-compteur){.externe}
 {% endlien %}

@@ -11,24 +11,24 @@ eleventyComputed:
 ---
 
 <!-- 
-> TBD <https://www.youtube.com/watch?v=icdyZN_ORYU>
-> masque cidr : <https://fr.wikipedia.org/wiki/Sous-r%C3%A9seau>
+> TBD <https://www.youtube.com/watch?v=icdyZN_ORYU>{.externe}
+> masque cidr : <https://fr.wikipedia.org/wiki/Sous-r%C3%A9seau>{.externe}
  -->
 
 
 {% lien %}
 
-- [Internet Protocol (IP)](https://fr.wikipedia.org/wiki/Internet_Protocol)
-- nombre d'adresses : <https://xkcd.com/865/>
-- [ipv4 vers ipv6 (chiffres ARCEP)](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html)
+- [Internet Protocol (IP)](https://fr.wikipedia.org/wiki/Internet_Protocol){.externe}
+- nombre d'adresses : <https://xkcd.com/865/>{.externe}
+- [ipv4 vers ipv6 (chiffres ARCEP)](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html){.externe}
 {% endlien %}
 
 ## Adresse IP
 
 {% lien %}
 
-- [adresse IP](https://fr.wikipedia.org/wiki/Adresse_IPv6)
-- [RFC IPv6](https://www.rfc-editor.org/rfc/rfc4291)
+- [adresse IP](https://fr.wikipedia.org/wiki/Adresse_IPv6){.externe}
+- [RFC IPv6](https://www.rfc-editor.org/rfc/rfc4291){.externe}
 
 {% endlien %}
 
@@ -58,7 +58,7 @@ On a du changer de version d'adressage car on est arrivé à court d'adresse dis
 
 Nous allons essentiellement parler ici de IPv6, la plupart des concepts étant identiques en IPv4 et IPv6.
 
-On fait parfois suivre l'adresse par un `/x` où `x` est un nombre entre 1 et 128. Ce type d'adresse représente un réseau et sont pour cela appelé [masque de sous réseau](https://fr.wikipedia.org/wiki/Adresse_IPv6#Notation_des_masques_de_sous-r%C3%A9seau). Par exemple (encore une fois repris de Wikipédia) :
+On fait parfois suivre l'adresse par un `/x` où `x` est un nombre entre 1 et 128. Ce type d'adresse représente un réseau et sont pour cela appelé [masque de sous réseau](https://fr.wikipedia.org/wiki/Adresse_IPv6#Notation_des_masques_de_sous-r%C3%A9seau){.externe}. Par exemple (encore une fois repris de Wikipédia) :
 
 ```
 2001:db8:1:1a0::/59
@@ -75,7 +75,7 @@ Elle encode donc au maximum $2^{69}$ machines possibles pour ce sous-réseau.
 Le préfixe 2001:db8::/32 est un préfixe IPv6 spécial utilisé spécifiquement dans les exemples de documentation.
 {% endinfo %}
 
-La commande [ip](https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf) permet d'identifier toutes les adresses IP, par exemple :
+La commande [ip](https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf){.externe} permet d'identifier toutes les adresses IP, par exemple :
 
 ```shell
 $ ip addr show dev en0
@@ -98,14 +98,14 @@ On y voit :
 > There appear to be four different types of IPv6 addresses:
 >
 > Main address, using your ISP prefix + derivation of your network-interface MAC-address.
-> [Temporary addresses](https://www.rfc-editor.org/rfc/rfc4941), based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
+> [Temporary addresses](https://www.rfc-editor.org/rfc/rfc4941){.externe}, based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
 > Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)
 > Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)
 
 Ceci signifie que l'adresse IP de ma machine est `2001:660:5404:f232::/64` c'est à dire que j'ai en fait $2^{64}$ adresses possibles et que mon ordinateur a choisi d'utiliser `2001:660:5404:f232:a4b7:59d7:f780:855c`.
 
 {% info %}
-Il y a tellement d'adresse IPv6 de disponibles (en tous cas, [pour l'instant...](https://xkcd.com/865/)) qu'on assigne par défaut un réseau en `/64` à toute machine. Quite à elle d'en choisir une (ou plusieurs) parmi toute ces possibilités.
+Il y a tellement d'adresse IPv6 de disponibles (en tous cas, [pour l'instant...](https://xkcd.com/865/){.externe}) qu'on assigne par défaut un réseau en `/64` à toute machine. Quite à elle d'en choisir une (ou plusieurs) parmi toute ces possibilités.
 {% endinfo %}
 
 On peut trouver une machine sur le réseau en la _pinguant_. On peut ainsi d'une autre machine de l'internet trouver ma machine en :
@@ -127,10 +127,10 @@ Il existe également la version IPv4 :
 ping 172.18.32.190
 ```
 
-Attention, contrairement à IPv6, IPv4 a de nombreux [réseaux locaux](https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9), inaccessible de l'internet. Mon adresse IPv4 en fait parti. Ces réseaux locaux existent de part la pénurie des adresse Ipv4, ils n'ont plus de raison d'être en IPv6.
+Attention, contrairement à IPv6, IPv4 a de nombreux [réseaux locaux](https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9){.externe}, inaccessible de l'internet. Mon adresse IPv4 en fait parti. Ces réseaux locaux existent de part la pénurie des adresse Ipv4, ils n'ont plus de raison d'être en IPv6.
 
 {% info %}
-Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol), qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les [attaques DDos](https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/)
+Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol){.externe}, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les [attaques DDos](https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/){.externe}
 
 {% endinfo %}
 
@@ -153,7 +153,7 @@ A----1---2---4----E
      B   C
 ```
 
-Pour envoyer un paquet de l'ordinateur A à E il y a plusieurs chemins, par exemple A-1-2-4-E ou encore A-1-3-2-4-E. Savoir à quel route aller, se fait via une [table de routage](https://en.wikipedia.org/wiki/Routing_table) qui determine le prochain routeur
+Pour envoyer un paquet de l'ordinateur A à E il y a plusieurs chemins, par exemple A-1-2-4-E ou encore A-1-3-2-4-E. Savoir à quel route aller, se fait via une [table de routage](https://en.wikipedia.org/wiki/Routing_table){.externe} qui determine le prochain routeur
 
 Par exemple la table de routage de A ressemble à :
 
@@ -190,7 +190,7 @@ On peut voir la table de routage de sa machine avec la commande :
 - `ip route show` pour le routage IPv4, qui est plus simple
 - `ip -6 route show` pour le routage IPv6
 
-Cette table est également accessible via la commande [netstat](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat) :
+Cette table est également accessible via la commande [netstat](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat){.externe} :
 
 ```shell
 netstat -r
@@ -222,7 +222,7 @@ Ce réseau extérieur est de notre provider internet, et plus vraisemblablement 
 
 ### Réseau ad-hoc
 
-Un réseau ad-hoc est un réseau qui s'auto-configure et ne repose sur aucune unité centralisée. C'est pour ça que le réseau initial ([ARPANET](https://fr.wikipedia.org/wiki/ARPANET)) a été crée. Il devait survivre à une attaque nucléaire qui détruirait tout réseau centralisé.
+Un réseau ad-hoc est un réseau qui s'auto-configure et ne repose sur aucune unité centralisée. C'est pour ça que le réseau initial ([ARPANET](https://fr.wikipedia.org/wiki/ARPANET){.externe}) a été crée. Il devait survivre à une attaque nucléaire qui détruirait tout réseau centralisé.
 
 Le protocole RIP de configuration des tables de routage en est issu.
 
@@ -238,7 +238,7 @@ Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet 
 
 #### Area et AS
 
-Le réseau géré par notre provider est une région (area.1) relié à un _backbone_ reliant un ensemble de région formant une **_région autonome (Autonomous System)_** d'internet. Disons, l'internet Français. Une [région autonome](https://fr.wikipedia.org/wiki/Autonomous_System) est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :
+Le réseau géré par notre provider est une région (area.1) relié à un _backbone_ reliant un ensemble de région formant une **_région autonome (Autonomous System)_** d'internet. Disons, l'internet Français. Une [région autonome](https://fr.wikipedia.org/wiki/Autonomous_System){.externe} est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :
 
 ```
   LAN                            ...
@@ -268,7 +268,7 @@ L'accès à chaque aire et sous-aire est faite via un routeur qui autorise les e
 
 #### BGP
 
-Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers [BGP](https://fr.wikipedia.org/wiki/Border_Gateway_Protocol)
+Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers [BGP](https://fr.wikipedia.org/wiki/Border_Gateway_Protocol){.externe}
 Impossible de tout garder dans les réseaux actuel. On segmente le réseau en régions autonomes liées par des routeurs spécialisés. Routeurs BGP (O) entre AS :
 
 ```
@@ -291,22 +291,22 @@ Ces différentes structuration de routage assurent une fluidité du routage sans
 
 ## Mise à jour des tables de routage
 
-mise à jour des table grace à des [protocole de routage](https://en.wikipedia.org/wiki/Routing_protocol) :
+mise à jour des table grace à des [protocole de routage](https://en.wikipedia.org/wiki/Routing_protocol){.externe} :
 
 ### Protocole RIP
 
-- réseau petit ou très changeant : [RIP](https://en.wikipedia.org/wiki/Routing_Information_Protocol)
+- réseau petit ou très changeant : [RIP](https://en.wikipedia.org/wiki/Routing_Information_Protocol){.externe}
 - métrique du hop.
 
-Chemin calculé avec . Toutes les 30s, chaque routeur reçoit la table de routage de sous ses voisins (il envoie également la sienne à ses voisins) avec la métrique du nombre de hop. Il peut alors mettre à jour sa propre table en utilisant l'algorithme de [Bellman ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford).
+Chemin calculé avec . Toutes les 30s, chaque routeur reçoit la table de routage de sous ses voisins (il envoie également la sienne à ses voisins) avec la métrique du nombre de hop. Il peut alors mettre à jour sa propre table en utilisant l'algorithme de [Bellman ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford){.externe}.
 
 ### Protocole OSPF
 
-- moyen (autonomous system) : [OSPF](https://fr.wikipedia.org/wiki/Open_Shortest_Path_First)
+- moyen (autonomous system) : [OSPF](https://fr.wikipedia.org/wiki/Open_Shortest_Path_First){.externe}
 - autre métrique que hop
 
 Dijkstra
 
 ### Protocole BGP
 
-Relie des gros réseaux entre eux : [BGP](https://fr.wikipedia.org/wiki/Border_Gateway_Protocol)
+Relie des gros réseaux entre eux : [BGP](https://fr.wikipedia.org/wiki/Border_Gateway_Protocol){.externe}

@@ -12,7 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On a vue que le modèle de la machine de Turing permet de créer des programmes ayant les mêmes structures de contrôle que le [pseudo-assembleur](../../../exécuter-code/pseudo-assembleur/){.interne}. C'est au niveau de la gestion de la mémoire que le modèle de la machine de Turing semble moins complet :
+On a vue que le modèle de la machine de Turing permet de créer des programmes ayant les mêmes structures de contrôle que le [pseudo-assembleur](../../../exécuter-code/pseudo-assembleur/). C'est au niveau de la gestion de la mémoire que le modèle de la machine de Turing semble moins complet :
 
 - on ne peut lire/écrire qu'au niveau du curseur qui ne peut se déplacer que d'une case par instruction
 - il n'y a pas de registre
@@ -191,7 +191,7 @@ Les différentes étapes ci-après permettent de simuler l'avancement de la mach
 
 Après ces 6 méta-étapes, la machine est de nouveau dans un état stable et peut recommencer son cycle.
 
-Les étapes précédentes peuvent être écrite en utilisant le formalisme des [compositions de machine](../composition){.interne}. Ceci fonctionne car $k$ est une constante et le nombre d'états fini. On peut donc utiliser les procédures qui génèrent autant d'états que nécessaire.
+Les étapes précédentes peuvent être écrite en utilisant le formalisme des [compositions de machine](../composition). Ceci fonctionne car $k$ est une constante et le nombre d'états fini. On peut donc utiliser les procédures qui génèrent autant d'états que nécessaire.
 
 ### Exemple
 

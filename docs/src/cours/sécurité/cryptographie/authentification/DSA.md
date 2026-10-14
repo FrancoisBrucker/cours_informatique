@@ -11,9 +11,9 @@ eleventyComputed:
 ---
 
 {% info %}
-DSA est une variante de [la méthode de signature ElGamal](https://en.wikipedia.org/wiki/ElGamal_encryption), qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.
+DSA est une variante de [la méthode de signature ElGamal](https://en.wikipedia.org/wiki/ElGamal_encryption){.externe}, qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.
 {% endinfo %}
 
-> TBD [DSA](https://fr.wikipedia.org/wiki/Digital_Signature_Algorithm)
-> problème du log discret et pas de la factorisation comme RSA. Rend cette méthode utilisable avec les courbes elliptiques : [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)
-> TBD <https://www.youtube.com/watch?v=_gmR5sYGUgs>
+> TBD [DSA](https://fr.wikipedia.org/wiki/Digital_Signature_Algorithm){.externe}
+> problème du log discret et pas de la factorisation comme RSA. Rend cette méthode utilisable avec les courbes elliptiques : [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm){.externe}
+> TBD <https://www.youtube.com/watch?v=_gmR5sYGUgs>{.externe}

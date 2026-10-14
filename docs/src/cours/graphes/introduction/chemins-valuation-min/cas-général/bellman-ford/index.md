@@ -15,7 +15,7 @@ eleventyComputed:
 
 Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre deux données (le plus rapide, le moins cher, ...). Nous allons ici utiliser comme données un réseau ferré et utiliser la méthode introduite par Bellman lui-même et qui à donné le nom à l'algorithme.
 
-Cet algorithme, appelé [_"algorithme de Bellman-Ford"_](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford), est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.
+Cet algorithme, appelé [_"algorithme de Bellman-Ford"_](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford){.externe}, est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.
 
 ### <span id="données"></span>Données
 
@@ -152,7 +152,7 @@ L'algorithme rend le tableau de temps intermédiaires qui contient le temps mini
 
 {% info %}
 
-- On a utilisé [`inf`{.language-} qui représente l'infini](https://docs.python.org/fr/3/library/math.html#math.inf)
+- On a utilisé [`inf`{.language-} qui représente l'infini](https://docs.python.org/fr/3/library/math.html#math.inf){.externe}
 - l'utilisation de $D$ permet d'éviter les effets de bord
 
 {% endinfo %}
@@ -187,7 +187,7 @@ L'intérêt de cette formalisation est qu'elle montre que la relation des chemin
 1. en considérant la relation $T$ des tronçons ($C[x][y]$ s'il existe un tronçon entre les gares $x$ et $y$)
 2. en fermant cette relation par transitivité
 
-À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall)) montre qu'on peut le faire très simplement :
+À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall){.externe}) montre qu'on peut le faire très simplement :
 
 {% exercice %}
 Soit $G = \\{ g_1, \dots g_n \\}$ les gares d'un réseau ferré et $T$ sa relation tronçon.
@@ -314,7 +314,7 @@ return M
 Tout comme l'algorithme de Bellman-Ford, on peut On facilement modifier l'algorithme précédent pour qu'il conserve le chemin permettant de réaliser le temps de trajet minium.
 {% endinfo %}
 
-L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connu sous le nom d'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall). Mais se pose alors la question : 
+L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connu sous le nom d'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall){.externe}. Mais se pose alors la question : 
 
 
 {% exercice %}

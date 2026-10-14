@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons ajouter des tests unitaires à notre projet. Il existe de [nombreuses bibliothèques](https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/) de tests en javascript. Nous allons nous focaliser sur [jest](https://jestjs.io/fr/) efficace et populaire.
+Nous allons ajouter des tests unitaires à notre projet. Il existe de [nombreuses bibliothèques](https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/){.externe} de tests en javascript. Nous allons nous focaliser sur [jest](https://jestjs.io/fr/){.externe} efficace et populaire.
 
 ## Installation
 
@@ -37,7 +37,7 @@ Une valeur a été ajoutée : `"devDependencies"` pour distinguer les dépendanc
 * `npm install` : toutes les dépendances (`"dependencies"` et `"devDependencies"`) seront installées
 * `npm install --production` : uniquement les dépendances `"dependencies"`  seront installées
 
-Voir [la documentation](https://docs.npmjs.com/cli/v7/commands/npm-install) pour de plus amples informations.
+Voir [la documentation](https://docs.npmjs.com/cli/v7/commands/npm-install){.externe} pour de plus amples informations.
 
 ### Exécutable
 
@@ -61,18 +61,18 @@ Puis on va l'utiliser pour lancer nos tests avec la commande `npm run test`. Pou
 L'exécutable jest est présent dans le dossier `node_modules/.bin/`{.fichier}. On peut alors l'exécuter :
 
 * soit avec son nom complet `node_modules/.bin/jest`
-* soit en utilisant la commande [`npx`](https://www.npmjs.com/package/npx) :  `npx jest`
+* soit en utilisant la commande [`npx`](https://www.npmjs.com/package/npx){.externe} :  `npx jest`
 
 ### vscode
 
-Vous pouvez installer le plugin [vscode-jest](https://github.com/jest-community/vscode-jest) pour utiliser jest dans vscode. Nous allons ici tout faire en ligne de commande, mais c'est pratique et ça permet (entre autres) :
+Vous pouvez installer le plugin [vscode-jest](https://github.com/jest-community/vscode-jest){.externe} pour utiliser jest dans vscode. Nous allons ici tout faire en ligne de commande, mais c'est pratique et ça permet (entre autres) :
 
 * à vscode de comprendre notre code jest
 * d'exécuter les tests quand on les crée
 
 > La palette de commande permet d'accéder à toutes les commandes du plugin en tapant *jest*
 
-On installera également le module `@types/jest` pour que vscode fasse la completion automatique lorsque l'on code des tests : `npm install --save-dev @types/jest` (tips pris de [là](https://tekloon.dev/autocomplete-for-jest-in-vscode)).
+On installera également le module `@types/jest` pour que vscode fasse la completion automatique lorsque l'on code des tests : `npm install --save-dev @types/jest` (tips pris de [là](https://tekloon.dev/autocomplete-for-jest-in-vscode){.externe}).
 
 Par défaut `jest` va exécuter tous les fichiers :
 
@@ -80,7 +80,7 @@ Par défaut `jest` va exécuter tous les fichiers :
 * de la forme `[nom].js`{.fichier} dans le dossier `__tests__`{.fichier} et dans tout ses sous dossiers.
 
 {% info %}
-[Chemins par défaut des fichiers de tests](https://jestjs.io/docs/configuration/#testmatch-arraystring) pour jest.
+[Chemins par défaut des fichiers de tests](https://jestjs.io/docs/configuration/#testmatch-arraystring){.externe} pour jest.
 
 {% endinfo %}
 
@@ -116,7 +116,7 @@ Changez ensuite le vrai en faux pour voir le test planter.
 
 ## Import ES6
 
-Par défaut, `jest`ne fonctionne qu'avec les import commonJs de node. [Pour utiliser les modules ES6](https://jestjs.io/docs/ecmascript-modules) il faut le préciser à `jest` avec une variable d'environnement :
+Par défaut, `jest`ne fonctionne qu'avec les import commonJs de node. [Pour utiliser les modules ES6](https://jestjs.io/docs/ecmascript-modules){.externe} il faut le préciser à `jest` avec une variable d'environnement :
 
 ```
 NODE_OPTIONS=--experimental-vm-modules npx jest
@@ -160,19 +160,19 @@ describe("Un chiffre associé à un prénom", () => {
 })
 ```
 
-Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a besoin de sous-groupes à l'intérieur d'un fichier, par exemple en faisant un groupe pour les tests d'une fonction, on peut utiliser un bloc [describe](https://jestjs.io/fr/docs/api#describename-fn).
+Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a besoin de sous-groupes à l'intérieur d'un fichier, par exemple en faisant un groupe pour les tests d'une fonction, on peut utiliser un bloc [describe](https://jestjs.io/fr/docs/api#describename-fn){.externe}.
 
 ## Front
 
 On peut tester de la même manière le js front. En revanche, on ne testera pas la manipulation de l'arbre DOM, il faut donc séparer les fichiers js en 2 types : ceux testables et les autres.
 
-Les fichiers js testables sont ensuite importé directement dans les fichiers html avec [un import classique](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+Les fichiers js testables sont ensuite importé directement dans les fichiers html avec [un import classique](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import){.externe}.
 
 Ici nous n'avons que ju javascript qui manipule l'arbre DOM, il est donc inutile de le tester.
 
 ## Coverage
 
-Pour savoir si nos tests couvrent bien l'ensemble du projet, c'est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code).
+Pour savoir si nos tests couvrent bien l'ensemble du projet, c'est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code){.externe}.
 
 {% attention %}
 Avoir 100% de couverture de code ne signifie pas que votre projet est bien testé... Juste que les tests ont utilisé toutes les lignes de codes :
@@ -187,7 +187,7 @@ Le code coverage est particulièrement utile pour savoir si on a bien testé ce 
 Il suffit de rajouter `--coverage`à jest pour qu'il fasse le coverage tout seul : `npm test -- --coverage` (ou `./node_modules/.bin/jest --coverage`).
 
 {% lien %}
-<https://www.valentinog.com/blog/jest-coverage/>
+<https://www.valentinog.com/blog/jest-coverage/>{.externe}
 {% endlien %}
 
 Modifions le test de chiffreAssocie pour s'en convaincre :
@@ -214,5 +214,5 @@ import db from "../db.js" // inutile. Juste pour voir le coverage
 Concept avancé mais très utile lorsque l'on veut tester un comportement spécifique d'une fonction sans avoir à tout paramétrer. On va l'utiliser ici de façon un peut surfaite, mais pensez-y pour les tests de pannes, d'erreurs ou de fonction nécessitant le réseau.
 
 {% lien %}
-<https://jestjs.io/docs/mock-functions>
+<https://jestjs.io/docs/mock-functions>{.externe}
 {% endlien %}

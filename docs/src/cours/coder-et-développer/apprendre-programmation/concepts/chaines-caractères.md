@@ -22,7 +22,7 @@ Une chaîne de caractères peut être vue comme un conteneur de caractères. On 
 'c'
 ```
 
-Ou même utiliser des [slices de liste](../listes/#slice){.interne} :
+Ou même utiliser des [slices de liste](../listes/#slice) :
 
 ```python
 >>> "abcdefghijklmnopqrstuvwxyz"[2:15:4]
@@ -42,7 +42,7 @@ TypeError: 'str' object does not support item assignment
 >>>
 ```
 
-Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) sous sa forme chaîne de caractères : `m23 = str(2 ** 11213 - 1)`{.language-}.
+Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe} sous sa forme chaîne de caractères : `m23 = str(2 ** 11213 - 1)`{.language-}.
 
 {% exercice %}
 Quels sont les 10 premiers chiffres de `m23`{.language-} ?
@@ -63,7 +63,7 @@ Quels sont les 10 derniers chiffres de `m23`{.language-} ?
 {% enddetails %}
 
 {% exercice %}
-Est-ce que `m23`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+Est-ce que `m23`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome){.externe} ?
 {% endexercice %}
 {% details "solution" %}
 
@@ -82,7 +82,7 @@ TypeError: 'str' object does not support item assignment
 
 ```
 
-Enfin on ne le répétera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants :
+Enfin on ne le répétera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods){.externe} en python pour résoudre les exercices suivants :
 
 {% exercice %}
 Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
@@ -109,16 +109,16 @@ re_x = x_en_byte.decode('utf8')
 
 Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des `byte` qu'il faudra re-écrire en `utf8`.
 
-Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings).
+Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings){.externe}.
 
 ### <span id="méthodes"></span>Méthodes des chaînes de caractères
 
-Les chaines de caractères ont [tout un tas de méthodes](https://docs.python.org/fr/3/library/stdtypes.html#string-methods).
+Les chaines de caractères ont [tout un tas de méthodes](https://docs.python.org/fr/3/library/stdtypes.html#string-methods){.externe}.
 
 Essayons de les apprendre avec ces petits exercices :
 
 {% exercice %}
-Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) ($2^{11213}-1$) en une chaîne de caractère
+Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe} ($2^{11213}-1$) en une chaîne de caractère
 {% endexercice %}
 {% details "solution" %}
 
@@ -129,7 +129,7 @@ Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count){.externe}, comptez le nombre de 0 du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe}.
 {% endexercice %}
 {% details "solution" %}
 
@@ -143,7 +143,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace){.externe}, changez les 2 en 7 dans le 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe}.
 {% endexercice %}
 {% details "solution" %}
 
@@ -156,7 +156,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 {% exercice %}
-Avec les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
+Avec les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count){.externe}, [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index){.externe} et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex){.externe} :
 
 Dans le 23e nombre de Mersenne :
 
@@ -224,7 +224,7 @@ On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne
 
 ## Exercices
 
-On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaînes de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.
+On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe} comme prétexte à la manipulation de chaînes de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.
 
 {% exercice %}
 Notez `m23` le 23ième nombre de Mersenne $2^{11213} -1$ :
@@ -250,7 +250,7 @@ Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
 
 ### Méthodes
 
-Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants
+Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods){.externe} en python pour résoudre les exercices suivants
 
 {% exercice %}
 Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
@@ -265,7 +265,7 @@ Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
 
 ### Slice
 
-Comme pour les listes, on peut [utiliser les _slices_](../listes/#slice){.interne} pour copier des parties de chaîne.
+Comme pour les listes, on peut [utiliser les _slices_](../listes/#slice) pour copier des parties de chaîne.
 
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 
@@ -288,7 +288,7 @@ Quels sont les 10 derniers chiffres de m23 ?
 {% enddetails %}
 
 {% exercice %}
-Est-ce que m23 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+Est-ce que m23 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome){.externe} ?
 {% endexercice %}
 {% details "solution" %}
 
@@ -300,7 +300,7 @@ Est-ce que m23 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
 
 {% lien "**Documentation**" %}
 
-<https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings>
+<https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings>{.externe}
 
 {% endlien %}
 

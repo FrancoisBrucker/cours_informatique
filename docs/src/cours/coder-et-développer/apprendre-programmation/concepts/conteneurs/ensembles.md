@@ -24,8 +24,8 @@ Gérer des ensembles rapidement et avec peu de place en mémoire :
 
 {% lien %}
 
-- [Documentation officielle](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
-- <https://realpython.com/python-sets/>
+- [Documentation officielle](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe}
+- <https://realpython.com/python-sets/>{.externe}
 
 
 {% endlien %}
@@ -91,7 +91,7 @@ L'erreur semble étrange `unhashable type: 'list'`{.language-}. On y reviendra m
 {% exercice %}
 Combien de mots différents contient le texte `"coucou les gars coucou les filles"`{.language-} ?
 
-Vous pourrez utiliser la méthode [split des `str`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
+Vous pourrez utiliser la méthode [split des `str`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.split){.externe}
 {% endexercice %}
 {% details "solution" %}
 
@@ -112,7 +112,7 @@ Attention cependant aux caractères de ponctuation lors du `split`{.language-}. 
 {% exercice %}
 Comptez les occurrences de chaque mot du texte `"coucou les gars coucou les filles"`{.language-} ?
 
-Vous pourrez utiliser la méthode [split des `str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
+Vous pourrez utiliser la méthode [split des `str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split){.externe}
 {% endexercice %}
 {% details "solution" %}
 

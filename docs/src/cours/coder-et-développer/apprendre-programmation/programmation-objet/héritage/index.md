@@ -94,7 +94,7 @@ L'exemple du personnel de l'université a pour diagramme UML :
 
 ### Python
 
-L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant [un espace de nommage](../classes-et-objets/#espace-nommage){.interne}.
+L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant [un espace de nommage](../classes-et-objets/#espace-nommage).
 
 En reprenant l'exemple du personnel de l'université, on peut d'ore et déjà écrire la classe mère :
 
@@ -114,7 +114,7 @@ class Personne:
 ```
 
 {% info %}
-On a utilisé [le module `datetime`{.language-} de python](https://docs.python.org/fr/3/library/datetime.html#) qui est fait pour gérer les dates. Utilisez **toujours** des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.
+On a utilisé [le module `datetime`{.language-} de python](https://docs.python.org/fr/3/library/datetime.html#){.externe} qui est fait pour gérer les dates. Utilisez **toujours** des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.
 {% endinfo %}
 
 Pour écrire le code des classes filles il faut pouvoir faire deux choses :
@@ -133,7 +133,7 @@ class Fille(Mère):
 Pour le second point on utilise le mot clé `super()`{.language-} suivi du nom de la méthode à utiliser qui lance la recherche du nom en commençant dans l'espace de nommage parent.
 
 {% lien %}
-Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html)
+Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html){.externe}
 {% endlien %}
 
 On peut maintenant coder les deux classes filles :
@@ -271,7 +271,7 @@ Pour cela, on va créer une classe `Point`{.language-} et une classe `Polygone`{
   - calcul du périmètre
   - calcul de l'aire
 
-On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
+On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple){.externe} pour simplifier le calcul de l'aire...
 
 #### Uml
 
@@ -509,7 +509,7 @@ class Magicien(Personnage):
 ## Héritage multiple
 
 {% lien %}
-[Héritage multiple en Pyton](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance)
+[Héritage multiple en Pyton](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance){.externe}
 {% endlien %}
 
 Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe `Doctorant`{.language-} qui serait **à la fois** `Étudiant`{.language-} et `EnseignantChercheur`{.language-} :
@@ -537,10 +537,10 @@ Python règle le problème en ordonnant les classes mères grace au mro :
 Python suit cet ordre et s'arrête à la première classe définissant le nom recherché.
 
 {% info %}
-Les problèmes d'ordre en héritage multiple sont décrits sous le nom de [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant).
+Les problèmes d'ordre en héritage multiple sont décrits sous le nom de [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant){.externe}.
 {% endinfo %}
 
-Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple [cette étude](https://realpython.com/python-super/#super-in-multiple-inheritance)), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :
+Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple [cette étude](https://realpython.com/python-super/#super-in-multiple-inheritance){.externe}), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :
 
 ```python/
 class Doctorant:

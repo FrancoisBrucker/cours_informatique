@@ -27,7 +27,7 @@ Soit $A$ un algorithme dont on veut calculer sa complexité par rapport au param
 - la complexité $C_\max(n)$ de l'algorithme vaut $C_\max(n) = \max \\{N(e) \mid e \in \mathcal{E}_n\\}$
 - la complexité minimum $C_\min(n)$ de l'algorithme vaut $C_\min(n) = \min \\{N(e) \mid e \in \mathcal{E}_n\\}$
 
-[L'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique) de la complexité, c'est à dire la complexité _attendue_ ou _normale_ si l'algorithme est exécutée pour une entrée au hasard, est appelée **complexité en moyenne**.
+[L'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} de la complexité, c'est à dire la complexité _attendue_ ou _normale_ si l'algorithme est exécutée pour une entrée au hasard, est appelée **complexité en moyenne**.
 
 Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :
 
@@ -60,7 +60,7 @@ $$
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne} :
+Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche) :
 
 ```pseudocode
 algorithme recherche(T: [entier], x: entier) → booléen:

@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple [d'algorithme diviser pour régner](./#diviser-pour-régner){.interne} et, surtout, le calcul de ses complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple [d'algorithme diviser pour régner](./#diviser-pour-régner) et, surtout, le calcul de ses complexités est très intéressant.
 
 Le principe est ici de séparer le tableau en entrée `T`{.language-} en 2 tableaux `T1`{.language-} et `T2`{.language-} et une valeur nommé `pivot`{.language-} de tel sorte que :
 
@@ -46,7 +46,7 @@ algorithme rapide(T: [entier]) → [entier]:
 
 {% details "code python" %}
 
-En utilisant [des list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension){.interne} de python, le code est plus compacte et plus clair que sa version en pseudocode :
+En utilisant [des list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension) de python, le code est plus compacte et plus clair que sa version en pseudocode :
 
 ```python
 def rapide(T):
@@ -187,7 +187,7 @@ Comme $C(n)$ est une fonction croissante et que $C(n) \geq \mathcal{O}(n)$, la c
 
 ![croissance convexe](tris-4.png)
 
-On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et [la preuve de l'algorithme fusion](../algorithme-fusion/#complexités-fusion){.interne} nous permet de conclure que :
+On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et [la preuve de l'algorithme fusion](../algorithme-fusion/#complexités-fusion) nous permet de conclure que :
 
 $$
 C_{\min(n)} = \mathcal{O}(n\ln(n))
@@ -253,7 +253,7 @@ C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k
 $$
 </div>
 
-On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ ([on le démontrera](../../projet-sommes-classiques/){.interne}).
+On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ ([on le démontrera](../../projet-sommes-classiques/)).
 
 {% enddetails %}
 
@@ -264,7 +264,7 @@ La complexité en moyenne du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ l
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
-on utilise [l'argument utilisé](../algorithme-insertion/#modèle-aléatoire-50){.interne} pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
+on utilise [l'argument utilisé](../algorithme-insertion/#modèle-aléatoire-50) pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 
@@ -278,7 +278,7 @@ C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + 
 $$
 </div>
 
-où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et donc que $p_i = \frac{1}{n}$ pour tout $i$.
+où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire) et donc que $p_i = \frac{1}{n}$ pour tout $i$.
 
 <div>
 $$
@@ -354,7 +354,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 $$
 </div>
 
-On peut facilement montrer ([on le démontrera](../../projet-sommes-classiques/){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :
+On peut facilement montrer ([on le démontrera](../../projet-sommes-classiques/)) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :
 
 <div>
 $$
@@ -369,8 +369,8 @@ $$
 
 La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.
 
-Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
-et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../projet-sommes-classiques/){.interne}).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
+Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique){.externe},
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe} à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../projet-sommes-classiques/)).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
 
 $$
 A(n) = \mathcal{O}(\ln(n))

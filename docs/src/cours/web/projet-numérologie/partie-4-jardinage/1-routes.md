@@ -75,7 +75,7 @@ export { router };
 Remarquez que nous avons utilisé ici une nouvelle façon d'exporter des noms : on le fait directement.
 {% endnote %}
 
-Ce fichier contient toutes les routes non statique et non `/` de notre serveur. Elles sont rangées dans un [router](http://expressjs.com/fr/guide/routing.html#express-router).
+Ce fichier contient toutes les routes non statique et non `/` de notre serveur. Elles sont rangées dans un [router](http://expressjs.com/fr/guide/routing.html#express-router){.externe}.
 
 {% attention %}
 Les imports de nos fichiers sont dans le dossier parent, il faut donc mettre `../` devant pour les retrouver
@@ -221,5 +221,5 @@ Toutes les routes de `apiRoutes` commencerons par `/api`. Un tel procédé rend 
 
 Les routes non statiques que possèdent maintenant notre serveur sont :
 
-- <http://127.0.0.1:3000/prénom> (GET) définie dans `route/index.js`{.fichier}
-- <http://127.0.0.1:3000/api/prénoms/read> (GET) définie dans `route/api/index.js`{.fichier}
+- <http://127.0.0.1:3000/prénom>{.externe} (GET) définie dans `route/index.js`{.fichier}
+- <http://127.0.0.1:3000/api/prénoms/read>{.externe} (GET) définie dans `route/api/index.js`{.fichier}

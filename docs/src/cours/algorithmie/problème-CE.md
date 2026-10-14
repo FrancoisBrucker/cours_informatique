@@ -27,7 +27,7 @@ Nous allons montrer que le problème Couverture Exacte est NP-complet
 - l'intersection de deux éléments différents de $\mathcal{P}$ est vide.
   {% endinfo %}
 
-Illustrons ce problème en reprenant [un exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) :
+Illustrons ce problème en reprenant [un exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2){.externe} :
 
 - $U = \\{1, 2, 3, 4, 5, 6, 7\\}$
 - $\mathcal{S} = \\{ \\{1, 4, 7\\}, \\{1, 4\\}, \\{4, 5, 7\\},\\{3, 5, 6\\},\\{2, 3, 6, 7\\},\\{2, 7\\}  \\}$
@@ -91,7 +91,7 @@ $$
 
 L'ensemble de $CE$ couvre tous les éléments de $SAT$ : les variables booléennes, les clauses et les littéraux. Les classes forment les liens entre les différents éléments : pour chaque $x_i$ les littéraux valant $x_i$, pour chaque $x_i$ les littéraux valant $\overline{x_i}$ et pour chaque clause l'ensemble de ses littéraux. Cette construction est bien polynomiale par rapport à la taille de l'entrée du problème $SAT$.
 
-Notre gadget transforme [L'instance exemple SAT](#exemple-SAT){.interne} en une instance de $CE$.
+Notre gadget transforme [L'instance exemple SAT](#exemple-SAT) en une instance de $CE$.
 
 Formule SAT originelle :
 

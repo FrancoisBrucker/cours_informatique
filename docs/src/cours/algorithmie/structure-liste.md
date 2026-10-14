@@ -9,10 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux){.interne} et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
+Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux) et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
-Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/bases-programmation/conteneurs/listes/){.interne} du cours sur les bases du code.
+Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/bases-programmation/conteneurs/listes/) du cours sur les bases du code.
 {% endinfo %}
 
 ## <span id="structure"></span>Définition de la structure
@@ -198,7 +198,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 $$
 </div>
 
-Comme, [on l'a vu](../projet-sommes-classiques/){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
+Comme, [on l'a vu](../projet-sommes-classiques/), $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
 
 <div>
 $$
@@ -218,7 +218,7 @@ Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathca
 
 {% endnote %}
 
-On appelle ce genre de raisonnement [analyse en complexité amortie](../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.
+On appelle ce genre de raisonnement [analyse en complexité amortie](../complexité-amortie/) et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.
 
 La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
@@ -249,7 +249,7 @@ Même si l'ajout en fin de liste et la suppression en fin de liste ont des compl
 La complexité amortie de l'ajout et de la suppression d'un élément en fin de liste est en $\mathcal{O}(1)$.
 {% endnote %}
 {% details "preuve" %}
-Voir [exercice de la complexité amortie](../complexité-amortie/#exercice-liste-suppression-ajout){.interne}.
+Voir [exercice de la complexité amortie](../complexité-amortie/#exercice-liste-suppression-ajout).
 {% enddetails %}
 
 La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
@@ -259,13 +259,13 @@ La plupart des implémentations des listes ont cette implémentation, ceci en fa
 Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :
 
 {% lien %}
-<https://www.youtube.com/watch?v=GZPqDvG615k>
+<https://www.youtube.com/watch?v=GZPqDvG615k>{.externe}
 {% endlien %}
 
 > TBD à écrire propre
 > TBD faire une expérimentation
 
-1. pour un seul tableau : <https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor> (qui mène à : <https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/>). Sauvent 1.5 est pris. $S + FS ≥ F^3S$. 
+1. pour un seul tableau : <https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor>{.externe} (qui mène à : <https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/>{.externe}). Sauvent 1.5 est pris. $S + FS ≥ F^3S$. 
 2. Attention, ce n'est plus vrai si on alloue plus d'un seul tableau... pour 2 tableaux le second peux commencer dans la place laissée par l'autre.
 
 

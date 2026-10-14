@@ -18,15 +18,15 @@ Le but de ce tuto est de comprendre pourquoi et comment utiliser `git rebase`.
 
 <!-- fin résumé -->
 
- Il s'agit d'une version allégée du déjà très digeste [article](https://www.miximum.fr/blog/git-rebase/) de Thibault Jouannic. Une bonne idée pourrait être de commencer par celui-ci, puis de lire le tuto originel pour approfondir.
+ Il s'agit d'une version allégée du déjà très digeste [article](https://www.miximum.fr/blog/git-rebase/){.externe} de Thibault Jouannic. Une bonne idée pourrait être de commencer par celui-ci, puis de lire le tuto originel pour approfondir.
 
 Sommaire :
 
-[Le pourquoi](./#pourquoi){.interne} |
-[Le quoi](./#quoi){.interne} |
-[Cas d'usage](./#usage){.interne} |
+[Le pourquoi](./#pourquoi) |
+[Le quoi](./#quoi) |
+[Cas d'usage](./#usage) |
 Récapitulatif des commandes |
-[Sources et ressources](./#sources){.interne} |
+[Sources et ressources](./#sources) |
 
 ## <span id="pourquoi"></span> Pourquoi
 
@@ -210,5 +210,5 @@ Le rebase interactif (`git rebase -i`) est très utile dans le cadre de l'utilis
 
 ## Bibliographie
 
-* Ce superbe [tuto](https://www.miximum.fr/blog/git-rebase/) réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.
-* <https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges> qui montre l'utilité de `git --rebase=merges` qui préserve les merges locaux s'il y en a.
+* Ce superbe [tuto](https://www.miximum.fr/blog/git-rebase/){.externe} réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.
+* <https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges>{.externe} qui montre l'utilité de `git --rebase=merges` qui préserve les merges locaux s'il y en a.

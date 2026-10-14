@@ -24,7 +24,7 @@ Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'an
 
 ## Utiliser des notebooks
 
-> TBD mettre ici cours sur les notebooks. [utiliser des notebook](./utiliser-notebooks/){.interne}
+> TBD mettre ici cours sur les notebooks. [utiliser des notebook](./utiliser-notebooks/)
 
 
 Il est important que vous ayez compris les bases sur lesquels nous allons coder nos analyses. Ce n'est pas un cours de code, mais comprendre ce que l'on fait vous permettra de créer des analyses plus fines.
@@ -39,14 +39,14 @@ En particulier on suppose que :
 2. vous savez utiliser soit jupyterlab soit vscode
 
 {% info %}
-Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans [le cours de développement](/cours/coder-et-développer/){.interne}
+Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans [le cours de développement](/cours/coder-et-développer/)
 
 {% endinfo %}
 
 ## <span id="packages-nécessaires"></span>Installation des modules pythons
 
 {% info %}
-Il pourra être utile d'installer les différents modules python dans [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne}.
+Il pourra être utile d'installer les différents modules python dans [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/).
 {% endinfo %}
 
 Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)
@@ -73,9 +73,9 @@ Vous aurez besoin d'installer :
 
 {% note "modules à installer" %}
 
-- [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
-- [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
-- [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
+- [pandas](https://pandas.pydata.org/){.externe} : `python -m pip install pandas`
+- [seaborn](https://seaborn.pydata.org/){.externe} : `python -m pip install seaborn`
+- [scikit-learn](https://scikit-learn.org/stable/){.externe} : `python -m pip install scikit-learn`
 
 {% endnote %}
 
@@ -87,7 +87,7 @@ Vous aurez besoin d'installer :
 
 {% info %}
 
-Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fait que vous l'ayez installé, essayez d'installer les [bibliothèques DLL de visual C++](https://pypi.org/project/msvc-runtime/) : `python -m pip install msvc-runtime`.
+Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fait que vous l'ayez installé, essayez d'installer les [bibliothèques DLL de visual C++](https://pypi.org/project/msvc-runtime/){.externe} : `python -m pip install msvc-runtime`.
 
 {% endinfo %}
 
@@ -98,9 +98,9 @@ Si vous avez des "sauts" dans la fenêtre Jupiter lorsque vous faites défiler v
 ## <span id="pandas"></span>Utilisation de pandas
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-pandas).
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-pandas){.externe}.
 
-Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
+Vous pouvez utiliser cette url <https://download-directory.github.io/>{.externe} pour télécharger le dossier.
 {% endinfo %}
 
 <!-- 
@@ -109,7 +109,7 @@ Vous pouvez utiliser cette url <https://download-directory.github.io/> pour tél
 
  -->
 
-Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
+Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html){.externe}.
 
 1. jeu de données utilisé [naissances en France en 2022](./notebooks/notebooks-pandas/nat2022_csv.zip){.fichier}
 2. [Premières manipulations](./notebooks/notebooks-pandas/1_1_cours_premières_manipulations.ipynb){.fichier}
@@ -134,17 +134,17 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 ## <span id="data-viz-pas-carto"></span>Visualisation de données
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-données).
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-données){.externe}.
 
-Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
+Vous pouvez utiliser cette url <https://download-directory.github.io/>{.externe} pour télécharger le dossier.
 {% endinfo %}
 
 ### Graphiques
 
 {% lien %}
 
-- <https://clauswilke.com/dataviz/>
-- <https://seaborn.pydata.org/index.html>
+- <https://clauswilke.com/dataviz/>{.externe}
+- <https://seaborn.pydata.org/index.html>{.externe}
 
 {% endlien %}
 
@@ -157,7 +157,7 @@ Reprendre les données des naissances et en utilisant le lien ci-dessus représe
 Faire grossir cette partie.
 Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 
-> - <https://www.oreilly.com/library/view/visualisation-de-donnees/9798341620735/>
+> - <https://www.oreilly.com/library/view/visualisation-de-donnees/9798341620735/>{.externe}
 > 
 -->
 
@@ -185,7 +185,7 @@ L'exercice suivant utilise vise à créer une distance entre texte puis à la re
 ## <span id="data-viz"></span>Visualisation de données cartographiques
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-cartes).
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-cartes){.externe}.
 
 {% endinfo %}
 
@@ -197,31 +197,31 @@ Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours
 
 Les modules classiques :
 
-- [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
-- [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
-- [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
+- [pandas](https://pandas.pydata.org/){.externe} : `python -m pip install pandas`
+- [seaborn](https://seaborn.pydata.org/){.externe} : `python -m pip install seaborn`
+- [scikit-learn](https://scikit-learn.org/stable/){.externe} : `python -m pip install scikit-learn`
 
 Les modules spécifiques aux données cartographiques :
 
-- [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
-- [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
-- [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
-- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
-- [`folium`{.language}](https://python-visualization.github.io/folium/) pour gérer rapidement des cartes : `python -m pip install folium`
-- [`mapclassify`{.language}](https://pysal.org/mapclassify/) pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html) de GeoPandas : `python -m pip install mapclassify`
+- [`geopandas`{.language}](https://geopandas.org/en/stable/){.externe} pour la gestion des données cartographiques : `python -m pip install geopandas`
+- [`geodatasets`{.language}](https://geodatasets.readthedocs.io/){.externe} pour la gestion des données cartographiques : `python -m pip install geodatasets`
+- [`contextily`{.language}](https://contextily.readthedocs.io/){.externe} pour les fond de cartes : `python -m pip install contextily`
+- [`osmnx`{.language-}](https://github.com/gboeing/osmnx){.externe} qui permet de récupérer des données d'<https://www.openstreetmap.fr/>{.externe} et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org){.externe} : `python -m pip install osmnx`
+- [`folium`{.language}](https://python-visualization.github.io/folium/){.externe} pour gérer rapidement des cartes : `python -m pip install folium`
+- [`mapclassify`{.language}](https://pysal.org/mapclassify/){.externe} pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html){.externe} de GeoPandas : `python -m pip install mapclassify`
 
 {% endnote %}
 
 {% faire %}
 
-Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/requirements.txt){.fichier} pour créer [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne} contenant déjà tous les modules nécessaires.
+Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/requirements.txt){.fichier} pour créer [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/) contenant déjà tous les modules nécessaires.
 
 {% endfaire %}
 
 ### <span id="data-viz-bases"></span>Base de la cartographie
 
 {% lien %}
-<https://geojson.io/>
+<https://geojson.io/>{.externe}
 {% endlien %}
 
 1. [Cartes de géographie](./notebooks/notebooks-dataviz-cartes/1_cours_cartes_de_géographies.ipynb){.fichier}
@@ -242,8 +242,8 @@ Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/req
 {% faire %}
 Utilisez les données des ressources suivantes :
 
-- [coordonnées geojson de la Réunion](https://github.com/gregoiredavid/france-geojson/tree/master/departements/974-la-reunion)
-- [population par canton](https://public.opendatasoft.com/explore/assets/demographyref-france-pop-legale-canton-millesime/)
+- [coordonnées geojson de la Réunion](https://github.com/gregoiredavid/france-geojson/tree/master/departements/974-la-reunion){.externe}
+- [population par canton](https://public.opendatasoft.com/explore/assets/demographyref-france-pop-legale-canton-millesime/){.externe}
 
 Créez une carte chloroplète de la réunion avec le nombre d'habitants par canton.
 
@@ -252,7 +252,7 @@ Créez une carte chloroplète de la réunion avec le nombre d'habitants par cant
 ### <span id="data-viz-OSM"></span>Données géographiques
 
 {% lien %}
-[OSM](https://www.openstreetmap.fr/)
+[OSM](https://www.openstreetmap.fr/){.externe}
 {% endlien %}
 
 [requêtes OSM](./notebooks/notebooks-dataviz-OSM/1_1_cours_OSM_requêtes.ipynb){.fichier}
@@ -270,7 +270,7 @@ Créez une carte chloroplète de la réunion avec le nombre d'habitants par cant
 ## Méthodes d'analyse des données
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse){.externe}
 {% endinfo %}
 
 ### Partitionnement et hiérarchies

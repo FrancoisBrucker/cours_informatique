@@ -7,7 +7,7 @@ authors:
 ---
 
 
-L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
+L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me){.externe}.
 
 Un polynôme est défini mathématiquement par la fonction :
 

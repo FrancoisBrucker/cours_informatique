@@ -11,6 +11,6 @@ eleventyNavigation:
   order: 1
 ---
 
-- [Enseignements](./enseignements){.interne}
-- [Cours](./cours){.interne}
-- [Tutoriels](./tutoriels){.interne}
+- [Enseignements](./enseignements)
+- [Cours](./cours)
+- [Tutoriels](./tutoriels)

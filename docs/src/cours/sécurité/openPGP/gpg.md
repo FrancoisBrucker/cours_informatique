@@ -14,20 +14,20 @@ eleventyComputed:
 
 <!-- TBD
 
-- subkeys : <https://wiki.debian.org/Subkeys>
-- list commandes : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>
-- tuto complet avec sub keys et tout : <https://www.youtube.com/watch?v=6i8vPJLAPRs&list=PLPj3KCksGbSZkVpgAZjAFfFp4D0SHLnFw>
-- revoke key : <https://superuser.com/questions/1526283/how-to-revoke-a-gpg-key-and-upload-in-gpg-server>
-- gpg config : <https://www.git-tower.com/blog/setting-up-gpg-windows>
-- <https://une-tasse-de.cafe/blog/yubikey/>
+- subkeys : <https://wiki.debian.org/Subkeys>{.externe}
+- list commandes : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>{.externe}
+- tuto complet avec sub keys et tout : <https://www.youtube.com/watch?v=6i8vPJLAPRs&list=PLPj3KCksGbSZkVpgAZjAFfFp4D0SHLnFw>{.externe}
+- revoke key : <https://superuser.com/questions/1526283/how-to-revoke-a-gpg-key-and-upload-in-gpg-server>{.externe}
+- gpg config : <https://www.git-tower.com/blog/setting-up-gpg-windows>{.externe}
+- <https://une-tasse-de.cafe/blog/yubikey/>{.externe}
 
  -->
 
 {% lien %}
 
-- [GnuPG](https://www.gnupg.org/)
-- [tuto gpg](https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/)
-- [autre tuto](https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html)
+- [GnuPG](https://www.gnupg.org/){.externe}
+- [tuto gpg](https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/){.externe}
+- [autre tuto](https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html){.externe}
 
 {% endlien %}
 
@@ -40,7 +40,7 @@ Ne signez les clés publique que des personnes que vous connaissez.
 ## Installation
 
 {% lien %}
-<https://www.gnupg.org/>
+<https://www.gnupg.org/>{.externe}
 {% endlien %}
 
 On utilise la version 2.4 :
@@ -84,17 +84,17 @@ On voit que chacha20 n'est pas pas pris en compte comme algorithme de chiffrage,
 
 ### Windows
 
-On utilise [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/), le gestionnaire de paquet de Windows 11.
+On utilise [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/){.externe}, le gestionnaire de paquet de Windows 11.
 
-1. recherche de openssl dans la liste des paquets disponibles : <https://winget.run/>
-2. on utilise le paquet [`GnuPG.GnuPG`](https://winget.run/pkg/GnuPG/GnuPG)
+1. recherche de openssl dans la liste des paquets disponibles : <https://winget.run/>{.externe}
+2. on utilise le paquet [`GnuPG.GnuPG`](https://winget.run/pkg/GnuPG/GnuPG){.externe}
 
 Une fois le parquet installé, il devrait être disponible dans une **nouvelle** fenêtre de powershell.
 
 ### Dossier de configuration/clés
 
 {% lien %}
-[Fichiers de configurations](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html)
+[Fichiers de configurations](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html){.externe}
 {% endlien %}
 
 Ce fichier va contenir et la configuration et les clés.
@@ -105,7 +105,7 @@ Ce fichier va contenir et la configuration et les clés.
 ## Chiffrer et déchiffrer des fichiers
 
 {% lien %}
-[Chiffrer/déchiffrer des fichiers avec GPG](https://www.youtube.com/watch?v=4z1LSbFHtQA)
+[Chiffrer/déchiffrer des fichiers avec GPG](https://www.youtube.com/watch?v=4z1LSbFHtQA){.externe}
 {% endlien %}
 
 > TBD comme chiffrement/déchiffrement  avec passphrase.
@@ -114,7 +114,7 @@ Ce fichier va contenir et la configuration et les clés.
 ## Création de clés
 
 {% lien %}
-<https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key>
+<https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key>{.externe}
 {% endlien %}
 
 ```sh
@@ -334,7 +334,7 @@ AAfCXxreu+uWC78Tn9ABAOuc1Zf2X/8aFe0K8/qcEro1s/IEJbKWlsmOvlriaY0A
 
 ```
 
-L'option `--armor` exporte la clé sous [la forme base64](https://fr.wikipedia.org/wiki/Base64) qui est affichable et facilement échangeable.
+L'option `--armor` exporte la clé sous [la forme base64](https://fr.wikipedia.org/wiki/Base64){.externe} qui est affichable et facilement échangeable.
 
 ```shell
 ❯ gpg --export 1746B97A12A97C32CB74C6157D305414B27F8E59 | base64
@@ -429,7 +429,7 @@ sub   cv25519 2025-10-19 [E] [expires: 2025-10-29]
 ### Signer des clés
 
 {% lien %}
-<https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84>
+<https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84>{.externe}
 {% endlien %}
 
 Vous pouvez, si vous le désirez, signer sa clé avec la commande de gestion des clés `sign` :
@@ -575,7 +575,7 @@ Do you really want to set this key to ultimate trust? (y/N) y
 ## Utilisation
 
 {% lien %}
-[comfy guide to gpg](https://www.youtube.com/watch?v=eLKOIjNFwVs)
+[comfy guide to gpg](https://www.youtube.com/watch?v=eLKOIjNFwVs){.externe}
 {% endlien %}
 
 ### Chiffrement/déchiffrement
@@ -679,7 +679,7 @@ Vérifiez le message que vous a envoyé votre correspondant.
 ## utilitaire
 
 {% lien %}
-[GPG TUI](https://github.com/orhun/gpg-tui)
+[GPG TUI](https://github.com/orhun/gpg-tui){.externe}
 {% endlien %}
 
 ## Gestion des clés
@@ -789,24 +789,24 @@ gpg> quit
 
 {% lien %}
 
-- [clés et sous clés GPG](https://wiki.debian.org/fr/Subkeys)
-- [sous clés GPG](https://mikeross.xyz/create-gpg-key-pair-with-subkeys/)
+- [clés et sous clés GPG](https://wiki.debian.org/fr/Subkeys){.externe}
+- [sous clés GPG](https://mikeross.xyz/create-gpg-key-pair-with-subkeys/){.externe}
 
 {% endlien %}
 
-> TBD : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>
+> TBD : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>{.externe}
 
 ## Serveur de clés
 
 {% lien %}
 
-<https://keyserver.ubuntu.com/>
-<https://www.gnupg.org/gph/en/manual/x457.html>
+<https://keyserver.ubuntu.com/>{.externe}
+<https://www.gnupg.org/gph/en/manual/x457.html>{.externe}
 
 {% endlien %}
 
 > TBD Permet d'utiliser des clés stockées dans un serveur de clé
-> <https://www.gnupg.org/gph/en/manual.html#AEN464>
+> <https://www.gnupg.org/gph/en/manual.html#AEN464>{.externe}
 >
 > 1. le faire.
 > 2. se signer mutuellement les clés.

@@ -37,7 +37,7 @@ for i <— 1 to len(T) - 1 :
 ## Permutations
 
 {% aller %}
-[Permutations](./permutations){.interne}
+[Permutations](./permutations)
 {% endaller %}
 
 ## Autres problèmes

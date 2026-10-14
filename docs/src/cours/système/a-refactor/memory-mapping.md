@@ -12,5 +12,5 @@ eleventyComputed:
 
 
 - utilise le iomapping vue dans la partie système.
-- [mmap](https://www.youtube.com/watch?v=m7E9piHcfr4)
-- [code en C](https://beej.us/guide/bgipc/html/#mmap)
+- [mmap](https://www.youtube.com/watch?v=m7E9piHcfr4){.externe}
+- [code en C](https://beej.us/guide/bgipc/html/#mmap){.externe}

@@ -12,17 +12,17 @@ eleventyComputed:
 
 <!-- TBD
 
-- <https://www.youtube.com/watch?v=lL3ElCmq6jc>
-- liste des ASN France : <https://whoisrequest.com/ip/fr>
-- <https://www.brindereseau.fr/?article=ipv6>
-- <https://fazamhd.com/mental-models/networking/>
+- <https://www.youtube.com/watch?v=lL3ElCmq6jc>{.externe}
+- liste des ASN France : <https://whoisrequest.com/ip/fr>{.externe}
+- <https://www.brindereseau.fr/?article=ipv6>{.externe}
+- <https://fazamhd.com/mental-models/networking/>{.externe}
 
  -->
 
 Bases de réseau. On y verra les concepts et protocoles qui régissent le réseau internet. Le réseau est composé de multiples ***liens*** entre deux ordinateurs. Ces liens forment un graphe qui constitue le réseau.
 
 {% info %}
-Vous aurez besoin d'avoir la commande `ip` très utile en réseau. Ils font parti de la suite logicielle [iproute2](https://en.wikipedia.org/wiki/Iproute2) et s'installe via les paquets `iproute2` sous Debian et `iproute2mac` avec brew.
+Vous aurez besoin d'avoir la commande `ip` très utile en réseau. Ils font parti de la suite logicielle [iproute2](https://en.wikipedia.org/wiki/Iproute2){.externe} et s'installe via les paquets `iproute2` sous Debian et `iproute2mac` avec brew.
 
 {% endinfo %}
 
@@ -40,7 +40,7 @@ La couche de transmission utilise pour cela la notion de [port](<https://fr.wiki
 {% note2 "**Définition**" %}
 Un **_port_** est un nombre entre 0 et $2^{16}-1 = 65535$ (codé sur 2B) associé à un système.
 
-Le système peut associer une application à un port particulier via une [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets), on dit que l'application **_écoute_** ce port.
+Le système peut associer une application à un port particulier via une [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets){.externe}, on dit que l'application **_écoute_** ce port.
 
 - du point de vue de l'application : cette socket est un fichier ouvert (il a un file descriptor)
 - du point de vue du système : toute communication réseau adressée à ce port est transmise en écriture au file descriptor de l'application.
@@ -82,8 +82,8 @@ Scanner les port ouvert d'une machine qui n'est pas la votre peut être considé
 {% endattention %}
 {% lien %}
 
-- [tuto](https://hackertarget.com/nmap-tutorial/)
-- [fonctionnement](https://www.malekal.com/types-scan-de-port-nmap/)
+- [tuto](https://hackertarget.com/nmap-tutorial/){.externe}
+- [fonctionnement](https://www.malekal.com/types-scan-de-port-nmap/){.externe}
 
 {% endlien %}
 
@@ -94,9 +94,9 @@ Réseau filaire : une ligne par communication de bout en bout, comme le téléph
 {% lien %}
 1878 à 1913 : le fonctionnement de la commutation manuelle :
 
-1. [intro](https://www.youtube.com/watch?v=YSYs5TyA3n0)
-2. [les centres](https://www.youtube.com/watch?v=vqGk7P-Rwto)
-3. [le fonctionnement](https://www.youtube.com/watch?v=qwoFJT7MQBE)
+1. [intro](https://www.youtube.com/watch?v=YSYs5TyA3n0){.externe}
+2. [les centres](https://www.youtube.com/watch?v=vqGk7P-Rwto){.externe}
+3. [le fonctionnement](https://www.youtube.com/watch?v=qwoFJT7MQBE){.externe}
 
 {% endlien %}
 
@@ -141,7 +141,7 @@ Pour palier ces potentiels soucis, il faut ajouter des informations aux paquets.
 - un corps du message (*payload*)
 
 {% faire %}
-Ouvrez un [Wireshark](https://www.wireshark.org/) et regardez tous les paquets qui viennent sur votre machine.
+Ouvrez un [Wireshark](https://www.wireshark.org/){.externe} et regardez tous les paquets qui viennent sur votre machine.
 
 Si peux de paquets arrivent, faîtes une requête google par exemple.
 {% endfaire %}
@@ -150,12 +150,12 @@ Il vous faudra peut-être exécuter `sudo wireshark` pour pouvoir récupérer to
 {% endinfo %}
 
 
-> TBD <https://www.youtube.com/watch?v=mdxKBz5QUTo>
+> TBD <https://www.youtube.com/watch?v=mdxKBz5QUTo>{.externe}
 
 ## Schéma global
 
 {% lien %}
-[Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
+[Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html){.externe}
 {% endlien %}
 
 > TBD voir bases réseau
@@ -169,10 +169,10 @@ liaisons   ethernet :    |__________________________________________|
 
 A chaque couche est associé un protocole dont le but est de résoudre la tâche qui lui est assignée. Dans le cas de notre exemple ces protocoles sont :
 
-- application : [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
-- transmission : [TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol)
-- routage : [IP](https://fr.wikipedia.org/wiki/Internet_Protocol)
-- liaisons : [Ethernet](https://fr.wikipedia.org/wiki/Ethernet)
+- application : [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol){.externe}
+- transmission : [TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol){.externe}
+- routage : [IP](https://fr.wikipedia.org/wiki/Internet_Protocol){.externe}
+- liaisons : [Ethernet](https://fr.wikipedia.org/wiki/Ethernet){.externe}
 
 Chaque couche encapsule le message de la couche précédente en ajoutant son header en début de message. A l'arrivée c'est le contraire, chaque couche supprime son header avant de passer le message à la couche suivante.
 
@@ -221,7 +221,7 @@ liaison      : ATIE --------> ATIE    ATIE   --------> ATIE
 Chaque lien de liaison permet de connecter 2 ordinateurs liés, il faut donc à chaque étape refaire cette couche en fonction de la couche précédente (routage) qui détermine la direction.
 
 {% info %}
-Ce modèle en quatre couches se décline en granularité plus fine de 7 couche, appelé [modèle OSI](https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI) (aussi appelé couches ISO).
+Ce modèle en quatre couches se décline en granularité plus fine de 7 couche, appelé [modèle OSI](https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI){.externe} (aussi appelé couches ISO).
 
 {% endinfo %}
 
@@ -232,13 +232,13 @@ netstat -s
 ```
 
 {% lien %}
-[Commande netstat](https://docs.oracle.com/cd/E19455-01/806-0916/6ja85399h/index.html)
+[Commande netstat](https://docs.oracle.com/cd/E19455-01/806-0916/6ja85399h/index.html){.externe}
 {% endlien %}
 
 ## Couches
 
 {% lien %}
-[Beej's Guide to Network Concepts](https://beej.us/guide/bgnet0/html/)
+[Beej's Guide to Network Concepts](https://beej.us/guide/bgnet0/html/){.externe}
 {% endlien %}
 
 > TBD : on se restreint à internet et ipv6 si on peut (on ne parlera de ipv4 que si nécessaire)
@@ -248,7 +248,7 @@ netstat -s
 Il y a de très très nombreux protocoles applicatif. Chaque application peut avoir le sien. La très grande majorité d'entre eux sont organisés autour de la notion de client et de serveur :
 
 {% note2 "**Définition**" %}
-Un [protocole client-serveur](https://fr.wikipedia.org/wiki/Client-serveur) permet à deux applications nommées ***client*** et ***serveur*** respectivement de communiquer par question-réponse.
+Un [protocole client-serveur](https://fr.wikipedia.org/wiki/Client-serveur){.externe} permet à deux applications nommées ***client*** et ***serveur*** respectivement de communiquer par question-réponse.
 
 1. l'application ***cliente*** va faire une ***requête*** au serveur
 2. le serveur répond à la requête par une ***réponse***.
@@ -263,7 +263,7 @@ Cette relation est éminemment dissymétrique :
 Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).
 
 {% aller %}
-[Aperçu du protocole http](http){.interne}
+[Aperçu du protocole http](http)
 {% endaller %}
 
 ### Transmission
@@ -273,19 +273,19 @@ La transmission se fait d'une application sur un ordinateur A à une application
 Comme il peut y a voir plusieurs communication simultanée sur un même ordinateur (web, mail, jeu en ligne, ...), il faut un moyen de les distinguer : les ports.
 
 {% aller %}
-[Port logiciel](./ports){.interne}
+[Port logiciel](./ports)
 {% endaller %}
 
 La transmission de données en elle meme peut se faire selon de multiples protocoles, nous en verront deux qui sont les plus utilisés : UDP et TCP
 
 {% lien %}
 
-- [paquets UDP et TCP](https://www.youtube.com/watch?v=V1CxV6Vg7_U)
-- [meme tcp et udp](https://www.reddit.com/r/ProgrammerHumor/comments/9gcwgw/tcp_vs_udp/)
+- [paquets UDP et TCP](https://www.youtube.com/watch?v=V1CxV6Vg7_U){.externe}
+- [meme tcp et udp](https://www.reddit.com/r/ProgrammerHumor/comments/9gcwgw/tcp_vs_udp/){.externe}
 
 {% endlien %}
 
-Nous allons utiliser [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash) pour gérer nos connexion réseau. Commençons par voir comment tout cela fonctionne en créant une connexion vers l'ordinateur `www.google.fr` sur le port 80 :
+Nous allons utiliser [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash){.externe} pour gérer nos connexion réseau. Commençons par voir comment tout cela fonctionne en créant une connexion vers l'ordinateur `www.google.fr` sur le port 80 :
 
 ```shell
 nc www.google.fr 80
@@ -316,7 +316,7 @@ Une fois la connexion établie, elle l'est dans les deux sens :
 Le protocole UDP est très simple, son principal intérêt est sa rapidité.
 
 {% aller %}
-[Protocole UDP](./udp){.interne}
+[Protocole UDP](./udp)
 {% endaller %}
 
  Si l'on veut transmettre des données de façon sûre, il faut utiliser un autre protocole, TCP
@@ -326,18 +326,18 @@ Le protocole UDP est très simple, son principal intérêt est sa rapidité.
 Le protocole TCP est utilisé dès qu'il faut transmettre de façon sûre et ordonnée.
 
 {% aller %}
-[Protocole TCP](./tcp){.interne}
+[Protocole TCP](./tcp)
 {% endaller %}
 
 ### IP et Routage
 
 {% aller %}
-[Routage IP](./ip){.interne}
+[Routage IP](./ip)
 {% endaller %}
 
 ### DNS
 
-Transformer un nom en numéro IP : [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System), voir comment faire avec [dig](https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux)
+Transformer un nom en numéro IP : [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System){.externe}, voir comment faire avec [dig](https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux){.externe}
 
 Un nom de machine se fini toujours par un `.` qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :
 
@@ -395,24 +395,24 @@ www.google.fr.		300	IN	A	142.251.37.227
 
 Dans la partie liaison on a soit affaire à deux ordinateurs (2 routeurs ou 1 ordinateur et un routeur) relié par une liaison physique. ce lien peut être :
 
-- un câble [RJ45](https://sitelec.org/cours/caleca/pc/cablage_reseau.html) qui est une simple communication série [Tx/Rx](https://www.youtube.com/watch?v=-Wx-_dUh3ME) (attention aux cables direct ou croisés)
-- une [onde](https://www.youtube.com/watch?v=Uz-RTurph3c)
-- une [fibre optique](https://www.youtube.com/watch?v=eGNHZC4FkAg)
+- un câble [RJ45](https://sitelec.org/cours/caleca/pc/cablage_reseau.html){.externe} qui est une simple communication série [Tx/Rx](https://www.youtube.com/watch?v=-Wx-_dUh3ME){.externe} (attention aux cables direct ou croisés)
+- une [onde](https://www.youtube.com/watch?v=Uz-RTurph3c){.externe}
+- une [fibre optique](https://www.youtube.com/watch?v=eGNHZC4FkAg){.externe}
 
 Chaque moyen de communication nécessite son propre protocole permettant la transmission et a ses propres limitations :
 
 - câble : distance courte, il faut avoir un cable
-- wifi : [bruit wifi](https://www.youtube.com/watch?v=vvKbMueRzrI)
+- wifi : [bruit wifi](https://www.youtube.com/watch?v=vvKbMueRzrI){.externe}
 - fibre : cher pour un usage purement local.
 
-Un routeur est forcément relié physiquement à plusieurs autres routeurs, selon les routes qu'il peut disposer. De même votre ordinateur est relié à d'autres ordinateur via le réseau wifi de votre maison par exemple. Ce réseau minimal est appelé [LAN](https://fr.wikipedia.org/wiki/R%C3%A9seau_local) : Local Area Network
+Un routeur est forcément relié physiquement à plusieurs autres routeurs, selon les routes qu'il peut disposer. De même votre ordinateur est relié à d'autres ordinateur via le réseau wifi de votre maison par exemple. Ce réseau minimal est appelé [LAN](https://fr.wikipedia.org/wiki/R%C3%A9seau_local){.externe} : Local Area Network
 
 Dans une LAN, tous les ordinateurs sont connectés entre eux : ils sont tous à 1hop les uns de autres. Ceci peut se faire directement en connectant physiquement les ordinateurs 2 à deux, mais le plus souvent on utilise des :
 
-- [hubs](https://fr.wikipedia.org/wiki/Hub_Ethernet) qui renvoient ce qu'il reçoivent à tous les autres ports.
-- ou des [switch](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau) qui renvoient les données uniquement au port concerné (ils maintiennent une table de correspondance à jour)
+- [hubs](https://fr.wikipedia.org/wiki/Hub_Ethernet){.externe} qui renvoient ce qu'il reçoivent à tous les autres ports.
+- ou des [switch](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau){.externe} qui renvoient les données uniquement au port concerné (ils maintiennent une table de correspondance à jour)
 
-Une LAN peut-être très petite (au pire un routeur et l'ordinateur) ou contenir de [nombreuses machines](https://en.wikipedia.org/wiki/LAN_party) utilisant des [bridges](https://fr.wikipedia.org/wiki/Pont_(r%C3%A9seau)) qui permettent la réémission des signaux.
+Une LAN peut-être très petite (au pire un routeur et l'ordinateur) ou contenir de [nombreuses machines](https://en.wikipedia.org/wiki/LAN_party){.externe} utilisant des [bridges](https://fr.wikipedia.org/wiki/Pont_(r%C3%A9seau)){.externe} qui permettent la réémission des signaux.
 
 Classiquement, une LAN est un réseau familial :
 
@@ -427,16 +427,16 @@ Z -R- C
 
 - W : borne wifi
 - Z : box (routeur)
-- R : [switch ou hub](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau)
+- R : [switch ou hub](https://fr.wikipedia.org/wiki/Commutateur_r%C3%A9seau){.externe}
 - A : ipad
 - B : iphone
 - C : imac
 - D : imprimante
 
-Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer et utilisent un protocole particulier [Ethernet](https://fr.wikipedia.org/wiki/Ethernet).
+Dans un réseau LAN toutes les machines sont connectée 2 à 2 : elles se voient sans passer par un procédé de routage. Elles n'ont donc pas besoin de IP pour communiquer et utilisent un protocole particulier [Ethernet](https://fr.wikipedia.org/wiki/Ethernet){.externe}.
 
 {% aller %}
-[Ethernet](./ethernet){.interne}
+[Ethernet](./ethernet)
 {% endaller %}
 
 ## Odds and ends
@@ -475,16 +475,16 @@ Client -- | -------->X --> Serveur:port
 
 ### Taille des paquets
 
-> TBD MTU 1500 : <https://test-ipv6.com/faq_pmtud.html> <https://www.bgpexpert.com/article.php?article=117>
+> TBD MTU 1500 : <https://test-ipv6.com/faq_pmtud.html>{.externe} <https://www.bgpexpert.com/article.php?article=117>{.externe}
 
 ### Taille de la FIFO d'un routeur
 
 La taille de la FIFO d'un routeur est dépendante du réseau. Allant de $C\cdot T$ où $C$ est le débit du réseau (10Gb/s par exemple) et $T$ le temps moyen allant de la demande à la réception d'une donnée (classiquement, on utilise 250ms) dans des réseau très congestionné à $\frac{C\cdot T}{\sqrt{N}}$, avec $N$ le nombre de communications simultanées dans le réseau pour de grands réseaux homogènes.
 
-Voir [cette référence](https://web.stanford.edu/class/cs244/papers/SizingRouterBuffersAppenzeller.pdf).
+Voir [cette référence](https://web.stanford.edu/class/cs244/papers/SizingRouterBuffersAppenzeller.pdf){.externe}.
 
 ## Bibliographie
 
-- [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
-- [Beej's Guide to Network Concepts](https://beej.us/guide/bgnet0/html/)
-- [Introduction to computer network](https://intronetworks.cs.luc.edu/)
+- [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html){.externe}
+- [Beej's Guide to Network Concepts](https://beej.us/guide/bgnet0/html/){.externe}
+- [Introduction to computer network](https://intronetworks.cs.luc.edu/){.externe}

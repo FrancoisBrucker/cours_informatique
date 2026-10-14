@@ -242,7 +242,7 @@ Cette technique est très puissante et est utilisée massivement e `C`.
 
 ### <span id="scanf"></span> scanf
 
-La fonction [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) demande à l'entrée standard (les champs sont séparés par des espaces par défaut) de renseigner une variable. On l'utilise de cette manière :
+La fonction [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html){.externe} demande à l'entrée standard (les champs sont séparés par des espaces par défaut) de renseigner une variable. On l'utilise de cette manière :
 
 ```c#
 #include <stdio.h>
@@ -373,7 +373,7 @@ Ne pas rendre un pointeur sur une variable crée dans une fonction.
 Il est tout à fait possible d'avoir un pointeur sur une fonction et d'utiliser le pointeur pour l'appeler.
 
 {% lien %}
-[Pointeur sur une fonction](https://www.youtube.com/watch?v=axngwDJ79GY)
+[Pointeur sur une fonction](https://www.youtube.com/watch?v=axngwDJ79GY){.externe}
 {% endlien %}
 
 ```c
@@ -462,5 +462,5 @@ printf("%f \n", conversion(37, kelvin));
 ```
 
 {% lien %}
-[Comprendre tous les types de fonctions](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs)
+[Comprendre tous les types de fonctions](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs){.externe}
 {% endlien %}

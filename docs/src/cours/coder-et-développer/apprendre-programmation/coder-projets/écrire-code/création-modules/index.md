@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une bonne pratique stipule qu'il faut séparer l'exécution des fonctions. Pour cela, python propose la notion de modules. [On a déjà utilisé des modules de python](../../../concepts/#modules){.interne} en les important. Le code suivant par exemple importe un module :
+Une bonne pratique stipule qu'il faut séparer l'exécution des fonctions. Pour cela, python propose la notion de modules. [On a déjà utilisé des modules de python](../../../concepts/#modules) en les important. Le code suivant par exemple importe un module :
 
 ```python
 import random
@@ -21,10 +21,10 @@ En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l
 On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.
 
 {% lien "**Documentation**" %}
-[Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html)
+[Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html){.externe}
 {% endlien %}
 
-L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/){.interne} :
+L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/) :
 
 {% info %}
 
@@ -94,7 +94,7 @@ import mon_module
 
 ![import](import-1.png)
 
-Le nom `mon_module`{.language-} correspond à un objet de type module contenant un espace de nommage. On peut accéder aux noms de son espace avec la [notation pointée](../principes/modules/#définition-notation-pointée){.interne} :
+Le nom `mon_module`{.language-} correspond à un objet de type module contenant un espace de nommage. On peut accéder aux noms de son espace avec la [notation pointée](../principes/modules/#définition-notation-pointée) :
 
 ```python
 mon_module.MA_CONSTANTE

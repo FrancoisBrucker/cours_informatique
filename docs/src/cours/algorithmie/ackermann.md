@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est le premier exemple connu de fonction calculable mais non primitive récursive.
+La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann){.externe}, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est le premier exemple connu de fonction calculable mais non primitive récursive.
 
 Elle se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :
 
@@ -152,10 +152,10 @@ Il faut donc (plus que) de l'ordre de de la valeur de la fonction d'Ackermann r�
 
 ## Valeurs
 
-Donnons une valeur à la fonction d'Ackermann. On doit cette évaluation à [D. Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) qui pour cela a inventé une nouvelle opération mathématique, l'opération $x \uparrow y$ :
+Donnons une valeur à la fonction d'Ackermann. On doit cette évaluation à [D. Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth){.externe} qui pour cela a inventé une nouvelle opération mathématique, l'opération $x \uparrow y$ :
 
 {% lien %}
-[Puissances itérées de Knuth](https://fr.wikipedia.org/wiki/Notation_des_puissances_it%C3%A9r%C3%A9es_de_Knuth)
+[Puissances itérées de Knuth](https://fr.wikipedia.org/wiki/Notation_des_puissances_it%C3%A9r%C3%A9es_de_Knuth){.externe}
 {% endlien %}
 
 On définit cette opération comme suit :
@@ -198,7 +198,7 @@ Ce n'est pas parce que l'on peut calculer quelque chose qu'on peut le faire en p
 {% info %}
 Lorsque l'on vous donne ce genre de grandeurs, ayez à l'esprit qu'il n'y a que de l'ordre de $10^{80}$ atomes dans l'univers, ce qui est bien plus petit que $2^{65500}$.
 
-cf. [unités et ordres de grandeur](/cours/misc/unités-ordres-grandeur){.interne}
+cf. [unités et ordres de grandeur](/cours/misc/unités-ordres-grandeur)
 {% endinfo %}
 
 Les nombres $2 \uparrow^{(m)} n$ vont être liés à la fonction d'Ackermann. Commençons donc par nous familiariser avec :

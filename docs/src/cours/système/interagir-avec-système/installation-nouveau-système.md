@@ -33,7 +33,7 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 
 {% endfaire %}
 
-L'installation devra très certainement aller sur internet pour récupérer les données du système ou retrouver vous données sauvegardées sur le cloud ([icloud](https://support.apple.com/fr-fr/guide/icloud/welcome/icloud) sur mac ou [one drive](https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage) sous windows). Pour que tout se passe au mieux :
+L'installation devra très certainement aller sur internet pour récupérer les données du système ou retrouver vous données sauvegardées sur le cloud ([icloud](https://support.apple.com/fr-fr/guide/icloud/welcome/icloud){.externe} sur mac ou [one drive](https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage){.externe} sous windows). Pour que tout se passe au mieux :
 
 {% faire %}
 
@@ -47,7 +47,7 @@ L'installation devra très certainement aller sur internet pour récupérer les 
 
 Votre compte utilisateur avec lequel vous allez faire du développement (qui peut être votre compte principal) doit posséder quelques propriétés qui vont vous faire gagner du temps :
 
-- doit être un **_compte administrateur_** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480) si vous êtes sous Linux)
+- doit être un **_compte administrateur_** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480){.externe} si vous êtes sous Linux)
 - votre nom de compte ne doit contenir **_ni espace ni accent_**
 
 Si votre compte ne satisfait pas les deux critères ci-dessus :
@@ -55,18 +55,18 @@ Si votre compte ne satisfait pas les deux critères ci-dessus :
 {% faire %}
 Création d'un compte administrateur :
 
-- [sous Windows 11](https://support.microsoft.com/fr-fr/windows/cr%C3%A9er-un-compte-d-administrateur-ou-d-utilisateur-local-dans-windows-20de74e0-ac7f-3502-a866-32915af2a34d)
-- [sous Macos](https://support.apple.com/fr-fr/guide/mac-help/mchl3e281fc9/mac)
-- [sous Linux/Ubuntu](https://guide.ubuntu-fr.org/desktop/user-add.html)
+- [sous Windows 11](https://support.microsoft.com/fr-fr/windows/cr%C3%A9er-un-compte-d-administrateur-ou-d-utilisateur-local-dans-windows-20de74e0-ac7f-3502-a866-32915af2a34d){.externe}
+- [sous Macos](https://support.apple.com/fr-fr/guide/mac-help/mchl3e281fc9/mac){.externe}
+- [sous Linux/Ubuntu](https://guide.ubuntu-fr.org/desktop/user-add.html){.externe}
 {% endfaire %}
 
 
 {% faire %}
 Procédez à l'installation de votre système en suivant les recommandations ci-après :
 
-- sous mac : <https://support.apple.com/fr-fr/HT204904>
-- sous windows : <https://www.microsoft.com/fr-fr/software-download/windows11> En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
-- sous Linux : <https://doc.ubuntu-fr.org/installation>
+- sous mac : <https://support.apple.com/fr-fr/HT204904>{.externe}
+- sous windows : <https://www.microsoft.com/fr-fr/software-download/windows11>{.externe} En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
+- sous Linux : <https://doc.ubuntu-fr.org/installation>{.externe}
 {% endfaire %}
 
 Une fois installé, il faut mettre le système à jour pour installer les toutes dernières versions.
@@ -74,9 +74,9 @@ Une fois installé, il faut mettre le système à jour pour installer les toutes
 {% faire %}
 Procédez à l'installation de votre système en suivant les recommandations ci-après :
 
-- sous mac : <https://support.apple.com/fr-fr/HT201541>
-- sous windows : <https://support.microsoft.com/fr-fr/windows/obtenez-la-derni%C3%A8re-mise-%C3%A0-jour-7d20e88c-0568-483a-37bc-c3885390d212>
-- sous Linux : <https://en.wikipedia.org/wiki/Software_Updater> ou dans un terminal avec la commande : `sudo apt update && sudo apt full-upgrade -y`
+- sous mac : <https://support.apple.com/fr-fr/HT201541>{.externe}
+- sous windows : <https://support.microsoft.com/fr-fr/windows/obtenez-la-derni%C3%A8re-mise-%C3%A0-jour-7d20e88c-0568-483a-37bc-c3885390d212>{.externe}
+- sous Linux : <https://en.wikipedia.org/wiki/Software_Updater>{.externe} ou dans un terminal avec la commande : `sudo apt update && sudo apt full-upgrade -y`
 {% endfaire %}
 
 ## Installation des Drivers

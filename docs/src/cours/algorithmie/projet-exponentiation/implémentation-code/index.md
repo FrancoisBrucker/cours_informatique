@@ -114,11 +114,11 @@ En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (p
 
 ## Complexité temporelle
 
-La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../complexité-calculs/définitions/#complexité-temps){.interne} de celui-ci pour une entrée réalisant la complexité maximale.
+La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../complexité-calculs/définitions/#complexité-temps) de celui-ci pour une entrée réalisant la complexité maximale.
 
 Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
 
-- nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
+- nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9){.externe} : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
 - python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](<https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)>)) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.
 
 Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces _temps parasites_ :
@@ -142,7 +142,7 @@ La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
 
 ### <span id="temporelle-comment-faire"></span>Comment faire
 
-On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html). Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
+On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html){.externe}. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
 
 {% faire %}
 Créez un fichier `temps_mesure.py`{.fichier} et mettez y le code suivant :
@@ -167,7 +167,7 @@ print("Temps d'attente :", delta)
 On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.
 {% endinfo %}
 
-Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter) qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (Youtube, Instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
+Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html){.externe} : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter){.externe} qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (Youtube, Instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
 {% faire %}
 
@@ -260,19 +260,19 @@ Vérifiez que le rapport `mesures_temps_naif[i] / mesures_temps_rapide[i]`{.lang
 Vérifiez que le rapport :
 
 - `mesures_temps_naif[i] / exposant[i]`{.language-} reste à peut prêt constant
-- `mesures_temps_rapide[i] / log(exposant[i])`{.language-} reste à peut prêt constant (`log`{.language-} est une fonction du [module `math`{.language-} de python](https://docs.python.org/fr/3/library/math.html))
+- `mesures_temps_rapide[i] / log(exposant[i])`{.language-} reste à peut prêt constant (`log`{.language-} est une fonction du [module `math`{.language-} de python](https://docs.python.org/fr/3/library/math.html){.externe})
   {% endfaire %}
 
 ## Graphiques
 
-Nous allons dans cette partie représenter graphiquement nos mesures. Nous utiliserons pour cela la bibliothèque [Matplotlib](https://matplotlib.org/).
+Nous allons dans cette partie représenter graphiquement nos mesures. Nous utiliserons pour cela la bibliothèque [Matplotlib](https://matplotlib.org/){.externe}.
 
 ### <span id="Matplotlib"></span>Bibliothèque Matplotlib
 
 Si ce n'est ps déjà fait, installez la bibliothèque :
 
 {% faire %}
-Dans un terminal, tapez la commande suivante pour installer [Matplotlib](https://matplotlib.org/) :
+Dans un terminal, tapez la commande suivante pour installer [Matplotlib](https://matplotlib.org/){.externe} :
 
 ```
 python -m pip install matplotlib
@@ -323,7 +323,7 @@ Le temps mis par l'exponentiation rapide est très inférieur à celui effectué
 ### Deux axes des ordonnées
 
 {% faire %}
-Utilisez le code de [ce lien](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines) pour utiliser `ax.twinx`{.language-} qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.
+Utilisez le code de [ce lien](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines){.externe} pour utiliser `ax.twinx`{.language-} qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.
 
 Vous pourrez également changer la couleur d'un des dessins en remplaçant le paramètre `'o-'`{.language-} d'un des 2 plot par `'ro-'`{.language-} pour dessiner en rouge (red).
 

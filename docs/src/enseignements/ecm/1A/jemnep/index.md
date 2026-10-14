@@ -18,9 +18,9 @@ eleventyComputed:
 
 Le premier d'une série de 3 enseignements orienté développement et axé autour de 3 thèmes :
 
-- le développement : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
+- le développement : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530){.externe})
 - le système : là où sera exécuté le code
-- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
+- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM){.externe})
 
 {% info %}
 [La trilogie](/enseignements/ecm/#mdd)
@@ -91,19 +91,19 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 -->
 
 {% aller "**Cours**" %}
-[Bases du développement](/cours/coder-et-développer/bases-programmation/){.interne}
+[Bases du développement](/cours/coder-et-développer/bases-programmation/)
 {% endaller %}
 
 ### Après-midi
 
 {% aller "**Exercices d'entraînement**" %}
 
-[Petits programmes](/cours/coder-et-développer/projet-codes/){.interne}
+[Petits programmes](/cours/coder-et-développer/projet-codes/)
 
 {% endaller %}
 {% aller "**On vérifie son niveau**" %}
 
-[100 mono-lignes](/cours/coder-et-développer/mono-lignes/){.interne}
+[100 mono-lignes](/cours/coder-et-développer/mono-lignes/)
 {% endaller %}
 
 ## Jour 2
@@ -112,11 +112,11 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Cours**" %}
 
-1. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
-2. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
+1. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/)
+2. [Modules externes python](/cours/coder-et-développer/modules-externes-python/)
 3. Gestion des données :
-   1. [chaînes de caractères](/cours/coder-et-développer/encodage-unicode/){.interne}
-   2. [notion de fichier](/cours/coder-et-développer/fichiers/structure/){.interne} et [fichier texte](/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
+   1. [chaînes de caractères](/cours/coder-et-développer/encodage-unicode/)
+   2. [notion de fichier](/cours/coder-et-développer/fichiers/structure/) et [fichier texte](/cours/coder-et-développer/fichiers/fichiers-texte/)
 
 {% endaller %}
 
@@ -124,13 +124,13 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Exercices d'entraînement**" %}
 
-1. [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
-2. [Projet fichier texte](/cours/coder-et-développer/fichiers/projet-texte/){.interne}
+1. [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/)
+2. [Projet fichier texte](/cours/coder-et-développer/fichiers/projet-texte/)
 
 {% endaller %}
 {% aller "**On va plus loin**" %}
 
-[Données texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
+[Données texte](/cours/coder-et-développer/fichiers/projet-données/)
 {% endaller %}
 
 ## Jour 3
@@ -139,17 +139,17 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Cours**" %}
 
-1. [mettre ses sources à disposition](/cours/gestion-des-sources/#dépot){.interne}
-2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
-3. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-4. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
+1. [mettre ses sources à disposition](/cours/gestion-des-sources/#dépot)
+2. [déboguer son code](/cours/coder-et-développer/débogueur/)
+3. [tester son code](/cours/coder-et-développer/tests-unitaires/)
+4. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/)
 
 {% endaller %}
 {% aller "**TD**" %}
 
-1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
-2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
-3. [faites le TD déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/)
+2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages)
+3. [faites le TD déboguer son code](/cours/coder-et-développer/débogueur/)
 
 {% endaller %}
 
@@ -157,18 +157,18 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Exercices d'entraînement**" %}
 
-[On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+[On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/)
 
 {% endaller %}
 
 {% aller "**On vérifie son niveau**" %}
-[Exercices](/cours/coder-et-développer/exercices-tests/){.interne}
+[Exercices](/cours/coder-et-développer/exercices-tests/)
 
 {% endaller %}
 
 ## Projet à rendre
 
-Choisissez un exercice du <https://adventofcode.com/> actuel et résolvez le. On vous demande de rendre :
+Choisissez un exercice du <https://adventofcode.com/>{.externe} actuel et résolvez le. On vous demande de rendre :
 
 - un fichier `main.py`{.fichier} pour votre programme principal
 - un fichier `fonction.py`{.fichier} pour vos fonctions
@@ -177,7 +177,7 @@ Choisissez un exercice du <https://adventofcode.com/> actuel et résolvez le. On
 
 Ainsi que la preuve que votre exercice est réussi.
 
-Vous devrez rendre votre travail [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1231) avant le 24 décembre 23h59.
+Vous devrez rendre votre travail [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1231){.externe} avant le 24 décembre 23h59.
 
 {% info %}
 Si vous rendez le code sous la forme d'un lien vers un projet github, vous aurez toute ma considération.

@@ -26,27 +26,27 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 ### Réseau
 
 {% aller %}
-[Principes et utilisation du réseau](bases-réseau){.interne}
+[Principes et utilisation du réseau](bases-réseau)
 {% endaller %}
 
 ### ssh
 
 {% aller %}
-[Connexions ssh](./ssh){.interne}
+[Connexions ssh](./ssh)
 {% endaller %}
 
 ## refactor
 
-> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>
-> TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
+> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>{.externe}
+> TBD <https://tuteurs.ens.fr/unix/>{.externe} et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>{.externe}
 > TBD découper en partie plus digeste
-> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
-> TBD opérateurs shell <https://quennec.fr/book/export/html/272>
-> TBD fibo en sh : <https://quennec.fr/node/640>
+> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>{.externe}
+> TBD opérateurs shell <https://quennec.fr/book/export/html/272>{.externe}
+> TBD fibo en sh : <https://quennec.fr/node/640>{.externe}
 
-1. [Bases de réseau](réseau){.interne}
-2. [clients serveurs](./client-serveur){.interne} (socket)
-3. [Redirection de ports](redirection-ports-ssh){.interne}
+1. [Bases de réseau](réseau)
+2. [clients serveurs](./client-serveur) (socket)
+3. [Redirection de ports](redirection-ports-ssh)
 4.  Docker : interfaces réseau
 
 {% info %}

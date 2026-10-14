@@ -12,7 +12,7 @@ eleventyComputed:
 
 
 {% lien %}
-[Type de fichiers Linux](https://www.n0tes.fr/2015/09/22/Types-fichiers-Linux/)
+[Type de fichiers Linux](https://www.n0tes.fr/2015/09/22/Types-fichiers-Linux/){.externe}
 {% endlien %}
 
 Le système de fichiers de Linux possède plusieurs types de fichiers différents. Ils permettent d'accéder non seulement à des données stockées sur le disque dur, mais également à tout ce qui se passe en interne dans le noyaux et les processus.
@@ -37,10 +37,10 @@ Le type de fichier est le 1er élément :
 - `-` pour les fichiers *régulier*, comme `.bashrc`{.fichier}
 - `d` pour les dossiers, comme `Bureau`{.fichier}
 
-On voit aussi deux dossiers spéciaux `.`{.fichier} et `..`{.fichier} qui permettent de remonter dans la hiérarchie et sont respectivement des [liens physiques](https://doc.ubuntu-fr.org/lien_physique_et_symbolique) vers les dossiers courant et parent.
+On voit aussi deux dossiers spéciaux `.`{.fichier} et `..`{.fichier} qui permettent de remonter dans la hiérarchie et sont respectivement des [liens physiques](https://doc.ubuntu-fr.org/lien_physique_et_symbolique){.externe} vers les dossiers courant et parent.
 
 {% info %}
-Un [lien symbolique](https://doc.ubuntu-fr.org/lien_physique_et_symbolique#exemple_de_lien_symbolique) aura un `l` comme premier élément et est un type de fichier spécial, le lien physique **est** le même fichier.
+Un [lien symbolique](https://doc.ubuntu-fr.org/lien_physique_et_symbolique#exemple_de_lien_symbolique){.externe} aura un `l` comme premier élément et est un type de fichier spécial, le lien physique **est** le même fichier.
 {% endinfo %}
 
 ## Fichiers d'accès aux données systèmes
@@ -71,7 +71,7 @@ $ ls -la /proc/$$
 ```
 
 {% attention %}
-[`/proc/$$`{.fichier} vs `/proc/self`{.fichier}](https://chengdol.github.io/2020/02/03/linux-proc-$$-self/)
+[`/proc/$$`{.fichier} vs `/proc/self`{.fichier}](https://chengdol.github.io/2020/02/03/linux-proc-$$-self/){.externe}
 {% endattention %}
 
 Le dossier `/proc/$$`{.fichier} Contient un dossier `cwd`{.fichier} qui est un fichier spécial (c'est un lien) :
@@ -111,7 +111,7 @@ Ce dossier contient, outre des liens symboliques, des fichiers de **type bloc** 
 ## FIFO
 
 {% lien %}
-[FIFO shell](https://www.youtube.com/watch?v=6lik_f1Vp54)
+[FIFO shell](https://www.youtube.com/watch?v=6lik_f1Vp54){.externe}
 {% endlien %}
 
 ```shell

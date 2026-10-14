@@ -50,7 +50,7 @@ $$
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
-Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} :
+Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) :
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:
@@ -336,7 +336,7 @@ Pour illustrer cela, nous allons considérer deux algorithmes permettant de calc
 ### Itératif
 
 Reprenons un de nos algorithmes fil rouge
-Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd){.interne} :
+Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd) :
  :
 
 ```pseudocode/
@@ -369,7 +369,7 @@ $$
 
 ### Récursif
 
-Reprenons l'exemple [l'algorithme du pgcd récursif](../../prouver-un-algorithme/#algorithme-pgcd-rec){.interne} :
+Reprenons l'exemple [l'algorithme du pgcd récursif](../../prouver-un-algorithme/#algorithme-pgcd-rec) :
 
 ```pseudocode/
 algorithme pgcd(a, b):  # a, b > 0

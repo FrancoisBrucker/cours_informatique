@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Algorithme de Edmonds et Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp)
+[Algorithme de Edmonds et Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp){.externe}
 {% endlien %}
 
 L'algorithme de Ford et Fulkerson pour trouver une chaîne augmentante est efficace si les capacités sont peux importantes. Il n'est cependant pas polynomial.

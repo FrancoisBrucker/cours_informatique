@@ -20,7 +20,7 @@ Qu'est ce qu'un sélecteurs css, comment
 
 {% lien "**Documentation**" %}
 
-<https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors>
+<https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Selectors>{.externe}
 
 {% endlien %}
 
@@ -52,7 +52,7 @@ Le sélecteur `*`{.language-} correspond à tout. Il n'est pas recommandé de l'
 
 {% lien "**Documentation**" %}
 
-<https://developer.mozilla.org/fr/docs/Web/CSS/Attribute_selectors>
+<https://developer.mozilla.org/fr/docs/Web/CSS/Attribute_selectors>{.externe}
 
 {% endlien %}
 
@@ -76,7 +76,7 @@ On peut sélection une balise selon les attributs qu'elle possède. Par exemple 
 
 {% lien "**Documentation**" %}
 
-[les pseudo-classes standards](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-classes#liste_des_pseudo-classes_standards)
+[les pseudo-classes standards](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-classes#liste_des_pseudo-classes_standards){.externe}
 
 {% endlien %}
 
@@ -109,7 +109,7 @@ p:hover {
 
 {% lien "**Documentation**" %}
 
-[les pseudo-éléments](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-elements#liste_des_pseudo-%C3%A9l%C3%A9ments)
+[les pseudo-éléments](https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-elements#liste_des_pseudo-%C3%A9l%C3%A9ments){.externe}
 
 {% endlien %}
 
@@ -148,7 +148,7 @@ p::after {
 
 ### class et id
 
-On en reparlera dans la partie sur les [balises anonymes](../balises-anonymes#sélecteur-css){.interne}, nous ne ferons que les mentionner ici pour la référence. Il existe deux sélecteurs css très utilisés :
+On en reparlera dans la partie sur les [balises anonymes](../balises-anonymes#sélecteur-css), nous ne ferons que les mentionner ici pour la référence. Il existe deux sélecteurs css très utilisés :
 
-* le [sélecteur de classes](https://developer.mozilla.org/fr/docs/Web/CSS/Class_selectors)
-* le [sélecteur d'identifiant](https://developer.mozilla.org/fr/docs/Web/CSS/ID_selectors)
+* le [sélecteur de classes](https://developer.mozilla.org/fr/docs/Web/CSS/Class_selectors){.externe}
+* le [sélecteur d'identifiant](https://developer.mozilla.org/fr/docs/Web/CSS/ID_selectors){.externe}

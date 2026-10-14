@@ -18,13 +18,13 @@ Le but de ce DS est de coder un 2048.
 
 {% endnote %}
 
-Vous aurez besoin de la bibliothèque [pyglet](https://pyglet.readthedocs.io/en/latest/) pour coder les fenêtres et gérer les évènements claviers (avec la méthode `on_key_press`{.language-}) et souris (avec la méthode `on_mouse_press`{.language-}). Nous n'aurons pas besoin de gérer le temps dans ce DS.
+Vous aurez besoin de la bibliothèque [pyglet](https://pyglet.readthedocs.io/en/latest/){.externe} pour coder les fenêtres et gérer les évènements claviers (avec la méthode `on_key_press`{.language-}) et souris (avec la méthode `on_mouse_press`{.language-}). Nous n'aurons pas besoin de gérer le temps dans ce DS.
 
 {% info %}
 Toutes les informations nécessaires pour ce DS ont été prises de :
 
 - [la description du jeu sur sa page wikipedia](<https://fr.wikipedia.org/wiki/2048_(jeu_vid%C3%A9o)>)
-- [cette implémentation du jeu](https://play2048.co/)
+- [cette implémentation du jeu](https://play2048.co/){.externe}
 
 {% endinfo %}
 
@@ -50,7 +50,7 @@ Cette étape va créer l'aire de jeu. À l'exécution du fichier `main.py`{.lang
 
 ![étape 1](étape-1.png)
 
-Les couleurs (au format [RGBA](https://fr.wikipedia.org/wiki/RVBA), le dernier paramètre étant la transparence) sont les suivantes :
+Les couleurs (au format [RGBA](https://fr.wikipedia.org/wiki/RVBA){.externe}, le dernier paramètre étant la transparence) sont les suivantes :
 
 - le fond : `(185, 173, 161, 255)`
 - les cases : `(202, 193, 181, 255)`
@@ -99,7 +99,7 @@ L'attribut `cases`{.language-} de la grille est une matrice de `Carré`{.languag
 
 {% info %}
 
-- [Classe `pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle)
+- [Classe `pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe}
 - [Comment créer une matrice](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#matrices)
 
 {% endinfo %}
@@ -151,7 +151,7 @@ L'attribut valeur peut valoir toutes les puissances de 2, allant de 1 à 2048 et
 
 {% info %}
 
-- [Classe `pyglet.text.Label`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label)
+- [Classe `pyglet.text.Label`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label){.externe}
 - Les couleurs des cases pour les différentes valeurs :
   - `(202, 193, 181, 255)`{.language-} pour une valeur de 1
   - `(238, 228, 218, 255)`{.language-} pour une valeur de 2
@@ -205,7 +205,7 @@ Modifiez la gestion du clique de souris pour que :
 - le clique gauche augmente la valeur de la case sur laquelle on clique
 - le clique droit diminue la valeur de la case sur laquelle on clique
   {% info %}
-  Si vous avez un mac, vous pouvez soit simuler le clique droit soit l'activer en suivant [cette aide d'apple](https://support.apple.com/fr-fr/guide/mac-help/mh35853/mac).
+  Si vous avez un mac, vous pouvez soit simuler le clique droit soit l'activer en suivant [cette aide d'apple](https://support.apple.com/fr-fr/guide/mac-help/mh35853/mac){.externe}.
   {% endinfo %}
 
 ## Étape 5
@@ -269,10 +269,10 @@ Si l'appui sur une touche de direction a effectivement déplacé une case de val
 - 20% du temps elle est incrémentée deux fois (ce qui est equivalent à ajouter une case de valeur 4)
 
 {% info %}
-Vous pourrez utiliser les méthodes suivantes [du module random de python](https://docs.python.org/fr/3/library/random.html)
+Vous pourrez utiliser les méthodes suivantes [du module random de python](https://docs.python.org/fr/3/library/random.html){.externe}
 
-- [`choice`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choice) pour prendre un élément au hasard parmi la liste des cases de valeur 1
-- [`random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) pour gérer les probabilités.
+- [`choice`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choice){.externe} pour prendre un élément au hasard parmi la liste des cases de valeur 1
+- [`random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random){.externe} pour gérer les probabilités.
   {% endinfo %}
 
 ## Étape 6

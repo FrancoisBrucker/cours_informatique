@@ -26,7 +26,7 @@ Outre l'utilisation d'entiers, on peut créer un booléen (0 ou 1) grâce aux op
 {% attention "**danger !**" %}
 Les comparaisons ne fonctionnent pas avec des tableaux ou les chaînes de caractères.
 
-Pour ces deux types, il peut utiliser des fonctions comme [`strcmp`{.language-}](https://fr.wikipedia.org/wiki/Strcmp) pour les chaines de caractères et [`memcmp`{.language-}](https://www.tutorialspoint.com/c_standard_library/c_function_memcmp.htm) pour comparer des plages de mémoire.
+Pour ces deux types, il peut utiliser des fonctions comme [`strcmp`{.language-}](https://fr.wikipedia.org/wiki/Strcmp){.externe} pour les chaines de caractères et [`memcmp`{.language-}](https://www.tutorialspoint.com/c_standard_library/c_function_memcmp.htm){.externe} pour comparer des plages de mémoire.
 {% endattention %}
 
 Combiner des conditions logiques se fait grâce aux opérateurs logiques :
@@ -35,7 +35,7 @@ Combiner des conditions logiques se fait grâce aux opérateurs logiques :
 - `||`{.language-} : ou
 - `!`{.language-} : non
 
-Pour les conditions utiliser les [opérateurs logiques](https://www.tutorialspoint.com/cprogramming/c_logical_operators.htm).
+Pour les conditions utiliser les [opérateurs logiques](https://www.tutorialspoint.com/cprogramming/c_logical_operators.htm){.externe}.
 
 {% attention "**danger !**" %}
 Ne confondez pas `&&` qui est la condition logique et `&` qui est la comparaison bit à bit (idem pour `||` et `|`).
@@ -130,7 +130,7 @@ if (condition) {
 )
 ```
 
-Vous verrez souvent ce genre de construction incluse dans une autre instruction. Vois par exemple [ce tutoriel](https://www.freecodecamp.org/news/c-ternary-operator/).
+Vous verrez souvent ce genre de construction incluse dans une autre instruction. Vois par exemple [ce tutoriel](https://www.freecodecamp.org/news/c-ternary-operator/){.externe}.
 
 > TBD exercice
 
@@ -185,7 +185,7 @@ printf("\n");
 On se trompe rapidement dans l'ordre et les paramètres de la boucle for. Encore une fois le mieux qui peut vous arriver est une erreur :
 
 - l'échange de condition de fin et de test fonctionne de temps en temps
-- remplacer les `;` par des `,` *peut* fonctionner (voir [`,` est un opérateur en C](https://en.wikipedia.org/wiki/Comma_operator))
+- remplacer les `;` par des `,` *peut* fonctionner (voir [`,` est un opérateur en C](https://en.wikipedia.org/wiki/Comma_operator){.externe})
 - oublier un paramètre fonctionne. Par exemple, ceci : `for(;;) {}`{.language} est parfaitement légitime...
 - etc
 
@@ -236,5 +236,5 @@ int main() {
 
 Comme en python :
 
-- [break](http://ressources.unit.eu/cours/Cfacile/co/Chap5_p14.html)
-- [continue](http://ressources.unit.eu/cours/Cfacile/co/Chap5_p13.html)
+- [break](http://ressources.unit.eu/cours/Cfacile/co/Chap5_p14.html){.externe}
+- [continue](http://ressources.unit.eu/cours/Cfacile/co/Chap5_p13.html){.externe}

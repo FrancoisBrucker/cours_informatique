@@ -9,11 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm).
+Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm){.externe}.
 
 ## Définitions
 
-On peut définir [une fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
+On peut définir [une fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage){.externe} $f$ comme étant :
 
 {% note2 "**Définition**" %}
 Une **_fonction de hachage_** est une fonction $f$ :
@@ -46,7 +46,7 @@ Une **_fonction de hachage_** est une fonction qui associe à tout **objet** soi
 
 {% endnote2 %}
 
-En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
+En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash){.externe} :
 
 ```python
 >>> hash("du texte")
@@ -101,7 +101,7 @@ Cette propriété permet d'utiliser les fonctions de hachage pour :
 - proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques s'ils ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
 - créer des structures de données avancées comme les dictionnaires
 
-Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/), ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/){.interne} qui assurent qu'il est _difficile_ :
+Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/){.externe}, ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/) qui assurent qu'il est _difficile_ :
 
 - de trouver $m$ à partir de $h$ tel que $f(m) = h$
 - de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
@@ -164,7 +164,7 @@ n = \underbracket{0 \cdots 1}_{k \times l}
 $$
 </div>
 
-On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme [sha-2](https://fr.wikipedia.org/wiki/SHA-2)) :
+On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme [sha-2](https://fr.wikipedia.org/wiki/SHA-2){.externe}) :
 
 <div>
 $$
@@ -234,12 +234,12 @@ On utilise le modulo comme fonction de hachage avec un nombre $m$ premier pour s
 
 ### Hash de python
 
-L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en.wikipedia.org/wiki/SipHash)
+L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en.wikipedia.org/wiki/SipHash){.externe}
 
 {% lien %}
 
-- [description](https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html)
-- [Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash)
+- [description](https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html){.externe}
+- [Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash){.externe}
 
 {% endlien %}
 
@@ -393,10 +393,10 @@ Ces inégalités permettent de plus de calculer le nombre d'élèves qu'il faut 
 - seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 23$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.
 
 {% info %}
-Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires).
+Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires){.externe}.
 {% endinfo %}
 
-Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirages de :
+Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git){.externe}, qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1){.externe}), il faudrait avoir un nombre de tirages de :
 
 $$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}

@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
+[liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e){.externe}
 {% endlien %}
 
 Une liste doublement chaînées est la structure :
@@ -83,7 +83,7 @@ Implémentez les 4 fonctions précédentes.
 ## Utilisation : parcours
 
 {% lien %}
-<https://medium.com/future-vision/data-structures-algorithms-linked-lists-fc0b8a82d609>
+<https://medium.com/future-vision/data-structures-algorithms-linked-lists-fc0b8a82d609>{.externe}
 {% endlien %}
 
 On a coutume d'appeler `liste`{.language-} un pointeur sur un élément telle que :

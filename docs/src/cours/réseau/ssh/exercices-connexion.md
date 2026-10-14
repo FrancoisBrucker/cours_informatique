@@ -41,14 +41,14 @@ Vous avez un répertoire `html`{.fichier} sur votre compte. Tout ce qui est plac
 Vérifiez que tout fonctionne :
 
 1. lancez le navigateur/browser web `firefox`
-2. vérifiez que vous accédez a votre espace web perso sous la forme <http://prenom.nom.perso.centrale-marseille.fr>
+2. vérifiez que vous accédez a votre espace web perso sous la forme <http://prenom.nom.perso.centrale-marseille.fr>{.externe}
 
-Le principe est simple : tout ce qui est précisé apres <http://prenom.nom.perso.centrale-marseille.fr> est relatif a votre repertoire `~/html`{.fichier}. Ainsi <http://prenom.nom.perso.centrale-marseille.fr/toto.txt> désigne le fichier `toto.txt`{.fichier} qui est `~/html/toto.txt`{.fichier}
+Le principe est simple : tout ce qui est précisé apres <http://prenom.nom.perso.centrale-marseille.fr>{.externe} est relatif a votre repertoire `~/html`{.fichier}. Ainsi <http://prenom.nom.perso.centrale-marseille.fr/toto.txt>{.externe} désigne le fichier `toto.txt`{.fichier} qui est `~/html/toto.txt`{.fichier}
 
-1. À quel fichier correspond l'url <http://prenom.nom.perso.centrale-marseille.fr/a/b/c/d/tutu.txt> ?
-2. Copiez avec [la commande `scp`](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/) depuis votre propre ordinateur jusqu'au dossier `~/html/` de l'ordinateur `sas1.ec-m.fr` le fichier `brise_marine.txt`.
+1. À quel fichier correspond l'url <http://prenom.nom.perso.centrale-marseille.fr/a/b/c/d/tutu.txt>{.externe} ?
+2. Copiez avec [la commande `scp`](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/){.externe} depuis votre propre ordinateur jusqu'au dossier `~/html/` de l'ordinateur `sas1.ec-m.fr` le fichier `brise_marine.txt`.
 3. Vérifiez que `brise_marine.txt` est bien accessible depuis votre site personnel de l'ecm.
-4. Téléchargez `brise_marine.txt` avec la commande [`curl`](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9)
+4. Téléchargez `brise_marine.txt` avec la commande [`curl`](https://www.youtube.com/watch?v=APtOavXTv5M&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=9){.externe}
 5. Déplacez le fichier `~/html/brise_marine.txt`{.fichier} dans le répertoire `~/html/visible`{.fichier}
 6. Essayez de voir le contenu de ce repertoire via le navigateur. Quelle difference de fonctionnement avec le cas precedent ?
 7. Déplacez le fichier `~/html/visible/brise_marine.txt`{.fichier} dans le dossier `~/html/intranet`.

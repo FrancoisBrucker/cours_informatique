@@ -19,7 +19,7 @@ Commençons par définir le problème :
 Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k}$ tel que :
 
 - $a = v_0$ et $b=v_{k}$
-- il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#definition-longueur){.interne} strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
+- il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#definition-longueur) strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
   {% endnote2 %}
 
 Que l'on généralise souvent aux **graphes (orientés) valués** :
@@ -51,7 +51,7 @@ Commençons par restreindre le problème au cas intuitif où **la valuation $f$ 
 
 {% aller %}
 
-[Graphe avec valuations positives](valuation-positive){.interne}
+[Graphe avec valuations positives](valuation-positive)
 
 {% endaller %}
 
@@ -61,7 +61,7 @@ La définition que l'on s'est donné de chemin de poids minimum est intuitive : 
 
 {% aller %}
  
-[Algorithmes généraux (Bellman-Ford et Roy-Floyd-Warshall)](cas-général){.interne}
+[Algorithmes généraux (Bellman-Ford et Roy-Floyd-Warshall)](cas-général)
 
 {% endaller %}
 
@@ -71,6 +71,6 @@ Un projet de code pour expérimenter :
 
 {% aller %}
 
-[Projet chemins de poids minimum](projet-chemins-min){.interne}
+[Projet chemins de poids minimum](projet-chemins-min)
 
 {% endaller %}

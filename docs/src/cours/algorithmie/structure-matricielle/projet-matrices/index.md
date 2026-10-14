@@ -18,7 +18,7 @@ eleventyComputed:
 > - **Difficulté** : facile
 
 
-Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal){.externe}, avec $1\leq k \leq n$ :
 
 <div>
 $$
@@ -35,12 +35,12 @@ $$
 </div>
 
 {% info %}
-[On a déjà vu](../../exercices-calculs-compexités/#triangle-de-pascal){.interne} l'approche récursive. Passons à l'approche itérative. 
+[On a déjà vu](../../exercices-calculs-compexités/#triangle-de-pascal) l'approche récursive. Passons à l'approche itérative. 
 {% endinfo %}
 
 ### Calcul de la matrice
 
-Le type matrice ne spécifie pas la longueur de chaque tableau, ceci permet de créer des matrices triangulaires inférieures, dans notre cas, une partie du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal) :
+Le type matrice ne spécifie pas la longueur de chaque tableau, ceci permet de créer des matrices triangulaires inférieures, dans notre cas, une partie du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal){.externe} :
 
 <div>
 $$
@@ -133,7 +133,7 @@ algorithme binom(n: entier, k:entier) → entier:
 
 La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction `binom_matrice(n: entier) → [[entier]]`{.language-}.
 
-En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/complexité-algorithmes/#règle-croissance){.interne}, cette complexité est en $\mathcal{O}(n^2)$.
+En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/complexité-algorithmes/#règle-croissance), cette complexité est en $\mathcal{O}(n^2)$.
 
 On en déduit que la complexité de l'algorithme `binom`{.language-} est en $\mathcal{O}(nk)$. Comme il faut de plus stocker toute la matrice triangulaire inférieure, sa complexité spatiale est en $\mathcal{O}(nk)$
 
@@ -270,7 +270,7 @@ Codez les différents exercices en python. Vous pourrez vérifier vos algorithme
 {% details "corrigé" %}
 
 {% lien %}
-[`pascal.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/pascal.py)
+[`pascal.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/pascal.py){.externe}
 {% endlien %}
 
 
@@ -282,7 +282,7 @@ Codez les différents exercices en python. Vous pourrez vérifier vos algorithme
 > - **Difficulté** : moyen
 
 {% info "**Anecdote cocasse**" %}
-Quand le CEA, qui avait financé les travaux, a demandé à Colmerauer un exemple de problème pratique que pouvait résoudre son nouveau langage [Prolog](https://fr.wikipedia.org/wiki/Prolog), il a répondu le problème des 8 reines.
+Quand le CEA, qui avait financé les travaux, a demandé à Colmerauer un exemple de problème pratique que pouvait résoudre son nouveau langage [Prolog](https://fr.wikipedia.org/wiki/Prolog){.externe}, il a répondu le problème des 8 reines.
 
 Pas sûr que les deux interlocuteurs aient la même notion de ce qu'était un _"problème pratique"_.
 {% endinfo %}
@@ -636,19 +636,19 @@ Et seulement 4 pour 6 lignes :
 {% details "corrigé" %}
 
 {% lien %}
-[`reines.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/reines.py)
+[`reines.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/reines.py){.externe}
 {% endlien %}
 {% enddetails %}
 
 ### Généralisation
 
 {% lien %}
-<https://interstices.info/le-probleme-des-8-reines-et-au-dela/>
+<https://interstices.info/le-probleme-des-8-reines-et-au-dela/>{.externe}
 {% endlien %}
 
 ## Multiplication de matrices
 
-Le problème de la multiplication de matrice est un problème intéressant [avec une grande histoire](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm). Nous allons montrer ici la méthode naïve et le plus célèbre des algorithmes, celui de Strassen. Notez qu'actuellement on peut faire mieux.
+Le problème de la multiplication de matrice est un problème intéressant [avec une grande histoire](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm){.externe}. Nous allons montrer ici la méthode naïve et le plus célèbre des algorithmes, celui de Strassen. Notez qu'actuellement on peut faire mieux.
 
 ### Création
 
@@ -868,11 +868,11 @@ Pour gagner en complexité il faut diminuer le nombre d'appels récursif et c'es
 ### Strassen
 
 {% lien %}
-[page Wikipédia sur l'algorithme Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)
+[page Wikipédia sur l'algorithme Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen){.externe}
 
 {% endlien %}
 
-L'astuce qu'a utilisé Strassen est peu ou prou la même que celle utilisée par [Karastuba pour multiplier des entiers](../../projet-complexité-problème/#Karastuba){.interne}. En reprenant les matrices $A_{ij}$ et $B_{ij}$ précédente, il montre que l'on peut créer les matrices $C_{ij}$ en passant par 7 matrices $M_k$ :
+L'astuce qu'a utilisé Strassen est peu ou prou la même que celle utilisée par [Karastuba pour multiplier des entiers](../../projet-complexité-problème/#Karastuba). En reprenant les matrices $A_{ij}$ et $B_{ij}$ précédente, il montre que l'on peut créer les matrices $C_{ij}$ en passant par 7 matrices $M_k$ :
 
 <div>
 $$
@@ -961,7 +961,7 @@ Implémentez l'algorithme de Strassen et comparez son exécution à une multipli
 {% details "corrigé" %}
 
 {% lien %}
-[`strassen.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py)
+[`strassen.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py){.externe}
 {% endlien %}
 
 L'algorithme de Strassen possède bien plus d'additions et de créations des nouvelles matrices que l'algorithme naïf. Asymptotiquement il est meilleur mais il faut que $n$ soit grand pour ˆ´tre effectivement plus rapide : on voit en effet que le rapport de temps entre les 2 temps algorithme augmente (mais très doucement).
@@ -981,12 +981,12 @@ Comment généraliseriez vous l'algorithme de Strassen à des matrices non carr�
 
 {% enddetails %}
 
-On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par [le complément de Schur](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur) d'une matrice. Les deux liens ci-après expliquent tout ça très bien :
+On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par [le complément de Schur](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur){.externe} d'une matrice. Les deux liens ci-après expliquent tout ça très bien :
 
 {% lien %}
 
-- <https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_la_multiplication_de_matrices#Inversion_de_matrice,_d%C3%A9terminant_et_%C3%A9limination_gaussienne>
-- <https://weimann.users.lmno.cnrs.fr/CM5.pdf>
+- <https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_la_multiplication_de_matrices#Inversion_de_matrice,_d%C3%A9terminant_et_%C3%A9limination_gaussienne>{.externe}
+- <https://weimann.users.lmno.cnrs.fr/CM5.pdf>{.externe}
 
 {% endlien %}
 
@@ -996,8 +996,8 @@ On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant 
 La limite théorique de la multiplication de deux matrices carrées à $n$ lignes est en $\mathcal{O}(n^2)$ et l'algorithme de Strassen est en $\mathcal{O}(n^{2.804})$. Il en existe d'autres meilleures, voir les lien ci-après :
 
 {% lien %}
-- [histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)
-- [Une expérimentation de _LaurieWired_](https://www.youtube.com/watch?v=HdysaWNs1g8)
+- [histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw){.externe}
+- [Une expérimentation de _LaurieWired_](https://www.youtube.com/watch?v=HdysaWNs1g8){.externe}
 {% endlien %}
 
 Cependant, comme on l'a vu, ces résultats sont asymptotiques et on ne voit la différence que pour des matrices très très grandes. À l'heure où je tape ces lignes, le meilleur algorithme connu date de 2025 et est en $\mathcal{O}(n^{2.271})$.

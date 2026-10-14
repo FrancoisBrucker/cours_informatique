@@ -27,7 +27,7 @@ Votre ordinateur est composé de **_fichiers_** et de **_dossiers_** (aussi appe
 Il existe un dossier spécial, appelé **_racine_** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
 {% endnote2 %}
 
-Cette organisation est appelée [arborescence de fichiers](<https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)>) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
+Cette organisation est appelée [arborescence de fichiers](<https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)>) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9){.externe} où les fichiers sont des feuilles, comme dans la figure ci-dessous :
 
 ![arbre des fichiers](arborescence.png)
 
@@ -37,11 +37,11 @@ Chaque système d'exploitation fournit un **_explorateur de fichiers_** qui est 
 
 {%details "Explorateur de Windows 11" %}
 
-[L'explorateur de fichiers](https://support.microsoft.com/fr-fr/windows/rechercher-et-ouvrir-explorateur-de-fichiers-ef370130-1cca-9dc5-e0df-2f7416fe1cb1) permet de naviguer dans l'arborescence de vos disque durs.
+[L'explorateur de fichiers](https://support.microsoft.com/fr-fr/windows/rechercher-et-ouvrir-explorateur-de-fichiers-ef370130-1cca-9dc5-e0df-2f7416fe1cb1){.externe} permet de naviguer dans l'arborescence de vos disque durs.
 
 {% enddetails %}
 {%details "Finder de Macos" %}
-L'explorateur de fichier sous mac s'appelle [le finder](https://support.apple.com/fr-fr/HT201732).
+L'explorateur de fichier sous mac s'appelle [le finder](https://support.apple.com/fr-fr/HT201732){.externe}.
 
 Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers. Pour qu'il soit un peu plus facile d'y naviguer :
 
@@ -53,7 +53,7 @@ Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers
 {% enddetails %}
 {%details "Files de Linux/Ubuntu" %}
 
-Sous Ubuntu, il existe [plusieurs explorateurs de fichiers](https://doc.ubuntu-fr.org/gestionnaire_de_fichiers). Par défaut c'est l'application files :
+Sous Ubuntu, il existe [plusieurs explorateurs de fichiers](https://doc.ubuntu-fr.org/gestionnaire_de_fichiers){.externe}. Par défaut c'est l'application files :
 
 ![application files](./ubuntu-files.png)
 
@@ -79,7 +79,7 @@ Pour aller à la racine, choisissez `other Locations > Computer` en bas du panel
 
 Vous pourrez ensuite naviguer de dossiers en dossiers, jusqu'à arriver à un fichier d'où vous ne pourrez plus avancer.
 
-Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo [d'Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) :
+Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo [d'Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace){.externe} :
 
 ![chemin vers le fichier ada_lovelace](chemin-vers-ada.png)
 
@@ -120,7 +120,7 @@ Sous Windows, on utilise souvent `\`{.fichier} à la place de `/`{.fichier}.
 
 On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une _racine des racines_, qui contient le départ vers les racines particulières des différents périphériques de stockages de l'ordinateur comme les disques durs, clés usb, etc.
 
-C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaque disque dur est [monté](https://fr.wikipedia.org/wiki/Point_de_montage).
+C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaque disque dur est [monté](https://fr.wikipedia.org/wiki/Point_de_montage){.externe}.
 
 {% info %}
 Souvent sous windows ces racines sont explicites, c'est `c:`{.fichier} par exemple pour le disque dur principal.
@@ -165,12 +165,12 @@ En cliquant sur le `v` on obtient le chemin :
 {% enddetails %}
 {% details "sous Macos" %}
 
-Dans le finder cliquez droit sur le dossier, puis copiez. Collez ensuite dans un [terminal](../terminal){.interne}.
+Dans le finder cliquez droit sur le dossier, puis copiez. Collez ensuite dans un [terminal](../terminal).
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
 
-Dans l'explorateur de fichiers cliquez droit sur le dossier et copiez le. Puis, dans un [terminal](../terminal){.interne}, cliquez droit et choissez `Paste as Filenames`
+Dans l'explorateur de fichiers cliquez droit sur le dossier et copiez le. Puis, dans un [terminal](../terminal), cliquez droit et choissez `Paste as Filenames`
 
 {% enddetails %}
 
@@ -194,7 +194,7 @@ Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les é
 
 ### Extension de fichier
 
-Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [**_une extension_**](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
+Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [**_une extension_**](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier){.externe}.
 
 Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
 
@@ -214,7 +214,7 @@ Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte q
 
 ### <span id="fichier-cache"></span>Fichiers cachés
 
-Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9) et nécessitent d'être administrateur pour y accéder.
+Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9){.externe} et nécessitent d'être administrateur pour y accéder.
 
 Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un `.`{.fichier} et dans le monde windows, ils sont déterminés par une propriété :
 
@@ -235,7 +235,7 @@ Après avoir activé l'affichage des fichiers cachés, le dossier `AppData`{.fic
 {% enddetails %}
 {% details "sous Macos" %}
 
-[dans le finder](https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/).
+[dans le finder](https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/){.externe}.
 
 {% attention %}
 Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d'appuyer sur la touche `fn` en plus.
@@ -255,7 +255,7 @@ Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui com
 
 ## <span id="liens"></span>Liens
 
-[Les liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link) sont des fichiers/dossier qui _représentent_ d'autres fichiers/dossier. Ils permettent d'accéder à un fichier/dossier via plusieurs chemins de l’arborescence. Par exemple :
+[Les liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link){.externe} sont des fichiers/dossier qui _représentent_ d'autres fichiers/dossier. Ils permettent d'accéder à un fichier/dossier via plusieurs chemins de l’arborescence. Par exemple :
 
 ![un lien](arborescence-liens.png)
 
@@ -269,7 +269,7 @@ Lors de la navigation on ne sait pas que l'on suit un lien, le fichier `/Utilisa
 
 Bien que les liens symboliques existent sous Windows et mac, ces deux systèmes mettent également en places de _pseudo-liens_ qui sont ne sont utilisables que via l'interface graphique :
 
-- [Les raccourcis windows](<https://fr.wikipedia.org/wiki/Raccourci_(informatique)>) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>
-- [Les alias de Macos](https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac) ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.
+- [Les raccourcis windows](<https://fr.wikipedia.org/wiki/Raccourci_(informatique)>) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>{.externe}
+- [Les alias de Macos](https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac){.externe} ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.
 
 {% endinfo %}

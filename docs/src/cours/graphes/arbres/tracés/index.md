@@ -127,4 +127,4 @@ Prouvez que la procédure précédente fonctionne
 
 ## Autre
 
-> TBD <https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/trees.pdf> et <https://www.csd.uoc.gr/~hy583/papers/ch8.pdf>
+> TBD <https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/trees.pdf>{.externe} et <https://www.csd.uoc.gr/~hy583/papers/ch8.pdf>{.externe}

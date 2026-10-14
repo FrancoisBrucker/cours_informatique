@@ -16,9 +16,9 @@ Colorer les sommets d'un graphe planaire est similaire à colorer des faces d'un
 
 ## 6-colorable
 
-On peut utiliser notre [algorithme glouton de coloration](../../coloration-sommets/#algorithme-glouton){.interne} en prenant un ordre spécial : celui où le sommet à colorier à toujours au plus 5 de ses voisins coloré avant lui.
+On peut utiliser notre [algorithme glouton de coloration](../../coloration-sommets/#algorithme-glouton) en prenant un ordre spécial : celui où le sommet à colorier à toujours au plus 5 de ses voisins coloré avant lui.
 
-Ceci est possible puisqu'on a vu qu'[un graphe planaire possède toujours au moins un sommet de degré inférieur ou égal à 5](../propriétés/#degré-5){.interne}. L'algorithme suivant en est une application directe de complexité clairement linéaire $\mathcal{O}(n+m)$.
+Ceci est possible puisqu'on a vu qu'[un graphe planaire possède toujours au moins un sommet de degré inférieur ou égal à 5](../propriétés/#degré-5). L'algorithme suivant en est une application directe de complexité clairement linéaire $\mathcal{O}(n+m)$.
 
 ```pseudocode
 
@@ -61,7 +61,7 @@ On va le montrer par récurrence sur $n$. Pour $n=1$, il est clair que le graphe
 
 S'il existe un sommet de degré 4 ou moins, on peut le supprimer du graphe. Comme ce nouveau graphe est planaire et à $n$ sommets, il respecte l'hypothèse de récurrence et on peut le colorer en 5 couleurs. On peut alors ajouter le sommet supprimé et comme il a au plus 4 voisins, il reste une couleur de disponible pour lui.
 
-S'il n'existe pas de sommets de degré 4 ou moins, on en prend un de degré 5 (on a a vu qu'[il existe toujours un sommet de degré inférieur ou égal à 5](../propriétés/#degré-5){.interne}). En le supprimant du graphe, on respecte les hypothèse de récurrence et ce graphe réduit est 5-colorable.
+S'il n'existe pas de sommets de degré 4 ou moins, on en prend un de degré 5 (on a a vu qu'[il existe toujours un sommet de degré inférieur ou égal à 5](../propriétés/#degré-5)). En le supprimant du graphe, on respecte les hypothèse de récurrence et ce graphe réduit est 5-colorable.
 
 En remettant ce sommet, le seul cas ou il peut y avoir un soucis est lorsque les 5 couleurs ont été utilisés pour ses voisins. Regardons ce qu'il se passe pour une représentation planaire du graphe :
 
@@ -92,7 +92,7 @@ Trouver une chaîne de Kempe se fait linérairement, il suffit de prendre la res
 {% attention %}
 On serait tenté d'utiliser cette même technique en changer 2 fois une couleur pour passer de 5 à 4 couleurs. 
 
-[Cela ne fonctionne pas](https://www.youtube.com/watch?v=adZZv4eEPs8).
+[Cela ne fonctionne pas](https://www.youtube.com/watch?v=adZZv4eEPs8){.externe}.
 {% endattention %}
 
 ### Algorithme linéaire
@@ -125,7 +125,7 @@ Ceci fonctionne car en regardant l'orientation planaire du sommet de degré 5, s
 
 L'idée de l'algorithme fonctionne mais savoir si un voisin d'un sommet de degré 5 est voisin d'un autre voisin prend son degré opérations qui peut être aussi grand qu'on veut...
 
-... Sauf si on se rappelle de notre propriété : [il existe un sommet de degré 5 qui est voisin d'un sommet de degré 6 ou plus](./../propriétés/#degré-5-6){.interne} :
+... Sauf si on se rappelle de notre propriété : [il existe un sommet de degré 5 qui est voisin d'un sommet de degré 6 ou plus](./../propriétés/#degré-5-6) :
 
 on peut alors vérifier si un sommet de degré au plus 6 (disons le voisin 1 de la figure précédente) est voisin du sommet 3 en temps constant et s'ils sont voisins alors les voisins 2 et 4 ne le sont pas.
 
@@ -222,10 +222,10 @@ algorithme coloration-5(G: Graphe) → [Sommet]Entier:
 
 {% lien %}
 
-- [Page d'un des auteurs](https://thomas.math.gatech.edu/FC/fourcolor.html)
-- [le papier](https://thomas.math.gatech.edu/PAP/fc.pdf) et [une version courte](https://thomas.math.gatech.edu/PAP/npfc.pdf)
-- [les 633 configurations inévitables](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf)
-- [comment prouver la preuve avec un ordinateur](https://inria.hal.science/hal-04034866/document) (c'est différent de faire un algorithme qui vérifie les cas)
+- [Page d'un des auteurs](https://thomas.math.gatech.edu/FC/fourcolor.html){.externe}
+- [le papier](https://thomas.math.gatech.edu/PAP/fc.pdf){.externe} et [une version courte](https://thomas.math.gatech.edu/PAP/npfc.pdf){.externe}
+- [les 633 configurations inévitables](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf){.externe}
+- [comment prouver la preuve avec un ordinateur](https://inria.hal.science/hal-04034866/document){.externe} (c'est différent de faire un algorithme qui vérifie les cas)
 
 {% endlien %}
 
@@ -236,7 +236,7 @@ Le théorème des 4 couleurs est le 1er théorème assisté par ordinateur qui v
 3. recherche de cycles cours (cycle de taille 3, 4 ou 5 avec au moins 1 sommet à l'intérieur pour les cycles de taille 3 ou 4 et au moins 2 sommets à l'intérieur pour les cycles de taille 5) :
    1. on peut récurser sur l'extérieur plus le cycle
    2. on peut récurser sur l'intérieur plus une adaptation du cycle
-4. Recherche d'une des [633 configurations réductibles inévitable](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf)
+4. Recherche d'une des [633 configurations réductibles inévitable](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf){.externe}
 5. Réduction : On isole cette configuration, puis on "simplifie" ou retire temporairement ces sommets du graphe $G$ pour obtenir un graphe plus petit $G'$ puis on récurse sur $G'$
 
 
@@ -310,7 +310,7 @@ Et 3-colorer le graphe $K_5$ devient équivalent à 3-colorer le graphe planaire
 
 ### Dans des problèmes
 
-3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>{.externe}
 
 ### Coloration de cartes de géographie
 
@@ -322,16 +322,16 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :
 
 > TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
 
-> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
+> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>{.externe}
 >
 {% lien %}
 
-- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
-- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
+- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc){.externe}
+- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf){.externe}
 
 {% endlien %}
 
-> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
+> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard){.externe}
 
 ### Algorithmes de coloration de listes
 
@@ -346,6 +346,6 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :
 
 > TBD Coloriabilité via le problème de la galerie d'art :
 > 
-> - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-> - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
-> - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>
+> - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>{.externe}
+> - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>{.externe}
+> - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>{.externe}

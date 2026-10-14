@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la [distance d'édition](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein), très utilisée.
+Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la [distance d'édition](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein){.externe}, très utilisée.
 
 ## Distance entre chaines ?
 
@@ -28,7 +28,7 @@ La distance entre _"MISO"_ et _"SILO"_ est de 2 différences.
 {% note %}
 
 Cette distance est très utilisée dans de nombreux domaines.
-Son nom commun est [Distance de Hamming ou distance L1](https://fr.wikipedia.org/wiki/Distance_de_Hamming).
+Son nom commun est [Distance de Hamming ou distance L1](https://fr.wikipedia.org/wiki/Distance_de_Hamming){.externe}.
 
 {% endnote %}
 {% exercice %}
@@ -247,7 +247,7 @@ Ce qui donne :
 Il n'y a qu'environ $10^{80}$ atomes dans l'univers.
 {% endinfo %}
 {% lien %}
-[Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk)
+[Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk){.externe}
 {% endlien %}
 
 #### Calcul
@@ -396,7 +396,7 @@ Car si $D(a[:-1], b[:-1])$ était strictement plus petite, on aurait pu passer p
 Les deux autres cas, se traitent de la même manière : un alignement optimal est composé de sous-alignements eux aussi optimaux !
 
 {% note %}
-C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique) : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
+C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique){.externe} : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
 {% endnote %}
 
 Donc si l'on connaît :

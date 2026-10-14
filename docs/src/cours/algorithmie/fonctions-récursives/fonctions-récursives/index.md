@@ -17,12 +17,12 @@ Nous allons montrer dans cette partie un modèle équivalent au pseudo-code nomm
 
 {% lien %}
 
-- [playlist sur les fonctions récursives](https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5)
-- [un cours](https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html)
+- [playlist sur les fonctions récursives](https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5){.externe}
+- [un cours](https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html){.externe}
 
 {% endlien %}
 
-On va vu que [les fonctions primitives récursives](../../bases-théoriques/calculabilité/récursive-primitive/){.interne} sont calculables mais qu'il existe des fonctions calculables non primitives récursives (comme [la fonction d'Ackermann](../../bases-théoriques/calculabilité/ackermann) par exemple).
+On va vu que [les fonctions primitives récursives](../../bases-théoriques/calculabilité/récursive-primitive/) sont calculables mais qu'il existe des fonctions calculables non primitives récursives (comme [la fonction d'Ackermann](../../bases-théoriques/calculabilité/ackermann) par exemple).
 
 Un pseudo-code est composé d'une suite de blocs d'instructions à executer séquentiellement. Chaque bloc peut être vue comme des fonctions. Si par exemple deux blocs consécutifs utilisent et modifient les variables `x1` à `xn`, on peut écrire :
 
@@ -42,7 +42,7 @@ Avant de nous attaquer à chaque type de bloc, commençons par résoudre le prem
 
 ## Couplage de Cantor
 
-[La fonction de couplage de Cantor](https://fr.wikipedia.org/wiki/Fonction_de_couplage) est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$ :
+[La fonction de couplage de Cantor](https://fr.wikipedia.org/wiki/Fonction_de_couplage){.externe} est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$ :
 
 {% note "**Proposition**" %}
 La fonction $f: \mathbb{N}^2 \rightarrow\mathbb{N}$ telle que : $\pi(x, y) = (x + y + 1)(x+y)/2 + y$ est appelée **_fonction de couplage de Cantor_** et est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$.
@@ -211,7 +211,7 @@ x = f(x1, ..., xn)
 g(x)
 ```
 
-Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../../bases-théoriques/calculabilité/récursive-primitive/#composition){.interne}. En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
+Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../../bases-théoriques/calculabilité/récursive-primitive/#composition). En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
 
 {% attention2 "**À retenir**" %}
 La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f\circ g(x)$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.
@@ -266,7 +266,7 @@ $$
 ## Récursives Primitives  et fonction `pour chaque`
 
 {% info %}
-On doit ce résultat à [Meyer et Ritchie en 1966](https://people.csail.mit.edu/meyer/meyer-ritchie.pdf) dans le cadre [des langages loop](https://en.wikipedia.org/wiki/LOOP_(programming_language)). Nous en donnons ici une preuve pour le pseudo-code.
+On doit ce résultat à [Meyer et Ritchie en 1966](https://people.csail.mit.edu/meyer/meyer-ritchie.pdf){.externe} dans le cadre [des langages loop](https://en.wikipedia.org/wiki/LOOP_(programming_language)){.externe}. Nous en donnons ici une preuve pour le pseudo-code.
 {% endinfo %}
 
 Nous allons montrer dans cette partie que toutes les fonctions récursives primitives sont exactement les fonctions calculables uniquement en utilisant des blocs de répétition `pour chaque`.

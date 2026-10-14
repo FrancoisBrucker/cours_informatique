@@ -11,10 +11,10 @@ eleventyComputed:
 ---
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Coloration_des_ar%C3%AAtes_d'un_graphe>
+<https://fr.wikipedia.org/wiki/Coloration_des_ar%C3%AAtes_d'un_graphe>{.externe}
 {% endlien %}
 
-La coloration des arêtes est un sujet moins populaire que la coloration des sommets en partie parce que l'on peut résoudre le problème via [le line-graph](https://fr.wikipedia.org/wiki/Line_graph)
+La coloration des arêtes est un sujet moins populaire que la coloration des sommets en partie parce que l'on peut résoudre le problème via [le line-graph](https://fr.wikipedia.org/wiki/Line_graph){.externe}
 
 {% note2 "**Définition**" %}
 Si $G=(V, E)$ est un graphe, son **_line graph_** $L(G) = (V_L, E_L)$ est défini tel que :
@@ -74,15 +74,15 @@ Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD p119 diestel. ou preuve avec suite de kempe pour amener vizing ? <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
+> TBD p119 diestel. ou preuve avec suite de kempe pour amener vizing ? <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>{.externe}
 
 {% enddetails  %}
 
 > TBD preuve donne algo.
 > le faire
-> TBD on peut faire mieux en complexité : <https://en.wikipedia.org/wiki/Edge_coloring#Optimally_coloring_special_classes_of_graphs>
+> TBD on peut faire mieux en complexité : <https://en.wikipedia.org/wiki/Edge_coloring#Optimally_coloring_special_classes_of_graphs>{.externe}
 
-> TBD preuve donne outil : Chaîne de Kempe pour les arête. On la retrouvera pour les sommet lorsque l'on traitera de coloration de graphe planaire. [Chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain).
+> TBD preuve donne outil : Chaîne de Kempe pour les arête. On la retrouvera pour les sommet lorsque l'on traitera de coloration de graphe planaire. [Chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain){.externe}.
 
 {% note2 "**Définition**" %}
 > TBD chaîne de Kempe
@@ -94,7 +94,7 @@ Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
 ## Bornes la colorabilité des arêtes
 
 {% lien %}
-[Vizing's Theorem](https://www.youtube.com/watch?v=OZWZpQmGp0g)
+[Vizing's Theorem](https://www.youtube.com/watch?v=OZWZpQmGp0g){.externe}
 {% endlien %}
 
 Contrairement à la coloration des sommets, il y a tres peu de choix pour le nombre de couleurs possibles pour colorer des arêtes :
@@ -110,7 +110,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-Le théorème va se prouver en utilisant [des chaînes de Kempe](https://en.wikipedia.org/wiki/Kempe_chain) appliquées à la coloration d'arêtes.
+Le théorème va se prouver en utilisant [des chaînes de Kempe](https://en.wikipedia.org/wiki/Kempe_chain){.externe} appliquées à la coloration d'arêtes.
 
 On suppose que $G$ admet une coloration de ses arêtes $f$ et on note $F(u) = \\{f(ux) \vert x \in V, ux \in E \\}$. Une chaîne de Kempe est une suite $uv_0, \dots, uv_k$ de $k+1$ arêtes de $G$ telle que la couleur $c_i = f(uv_{i+1})$ n'est pas dans $F(v_i)$ pour tout $0 \leq i <k$
 
@@ -147,18 +147,18 @@ En revanche, dans le cas général connaître l'index chromatique est un problè
 
 ## NP-complétude du problème
 
-> TBD NP-complet. exercice 8.16 de <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>
-> TBD preuve. si le graphe est de classe 1 ou 2.<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>.
+> TBD NP-complet. exercice 8.16 de <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>{.externe}
+> TBD preuve. si le graphe est de classe 1 ou 2.<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>{.externe}.
 
 > TBD la NP-complétude se niche donc uniquement sur les graphes 3-réguliers avec un nombre pair de sommets
 
 De plus, la plupart des graphes sont de type 1
 
 > TBD Erdos. Voir si la preuve est faisable.
-> - un graphe est presque sûrement de type 1 <https://www.renyi.hu/~p_erdos/1977-20.pdf> (voir <https://en.wikipedia.org/wiki/Vizing%27s_theorem>)
+> - un graphe est presque sûrement de type 1 <https://www.renyi.hu/~p_erdos/1977-20.pdf>{.externe} (voir <https://en.wikipedia.org/wiki/Vizing%27s_theorem>{.externe})
 
 > TBD c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.
 
 ## Arêtes comme aide pour les sommets
 
-> TBD contraire : partie 4 : <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
+> TBD contraire : partie 4 : <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>{.externe}

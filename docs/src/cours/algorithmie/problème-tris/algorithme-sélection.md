@@ -45,7 +45,7 @@ L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètr
 <span id="définition-in-place"></span>
 
 {% note2 "**Définition**" %}
-Les algorithmes qui modifient leurs entrées sont appelés [**_in place_**](https://en.wikipedia.org/wiki/In-place_algorithm)
+Les algorithmes qui modifient leurs entrées sont appelés [**_in place_**](https://en.wikipedia.org/wiki/In-place_algorithm){.externe}
 {% endnote2 %}
 
 ## <span id="fonctionnement-sélection"></span> Fonctionnement
@@ -82,7 +82,7 @@ Allons plus vite pour la complexité :
 - la boucle principale effectue $\mathcal{O}(n)$ itérations ($n-1$ exactement mais ce n'est pas important)
 - la boucle intérieure fait $n-i-1$ itérations
 
-Le nombre d'itérations de la boucle intérieure n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle intérieure n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 

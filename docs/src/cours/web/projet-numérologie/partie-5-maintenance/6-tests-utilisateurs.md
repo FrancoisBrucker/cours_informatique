@@ -21,7 +21,7 @@ User stories.
 <!-- fin résumé -->
 
 Lorsque l'on fabrique un site, on a envie de l'utiliser d'une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d'utilisation
-appelées *user stories* ou *test fonctionnels*. Elles dépendent souvent de [persona](https://fr.wikipedia.org/wiki/Persona_(marketing)), sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.
+appelées *user stories* ou *test fonctionnels*. Elles dépendent souvent de [persona](https://fr.wikipedia.org/wiki/Persona_(marketing)){.externe}, sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.
 
 Le but est de tester que les intentions d'un utilisateurs peuvent être satisfaites. C'est un enchaînement de tests fonctionnels qui racontent une histoire d'**un** utilisateur voulant réaliser **une** tache sur notre application/site.
 
@@ -34,20 +34,20 @@ Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s
 Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.
 On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.
 
-Pour cela, on va utiliser [Selenium](https://www.selenium.dev), un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.
+Pour cela, on va utiliser [Selenium](https://www.selenium.dev){.externe}, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.
 C’est un outil très générique puisqu’il supporte de nombreux navigateurs, il est utilisable avec de nombreux langages également.
 
 ## Selenium
 
-[Selenium](https://www.selenium.dev/) est une bibliothèque permettant de contrôler les actions d'un navigateur.
+[Selenium](https://www.selenium.dev/){.externe} est une bibliothèque permettant de contrôler les actions d'un navigateur.
 
 {% lien %}
-La [documentation officielle](https://www.selenium.dev/documentation/) est très précieuse. Il y a en effet plein de possibilités.
+La [documentation officielle](https://www.selenium.dev/documentation/){.externe} est très précieuse. Il y a en effet plein de possibilités.
 {% endlien %}
 
 ### Installation
 
-Pour utiliser selenum il nous [faudra installer](https://www.selenium.dev/documentation/webdriver/getting_started/) :
+Pour utiliser selenum il nous [faudra installer](https://www.selenium.dev/documentation/webdriver/getting_started/){.externe} :
 
 * `selenium-webdriver`, la bibliothèque de Selenium proprement dit
 * un navigateur web :
@@ -76,7 +76,7 @@ On veut aller aller sur la page de google et vérifier que son titre contient `"
 {% faire %}
 
 1. ouvrez une nouvelle fenêtre
-2. tapez <https://www.google.fr>
+2. tapez <https://www.google.fr>{.externe}
 3. vérifiez que le titre de la fenêtre contient `"Google"`{.language-}
 
 {% endfaire %}
@@ -151,7 +151,7 @@ On veut réellement utiliser google dans notre user story :
 {% faire %}
 
 1. ouvrez une nouvelle fenêtre
-2. tapez <https://www.google.fr>
+2. tapez <https://www.google.fr>{.externe}
 3. cliquer sur le bouton *j'accepte*
 4. rechercher *Carole Deumié*
 5. prendre un screenshot
@@ -201,7 +201,7 @@ afterEach(async () => {
 
 ```
 
-> [Étonnant, non ?](https://www.youtube.com/watch?v=NzxejXTumLQ)
+> [Étonnant, non ?](https://www.youtube.com/watch?v=NzxejXTumLQ){.externe}
 
 ## Fonctionnement de selenium
 
@@ -243,7 +243,7 @@ Ici on a utilisé Chrome et son driver associé `'chromedriver'`{.language-}. On
 Il suffit dans le code de changer les noms du driver et du navigateur.
 
 {% lien %}
-Pour installer et utiliser d'autres drivers [consultez cette page](https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/).
+Pour installer et utiliser d'autres drivers [consultez cette page](https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/){.externe}.
 {% endlien %}
 
 ### Trouver un Élément Web
@@ -333,8 +333,8 @@ await driver.findElement(By.name('name')).sendKeys("Manu", Key.ENTER);
 
 {% lien %}
 Des actions plus précises peuvent être faites
-[à la souris](https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/)
-comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/).
+[à la souris](https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/){.externe}
+comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/){.externe}.
 {% endlien %}
 
 ### Quelques commandes utiles
@@ -347,7 +347,7 @@ browser.takeScreenshot().then((data) => {
     })
 ```
 
-Certaines pages comme Google font apparaître un popup dans une [iframe](https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe).
+Certaines pages comme Google font apparaître un popup dans une [iframe](https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe){.externe}.
 Dans ce cas, on doit utiliser `switchTo`{.language-} pour accéder à son contenu :
 
 ```js
@@ -442,7 +442,7 @@ afterEach(async () => {
 })
 ```
 
-Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un [temps d'attente explicite](https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait) pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode `getText()` rende une valeur non nulle, et on attend au pire 10s.
+Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un [temps d'attente explicite](https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait){.externe} pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode `getText()` rende une valeur non nulle, et on attend au pire 10s.
 
 > Si on veut attendre de façon certaine, 2s par exemple, on peut utiliser une fonction qui rend toujours faux : `await browser.wait(() => false, 2000)`
 

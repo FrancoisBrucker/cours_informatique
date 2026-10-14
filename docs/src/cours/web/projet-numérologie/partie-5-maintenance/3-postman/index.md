@@ -16,12 +16,12 @@ Vérification des routes avec postman.
 
 <!-- fin résumé -->
 
-[Postman](https://www.postman.com/) est une application permettant de tester ses routes http, en particulier les routes POST que l'on ne peut pas tester directement avec un navigateur.
+[Postman](https://www.postman.com/){.externe} est une application permettant de tester ses routes http, en particulier les routes POST que l'on ne peut pas tester directement avec un navigateur.
 
 ## Installation
 
 {% lien "Téléchargement" %}
-[postman](https://www.postman.com/downloads/)
+[postman](https://www.postman.com/downloads/){.externe}
 {% endlien %}
 
 {% info %}
@@ -55,7 +55,7 @@ Remettez l'option à ON car c'est ce que l'on veut habituellement.
 
 ### Paramètres
 
-<http://127.0.0.1:3000/prénom/?valeur="François">
+<http://127.0.0.1:3000/prénom/?valeur="François">{.externe}
 
 ![GET paramètres](get-numérologie-paramètres.png)
 

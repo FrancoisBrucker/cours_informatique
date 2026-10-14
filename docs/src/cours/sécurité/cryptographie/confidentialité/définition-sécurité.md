@@ -12,7 +12,7 @@ eleventyComputed:
 
 La sécurité d'une méthode de chiffrement va dépendre, certes de la méthode employée, mais surtout du temps et des moyens mis en œuvre par l'attaquant.
 
-En effet on a vu que seule une clé égale à la taille du message pouvait garantir [une confidentialité parfaite](../../chiffre-vernam/#confidentialité-parfaite){.interne}, or ceci est irréalisable en pratique puisque deux ordinateurs doivent pouvoir communiquer de façon sécurisée sans s'être au préalable rencontré : toute méthode réaliste de chiffrement va laisser fuiter de l'information.
+En effet on a vu que seule une clé égale à la taille du message pouvait garantir [une confidentialité parfaite](../../chiffre-vernam/#confidentialité-parfaite), or ceci est irréalisable en pratique puisque deux ordinateurs doivent pouvoir communiquer de façon sécurisée sans s'être au préalable rencontré : toute méthode réaliste de chiffrement va laisser fuiter de l'information.
 
 Enfin comme la taille des clés est finie un algorithme brute force arrivera toujours _in fine_ à casser décrypter le message chiffré. Selon les moyens et les personnes impliquées (d'un adolescent dans sa chambre à un état) cela pourra prendre plus ou moins de temps.
 
@@ -139,8 +139,8 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% lien %}
 
-- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
-- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
+- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security){.externe}
+- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function){.externe}
 
 {% endlien %}
 
@@ -157,7 +157,7 @@ Classiquement ceci se formalise par la modélisation sous la forme d'un jeu.
 ### <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
 
 {% lien %}
-[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire)
+[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire){.externe}
 {% endlien %}
 
 La confidentialité peut s'écrire sous la forme d'un _jeu_ à deux joueurs :
@@ -321,7 +321,7 @@ Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces 
 
 ### Jeu du chiffrement
 
-Pour une méthode de chiffrement, trouver les distribution à tester peut se faire avec le jeu suivant où l'attaquant choisi deux mots à tester. Si la méthode est sémantiquement sécurisé cela signifie que la différence de distribution est négligeable et est donc une approximation réaliste de la [confidentialité parfaite](../../chiffre-vernam/#confidentialité-parfaite){.interne}.
+Pour une méthode de chiffrement, trouver les distribution à tester peut se faire avec le jeu suivant où l'attaquant choisi deux mots à tester. Si la méthode est sémantiquement sécurisé cela signifie que la différence de distribution est négligeable et est donc une approximation réaliste de la [confidentialité parfaite](../../chiffre-vernam/#confidentialité-parfaite).
 
 Le jeu consiste alors en 6 étapes :
 

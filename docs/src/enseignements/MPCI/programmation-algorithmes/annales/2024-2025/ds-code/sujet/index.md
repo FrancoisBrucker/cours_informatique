@@ -7,12 +7,12 @@ Le but de ce DS est de coder le magnifique jeu de plateau _Big Points_.
 
 {% lien %}
 
-- [Règles en français du Big Points](https://www.associationallee.fr/wp-content/uploads/sites/2286/2019/06/big-points-regle.pdf)
-- [Youtube en anglais de BGG](https://www.youtube.com/watch?v=BhSF6KzENtM) (pas pendant le DS...)
+- [Règles en français du Big Points](https://www.associationallee.fr/wp-content/uploads/sites/2286/2019/06/big-points-regle.pdf){.externe}
+- [Youtube en anglais de BGG](https://www.youtube.com/watch?v=BhSF6KzENtM){.externe} (pas pendant le DS...)
 
 {% endlien %}
 {% info %}
-Le jeu n'est plus trouvable en l'état et c'est dommage. La version actuelle, moins abstraite et avec plus de règles s'appelle [Bites](https://www.philibertnet.com/fr/allplay/109573-bites-644216939862.html).
+Le jeu n'est plus trouvable en l'état et c'est dommage. La version actuelle, moins abstraite et avec plus de règles s'appelle [Bites](https://www.philibertnet.com/fr/allplay/109573-bites-644216939862.html){.externe}.
 
 On peut cependant encore jouer à bites en utilisant les règles originales du big points, ouf !
 {% endinfo %}
@@ -24,7 +24,7 @@ Commencez par lire rapidement la règle avant de vous lancer dans le sujet propr
 
 Le rendu du DS consiste en deux parties :
 
-1. **le code** que vous êtes parvenu à rendre [sur Amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=4084092).
+1. **le code** que vous êtes parvenu à rendre [sur Amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=4084092){.externe}.
 2. **un écrit** regroupant les différentes questions hors code.
 
 ### Code
@@ -196,13 +196,13 @@ Comme s'assure-t-on que l'on a bien installé les module pour l'interpréteur de
 ### Q3.2 : code
 
 {% faire %}
-Installez le module [rich](https://github.com/Textualize/rich)
+Installez le module [rich](https://github.com/Textualize/rich){.externe}
 {% endfaire %}
 
-Le module rich permet de [remplacer la fonction print de python](https://github.com/Textualize/rich?tab=readme-ov-file#rich-print) en quelque chose qui supporte la couleur :
+Le module rich permet de [remplacer la fonction print de python](https://github.com/Textualize/rich?tab=readme-ov-file#rich-print){.externe} en quelque chose qui supporte la couleur :
 
-- utiliser du texte colorisé : <https://rich.readthedocs.io/en/latest/markup.html>
-- liste des couleurs : <https://rich.readthedocs.io/en/latest/appendix/colors.html>
+- utiliser du texte colorisé : <https://rich.readthedocs.io/en/latest/markup.html>{.externe}
+- liste des couleurs : <https://rich.readthedocs.io/en/latest/appendix/colors.html>{.externe}
 
 {% faire %}
 

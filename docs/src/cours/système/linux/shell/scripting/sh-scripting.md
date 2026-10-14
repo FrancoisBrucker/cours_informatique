@@ -10,20 +10,20 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-- histoire : <https://www.in-ulm.de/~mascheck/bourne/>
-- parameter expansion : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02>
+- histoire : <https://www.in-ulm.de/~mascheck/bourne/>{.externe}
+- parameter expansion : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02>{.externe}
 
 > TBD args et getopts :
-> - <https://www.youtube.com/watch?v=fJSUVGlQ1E8>
-> - <https://www.youtube.com/watch?v=5O4SLIDSMqg>
-> - <https://www.quennec.fr/book/export/html/341>
+> - <https://www.youtube.com/watch?v=fJSUVGlQ1E8>{.externe}
+> - <https://www.youtube.com/watch?v=5O4SLIDSMqg>{.externe}
+> - <https://www.quennec.fr/book/export/html/341>{.externe}
 
 > sh cheat sheet : <joedog.org/articles-cheat-sheet/>
-> <https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash>
-> <https://stackoverflow.com/a/5725402>
-> <https://www.commandlinux.com/man-page/man1/sh.1.html>
+> <https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash>{.externe}
+> <https://stackoverflow.com/a/5725402>{.externe}
+> <https://www.commandlinux.com/man-page/man1/sh.1.html>{.externe}
 
-Les principes d'un bon script sont (voir [classic shell scripting](https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954)) :
+Les principes d'un bon script sont (voir [classic shell scripting](https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954){.externe}) :
 
 1. faire **une seule chose** et sans blabla
 2. prendre et rendre du texte pas de fichiers binaires
@@ -42,10 +42,10 @@ Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout.
 Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes sans les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)
 
 {% lien %}
-- [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4)
-- [un autre tuto](https://www.youtube.com/watch?v=KG97VzMjfMg)
+- [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4){.externe}
+- [un autre tuto](https://www.youtube.com/watch?v=KG97VzMjfMg){.externe}
 
-<https://www.gnu.org/software/bash/manual/html_node/>
+<https://www.gnu.org/software/bash/manual/html_node/>{.externe}
 {% endlien %}
 
 ```shell
@@ -74,7 +74,7 @@ $ PORT=1456 python variables.py
 ### node
 
 {% lien %}
-<https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>
+<https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>{.externe}
 
 {% endlien %}
 
@@ -86,28 +86,28 @@ console.log(process.env.PORT || 3000)
 ### env file
 
 {% lien %}
-<https://12factor.net/config>
+<https://12factor.net/config>{.externe}
 {% endlien %}
 
 Il n'est pas commité.
 
-- <https://pypi.org/project/python-dotenv/>
+- <https://pypi.org/project/python-dotenv/>{.externe}
 - `node --env-file-if-exists=.env app.js`
-- <https://github.com/motdotla/dotenv>
-- `set -a && source .env && set +a` voir : [shell](https://gist.github.com/mihow/9c7f559807069a03e302605691f85572)
+- <https://github.com/motdotla/dotenv>{.externe}
+- `set -a && source .env && set +a` voir : [shell](https://gist.github.com/mihow/9c7f559807069a03e302605691f85572){.externe}
 
 ## Gestion des paramètres
 
 {% lien %}
-[Gestion des paramètres d'un script](https://coderwall.com/p/85jnpq/bash-built-in-variables)
+[Gestion des paramètres d'un script](https://coderwall.com/p/85jnpq/bash-built-in-variables){.externe}
 {% endlien %}
 
 ## Fonctions
 
 {% lien %}
 
-- [Fonctions bash en texte](https://linuxize.com/post/bash-functions/)
-- [fonctions bash YouTube](https://www.youtube.com/watch?v=aqvc9kYnz0U&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=2)
+- [Fonctions bash en texte](https://linuxize.com/post/bash-functions/){.externe}
+- [fonctions bash YouTube](https://www.youtube.com/watch?v=aqvc9kYnz0U&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&index=2){.externe}
 
 {% endlien %}
 
@@ -142,7 +142,7 @@ C'est le retour de la dernière commande avant la ligne avec `then` qui décide 
 - s'il vaut 0 on fait le bloc allant de `then` à `else` (ou `fi` s'il n'y a pas de bloc `else`)
 - sinon on fait le bloc allant de `else` à `fi`
 
-Par exemple, en utilisant les commandes [`true`](https://man7.org/linux/man-pages/man1/true.1.html) et [`false`](https://man7.org/linux/man-pages/man1/false.1.html) :
+Par exemple, en utilisant les commandes [`true`](https://man7.org/linux/man-pages/man1/true.1.html){.externe} et [`false`](https://man7.org/linux/man-pages/man1/false.1.html){.externe} :
 
 ```shell
 if
@@ -193,23 +193,23 @@ fi
 
 {% endattention %}
 
-La commande [`test`](https://linux.die.net/man/1/test) qui est aussi la commande `[` (oui, `[` est un fichier de `/usr/bin`) permet de faire de nombreux test courant :
+La commande [`test`](https://linux.die.net/man/1/test){.externe} qui est aussi la commande `[` (oui, `[` est un fichier de `/usr/bin`) permet de faire de nombreux test courant :
 
 {% lien %}
-[Utiliser la commande `test` ou `[`](https://www.shellscript.sh/test.html)
+[Utiliser la commande `test` ou `[`](https://www.shellscript.sh/test.html){.externe}
 {% endlien %}
 
-Bash permet également d'utiliser une construction utilisant [`[[ expression ]]`](https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS) qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (`[[` n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec `[` ou `test`, plus portable.
+Bash permet également d'utiliser une construction utilisant [`[[ expression ]]`](https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS){.externe} qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (`[[` n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec `[` ou `test`, plus portable.
 
 Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :
 {% lien %}
-[comment réaliser des tests en bash](https://fr.wikibooks.org/wiki/Programmation_Bash/Tests)
+[comment réaliser des tests en bash](https://fr.wikibooks.org/wiki/Programmation_Bash/Tests){.externe}
 {% endlien %}
 
 ### boucles for/while/until
 
 {% lien %}
-[boucles en bash](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html)
+[boucles en bash](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html){.externe}
 {% endlien %}
 
 Les constructions sont identiques à la construction du if. La seule particularité est la boucle for qui itère sur une suite de mot séparé par des espaces :
@@ -229,7 +229,7 @@ echo $x
 done                   
 ```
 
-On utilise parfois la boucle `while` pour lire l'entrée standard, en combinaison avec la commande [`read`](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read) :
+On utilise parfois la boucle `while` pour lire l'entrée standard, en combinaison avec la commande [`read`](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read){.externe} :
 
 ```shell
 while read line
@@ -247,7 +247,7 @@ do
 done < "${1:-/dev/stdin}"
 ```
 
-Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de sh pour [gérer les variables](https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion).
+Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de sh pour [gérer les variables](https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion){.externe}.
 
 ## Variables
 
@@ -258,7 +258,7 @@ On a déjà vu [les métacaractères du shell](../../bases-linux/commandes#meta-
 - `$?` : le code de sortie de la dernière commande
 - `$$` : le PID du shell courant
 - `$(expression)` : pour exécuter l'expression et donner son affichage comme argument. Par exemple `echo $(expr 3 + 4)`. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.
-- `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic), par exemple `echo $((3+4))`
+- `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic){.externe}, par exemple `echo $((3+4))`
 - `${variable}` : pour afficher le contenu d'une variable, par exemple `echo ${PAH}`
 
 ### Variables internes
@@ -266,7 +266,7 @@ On a déjà vu [les métacaractères du shell](../../bases-linux/commandes#meta-
 Des variables créés par le shell et pouvant être utilisé dans les scripts. A utiliser avec parcimonie car cela rend vos scripts spécifiques à bash.
 
 {% lien %}
-<https://tldp.org/LDP/abs/html/internalvariables.html>
+<https://tldp.org/LDP/abs/html/internalvariables.html>{.externe}
 {% endlien %}
 
 ## Process et shell
@@ -310,14 +310,14 @@ $ echo $$
 
 ## Getopt
 
-> TBD <https://labex.io/fr/tutorials/shell-bash-getopt-391993>
+> TBD <https://labex.io/fr/tutorials/shell-bash-getopt-391993>{.externe}
 
 ## Bash scripting
 
 > TBD étoffer et vérifier que je ne raconte pas de bêtises.
 > TBD dans les systèmes actuels sh = bash
 
-- [un cours](https://michael-herbst.com/teaching/advanced-bash-scripting-2017/)
+- [un cours](https://michael-herbst.com/teaching/advanced-bash-scripting-2017/){.externe}
 
 ## on s'amuse avec rot13
 

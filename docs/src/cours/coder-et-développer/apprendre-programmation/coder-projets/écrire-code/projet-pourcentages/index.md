@@ -137,7 +137,7 @@ Testez ensuite que vos tests fonctionnent :
 
 {% endfaire %}
 {% attention %}
-Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`{.language-}). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/)
+Pour exécuter ce fichier sous la forme de test, on ne **peut pas** juste l'exécuter. En effet, on ne fait **que** définir des fonctions de tests, aucune n'est exécutée (faite le test en exécutant directement ce fichier de test et en créant un test objectivement faux par exemple `assert 1 == 2`{.language-}). Il faut donc passer ce fichier à un programme qui exécute les tests : [pytest](https://docs.pytest.org/){.externe}
 
 {% endattention %}
 
@@ -159,7 +159,7 @@ test_pourcentage.py ..                                                          
 
 On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que `"101"`{.language-} rende `100 * (1/3)`{.language-}.
 
-Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html)).
+Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html){.externe}).
 
 {% attention %}
 Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, seuls les entiers le sont.
@@ -171,7 +171,7 @@ On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)`{
 On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.
 {% endnote %}
 
-Pour cela on va utiliser une fonction spéciale de pytest qui vérifie si 2 réels sont _à peu près égaux_ (par défaut à dix moins six près) : [`approx`{.language-}](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
+Pour cela on va utiliser une fonction spéciale de pytest qui vérifie si 2 réels sont _à peu près égaux_ (par défaut à dix moins six près) : [`approx`{.language-}](https://docs.pytest.org/en/latest/reference.html#pytest-approx){.externe}.
 
 Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test
 
@@ -194,7 +194,7 @@ def test_pourcent_1():
 ```
 
 {% endfaire %}
-{% note "**Style** : L'ordre des `import` est, [par coutume](https://google.github.io/styleguide/pyguide.html#s3.13-imports-formatting), le suivant :" %}
+{% note "**Style** : L'ordre des `import` est, [par coutume](https://google.github.io/styleguide/pyguide.html#s3.13-imports-formatting){.externe}, le suivant :" %}
 
 1. les modules de python
 2. les modules externes
@@ -243,7 +243,7 @@ Faisons notre première tentative de programme principal. On va demander directe
 
 {% exercice %}
 
-Pour interagir avec l'utilisateur, vous utiliserez [la fonction `input`{.language-}](https://docs.python.org/fr/3/library/functions.html#input) de python pour cela. Répondez aux questions :
+Pour interagir avec l'utilisateur, vous utiliserez [la fonction `input`{.language-}](https://docs.python.org/fr/3/library/functions.html#input){.externe} de python pour cela. Répondez aux questions :
 
 - de quel type est le résultat de la fonction `input`{.language-} ?
 - pourquoi ?
@@ -276,7 +276,7 @@ Quand je vous avais dit de ne pas faire de vérification, c'est vrai pour tout c
 
 {% note %}
 
-Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est [la loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy) : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
+Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est [la loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy){.externe} : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
 
 {% endnote %}
 
@@ -290,14 +290,14 @@ Avant de vous donner le code complet, essayez de trouver la représentation en b
 
 {% faire %}
 
-- donnez la représentation d'un nombre en base 2 en python en regardant [la fonction `bin`{.language-}](https://docs.python.org/fr/3.6/library/functions.html#bin)
+- donnez la représentation d'un nombre en base 2 en python en regardant [la fonction `bin`{.language-}](https://docs.python.org/fr/3.6/library/functions.html#bin){.externe}
 - Pourquoi la fonction `bin`{.language-} rent-elle une chaîne de caractère ? Et comment est-elle formée ?
 - Comment ne prendre que les chiffre de la représentation donnée par `bin`{.language-} ?
 - Quelles sont les fonction pour trouver la représentation hexadécimale d'un nombre ?
 
 {% endfaire %}
 
-On utilise [la gestion des erreurs de python](https://docs.python.org/fr/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
+On utilise [la gestion des erreurs de python](https://docs.python.org/fr/3/tutorial/errors.html#handling-exceptions){.externe} pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
 
 {% faire %}
 Mettez le code suivant dans `main.py`{.fichier} :

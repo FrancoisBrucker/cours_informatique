@@ -18,12 +18,12 @@ Lorsque l'on manipule des données, on essaye toujours :
 
 Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :
 
-- les [fichiers csv](https://fr.wikipedia.org/wiki/Comma-separated_values) pour des données de type tableaux excel
-- les [fichiers json](https://www.json.org/json-fr.html) pour des données structurées en fiches.
+- les [fichiers csv](https://fr.wikipedia.org/wiki/Comma-separated_values){.externe} pour des données de type tableaux excel
+- les [fichiers json](https://www.json.org/json-fr.html){.externe} pour des données structurées en fiches.
 
 {% endnote %}
 
-Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données, on ne le fait pas la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/).
+Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données, on ne le fait pas la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/){.externe}.
 
 ## Projets
 
@@ -32,11 +32,11 @@ Plutôt qu'un cours, suivez ces deux projets qui vous permettrons de manipuler l
 ### Fichiers csv
 
 {% aller %}
-[Gérer des données au format csv](données-csv){.interne}
+[Gérer des données au format csv](données-csv)
 {% endaller %}
 
 ### Fichiers json
 
 {% aller %}
-[Gérer des données au format json](données-json){.interne}
+[Gérer des données au format json](données-json)
 {% endaller %}

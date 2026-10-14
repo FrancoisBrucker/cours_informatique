@@ -27,7 +27,7 @@ Enfin, faites aussi en sorte que votre code ait 0 défaut de style (le linter ne
 ## Sujet
 
 {% aller %}
-[Pendu](/cours/coder-et-développer/projet-codes/#pendu){.interne}
+[Pendu](/cours/coder-et-développer/projet-codes/#pendu)
 {% endaller %}
 
 ## Barème

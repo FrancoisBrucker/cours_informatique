@@ -35,75 +35,75 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 ### Tout est objet en python
 
 {% aller %}
-[Utiliser des objets en python](introduction){.interne}
+[Utiliser des objets en python](introduction)
 {% endaller %}
 
 ### Concevoir des classes et des objets
 
 {% aller %}
-[Classes et objets](classes-et-objets){.interne}
+[Classes et objets](classes-et-objets)
 {% endaller %}
 {% aller %}
-[Projet dés](projet-objets-dés){.interne}
+[Projet dés](projet-objets-dés)
 {% endaller %}
 
 On s'entraîne à la création d'objets :
 
 {% aller %}
-[Projet cartes](projet-objets-cartes){.interne}
+[Projet cartes](projet-objets-cartes)
 {% endaller %}
 
 ### Améliorer ses objets
 
 {% aller %}
-[Améliorer ses objets](améliorer-ses-objets){.interne}
+[Améliorer ses objets](améliorer-ses-objets)
 {% endaller %}
 {% aller %}
-[Améliorons nos dés](projet-objets-dés-amélioration){.interne}
+[Améliorons nos dés](projet-objets-dés-amélioration)
 {% endaller %}
 
 On s'entraîne en perfectionnant nos cartes :
 
 {% aller %}
-[Améliorons nos cartes](projet-objets-cartes-amélioration){.interne}
+[Améliorons nos cartes](projet-objets-cartes-amélioration)
 {% endaller %}
 
 ## Combiner ses objets entre eux
 
 {% aller %}
-[Composition et agrégation](composition-agrégation){.interne}
+[Composition et agrégation](composition-agrégation)
 {% endaller %}
 {% aller %}
-[Projet de compositions et d'agrégation de dés](projet-composition-aggrégation-dés){.interne}
+[Projet de compositions et d'agrégation de dés](projet-composition-aggrégation-dés)
 {% endaller %}
 
 Reprenons nos objets et combinons les avec d'autres :
 
 {% aller %}
-[Projet d'agrégation de cartes](projet-agrégation-cartes){.interne}
+[Projet d'agrégation de cartes](projet-agrégation-cartes)
 {% endaller %}
 
 ## Héritage
 
 {% aller %}
-[Héritage](héritage){.interne}
+[Héritage](héritage)
 {% endaller %}
 {% aller %}
-[Dés spécifiques](projet-objets-dés-héritage){.interne}
+[Dés spécifiques](projet-objets-dés-héritage)
 {% endaller %}
 
 On implémente les exemples du cours :
 
 {% aller %}
-[Projet héritage](projet-héritage){.interne}
+[Projet héritage](projet-héritage)
 {% endaller %}
 
 ## On s'entraîne
 
 {% aller %}
-[Créons un interpréteur du langage Fractran](projet-fractran){.interne}
+[Créons un interpréteur du langage Fractran](projet-fractran)
 {% endaller %}
 
 {% aller %}
-[La bataille navale](projet-bataille-navale){.interne}
+[La bataille navale](projet-bataille-navale)
 {% endaller %}

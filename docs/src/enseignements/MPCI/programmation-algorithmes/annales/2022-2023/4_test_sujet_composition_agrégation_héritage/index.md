@@ -22,7 +22,7 @@ Vous devez rendre un dossier contenant les fichiers de ce test. Il contiendra :
 
 {% endnote %}
 
-Le but de ce test est de pouvoir réaliser des combinaisons de dés utiles en [jeu de rôle](https://fr.wikipedia.org/wiki/Jeu_de_r%C3%B4le_sur_table). On veut pouvoir par exemple utiliser des objets permettant de représenter :
+Le but de ce test est de pouvoir réaliser des combinaisons de dés utiles en [jeu de rôle](https://fr.wikipedia.org/wiki/Jeu_de_r%C3%B4le_sur_table){.externe}. On veut pouvoir par exemple utiliser des objets permettant de représenter :
 
 * d6 + d20 (somme d'un jet d'un dé à 6 faces et d'un jet d'un dé à 20 faces)
 * 3 * d6 (3 fois la valeur d'un jet d'un dé à 6 faces)
@@ -193,7 +193,7 @@ Créez une classe `Cte`{.language-} qui :
 Il suffit maintenant d'intercepter les entiers qui peuvent arriver dans nos expressions et de les transformer en constante.
 
 {% faire %}
-Dans les méthodes `DéGénérique.__add__(other)`{.language-} et `Somme.__add__(other)`{.language-} transformez le paramètre `other`{.language-} s'il est entier en un objet de type `Cte()`{.language-} (vous pourrez utiliser [`isinstance(other, int)`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hasattr#isinstance) pour savoir si `other`{.language-} est un entier)
+Dans les méthodes `DéGénérique.__add__(other)`{.language-} et `Somme.__add__(other)`{.language-} transformez le paramètre `other`{.language-} s'il est entier en un objet de type `Cte()`{.language-} (vous pourrez utiliser [`isinstance(other, int)`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hasattr#isinstance){.externe} pour savoir si `other`{.language-} est un entier)
 
 {% endfaire %}
 

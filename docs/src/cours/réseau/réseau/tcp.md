@@ -13,7 +13,7 @@ eleventyComputed:
 Le protocole TCP permet une communication sûre et ordonnée entre deux applications. Il est donc utilisé pour des communication où chaque donnée est importante et où l'ordre dans lequel sont envoyé des paquets doit être respecté (pour l'envoi de fichiers par exemple).
 
 {% lien %}
-[protocole TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol)
+[protocole TCP](https://fr.wikipedia.org/wiki/Transmission_Control_Protocol){.externe}
 {% endlien %}
 
 Ce protocole est certainement le plus utilisé sur internet. D'un point de vue protocole, TCP est bien plus compliqué que UDP car il garantit non seulement l'exactitude des données mais également :
@@ -26,7 +26,7 @@ Tout ceci sans congestionner le réseau.
 
 ## Entête TCP
 
-L'[entête de chaque paquet TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure) est de taille variable. On retrouve les données de l'entêtes UDP :
+L'[entête de chaque paquet TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure){.externe} est de taille variable. On retrouve les données de l'entêtes UDP :
 
 - le port de départ (2B)
 - le port destination (2B)
@@ -57,7 +57,7 @@ Vous devriez voir :
 
 {% endfaire %}
 {% info %}
-La taille totale du ficher html transmis peut être encodé dans l'entête http (c'est l'option `Content-length`), ou si elle n'est pas connu à l'avance, déterminée dynamiquement grâce à l'option [Transfer-Encoding: chunked](https://fr.wikipedia.org/wiki/Chunked_transfer_encoding) (c'est le cas de cette requête).
+La taille totale du ficher html transmis peut être encodé dans l'entête http (c'est l'option `Content-length`), ou si elle n'est pas connu à l'avance, déterminée dynamiquement grâce à l'option [Transfer-Encoding: chunked](https://fr.wikipedia.org/wiki/Chunked_transfer_encoding){.externe} (c'est le cas de cette requête).
 {% endinfo %}
 
 Une connexion TCP se fait sous un mode client-serveur bi-directionnelle. Elle contient 3 phases :
@@ -70,7 +70,7 @@ Une connexion TCP se fait sous un mode client-serveur bi-directionnelle. Elle co
 
 Initier une connexion TCP se fait avec le (fameux) *three-way handshake* :
 {% lien %}
-<https://fr.wikipedia.org/wiki/Three-way_handshake>
+<https://fr.wikipedia.org/wiki/Three-way_handshake>{.externe}
 {% endlien %}
 
 ```
@@ -228,7 +228,7 @@ Lors d'un paquet d'acquittement, le récepteur indique le nombre de byte restant
 
 {% lien %}
 
-[transmission tcp rate](https://www.youtube.com/watch?v=LfiRKZze0HM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=32)
+[transmission tcp rate](https://www.youtube.com/watch?v=LfiRKZze0HM&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=32){.externe}
 
 {% endlien %}
 

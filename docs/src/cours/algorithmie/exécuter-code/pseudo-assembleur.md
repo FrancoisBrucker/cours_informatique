@@ -54,7 +54,7 @@ M[i + 7] = 0
 Attention à la lecture, **_le bit de poids fort_** de l'objet, celui le plus à gauche, est d'indice le plus petit.
 
 {% attention %}
-Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette **convention** [**_big endian_** (ou gros boutisme en français)](https://fr.wikipedia.org/wiki/Boutisme).
+Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette **convention** [**_big endian_** (ou gros boutisme en français)](https://fr.wikipedia.org/wiki/Boutisme){.externe}.
 
 Comme toute convention, certains prennent la convention opposée, dite **_little endian_** (ou petit boutisme en français).
 {% endattention %}
@@ -95,8 +95,8 @@ Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot S$ cases
 L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :
 
 - $u: \\{0, 1\\}^{S}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire
-- $s: \\{0, 1\\}^{S}\rightarrow \mathbb{Z}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) sur $S$ bits.
-- $b: \mathbb{Z} \rightarrow  \\{0, 1\\}^{S}$ qui rend la représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) sur $S$ bits associé à l'entier.
+- $s: \\{0, 1\\}^{S}\rightarrow \mathbb{Z}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe} sur $S$ bits.
+- $b: \mathbb{Z} \rightarrow  \\{0, 1\\}^{S}$ qui rend la représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe} sur $S$ bits associé à l'entier.
 
 Pour l'objet `o = 1011001` précédent, on a :
 
@@ -113,7 +113,7 @@ Qui sera équivalent à `M[X:X+S] = 1011001` si $S=8$ et à `M[X:X+S] = 00000000
 
 ### Équivalence avec le pseudo-code
 
-On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../bases-théoriques/définition/#paramètres-binaires){.interne}. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.
+On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../bases-théoriques/définition/#paramètres-binaires). Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.
 
 De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :
 
@@ -270,7 +270,7 @@ Dans ce cas là, le nombre de ligne de code est borné par l'adressage possible 
 On le voit, l'utilisation de saut peut vite être difficile à lire, on recommande de l'utiliser de façon parcimonieuse.
 
 {% lien %}
-[Célèbre article de Dijkstra contre l'utilisation des sauts en programmation](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf).
+[Célèbre article de Dijkstra contre l'utilisation des sauts en programmation](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf){.externe}.
 {% endlien %}
 
 ### Test
@@ -291,7 +291,7 @@ Par exemple :
 - $a \leq b$ pourra être effectué en regardant la valeur du drapeau `NÉGATIF` après l'opération $b-a$.
 - $(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau `ZÉRO` (s'il vaut `0`, c'est vrai)
 
-Comme les nombres négatifs seront codés en [Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux), le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau `NÉGATIF`  peut donc être simulé par le drapeau `ZÉRO` en effectuant l'opération `x ET 01...1` qui vaudra 0 (le drapeau `ZÉRO` vaudra alors 1) que le si le nombre `u(x)` est positif.
+Comme les nombres négatifs seront codés en [Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe}, le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau `NÉGATIF`  peut donc être simulé par le drapeau `ZÉRO` en effectuant l'opération `x ET 01...1` qui vaudra 0 (le drapeau `ZÉRO` vaudra alors 1) que le si le nombre `u(x)` est positif.
 
 On peut donc faire tout nos test en utilisant uniquement le drapeau `ZÉRO` :
 
@@ -367,12 +367,12 @@ OP #1 #2 #3
 
 Où :
 
-- `OP` est le [code mnémonique](https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique) associée (le nom) à l'opération
+- `OP` est le [code mnémonique](https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique){.externe} associée (le nom) à l'opération
 - `#1`, `#2` et `#3` représentent les paramètres de l'opération et peuvent représenter soit des entrées soit une sortie selon l'opération.
 
 {% endnote2 %}
 
-Les paramètres d'entrées et la sortie sont stockés dans des [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur) qui sont des variables spéciales.
+Les paramètres d'entrées et la sortie sont stockés dans des [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur){.externe} qui sont des variables spéciales.
 
 ### Registres
 
@@ -429,7 +429,7 @@ Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des regi
 Pour générer toutes les opérations arithmétiques sur les entiers relatifs, il suffit de posséder les opérations d'addition et de soustraction. En utilisant le complément à deux pour noter les entiers négatifs, addition et soustractions sont équivalents :
 
 {% lien %}
-[Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
+[Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe}
 {% endlien %}
 
 On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits `M[0]` et `M[1]` pour rendre la valeur `M[3]` et la retenue, `M[2]`, s'il y en a une:
@@ -493,7 +493,7 @@ Les structure de contrôles, les variables en mémoire et l'unique opération `N
 
 ## I/O
 
-[Les entrées/sorties](https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie) ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.
+[Les entrées/sorties](https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie){.externe} ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.
 
 ## Pseudo-assembleur minimal
 

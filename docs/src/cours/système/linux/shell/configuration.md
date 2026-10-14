@@ -14,22 +14,22 @@ eleventyComputed:
 ---
 
 
-> TBD <https://blog.stephane-robert.info/docs/admin-serveurs/linux/shells-linux/bash/>
+> TBD <https://blog.stephane-robert.info/docs/admin-serveurs/linux/shells-linux/bash/>{.externe}
 
 Lorsqu'un shell est crée il va lire ses fichiers de configuration qui permettent de le personnaliser.
 
 On va ici se concentrer sur les fichiers de configuration de bash. Chaque shell va avoir sa façon de faire, faites-y attention si vous changez de shell où êtes sous mac qui par défaut a le shell zsh.
 
 {% lien %}
-[Fichiers de configurations de zsh](https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/)
+[Fichiers de configurations de zsh](https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/){.externe}
 {% endlien %}
 
-> TBD <https://www.youtube.com/watch?v=Yva_nTXzTTw>
+> TBD <https://www.youtube.com/watch?v=Yva_nTXzTTw>{.externe}
 
 ## Fichiers de configurations de bash
 
 {% lien %}
-[dotfiles de bash](http://mywiki.wooledge.org/DotFiles)
+[dotfiles de bash](http://mywiki.wooledge.org/DotFiles){.externe}
 {% endlien %}
 
 Plusieurs fichiers sont lus lors de l'exécution du shell :
@@ -54,7 +54,7 @@ Il va les exécuter un à un.
 
 ## Que mettre dans les fichiers de conf
 
-- on place dans le `.profile` les éléments qui sont transmis aux enfants donc essentiellement les variables d'environnements, en particulier [la gestion du `$PATH`](https://opensource.com/article/17/6/set-path-linux).
+- on place dans le `.profile` les éléments qui sont transmis aux enfants donc essentiellement les variables d'environnements, en particulier [la gestion du `$PATH`](https://opensource.com/article/17/6/set-path-linux){.externe}.
 - le fichier `.bashrc` contient tous les éléments qui ne sont pas transmis aux shell enfants, comme les alias ou les définitions de fonctions,
 
 ### `.profile`{.fichier} minimal
@@ -85,7 +85,7 @@ alias ll="ls -la"
 Qui définie une variable d'environnement puis un alias.
 
 {% lien %}
-[les alias en bash](https://debian-facile.org/doc:programmation:bash:alias)
+[les alias en bash](https://debian-facile.org/doc:programmation:bash:alias){.externe}
 {% endlien %}
 
 Créons quelques alias :
@@ -108,7 +108,7 @@ Créez dans un shell les deux alias suivant :
 ## Fichiers de configurations des applications
 
 {% lien %}
-[Où sont rangés les fichiers de configuration](https://wiki.archlinux.org/title/XDG_Base_Directory)
+[Où sont rangés les fichiers de configuration](https://wiki.archlinux.org/title/XDG_Base_Directory){.externe}
 {% endlien %}
 
 Les application vont eux aussi avec des fichiers de configurations. La plupart des applications vont créer un dossier à leur nom dans votre `$HOME/.config`
@@ -118,5 +118,5 @@ Si vous avez des exécutables à vous, rangez les dans : `$HOME/.local/bin`, et 
 L'organisation des ses fichiers de préférence, appelés les _dotfiles_ est un réel sujet. La plupart d'entre nous ont un projet github contenant nos fichiers de conf pour pouvoir les déplacer facilement d'une machine à l'autre :
 
 {% lien %}
-[gestion des dotfiles](https://www.youtube.com/watch?v=5oXy6ktYs7I)
+[gestion des dotfiles](https://www.youtube.com/watch?v=5oXy6ktYs7I){.externe}
 {% endlien %}

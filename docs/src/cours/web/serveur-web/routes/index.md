@@ -29,7 +29,7 @@ Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifie
 
 ## Préparation
 
-Reprenons le serveur de la [partie précédente](../minimal){.interne} :
+Reprenons le serveur de la [partie précédente](../minimal) :
 
 ```javascript
 import http from "http";
@@ -111,12 +111,12 @@ Server running at http://127.0.0.1:3000/
 ```
 
 {% info %}
-Si vous utilisez le navigateur chrome, à chaque chargement de page, il demande en plus une requête [flavicon](https://www.w3schools.com/html/html_favicon.asp) 0 la suite de la première requête.
+Si vous utilisez le navigateur chrome, à chaque chargement de page, il demande en plus une requête [flavicon](https://www.w3schools.com/html/html_favicon.asp){.externe} 0 la suite de la première requête.
 {% endinfo %}
 
 ## 404
 
-Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html. Si on tape n'importe quelle autre route que `/` on obtient tout dem même notre fichier html... Remédions à ça en créant rendant un [statut 404](https://http.cat/404) si l'url demandée n'est pas une route valide :
+Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html. Si on tape n'importe quelle autre route que `/` on obtient tout dem même notre fichier html... Remédions à ça en créant rendant un [statut 404](https://http.cat/404){.externe} si l'url demandée n'est pas une route valide :
 
 ```javascript
 // ...
@@ -160,7 +160,7 @@ Le `res.end()` est indispensable dans la gestion du 404, sinon le navigateur att
 
 Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées **fichiers statiques**. Comme notre fichier `index.html`{.fichier}.
 
-Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au cours du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coûte toujours du temps).
+Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au cours du temps. On peut utiliser sur eux des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web){.externe} (côté client et serveur) ou encore de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge){.externe} pour accélérer le résultat (le réseau coûte toujours du temps).
 
 {% note %}
 On essayera toujours de déplacer le travail du serveur (unique) aux clients (multiples).
@@ -210,7 +210,7 @@ Ceci est effectué en :
 
 1. prenant la variable `req.url`{.language-}
 2. en concaténant avec `.` puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier `./static/[fin de l'url]`{.fichier}
-3. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options), il est envoyé par le serveur
+3. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options){.externe}, il est envoyé par le serveur
 
 {% info %}
 La lecture de fichiers se fait par flux en node. Nous reviendrons là-dessus un oeu plus tard dans le cours.
@@ -263,7 +263,7 @@ server.listen(port, hostname, () => {
 });
 ```
 
-Nous avons utilisé une [redirection](https://http.cat/301) de la requête `/` vers la requête `http://127.0.0.1:3000/static/index.html` (la variable `req.headers['host']`js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).
+Nous avons utilisé une [redirection](https://http.cat/301){.externe} de la requête `/` vers la requête `http://127.0.0.1:3000/static/index.html` (la variable `req.headers['host']`js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).
 
 Ainsi, lorsque le serveur fait une requête `http://127.0.0.1:3000` :
 
@@ -350,7 +350,7 @@ Il ne faut donc pas prendre comme référence le dossier courant mais le dossier
 
 Node nous permet de faire ça en définissant les constantes `__filename`{.language-} et `__dirname`{.language-} en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.
 
-Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est _bad karma_ : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.
+Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est _bad karma_ : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html){.externe} qui s'occupe de ça.
 
 ### A vous
 
@@ -358,7 +358,7 @@ Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujour
 Ajoutez une route nommée `http://127.0.0.1/API/hasard` qui affiche (en texte) un réel aléatoire entre 0 et 1.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la méthode [`Math.random`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) pour obtenir un réel entre 0 et 1 et le transformer en chaîne de caractère avec : `String` : `String(Math.random())`.
+Vous pourrez utiliser la méthode [`Math.random`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random){.externe} pour obtenir un réel entre 0 et 1 et le transformer en chaîne de caractère avec : `String` : `String(Math.random())`.
 {% endinfo %}
 {% details "solution" %}
 

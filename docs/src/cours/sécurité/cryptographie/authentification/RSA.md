@@ -12,8 +12,8 @@ eleventyComputed:
 
 {% lien %}
 
-- [Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
-- [preuves RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo)
+- [Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA){.externe}
+- [preuves RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo){.externe}
 
 {% endlien %}
 
@@ -22,7 +22,7 @@ Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leona
 Le code RSA est basé sur des principes arithmétiques. Le message à coder/décoder sera donc un entier $m$.
 
 {% info %}
-Pour bien appréhender cette partie, il faudra avoir quelques connaissances basiques sur les [modulo](https://fr.wikipedia.org/wiki/Modulo_(op%C3%A9ration)). En particulier :
+Pour bien appréhender cette partie, il faudra avoir quelques connaissances basiques sur les [modulo](https://fr.wikipedia.org/wiki/Modulo_(op%C3%A9ration)){.externe}. En particulier :
 
 - $x \equiv y \pmod{n}$ signifie que $x - y$ est un multiple de $n$
 - $x \equiv y \pmod{n} \equiv (y + kn) \pmod{n}$ pour tout entier relatif $k$
@@ -61,7 +61,7 @@ Le couple $(d, n)$ constitue la **clé de déchiffrement** et la fonction de dé
 
 ## Existence et calcul de $d$
 
-L'existence de $d$ est lié à une conséquence du [théorème de Bézout](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout) :
+L'existence de $d$ est lié à une conséquence du [théorème de Bézout](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout){.externe} :
 
 {% note "Théorème de Bézout" %}
 
@@ -110,16 +110,16 @@ Enfin, si $ax=1+by$ et $ax'=1+by'$ alors $a(x-x') = b(y-y')$ et comme $a$ et $b$
 
 {% enddetails %}
 
-On vient de montrer que pour tout couple d'entiers $a < b$ premiers entre eux, il existe un unique entier $a' < b$ tel que : $aa' \equiv 1 \pmod{b}$. Cet entier est appelé [inverse modulaire](https://fr.wikipedia.org/wiki/Inverse_modulaire).
+On vient de montrer que pour tout couple d'entiers $a < b$ premiers entre eux, il existe un unique entier $a' < b$ tel que : $aa' \equiv 1 \pmod{b}$. Cet entier est appelé [inverse modulaire](https://fr.wikipedia.org/wiki/Inverse_modulaire){.externe}.
 
 {% lien %}
 Voir le code RSA en action :
-<https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html>
+<https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html>{.externe}
 {% endlien %}
 
 ## Preuve des bijections
 
-Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le [petit théorème de Fermat](https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat) :
+Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le [petit théorème de Fermat](https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat){.externe} :
 
 {% note "petit théorème de Fermat" %}
 Si $p$ est un nombre premier et que $a$ est un entier alors : $a^{p} - a$ est un multiple de $p$
@@ -190,7 +190,7 @@ $$
 
 ### Calcul de d
 
-Trouver l'inverse modulaire d'un nombre se fait usuellement en utilisant l'[algorithme d'Euclide étendu](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu), qui est une généralisation de l'[algorithme d'Euclide](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide) qui calcule la division euclidienne.
+Trouver l'inverse modulaire d'un nombre se fait usuellement en utilisant l'[algorithme d'Euclide étendu](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu){.externe}, qui est une généralisation de l'[algorithme d'Euclide](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide){.externe} qui calcule la division euclidienne.
 
 ### Calcul des codes
 
@@ -202,12 +202,12 @@ Calculer $f(m) = m^e \pmod{n}$ (ou $f^{-1}(m)$) se fait par exponentiation modul
 > 
 > TBD RSA : bien choisir ses clés. Sinon multiplication de Fermat
 
-> TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)
+> TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk){.externe}
 
-pb des 0 : <https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding>
+pb des 0 : <https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding>{.externe}
 
-Basé sur le fait qu'algorithmiquement on ne sait pas efficacement [décomposer un nombre en produit de ses facteurs premiers](https://fr.wikipedia.org/wiki/D%C3%A9composition_en_produit_de_facteurs_premiers).
+Basé sur le fait qu'algorithmiquement on ne sait pas efficacement [décomposer un nombre en produit de ses facteurs premiers](https://fr.wikipedia.org/wiki/D%C3%A9composition_en_produit_de_facteurs_premiers){.externe}.
 
 Pour trouver la clé secrète $(e, pq)$ en connaissant $(d, pq)$, il faut trouver $p$ et $q$ et donc décomposer $n=pq$ en produit de ses facteurs premiers : il est donc **difficile** de casser le code RSA lorsque $n$ est grand.
 
-<https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/>
+<https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/>{.externe}

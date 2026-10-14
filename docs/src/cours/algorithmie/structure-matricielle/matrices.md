@@ -178,7 +178,7 @@ La méthode de création présenté nécessite une boucle, ce n'est donc pas une
 Il faut par exemple $n$ opérations pour créer une matrice de $n$ lignes et $p$ colonnes.
 Ceci n'est souvent pas gênant algorithmiquement car si on utilise une matrice c'est pour utiliser toutes ses lignes et colonnes, ne serait-ce que pour les initialiser (rappelez vous que lorsque l'on crée un tableau ses valeurs sont indéterminées). Mais si l'on veut pouvoir créer des matrices en 1 unique opération on peut le faire comme le montre la série d'exercices suivant. On utilise cependant peu cette méthode algorithmiquement car son utilisation complexifie l'algorithme sans réel gain car s'il faut initialiser la matrice on ne gagne rien (algorithmiquement) à la créer en $\mathcal{O}(1)$ opération.
 
-Son réel gain est au niveau de l'implémentation car elle permet de stocker la matrice dans des cases mémoires contiguës ce qui permet une gestion [de la mémoire cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache) plus optimale. Ceci dépasse cependant le cadre de ce cours d'algorithmie (rendez vous dans le cours système !)
+Son réel gain est au niveau de l'implémentation car elle permet de stocker la matrice dans des cases mémoires contiguës ce qui permet une gestion [de la mémoire cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache){.externe} plus optimale. Ceci dépasse cependant le cadre de ce cours d'algorithmie (rendez vous dans le cours système !)
 
 {% exercice %}
 Montrez qu'il existe une bijection entre l'ensemble de tous les couples $(i, j)$ pour $1\leq i \leq n$ et $1\leq j \leq p$ et l'intervalle $[0, p\cdot q[$

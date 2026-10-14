@@ -25,7 +25,7 @@ Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informa
 2. écrire notre programme en-dehors de tout interpréteur
 
 {% aller %}
-[Version de l'interpréteur python](version-python){.interne}
+[Version de l'interpréteur python](version-python)
 {% endaller %}
 
 ## Créer son environnement python
@@ -35,5 +35,5 @@ Chaque projet va dépendre de modules externes que vous avez installés avec `pi
 Python règle ces deux problèmes d'un seul coup en utilisant des environnements virtuels :
 
 {% aller %}
-[Environnements virtuels](environnements-virtuels){.interne}
+[Environnements virtuels](environnements-virtuels)
 {% endaller %}

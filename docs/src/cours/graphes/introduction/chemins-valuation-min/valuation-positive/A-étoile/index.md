@@ -12,9 +12,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : <https://www.youtube.com/watch?v=A60q6dcoCjw>
+> TBD : <https://www.youtube.com/watch?v=A60q6dcoCjw>{.externe}
 
-Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors _rapidement_ une solution _acceptable_ plutôt qu'obtenir _lentement_ une solution optimale.
+Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*){.externe}, qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors _rapidement_ une solution _acceptable_ plutôt qu'obtenir _lentement_ une solution optimale.
 
 Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :
 
@@ -117,7 +117,7 @@ Si l’heuristique de $A^\star$ est admissible **et** qu'à chaque étape de l'a
 {% endnote %}
 {% details "preuve", "open" %}
 
-Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof).
+Voir <https://en.wikipedia.org/wiki/Admissible_heuristic>{.externe} et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof){.externe}.
 
 {% enddetails %}
 
@@ -139,7 +139,7 @@ Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement
 Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
 {% enddetails %}
 
-On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [_pathfinding_](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
+On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [_pathfinding_](https://fr.wikipedia.org/wiki/Recherche_de_chemin){.externe} par exemple.
 
 
 ## Dijkstra et BFS

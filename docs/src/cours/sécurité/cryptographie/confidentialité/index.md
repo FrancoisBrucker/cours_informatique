@@ -51,7 +51,7 @@ Nous ne rentrerons pas en détail ici sur les moyens de générer de tels nombre
 
 Pour en savoir plus :
 
-[_True Random Number Generator_](/cours/misc/aléatoire/nombres-aléatoires){.interne}
+[_True Random Number Generator_](/cours/misc/aléatoire/nombres-aléatoires)
 
 {% endinfo %}
 
@@ -68,7 +68,7 @@ Il est cependant irréaliste qu'Alice et Bob aient connaissance de la clé avant
 Ceci est possible en utilisant des problèmes dont que l'on ne sait pas algorithmiquement résoudre efficacement :
 
 {% aller %}
-[Partager un secret](partager-secret){.interne}
+[Partager un secret](partager-secret)
 {% endaller %}
 
 Le schéma de transmission confidentiel devient alors :
@@ -97,7 +97,7 @@ Formalisons ce concept avec la notion de fonctions à sens unique.
 ### Fonctions à sens unique
 
 {% lien %}
-[One way function](https://en.wikipedia.org/wiki/One-way_function)
+[One way function](https://en.wikipedia.org/wiki/One-way_function){.externe}
 {% endlien %}
 
 En gros, une fonction $f$ est à sens unique s'il est :
@@ -153,7 +153,7 @@ Ces deux problèmes sont (très fortement) soupçonnées de faire partie de ce t
 S'il existe des fonctions à sens unique, alors $P \neq NP$
 {% endnote %}
 {% details "preuve", "open" %}
-Dérive directement de ce que l'[on a vu avec le problème SAT](/cours/algorithmie/problème-SAT/#algorithme-SAT){.interne} : il est équivalent pour SAT de trouver une entrée si on a la solution que de trouver la solution si on a une entrée. On a donc l'implication suivante : Si $P = NP$ alors il ne peut exister de fonction à sens unique.
+Dérive directement de ce que l'[on a vu avec le problème SAT](/cours/algorithmie/problème-SAT/#algorithme-SAT) : il est équivalent pour SAT de trouver une entrée si on a la solution que de trouver la solution si on a une entrée. On a donc l'implication suivante : Si $P = NP$ alors il ne peut exister de fonction à sens unique.
 {% enddetails %}
 
 Notez que :
@@ -174,7 +174,7 @@ Ici faire directement le découpage avec des permutations. Ne plus parler des G(
 Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :
 
 {% aller %}
-[Sémantiquement sécurisée](définition-sécurité){.interne}
+[Sémantiquement sécurisée](définition-sécurité)
 {% endaller %}
 
 ## Transmission
@@ -200,7 +200,7 @@ On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cr
 ```
 
 {% aller %}
-[Nombres pseudo aléatoires cryptographiques](nombres-pseudo-aléatoires-cryptographiques){.interne}
+[Nombres pseudo aléatoires cryptographiques](nombres-pseudo-aléatoires-cryptographiques)
 {% endaller %}
 
 Avoir un CPRNG suffit pour garantir un chiffrement de Vernam sémantiquement sécurisé :
@@ -229,7 +229,7 @@ $$
 $$
 </div>
 
-Comme $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1$ est une variable uniforme ([on l'a démontré](../chiffre-vernam/#uniforme){.interne}) on a $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1 = u\xleftarrow{U}\\{0, 1\\}^t\oplus m_2 = u\xleftarrow{U}\\{0, 1\\}^t$ et donc :
+Comme $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1$ est une variable uniforme ([on l'a démontré](../chiffre-vernam/#uniforme)) on a $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1 = u\xleftarrow{U}\\{0, 1\\}^t\oplus m_2 = u\xleftarrow{U}\\{0, 1\\}^t$ et donc :
 
 <div>
 $$
@@ -310,12 +310,12 @@ On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.
 
 <!-- 
 
-> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
+> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>{.externe}
 
  -->
 
 {% attention %}
-Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/)
+Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/){.externe}
 
 {% endattention %}
 
@@ -323,7 +323,7 @@ Voyons  comment tout ceci peut se faire de façon sécurisée :
 
 Concaténer des blocs de messages chiffrés. On découpe le message à chiffrer $m$ en blocs $m_i$ de taille $t$ fixe que l'on traite séparément.
 
-Plutôt que d'utiliser un générateur on utilise une [fonction pseudo-aléatoire sécurisée](../nombres-pseudo-aléatoires-cryptographiques/#PRF){.interne} (ou une [permutation](../nombres-pseudo-aléatoires-cryptographiques/#PRP){.interne}) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.
+Plutôt que d'utiliser un générateur on utilise une [fonction pseudo-aléatoire sécurisée](../nombres-pseudo-aléatoires-cryptographiques/#PRF) (ou une [permutation](../nombres-pseudo-aléatoires-cryptographiques/#PRP)) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.
 
 On va utiliser le schéma suivant pour désigner une PRF (_resp._ une PRP) $F(k, \text{iv})$ :
 
@@ -370,7 +370,7 @@ L'opérateur $\\;\\|\\;$ est la concaténation.
 {% endinfo %}
 {% details "preuve", "open" %}
 
-Comme $F$ est une PRF, $F(k, \text{iv} \\;\\|\\; i)$ est indiscernable de la variable aléatoire uniforme pour tout $\text{iv} \\;\\|\\; i$. On peut ensuite utiliser le même schéma de preuve que [la preuve de l'incrémentalité d'un CPRNG](./nombres-pseudo-aléatoires-cryptographiques/#chiffre-CPRNG-incrémental){.interne} et permet de montrer que $(F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; l))$ est indiscernable de la variable aléatoire uniforme (ici $m$ est au pire égale à la taille $t$ du message qui reste polynomial par rapport au paramètre de sécurité).
+Comme $F$ est une PRF, $F(k, \text{iv} \\;\\|\\; i)$ est indiscernable de la variable aléatoire uniforme pour tout $\text{iv} \\;\\|\\; i$. On peut ensuite utiliser le même schéma de preuve que [la preuve de l'incrémentalité d'un CPRNG](./nombres-pseudo-aléatoires-cryptographiques/#chiffre-CPRNG-incrémental) et permet de montrer que $(F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; l))$ est indiscernable de la variable aléatoire uniforme (ici $m$ est au pire égale à la taille $t$ du message qui reste polynomial par rapport au paramètre de sécurité).
 
 {% enddetails %}
 
@@ -399,9 +399,9 @@ Cette construction permet également de chiffrer **et** déchiffrer rapidement l
 
 ## Nonce
 
-Le vecteur d'initialisation est souvent utilisé comme [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce), qui comme son nom l'indique est utilisé une unique fois.
+Le vecteur d'initialisation est souvent utilisé comme [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce){.externe}, qui comme son nom l'indique est utilisé une unique fois.
 
-De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les [attaque par rejeu](https://fr.wikipedia.org/wiki/Attaque_par_rejeu). Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.
+De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les [attaque par rejeu](https://fr.wikipedia.org/wiki/Attaque_par_rejeu){.externe}. Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.
 
 ```
     Alice     |         |     Bob
@@ -453,13 +453,13 @@ En utilisant le chirrfre de Vernam, la transmission sécurisée ressemble finale
 ----          |         |    
 ```
 
-On appelle ce type de transmission [chiffrement de flux](https://fr.wikipedia.org/wiki/Chiffrement_de_flux), qui est la norme actuellement. Il permet :
+On appelle ce type de transmission [chiffrement de flux](https://fr.wikipedia.org/wiki/Chiffrement_de_flux){.externe}, qui est la norme actuellement. Il permet :
 
 - des clés de petites tailles par rapport au message à faire passer
 - des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.
 
-On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
+On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack){.externe}, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
 
 {% lien %}
-[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
+[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/){.externe}
 {% endlien %}

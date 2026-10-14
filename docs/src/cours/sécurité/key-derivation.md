@@ -12,8 +12,8 @@ eleventyComputed:
 
 {% lien %}
 
-- [Définition](https://en.wikipedia.org/wiki/Key_derivation_function)
-- [introduction](https://blog.boot.dev/cryptography/key-derivation-functions/)
+- [Définition](https://en.wikipedia.org/wiki/Key_derivation_function){.externe}
+- [introduction](https://blog.boot.dev/cryptography/key-derivation-functions/){.externe}
 
 {% endlien %}
 
@@ -32,12 +32,12 @@ Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : 
 
 {% lien %}
 
-- [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2)
-- <https://www.youtube.com/watch?v=gTaOccTY9bc>
+- [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2){.externe}
+- <https://www.youtube.com/watch?v=gTaOccTY9bc>{.externe}
 
 {% endlien %}
 
-Nous allons montrer préciser le principe en explicitant le protocole `PBKDF2` encore très utilisé aujourd'hui. On lui préférera tout de même [argon2](https://en.wikipedia.org/wiki/Argon2), plus complexe, pour de nouvelles applications.
+Nous allons montrer préciser le principe en explicitant le protocole `PBKDF2` encore très utilisé aujourd'hui. On lui préférera tout de même [argon2](https://en.wikipedia.org/wiki/Argon2){.externe}, plus complexe, pour de nouvelles applications.
 
 ```sh
 ❯ openssl kdf -keylen 32 -kdfopt digest:SHA256 -kdfopt pass:"password" -kdfopt salt:"" -kdfopt iter:2 PBKDF2
@@ -63,9 +63,9 @@ On vot que l'itération des fonctions de hash permet d'uniformiser le hash.
 
 {% lien %}
 
-- [Argon2 specification](https://www.password-hashing.net/argon2-specs.pdf)
-- [Argon2 algorithm](https://www.youtube.com/watch?v=Sc3aHMCc4h0)
-- [Argon2 vs PBKDF2](https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/)
+- [Argon2 specification](https://www.password-hashing.net/argon2-specs.pdf){.externe}
+- [Argon2 algorithm](https://www.youtube.com/watch?v=Sc3aHMCc4h0){.externe}
+- [Argon2 vs PBKDF2](https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/){.externe}
 
 {% endlien %}
 
@@ -105,7 +105,7 @@ Attention, tous les paramètres sont importants. Trouver le même hash avec open
 
 {% lien %}
 
-[Usage](https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/)
+[Usage](https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/){.externe}
 
 {% endlien %}
 

@@ -14,7 +14,7 @@ On peut très bien uniquement stocker ses données sous la forme de variables, d
 
 Nous allons montrer ici un cas d'utilisation simple que vous pourrez adapter à vos besoins futur :
 
-- utilisation d'une base de donnée relationnelle [SQLite](https://www.sqlite.org).
+- utilisation d'une base de donnée relationnelle [SQLite](https://www.sqlite.org){.externe}.
 - utilisation de sequelize pour la gestion de celle-ci
 
 Nous aurons besoin d'un projet pour tester ce que nous allons voir donc :
@@ -53,12 +53,12 @@ npm install --save sqlite3
 
 {% endfaire %}
 {% info %}
-Il existe également Le module node [better-sqlite3](https://www.npmjs.com/package/better-sqlite3) est une version amélioré — selon ses auteurs — du module classique [sqlite3](https://www.npmjs.com/package/sqlite3), mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.
+Il existe également Le module node [better-sqlite3](https://www.npmjs.com/package/better-sqlite3){.externe} est une version amélioré — selon ses auteurs — du module classique [sqlite3](https://www.npmjs.com/package/sqlite3){.externe}, mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.
 {% endinfo %}
 
-Il est parfois aussi utile d'avoir une [cli](https://fr.wikipedia.org/wiki/CLI) pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :
+Il est parfois aussi utile d'avoir une [cli](https://fr.wikipedia.org/wiki/CLI){.externe} pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :
 
-- sous windows : <https://www.sqlite.org/download.html>
+- sous windows : <https://www.sqlite.org/download.html>{.externe}
 - sous mac `brew install sqlite`
 - sous Linux/Ubuntu : `sudo apt-get install sqlite3`
 
@@ -84,19 +84,19 @@ Nous n'utiliserons pas cette façon de faire qui est pleine de défauts (voir ap
 #### fichier en cli
 
 {% lien %}
-<https://www.sqlite.org/cli.html>
+<https://www.sqlite.org/cli.html>{.externe}
 {% endlien %}
 
 #### fichier sous node
 
 {% lien %}
-<https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/>
+<https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/>{.externe}
 {% endlien %}
 
 #### mémoire sous node
 
 {% lien %}
-<https://www.sqlite.org/inmemorydb.html>
+<https://www.sqlite.org/inmemorydb.html>{.externe}
 {% endlien %}
 
 ## ORM : sequelize
@@ -107,7 +107,7 @@ Nous n'allons pas utiliser sqlite en tapant juste des commandes sql pour plusieu
 - impossible à déboguer ou a modifier
 - plein de dialectes différents. Une fois qu'on a une pase très difficile d'en changer à cause des différents dialectes SQL possibles
 
-On utilise un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) (_Object-Relational Mapping_) qiu permet
+On utilise un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel){.externe} (_Object-Relational Mapping_) qiu permet
 
 - permet d'écrire des bases et d'utiliser des requêtes comme on fait des objets
 - pattern facade : indépendant de la base. On peut changer la base de donnée sans changer le code (juste la config)
@@ -163,7 +163,7 @@ L'intérêt des ORM est que l'on va décrire la base de donnée et interagir ave
 - le modèle est la classe et les attributs correspondent aux colonne de la table SQL
 - l'objet est une donnée et il correspond à une ligne de la table SQL
 
-Les types possible de champs sont disponible [dans la documentation](https://sequelize.org/v5/manual/data-types.html).
+Les types possible de champs sont disponible [dans la documentation](https://sequelize.org/v5/manual/data-types.html){.externe}.
 
 On va par exemple créer un modèle constitué d'une chaîne de caractère (`STRING` : chaîne de caractère d'au plus 255 caractères) et d'un entier (`INTEGER`) :
 
@@ -188,7 +188,7 @@ const MonModèle = db.define(
 );
 ```
 
-Une fois le modèle donné, il faut [synchroniser la base de donnée](https://sequelize.org/master/manual/model-basics.html#model-synchronization) avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse `sync` :
+Une fois le modèle donné, il faut [synchroniser la base de donnée](https://sequelize.org/master/manual/model-basics.html#model-synchronization){.externe} avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse `sync` :
 
 ```js
 await sequelize.sync();
@@ -245,7 +245,7 @@ Par défaut, utilisez toujours ce champ comme clé primaire.
 #### Temps
 
 {% lien %}
-<https://sequelize.org/master/manual/model-basics.html#timestamps>
+<https://sequelize.org/master/manual/model-basics.html#timestamps>{.externe}
 {% endlien %}
 
 Par défaut, sequelize ajoute deux champs spéciaux `createdAt`{.language-} and `updatedAt`{.language-} pour connaître la date de création et de la dernière mise à jour d'une donnée.
@@ -255,7 +255,7 @@ Le type de ces champ et `DataTypes.DATE`{.language-}. A chaque fois que vous dev
 ### Lire et sauver des données
 
 {% lien %}
-<https://sequelize.org/master/manual/model-querying-basics.html>
+<https://sequelize.org/master/manual/model-querying-basics.html>{.externe}
 {% endlien %}
 
 ## Exemple
@@ -454,7 +454,7 @@ console.log("coucou !");
 
 ## CRUD
 
-Accéder aux données se fait, on l'a vue, en utilisant le formalisme [CRUD](https://fr.wikipedia.org/wiki/CRUD), c'est à dire que l'on veut avoir des url qui nous permettent de :
+Accéder aux données se fait, on l'a vue, en utilisant le formalisme [CRUD](https://fr.wikipedia.org/wiki/CRUD){.externe}, c'est à dire que l'on veut avoir des url qui nous permettent de :
 
 - **C**reate : créer un message
 - **R**ead : lire un message
@@ -470,7 +470,7 @@ Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécif
 ### Create
 
 {% lien %}
-<https://sequelize.org/master/manual/model-instances.html#creating-an-instance>
+<https://sequelize.org/master/manual/model-instances.html#creating-an-instance>{.externe}
 {% endlien %}
 
 Créer une donnée en sequelize peu se faire comme ça :
@@ -487,7 +487,7 @@ Le message est poussé en base. La clé primaire est le champ `id`. Si c'est le 
 ### Read
 
 {% lien %}
-<https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code->
+<https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code->{.externe}
 {% endlien %}
 
 Lire une instance en connaissant sa clé primaire.
@@ -511,7 +511,7 @@ Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
 ### Update
 
 {% lien %}
-<https://sequelize.org/master/manual/model-instances.html#updating-an-instance>
+<https://sequelize.org/master/manual/model-instances.html#updating-an-instance>{.externe}
 {% endlien %}
 
 Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :
@@ -528,7 +528,7 @@ Remarquez que l'on a créée une fonction de type `async` pour assurer que la do
 ### Delete
 
 {% lien %}
-<https://sequelize.org/master/manual/model-instances.html#deleting-an-instance>
+<https://sequelize.org/master/manual/model-instances.html#deleting-an-instance>{.externe}
 {% endlien %}
 
 ```js

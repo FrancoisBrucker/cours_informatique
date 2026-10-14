@@ -18,17 +18,17 @@ Il y a un grand nombre de problèmes NP complets. Ce sont donc fondamentalement 
 
 ## SUBSETSUM
 
-> subsetsum 3-SAT :<https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf>
+> subsetsum 3-SAT :<https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf>{.externe}
 
 ## Partition
 
-> depuis subsetsum : <https://www.geeksforgeeks.org/set-partition-is-np-complete/>
+> depuis subsetsum : <https://www.geeksforgeeks.org/set-partition-is-np-complete/>{.externe}
 
 ## Sac à dos
 
 > Passer du problème d'optimisation au problème de décision. Au départ pas de décision et donc pas dans NP.
-> TBD depuis partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2023Knapsack.pdf>
+> TBD depuis partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2023Knapsack.pdf>{.externe}
 
 ## Autres exemples
 
-> TBD exemple de choses NP complete : <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap12-good.pdf>
+> TBD exemple de choses NP complete : <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap12-good.pdf>{.externe}

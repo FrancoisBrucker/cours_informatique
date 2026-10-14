@@ -15,11 +15,11 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 ## Complexité algorithmique
 
 {% aller %}
-[Définitions](./définitions){.interne}
+[Définitions](./définitions)
 {% endaller %}
 
 {% aller %}
-[Importance](./importance){.interne}
+[Importance](./importance)
 {% endaller %}
 
 ## Problème du comptage exhaustif de la complexité
@@ -90,20 +90,20 @@ Les coefficients multiplicatifs et additifs constants sont négligeable par rapp
 
 ## Comparaisons asymptotiques
 
-Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique). Avant de les utiliser en algorithmie, commençons par les définir formellement.
+Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe}. Avant de les utiliser en algorithmie, commençons par les définir formellement.
 
 {% aller %}
-[_fonctions_ de comparaisons asymptotiques](./comparaisons-asymptotiques){.interne}
+[_fonctions_ de comparaisons asymptotiques](./comparaisons-asymptotiques)
 {% endaller %}
 
 {% aller %}
-[Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie){.interne}
+[Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie)
 {% endaller %}
 
 ## Comment calculer la complexité d'algorithmes
 
 {% aller %}
-[Calcul de complexités avec des $\mathcal{O}$](./complexité-algorithmes){.interne}
+[Calcul de complexités avec des $\mathcal{O}$](./complexité-algorithmes)
 {% endaller %}
 
 ## Complexité d'un code

@@ -15,12 +15,12 @@ Utilisation du format json en python.
 
 <!-- end résumé -->
 
-Le format [json](https://www.json.org/json-fr.html) vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :
+Le format [json](https://www.json.org/json-fr.html){.externe} vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :
 
 - aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.
 - aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.
 
-Ci-après, un exemple de fichier json contenant des super-héros (adapté de la [documentation javascript de Mozilla](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON). Si vous voulez apprendre le web, c'est une bonne adresse), on supposera pour la suite que vous avez dans le dossier du projet courant le fichier `données.csv`{.fichier} contenant :
+Ci-après, un exemple de fichier json contenant des super-héros (adapté de la [documentation javascript de Mozilla](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON){.externe}. Si vous voulez apprendre le web, c'est une bonne adresse), on supposera pour la suite que vous avez dans le dossier du projet courant le fichier `données.csv`{.fichier} contenant :
 
 ```text
 [
@@ -49,12 +49,12 @@ C'est une liste de deux éléments, chaque élément étant composée de _clés_
 {% note %}
 Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.
 
-Il en existe de nombreux. J'ai installé le tout simple [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json) pour rendre lisible tout fichier json.
+Il en existe de nombreux. J'ai installé le tout simple [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json){.externe} pour rendre lisible tout fichier json.
 {% endnote %}
 
 ## Json et dictionnaires en python
 
-Un json c'est **une chaîne de caractère** qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa [bibliothèque json](https://docs.python.org/fr/3/library/json.html).
+Un json c'est **une chaîne de caractère** qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa [bibliothèque json](https://docs.python.org/fr/3/library/json.html){.externe}.
 
 Un dictionnaire python :
 
@@ -65,7 +65,7 @@ mes_donnees_dictionnaire = {
 }
 ```
 
-Se transforme en json (une chaîne de caractère) avec [`json.dumps`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dumps) :
+Se transforme en json (une chaîne de caractère) avec [`json.dumps`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dumps){.externe} :
 
 ```python
 import json
@@ -79,7 +79,7 @@ Pour le représenter de façon joli, on pourra ajouter les arguments :
 print(json.dumps(mes_donnees_dictionnaire, indent=4))
 ```
 
-Cette chaîne peut à nouveau être transformée en dictionnaire grâce à [`json.loads`{.language-}](https://docs.python.org/fr/3/library/json.html#json.loads) :
+Cette chaîne peut à nouveau être transformée en dictionnaire grâce à [`json.loads`{.language-}](https://docs.python.org/fr/3/library/json.html#json.loads){.externe} :
 
 ```python
 donnees = json.loads(texte_json)
@@ -87,7 +87,7 @@ donnees = json.loads(texte_json)
 
 ## Lecture de fichiers
 
-Pour lire un fichier on utilise la méthode [`json.load`{.language-}](https://docs.python.org/fr/3/library/json.html#json.load) (à ne pas confondre avec `json.loads`{.language-} qui est pour les chaines de caractères).
+Pour lire un fichier on utilise la méthode [`json.load`{.language-}](https://docs.python.org/fr/3/library/json.html#json.load){.externe} (à ne pas confondre avec `json.loads`{.language-} qui est pour les chaines de caractères).
 
 ```python
 f = open("données.json", "r")
@@ -99,12 +99,12 @@ Une fois lu, le fichier json est converti en objet python. L'objet `data`{.langu
 
 ## Écriture de fichiers
 
-Pour lire un fichier on utilise la méthode [`json.dump`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps`{.language-} qui est pour les chaines de caractères).
+Pour lire un fichier on utilise la méthode [`json.dump`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dump){.externe} (à ne pas confondre avec `json.dumps`{.language-} qui est pour les chaines de caractères).
 
 ### Json
 
 {% faire %}
-Téléchargez Informations générales sur les Sénateurs au format json à partir de [cette page](https://www.data.gouv.fr/fr/datasets/les-senateurs).
+Téléchargez Informations générales sur les Sénateurs au format json à partir de [cette page](https://www.data.gouv.fr/fr/datasets/les-senateurs){.externe}.
 {% endfaire %}
 
 Examinez le fichier json :
@@ -129,9 +129,9 @@ Lorsque l'on travaille avec des dates en informatique, il ne faut **JAMAIS** le 
 
 ### Dates en python
 
-En python, cette bibliothèque s'appelle [`datetime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html). Pour le sujet qui nous intéresse, on a besoin de transformer une chaîne de caractères en date. Ceci est possible avec la méthode [`strptime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior).
+En python, cette bibliothèque s'appelle [`datetime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html){.externe}. Pour le sujet qui nous intéresse, on a besoin de transformer une chaîne de caractères en date. Ceci est possible avec la méthode [`strptime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior){.externe}.
 
-Si on veut par exemple convertir la date "01/04/2020 à 14h34" en date python, on passe la chaine de caractère et le format à [`strptime`{.language-}](https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior) :
+Si on veut par exemple convertir la date "01/04/2020 à 14h34" en date python, on passe la chaine de caractère et le format à [`strptime`{.language-}](https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior){.externe} :
 
 ```python
 from datetime import datetime
@@ -144,7 +144,7 @@ date = datetime.strptime(date_en_chaîne, format)
 
 ### Différences de dates
 
-En python la différence de 2 dates est un objet spécial de type [`timedelta`{.language-}](https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects). Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :
+En python la différence de 2 dates est un objet spécial de type [`timedelta`{.language-}](https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects){.externe}. Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :
 
 ```python
 

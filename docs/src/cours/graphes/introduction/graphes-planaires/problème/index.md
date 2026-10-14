@@ -26,23 +26,23 @@ La dernière condition n'est pas restrictive puisqu'on peut toujours modifier d'
 Une **_courbe_** est une fonction $\gamma$ continue de $[0, 1]$ dans $\mathbb{R}^2$ telle que $\gamma(s) \neq \gamma(t)$ si $s\neq t$ et $\\{s, t\\} \neq \\{0, 1\\}$.
 {% endnote2 %}
 
-Par exemple le dessin ci-dessous des [graphes de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen) et de $K_4$ :
+Par exemple le dessin ci-dessous des [graphes de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe} et de $K_4$ :
 
-![dessin 1](dessin-1.png){.interne}
+![dessin 1](dessin-1.png)
 
 Il existes de nombreuses façon de dessiner les graphe, par exemple ci-dessous un autre dessin des deux graphes précédents :
 
-![dessin 2](dessin-2.png){.interne}
+![dessin 2](dessin-2.png)
 
 On a utilisé des courbes simples, mais rien d'empêche de faire dans le bizarre :
 
 <span id="intersections"></span>
 
-![dessin 3](dessin-3.png){.interne}
+![dessin 3](dessin-3.png)
 
 En revanche, la définition d'une courbe empêche les boucles, le dessin suivant n'est donc pas à proprement parler un dessin de graphe.
 
-![dessin 4](dessin-4.png){.interne}
+![dessin 4](dessin-4.png)
 
 Dessiner un graphe est un problème peu simple car il dépend de ce que l'on cherche à faire :
 
@@ -63,7 +63,7 @@ Nous allons nous intéresser ici à la représentation d'un graphe avec le moins
 Une **_intersection_** d'un dessin dessin $(f, g)$ d'un graphe $G= (V, E)$ est un point d'intersection de deux courbes représentant des arêtes. C'est à dire un point $p$ tel que $p = g(xy)(s) = g(zt)(t)$
 {% endnote2 %}
 
-[Le dessin précédent](#intersections){.interne} possède 5 intersections.
+[Le dessin précédent](#intersections) possède 5 intersections.
 
 Les dessins sans intersections sont dit planaires :
 
@@ -116,7 +116,7 @@ On va ici supposer que l'on a un dessin planaire d'un graphe $G$.
 
 ### Courbe de Jordan
 
-Un outil géométrique important pour étudier les graphes planaires est [la courbe de Jordan](https://www.bibmath.net/dico/index.php?action=affiche&quoi=./c/courbejordan.html) et son [célèbre théorème associé](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Jordan) :
+Un outil géométrique important pour étudier les graphes planaires est [la courbe de Jordan](https://www.bibmath.net/dico/index.php?action=affiche&quoi=./c/courbejordan.html){.externe} et son [célèbre théorème associé](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Jordan){.externe} :
 
 {% note2 "**Définition**" %}
 Une **_courbe de Jordan_** est une courbe $\gamma$ telle que $\gamma(0) = \gamma(1)$.
@@ -139,7 +139,7 @@ Pour toute courbe de Jordan $\gamma$, il existe $\mathcal{P}_1$ et $\mathcal{P}_
 
 Par exemple :
 
-![dessin 3](dessin-3.png){.interne}
+![dessin 3](dessin-3.png)
 
 Ce que dit le théorème est tout simple :
 
@@ -225,7 +225,7 @@ On se place dans le plan complexe.
 
 On suppose que le cycle ne borde pas la face infinie et on  et on choisi un point $z_0$ à l'intérieur.
 
-En appliquant [la transformation de Möbius](https://fr.wikipedia.org/wiki/Transformation_de_M%C3%B6bius) suivante :
+En appliquant [la transformation de Möbius](https://fr.wikipedia.org/wiki/Transformation_de_M%C3%B6bius){.externe} suivante :
 
 <div>
 $$
@@ -234,7 +234,7 @@ $$
 </div>
 
 
-La transformation de Möbius est [un homéomorphisme](https://fr.wikipedia.org/wiki/Hom%C3%A9omorphisme) :
+La transformation de Möbius est [un homéomorphisme](https://fr.wikipedia.org/wiki/Hom%C3%A9omorphisme){.externe} :
 
 - c'est une bijection, donc elle ne produira pas de croisement de courbes,
 - elle conserve la continuité : les courbes resteront continues

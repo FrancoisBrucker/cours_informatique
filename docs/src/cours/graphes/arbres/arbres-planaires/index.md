@@ -81,7 +81,7 @@ Les deux remarques sont fondamentales, puisque tout mot ayant les 2 propriétés
 On en déduit que ces mots de tailles $2p$ forment une bijection avec les arbres plantés à $p+1$ sommets. On se convaincra aisément que l'on peut aussi les décrire comme suit :
 
 {% note2 "**Définition**" %}
-On appelle **_chemin de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck)_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
+On appelle **_chemin de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck){.externe}_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
 
 1. $u_i \in \\{-1, 1\\}$ pour tout $1\leq i \leq 2p$
 2. $\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$
@@ -109,7 +109,7 @@ Un façon commode de représenter un chemin de Dyck est le profil de montagne. O
 
 Le profil s'inscrit dans une demi-grille $p \times p$ si le chemin est de longueur $2p$.
 
-De là, un chemin de Dyck de longueur $2p$ est [un chemin de taxi](../../projet-chemin-de-taxi/){.interne} sur une grille carrée de longueur $p \times p$ restant au-dessus de la diagonale :
+De là, un chemin de Dyck de longueur $2p$ est [un chemin de taxi](../../projet-chemin-de-taxi/) sur une grille carrée de longueur $p \times p$ restant au-dessus de la diagonale :
 
 ![chemin de taxi Dyck](./chemin-taxi-dyck.png)
 
@@ -120,7 +120,7 @@ De là, un chemin de Dyck de longueur $2p$ est [un chemin de taxi](../../projet-
 ## Compter les chemins de Dyck
 
 {% lien %}
-[Compter les chemins de Dyck](https://www.youtube.com/watch?v=Lcy5PLkHEoo&list=PLmoTCYjMFPpSK1Hmew6nR1PgPueYVEUyw&index=21)
+[Compter les chemins de Dyck](https://www.youtube.com/watch?v=Lcy5PLkHEoo&list=PLmoTCYjMFPpSK1Hmew6nR1PgPueYVEUyw&index=21){.externe}
 {% endlien %}
 
 On va compter les chemins de Dyck de deux façons différentes. Elles vont nous donner deux formules égales (mais dont l'égalité n'est pas triviales à démontrer) et deux jolies démonstrations.

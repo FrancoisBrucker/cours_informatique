@@ -31,13 +31,13 @@ Un informaticien compétent doit avoir des compétences sur tout l'axe, une extr
 
 Il n'y a **pas de prérequis** à avoir avant d'assister aux cours d'informatique de la licence MPCI. Si vous avez fait NSI avant ce n'est pas un mal mais l'expérience prouve que ça ne donne pas d'avantage significatif. 
 
-Au départ l'informatique ressemble à ce que vous avez déjà vu au Lycée... Attention : ce n'est que de la ressemblance (c'est pareil pour les maths et la physique. En vrai, vous n'en avez encore jamais fait pour de vrai). Venez avec [l'état d'esprit du débutant](https://fr.wikipedia.org/wiki/Shoshin), travaillez régulièrement et n'hésitez pas à demander à vos professeurs si vous avez des questions et tout se passera bien.
+Au départ l'informatique ressemble à ce que vous avez déjà vu au Lycée... Attention : ce n'est que de la ressemblance (c'est pareil pour les maths et la physique. En vrai, vous n'en avez encore jamais fait pour de vrai). Venez avec [l'état d'esprit du débutant](https://fr.wikipedia.org/wiki/Shoshin){.externe}, travaillez régulièrement et n'hésitez pas à demander à vos professeurs si vous avez des questions et tout se passera bien.
 
 On parle d'informatique mais en vérité il faudrait parler d'informatiques (comme les mathématiques) tant les compétences mobilisées sont diverses. La grande majorité des étudiants va avoir du mal avec une des parties (parfois le code, parfois l'algorithmie, parfois les démonstrations) : il **faut** la travailler. Le déclic de compréhension va se faire pour tout le monde, parfois il faut plus de temps que pour la majorité des autres étudiants mais c'est normal. 
-Une technique d'apprentissage qui fonctionne est de ne pas aller trop vite et de respecter les principes du [Shuhari](https://fr.wikipedia.org/wiki/Shuhari) : il faut comment par répéter avant d'adapter puis d'improviser. 
+Une technique d'apprentissage qui fonctionne est de ne pas aller trop vite et de respecter les principes du [Shuhari](https://fr.wikipedia.org/wiki/Shuhari){.externe} : il faut comment par répéter avant d'adapter puis d'improviser. 
 En algorithmie par exemple, il ne faut pas hésiter à apprendre par cœur les algorithmes classiques du cours (le code et la preuve), ce qui vous permettra de les adapter ensuite à des problèmes proches pour enfin pouvoir s'en détacher et d'en inventer des neufs pour résoudre des problèmes nouveaux (tout comme au primaire vous appreniez par cœur des comptines avant de faire vos premières compositions au collèges puis dissertations au Lycée).
 
-Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger) qui stipule que moins on en sait plus on croit en savoir (on sur-évalue ses connaissances réelles, souvent en L1), souvent suivi plus tard de la descente où on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
+Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger){.externe} qui stipule que moins on en sait plus on croit en savoir (on sur-évalue ses connaissances réelles, souvent en L1), souvent suivi plus tard de la descente où on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
 
 {% attention2 "**À retenir**" %}
 Travaillez régulièrement et sérieusement toutes les parties et si vous avez des questions il ne faut pas hésiter à demander à vos professeurs : ils sont là pour ça et sauront mieux vous conseiller qu'une IA.
@@ -52,7 +52,7 @@ Travaillez régulièrement et sérieusement toutes les parties et si vous avez d
 
 Les enseignements d'informatique sont organisés en 3 paliers de connaissances/compétences :
 
-- L1 : niveau novice. Bases d'informatique pour tout ["honnête homme"](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme). À l'issue de cette année vous aurez assez de compétences pratiques pour coder un petit projet.
+- L1 : niveau novice. Bases d'informatique pour tout ["honnête homme"](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme){.externe}. À l'issue de cette année vous aurez assez de compétences pratiques pour coder un petit projet.
 - L2 : niveau competent. Vous apprendrez une vaste gamme de méthodes pour vous permettre de résoudre un problème de complexité moyenne, proche d'un problème de référence. l'issue de cette année vous aurez assez d'expérience de programmation pour coder un projet sur la durée.
 - L3 : niveau avancé. Vous pouvez créer vos propres algorithmes et résoudre des problèmes complexe.  l'issue de cette année vous aurez des connaissances fines concernant les fondements théoriques de l'informatique.
 
@@ -74,7 +74,7 @@ Le langage de programmation utilisé est le python qui est un langage générali
 ##### _Données, calcul en informatique_ (18h)
 
 {% lien %}
-[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP1U25?external=1)
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP1U25?external=1){.externe}
 {% endlien %}
 
 On y verra comment l'informatique représente ses données à partir d'une suite de 0 et de 1 :
@@ -88,7 +88,7 @@ Et comment elle les manipule en utilisant le calcul booléen.
 ##### _Bases de programmation_ (36h)
 
 {% lien %}
-[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP1U24?external=1)
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP1U24?external=1){.externe}
 {% endlien %}
 
 On y verra les principe de programmation communs à tous les langages informatique (variable, tests et boucles) et comment créer des programmes python (itératifs et récursifs) à partir de ces briques élémentaires.
@@ -152,7 +152,7 @@ Enfin, le cours s’ouvre sur une initiation aux perspectives d’analyse prédi
 ##### _Structure de données - arbres et graphes_ (30h)
 
 {% lien %}
-[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP3U12?external=1)
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP3U12?external=1){.externe}
 {% endlien %}
 
 
@@ -182,7 +182,7 @@ Le langage de programmation des divers application est le python,
 ##### _Langages, Automates, Grammaires_ (38h)
 
 {% lien %}
-[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP4U17?external=1)
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP4U17?external=1){.externe}
 {% endlien %}
 
 L'objectif de cette  UE est de comprendre le formalisme de machine à état fini et les algorithmes reliés et les utiliser pour la modélisation. Comprendre et utiliser les formalismes d’expression régulières et de grammaires pour modéliser des langages. Comprendre l’utilisation de traduction d’un langage en un autre.

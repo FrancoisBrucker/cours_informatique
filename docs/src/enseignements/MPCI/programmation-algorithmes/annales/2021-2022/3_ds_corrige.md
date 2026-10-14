@@ -70,7 +70,7 @@ Comme le tri fusion vu en cours est de cette complexité on en déduit que la co
 
 ## Questions 2
 
-Le [tri de crêpes](https://fr.wikipedia.org/wiki/Tri_de_cr%C3%AApes) est un problème originellement étudié par Bill Gates (oui, lui même) et Chritos Papadimitriou (un grand nom de l'informatique théorique) dans [un papier de discrete mathematics](https://www.sciencedirect.com/science/article/pii/0012365X79900682?via%3Dihub). Il y démontre une borne supérieure bien meilleure que celle que l'on vous fait calculer. Mais lisez ce papier, il est facile à comprendre.
+Le [tri de crêpes](https://fr.wikipedia.org/wiki/Tri_de_cr%C3%AApes){.externe} est un problème originellement étudié par Bill Gates (oui, lui même) et Chritos Papadimitriou (un grand nom de l'informatique théorique) dans [un papier de discrete mathematics](https://www.sciencedirect.com/science/article/pii/0012365X79900682?via%3Dihub){.externe}. Il y démontre une borne supérieure bien meilleure que celle que l'on vous fait calculer. Mais lisez ce papier, il est facile à comprendre.
 
 ### 2.1
 

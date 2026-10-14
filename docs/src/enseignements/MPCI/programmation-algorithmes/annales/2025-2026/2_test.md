@@ -98,7 +98,7 @@ La suite associée est : [1, -1, -1]
 ### 3 Bon parenthésage
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Langage_de_Dyck>
+<https://fr.wikipedia.org/wiki/Langage_de_Dyck>{.externe}
 {% endlien %}
 
 La suite crée précédemment permet de déterminer si la chaîne initiale est un bon parenthésage. En effet, on peut montrer qu'une liste $t$ définie comme en 2 correspond à un bon parenthésage si et seulement si :

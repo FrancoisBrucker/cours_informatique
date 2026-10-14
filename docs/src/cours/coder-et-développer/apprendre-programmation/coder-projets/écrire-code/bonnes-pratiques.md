@@ -12,24 +12,24 @@ eleventyComputed:
 Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lorsque l'on code.
 
 {% note %}
-Les différentes méthodes et mantra que l'on va voir sont issues de [l'*extreme programming* (XP)](https://fr.wikipedia.org/wiki/Extreme_programming), qui date des années 2000 mais dont on à l'impression qu'elle a été écrite hier (voire demain tellement elle est encore novatrice).
+Les différentes méthodes et mantra que l'on va voir sont issues de [l'*extreme programming* (XP)](https://fr.wikipedia.org/wiki/Extreme_programming){.externe}, qui date des années 2000 mais dont on à l'impression qu'elle a été écrite hier (voire demain tellement elle est encore novatrice).
 {% endnote %}
 
 Ces règles sont appelées des ***coding mantra***. Comme toutes les règles, il ne faut pas apprendre ce qu'elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s'il fonctionne : il faut pouvoir aller rapidement là où l'on veut modifier son code et comprendre aisément comment le modifier.
 
 ## Quel langage utiliser ?
 
-Il existe de nombreux langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connaît, en passant par [le haskell](https://fr.wikipedia.org/wiki/Haskell), [le C](https://fr.wikipedia.org/wiki/C_(langage)) ou encore [le Rust](https://www.rust-lang.org/fr).
+Il existe de nombreux langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur){.externe} compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)){.externe} que tout le monde connaît, en passant par [le haskell](https://fr.wikipedia.org/wiki/Haskell){.externe}, [le C](https://fr.wikipedia.org/wiki/C_(langage)){.externe} ou encore [le Rust](https://www.rust-lang.org/fr){.externe}.
 
-On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) tout en étant aussi expressif que le python. Le plus célèbre d'entre eux est [le brainfuck](https://fr.wikipedia.org/wiki/Brainfuck).
+On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique){.externe}) tout en étant aussi expressif que le python. Le plus célèbre d'entre eux est [le brainfuck](https://fr.wikipedia.org/wiki/Brainfuck){.externe}.
 
 {% info "**fun fact**" %}
-On peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de [tri quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une calculatrice](https://www.youtube.com/watch?v=uGug-4xkw6M)).
+On peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/){.externe} (l'algorithme de [tri quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU){.externe}), ou encore [minecraft](https://www.minecraft.net/){.externe} ([une calculatrice](https://www.youtube.com/watch?v=uGug-4xkw6M){.externe}).
 {% endinfo %}
 
 Tous ces langages sont ***équivalents*** : ce que l'on peut faire dans un langage peut être fait dans un autre (et réciproquement). **Mais** certains langage sont plus adaptés que d'autre pour faire certaines tâches.
 
-Par exemple, si vous créez d'énormes programmes avec des milliers de lignes de codes, il vaut mieux utiliser un langage comme [le java](https://www.java.com/fr/) ou [le C#](https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/). Ou encore, si vous coder des applications web, on utilisera beaucoup [le javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript).
+Par exemple, si vous créez d'énormes programmes avec des milliers de lignes de codes, il vaut mieux utiliser un langage comme [le java](https://www.java.com/fr/){.externe} ou [le C#](https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/){.externe}. Ou encore, si vous coder des applications web, on utilisera beaucoup [le javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript){.externe}.
 
 Bref :
 {% note "**Règle générale**" %}
@@ -65,13 +65,13 @@ Le découpage fonctionnel de votre code permet d'éviter la duplication de code,
 
 <span id="DRY"></span>
 {% note "**Coding mantra**" %}
-[DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas) : *don't repeat yourself*.
+[DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas){.externe} : *don't repeat yourself*.
 {% endnote %}
 
 Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
 
 {% note "**Coding mantra**" %}
-[NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
+[NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/){.externe}
 {% endnote %}
 
 En plus d'être inutile, les commentaires :
@@ -84,9 +84,9 @@ En plus d'être inutile, les commentaires :
 {% endattention %}
 
 - Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.
-- si votre code va être utilisé par des inconnus (lorsque vous créez [une bibliothèque](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle) par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.
+- si votre code va être utilisé par des inconnus (lorsque vous créez [une bibliothèque](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle){.externe} par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.
 
-Lorsque l'on utilise [une API](https://fr.wikipedia.org/wiki/Interface_de_programmation), on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaître le corps :
+Lorsque l'on utilise [une API](https://fr.wikipedia.org/wiki/Interface_de_programmation){.externe}, on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaître le corps :
 
 {% attention2 "**À retenir**" %} 
 Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.
@@ -105,10 +105,10 @@ Un code est fait pour être relu et amélioré. On **doit** privilégier sa lect
 Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
 {% note "**Coding mantra**" %}
-[KISS](https://fr.wikipedia.org/wiki/Principe_KISS) : *keep it simple, stupid*.
+[KISS](https://fr.wikipedia.org/wiki/Principe_KISS){.externe} : *keep it simple, stupid*.
 {% endnote %}
 
-Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur [un coding style](https://fr.wikipedia.org/wiki/Style_de_programmation). Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/)
+Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur [un coding style](https://fr.wikipedia.org/wiki/Style_de_programmation){.externe}. Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/){.externe}
 
 {% attention2 "**À retenir**" %} 
 Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.
@@ -139,7 +139,7 @@ Le mieux étant encore de ne jamais l'écrire au départ :
 
 <span id="YAGNI"></span>
 {% note "**Coding mantra**" %}
-[YAGNI](https://fr.wikipedia.org/wiki/YAGNI) : *You ain't gonna need it*.
+[YAGNI](https://fr.wikipedia.org/wiki/YAGNI){.externe} : *You ain't gonna need it*.
 {% endnote %}
 
 ## Tests
@@ -160,7 +160,7 @@ Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réappara
 Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
 
 {% note "**Coding mantra**" %}
-[TDD](https://artificials.ch/test-driven-development-mantra/) : *test driven development*.
+[TDD](https://artificials.ch/test-driven-development-mantra/){.externe} : *test driven development*.
 {% endnote %}
 
 Nous n'utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'essai de coder vos tests avant la fonction, cela permet d'utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.

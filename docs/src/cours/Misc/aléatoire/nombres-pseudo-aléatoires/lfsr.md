@@ -13,15 +13,15 @@ eleventyComputed:
 
 > TBD LFSR
 
-polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>
+polynome groupes. <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap3.pdf>{.externe}
 modulo pas crypto car on déduit a et b de deux variables.
 
-<https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf>
+<https://www.usna.edu/Users/math/dphillip/sa421.s16/chapter02.pdf>{.externe}
 
 > 2. faire avec des LSFR
 > 
-> LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
-> LSFR toutes les preuves sont là : <https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf>
+> LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>{.externe}
+> LSFR toutes les preuves sont là : <https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf>{.externe}
 >
-> <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/3_FSR/FSR.pdf>
+> <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/3_FSR/FSR.pdf>{.externe}
 > 

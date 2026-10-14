@@ -18,19 +18,19 @@ Petit recueil de ce qui peut/est déjà tombé au concours.
 ## Programme de prépa
 
 {% lien %}
-- [Informatique commune](https://sti.eduscol.education.fr/sites/eduscol.education.fr.sti/files/textes/974-programme-informatique-xxsi.pdf)
-- [Informatique MPI](https://www.cpgelachenal.fr/documents/Programme%20informatique%20MP2I-MPI.pdf)
+- [Informatique commune](https://sti.eduscol.education.fr/sites/eduscol.education.fr.sti/files/textes/974-programme-informatique-xxsi.pdf){.externe}
+- [Informatique MPI](https://www.cpgelachenal.fr/documents/Programme%20informatique%20MP2I-MPI.pdf){.externe}
 {% endlien %}
 
 ## Oraux Concours Commun INP
 
 Pas forcément un concours que vous passez, mais peut valoir le coup de regarder puisqu'il y a aussi des corrigés :
 
-<https://www.concours-commun-inp.fr/fr/epreuves/les-epreuves-orales.html>
+<https://www.concours-commun-inp.fr/fr/epreuves/les-epreuves-orales.html>{.externe}
 
 ## QCM GEI
 {% lien %}
-<https://www.geiuniv.com/wp-content/uploads/2025/11/Reglement-GEI-UNIV-2026.pdf>
+<https://www.geiuniv.com/wp-content/uploads/2025/11/Reglement-GEI-UNIV-2026.pdf>{.externe}
 {% endlien %}
 
 En page 5 du lien ci-dessus vous aurez les écoles qui prennent en compte l'informatique dans leurs QCM. C'est à dire presque toutes.
@@ -40,7 +40,7 @@ En page 5 du lien ci-dessus vous aurez les écoles qui prennent en compte l'info
 Au fil des années, les QCM changent de format : moins de C et plus de python. Depuis 2024 il y a même du pseudo-code pour les questions algorithmiques.
 
 {% attention "avec le pseudo-code" %}
-Ils prennent parfois (en tous cas pour quelques exemples en 2024, mais pas tous) la convention du [Cormen](https://www.amazon.fr/Introduction-%C3%A0-lalgorithmique-Thomas-Cormen/dp/2100031287) en faisant commencer les tableaux à l'indice 1.
+Ils prennent parfois (en tous cas pour quelques exemples en 2024, mais pas tous) la convention du [Cormen](https://www.amazon.fr/Introduction-%C3%A0-lalgorithmique-Thomas-Cormen/dp/2100031287){.externe} en faisant commencer les tableaux à l'indice 1.
 
 Cela **ne devrait pas être le cas en 2025**, mais méfiez vous !
 {% endattention %}
@@ -61,7 +61,7 @@ Pour gérer un QCM il y a trois approches qui fonctionnent, par ordre de rapidit
 
 ### Programme
 
-De la [L1](/enseignements/MPCI/programmation-algorithmes/){.interne}, [L2](https://ametice.univ-amu.fr/course/view.php?id=129126) et [L3](/enseignements/MPCI/algorithmie-avancée/){.interne} et un peu de hors programme.
+De la [L1](/enseignements/MPCI/programmation-algorithmes/), [L2](https://ametice.univ-amu.fr/course/view.php?id=129126){.externe} et [L3](/enseignements/MPCI/algorithmie-avancée/) et un peu de hors programme.
 
 {% info %}
 Au doigt mouillé, le cours de L1 doit vous permettre de répondre à prêt de la moitié des questions, le cours de L2 vous permet d'y ajouter un petit quart.
@@ -72,7 +72,7 @@ Au doigt mouillé, le cours de L1 doit vous permettre de répondre à prêt de l
 Tout le cours de L1 semble plus ou moins être au programme, ce qui correspond à la partie I du cours d'_algorithmie_ :
 
 {% lien %}
-[Partie I du cours d'Algorithmie](/cours/algorithmie/#partie-1){.interne}
+[Partie I du cours d'Algorithmie](/cours/algorithmie/#partie-1)
 {% endlien %}
 
 En particulier :
@@ -97,7 +97,7 @@ Il faut aussi connaître quelques algorithmes que GEI semble adorer :
 Questions souvent basique ou en lien avec un problème d'algorithmie. Relisez et comprenez la partie _Base de la programmation_ du cours _coder et développer_ :
 
 {% lien %}
-[partie Base du Cours Coder et développer](/cours/coder-et-développer/bases-programmation/){.interne}
+[partie Base du Cours Coder et développer](/cours/coder-et-développer/bases-programmation/)
 {% endlien %}
 
 #### Java
@@ -123,7 +123,7 @@ Il ne reste presque plus de C, remplacé par du python dans les derniers QCM.
 Je ne sais pas si c'est utile de réviser pour le peu de questions qu'il y a, mais vous pouvez toujours jeter un œil à la partie C du cours _système et réseau_ :
 
 {% lien %}
-[langage C](/cours/système-et-réseau/langage-c/){.interne}
+[langage C](/cours/système-et-réseau/langage-c/)
 {% endlien %}
 
 #### Graphes
@@ -131,7 +131,7 @@ Je ne sais pas si c'est utile de réviser pour le peu de questions qu'il y a, ma
 Quelques notions sur les Graphes et les arbres. Relisez le début du cours de graphe :
 
 {% lien %}
-[Cours de Graphe](/cours/graphes/){.interne}
+[Cours de Graphe](/cours/graphes/)
 {% endlien %}
 
 En particulier :
@@ -151,13 +151,13 @@ Quelques algorithmes ont aussi à connaître :
 - coloration de graphe, en particulier l'algorithme glouton de Welsch et Powell (celui du cours)
 
 
-> TBD. Chemins de Dyck. Ca tombe régulièrement aux concours (et plutôt en math d'ailleurs) Trouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
+> TBD. Chemins de Dyck. Ca tombe régulièrement aux concours (et plutôt en math d'ailleurs) Trouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>{.externe}
 >
 
 ## X
 
 > TBD
-> <https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/>
+> <https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/>{.externe}
 
 ## ENS
 
@@ -165,12 +165,12 @@ Le programme en informatique est celui des classes prépa :
 
 {% lien %}
 
-1. [Programme d'informatique tronc commun](https://prepas.org/ups.php?document=72)
-2. [Annales écrits prépa](https://diplome.di.ens.fr/informatique-ens/annales.html)
+1. [Programme d'informatique tronc commun](https://prepas.org/ups.php?document=72){.externe}
+2. [Annales écrits prépa](https://diplome.di.ens.fr/informatique-ens/annales.html){.externe}
 
 {% endlien %}
 
-Votre programme MPCI en informatique a une très forte intersection avec lui, donc pas de soucis. La seule partie que vous n'avez que peu vu sera [la programmation fonctionnelle en Ocaml](https://fr.wikipedia.org/wiki/OCaml), mais vous devez avoir les bases nécessaire en programmation fonctionnelle avec votre cours sur le lambda calcul
+Votre programme MPCI en informatique a une très forte intersection avec lui, donc pas de soucis. La seule partie que vous n'avez que peu vu sera [la programmation fonctionnelle en Ocaml](https://fr.wikipedia.org/wiki/OCaml){.externe}, mais vous devez avoir les bases nécessaire en programmation fonctionnelle avec votre cours sur le lambda calcul
 
 > TBD : tous les cours informatique MPCI à lister.
 
@@ -178,7 +178,7 @@ Ci après une annales des écrits/oraux à l'ENS Lyon :
 
 {% lien %}
 
-[Annales écrits filière universitaire Lyon](https://banques-ecoles.fr/cms/filieres-universitaires-second-concours-scientifique/)
+[Annales écrits filière universitaire Lyon](https://banques-ecoles.fr/cms/filieres-universitaires-second-concours-scientifique/){.externe}
 
 {% endlien %}
 
@@ -190,7 +190,7 @@ Pour vous entraîner, refaites les exercices/projets durs en algorithmie et thé
 
 
 {% lien %}
-[concours universitaire](https://www.groupe-centrale.com/concours-universitaire/)
+[concours universitaire](https://www.groupe-centrale.com/concours-universitaire/){.externe}
 {% endlien %}
 
 Le programme est gigantesque et regroupe tous les programmes de toutes les licences d'informatique (ainsi que de leurs options) de toute la France... Que vous n'ayez pas tout fait est normal !
@@ -208,7 +208,7 @@ Donc :
 
 Vous pouvez tomber sur le même exercices aux mines ou à l'X/ENS. Ce qui changera c'est les indications et le nombre de questions intermédiaires. Mais en gros tout peut tomber, c'est pourquoi faire les QCM GEI est un bon exercice pour bien asseoir les bases qui vous seront nécessaires pour résoudre les problèmes plus dur..
 
-Préparez vous en reprenant les cours et en comprenant les démonstrations. Ce sont souvent les mêmes chemins qui sont pris. On ne peut pas vous demander de trouver des preuves digne du [book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK) ou la méga astuce algorithmique, mais vous devez montrer que vous connaissez votre sujet, connaissez les _trucs_ de bases et que vous avez un peu d'intuition (ce qui se travaille en cherchant les ressemblances entre les différentes techniques de preuve).
+Préparez vous en reprenant les cours et en comprenant les démonstrations. Ce sont souvent les mêmes chemins qui sont pris. On ne peut pas vous demander de trouver des preuves digne du [book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK){.externe} ou la méga astuce algorithmique, mais vous devez montrer que vous connaissez votre sujet, connaissez les _trucs_ de bases et que vous avez un peu d'intuition (ce qui se travaille en cherchant les ressemblances entre les différentes techniques de preuve).
 
 > TBD exercices oraux blanc
 

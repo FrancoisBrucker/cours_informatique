@@ -12,7 +12,7 @@ eleventyComputed:
 
 {% lien %}
 
-> TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
+> TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>{.externe}
 {% endlien %}
 
 ## arbre planté
@@ -61,7 +61,7 @@ Donnez un exemple de chacun des termes pour le graphe ci-avant.
 
 {% enddetails %}
 
-Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).
+Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique){.externe} par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).
 
 ## Représentation graphique
 
@@ -72,5 +72,5 @@ En reprenant [l'arbre de la partie Cayley](../cayley/arbre-prufer-1.png) et en l
 Jetez aussi un coup d'œil au lien suivant qui donne plusieurs façons de dessiner des arbres plantés :
 
 {% lien %}
-[Drawing Presentable Trees](https://llimllib.github.io/pymag-trees/)
+[Drawing Presentable Trees](https://llimllib.github.io/pymag-trees/){.externe}
 {% endlien %}

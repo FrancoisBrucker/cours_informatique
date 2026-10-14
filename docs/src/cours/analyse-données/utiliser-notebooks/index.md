@@ -17,15 +17,15 @@ Utiliser des notebooks pours écrire du code python.
 
 <!-- end résumé -->
 
-Les notebooks python ont été rendus populaire par la société Jupyter. Stricto sensu, c'est une interface web à [IPython](https://fr.wikipedia.org/wiki/IPython) (une console python conviviale).
+Les notebooks python ont été rendus populaire par la société Jupyter. Stricto sensu, c'est une interface web à [IPython](https://fr.wikipedia.org/wiki/IPython){.externe} (une console python conviviale).
 
 
-[Les Notebooks](https://jupyter.org/) sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
+[Les Notebooks](https://jupyter.org/){.externe} sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
 
 Plusieurs possibilités pour acceder à des notebook :
 
-- <https://basthon.fr/> (qui est géré par l'éducation nationale)
-- <https://colab.google/> (qui est géré par google)
+- <https://basthon.fr/>{.externe} (qui est géré par l'éducation nationale)
+- <https://colab.google/>{.externe} (qui est géré par google)
 - installer un environnement virtuel
 
 
@@ -34,13 +34,13 @@ Leur utilisation est particulièrement adaptée pour rédiger et partager des co
 ## Basthon
 
 
-Il existe beaucoup de solutions pour utiliser un Notebook sur internet. Pour un usage scolaire ou une découverte <https://basthon.fr/>
+Il existe beaucoup de solutions pour utiliser un Notebook sur internet. Pour un usage scolaire ou une découverte <https://basthon.fr/>{.externe}
 
 Regardons à quoi ça correspond :
 
-{% faire "Allez sur le site <https://basthon.fr/> et choisissez *menu Notebook > python*" %}
+{% faire "Allez sur le site <https://basthon.fr/>{.externe} et choisissez *menu Notebook > python*" %}
 
-Vous allez vous retrouver sur le site <https://notebook.basthon.fr/>
+Vous allez vous retrouver sur le site <https://notebook.basthon.fr/>{.externe}
 {% endfaire %}
 
 Vous devriez avoir quelque chose du genre :
@@ -71,7 +71,7 @@ Félicitations ! vous avez écrit votre premier notebook !
 
 ## Colab
 
-<https://colab.research.google.com> : pour un usage professionnel. Mais nécessite un compte google pour fonctionner.
+<https://colab.research.google.com>{.externe} : pour un usage professionnel. Mais nécessite un compte google pour fonctionner.
 
 > TBD
 > - modules

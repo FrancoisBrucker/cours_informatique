@@ -78,7 +78,7 @@ Formalisation cette notion de besoin avec l'UML.
 Pour représenter les différentes possibilités offertes par une classe on utilise l'[Unified Modeling Language (UML)](<https://fr.wikipedia.org/wiki/UML_(informatique)>)
 
 {% lien %}
-Vous pouvez suivre ce petit [tutoriel UML](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html) pour comprendre sa notation et son utilité.
+Vous pouvez suivre ce petit [tutoriel UML](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html){.externe} pour comprendre sa notation et son utilité.
 {% endlien %}
 
 L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :
@@ -90,8 +90,8 @@ Un diagramme UML est une boite qui décrit une classe. Elle contient 4 informati
 
 - `<nom de la classe>` qui sera un nom sans espace. En python ce nom sera avec une majuscule.
 - une case pour y placer **les différents attributs**. on précisera le _type_ (entier, chaîne de caractères, une classe particulière d'objet, ...) de chaque attribut
-- **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
-- une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
+- **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
+- une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
 
 {% endnote2 %}
 
@@ -140,7 +140,7 @@ Pour créer un diagramme UML :
 La modélisation UML ne nous indique pas l'implémentation des différentes méthodes, il nous indique juste comment on peut les utiliser. Pour exécuter et utiliser notre compteur, il faut le coder.
 
 {% lien %}
-N'hésitez pas à jeter un coup d'œil au [tutoriel de python sur ses classes](https://docs.python.org/fr/3/tutorial/classes.html). Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
+N'hésitez pas à jeter un coup d'œil au [tutoriel de python sur ses classes](https://docs.python.org/fr/3/tutorial/classes.html){.externe}. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
 {% endlien %}
 
 
@@ -204,11 +204,11 @@ De façon formelle :
 <div id="espace-nommage"></div>
 
 {% note2 "**Définition**" %}
-Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../concepts/utilisation-modules/#définition-espace-nommage){.interne}.
+Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../concepts/utilisation-modules/#définition-espace-nommage).
 
 {% endnote2 %}
 
-Reprenons [l'exemple de la classe compteur](./#compteur-code){.interne} et examinons son exécution. à la fin de la ligne 1, on vient d'importer le module `compteur`{.language-} qui [contient uniquement une définition de classe](./#compteur-classe){.interne}, on est dans le cas suivant :
+Reprenons [l'exemple de la classe compteur](./#compteur-code) et examinons son exécution. à la fin de la ligne 1, on vient d'importer le module `compteur`{.language-} qui [contient uniquement une définition de classe](./#compteur-classe), on est dans le cas suivant :
 
 ![](compteur-code-1.png)
 
@@ -253,7 +253,7 @@ Va créer un objet de type `MaClasse`{.language-} en effectuant les différentes
 1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-} contenant un espace de nommage dont le parent est l'espace de nommage de sa classe
 2. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que la méthode `__init__`{.language-} n'a pas de retour)
 
-En prenant [l'exemple du compteur](./#compteur-code){.interne}. l'exécution de la ligne 3 (`c1 = Compteur()`{.language-}) se déroule comme suit :
+En prenant [l'exemple du compteur](./#compteur-code). l'exécution de la ligne 3 (`c1 = Compteur()`{.language-}) se déroule comme suit :
 
 1. Création d'un nouvel objet :
     ![](compteur-code-2.png)
@@ -278,7 +278,7 @@ L'exécution de méthodes se fait simplement en utilisant les règles des espace
 1. on cherche le nom (potentiellement récursivement) dans l'espace de nommage 
 2. l'objet appelant est donné comme premier paramètre de la méthode.
 
-Ainsi pour [l'exemple du compteur](./#compteur-code){.interne}, l'exécution de la ligne 5 (`c1.incrémente()`{.language-}) se déroule comme suit :
+Ainsi pour [l'exemple du compteur](./#compteur-code), l'exécution de la ligne 5 (`c1.incrémente()`{.language-}) se déroule comme suit :
 
 1. on cherche le nom `incrémente`{.language-} dans l'espace de nommage de `c1`{.language-}. Il n'y est pas
 2. on cherche alors le nom `incrémente`{.language-} dans l'espace de nommage parent, c'est celui de sa classe et on le trouve !
@@ -292,13 +292,13 @@ Le résultat de l'exécution de la ligne 5 est alors :
 À vous pour vérifier que vous avez compris :
 
 {% exercice %}
-Donnez le schéma des espaces de nommages jusqu'après l'exécution de la ligne 7 de [l'exemple du compteur](./#compteur-code){.interne}.
+Donnez le schéma des espaces de nommages jusqu'après l'exécution de la ligne 7 de [l'exemple du compteur](./#compteur-code).
 {% endexercice %}
 {% details "corrigé" %}
 ![](compteur-code-6.png)
 {% enddetails  %}
 {% exercice %}
-Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-code){.interne} (`print(c2.valeur)`{.language-}).
+Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-code) (`print(c2.valeur)`{.language-}).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -312,6 +312,6 @@ Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-cod
 ## Code Python de la classe Compteur
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?filename=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur){.externe}
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?filename=projet-compteur){.externe}
 {% endlien %}

@@ -13,7 +13,7 @@ eleventyComputed:
 ---
 
 
-Il peut en effet exister des [circuits](../../chemins-cycles-connexite#définition-circuit){.interne} de poids négatifs :
+Il peut en effet exister des [circuits](../../chemins-cycles-connexite#définition-circuit) de poids négatifs :
 
 {% note2 "**Définition**" %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.
@@ -137,7 +137,7 @@ Dijkstra trouvera $xy$ comme chemin de poids minimum entre $x$ et $y$ alors que 
 Cas heureux, on peut résoudre les deux problèmes en même temps grâce à :
 
 {% note %}
-l'algorithme de [Bellman-Ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford) qui :
+l'algorithme de [Bellman-Ford](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford){.externe} qui :
 
 - cherche un chemin de poids minimum entre deux sommets dans un graphe orienté valué
 - donne un circuit absorbant entre $a$ et $b$ s'il y en a un
@@ -148,7 +148,7 @@ En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.
 La complexité de l'algorithme de Bellman-Ford est plus importante que celle de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.
 
 {% aller %}
-[Algorithme de Bellman-Ford](./bellman-ford){.interne}
+[Algorithme de Bellman-Ford](./bellman-ford)
 {% endaller %}
 
 ## Algorithme de Roy-Floyd-Warshall
@@ -156,7 +156,7 @@ La complexité de l'algorithme de Bellman-Ford est plus importante que celle de 
 Dans le cas d'un graphe orienté valué, si l'on cherche tous les chemins de poids minimum entre chaque paire de sommets, on peut utiliser :
 
 {% note %}
-L'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) qui pour un graphe orienté valué :
+L'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall){.externe} qui pour un graphe orienté valué :
 
 - donne tous les chemins de poids minimum entre chaque paire de sommets
 - donne un circuit absorbant s'il en existe

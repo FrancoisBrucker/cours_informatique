@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Pour ce projet, on va suivre [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/){.interne} :
+Pour ce projet, on va suivre [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/) :
 
 1. vous avez créé un projet avec vscode
 2. tous les fichiers que vous créez sont dans le dossier du projet
@@ -19,7 +19,7 @@ Pour ce projet, on va suivre [les consignes du tutoriel vscode et python](../../
 Ces consignes précédentes assurent que **vous exécutez votre code python à partir du dossier contenant votre projet**.
 
 {% prerequis "**Faites ce prérequis avant de passer aux exercices**" %}
-On va reprendre les différents [exercices de code](../../../concepts/projet-codes/){.interne} pour les transformer en un projet python exécutable avec vscode.
+On va reprendre les différents [exercices de code](../../../concepts/projet-codes/) pour les transformer en un projet python exécutable avec vscode.
 
 {% endprerequis %}
 
@@ -40,7 +40,7 @@ Supprimez le contenu du fichier `main.py`{.fichier} (mais pas le fichier en lui-
 Tout est prêt pour coder :
 
 {% exercice %}
-Reprenez [l'exercice syracuse du projet de code](../../../concepts/projet-codes/#syracuse){.interne} et faites en sorte que :
+Reprenez [l'exercice syracuse du projet de code](../../../concepts/projet-codes/#syracuse) et faites en sorte que :
 
 - le fichier `main.py`{.fichier}  contienne uniquement la partie exécution du programme,
 - le fichier `syracuse.py`{.fichier} contienne les diverses fonctions (un fichier à tout à fait le droit de s'appeler comme le répertoire qui le contient)
@@ -101,7 +101,7 @@ Supprimez le contenu du fichier `main.py`{.fichier} (mais pas le fichier en lui-
 Tout est prêt pour coder :
 
 {% exercice %}
-Reprenez [l'exercice du jeu du pendu du projet de code](../../../concepts/projet-codes/#pendu){.interne} et faites en sorte que :
+Reprenez [l'exercice du jeu du pendu du projet de code](../../../concepts/projet-codes/#pendu) et faites en sorte que :
 
 - le fichier `main.py`{.fichier}  contienne uniquement la partie exécution du programme,
 - le fichier `pendu.py`{.fichier} contienne les diverses fonctions.
@@ -186,7 +186,7 @@ Supprimez le contenu du fichier `main.py`{.fichier} (mais pas le fichier en lui-
 Tout est prêt pour coder :
 
 {% exercice %}
-Reprenez [l'exercice du jeu du compte du projet de code](../../../concepts/projet-codes/#compte-caractère){.interne} et faites en sorte que :
+Reprenez [l'exercice du jeu du compte du projet de code](../../../concepts/projet-codes/#compte-caractère) et faites en sorte que :
 
 - le fichier `main.py`{.fichier}  contienne uniquement la partie exécution du programme,
 - le fichier `fonctions.py`{.fichier} contienne les diverses fonctions.

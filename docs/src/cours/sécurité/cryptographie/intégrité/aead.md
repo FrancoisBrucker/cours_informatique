@@ -27,7 +27,7 @@ $$
 La clé utilisée pour la signature doit être différente de la clé utilisée pour signer. Ces deux clés sont souvent des clés dérivées.
 
 {% lien %}
-[AEAD](https://www.youtube.com/watch?v=Q4EmXJTwcdo)
+[AEAD](https://www.youtube.com/watch?v=Q4EmXJTwcdo){.externe}
 {% endlien %}
 
 ## Chacha20-poly1309
@@ -35,7 +35,7 @@ La clé utilisée pour la signature doit être différente de la clé utilisée 
 Le MAC associé au chiffrement chacha20 est poly1305.
 
 {% lien %}
-[chacha20-poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305)
+[chacha20-poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305){.externe}
 {% endlien %}
 
 On hash une concaténation de toutes les données :
@@ -52,14 +52,14 @@ Un padding est ajouté à la chaîne pour que leurs emplacements soient facile �
 Le MAC associé au chiffrement AES est Galois counter mode (GCM).
 
 {% lien %}
-[AES GCM](https://www.youtube.com/watch?v=g_eY7JXOc8U)
+[AES GCM](https://www.youtube.com/watch?v=g_eY7JXOc8U){.externe}
 
 {% endlien %}
 
-Le [Galois counter mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode) fait ses opérations dans un corps :
+Le [Galois counter mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode){.externe} fait ses opérations dans un corps :
 
 {% lien %}
-[GCM](https://www.youtube.com/watch?v=R2SodepLWLg)
-[galois counter mode spécification](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf)
+[GCM](https://www.youtube.com/watch?v=R2SodepLWLg){.externe}
+[galois counter mode spécification](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf){.externe}
 
 {% endlien %}

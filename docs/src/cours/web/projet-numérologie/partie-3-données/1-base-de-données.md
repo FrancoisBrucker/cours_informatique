@@ -24,7 +24,7 @@ On va commencer par créer une base de donnée en lecture seule pour associer à
 
 ### Modèle
 
-Le modèle va être identique au [modèle du cours](../../../bases-de-données/){.interne}.
+Le modèle va être identique au [modèle du cours](../../../bases-de-données/).
 
 {% faire %}
 Créez le fichier `numérologie/db.js`{.fichier} et copiez/collez y le code suivant, qui crée le modèle :
@@ -193,7 +193,7 @@ Nous allons donner le message associé au numéro en plus du reste.
 
 ### Côté serveur
 
-Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode [findOne](https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-)) et on le renvoie dans le json de résultat. On modifie le fichier `numérologie/index.js`{.fichier} pour cela :
+Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode [findOne](https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-){.externe}) et on le renvoie dans le json de résultat. On modifie le fichier `numérologie/index.js`{.fichier} pour cela :
 
 ```js
 // ...
@@ -365,7 +365,7 @@ Le code précédent commence par tenter de chercher le prénom dans la base. S'i
 Les deux recherches sont asynchrones et indépendantes.
 
 {% info %}
-Les deux opérateurs `==` et `===` [sont différents](https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness) en javascript.
+Les deux opérateurs `==` et `===` [sont différents](https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness){.externe} en javascript.
 {% endinfo %}
 
 ### Lecture des prénoms
@@ -396,7 +396,7 @@ app.get(encodeURI("/api/prénoms/read"), (req, res) => {
 
 {% faire %}
 
-Testez cette route après avec l'url <http://127.0.0.1:3000/api/prenoms/read> avoir ajouté (avec la page de départ) quelques prénoms à la base de données.
+Testez cette route après avec l'url <http://127.0.0.1:3000/api/prenoms/read>{.externe} avoir ajouté (avec la page de départ) quelques prénoms à la base de données.
 {% endfaire %}
 
 ### Représenter les prénoms
@@ -460,6 +460,6 @@ Notez comment on a fait pour :
 
 {% faire %}
 
-Testez cette page (<http://127.0.0.1:3000/static/prénoms.html>) sur une base vide (juste après un `npm run init`) et sur une base avec des prénoms de stockés.
+Testez cette page (<http://127.0.0.1:3000/static/prénoms.html>{.externe}) sur une base vide (juste après un `npm run init`) et sur une base avec des prénoms de stockés.
 
 {% endfaire %}

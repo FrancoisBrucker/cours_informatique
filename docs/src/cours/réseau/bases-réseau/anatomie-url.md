@@ -9,12 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (Uniform Resource Locator) est un cas particulier d'[URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
+Une [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator){.externe} (Uniform Resource Locator) est un cas particulier d'[URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier){.externe}.
 
-Pour ce qui nous concernent, ces deux notions permettent de retrouver une ressource. La force d'une d'URI est son [schéma](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI), très souple qui s'adapte à de nombreuses situation
+Pour ce qui nous concernent, ces deux notions permettent de retrouver une ressource. La force d'une d'URI est son [schéma](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI){.externe}, très souple qui s'adapte à de nombreuses situation
 
 {% note2 "**Définition**" %}
-Un [schéma d'URI](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI) est défini de la façon suivante :
+Un [schéma d'URI](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI){.externe} est défini de la façon suivante :
 
 ```
 <nom du schéma>://<domaine>/<chemin> [?<requête>] [#<fragment>]
@@ -30,7 +30,7 @@ Un [schéma d'URI](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI) est défin
 Dans le web on parle plutôt d'url qui sont une sous-classe des uri :
 
 {% note2 "**Définition**" %}
-Une [url (Uniform Resource Locator)](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :
+Une [url (Uniform Resource Locator)](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator){.externe} est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :
 
 ```shell
 <protocole>://<serveur>[:port]/<ressource>[ ? <requête> ] [#<lien>]
@@ -38,7 +38,7 @@ Une [url (Uniform Resource Locator)](https://fr.wikipedia.org/wiki/Uniform_Resou
 
 {% endnote2 %}
 
-Ce qui donne pour l'url <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator> :
+Ce qui donne pour l'url <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator>{.externe} :
 
 - le _protocole_ est `https`
 - le _serveur_ est `fr.wikipedia.org`
@@ -47,14 +47,14 @@ Ce qui donne pour l'url <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator>
 Le boulot d'un navigateur pour une url `protocole://serveur/ressource` donnée est alors :
 
 1. de récupérer la `ressource` sur le `serveur` en utilisant le protocole `protocole`
-2. d'interpréter la ressource récupérée pour l'afficher (c'est souvent du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language))
+2. d'interpréter la ressource récupérée pour l'afficher (c'est souvent du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language){.externe})
 
 ## Protocole
 
 Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il y a essentiellement 3 protocoles d'utilisé :
 
-- [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes. Exemple : <http://www.csszengarden.com/>
-- [https](https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure): le même qu'avant mais de façon sécurisé (le "s" veut dire "secure"). Exemple : <https://www.google.com/>
+- [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol){.externe} : permet d'envoyer et de recevoir des fichiers. Généralement des fichiers textes. Exemple : <http://www.csszengarden.com/>{.externe}
+- [https](https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure){.externe}: le même qu'avant mais de façon sécurisé (le "s" veut dire "secure"). Exemple : <https://www.google.com/>{.externe}
 - **file** : permet d'accéder à un fichier de l'ordinateur. Le chemin est alors le [chemin absolu]({{ "/tutoriels/fichiers-navigation" }}#absolu-relatif) vers votre fichier. Exemple : `file:///Users/fbrucker/Documents/web/exemple.html`
 
 {% info %}
@@ -70,7 +70,7 @@ Le serveur est l'adresse internet de l'ordinateur sur lequel la ressource est st
 - Il n'y a pas de serveur lorsque l'on utilise le protocole file, c'est pourquoi les url utilisant le protocole file commencent toujours par `file:///`
 
 {% info %}
-Une machine ne comprenant que les nombres, à chaque nom est associé une adresse IP grâce à un annuaire que l'on appelle [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System). A chaque adresse IP peut donc être associé un ou plusieurs noms.
+Une machine ne comprenant que les nombres, à chaque nom est associé une adresse IP grâce à un annuaire que l'on appelle [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System){.externe}. A chaque adresse IP peut donc être associé un ou plusieurs noms.
 {% endinfo %}
 
 Parmi toutes les adresses et les noms, il en existe deux qui signifient **toujours** la machine actuelle :
@@ -91,11 +91,11 @@ La ressource est ensuite déterminée par le serveur et est envoyée au demandeu
 
 Dans le cadre d'une page web, cette ressource sera pourra être :
 
-- du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language) : la structure de la page
-- du [css](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade) : le style de la page
-- du [javascript](https://fr.wikipedia.org/wiki/JavaScript) : qui gère les interactions avec l'utilisateur
+- du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language){.externe} : la structure de la page
+- du [css](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade){.externe} : le style de la page
+- du [javascript](https://fr.wikipedia.org/wiki/JavaScript){.externe} : qui gère les interactions avec l'utilisateur
 - une image
-- des données décrite au format [json](https://www.json.org/json-fr.html)
+- des données décrite au format [json](https://www.json.org/json-fr.html){.externe}
 - ...
 
 ## <span id="port"></span> Port
@@ -106,7 +106,7 @@ Dans le schéma d'une url, la machine sur sur laquelle on va chercher la ressour
 <protocole>://<serveur>[:port]
 ```
 
-En effet, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un [un port](https://fr.wikipedia.org/wiki/Port_(logiciel)) à chacune d'elle : l'url est alors de la forme `protocole://serveur:port/ressource`.
+En effet, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un [un port](https://fr.wikipedia.org/wiki/Port_(logiciel)){.externe} à chacune d'elle : l'url est alors de la forme `protocole://serveur:port/ressource`.
 
 Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun port n'est précisé. Par exemple, le port par défaut du protocole https est le 443 et donc les urls `https://www.google.com` et `https://www.google.com:443` sont identiques.
 

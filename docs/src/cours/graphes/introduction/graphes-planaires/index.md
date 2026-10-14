@@ -11,31 +11,31 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg)
+[Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg){.externe}
 {% endlien %}
 
 ## Problème
 
 {% aller %}
-[Problème de la planarité d'un graphe](./problème/){.interne}
+[Problème de la planarité d'un graphe](./problème/)
 {% endaller %}
   
 ## Caractérisation des graphes planaires
 
 {% aller %}
-[Caractérisation](./caractérisation/){.interne}
+[Caractérisation](./caractérisation/)
 {% endaller %}
 
 ## Propriétés
 
 {% aller %}
-[Propriétés](./propriétés/){.interne}
+[Propriétés](./propriétés/)
 {% endaller %}
 
 
 ## Tracé planaire
 
-> TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
+> TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>{.externe}
 > TBD donne aussi une reconnaissance.
 > TBD c'est une recomposition d'oreilles bien choisies.
 
@@ -46,7 +46,7 @@ eleventyComputed:
 ## Coloration de graphes planaires
 
 {% aller %}
-[Coloration de graphes planaires](./coloration/){.interne}
+[Coloration de graphes planaires](./coloration/)
 {% endaller %}
 
 <!-- 
@@ -54,7 +54,7 @@ eleventyComputed:
 ## Odds and ends
 
 
-- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). 
+- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>{.externe}, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>{.externe}. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). 
 - isomorphisme de graphe planaire
 > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. 
 
@@ -62,12 +62,12 @@ eleventyComputed:
 ## Références
 
 {% lien %}
-- <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>
+- <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>{.externe}
 {% endlien %}
 
 
-- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> 
+- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>{.externe}
+- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf>{.externe} 
 - 
 - --> 
 

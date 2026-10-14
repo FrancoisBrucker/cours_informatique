@@ -12,7 +12,7 @@ eleventyComputed:
 Le problème du couplage dans un graphe quelconque se résout aussi de façon polynomiale, mais les algorithmes sont plus complexes.
 
 {% lien %}
-[Algorithme d'Edmonds cas général](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages)
+[Algorithme d'Edmonds cas général](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages){.externe}
 
 {% endlien %}
 
@@ -89,15 +89,15 @@ La complexité de recherche d'un couplage maximum dans un graphe connexe est en 
 
 > TBD :
 > 
-> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
+> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>{.externe}
 >
 > - perfect matching :
->   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
+>   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>{.externe}
 >   - tutte 47 graph with perfect matching dans NP cap co-NP
->   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
->   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
+>   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>{.externe}
+>   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>{.externe}
 
 {% info %}
-Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
+Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>{.externe}
 
 {% endinfo %}

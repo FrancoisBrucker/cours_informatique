@@ -28,4 +28,4 @@ Le nom du dossier du projet est `numérologie`{.fichier}. Sa structure finale es
 
 ## Projet final
 
-Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-1-front/niveau-1/numérologie).
+Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-1-front/niveau-1/numérologie){.externe}.

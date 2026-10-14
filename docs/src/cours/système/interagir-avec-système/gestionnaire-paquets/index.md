@@ -10,18 +10,18 @@ eleventyComputed:
 ---
 
 
-Sous Linux, Macos et depuis plus récemment sous windows, l'installation d'applications se fait via l'utilisation d'[un gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets).
+Sous Linux, Macos et depuis plus récemment sous windows, l'installation d'applications se fait via l'utilisation d'[un gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets){.externe}.
 
 ## Windows
 
 ### Windows store
 
-Le [Windows store](https://apps.microsoft.com/home?hl=fr-FR&gl=US) va contenir de nombreuses applications, dont certaines utiles pour le développement (comme le langage python par exemple). Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
+Le [Windows store](https://apps.microsoft.com/home?hl=fr-FR&gl=US){.externe} va contenir de nombreuses applications, dont certaines utiles pour le développement (comme le langage python par exemple). Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
 
 
 ### Winget
 
-Depuis quelque temps les logiciels systèmes sous windows peuvent s'installer via [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/). Il fonctionne avec [le terminal](../terminal/bases/){.interne} et contient plein d'outils système.
+Depuis quelque temps les logiciels systèmes sous windows peuvent s'installer via [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/){.externe}. Il fonctionne avec [le terminal](../terminal/bases/) et contient plein d'outils système.
 
 Quelques commandes utiles :
 
@@ -38,15 +38,15 @@ Quelques commandes utiles :
 
 ### App store
 
-L'[App store](https://www.apple.com/fr/app-store/) permet d'installer les outils génériques utiles pour l'utilisation de son mac. Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
+L'[App store](https://www.apple.com/fr/app-store/){.externe} permet d'installer les outils génériques utiles pour l'utilisation de son mac. Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
 
 ### Brew
 
 {% lien "**Documentation**" %}
-<https://brew.sh>
+<https://brew.sh>{.externe}
 {% endlien %}
 
-Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix. Le logiciel brew vous permet de le faire avec [le terminal](../terminal/bases/){.interne}  sans soucis.
+Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix. Le logiciel brew vous permet de le faire avec [le terminal](../terminal/bases/)  sans soucis.
 
 1. installez le en copiant/collant la ligne de commande demandée dans un terminal.
 2. si vous avez un mac avec une puce M1, il vous faudra également taper la commande `echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile`
@@ -57,19 +57,19 @@ Vous pourrez ensuite utiliser des commandes comme `brew install python3` pour in
 
 {% attention2 "**À retenir**" %}
 
-N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr) pour le faire.
+N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr){.externe} pour le faire.
 
 {% endattention2 %}
 
 ## Linux
 
 
-`apt` et `snap` sont deux applications permettant d'installer des applications via [le terminal](../terminal/bases/){.interne} avec un système d'exploitation Linux/Ubuntu :
+`apt` et `snap` sont deux applications permettant d'installer des applications via [le terminal](../terminal/bases/) avec un système d'exploitation Linux/Ubuntu :
 
-- [apt](https://doc.ubuntu-fr.org/apt) pour les installations Ubuntu
-- [snap](https://doc.ubuntu-fr.org/snap) pour les installations standalone
+- [apt](https://doc.ubuntu-fr.org/apt){.externe} pour les installations Ubuntu
+- [snap](https://doc.ubuntu-fr.org/snap){.externe} pour les installations standalone
 
-Pour utiliser ces gestionnaires, il vous faut avoir les droits administrateurs. Ceci se fait via la commande [sudo](https://doc.ubuntu-fr.org/utilisateurs/roschan/sudo) (une [petite blague d'informaticien](https://xkcd.com/149/) à propos de sudo). 
+Pour utiliser ces gestionnaires, il vous faut avoir les droits administrateurs. Ceci se fait via la commande [sudo](https://doc.ubuntu-fr.org/utilisateurs/roschan/sudo){.externe} (une [petite blague d'informaticien](https://xkcd.com/149/){.externe} à propos de sudo). 
 
 {% info %}
 La commande `sudo` vous demandera votre mot de passe pour vérifier que c'est bien vous avant que la commande ne s'exécute.
@@ -106,8 +106,8 @@ On utilise apt pour l'installation de paquets liés à la distribution ubuntu : 
 
 {% lien %}
 
-- [le manuel](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html)
-- [un tuto pour utiliser apt](https://debian-facile.org/doc:systeme:apt:apt).
+- [le manuel](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html){.externe}
+- [un tuto pour utiliser apt](https://debian-facile.org/doc:systeme:apt:apt){.externe}.
 {% endlien %}
 
 L'intérêt d'utiliser apt pour installer des applications et que les *dépendances* (c'est à dire les différentes application ou bibliothèques nécessaires à l'installation de son paquet) sont gérés automatiquement.
@@ -119,8 +119,8 @@ Vous verrez sûrement quelques tuto utiliser `apt-get` plutôt que `apt`.
 
 La commande `apt` est sensée remplacer `apt-get` pour la plupart des instructions. Vous trouverez ci-aprèß deux lien qui montrent les différences, mais dans le doute utilisez `apt`.
 
-- <https://aws.amazon.com/fr/compare/the-difference-between-apt-and-apt-get>
-- <https://itsfoss.com/apt-vs-apt-get-difference/>
+- <https://aws.amazon.com/fr/compare/the-difference-between-apt-and-apt-get>{.externe}
+- <https://itsfoss.com/apt-vs-apt-get-difference/>{.externe}
 
 {% endinfo %}
 
@@ -129,8 +129,8 @@ La commande `apt` est sensée remplacer `apt-get` pour la plupart des instructio
 
 {% lien %}
 
-- le store : <https://snapcraft.io/store>
-- [un tutoriel](https://debian-facile.org/doc:systeme:snap)
+- le store : <https://snapcraft.io/store>{.externe}
+- [un tutoriel](https://debian-facile.org/doc:systeme:snap){.externe}
 {% endlien %}
 
 

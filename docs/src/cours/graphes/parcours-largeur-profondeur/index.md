@@ -34,7 +34,7 @@ Permettent de :
 > TBD profondeur et pile
 
 
-> TBD propriétés : <https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf>
+> TBD propriétés : <https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf>{.externe}
 
 > TBD application quand il faut aller le plus loin possible
 
@@ -61,10 +61,10 @@ Permettent de :
 
 > TBD  connexes
 
-- Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>
-- Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>
+- Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>{.externe}
+- Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>{.externe}
 
-> TBD <https://www.youtube.com/watch?v=m2mdGfxs_5E>
+> TBD <https://www.youtube.com/watch?v=m2mdGfxs_5E>{.externe}
 >
 
 ### Trouver une composante 2-connexe

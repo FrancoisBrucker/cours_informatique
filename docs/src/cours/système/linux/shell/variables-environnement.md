@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La gestion des variables d'environnement dépend du shell utilisé. On suppose ici que vous utilisez le shell par défaut sous Linux/Ubuntu : [bash](https://www.gnu.org/software/bash/). Ces variables servent à deux choses essentiellement :
+La gestion des variables d'environnement dépend du shell utilisé. On suppose ici que vous utilisez le shell par défaut sous Linux/Ubuntu : [bash](https://www.gnu.org/software/bash/){.externe}. Ces variables servent à deux choses essentiellement :
 
 - personnaliser son shell (par exemple la langue, les chemins vers les exécutables, ...)
 - stocker des paramètres pour plus tard (l'ancien dossier courant par exemple)
@@ -21,7 +21,7 @@ La gestion des variables d'environnement dépend du shell utilisé. On suppose i
 L'ensemble de ces variables d'environnement sont disponibles avec la commande `env` ou `export` sans paramètre.
 
 {% lien %}
-[env et export](https://www.youtube.com/watch?v=1z6EUUl11qI&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs&index=2)
+[env et export](https://www.youtube.com/watch?v=1z6EUUl11qI&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs&index=2){.externe}
 {% endlien %}
 
 ### Création d'une variable d'environnement

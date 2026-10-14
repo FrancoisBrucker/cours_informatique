@@ -15,13 +15,13 @@ eleventyComputed:
 
 {% lien %}
 
-[process](https://www.youtube.com/watch?v=ls5cGi12kGw&list=PLtK75qxsQaMKLUENMaPlD_O2qS8ZBGjuy)
+[process](https://www.youtube.com/watch?v=ls5cGi12kGw&list=PLtK75qxsQaMKLUENMaPlD_O2qS8ZBGjuy){.externe}
 
 {% endlien %}
 
 Un process correspond à l'exécution d'un fichier. Les process sont organisés en arbre et descendent tous du premier process crée : `systemd`. Créer un process se fait en plusieurs temps :
 
-1. le process appelant est dupliqué en utilisant l'appel système [fork](https://fr.wikipedia.org/wiki/Fork_(programmation)) (*ie* le shell qui lance la commande). Le process appelant est le process parent, le nouveau process le process enfant. Le fait que le process est dupliqué fait que :
+1. le process appelant est dupliqué en utilisant l'appel système [fork](https://fr.wikipedia.org/wiki/Fork_(programmation)){.externe} (*ie* le shell qui lance la commande). Le process appelant est le process parent, le nouveau process le process enfant. Le fait que le process est dupliqué fait que :
    1. l'environnement des process parent et enfant est le même
    2. le propriétaire (uip) et le groupe (pid) des process parent et enfant sont les mêmes
 2. on associe un numéro, le PID, à ce nouveau process. Ce numéro est unique
@@ -32,7 +32,7 @@ Un process d'uid root peut changer son utilisateur et son groupe. Ceci se fait :
 - au login d'un utilisateur : le premier shell de l'utilisateur possède son uid
 - pour les serveurs : le groupe est positionné au groupe de l'application. Par exemple web pour un serveur web.
 
-Enfin, certains process peuvent avoir les privilèges de `root` alors qu'ils sont exécutés par de simples utilisateur. Ces process sont lancés par des fichiers possédant le flag [setuid ou setgid](https://en.wikipedia.org/wiki/Setuid). Par exemple la commande `passwd` qui doit pouvoir être exécutée par un utilisateur mais modifier le ficheor `/etc/shadow` qui est la propriété de `root`.
+Enfin, certains process peuvent avoir les privilèges de `root` alors qu'ils sont exécutés par de simples utilisateur. Ces process sont lancés par des fichiers possédant le flag [setuid ou setgid](https://en.wikipedia.org/wiki/Setuid){.externe}. Par exemple la commande `passwd` qui doit pouvoir être exécutée par un utilisateur mais modifier le ficheor `/etc/shadow` qui est la propriété de `root`.
 
 ## Arbre des process
 
@@ -46,7 +46,7 @@ ps aux
 
 ## Process foreground/background
 
-> TBD : [process management](https://www.scaler.com/topics/process-management-in-linux/)
+> TBD : [process management](https://www.scaler.com/topics/process-management-in-linux/){.externe}
 
 Tout shell possède :
 
@@ -54,7 +54,7 @@ Tout shell possède :
 - plusieurs process background qui possèdent la sortie et l'erreur standard
 
 - suspendre une commande avec ctrl+Z qui envoie le signal `SIGSTOP`
-- [fg et bg](https://www.redhat.com/sysadmin/jobs-bg-fg)
+- [fg et bg](https://www.redhat.com/sysadmin/jobs-bg-fg){.externe}
 - exécuter une commande avec `&`
 
 ## Vie et mort d'un process

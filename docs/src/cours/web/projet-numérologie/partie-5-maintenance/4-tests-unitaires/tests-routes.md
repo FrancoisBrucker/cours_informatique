@@ -16,7 +16,7 @@ Tests de routes.
 
 <!-- fin résumé -->
 
-On a déjà un peu regardé les route avec [postman](../../3-postman){.interne}, mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque [supertest](https://github.com/visionmedia/supertest#readme) pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).
+On a déjà un peu regardé les route avec [postman](../../3-postman), mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque [supertest](https://github.com/visionmedia/supertest#readme){.externe} pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).
 
 ## Installation
 
@@ -27,7 +27,7 @@ npm install --save-dev supertest
 ## Utilisation
 
 {% lien %}
-[Un tutoriel](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
+[Un tutoriel](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6){.externe}
 {% endlien %}
 
 On teste toutes les routes du serveur pour être sur de ne pas avoir de 404. Ce n'est pas la peine de tester l'algorithmie des routes s'il y en a, puisque ceci est fait avec des tests unitaires.
@@ -148,7 +148,7 @@ On utilise les méthodes `beforeAll`{.language-} et `afterAll`{.language-} pour 
 
 Gestion des promesses :
 
-* on a passé un paramètre (`done`) dans la fonction de test. Ce paramètre est exécuté en fin de test pour montrer que le test est fini. C'est la façon qu'à jest de traiter les [tests de fonctions asynchrones](https://jestjs.io/docs/asynchronous), sinon il n'a aucun moyen de savoir si un test est fini ou pas.
+* on a passé un paramètre (`done`) dans la fonction de test. Ce paramètre est exécuté en fin de test pour montrer que le test est fini. C'est la façon qu'à jest de traiter les [tests de fonctions asynchrones](https://jestjs.io/docs/asynchronous){.externe}, sinon il n'a aucun moyen de savoir si un test est fini ou pas.
 * on passe l'application à supertest (`request.agent(app)`) pour créer un serveur qu'on interroge ensuite.
 * n'oubliez pas de finir par `.end` pour récupérer les erreurs s'il y en a et exécuter `done` pour la fin de test.
 
@@ -160,8 +160,8 @@ Il faut créer des environnement différents pour la production et les tests.
 
 {% lien %}
 
-* <https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env>
-* <https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/>
+* <https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env>{.externe}
+* <https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/>{.externe}
 
 {% endlien %}
 
@@ -195,7 +195,7 @@ if (env === "test") {
 export const logger = logger_choice;
 ```
 
-Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque [process](https://nodejs.org/api/process.html#process) qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode `"test"`{.language-}, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.
+Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque [process](https://nodejs.org/api/process.html#process){.externe} qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode `"test"`{.language-}, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.
 
 Changeons le mode d'exécution des tests pour le développement sous mac et Linux :
 

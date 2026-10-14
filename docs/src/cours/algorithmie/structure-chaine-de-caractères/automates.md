@@ -9,8 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://www.youtube.com/watch?v=DiXMoBMWMmA>
-> TBD <https://www.youtube.com/watch?v=5vbk0TwkokM>
+> TBD <https://www.youtube.com/watch?v=DiXMoBMWMmA>{.externe}
+> TBD <https://www.youtube.com/watch?v=5vbk0TwkokM>{.externe}
 
 Une classe de langages particulier, décidables, sont très utiles, c'est ceux que l'on peut créer avec un **_automate (fini)_** :
 
@@ -37,10 +37,10 @@ def automate(m):
 
 {% endnote2 %}
 
-Un automate est une version simplifiée d'une machine de Turing (donc d'un algorithme), il n'y a pas de possibilité de stocker des variables, et sa forme est déterminée exclusivement par sa fonction de transition. On a alors coutume de représenter les automates par un [diagramme](https://fr.wikipedia.org/wiki/Automate_fini_d%C3%A9terministe#Repr%C3%A9sentation_graphique) :
+Un automate est une version simplifiée d'une machine de Turing (donc d'un algorithme), il n'y a pas de possibilité de stocker des variables, et sa forme est déterminée exclusivement par sa fonction de transition. On a alors coutume de représenter les automates par un [diagramme](https://fr.wikipedia.org/wiki/Automate_fini_d%C3%A9terministe#Repr%C3%A9sentation_graphique){.externe} :
 
 > TBD exemple. avec départ et arrivées.
-> TBD cours <https://pageperso.lis-lab.fr/arnaud.labourel/AUTO/cours7.pdf>
+> TBD cours <https://pageperso.lis-lab.fr/arnaud.labourel/AUTO/cours7.pdf>{.externe}
 
 Les langages reconnaissables par un automates sont strictement inclus dans les langages décidables :
 
@@ -72,17 +72,17 @@ De nombreux langages sont rationnels :
 > on peu ajouter du stockage automate à pile, mais toujours pas tout.
 > expression reg avec des `$1`
 
-> <https://www-igm.univ-mlv.fr/~desar/Cours/automates/ch1.pdf>
+> <https://www-igm.univ-mlv.fr/~desar/Cours/automates/ch1.pdf>{.externe}
 
-> TBD (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
+> TBD (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re){.externe})
 
-La formalisation et l'étude des expressions régulières dépassent le cadre de ce cours introductif mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).
+La formalisation et l'étude des expressions régulières dépassent le cadre de ce cours introductif mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html){.externe} qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/){.externe}.
 
 ## TBD
 
-- <https://pressbooks.senecapolytechnic.ca/uli101/chapter/extended-regular-expressions/>
-- <https://docs.python.org/fr/3.13/library/re.html>
-- <https://github.com/gawron/python-for-social-science/blob/master/text_classification/regular_expressions.ipynb>
-- <https://cs.uwaterloo.ca/~dtompkin/teaching/08a/lab7/>
+- <https://pressbooks.senecapolytechnic.ca/uli101/chapter/extended-regular-expressions/>{.externe}
+- <https://docs.python.org/fr/3.13/library/re.html>{.externe}
+- <https://github.com/gawron/python-for-social-science/blob/master/text_classification/regular_expressions.ipynb>{.externe}
+- <https://cs.uwaterloo.ca/~dtompkin/teaching/08a/lab7/>{.externe}
 
-Pour aller plus loin : [grammaires, parseur de langages et automates à pile](https://www.youtube.com/watch?v=ENKT0Z3gldE)
+Pour aller plus loin : [grammaires, parseur de langages et automates à pile](https://www.youtube.com/watch?v=ENKT0Z3gldE){.externe}

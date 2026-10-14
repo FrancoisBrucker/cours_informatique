@@ -12,8 +12,8 @@ eleventyComputed:
 
 > TBD exos de mpci
 
-> TBD <https://diplome.di.ens.fr/informatique-ens/annales.html>
-> TBD <https://nstarr.people.amherst.edu/trom/intro-notsure.html> <https://www.gamepuzzles.com/3color.htm>
-> TBD <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+> TBD <https://diplome.di.ens.fr/informatique-ens/annales.html>{.externe}
+> TBD <https://nstarr.people.amherst.edu/trom/intro-notsure.html>{.externe} <https://www.gamepuzzles.com/3color.htm>{.externe}
+> TBD <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>{.externe}
 
-> TBD bezout : <http://pascal.delahaye1.free.fr/cpge/informatique/cours%20projetes/cp04.pdf>
+> TBD bezout : <http://pascal.delahaye1.free.fr/cpge/informatique/cours%20projetes/cp04.pdf>{.externe}

@@ -105,7 +105,7 @@ server.listen(port, hostname, () => {
 ```
 
 {% info %}
-Ce serveur est celui donné dans [la doc de node](https://nodejs.org/api/synopsis.html#synopsis_example)
+Ce serveur est celui donné dans [la doc de node](https://nodejs.org/api/synopsis.html#synopsis_example){.externe}
 {% endinfo %}
 
 Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve `index.js`{.fichier} (normalement `serveur_web`{.fichier}), tapez la commande :
@@ -114,7 +114,7 @@ Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve
 node index.js
 ```
 
-Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arrête pas et demande d'aller voir à l'url : <http://127.0.0.1:3000>. Si on tape cette adresse dans un navigateur on voit le texte : `Hello World`{.language-} s'afficher.
+Le programme s'exécute dans le terminal et il ne rend pas la main. Il ne s'arrête pas et demande d'aller voir à l'url : <http://127.0.0.1:3000>{.externe}. Si on tape cette adresse dans un navigateur on voit le texte : `Hello World`{.language-} s'afficher.
 
 {% note %}
 Nous venons de créer un serveur web sur notre machine locale sur le port 3000.
@@ -126,28 +126,28 @@ La machine locale s'appelle :
   {% endnote %}
 
 {% info %}
-Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port){.interne} pour vous rappeler ce qu'est un port.
+Allez du côté de la partie [port du cours sur les url](../../anatomie-url#port) pour vous rappeler ce qu'est un port.
 {% endinfo %}
 
 Regardons la syntaxe du code :
 
 - `const`{.language-} : déclaration de constantes.
-- `import from`{.language-} : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html) de node) et affectation de celle-ci à une variable (nommée aussi `http`{.language-}) : en javascript **on importe toujours quelque chose**
+- `import from`{.language-} : importation d'une bibliothèque (ici la bibliothèque [http](https://nodejs.org/api/http.html){.externe} de node) et affectation de celle-ci à une variable (nommée aussi `http`{.language-}) : en javascript **on importe toujours quelque chose**
 
 Que fait le code :
 
-1. on crée un serveur avec la fonction [http.createServer](https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener). Cette fonction prend **1 paramètre** en argument qui est une fonction. Cette fonction sera appelée à chaque appelle au serveur avec deux paramètres :
-   1. `req` (qui contiendra la **requête `http`**) : de type [`http.IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
-   2. `res` (qui contiendra notre **réponse `http`**) : de type [`http.ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse)
+1. on crée un serveur avec la fonction [http.createServer](https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener){.externe}. Cette fonction prend **1 paramètre** en argument qui est une fonction. Cette fonction sera appelée à chaque appelle au serveur avec deux paramètres :
+   1. `req` (qui contiendra la **requête `http`**) : de type [`http.IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage){.externe}
+   2. `res` (qui contiendra notre **réponse `http`**) : de type [`http.ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse){.externe}
 2. une fois le serveur crée on le place derrière un port de la machine, ici 3000.
 
 {% attention %}
-La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec [`res.end()`](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback) par exemple).
+La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec [`res.end()`](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback){.externe} par exemple).
 {% endattention %}
 
 ## Protocole http
 
-On ne va pas faire un long cours sur le [protocole http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol), on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).
+On ne va pas faire un long cours sur le [protocole http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol){.externe}, on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).
 
 {% note %}
 Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demandes du navigateur, sans avoir besoin d'écrire des requêtes http conformes (ce qui n'est pas très marrant).
@@ -244,14 +244,14 @@ GET
 ```
 
 {% note %}
-A chaque actualisation, le serveur est **sollicité deux fois**, une fois pour l'url `/` et une autre fois pour l'url [`/flavicon.ico`](https://fr.wikipedia.org/wiki/Favicon).
+A chaque actualisation, le serveur est **sollicité deux fois**, une fois pour l'url `/` et une autre fois pour l'url [`/flavicon.ico`](https://fr.wikipedia.org/wiki/Favicon){.externe}.
 {% endnote %}
 
 Pour résumer :
 
 - le navigateur parle en http 1.1 (ce qui est ok)
-- les [headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers) nous informent un peut plus sur lui
-- il demande avec la [méthode](https://developer.mozilla.org/fr/docs/Web/HTTP/Methods) **GET** l'url `/` au serveur puis l'url `/flavicon.ico`
+- les [headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers){.externe} nous informent un peut plus sur lui
+- il demande avec la [méthode](https://developer.mozilla.org/fr/docs/Web/HTTP/Methods){.externe} **GET** l'url `/` au serveur puis l'url `/flavicon.ico`
 
 {% note "**Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de**" %}
 
@@ -266,19 +266,19 @@ La version de l'http n'est pas importante pour nous, c'est node qui s'occupe de 
 
 Une réponse http **est toujours** en trois parties :
 
-- le [status code](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP) qui résume ce que le serveur a fait avec la requête
-- des [headers](https://developer.mozilla.org/en-US/docs/Glossary/Response_header)
+- le [status code](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP){.externe} qui résume ce que le serveur a fait avec la requête
+- des [headers](https://developer.mozilla.org/en-US/docs/Glossary/Response_header){.externe}
 - le corps du message (qui peut, mais c'est rare) être vide.
 
 Dans notre cas :
 
-- le status est [200](https://http.cat/200) (ou [200](https://http.dog/200) si vous êtes ce genre de personnes)
-- le header informe le navigateur du [type de message](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type) : ici du texte
+- le status est [200](https://http.cat/200){.externe} (ou [200](https://http.dog/200){.externe} si vous êtes ce genre de personnes)
+- le header informe le navigateur du [type de message](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type){.externe} : ici du texte
 - le message complet : ici la chaîne de caractère `'Hello World\n'`
 
 ### Status
 
-Les [status HTTP](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP) d'un serveur sont importants car ils informent le client de comment on a compris leur requête.
+Les [status HTTP](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP){.externe} d'un serveur sont importants car ils informent le client de comment on a compris leur requête.
 
 Dans les [outils de développement]({{"/cours/web/outils-de-développement" | url}}), c'est l'onglet network qui renseigne de ces champs.
 
@@ -300,7 +300,7 @@ Postman est un outil plutôt utilisé dans le cadre des routes des APIs. L perme
 Vous pouvez le télécharger ici :
 
 {% lien %}
-[https://www.postman.com/downloads/](https://www.postman.com/downloads/)
+[https://www.postman.com/downloads/](https://www.postman.com/downloads/){.externe}
 
 {% endlien %}
 

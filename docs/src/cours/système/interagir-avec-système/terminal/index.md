@@ -14,9 +14,9 @@ eleventyComputed:
 Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.
 
 {% aller %}
-[Terminal, les bases](bases){.interne}
+[Terminal, les bases](bases)
 {% endaller %}
 
 {% aller %}
-[Utilisation courante du terminal](utilisation){.interne}
+[Utilisation courante du terminal](utilisation)
 {% endaller %}

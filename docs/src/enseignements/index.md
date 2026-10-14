@@ -14,8 +14,8 @@ eleventyNavigation:
 
 Tous les enseignements donnés cette année.
 
-- [Cours à l'ECM](./ecm){.interne}
-- [Cours en MPCI](./MPCI){.interne}
+- [Cours à l'ECM](./ecm)
+- [Cours en MPCI](./MPCI)
 
 <!-- TBD
 Programme d'algorithmie de la licence MPCI

@@ -13,24 +13,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Linux à proprement parler ne concerne que [le noyau](https://fr.wikipedia.org/wiki/Noyau_Linux), dont le rôle est la gestion du matériel et la bonne entente entre processus. C'est pourquoi on parle souvent de **_Distribution Linux_** qui contient :
+Linux à proprement parler ne concerne que [le noyau](https://fr.wikipedia.org/wiki/Noyau_Linux){.externe}, dont le rôle est la gestion du matériel et la bonne entente entre processus. C'est pourquoi on parle souvent de **_Distribution Linux_** qui contient :
 
 - le noyau Linux
 - une interface graphique
 - des logiciels pour utiliser le système
 - des outils de configurations et d'administration
 
-Par exemple les distributions GNU/Linux où [GNU](https://www.gnu.org/) fournit tous les outils et logiciels utilisées par le noyau Linux pour créer un système d'exploitation complet. Il existe de nombreuses distributions Linux, elles se distinguent par leur gestion des logiciels à installer via un [gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets) qui gère les dépendances (nombreuses) entre les différents paquets :
+Par exemple les distributions GNU/Linux où [GNU](https://www.gnu.org/){.externe} fournit tous les outils et logiciels utilisées par le noyau Linux pour créer un système d'exploitation complet. Il existe de nombreuses distributions Linux, elles se distinguent par leur gestion des logiciels à installer via un [gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets){.externe} qui gère les dépendances (nombreuses) entre les différents paquets :
 
-- [apt](https://fr.wikipedia.org/wiki/Advanced_Packaging_Tool) et paquets d'extension `.deb`{.fichier} pour [la distribution Debian](https://www.debian.org/index.fr.html)
-- [rpm](https://en.wikipedia.org/wiki/RPM_Package_Manager) et paquets d'extension `.rpm`{.fichier} pour [la distribution Redhat](https://www.redhat.com/fr)
-- [pacman](https://fr.wikipedia.org/wiki/Pacman_(Arch_Linux)) pour [la distribution Arch](https://archlinux.org/)
+- [apt](https://fr.wikipedia.org/wiki/Advanced_Packaging_Tool){.externe} et paquets d'extension `.deb`{.fichier} pour [la distribution Debian](https://www.debian.org/index.fr.html){.externe}
+- [rpm](https://en.wikipedia.org/wiki/RPM_Package_Manager){.externe} et paquets d'extension `.rpm`{.fichier} pour [la distribution Redhat](https://www.redhat.com/fr){.externe}
+- [pacman](https://fr.wikipedia.org/wiki/Pacman_(Arch_Linux)){.externe} pour [la distribution Arch](https://archlinux.org/){.externe}
 
 De ces trois distributions majeures et générales vont découler nombres d'autres plus spécialisées utilisant le même gestionnaire de paquets. Par exemple :
 
-- [Ubuntu](https://www.ubuntu-fr.org/) pour Debian
-- [Fedora](https://www.fedoraproject.org/fr/) pour Redhat
-- [Manjaro](https://manjaro.org/) pour Arch
+- [Ubuntu](https://www.ubuntu-fr.org/){.externe} pour Debian
+- [Fedora](https://www.fedoraproject.org/fr/){.externe} pour Redhat
+- [Manjaro](https://manjaro.org/){.externe} pour Arch
 
 Pour connaître sa distribution, tapez dans un terminal :
 
@@ -49,13 +49,13 @@ Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C�
 ### Arborescence système Linux
 
 {% aller %}
-[Arborescence des fichiers d'un système Linux](hiérarchie-fichiers){.interne}
+[Arborescence des fichiers d'un système Linux](hiérarchie-fichiers)
 {% endaller %}
 
 ### Droits
 
 {% aller %}
-[fichiers et droits](fichiers-droits){.interne}
+[fichiers et droits](fichiers-droits)
 {% endaller %}
 
 ## shell
@@ -78,16 +78,16 @@ Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C�
 
 > TBD Dans ce qui suit des choses simples qui peuvent rester dans bases et des choses bien plus compliquées qui doivent passer dans shell par exemple
 
-1. [commandes](./commandes){.interne}
-2. [process](process){.interne}
-3. [exercices](exercices){.interne}
+1. [commandes](./commandes)
+2. [process](process)
+3. [exercices](exercices)
 
 ## Bibliographie
 
 - très didactique. Deux séries de vidéos :
-  - <https://www.youtube.com/watch?v=EYRWohJeCkk&list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl>
-  - <https://www.youtube.com/watch?v=M5dZHdN-Aac&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs>
-- <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>
-- <https://www.youtube.com/watch?v=sAD4dq_jDTA&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP>
-- <https://www.youtube.com/watch?v=QlWKQAh7MKc&list=PLTXMX1FE5Hj6QRdYfuLsTdwCDDISV9TtB>
-- <https://www.youtube.com/watch?v=k89LskKoc1E&list=PL6tu16kXT9Po1kDfJXv0XDSatvGhbC3_X&index=1>
+  - <https://www.youtube.com/watch?v=EYRWohJeCkk&list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl>{.externe}
+  - <https://www.youtube.com/watch?v=M5dZHdN-Aac&list=PLQqbP89HgbbY23Ab_vXGfLXHygquD7cAs>{.externe}
+- <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>{.externe}
+- <https://www.youtube.com/watch?v=sAD4dq_jDTA&list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP>{.externe}
+- <https://www.youtube.com/watch?v=QlWKQAh7MKc&list=PLTXMX1FE5Hj6QRdYfuLsTdwCDDISV9TtB>{.externe}
+- <https://www.youtube.com/watch?v=k89LskKoc1E&list=PL6tu16kXT9Po1kDfJXv0XDSatvGhbC3_X&index=1>{.externe}

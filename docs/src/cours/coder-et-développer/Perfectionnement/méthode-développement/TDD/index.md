@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons nous intéresser à une méthode de développement née dans les années 2000 mais encore très moderne. Elle est à la base de la méthode [XP](https://fr.wikipedia.org/wiki/Extreme_programming) et se prête très bien avec une programmation aidée par IA si on fait un peu attention (l'IA a tendance a faire trop de tests donc, comme toujours, vérifier ce qu'elle écrit comme tests et modifiez les si nécessaire).
+Nous allons nous intéresser à une méthode de développement née dans les années 2000 mais encore très moderne. Elle est à la base de la méthode [XP](https://fr.wikipedia.org/wiki/Extreme_programming){.externe} et se prête très bien avec une programmation aidée par IA si on fait un peu attention (l'IA a tendance a faire trop de tests donc, comme toujours, vérifier ce qu'elle écrit comme tests et modifiez les si nécessaire).
 
 Le TDD (_Test Driven Development_) ou **_Programmation part les tests_** (on ne dit malheureusement pas le PPT) est une méthode puissante mais ce n'est pas quelque chose d'instinctif. Elle nécessite :
 
@@ -18,15 +18,15 @@ Le TDD (_Test Driven Development_) ou **_Programmation part les tests_** (on ne 
 
 Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus vous en passer.
 
-Nous allons suivre le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
+Nous allons suivre le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example){.externe} de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck){.externe}, ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
 
 {% note2 "**Définition**" %}
 Le ***But de la programmation*** est de créer du code **propre** qui **fonctionne** (*clean code that works* en version originale).
 {% endnote2 %}
 
-Outre la méthode, nous verrons également quelques techniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de [Refactoring: Improving the Design of Existing Code](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2) de [Martin Fowler](https://martinfowler.com) (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).
+Outre la méthode, nous verrons également quelques techniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de [Refactoring: Improving the Design of Existing Code](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2){.externe} de [Martin Fowler](https://martinfowler.com){.externe} (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).
 
-Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le meilleur indicateur au monde d'un bon code (issu du livre [clean code](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) de [Robert C. Martin](https://fr.wikipedia.org/wiki/Robert_C._Martin). Ce n'est pas un livre pour débutant mais si vous avez déjà compris le tdd, c'est un super pour finaliser votre compréhension) :
+Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le meilleur indicateur au monde d'un bon code (issu du livre [clean code](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882){.externe} de [Robert C. Martin](https://fr.wikipedia.org/wiki/Robert_C._Martin){.externe}. Ce n'est pas un livre pour débutant mais si vous avez déjà compris le tdd, c'est un super pour finaliser votre compréhension) :
 
 ![WTFs/minute](wtfm.jpg)
 
@@ -39,7 +39,7 @@ Si vous lisez cette partie sans prof, faites l'effort de coder **en même temps*
 On va exécuter les tests un million de fois. Pour éviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :
 
 - dédiez un terminal pour cela. Une fois la commande tapée, il vous suffit de faire *flèche du haut* pour revenir à la commande précédente et l'exécuter
-- lorsque vos tests passent, il est intéressant d'utiliser le raccourci clavier de votre éditeur pour exécuter tous les tests (sous [vscode](https://docs.microsoft.com/fr-fr/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2022#bkmk_test-global-shortcuts)).
+- lorsque vos tests passent, il est intéressant d'utiliser le raccourci clavier de votre éditeur pour exécuter tous les tests (sous [vscode](https://docs.microsoft.com/fr-fr/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2022#bkmk_test-global-shortcuts){.externe}).
 
 ## Projet
 
@@ -124,9 +124,9 @@ Créez un dossier `projet-tdd`{.fichier} qui contiendra votre projet.
 
 Le déroulé du projet est séparé en trois parties :
 
-1. [Introduction et principes de la méthode en action](projet-tdd-1){.interne}
-2. [On s'entraîne](projet-tdd-2){.interne}
-3. [On progresse en utilisant des design pattern](projet-tdd-3){.interne}
+1. [Introduction et principes de la méthode en action](projet-tdd-1)
+2. [On s'entraîne](projet-tdd-2)
+3. [On progresse en utilisant des design pattern](projet-tdd-3)
 
 ## Bilan
 

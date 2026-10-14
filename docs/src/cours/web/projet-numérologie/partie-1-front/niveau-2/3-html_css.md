@@ -56,7 +56,7 @@ Pour créer le fichier html, il faut s'appuyer sur les users stories pour être 
 * un chiffre associé au prénom
 
 {% note %}
-Avec ces directives on peut procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-1){.interne}
+Avec ces directives on peut procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-1)
 {% endnote %}
 
 ## Ajout de todos
@@ -94,7 +94,7 @@ Il est tout à fait naturel d'ajouter/supprimer et modifier des todos de notre l
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2){.interne}
+On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2)
 {% endnote %}
 
 ## Tache 3 : bibliothèque css
@@ -112,7 +112,7 @@ On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-2){.interne}
 * [ ] récupérer un info de l'url et la traiter
 
 {% note %}
-On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-3){.interne}.
+On va procéder comme [au niveau 1](../../niveau-1/3-html_css#tache-3).
 {% endnote %}
 
 ## Tache 3.5 : mais que fait la police ?
@@ -132,7 +132,7 @@ Notre user story dit que la police de caractère du chiffre doit être *rigolote
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-Si on est pas riche à millions pour acheter une font propriétaire, choisir une fonte spéciale peut se faire facilement grâce à : <https://fonts.google.com/>.
+Si on est pas riche à millions pour acheter une font propriétaire, choisir une fonte spéciale peut se faire facilement grâce à : <https://fonts.google.com/>{.externe}.
 
 Cela fonctionne de façon assez finaude. Une fois la font choisie et ses styles choisis, google nous donne un lien à mettre dans notre balise head. Ici :
 
@@ -154,7 +154,7 @@ p {
 ```
 
 {% info %}
-Remarquez comme la marque des [commentaires en css](https://developer.mozilla.org/fr/docs/Web/CSS/Comments) est différentes de ceux en javascript. UN peut de patience, nous verrons comment sont les commentaires html dans la prochaine partie...
+Remarquez comme la marque des [commentaires en css](https://developer.mozilla.org/fr/docs/Web/CSS/Comments){.externe} est différentes de ceux en javascript. UN peut de patience, nous verrons comment sont les commentaires html dans la prochaine partie...
 {% endinfo %}
 
 ## Todos finaux

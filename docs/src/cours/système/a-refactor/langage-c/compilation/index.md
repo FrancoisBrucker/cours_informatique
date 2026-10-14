@@ -27,7 +27,7 @@ int main(void) {
 
 Compiler un programme C se fait en plusieurs étapes, dont les 4 principales sont :
 
-1. [préprocesseur](https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C)
+1. [préprocesseur](https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C){.externe}
 2. compilateur en ASM
 3. compilateur ASM vers objet
 4. édition de lien
@@ -94,7 +94,7 @@ clang -S hello.c
 Par défaut la sortie de l'option `-S` est un fichier d'extension `.a`. On précise donc pas le fichier de sortie par l'option `-o`, la commande va produire un fichier `hello.s`{.fichier}
 {% endinfo %}
 
-Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe [nasm](https://www.nasm.us/), il faut rajouter des options :
+Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe [nasm](https://www.nasm.us/){.externe}, il faut rajouter des options :
 
 ```
 clang -S hello.c -masm=intel   
@@ -146,13 +146,13 @@ Le but de l'édition de lien est d'assembler les *bouts de codes* en un tout coh
 clang hello.o
 ```
 
-Le compilateur `clang` v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html), `otool -L` sous macos):
+Le compilateur `clang` v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html){.externe}, `otool -L` sous macos):
 
 ```
 ldd a.out
 ```
 
-La [libc](https://www.gnu.org/software/libc/manual/html_node/index.html) est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de `C`. C'est en particulier elle qui contient le code de la fonction [`printf`](https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html).
+La [libc](https://www.gnu.org/software/libc/manual/html_node/index.html){.externe} est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de `C`. C'est en particulier elle qui contient le code de la fonction [`printf`](https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html){.externe}.
 
 On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :
 
@@ -179,7 +179,7 @@ clang hello.c -nostdlib -lc
 
 L'édition de lien fait deux choses :
 
-- elle associe le code d'une fonction à son utilisation via sa [signature](https://developer.mozilla.org/fr/docs/Glossary/Signature/Function). C'est pourquoi il faut déclarer la fonction même si on a pas son code
+- elle associe le code d'une fonction à son utilisation via sa [signature](https://developer.mozilla.org/fr/docs/Glossary/Signature/Function){.externe}. C'est pourquoi il faut déclarer la fonction même si on a pas son code
 - elle donne le point d'entrée du programme, la fonction `main`
 
 ## Règles de survie
@@ -202,7 +202,7 @@ clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
 {% endnote %}
 
 {% exercice %}
-A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html) ajoutées ?
+A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.html){.externe} ajoutées ?
 {% endexercice %}
 {% details "solution" %}
 
@@ -215,7 +215,7 @@ A quoi correspondent les [options llvm](https://clang.llvm.org/docs/UsersManual.
 {% info %}
 Pour référence :
 
-<https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23>
+<https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23>{.externe}
 
 Pour l'instant cela doit vous sembler incompréhensible, c'est normal.
 {% endinfo %}
@@ -224,5 +224,5 @@ De plus, le compilateur C est très efficace pur trouver des optimisations à vo
 
 ## Détails
 
-- [préprocesseur](préprocesseur){.interne}
-- [Édition de liens](édition-liens){.interne}
+- [préprocesseur](préprocesseur)
+- [Édition de liens](édition-liens)

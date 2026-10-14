@@ -42,7 +42,7 @@ L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un e
 On ne va pas définir plus que ça la notion d'aléatoire en informatique. On va ici prendre la définition mathématique : *rend un nombre entre $a$ et $b$ de façon équiprobable*, et considérer que c'est ok.
 
 {% info %}
-Il n'existe pas d'aléatoire au sens mathématique en informatique. On ne peut atteindre que des nombre [pseudo-aléatoires](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire), mais c'est une autre histoire.
+Il n'existe pas d'aléatoire au sens mathématique en informatique. On ne peut atteindre que des nombre [pseudo-aléatoires](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire){.externe}, mais c'est une autre histoire.
 {% endinfo %}
 
 ## Remarques préliminaires
@@ -69,7 +69,7 @@ Il peut y avoir des répétitions dans le choix des nombre aléatoire.
 
 {% enddetails %}
 {% faire %}
-Codez cette méthode (on a utilisé la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
+Codez cette méthode (on a utilisé la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange){.externe} du module [random](https://docs.python.org/fr/3/library/random.html){.externe}) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
 {% endfaire %}
 
 ## Borne min du problème
@@ -107,14 +107,14 @@ En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\s
 Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$
 {% endnote %}
 
-Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire){.interne} : créer une fonction qui trouve le successeur d'un tableau.
+Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire) : créer une fonction qui trouve le successeur d'un tableau.
 
 Pour cela, il nous faut :
 
 1. trouver un ordre pour les tableaux d'entiers
 2. caractériser l'ensemble de nos tableaux
 
-L'ordre entre les tableau d'entier classique est l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique) :
+L'ordre entre les tableau d'entier classique est l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique){.externe} :
 
 {% note2 "**Définition**" %}
 L'***ordre lexicographique*** entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :
@@ -221,7 +221,7 @@ Cet algorithme est bien exact car :
 
 {% enddetails %}
 
-Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexité-amortie/#compteur-agrégat){.interne}, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
+Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexité-amortie/#compteur-agrégat), on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
 
 Pour tout $1 \leq i < n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] < S[n-i+1]$ ou $S[n-i] > S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] < S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] > S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] < S[n-i+1]$ et $S[n-i+1] > S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] > S[n-i+3]$...
 
@@ -238,7 +238,7 @@ $$
 
 En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.
 
-En poussant le calcul [comme on a fait pour le compteur binaires](../complexité-amortie/#compteur-agrégat-partition){.interne}, on trouve :
+En poussant le calcul [comme on a fait pour le compteur binaires](../complexité-amortie/#compteur-agrégat-partition), on trouve :
 
 $$
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
@@ -303,7 +303,7 @@ def mélange(T):
 
 ```
 
-Si la la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange) de python rend un nombre aléatoire équiprobable `mélange` doit bien rendre chaque permutation de façon équiprobable.
+Si la la fonction [randrange](https://docs.python.org/fr/3/library/random.html#random.randrange){.externe} de python rend un nombre aléatoire équiprobable `mélange` doit bien rendre chaque permutation de façon équiprobable.
 
 ### Expérimentations
 
@@ -377,7 +377,7 @@ Les permutations semblent bien équiprobables.
 
 Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.
 
-Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexités/max-min#n_factoriel){.interne}
+Comme on a considéré que la complexité de `randrange`{.language-} est de $\mathcal{O}(1)$, la complexité de `mélange`{.language-} est de l'ordre de la complexité de `permutations`{.language-} donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `T`. L'algorithme `mélange`{.language-} n'est pas utilisable en pratique car [n! est trop gros](../complexités/max-min#n_factoriel)
 
 {% note %}
 L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
@@ -385,7 +385,7 @@ L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un 
 
 ## <span id="algorithme-fisher-yates"></span> Algorithme de Fisher-Yates ou de Knuth
 
-L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
+L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates){.externe}, va également résoudre le problème "permutation", mais de façon bien plus élégante.
 
 {% info %}
 Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme *algorithme de Knuth* plutôt qu'*algorithme de Fisher-Yates*. Cependant comme Knuth a créé de très nombreux algorithmes, googler "algorithme de fisher-yates" donne directement le résultat attendu alors que googler "algorithme de Knuth" donne plein de résultats différents (mais tous sont de superbes algorithmes !).
@@ -508,7 +508,7 @@ Vous devriez obtenir le résultat suivant :
 Le nombre de permutations trouvé oscille bien autour de la valeur théorique.
 
 {% info %}
-Pour vérifier que notre résultat est bien conforme à un tirage aléatoire, on devrait [fair un test du chi2 d'indépendance](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Test_du_%CF%872_d'ind%C3%A9pendance), mais cela nous éloignerait trop d'un cours d'algorithmie.
+Pour vérifier que notre résultat est bien conforme à un tirage aléatoire, on devrait [fair un test du chi2 d'indépendance](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Test_du_%CF%872_d'ind%C3%A9pendance){.externe}, mais cela nous éloignerait trop d'un cours d'algorithmie.
 {% endinfo %}
 
 ### Preuve de programme
@@ -557,16 +557,16 @@ Cette preuve permet aussi de montrer que l'algorithme ne peut pas boucler et ret
 
 ## Méthodes de python
 
-Python utilise la méthode [shuffle](https://docs.python.org/fr/3/library/random.html#random.shuffle) du module random pour mélanger une liste.
+Python utilise la méthode [shuffle](https://docs.python.org/fr/3/library/random.html#random.shuffle){.externe} du module random pour mélanger une liste.
 
 {% attention %}
-La méthode shuffle ne rend pas une nouvelle liste, elle mélange la liste en entrée. Si l'on veut créer une nouvelle liste il faut utiliser la méthode [sample](https://docs.python.org/fr/3/library/random.html#random.sample) avec les paramètres suivants : `sample(x, k=len(x))`
+La méthode shuffle ne rend pas une nouvelle liste, elle mélange la liste en entrée. Si l'on veut créer une nouvelle liste il faut utiliser la méthode [sample](https://docs.python.org/fr/3/library/random.html#random.sample){.externe} avec les paramètres suivants : `sample(x, k=len(x))`
 {% endattention %}
 
 La méthode utilisée par shuffle est l'algorithme de Knuth / Fisher-Yates.
 
 {% exercice %}
-Regardez les 4 différentes méthodes pour mélanger en python de cet article : <https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/>. La 4ème méthode n'est pas optimale en complexité. Pourquoi ?
+Regardez les 4 différentes méthodes pour mélanger en python de cet article : <https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/>{.externe}. La 4ème méthode n'est pas optimale en complexité. Pourquoi ?
 {% endexercice %}
 {% details  "solution" %}
 
@@ -586,7 +586,7 @@ On va montrer trois écueils du mélange :
 
 Si vous implémentez un algorithme de mélange mais qu'il peut obtenir plusieurs fois la même permutation avec des opérations différentes, alors vous risquez fort de ne pas être équiprobable. Illustrons ceci par un exemple.
 
-On sait que toute permutation d'un tableau peut être atteinte en échangeant itérativement une paire d'éléments (on appelle ça une [décomposition en produit de transpositions](https://fr.wikipedia.org/wiki/Permutation#D%C3%A9composition_en_produit_de_transpositions)). On peut même montrer qu'il suffit d'en faire au plus la taille du tableau moins 1.
+On sait que toute permutation d'un tableau peut être atteinte en échangeant itérativement une paire d'éléments (on appelle ça une [décomposition en produit de transpositions](https://fr.wikipedia.org/wiki/Permutation#D%C3%A9composition_en_produit_de_transpositions){.externe}). On peut même montrer qu'il suffit d'en faire au plus la taille du tableau moins 1.
 
 On en déduit l'algorithme de mélange suivant :
 
@@ -618,7 +618,7 @@ Vous devriez obtenir quelque chose du type :
 On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des pics réguliers que l'on n'observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.
 
 {% info %}
-Lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
+Lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>{.externe}. Il explique pourquoi cette méthode n'est pas efficace.
 {% endinfo %}
 
 Nous allons ici juste montrer que les permutations en sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :
@@ -655,7 +655,7 @@ Le fait que l'on ne soit pas équiprobable vient du fait que l'on procède à ex
 
 ### `randrange`{.language-} doit être puissant
 
-En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires).
+En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires){.externe}.
 
 La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.
 
@@ -666,24 +666,24 @@ Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce qui n'
 {% endinfo %}
 
 {% info %}
-La partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html> qui explique cela.
+La partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html>{.externe} qui explique cela.
 {% endinfo %}
 
 ### Attention aux humains
 
-La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le [biais de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se rappeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
+La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le [biais de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation){.externe} tend à se rappeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
 
-- Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, [ils répondent le plus souvent 7](https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/).
+- Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, [ils répondent le plus souvent 7](https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/){.externe}.
 - lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : cela ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
 
 {% info %}
-Lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).
+Lisez l'article de <https://draftsim.com/mtg-arena-shuffler/>{.externe} qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena){.externe}.
 {% endinfo %}
 
 ## Autres références
 
 Quelques autres articles sur le sujet :
 
-- <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>
-- <https://blog.codinghorror.com/the-danger-of-naivete/>
-- <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>
+- <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>{.externe}
+- <https://blog.codinghorror.com/the-danger-of-naivete/>{.externe}
+- <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>{.externe}

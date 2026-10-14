@@ -13,9 +13,9 @@ Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, 
 
 ## Le problème concret ou _"comment ne pas aller se promener"_
 
-C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg), qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler) d'inventer la théorie des graphes pour éviter d'aller se balader.
+C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg){.externe}, qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler){.externe} d'inventer la théorie des graphes pour éviter d'aller se balader.
 
-La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça ([cliquez pour voir les 7 ponts en vrai](https://www.google.com/maps/d/viewer?msa=0&mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&ll=54.708383%2C20.508084000000014&z=15)):
+La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça ([cliquez pour voir les 7 ponts en vrai](https://www.google.com/maps/d/viewer?msa=0&mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&ll=54.708383%2C20.508084000000014&z=15){.externe}):
 
 ![ponts de Königsberg](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png)
 
@@ -146,7 +146,7 @@ Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à d
 
 ### Gestion des cycles
 
-Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente){.interne} (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.
+Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente) (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.
 
 
 Après itération des cycles, j'obtient la liste de cycles :
@@ -206,7 +206,7 @@ $$
 >
 > TBD écrire algo cycle partant de x
 
-On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer) qui implémente l'idée précédente mais l'optimise.
+On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer){.externe} qui implémente l'idée précédente mais l'optimise.
 
 Il fonctionne via cet algorithme :
 
@@ -299,7 +299,7 @@ Un multi-graphe orienté $G= (V, E)$ possède un circuit eulérien si et seuleme
 {% details "preuve", "open" %}
 Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que l'existence d'un circuit eulérien implique $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
 
-Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cycles-connexite/#exercice-circuit-oriente){.interne} montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.
+Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cycles-connexite/#exercice-circuit-oriente) montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.
 
 {% enddetails %}
 
@@ -336,7 +336,7 @@ Tout d'abord, on peut toujours s'arranger pour que $
 
 La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.
 
-Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant [la technique classique](../chemins-cycles-connexite/#prop-cycles-graphe){.interne} et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).
+Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant [la technique classique](../chemins-cycles-connexite/#prop-cycles-graphe) et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).
 
  Le supprimer du graphe va conserver les deux propriétés puisque sur ce cycle, on va rentrer et sortir un nombre égal de fois de tout $V \subseteq V$. On peut donc procéder itérativement, comme on l'a fait pour le multi-graphe non orienté, pour trouver un circuit mixte eulérien à notre multi-graphe mixte.
 

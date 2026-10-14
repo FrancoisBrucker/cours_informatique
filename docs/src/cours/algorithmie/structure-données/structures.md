@@ -253,7 +253,7 @@ Il peut être utile de définir des types génériques ou spécifiques pour nos 
 Tout comme un tableau peut stocker tout type de données, il peut être intéressant de définir une structure générique, c'est à dire pouvant gérer plusieurs types de la même façon, plutôt que de définir une structure par type.
 
 {% lien %}
-[type générique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9)
+[type générique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9){.externe}
 {% endlien %}
 
 Pour être explicite, On signifie la généricité entre "<>" dans la définition de la structure, par exemple dans l'exemple suivant :

@@ -12,7 +12,7 @@ eleventyComputed:
 
 {% lien %}
 
-[documentation vscode](https://code.visualstudio.com/docs/editor/debugging)
+[documentation vscode](https://code.visualstudio.com/docs/editor/debugging){.externe}
 
 {% endlien %}
 
@@ -20,8 +20,8 @@ eleventyComputed:
 
 Deux video d'utilisation du debugger :
 
-- <https://www.youtube.com/watch?v=7qZBwhSlfOo>
-- <https://www.youtube.com/watch?v=KEdq7gC_RTA&list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi>
+- <https://www.youtube.com/watch?v=7qZBwhSlfOo>{.externe}
+- <https://www.youtube.com/watch?v=KEdq7gC_RTA&list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi>{.externe}
 
 {% endlien %}
 
@@ -107,7 +107,7 @@ C'est normal par il faut demander explicitement au débogueur de s'arrêter un c
 ### Création d'un breakpoint
 
 {% lien %}
-[créer un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)
+[créer un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints){.externe}
 {% endlien %}
 
 Trois moyen équivalents :
@@ -466,7 +466,7 @@ Utiliser `pas à pas sortant` alors que l'on est pas dans une fonction est équi
 
 Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif : on peut appeler une fonction à l'intérieur d'une fonction...
 
-Ce mécanisme est géré avec ce que l'on appelle [une pile d'exécution (ou pile d'appels)](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) :
+Ce mécanisme est géré avec ce que l'on appelle [une pile d'exécution (ou pile d'appels)](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution){.externe} :
 
 {% note %}
 Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit **_empilée_**) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.
@@ -593,7 +593,7 @@ L'utilisation d'espions est très pratique pour accélérer le débogage de prog
 
 ## Exercice
 
-Le code ci-dessous est une implémentation python [du crible d’Ératosthène](https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne) :
+Le code ci-dessous est une implémentation python [du crible d’Ératosthène](https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne){.externe} :
 
 ```python/
 def élague(x, crible):

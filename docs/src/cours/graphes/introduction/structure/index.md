@@ -73,8 +73,8 @@ Les multi-graphes sont des outils puissants de modélisation permettant de réso
 
 Outre le problème évident de construction ou de maintien de réseaux (informatique, de transports ou encore sociaux), on peut aussi citer :
 
-- [google maps](https://www.google.fr/maps/dir/). On cherche un itinéraire entre deux villes en ne connaissant à priori que ce qui se passe entre deux croisement consécutifs, mais on connaît tous les croisements,
-- les contraintes d'allocations de ressources. Les sommets sont les antennes et les arêtes si il y a des interférences possibles, on cherche à trouver une [coloration du graphe](https://fr.wikipedia.org/wiki/Coloration_de_graphe),
+- [google maps](https://www.google.fr/maps/dir/){.externe}. On cherche un itinéraire entre deux villes en ne connaissant à priori que ce qui se passe entre deux croisement consécutifs, mais on connaît tous les croisements,
+- les contraintes d'allocations de ressources. Les sommets sont les antennes et les arêtes si il y a des interférences possibles, on cherche à trouver une [coloration du graphe](https://fr.wikipedia.org/wiki/Coloration_de_graphe){.externe},
 - problèmes de transports où l'on veut distribuer le plus de ressources possibles dans un réseau routier/fluvial/informatique,
 
 Les problèmes ci-dessus ont ceci de particulier qu'ils peuvent très facilement **se décrire localement** :
@@ -99,8 +99,8 @@ Un problème pouvant se décrire localement mais dont la solution est globale pe
 
 Ils permettent également de comprendre le réel en utilisant des classes particulières de multi-graphes. Par exemple :
 
-- le modèle arboré des [arbres phylogénétique](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) modélisent l'évolution des espèces
-- des graphes aléatoire générés en utilisant par exemple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert) permettent de créer des graphes "_petit monde_" typiques des réseaux sociaux ou de l'internet.
+- le modèle arboré des [arbres phylogénétique](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique){.externe} modélisent l'évolution des espèces
+- des graphes aléatoire générés en utilisant par exemple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert){.externe} permettent de créer des graphes "_petit monde_" typiques des réseaux sociaux ou de l'internet.
 
 ### Esthétique
 
@@ -322,7 +322,7 @@ Montrez que dans tout graphe (à au moins 2 sommets) il existe au moins deux som
 
 {% endexercice %}
 {% details "solution" %}
-C'est une application directe du [principe des tiroirs](https://fr.wikipedia.org/wiki/Principe_des_tiroirs).
+C'est une application directe du [principe des tiroirs](https://fr.wikipedia.org/wiki/Principe_des_tiroirs){.externe}.
 Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soit $n$ possibilités. Si tous les sommets avaient des degrés différents il y en aurait 1 avec 0 voisins et un autre avec $n-1$, ce qui est impossible.
 
 {% enddetails %}
@@ -465,7 +465,7 @@ Montrez que les deux graphes précédents sont isomorphes
 {% endexercice %}
 {% details "corrigé" %}
 
-Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>.
+Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>{.externe}.
 
 ![Petesen iso](./petersen-iso-solution.png)
 

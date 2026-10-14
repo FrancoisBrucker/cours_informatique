@@ -20,30 +20,30 @@ eleventyComputed:
 > 3h
 
 {% info %}
-Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.interne}. Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.
+Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/). Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
 ### Interpréteur, terminal et IDE
 
 {% aller %}
 1. Interagir avec le système :
-   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/){.interne}
-   2. [Terminal](/cours/système/interagir-avec-système/terminal/){.interne}
-2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
+   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/)
+   2. [Terminal](/cours/système/interagir-avec-système/terminal/)
+2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
 {% endaller %}
 
 ### Structure d'un projet informatique
 
 {% aller %}
-1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
-2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
+1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/)
+2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
 {% endaller %}
 
 ### Gestion des dépendances
 
 {% aller %}
-1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/){.interne} pour ses projets
-2. mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
+1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/) pour ses projets
+2. mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/) sur github.
 
 {% endaller %}
 
@@ -64,13 +64,13 @@ Vous devez pouvoir :
 Le cours suivant va vous donner des bases de programmation objet en python :
 
 {% aller %}
-[Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
+[Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/)
 {% endaller %}
 
 On va découvrir tous ces concepts via le TD suivant, dont le but est de vous former au TDD :
 
 {% aller %}
-[Test Driven Development](/cours/coder-et-développer/Perfectionnement/méthode-développement/TDD/){.interne}
+[Test Driven Development](/cours/coder-et-développer/Perfectionnement/méthode-développement/TDD/)
 {% endaller %}
 {% info %}
 Faite le TD de TDD dans un environnement virtuel.
@@ -79,7 +79,7 @@ Faite le TD de TDD dans un environnement virtuel.
 Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tests unitaires. Voir par exemple le lien suivant pour une introduction aux différents tests utilisés :
 
 {% lien %}
-[Différents types de tests](https://www.youtube.com/watch?v=gnrBqLbj1_Q)
+[Différents types de tests](https://www.youtube.com/watch?v=gnrBqLbj1_Q){.externe}
 {% endlien %}
 
 
@@ -87,8 +87,8 @@ Entraînez vous :
 
 {% faire %}
 
-- [exercice de code](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
-- [advent of code](https://adventofcode.com/)
+- [exercice de code](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/)
+- [advent of code](https://adventofcode.com/){.externe}
 
 {% endfaire %}
 
@@ -100,8 +100,8 @@ Pour la prochaine fois, quatre groupes :
 {% attention "**Travail à préparer**" %}
 
 
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
+- [poetry](https://python-poetry.org/){.externe}
+- [uv](https://docs.astral.sh/uv/){.externe}
 - tests dans d'autres langages (java, js ou ts, ...)
 - mock et tests
 
@@ -118,15 +118,15 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 > Design Pattern
 
 {% lien %}
-- [design pattern](https://refactoring.guru/design-patterns)
-- [refactoring pattern](https://refactoring.guru/refactoring)
+- [design pattern](https://refactoring.guru/design-patterns){.externe}
+- [refactoring pattern](https://refactoring.guru/refactoring){.externe}
 {% endlien %}
 
 
 On a vu le design pattern composite dans le projet TDD, il en existe de nombreux autres ! Découvrons en quelques uns souvent utiles :
 
 {% aller %}
-[Design pattern](/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/){.interne}
+[Design pattern](/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/)
 {% endaller %}
 
 <!-- 
@@ -150,14 +150,14 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 
 
 {% aller %}
-[Gestion du code source](/cours/gestion-des-sources/){.interne}
+[Gestion du code source](/cours/gestion-des-sources/)
 {% endaller %}
 
 <!-- 
 ## Outils python de gestion de package
 
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
+- [poetry](https://python-poetry.org/){.externe}
+- [uv](https://docs.astral.sh/uv/){.externe}
  
  ->
 
@@ -170,6 +170,6 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 
 <!-- TBD 
 
-> 3a docker <https://www.youtube.com/watch?v=b0HMimUb4f0> 
+> 3a docker <https://www.youtube.com/watch?v=b0HMimUb4f0>{.externe} 
 
 -->

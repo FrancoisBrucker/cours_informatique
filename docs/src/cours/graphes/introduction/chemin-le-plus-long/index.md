@@ -34,7 +34,7 @@ Problème pour lequel on a pas non plus vu d'algorithme efficace (_ie._ polynomi
 
 ## NP-complétude de la reconnaissance d'un graphe hamiltonien
 
-[On a déjà parlé de ces problèmes](../graphes-hamiltoniens/#chemin-cycle){.interne}, formalisons les :
+[On a déjà parlé de ces problèmes](../graphes-hamiltoniens/#chemin-cycle), formalisons les :
 
 {% note "**Problème**" %}
 
@@ -54,7 +54,7 @@ Et faisons de même pour les chemins hamiltonien dans ses versions orienté et n
 
 {% endnote %}
 
-On a montré que la recherche d'un chemin  et un cycle (_resp._ d'un chemin orienté et d'un circuit) sont deux problèmes équivalents. Nous allons donc uniquement montrer la NP-complétude de la recherche de chemins orienté par une réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat){.interne} et conclure en montrant une reduction de la recherche de chemins orientés vers la recherche  d'un chemin hamiltonien non orienté.
+On a montré que la recherche d'un chemin  et un cycle (_resp._ d'un chemin orienté et d'un circuit) sont deux problèmes équivalents. Nous allons donc uniquement montrer la NP-complétude de la recherche de chemins orienté par une réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat) et conclure en montrant une reduction de la recherche de chemins orientés vers la recherche  d'un chemin hamiltonien non orienté.
 
 ### 3-SAT ≤ Chemin orienté hamiltonien
 
@@ -313,7 +313,7 @@ Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \v
 > TBD DFS et Problème d’ordonnancements
 >
 
-Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement) peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
+Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement){.externe} peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
 
 {% exercice %}
 Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?

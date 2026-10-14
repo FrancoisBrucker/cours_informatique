@@ -14,11 +14,11 @@ Les algorithmes gloutons sont au coeur de nombreux algorithmes. Leur design est 
 ## Principe
 
 {% aller %}
-[Principe](./principe){.interne}
+[Principe](./principe)
 {% endaller %}
 
 ## Exercices
 
 {% aller %}
-[Exercices](./exercices){.interne}
+[Exercices](./exercices)
 {% endaller %}

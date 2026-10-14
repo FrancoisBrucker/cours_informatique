@@ -13,16 +13,16 @@ eleventyComputed:
 > TBD : Ne faire que des exemple d'utilisation shasum
 
 
-> TBD [faire du sha](https://osxdaily.com/2021/12/17/check-sha256-hash-mac/)
+> TBD [faire du sha](https://osxdaily.com/2021/12/17/check-sha256-hash-mac/){.externe}
 
 {% lien %}
 
-- [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique
-- SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
+- [sha-1](https://fr.wikipedia.org/wiki/SHA-1){.externe} utilisé par git mais plus trop de façon cryptographique
+- SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2){.externe})
 
 {% endlien %}
 
-> [Gitlab passe à sha-256](https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/)
+> [Gitlab passe à sha-256](https://about.gitlab.com/blog/2023/08/28/sha256-support-in-gitaly/){.externe}
 
 > Fonctionne comme ce qu'on a vu en cours, le PRP est appelé SHACAL.
 
@@ -32,10 +32,10 @@ On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usag
 
 Ils sont directement utilisable :
 
-- [sous mac](https://fre.applersg.com/check-sha1-checksum-mac-os-x) et [linux](https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/) avec le programme `shasum`
-- [sous windows](https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html) avec la commande [Get-FileHash](module) sous powershell.
+- [sous mac](https://fre.applersg.com/check-sha1-checksum-mac-os-x){.externe} et [linux](https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/){.externe} avec le programme `shasum`
+- [sous windows](https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html){.externe} avec la commande [Get-FileHash](module) sous powershell.
 
 
-[sha](https://www.youtube.com/watch?v=DMtFhACPnTY)
+[sha](https://www.youtube.com/watch?v=DMtFhACPnTY){.externe}
 
-[SHA-x](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms)
+[SHA-x](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms){.externe}

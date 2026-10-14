@@ -44,4 +44,4 @@ Ni le dossier `node_modules`{.fichier} ni les fichiers `package-lock.json`{.fich
 
 ## Projet final
 
-Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-4-jardinage/numérologie).
+Les fichiers sont disponibles à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-numérologie/partie-4-jardinage/numérologie){.externe}.

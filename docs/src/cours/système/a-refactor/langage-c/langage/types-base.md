@@ -49,7 +49,7 @@ Une variable est ainsi l'indice de la pile ou de la partie data à laquelle sa v
 
 {% endnote %}
 
-On peut connaître la taille d'une variable grâce à l'opérateur [`sizeof`](https://fr.wikipedia.org/wiki/Sizeof).
+On peut connaître la taille d'une variable grâce à l'opérateur [`sizeof`](https://fr.wikipedia.org/wiki/Sizeof){.externe}.
 
 ```c#
 #include <stdio.h>
@@ -76,12 +76,12 @@ Taille d'un caractère : 1B
 ```
 
 {% note %}
-La fonction [printf](https://koor.fr/C/cstdio/fprintf.wp) permet d'afficher une chaîne de caractères formatée :
+La fonction [printf](https://koor.fr/C/cstdio/fprintf.wp){.externe} permet d'afficher une chaîne de caractères formatée :
 
 - le premier paramètre est ue chaîne de caractères. Elle contient des paramètres `%x` où `x` correspond au type de la variable à représenter.
 - les autres paramètres correspondent aux variables qui remplaceront, dans l'ordre, les caractères `%x`
 
-Il existe beaucoup de types possibles, ils sont tous représentés ici : [text spécifier](https://en.wikipedia.org/wiki/C_data_types#Main_types). On utilise fréquemment les formats :
+Il existe beaucoup de types possibles, ils sont tous représentés ici : [text spécifier](https://en.wikipedia.org/wiki/C_data_types#Main_types){.externe}. On utilise fréquemment les formats :
 
 - `%zu` : pour les résultats d'un sizeof
 - `%i` : pour les entiers (signés)
@@ -140,7 +140,7 @@ Il est crucial de se rappeler qu'une donnée peut se voir de multiple façon sel
 Le type `int` est l'entier par défaut en C. Il est signé, ce qui signifie qu'il peut être positif ou négatif. Sa taille n'est pas définie et peut donc être variable selon l'architecture. Il est habituellement codé sur 4B pour les machines de bureaux.
 
 {% info %}
-La norme `c23` impose que le signe soit effectué par [complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
+La norme `c23` impose que le signe soit effectué par [complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe}
 {% endinfo %}
 
 ### Types d'entiers
@@ -171,7 +171,7 @@ L'intérêt d'utiliser des entiers non signés est double :
 - les nombres cyclent du maximum à 0 (ce comportement est non définit pour les entiers signés)
 
 {% exercice %}
-En utilisant le fichier [`limits.h`](https://www.tutorialspoint.com/c_standard_library/limits_h.htm), vérifiez que lorsqu'on ajoute 1 à un entier non signé maximum, on obtient bien 0.
+En utilisant le fichier [`limits.h`](https://www.tutorialspoint.com/c_standard_library/limits_h.htm){.externe}, vérifiez que lorsqu'on ajoute 1 à un entier non signé maximum, on obtient bien 0.
 
 {% endexercice %}
 {% details "solution" %}
@@ -215,7 +215,7 @@ Utilisez le type `int` par défaut lorsque vous avez besoin d'entiers.
 
 ## Réels
 
-Le type réel `double` est codé selon le format [double précision de la représentation ds nombre en virgule flottante](https://fr.wikipedia.org/wiki/IEEE_754#Format_double_pr%C3%A9cision_(64_bits)), sur 8B.
+Le type réel `double` est codé selon le format [double précision de la représentation ds nombre en virgule flottante](https://fr.wikipedia.org/wiki/IEEE_754#Format_double_pr%C3%A9cision_(64_bits)){.externe}, sur 8B.
 
 - le format en simple précision sur 4B, noté `float`, existe aussi mains n'est plus recommandé pour les calculs.
 - le format `long double` existe également. Il est codé sur 16B.
@@ -230,7 +230,7 @@ Utilisez le type `double` par défaut lorsque vous avez besoin de réels.
 
 Le type `char` est le plus petit adressage possible, sur 1B (sur toutes les implémentations actuelles). Il correspond aussi à la représentation d'un caractère ASCII sur 7b.
 
-L'encodage par défaut actuel, [UTF-8](https://fr.wikipedia.org/wiki/UTF-8), encode également ses caractères sur des bytes, mais les caractères autres que les caractères ASCII sont codées sur plus d'un byte. Remplacez la ligne 7 de l'exemple par :
+L'encodage par défaut actuel, [UTF-8](https://fr.wikipedia.org/wiki/UTF-8){.externe}, encode également ses caractères sur des bytes, mais les caractères autres que les caractères ASCII sont codées sur plus d'un byte. Remplacez la ligne 7 de l'exemple par :
 
 ```
 char c = 'é';
@@ -282,7 +282,7 @@ double k = (double)i / 13;
 Que vaut $k$ sans et avec le cast explicite
 {% endexercice %}
 {% details "solution" %}
-<https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/#division-et-modulo>
+<https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/#division-et-modulo>{.externe}
 {% enddetails %}
 
 Lorsque vous manipulez des nombres et vous voulez vous assurer que ce sont les opérations réelles qui sont utilisées, même si vous manipulez des entiers, écrivez-les sous la forme de réels. Par exemple :
@@ -299,7 +299,7 @@ vous assurera d'utiliser la division réelle.
 
 Le `C` ne possède qu'un nombre limité de types qui correspondant à une taille de stockages et pas à leurs utilisations. Il est alors courant de renommer ces types pour rendre leur usage explicite et faciliter la lecture du code.
 
-Par exemple le type de retour de [`sizeof`](https://fr.wikipedia.org/wiki/Sizeof) est `size_t`. Ce type correspond chez moi à un entier long non signé (il est défini dans le fichier `stddef.h`).
+Par exemple le type de retour de [`sizeof`](https://fr.wikipedia.org/wiki/Sizeof){.externe} est `size_t`. Ce type correspond chez moi à un entier long non signé (il est défini dans le fichier `stddef.h`).
 
 Ce renommage utilise l'opérateur `typedef`{.language-} :
 
@@ -347,7 +347,7 @@ Si pas de contrainte de taille :
 - réel : `double`
 
 <span id="qualifier"></span>
-Les variables peuvent être [Qualifiées](https://en.wikipedia.org/wiki/Type_qualifier#C/C++). Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en `C`.
+Les variables peuvent être [Qualifiées](https://en.wikipedia.org/wiki/Type_qualifier#C/C++){.externe}. Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en `C`.
 
 Le qualifier se place au début de la déclaration, Par exemple :
 
@@ -360,16 +360,16 @@ Il existe 3 types de _qualifier_ :
 
 - `const` : la variable est constante. Le compilateur va produire une erreur lorsque le code tentera de la modifier.
 - `volatile` : la variable peut être modifiée en dehors du code (lorsque la variable correspond à des données partagées via le réseau par exemple), le compilateur ne doit pas *cacher* la variable par exemple
-- `restrict` : assure le compilateur que cette donnée ne sera pas accessible par une autre variable. Cela évite le [*pointer aliasing*](https://en.wikipedia.org/wiki/Aliasing_(computing)#Aliased_pointers).
+- `restrict` : assure le compilateur que cette donnée ne sera pas accessible par une autre variable. Cela évite le [*pointer aliasing*](https://en.wikipedia.org/wiki/Aliasing_(computing)#Aliased_pointers){.externe}.
 
 {% attention "**danger !**" %}
-[Bizarreries de `const` en `C`](https://www.youtube.com/watch?v=8a3HyL1VN0Q)
+[Bizarreries de `const` en `C`](https://www.youtube.com/watch?v=8a3HyL1VN0Q){.externe}
 {% endattention %}
 
 ## Opérations
 
-- [opérations mathématiques](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/)
-- [opérateur bit à bit](https://en.wikipedia.org/wiki/Bitwise_operations_in_C)
+- [opérations mathématiques](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/){.externe}
+- [opérateur bit à bit](https://en.wikipedia.org/wiki/Bitwise_operations_in_C){.externe}
 
 {% attention "**danger !**" %}
 Méfiez vous de `++i` et `i++`.

@@ -24,7 +24,7 @@ Web front et back (avec node).
 ## Programme
 
 {% aller %}
-[Cours de web](/cours/web){.interne}
+[Cours de web](/cours/web)
 {% endaller %}
 
 ## cours 1 : html (2h)
@@ -86,7 +86,7 @@ Bases de javascript
 Choisir un sujet et coder les pages
 
 {% lien %}
-[règles du décathlon](https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf)
+[règles du décathlon](https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf){.externe}
 {% endlien %}
 
 ### cours 6
@@ -94,7 +94,7 @@ Choisir un sujet et coder les pages
 Lier les pages dans un projet front et un serveur web de fichiers statiques.
 
 {% aller %}
-[Site statique](/cours/web/projet-front/){.interne}
+[Site statique](/cours/web/projet-front/)
 {% endaller %}
 
 ## cours 7
@@ -104,7 +104,7 @@ Presentation des projets.
 ## Cours 8&9 : backend
 
 {% aller %}
-[Site statique](/cours/web/serveur-web/){.interne}
+[Site statique](/cours/web/serveur-web/)
 {% endaller %}
 
 ## Projet final

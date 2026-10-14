@@ -14,10 +14,10 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 On y reviendra à de nombreuses reprises :
 
 {% attention2 "**À retenir**" %}
-Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
+Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/){.externe}.
 {% endattention2 %}
 
-Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
+Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion){.externe} que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
 
 On va créer un projet pour comprendre comment tout ça fonctionne.
@@ -35,7 +35,7 @@ Exécutez le fichier main avec vscode et le terminal pour vérifier que tout fon
 
 ## La commande assert
 
-On utilise en python [la commande assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement) pour vérifier que quelque chose est correct. Elle fonctionne ainsi :
+On utilise en python [la commande assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement){.externe} pour vérifier que quelque chose est correct. Elle fonctionne ainsi :
 
 ```python
 assert <expression logique>
@@ -194,17 +194,17 @@ Ce n'est cependant pour l'instant pas très pratique :
 2. il faut explicitement exécuter les fonctions de tests (on peut en oublier et rien ne nous l'indiquera)
 3. si un test rate, les autres tests ne seront pas exécutés.
 
-Pour pallier ces inconvénients on utilise une bibliothèque de test spécialisée : [Pytest](https://docs.pytest.org).
+Pour pallier ces inconvénients on utilise une bibliothèque de test spécialisée : [Pytest](https://docs.pytest.org){.externe}.
 
 ## Installation de la bibliothèque de tests
 
 {% lien "**Documentation**" %}
-[tests avec vscode](https://code.visualstudio.com/docs/python/testing)
+[tests avec vscode](https://code.visualstudio.com/docs/python/testing){.externe}
 {% endlien %}
 
 ### <span id="installation-pytest"></span> Installation
 
-Commençons par installer le module pytest [comme on a appris](../../outils/modules-externes-python/){.interne} (il vous faudra peut-être modifier l'instruction générique suivante) :
+Commençons par installer le module pytest [comme on a appris](../../outils/modules-externes-python/) (il vous faudra peut-être modifier l'instruction générique suivante) :
 
 ```shell
 python -m pip install pytest
@@ -212,8 +212,8 @@ python -m pip install pytest
 
 ### <span id="configuration-pytest"></span> Configuration
 
-1. dans les préférences (_menu file/code > Préférences > settings_) tapez `python.testing.pytestEnabled` dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
-2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../../outils/éditeur-vscode/prise-en-main/#palette-de-commande){.interne}) : _python : Configure tests_ on choisit _pytest_ puis _. (root)_ qui donne le dossier de départ où aller chercher nos tests
+1. dans les préférences (_menu file/code > Préférences > settings_) tapez `python.testing.pytestEnabled` dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html){.externe} ou encore [nosetests](https://nose.readthedocs.io/en/latest/){.externe}, mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../../outils/éditeur-vscode/prise-en-main/#palette-de-commande)) : _python : Configure tests_ on choisit _pytest_ puis _. (root)_ qui donne le dossier de départ où aller chercher nos tests
 
 ## <span id="utilisation-pytest"></span> Exécuter des tests
 
@@ -242,7 +242,7 @@ Si vous l'exécutez, il ne va rien se passer, même si vous remettez une erreur 
 Testez le !
 {% endfaire %}
 
-Ceci est normal puisque le code ne fait que **définir** des fonctions sans jamais les exécuter. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec _Menu Affichage testing_ (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+Ceci est normal puisque le code ne fait que **définir** des fonctions sans jamais les exécuter. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec _Menu Affichage testing_ (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}).
 
 En suite le menu _TESTING_ en haut de cette nouvelle fenêtre vous permet :
 
@@ -286,7 +286,7 @@ Que fait pytest :
 Pytest exécute toutes les fonctions commençant par `test_`{.fichier} de tous les fichiers commençant par `test_`{.fichier} d’un projet.
 {% endnote %}
 
-On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
+On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests){.externe}. Vous pourrez ensuite :
 
 1. découvrir les tests du projet
 2. exécuter tous les tests

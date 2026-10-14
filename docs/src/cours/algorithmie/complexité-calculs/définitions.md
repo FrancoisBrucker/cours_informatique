@@ -59,7 +59,7 @@ Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utili
 Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
 {% endattention %}
 
-Reprenons par exemple [le code de l'algorithme recherche](../../bases-théoriques/définition/#algorithme-recherche){.interne} et comptons les instructions utilisées au cours de son exécution :
+Reprenons par exemple [le code de l'algorithme recherche](../../bases-théoriques/définition/#algorithme-recherche) et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
 fonction recherche(T: [entier], x: entier) → booléen:
