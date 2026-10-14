@@ -211,9 +211,9 @@ def recherche(p, C):
 
 Utilisation des listes pour faire grossir des tableaux.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Étant donné un tableau $T$, **_une monotonie_** est une suite croissante maximale d'éléments consécutifs de $T$. 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.
 

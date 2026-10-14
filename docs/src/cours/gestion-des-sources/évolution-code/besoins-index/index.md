@@ -15,7 +15,7 @@ Les commits d'un projet ajoutent, modifient voir suppriment des fichiers à un p
 
 <span id="déf-commit"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_commit_** d'un projet est constitué :
 
 - d'une sauvegarde du répertoire de travail (un **snapshot** du working directory)
@@ -24,7 +24,7 @@ Un **_commit_** d'un projet est constitué :
 - du (ou des) commits **PARENT(S)**
 - d'un descriptif des modifications effectuées (**QUOI**)
 
-{% endnote2 %}
+{% enddefinition %}
 
 ![commits](./commits.png)
 
@@ -75,7 +75,7 @@ L'index présente ce que vous allez sauver dans votre sauvegarde. À tout moment
 - les différences entre votre sauvegarde actuelle et ce que vous aller ajouter
 - les différences et ce que vous aller sauver et votre travail actuel
 
-{% note2 "**Définition**" %}
+{% definition %}
 On appelle **_`diff`_** les différences entre deux commits, entre le répertoire de travail et l'index ou encore entre deux fichiers.
 
 A savoir :
@@ -83,7 +83,7 @@ A savoir :
 - les fichiers présent dans un commit et pas dans un autre
 - les lignes différentes dans un fichier présent dans les deux commits
 
-{% endnote2 %}
+{% enddefinition %}
 
 Attention cependant, ces diff ne sont que des constructions, ils ne sont pas stocké dans le système.
 
@@ -113,7 +113,7 @@ Par exemple, si le `fichier3.txt`{.fichier} n'est jamais à sauver, une fois ajo
 
 ![ignore list](./index-ignorelist.png)
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La liste des fichier à ignorer est très pratique en code pour ignorer les environnements virtuels, les fichiers de configurations de l'IDE, les fichiers compilés, les bibliothèques partagées. Bref tout ce qui n'est pas _stricto sensu_ utile au code du projet.
-{% endattention2 %}
+{% endretenir %}
 

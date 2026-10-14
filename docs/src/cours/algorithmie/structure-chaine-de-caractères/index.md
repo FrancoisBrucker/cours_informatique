@@ -13,7 +13,7 @@ eleventyComputed:
 
 Une chaîne de caractères est dans toute sa généralité définie comme un **_mot_** produit par un **_alphabet_** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 - Un **_alphabet_** $\mathcal{A}$ est un ensemble fini
 - un **_mot_** est une suite finie d'éléments de $\mathcal{A}$
@@ -21,7 +21,7 @@ Une chaîne de caractères est dans toute sa généralité définie comme un **_
 - un **_langage_** est un ensemble, possiblement infini de mots d'un alphabet
 
 Le **_langage_** formé de tous les mots d'un alphabet $\mathcal{A}$ est noté $\mathcal{A}^\star$
-{% endnote2 %}
+{% enddefinition %}
 
 On représentera par la suite de façon indistincte un mot par :
 
@@ -57,18 +57,18 @@ Nous verrons également comment passer d'un alphabet binaire à un alphabet quel
 ## Langages et algorithmes
 
 <div id="décideur"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_décideur_** est un programme de :
 
 $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1 \\}$$
 
-{% endnote2 %}
+{% enddefinition %}
 
-{% note2 "**Définition**" %}
+{% definition %}
 On appelle **_langage_** d'un décideur $d$ l'ensemble $d^{-1}(1)$.
 
 On dira qu'un décideur $d$ **_accepte le langage_** $L$ si $L = d^{-1}(1)$ et qu'un langage $L$ est **_décidable_** s'il existe un algorithme pour l'accepter.
-{% endnote2 %}
+{% enddefinition %}
 
 Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../../bases-théoriques/arrêt-rice/#algorithme-STOP)). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
 

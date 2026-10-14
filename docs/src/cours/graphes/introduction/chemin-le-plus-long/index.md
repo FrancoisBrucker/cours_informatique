@@ -169,9 +169,9 @@ Ce problème est même NP-complet puisque si $K$ vaut le nombre de sommets moins
 
 De plus, il est facile (par dichotomie) de résoudre le chemin le plus long à partir d'un algorithme résolvant le problème "chemin de longueur donné" : ces deux problèmes sont donc à un facteur log prêt de même complexité :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un problème est dit **NP-difficile**. si son pendant à paramètre fixé est NP-Complet.
-{% endnote2 %}
+{% enddefinition %}
 
 
 Trouver un plus long chemin  dans un graphe est donc un problème NP-difficile. Mais il existe des cas où sa résolution est toute simple ! On va en examiner deux.
@@ -227,9 +227,9 @@ Donc la longueur du chemin entre $X$ et $X'$ est plus petite que la longueur du 
 
 Il existe un cas où trouver un chemin le plu long est facile : dans les graphes orientés qui ne contiennent pas de circuit :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe orienté sans circuit est appelé DAG (_direct acyclic graph_)
-{% endnote2 %}
+{% enddefinition %}
 
 On appelle **_tri topologique_** d'un graphe orienté $G = (V, E)$ un ordre total $<$ sur les sommets du graphe tel que $xy \in E$ implique $x < y$ dans l'ordre.
 

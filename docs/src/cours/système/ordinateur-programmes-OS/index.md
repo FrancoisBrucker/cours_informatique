@@ -16,7 +16,7 @@ Nous allons présenter ici les principes d'un OS de bureau (W11, Linux Ubuntu, M
 
 Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur){.externe} est de permettre à des utilisateurs d'exécuter des applications :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_ordinateur_** est composé de multiples composants physiques qui interagissent entre eux via [une carte mère](https://fr.wikipedia.org/wiki/Carte_m%C3%A8re){.externe} :
 
 - le [**_processeur_**](https://fr.wikipedia.org/wiki/Processeur){.externe} qui exécute des instructions sur des variables appelés **_registre_** pouvant contenir 64[bit](https://fr.wikipedia.org/wiki/Bit){.externe} d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).
@@ -32,7 +32,7 @@ Un **_ordinateur_** est composé de multiples composants physiques qui interagis
     - dont on peut uniquement envoyer des données (périphériques de sortie) : écran/imprimante
     - entrée/sortie : volant avec retour de force
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 [Unités et ordres de grandeur en informatique](/cours/misc/unités-ordres-grandeur)
 {% endinfo %}
@@ -50,7 +50,7 @@ Un programme est une suite d'instructions exécutée l'une après l'autre par le
 1. le seul endroit où peut être stocké un programme est en mémoire : chaque instruction du processeur doit être associé à un nombre binaire. 
 2. le processeur doit connaître la prochaine instruction qu'il doit exécuter : un de ses registres spécialisé nommé **_pointeur d'instruction_** (d’abréviation _IP_) contiendra toujours l'adresse en mémoire de la **prochaine** instruction à exécuter.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Exécuter un programme sur un ordinateur de fait en suivant les étapes suivantes :
 
 1. initialisation :
@@ -64,7 +64,7 @@ Exécuter un programme sur un ordinateur de fait en suivant les étapes suivante
    3. étape **_execute_** : le processeur exécute l'instruction courante
 3. si l'instruction courante n'était pas l'instruction de fin de programme, on retourne à l'étape 2. pour effectuer une nouvelle boucle d'exécution du programme
 
-{% endnote2 %}
+{% enddefinition %}
 
 La définition ci-dessus amène quelques commentaires. 
 
@@ -145,15 +145,15 @@ ADD RAX, RBX
 
 Enfin, toutes ces instructions dépendant du processeur utilisé par l'ordinateur ! Nous avons utilisé ici des jeux d'instructions pour des processeurs de type x64 (les PC). Ces instructions seraient tout à fait différente pour un programme s'exécutant sur un mac par exemple.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un programme dépend du processeur utilisé car les instructions de chaque type de processeur (PC, MAC, mobile) va être différente.
-{% endattention2 %}
+{% endretenir %}
 
 Mais c'est encore pire que ça. Lorsqu'un processeur veut accéder à un device comme le disque dur il faudra qu'il parle son langage et ce langage va être différent selon le type de device (on ne parle pas à un écran comme on parle à une clé USB) et même selon la marque du device (deux écrans de marque différentes vont avoir des langages différents) : si l'on change de clavier il faut possiblement changer son programme !
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un programme dépend non seulement du processeur utilisé mais également des différents devices de l'ordinateur sur lequel il est exécuté.
-{% endattention2 %}
+{% endretenir %}
 
 S'il n'existe (en gros) que deux types de processeurs différents (x86 et ARM), la multitude de type de périphériques fait qu'il n'est pas raisonnable d'avoir à modifier son programme à chaque fois que l'on change une partie de son ordinateur. Le lien entre la partie dépendant uniquement du processeur et les périphériques va être géré par le système d'exploitation.
 
@@ -167,12 +167,12 @@ Le but premier d'un système d'exploitation est de faire le lien entre la partie
 
 Lorsqu'un logiciel veut avoir accès à un périphérique (afficher une chaîne de caractère à l'écran, lire un fichier sur le disque dur, accéder au clavier, etc) il passe par l'intermédiaire du système d'exploitation via [un appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me){.externe} qui fait l'opération pour lui. Pour que ceci fonctionne il faut que le système connaisse le fonctionnement du matériel, il faut donc installer des programmes spécifiques à son matériel pour le système d'exploitation :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Chaque matériel vient avec un programme nommé [**_driver_**](https://fr.wikipedia.org/wiki/Pilote_informatique){.externe} (**_pilote_** en Français) devant être utilisé par le système d'exploitation pour y acceder.     
 
 Un programme demande l'accès au matériel via un [appel système](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me){.externe} unique pour une catégorie de périphérique donné.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Un programme n'est maintenant plus dépendant du matériel de chaque ordinateur mais reste dépendant du système d'exploitation car les appels systèmes sont différents selon le système d'exploitation utilisé. Mais comme il y a moins de système d'exploitations que de matériel on y gagne en simplicité.
 
@@ -193,11 +193,11 @@ Ce principe universel est une instanciation de la [deuxième partie du discours 
 
 <div id="TFIL"></div>
 
-{% note2 "**Théorème**" %}
+{% definition "**Théorème**" %}
 
 Le **_Théorème Fondamental de l’Ingénierie Logicielle_** stipule que l'on peut régler tous les problèmes en ajoutant une couche d'indirection.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On retrouvera ce fonctionnement tout au long de notre découverte du fonctionnement d'un système d'exploitation.
 
@@ -205,14 +205,14 @@ On retrouvera ce fonctionnement tout au long de notre découverte du fonctionnem
 
 Si faire l'interface entre le logiciel et le matériel est le but premier d'un système d'exploitation, son second but est de gérer les programmes entre eux : un ordinateur va toujours avoir plusieurs programmes en fonctionnement en même temps. 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Un système d'exploitation permet l'exécution de programmes :
 
 - de façon [concurrente](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (on peut écrire dans un gdoc tout en écoutant de la musique)
 - de façon sécurisée : le gdoc ne peut accéder aux variables de l'application jouant de la musique
 
-{% endattention2 %}
+{% endretenir %}
 
 Il n'y aura toujours qu'un seul programme actif à chaque instant, mais comme on en change souvent, on a l'impression qu'ils s'exécutent en même temps.
 
@@ -234,14 +234,14 @@ Enfin, le système d'exploitation doit permettre aux programmes de communiquer e
 
 Un programme est intimement lié au système d'exploitation qui l'exécute. 
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On fait la distinction entre plusieurs types de programmes :
 
 - ceux lancés par l'utilisateur via une interface graphique ou le terminal qu'on appelle **_application_**
 - les programmes en cours d'exécution que l'on appel **_processus_** (une application peut lancer plusieurs processus)
 
-{% endnote2 %}
+{% enddefinition %}
 
 Une application est à la base un processus. De plus rien n'empêche un processus de lancer lui-même d'autres processus ! 
 
@@ -251,7 +251,7 @@ Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impr
 
 L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le [TFIL](./#TFIL) ces diverses responsabilités sont séparées en 3 couches :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un système d'exploitation est constitué de 3 couches :
 
@@ -259,19 +259,19 @@ Un système d'exploitation est constitué de 3 couches :
 - **des** [interfaces logicielles](<https://en.wikipedia.org/wiki/Interface_(computing)#Software_interfaces>) qui permettent d'accéder aux devices (comme accéder à une clé usb)
 - **des** [démons](<https://fr.wikipedia.org/wiki/Daemon_(informatique)>) qui gèrent l'environnement (le fait de réagir à l'insertion d'une clé usb dans l'ordinateur par exemple)
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### <span id="kernel-user-mode"></span>User et kernel mode
 
 Seul le noyau a accès au matériel et a un contrôle total de la machine. 
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On distingue deux états d'une machine :
 
 - le [_kernel mode_](https://fr.wikipedia.org/wiki/Espace_noyau){.externe} : le noyau travail, il a accès à tout l'ordinateur
 - le [_user mode_](https://fr.wikipedia.org/wiki/Espace_utilisateur){.externe} : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
-{% endnote2 %}
+{% enddefinition %}
 {% lien %}
   [User et Kernel mode sous windows 11](https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode){.externe}
 {% endlien %}
@@ -296,9 +296,9 @@ La distinction entre user et kernel mode se fait directement au démarrage de la
 - via un appel système d'un processus
 - lorsque l'on change de processus actif
 
-{% attention2 "À retenir" %}
+{% retenir %}
 La partie noyau du système d'exploitation ne fonctionne pas tout le temps, elle ne s'active **que** lors d'un appel système ou lors du changement de processus actif.
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Le but du noyau c'est d'être petit et de ne presque jamais être en fonctionnement.
 {% endinfo %}

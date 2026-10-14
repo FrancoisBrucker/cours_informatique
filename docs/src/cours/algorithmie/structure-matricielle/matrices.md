@@ -13,10 +13,10 @@ On peut facilement créer des matrices en combinant des tableaux. Ce type est te
 
 Pour cela on utilisera le paradigme suivant :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Une matrice de dimension $k$ est constitué d'un tableau de matrices de dimensions $k-1$
-{% endnote2 %}
+{% enddefinition %}
 
 Ainsi une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constituée d'un tableau de $n$ lignes (chacune étant un tableau de $p$ entiers).
 
@@ -60,10 +60,10 @@ algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entie
 Le nombre d'opération élémentaires pour initialiser la matrice sera alors proportionnelle à sa taille :
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La création et l'affectation initiale d'une matrice est linéaire en sa taille : le nombre de lignes fois le nombre de colonnes.
 
-{% endattention2 %}
+{% endretenir %}
 
 
 

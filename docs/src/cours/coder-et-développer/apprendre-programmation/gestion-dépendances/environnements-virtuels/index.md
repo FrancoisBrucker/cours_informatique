@@ -23,9 +23,9 @@ eleventyComputed:
 
 Le but d'un environnement virtuel est de créer un environnement python complet (interpréteur et modules) différent par projet. Ceci permet de contrôler les modules installés et utilisés.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il est fortement recommandé de créer un environnement virtuel pour **chaque** projet.
-{% endattention2 %}
+{% endretenir %}
 
 ## Environnement python
 

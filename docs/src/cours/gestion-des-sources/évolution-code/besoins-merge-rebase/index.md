@@ -47,17 +47,17 @@ La fusion peut maintenant être effectuée. On procède comme suit :
 
 ![merge 3](./merge-3.png)
 
-{% note2 "**Définition**" %}
+{% definition %}
 Ce type de fusion est appelée **_3-way merge_** car il prend en compte 3 commits différents : les 2 branches à fusionner et l'ancêtre commun.
-{% endnote2 %}
+{% enddefinition %}
 
 Lorsque l'ancêtre commun est un des 2 commit, par exemple si l'on veut maintenant fusionner la branche `dev` et et la branche `main`, tout devient plus simple : il suffit de déplacer la branche ancêtre sur la branche descendante sans nécessité de créer un nouveau commit :
 
 ![merge 4](./merge-4.png)
 
-{% note2 "**Définition**" %}
+{% definition %}
 Ce type de fusion est appelée **_fast-forward merge_** (ou rarement **_2-way merge_**) : une branche à fusionner est l'ancêtre commun.
-{% endnote2 %}
+{% enddefinition %}
 
 ## Rebase
 
@@ -93,17 +93,17 @@ Enfin :
 
 Les précédent commits de la branche dev avant rebase ne sont plus accessibles via une branche mais sont par défaut toujours présent dans la structure de sauvegarde (qui garde tout).
 
-{% note2 "**Définition**" %}
+{% definition %}
 On appelle **_rebase_** d'une branche $A$ sur une autre $B$ le fait de rejouer les diff des commits de la branche $A$ sur la branche $B$ depuis leur ancêtre commun.
 
-{% endnote2 %}
+{% enddefinition %}
 
 A priori les commit résultant d'un merge (ceux ayant plus d'un parent) ne sont pas concernés par le rebase puisqu'il sont déjà eux même des combinaisons de commits existants.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Préférer toujours faire un rebase lorsque c'est possible, un historique linéaire est toujours mieux qu'une succession de fusions pour pouvoir plus tard s'y retrouver lorsqu'il faudra corriger un bug.
-{% endattention2 %}
+{% endretenir %}
 
 ## Nettoyage de base
 

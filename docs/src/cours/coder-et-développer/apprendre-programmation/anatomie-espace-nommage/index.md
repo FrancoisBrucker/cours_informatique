@@ -30,33 +30,33 @@ De façon formelle :
 
 <span id="définition-espace-nommage"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_espace de nommage_** est constitué de deux parties :
 
 - une table de correspondance ([un dictionnaire](../conteneurs/dictionnaires)) associant des noms (les clés) à des objets (les valeurs). 
 - un lien vers un espace de nommage **_parent_** (qui peut être vide)
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple les espaces de nommages associés aux modules on par exemple un parent vide et ceux créés par les fonctions dépendant de l'espace de nommage qui les a appelé.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les espaces de nommages sont utilisés à de nombreux endroits dans python et sont là pour : 
 
 1. gérer les noms et leurs objets associés
 2. séparer les responsabilités et cloisonner les noms auxquels ont accès les différentes parties d'un programme
-{% endattention2  %}
+{% endretenir  %}
 
 On accède aux noms (et donc aux objets qu'ils référencent) des espaces de noms d'un objet en utilisant la notation pointée :
 
 <span id="définition-notation-pointée"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le **_notation pointée_** permet d'accéder aux noms d'un espace de nommage. Si `o`{.language-} est un objet contenant un espace de nom on peut :
 
 - accéder à un nom `n`{.language-} défini dans l'espace un nom de `o` avec l'instruction `o.n`{.language-} (si on a importé le module random on peut utiliser la fonction `randrange`{.language-} qui y est défini avec l'instruction `random.randrange(1, 7)`{.language-}). 
 - affecter un nom `n`{.language-} dans l'espace un nom de `o` avec l'instruction `o.n = <objet>`{.language-} (par exemple `o.n = 42`{.language-}). 
 
-{% endnote2 %}
+{% enddefinition %}
 
 Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.
 
@@ -67,14 +67,14 @@ Commençons par quelques rappels et précisions sur les variables et leurs liens
 - tout ce que manipule un programme est appelé objet.
 - les variables sont des noms via lesquels on accède aux objets. On dit aussi parfois qu'une variable est une **_référence_** à un objet.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Pour qu'un programme objet fonctionne, on a besoin de deux mécanismes :
 
 - un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)
 - un moyen d'y accéder (les variables)
 
-{% endattention2 %}
+{% endretenir %}
 
 ### Objets
 
@@ -85,11 +85,11 @@ Un objet est une structure de donnée générique permettant de gérer tout ce d
 - des modules
 - ...
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Tout est objet dans un langage objet.
 
-{% endattention2 %}
+{% endretenir %}
 
 ### Variables
 
@@ -101,9 +101,9 @@ variable = objet
 
 A gauche de l’opérateur `=`{.language-} se trouve une **variable** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une variable n'est **pas** l'objet, c'est une référence à celui-ci
-{% endattention2 %}
+{% endretenir %}
 
 La variable peut être vue comme un **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.
 
@@ -113,9 +113,9 @@ Pour s'y retrouver et avoir une procédure déterministe pour retrouver les obje
 
 L'espace des variables peut-être vu comme un espace de nom particulier : c'est celui qui est créé au début de l'exécution de l'interpréteur.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Au démarrage d'une exécution d'un programme, l'espace des variables est créé. C'est un espace de nommage sans parent : c'est à partir de lui que toutes les variables doivent être atteintes.
-{% endattention2 %}
+{% endretenir %}
 
 Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par `__`{.language-}) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.
 
@@ -194,10 +194,10 @@ Vérifions le :
 je suis un véritable hacker.
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder à tous les objets via celui-ci.
 
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="espace-modules"></span> Espaces de nommage des modules
 
@@ -338,14 +338,14 @@ math.pi = 3.2
 L'exécution de fonction nécessite l'utilisation d'espaces de nommages pour
 compartimenter l'usage des variables.
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'interpréteur possède à chaque instant **_un espace de nommage courant_**  qui est l'espace par défaut des noms :
 
 - python commence par rechercher un nom dans cet espace puis cherche dans l'espace parent s'il n'est pas trouvé
 - python affectera toujours un nom dans cet espace (hors notation pointée)
 
 Par défaut l'espace de nommage courant est l'espace des variables.
-{% endnote2 %}
+{% enddefinition %}
 
 Pour voir les noms définis dans l'espace de noms courant, on utilise en python [la fonction `locals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#locals){.externe} qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
 
@@ -407,11 +407,11 @@ On voit bien que :
 
 [Un espace de nommage est créé pour chaque fonction lors de son exécution](../creation-fonctions/#espace-nommage), on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un espace de nommage est crée lors de chaque **exécution** d'une fonction. 
 
 Cet espace aura un parent non vide qui sera **toujours le même**, celui qui contient la définition de la fonction.
-{% endnote2 %}
+{% enddefinition %}
 
 
 Créons un fichier `main.py`{.fichier} et mettons-y le code suivant :
@@ -458,7 +458,7 @@ La variable `n`{.language-} existe dans **tous** les espaces de nommages, une fo
 
 L'espace de nommage parent permet de hiérarchiser la recherche de noms :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Lorsque python cherche à **_trouver l'objet associé à un nom_** il procède récursivement :
 
@@ -467,15 +467,15 @@ Lorsque python cherche à **_trouver l'objet associé à un nom_** il procède r
    - si l'espace de recherche à un parent non vide, il devient l'espace de recherche courant et on recommence l'étape 2.
    - si l'espace de recherche à un parent vide : on arrête la recherche et on produit une erreur de type `NameError`{.language-}
 
-{% endnote2 %}
+{% enddefinition %}
 
 En revanche, lorsque l'on affecte un nom, la règle est simple :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Lorsque python cherche à **_affecter un objet à un nom_** il rajoute la correspondance nom/objet au dictionnaire de l'**_espace de nommage courant_**.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Illustrons ceci :
 

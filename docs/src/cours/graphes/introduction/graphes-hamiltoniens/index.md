@@ -12,11 +12,11 @@ eleventyComputed:
 
 
 <div id="definition-graphe-hamiltonien"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe (_resp._ graphe dirigé) admet un **_cycle_** (_resp._ **_circuit_**) **_hamiltonien_** s'il existe un cycle (_resp._ un circuit) élémentaire passant par tous les sommets.
 
 Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien.
-{% endnote2 %}
+{% enddefinition %}
 
 On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton){.externe} qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game){.externe} qu'il commercialisa et correspond à l'exercice suivant :
 
@@ -43,10 +43,10 @@ Et au final le cycle hamiltonien :
 
 La définition suivante est également très utilisée :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe (_resp._ graphe dirigé) admet un **_chemin hamiltonien_** s'il existe un chemin élémentaire passant par tous les sommets.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe} (que l'on est amené à revoir), n'en possède pas :
 
@@ -137,9 +137,9 @@ On procède de la même manière que pour le cas orienté en :
 
 Selon les cas on préférera traiter un cas ou l'autre mais dans l'absolu ces problèmes sont de même complexité :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les problèmes de recherche d'un chemin ou d'un cycle hamiltonien dans des graphes (orienté ou non) sont identiques : on peut de plus résoudre un problème par un algorithme résolvant l'autre via une transformation linéaire d'une entrée dans l'autre.
-{% endattention2 %}
+{% endretenir %}
 
 ## Densité d'arêtes des graphes hamiltoniens
 

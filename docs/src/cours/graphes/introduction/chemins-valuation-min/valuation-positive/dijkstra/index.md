@@ -15,7 +15,7 @@ eleventyComputed:
 
 L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra){.externe} permet, à partir d'un graphe orienté valué **positivement**, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée). Il cherche à créer un **_arborescence_** à partir d'un graphe initial $G$. Précisons cela.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une **_arborescence_** $T_{x} = (V', E')$ est un graphe tel que :
 
@@ -24,7 +24,7 @@ Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ 
 - il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ pour tout sommet $y \in V'$
 - pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est **minimum**
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 

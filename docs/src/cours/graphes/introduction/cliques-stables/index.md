@@ -11,17 +11,17 @@ eleventyComputed:
 
 
 <span id="definition-clique"></span>
-{% note2 "**Définitions**" %}
+{% definition %}
 Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
-{% endnote2 %}
+{% enddefinition %}
 
 Un **_stable_** est l'opposé :
 
 <span id="definition-stable"></span>
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommets tel que quelque soient $x \neq y \in S$, $xy \notin E$.
-{% endnote2 %}
+{% enddefinition %}
 
 Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle **_clique maximale_** (_resp._ **_stable maximal_**) un ensemble maximal pour l'inclusion.
 
@@ -33,13 +33,13 @@ On appelle **_clique maximum_** (_resp._ **_stable maximum_**) une clique maxima
 
 <span id="définition-notation-clique-stable-maximum"></span>
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Soit $G$ un graphe. On note :
 
 - $\omega(G)$ la taille de ses cliques maximum
 - $\alpha(G)$ la taille de ses stables maximum
 
-{% endnote2 %}
+{% enddefinition %}
 
 Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
 
@@ -239,9 +239,9 @@ C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir 
 
 <span id="problème-graphe-couverture"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_couverture_** d'un graphe $G=(V, E)$ est un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $C$.
-{% endnote2 %}
+{% enddefinition %}
 
 {% note "**Problème**" %}
 
@@ -579,13 +579,13 @@ En remplaçant $k$ par sa valeur on obtient $R(n) > \lfloor\frac{n}{e}\cdot 2^{n
 
 On en déduit l'encadrement :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 <div>
 $$
  (\frac{1}{e} + o(1))\cdot n\cdot 2^{n/2} < R(n) \leq  (1 + o(1))\frac{4^{n-1}}{\sqrt{\pi \cdot n}}
 $$
 </div>
-{% endattention2 %}
+{% endretenir %}
 
 C'est un encadrement très proche des bornes connues.
 

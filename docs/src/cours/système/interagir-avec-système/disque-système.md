@@ -25,9 +25,9 @@ L'organisation de cette structure est différente selon les OS mais on retrouver
 
 Lorsque l'on démarre un ordinateur, il faut commencer par trouver le noyau du système d'exploitation appelé **_bootloader_**. Le bootloader et le noyau se trouvent dans [une partition spéciale](https://fr.wikipedia.org/wiki/Partition_(informatique)){.externe} du disque dur de démarrage.
 
-{% note2 "**Définition**" %}
+{% definition %}
 [Une **_partition_**](https://fr.wikipedia.org/wiki/Partition_(informatique)){.externe} est une partie d'un disque dur. 
-{% endnote2 %}
+{% enddefinition %}
 
 Un disque dur système possédera toujours au moins 2 partitions :
 

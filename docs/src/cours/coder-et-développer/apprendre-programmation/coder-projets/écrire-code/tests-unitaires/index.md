@@ -13,9 +13,9 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 
 On y reviendra à de nombreuses reprises :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/){.externe}.
-{% endattention2 %}
+{% endretenir %}
 
 Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion){.externe} que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
@@ -258,9 +258,9 @@ On peut également directement utiliser pytest avec le terminal en tapant `pytho
 Testez l'exécution des tests avec le terminal
 {% endfaire %}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 pytest exécute toutes les fonctions commençant par `test_`{.fichier} de tous les fichiers commençant par `test_`{.fichier} du projet.
-{% endattention2 %}
+{% endretenir %}
 {% faire %}
 Ajoutez une fonction ne commençant pas par `test_`{.fichier} et exécutez les tests " elle ne sera pas exécutée.
 {% endfaire %}

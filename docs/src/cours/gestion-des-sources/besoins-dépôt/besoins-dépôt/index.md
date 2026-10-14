@@ -55,10 +55,10 @@ Formalisons ceci avec la notion de **_commit_**, qui est constitué :
 
 Un tag est alors un nom de commit :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_tag_** est une référence vers un commit donné. Il est constitué :
 
 - d'un nom
 - d'un lien vers le commit qu'il référence
 
-{% endnote2 %}
+{% enddefinition %}

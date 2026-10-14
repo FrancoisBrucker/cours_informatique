@@ -27,13 +27,13 @@ eleventyComputed:
 
 La caractérisation des graphes planaire se fait par "_mineur exclu_". C'est à dire caractériser les graphes qui vont nous empêcher de réussir un dessin planaire
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G$ un graphe. Un graphe $H$ est un mineur de $G$ s'il peut être obtenu par un nombre quelconque des opérations suivantes :
 
 - suppression d'un sommet sans voisin
 - suppression d'une arête
 - contraction d'un arête: on fusionne l'arête en un nouveau sommet $z$ dont les voisins sont les voisins des anciens sommets formant l'arête
-{% endnote2 %}
+{% enddefinition %}
 {% lien %}
 [mineurs de graphes](https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)){.externe}
 {% endlien %}
@@ -93,13 +93,13 @@ La caractérisation des graphes planaire est tres liée à la notion de 2-connex
 
 <span id="définition-k-connexité"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un graphe est dit $k$-connexe si la suppression d'un ensemble quelconque de $k-1$ de ses sommets ne déconnecte pas $G$.
 
 On appelle **_connectivité_** de $G$ et la note $\kappa(G)$, le plus grand $k$ tel que $G$ soit $k$-connexe.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 
@@ -140,17 +140,17 @@ Comme $j>i$ on a une contradiction.
 
 Tout comme un graphe peut se décomposer en composantes connexes, on peut le décomposer en ses composantes 2-connexes
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un ensemble de sommet d'un graphe est 2-connexe si la restriction du graphe à cet ensemble est 2-connexe.
 
-{% endnote2 %}
-{% note2 "**Définition**" %}
+{% enddefinition %}
+{% definition %}
 Un ensemble de sommets d'un graphe est une composante 2-connexe si :
 
 - il est 2-connexe,
 - il est maximal pour l'inclusion
 
-{% endnote2 %}
+{% enddefinition %}
 
 {% note "**Proposition**" %}
 Si $A$ et $B$ sont deux composantes 2-connexes d'un graphe connexe $G$, on a soit :
@@ -180,10 +180,10 @@ Pour toute arête $xy$ d'un graphe il existe une unique composante 2-connexe con
 Comme $\\{x, y\\}$ est 2-connexe si $xy \in E(G)$, il fait partie d'une composante 2-connexe et la proposition précédente permet de conclure.
 {% enddetails %}
 
-{% note2 "**Définition**" %}
+{% definition %}
 On appelle **_nœud d'articulation_** d'un graphe les sommets à l'intersection de deux composantes 2-connexes.
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 {% note "**Proposition**" %}
@@ -325,14 +325,14 @@ On obtient l'arbre suivant (l'ordre de passage va de gauche à droite) :
 
 L'algorithme est donc à la fois très rapide (il est linéaire en la taille du graphe) et montre des propriétés insoupçonnée du DFS.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Soit $G$ un graphe. Un chemin $P$ est une **_oreille_** de $G$ si :
 
 - seules ses extrémités font partie de $G$,
 - aucune arête de $P$ n'est dans $G$.
 
-{% endnote2  %}
+{% enddefinition  %}
 
 En prenant l'exemple suivant :
 

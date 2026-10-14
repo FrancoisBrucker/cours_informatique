@@ -19,7 +19,7 @@ Un graphe $G=(V, E)$ rend compte d'une _relation_ (les arêtes) entre des objets
 Un chemin (et par extension un cycle) peut avoir de multiples définitions, selon ce que l'on cherche à faire. Commençons par la définition canonique :
 
 <span id="definition-longueur"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k}$** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -31,11 +31,11 @@ de sommets du graphe telle que :
 
 Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (_resp._ arête).
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut affaiblir la notion de chemin pour les graphes orienté :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Une **chaîne** est une suite :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -47,12 +47,12 @@ de sommets du graphe telle que :
 
 La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
 
-{% endnote2 %}
+{% enddefinition %}
 
 Un chemin nous permet de définir un cycle pour les graphes non-orientés :
 
 <span id="définition-cycle"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe non orienté. Un **cycle** est un chemin
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -60,11 +60,11 @@ $$C = v_0v_1\dots v_i \dots v_k$$
 tel que $v_0 = v_k$
 
 La cycle $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes).
-{% endnote2 %}
+{% enddefinition %}
 
 Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un **cycle** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -75,17 +75,17 @@ de sommets du graphe telle que :
 2. les arcs sont deux à deux distinctes.
 3. $v_0 = v_k$
 
-{% endnote2 %}
+{% enddefinition %}
 
 <span id="définition-circuit"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un **_circuit_** est un cycle :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
 
 de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Terminons cette partie par un petit exercice :
 
@@ -104,13 +104,13 @@ Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c
 Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :
 
 <span id="définition-pseudo-"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un graphe orienté. Un **_pseudo-chemin_** est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$.
-{% endnote2  %}
+{% enddefinition  %}
 <span id="définition-élémentaire"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un graphe orienté. Un **_chemin élémentaire_** (_resp._ cycle ou circuit élémentaire) est un chemin (_resp._ cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.
-{% endnote2  %}
+{% enddefinition  %}
 
 {% info %}
 Notez qu'un pseudo-chemin/pseudo-cycle/pseudo-circuit où chaque sommet n'apparaît qu'une seule fois est forcément un chemin/cycle/circuit élémentaire !
@@ -141,7 +141,7 @@ La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou
 > 
 Pour tout $n$, il existe deux graphes représentant un chemin ert un cycle :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pur tout entier $n$ on note :
 
 - $P_n = (V, E)$ le graphe composé d'un chemin de longueur $n$ :
@@ -150,15 +150,15 @@ Pur tout entier $n$ on note :
 - $C_n = (V, E)$ le graphe composé d'un cycle de longueur $n+1$ :
     - $V=\\{x_1, \dots, x_n \\}$,
     - $E = \\{x_ix_{i+1 \pmod n} \mid 1\leq i \leq n\\}$
-{% endnote2 %}
+{% enddefinition %}
 
 Enfin, on dira qu'un chemin (_resp._ cycle) est induit pour graphe $G$ si la restriction de $G$ aux $n'$ sommets de ce chemin (_resp._ cycle) est $P_{n'}$ (_resp._ $C_{n'}).
 
 ### <span id="induit"></span>Chemins et cycles induits
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un chemin, cycle ou circuit est dit **_induit_** pour graphe $G$ s'ils sont des sous-graphes induits de $G$.
-{% endnote2 %}
+{% enddefinition %}
 
 Les chemins ou cycle induits n'ont en particulier pas d'arêtes reliant des sommets qui ne sont pas voisins dans le chemin/cycle.
 
@@ -166,25 +166,25 @@ Les chemins ou cycle induits n'ont en particulier pas d'arêtes reliant des somm
 ## Connexité
 
 <span id="définition-connexe"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
 Si le graphe est orienté :
 
 - il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.
 - il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
-  {% endnote2 %}
+  {% enddefinition %}
 
 La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à _google maps_ où l'on aime bien pouvoir faire des aller-retours.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G=(V, E)$ un graphe orienté ou non.
 
 - Un **ensemble connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ ou entre $y$ et $x$.
 - Un **ensemble fortement connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ et entre $y$ et $x$.
 - Une **composante (fortement) connexe** $Y \subseteq V$ de $G$ est un ensemble (fortement) connexe maximal pour l'inclusion.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si un graphe n'est pas connexe on le partitionnera en ses **composantes connexes** qui peuvent être vues en vertu de la proposition suivante comme des graphes distincts que l'on peut analyser séparément.
 
@@ -211,13 +211,13 @@ Les composantes connexes d'un graphe orienté ne sont pas forcément disjointes,
 
 Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G$ un graphe connexe.
 
 - Un **isthme** est une arête qui déconnecte le graphe si on la supprime
 - Un **nœud d'articulation** est un sommet qui déconnecte le graphe si on le supprime
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple, dans des réseau routiers, les isthme et les nœuds n'articulations vont créer des bouchons s'ils sont saturés (le tunnel sous Fourvière par exemple).
 
@@ -225,11 +225,11 @@ Plus généralement, on parlera d'ensemble séparant :
 
 <div id="séparateur"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G$ un graphe connexe. Un ensemble de sommets est dit être **_séparateur_** de $G$ si leur suppression de $G$ le déconnecte.
 
 Un sous graphe induit sera dit **_séparant_** si l'ensemble de ses sommets est un séparateur de $G$.
-{% endnote2 %}
+{% enddefinition %}
 
 ## Propriétés fondamentales d'existence
 

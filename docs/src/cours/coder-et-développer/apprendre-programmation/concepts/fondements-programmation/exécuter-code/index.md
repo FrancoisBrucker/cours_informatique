@@ -14,14 +14,14 @@ eleventyComputed:
 
 On a vue dans la partie système (le prérequis) qu'un programme s'exécute via un processeur, instruction par instruction. Presque plus personne ne crée de programmes directement en langage machine, on utilise des langages dit _évolués_ composées d'instructions spécifiques à celui-ci. Un programme d'un langage évolué est alors une suite d'instructions. 
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur chacune de ses instructions doit être traduite en instructions machine avant son exécution. Il existe trois stratégies pour cela :
 
 - convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit **_langages compilés_** et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).
 - convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit **_langages interprétés_**, ou encore **_langages de script_** et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)
 - méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé [bytecode](https://fr.wikipedia.org/wiki/Bytecode){.externe}. Le java ou le C# sont des langages appliquant cette stratégie.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langages :
 
@@ -36,7 +36,7 @@ Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langage
   - **inconvénients** : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau){.externe}
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il n'y a pas de mauvaise stratégie, il faut utiliser le langage adapté à notre situation/projet :
 
 - petits projets ou code devant être modifié souvent : langage de script
@@ -47,7 +47,7 @@ En plus de cela, chaque langage va bien sur avoir sa spécificité, mais rappele
 
 > Plus on veut du code rapide (ou optimisé) plus on va passer du temps a l'écrire et moins il sera portable.
 
-{% endattention2 %}
+{% endretenir %}
 
 
 Nous utiliserons ainsi ici [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>) qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.
@@ -64,10 +64,10 @@ L'utilisation d'un interpréteur pour exécuter du code est une application dire
 
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'interpréteur python comme intermédiaire entre le code python et son exécution.
 
-{% endattention2  %}
+{% endretenir  %}
 
 Tout code python est exécuté _via_ un interpréteur dont le but est de transformer le code python en code machine :
 
@@ -151,9 +151,9 @@ Rechargez la page et vérifiez que la variable `s`{.language-} n'existe plus.
 
 Retenez donc le point essentiel :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'interpréteur python reste présent tout au long de l'exécution des instructions.
-{% endattention2  %}
+{% endretenir  %}
 
 On n'est pas obligé de taper une instruction après l'autre, on peut en envoyer une série qui seront exécutées l'une à la suite de l'autre. Avec <https://console.basthon.fr/>{.externe}, ceci se fait sur la fenêtre de gauche où on peut écrire nos différentes instructions :
 

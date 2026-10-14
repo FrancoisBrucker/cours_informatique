@@ -138,10 +138,10 @@ Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wiki
 
 Cette notion de sous-réseau est importante pour l'organisation des machines sur le réseau. On considère que des machines de numéro proches donc d'un même sous-réseau, sont aussi proche physiquement et peuvent être routé par le même routeur.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_routeur_** est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut considérer le réseau ci-après, à 5 machines (de A à E) et 4 routeurs (1 à 4)
 

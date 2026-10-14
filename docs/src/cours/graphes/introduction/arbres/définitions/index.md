@@ -12,13 +12,13 @@ eleventyComputed:
 
 Explorer les propriétés et l'intérêt de l'arbre.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_arbre_** est un _graphe_ $T = (V, E)$ qui est :
 
 - [connexe](../../chemins-cycles-connexite/#définition-connexe)
 - [sans cycle](../../chemins-cycles-connexite/#définition-cycle)
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple, seul le graphe du milieu est un arbre parmi les 3 graphes ci-dessous :
 
@@ -28,29 +28,29 @@ Par exemple, seul le graphe du milieu est un arbre parmi les 3 graphes ci-dessou
 
 Finissons cette partie par une définissions filant la métaphore botaniste :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un _graphe_ dont chaque partie connexe est un arbre est appelée une **_forêt_**.
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 Les définitions précédentes concernaient les graphes, il existe un pendant pour les graphes orientés, les arborescences :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une _**arborescence**_ est un graphe orienté $G = (V, E)$ tel que :
 
 - si $xy \in E$ alors $yx \notin E$
 - le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre
 - tel qu'il existe un sommet $r$, appelé **_racine_** tel que pour tout $x \in V$ il existe un chemin allant de $r$ à $x$ dans $G$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On a parfois envie que les chemin ailles vers la racine plutôt qu'en partent et a pour ça la notion d'arbre dirigé enraciné :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un _**arbre dirigé enraciné en $r$**_ (on dit aussi _**arbre dirigé planté en $r$**_) est un graphe orienté $G = (V, E)$ si et seulement le graphe $G' = (V, E')$ tel que $xy \in E'$ si et seulement si $yx \in E$ est une arborescence de racine $r$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence avec le sommet rouge en racine et celui de droite un arbre dirigé enraciné en le sommet rouge :
 
@@ -120,12 +120,12 @@ Les trois propositions suivantes sont équivalentes :
 
 ## Sommets et feuilles
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_feuille_** d'un arbre $T = (V, E)$ est un sommet de degré 1. Un **_sommet interne_** est un sommet de degré strictement supérieur à 1.
-{% endnote2 %}
-{% note2 "**Définition**" %}
+{% enddefinition %}
+{% definition %}
 Une **_feuille_** d'une arborescence $T = (V, E)$ est un sommet de degré sortant 0. Un **_sommet interne_** est un sommet de degré sortant strictement supérieur à 0.
-{% endnote2 %}
+{% enddefinition %}
 
 Commençons par une propriété sympathique des feuilles d'un arbre :
 
@@ -198,10 +198,10 @@ Le même raisonnement implique que supprimer une arête d'un arbre produit une f
 
 Les deux exercices précédents nous permettent de conclure sur l'existence des **_ordres d'effeuillage_** pur tout arbre :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Pour tout arbre $T = (V, E)$, les ordres $x_1, \dots, x_n$ de ses sommets tels que $T \backslash \\{x_1, x_2, \dots x_i\\}$ est un arbre pour tout $1\leq i < \vert V \vert$ sont appelées **_ordre d'effeuillage_**.
-{% endnote2 %}
+{% enddefinition %}
 
 Les ordre d'effeuillage permettent tout un tas de raisonnements par récurrence et sont a la base de nombre d'algorithmes d'arbres car ils préserve la structure de l'arbre.
 

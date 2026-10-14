@@ -259,7 +259,7 @@ Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible
 
 Nous allons montrer que notre problème est équivalent à celui de [la recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe) que nous avons déjà étudié.
 
-{% note2 "**Problème algorithmique**" %}
+{% definition "**Problème algorithmique**" %}
 
 - Nom : Point fixe
 - Entrées :
@@ -267,18 +267,18 @@ Nous allons montrer que notre problème est équivalent à celui de [la recherch
   - $x \in [\\![ 1, n]\\!]$
 - Sortie : Un entier positif $x'$ tel qu'il existe $u \neq v$ pour lesquels $f^u(x) = f^{v}(x) = x'$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Commençons par rappeler ce qu'est une suite ultimement périodique :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Une suite $(a_i)_{1\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
 
 - les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
 - $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Et son association à $f$. La suite $(a_i)_{1\leq i}$ est ultimement périodique :
 

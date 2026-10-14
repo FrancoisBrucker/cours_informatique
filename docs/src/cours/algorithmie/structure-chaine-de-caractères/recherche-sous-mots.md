@@ -26,7 +26,7 @@ Nous allons dans cette partie analyser le problème de la _recherche d'une sous-
 
 Une définition formelle de _sous-chaîne_ étant :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement.
 
 La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$ :
@@ -35,7 +35,7 @@ $$
 b[j] = a[i + j]
 $$
 
-{% endnote2 %}
+{% enddefinition %}
 
 ## Algorithme naïf
 

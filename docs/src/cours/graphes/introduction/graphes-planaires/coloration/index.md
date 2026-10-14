@@ -83,9 +83,9 @@ On peut donc échanger les couleurs rouge et jaunes uniquement dans l'encercleme
 
 Les chaînes de Kempe forment un outils important pour la coloration de graphes. Donnons en une définition :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Étant donné une coloratiojn d'un graphe, une **_chaîne de kempe_** entre deux sommets $x$ et $y$ est un chemin entre $x$ et $y$ dont la couleur de ses sommets alterne entre celle de $x$ et celle de $y$.
-{% endnote2 %}
+{% enddefinition %}
 
 Trouver une chaîne de Kempe se fait linérairement, il suffit de prendre la restriction du graphe aux deux couleurs et de chercher si $x$ est dans la composante connexe de $y$.
 

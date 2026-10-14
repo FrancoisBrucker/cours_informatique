@@ -11,9 +11,9 @@ eleventyComputed:
 
 [Un problème algorithmique](../écrire-algorithmes/problème/) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.
-{% endnote2 %}
+{% enddefinition %}
 
 Cette complexité existe toujours car :
 
@@ -41,7 +41,7 @@ $$
 
 Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :
 
 $$
@@ -50,7 +50,7 @@ $$
 
 on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.
 
-{% endattention2 %}
+{% endretenir %}
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau. Cette étude nous permettra de voir plusieurs facettes de ce qu'est un problème algorithmique.
 
@@ -120,11 +120,11 @@ La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la lo
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.
 
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
-{% endattention2 %}
+{% endretenir %}
 
 À vous :
 

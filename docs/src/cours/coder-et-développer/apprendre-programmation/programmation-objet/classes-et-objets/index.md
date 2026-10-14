@@ -20,14 +20,14 @@ Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les o
 
 De façon générale, on peut définir un objet et une classe comme :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_objet_** est une structure de données (les champs de la structure de donnée sont appelés **_attributs_**) sur laquelle on peut effectuer des opérations (appelées **_méthodes_**).
 
 Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des **_classes_** comme patron de ces objets :
 - elles vont gérer la création des objets via un **_constructeur_**.
 - elles contiennent dans leur espace de noms les différentes **_méthodes_** que l'on pourra appliquer
 
-{% endnote2 %}
+{% enddefinition %}
 
 <div id="compteur-code"></div>
 
@@ -67,9 +67,9 @@ A la lecture du code, on a donc _envie_ que le code :
 
 Notez que l'on a pas eu besoin du code de `Compteur()`{.language-} ni de `incrémente()`{.language-} pour "_voir_" ce que faisait le code. C'est une de la puissance de la programmation objet :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un code dont les objets sont bien nommés doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.
-{% endattention2 %}
+{% endretenir %}
 
 Formalisation cette notion de besoin avec l'UML.
 
@@ -85,7 +85,7 @@ L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme u
 
 ![une classe UML](classes-1.png)
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un diagramme UML est une boite qui décrit une classe. Elle contient 4 informations  :
 
 - `<nom de la classe>` qui sera un nom sans espace. En python ce nom sera avec une majuscule.
@@ -93,7 +93,7 @@ Un diagramme UML est une boite qui décrit une classe. Elle contient 4 informati
 - **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
 - une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 Par exemple un point et un polygone qui les utilise :
@@ -107,12 +107,12 @@ Ou le classique personne et compte bancaire :
 
 #### UML du Compteur
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour construire le modèle UML d'une classe, il faut se poser les deux questions suivantes :
 
 - _"que dois-je pouvoir faire ? "_ ce qui permettra de déterminer les méthodes de la classe
 - _"que dois-je stocker comme information pour que les méthodes fonctionnent ?"_ ce qui permettra de déterminer les attributs de chaque objet.
-{% endattention2 %}
+{% endretenir %}
 
 
 On va essayer de comprendre le code pour produire une représentation UML de la classe `Compteur`{.language-}. L'analyse du besoin que l'on a effectué nous a permit de définir l'usage ue l'on veut faire du compteur :
@@ -125,7 +125,7 @@ Ce qui donne le diagramme UML du compteur :
 ![compteur](classes-2.png)
 
 
-{% attention2 "**À retenir**"  %}
+{% retenir %}
 
 Pour créer un diagramme UML :
 
@@ -133,7 +133,7 @@ Pour créer un diagramme UML :
 2. on explicite ses méthodes, c'est à dire comment on va utiliser les objets (ici incrémenter un compteur).
 3. on crée la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
 
-{% endattention2 %}
+{% endretenir %}
 
 ### Implémentation en python
 
@@ -191,22 +191,22 @@ Ce bloc contient :
 
 Notez qu'en python on ne décrit pas les différents attributs. On les créera dans le constructeur en utilisant le paramètre `self`{.language-} qui est présent dans **toutes les méthodes** et contient l'objet appelant la méthode (on verra comment en détail ci-après).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 En python :
 
 - les attributs sont déclarés dans le constructeur,
 - `__init__`{.language-} n'a pas de `return`{.language-},
 - le constructeur et les méthodes ont toutes comme premier paramètre `self`{.language-} qui contient l'objet appelant.
-{% endattention2 %}
+{% endretenir %}
 
 De façon formelle :
 
 <div id="espace-nommage"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../concepts/utilisation-modules/#définition-espace-nommage).
 
-{% endnote2 %}
+{% enddefinition %}
 
 Reprenons [l'exemple de la classe compteur](./#compteur-code) et examinons son exécution. à la fin de la ligne 1, on vient d'importer le module `compteur`{.language-} qui [contient uniquement une définition de classe](./#compteur-classe), on est dans le cas suivant :
 
@@ -219,10 +219,10 @@ L'espace de nommage de la classe `Compteur`{.language-} contient deux méthodes 
 
 Les deux méthodes prennent comme premier paramètre un objet nommé `self`{.language-}, qui est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes :
 
-{% note2 "**Définition**" %}
+{% definition %}
 le premier paramètre de toute méthode, noté `self`{.language-}, est l'objet sur lequel on va appliquer la méthode (l'objet à gauche du `.`{.language-} lors de l'appel à celle-ci par une notation pointée).
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Vous pouvez appeler ce premier paramètre comme vous voulez, mais il est **très très** déconseillé de le faire car votre code en deviendra moins lisible (tout le monde utilise le nom `self`{.language-}).
 {% endinfo %}
@@ -266,9 +266,9 @@ On refait pareil pour la ligne 4 (`c2 = Compteur()`{.language-}), ce qui fait qu
 
 Comme le constructeur est toujours appliqué au nouvel objet créé chaque objet va bien avoir des attributs distincts !
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 En python, les attributs d'un objet **sont explicitement créés** dans le constructeur.
-{% endattention2 %}
+{% endretenir %}
 
 
 ### Exécution de méthodes

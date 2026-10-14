@@ -1,8 +1,8 @@
 import info from "./info.js";
 import attention from "./attention.js";
-import attention2 from "./attention2.js";
+import retenir from "./retenir.js";
 import note from "./note.js";
-import note2 from "./note2.js";
+import definition from "./definition.js";
 import faire from "./faire.js";
 import details from "./details.js";
 import exercice from "./exercice.js";
@@ -16,11 +16,11 @@ export default async function(eleventyConfig) {
     details(eleventyConfig);
     exercice(eleventyConfig);
     note(eleventyConfig);
-    note2(eleventyConfig);
+    definition(eleventyConfig);
     chemin(eleventyConfig);
     lien(eleventyConfig);
     attention(eleventyConfig);
-    attention2(eleventyConfig);
+    retenir(eleventyConfig);
     prerequis(eleventyConfig);
     info(eleventyConfig);
     faire(eleventyConfig);

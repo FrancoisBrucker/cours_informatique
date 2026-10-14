@@ -18,15 +18,15 @@ Enfin comme la taille des clés est finie un algorithme brute force arrivera tou
 
 ## Sécurisé en temps
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une méthode de chiffrement est **_$(t, \epsilon)$-sécurisée_** si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.
-{% endnote2  %}
+{% enddefinition  %}
 
 L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite sera égale au pourcentage de clé testées :  au bout de $T$ secondes il aura testé $\frac{T}{t}$ clés, soit une proportion de  sera de $\frac{T/t}{2^s}$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(T, \frac{T}{t\cdot 2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.
-{% endattention2  %}
+{% endretenir  %}
 
 Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :
 
@@ -62,7 +62,7 @@ La notion de $(t, \epsilon)$-sécurité est indissociable de l'algorithme qui d�
 
 Lorsque l'on calcule la complexité des algorithmes de décryptage on le fait (comme toujours) par rapports à la taille de ses entrées. Les entrées correspondent aux différents paramètres de la méthode de chiffrement :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.
 
 De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé (valant $s$) plus la taille du message à chiffrer (valant $t$) :
@@ -73,15 +73,15 @@ n \coloneqq s+t
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opérations.
 
 Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite :
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité de résoudre le problème pour un temps d'exécution de 1 instruction.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon = \mathcal{O}(\frac{s^d}{2^{s}})$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
 
@@ -125,7 +125,7 @@ Cette méthode permet de formaliser :
 
 C'est cette dernière notion que nous allons maintenant formaliser.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 1. un adversaire motivé et ayant du temps pourra toujours décrypter un message
 2. on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force
@@ -133,7 +133,7 @@ C'est cette dernière notion que nous allons maintenant formaliser.
 
 Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.
 
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
@@ -146,9 +146,9 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une méthode de chiffrement pourra être considéré comme  **_sécurisée_** si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
-{% endattention2 %}
+{% endretenir %}
 
 La sécurité sémantique stipule qu'une méthode doit être sécurisé quelque soit l'algorithme efficace utilisé. Pour obtenir ce genre de résultat sans connaître tous les algorithmes possibles on utilise une modélisation statistique cherchant à mesurer l'écart entre la distribution produite par la méthode et la loi uniforme.
 
@@ -194,7 +194,7 @@ Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la s
 
 L'adversaire possède un **[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)** si la probabilité que `A(x)=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :
 
 <div>
@@ -203,7 +203,7 @@ $$
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.
 
@@ -294,13 +294,13 @@ Si $D0$ et $D1$ sont équivalent (l'algorithme répond le contraire si on invers
 
 De là :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Deux lois seront dites :
 
 - **_équivalentes_** si $D0 = D1$ : on ne peut les distinguer par le jeu de la reconnaissance
 - **_statistiquement sécurisés_** si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable
 - **_sémantiquement sécurisés_** si le meilleur algorithme **efficace** de reconnaissance ne peut obtenir qu'un avantage négligeable
-{% endnote2 %}
+{% enddefinition %}
 
 On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :
 
@@ -345,9 +345,9 @@ Le jeu consiste alors en 6 étapes :
 
 Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance puisque l'on cherche à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme. Ce type d'attaque, bien qu'elle ne permet pas de déchiffrer les messages permet tout de même d'avoir des informations sur le type de message chiffré, par exemple si la réponse est positive (`m0 = "oui"`) ou négative (`m1 = "non"`).
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une méthode de chiffrement est **_sémantiquement sécurisée_** (_Semantically secured_) si un adversaire efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$. L'adversaire pourrait choisir `m0 = "aa"` et `m1 = "ab"` et décider de répondre 1 si `c[1] ≠ c[0]`. L'avantage de cet algorithme va être énorme puisque :
 

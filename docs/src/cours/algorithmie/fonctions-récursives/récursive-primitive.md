@@ -23,7 +23,7 @@ C'est [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano){.
 
 Elles sont définies à partir de trois fonctions de base :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Les _**fonctions récursives primitives de bases**_ sont :
 
@@ -59,7 +59,7 @@ Les _**fonctions récursives primitives de bases**_ sont :
     $$
     </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections. La fonction successeur l'est également, on l'a déjà rencontré :
 
@@ -96,7 +96,7 @@ La règle de composition est classique :
 
 <div id="composition"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient :
 
 - $f: \mathbb{N}^n \to \mathbb{N}$
@@ -113,7 +113,7 @@ $$
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :
 
@@ -156,7 +156,7 @@ Par récurrence sur $k$. On a $f_0(x) = \pi^1_1$. Si on suppose que $f_k$ existe
 
 On ne peut utiliser que cette règle car elle ne permet pas de créer des fonctions toutes simples (et calculable) comme $\text{add}(x, y) = x + y$. On a besoin pour cela de pouvoir itérer le processus d'ajouter 1 un nombre quelconque de fois, bref de simuler une boucle. Pour cela, on utilise... la récursion :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit :
 
 - $f: \mathbb{N}^n \to \mathbb{N}$
@@ -175,7 +175,7 @@ $$
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Dans la définition de la récursion, la fonction $g$ fait office d'algorithme permettant d'ajouter par récurrence un paramètre à $f$.
 
@@ -290,11 +290,11 @@ Les fonctions récursives primitives sont calculables.
 
 Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent de créer toutes les fonctions arithmétiques usuelles (voir [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano){.externe}) et ont été utilisées par Gödel pour montrer son [célèbre théorème d'incomplétude](https://perso.ens-lyon.fr/natacha.portier/enseign/logique/GoedelParAlex.pdf){.externe}.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Ce type de construction où l'on combine simplement des éléments basiques pour produire des choses complexes est l'essence même de l'informatique et de l'algorithmie.
 
 **Nous n'allons cesser de le montrer dans ce cours.**
-{% endattention2 %}
+{% endretenir %}
 
 On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Par exemple la fonction $\text{eq}_0(x) = 1 \text{ si } x = 0 \text{ et } \text{eq}_0(x) = 0 \text{ sinon}$ est primitive récursive puisque :
 
@@ -352,8 +352,8 @@ $$
 
 {% enddetails %}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La quasi totalité des fonctions mathématiques usuelles sont primitives récursives, donc calculables uniquement en utilisant des boucles de type _"pour chaque"_.
-{% endattention2 %}
+{% endretenir %}
 
 C'est pourquoi on s'est longtemps demandé si calculabilité et fonctions récursives primitives n'étaient pas synonymes. Ce n'est pas le cas, comme nous allons tout de suite le voir.

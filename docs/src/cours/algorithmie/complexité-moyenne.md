@@ -11,9 +11,9 @@ eleventyComputed:
 
 Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La **_complexité en moyenne_** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à toutes les entrées de mêmes paramètres.
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.
 {% endinfo %}
@@ -31,7 +31,7 @@ Soit $A$ un algorithme dont on veut calculer sa complexité par rapport au param
 
 Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La **_complexité en moyenne_** de l'algorithme $A$ pour une entrée de paramètre $n$ est :
 
 <div>
@@ -46,7 +46,7 @@ Avec :
 - $p_n(e)$ la probabilité de choisir $e \in \mathcal{E}_n$ comme entrée de l'algorithme
 - $N(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée $e$ de $\mathcal{E}_n$ a la même probabilité d'être choisie :
 
@@ -77,13 +77,13 @@ On avait déterminé ses complexités par rapport à la longueur $n$ du tableau 
 
 Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableau de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour calculer facilement une complexité en moyenne il faut pourvoir partitionner l'ensemble des entrées un nombre fini de classes dont :
 
 - la complexité est la même pour des entrées de la même classe, 
 - il est facile de calculer la probabilité qu'une entrée fasse partie d'une classe donnée
 
-{% endattention2 %}
+{% endretenir %}
 
 Pour notre problème de recherche, cette partition va correspondre à l'endroit où se trouve la valeur à chercher `x`{.language-} dans le tableau `T`{.language-} : 
 
@@ -154,10 +154,10 @@ La **complexité en moyenne** de l'algorithme `recherche`{.language-} est la mê
 
 On peut comprendre ce résultat ainsi : si notre modèle est équiprobable, `s`{.language-} va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `T`{.language-}, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 On utilisera souvent ce genre de raisonnement si les données sont équiprobable : en moyenne il faut parcourir la moitié des possibilités avant de trouver la solution.
 
-{% endattention2 %}
+{% endretenir %}
 
 ## Intérêt
 
@@ -172,12 +172,12 @@ $$
 La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on exécute l'algorithme (et qu'on a ni beaucoup de chance pour tomber sur la complexité minimale ni pas de chance du tout pour tomber sur la complexité maximale). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 - si la complexité maximale est égale à la complexité en moyenne alors la complexité maximale arrivera souvent
 - si la complexité minimale est égale à la complexité en moyenne alors la complexité minimale arrivera souvent
 - si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 
-{% endattention2 %}
+{% endretenir %}
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).

@@ -54,9 +54,9 @@ Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté n
 Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur. Il est communément admis que tout algorithme peut être écrit en **_pseudo-code_** :
 
 <span id="règles"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un pseudo-code est une succession de lignes qui seront exécutées **_en séquence_** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante.
-{% endnote2 %}
+{% enddefinition %}
 
 Les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement. Ce sont deux notions équivalentes :
 

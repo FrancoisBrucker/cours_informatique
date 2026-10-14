@@ -45,9 +45,9 @@ Un byte ou une suite de byte peut être interprétée de multiples manières :
 - [une instruction machine](https://fr.wikipedia.org/wiki/Langage_machine){.externe},
 - ...
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La signification d'une suite de bytes dépend du contexte. 
-{% endattention2 %}
+{% endretenir %}
 
 Si on les représente parfois directement par leur représentation binaire, leur représentation canonique est sous une forme numérique :
 
@@ -107,11 +107,11 @@ QW XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  64b = 8B  2
 
 Lorsque l'on vous donne ce genre de grandeurs, ayez à l'esprit qu'il n'y a que de l'ordre de $10^{80}$ atomes dans l'univers, qui est environ égal à $2^{256}b = 2^{32}B$ soit 4 gibi byte ou encore 4.3 GB (ce qui est très peu au final).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le nombre de possibilité augmente de façon exponentielle par rapport à sa taille. 
 
 Toutes les particules de l'univers peuvent être nommée par un suite de 256b.
-{% endattention2 %}
+{% endretenir %}
 
 
 {% lien %}

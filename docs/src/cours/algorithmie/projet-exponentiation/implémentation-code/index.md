@@ -71,7 +71,7 @@ Vérifier que vos tests se lancent bien dans le terminal.
 
 Pour les tests, on utilisera les règles suivantes :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Organisation des tests :
 
@@ -79,7 +79,7 @@ Organisation des tests :
 - chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
 - un test doit tester **une unique chose**. On peut se permettre d'avoir plusieurs `assert`{.language-} par fonction de test du moment que ce qu'on test peut être qualifié par un nom précis (la partie `[ce que l'on teste]`{.language-} du nom de la fonction de test)
 
-{% endattention2 %}
+{% endretenir %}
 
 Terminons cette partie en utilisant le débogueur :
 
@@ -129,7 +129,7 @@ Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces _tem
 
 Le protocole de calcul sera alors le suivant :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Pour mesurer le temps d'exécution d'un algorithme :
 
@@ -138,7 +138,7 @@ Pour mesurer le temps d'exécution d'un algorithme :
 3. on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme
 
 La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
-{% endattention2 %}
+{% endretenir %}
 
 ### <span id="temporelle-comment-faire"></span>Comment faire
 
@@ -181,9 +181,9 @@ Le code précédent utilise une fonction du module [`time`{.language-}](https://
 
 Vous devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque l'on calcule des complexités temporelles, on réalise plusieurs mesures pour en rendre la moyenne et ainsi atténuer les fluctuations.
-{% endattention2 %}
+{% endretenir %}
 
 ### Expérimentations
 

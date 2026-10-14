@@ -19,7 +19,7 @@ La programmation objet est un sujet très commenté. Il existe de nombreux cours
 Ce cours devrait vous permettre de vous lancer dans la programmation objet dans tout langage, mais nous illustrerons tous les principes vues en python. Il restera bien sur des choses à découvrir, des concepts avancés ou encore les subtilités d'utilisation des objets dans divers langages, mais après ce cours vous devriez être bien préparé.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le but de la programmation objet est d'écrire du code :
 
 - facile à lire
@@ -28,7 +28,7 @@ Le but de la programmation objet est d'écrire du code :
 
 
 Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'UTILISEZ PAS**. 
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="classes-objets"></span>Classes et objets
 

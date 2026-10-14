@@ -29,11 +29,11 @@ Lorsque l'on répond OUI, il faut donner une raison (le certificat), c'est à di
 
 Pour vérifier qu'il n'y a pas de réponse au problème de décision il n'y a pas de certificat à demander, il faut faire tous les cas.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_Un problème (de décision) est dit_** co-$NP$ s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ **fausse** du problème il existe $t$, appelé **_certificat de_** $e$ tel que $v(e, t)$ soit vrai.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Si l'on change le problème SAT en :
 
@@ -51,11 +51,11 @@ On voit bien que NON et OUI ont des comportements différents à cause du certif
 
 Une définition alternative de co-NP est souvent faite en utilisant les langages :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un langage est dans co-$NP$ si sont complémentaire est dans NP.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple le langage des nombres composés qui correspond au problème de décision :
 

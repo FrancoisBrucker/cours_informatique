@@ -14,7 +14,7 @@ eleventyComputed:
 
 Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_machine de Turing_** est composée :
 
 - d'un **_ruban_** (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère `0` soit le caractère `1`
@@ -27,11 +27,11 @@ Une **_machine de Turing_** est composée :
   - l'état de la machine : $\delta_e : Q \times \\{0, 1\\} \mapsto Q$
   - le caractère de la case du ruban pointée par le curseur : $\delta_c : Q \times \\{0, 1\\} \mapsto \\{0, 1\\}$
   - la position du curseur : $\delta_d : Q \times \\{0, 1\\} \mapsto \\{\leftarrow, \rightarrow\\}$
-    {% endnote2 %}
+    {% enddefinition %}
 
 Une machine c'est donc un **programme** (la fonction de transition) qui agit à partir de **données** (le ruban et l'état interne de la machine). Une machine de Turing n'a d'intérêt que si elle est **exécutée** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'**_exécution_** d'une machine de Turing se déroule comme suit :
 
 1. initialisation :
@@ -45,7 +45,7 @@ L'**_exécution_** d'une machine de Turing se déroule comme suit :
    5. on déplace le curseur d'une case à droite ou à gauche selon la valeur de $\delta_d(q, r)$ (à gauche si $\leftarrow$, à droite si $\rightarrow$)
    6. on change l'état courant de la machine en $\delta_e(q, r)$
    7. retour en 2.1
-      {% endnote2 %}
+      {% enddefinition %}
 
 L'exécution d'une machine de Turing ne s'arrête pas forcément. Elle ne le fait que si elle atteint l'état `STOP`{.language-}, ce qui peut ne jamais arriver.
 
@@ -356,12 +356,12 @@ table:
 
 Mais si la machine s'arrête, le ruban constitue sa **_sortie_**. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La **_sortie_** d'une machine de Turing est constituée la partie finie du ruban entourant le curseur allant de :
 
 - la case contenant le caractère `1` le plus à gauche du curseur ou la case contenant le curseur s'il n'y a que des `0` à gauche du curseur
 - à la case contenant le caractère `1` le plus à droite la case contenant le curseur s'il n'y a que des `0` à droite du curseur
-  {% endnote2 %}
+  {% enddefinition %}
 
 Par exemple si le ruban est :
 
@@ -388,13 +388,13 @@ Cette définition de sortie n'est pas totalement satisfaisante puisqu'elle est v
 Avant de définir l'**_entrée_** d'une machine de Turing, commençons par une propriété anodine mais avec de grosses conséquences :
 
 <span id="addition-turing"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Si $M$ et $M'$ sont deux machines de Turing, on définit la machine de Turing $M+M'$ en suivant la procédure suivante :
 
 - on s'assure que les états de $M$ et les états de $M'$ (à part `START`{.language-} et `STOP`{.language-}) soient différents
 - on renomme l'état `STOP`{.language-} de la machine $M$ en `START'`{.language-}
 - on renomme l'état `START`{.language-} de la machine M' en `START'`{.language-}
-  {% endnote2 %}
+  {% enddefinition %}
 
 La définition ci-dessus nous permet d'exécuter à la suite deux machine de Turing, l'état de fin de la première machine devenant l'état de départ de la suivante.
 
@@ -540,7 +540,7 @@ table:
 
 Ce cas étant très courant, plutôt que de concaténer une machine qui initialise le ruban à la machine principale, on donne la possibilité de donner une entrée à l'exécution d'une machine :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le **_paramètre d'entrée_** de l'exécution d'une machine de Turing $M$ est une suite **finie** $E$ (pouvant être vide) de caractères `0` et `1`.
 
 Lors de l'initialisation de l'exécution de la machine on rajoute deux étapes :
@@ -549,7 +549,7 @@ Lors de l'initialisation de l'exécution de la machine on rajoute deux étapes :
 2. positionnement du curseur sur la case contenant le premier élément de la chaîne.
 
 L'exécution de la machine $M$ avec l'entrée $E$ s'écrit : $M(E)$
-{% endnote2 %}
+{% enddefinition %}
 
 Remarquez bien que :
 
@@ -615,9 +615,9 @@ table:
 
 Attention cependant, une machine peut s'arrêter pour certaines entrées et pas d'autres. On défini alors :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un machine de Turing $M$ **_accepte_** la chaîne de caractères $E\in \\{0, 1\\}^\star$ (qui peut être vide) si l'exécution de $M(E)$ s'arrête. Par abus de notation, on associera alors $M(E)$ à sa sortie.
 
 Le **_langage_** de $M$ est l'ensemble de toutes les chaînes de caractères $E\in \\{0, 1\\}^\star$ qu'elle accepte.
-{% endnote2 %}
+{% enddefinition %}

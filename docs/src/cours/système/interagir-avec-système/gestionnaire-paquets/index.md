@@ -55,11 +55,11 @@ Lorsque l'on utilise son mac pour le développement, il faut souvent installer t
 Vous pourrez ensuite utiliser des commandes comme `brew install python3` pour installer python ou encore `brew install wezterm` pour les plus geek d'entre nous.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew](https://brew.sh/index_fr){.externe} pour le faire.
 
-{% endattention2 %}
+{% endretenir %}
 
 ## Linux
 

@@ -19,20 +19,20 @@ De ces deux constatations, on a déduit trois règles fondamentales d'un code ut
 
 Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres éditeurs en lisant la doc.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que _ça suffit bien pour ce que je veux faire_. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
-{% endattention2 %}
+{% endretenir %}
 
 ## Un projet
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un projet informatique est un dossier contenant :
 
 - le code du projet,
 - les tests du code du projet,
 - un moyen clair de l'exécuter,
 
-{% endnote2 %}
+{% enddefinition %}
 
 On va créer un projet pour comprendre comment tout ça fonctionne :
 
@@ -46,18 +46,18 @@ On va créer un projet pour comprendre comment tout ça fonctionne :
 
 Vscode comprend que vous êtes entrain de créer un projet car vous ouvrez un dossier. Il sera le départ de votre projet et vscode s'appelle _workspace_.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers et de dossier doivent êtres **sans espaces et sans accents**.
-{% endattention2 %}
+{% endretenir %}
 
 ### Fichier python
 
 Un projet étant fait pour être exécuté, créons tout de suite le moyen de l'exécuter :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un projet informatique python s'exécute en demandant à l'interpréteur d'exécuter le fichier `main.py`{.fichier} présent à la racine du code.
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 Faisons le :
@@ -107,10 +107,10 @@ print("bonjour les gens !")
 
 Un projet python avec un fichier `main.py`{.interne} est le moyen classique d'exécuter un fichier. Pour qu'un utilisateur sache ce qu'il exécute, on ajoute un fichier de documentation de projet :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un projet informatique doit avoir une documentation qui permettent aux utilisateur de savoir ce qu'ils exécute et comment le faire. L'usage veut que ce fichier soit écrit en markdown et s'appelle `README.md`{.fichier}.
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 [Ce que doit contenir un fichier readme selon github](https://docs.github.com/fr/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes){.externe}.
 {% endinfo %}
@@ -196,16 +196,16 @@ print("bonjour les gens !")
 
 Ce qui est non seulement plus joli mais de plus respecte la PEP8.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Votre code doit **toujours** être joli. Vous devez utiliser black le plus souvent possible. 
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Toute action qui se fait souvent va avoir son raccourci clavier. Regardez le votre. Chez moi (_cf._ le screenshot) c'est option shift F. 
 {% endinfo %}
 
 ## Séparer code et main
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un projet c'est trois choses d'égale importance :
 
@@ -213,7 +213,7 @@ Un projet c'est trois choses d'égale importance :
 - le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
 - les tests : ce qui garantit que le code fonctionne
 
-{% endnote2 %}
+{% enddefinition %}
 
 Pour séparer les différentes parties vous allez :
 
@@ -253,9 +253,9 @@ La notation pointée se lit alors : exécute le nom `bonjour` définit dans `fon
 Ne **jamais jamais jamais** utiliser `from fonctions import *`{.language-} qui importe tous les noms définis dans `fonctions.py`{.fichier}. On ne sait pas vraiment ce qui a été importé en lisant `fonctions.py`{.fichier}. : notre code n'est pas lisible ! Le gain d'écriture de `*`{.language-} plutôt que `bonjour`{.language-} sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`{.language-}...
 {% endattention %}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**. On préférera toujours **la lisibilité à la rapidité**.
-{% endattention2 %}
+{% endretenir %}
 
 ## Tests
 
@@ -264,9 +264,9 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 On reprend [ce que l'on a déjà vu](../tests-unitaires/) pour finaliser notre projet :
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il faut au moins un fichier de test par fichier du projet hors main. Par défaut ce fichier s'appelle `test_<nom>.py`{.fichier} qui teste toutes les fonctions du fichier `<nom>.py`{.fichier}
-{% endattention2 %}
+{% endretenir %}
 
 Notre projet contient pour l'instant une fonction qui rend une constante. Tester une constante n'a pas de sens, modifions notre code pour que notre fonction ait plus de sens :
 

@@ -71,6 +71,8 @@ All are paired shortcodes (content between open/close tags, rendered as markdown
 | `{% info %}...{% endinfo %}` | Informational callout (cyan) |
 | `{% attention %}...{% endattention %}` | Warning callout |
 | `{% note %}...{% endnote %}` | Note callout |
+| `{% definition "Title" %}...{% enddefinition %}` | Definition callout |
+| `{% retenir %}...{% endretenir %}` | "À retenir" callout |
 | `{% faire %}...{% endfaire %}` | Action/task callout |
 | `{% exercice %}...{% endexercice %}` | Exercise block |
 | `{% details "Title" %}...{% enddetails %}` | Collapsible section |

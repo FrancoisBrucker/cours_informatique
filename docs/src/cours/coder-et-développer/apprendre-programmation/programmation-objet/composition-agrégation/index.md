@@ -13,12 +13,12 @@ Composition et agrégation permettent de lier des classes entres elles et plus p
 
 Ce qui les distingue :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 - **_agrégation_** : quand les objets utilisés sont créés en dehors de la classe,
 - **_composition_** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
@@ -255,9 +255,9 @@ class Panier:
 
 Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera **toujours** cette solution qui est la plus robuste.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une bonne façon de programmer est d'**utiliser par défaut uniquement des objets non modifiables** et que si le besoin s'en fait sentir de les rendre modifiables.
-{% endattention2 %}
+{% endretenir %}
 
 Il ~nous~ vous reste à modifier les tests :
 

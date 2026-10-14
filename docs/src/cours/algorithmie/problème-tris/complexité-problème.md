@@ -13,9 +13,9 @@ Nous allons nous intéresser à la complexité du problème du tri, indépendamm
 
 Commençons par une remarque d'importance :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
-{% endattention2 %}
+{% endretenir %}
 
 Par exemple, pour un tableau à trois éléments :
 

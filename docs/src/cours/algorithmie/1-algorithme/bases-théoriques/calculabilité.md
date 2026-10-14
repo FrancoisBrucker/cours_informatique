@@ -20,13 +20,13 @@ Vous pouvez [consulter ce lien](https://perso.ens-lyon.fr/pierre.lescanne/PUBLIC
 
 ## Algorithmes et nombres
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un nombre $x$ est **_calculable_** s'il existe un algorithme $A$ tel que :
 
 - $A(0)$ rend la partie entière de $x$
 - $A(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Nombres entiers et rationnels
 
@@ -157,9 +157,9 @@ Contrairement à une croyance largement répandue en Europe, on sait que $\pi$ e
 
 En conclusion :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La quasi-totalité des nombres réels utilisés en mathématiques en tant que tels ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.
 {% endinfo %}
@@ -201,10 +201,10 @@ Programme :
 
 De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 42 \cdot n$ ou encore $f(n) = 2 \cdot n$ sont des algorithmes. On dit que ces fonctions sont **_calculables_** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est **_calculable_** s'il existe un algorithme qui permet de la calculer.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement incluse dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :
 
@@ -224,9 +224,9 @@ On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre
 
 Comme il existe [autant d'algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes) :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
-{% endattention2 %}
+{% endretenir %}
 
 ### Exemple de fonction calculable
 
@@ -263,11 +263,11 @@ Si $a$ et $b$ sont deux entiers positifs et tels que $\min(a, b) > 0$ alors : $\
 
 Un cas d'usage classique est une fonction qui admet [un développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries){.externe} comme quasi toutes les fonctions mathématiques usuelles (comme $x \mapsto \cos(x)$, $x \mapsto \sin(x)$, $x \mapsto \sqrt{x}$, etc)  :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Si vous pensez à une fonction il y a toutes les chances qu'elle soit calculable.
 
-{% endattention2 %}
+{% endretenir %}
 
 ### Cas limites
 
@@ -317,9 +317,9 @@ Programme :
 
 Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe} et donc on ne sait pas lequel des deux algorithmes est le bon.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
-{% endattention2 %}
+{% endretenir %}
 
 On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car elles sont très gourmandes en temps de calcul.
 
@@ -329,7 +329,7 @@ On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont pa
 
 La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi){.externe} est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi){.externe} est définie pour tous entiers positifs $x$, $y$ et $z$ telle que :
 
@@ -343,7 +343,7 @@ $$
 \right.
 $$
 </div>
-{% endnote2 %}
+{% enddefinition %}
 
 Pour prouver que cette fonction est calculable il faut montrer deux choses :
 
@@ -436,11 +436,11 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez-le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquées.
 
 Lorsque vous essayez de résoudre un problème avec un algorithme, essayez toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt que la version simple.
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="non-calculable"></span>Non calculabilité
 
@@ -472,9 +472,9 @@ Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le fair
 
 La complexité de Kolmogorov est un exemple classique de fonction non calculable.
 
-{% note2 "**Définition**" %}
+{% definition %}
 La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est l'affichage à l'écran du nombre $n$
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 La valeur de la fonction va dépendre de la langue utilisée bien sûr. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
 {% endinfo %}

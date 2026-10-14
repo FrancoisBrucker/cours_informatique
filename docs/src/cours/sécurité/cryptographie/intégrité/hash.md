@@ -23,23 +23,23 @@ eleventyComputed:
 
 Une fonction de hash cryptographique doit être conçue pour éviter les collisions, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ est une fonction de **_hash cryptographique_** si elle est résistante aux collisions.
 
 Tout algorithme efficace ne peut rendre un couple $(x, x')$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.
-{% endnote2 %}
+{% enddefinition %}
 
 On peut relâcher la condition de résistance à la collision en :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ est **_résistant à la pré-image_** si étant donné $y$, tout algorithme efficace ne peut trouver $x$ tel que $H(x) = y$ qu'avec un avantage négligeable.
-{% endnote2 %}
+{% enddefinition %}
 
 Ou encore :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ est **_résistant à la seconde pré-image_** si étant donné $x$, tout algorithme efficace ne peut trouver $x'$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.
-{% endnote2 %}
+{% enddefinition %}
 
 La résistance à la seconde pré-image condition étant plus restrictive que la résistance à la pré-image.
 

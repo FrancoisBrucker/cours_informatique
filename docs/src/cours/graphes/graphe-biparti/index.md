@@ -118,10 +118,10 @@ Or $\sum_{u\in U} \delta(u) = k\cdot \vert U\vert$ et $\sum_{v\in V} \delta(u) =
 
 <span id="définition-biparti-complet"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_graphe biparti complet_** est le graphe $K_{p,q} = (V_p \cup V_q, V_p \times V_q)$, avec $\vert V_p \vert = p$ et $\vert V_q \vert = q$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Le graphe $K_{2, 3}$ est par exemple :
 
@@ -161,14 +161,14 @@ On en a parfois besoin, donc autant les définir ici :
 
 <span id="définition-k-parti"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On appelle **_graphe $k$-parti_** tout graphe admettant une partition de ses sommets en $k$ stables.
-{% endnote2 %}
-{% note2 "**Définition**" %}
+{% enddefinition %}
+{% definition %}
 
 On appelle **_graphe $k$-parti complet_** le graphe Le graphe $K_{p_1,\dots, p_k} = (\cup_{i} V_{p_i}, \\{uv \vert u\in V_{p_i}, v\in V_{p_j}, i\neq j\\})$
-{% endnote2 %}
+{% enddefinition %}
 
 Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'œil à la page suivante :
 
@@ -248,21 +248,21 @@ Si chaque couple d'ordinateur doit s'échanger **exactement une** donnée (en é
 
 Ce problème peux se décrire comme un problème de graphe. Commençons par définir une partition d'un graphe.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_partition_** d'un graphe $G=(V, E)$ est une suite $G_i=(V, E_i)$, avec $1\leq i \leq m$ telle que :
 
 - $\cup_{1\leq i \leq m} E_i = E$
 - $E_i \cap E_j = \varnothing$ pour tout $1\leq i \neq j \leq m$
 
-{% endnote2 %}
+{% enddefinition %}
 
 La définition explicite le fait que l'on partitionne l'ensemble des arêtes d'un graphe. On spécifie souvent la famille de graphe à laquelle la partition doit appartenir (pour nous des graphes bipartis) et comme tout graphe à $n$ sommet est inclut dans $K_n$ la clique à $n$ sommet, c'est lui que l'on va chercher à partitionner.
 
 Notre problème de partition est :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Combien faut-il au minimum de graphes bipartis (complets) pour partitionner $K_n$ ?
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Comme il faut minimiser le nombre d'éléments de la partition et que chaque arête du graphe complet doit être utilisé, les graphes bi-partis sont forcément complets.
 {% endinfo %}
@@ -275,9 +275,9 @@ On peut bien sur faire mieux, comme le montre l'exemple suivant qui partitionne 
 
 Vous avez peut-être remarqué, mais la partition ci-dessus n'est pas minimale, on peut faire mieux grace aux étoiles :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_étoile_** est un graphe $G = (V, E)$ tel qu'il existe $x\in V$ avec $E = \\{xy | y \in V\backslash \\{x\\}\\}$
-{% endnote2  %}
+{% enddefinition  %}
 
 On peut toujours décomposer $K_n$ en $n-1$ étoiles $G_i = (V_i, E_i)$ avec $1\leq i < n$ :
 

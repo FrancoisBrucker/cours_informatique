@@ -160,7 +160,7 @@ Donnons une valeur à la fonction d'Ackermann. On doit cette évaluation à [D. 
 
 On définit cette opération comme suit :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $a$ et $b$ deux entiers strictement positif. On note :
 
 <div>
@@ -176,7 +176,7 @@ $$
 </div>
 
 On notera aussi le cas limite $a \uparrow^{(k)} 0 = 1$ pour tout entier $k$.
-{% endnote2 %}
+{% enddefinition %}
 
 C'est une notation extrêmement compacte pour écrire des monstres. Par exemple :
 
@@ -192,9 +192,9 @@ Ces nombres sont énormes ! Rien que les écrire va prendre du temps. Si l'on su
 - 1.6s pour $2 \uparrow^{(2)} 4$
 - $2^{65500}$ millénaires pour $2 \uparrow^{(3)} 4$
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Ce n'est pas parce que l'on peut calculer quelque chose qu'on peut le faire en pratique, du moins si on est pas immortel.
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Lorsque l'on vous donne ce genre de grandeurs, ayez à l'esprit qu'il n'y a que de l'ordre de $10^{80}$ atomes dans l'univers, ce qui est bien plus petit que $2^{65500}$.
 

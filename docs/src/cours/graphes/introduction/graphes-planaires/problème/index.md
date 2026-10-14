@@ -12,19 +12,19 @@ eleventyComputed:
 
 Un graphe est une structure abstraite. Lorsque l'on veut la représenter graphiquement, il faut la dessiner. Cette opération instinctive peut s'écrire formellement ainsi :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **dessin** d'un graphe $G= (V, E)$ est un couple de fonctions :
 
 - une injection $f: V \rightarrow \mathbb{R}^2$ associant les sommets à des points du plan (les sommets sont distincts),
 - une fonction $g: E \rightarrow \mathscr{C}$ associant les arêtes à des **_courbes_** $\gamma_{xy}$ allant d'un sommet à l'autre ($\gamma_{x, y}(0) = f(x)$ et $\gamma_{x, y}(1) = f(y)$)
 - pour toute courbe $\gamma_{xy}$, $\gamma_{xy}(s) \notin f(V)$ pour tout $0<s <1$.
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 La dernière condition n'est pas restrictive puisqu'on peut toujours modifier d'un epsilon une courbe pour qu'elle évite un nombre finis de points.
 {% endinfo %}
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_courbe_** est une fonction $\gamma$ continue de $[0, 1]$ dans $\mathbb{R}^2$ telle que $\gamma(s) \neq \gamma(t)$ si $s\neq t$ et $\\{s, t\\} \neq \\{0, 1\\}$.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple le dessin ci-dessous des [graphes de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe} et de $K_4$ :
 
@@ -59,17 +59,17 @@ Par défaut, on ne considérera ici que des graphes connexes.
 
 Nous allons nous intéresser ici à la représentation d'un graphe avec le moins d'**_intersections_**.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_intersection_** d'un dessin dessin $(f, g)$ d'un graphe $G= (V, E)$ est un point d'intersection de deux courbes représentant des arêtes. C'est à dire un point $p$ tel que $p = g(xy)(s) = g(zt)(t)$
-{% endnote2 %}
+{% enddefinition %}
 
 [Le dessin précédent](#intersections) possède 5 intersections.
 
 Les dessins sans intersections sont dit planaires :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_dessin planaire_** d'un graphe est un dessin sans intersections.
-{% endnote2 %}
+{% enddefinition %}
 
 On a alors clairement que :
 
@@ -118,9 +118,9 @@ On va ici supposer que l'on a un dessin planaire d'un graphe $G$.
 
 Un outil géométrique important pour étudier les graphes planaires est [la courbe de Jordan](https://www.bibmath.net/dico/index.php?action=affiche&quoi=./c/courbejordan.html){.externe} et son [célèbre théorème associé](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Jordan){.externe} :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_courbe de Jordan_** est une courbe $\gamma$ telle que $\gamma(0) = \gamma(1)$.
-{% endnote2 %}
+{% enddefinition %}
 
 Ce qui appliqué aux dessins planaire donne :
 
@@ -178,9 +178,9 @@ Et en analysant les autres arêtes il n'y a pas assez de place à l'intérieur e
 
 Ceci nous donne une réponse à notre première question : NON tous les graphes n'admettent pas de dessin planaire. Ce qui nous permet de définir les **_graphes planaires_** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe est **_planaire_** s'il admet un dessin planaire.
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Tous les dessins d'un graphe ne sont bien sur pas planaires, comme le montre les 2 dessins de $K_4$.
 {% endinfo %}
@@ -194,24 +194,24 @@ Ceci nous donne aussi une technique de preuve pour savoir si un graphe hamiltoni
 
 ### Faces
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un ensemble $A \subseteq \mathcal{R}^2$ est connexe si pour tous $x, y \in A$ il existe une courbe $\gamma$ telle que :
 
 - $\gamma(0) = x$, $\gamma(1) = y$
 - $\gamma([0, 1]) \subseteq A$
-{% endnote2 %}
-{% note2 "**Définition**" %}
+{% enddefinition %}
+{% definition %}
 Les **_faces_** d'un dessin planaire $(f, g)$ d'un graphe connexe $G=(V, E)$ sont les régions connexes de $\mathcal{R}^2 \backslash (\cup_{xy \in E}g(xy)([0, 1]))$.
-{% endnote2 %}
+{% enddefinition %}
 
 Les faces sont bien ce que l'on pense qu'elles sont, si on n'oublie pas la face extérieur (infinie). Le graphe suivant à donc 3 faces :
 
 ![faces](./faces.png)
 
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_La frontière d'une face_** est le cycle de $G$ qui la borde.
-{% endnote2 %}
+{% enddefinition %}
 
 On remarquer que pour toute représentation planaire il existe une unique face infinie.
 

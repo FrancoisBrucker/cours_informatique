@@ -36,9 +36,9 @@ L.queue ← ListeChaînée<entier>{tête: 2}
 
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une liste chaînée est un type récursif et n'a pas de notion de capacité ou de longueur : une liste chaînée est potentiellement infinie
-{% endattention2  %}
+{% endretenir  %}
 
 ## Complexité
 

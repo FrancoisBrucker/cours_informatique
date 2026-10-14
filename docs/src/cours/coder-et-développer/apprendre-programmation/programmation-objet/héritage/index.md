@@ -16,7 +16,7 @@ Le mécanisme d'héritage permet d'organiser les classes entre elles et de réut
 
 ## Définitions
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_L'héritage_** rend compte de la relation _est un_ entre classes. La classe $B$ hérite de $A$ si, de façon équivalente :
 
 - $B$ est un cas particulier de $A$,
@@ -28,7 +28,7 @@ On dira que :
 - $A$ est **_la classe mère_** de $B$
 - $B$ est **_une classe fille_** de $A$ 
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple (ils seront développés par la suite) :
 
@@ -44,10 +44,10 @@ Par exemple (ils seront développés par la suite) :
 
 ### UML
 
-{% note2 "**Définition**" %}
+{% definition %}
 La flèche qui montre la relation d'héritage est :
 ![flèche héritage](flèche_héritage.png)
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 

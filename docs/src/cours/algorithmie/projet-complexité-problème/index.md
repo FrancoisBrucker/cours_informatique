@@ -19,14 +19,14 @@ Nous montrerons ici quelques problème ainsi que des algorithmes permettant d'at
 
 Le but de cet exercice est d'étudier les **_cols_** d'un tableau.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_col_** d'un tableau d'entiers $T$ de taille $n > 1$ est un indice $0 \leq i < n$ tel que :
 
 - soit $i = 0$ et $T[i] \leq T[1]$
 - soit $i = n-1$ et $T[i] \leq T[n-2]$
 - soit $0 < i < n-1$ et $T[i] \leq \min(T[i-1], T[i+1])$
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Existence
 
@@ -418,22 +418,22 @@ Le lecteur averti se sera rendu compte que c'est exactement notre complexité.
 
 Nous allons étudier le problème algorithmique suivant :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Une suite $(a_i)_{1\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
 
 - les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
 - $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
 
-{% endnote2 %}
+{% enddefinition %}
 
-{% note2 "**Problème algorithmique**" %}
+{% definition "**Problème algorithmique**" %}
 
 - Nom : Point fixe
 - Entrée : une suite $(a_i)_{1\leq i}$ ultimement périodique
 - Sortie : $\mu$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Cet problème est magnifique car :
 
@@ -658,14 +658,14 @@ algorithme mu(a: (entier) → entier) → entier:
 
 L'algorithme du lièvre et de la tortue est très utilisé pour trouver des points fixes de fonctions.
 
-{% note2 "**Problème algorithmique**" %}
+{% definition "**Problème algorithmique**" %}
 
 - Nom : Point fixe
 - Entrées :
   - $f: \mathbb{N} \to [\\![ 1, n]\\!]$
 - Sortie : Un couple d'entiers $x$ et $y$ tels que $f(x) = f(y)$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Commençons par lier nos fonctions à des suite ultimement périodiques :
 
@@ -731,7 +731,7 @@ algorithme point_fixe(f: (entier) → entier, a1: entier)  # on suppose que a1 �
 
 On considérera toujours en algorithmie que lorsque l'on manipule des entiers les opérations de sommes et de multiplications sont en $\mathcal{O}(1)$ opérations. Si cette approximation fonctionne lorsque les nombres sont bornés (sur 64 bits usuellement), ce n'est bien sur pas possible si les nombres deviennent très grands où il faut considérer leur représentation interne.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On note $u$ la bijection $u: \\{0, 1\\}^\star \rightarrow \mathbb{N}$ telle que :
 
@@ -742,7 +742,7 @@ $$
 </div>
 
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
-{% endnote2 %}
+{% enddefinition %}
 
 Ainsi :
 

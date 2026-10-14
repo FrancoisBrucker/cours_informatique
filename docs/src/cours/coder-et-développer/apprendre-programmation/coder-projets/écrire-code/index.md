@@ -16,10 +16,10 @@ Modifier du code est ce vous ferez le plus souvent : on passe son temps à modif
 
 Il en découle que :
 
-{% attention2 "**À retenir**" %} 
+{% retenir %} 
 Vous allez passer plus de temps à **lire** du code qu'à en **écrire**
 
-{% endattention2 %}
+{% endretenir %}
 
 Comme il faut que : *ce qui se fait souvent doit se faire rapidement*, on utilisera une série de règles et de méthodes pour lire aisément son code, se faire comprendre aisément de ses partenaires et - surtout - s'assurer de son bon fonctionnement.
 
@@ -35,9 +35,9 @@ Comme il faut que : *ce qui se fait souvent doit se faire rapidement*, on utilis
 
 Des bonnes pratiques découlent une série de méthodes et pratiques utilisé pour écrire _du code propre qui fonctionne_.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Selon Kent Beck (grand développeur), le but de la programmation est d'écrire du : _**Clean code that works**_
-{% endattention2 %}
+{% endretenir %}
 
 
 ### Séparer fonctions et exécution

@@ -99,14 +99,14 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 
 Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_problème_** est un texte composé de 3 parties :
 
 - **Nom** : le nom du problème
 - **Entrées** : les paramètres dont on a besoin
 - **Sortie** : la solution recherchée
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 
@@ -124,13 +124,13 @@ Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par
 
 <span id="problème-algorithmique"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
 - donne en sortie la solution recherchée.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. 
 
@@ -934,9 +934,9 @@ Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'i
 
 Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet){.externe} c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'une machine de Turing peut faire.
-{% endnote2 %}
+{% enddefinition %}
 
 Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing que ce modèle peut calculer tous les algorithmes. Pour montrer qu'un modèle est Turing-complet, on peut soit écrire un simulateur de machine de Turing (pour un langage comme python par exemple) ou, comme on l'a vu avec le pseudo-assembleur, montrer que l'on possède :
 

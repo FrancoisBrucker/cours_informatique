@@ -16,7 +16,7 @@ Seconde partie du projet TDD.
 
 On rappelle le principe du TDD :
 
-{% note2 "**Principe du TDD**" %}
+{% definition "**Principe du TDD**" %}
 
 1. **rouge** :
    - écrire *rapidement* un *petit* test
@@ -28,7 +28,7 @@ On rappelle le principe du TDD :
    - élimine les duplications tout en conservant la validité des tests.
 
 La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
-{% endnote2 %}
+{% enddefinition %}
 
 Cela va être bien présent dans cette partie ou l'on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera **tout en conservant le vert**.
 

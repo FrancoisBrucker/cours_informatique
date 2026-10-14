@@ -13,9 +13,9 @@ Outre les questions, j'ai noté le fait que je puisse :
 - lancer le projet en tapant `python main.py` et qu'il s'exécute sans planter. 
 - exécuter les tests en tapant `python -m pytest` et que les tests s'exécutent. Des tests peuvent échouer (le correcteur voit sur quoi vous travailliez, c'est ok) mais votre code doit s'exécuter sans erreur de python. 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Vous devez toujours vous assurer d'avoir un projet fonctionnel, même si vous n'avez pas fini le test. Si vous  êtes entrain d'écrire une fonction et qu'elle n'est pas terminée ne l'incluez pas dans le programme principal. Il est en revanche tout à fait autorisé de laisser des tests qui échouent lorsque l'on est entrain de coder une fonction du moment que les tests s'exécutent.
-{% endattention2 %}
+{% endretenir %}
 
 ### Ventilation des points
 

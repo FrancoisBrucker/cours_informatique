@@ -34,7 +34,7 @@ Ces deux moyens d'accès ont chacun des avantages et ds inconvénients selon le 
 
 On privilégiera l'accès direct lorsque l'on cherche à accéder **rapidement** à une donnée parmi un nombre constant de donnée, c'est à dire pour les accès mémoires, et l'accès séquentiel pour tout le reste.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Dans le monde unix, une donnée pouvant être accédée de façon séquentielle est un ***fichier***. On y accède via 5 méthodes :
 
 - ***open*** qui prépare le fichier à être accédé **soit** en lecture **soit** en écriture
@@ -42,7 +42,7 @@ Dans le monde unix, une donnée pouvant être accédée de façon séquentielle 
 - ***read*** qui retourne des données du fichier
 - ***write*** qui envoie des données au fichier
 - ***seek*** qui permet de gérer la position dans le fichier
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 La méthode **seek** permet d'accéder à une position particulière dans le fichier (nommée `offset`), comme on le ferait avec une donnée à accès direct, mais :
 

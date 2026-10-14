@@ -13,7 +13,7 @@ eleventyComputed:
 
 Lorsqu'un algorithme doit gérer un _flux_ de données (des données à traiter vont arriver tout au long de son exécution), il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une structure de données `Flux<T>`{.language-} permettant de gérer un flux de données de type `T`{.language-} (tout type fonctionne) doit avoir au moins deux méthodes :
 
 - `(f: Flux<T>) push(donnée: T) → ∅`{language-pseudocode} : une méthode de **stockage** d'une donnée dans la structure
@@ -24,7 +24,7 @@ Et deux attributs :
 - `longueur: entier`{language-} permettant de connaître le nombre de données actuellement stockées dans la structure
 - `capacité: entier`{language-} permettant de connaître le nombre total de données que peut stocker la structure
 
-{% endnote2 %}
+{% enddefinition %}
 
 Les structures de gestion de flux de données se distinguent selon que la donnée rendue soit :
 

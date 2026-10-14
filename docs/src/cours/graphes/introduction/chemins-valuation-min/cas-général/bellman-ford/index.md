@@ -21,7 +21,7 @@ Cet algorithme, appelé [_"algorithme de Bellman-Ford"_](https://fr.wikipedia.or
 
 On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare de passage.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_tronçon_** entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gare intermédiaire.
 
@@ -30,11 +30,11 @@ Pour un ensemble de gares $G$, on note $T$ la relation telle que :
 - $T[x][y]$ est le temps pour relier la gare $x$ à la gare $y$ s'il existe un tronçon entre elles,
 - $T[x][y]$ vaut $+\infty$ s'il n'existe pas de tronçon entre la gare $x$ et la gare $y$,
 - $T[x][x]$ vaut 0 pour toute gare $x$
-{% endnote2 %}
+{% enddefinition %}
 
 Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_chemin_** entre deux gares $x$ et $y$ est soit :
 
@@ -44,7 +44,7 @@ Un **_chemin_** entre deux gares $x$ et $y$ est soit :
   - les gares $g_{i-1}$ et $g_{i}$ sont différentes et reliées par un tronçon pour tout $1 < i \leq n$
   - pour un chemin $g_1\dots g_{i-1}g_i\dots g_n$ entre $g_1$ et $g_n$, les gares $g_2$ à $g_{n-1}$ sont dites **_gares de passage_**
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Problème à résoudre
 
@@ -164,14 +164,14 @@ La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ l
 
 En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconques. On aimerait avoir une relation $C$ nous permettant de savoir si l'on peut voyager de la gare $x$ à la gare $y$ :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pour un ensemble de gares $G$, on note $C$ **_la relation chemin_**  telle que :
 
 - $C[x][y]$ est **vrai** s'il existe un chemin entre les gares $x$ et $y$
 - $C[x][y]$ est **faux** s'il n'existe pas de chemin entre les gares $x$ et $y$
 - $C[x][x]$ est **vrai** pour toute gare $x$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.
 

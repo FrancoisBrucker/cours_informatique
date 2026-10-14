@@ -104,14 +104,14 @@ $$
 
 On va montrer que :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour trier un tableau de longueur $n$, les complexités de `rapide`{.language-} sont :
 
 - la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,
 - la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,
 - la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,
 
-{% endattention2 %}
+{% endretenir %}
 
 Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.
 

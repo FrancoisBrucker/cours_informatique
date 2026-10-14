@@ -198,9 +198,9 @@ g(x)
 
 Tout en conservant la récursive primalité de $f$ et $g$.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La fonction de couplage de Cantor est l'équivalent pour les entiers de ce qu'on a déjà vu pour les chaines de caractères (toute chaîne de caractères peut s'écrire en une suite de `0` et de `1`) : toute suite finie d'entiers peut être représentée par un entier.
-{% endattention2 %}
+{% endretenir %}
 
 ## Composition et Séquentialité
 
@@ -213,9 +213,9 @@ g(x)
 
 Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../../bases-théoriques/calculabilité/récursive-primitive/#composition). En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f\circ g(x)$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.
-{% endattention2 %}
+{% endretenir %}
 
 On a alors que le code :
 
@@ -336,12 +336,12 @@ La proposition précédente montre deux choses :
 
 Pour pouvoir capter le pseudo-code que l'on écrit avec des boucles `tant que` il faut ajouter une opérations sur les fonctions récursives primitives.
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_Les fonctions récursives_** sont toutes les fonctions que l'on peut obtenir en combinant les fonctions de base (zéro, projections et successeur) en utilisant les règles de composition, de récursion et de **_minimisation_**.
 
-{% endnote2 %}
+{% enddefinition %}
 <div id="minimisation"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $f: \mathbb{N}^{n+1} \to \mathbb{N}$. La **_minimisation_** de $f$ est notée $\mu^n(f)$ et vaut :
 
 <div>
@@ -353,7 +353,7 @@ $$
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Il est clair que s'il existe un algorithme pour créer $f$, l'algorithme suivant fonctionne pour créer la minimisation :
 
@@ -371,9 +371,9 @@ Programme :
 
 On voit que cet algorithme ne rend une réponse que s'il existe $x$ tel que $f(x, x_1, \dots, x_n) = 0$. Ceci est normal puisque la fonction de minimisation n'est possible que pour ces valeurs de $(x_1, \dots, x_n)$.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Contrairement aux fonction récursives primitives, les fonctions récursives ne sont plus obligatoirement définies sur tout $\mathbb{N}^n$.
-{% endattention2 %}
+{% endretenir %}
 
 Le même raisonnement que pour les blocs `pour chaque` nous permet d'écrire :
 

@@ -27,14 +27,14 @@ Python structure son code en [_blocs_ d'instructions](./#bloc) qui permettent di
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en blocs.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Les **_blocs_** en python permettent de grouper des lignes de code qui seront exécutées ensemble sous certaines conditions. Un bloc est toujours défini de la même manière :
 
 - Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`{.language-}
 - Les instructions le constituant.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
 
@@ -65,10 +65,10 @@ Les blocs peuvent bien sur se combiner :
     <instruction n du bloc A>
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'indentation permet **toujours** de s'y retrouver.
 
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 <span id="interpréteur-blocs"></span>
 
@@ -353,7 +353,7 @@ for x in range(10):
 
 Affichera les 10 premiers entiers (de 0 à 9). Le résultat de `range(10)`{.language-} est un objet de type range, qui est fait pour être utilisé avec l'instruction for.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 On peut utiliser la fonction `range`{.language-} de trois façons différentes qu'elle soit appelée avec un, deux ou trois paramètres :
 
@@ -361,7 +361,7 @@ On peut utiliser la fonction `range`{.language-} de trois façons différentes q
 - de `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}. Par exemple `range(4, 10)`{.language-} rendra un itérateur de la suite des 6 entiers allant de 4 à 9.
 - `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}, avec un saut de `troisième paramètre`{.language-}. Par exemple `range(10, -1, -1)`{.language-} rendra un itérateur de la suite 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.
 
-{% endattention2 %}
+{% endretenir %}
 {% exercice %}
 Écrire un programme qui affiche la table de 9 :
 

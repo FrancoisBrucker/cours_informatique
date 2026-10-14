@@ -345,11 +345,11 @@ On peut lui associer **en temps polynomial** la conjonction de clauses définie 
 
 Le problème SAT est donc le problème le plus dur de NP (il est clair que SAT est donc NP) puisqu'il est supérieur polynomialement à tout autre : le résoudre permet de résoudre tous les autre problèmes de $NP$. Ce n'est pas le seul problème dans ce cas, puisqu'on a montré que SAT ≤ 3-SAT et il y en a plein d'autres.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Les problèmes de décision $d$ de $NP$ tels que SAT ≤ d sont dit **_NP-complets_**.
 
 Les problèmes $p$ qui ne sont pas dans NP et tels que SAT ≤ p sont dit **_NP-difficiles_**.
-{% endnote2 %}
+{% enddefinition %}
 
 Les problèmes NP-complets signifient qu'ils sont universels : les solutions peuvent apparaître partout ; ils n'ont pas de structure qui permettent d'inférer une solution par rapport à une entrée.
 

@@ -243,11 +243,11 @@ Cette vérification se fait en $\mathcal{O}(n)$.
 
 De là, un algorithme résolvant le problème du sac à dos peut-être utilisé pour résoudre le problème du sac à dos optimal en faisant une dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P on double le prix et sinon on le divise par deux. On aura besoin au maximum $\log(sum_{1\leq i \leq n} p_i)$ itérations de l'algorithme de résolution du sac à dos pour trouver une solution au problème du sac à dos optimal.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
 
 On trouve alors l'optimum par dichotomie.
-{% endattention2 %}
+{% endretenir %}
 
 ### NP-complet
 
@@ -410,9 +410,9 @@ $$
 
 ## Solution par programmation dynamique
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La technique de résolution du sac à dos par programmation dynamique est fondamentale. **Retenez-là** car elle peut-être utilisée dans bon nombre de problèmes concrets !
-{% endattention2 %}
+{% endretenir %}
 
 Le problème du sac à dos admet une solution via la programmation dynamique simple et élégante. Soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
 
@@ -641,7 +641,7 @@ On a choisi de fixer $x_1$, mais il est évident à une renumérotation prêt, q
 
 On peut ainsi fixer n'importe quel sous-ensemble de variables et toujours avoir à résoudre un problème de sac à dos.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).
 
 Une **_solution ouverte_** est une suite $y_i$ ($1\leq i \leq n$) telle que :
@@ -650,7 +650,7 @@ Une **_solution ouverte_** est une suite $y_i$ ($1\leq i \leq n$) telle que :
 - $\sum_{i \in I} y_i \cdot k_i \leq K$ avec $I$ l'ensemble des indices $i$ tels que $y_i \neq -1$
 
 Une solution ouverte permet de définir un **_sous-problème associé_** où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.
-{% endnote2 %}
+{% enddefinition %}
 
 Une solution ouverte ne possédant que des -1 correspond au problème général du sac à dos et les solutions ouvertes ayant des 0 et des 1 correspondent à un sous-problème.
 

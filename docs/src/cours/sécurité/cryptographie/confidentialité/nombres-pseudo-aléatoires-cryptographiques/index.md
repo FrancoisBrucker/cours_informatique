@@ -31,7 +31,7 @@ Pour que l'algorithme de Vernam fonctionne il faut que $K$ le plus uniforme poss
 
 <div id="CPRNG"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_générateur de nombres pseudo-aléatoire sécurisé_** (_cryptographic pseudo random generator **CPRNG**_) doit avoir les propriétés suivantes :
 
 - $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^t$, avec $s <<t$
@@ -41,7 +41,7 @@ Un **_générateur de nombres pseudo-aléatoire sécurisé_** (_cryptographic ps
 - la variable aléatoire $G(k \xleftarrow{U} \\{0, 1\\}^s)$ prenant ses valeurs dans $\\{0, 1\\}^t$
 - la variable aléatoire $x \xleftarrow{U} \\{0, 1\\}^t$
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Le paramètre de $G$ est appelé _seed_
 {% endinfo %}
@@ -52,9 +52,9 @@ Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (
 
 La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la _seed_ choisie.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 En cryptographie utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.
-{% endattention2 %}
+{% endretenir %}
 
 Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est **pas** uniforme :
 
@@ -91,9 +91,9 @@ Pour trouver une partie de la clé. Si à partir de là on peut prédire la suit
 
 Heureusement pour nous, non-prédictabilité et générateur de nombres pseudo-aléatoire sécurisé sont deux notions équivalentes.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une suite $({x^k_i})\_{i\geq 0}$ avec $k \in \\{0, 1\\}^s$ est **_non prédictible_** si tout algorithme efficace ne peut peut prédire $x^k_{m+1}$ sachant $x^k_1, \dots x^k_{m}$ qu'avec un avantage négligeable.
-{% endnote2 %}
+{% enddefinition %}
 
 Ceci disqualifie d'emblée tous les générateurs pseudo-aléatoire de type $x^k_{i+1} = a \cdot x^k_{i} + b \bmod p$, puisque connaître $x^k_i$ permet de connaître tout $x^k_j$ avec $j> i$. Ceci est la principale différence entre un générateur pseudo-aléatoire et un générateur cryptographique : le premier veut obtenir une suite uniforme (ce que fait le générateur avec un modulo si $p$ est premier) alors que le second cherche à ne pas être prédictible.
 
@@ -273,7 +273,7 @@ Nous allons procéder en deux temps :
 
 <div id="PRF"></div>
 
-{% note2 "**Définition PRF**" %}
+{% definition %}
 Soit $F: \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ une fonction implémentable par un algorithme efficace.
 
 $F$ est dite être une **fonction pseudo-aléatoire sécurisée** (_secure pseudo random function **PRF**_) si tout algorithme efficace ne peut avoir qu'un avantage négligeable au [jeu de la reconnaissance](../définition-sécurité/#jeu-reconnaissance) entre :
@@ -281,7 +281,7 @@ $F$ est dite être une **fonction pseudo-aléatoire sécurisée** (_secure pseud
 - la variable aléatoire $F(k \xleftarrow{U} \\{0, 1\\}^s, \cdot)$ prenant ses valeurs dans l'ensemble $\mathcal{F}(\\{0, 1\\}^t, \\{0, 1\\}^t)$ des fonctions de $\\{0, 1\\}^t$ dans $\\{0, 1\\}^t$
 - la variable aléatoire $f \xleftarrow{U} \mathcal{F}(\\{0, 1\\}^t, \\{0, 1\\}^t)$
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut utiliser une fonction pseudo-aléatoire sécurisée pour modéliser un générateur de nombres pseudo-aléatoire sécurisé :
 
@@ -324,7 +324,7 @@ Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générat
 
 <div id="PRP"></div>
 
-{% note2 "**Définition PRP**" %}
+{% definition %}
 Soit $F: \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ une fonction pseudo-aléatoire sécurisée.
 
 $F$ est une **permutation pseudo-aléatoire sécurisée** (_secure **PRP**, pseudo random permutation_) si :
@@ -334,7 +334,7 @@ $F$ est une **permutation pseudo-aléatoire sécurisée** (_secure **PRP**, pseu
   - une permutation $F(k, \cdot)$ pour $k$ uniformément choisie,
   - une permutation $f$ uniformément choisie parmi toutes les permutations de $\\{0, 1\\}^t$ dans $\\{0, 1\\}^t$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Une PRP est un cas particulier de PRF, mais si $n$ est grand, elle est indistinguable d'une fonction quelconque avec un avantage non négligeable :
 

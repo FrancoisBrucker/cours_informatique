@@ -25,13 +25,13 @@ Une fois le compte crée, allez dans la modification du profil (en haut à droit
 - une vrai photo, un logo ou un dessin qui vous représente (rechargez la page pour avoir la nouvelle photo)
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le site est ouvert sur internet donc :
 
 - faites attention à ce que vous partagez
 - on renseigne souvent son compte github dans son cv.
 
-{% endattention2  %}
+{% endretenir  %}
 
 
 Enfin, lorsque vous travaillerez à plusieurs sur un projet, il **faudra** pouvoir identifier toute modification/ajout de code pour pouvoir poser des questions sur code ajouté, trouver le responsable d'un bug, authentifier un bou code génial, etc.

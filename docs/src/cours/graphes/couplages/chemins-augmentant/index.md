@@ -36,7 +36,7 @@ Dans notre graphe de couplage ceci s'écrit comme un chemin de longueur impaire 
 
 <span id="définition-chemin-alternant"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G=(V, E)$ un graphe et $M$ un de ses couplages.
 
 - **_Un chemin alternant_** $x_0\dots x_k$ est tel que :
@@ -45,7 +45,7 @@ Soit $G=(V, E)$ un graphe et $M$ un de ses couplages.
   - si $x_{i-1}x_{i} \notin M$ alors $x_{i}x_{i+1} \in M$ pour tout $i$
 - **_Un chemin augmentant_** $x_0\dots x_k$ est un chemin alternant qui commence ($x_0$) et termine ($x_k$) par deux sommets libres.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Dans l'exemple précédent, `Cléopâtre - Achille - Iphigénie` est un chemin alternant mais pas augmentant, alors que `Juliette - Roméo` ou encore `César - Cléopâtre - Achille - Iphigénie` sont des chemins augmentant. On remarque que cette notion (de chemin augmentant) est similaire à celle de chaîne augmentante dans les flots :
 

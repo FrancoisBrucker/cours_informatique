@@ -17,9 +17,9 @@ La complexité d'un pseudo-code est une mesure associée au pseudo-code. Elle pe
 
 Par défaut, la complexité utilisée est celle en temps :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La complexité d'un pseudo-code est la complexité en temps de celui-ci.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple le pseudo-code suivant :
 
@@ -247,18 +247,18 @@ La complexité de cet algorithme va dépendre de l'endroit où se trouve la vale
 
 Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 On calcule la complexité d'un algorithme par rapport à un paramètre qui rend compte de la connaissance _a priori_ que l'on a sur les entrées de celui-ci.
-{% endattention2 %}
+{% endretenir %}
 
 ### Connaissances minimales sur les entrées
 
 Les connaissances minimales que l'on possède sur les données sont leurs tailles de stockage en mémoire.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_la taille des entrées d'un algorithme_** est le nombre de cases mémoires nécessaires pour stocker toutes ses entrées.
-{% endnote2 %}
+{% enddefinition %}
 
 Dans la partie pseudo-code on a considéré deux types de données :
 
@@ -270,12 +270,12 @@ Dans la partie pseudo-code on a considéré deux types de données :
 En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :
 
 <div id="complexité"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$
 pour des données de paramètre $N$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme paramètre : pour tout tableau de longueur $N$ passé en paramètre, la complexité maximale est de $6N+5$ instructions.
 
@@ -283,14 +283,14 @@ Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille pris
 
 Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque l'on donne une complexité en fonction d'un paramètre, il faut :
 
 - obligatoirement l'**expliciter** (taille des données, valeur d'une entrée, etc)
 - s'assurer que l'on peut calculer ce paramètre pour **toutes les entrées**
 - ne pas oublier que la complexité est le **maximum** du nombre d'instructions pour les exécutions de l'algorithme avec des entrées de paramètre constant (même taille de donnée, même valeur d'entrée, etc)
 
-{% endattention2 %}
+{% endretenir %}
 
 ## Autres types de complexités
 
@@ -300,24 +300,24 @@ Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant 
 
 Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_La complexité minimum_** $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées de paramètre $N$.
-{% endnote2 %}
+{% enddefinition %}
 
 ## <span id="complexité-temps"></span>Complexité en temps
 
 Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exécution. On peut alors définir la **_complexité en temps_** d'exécution d'un code :
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_La complexité en temps_** $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées de paramètre $N$.
-{% endnote2 %}
+{% enddefinition %}
 
 Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le temps mis pour un code à être exécuté est proportionnelle au nombre d'instructions exécutés de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).
-{% endattention2 %}
+{% endretenir %}
 
 Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.
 
@@ -326,12 +326,12 @@ Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)
 Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.
 
 <div id="complexité-spatiale"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 
 **_La complexité spatiale_** $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée **_complexité en mémoire_**) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées de paramètre $N$.
 
 On **ne compte pas** dans ce calcul la taille nécessaire pour stocker les différents paramètres de l'algorithme.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple notre fonction `fibonacci(n)`{.language-} nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :
 

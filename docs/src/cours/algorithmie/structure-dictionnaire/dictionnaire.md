@@ -235,9 +235,9 @@ $$
 
 En toute généralité on a :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$ définis pour tout entier $m$.
-{% endnote2 %}
+{% enddefinition %}
 
 ### Taille fixe
 
@@ -403,11 +403,11 @@ La complexité **en moyenne** d'ajout, de recherche et suppression d'un élémen
 
 La structure de dictionnaire est donc une structure très efficace le cas le pire arrivant très rarement !
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
 
 La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.
-{% endattention2 %}
+{% endretenir %}
 
 ## Utilisation
 
@@ -435,10 +435,10 @@ nombre_pommes[1] ← 3
 nombre_pommes[2] ← 42
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'indices (via une indirection) pour obtenir une complexité de $\mathcal{O}(1)$, l'usage direct des données via un dictionnaire est très utilisé en code car le gain en simplicité vaut _a priori_ la légère perte de complexité ($\mathcal{O}(1)$ en moyenne seulement).
 
-{% endattention2 %}
+{% endretenir %}
 
 Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :
 

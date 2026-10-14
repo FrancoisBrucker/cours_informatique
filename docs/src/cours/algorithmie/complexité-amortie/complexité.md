@@ -16,13 +16,13 @@ De plus, lors d'un calcul de complexité amortie on connaît les paramètres de 
 
 Enfin, Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.
 
 Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.
 
-{% endattention2 %}
+{% endretenir %}
 
 La complexité amortie est un concept avancé, utilisée dans deux cas principalement :
 
@@ -91,10 +91,10 @@ La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$
 Lorsqu'un programme utilise de nombreuses fois la méthode `suivant`{.language-}, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.
 {% endnote %}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La complexité amortie est **une moyenne de complexités maximales** et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.
 
-{% endattention2 %}
+{% endretenir %}
 Enfin, remarquez que la complexité amortie de `suivant` ne dépend par de la longueur de l'attribut $N$.
 
 {% info %}

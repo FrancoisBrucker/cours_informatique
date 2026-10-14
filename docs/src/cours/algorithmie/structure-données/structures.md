@@ -13,14 +13,14 @@ eleventyComputed:
 Un structure de donnée généralise les tuples et est une version algorithmique des objets de la programmation orientée objet. Une fois définis on pourra utiliser une structure comme un nouveau type de variable.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une **_structure de données_** est composée :
 
 - d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données). On accède au attributs et aux méthodes d'une structure avec la notation pointée.
 - de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
 
 Une structure de donnée définit un nouveau type qui peut être utilisé ensuite comme un type de base.
-{% endattention2 %}
+{% endretenir %}
 
 Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
 
@@ -30,7 +30,7 @@ Pour qu'une structure de donnée puisse être utilisée, il est crucial de conna
 
 Une structure de donnée est composée d'**_attributs_** qui la définisse :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une structure de donnée est définie par ses **_attributs_** qui sont des variables. Par exemple :
 
 ```pseudocode
@@ -56,7 +56,7 @@ x.v1 ← o'
 ```
 
 En notation pointée `a.b`{.language-} signifie que `b`{.language-} est un attribut de la structure `a`{.language-}.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple si on veut définir une structure pouvant simuler des points de $\mathbb{R}^2$, on pourrait écrire :
 
@@ -93,11 +93,11 @@ Va modifier les attributs du premier paramètre.
 
 ## Création
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_Créer_** un objet d'une structure revient à créer ses attributs (des variables) **et** y affecter des objets. 
 
 La taille en mémoire d'un objet est proportionnelle à la taille de ses attributs.
-{% endnote2 %}
+{% enddefinition %}
 
 Pour que ce processus ne soit pas lourd à écrire on s'autorise les abus de notations suivant
 
@@ -130,7 +130,7 @@ p ← Point{x: 0.0, y:0.0}
 
 On utilisera tout au long de ce cours le processus de construction d'objets suivant :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Processus de construction d'une structure de donnée :
 
@@ -138,7 +138,7 @@ Processus de construction d'une structure de donnée :
 2. les initiations explicites des attributs sont effectuées
 3. les initiations par défaut des attributs **sans initialisation explicite** sont effectuées
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Au terme de ce processus tous les attributs sont initialisés.
 {% endinfo %}
@@ -173,7 +173,7 @@ Comme l'attribut `y` est affecté à la construction, l'initiation par défaut d
 
 L'intérêt fondamental des structures de données est de leur associer des fonctions spécifiques, appelées **_méthodes_**. Le but des méthodes est d'opérer sur les objets de la structure.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_méthode_** est une fonction spéciale de signature :
 
 ```pseudocode
@@ -186,7 +186,7 @@ Une méthode est associée à la structure (`Struct`{.language-} dans notre exem
 s.nom_méthode( ... )
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 Transformons la fonction `additionne_point`{.language-} précédente en méthode  de `Point`{.language-} :
@@ -218,7 +218,7 @@ affiche p1.x et p1.y  # affiche 5 et 7
 
 Manipuler des objets ou des structures en algorithmie va nécessiter des opérations élémentaires qu'il faut compter pour en connaître la complexité. On peut classer ces manipulations en trois grandes catégories :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Pour chaque type de donnée (base ou structure) ses **_complexités_** sont  :
 
@@ -226,7 +226,7 @@ Pour chaque type de donnée (base ou structure) ses **_complexités_** sont  :
 - **_complexité de suppression_** d'un objet de ce type
 - **_complexité d'opération_** qui regroupe la complexité de chaque opération ou méthode lié à ce type
 
-{% endnote2 %}
+{% enddefinition %}
 
 Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes.
 

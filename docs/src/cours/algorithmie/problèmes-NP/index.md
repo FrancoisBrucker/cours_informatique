@@ -23,11 +23,11 @@ Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on p
 
 ### Résolution efficace
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un problème algorithmique est dit **_polynomial_** s'il existe un pseudo-code de complexité polynomiale en la taille de son entrée permettant de le résoudre.
 
 L'ensemble des problèmes polynomiaux est nommé $P$.
-{% endnote2 %}
+{% enddefinition %}
 
 On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :
 
@@ -53,33 +53,33 @@ Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiau
 
 <div id="définition-vérifieur"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_vérifieur_** est un algorithme de :
 
 $$v: \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$$
-{% endnote2 %}
+{% enddefinition %}
 
 On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée de l'exactitude d'une solution. Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.
 
 Mais pour que cette vérification puisse être utilisable en pratique il ne faut pas qu'elle dure trop longtemps : elle doit "_efficace_" (_ie._ polynomiale, donc pouvant être écrite puis lue par des humains). Formalisons cette notion de vérification efficace :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
 
 - $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$
 - la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.
 {% endinfo %}
 
 Remarquez que l'on ne demande **pas** que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte. Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si un problème décidable admet un vérifieur efficace, la taille de la sortie est polynomiale par rapport à la taille de l'entrée.
 
-{% endattention2 %}
+{% endretenir %}
 
 Cette définition est réaliste puisque si l'on possède une solution potentielle on veut pouvoir vérifier de façon efficace (_ie._ polynomialement) que c'est bien une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !
 
@@ -132,9 +132,9 @@ L'algorithme qui, pour une entrée $e$ donnée testes toutes les solutions possi
 
 Les problèmes utiles qui s'appellent en algorithmie les problèmes NP :
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_Un problème algorithmique est dit_** $NP$ s'il existe un vérifieur efficace de ses solutions.
-{% endnote2 %}
+{% enddefinition %}
 
 Ce qui donne le schéma suivant :
 
@@ -145,13 +145,13 @@ La définition ci-dessus appelle deux remarques :
 - premièrement le nom a été très mal choisi. Il signifie _Non Déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.
 - deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
 
 - On peut énumérer toutes les solutions possibles en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible), donc fini.
 - On peut vérifier efficacement (en temps polynomial) si une proposition de solution en est réellement une.
 
-{% endattention2 %}
+{% endretenir %}
 
 On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.
 
@@ -194,13 +194,13 @@ Le problème SAT cherche à vérifier si une formule logique spéciale peut-êtr
 
 <div id="définition-clauses"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
 - une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
-  {% endnote2 %}
+  {% enddefinition %}
 
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
 
@@ -298,9 +298,9 @@ La complexité de l'algorithme est clairement linéaire : on regarde au pire cha
 
 Même s'il est facile de vérifier si une solution potentielle est une solution, on ne connaît pas d'algorithme polynomial pour résoudre SAT. L'algorithme naïf consistant à tester toutes les solutions possibles prendrait $\mathcal{O}(mn\cdot 2^n)$ opérations ($2^n$ possibilités pour les variables et la taille d'une conjonction de clause est $nm$). Aussi surprenant que cela paraisse, on ne connaît pas d'algorithme fondamentalement meilleur :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorithme efficace pour le résoudre.
-{% endattention2 %}
+{% endretenir %}
 
 ### Réduction vers SAT
 
@@ -568,9 +568,9 @@ $$
 
 Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes _universels_, on les appelle **_NP-complet_**, dont tous les autres problèmes ne sont que des cas particuliers :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un problème $A$ de NP est NP-complet si $B \leq A$ pour tout problème $B$ de NP.
-{% endnote2 %}
+{% enddefinition %}
 
 Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :
 
@@ -629,19 +629,19 @@ Il existe un grand nombre de problèmes NP-complet. Juste après la démonstrati
 
 Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont _universels_. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, [il n'y a pas de balle en argent](https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent){.externe} pour résoudre magiquement le problème. Il faut tout essayer.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où _a contrario_ des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.
 
-{% endattention2 %}
+{% endretenir %}
 
 Comme tout problème est un cas particulier de n'importe lequel des problème NP-Complet on a aussi :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes possibles.
 
-{% endattention2 %}
+{% endretenir %}
 
 
 ### P et NP
@@ -656,9 +656,9 @@ Il existe même un prix d'un million de dollars pour qui donnerait une réponse 
 
 Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Même si la chose n'est pas démontrée on considérera que $P \neq NP$ dans toute la suite de ce cours (et notre vie). Prouver qu'un problème est NP-complet sera donc une garantie que l'on ne pourra pas le résoudre de façon efficace et que l'on peut chercher une solution approchée via un algorithme polynomial.
-{% endattention2 %}
+{% endretenir %}
 
 Mais imaginons un instant que SAT soit polynomial. Vous avez sûrement remarqué que tout problème transformé en une instance de SAT est symétrique ?:
 
@@ -678,9 +678,9 @@ Donc si je connais le pseudo-code de cet, je peux en écrire sa formule SAT asso
 
 Bref :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 P = NP ne ferait pas que des heureux.
-{% endattention2 %}
+{% endretenir %}
 
 ### Pas dans P ni NPC ?
 

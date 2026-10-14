@@ -128,9 +128,9 @@ T = 0011001101001100110011\\
 $$
 </div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 On note $\<M\>$ l'encodage de la fonction de transition associé à la machine de Turing $M$.
-{% endnote2 %}
+{% enddefinition %}
 
 ### Décodage
 

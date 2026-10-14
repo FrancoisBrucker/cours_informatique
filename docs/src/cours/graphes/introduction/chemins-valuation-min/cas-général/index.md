@@ -15,9 +15,9 @@ eleventyComputed:
 
 Il peut en effet exister des [circuits](../../chemins-cycles-connexite#définition-circuit) de poids négatifs :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $(G, f)$ un graphe orienté valué. Un **circuit absorbant** est un circuit $c$ de poids strictement négatif.
-{% endnote2 %}
+{% enddefinition %}
 
 Même s'il existe toujours des chemins de poids minimum (on ne repasse pas deux fois par le même arc, il y en a donc un nombre fini), ils ne sont pas les plus rapides ! En effet il suffit de repasser une fois par le circuit absorbant pour aller encore plus vite... Par exemple dans le graphe orienté ci-dessous le poids du circuit $abca$ est de -3 :
 

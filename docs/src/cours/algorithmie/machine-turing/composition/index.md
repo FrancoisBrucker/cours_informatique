@@ -24,7 +24,7 @@ Nous allons montrer comment combiner plusieurs machines entres-elles afin de ré
 Nous formalisons ici l'[addition](../définitions/#addition-turing) vue dans la partie entrée.
 
 <span id="exécution-séquentielle"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $M_i$, $1\leq i \leq n$, $n$ machines de Turing de fonctions de transition respectives $\delta^i(q, r) = (\delta^i_e(q, r), \delta^i_c(q, r), \delta^i_d(q, r))$.
 
 L'**_exécution séquentielle_** des $M_i$ machines est alors la machine définie par la fonction de transition $\delta$ telle que :
@@ -38,7 +38,7 @@ L'**_exécution séquentielle_** des $M_i$ machines est alors la machine défini
   - $\delta((i, \text{STOP}), r) = ((i, \text{STOP}'), r,\rightarrow)$
   - $\delta((i, \text{STOP}'), r) = ((i+1, \text{START}), r,\leftarrow)$
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 On a ajouté une machine qui fait un aller-retour d'une case entre chaque exécution d'une machine pour garantir que la case du début de la machine $i+1$ est bien la même que la case qui a déclenchée la transition de fin de la machine $i$. Cela est cohérent avec la définition de $M+M'$ et rend indépendant les instructions $i$ et $i+1$.
 {% endinfo %}
@@ -57,13 +57,13 @@ Chaque ligne correspond à une _instruction_ indépendante, l'interaction entre 
 
 L'exécution séquentielle des machines permet de créer une machine permettant de _sauter_ à une autre ligne du programme. Pour cette machine, on ne relabelle que ses états `START` et `START'` pour coller à son numéro de ligne dans le programme, son état interne sautant déjà vers une ligne donnée du programme :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Dans un programme, La machine **_GOTO LIGNE_** est définie par la fonction de transition :
 
 - $\delta(\text{START}, r) = (\text{START}', r,\rightarrow)$
 - $\delta(\text{START}', r) = ((\text{LIGNE}, \text{START}), r,\leftarrow)$
 
-{% endnote2 %}
+{% enddefinition %}
 
 ## Saut conditionnel
 
@@ -72,14 +72,14 @@ Comme pour la machine de saut, on ne relabelle que ses états `START`, `START'` 
 La machine suivante saute à une ligne particulière
  :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La machine **_IF 1 GOTO LIGNE_** est définie par la fonction de transition :
 
 - $\delta(START, 0) = (\text{STOP}, 0,\rightarrow)$
 - $\delta(START, 1) = (\text{START}', 1,\rightarrow)$
 - $\delta(\text{START}', r) = ((\text{LIGNE}, \text{START}), r,\leftarrow)$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Créez le pendant de cette machine :
 
@@ -102,7 +102,7 @@ Souvent lorsque l'on crée un programme avec une machine de Turing on se trouve 
 
 Pour permettre d'écrire cela de façon condensée on peut définir des labels spéciaux dans nos programmes :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Dans un programme, on permet de définir un label générique **LIGNE: ($p_1, \dots, p_k$): M** où les $p_i$ peuvent prendre toutes les valeurs d'un ensemble $P_i$ **fini**. On peut utiliser les noms $p_i$ ($1\leq i \leq k$) dans la définition de la machine M.
 
@@ -113,7 +113,7 @@ $$
 $$
 
 Pour tous les $(p_1, \dots, p_k) \in P_1 \times \dots \times P_k$
-{% endnote2 %}
+{% enddefinition %}
 
 Cette astuce permet de créer rapidement toute une variété (fini) de cas d'exécutions possibles de la ligne $i$. Elles correspondent cependant à $\vert P \vert^k$ machines différents, ce ne sont pas à proprement parler des paramètres de fonction :
 
@@ -123,9 +123,9 @@ Attention, ce ne sont pas vraiment des fonctions car on ne fait que créer une f
 
 On a donc une propriété sympathique des machines de Turing :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque le nombre de choix est fini, on peut les simuler par autant d'états différents : on a pas besoin de stocker les possibilités sur le ruban.
-{% endattention2 %}
+{% endretenir %}
 
 ## Exemple de composition
 

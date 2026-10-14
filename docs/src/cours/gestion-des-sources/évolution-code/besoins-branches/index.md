@@ -38,11 +38,11 @@ Si habituellement un commit n'a qu'un seul parent (la version précédente du do
 
 La structure de branches permet de gérer les évolutions possiblement divergentes du code :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_branche_** est une référence vers un commit donné. L'historique d'une branche est constitué du commit qu'elle référence et de tous ses ancêtres.
 
 Un utilisateur accède à la structure de sauvegarde via les branches qui constituent les différentes évolutions du projet.
-{% endnote2 %}
+{% enddefinition %}
 
 À la différence d'[un tag](../../dépôt/besoins-dépôt/#tag) qui référence un commit particulier, une branche représente une histoire :
 
@@ -62,9 +62,9 @@ Notre structure de stockage est complète. Il nous reste à faire en sorte que l
 
 On dispose pour cela d'une référence sur la branche courante (ou un commit, mais c'est plus rare), appelé **_HEAD_**.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le pointeur courant **_HEAD_** est une référence vers une branche ou un commit donné. Il permet de faire le lien entre commit et working directory.
-{% endnote2 %}
+{% enddefinition %}
 
 ![head](head.png)
 
@@ -89,9 +89,9 @@ Les branches et leurs historiques représentent les lignes de développement du 
 
 Chaque branche a ainsi une raison d'être : branche principale, de développement d'une _feature_ particulière, d'un participant, ... Il n'y a pas de règle particulière sur ce que représente une branche **mais** elle doit avoir une signification pour l'équipe. Enfin une branche devenue inutile doit disparaître (il suffit de supprimer la référence).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'historique d'un projet doit contenir uniquement ce qui est nécessaire pour comprendre son état actuel, c'est à dire ses branches (l'état actuel) et leurs historiques, le reste est inutile.
-{% endattention2 %}
+{% endretenir %}
 
 Parmi toutes les branches, la branche `main` est celle qui va contenir la branche de développement principale.
 

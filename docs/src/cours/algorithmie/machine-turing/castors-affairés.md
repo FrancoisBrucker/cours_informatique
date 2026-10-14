@@ -17,11 +17,11 @@ L'[article](https://www.gwern.net/docs/cs/1962-rado.pdf){.externe} de Tibor Rad�
 
 On a pas pu la donner avant car elle dépend intrinsèquement de la notion de machine de Turing.
 
-{% note2 "**Définition**" %}
+{% definition %}
 On définit le **_score_** $\rho(M)$ d'une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.
 
 La fonction du **castor affairé** $\Sigma : \mathbb{N} \rightarrow \mathbb{N}$ est définie telle que $\beta(n)$ vaut le score maximal pour toutes les machine de Turing à $n$ états acceptant le mot vide.
-{% endnote2 %}
+{% enddefinition %}
 
 La fonction est bien définie pour tout $n>0$ puisqu'il n'y a qu'un nombre fini de machine de Turing à $n$ états : la valeur $\beta(n)$ est un maximum d'un ensemble fini, ce nombre existe.
 

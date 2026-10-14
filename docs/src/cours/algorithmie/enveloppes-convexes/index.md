@@ -23,7 +23,7 @@ Nous nous restreignons ici à la géométrie du plan euclidien $\mathbb{R}^2$. C
 
 La notion de _convexité_, très générale, est utilisée lorsque l'on manipule des objets _pleins_ et de forme _bombée_. Elle se formalise en utilisant les segments :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit deux points $A=(x, y)$ et $B=(x', y')$. Le **_segment $[A, B]$_** est l'ensemble des points $C$ tels que :
 
 <div>
@@ -40,7 +40,7 @@ $$
 
 Avec $0 \leq \lambda \leq 1$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est _convexe_.
 
@@ -50,7 +50,7 @@ De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudi�
 <https://fr.wikipedia.org/wiki/Fonction_convexe>{.externe}
 {% endlien %}
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est **_convexe_** si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :
 
 <div>
@@ -58,7 +58,7 @@ $$
 f\left(\lambda\cdot x+(1-\lambda)\cdot x'\right)\leq \lambda\cdot f(x)+(1-\lambda)\cdot f(y)
 $$
 </div>
-{% endnote2 %}
+{% enddefinition %}
 
 Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit $(u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :
 
@@ -72,9 +72,9 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 <https://fr.wikipedia.org/wiki/Ensemble_convexe>{.externe}
 {% endlien %}
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un ensemble $C \subseteq \mathbb{R}^2$ est **_convexe_** si pour tous $x, y \in C$, $[x, y] \subseteq C$.
-{% endnote2 %}
+{% enddefinition %}
 
 La première propriété que l'on peut donner est, clairement, que :
 
@@ -126,28 +126,28 @@ En informatique (et dans la vie réelle), les ensembles convexes se rencontrent 
 
 #### Définition
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone){.externe} est une suite finie de points $[p_1, \dots, p_h]$ :
 
 ![exemple polygones](./exemple-polygones.png)
 
 Le polygone de droite est dit **_croisé_** ou **_complexe_** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [**_simple_**](https://fr.wikipedia.org/wiki/Polygone_simple){.externe}.
-{% endnote2 %}
+{% enddefinition %}
 
 Un polygone simple est une surface :
 
-{% note2 "**Définitions**" %}
+{% definition %}
 
 L'**_intérieur_** d'un polygone simple est la surface formé par la ligne polygonale fermée.
 
 On confond souvent intérieur et polygone simple.
-{% endnote2 %}
+{% enddefinition %}
 
 Un polygone convexe est un polygone simple particulier :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forme un ensemble convexe.
-{% endnote2 %}
+{% enddefinition %}
 
 On a la propriété suivant qui le caractérise :
 
@@ -211,9 +211,9 @@ Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^
 
 ### Enveloppe convexe
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'**_enveloppe convexe_** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
-{% endnote2 %}
+{% enddefinition %}
 
 Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous :
 

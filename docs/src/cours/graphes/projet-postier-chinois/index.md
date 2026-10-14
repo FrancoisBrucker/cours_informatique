@@ -16,11 +16,11 @@ Un problème d'optimisation où la théorie des graphes peut aider.
 
 Nous allons étudier le problème du [postier chinois](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois){.externe}, proposé par le mathématicien chinois [管梅谷](https://fr.wikipedia.org/wiki/Meigu_Guan){.externe} en 1962 :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E, A)$ un [graphe mixte](../structure#definition-graphe-mixte) connexe, et $f: E \cup A \rightarrow \mathbb{R}^+$ une fonction de valuation des arcs et arêtes.
 
 Le **problème du postier chinois** consiste à trouver un pseudo-circuit (des arêtes/arcs peuvent apparaître plusieurs fois) passant par toutes les arêtes et les arcs du graphe mixte de coût (la somme des valuations des arcs/arêtes le constituant) minimum.
-{% endnote2 %}
+{% enddefinition %}
 
 Nous ne donnerons pas ici les algorithmes exactes pour le résoudre mais donnerons les liens vers les parties (suivantes) de ce cours qui vous permettrons de le résoudre. Voyez ça comme une justification, un fil rouge, de ce qui va suivre.
 
@@ -33,11 +33,11 @@ Nous ne donnerons pas ici les algorithmes exactes pour le résoudre mais donnero
 
 Nous nous intéresserons ici à un cas particulier du problème où $G$ est juste un graphe :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un graphe connexe, et $f: E \rightarrow \mathbb{R}^+$ une fonction de valuation des arêtes.
 
 Le **problème du postier chinois** consiste à trouver un pseudo-cycle (des arêtes peuvent apparaître plusieurs fois) passant par toutes les arêtes du graphe de coût (la somme des valuations des arcs/arêtes le constituant) minimum.
-{% endnote2 %}
+{% enddefinition %}
 
 Le problème du postier chinois permet de modéliser les problèmes de tournées (poste, ramassage des ordures, ...) dans des villes.
 

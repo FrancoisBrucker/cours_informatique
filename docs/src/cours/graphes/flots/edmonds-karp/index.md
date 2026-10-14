@@ -21,13 +21,13 @@ Nous allons montrer ici une variante utilisant un graphe, nommé **_graphe d'éc
 
 On peut utiliser un graphe auxiliaire, appelé **_graphe d'écart_** pour trouver une chaîne augmentante.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G=(V, E)$ un graphe orienté antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas), une capacité $c$ et un flot $f$. On appelle **_graphe d'écart_** le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
 
 - si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$
 - si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Il est alors clair qu'il n'existe un chemin allant de $s$ à $p$ dans $G_f$ que si et seulement si il existe une chaîne augmentante pour le réseau initial.
 
@@ -171,11 +171,11 @@ Il nous reste à estimer le nombre de fois où l'on va refaire ces étapes. On v
 
 Soit $G_f$ un graphe d'écart, $ c_f = s x_1\dots x_{k-1} p$ un chemin de longueur minimum (donc élémentaire) entre $s$ et $p$ et $G_f{f'}$ le prochain graphe d´écart ($f'$ est le flot $f$).
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On note $\delta_f(x, y)$ la longueur min d'un chemin entre $x$ et $y$ dans $G_f$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 La proposition suivante va être la pierre angulaire de la preuve de polynomialité :
 

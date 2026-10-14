@@ -15,19 +15,19 @@ Vous aller coder ici une méthode de chiffrement/déchiffrement de texte : [le c
 
 Du point de vue de python un projet est un dossier qui va contenir les différents fichiers python. Appelons le `chiffre_cesar`{.fichier}.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Dans la mesure du possible, le nom des dossiers et des fichiers d'un projet informatiques :
 - ne doivent contenir que des lettres **non accentuées**
 - ne doivent contenir **pas** contenir d'espaces. On sépare les mots par des _underscore_ `_`
-{% endattention2 %}
+{% endretenir %}
 
 ## Le programme principal
 
 Le programme principal est le fichier que l'on va exécuter, on a coutume de l'appeler `main.py`{.fichier}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un projet informatique va contenir de nombreux fichiers, mais un seul sera le programme principal, celui que l'on exécutera avec la commande `python main.py`.
-{% endattention2 %}
+{% endretenir %}
 
 Dans notre cas, notre programme est : 
 
@@ -141,16 +141,16 @@ Créez un fichier `texte.py`{.fichier} contenant la fonction ci-dessus. Créez l
 
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Sachez refaire la fonction de conversion. Elle est parfois très utile.
-{% endattention2 %}
+{% endretenir %}
 
 
 Ce que l'on teste est dépendant de chaque développeur : si les tests passent il doit être convaincu que son code est fonctionnel.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 C'est au développeur des fonctions de créer des tests pour elles de tel sorte que s'ils passent il soit persuadé que son code est sans bug (si un bug est découvert plus tard, il suffit de rajouter un test qui le montre puis corriger le code).
-{% endattention2 %}
+{% endretenir %}
 
 ## Corrigé
 

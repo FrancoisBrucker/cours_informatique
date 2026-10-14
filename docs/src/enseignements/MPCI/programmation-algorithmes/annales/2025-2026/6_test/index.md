@@ -31,10 +31,10 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 
 ## Sujet
 
-{% note2 "**But**" %}
+{% definition "**But**" %}
 Le but du sujet est de construire un ordinateur !
 
-{% endnote2 %}
+{% enddefinition %}
 On utilisera pour cela [le FRACTRAN](https://fr.wikipedia.org/wiki/FRACTRAN){.externe} qui est un langage de programmation inventé par John Conway (à qui l'on doit aussi le célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie){.externe}). Nous allons y aller pas à pas, il suffit de suivre les différentes étapes.
 
 ### Fractions
@@ -122,7 +122,7 @@ Vous pourrez utiliser le fait qu'en python  `a ** b`{.language-} rend $a^b$.
 
 ### Fractran
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le Fractran est un langage de programmation où un programme est une liste finie de fractions :
 
 <div>
@@ -136,7 +136,7 @@ Son exécution nécessite un paramètre d'entrée $n$ et se déroule comme suit 
 - Tant qu'il existe $i$ tel que $q_i$ divise $n$, on pose $n \leftarrow n \cdot \frac{p_{i^\star}}{q_{i^\star}}$ avec $i^\star$ le plus petit indice $i$ tel que $q_i$ divise $n$.
 - Lorsqu'il n'existe plus d'indice $i$ tel que $q_i$ divise $n$, le programme s'arrête et rend $n$.
 
-{% endnote2 %}
+{% enddefinition %}
 Par exemple si $P = [\frac{3}{10}, \frac{4}{3}]$ alors $P(14) = 14$ (aucun dénominateur ne divise 14) et $P(15) = 8$ (3 divise 15 ; 10 divise 20 ; 3 divise 6 ; aucune fraction ne divise 8).
 
 Le code suivant (écrit dans `fractran.py`{.fichier}) implémente cette idée :

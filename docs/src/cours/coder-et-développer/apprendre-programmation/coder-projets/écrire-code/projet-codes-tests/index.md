@@ -20,7 +20,7 @@ On reprends [les projets de la création de modules](../projet-création-modules
 
 Les corriges sont des **propositions** de tests, ce n'est pas la vérité :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les tests sont écrit par le développeur et leurs buts est qu'ils lui permettent d'être convaincu que le code fonctionne si les tests passent. Ce n'est pas une **preuve** mais permet de continuer à coder tranquillement.
 
 Pour ma part, j'aime faire 3 types de tests pour mes fonctions :
@@ -29,7 +29,7 @@ Pour ma part, j'aime faire 3 types de tests pour mes fonctions :
 - un (ou plusieurs si nécessaire) cas particulier
 - un cas général
 
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="syracuse"></span>Syracuse
 

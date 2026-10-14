@@ -306,9 +306,9 @@ git commit -m"add css and link to html"
 git status
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Prenez l'habitude de faire un `git status` avant et après chaque commit, histoire d'être sur que l'on ne va rien oublier dans le commit.
-{% endattention2 %}
+{% endretenir %}
 
 Un `git log --oneline` nous montre que l'on a 3 commits (notez que l'option `--oneline` ne garde que les 7 premiers chiffres de chaque commit).
 
@@ -758,9 +758,9 @@ C'est quand on veut faire ce genre de chose ou que l'on cherche quand un bug a �
 
 Il y a 3 commandes git qui permettent de gérer l'historique [reset, restore et revert](https://git-scm.com/docs/git#_reset_restore_and_revert){.externe}, chacune a ses spécificités et ses utilités.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La commande `git reflog` montre tous les commits du projet. Cela peut être super utile si on a fait un `git reset` à un ancien commit et que l'on veut finalement revenir à un endroit dans le futur par rapport à ce commit.
-{% endattention2 %}
+{% endretenir %}
 On va voir plusieurs cas pratiques :
 
 - revenir au dernier commit. Le dernier commit est appelé _HEAD_ par git.

@@ -26,9 +26,9 @@ On montre 3 _fonctions_ asymptotiques, a plus utilisée étant la fonction $\mat
 
 Les _grand O_, $\mathcal{O}()$, permettent de caractériser les fonctions qui en majorent une autre.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot f'(N)$ pour tout $N > N_0$.
-{% endnote2 %}
+{% enddefinition %}
 
 Connaître le comportement en $\mathcal{O}$ de $f(N)$ nous donne un majorant de son _allure_ lorsque $N$ devient grand.
 
@@ -43,9 +43,9 @@ Par abus de langage, on notera :
 
 De façon symétrique, on défini les _grand Omega_, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \geq c_0 \cdot f'(N)$ pour tout $N > N_0$.
-{% endnote2 %}
+{% enddefinition %}
 
 La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
 
@@ -62,12 +62,12 @@ Réciproquement, si $g(N) = \Omega(f(N))$, il existe $c_0$ et $N_0$ tels que $c_
 
 ### Les $\Theta()$ pour les équivalences
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction <span>$f(N)$</span> est en $\Theta(f'(N))$ si :
 
 - <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$
 - <span>$f(N)$</span> est en $\Omega(f'(N))$
-  {% endnote2 %}
+  {% enddefinition %}
 
 La fonction $\Omega$ rend compte de fonctions aux allures similaires :
 

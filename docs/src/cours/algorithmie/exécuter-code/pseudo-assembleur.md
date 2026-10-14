@@ -17,9 +17,9 @@ Nous allons présenter une version _"minimale"_ de pseudo-code que nous appeller
 
 ## Objet et variables
 
-{% note2 "**Définition**" %}
+{% definition %}
 Les objets que peut manipuler le pseudo-assembleur sont les caractères `0` et `1` et les suites finies de ces caractères.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple l'objet de nom `o` :
 
@@ -29,9 +29,9 @@ o = 1011001
 
 Dans un pseudo-code, l'endroit où sont stockés les objets n'est pas défini, dans le pseudo-assembleur, on les stocke explicitement dans un tableau nommé **_mémoire_** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 La **_mémoire_** est un tableau $M$ de taille $N$ où chaque case peut contenir soit le caractère `0`, soit le caractère `1`.
-{% endnote2 %}
+{% enddefinition %}
 
 Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de `0` et de `1`, est stocké dans des cases contiguës de la mémoire.
 
@@ -61,27 +61,27 @@ Comme toute convention, certains prennent la convention opposée, dite **_little
 
 Ce stockage permet de définir les références :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une _**référence**_ d'un objet est l'adresse du premier indice en mémoire le contenant.
-{% endnote2 %}
+{% enddefinition %}
 
 Une variable est alors une référence nommée :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une _**variable**_ est un nom auquel est associé une référence à un objet.
-{% endnote2 %}
+{% enddefinition %}
 
 La mémoire étant finie, la référence à un objet est toujours codée sur $S = \log_2(N)$ bits.
 
-{% note2 "**Définition**" %}
+{% definition %}
 La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$$, la taille (entière et en bit) du codage binaire d'une adresse.
-{% endnote2 %}
+{% enddefinition %}
 
 Ceci permet de définir rigoureusement un tableau :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot S$ cases mémoire. Chaque $S$ bits successifs en mémoire contient la référence d'un objet.
-{% endnote2 %}
+{% enddefinition %}
 
 > TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).
 >
@@ -282,9 +282,9 @@ Les tests en pseudo-code sont de deux types :
 
 Ils n'existent pas à proprement parler en pseudo-assembleur, mais ils peuvent être simulé grâce aux **_drapeaux_**.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_drapeau_** (**_flag_**)  est une variable binaire affectée automatiquement après une opération.
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 
@@ -295,9 +295,9 @@ Comme les nombres négatifs seront codés en [Complément à deux](https://fr.wi
 
 On peut donc faire tout nos test en utilisant uniquement le drapeau `ZÉRO` :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le pseudo-assembleur possède un drapeau `ZÉRO` qui vaut `1` si la dernière opération arithmétique ou logique a donné un résultat de zéro, et `0` sinon.
-{% endnote2 %}
+{% enddefinition %}
 
 Ce drapeau nous permet de faire tous les tests possibles en pseudo-code et donc :
 
@@ -309,7 +309,7 @@ On peut créer les mêmes tests en pseudo-assembleur et en pseudo-code.
 
 Enfin, pour permettre de construire les structures de contrôle du pseudo-code, on ajoute les **_sauts conditionnels_** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un saut conditionnel est de la forme :
 
 ```python
@@ -326,7 +326,7 @@ GOTOIFNOT drapeau label
 
 La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau de nom `drapeau` vaut `0`.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :
 
@@ -357,7 +357,7 @@ Les opérations autorisées en pseudo-code sont de deux ordres : logique et arit
 
 Par exemple l'addition (2 paramètres et une sortie) ou la négation (1 paramètre et une sortie). Notez que les opérations qui rendent plus que une sortie (comme la division euclidienne par exemple) peuvent être décomposées en plusieurs opérations rendant chacune une unique sortie (division entière et modulo pour la division euclidienne).
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Le schéma général d'une **_opération_** en pseudo-assembleur est :
 
@@ -370,20 +370,20 @@ Où :
 - `OP` est le [code mnémonique](https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique){.externe} associée (le nom) à l'opération
 - `#1`, `#2` et `#3` représentent les paramètres de l'opération et peuvent représenter soit des entrées soit une sortie selon l'opération.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Les paramètres d'entrées et la sortie sont stockés dans des [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur){.externe} qui sont des variables spéciales.
 
 ### Registres
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_registre_** est une mémoire de taille $S$ (donc suffisante pour stocker une adresse). Il en existe deux types :
 
 - les registres génériques qui peuvent indépendamment être utilisé comme entrée et sortie d'une opération. Ils sont désignés par un numéro `$1`, `$2`, etc.
 - les registres spécifiques qui véhiculent des informations précisent et sont souvent en lecture seule (les drapeaux sont des registres spécifiques par exemple).
 
-{% endnote2 %}
+{% enddefinition %}
 
 Les registres permettent de faire fonctionner le pseudo-assembleur et forment les liens entre opérations et mémoire. Les opérations permettant de déplacer les valeurs des registres à la mémoire et inversement sont :
 
@@ -487,9 +487,9 @@ affiche à l'écran u($1)
 
 La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération `NAND`. Tout le reste peut être construit grâce à du code.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les structure de contrôles, les variables en mémoire et l'unique opération `NAND` permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.
-{% endattention2 %}
+{% endretenir %}
 
 ## I/O
 
@@ -511,6 +511,6 @@ On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que
 
 Tout le reste peut–être géré via du code, lui aussi est très simple puisqu'il est uniquement constitué de transfert de mémoire, d'opérations `NAND` et de sauts conditionnels.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le pseudo-code ne peut pas faire plus que du pseudo-assembleur, c'est juste plus agréable à écrire.
-{% endattention2 %}
+{% endretenir %}

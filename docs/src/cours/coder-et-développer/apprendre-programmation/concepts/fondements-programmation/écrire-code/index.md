@@ -18,7 +18,7 @@ eleventyComputed:
 
 On va lister les concepts fondamentaux qui permettent d'écrire du code python que l'on pourra faire exécuter par l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Dans tous les exemples de code qui suivront, lorsque la ligne de code commencera par `>>>`{.language-} cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :
 
 ```python
@@ -36,11 +36,11 @@ print(x)
 
 Il faudra ensuite l'exécuter pour voir son résultat.
 
-{% endattention2 %}
-{% attention2 "**À retenir**" %}
+{% endretenir %}
+{% retenir %}
 Dans tous **les instructions** de code qui suivront (pas les résultats donnés par python), lorsqu'un texte est entre `<>`{.language-} cela signifiera que c'est un paramètre variable, ce qu'on peut y mettre étant décrit entre les `<>`{.language-}. Par exemple : `<un entier>`{.language-} fonctionnera en le remplaçant par un entier quelconque.
 
-{% endattention2 %}
+{% endretenir %}
 
 - Dans Spyder, la console est une console Ipython, elle ne commence donc pas par `>>>` mais par `In` suivi d'un numéro entre crochet, par exemple : `In [42]`. Son fonctionnement est cependant identique.
 - pour exécuter du code avec spyder, on utilise soit :
@@ -108,9 +108,9 @@ Python connaît 6 types d'objets de base qui permettent de faire la grande major
 - **_le vide_**, utilisé pour noter l'absence de valeur
   - ne contient qu'un unique élément noté `None`{.language-}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Tout objet de python possède un type.
-{% endattention2 %}
+{% endretenir %}
 
 Pour connaître le type d'un objet, on peut utiliser la fonction `type`{.language-}. Par exemple :
 
@@ -121,10 +121,10 @@ Pour connaître le type d'un objet, on peut utiliser la fonction `type`{.languag
 
 Les entiers sont donc de type ` class 'int'`{.language-}, ce que l'on traduit par : l'entier 42 est objet de la classe entier :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Chaque objet de python possède un unique type. Ce type est très souvent une classe :
 **Dans le cadre de ce cours on considérera que type et classe sont deux synonymes**
-{% endnote2 %}
+{% enddefinition %}
 
 À vous :
 
@@ -154,14 +154,14 @@ Quelle est la classe de chaque objet de base ?
 
 Le type d'un objet n'est pas modifiable : par exemple un entier (3) n'est pas un réel (3.0) et réciproquement. Il est en revanche possible de créer un nouvel objet du type choisi à partir d'un objet d'un autre type. Pr exemple pour créer un objet te type réel depuis un entier 3, on peut écrire : `float(3)`{.language-}. Ceci se généralise :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Créer un objet de type `<un type>`{.language-} à partir d'un objet `<un objet>`{.language-} s'écrit :
 
 ```txt
 <un type>(<un objet>)
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 On ne peut bien sur pas faire n'importe quoi `int("deux")`{.language-} ne crée pas un entier valant 2, mais beaucoup des choses sont possibles.
 
@@ -220,9 +220,9 @@ Une chaîne de caractère n'est **pas** un réel ou un entier.
 {% endattention %}
 
 La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur. jen effet :
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une entrée donnée par un utilisateur est **toujours** une chaîne de caractères.
-{% endattention2 %}
+{% endretenir %}
 
 ### <span id="conversion-bool"></span>Conversion de booléens
 
@@ -285,17 +285,17 @@ Une chaîne de caractère est fausse si elle est vide et vraie sinon.
 
 ## Variables
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_variable_** est un nom qui représente un objet : une variable n'est **pas** un objet, c'est un moyen d'y accéder.
  
-{% endnote2 %}
+{% enddefinition %}
 
 Les variables permettent à l'interpréteur de se rappeler d'objets qu'il a crée lors d'exécutions précédentes. Sans elles, on ne pourrait exécuter que des lignes indépendantes les unes entre elles : bref, on ne pourrait rien faire d'intéressant.
 
 
 ### Affecter une variable
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Une variable est un **_nom_** auquel est associé un objet. Pour associer un nom à un objet on utilise **_l’opérateur d’affectation_** `=`{.language-} :
 
@@ -304,7 +304,7 @@ Une variable est un **_nom_** auquel est associé un objet. Pour associer un nom
 ```
 
 À l'issue de l'affectation, la variable à gauche du signe `=` représentera l'objet à droite de celui-ci.
-{% endnote2 %}
+{% enddefinition %}
 
 A gauche de l’opérateur d'affection `=`{.language-} se trouve une **variable** (en gros, un nom ne pouvant commencer par un nombre) et à droite un **objet**. Après affectation, dans toute la suite du programme l'interpréteur python  remplacera la variable par l'objet à chaque fois qu'elle la rencontrera.
 
@@ -459,9 +459,9 @@ Python utilise un mécanisme nommé [ramasse-miettes](https://fr.wikipedia.org/w
 
 ![suppression 4](suppression-4.png)
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les objets n'existent que tant qu'on pense à eux (qu'on peut les nommer).
-{% endattention2 %}
+{% endretenir %}
 
 À vous (certains exercices sont liés : utilisez toujours le même interpréteur) :
 
@@ -724,11 +724,11 @@ On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus 
 ![nouvel objet](./nouvel-objet.png)
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les  objets basiques de python sont dit **_immutables_** : ils ne peuvent être modifiées après leurs créations. La notion de mutabilité est cruciale dans les langages objets, nous reviendrons souvent sur cette notion qui peut mordre très fort si on ne la comprend pas bien. 
 
 Pour l'instant tout est ok puisque nous n'avons qu'une sorte d'objets et qu'ils sont immutables.
-{% endattention2 %}
+{% endretenir %}
 
 ## Fonctions
 
@@ -741,14 +741,14 @@ C'est un objet :
 <class 'builtin_function_or_method'>
 ```
 
-{% note2 "**Définition**" %}
+{% definition %}
 On **_exécute_** l'objet en faisant suivre son nom de parenthèses :
 
 ```txt
 <nom de la fonction>()
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple :
 ```python
@@ -759,14 +759,14 @@ Par exemple :
 
 Va exécuter la fonction `print`{.language-} de python qui affiche à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot){.externe} ce qui a pour effet d'aller à la ligne.
 
-{% note2 "**Définition**" %}
+{% definition %}
 De nombreuses fonctions peuvent être exécutées avec des **_paramètres_** qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
 
 ```txt
 <nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 Prenons par exemple la fonction print de python :
 
@@ -822,14 +822,14 @@ coucou
 L'exécution de toute fonction va retourner un objet. 
 
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le retour de l'exécution est un objet qui peut être stockée dans une variable via une affectation :
 
 ```txt
 <nom de variable> = <nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs){.externe}) :
 
@@ -857,15 +857,15 @@ Enfin, comme ici on exécute notre code directement dans l'interpréteur python,
 
 ### <span id="paramètres"></span> Paramètres d'une fonction
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.
-{% endattention2 %}
+{% endretenir %}
 
 En regardant [la documentation de la fonction `print`{.language-}](https://docs.python.org/fr/3/library/functions.html#print){.externe}, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
 
-{% note2 "**Définition**" %}
+{% definition %}
 Les paramètres sans valeurs par défaut sont **obligatoires** lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont **optionnels**.
-{% endnote2 %}
+{% enddefinition %}
 
 On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur par défaut :
 
@@ -874,13 +874,13 @@ On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur pa
 coucou***les gens***!
 ```
 
-{% note2 "**Définition**" %}
+{% definition %}
 Les paramètres d'une fonctions doivent être mis dans cet ordre :
 
 1. **tous** les paramètres sans valeurs par défaut dans l'ordre de la définition
 2. **puis** les paramètres optionnels utilisés sans nom, dans l'ordre de leurs définitions
 3. **puis** les paramètres optionnels utilisés avec leur nom (`nom=valeur`{.language-}) que l'on peut les mettre dans n'importe quel ordre.
-{% endnote2 %}
+{% enddefinition %}
 
 {% info %}
 La fonction print n'a pas de nombre déterminé de paramètres sans valeurs par défaut (il y a un `...`), la règle 2 ne s'applique donc pas pour print.
@@ -1021,18 +1021,18 @@ Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on ve
 
 Les méthodes sont un autre moyen d'agir sur un objet :
 
-{% note2 "**Définition**" %}
+{% definition %}
 ```python
 <retour de la méthode> = <un objet>.<nom de la méthode>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
 ```
 
 On applique `<nom de la méthode>`{.language-} (dit méthode appelée) à `<un objet>`{.language-} (dit objet appelant)  en utilisant les paramètres de la méthode. Comme une fonction, on peut récupérer son résultat si nécessaire via une affectation.
-{% endnote2 %}
+{% enddefinition %}
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une méthode ne s'utilise **jamais** seule. Elle s'applique à ce qu'il y a à gauche d'elle.
-{% endattention2 %}
+{% endretenir %}
 
 Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaînes de caractères et les listes.
 
@@ -1054,7 +1054,7 @@ On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de l
 
 Signifie que `<nom de la méthode 2>`{.language-} est appliquée à l'objet rendu par l'exécution de `<nom de la méthode 2>`{.language-} sur `<un objet>`{.language-}.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'application des méthodes est **associative à gauche**.
 
 ```txt
@@ -1067,7 +1067,7 @@ est équivalent à :
 (<un objet>.<nom de la méthode 1>()).<nom de la méthode 2>()
 ```
 
-{% endattention2 %}
+{% endretenir %}
 
 
 Par exemple :
@@ -1115,7 +1115,7 @@ On peut voir les méthodes comme des fonctions définies dans l'espace de nom de
 
 C'est plus rare, mais certaines classes possèdent des également des _attributs_ en plus des méthodes. 
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un attribut est un nom représentant un objet :
 
 ```python
@@ -1123,7 +1123,7 @@ Un attribut est un nom représentant un objet :
 ```
 
 Un attribut est une variable située dans un objet.
-{% endnote2 %}
+{% enddefinition %}
 
 Ce sont des valeurs associées à l'objet.
 

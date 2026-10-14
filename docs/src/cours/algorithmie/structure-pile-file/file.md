@@ -29,10 +29,10 @@ méthode (f: File<T>) défile() → T           # pop
 
 La taille de la file doit être déterminée à la création. Comme la pile, son implémentation nécessitera d'autres attributs.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Une file est [un **_buffer_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_tampon){.externe} permettant de découpler l'arrivée du traitement de données temporelles.
-{% endattention2 %}
+{% endretenir %}
 
 ### <span id="structure"></span>Implémentation
 

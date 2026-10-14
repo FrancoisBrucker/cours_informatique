@@ -18,7 +18,7 @@ Commençons par les définir de façon visuelle : Un **_arbre de Catalan_** est 
 
 Notez bien que les arbres de catalan sont une **généralisation stricte** des arbres planaires où chaque nœud a au plus 2 enfants. L'exemple précédent n'est pas planaire (un nœud n'a qu'un enfant droit). Pour éviter toute confusion, considérez la définition suivante, utilisant les suites finies de `0` et de `1` (d'où l'utilisation d'arbre binaires) :
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'ensemble des suites finies de 0 et de 1 est notée $\\{0, 1\\}^\star$ :
 <div>
 $$
@@ -27,13 +27,13 @@ $$
 </div>
 
 Avec $\epsilon$ la suite vide et $\\{0, 1\\}^n$ le produit cartésien de taille $n$ de $\\{0, 1\\}$.
-{% endnote2  %}
-{% note2 "**Définition**" %}
+{% enddefinition  %}
+{% definition %}
 Un **_arbre de Catalan_** (ou **_arbre binaire_**) $\tau$ est un sous ensemble de $\\{0, 1\\}^\star$ tel que :
 
 - $\epsilon \in \tau$
 - quelles que soient $u, v \in \\{0, 1\\}^\star$, si $uv \in \tau$ alors $u \in \tau$
-{% endnote2  %}
+{% enddefinition  %}
 
 Avec cette définition, les nœuds de l'arbre précédent deviennent :
 
@@ -140,9 +140,9 @@ C_n = \frac{1}{n + 1}\binom{2n}{n}
 $$
 </div>
 {% endnote %}
-{% note2 "**Définition**" %}
+{% definition %}
 Les $C_n$ sont appelé [nombres de catalan](https://fr.wikipedia.org/wiki/Nombre_de_Catalan){.externe}
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Le Catalan dont on parle est [Eugène Charles Catalan](https://fr.wikipedia.org/wiki/Eug%C3%A8ne_Charles_Catalan){.externe}, mathématicien Franco-Belge, et ses nombres se retrouvent partout en combinatoire.
 {% endinfo %}
@@ -344,12 +344,12 @@ $$
 
 ## Arbres binaires complet
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_arbre de Catalan complet_** (ou **_arbre binaire complet_**) $\tau$ est :
 
 - un arbre de catalan
 - quel que soit $u \in \tau$ alors $u0 \in \tau \Leftrightarrow u1 \in \tau$
-{% endnote2  %}
+{% enddefinition  %}
 
 Les arbres de catalan complet forment à la fois n sous ensemble des arbres de Catalan et l'ensemble tout entier. Il est en effet possible d'associer injectivement un arbre de Catalan Complet à tout arbre de Catalan en ajoutant à chaque nœud de l'arbre de Catalan autant de feuille qu'il lui manque d'enfants :
 

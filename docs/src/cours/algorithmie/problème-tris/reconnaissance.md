@@ -90,13 +90,13 @@ La question est délicate. Il faut se demander quel est le modèle sous-jacent �
 
 <span id="définition-modèle-tableau-aléatoire"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
 - on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation){.externe} $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
 - $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Dans un tableau aléatoire, toutes les valeurs sont différentes.
 {% endinfo %}
@@ -254,13 +254,13 @@ La complexité en moyenne du problème de la reconnaissance est en temps constan
 
 Ce résultat est remarquable :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 - Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !
 - Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
 - Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente){.externe} est très utile pour démontrer qu'un algorithme est en temps constant.
 
-{% endattention2 %}
+{% endretenir %}
 
 
 Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :

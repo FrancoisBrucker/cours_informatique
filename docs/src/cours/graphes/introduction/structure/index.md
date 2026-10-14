@@ -24,28 +24,28 @@ Cette définition permet de considérer des ensemble a priori non dénombrable, 
 
 En pratique, on aura toujours un nombre fini de sommets et d'arêtes (ou au pire dénombrable), on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_multi-graphe_** est un couple $G = (V, E)$ où :
 
 - $V$ est un ensemble fini de **_sommets_** (**_vertices_**)
 - $E$ est une liste finie de d'éléments de $V \times V$ appelés **_arcs_** (**_edges_**)
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Notez que la définition précédente s'étant sans problème aux ensemble infinis dénombrables.
 {% endinfo %}
 
 Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois les notations suivantes :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Si $G$ est un multi-graphe, on note :
 
 - $V(G)$ et $v(G)$ pour noter l'ensemble des sommets et leur nombre,
 - $E(G)$ et $e(G)$ pour noter l'ensemble des arcs et leur nombre.
 
-{% endnote2 %}
+{% enddefinition %}
 
 ## Exemple
 
@@ -91,9 +91,9 @@ Mais la **solution cherchée est globale** :
 
 C'est une caractéristique générale :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un problème pouvant se décrire localement mais dont la solution est globale peut **souvent** se modéliser puis se résoudre à l'aide de graphes.
-{% endattention2 %}
+{% endretenir %}
 
 ### Modélisation
 
@@ -110,48 +110,48 @@ Enfin, ils procurent une satisfaction purement esthétique de part la grande bea
 
 Notre définition est tellement générale, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un multi-graphe sera dit :
 - **_sans boucles_** si es arcs commencent et finissent toujours sur nœuds différents.
 - **_sans arcs multiples_** si une arête ne peut arriver qu'une seule fois (les arêtes sont un sous-ensemble de $V \times V$ : c'est une **relation**).
 - **_non orienté_** si le sens d'une arête importe peu (une arête est alors un sous-ensemble à 2 éléments).
 
-{% endnote2 %}
+{% enddefinition %}
 
 Ainsi, un **_multi-graphe non orienté sans boucle_** est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.
 
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle **_graphes_** et on peut les définir comme suit :
 
 <span id="definition-graphe"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un **graphe** est un couple $G = (V, E)$ où :
 
 - $V$ est un ensemble fini. Ses éléments sont appelés **_sommets_**.
 - $E$ est un sous-ensemble de $\\{ \\{x, y\\} \mid x \neq y \in V \\}$. Ses éléments sont appelés **_arêtes_**.
 
-{% endnote2 %}
+{% enddefinition %}
 
 De cette définition minimale on pourra alors définir d'autres cas, comme le **_graphe orienté_** :
 
 <span id="definition-graphe-orienté"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_graphe orienté_** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
 
 - $V$ est un ensemble fini
 - $E$ est un sous-ensemble de $\\{ (x, y) \mid x \neq y \in V \\}$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Enfin, plus rarement, vous pourrez rencontrer des **graphes mixtes** qui permettent de rendre compte de situations réelles comme lorsque l'on modélise des réseaux routiers où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens) :
 
 <span id="definition-graphe-mixte"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **graphe mixte** est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un graphe non orienté et $G_2=(V, A)$ soit un graphe orienté.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Ou toutes les généralisations de ceux-ci comme :
 
@@ -164,9 +164,9 @@ Il est important de connaître précisément de quels type de graphe on parle ca
 
 ## Vocabulaire
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Par abus de langage on écrira $xy$ pour designer une arête (_resp._ arc) plutôt que $\\{x, y\\}$ (_resp._ $(x, y)$).
-{% endattention2 %}
+{% endretenir %}
 
 ### Parties de graphes
 
@@ -174,34 +174,34 @@ On a parfois envie de découper un graphe pour en étudier une partie (s'il est 
 
 <div id="definition-sous-graphe"></div>
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$, alors $\left.G\right|_{V'} = (V', E')$ est un **_sous-graphe_** de $G$.
-{% endnote2 %}
+{% enddefinition %}
 
 Un sous-graphe admet deux cas particuliers :
 
 <div id="definition-graphe-partiel"></div>
-{% note2 "**Définitions**" %}
+{% definition %}
 
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté, $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$.
 
 - $G'=(V, E')$ est appelé **_graphe partiel_** ou encore un **_sous-graphe couvrant_** de $G$
 - $G' = (V' , E' \cap V' \times V')$ est dit être un **_sous-graphe induit_** de $G$. On dit que $G'$ est **_la restriction_** de $G$ à $V'$ et est noté $G\vert_{V'}$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Un cas d'intérêt particulier de sous-graphes induits pour les graphes sont les cliques et les stables :
 
 <div id="définition-clique"></div>
 <div id="définition-stable"></div>
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Soit $G = (V, E)$ un graphe. L'ensemble $V' \subseteq V$ est dit être :
 
 - une **_clique_** de $G$ si son sous-graphe induit par $V'$ est complet,
 - un **_stable_** de $G$ si son sous-graphe induit par $V'$ est discret.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple pour le graphe $G$ suivant :
 
@@ -214,38 +214,38 @@ Par exemple pour le graphe $G$ suivant :
 
 ### Taille et ordre
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Pour un graphe (potentiellement orienté) $G = (V, E)$ on appellera :
 
 - **_ordre_** le nombre de sommets d'un graphe et on le note $n$ par défaut
 - **_taille_** le nombre d'arêtes d'un graphe et on le note $m$ par défaut
 
-{% endnote2 %}
+{% enddefinition %}
 
 A ordre fixé, les graphes de taille maximum son dit **_complet_** :
 
 <span id="definition-graphe-complet"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe est **_complet_** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
-{% endnote2 %}
+{% enddefinition %}
 
 Réciproquement, un graphe sans arête est dit **_discret_** :
 
 <span id="definition-graphe-discret"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe est **_discret_** s'il ne possède aucune arête.
-{% endnote2 %}
+{% enddefinition %}
 
 On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un **_graphe orienté complet_** n'existe pas. On préfère parler de [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) :
 
 <span id="definition-tournoi"></span>
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_tournoi_** est un graphe orienté $G=(V, E)$ tel que :
 
 - si $xy \in E$ alors $yx \notin E$
 - pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.
-{% endnote2 %}
+{% enddefinition %}
 
 ### Arcs
 
@@ -255,7 +255,7 @@ Un **_arc_** $xy$ est un élément de $E$ pour les graphes orientés. On le repr
 
 Quelques notations et définitions relatives aux arcs :
 
-{% note2 "**Définitions**" %}
+{% definition %}
 
 - $x$ est l'**_origine_** de l'arc,
 - $y$ est la **_destination_** de l'arc.
@@ -276,11 +276,11 @@ Son cardinal est appelé **_degré entrant_** de $y$ et on le note :
 
 $$\delta^-(y) = \vert N^-(y) \vert$$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Lorsque l'on a besoin d'inclure l'élément dans le voisinage, on considère les voisinages fermés :
 
-{% note2 "**Définitions**" %}
+{% definition %}
 
 On appelle **_voisinage fermé de $x$_** l'ensemble des arcs d'origine $x$ plus $x$ et on le note :
 
@@ -290,7 +290,7 @@ et
 
 $$N^-[x] =N^-(x) \cup \\{ x \\}$$
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Arêtes
 
@@ -300,7 +300,7 @@ Une **_arête_** $xy$ est un élément de $E$ pour les graphes non orienté. On 
 
 Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Le **_voisinage_** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. On les notes :
 
 $$N(x) = \\{ y \mid  xy \in E\\}$$
@@ -312,7 +312,7 @@ Le cardinal d'un voisinage est appelé **_degré_**. On le note :
 
 $$\delta(x) = \vert N(x) \vert$$
 
-{% endnote2 %}
+{% enddefinition %}
 
 En remarquant que $0 \leq \delta(x) < n$ pour un sommet $x$ d'un graphe à $n$ sommets, prouvez la propriété suivante :
 
@@ -331,20 +331,20 @@ Enfin :
 
 <span id="degré-max-min-graphe"></span>
 
-{% note2 "**Définitions**" %}
+{% definition %}
 Si $G=(V, E)$  est un graphe, on note :
 
 - $\Delta(G) = \max(\\{\delta(x) \vert x \in V\\})$
 - $\delta(G) = \min(\\{\delta(x) \vert x \in V\\})$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Si tous les sommets ont mêmes degré, on les appelle régulier :
 
 <span id="graphe-régulier"></span>
-{% note2 "**Définitions**" %}
+{% definition %}
 Un graphe $G$ est dit **k-_régulier_** (ou parfois juste **_régulier_**) si $\Delta(G) = \delta(G) = k$.
-{% endnote2 %}
+{% enddefinition %}
 
 ## Voisinages et arêtes
 
@@ -423,11 +423,11 @@ Pour un graphe, chaque arête $uv$ est unique et est comptée 2 fois dans la som
 
 Deux graphes sont **_isomorphes_** s'ils sont identique au noms de leurs sommets prêt. Formalisons cette intuition :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Deux graphes $G = (V, E)$ et $G' = (V', E')$ sont isomorphes s'il existe une bijection $f: V\to V'$ telle que $xy \in E$ si et seulement si $f(x)f(y) \in E'$.
 
 La fonction $f$ est appelé **_isomorphisme_** entre $G$ et $G'$.
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 La notion d'isomorphisme se généralise directement à des graphes orienté ou à des multigraphes.
 {% endinfo %}
@@ -475,10 +475,10 @@ C'est pourquoi lorsque l'on énumère des graphes on le fera la plupart du temps
 
 Enfin, on peut chercher les isomorphismes entre un graphe et lui-même. Il en existe toujours au moins un puisque la fonction identité marchera toujours.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Attention, ne confonde pas isomorphe, isomorphisme et automorphisme :
 
@@ -486,8 +486,8 @@ Attention, ne confonde pas isomorphe, isomorphisme et automorphisme :
 
 Les 3 graphes $G_1$, $G_2$ et $G_3$ sont isomorphes (nous n'avons que renuméroté les sommets entre eux), mais seuls $G_1$ et $G_3$ sont automorphes par l'automorphisme qui échange $A$ et $C$. En effet, le graphe $G_2$ n'est pas le graphe $G_1$ puisque le degré de son sommet $B$ vaut 2 : leurs ensembles d'arêtes sont différents. 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 - un isomorphisme change le nom des sommets (si les sommets sont les même être les graphes de de départ et d'arrivée, les arêtes peuvent être différentes),
 - un automorphisme cherche les symétries dans un graphe (le graphe d'arrivée est **le même** que le graphe de départ (sommets **et** arêtes)).
-{% endattention2  %}
+{% endretenir  %}
 

@@ -13,9 +13,9 @@ eleventyComputed:
 
 La recherche d'un arbre couvrant ou d'une arborescence d'un graphe non valué peut se faire en utilisant de algorithmes très généraux de parcours de graphes : les parcours en largeur et en profondeur.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Ces parcours servent **beaucoup**. On va les retrouver à plein d'endroit donc connaissez les : ils sont bien plus important qu'on ne le pense au départ.
-{% endattention2 %}
+{% endretenir %}
 
 Nous allons expliciter les deux parcours en supposant que les graphes ne sont pas forcément connexes, ils rendront ainsi plutôt une forêt couvrant qu'un arbre couvrant. Enfin, ces deux algorithmes fonctionnent sans soucis pour des graphes orientés ou non voir des multi-graphes.
 

@@ -25,7 +25,7 @@ Nous allons pour cela donner 4 définitions alternatives mais équivalentes d'un
 
 Commençons par un cas simple, le fait de ne pas avoir à se déplacer que de 1 case à la fois :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_machine de Turing à accès aléatoire en mémoire_** est composée :
 
 - d'un **_ruban_** (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère `0` soit le caractère `1`
@@ -36,7 +36,7 @@ Une **_machine de Turing à accès aléatoire en mémoire_** est composée :
   - l'état de la machine : $\delta_e : Q \times \\{0, 1\\} \mapsto Q$
   - le caractère de la case du ruban pointée par le curseur : $\delta_c : Q \times \\{0, 1\\} \mapsto \\{0, 1\\}$
   - la position du curseur : $\delta_d : Q \times \\{0, 1\\} \mapsto \mathbb{Z}$
-{% endnote2 %}
+{% enddefinition %}
   
 À l'exécution d'une machine de Turing à accès aléatoire en mémoire, le curseur peut se déplacer d'autant de case vers la droite (si positif) ou la gauche (si négatif) qu'il le souhaite.
 
@@ -73,7 +73,7 @@ Les deux notions sont donc équivalentes.
 
 Une machine de Turing à $k$ curseurs peut être définie comme suit.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_machine de Turing à $k$ curseurs_** est composée :
 
 - de un **_ruban_** (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère `0` soit le caractère `1`
@@ -84,7 +84,7 @@ Une **_machine de Turing à $k$ curseurs_** est composée :
   - l'état de la machine : $\delta_e : Q \times \\{0, 1\\}^k \mapsto Q$
   - les caractères des cases pointées par chaque curseur $1\leq i \leq k$ : $\delta_{c_i} : Q \times \\{0, 1\\}^k \mapsto \\{0, 1\\}$
   - les positions des $1\leq i \leq k$ curseurs : $\delta_{d_i} : Q \times \\{0, 1\\}^k \mapsto \\{\leftarrow, \rightarrow\\}$
-    {% endnote2 %}
+    {% enddefinition %}
 
 Cette machine permet de prendre en compte plusieurs cases du ruban pour les transition. La gestion des curseurs est faite ainsi :
 
@@ -242,7 +242,7 @@ Les deux notions sont donc équivalentes.
 
 Une machine de Turing à $k$ rubans peut être définie comme suit.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_machine de Turing à $k$ rubans_** est composée :
 
 - de $k$ **_rubans_** (supposés infinis) constitués de cases contiguës pouvant chacune contenir soit le caractère `0` soit le caractère `1`
@@ -253,7 +253,7 @@ Une **_machine de Turing à $k$ rubans_** est composée :
   - l'état de la machine : $\delta_e : Q \times \\{0, 1\\}^k \mapsto Q$
   - les caractères des cases de chaque ruban $1\leq i \leq k$ pointées par les curseurs : $\delta_{c_i} : Q \times \\{0, 1\\}^k \mapsto \\{0, 1\\}$
   - les positions des $1\leq i \leq k$ curseurs : $\delta_{d_i} : Q \times \\{0, 1\\}^k \mapsto \\{\leftarrow, \rightarrow\\}$
-    {% endnote2 %}
+    {% enddefinition %}
 
 L'**_exécution_** est alors identique à la machine simple. Tout se passe comme si on avait $k$ machines différentes, mais un seul état et une fonction de transition dépendant de tous les rubans.
 
@@ -328,7 +328,7 @@ En utilisant les technique de preuve précédentes on arrive facilement à montr
 
 Ne travailler qu'avec des `0` et des `1` peut sembler réducteur :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_machine de Turing sur un alphabet $\mathcal{A}$_** est composée :
 
 - d'un ensemble fini $\mathcal{A}$ nommé **_alphabet_**
@@ -341,7 +341,7 @@ Une **_machine de Turing sur un alphabet $\mathcal{A}$_** est composée :
   - l'état de la machine : $\delta_e : Q \times \mathcal{A} \mapsto Q$
   - le caractère de la case du ruban pointée par le curseur : $\delta_c : Q \times \mathcal{A} \mapsto \mathcal{A}$
   - la position du curseur : $\delta_d : Q \times \mathcal{A} \mapsto \\{\leftarrow, \rightarrow\\}$
-    {% endnote2 %}
+    {% enddefinition %}
 
 L'**_exécution_** est alors identique à la machine simple, sauf pour l'initialisation où le ruban est rempli de caractères blanc plutôt que de `0`.
 
@@ -384,7 +384,7 @@ Les deux notions sont donc équivalentes.
 
 La définition d'une machine de Turing la plus couramment utilisée en algorithmie théorique est la machine de Turing d'alphabet $\\{0, 1, \sharp\\}$ avec `#` comme caractère blanc et la possibilité de ne pas avancer le ruban :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Nous nommerons : **_Machine de Turing `01#`_** une machine $M$ de Turing d'alphabet $\\{0, 1, \sharp\\}$ avec `#` comme caractère blanc avec les caractéristiques suivantes :
 
 - $\delta_d(q, r)$ (ou les $\delta_{d_i}(q, r_1, \dots, r_p)$ si la machine possède plusieurs rubans ou curseurs) prend ses valeurs dans $\\{ \leftarrow, \emptyset, \rightarrow \\}$. Si la valeur est $\emptyset$ le curseur ne bouge pas.
@@ -394,7 +394,7 @@ Nous nommerons : **_Machine de Turing `01#`_** une machine $M$ de Turing d'alpha
   - $M([E])$ avec $[E] = E_1\sharp...\sharp E_i\sharp ...\sharp E_n$ avec les E_i uniquement composée de `0` ou de `1`
 
 Une machine **_Machine de Turing `01#` à $k$ rubans_** aura comme entrée $M(E_1, \dots, E_k)$, $M([E_1], \dots, [E_k])$ ou une combinaison de ceux-ci.
-{% endnote2 %}
+{% enddefinition %}
 
 La fait d'accepter de ne pas se déplacer permet des transitions de type $\delta_i(q, r_1, \dots, r_p) = (q, r_i, \emptyset)$ pour tout $i \neq I$ et $\delta_I(q, r_1, \dots, r_p) = (q, r'_I, \leftarrow)$. On peut bouger les rubans indépendamment les uns des autres !
 

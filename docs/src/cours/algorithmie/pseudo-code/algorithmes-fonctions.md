@@ -13,10 +13,10 @@ Le pseudo-code permet d'écrire des algorithmes de façon claire et sans ambigu�
 
 ## Algorithme
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_algorithme_** est une suite d'instructions de pseudo-code qui, a partir de paramètres d'entrées de type déterminé, rend une sortie de type déterminé.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Considérons par exemple la description de  l'algorithme de recherche d'un élément dans une liste :
 
@@ -82,9 +82,9 @@ algorithme réponse() → entier:
 
 L'affichage à l'écran est une **information donnée à l'utilisateur**, l'algorithme s'en fiche et fonctionne tout à fait sans.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour distinguer le retour de fonction d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
-{% endattention2 %}
+{% endretenir %}
 
 
 Terminons par un petit exercice :
@@ -120,7 +120,7 @@ algorithme nombre(T: [entier], x: entier) → entier:
 
 Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des _sous-programmes_ réutilisables à volonté, appelés **_fonctions_**.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une fonction est un programme. Elle a ainsi :
 
 - un nom
@@ -134,7 +134,7 @@ Une fois définie, on peut l'appeler comme une instruction (sa sortie est affect
 sortie ← nom_fonction(entrée_1, ..., entrée_n)
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Appels de fonctions
 
@@ -166,11 +166,11 @@ affiche à l'écran trouve
 
 Est un pseudo-code valide puisque `recherche`{.language-} est bien défini et utilisé correctement (le type de ses paramètres est correct).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 - Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.
 - Les paramètres sont **des variables** qui sont initialisées au début de l'exécution de la fonction.
 - **Seuls** les objets peuvent être transmis.
-{% endattention2 %}
+{% endretenir %}
 
 
 Dans l'exemple précédent, tout ce passe comme si on disposait de deux ordinateurs, un qui exécute le pseudo-code, l'autre la fonction `recherche`{.language-} :
@@ -234,9 +234,9 @@ L'entier `x`{.language-} de la fonction est indépendant de l'entier `x`{.langua
 
 ### Tableaux et fonctions
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les objets sont communs à toutes les exécutions d'un même algorithmes. Ils peuvent passer d'une fonction à une autre via les variables.
-{% endattention2 %}
+{% endretenir %}
 
 Par exemple :
 
@@ -265,15 +265,15 @@ Va afficher 0 puis 3. En effet :
 
 Les tableaux sont les seuls objets défini en pseudo-code qui peuvent être modifiés, ce n'est pas le cas ni des 5 types basiques ni des chaînes.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !
-{% endattention2 %}
+{% endretenir %}
 
 ## <span id="type"></span>Signature d'un algorithme ou d'une fonction
 
 Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_signature de fonction_** associe :
 
 - son nom
@@ -292,12 +292,12 @@ Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :
 nom_de_l_algorithme(nom_premier_paramètre: type_premier_paramètre, ..., nom_premier_paramètre: type_dernier_paramètre) → type_de_sortie
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le **_type_** d'un algorithme est sa signature sans son nom.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple pour l'algorithme `recherche`{.language-} :
 

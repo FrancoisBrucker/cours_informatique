@@ -20,7 +20,7 @@ Il n'est jamais bon de copier/coller un bout de programme qui se répète plusie
 
 ## Définition d'une fonction
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_fonction_** est [un bloc](./#bloc) auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
 ```python
@@ -33,7 +33,7 @@ def <nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>):
     return <un objet>
 ```
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Les paramètres et la dernière la dernière ligne avec `return`{.language-} sont optionnelles.
 {% endinfo %}
@@ -56,9 +56,9 @@ Ensuite vient le bloc fonction en lui-même qui ne contient ici qu'une seule lig
 
 Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait que définir la fonction. Pour l'utiliser, ajoutez `salutation()`{.language-} à la suite du bloc.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une **_fonction_** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par des virgules (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
-{% endattention2 %}
+{% endretenir %}
 
 ## Nom d'une fonction
 
@@ -209,10 +209,10 @@ def puissance(x, y=2):
 
 ## Retour d'une fonction
 
-{% note2 "**Définition**" %}
+{% definition %}
 Toute fonction rend une valeur. On utilise le mot-clef `return`{.language-} suivi de la valeur à rendre pour cela et ce sera toujours la dernière instruction effectuée.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple la fonction suivante rend le double de la valeur de l'objet passé en paramètre:
 
@@ -238,12 +238,12 @@ print(double(21))
 
 Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable. 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'affichage à l'écran avec la fonction `print`{.interne} est **DIFFÉRENT** d'un retour de fonction :
 
 - l'affichage à l'écran concerne l'utilisateur : le code n'a aucun moyen d'utiliser cet affichage
 - le retour d'une fonction sera utilisé dans la suite du code : il concerne le code
-{% endattention2 %}
+{% endretenir %}
 
 
 Enfin, python ajoute ajoute implicitement à toute fonction une dernière ligne avec l'instruction `return None`{.language-} : toute fonction rendra toujours quelque chose, au pire `None`{.language-}. Par exemple la fonction suivante rendra l'objet `None`{.language-} :
@@ -387,9 +387,9 @@ Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langag
 
 ## <span id="variables"></span>Variables et fonctions
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les variables crées dans les fonctions restent dans les fonctions.
-{% endattention2 %}
+{% endretenir %}
 
 Comme les objets crées ne sont accessible que part leurs noms et que python détruit les objets sans aucun nom, une fois la fonction terminées, les objets créez dans la fonction mais non retourné sont détruits. Ce mécanisme permet également d'avoir dans plusieurs fonction des variables de même nom !
 

@@ -15,22 +15,22 @@ Pour cette partie, nous n'allons considérer **que des graphes orientés** car l
 
 Commençons par définir le problème :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k}$ tel que :
 
 - $a = v_0$ et $b=v_{k}$
 - il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#definition-longueur) strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
-  {% endnote2 %}
+  {% enddefinition %}
 
 Que l'on généralise souvent aux **graphes (orientés) valués** :
 
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k}$ tel que :
 
 - $a = v_0$ et $b=v_{k}$
 - il n'existe pas de chemin $w_0\dots w_{k'}$ de poids plus petit que celui de $c$.
-  {% endnote2 %}
+  {% enddefinition %}
 
 Il est clair qu'un chemin de longueur minimum d'un graphe est un chemin de poids minimum où toutes les valuations sont égales à 1.
 

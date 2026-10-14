@@ -25,11 +25,11 @@ Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des comp
 Si lors de l'exécution d'un algorithme $A$, une opération $O$ (ou une fonction) de celui-ci se répète plusieurs fois et que sa
 complexité diffère selon les appels, le calcul de la complexité de $A$ va nécessiter une analyse fine de de **toutes** les exécutions de l'opération $O$ car borner la complexité par le maximum conduit (souvent) à surestimer grandement la complexité réelle.
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'**_analyse amortie_** est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.
 
 La **_complexité amortie_** de cet algorithme est alors $\frac{C}{m}$.
-{% endnote2 %}
+{% enddefinition %}
 {% attention %}
 Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $m$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.
 {% endattention %}

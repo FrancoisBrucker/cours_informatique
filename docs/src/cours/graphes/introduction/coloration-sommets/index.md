@@ -16,9 +16,9 @@ eleventyComputed:
 
 Commençons par définir ce que l'on cherche à faire :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $G=(V, E)$ un graphe. Une **_$k$-coloration_** de $G$ est une fonction $c: V \to \\{1,\dots, k\\}$ telle que pour toute arête $xy \in E$, $c(x) \neq c(y)$.
-{% endnote2 %}
+{% enddefinition %}
 
 Le graphe discret par exemple admet une 1-coloration, 2-coloration, ..., jusqu'à une $n$-coloration :
 
@@ -75,11 +75,11 @@ Explicitons cette borne minimum de coloration :
 
 <span id="définition-notation-coloration-minimum"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Soit $G=(V, E)$ un graphe. On note $\chi(G)$ le nombre minimum de couleurs qu'il faut pour colorier ses sommets et on l'appelle **_nombre chromatique de $G$_**.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On a déjà quelques $\chi$ pour des classes de graphes connus :
 
@@ -256,9 +256,9 @@ Le problème de la 2-colorabilité définit une classe très importante de graph
 
 <span id="définition-biparti"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#définition-stable).
-{% endnote2  %}
+{% enddefinition  %}
 
 Par exemple le graphe suivant :
 
@@ -523,7 +523,7 @@ Cet proposition toute simple montre que l'on peut parfois utiliser des coloratio
 
 Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski){.externe} est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_Les graphes de Mycielski_**, notés $M_k = (V_k, E_k)$ pour tous $k\geq 2$ sont définis récursivement tels que $M_2 = (\\{u, v\\}, \\{uv \\})$ est le graphe complet à 2 sommets et $M_{k+1} = (V_{k+1}, E_{k+1})$ :
 
 <div>
@@ -536,7 +536,7 @@ $$
 </div>
 
 
-{% endnote2 %}
+{% enddefinition %}
 
 La figure c-après montre les graphes $M_2$, $M_3$ et $M_4$ :
 
@@ -585,7 +585,7 @@ Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de m
 
 Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 + G_2$ le graphe :
 
 <div>
@@ -594,7 +594,7 @@ G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 
 {% exercice %}
@@ -634,7 +634,7 @@ Donnez une coloration optimale de
 
 On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les arêtes possibles entre les deux graphes :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \vee G_2$ la **liaison forte** entre $G_1$ et $G_2$. C'est le graphe :
 
 <div>
@@ -643,7 +643,7 @@ G_1 \vee G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{ xy \mid x \in V_1, y \in V_2
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 {% exercice %}
 Que vaut :
 ![g V g](./g_V_g.png)
@@ -682,7 +682,7 @@ Donnez une coloration optimale de
 
 Enfin, de façon plus subtile :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ deux graphes. On note $G_1 \square G_2$ le **produit cartésien** entre $G_1$ et $G_2$. C'est le graphe :
 
 <div>
@@ -696,7 +696,7 @@ Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
 - $x_2 = y_2$ et $x_1y_1 \in E_1$
 - $x_1 = y_1$ et $x_2y_2 \in E_2$
 
-{% endnote2 %}
+{% enddefinition %}
 {% exercice %}
 Que vaut :
 ![g carré g](./g_carré_g.png)
@@ -785,9 +785,9 @@ Conjecture de Hedetniemi :
 
 ## Applications
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation et pour résoudre des problèmes ou l'on cherche à minimiser les incompatibilités.
-{% endattention2 %}
+{% endretenir %}
 
 ### Résoudre des sudoku
 

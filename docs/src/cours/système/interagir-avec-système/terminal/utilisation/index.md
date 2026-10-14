@@ -27,14 +27,14 @@ Le corrigé des exercices montrent les résultat sur :
 
 Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](<https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)>).
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Dans tous les exemples d'utilisation du terminal, on fera commencer la commande par le prompt :
 
 - `$ ` si le terminal utilisé est un shell unix (linux/wsl/macos)
 - `> ` si le terminal est un powershell windows
 - `$> ` si le terminal utilisé peut être indifféremment un powershell ou un unix
 
-{% endattention2 %}
+{% endretenir %}
 
 Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une [**_ligne de commande_**](./#ligne-commande) à la suite du prompt et on appuie sur entrée pour l'exécuter. Par exemple :
 
@@ -66,9 +66,9 @@ Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on
 
 De plus un terminal est **toujours** positionné dans un dossier précis de votre arborescence de fichiers. C'est le **dossier courant**.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un terminal est **toujours** positionné dans un dossier, appelé **_dossier courant_**.
-{% endattention2 %}
+{% endretenir %}
 
 L'exécution d'une ligne de commande se fera **toujours** par rapport à cet endroit.
 
@@ -155,7 +155,7 @@ franoisbruca7be\fbrucker
 
 Une ligne de commande sera toujours composée de mots séparé par des espaces :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_ligne de commande_** est une chaîne de caractères composées de mots séparés par un ou plusieurs espaces tes que :
 
 - le premier mot est la commande et sera :
@@ -163,7 +163,7 @@ Une **_ligne de commande_** est une chaîne de caractères composées de mots s�
   - soit une instructions compréhensible par le terminal, comme `ls`{.language-} par exemple.
 - les mots suivants sont optionnels et sont les paramètres de la commande.
 
-{% endnote2 %}
+{% enddefinition %}
 
 ### Commande
 
@@ -201,12 +201,12 @@ Les paramètres peuvent être très simple (comme ci-dessous) comme très compli
 
 Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html){.externe} nous indique que le paramètre `mon_script.py`{.fichier} correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour que notre commande `python mon_script.py`{.language-} soit exécutée sans erreur il faut donc :
 
 1. qu'un fichier exécutable nommé `python`{.fichier} (ou `python.exe`{.fichier} sous windows) soit présent dans un des dossiers du path
 2. qu'il existe un fichier nommé `mon_script.py`{.fichier} dans le dossier courant du terminal
-{% endattention2 %}
+{% endretenir %}
 
 ### <span id="which"></span> Quelle commande ?
 

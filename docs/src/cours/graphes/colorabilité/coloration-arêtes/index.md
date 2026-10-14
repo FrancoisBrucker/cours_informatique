@@ -16,13 +16,13 @@ eleventyComputed:
 
 La coloration des arêtes est un sujet moins populaire que la coloration des sommets en partie parce que l'on peut résoudre le problème via [le line-graph](https://fr.wikipedia.org/wiki/Line_graph){.externe}
 
-{% note2 "**Définition**" %}
+{% definition %}
 Si $G=(V, E)$ est un graphe, son **_line graph_** $L(G) = (V_L, E_L)$ est défini tel que :
 
 - $V_L = E$
 - $uv \in E_L$ si les arêtes $u$ et $v$ ont une extrémité en commun
 
-{% endnote2 %}
+{% enddefinition %}
 
 On a alors immédiatement la proposition suivante :
 
@@ -84,9 +84,9 @@ Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
 
 > TBD preuve donne outil : Chaîne de Kempe pour les arête. On la retrouvera pour les sommet lorsque l'on traitera de coloration de graphe planaire. [Chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain){.externe}.
 
-{% note2 "**Définition**" %}
+{% definition %}
 > TBD chaîne de Kempe
-{% endnote2 %}
+{% enddefinition %}
 
 > TBD propriété. alternant et ne peut pas revenir.
 > on peut échanger ses couleurs alternantes (ne change rien si cycle impair)

@@ -33,11 +33,11 @@ On y verra également que :
 
 Enfin :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 C'est en codant qu'on devient codeur. Vous allez passer votre temps à vous tromper ou ne pas comprendre. Ce processus est normal. **MAIS** si vous ne comprenez pas quelque chose  : arrêtez vous et comprenez. 
 
 Ne recommencez pas à coder avant d'avoir compris sinon les incompréhensions vont s'accumuler et vous perdrez au final plus de temps.
-{% endattention2 %}
+{% endretenir %}
 
 
 ## <span id="installation-développement"></span> Outils de développement

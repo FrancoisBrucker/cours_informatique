@@ -234,9 +234,9 @@ On utilise des graphe de degré minimal au moins 5 car cette technique a été d
 
 Enfin, une dernière propriété sur les graphes nom planaires.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pour tout graphe $G$, on note $\text{cr}(G)$ le nombre minimum de croisements d'arêtes qu'un dessin de $G$ peut avoir.
-{% endnote2 %}
+{% enddefinition %}
 
 Les graphes planaires sont bien sur les graphes $G$ tels que $\text{cr}(G) = 0$. Et $\text{cr}(K_5) = 1$ (il n'est pas planaire et on l'a dessiné avec uniquement 1 croisement d'arête). Pour chaque graphe, il faudrait pouvoir trouver tous ses dessins possibles et compter pour chacun le nombre de croisements, ce qui est impossible à faire en pratique.
 

@@ -133,14 +133,14 @@ On reprend la relation $C$ du deuxième exemple de la partie consacrée à la pr
 
 Le fait que la relation *chemin*  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).
 
-{% note2 "**Définition**" %}
+{% definition %}
 Si $C$ est une relation d'équivalence sur $V$, la **_classe d'équivalence_** de $x \in V$ est :
 
 $$
 C(x) = \\{ y | C[x][y] == \text{Vrai}, y \in V \\}
 $$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Si un réseau ferré n'est pas connexe, les classes d'équivalences de la relation chemin donnent les **_composantes connexes_** du réseau ferré. Le réseau ferré de la figure suivante contient 2 composantes connexes :
 
@@ -241,12 +241,12 @@ Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la conditi
 
 ## Création du réseau ferré
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 - le **_coût de construction_** d'un tronçon entre deux gares $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
 - le **_coût de construction_** d'un réseau ferré est la somme des coûts de construction des tronçons qui le composent.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut maintenant reformuler notre problème d'optimisation :
 

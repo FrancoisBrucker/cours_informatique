@@ -98,7 +98,7 @@ Essayons de comprendre comment tout ça fonctionne :
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Pour dessiner un graphique, on procédera toujours de la même façon :
 
 1. on crée les données à représenter
@@ -106,7 +106,7 @@ Pour dessiner un graphique, on procédera toujours de la même façon :
 3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`{.language-}
 4. représenter la figure (commande `plt.show()`{.language-}) ou la sauver dans un fichier
 
-{% endattention2 %}
+{% endretenir %}
 
 
 {% info "**Vous pouvez souvent supprimer la partie 2.1 de vos dessins**" %}

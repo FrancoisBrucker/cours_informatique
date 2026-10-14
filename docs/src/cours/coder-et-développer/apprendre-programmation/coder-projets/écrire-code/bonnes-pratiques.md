@@ -45,9 +45,9 @@ Si vous utilisez le langage adapté, vous écrirez moins de code et il sera plus
 
 Ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu'autre chose :
 
-{% attention2 "**À retenir**" %} 
+{% retenir %} 
  Un langage informatique n'est **pas** une langue. C'est facile à apprendre ! 
-{% endattention2 %} 
+{% endretenir %} 
  
  
 ## Noms explicites et découpage fonctionnel
@@ -88,9 +88,9 @@ En plus d'être inutile, les commentaires :
 
 Lorsque l'on utilise [une API](https://fr.wikipedia.org/wiki/Interface_de_programmation){.externe}, on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaître le corps :
 
-{% attention2 "**À retenir**" %} 
+{% retenir %} 
 Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.
-{% endattention2 %} 
+{% endretenir %} 
 
 ## Lisibilité
 
@@ -110,9 +110,9 @@ Si on a le choix entre écrire du code utilisant des subtilités algorithmiques 
 
 Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur [un coding style](https://fr.wikipedia.org/wiki/Style_de_programmation){.externe}. Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/){.externe}
 
-{% attention2 "**À retenir**" %} 
+{% retenir %} 
 Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.
-{% endattention2 %} 
+{% endretenir %} 
 
 ## Efficacité
 
@@ -130,10 +130,10 @@ De plus, du code inutile contraint le développement : il est là, ne sert à ri
 En conséquence :
 
 
-{% attention2 "**À retenir**" %} 
+{% retenir %} 
 Tout code qui n'est plus/pas utile doit être immédiatement supprimé.
 
-{% endattention2 %}
+{% endretenir %}
 
 Le mieux étant encore de ne jamais l'écrire au départ :
 

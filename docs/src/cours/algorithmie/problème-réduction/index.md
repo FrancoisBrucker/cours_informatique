@@ -72,20 +72,20 @@ Cette procédure, un peu plus complexe que la précédente, permet à nouveau de
 
 ## Définition
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :
 
 - Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$
 - Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$
 
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
-{% endnote2 %}
+{% enddefinition %}
 
 La définition formelle ci-dessus est équivalente à :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Une réduction de $P_1$ en $P_2$ signifie  que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$.
-{% endattention2 %}
+{% endretenir %}
 
 Pour qu'une réduction ait un sens, il faut que les passages entre les problème $P_1$ et $P_2$ soit de faible complexité. En effet, en notant $C_{P_1}(n)$, $C_{1\rightarrow 2}(n)$, $C_{P_2}(n)$ et $C_{2\rightarrow 1}(n)$ les complexités des algorithmes $P_1$, $A_{1\rightarrow 2}$, $P_2$ et $A_{2\rightarrow 1}$ respectivement on a :
 
@@ -105,11 +105,11 @@ Notez bien que comme on cherche à borner la complexité du problème $P_1$, tou
 
 <span id="définition-réduction-polynomiale"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Une **_réduction polynomiale_** du problème algorithmique $P_1$ au problème algorithmique $P_2$ est une réduction où les algorithmes $A_{1\rightarrow 2}$ (passage d'une entrée du problème $P_1$ à une entrée du problème $P_2$) et $A_{2\rightarrow 1}$ (passage d'une solution du problème $P_2$ à une solution du problème $P_1$) sont tous deux de complexité polynomiale.
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut sur le même schéma définir une **_réduction linéaire_** (les passages sont de complexité linéaire), **_reduction logarithmique_** (les passages sont de complexité logarithmique par rapport à la taille de l'entrée), etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
 
@@ -143,9 +143,9 @@ La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qu
 
 La proposition précédente donne le but de toute réduction :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Si la complexité du problème $P_2$ est identique au type de réduction (polynomiale, linéaire, logarithmique, etc) **alors** la complexité du problème $P_1$ l'est aussi : c'est donc un outil de preuve de complexité puissant.
-{% endattention2 %}
+{% endretenir %}
 
 Entraînons nous sur un petit exemple qui va nécessiter d'utiliser et la sortie de $P_2$ et l'entrée $E_1$ pour trouver $S_1$ :
 

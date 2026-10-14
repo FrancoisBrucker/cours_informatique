@@ -24,11 +24,11 @@ Ceci implique que chaque copie soit synchronisée par un dépôt référent, un 
 
 Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le plus souvent possible pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais ne faut pas en sacraliser la mise en commun avec des règles de soumission stricte ou un superviseur.
 
-{% endattention2 %}
+{% endretenir %}
 
 
 Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" de la structure de sauvegarde est appréciable. Parmi tous les avantages, on peut citer :
@@ -48,7 +48,7 @@ Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, **_e
 
 L'opération de clonage effectue les opérations suivantes :
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'opération de **_cloner_** un projet consiste à :
 
 1. copier sa structure de donnée
@@ -57,7 +57,7 @@ L'opération de **_cloner_** un projet consiste à :
 4. placer le pointeur HEAD de la copie au même endroit (commit ou branche) que l'origine
 5. garder une références de toutes les branches de l'origine
 
-{% endnote2 %}
+{% enddefinition %}
 
 On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, l'index et le répertoire de travail sont inutiles.
 
@@ -118,9 +118,9 @@ Une fois les synchronisations de l'origine vers le serveur locales terminées, l
 
 La principale règle à suivre lorsque l'on participe à un projet avec l'origin est :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 On ne modifie pas l'historique de l'origine.
-{% endattention2 %}
+{% endretenir %}
 
 Dans l'exemple ci-dessous, l'utilisateur du haut a modifié son historique **et** celui de l'origine. Les commits rouges de l'utilisateur du bas ne sont plus accessibles depuis l'origine (ils sont toujours présent mais sans pointeur de branche. Les retrouver est très compliqué) :
 
@@ -128,9 +128,9 @@ Dans l'exemple ci-dessous, l'utilisateur du haut a modifié son historique **et*
 
 Le corollaire de la règle principale est :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 On ne modifie pas son historique commun avec l'origine.
-{% endattention2 %}
+{% endretenir %}
 
 Quand on voudra synchroniser notre travaille avec l'origine, il est indispensable que l'origine que l'on connaisse soit une sous-partie de l'origine actuelle : elle a pu évoluer indépendamment de nous mais il faut pouvoir **ajouter** nos commit à l'historique à partir du point d'ancrage connu.
 
@@ -138,9 +138,9 @@ Comme la branche de dév et le main sont sur l'origine, le seul moyen de les fus
 
 ![pas de désynchronisation](./pas-désynchronisation.png)
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 L'historique de toute branche sur l'origin est publique et ne doit pas être altérée.
-{% endattention2 %}
+{% endretenir %}
 
 Mais cela n’empêche pas la réécriture d'historique en locale. Tant que vous n'avez pas publié vos commits vous êtes libre de faire ce que vous voulez.
 

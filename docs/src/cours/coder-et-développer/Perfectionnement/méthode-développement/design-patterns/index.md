@@ -18,9 +18,9 @@ Le terme de _design pattern_ a été initialement donné dans le livre [Design P
 
 Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme [singleton](<https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)>) ne sont plus utilisés et d'autres, comme [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter){.externe} sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Les design pattern sont très utilisés par les bibliothèques (par exemple [les design pattern de react](https://refine.dev/blog/react-design-patterns/){.externe}), les reconnaître vous permettra 'aller vite dans la compréhension de celles-ci.
-{% endattention2 %}
+{% endretenir %}
 
 Le site suivant contient une liste actualisée de design patterns :
 

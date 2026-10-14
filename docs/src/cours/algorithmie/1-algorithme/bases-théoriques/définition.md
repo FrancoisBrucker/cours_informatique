@@ -11,16 +11,15 @@ eleventyComputed:
 
 On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace){.externe} (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE){.externe} qui a publié le premier manuel d'algèbre connu à ce jour.
 
-
 On va montrer quelques propriétés générales d'un programme et d'un algorithme.
 
 ## <span id="algorithme"></span> Algorithme ?
 
-{% note2 "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
+{% definition %}
 Un **_algorithme_** est un ensemble des règles opératoires propres à un _calcul_.
-{% endnote2 %}
+{% enddefinition %}
 
-Qu'est-ce que ça veut dire ?
+Qu'est-ce que ça veut dire ? Cherchons dans [le petit robert](https://dictionnaire.lerobert.com/fr/) :
 
 - **algorithme** : ensemble des règles opératoires propres à un **calcul**
 - **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
@@ -35,14 +34,14 @@ Entrées :
 Programme :
     1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
     2. afficher la définition à l'écran
-    3. lire la définition et pour chaque mot non compris dans la définition, exécuter : `comprendre_une_définition_du_petit_Robert(mot non compris)`
+    3. lire la définition puis, pour chaque mot non compris dans la définition, chercher ce mot dans le petit robert
 ```
 
 C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
 - compréhensible
 - chaque instruction (lire une définition, comprendre un mot, ...) peut être caractérisée par un petit texte en français
-- notre algorithme est récursif (il s'appelle lui-même) s'arrête bien à un moment (au pire une fois que l'on a passé en revue tous les mots du dictionnaire, on aura compris tous les mots de toutes les définitions)
+- notre algorithme est récursif (il s'appelle lui-même) mais s'arrête bien à un moment (au pire une fois que l'on a passé en revue et compris tous les mots du dictionnaire)
 
 Règles de construction de l'algorithme utilisées :
 
@@ -52,6 +51,7 @@ Règles de construction de l'algorithme utilisées :
 - l'exécution d'un algorithme est signifiée par son nom suivi de parenthèses contenant ses paramètres
 - afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme : l'algorithme continue de fonctionner après l'affichage
 
+{% retenir %}
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme#Quelques_d%C3%A9finitions_connexes){.externe} :
 
 - **finitude** : Un algorithme doit toujours se terminer après un nombre fini d’étapes.
@@ -59,11 +59,12 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **entrées** : […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié.
 - **sortie** : […] des quantités ayant une relation spécifiée avec les entrées.
 - **rendement** : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.
+{% endretenir %}
 
 On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. À partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
 <div id="définition-règles-générales"></div>
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un **_algorithme_** est défini par les 4 propriétés suivantes :
 
@@ -72,11 +73,11 @@ Un **_algorithme_** est défini par les 4 propriétés suivantes :
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
 
-{% endnote2 %}
-{% note2 "**Définition**" %}
+{% enddefinition %}
+{% definition %}
 On appellera **_programme_** un texte qui ne respecte que les 3 premières propriétés : un algorithme est un programme qui s'arrête.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
@@ -144,7 +145,7 @@ Programme :
     Sinon rendre `Faux`.
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un **programme** possède :
 
 - un nom
@@ -153,7 +154,7 @@ Un **programme** possède :
 - une description qui explicite ce qu'il fait.
 
 Si le programme s'arrête quelles que soient ses entrées, c'est un **algorithme**.
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par un autre programme.
 {% endinfo %}
@@ -202,7 +203,7 @@ Le terme **fini** de la définition d'un programme/algorithme est crucial : pour
 
 Donc la description du programme ainsi que les données doivent être décrites avec un _"langage"_ formé avec des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>).
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On appelle :
 
@@ -214,7 +215,7 @@ On appelle :
 - l'ensemble de tous les mots d'un alphabet $\mathcal{A}$ est noté $\mathcal{A}^\star$
 - un **_langage_** est un sous-ensemble de $\mathcal{A}^\star$ (un ensemble, possiblement infini, de mots de $\mathcal{A}^\star$)
 
-{% endnote2 %}
+{% enddefinition %}
 
 Par exemple le programme suivant qui énumère tous les entiers :
 
@@ -247,11 +248,11 @@ Comme une donnée doit être lue en temps fini, elle doit être composée d'une 
 
 Une conséquence directe de la proposition précédente est qu'un programme ne peut pas manipuler de nombres réels.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 **Un réel ne l'est pas : c'est une limite**. 
 
 Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.
-{% endattention2 %}
+{% endretenir %}
 
 
 
@@ -270,9 +271,9 @@ Or :
 
 <span id="paramètres-binaires"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.
-{% endnote2 %}
+{% enddefinition %}
 {% note "**Proposition**" %}
 
 Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)){.externe} entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout ensemble fini $\mathcal{A}$.
@@ -318,9 +319,9 @@ On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i
 
 La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit){.externe}.
-{% endnote2 %}
+{% enddefinition %}
 
 {% note "**Proposition**" %}
 Tout ce que peut manipuler un programme est une suite finie de bits.
@@ -351,11 +352,11 @@ Dans la première définition [des machines de Turing](https://fr.wikipedia.org/
 
 Au final :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de `0` et de `1`.
 
 Alternativement, on peut aussi supposer sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
-{% endattention2 %}
+{% endretenir %}
 
 
 ## Nombres de paramètres d'entrée d'un programme
@@ -392,7 +393,7 @@ Cette proposition est vraiment importante car elle montre que l'on peut toujours
 
 Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quitte à retrouver les paramètres initiaux en utilisant la réciproque de notre procédure de compactage des paramètres. Comme les suites finies de `0` et de `1` sont des entiers écrits en base 2, on obtient le résultat fondamental :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Tout programme peut être écrit comme ayant :
 
@@ -405,7 +406,7 @@ Tout programme peut être écrit comme ayant :
 - au plus une entrée dans $\mathbb{N}$ 
 - une sortie dans $\mathbb{N}$ s'il s'arrête
 
-{% endattention2 %}
+{% endretenir %}
 
 Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il n'y a pas plus d'éléments dans $\mathbb{Q}$ (l'ensemble des fractions entières qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui-même en bijection avec $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec $\\{0, 1\\}^\star$). Étonnant, non ?
 
@@ -535,9 +536,9 @@ Ce qui implique que la fonction qui associe à tout algorithme sa position dans 
 
 La preuve ci-dessus est classique et est basée sur le fait que deux ensembles sont de même cardinal s'il existe une bijection entre les deux. Cette définition est évidente lorsque les ensembles sont finis et elle s'étend lorsque les ensembles sont infinis :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un ensemble est dénombrable s'il est en bijection avec $\mathbb{N}$.
-{% endnote2 %}
+{% enddefinition %}
 
 Il faut faire un peu attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :
 
@@ -551,9 +552,9 @@ Ceci montre que :
 
 Bref : il y a autant d'entiers que d'entiers pairs et que d'entiers impairs !
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'éléments d'un ensemble dénombrable), il y en a autant que d'entiers. 
-{% endattention2 %}
+{% endretenir %}
 
 À vous, pour voir si vous avez compris :
 
@@ -651,7 +652,7 @@ On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui
 
 D'un point de vue informatique, on conclut de cette partie que tout ce qu'on manipule en informatique sont des suites finies de `0` et de `1`, que ce soit les données ou les programmes eux-mêmes :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie une suite finie de `0` et de `1`.
 
@@ -660,7 +661,7 @@ Connaître les données ou les instructions "réelles" d'un algorithme se fait v
 - en instructions
 - en données
 
-{% endattention2 %}
+{% endretenir %}
 
 
 Pour finir, un petit résultat très utile que vous pouvez démontrer :
@@ -712,8 +713,8 @@ De façon plus précise on a la suite d'équivalences :
 6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt){.externe}, ce qui est équivalent à (3))
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Algorithmes et démonstrations mathématiques sont deux notions équivalentes.
 
-{% endattention2 %}
+{% endretenir %}

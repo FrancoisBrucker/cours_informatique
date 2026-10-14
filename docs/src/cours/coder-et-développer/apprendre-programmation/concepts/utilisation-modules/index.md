@@ -16,10 +16,10 @@ Un _module_ (aussi appelé _bibliothèque_ ou _library_) est un ensemble de fonc
 - [pathlib](https://docs.python.org/3/library/pathlib.html){.externe} pour naviguer dans l'arborescence du disque dur,
 - ...
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
 est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de nombreux via sa bibliothèque standard.
-{% endattention2 %}
+{% endretenir %}
 {% lien %}
 [Bibliothèque standard de python](https://docs.python.org/fr/3.14/library/index.html){.externe}
 {% endlien %}
@@ -52,11 +52,11 @@ Un module contient un objet python appelé _espace de nommage_ et qui permet d'a
 
 <div id="définition-espace-nommage"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **_espace de nommage_** est un endroit où sont stockées des variables.
 
 C'est un espace de variables "_local_", par opposition à l'espace de variable "_global_" qui est créé au démarrage de l'interpréteur.
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 On a déjà vu ce principe avec [l'utilisation de fonction](../fondements-programmation/écrire-fonctions/#variables) ! En interne python crée un espace de nommage pour les variables créées par l'exécution d'une fonction puis le supprime une fois la fonction terminée.
 {% endinfo %}
@@ -74,7 +74,7 @@ Pour accéder aux objets d'un espace de nommage, on utilise la notation pointée
 
 <div id="définition-notation-pointée"></div>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Lorsqu'un objet `o`{.language-} contient un espace de nommage, on peut accéder aux noms qui y sont stockés en utilisant **_la notation pointée_** :
 
 ```python
@@ -82,7 +82,7 @@ o.a
 ```
 
 La ligne de code précédente rend l'objet de nom `o.a`{.language-} c'est a dire l'objet de nom `a`{.language-} dans l'espace de nom de l'objet de nom `o`{.language-}
-{% endnote2 %}
+{% enddefinition %}
 
 À l'issue de la seconde ligne on est dans l'état suivant :
 
@@ -149,7 +149,7 @@ import matplotlib.pyplot as plt
 
 Notez que dans ce dernier cas, ceci signifie que `pyplot`{.language-} était aussi un module !
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La notation pointée est **associative à gauche**. La ligne de code suivante :
 
 ```python
@@ -164,7 +164,7 @@ Est ainsi équivalente à :
 
 Le nom `axes`{.language-} est défini dans l'espace de nom de l'objet de nom `matplotlib.pyplot`{.language-}. C'est a dire l'objet associé au nom `pyplot`{.language-} défini dans l'espace de nom de l'objet associé au nom `matplotlib`{.language-}.
 
-{% endattention2 %}
+{% endretenir %}
 
 ![espace de nommage plt](espace-nommage-plt.png)
 

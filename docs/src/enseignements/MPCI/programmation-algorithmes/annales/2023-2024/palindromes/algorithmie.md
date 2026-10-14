@@ -59,7 +59,7 @@ Démontrez que **la complexité du problème de reconnaissance** d'un palindrome
 
 Cette partie est consacrée à l'étude des mots palindromiques d'une chaîne de caractères. Commençons par définir ce qu'est ***un mot*** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un mot $s[i:j]$ ($0 \leq i < j \leq n$) d'une chaîne de caractères $s=\text{"}s_0\dots s_{n-1}\text{"}$ est la chaîne :
 
 <div>
@@ -68,13 +68,13 @@ s[i:j] = s_i \dots s_{j-1}
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Puis de caractériser les mots palindromiques :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un mot $s[i:j]$ ($0 \leq i < j \leq n$) d'une chaîne de caractères $s$ de longueur $n > 0$ est un ***sous-palindrome de $s$*** si $s[i:j]$ est un palindrome.
-{% endnote2 %}
+{% enddefinition %}
 
 Mettons cette définition en pratique :
 
@@ -125,7 +125,7 @@ Le but de la fin de la partie algorithmique de cette étude est de montrer que l
 
 On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une [une matrice carrée triangulaire supérieure](https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_supérieures){.externe} qui va expliciter si le mot $s[i:j+1]$ est un sous-palindrome ou pas :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $M_s$ une matrice carrée à $n$ lignes ($M_s[i]$, $0 \leq i < n$, est un tableau représentant la ligne $i$ et $M_s[i][j]$, $0 \leq i, j < n$, correspond à la case de ligne $i$ et colonne $j$ de $M_s$) et $s$ une chaîne de caractères de longueur $n$.
 
 La matrice $M_s$ est définie telle que
@@ -136,7 +136,7 @@ La matrice $M_s$ est définie telle que
   - $M_s[i][j] = 1$ si $s[i:j+1]$ est un sous-palindrome de $s$,
   - $M_s[i][j] = 0$ sinon.
 
-{% endnote2  %}
+{% enddefinition  %}
 Mettons cette définition en pratique :
 
 {% faire %}
@@ -185,7 +185,7 @@ L'algorithme que nous allons développer dans cette partie nécessite de n'avoir
 
 #### De $s$ à $s^\sharp$
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $s =\text{"}s_0 \dots s_{n-1}\text{"}$ une chaîne de caractères et $\sharp$ un caractère non présent dans $s$. On note $s^\sharp$ la chaîne de caractères de longueur $2n+1$ telle que :
 
 <div>
@@ -193,7 +193,7 @@ $$
 s^\sharp = \text{"}\sharp s_0\sharp  \dots s_{i-1} \sharp s_i \sharp s_{i+1} \dots \sharp s_{n-1} \sharp\text{"}
 $$
 </div>
-{% endnote2  %}
+{% enddefinition  %}
 
 Les sous-palindromes de $s$ et $s^\sharp$ sont liés :
 
@@ -216,13 +216,13 @@ En utilisant la chaîne de caractères $s = \text{"babba"}$, explicitez les sous
 
 Les palindromes de longueur impaire sont centrés autour d'un élément :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $s[i:j]$ un sous-palindrome de longueur impaire de $s$. On appelle :
 
 - ***centre du sous-palindrome*** l'index $(i+j -1)/2$.
 - ***rayon du sous-palindrome*** le nombre $(j-i -1)/2$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 {% faire %}
 Explicitez le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{"babba"}$.
@@ -232,9 +232,9 @@ Plutôt que de calculer tous les mot d'une chaîne et de vérifier s'ils sont pa
 
 #### Tableau $T_s$
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ est la taille du plus grand rayon d'un sous-palindrome de taille impaire centré en $i$.
-{% endnote2  %}
+{% enddefinition  %}
 
 {% faire %}
 

@@ -18,7 +18,7 @@ eleventyComputed:
 
 <span id="définition-fonction-booléenne"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_fonction booléenne_** est une fonction
 
 <div>
@@ -37,7 +37,7 @@ f: \{0, 1\}^n \rightarrow \{0, 1\}^m
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 > TBD exemple de la duplication
 
@@ -58,7 +58,7 @@ Il y a 4 fonctions différentes dont l'entrée est réduite à 1 bit :
 
 On les décrit avec leurs On les représentent via leurs [tables de vérité](https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9){.externe} :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On décrit les 3 fonctions $f: \\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ **_OU_**, **_ET_** **_OU exclusif_** comme étant :
 
@@ -71,7 +71,7 @@ x | y | OR(x, y) | AND(x, y) | XOR(x, y) |
 1 | 0 | 1 | 0 | 1 |
 1 | 1 | 1 | 1 | 0 |
 
-{% endnote2 %}
+{% enddefinition %}
 
 Nous n'en avons décrit que 3 parmi les 16 possibles car il est possible de toutes les obtenir en combinant les fonctions NON, OU et ET. Par exemple :
 
@@ -133,7 +133,7 @@ On a :
 
 Vous savez quoi, on peut même faire mieux en utilisant la fonction $\text{NAND}(x, y)$.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 La fonction $\text{NAND}(x, y)$ est définie telle que :
 
@@ -143,7 +143,7 @@ $$
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 On peut tout retrouver grâce à elle :
 
@@ -318,9 +318,9 @@ indice : 76543210
 
 Tout tableau de bit peut être interprété de nombreuses manière : entier, réel, caractère, etc :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La signification d'une donnée est dépendante du contexte.
-{% endattention2 %}
+{% endretenir %}
 
 Pour éviter toute confusion entre les entiers on écrira :
 
@@ -334,7 +334,7 @@ Pour éviter toute confusion entre les entiers on écrira :
 
 ### Booléen
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On note $b$ la bijection $b: \\{0, 1\\} \rightarrow \\{\text{Vrai}, \text{Faux}\\}$ telle que :
 
@@ -346,7 +346,7 @@ b(1) = \text{Vrai}\\
 \end{cases}
 $$
 </div>
-{% endnote2 %}
+{% enddefinition %}
 
 ### Entiers
 
@@ -361,7 +361,7 @@ Un tableau de bit pourra être interprété de deux façons complémentaires :
 > 
 On utilise la représentation binaire classique :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On note $u$ la bijection $u: \\{0, 1\\}^\star \rightarrow \mathbb{N}$ telle que :
 
@@ -372,7 +372,7 @@ $$
 </div>
 
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
-{% endnote2 %}
+{% enddefinition %}
 
 Ainsi :
 
@@ -482,15 +482,15 @@ Comme $u(-x) = -u(x) \bmod 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :
 
 Enfin, tout ceci se calcule très vite :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer l'opposé d'un tableau de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention2 %}
+{% endretenir %}
 
 #### Signé
 
 On a tout en notre possession pour associer des entiers relatifs aux tableaux de bit :
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 On note $i_n: \\{0, 1\\}^n \rightarrow  [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$ la bijection telle que :
 
@@ -504,7 +504,7 @@ u_{n-1}(x)\text{ si } x[-1] == 0\\
 $$
 </div>
 
-{% endnote2 %}
+{% enddefinition %}
 
 Il est clair que $i_n$ est une bijection puisque $u_{n-1}$ en est une de $\\{0, 1\\}^{n-1}$ dans $[0 \mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$. Le bit de poids fort des tableaux de bits est appelé **_bit de signe_** car $i_n(x) < 0$ s'il vaut 1. Elle est de plus compatible avec notre négation :
 
@@ -532,7 +532,7 @@ Remarquez deux choses :
 - Un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif
 - il ne suffit pas de changer le bit de signe pour avoir l'opposé d'un nombre.
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 Un tableau de bit considéré comme :
 
@@ -540,7 +540,7 @@ Un tableau de bit considéré comme :
 - un entier relatif est dit **_signé_**
 
 Le bit de poids fort d'un tableau signé est appelé **_bit de signe_** (il ne vaut `1` `que si l'entier représenté est négatif).
-{% endnote2 %}
+{% enddefinition %}
 
 ### Réels
 
@@ -894,9 +894,9 @@ algorithme PLUS(x: [bit: n], y: [bit: n]) → [bit: n]
     rendre z
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer la somme de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention2 %}
+{% endretenir %}
 
 On peut définir les opérations linéaires **pour des tableaux de même taille** :
 
@@ -921,9 +921,9 @@ $$
 
 Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve){.externe}.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention2 %}
+{% endretenir %}
 
 #### Multiplication
 
@@ -986,9 +986,9 @@ algorithme FOIS(x: [bit: n], y: [bit: n]) → [bit: n]
 
 La complexité de l'algorithme est en $\mathcal(O)(n^2)$ et on a :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer le produit de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
@@ -1047,9 +1047,9 @@ algorithme FOIS(x: [bit: n], y: [bit: n]) → ([bit: n], [bit: n])
     rendre (q, r)
 ```
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer la division euclidienne de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} (il y a une soustraction et un test pour chaque itération de la boucle) et la fonction booléenne sur 1 bit `NAND`.
-{% endattention2 %}
+{% endretenir %}
 
 #### pgcd
 
@@ -1089,9 +1089,9 @@ algorithme PGCD(x: [bit: n], y: [bit: n]) → [bit: n]
 
 Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Calculer le pgcd de deux tableaux de bit se fait en temps quadratique.
-{% endattention2 %}
+{% endretenir %}
 
 ## Pseudo-code
 

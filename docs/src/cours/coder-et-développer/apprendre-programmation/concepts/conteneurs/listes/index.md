@@ -43,7 +43,7 @@ L'exemple précédent à créé une liste de variables `x`{.language-} qui conti
 
 ![liste 3 éléments](./liste-2.png)
 
-{% note2 "**Définition**" %}
+{% definition %}
 Les variables de la listes sont accessible via leur **_index_** allant de 0 au nombre d'élément moins un. Pour cela on fait suivre le nom de la liste par des `[]` et en mettant l'index voulu :
 
 - le premier élément de la liste `x`{.language-} est associé à la variable `x[0]`{.language-}, ici un entier valant 1
@@ -59,10 +59,10 @@ On peut aussi aller à l'envers :
 
 Enfin, le nombre d'éléments d'un conteneur, comme une liste, peut être donné par la fonction `len`{.language-}. Pour l'exemple précédent `len(x)`{.language-} sera égal à 3
 
-{% endnote2 %}
-{% attention2 "**À retenir**" %}
+{% enddefinition %}
+{% retenir %}
 Les 3 objets ne sont pas contenus dans la liste, elle ne possède qu'une référence vers eux.
-{% endattention2 %}
+{% endretenir %}
 
 
 Ainsi après exécution du code suivant :

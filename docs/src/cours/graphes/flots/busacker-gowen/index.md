@@ -19,7 +19,7 @@ On considérera par la suite que le graphe $G$ est antisymétrique puisque l'on 
 
 Si on doit payer un coût pour faire transiter un flot par un arc, il est naturel de rechercher un flot maximum à coût minimum.
 
-{% note2 "**Définition**" %}
+{% definition %}
 Si $\gamma : E \rightarrow \mathbb{R}^+$ est une fonction de coût sur les arc de $G$ et $f$ un de ses flot, le coût du flot est :
 
 <div>
@@ -27,7 +27,7 @@ $$
 \sum_{xy \in G} f(xy) \cdot \gamma(xy)
 $$
 </div>
-{% endnote2 %}
+{% enddefinition %}
 
 Le problème est alors :
 

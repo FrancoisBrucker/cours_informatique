@@ -58,14 +58,14 @@ Attention cependant :
 
 En conclusion :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 Ce type d'algorithme est très utilisé pour :
 
 1. résoudre des problèmes ou la solution optimale peut être construite itérativement
 2. résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).
 
-{% endattention2 %}
+{% endretenir %}
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique){.externe} utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
 
@@ -175,13 +175,13 @@ La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas tro
 
 Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Prouver qu'un algorithme glouton est optimal va se faire **tout le temps** de la même façon : par échange.
 
 On va itérativement transformer une solution optimale initiale inconnue en notre sortie de l'algorithme glouton tout en gardant l'optimalité ce qui prouvera l'optimalité du glouton.
 
 Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.
-{% endattention2 %}
+{% endretenir %}
 
 Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est [un matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde){.externe}, dont la principale propriété est d'être stable par échange.
 
@@ -315,9 +315,9 @@ Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer 
 
 <span id="définition-performance-garantie"></span>
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
-{% endnote2 %}
+{% enddefinition %}
 
 ### Problème du _bin packing_
 

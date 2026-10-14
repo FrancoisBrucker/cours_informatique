@@ -92,11 +92,11 @@ La méthode la plus simple, on compte tout. C'est ce qu'on a fait avec les liste
 
 ### Définition de l'analyse par agrégat
 
-{% note2 "**Définition**" %}
+{% definition %}
 **_L'analyse par agrégat_** consiste à considérer l'ensemble des $m$ exécutions comme un **tout**.
 
 On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.
-{% endnote2 %}
+{% enddefinition %}
 
 ### <span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par agrégat
 
@@ -163,7 +163,7 @@ La méthode comptable va associer des coûts différents à chaque opération, a
 
 ### Définition de la méthode comptable
 
-{% note2 "**Définition**" %}
+{% definition %}
 
 La **_méthode comptable_** pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_coût amorti_** $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :
 
@@ -172,7 +172,7 @@ $$
 $$
 
 L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.
-{% endnote2 %}
+{% enddefinition %}
 
 Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.
 
@@ -195,7 +195,7 @@ Cette méthode de calcul est une généralisation des deux méthodes précédent
 
 ### Définition de l'analyse par potentiel
 
-{% note2 "**Définition**" %}
+{% definition %}
 L'**_analyse par potentiel_** calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_potentiel_** $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)
 
 Le **_coût amorti_** $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :
@@ -210,7 +210,7 @@ $$
 \sum_{i=1}^{m} \widehat{c_i} = \sum_{i=1}^{m} ({c_i} + \Omega(i) - \Omega(i-1)) = \sum_{i=1}^{m} {c_i} + \Omega(m) - \Omega(0) \geq \sum_{i=1}^{m} {c_i}
 $$
 
-{% endnote2 %}
+{% enddefinition %}
 
 Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$. Cette énergie potentielle $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.
 

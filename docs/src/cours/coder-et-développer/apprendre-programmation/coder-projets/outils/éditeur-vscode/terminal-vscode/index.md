@@ -31,7 +31,7 @@ Une fois le programme exécuté, vscode vous laisse dans le terminal. Vous pouve
 
 <div id="exécuter-programme"></div>
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Cette technique est utile pour connaître l'interpréteur utilisé par vscode.
 
 1. commencez par exécuter un programme python avec le triangle
@@ -48,7 +48,7 @@ Vous pouvez alors :
 - soit copier le `<nom du programme python>` pour l'utiliser dans un autre terminal
 - soit supprimez la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
 
-{% endattention2 %}
+{% endretenir %}
 
 Nous allons refaire ce processus à la main.
 

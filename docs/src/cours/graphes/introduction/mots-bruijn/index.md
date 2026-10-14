@@ -139,13 +139,13 @@ Sauf que l'on ne pas pas si une telle chaîne existe...
 
 Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ :
 
-{% note2 "**Définition**" %}
+{% definition %}
  Le **_graphe de Bruijn_** noté $B(n, p) = (V, E)$ est un graphe orienté défini pour tous $n\geq1$ et $p\geq2$ tel que :
 
 - $V$ est l'ensemble des mots de longueur $p-1$ de l'alphabet $[0 .. n[$
 - $xy \in E$ si les $p-2$ derniers caractères de $x$ sont les $p-2$ premiers caractères de $y$
 
-{% endnote2  %}
+{% enddefinition  %}
 
 {% exercice %}
 Donnez le graphe de Bruijn $B(2, 3)$
@@ -169,9 +169,9 @@ Réciproquement chaque mot de longueur $p$ pouvant s'écrire sous la forme $aXb$
 
 Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p-1$ dont les $p-2$ derniers caractères correspondent aux $p-2$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-2$ premiers caractères correspondent aux $p-2$ derniers caractères de $x$) :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le graphe $B(n, p)$ est eulérien pour tout $p\geq2$ et tout $n\geq 1$.
-{% endattention2 %}
+{% endretenir %}
 
 ### Cycle eulérien
 

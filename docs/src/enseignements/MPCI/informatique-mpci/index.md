@@ -39,9 +39,9 @@ En algorithmie par exemple, il ne faut pas hésiter à apprendre par cœur les a
 
 Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger){.externe} qui stipule que moins on en sait plus on croit en savoir (on sur-évalue ses connaissances réelles, souvent en L1), souvent suivi plus tard de la descente où on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Travaillez régulièrement et sérieusement toutes les parties et si vous avez des questions il ne faut pas hésiter à demander à vos professeurs : ils sont là pour ça et sauront mieux vous conseiller qu'une IA.
-{% endattention2 %}
+{% endretenir %}
 
 
 ## UEes d'informatique de la licence MPCI

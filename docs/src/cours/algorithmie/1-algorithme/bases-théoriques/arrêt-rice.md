@@ -18,14 +18,14 @@ La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un ca
 
 Mais qu'en est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelle que soit son entrée ? On verra que cette question est cruciale et... compliquée. Commençons par définir un algorithme qui ne finit pas forcément :
 
-{% note2 "**Définition**" %}
+{% definition %}
 On appelle **_programme_** un texte respectant les trois premières propriétés de [la définition d'un algorithme](../définition/#définition-règles-générales) :
 
 1. il est constitué d'une **suite finie d'instructions**, chacune décrite avec **un nombre fini de symboles**
 2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 
-{% endnote2 %}
+{% enddefinition %}
 
 C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujours se poser la question de la terminaison de votre programme.
 
@@ -147,9 +147,9 @@ Si `oups`{.language-} ne peut pas exister, `stop`{.language-} ne le peut pas non
 
 Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tous les algorithmes et qui les différencieraient des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'arrêtent. Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme s'arrête.
-{% endattention2 %}
+{% endretenir %}
 
 ## Que calcule un algorithme
 
@@ -161,14 +161,14 @@ S'il est impossible de savoir a priori si un programme s'arrête ou pas, il est 
 
 Commençons par définir ce qu'est une propriété :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une **_propriété_** $P$ est un sous-ensemble non trivial d'algorithmes :
 
 - il existe au moins un algorithme dans $P$
 - il existe au moins un algorithme qui n'est pas dans $P$
 
 Un algorithme $A$ **_satisfait la propriété_** $P$ s'il existe $A'\in P$ tel que $A$ et $A'$ coïncident pour chaque entrée.
-{% endnote2 %}
+{% enddefinition %}
 
 La notion de propriété permet de rendre compte du sens des algorithmes, de ce qu'ils font : les programmes faisant la même chose font partie de la même propriété. 
 
@@ -225,11 +225,11 @@ Il est donc nécessaire :
 - de prouver individuellement tout algorithme que l'on conçoit
 - de tester personnellement toute fonction que l'on code
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque vous créez des algorithmes, il faut **toujours** :
 
 1. expliciter ce que vous pensez qu'il fait
 2. démontrer qu'il le fait
 
 Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un algorithme fait ce que l'on pense qu'il fait et ce, quoi que l'on pense qu'il fasse.
-{% endattention2 %}
+{% endretenir %}

@@ -50,24 +50,24 @@ Les notions définies dans cette partie le seront -- par commodité -- pour des 
 
 ### Définitions
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une fonction $f: V\to V'$ est un **_morphisme_** entre $G$ et $G'$ si $xy \in E$ implique $f(x)f(y) \in E'$.
 
-{% endnote2 %}
+{% enddefinition %}
 
 > TBD exemple
 > G = ({1, 2, 3, 4}, {12, 23, 34}) et G'=({u, v}, {uv}) et f(x) = f(z) = u ; f(y) = f(t) = v
 
 On le voit dans l'exemple $f$ n'est pas forcément une bijection de $V$ dans $V'$ et l'implication n'est que dans un sens : l'arête  $f(x)f(y)$ peut exister dans $G'$ alors que $xy \notin E$. Pour avoir une correspondance parfaite entre $G$ et $G'$ il faut qu'il existe un **_isomorphisme_** entre eux :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes.  Une fonction $f: V\to V'$ est un **_isomorphisme_** entre $G$ et $G'$ si :
 
 - $f$ est une bijection
 - $f$ est un morphisme entre $G$ et $G'$
 - $f^{-1}$ est un morphisme entre $G'$ et $G$
 
-{% endnote2 %}
+{% enddefinition %}
 
 > TBD exemple.
 

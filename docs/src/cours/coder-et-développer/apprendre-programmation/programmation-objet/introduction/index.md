@@ -126,14 +126,14 @@ Un objet issu d'une certaine classe :
 - possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses **attributs**
 - possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via [la notation pointée](../../concepts/utilisation-modules/#définition-notation-pointée) : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de _coder objet_ car :
 
 - cela favorise la factorisation du code ([on ne se répète pas](../../coder-projets/écrire-code/bonnes-pratiques#DRY)) : on ne définit ses méthodes qu'une seule fois dans les classes
 - lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
 - compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.
 - plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.
-{% endattention2 %}
+{% endretenir %}
 
 {% info %}
 Ces principes sont mis en œuvre de façon différentes selon les langages mais on retrouvera toujours ces notions.
@@ -252,15 +252,15 @@ Les trois écritures sont identiques en python, mais bien sur, nous préféreron
 Remarquez que l'opération `+`{.language-} n'est pas identique pour `1 + 2`{.language-} et `1.0 + 2`{.language-}. Dans le premier cas c'est l'addition définie dans `int`{.language-} qui est utilisé, dans le second cas c'est celle définie dans `float`{.language-}.
 
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 **Tout** ce que l'ont peut faire avec un type d'objet est définie pas ses méthodes.
 
-{% endattention2 %}
+{% endretenir %}
 
 Certaines méthodes peuvent-être utilisées autrement que via la notation pointée que python détermine (comme la méthode `__add__`{.language-} qui permet d'additionner 2 objets en utilisant l'opérateur `+`). 
 
-{% note2 "**Définition**" %}
+{% definition %}
 Python définie des **_méthodes spéciales_** que l'on peut utiliser autrement que via la notation pointée. Ces méthodes sont **toujours** définies de la même manière, en commençant et finissant par deux underscores :
 
 ```txt
@@ -269,7 +269,7 @@ __<nom de la méthode>__
 
 Ces méthodes sont utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.
 
-{% endnote2 %}
+{% enddefinition %}
 {% info %}
 Le caractère `_`, aussi parfois improprement appelé _tiret-du-huit_ car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers).
 {% endinfo %}

@@ -20,9 +20,9 @@ Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus
 
 Nous allons suivre le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example){.externe} de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck){.externe}, ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Le ***But de la programmation*** est de créer du code **propre** qui **fonctionne** (*clean code that works* en version originale).
-{% endnote2 %}
+{% enddefinition %}
 
 Outre la méthode, nous verrons également quelques techniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de [Refactoring: Improving the Design of Existing Code](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2){.externe} de [Martin Fowler](https://martinfowler.com){.externe} (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).
 
@@ -67,9 +67,9 @@ Nous n'utiliserons pas ici notre code. Mais il faudra tout faire *from scratch*.
 
 On verra tout au long du cours divers patterns de test et de développement pour que tout aille pour le mieux. Notre but est ici de faire du :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Le but de la programmation est de produire du *clean code that works*
-{% endattention2 %}
+{% endretenir %}
 
 Pour cela on va se fixer quelques règles :
 
@@ -98,15 +98,15 @@ Cela permet de prendre du plaisir à coder :
 - en voyant la todo list diminuer ce qui montre qu'on progresse
 - comme tous les tests sont conservés on sait que l'on ne travaille pas pour rien
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Toutes les règles du TDD visent à diminuer la peur qui bloque tout progrès.
-{% endattention2 %}
+{% endretenir %}
 
 ### Code
 
 On va développer petit à petit notre propre application de change en utilisant le TDD :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 
 
 - chaque test couvre un petit ajout d'une fonctionnalité
@@ -114,7 +114,7 @@ On va développer petit à petit notre propre application de change en utilisant
 - toute les modifications de code sont effectuées alors que les testent passent
 - le refactoring est fait par petites touches
 
-{% endattention2 %}
+{% endretenir %}
 
 ## Déroulé
 

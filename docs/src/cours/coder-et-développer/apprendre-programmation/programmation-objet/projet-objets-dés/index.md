@@ -192,7 +192,7 @@ Dans la documentation et lorsque l'on décrit une méthode, som nom de la métho
 - la méthode `lancer`{.language-} de la classe `Dé`{.language-}
 - cette méthode ne prend pas de paramètre.
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Lorsque l'on décrit une méthode, on ne montre jamais `self`{.language-}. Ce n'est en effet pas un paramètre de la méthode à proprement parlé, c'est l'**objet** de la méthode : il est à gauche du `.`{.language-} lors de l'appel de la fonction.
 
 On pourrait (mais on ne le fait pas parce que c'est moins clair) replacer le code suivant :
@@ -209,7 +209,7 @@ Par le code ci-après qui est équivalent :
 >>> Dé.lancer(un_dé)
 ```
 
-{% endattention2 %}
+{% endretenir %}
 
 On a toutes les information nécessaire pour le faire : 
 
@@ -258,12 +258,12 @@ def test_lancer():
 
 ## User stories
 
-{% note2 "**Définition**" %}
+{% definition %}
 Une [user story](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur){.externe} est un récit qui nous permet de savoir comment et par qui va être utilisé notre code.
-{% endnote2 %}
+{% enddefinition %}
 
 L'idée est d'écrire une succession d'actions faites par un utilisateur typique afin de réaliser une tâche précise avec notre programme. Par exemple :
-{% note2 "**User story**" %}
+{% definition "**User story**" %}
 
 - Nom : "Aléatoire ?"
 - Utilisateur : un professeur.
@@ -273,7 +273,7 @@ L'idée est d'écrire une succession d'actions faites par un utilisateur typique
   2. afficher à l'écran sa valeur (ça doit être 1)
   3. lancer le dé 10 fois et affiche la valeur du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.
 
-{% endnote2 %}
+{% enddefinition %}
 
 Codez cette user story si on devait la coder :
 
@@ -306,13 +306,13 @@ for i in range(10):
 
 La user story fait office de **test fonctionnel** qui permet de vérifier que le code correspond aux attentes des utilisateurs :
 
-{% note2 "**Définition**" %}
+{% definition %}
 Un **test fonctionnel** est un programme qui démontre les fonctionnalités d'une application. Il est l'implémentation d'une user story.
-{% endnote2 %}
+{% enddefinition %}
 
 Au final :
 
-{% attention2 "**À retenir**" %}
+{% retenir %}
 Un programme aura :
 
 - **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire){.externe} car ils garantissent que ce que vous avez codé est correct
@@ -320,7 +320,7 @@ Un programme aura :
 
 On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que l'on modifie une fonction, les tests fonctionnels sont exécutés a chaque fois que l'on achève une fonctionnalité.
 
-{% endattention2 %}
+{% endretenir %}
 {% info %}
 Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../coder-projets/écrire-code/bonnes-pratiques/#YAGNI).
 {% endinfo %}
