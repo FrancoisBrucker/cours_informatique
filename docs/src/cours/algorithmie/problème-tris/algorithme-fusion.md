@@ -38,10 +38,10 @@ Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on t
 L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :
 
 ```pseudocode/
-algorithme combiner(T1: [entier], T2: [entier]) → [entier]:
+algorithme combiner(T1: []entier, T2: []entier) → []entier:
     (i1 := entier) ← 0
     (i2 := entier) ← 0
-    (T := [entier]) ← [entier]{longueur: T1.longueur + T2.longueur}
+    (T := []entier) ← []entier{longueur: T1.longueur + T2.longueur}
 
     pour chaque (i := entier) de [0 .. T.longueur[:
         si i2 == T2.longueur:
@@ -94,10 +94,10 @@ Faites très attention aux conditions lors de votre implémentation. C'est très
 Montrer que l'algorithme combiner précédent **n'est pas équivalent** à celui-ci :
 
 ```pseudocode/
-algorithme combiner_faux(T1: [entier], T2: [entier]) → [entier]:
+algorithme combiner_faux(T1: []entier, T2: []entier) → []entier:
     (i1 := entier) ← 0
     (i2 := entier) ← 0
-    (T := [entier]) ← [entier]{longueur: T1.longueur + T2.longueur}
+    (T := []entier) ← []entier{longueur: T1.longueur + T2.longueur}
 
     pour chaque (i := entier) de [0 .. T.longueur[:
         si (i2 == T2.longueur) ou (T1[i1] < T2[i2]):
@@ -121,19 +121,19 @@ Si `i2 < T2.longueur`{.language-} mais que `i1 = T1.longueur`{.language-} l'algo
 Avec notre fonction `combiner(T1, T2)`{.language-} le pseudo code de l'algorithme fusion est :
 
 ```pseudocode
-algorithme fusion(T: [entier]) → [entier]:
+algorithme fusion(T: []entier) → []entier:
     si T.longueur < 2:
         rendre nouveau tableau contenant T
     sinon:
         (milieu := entier) ← T.longueur // 2  # division entière
-        (T1 := [entier]) ← [entier]{T.longueur // 2}
+        (T1 := []entier) ← []entier{T.longueur // 2}
         T1 ← T[:milieu]
-        (T2 := [entier]) ← {T.longueur // 2 + T.longueur mod 2} # attention aux longueurs impaires
+        (T2 := []entier) ← {T.longueur // 2 + T.longueur mod 2} # attention aux longueurs impaires
         T2 ← T[milieu:]
 
-        (T1_trié := [entier]) ← fusion(T1)
-        (T2_trié := [entier]) ← fusion(T2)
-        (T_trié := [entier]) ← combiner(T1_trié, T2_trié)
+        (T1_trié := []entier) ← fusion(T1)
+        (T2_trié := []entier) ← fusion(T2)
+        (T_trié := []entier) ← combiner(T1_trié, T2_trié)
 
         rendre T_trié
 

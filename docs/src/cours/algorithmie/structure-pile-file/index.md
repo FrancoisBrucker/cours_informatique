@@ -80,7 +80,7 @@ structure Deque<T>:
     longueur: entier
     capacité: entier
 
-    (données: [T]) ← [T]{longueur: capacité}
+    (données: []T) ← []T{longueur: capacité}
     début: entier ← capacité - 1
     fin: entier ← 0
 

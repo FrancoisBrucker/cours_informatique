@@ -213,8 +213,8 @@ Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne pos
 L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe [MULTIPLY and SQUARE](/cours/misc/nombres/#exponentiation).
 
 ```
-algorithme expo(x: [entier], y: [entier]) → [entier]:
-  r := [entier]
+algorithme expo(x: []entier, y: []entier) → []entier:
+  r := []entier
   r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:

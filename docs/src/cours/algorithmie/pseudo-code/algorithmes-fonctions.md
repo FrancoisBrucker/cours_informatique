@@ -38,7 +38,7 @@ En pseudo-code, cela va donner ça :
 <div id="problème-recherche"></div>
 
 ```pseudocode
-algorithme recherche(T: [entier],
+algorithme recherche(T: []entier,
                      x: entier     # entier recherché dans t
                     ) → booléen:   # Vrai si x est dans t
 
@@ -92,10 +92,10 @@ Terminons par un petit exercice :
 <span id="algorithme-nombre-occurrences"></span>
 
 {% exercice %}
-Adaptez le pseudo code de l'algorithme `recherche(T: [entier], x: entier) → booléen`{.language-} précédent pour créer l'algorithme :
+Adaptez le pseudo code de l'algorithme `recherche(T: []entier, x: entier) → booléen`{.language-} précédent pour créer l'algorithme :
 
 ```pseudocode
-nombre(T: [entier], x: entier) → entier
+nombre(T: []entier, x: entier) → entier
 ```
 
 Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `T`{.language-}
@@ -103,7 +103,7 @@ Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `T`
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme nombre(T: [entier], x: entier) → entier:
+algorithme nombre(T: []entier, x: entier) → entier:
     nb := entier
     nb ← 0
 
@@ -141,7 +141,7 @@ sortie ← nom_fonction(entrée_1, ..., entrée_n)
 On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme de recherche :
 
 ```pseudocode
-algorithme recherche(t: [entier],
+algorithme recherche(t: []entier,
                      x: entier
                     ) → booléen:
 
@@ -156,7 +156,7 @@ On peut utiliser le pseudo code de nom _recherche_ dans d'autres pseudo-code com
 
 ```pseudocode
 
-t := [entier]{longueur: 3}
+t := []entier{longueur: 3}
 t ← [1, 2, 6]
 
 trouve := booléen
@@ -185,7 +185,7 @@ Dans l'exemple précédent, la variable `e`{.language-} définie dans l'algorith
 On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :
 
 ```pseudocode
-fonction recherche(t: [entier],
+fonction recherche(t: []entier,
                    x: entier
                   ) → booléen:
 
@@ -195,7 +195,7 @@ fonction recherche(t: [entier],
             rendre Vrai
     rendre Faux
 
-algorithme exorcisme(t: [entier]
+algorithme exorcisme(t: []entier
                     ) → chaîne:
 
     si recherche(t, 666):
@@ -241,14 +241,14 @@ Les objets sont communs à toutes les exécutions d'un même algorithmes. Ils pe
 Par exemple :
 
 ```pseudocode
-fonction modif(U: [entier]) → ∅:
+fonction modif(U: []entier) → ∅:
 
     U[2] ← U[0] + U[1]
 
 algorithme tableau() → ∅:
 
-    T := [entier]
-    T ← [entier]{longueur: 3}
+    T := []entier
+    T ← []entier{longueur: 3}
 
     T[0] ← 1
     T[1] ← 2
@@ -301,8 +301,8 @@ Le **_type_** d'un algorithme est sa signature sans son nom.
 
 Par exemple pour l'algorithme `recherche`{.language-} :
 
-- sa signature est `recherche([entier], entier) → booléen`{.language-}
-- son type est `([entier], entier) → booléen`{.language-}
+- sa signature est `recherche([]entier, entier) → booléen`{.language-}
+- son type est `([]entier, entier) → booléen`{.language-}
 
 {% note %}
 Lorsque le nom des paramètres est significatif, on les ajoutera à la signature. On écrira par exemple `division(dividende: réel, diviseur: réel) → réel`{.language-} plutôt que `division(réel, réel) → réel`{.language-} qui ne nous permet pas directement d'utiliser la fonction.
@@ -311,7 +311,7 @@ Lorsque le nom des paramètres est significatif, on les ajoutera à la signature
 Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
 
 ```pseudocode
-f := ([entier], entier) → booléen
+f := ([]entier, entier) → booléen
 
 f ← recherche
 affiche f([1, 2, 6], 6)
@@ -335,7 +335,7 @@ Par exemple l'algorithme suivant est une implémentation récursive de l'algorit
 <span id="algorithme-recherche-rec"></span>
 
 ```pseudocode
-algorithme recherche(T: [entier],
+algorithme recherche(T: []entier,
                      x: entier     # entier recherché dans t
                     ) → booléen:   # Vrai si x est dans t
 

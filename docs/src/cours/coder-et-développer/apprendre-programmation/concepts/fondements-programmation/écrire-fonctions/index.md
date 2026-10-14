@@ -371,7 +371,7 @@ def recherche(t, x):
 Si l'on veut restreindre cette fonctions aux listes d'entier on pourra écrire :
 
 ```python
-def recherche(t: [int], x: int) -> bool
+def recherche(t: []int, x: int) -> bool
     for e in t:
         if e == x:
             return True

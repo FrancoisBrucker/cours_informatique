@@ -71,7 +71,7 @@ Comment savoir si l'entier $n$ représenté par un tableau de bits $T_n$ est pai
 #### 2.2
 
 ```pseudocode
-algorithme mul2(T: [bit]):
+algorithme mul2(T: []bit):
     pour chaque i de [1, T.longueur - 1]:
         T[i] ← T[i-1]
     T[0] ← 0
@@ -79,15 +79,15 @@ algorithme mul2(T: [bit]):
 
 ##### 2.2.1
 
-Quel est la complexité de l'algorithme `mul2(T: [bit])`{.language-} ?
+Quel est la complexité de l'algorithme `mul2(T: []bit)`{.language-} ?
 
 ##### 2.2.2
 
-Montrez en quelques mots que l'algorithme `mul2(T: [bit])`{.language-} permet de multiplier par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[-1] = 0$.
+Montrez en quelques mots que l'algorithme `mul2(T: []bit)`{.language-} permet de multiplier par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[-1] = 0$.
 
 ##### 2.3
 
-Donnez un algorithme `div2(T: [bit])`{.language-} ainsi que sa complexité permettant de diviser par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.
+Donnez un algorithme `div2(T: []bit)`{.language-} ainsi que sa complexité permettant de diviser par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.
 
 #### 2.4
 
@@ -97,7 +97,7 @@ Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers `x`{.la
 
 #### 3.1
 
-Modifiez l'algorithme `mul(x: entier, y: entier) → entier`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: [bit], Ty: [bit]) → [bit]`{.language-}
+Modifiez l'algorithme `mul(x: entier, y: entier) → entier`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: []bit, Ty: []bit) → []bit`{.language-}
 
 #### 3.2
 

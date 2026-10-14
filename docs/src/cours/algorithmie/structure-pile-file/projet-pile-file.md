@@ -101,7 +101,7 @@ En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme permutation(T: [entier], k: entier) → ∅:
+algorithme permutation(T: []entier, k: entier) → ∅:
     (F := File<entier>) ← File<entier>{capacité: T.longueur}
 
     pour chaque (i:= entier) de [0 .. T.longueur[:

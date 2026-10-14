@@ -328,22 +328,22 @@ Si le tableau est nommé $T$ :
 - $T[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
 - $T[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
 
-Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}.
+Le type d'un tableau est défini par le type des objets qu'il contient, précédé de crochets : `[]type`{.language-}. Un tableau de tableaux d'entiers est ainsi de type `[][]entier`{.language-}.
 
 {% enddefinition %}
 
 Créons un objet tableau pouvant contenir 13 variables de type entier :
 
 ```pseudocode
-T := [entier]  # création de la variable pouvant accueillir un tableau d'entier
+T := []entier  # création de la variable pouvant accueillir un tableau d'entier
 
-T <- [entier]{longueur: 13}  # création d'un tableau pouvant contenir 13 variables entières
+T <- []entier{longueur: 13}  # création d'un tableau pouvant contenir 13 variables entières
 ```
 
 {% definition %}
 
-- le format général de la création d'une variable tableau : `nom_du_tableau := [type]`{.language-}
-- création d'un tableau de longueur $n$  : `[type]{longueur: n}`{.language-}
+- le format général de la création d'une variable tableau : `nom_du_tableau := []type`{.language-}
+- création d'un tableau de longueur $n$  : `[]type{longueur: n}`{.language-}
 {% enddefinition %}
 
 Un tableau est un mix entre variables et objet : c'est un objet contenant des variables de même type. 
@@ -371,8 +371,8 @@ Mais cette rapidité interne vient avec une complexité supplémentaire : la né
 On utilise un tableau comme une collection de variables, par exemple :
 
 ```pseudocode
-T := [entier]
-T ← [entier]{longueur: 3}
+T := []entier
+T ← []entier{longueur: 3}
 
 T[0] ← 41
 T[1] ← 1
@@ -441,7 +441,7 @@ La chaîne de caractère étant très utilisée, on se permettra les abus suivan
 - on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"comment vas-tu" + " yau d’poêle ?"`{.language-} vaut la chaîne de caractères `"comment vas-tu yau d’poêle ?"`{.language-}
 
 {% definition %}
-Le type `chaîne`{.language-} peut être vu comme un synonyme `[caractère]`{.language-} sauf que l'on ne peut pas modifier un de ses indices (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[chaîne]`{.language-}.
+Le type `chaîne`{.language-} peut être vu comme un synonyme `[]caractère`{.language-} sauf que l'on ne peut pas modifier un de ses indices (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[]chaîne`{.language-}.
 {% enddefinition %}
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle

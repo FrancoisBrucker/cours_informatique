@@ -100,7 +100,7 @@ Créez un fichier `main_tris_basiques.py`{.fichier}.
 #### Tri par sélection
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_sélection(T: [int]) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_sélection(T: []int) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 
 {% endexercice %}
 {% details "solution" %}
@@ -144,7 +144,7 @@ Vérifiez que le rapport `mesures_temps_sélection[i] / (taille_tableau[i]) ** 2
 #### Tri par insertion
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion(T: [int]) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_insertion(T: []int) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 
 {% endexercice %}
 
@@ -219,7 +219,7 @@ Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A
 ### Complexités du tri à bulle
 
 {% exercice %}
-Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles(T: [int]) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
+Créez dans le fichier `mesure.py`{.fichier} une fonction `temps_bulles(T: []int) -> float`{.language-} qui, à partir d'un tableau $T$ en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 
 {% endexercice %}
 {% info %}

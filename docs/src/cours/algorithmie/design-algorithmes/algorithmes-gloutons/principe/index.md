@@ -235,7 +235,7 @@ C'est un cas courant en optimisation discrète : il existe de nombreuses solutio
 On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.
 
 ```pseudocode
-algorithme recouvrement(T: [réel]) → [(réel, réel)]:
+algorithme recouvrement(T: []réel) → [(réel, réel)]:
     trie T par ordre croissant.
     I ← []
     courant ← [T[0], T[0] + 1]
@@ -364,7 +364,7 @@ Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale
 Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :
 
 ```pseudocode
-algorithme bin_packing(T: [entier]) → [[entier]]
+algorithme bin_packing(T: []entier) → [][]entier
     Es ← []
     E ← []
     s ← 0
@@ -601,8 +601,8 @@ L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissé
 > TBD refaire avec échange pour ne pas recréer de données.
 
 ```pseudocode/
-algorithme ordonnancement(V: [[entier]], O: [entier], T: [entier]) → [[entier]]:
-    V' ← une nouvelle liste de [entier]
+algorithme ordonnancement(V: [][]entier, O: []entier, T: []entier) → [][]entier:
+    V' ← une nouvelle liste de []entier
     
     # initialisation
     i0 ← 0

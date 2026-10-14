@@ -23,7 +23,7 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 structure Liste<T>:
     longueur: entier ← 0
     capacité: entier ← 0
-    données: [T] ← [T]{longueur: capacité}
+    données: []T ← []T{longueur: capacité}
 
 méthode (self: Liste<T>) get(i: entier) → T:  # valeur ← self[i] = valeur ← self.get(i)
     rendre self.données[i]
@@ -33,9 +33,9 @@ méthode (self: Liste<T>) set(i: entier, valeur: T) → ∅:  # self[i] ← vale
 
 méthode (self: Liste<T>) append(x: T)  → ∅:
     si self.longueur == self.capacité:
-        (T2 := [T]) ← self.données
+        (T2 := []T) ← self.données
         self.capacité ← 2 * self.capacité 
-        self.données ← [T]{longueur: self.capacité}
+        self.données ← []T{longueur: self.capacité}
         pour chaque (i:= entier) de T2.longueur:
             self.données[i] ← T2[i]
     self.données[self.longueur] ← x
@@ -101,7 +101,7 @@ La liste est une généralisation du tableau permettant de modifier sa longueur.
 Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
 ```pseudocode
-x := [entier]
+x := []entier
 ```
 
 Pour décrire soit un tableau, soit une liste. On pourra voir la différence pendant son initialisation avec l'utilisation ou non de l'attribut `longueur`{.language-} :
@@ -111,8 +111,8 @@ Pour décrire soit un tableau, soit une liste. On pourra voir la différence pen
 
 On se permettra alors les abus de languages suivant pour remplacer l'initialisation `x ← Liste<entier>{}`{.language-} :
 
-- `x ← [entier]{}`{.language-}
-- `x ← [entier]{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
+- `x ← []entier{}`{.language-}
+- `x ← []entier{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
 
 {% endnote %}
 

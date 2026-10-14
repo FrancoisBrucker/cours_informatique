@@ -12,7 +12,7 @@ eleventyComputed:
 
 > TBD plan
 
-Le but de cette partie est de montrer que l'on peut "_compiler_" tout algorithme de signature `f(e:[bit]) → [bit]`{.language-} écrit en pseudo-code en une formule SAT.
+Le but de cette partie est de montrer que l'on peut "_compiler_" tout algorithme de signature `f(e:[]bit) → []bit`{.language-} écrit en pseudo-code en une formule SAT.
 
 > TBD algo de a([bit:n])-> [bit:n'] est une fonction booléenne vectorielle de $\\{0, 1\\}^n \rightarrow \\{0, 1\\}^{n'}$. On peut donc lui associer une formule logique sous la forme d'une CNF. Cependant cette taille peut être exponentielle par rapport aux données.
 > Nous allons montrer ici qu'on peut le faire avec une taille en nombre de littéraux polynomiale en ses complexités spatiales et temporelles.
@@ -30,7 +30,7 @@ On utilise une version épurée (mais équivalente) au [pseudo-code utilisant de
 Soit $A$ un algorithme (il s'arrête pour toute entrée) écrit en pseudo-code. On peut supposer sans perte de généralité que :
 
 - son entrée est une variable `e:[bit:n]`{.language-} de longueur $n$, 
-- sa sortie est une variable `s:[bit]`{.language-},
+- sa sortie est une variable `s:[]bit`{.language-},
 - chaque ligne $A_i$ du pseudocode correspond à une instruction
 - Sa complexité temporelle vaut $C(n)$ et sa complexité spatiale $S(n)$
 
@@ -44,13 +44,13 @@ On va de plus simplifier l'écriture des instructions et des variables pour notr
 
 On suppose que la taille de chaque variable est connue et ne dépend que de la taille de l'entrée. Ceci peut se faire sans perte de généralité et à un coût en complexité acceptable.
 
-En effet pour tout algorithme de complexité temporelle et spatiale valant respectivement $C(n)$ et $S(n)$, on peut créer chaque variable de type `[bit]`{.language-} avec une taille de $S(n)$. Ce nouvel algorithme aura la même complexité temporelle que l'original (les tableaux  sont tous juste plus grand) et aura une complexité spatiale bornée par $C(n) \cdot S(n)$ (il y a au pire $C(n)$ variables binaires).
+En effet pour tout algorithme de complexité temporelle et spatiale valant respectivement $C(n)$ et $S(n)$, on peut créer chaque variable de type `[]bit`{.language-} avec une taille de $S(n)$. Ce nouvel algorithme aura la même complexité temporelle que l'original (les tableaux  sont tous juste plus grand) et aura une complexité spatiale bornée par $C(n) \cdot S(n)$ (il y a au pire $C(n)$ variables binaires).
 
 {% note %}
 Les seules instructions de création de variables seront :
 
 1. `b ← nouveau bit`{.language-} création d'une variable $b$ de type `bit`{.language-}
-2. `t ← nouveau [bit]`{.language-} création d'une variable $t$ de type `[bit]`{.language-} de longueur dépendant de la taille de l'entrée
+2. `t ← nouveau []bit`{.language-} création d'une variable $t$ de type `[]bit`{.language-} de longueur dépendant de la taille de l'entrée
 
 Toutes ces instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires
 {% endnote %}
@@ -64,8 +64,8 @@ Toutes ces instructions vont nécessiter $\mathcal{O}(1)$ opérations élémenta
 - `b ← 0`{.language-} où $b$ est une variable de type `bit`{.language-}
 - `b ← 1`{.language-} où $b$ est une variable de type `bit`{.language-}
 - `b ← b'`{.language-} où $b$ et $b'$ sont des variables de type `bit`{.language-}
-- `t[u(i)] ← b`{.language-} où $b$ est une variable de type `bit`{.language-}, $t$ et $u$ des des variables de type `[bit]`{.language-}
-- `b ← t[u(i)]`{.language-}où $b$ est une variable de type `bit`{.language-}, $t$ et $u$ des des variables de type `[bit]`{.language-}
+- `t[u(i)] ← b`{.language-} où $b$ est une variable de type `bit`{.language-}, $t$ et $u$ des des variables de type `[]bit`{.language-}
+- `b ← t[u(i)]`{.language-}où $b$ est une variable de type `bit`{.language-}, $t$ et $u$ des des variables de type `[]bit`{.language-}
 
 ### Opérations
 
@@ -308,8 +308,8 @@ $$
 > TBD dire ici comme successions de projection fonctions booléennes (voir partie fonction booléennes).
 Un pseudo-code utilisant une fonction booléenne peut s'écrire de deux façons :
 
-- `y ← f(x)`{.language} avec $x$ et $y$ deux variables de type `[bit]`{.language-}
-- `b ← f(x)`{.language} avec $x$ une variable de type `[bit]`{.language-} et $b$ de type `bit`{.language-}
+- `y ← f(x)`{.language} avec $x$ et $y$ deux variables de type `[]bit`{.language-}
+- `b ← f(x)`{.language} avec $x$ une variable de type `[]bit`{.language-} et $b$ de type `bit`{.language-}
 
 
 En utilisant le fait que [toute fonction booléenne peut s'écrire sous une forme normale conjonctive](../fonctions-booléennes/#), on peut associer à toute opération `y ← f(x)`{.language} telle que `f(x:[bit:n]) → bit`{.language-} une formule normale conjonctive `F(x)`{.language-} telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.

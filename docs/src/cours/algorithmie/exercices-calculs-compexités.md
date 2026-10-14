@@ -39,7 +39,7 @@ Le but de cette partie est d'estimer le nombre (en $\mathcal{O}$) de multiplicat
 ### Algorithme naïf
 
 ```pseudocode
-algorithme valeur_naif(P: [entier], x: réel) → réel:
+algorithme valeur_naif(P: []entier, x: réel) → réel:
     (v := réel) ← 0
     pour chaque (i := entier) de [0 .. P.longueur[:
         m := P[i]
@@ -68,7 +68,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 ### Algorithme puissances itérées
 
 ```pseudocode
-algorithme valeur_itéré(P: [entier], x: réel) → réel:
+algorithme valeur_itéré(P: []entier, x: réel) → réel:
     (v := réel) ← P[0]
     xi ← x
     pour chaque (i := entier) de [1 .. P.longueur[:
@@ -101,7 +101,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 {% endlien %}
 
 ```pseudocode
-algorithme valeur_horner(P: [entier], x: entier) → entier:
+algorithme valeur_horner(P: []entier, x: entier) → entier:
     i := P.longueur -1
     (v := réel) ← P[i]
     tant que i > 0:
@@ -133,15 +133,15 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 On considère le pseudo-code suivant :
 
 ```pseudocode
-fonction copie(T: [entier]) → [entier]:
+fonction copie(T: []entier) → []entier:
 
-    T' := [entier]{longueur: T.longueur}
+    T' := []entier{longueur: T.longueur}
     T' ← T[:]
 
     rendre T'
 
 
-fonction maximum(T: [entier]) → entier:
+fonction maximum(T: []entier) → entier:
     m := 0
     pour chaque (i := entier) de [0 .. T.longueur[:
         if T[m] < T[i]:
@@ -157,7 +157,7 @@ fonction minimum(T):
     rendre m
 
 
-algorithme recherche(T: [entier], k: entier) → entier:
+algorithme recherche(T: []entier, k: entier) → entier:
     max_value := T[maximum(T)]
     min := 0
 

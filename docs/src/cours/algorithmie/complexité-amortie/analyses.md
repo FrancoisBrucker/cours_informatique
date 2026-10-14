@@ -23,7 +23,7 @@ Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de 
 Soit lors l'algorithme suivant :
 
 ```pseudocode
-fonction successeur(N: [bit]) → vide:
+fonction successeur(N: []bit) → vide:
     (i := entier) ← N.longueur - 1
 
     tant que (i ≥ 0) et (N[i] == 1):
@@ -34,7 +34,7 @@ fonction successeur(N: [bit]) → vide:
         N[i] ← 1
 
 algorithme tous(n: entier) → vide:
-    (N := [bit]) ← [bit]{longueur: n}
+    (N := []bit) ← []bit{longueur: n}
     N[:] ← 0
 
     pour chaque (i := entier) de [0 .. 2^n[:        

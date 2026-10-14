@@ -68,7 +68,7 @@ La chaîne contient la suite de parenthèses : ())
 Créez une fonction de signature :
 
 ```pseudocode
-suite(s: chaîne) → [entier]  # l'entrée est uniquement composée de parenthèses
+suite(s: chaîne) → []entier  # l'entrée est uniquement composée de parenthèses
 ```
 
 Qui rend à partir d'une chaîne de caractères `s`{.language-} uniquement constituée de parenthèses ouvrantes et fermantes un tableau d'entier `t`{.language-} de même longueur tel que `t[i] = 1`{.language-} si `s[i] = '('`{.language-} et `t[i] = -1`{.language-} si `s[i] = ')'`{.language-}
@@ -112,7 +112,7 @@ Une telle liste est appelée liste de Dyck.
 Créez une fonction de signature :
 
 ```pseudocode
-bon_parenthésage(l: [entier]) → booléen  # l'entrée est uniquement composée de 1 et de -1
+bon_parenthésage(l: []entier) → booléen  # l'entrée est uniquement composée de 1 et de -1
 ```
 
 Qui rend à partir d'une liste de 1 et de -1 :

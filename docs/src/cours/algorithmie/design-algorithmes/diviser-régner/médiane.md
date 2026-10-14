@@ -106,7 +106,7 @@ Tentons une autre approche, encore une fois issue d'un algorithme de tri pour te
 Pour cela, on reprend l'idée du pivot utilisée dans [l'algorithme du tri rapide](../../../problème-tris/algorithme-rapide/) :
 
 {% faire %}
-Donnez un algorithme `pivot(T: [entier], v: entier) → ([entier], [entier])`{.language-} de complexité égale à la taille du tableau en entrée qui rend deux tableaux $T_1$ et $T_2$ tels que :
+Donnez un algorithme `pivot(T: []entier, v: entier) → ([]entier, []entier)`{.language-} de complexité égale à la taille du tableau en entrée qui rend deux tableaux $T_1$ et $T_2$ tels que :
 
 - $T_1$ contient tous les éléments de $T$ strictement plus petit que $v$
 - $T_2$ contient tous les éléments de $T$ strictement plus grand que $v$

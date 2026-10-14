@@ -269,7 +269,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 Un entier écrit sous forme binaire peut s'écrire comme un tableau $x$ composées de bits (entier valant 0 ou 1). Par exemple l'entier 19 s'écrira $N = [1, 1, 0, 0, 1]$ avec $19 = \sum_i N[i] \cdot 2^i$
 
-L'algorithme `algorithme successeur(N: [bit]) → vide:`{.language-} suivant prend en paramètre un entier écrit sous sa forme binaire et qui **le modifie** pour que sa valeur soit l'entier suivant. L'algorithme  n'augmente pas la taille en bits de l'entier passé et donc `succ([1, 1, 1, 1])`{.language-} change le tableau en entrée en `[0, 0, 0, 0]`{.language-}.
+L'algorithme `algorithme successeur(N: []bit) → vide:`{.language-} suivant prend en paramètre un entier écrit sous sa forme binaire et qui **le modifie** pour que sa valeur soit l'entier suivant. L'algorithme  n'augmente pas la taille en bits de l'entier passé et donc `succ([1, 1, 1, 1])`{.language-} change le tableau en entrée en `[0, 0, 0, 0]`{.language-}.
 
 Cette fonction permet d'écrire le code suivant :
 
@@ -288,7 +288,7 @@ Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
 ### <span id="successeur"></span>L'algorithme
 
 ```pseudocode
-algorithme successeur(N: [bit]) → vide:
+algorithme successeur(N: []bit) → vide:
     (i := entier) ← 0
 
     tant que (i ≤ N.longueur - 1) et (N[i] == 1):
@@ -443,7 +443,7 @@ print(x)
 <span id="algorithme-compteur-binaire-rec"></span>
 
 ```pseudocode
-fonction tous_rec(N: [bit], i: entier) → vide:
+fonction tous_rec(N: []bit, i: entier) → vide:
 
     si i == -1:
         affiche à l'écran N
@@ -496,13 +496,13 @@ La complexité en mémoire est de $n$, car chaque aucune récursion ne crée de 
 ### Généralisation
 
 {% exercice %}
-Modifiez `tous(n: [bit])  → vide`{.language-} pour afficher l'ensemble des jets de $n$ dés à 6 faces ?
+Modifiez `tous(n: []bit)  → vide`{.language-} pour afficher l'ensemble des jets de $n$ dés à 6 faces ?
 {% endexercice %}
 {% details "corrigé" %}
 Clairement, l'algorithme suivant fonctionne :
 
 ```pseudocode
-fonction tous_rec(N: [caractère], i: entier) → vide:
+fonction tous_rec(N: []caractère, i: entier) → vide:
 
     si i == -1:
         affiche à l'écran N
@@ -567,9 +567,9 @@ On peut utiliser l'algorithme suivant, qui modifie le tableau passé en paramèt
 <span id="algorithme-tri-paquet"></span>
 
 ```pseudocode
-algorithme tri_paquet(E: [entier], f:(entier) → entier) → ∅:
+algorithme tri_paquet(E: []entier, f:(entier) → entier) → ∅:
     (m := entier) ← max(f(x) | x de E)
-    (T = [entier]) ← [entier]{longueur: m + 1}
+    (T = []entier) ← []entier{longueur: m + 1}
     T[:] ← ∅  # ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers
 
     pour chaque (x:= entier) de E:
@@ -610,7 +610,7 @@ Cet algorithme est utile si on doit trier des objets via une fonction $f: \mathc
 Si l'on veut trier des entiers pouvant être égaux, on peut utiliser l'algorithme suivant qui compte dans $T[i]$ le nombre de fois où $i$ est présent dans $E$.
 
 ```pseudocode
-algorithme tri_paquet(E: [entier]) → ∅:
+algorithme tri_paquet(E: []entier) → ∅:
     m ← max(x | x de E)
     T ← un nouveau tableau d'entier de taille m + 1
     T[:] ← 0  # ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers
@@ -700,18 +700,18 @@ Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on suppose
 {% endexercice %}
 {% details "corrigé" %}
 
-L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos données étant des tableaux de bits, l'entrée de l'algorithme est un tableau de tableaux de bit. Cela s'écrit : `[[bit]]`{.language-} :
+L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos données étant des tableaux de bits, l'entrée de l'algorithme est un tableau de tableaux de bit. Cela s'écrit : `[][]bit`{.language-} :
 
 <span id="algorithme-tri-base"></span>
 
 ```pseudocode
-algorithme tri_base(T: [entier],
+algorithme tri_base(T: []entier,
                     N: entier     # T[i] < 2^N pour tout i
                    ) → ∅
-    (T0 := [entier]) ← [entier]{longueur: T.longueur}
+    (T0 := []entier) ← []entier{longueur: T.longueur}
     (i0 := entier) ← 0
 
-    (T1 := [entier]) ← [entier]{longueur: T.longueur}
+    (T1 := []entier) ← []entier{longueur: T.longueur}
     (i1 := entier) ← 0
 
     pour (i:= entier) de [0 .. N[:
@@ -857,14 +857,14 @@ algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
 
 {% exercice %}
 
-Donnez un algorithme optimal simple, `permutation(S: [caractère], k: entier) →[caractère]`{.language-} qui rend à partir de $S$ et de $k$, un nouveau tableau permutation circulaire de $S$ de $k$ caractères.
+Donnez un algorithme optimal simple, `permutation(S: []caractère, k: entier) →[]caractère`{.language-} qui rend à partir de $S$ et de $k$, un nouveau tableau permutation circulaire de $S$ de $k$ caractères.
 {% endexercice %}
 {% details "corrigé" %}
 
 La solution est optimale puisqu'elle est en $\mathcal{O}(n)$
 
 ```pseudocode
-algorithme permutation(S: [caractère], k: entier) → [caractère]:
+algorithme permutation(S: []caractère, k: entier) → []caractère:
     S2 ← un tableau de n caractères
 
     pour chaque i de [0 .. k [:
@@ -884,14 +884,14 @@ remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières 
 
 {% exercice %}
 
-Donnez un algorithme `retournement(S: [caractère]) → ∅`{.language-} en $\mathcal{O}(n)$ et utilisant $\mathcal{O}(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
+Donnez un algorithme `retournement(S: []caractère) → ∅`{.language-} en $\mathcal{O}(n)$ et utilisant $\mathcal{O}(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
 
 {% endexercice %}
 {% details "corrigé" %}
 Si on droit qu'à un nombre constant de variables ceci n'est plus possible. Il faut ruser en utilisant des retournements
 
 ```pseudocode
-algorithme retournement(S: [caractère]) → ∅:
+algorithme retournement(S: []caractère) → ∅:
     pour chaque i de [0 .. S.longueur // 2[:
     S[i], S[S.longueur - 1 - i] ← S[S.longueur - 1 - i], S[i]
 
@@ -925,7 +925,7 @@ L'algorithme de permutation est alors tout simple :
 <span id="algorithme-permutation"></span>
 
 ```pseudocode
-algorithme permutation(S: [caractère], k: entier) → ∅:
+algorithme permutation(S: []caractère, k: entier) → ∅:
     retournement(S[:-k])
     retournement(S[k:])
     retournement(S)

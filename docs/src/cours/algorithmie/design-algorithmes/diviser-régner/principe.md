@@ -234,7 +234,7 @@ La méthode de Strassen fonctionne de la même manière pour la multiplication d
 #### Algorithme naif
 
 {% exercice %}
-Donner un algorithme naïf de signature `multiplication(A: [[entier]], B:[[entier]]) → [[entier]]`{.language-} et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.
+Donner un algorithme naïf de signature `multiplication(A: [][]entier, B:[][]entier) → [][]entier`{.language-} et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.
 {% endexercice %}
 {% details "corrigé" %}
 

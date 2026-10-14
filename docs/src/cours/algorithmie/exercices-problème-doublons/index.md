@@ -51,7 +51,7 @@ Montrez que l'algorithme suivant permet de résoudre le problème _Doppelganger_
 - spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
 
 ```pseudocode
-algorithme doppelganger_naif(T: [entier]) → entier:
+algorithme doppelganger_naif(T: []entier) → entier:
     pour chaque (i := entier) de [0 .. T.longueur[:
         pour chaque (j := entier) de [i+1 .. T.longueur[:
             si T[i] == T[j]:
@@ -87,7 +87,7 @@ On vous demande de  créer un projet vscode dans le dossier `doppelganger`{.fich
 Créez une fonction python vérifiera qu'un tableau passé en paramètre est une entrée valide du problème doppelganger Qui devra rendre une entrée du problème. Sa signature doit être :
 
 ```pseudocode
-doppelganger_valide(T: [int]) → bool
+doppelganger_valide(T: []int) → bool
 ```
 
 {% endfaire %}
@@ -97,7 +97,7 @@ doppelganger_valide(T: [int]) → bool
 Créez une fonction python qui devra rendre une entrée du problème. Sa signature doit être :
 
 ```pseudocode
-doppelganger_entrée(n: int) → [int]
+doppelganger_entrée(n: int) → []int
 ```
 
 Vous ferez en sorte que la probabilité $\Pr(T[i] =  x)$ soit de $1/(n-1)$ quelques soient $x$ et $i$.
@@ -114,7 +114,7 @@ Vous pourrez utiliser [la méthode `randrange`{.language-} du module `random`{.l
 Implémentez l'algorithme du I.2 dans une fonction de signature :
 
 ```pseudocode
-doppelganger_naif(T: [int]) → int
+doppelganger_naif(T: []int) → int
 ```
 
 {% endfaire %}
@@ -150,7 +150,7 @@ Montrer que si le tableau en entrée du problème est trié, on peut résoudre l
 Implémentez un algorithme du II.1.2 dans une fonction de signature :
 
 ```pseudocode
-doppelganger_tri(T: [int]) → int
+doppelganger_tri(T: []int) → int
 ```
 Qui commence par trier la liste $T$ passée en entrée puis utilise votre algorithme du II.1.1 pour résoudre le problème.
 {% endfaire %}
@@ -220,7 +220,7 @@ Montrez qu'en utilisant un tableau `B`{.language-} de $n$ booléens, on peut cr�
 Implémentez l'algorithme du II.2.1 dans une fonction de signature :
 
 ```python
-doppelganger_bool(T: [int]) → int
+doppelganger_bool(T: []int) → int
 ```
 
 Ajoutez au programme principal du fichier `main_II.py`{.fichier} le temps d'exécution de l'algorithme `doppelganger_bool`{.language-}.
@@ -315,7 +315,7 @@ Nous allons coder cette partie. Pour cela, créez deux fichiers, `point_fixe.py`
 Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :
 
 ```pseudocode
-lièvre_tortue(T: [entier]) -> entier
+lièvre_tortue(T: []entier) -> entier
 ```
 
 Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
@@ -329,7 +329,7 @@ Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et compos�
 Codez l'algorithme `mu` de l'exercice [recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe-mu) pour nos fonctions. Cet algorithme devra être de signature :
 
 ```pseudocode
-mu(T: [entier]) -> entier
+mu(T: []entier) -> entier
 ```
 
 Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
@@ -396,7 +396,7 @@ On termine ce projet en implémentant tout ça !
 Ajoutez dans le fichier `doppelganger.py`{.fichier} un algorithme de signature :
 
 ```pseudocode
-doppelganger_optimal(T: [entier]) -> entier
+doppelganger_optimal(T: []entier) -> entier
 ```
 
 Qui résout de façon optimale en temps et en espace le problème _Doppelganger_.

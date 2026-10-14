@@ -22,7 +22,7 @@ Commençons par deux exercices préparatoires :
 Donnez et prouvez **un algorithme itératif** de signature :
 
 ```pseudocode
-palindrome(T: [entier]) → booléen
+palindrome(T: []entier) → booléen
 ```
 
 Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome){.externe}.
@@ -30,7 +30,7 @@ Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Pa
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme palindrome(T: [entier]) → booléen
+algorithme palindrome(T: []entier) → booléen
     pour chaque i de [0, T.longueur // 2[:
         si T[i] ≠ T[T.longueur - 1 - i]:
             rendre Faux
@@ -47,14 +47,14 @@ Et maintenant la version récursive :
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-palindrome_rec(T: [entier], i: entier) → booléen
+palindrome_rec(T: []entier, i: entier) → booléen
 ```
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme palindrome_rec(T: [entier], i: entier) → booléen
+algorithme palindrome_rec(T: []entier, i: entier) → booléen
     si T.longueur - 1 - i ≤ i:
         rendre Vrai
     si  T[i] ≠ T[T.longueur - 1 - i]:
@@ -75,7 +75,7 @@ palindrome(T) = (T[0] == T[-1]) et palindrome(T[1:-1])
 
 {% enddetails %}
 
-Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si on veut savoir si un tableau est un palindrome en utilisant l'algorithme récursif `palindrome_rec(T: [entier], i: entier) → booléen`{.language-}, il faut écrire `palindrome_rec(T, T.longueur)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global.
+Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si on veut savoir si un tableau est un palindrome en utilisant l'algorithme récursif `palindrome_rec(T: []entier, i: entier) → booléen`{.language-}, il faut écrire `palindrome_rec(T, T.longueur)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global.
 
 Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion.
 
@@ -88,23 +88,23 @@ Cette technique est **à utiliser** dès que l'on a besoin de paramètres récur
 Pour savoir si un tableau est un palindrome, l'algorithme sera :
 
 ```pseudocode
-fonction palindrome_rec(T: [entier], i: entier) → booléen
+fonction palindrome_rec(T: []entier, i: entier) → booléen
     ...  # code de la fonction récursive
 
-algorithme palindrome(T: [entier]) → booléen
+algorithme palindrome(T: []entier) → booléen
     rendre palindrome_rec(T, T.longueur)
 ```
 
 Entraînons nous :
 
 {% exercice %}
-Encapsulez la fonction récursive `maximum_rec(t: [réel], i: entier) → entier`{.language-pseudocode} du premier exercice dans une fonction permettant de rendre le maximum d'un tableau passé en paramètre.
+Encapsulez la fonction récursive `maximum_rec(t: []réel, i: entier) → entier`{.language-pseudocode} du premier exercice dans une fonction permettant de rendre le maximum d'un tableau passé en paramètre.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum(T: [entier]) → entier
+algorithme maximum(T: []entier) → entier
     rendre maximum_rec(t, T.longueur - 1)
 ```
 
@@ -151,13 +151,13 @@ Entraînons nous.
 
 {% exercice %}
 
-L'algorithme `palindrome_rec(T: [entier], i: entier) → booléen`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
+L'algorithme `palindrome_rec(T: []entier, i: entier) → booléen`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme palindrome_pas_rec(T: [entier], i: entier) → booléen
+algorithme palindrome_pas_rec(T: []entier, i: entier) → booléen
     tant que (T.longueur - 1 - i > i): 
         si  T[i] ≠ T[T.longueur - 1 - i]:
             rendre Faux
@@ -169,14 +169,14 @@ algorithme palindrome_pas_rec(T: [entier], i: entier) → booléen
 
 {% exercice %}
 
-L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} [que l'on a déjà vu](../projet-itératif-récursif/#algorithme-retournement) est sous forme terminale, transformez le en programme itératif.
+L'algorithme `retournement_indice(T: []entier, i: entier) → ∅`{.language-pseudocode} [que l'on a déjà vu](../projet-itératif-récursif/#algorithme-retournement) est sous forme terminale, transformez le en programme itératif.
 
 En déduire un algorithme itératif permettant de retourner un tableau.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme retournement_indice(t: [entier], i: entier) → ∅
+algorithme retournement_indice(t: []entier, i: entier) → ∅
     temp := entier
     tant que (t.longueur - 1 - i > i):
         temp ← t[i]
@@ -189,7 +189,7 @@ algorithme retournement_indice(t: [entier], i: entier) → ∅
 Et donc, en utilisant un petit abus de pseudocode :
 
 ```pseudocode
-algorithme retournement(t: [entier], i: entier) → ∅
+algorithme retournement(t: []entier, i: entier) → ∅
     tant que (t.longueur - 1 - i > i):
         t[i], t[t.longueur - 1 - i] ← t[t.longueur - 1 - i], t[i] 
         i ← i + 1

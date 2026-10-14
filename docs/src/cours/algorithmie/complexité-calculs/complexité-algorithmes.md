@@ -53,7 +53,7 @@ Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{
 Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) :
 
 ```pseudocode/
-algorithme nombre(T: [entier], x: entier) → entier:
+algorithme nombre(T: []entier, x: entier) → entier:
     (nb := entier) ← 0
     pour chaque (e := entier) de T:
         si e == x:

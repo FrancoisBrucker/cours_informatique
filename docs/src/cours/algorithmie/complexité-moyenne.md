@@ -63,7 +63,7 @@ $$
 Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche) :
 
 ```pseudocode
-algorithme recherche(T: [entier], x: entier) → booléen:
+algorithme recherche(T: []entier, x: entier) → booléen:
     pour chaque e de T:
         si e == x:
             rendre Vrai

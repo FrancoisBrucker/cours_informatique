@@ -26,7 +26,7 @@ Ainsi une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constituée d'
 Une matrice d'entiers en deux dimensions sera ainsi un tableau de tableaux, donc de type :
 
 ```pseudocode
-M := [[entier]]
+M := [][]entier
 ```
 
 ### Création
@@ -34,19 +34,19 @@ M := [[entier]]
 La création d'une matrice $M$ se fait ligne à ligne :
 
 ```pseudocode
-algorithme creation_matrice(n: entier, p:entier) → [[entier]]:
-    M := [[entier]]
-    M ← [[entier]]{longueur: n}
+algorithme creation_matrice(n: entier, p:entier) → [][]entier:
+    M := [][]entier
+    M ← [][]entier{longueur: n}
 
     pour chaque (i := entier) de [0 .. n[:
-        M[i] ← [entier]{longueur: p}
+        M[i] ← []entier{longueur: p}
     rendre M
 ```
 
 Comme lors de la création de tableaux les valeurs sont indéterminées, on a coutume d'initialiser les valeurs de la matrice lors de sa création :
 
 ```pseudocode
-algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [[entier]]:
+algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [][]entier:
     M ← un nouveau tableau de l tableaux d'entiers
 
     pour chaque (i := entier) de [0 .. nb_lignes[:
@@ -111,10 +111,10 @@ Pour remplacer le code :
 
 
 ```pseudocode
-M' ← [[entier]]{longueur: d-c}
+M' ← [][]entier{longueur: d-c}
 
 pour chaque (i := entier) de [c .. d[:
-    M'[i - c] ← [entier]{longueur: b-a}
+    M'[i - c] ← []entier{longueur: b-a}
     pour chaque (j := entier) de [a .. b[:
         M'[i-c][j-a] ← M[i][j]
 ```
@@ -125,17 +125,17 @@ On se permettra aussi des abus de notation pour la création. On se permettra ai
 
 
 ```pseudocode
-(M := [[entier]]) ← [[entier]{longueur: l}]{longueur: c}
+(M := [][]entier) ← []([]entier{longueur: l}){longueur: c}
 ```
 
 à la place de :
 
 ```pseudocode
-    M := [[entier]]
-    M ← [[entier]]{longueur: l}
+    M := [][]entier
+    M ← [][]entier{longueur: l}
 
     pour chaque i de [0 .. l[:
-        M[i] ← [entier]{longueur: c}
+        M[i] ← []entier{longueur: c}
     rendre M
 ```
 
@@ -146,19 +146,19 @@ Cette méthode se généralise aisément à des matrices de dimensions supérieu
 Pour créer une matrice de dimension 3 (d1, d2 et d3) dont le type sera un tableau de tableaux de tableaux d'entiers :
 
 ```pseudocode
-M: [[[entier]]]
+M: [][][]entier
 ```
 
 On procède en deux boucles imbriquées :
 
 ```pseudocode
-M3 := [[[entier]]]
-M3 ← [[[entier]]]{longueur: d1}
+M3 := [][][]entier
+M3 ← [][][]entier{longueur: d1}
 
 pour chaque (i := entier) de [0 .. d1[:
-    M3[i] ← [[entier]]{longueur: d2}
+    M3[i] ← [][]entier{longueur: d2}
     pour chaque (j := entier) de [0 .. d2[:
-        M3[i][j] ← [entier]{longueur: d3}
+        M3[i][j] ← []entier{longueur: d3}
 ```
 
 Une fois la matrice créée, son utilisation est identique à une matrice en deux dimensions :

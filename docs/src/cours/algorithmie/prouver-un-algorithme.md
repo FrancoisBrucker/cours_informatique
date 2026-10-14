@@ -453,7 +453,7 @@ On considère l'algorithme itératif suivant :
 <span id="algorithme-max-tableau-iter"></span>
 
 ```pseudocode
-algorithme maximum(t: [entier]) → entier:
+algorithme maximum(t: []entier) → entier:
     (m := entier) ← t[0]
     pour chaque x de t:
         si m < x:
@@ -493,7 +493,7 @@ Il faut montrer que la variable `m`{.language-} contient la valeur maximale pour
 Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableaux (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle `pour chaque`{.language-}. On modifie alors notre algorithme pour rendre $i$ explicite :
 
 ```pseudocode
-algorithme maximum(t: [entier]) → entier:
+algorithme maximum(t: []entier) → entier:
     (m := entier) ← t[0]
     x := entier
     pour chaque i de [0 .. t.longueur[:
@@ -551,7 +551,7 @@ Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](..
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme nombre(T: [entier], x: entier) → entier:
+algorithme nombre(T: []entier, x: entier) → entier:
     (nb := entier) ← 0
     pour chaque e de T:
         si e == x:
@@ -598,7 +598,7 @@ Vous trouverez ci-après une version itérative de l'algorithme de la division e
 
 ```pseudocode
 algorithme division_euclidienne(a: entier,
-                                b: entier) → [entier]:
+                                b: entier) → []entier:
     (r := entier) ← a
     (q := entier) ← 0
     

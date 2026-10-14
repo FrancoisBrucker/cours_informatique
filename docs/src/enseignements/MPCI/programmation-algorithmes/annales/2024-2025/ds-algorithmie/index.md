@@ -87,7 +87,7 @@ def cases_noires(cle_l):
     return sum(sum(ligne) for ligne in cle_l)
 ```
 
-Qui est de même complexité car la complexité de la fonction `sum([entier]) -> entier`{.language-} de python est de l'ordre de la taille de la liste passée en paramètre.
+Qui est de même complexité car la complexité de la fonction `sum([]entier) -> entier`{.language-} de python est de l'ordre de la taille de la liste passée en paramètre.
 
 {% endinfo %}
 
@@ -100,7 +100,7 @@ def compatibles(cle_l, cle_c):
     return cases_noires(cle_l) == cases_noires(cle_c)
 ```
 
-Qui est de complexité égale à la complexité de `case_noires([[entier]]) -> entier`{.language-} de la question précédente.
+Qui est de complexité égale à la complexité de `case_noires([][]entier) -> entier`{.language-} de la question précédente.
 
 {% info %}
 Cette version est également possible, mais est très lourde et inélégante puisque le retour de `==` est déjà un booléen :
@@ -126,7 +126,7 @@ def taille_minimale(ligne):
 
 Notez que l'hypothèse selon laquelle le tableau est nom vide est importante, sinon le code de la fonction précédente est faux.
 
-La complexité de la fonction est de l'ordre de celle de la fonction `sum([entier]) -> entier`{.language-}, c'est à dire de la taille de la liste passée en paramètre.
+La complexité de la fonction est de l'ordre de celle de la fonction `sum([]entier) -> entier`{.language-}, c'est à dire de la taille de la liste passée en paramètre.
 
 #### Question 4
 

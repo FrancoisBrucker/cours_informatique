@@ -196,9 +196,9 @@ Le décalage pour l'indice $i$ de $a$ ne dépend que des caractères de $b$ et d
 - si le caractère est dans $b$ on décale de $m - k - 1$ où $k$ est le plus grand indice où apparaît le caractère. Ceci donne l'algorithme suivant :
 
 ```pseudocode
-algorithme décalage(b: chaîne) → [entier]:
+algorithme décalage(b: chaîne) → []entier:
     (m := entier) ← b.longueur
-    T := [entier] ← [entier]{longueur: L}
+    T := []entier ← []entier{longueur: L}
     pour chaque (i := entier) de [0 .. L[:
         T[i] ← m
     pour chaque (k := entier) de [0 .. b.longueur - 1[:
@@ -219,9 +219,9 @@ Comme le nombre de caractères pouvant à priori être aussi grand qu'on veut, $
 ##### 2.3.1
 
 ```pseudocode
-fonction décalage(b: chaîne) → [entier]:
+fonction décalage(b: chaîne) → []entier:
     (m := entier) ← b.longueur
-    T := [entier] ← [entier]{longueur: L}
+    T := []entier ← []entier{longueur: L}
     pour chaque (i := entier) de [0 .. L[:
         T[i] ← m
     pour chaque (k := entier) de [0 .. b.longueur - 1[:
@@ -229,9 +229,9 @@ fonction décalage(b: chaîne) → [entier]:
 
     rendre T
 
-algorithme BMH(a: chaîne, b: chaîne) → [entier]:
+algorithme BMH(a: chaîne, b: chaîne) → []entier:
     (m := entier) ← b.longueur
-    T := [entier] ← [entier]{longueur: L}
+    T := []entier ← []entier{longueur: L}
     pour chaque (i := entier) de [0 .. L[:
         T[i] ← m
     pour chaque (k := entier) de [0 .. b.longueur - 1[:

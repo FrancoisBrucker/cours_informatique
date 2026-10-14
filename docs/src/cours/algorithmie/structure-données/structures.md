@@ -287,7 +287,7 @@ On aura parfois besoin de spécifier dans nos structures des attributs dont les 
 
 ```pseudocode
 structure Point:
-    coords: [entier]<longueur: 2>
+    coords: []entier<longueur: 2>
 ```
 
 L'exemple précédent spécifie que la longueur du tableau est forcément de 2.

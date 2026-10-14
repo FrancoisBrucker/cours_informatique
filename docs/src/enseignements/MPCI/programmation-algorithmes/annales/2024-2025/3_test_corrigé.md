@@ -102,13 +102,13 @@ Le fait que $T[i-1] = 0$ permet de dire que le tableau représentant $2n$ peut a
 ##### 2.3
 
 ```pseudocode
-algorithme div2(T: [bit]):
+algorithme div2(T: []bit):
     pour chaque i de [0, T.longueur - 1[:
         T[i] ← T[i+1]
     T[-1] ← 0
 ```
 
-Le raisonnement est identique que pour  prouver `mul2(T: [bit])`{.language-} :
+Le raisonnement est identique que pour  prouver `mul2(T: []bit)`{.language-} :
 
 Si $n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $n/2 = \sum_{0 \leq i < T.\mbox{\tiny longueur} - 1}2^i\cdot T[i+1]$ ce qui correspond à ce que fait l'algorithme.
 
@@ -125,7 +125,7 @@ La taille doit être égale à $T_x.\mbox{\tiny longueur} + T_y.\mbox{\tiny long
 On suppose que l'on a une méthode `add(Tx, Ty)`{.language-} qui fait l'addition `x+y`{.language-} et la réaffecte dans le tableau `Tx`{.language-}. Sa complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur})$
 
 ```pseudocode
-algorithme mul(Tx: [bit], Ty: [bit]) → [bit]:
+algorithme mul(Tx: []bit, Ty: []bit) → []bit:
     Ty' ← un tableau de taille Tx.longueur + Ty.longueur
     R ← un tableau de taille  Tx.longueur + Ty.longueur
 

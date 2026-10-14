@@ -193,7 +193,7 @@ Le code Fractran du produit est [décrit ici](https://fr.wikipedia.org/wiki/FRAC
 On peut faire des choses incroyables en Fractran, mais pour cela il faut considérer tous les entiers générés par le programme au cours de son exécution et pas juste rendre le dernier.
 
 {% faire %}
-Ajoutez à la classe `Fractran`{.language-} une méthode de signature `Fractran.suite(n: int, N:int): [int]`{.language-}. Si $L$ est la liste rendue par la méthode elle doit être telle que :
+Ajoutez à la classe `Fractran`{.language-} une méthode de signature `Fractran.suite(n: int, N:int): []int`{.language-}. Si $L$ est la liste rendue par la méthode elle doit être telle que :
 
 - $\text{len}(L) \leq N$
 - $L[0]$ soit le paramètre d'entrée $n$ de la méthode

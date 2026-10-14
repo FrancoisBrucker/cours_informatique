@@ -86,7 +86,7 @@ Vous expliciterez :
 La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
 
 ```pseudocode/
-algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
+algorithme trouve(T: []entier) → entier:  # T.longueur > 1
     si T[0] ≤ T[1]:
         rend 0
 
@@ -115,7 +115,7 @@ $$
 On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `pour chaque`{.language-} en gardant la même complexité :
 
 ```pseudocode
-algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
+algorithme trouve(T: []entier) → entier:  # T.longueur > 1
     si T[0] ≤ T[1]:
         rend 0
 
@@ -137,7 +137,7 @@ Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'enti
 
 
 ```pseudocode
-algorithme trouve_vite(T: [entier]) → entier:    # T.longueur > 1
+algorithme trouve_vite(T: []entier) → entier:    # T.longueur > 1
     si T[0] ≤ T[1]:
         rendre 0
 
@@ -280,13 +280,13 @@ On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on ve
 On a donc l'algorithme suivant :
 
 ```pseudocode
-fonction déplace(départ: [entier], arrivée: [entier]):
+fonction déplace(départ: []entier, arrivée: []entier):
     (disque := entier) ← départ[départ[0]]
     départ[0] ← départ[0] - 1 
     arrivée[0] ← arrivée[0] + 1 
     arrivée[arrivée[0]] ← disque
 
-algorithme Hanoï(nombre: entier, départ: [entier], arrivée: [entier], intermédiaire: [entier]):
+algorithme Hanoï(nombre: entier, départ: []entier, arrivée: []entier, intermédiaire: []entier):
     si nombre > 0:
         Hanoï(nombre - 1, départ, intermédiaire, arrivée)  # déplace n-1 à intermédiaire
         déplace(départ, arrivée)                           # place le premier disque
@@ -699,7 +699,7 @@ On calcule itérativement les éléments de la suite ce qui permet de ne pas exp
 
 
 ```pseudocode
-fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier) → [entier]:
+fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier) → []entier:
     (x := entier)
     (y := entier)
 
@@ -758,12 +758,12 @@ Nous allons voir dans la suite les complexités des opération de somme et de mu
 Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,
 
 {% exercice %}
-Écrivez un algorithme de signature `u(x: [bit]) → entier`{.language-} de complexité $\Omega(x.\text{longueur})$ qui rend l'entier positif associé au tableau de bits.
+Écrivez un algorithme de signature `u(x: []bit) → entier`{.language-} de complexité $\Omega(x.\text{longueur})$ qui rend l'entier positif associé au tableau de bits.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme u(x: [bit]) → entier:
+algorithme u(x: []bit) → entier:
     (v := entier) ← 0
     (puissance_2 := entier) ← 1
     pour chaque (i := entier) de [0 .. x.longueur - 1[:
@@ -779,19 +779,19 @@ La finitude du programme est clair. L'invariant de boucle permettant de prouver 
 {% enddetails %}
 
 {% exercice %}
-Écrivez un algorithme de signature `u_moins_1(n: entier) → [bit]`{.language-} qui rend le tableau de bits associé à l'entier en paramètre. Sa complexité doit être en $\mathcal{O}(\ln(n))$.
+Écrivez un algorithme de signature `u_moins_1(n: entier) → []bit`{.language-} qui rend le tableau de bits associé à l'entier en paramètre. Sa complexité doit être en $\mathcal{O}(\ln(n))$.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme u_moins_1(n: entier) → [bit]:
+algorithme u_moins_1(n: entier) → []bit:
     (k := entier) ← 0
     (puissance_2 := entier) ← 1
     tant que puissance_2 ≤ n:
         puissance_2 ← 2 * puissance_2
         (k := entier) ← k + 1
     
-    (T := [bit]) ← [bit]{longueur: k}
+    (T := []bit) ← []bit{longueur: k}
     (i := entier) ← 0
     tant que n > 0:
         si n est impair:
@@ -838,7 +838,7 @@ Attention à la retenue qui potentiellement augmente la taille de la sortie :
 ```
 
 {% exercice %}
-Écrivez un algorithme de signature `addition(x: [bit], y: [bit]) → [bit]`{.language-} utilisant l'addition posée. On supposera que :
+Écrivez un algorithme de signature `addition(x: []bit, y: []bit) → []bit`{.language-} utilisant l'addition posée. On supposera que :
 
 - $x$ et $y$ sont tous deux de longueur $n$
 - la sortie est de taille $n + 1$
@@ -847,11 +847,11 @@ Attention à la retenue qui potentiellement augmente la taille de la sortie :
 
 
 ```pseudocode
-algorithme addition(x: [bit],
-                    y: [bit])  # on suppose x et y de même taille
-                    → [bit]    # de la taille de x et y + 1
+algorithme addition(x: []bit,
+                    y: []bit)  # on suppose x et y de même taille
+                    → []bit    # de la taille de x et y + 1
 
-    (somme := [bit]) ← [bit]{longueur: x.longueur + 1}
+    (somme := []bit) ← []bit{longueur: x.longueur + 1}
     (retenue := bit) ← 0
 
     pour chaque (i := entier) de [0 .. x.longueur - 1[:
@@ -898,7 +898,7 @@ Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement
 On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.
 
 {% exercice %}
-Écrivez un algorithme de signature `soustraction(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la soustraction posée. On supposera que :
+Écrivez un algorithme de signature `soustraction(x: []bit, y: []bit) → []bit`{.language-} utilisant la soustraction posée. On supposera que :
 
 - $x$ et $y$ sont tous deux de longueur $n$
 - la sortie est de taille $n + 1$
@@ -909,11 +909,11 @@ On va se placer dans le cadre de la soustraction de deux nombres dont le résult
 Nos conventions veulent que `x.longueur`{.language-} et `y.longueur`{.language-} soient égales et comme on suppose que $u(x) \geq u(y)$ la sortie sera positive et de la même longueur que $x$.
 
 ```pseudocode
-algorithme soustraction(x: [bit],
-                        y: [bit])  # on suppose x et y de même taille et que u(x) ≥ u(y)
-                        → [bit]    # de la taille de x et y
+algorithme soustraction(x: []bit,
+                        y: []bit)  # on suppose x et y de même taille et que u(x) ≥ u(y)
+                        → []bit    # de la taille de x et y
 
-    (différence := [bit]) ← [bit]{longueur: x.longueur}
+    (différence := []bit) ← []bit{longueur: x.longueur}
     (retenue := bit) ← 0
 
     pour chaque (i := entier) de [0 .. x.longueur - 1[:
@@ -977,15 +977,15 @@ Tout en gardant la même complexité.
 Pour le premier point, on peut garder le même algorithme en copiant les entrées dans deux tableaux originellement remplis de 0 tout deux de longueurs égale au max des longueurs des deux entrées :
 
 ```pseudocode
-algorithme opération(x: [bit],
-                     y: [bit])  # on suppose x et y de même taille
-                     → [bit]    # de la taille de x et y + 1
+algorithme opération(x: []bit,
+                     y: []bit)  # on suppose x et y de même taille
+                     → []bit    # de la taille de x et y + 1
 
-    (x' := [bit]) ← [bit]{longueur: max(x.longueur, y.longueur)}
+    (x' := []bit) ← []bit{longueur: max(x.longueur, y.longueur)}
     x'[:] ← 0
     pour chaque (i := entier) de [0 .. x.longueur[:
         x'[i] ← x[i]
-    (y' := [bit]) ← [bit]{longueur: max(x.longueur, y.longueur)}
+    (y' := []bit) ← []bit{longueur: max(x.longueur, y.longueur)}
     y'[:] ← 0
     pour chaque (i := entier) de [0 .. x.longueur[:
         y'[i] ← y[i]
@@ -998,9 +998,9 @@ Les opérations ajoutées sont en $\mathcal{O}(max(x.\text{longueur}, y.\text{lo
 Pour le second point, on peut supprimer tous les derniers élément du tableaux égaux à 0 :
 
 ```pseudocode
-algorithme opération(x: [bit],
-                     y: [bit])  # on suppose x et y de même taille
-                     → [bit]    # de la taille de x et y + 1
+algorithme opération(x: []bit,
+                     y: []bit)  # on suppose x et y de même taille
+                     → []bit    # de la taille de x et y + 1
 
     #  ... début de l'algorithme
 
@@ -1013,7 +1013,7 @@ algorithme opération(x: [bit],
         sinon:
             i ← i - 1
     
-    (résultat' := [bit]) ← [bit]{longueur: i}
+    (résultat' := []bit) ← []bit{longueur: i}
 
     pour chaque i de [0 .. résultat'.longueur[:
         résultat'[i] ← résultat[i]
@@ -1063,7 +1063,7 @@ Montrez que multiplier un nombre par une puissance de 2 revient à ajouter des 0
 
 {% enddetails %}
 {% exercice %}
-En déduire un algorithme de signature `puissance(n: entier, x: [bit]) → [bit]`{.language-} permettant de rendre $u(2^n \cdot u^{-1}(x))$ avec une complexité optimale.
+En déduire un algorithme de signature `puissance(n: entier, x: []bit) → []bit`{.language-} permettant de rendre $u(2^n \cdot u^{-1}(x))$ avec une complexité optimale.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -1097,7 +1097,7 @@ On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).
 
 
 {% exercice %}
-Écrivez un algorithme de signature `multiplication(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la multiplication posée.
+Écrivez un algorithme de signature `multiplication(x: []bit, y: []bit) → []bit`{.language-} utilisant la multiplication posée.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -1106,9 +1106,9 @@ Nos conventions veulent que `x.longueur`{.language-} et `y.longueur`{.language-}
 On obtient l'algorithme suivant :
 
 ```pseudocode
-algorithme multiplication(x: [bit], y: [bit]) → [bit]
+algorithme multiplication(x: []bit, y: []bit) → []bit
 
-    (résultat := [bit]) ← [bit]{longueur: 2 * x.longueur}
+    (résultat := []bit) ← []bit{longueur: 2 * x.longueur}
     résultat[:] ← 0
 
     retenue := entier
@@ -1149,11 +1149,11 @@ La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 e
 
 On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on a des algorithmes optimaux pour écrire :
 
-- des additions de $[bit]$ sans soucis de taille : $[x_0, \dots, x_{p-1}] + [y_0, \dots, y_{q-1}] = [z_0, \dots z_{r-1}]$
-- des soustractions de $[bit]$ sans soucis de taille (mais on considère toujours que le résultat doit être positif): $[x_0, \cdot x_{p-1}] - [y_0, \dots, y_{q-1}] = [z_0, \dots, z_{r-1}]$
-- multiplier des $[bit]$ par $2^n$ : $2^n \cdot [x_0, \dots, x_{p-1}] = [0, \dots, 0, x_0, \dots, x_{p-1}]$
+- des additions de $[]bit$ sans soucis de taille : $[x_0, \dots, x_{p-1}] + [y_0, \dots, y_{q-1}] = [z_0, \dots z_{r-1}]$
+- des soustractions de $[]bit$ sans soucis de taille (mais on considère toujours que le résultat doit être positif): $[x_0, \cdot x_{p-1}] - [y_0, \dots, y_{q-1}] = [z_0, \dots, z_{r-1}]$
+- multiplier des $[]bit$ par $2^n$ : $2^n \cdot [x_0, \dots, x_{p-1}] = [0, \dots, 0, x_0, \dots, x_{p-1}]$
 
-On cherche à effectuer de façon efficace la multiplication de $[bit]$ de même taille : $[x_0, \dots, x_{n-1}]  \cdot \cdot [y_0, \cdot y_{n-1}] = [z_0, \dots, z_{m-1}]$ (avec $m \leq 2n$)
+On cherche à effectuer de façon efficace la multiplication de $[]bit$ de même taille : $[x_0, \dots, x_{n-1}]  \cdot \cdot [y_0, \cdot y_{n-1}] = [z_0, \dots, z_{m-1}]$ (avec $m \leq 2n$)
 
 Il a longtemps été pensé que l'on ne pouvait pas faire mieux que la multiplication naïve, la solution ne va donc pas consister à en optimiser le fonctionnement. L'idée est d'utiliser un principe [que l'on formalisera plus tard](../design-algorithmes/diviser-régner/) et qui s'appelle _"diviser pour régner"_. Notre but est d'utiliser la récursion pour effectuer des multiplication sur des tableaux de bits plus petit et espérer gagner en complexité.
 
@@ -1188,10 +1188,10 @@ Montrez que l'astuce suivante permet de séparer un tableau $x$ en 2 sous-tablea
 ```pseudocode
 (x := entier) ← x.longueur
 
-(x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+(x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
 x1[-1] ← 0
 x1[: n // 2] ← x[: n // 2]
-(x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+(x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
 x2[n // 2 :] ← x[n // 2 :]
 
 ```
@@ -1206,35 +1206,35 @@ x2[n // 2 :] ← x[n // 2 :]
 On peut maintenant écrire le pseudo-code associé à notre équation :
 
 {% exercice %}
-Écrire l'algorithme permettant de multiplier récursivement deux `[bit]`{.language-} de même longueur en utilisant l'équation précédente. 
+Écrire l'algorithme permettant de multiplier récursivement deux `[]bit`{.language-} de même longueur en utilisant l'équation précédente. 
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
+algorithme Karatsuba(x: []bit, y: []bit) → []bit:  # x et y de même longueur
     (n := entier) ← x.longueur
 
     # astuce pour garantir une même taille aux tableaux si la longueur est impaire
-    (x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     x1[-1] ← 0
     x1[: n // 2] ← x[: n // 2]
-    (x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     x2[n // 2 :] ← x[n // 2 :]
 
-    (y1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (y1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     y1[-1] ← 0
     y1[: n // 2] ← y[: n // 2]
-    (y2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (y2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     y2[n // 2 :] ← y[n // 2 :]
 
-    (x2y2 := [bit]) ← Karatsuba(x2, y2)
-    (x1y1 := [bit]) ← Karatsuba(x1, y1)
+    (x2y2 := []bit) ← Karatsuba(x2, y2)
+    (x1y1 := []bit) ← Karatsuba(x1, y1)
 
-    (x1y2 := [bit]) ← Karatsuba(x1, y2)
-    (x2y1 := [bit]) ← Karatsuba(x2, y1)
+    (x1y2 := []bit) ← Karatsuba(x1, y2)
+    (x2y1 := []bit) ← Karatsuba(x2, y1)
 
-    résultat := [bit]
+    résultat := []bit
 
     résultat ← puissance(n, x2y2)
     résultat ← somme(résultat, puissance(n // 2, somme(x1y2, x2y1)))
@@ -1317,30 +1317,30 @@ Modifiez votre algorithme de Karatsuba pour qu'il intègre l'astuce précédente
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
+algorithme Karatsuba(x: []bit, y: []bit) → []bit:  # x et y de même longueur
     (n := entier) ← x.longueur
 
     # astuce pour garantir une même taille aux tableaux si la longueur est impaire
-    (x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     x1[-1] ← 0
     x1[: n // 2] ← x[: n // 2]
-    (x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     x2[n // 2 :] ← x[n // 2 :]
 
-    (y1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (y1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     y1[-1] ← 0
     y1[: n // 2] ← y[: n // 2]
-    (y2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    (y2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
     y2[n // 2 :] ← y[n // 2 :]
 
-    (x2y2 := [bit]) ← Karatsuba(x2, y2)
-    (x1y1 := [bit]) ← Karatsuba(x1, y1)
+    (x2y2 := []bit) ← Karatsuba(x2, y2)
+    (x1y1 := []bit) ← Karatsuba(x1, y1)
 
-    (s1 := [bit]) ← somme(x1, x2)
-    (s2 := [bit]) ← somme(y1, y2)
-    (p := [bit]) ← Karatsuba(s1, s2)
+    (s1 := []bit) ← somme(x1, x2)
+    (s2 := []bit) ← somme(y1, y2)
+    (p := []bit) ← Karatsuba(s1, s2)
 
-    résultat := [bit]
+    résultat := []bit
 
     résultat ← puissance(n, x2y2)
     résultat ← somme(résultat, puissance(n // 2, x2y2))

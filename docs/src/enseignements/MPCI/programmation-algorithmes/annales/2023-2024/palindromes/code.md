@@ -123,7 +123,7 @@ Pour les fleurs du mal de Baudelaire c'est là : <https://www.gutenberg.org/eboo
 Trouver des sous-phrases palindromes d'un texte peut être rigolo, mais sans caractères de ponctuation, il peut être difficile de s'y retrouver.
 
 {% faire %}
-Créez une fonction `correspondance(s12: str, s123:str) -> [int]`{.language-} qui prend deux paramètres :
+Créez une fonction `correspondance(s12: str, s123:str) -> []int`{.language-} qui prend deux paramètres :
 
 - une chaîne `s12`{.language-} dont les lettres sont sans accents et en majuscules (résultat des étapes 1 et 2 du prétraitement pour une chaîne `s`{.language-})
 - la chaîne `s123`{.language-} correspondant au prétraitement complet de `s12`{.language-} (`s12`{.language-} auquel on a fait l'étape 3 du prétraitement)

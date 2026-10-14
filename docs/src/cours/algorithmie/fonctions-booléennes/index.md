@@ -290,8 +290,8 @@ algorithme f(x: [bit: n]) → [bit: m]
 
 Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations évident :
 
-- `f(x_1: bit, ..., x_n: bit) → [bit]`{.language-} à la place de `f([bit: n]) → [bit]`{.language-},
-- `f(x_1: [bit], ..., x_n: [bit]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # n entrées de taille t_1 + ... + t_n`{.language-},
+- `f(x_1: bit, ..., x_n: bit) → []bit`{.language-} à la place de `f([bit: n]) → []bit`{.language-},
+- `f(x_1: []bit, ..., x_n: []bit) → []bit`{.language-} à la place de `f([]bit) → []bit # n entrées de taille t_1 + ... + t_n`{.language-},
 
 Cette notation nous permettra d'écrire facilement des fonctions :
 
@@ -306,7 +306,7 @@ Cette notation nous permettra d'écrire facilement des fonctions :
 On peut sans perte de généralité supposer qu'[un pseudo-code](../pseudo-code/briques-de-base/){.language-} ne peut manipuler que :
 
 - des objets (uniquement) de type `bit`{.language-}
-- des tableaux de type `[bit]`{.language-}
+- des tableaux de type `[]bit`{.language-}
   {% endnote %}
 
 Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. Attention, l'ordre de représentation des listes fait croître les indices de gauche à droite, alors que [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire){.externe} va **de droite à gauche**. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
@@ -394,7 +394,7 @@ $$
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme INC(x: [bit]) → [bit]:
+algorithme INC(x: []bit) → []bit:
     y ← un tableau de bit de taille x.longueur
     y[:] ← x[:]
 
@@ -583,7 +583,7 @@ Quelques opérations utiles lorsque l'on manipule des tableaux de bits comme des
 On utilise la concaténation lorsque l'on veut écrire des entiers plus gros. On utilise un opérateur particulier car ce n'est pas la concaténation de listes habituelle. En effet si on veut concaténer le nombre $x = 0b110$ avec le nombre $y = 0b001$ pour former le nombre $x || y = 0b11001$, on ne peut pas juste concaténer le tableau $X = [0, 1, 1]$ qui représente $x$ au tableau $Y = [1, 0, 0]$ qui représente $y$, il faut faire le contraire ($Y + X$). Explicitons le :
 
 ```pseudocode
-algorithme CONCAT(x: [bit], y: [bit])  → [bit]:
+algorithme CONCAT(x: []bit, y: []bit)  → []bit:
     z ← un tableau de bit de taille x.longueur + y.longueur
 
     pour chaque i de [0 .. y.longueur[:
@@ -626,7 +626,7 @@ $$
 Avec :
 
 ```pseudocode
-algorithme LSHIFT(x: [bit], k: entier)  → [bit]:
+algorithme LSHIFT(x: []bit, k: entier)  → []bit:
     z ← un tableau de bit de taille x.longueur
 
     z[:k] ← 0
@@ -635,7 +635,7 @@ algorithme LSHIFT(x: [bit], k: entier)  → [bit]:
 
     rendre z
 
-algorithme RSHIFT(x: [bit], k: entier)  → [bit]:
+algorithme RSHIFT(x: []bit, k: entier)  → []bit:
     z ← un tableau de bit de taille x.longueur
 
     z[-k:] ← 0
@@ -648,7 +648,7 @@ algorithme RSHIFT(x: [bit], k: entier)  → [bit]:
 Notez que nous nous sommes autorisé l'abus de notation en utilisant des paramètres entiers. En toute logique l'algorithme `LSHIFT`{.language-} devrait être :
 
 ```pseudocode
-algorithme LSHIFT(x: [bit], k: [bit])  → [bit]:
+algorithme LSHIFT(x: []bit, k: []bit)  → []bit:
     z ← un tableau de bit de taille x.longueur
 
     z[:u(k)] ← 0
@@ -679,7 +679,7 @@ $$
 </div>
 
 {% exercice %}
-Donnez un algorithme linéaire pour calculer la rotation. Il devra être de signature : `LROT(x: [bit], k: entier)  → [bit]`{.language-}
+Donnez un algorithme linéaire pour calculer la rotation. Il devra être de signature : `LROT(x: []bit, k: entier)  → []bit`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -703,7 +703,7 @@ algorithme NAND(x: [bit: n], y: [bit: n]) → [bit: n]
     rendre z
 ```
 
-Puis de mimer ce que l'on a fait avec les fonction sur 1 bit, par exemple `NOT(x: [bit]) → [bit] := NAND(x, x)`{.language-}. Remarquez que cette fonction n'est **pas** une fonction booléenne vectorielle, mais bien un algorithme : ses entrées ne sont pas de taille fixe.
+Puis de mimer ce que l'on a fait avec les fonction sur 1 bit, par exemple `NOT(x: []bit) → []bit := NAND(x, x)`{.language-}. Remarquez que cette fonction n'est **pas** une fonction booléenne vectorielle, mais bien un algorithme : ses entrées ne sont pas de taille fixe.
 
 {% exercice %}
 Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : `OR(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}
@@ -713,7 +713,7 @@ Puis de mimer ce que l'on a fait avec les fonction sur 1 bit, par exemple `NOT(x
 On peut utiliser `NAND` puisque $\overline{x} = \overline{x \land x}$ :
 
 ```pseudocode
-OR(x: [bit], y: [bit]) → [bit] := NAND(NOT(x), NOT(y))
+OR(x: []bit, y: []bit) → []bit := NAND(NOT(x), NOT(y))
 ```
 
 {% enddetails %}
@@ -742,7 +742,7 @@ Qui permettent de travailler sur des tableaux de bits. On va voir que ces foncti
 ### Tests
 
 ```pseudocode
-algorithme ZERO(x: [bit]) → bit
+algorithme ZERO(x: []bit) → bit
     pour chaque i de [0 .. x.longueur[:
         si AND(x[i], 1):  # x[i] == 1
             rendre 0
@@ -1116,7 +1116,7 @@ algorithme NAND(x: [bit: n], y: [bit: n]) → [bit: n]
 La différence est que l'on utilise maintenant les opérations que l'on a défini pour les tableaux de bit ! Il n'y a plus d'entier, même dans les variables internes.
 
 {% note "**Proposition**" %}
-Un pseudo-code utilisant uniquement des variables de type bit ou [bit] a la même expressivité que le pseudo-code utilisant [les types basiques](../pseudo-code/briques-de-base/#objets-basiquess).
+Un pseudo-code utilisant uniquement des variables de type bit ou []bit a la même expressivité que le pseudo-code utilisant [les types basiques](../pseudo-code/briques-de-base/#objets-basiquess).
 {% endnote %}
 
 ### Opérations autorisées

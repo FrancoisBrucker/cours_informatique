@@ -32,7 +32,7 @@ Nous allons expliciter les deux parcours en supposant que les graphes ne sont pa
 algorithme largeur(G: Graphe, x: Sommet): Graphe
     var F: File<Sommet> ← File<Sommet>{x}
     var s: Sommet
-    var E: [Arête] ← []
+    var E: []Arête ← []
 
     marque(s)
     tant que F est non vide:
@@ -77,7 +77,7 @@ Ce parcours s'écrit facilement de façon récursive :
 algorithme largeur(G: Graphe, x: Sommet): Graphe
     var F: File<Sommet> ← File<Sommet>{x}
     var s: Sommet
-    var E: [Arête] ← []
+    var E: []Arête ← []
 
     marque(s)
     tant que F est non vide:

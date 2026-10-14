@@ -42,7 +42,7 @@ En revanche, considérons la structure suivante :
 
 ```pseudocode
 structure Compteur:
-    N: [bit]
+    N: []bit
 
 méthode (c: Compteur) suivant() → vide:
             successeur(c.N)

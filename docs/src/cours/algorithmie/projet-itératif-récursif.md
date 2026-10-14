@@ -37,7 +37,7 @@ On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorit
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-maximum_rec(T: [réel], n: entier) → entier
+maximum_rec(T: []réel, n: entier) → entier
 ```
 
 Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \leq n\})$.
@@ -45,7 +45,7 @@ Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum_rec(T: [réel], n: entier) → entier:
+algorithme maximum_rec(T: []réel, n: entier) → entier:
     x := entier
 
     si n == 0:
@@ -76,7 +76,7 @@ La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.lan
 Donnez et prouvez **un algorithme itératif** de signature :
 
 ```pseudocode
-concaténation(début: [entier], fin: [entier]) → [entier]
+concaténation(début: []entier, fin: []entier) → []entier
 ```
 
 Qui rend **un nouveau tableau** contenant la concaténation de `début`{.language-} et de `fin`{.language-}.
@@ -86,8 +86,8 @@ Vous utiliserez des invariants de boucle pour le prouver.
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme concaténation(début: [entier], fin: [entier]) → [entier]
-    (t := [entier]) ← [entier]{longueur: début.longueur + fin.longueur}
+algorithme concaténation(début: []entier, fin: []entier) → []entier
+    (t := []entier) ← []entier{longueur: début.longueur + fin.longueur}
     (i := entier) ← -1
 
     pour chaque (j := entier) de [0 .. début.longueur[:
@@ -144,7 +144,7 @@ Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 Écrivez **un algorithme itératif** de signature :
 
 ```pseudocode
-algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
+algorithme intersection_non_vide(T1: []entier, T2: []entier) → booléen
 ```
 
 Permettant de vérifier s'il existe un élément de `T1`{.language-} qui est égal à un élément de `T2`{.language-}.
@@ -152,7 +152,7 @@ Permettant de vérifier s'il existe un élément de `T1`{.language-} qui est ég
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
+algorithme intersection_non_vide(T1: []entier, T2: []entier) → booléen
     pour chaque (x := entier) de T1:
         pour chaque (y := entier) de T2:
             si x == y:
@@ -176,7 +176,7 @@ Prouver cet algorithme ne nécessite pas d'invariant de boucle formel.
 Écrivez **un algorithme itératif** de signature :
 
 ```pseudocode
-algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
+algorithme égalité_valeurs(T1: []entier, T2: []entier) → booléen
 ```
 
 Permettant de vérifier que deux tableaux d'entiers `T1`{.language-} et `T2`{.language-} contiennent les mêmes valeurs.
@@ -187,7 +187,7 @@ Il faut vérifier que pour pour tout $0\leq i < T1.\text{\small longueur}$ il ex
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
+algorithme égalité_valeurs(T1: []entier, T2: []entier) → booléen
     trouvé := booléen
     pour chaque (x := entier) de T1:
         trouvé ← Faux
@@ -218,7 +218,7 @@ Terminons cette partie avec l'algorithme suivant :
 Écrivez **un algorithme itératif** de signature :
 
 ```pseudocode
-algorithme permutation(T1: [entier], T2: [entier]) → booléen
+algorithme permutation(T1: []entier, T2: []entier) → booléen
 ```
 
 Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small longueur}[$ (on a pas besoin de la donner).
@@ -231,7 +231,7 @@ Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorit
 Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant `nombre`{.language-}, on a l'algorithme suivant :
 
 ```pseudocode
-algorithme égalité(T1: [entier], T2: [entier]) → entier
+algorithme égalité(T1: []entier, T2: []entier) → entier
     pour chaque  (x := entier) de T1:
         si nombre(T1, x) ≠ nombre(T2, x):
             rendre Faux
@@ -250,7 +250,7 @@ On ne peut rendre Vrai que si tous les éléments de T1 sont dans T2 avec un mê
 Donnez et prouvez **un algorithme itératif** de signature :
 
 ```pseudocode
-supprime(T: [entier], v: entier) → [entier]
+supprime(T: []entier, v: entier) → []entier
 ```
 
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}.
@@ -263,8 +263,8 @@ Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-co
 Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du tableau à créer et donc compter le nombre d’occurrences de `v`{.language-} dans `T`{.language-}. Ensuite, il sera possible de remplir le tableau.
 
 ```pseudocode/
-algorithme supprime(T: [entier], v: entier) → [entier]
-    (T2 := [entier]) ← [entier]{longueur: taille t.longueur - nombre(T, v)}
+algorithme supprime(T: []entier, v: entier) → []entier
+    (T2 := []entier) ← []entier{longueur: taille t.longueur - nombre(T, v)}
 
     (j := entier) ← 0
     pour chaque (i := entier) de [0, t.longueur[:
@@ -293,7 +293,7 @@ Et maintenant la version récursive :
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-supprime_rec(T: [entier], v: entier) → [entier]
+supprime_rec(T: []entier, v: entier) → []entier
 ```
 
 Qui rend **un nouveau tableau** contenant la restriction de `T`{.language-} aux valeurs différentes de `v`{.language-}.
@@ -304,11 +304,11 @@ Vous pourrez utiliser [l'algorithme `concaténation`{.language-}](./#algorithme-
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme supprime_rec(t: [entier], v: entier) → [entier]
+algorithme supprime_rec(t: []entier, v: entier) → []entier
     si t.longueur == 0:
         rendre t
 
-    (t2 := [entier]) ← [entier]{longueur: t.longueur - 1}
+    (t2 := []entier) ← []entier{longueur: t.longueur - 1}
     pour i de [0, t2.longueur[:
         t2[i] ← t[i + 1]
     
@@ -332,7 +332,7 @@ Pour la correction une récurrence immédiate sur la taille du tableau nous perm
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-retournement_indice(t: [entier], i: entier) → ∅
+retournement_indice(t: []entier, i: entier) → ∅
 ```
 
 Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.\mbox{longueur} - 1 - j]$ soient échangés pour tous $i \leq j < t.\mbox{longueur} - i$
@@ -340,7 +340,7 @@ Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte 
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme retournement_indice(T: [entier], i: entier) → ∅
+algorithme retournement_indice(T: []entier, i: entier) → ∅
     si T.longueur - 1 - i > i:
         (temp := entier) ← T[i]
         T[i] ← T[T.longueur - 1 - i]
@@ -368,16 +368,16 @@ Lorsque l'on manipule des indices de tableau il faut **toujours** :
 {% enddetails %}
 
 {% exercice %}
-Encapsulez la fonction récursive `retournement_indice(t: [entier], i: entier) → ∅`{.language-pseudocode} pour qu'elle puisse retourner un tableau passer en paramètre.
+Encapsulez la fonction récursive `retournement_indice(t: []entier, i: entier) → ∅`{.language-pseudocode} pour qu'elle puisse retourner un tableau passer en paramètre.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-fonction retournement_indice(T: [entier], i: entier) → ∅
+fonction retournement_indice(T: []entier, i: entier) → ∅
     ...  # code de la fonction récursive
 
-algorithme retournement(T: [entier]) → ∅
+algorithme retournement(T: []entier) → ∅
     retournement_indice(T, 0)
 ```
 

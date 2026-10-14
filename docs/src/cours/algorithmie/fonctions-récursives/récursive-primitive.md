@@ -73,7 +73,7 @@ Il faut modifier l'algorithme de deux façons :
 2. il ne doit pas cycler
 
 ```pseudocode
-algorithme successeur(N: [bit]) → [bit]:
+algorithme successeur(N: []bit) → []bit:
     i ← N.longueur - 1
 
     tant que (i ≥ 0) et (N[i] == 1):
@@ -119,9 +119,9 @@ Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme 
 
 ```pseudocode
 algorithme composition(n : entier,
-                       x: [entier],         # un tableau de m entiers
-                       f: ([entier]) → ∅,   # une fonction à n paramètres
-                       g: [([entier]) → ∅]. # un tableau de n fonctions à m paramètres
+                       x: []entier,         # un tableau de m entiers
+                       f: ([]entier) → ∅,   # une fonction à n paramètres
+                       g: [([]entier) → ∅]. # un tableau de n fonctions à m paramètres
                        ) → ∅:
     y ← un tableau de taille n entiers
     pour chaque i de [0 .. n[:

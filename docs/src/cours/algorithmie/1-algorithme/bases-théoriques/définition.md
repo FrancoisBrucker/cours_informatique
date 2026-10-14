@@ -60,30 +60,31 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **sortie** : […] des quantités ayant une relation spécifiée avec les entrées.
 - **rendement** : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.
 {% endretenir %}
+{% lien %}
+N'hésitez pas à regarder cette vidéo, [petite biographie de Donald Knuth](https://www.youtube.com/watch?v=d2a4MpY7I2w){.externe}, grand informaticien.
+{% endlien %}
 
-On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. À partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
+On peut en déduire la définition suivante : Un **_programme_** est une succession d'instructions simples et clairement définies. Ou, de façon équivalente :
 
 <div id="définition-règles-générales"></div>
 {% definition %}
+Un **_programme_** est défini par les trois propriétés suivantes :
 
-Un **_algorithme_** est défini par les 4 propriétés suivantes :
-
-1. un algorithme est constitué d'une **suite finie d'instructions**, chacune décrite avec **un nombre fini de symboles**
+1. il est est constitué d'une **suite finie d'instructions**, chacune décrite avec **un nombre fini de symboles**
 2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
-4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
 
 {% enddefinition %}
+
+Un algorithme est un programme qui s'arrête à coup sûr :
+
 {% definition %}
-On appellera **_programme_** un texte qui ne respecte que les 3 premières propriétés : un algorithme est un programme qui s'arrête.
+
+Un **_algorithme_** est un programme qui s'arrête quelques soient ses entrées après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
 
 {% enddefinition %}
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
-
-{% lien %}
-N'hésitez pas à regarder cette vidéo, [petite biographie de Donald Knuth](https://www.youtube.com/watch?v=d2a4MpY7I2w){.externe}, grand informaticien.
-{% endlien %}
 
 Prenons l'énoncé suivant qui décrit une procédure permettant de chercher un élément particulier dans une suite finie de nombres :
 
@@ -169,11 +170,8 @@ Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :
 <span id="algorithme-recherche"></span>
 
 ```pseudocode
-algorithme recherche(T: [entier],
-                     x: entier
-                    ) → booléen:
-
-    pour chaque (e := entier) de T:
+algorithme recherche(T: []entier, x: entier) → booléen:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -327,7 +325,7 @@ Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki
 Tout ce que peut manipuler un programme est une suite finie de bits.
 {% endnote %}
 
-Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
+Cependant n'utiliser que des tableaux de bits (dont le type est `[]bit`) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
 
 - un entier relatif :
   - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)

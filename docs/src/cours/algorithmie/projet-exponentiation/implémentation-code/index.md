@@ -234,7 +234,7 @@ On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets 
 Commençons par créer les points de contrôles sous la forme d'un tableau d'exposants à calculer :
 
 {% faire %}
-Créez (et testez) une fonction `donne_pas(nombre_pas: int, min_valeur: int, max_valeur: int) -> [int]`{.language-} qui rend une liste d'entiers allant de `min_valeur`{.language-} à au plus `max_valeur`{.language-} par pas de `(max_valeur - min_valeur) //  nombre_pas`{.language-}
+Créez (et testez) une fonction `donne_pas(nombre_pas: int, min_valeur: int, max_valeur: int) -> []int`{.language-} qui rend une liste d'entiers allant de `min_valeur`{.language-} à au plus `max_valeur`{.language-} par pas de `(max_valeur - min_valeur) //  nombre_pas`{.language-}
 {% endfaire %}
 {% info %}
 `donne_pas(4, 2, 23)`{.language-} rendra la liste `[2, 7, 12, 17, 22]`{.language-}. Elle est très facile à créer avec la fonction `range`{.language-}

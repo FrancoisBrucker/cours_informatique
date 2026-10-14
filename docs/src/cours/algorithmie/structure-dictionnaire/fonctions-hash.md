@@ -201,7 +201,7 @@ Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur 
 De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) = \mathcal{O}(\log(n))$ grace à l'algorithme `modulo([n0, ..., nl], 2^k)`{.language-} :
 
 ```pseudocode
-algorithme modulo(n: [entier], base) → entier:
+algorithme modulo(n: []entier, base) → entier:
     (e := entier) ← base mod m
     (exp := entier) ← 1
     (res := entier) ← n[0] mod m

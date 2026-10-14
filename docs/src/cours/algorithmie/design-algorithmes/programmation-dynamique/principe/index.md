@@ -167,7 +167,7 @@ On peut alors remplir la matrice ligne à ligne (ou colonne par colonne) :
 
 ```pseudocode
 algorithme nombre_chemins(n: entier) → entier:
-    N ← un tableau de [entier] de taille n+1
+    N ← un tableau de []entier de taille n+1
     N[:] ← un tableau de n+1 entiers
 
     pour chaque j de [0 .. n]:
@@ -195,7 +195,7 @@ Une petite modification de l'algorithme précédent permet de répondre à la qu
 
 ```pseudocode
 algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
-    N ← un tableau de [entier] de taille n+1
+    N ← un tableau de []entier de taille n+1
     N[:] ← un tableau de n+1 entiers
 
     si (0, 0) est dans P:
@@ -229,7 +229,7 @@ Modifiez l'algorithme précédent pour qu'il puisse rendre un chemin maximisant 
 
 Il faut parcours la matrice N créé par l'algorithme de la question précédente à rebours en conservant le nombre de points d'intérêt.
 
-```algorithme chemin(N: [[entier]], P: P: [(entier, entiers)]) → [(entier, entiers)]:
+```algorithme chemin(N: [][]entier, P: P: [(entier, entiers)]) → [(entier, entiers)]:
     C ← une liste de (entier, entiers)
     n ← N.longueur - 1
     ajouter (n, n) en début de C
@@ -284,7 +284,7 @@ En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynam
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme vente(n: entier, P: [entier]) → entier:
+algorithme vente(n: entier, P: []entier) → entier:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
 
@@ -307,7 +307,7 @@ Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet 
 On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
 
 ```pseudocode
-algorithme vente(n: entier, P: [entier]) → [entier]:
+algorithme vente(n: entier, P: []entier) → []entier:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
     D ← un tableau d'entiers de taille n + 1

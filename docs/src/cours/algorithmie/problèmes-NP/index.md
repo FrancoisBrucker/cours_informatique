@@ -88,7 +88,7 @@ Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter
 Ainsi, pour [le problème MAX (trouver le maximum d'un tableau)](../#problème-max-tableau) :
 
 ```pseudocode
-algorithme vérification_max(T: [entier], sol: entier) → booléen:
+algorithme vérification_max(T: []entier, sol: entier) → booléen:
   m ← max(T)  # algorithme linaire trouvant le maximum d'un tableau
   rendre m == sol
 ```
@@ -101,7 +101,7 @@ Montrez que le problème [3-SUM](../problème-réduction/#problème-3-SUM) admet
 {% details "solution" %}
 
 ```pseudocode
-algorithme vérification_3_SUM(T: [entier], sol: (entier, entier, entier)) → booléen:
+algorithme vérification_3_SUM(T: []entier, sol: (entier, entier, entier)) → booléen:
   i, j, k ← sol
   si T[i] + T[j] + T[k] == 0:
       rendre Vrai
@@ -277,8 +277,8 @@ Utilisez le codage précédent pour écrire un vérifieur linéaire de SAT.
 On propose l'algorithme suivant :
 
 ```pseudocode
-algorithme vérif_SAT(conj_clauses: [[entier]], # [c_1, ..., c_m]
-                     solution: [booléen]) # [x_1, ..., x_n]
+algorithme vérif_SAT(conj_clauses: [][]entier, # [c_1, ..., c_m]
+                     solution: []booléen) # [x_1, ..., x_n]
                      → booléen:
     pour chaque c de conj_clauses:
         sat ← Faux
@@ -385,7 +385,7 @@ Commençons par quelque chose de simple, l'addition de 2 bits :
 ```pseudocode
 algorithme somme_binaire(x: bit,
                          y: bit)
-                         → [bit]  # somme = T[0] + 2 * T[1]
+                         → []bit  # somme = T[0] + 2 * T[1]
     somme ← [0, 0]
     si (x == 1) et (y == 1):
         rendre [0, 1]             # le nombre 10
@@ -479,9 +479,9 @@ Tout comme pour le problème du max si on veut additionner deux entiers on les t
 <span id="algorithme-somme_binaire"></span>
 
 ```pseudocode
-algorithme somme_binaire(x: [bit],
-                         y: [bit])  # on suppose x et y de même taille
-                         → [bit]  # de la taille de x et y + 1
+algorithme somme_binaire(x: []bit,
+                         y: []bit)  # on suppose x et y de même taille
+                         → []bit  # de la taille de x et y + 1
 
     somme ← un tableau de taille x.longueur + 1 bits
     retenues ← un tableau de taille x.longueur + 1 bits

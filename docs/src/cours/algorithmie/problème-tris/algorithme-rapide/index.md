@@ -32,15 +32,15 @@ Les preuves formelles de complexités sont ardues. On ne vous demande pas de les
 En pseudo-code cela pourrait donner :
 
 ```pseudocode/
-algorithme rapide(T: [entier]) → [entier]:
+algorithme rapide(T: []entier) → []entier:
     si T.longueur <= 1:
         rendre une copie de T
 
-    (T1 := [entier]) ← un nouveau tableau contenant tous les éléments T[1:] plus petits ou égaux à T[0]
-    (T2 := [entier]) ← un nouveau tableau contenant tous les éléments T[1:] strictement plus grand que T[0]
+    (T1 := []entier) ← un nouveau tableau contenant tous les éléments T[1:] plus petits ou égaux à T[0]
+    (T2 := []entier) ← un nouveau tableau contenant tous les éléments T[1:] strictement plus grand que T[0]
 
-    (T1' := [entier]) ← rapide(T1)
-    (T2' := [entier]) ← rapide(T2)
+    (T1' := []entier) ← rapide(T1)
+    (T2' := []entier) ← rapide(T2)
     rendre T1' + [T[0]] + T2'
 ```
 

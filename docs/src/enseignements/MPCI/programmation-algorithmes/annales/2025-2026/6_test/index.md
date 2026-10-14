@@ -209,7 +209,7 @@ for i in range(10):
 On peut faire des choses incroyables en Fractran, mais pour cela il faut considérer tous les entiers générés par le programme au cours de son exécution et pas juste rendre le dernier.
 
 {% faire %}
-Ajoutez à la classe `Fractran` une méthode de signature `Fractran.suite(n: int, N:int): [int]`{.language-}. Si $L$ est la liste rendue par la méthode elle doit être telle que :
+Ajoutez à la classe `Fractran` une méthode de signature `Fractran.suite(n: int, N:int): []int`{.language-}. Si $L$ est la liste rendue par la méthode elle doit être telle que :
 
 - $\text{len}(L) \leq N$
 - $L[0]$ soit le paramètre d'entrée $n$ de la méthode

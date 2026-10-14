@@ -62,13 +62,13 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 Reprenons par exemple [le code de l'algorithme recherche](../../bases-théoriques/définition/#algorithme-recherche) et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
-fonction recherche(T: [entier], x: entier) → booléen:
+fonction recherche(T: []entier, x: entier) → booléen:
     pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai
     rendre Faux
 
-T := [entier] 
+T := []entier 
 T ← [1, 2, 6]
 trouve := entier
 trouve ← recherche(T, 6)
@@ -136,8 +136,8 @@ De là l'instruction :
 Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :
 
 ```pseudocode/
-F := [entier]
-F ← [entier]{longueur: 10}
+F := []entier
+F ← []entier{longueur: 10}
 F[0] ← 1
 F[1] ← 1
 
@@ -197,8 +197,8 @@ Mais souvent la complexité dépend des paramètres du programme, comme par exem
 
 ```pseudocode/
 algorithme fibonacci(n: entier) → entier:
-  F := [entier]
-  F ← [entier]{longueur: n}
+  F := []entier
+  F ← []entier{longueur: n}
   F[0] ← 1
   F[1] ← 1
 
@@ -236,7 +236,7 @@ $$
 Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur `v`{.language-} est dans un tableau `T`{.language-} :
 
 ```pseudocode/
-algorithme recherche(T: [entier], x: entier) → booléen:
+algorithme recherche(T: []entier, x: entier) → booléen:
     pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai

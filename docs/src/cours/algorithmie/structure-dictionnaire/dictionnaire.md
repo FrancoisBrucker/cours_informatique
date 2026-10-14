@@ -48,7 +48,7 @@ Le squelette de la structure de dictionnaire est la suivante :
 
 ```pseudocode
 structure Dictionnaire<K, V>:
-    T: [V]<longueur: m>  ← [∅ .. ∅]  # tableau de m entrées toutes vides
+    T: []V<longueur: m>  ← [∅ .. ∅]  # tableau de m entrées toutes vides
 
 méthode (d: Dictionnaire<K, V>) f(clé: K) → [0 .. m[ 
 
@@ -244,7 +244,7 @@ Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{
 La version finale de la structure de dictionnaire est alors :
 
 ```pseudocode
-fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
 m0 := entier                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
@@ -297,7 +297,7 @@ Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le no
 <span id="structure-dictionnaire"></span>
 
 ```pseudocode
-fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
 m0 := entier                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
@@ -428,8 +428,8 @@ nombre_pommes["pink lady"] ← 42
 Plutôt que de d'abord associer un indice aux données :
 
 ```pseudocode
-pommes_indirection := [chaîne] ← ["fuji", "gala", "pink lady"]
-nombre_pommes := [entier] ← [entier]{longueur: 3}
+pommes_indirection := []chaîne ← ["fuji", "gala", "pink lady"]
+nombre_pommes := []entier ← []entier{longueur: 3}
 nombre_pommes[0] ← 12
 nombre_pommes[1] ← 3
 nombre_pommes[2] ← 42

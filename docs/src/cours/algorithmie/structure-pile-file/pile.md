@@ -45,7 +45,7 @@ structure Pile<T>:
     longueur: entier ← 0
     capacité: entier
 
-    (données: [T]) ← [T]{longueur: capacité}
+    (données: []T) ← []T{longueur: capacité}
 
 méthode (p:Pile<T>) empile(donnée: T) → ∅:
     p.données[p.longueur] ← donnée
