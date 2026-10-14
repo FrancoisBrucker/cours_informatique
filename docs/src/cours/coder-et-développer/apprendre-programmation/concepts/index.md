@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Concepts
+title: "Concepts de la programmation"
 
 eleventyComputed:
   eleventyNavigation:

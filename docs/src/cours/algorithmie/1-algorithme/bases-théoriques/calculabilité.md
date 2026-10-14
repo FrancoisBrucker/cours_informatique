@@ -9,9 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombre.
+On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombres.
 
-Cette introduction à ce l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9){.externe} en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
+Cette introduction à ce que l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9){.externe} en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
 
 {% lien %}
 
@@ -28,7 +28,7 @@ Un nombre $x$ est **_calculable_** s'il existe un algorithme $A$ tel que :
 
 {% endnote2 %}
 
-### Nombres Entiers et rationnels
+### Nombres entiers et rationnels
 
 On a donc immédiatement :
 
@@ -67,9 +67,9 @@ Il suffit d'utiliser [l'algorithme de la division de deux entiers décimaux](htt
 
 En revanche, ça s'arrête là. 
 
-### Nombres réel
+### Nombres réels
 
-Tous les réels ne sont pas calculables. Ceci est du au résultat suivant :
+Tous les réels ne sont pas calculables. Ceci est dû au résultat suivant :
 
 <span id="diagonale-cantor"></span>
 {% note "**Théorème**" %}
@@ -82,18 +82,18 @@ On commence en remarquant que l'on peut associer à tout entier $i$ formé des c
 
 On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :
 
-- on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
-- on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
+- on appelle $r_1$ le 1er réel, c'est-à-dire celui tel que $f(r_1) \leq f(x)$, quel que soit $x \in [0, 1]$
+- on appelle $r_2$ le second réel $r_2$ , c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
 - ...
 - on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
 - ...
 
-Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
+Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que son $i$ème chiffre après la virgule soit :
 
 - $1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$
 - $2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$
 
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els){.externe}, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
+Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quel que soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els){.externe}, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
 Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
@@ -107,12 +107,12 @@ Il existe des réels non calculables.
 
 {% endnote %}
 {% details "preuve", "open" %}
-On a vu [qu 'il existait au plus un nombre dénombrable de programmes](../définition/#proposition-nb-dénombrable-algorithmes), donc au plus autant de programme que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.
+On a vu [qu'il existait au plus un nombre dénombrable de programmes](../définition/#proposition-nb-dénombrable-algorithmes), donc au plus autant de programmes que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.
 {% enddetails %}
 
 
 
-Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu){.externe}.
+Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspens, mais on n'a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sait pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu){.externe}.
 
 {% info %}
 Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/){.externe}, très bien faite.
@@ -120,7 +120,7 @@ Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Ar
 
 Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
 
-Enfin, certains réels sont calculables, même si leurs nombres de décimales sont infinis. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :
+Enfin, certains réels sont calculables, même si leurs nombres de décimales sont infinis. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :
 
 {% note "**Proposition**" %}
 Soit $(u_n)_{n \geq 1}$ une suite réelle.
@@ -137,31 +137,31 @@ Alors le réel $x$ est calculable.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x - u_n\mid < 10^{-i}$ pour tout $n > N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.
+Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x - u_n\mid < 10^{-i}$ pour tout $n > N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.
 
 {% enddetails %}
 
 La proposition ci-dessus permet de montrer que la plupart des réels connus sont calculables. Par exemple $\pi$ puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e){.externe}.
 
 {% info %}
-Contrairement à une croyance largement rependue en europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathématicien chinois [刘徽](https://fr.wikipedia.org/wiki/Liu_Hui){.externe} en [proposait un algorithme](https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80){.externe} au troisième siècle.
+Contrairement à une croyance largement répandue en Europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. Le mathématicien chinois [刘徽](https://fr.wikipedia.org/wiki/Liu_Hui){.externe} en [proposait un algorithme](https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80){.externe} au troisième siècle.
 
 {% endinfo %}
 
-**Attention cependant**, Il faut que **le même algorithme** soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker){.externe} par exemple.
+**Attention cependant**, il faut que **le même algorithme** soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suites de Specker](https://fr.wikipedia.org/wiki/Suite_de_Specker){.externe} par exemple.
 
 {% lien %}
 
-[Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable){.externe}, des nombres calculable.
+[Page Wikipédia sur les réels calculables](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable){.externe}, des nombres calculables.
 {% endlien %}
 
 En conclusion :
 
 {% attention2 "**À retenir**" %}
-La quasi-totalité des nombres réels utilisés en mathématiques en tant que tel ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
+La quasi-totalité des nombres réels utilisés en mathématiques en tant que tels ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
 {% endattention2 %}
 {% info %}
-Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) son symbole utilisation en calcul formel et son approximation que l'on peut utiliser dans les calculs.
+Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.
 {% endinfo %}
 
 
@@ -206,7 +206,7 @@ Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est **_calculable_** s'il ex
 
 {% endnote2 %}
 
-Montrons tout de suite que cette notion a un sens, c'est à dire que l'ensemble des fonctions calculables est strictement inclue dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :
+Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement incluse dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :
 
 {% note "**Proposition**" %}
 Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
@@ -222,7 +222,7 @@ On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre
 
 {% enddetails %}
 
-Comme il existe [autant d'Algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes) :
+Comme il existe [autant d'algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes) :
 
 {% attention2 "**À retenir**" %}
 Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
@@ -230,7 +230,7 @@ Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles pa
 
 ### Exemple de fonction calculable
 
-La plupart des fonctions connues sont calculables. Prenons la plus connue d'entre elle la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entier positifs $a$ et $b$.
+La plupart des fonctions connues sont calculables. Prenons la plus connue d'entre elles, la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entiers positifs $a$ et $b$.
 
 <span id="algorithme-euclide"></span>
 
@@ -241,7 +241,7 @@ le pgcd de deux nombres n'est pas changé si on remplace le plus grand d'entre e
 ```
 
 {% exercice %}
-Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étape.
+Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étapes.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -257,7 +257,7 @@ $$
 $$
 </div>
 
-Si $a$ et $b$ sont deux entiers positifs et tel que $\min(a, b) > 0$ alors : $\max(a, b) - \min(a, b) < \max(a, b) \geq 0$. Il arrivera donc forcément un moment ou $\min(a, b) = 0$.
+Si $a$ et $b$ sont deux entiers positifs et tels que $\min(a, b) > 0$ alors : $\max(a, b) - \min(a, b) < \max(a, b) \geq 0$. Il arrivera donc forcément un moment où $\min(a, b) = 0$.
 
 {% enddetails %}
 
@@ -265,7 +265,7 @@ Un cas d'usage classique est une fonction qui admet [un développement en série
 
 {% attention2 "**À retenir**" %}
 
-Si vous pensez à une fonction il y a toute les chances qu'elle soit calculable.
+Si vous pensez à une fonction il y a toutes les chances qu'elle soit calculable.
 
 {% endattention2 %}
 
@@ -275,7 +275,7 @@ Il existe tout un tas de cas limites rigolos. Nous allons en voir deux.
 
 #### Fonctions calculables sans algorithme connu
 
-Il existe aussi des fonctions que l'on sait calculable mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
+Il existe aussi des fonctions que l'on sait calculables mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
 
 ```text
 Nom : 5-consécutifs
@@ -290,9 +290,9 @@ Programme :
 
 Le texte ci-dessus n'est **pas** un programme car le "il existe" n'est pas une opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du "il existe", ce qui fait que s'il n'existe pas n "5" successifs, le programme ne s'arrêtera pas.
 
-Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.
+Mais en vrai, le texte ci-dessus peut se réécrire de deux façons.
 
-Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe}) et alors le programme devient l'algorithme ci-dessous :
+Soit il existe n "5" consécutifs dans les décimales de $\pi$ quel que soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe}) et alors le programme devient l'algorithme ci-dessous :
 
 ```text
 Nom : 5-consécutifs
@@ -321,7 +321,7 @@ Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
 {% endattention2 %}
 
-On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
+On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car elles sont très gourmandes en temps de calcul.
 
 #### Fonction écran de fumée
 
@@ -348,12 +348,12 @@ $$
 Pour prouver que cette fonction est calculable il faut montrer deux choses :
 
 1. la véracité de la définition
-2. que le nombre de récursion n'est pas infini
+2. que le nombre de récursions n'est pas infini
 
 Faisons la première proposition avec un exercice :
 
 {% exercice %}
-Montrez par récurrence sur $k = x+y+z$ que si la définition de la fonction de Takeuchi est bien définie (le nombre de récursion est fini), alors :
+Montrez par récurrence sur $k = x+y+z$ que si la définition de la fonction de Takeuchi est bien définie (le nombre de récursions est fini), alors :
 
 <div>
 $$
@@ -391,11 +391,11 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 {% enddetails %}
 
-Il nous reste à montrer que le nombre d'itération est bien fini. Ce n'est en effet pas parce que l'équation de récurrence admet une solution qu'on peut la calculer avec un algorithme, c'est à dire en temps fini. On utilise pour cela utiliser l'exercice précédent et une récurrence :
+Il nous reste à montrer que le nombre d'itérations est bien fini. Ce n'est en effet pas parce que l'équation de récurrence admet une solution qu'on peut la calculer avec un algorithme, c'est-à-dire en temps fini. On utilise pour cela l'exercice précédent et une récurrence :
 
 {% note "**Proposition**" %}
 
-La fonction $\tau(x, y, z)$ de Takeuchi est bien définie en un nombre fini de récursion et sa valeur vaut :
+La fonction $\tau(x, y, z)$ de Takeuchi est bien définie en un nombre fini de récursions et sa valeur vaut :
 
 <div>
 $$
@@ -434,37 +434,37 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 {% enddetails %}
 
-Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
+Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez-le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
 {% attention2 "**À retenir**" %}
-La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquée.
+La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquées.
 
-Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
+Lorsque vous essayez de résoudre un problème avec un algorithme, essayez toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt que la version simple.
 {% endattention2 %}
 
 ## <span id="non-calculable"></span>Non calculabilité
 
 Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.
 
-Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.
+Mais ces objets existent puisqu'il y a strictement plus de fonctions et de réels que d'algorithmes.
 
 Nous allons donner un exemple de chaque ci-après.
 
 ### Un nombre non calculable : $\Omega$ de Chaitin
 
-Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin){.externe}, lui aussi non dénombrable.
+Nous allons montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin){.externe}, lui aussi non calculable.
 
 Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
 
-Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
+Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimale soit :
 
 - égale à 1 si le programme $P_i$ s'arrête
-- égale à 0 si le programme $P_i$ se s'arrête pas
+- égale à 0 si le programme $P_i$ ne s'arrête pas
 
 Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice) serait décidable.
 
 
-### <span id="complexité-Kolmogorov"></span> Une Fonction non calculable : la complexité de Kolmogorov
+### <span id="complexité-Kolmogorov"></span> Une fonction non calculable : la complexité de Kolmogorov
 
 {% lien %}
 [Complexité de Kolmogorov](https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_Kolmogorov){.externe}
@@ -476,16 +476,16 @@ La complexité de Kolmogorov est un exemple classique de fonction non calculable
 La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb{N}$ telle que $k(n)$ soit le nombre de caractères minimum d'un algorithme sans paramètre dont la sortie est l'affichage à l'écran du nombre $n$
 {% endnote2 %}
 {% info %}
-La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
+La valeur de la fonction va dépendre de la langue utilisée bien sûr. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
 {% endinfo %}
 
-La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :
+La définition semble idiote. Pour rendre 5 il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :
 
 ```text
 affiche à l'écran la chaîne de caractères "5"
 ```
 
-Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
+Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux `"`). Si ce nombre est gros, on peut faire bien mieux.
 
 Par exemple :
 
@@ -499,11 +499,11 @@ Possède 49 caractères et permet d'écrire un nombre de 1000 chiffres ! La ques
 La fonction $k(n)$ existe.
 {% endnote %}
 {% details "preuve", "open" %}
-En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial (le notre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcément trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égaux à l'algorithme trivial (le nôtre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programmes (facile, ce sont les textes qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
 
 {% enddetails %}
 
-La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
+La difficulté réside bien sûr dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
 
 On a maintenant assez de billes pour démontrer la non-calculabilité de la complexité de Kolmogorov :
 

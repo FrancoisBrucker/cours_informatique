@@ -41,21 +41,13 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 ## <span id="partie-1"></span>Partie I : algorithmes
 
-Tout ce que devrait connaître tout ingénieur de l'informatique.
-
-{% prerequis %}
-[Bases de la programmation](/cours/coder-et-développer/apprendre-programmation/concepts/)
-{% endprerequis %}
- 
-### Algorithmes et programmes
-
-#### Définitions
-
-Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas faire :
-
 {% aller %}
-[Bases théoriques](./bases-théoriques)
+[Écrire des algorithmes](./1-algorithme/)
 {% endaller %}
+
+> TBD en chantier : la partie I migre vers le lien ci-dessus
+
+### Algorithmes et programmes
 
 #### Pseudo code
 

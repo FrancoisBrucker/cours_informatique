@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Définitionsd'un algorithme
+title: Définitions d'un algorithme
 
 eleventyComputed:
   eleventyNavigation:
@@ -26,7 +26,7 @@ Qu'est-ce que ça veut dire ?
 - **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
 - **tâche** : ...
 
-Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un algorithme ! Formalisons le :
+Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un algorithme ! Formalisons-le :
 
 ```text
 Nom : comprendre_une_définition_du_petit_Robert
@@ -35,23 +35,21 @@ Entrées :
 Programme :
     1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
     2. afficher la définition à l'écran
-    3. lire la définition et l'
-    4. pour chaque mot non compris dans la définition :
-       4.1. comprendre_une_définition_du_petit_Robert(mot)
+    3. lire la définition et pour chaque mot non compris dans la définition, exécuter : `comprendre_une_définition_du_petit_Robert(mot non compris)`
 ```
 
 C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 
 - compréhensible
 - chaque instruction (lire une définition, comprendre un mot, ...) peut être caractérisée par un petit texte en français
-- notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revue tous les mots du dictionnaire)
+- notre algorithme est récursif (il s'appelle lui-même) s'arrête bien à un moment (au pire une fois que l'on a passé en revue tous les mots du dictionnaire, on aura compris tous les mots de toutes les définitions)
 
 Règles de construction de l'algorithme utilisées :
 
 - **des** paramètres en entrée mais **au plus une** sortie (qui peut être une structure composée comme une liste par exemple).
 - le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
 - une description de ce qu'il fait
-- l'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
+- l'exécution d'un algorithme est signifiée par son nom suivi de parenthèses contenant ses paramètres
 - afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme : l'algorithme continue de fonctionner après l'affichage
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme#Quelques_d%C3%A9finitions_connexes){.externe} :
@@ -62,14 +60,14 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **sortie** : […] des quantités ayant une relation spécifiée avec les entrées.
 - **rendement** : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.
 
-On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
+On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. À partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
 <div id="définition-règles-générales"></div>
 {% note2 "**Définition**" %}
 
 Un **_algorithme_** est défini par les 4 propriétés suivantes :
 
-1. un algorithme est constitué d'un **suite finie d'instructions**, chacune décrite avec **un nombre fini de symboles**
+1. un algorithme est constitué d'une **suite finie d'instructions**, chacune décrite avec **un nombre fini de symboles**
 2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
@@ -116,7 +114,7 @@ Programme :
     Si on trouve un tel élément, rendre "J'ai trouvé ton entier dans la liste ! Je suis trop trop fort !".
 ```
 
-Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas `x`{.language-} dans `t`{.language-}. Modifions le :
+Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas `x`{.language-} dans `t`{.language-}. Modifions-le :
 
 ```text
 Nom : recherche
@@ -131,7 +129,7 @@ Programme :
 
 Notre programme s'arrête tout le temps : c'est un algorithme.
 
-On peut le rendre un peut plus professionnel en ne rendant pas une chaîne de caractère mais un booléen (`Vrai` s'il est dans la liste et `Faux` sinon) :
+On peut le rendre un peu plus professionnel en ne rendant pas une chaîne de caractères mais un booléen (`Vrai` s'il est dans la liste et `Faux` sinon) :
 
 ```text
 Nom : recherche
@@ -150,20 +148,20 @@ Programme :
 Un **programme** possède :
 
 - un nom
-- des paramètres d'entrée (il peut y en avoir 0). Chaque paramètre à un nom qui pourra être utilisé dans la description du programme et un type qui décrit sa nature.
+- des paramètres d'entrée (il peut y en avoir 0). Chaque paramètre a un nom qui pourra être utilisé dans la description du programme et un type qui décrit sa nature.
 - une sortie. Si le programme s'arrête il doit rendre quelque chose. La sortie doit toujours être du même type.
 - une description qui explicite ce qu'il fait.
 
-Si le programme s'arrête quelque soient ses entrées, c'est un **algorithme**.
+Si le programme s'arrête quelles que soient ses entrées, c'est un **algorithme**.
 {% endattention2 %}
 {% info %}
-Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
+Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par un autre programme.
 {% endinfo %}
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
 1. le pseudo-code : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
-2. le code : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
+2. le code : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au cours du temps.
 
 Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :
 
@@ -198,11 +196,11 @@ Mais avant de n'utiliser plus que du pseudo-code, regardons ce que cela veut dir
 
 Le terme **fini** de la définition d'un programme/algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il faut que :
 
-- chaque algorithme soit décri par un texte **fini**
+- chaque algorithme soit décrit par un texte **fini**
 - chaque instruction doit s'exécuter en un temps **fini** 
 - chaque donnée manipulée doit être de taille **finie**
 
-Donc la description du programme ainsi que les données doivent être décrite avec un _"langage"_ formé  avec des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>).
+Donc la description du programme ainsi que les données doivent être décrites avec un _"langage"_ formé avec des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>).
 
 {% note2 "**Définition**" %}
 
@@ -210,11 +208,11 @@ On appelle :
 
 - **_alphabet_** est un ensemble fini $\mathcal{A}$
 - une **_lettre_** est un élément d'un alphabet
-- un **_mot_** d'un alphabet $\mathcal{A}$ est une suite finie d'élément de $\mathcal{A}$
-- la **_longueur_** d'un mot est lee nombre d'élément de la suite le constituant
+- un **_mot_** d'un alphabet $\mathcal{A}$ est une suite finie d'éléments de $\mathcal{A}$
+- la **_longueur_** d'un mot est le nombre d'éléments de la suite le constituant
 - le **_mot vide_**, de longueur 0, est noté $\epsilon$
 - l'ensemble de tous les mots d'un alphabet $\mathcal{A}$ est noté $\mathcal{A}^\star$
-- un **_language_** est un sous-ensemble de $\mathcal{A}^\star$ (un ensemble, possiblement infini, de mots de $\mathcal{A}^\star$)
+- un **_langage_** est un sous-ensemble de $\mathcal{A}^\star$ (un ensemble, possiblement infini, de mots de $\mathcal{A}^\star$)
 
 {% endnote2 %}
 
@@ -232,18 +230,18 @@ Programme :
 Même si le programme ne s'arrête pas, chaque étape est bien finie : 
 
 - `x` est toujours un entier que l'on peut décrire comme des mots de l'alphabet $\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$
-- écrire un nombre sur une feuille de papier est toujours possible et prendra un temps proportionnel aux nombre de ses chiffres à écrire.
+- écrire un nombre sur une feuille de papier est toujours possible et prendra un temps proportionnel au nombre de ses chiffres à écrire.
 - ajouter 1 à `x` est possible en posant l'addition et cela prendra un temps proportionnel à son nombre de chiffres et l'[on peut décrire le principe de l'addition en français](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul){.externe}, donc avec un nombre fini de symboles (les lettres, les chiffres et quelques symboles de ponctuation)
 
 
 La conséquence fondamentale de ceci est que :
 
 {% note "**Proposition**" %}
-Un programme ne peut manipuler que des données de la forme d'une suite fini d'un ensemble fini.
+Un programme ne peut manipuler que des données de la forme d'une suite finie d'un ensemble fini.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Comme une donnée doit être lue en temps finie, elle doit être composée d'une liste finie d'éléments. Si le nombre d'éléments possibles était infini, il faudrait une description infinie de chaque instruction qui l'utiliserait.
+Comme une donnée doit être lue en temps fini, elle doit être composée d'une liste finie d'éléments. Si le nombre d'éléments possibles était infini, il faudrait une description infinie de chaque instruction qui l'utiliserait.
 
 {% enddetails %}
 
@@ -259,13 +257,13 @@ Un réel est une abstraction que l'on peut considérer soit comme une approximat
 
 Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80){.externe}, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :
 
-- soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
+- soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est-à-dire sans jamais connaître sa valeur
 - soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
 
-Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique){.externe} en se fixant une précision ne gène pas les calculs physiques.
+Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique){.externe} en se fixant une précision ne gêne pas les calculs physiques.
 
 {% info %}
-Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon){.externe}, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique){.externe}.
+Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon){.externe}, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dits de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique){.externe}.
 {% endinfo %}
 
 Or :
@@ -284,9 +282,9 @@ Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9mat
 
 On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble fini $\mathcal{A}$ est triviale.
 
-On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe} que l'on va noter. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
+On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe} que l'on va noter. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
 
-Une chaîne de caractère $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
+Une chaîne de caractères $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
 
 <div>
 $$
@@ -294,7 +292,7 @@ $$
 $$
 </div>
 
-Pour éviter tout soucis avec des données commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer toute données par le chiffre 1. La chaîne de caractères  "Coucou toi !" correspond ainsi au nombre :
+Pour éviter tout souci avec des données commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffres 0 qu'il veut au début), on fait commencer toute donnée par le chiffre 1. La chaîne de caractères  "Coucou toi !" correspond ainsi au nombre :
 
 <div>
 $$
@@ -328,7 +326,7 @@ Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki
 Tout ce que peut manipuler un programme est une suite finie de bits.
 {% endnote %}
 
-Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
+Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
 
 - un entier relatif :
   - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
@@ -346,7 +344,7 @@ Toute suite binaire est un nombre $n$ écrit en base 2. On peut donc représente
 
 On a cependant besoin d'un second caractère pour terminer la séquence lorsqu'on l'écrit ! Sinon, comment savoir lorsque le mot est fini ? On ne peut donc pas écrire toutes les suites juste avec un seul caractère puisqu'il en faut au moins un deuxième qui détermine la fin de la chaîne.
 
-Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} les données de la machines sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs `1` et ` ` (blanc).
+Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} les données de la machine sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs `1` et ` ` (blanc).
 
 {% enddetails %}
 
@@ -356,13 +354,13 @@ Au final :
 {% attention2 "**À retenir**" %}
 On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de `0` et de `1`.
 
-Alternativement, on peut aussi sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
+Alternativement, on peut aussi supposer sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
 {% endattention2 %}
 
 
 ## Nombres de paramètres d'entrée d'un programme
 
-On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de `0` et de `1`, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de `0` et de `1` par une unique suite finie de `0` et de `1`.
+On vient de voir que tous les objets manipulables par des programmes peuvent être assimilés à des suites finies de `0` et de `1`, bref à des entiers représentés en base 2. On peut aller plus loin en représentant les tableaux de suites finies de `0` et de `1` par une unique suite finie de `0` et de `1`.
  
 <div id="proposition-cartésien"></div>
 
@@ -372,7 +370,6 @@ Il existe une injection de $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$ dans $\\{0
 {% endnote %}
 {% details "preuve", "open" %}
 
-On représente
 On peut utiliser l'encodage suivant :
 
 - le caractère `0` est encodé par la suite `10`
@@ -385,15 +382,15 @@ Il est clair que cet encodage est unique puisque :
 
 - il sera de longueur paire
 - commence par un 1
-- chaque élément est codé par 2 bit
+- chaque élément est codé par 2 bits
 
-Ce qui assure que l'on peu retrouver le couple initial à partir de la suite finale.
+Ce qui assure que l'on peut retrouver le couple initial à partir de la suite finale.
 
 {% enddetails %}
 
-Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au d´´but de l'algorithme !
+Cette proposition est vraiment importante car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au début de l'algorithme !
 
-Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
+Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quitte à retrouver les paramètres initiaux en utilisant la réciproque de notre procédure de compactage des paramètres. Comme les suites finies de `0` et de `1` sont des entiers écrits en base 2, on obtient le résultat fondamental :
 
 {% attention2 "**À retenir**" %}
 
@@ -410,7 +407,7 @@ Tout programme peut être écrit comme ayant :
 
 {% endattention2 %}
 
-Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $\\{0, 1\\}^\star$). Étonnant, non ?
+Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il n'y a pas plus d'éléments dans $\mathbb{Q}$ (l'ensemble des fractions entières qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui-même en bijection avec $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec $\\{0, 1\\}^\star$). Étonnant, non ?
 
 Terminons avec un petit exercice pour voir si vous avez compris :
 
@@ -460,7 +457,7 @@ En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
 
-De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien puis rendent 1.
+La preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien puis rendent 1.
 
 {% info %}
 On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.
@@ -472,7 +469,7 @@ Mais, on peut aussi démontrer :
 Il existe une infinité d'algorithmes faisant des choses deux à deux différentes.
 {% endnote %}
 {% details "preuve", "open" %}
-On peut par exemple considérer la familles $A_k$ d'algorithmes ($k > 0$) définis tels que $A_k$ soit constitué d'une seule instruction :
+On peut par exemple considérer la famille $A_k$ d'algorithmes ($k > 0$) définis tels que $A_k$ soit constitué d'une seule instruction :
 
 ```text
 Rend l'entier k
@@ -497,7 +494,7 @@ Un **_programme_** est une suite finie $c_1 \dots c_n$ où :
 
 {% endnote %}
 {% details "preuve", "open" %}
-Un programme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
+Un programme est composé d'une suite finie d'instructions. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite par un texte en français, tout algorithme est une suite de caractères Unicode.
 {% enddetails %}
 
 Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser [la proposition sur les suites binaires](./#paramètres-binaires) pour avoir la proposition suivante :
@@ -507,7 +504,7 @@ Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaîne
 On peut associer à tout programme un entier unique. C'est à dire qu'il existe une injection $N$ de l'ensemble $\mathcal{P}$ de tous les programmes vers l'ensemble des entiers.
 {% endnote %}
 {% details "preuve", "open" %}
-Comme tout programme est une suite finie $c_1 \dots c_n$ de caractère Unicode, on utilise la technique de [la proposition sur les suites binaires](./#paramètres-binaires) puis lui associer un nombre unique.
+Comme tout programme est une suite finie $c_1 \dots c_n$ de caractères Unicode, on utilise la technique de [la proposition sur les suites binaires](./#paramètres-binaires) puis lui associer un nombre unique.
 
 {% enddetails %}
 
@@ -525,37 +522,37 @@ Soit $f: \mathcal{P} \rightarrow \mathbb{N}$ une injection permettant d'associer
 On peut alors ordonner les programmes selon l'ordre induit par $N$. On note :
 
 - $A_1$ est le programme de plus petit nombre associé
-- pour $k > 1$, $A_k$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{k-1}$
+- pour $k > 1$, $A_k$ est l'algorithme dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{k-1}$
 
 On a alors :
 
-- $A_k$ existe pour entier $k$ (puisqu'il y a une infinité de programmes différents, donc de descriptions différentes)
-- pour tout programme $P$, il existe $k$ telle que $P=A_k$
+- $A_k$ existe pour tout entier $k$ (puisqu'il y a une infinité de programmes différents, donc de descriptions différentes)
+- pour tout programme $P$, il existe $k$ tel que $P=A_k$
 
 Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des programmes et l'ensemble des entiers strictement positifs.
 
 {% enddetails %}
 
-La preuve ci-dessus est classique et est basée sur le fait que deux ensembles sont de même cardiaux que s'il existe une bijection entre les deux. Cette définition est évidente lorsque les ensembles sont fini et elle s'étend lorsque les ensemble sont infinis :
+La preuve ci-dessus est classique et est basée sur le fait que deux ensembles sont de même cardinal s'il existe une bijection entre les deux. Cette définition est évidente lorsque les ensembles sont finis et elle s'étend lorsque les ensembles sont infinis :
 
 {% note2 "**Définition**" %}
 Un ensemble est dénombrable s'il est en bijection avec $\mathbb{N}$.
 {% endnote2 %}
 
-Il faut faire un peut attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :
+Il faut faire un peu attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :
 
 - $f(n) = 2n$ pour entier positif $n$,
 - $g(n) = 2n-1$ pour entier positif $n$.
 
 Ceci montre que :
 
-- les entiers sont en bijection avec $f(\mathbb{N})$ c'est à dire les entiers pairs
-- les entiers sont en bijection avec $g(\mathbb{N})$ c'est à dire les entiers impair
+- les entiers sont en bijection avec $f(\mathbb{N})$ c'est-à-dire les entiers pairs
+- les entiers sont en bijection avec $g(\mathbb{N})$ c'est-à-dire les entiers impairs
 
-Bref : il y a autant d'entier que d'entier pair que d'entiers impair !
+Bref : il y a autant d'entiers que d'entiers pairs et que d'entiers impairs !
 
 {% attention2 "**À retenir**" %}
-Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'élément d'un ensemble dénombrable), il y en a autant que d'entiers. 
+Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'éléments d'un ensemble dénombrable), il y en a autant que d'entiers. 
 {% endattention2 %}
 
 À vous, pour voir si vous avez compris :
@@ -637,7 +634,7 @@ Comme $f$ est une bijection de $f$ dans son image $f(A)$, $h^{-1} \circ f$ est u
 [Référence](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration){.externe}
 {% endinfo %}
 
-Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitif comme le résultat précédent qui montre qu'il peut y avoir autant d'élément dans un ensemble et une partie de celui-ci. 
+Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitifs comme le résultat précédent qui montre qu'il peut y avoir autant d'éléments dans un ensemble et une partie de celui-ci. 
 
 On peut grâce au résultat précédent démontrer :
 
@@ -652,13 +649,13 @@ On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui
 
 {% enddetails %}
 
-D'un point de vue informatique, on conclut de cette partie que tout ce qu'on manipule en informatique sont des suites finies de `0` et de `1`, que ce soit les données ou les programmes eux-même :
+D'un point de vue informatique, on conclut de cette partie que tout ce qu'on manipule en informatique sont des suites finies de `0` et de `1`, que ce soit les données ou les programmes eux-mêmes :
 
 {% attention2 "**À retenir**" %}
 
-On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie une suite finie de `0` et de `1`.
+On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie une suite finie de `0` et de `1`.
 
-Connaître les données ou les instructions "réels" d'un algorithme se fait via des procédures qui transforment les suites de finies de `0` et de `1` :
+Connaître les données ou les instructions "réelles" d'un algorithme se fait via des procédures qui transforment les suites finies de `0` et de `1` :
 
 - en instructions
 - en données
@@ -669,7 +666,7 @@ Connaître les données ou les instructions "réels" d'un algorithme se fait via
 Pour finir, un petit résultat très utile que vous pouvez démontrer :
 
 {% exercice %}
-On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie `1` ou `0`.
+On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie `1` ou `0`.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -696,12 +693,12 @@ A'(E):
 Déduire de l'exercice précédent qu'un algorithme peut être vu comme un langage de $\\{0, 1\\}$.
 {% endexercice %}
 {% details "corrigé" %}
-On considère les algorithmes comme vu dans l'exercice précédent, c'est à dire une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie `1` ou `0`.
+On considère les algorithmes comme vu dans l'exercice précédent, c'est-à-dire une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie `1` ou `0`.
 
 Et on associe à un algorithme $A$ le langage formé de toutes les entrées pour lesquelles il rend `1`.
 {% enddetails %}
 
-## Algorithmes et démonstration mathématiques
+## Algorithmes et démonstrations mathématiques
 
 On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de logique ou de calculabilité) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).
 
@@ -710,7 +707,7 @@ De façon plus précise on a la suite d'équivalences :
 1. faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. ([Aristote](https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme){.externe}, en -350 environ)
 2. (1) est équivalent à démontrer à l'aide d'une suite finie de déductions qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert){.externe}, début XXe siècle)
 3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del){.externe}, en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
-4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard){.externe}, en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul){.externe}
+4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard){.externe}, en 1950 et 1980, montrent que (2) est équivalent à écrire en termes de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul){.externe}
 5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing){.externe} démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
 6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt){.externe}, ce qui est équivalent à (3))
 
