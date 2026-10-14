@@ -203,9 +203,7 @@ Donc la description du programme ainsi que les données doivent être décrites 
 
 {% definition %}
 
-On appelle :
-
-- **_alphabet_** est un ensemble fini $\mathcal{A}$
+- un **_alphabet_** est un ensemble fini non vide
 - une **_lettre_** est un élément d'un alphabet
 - un **_mot_** d'un alphabet $\mathcal{A}$ est une suite finie d'éléments de $\mathcal{A}$
 - la **_longueur_** d'un mot est le nombre d'éléments de la suite le constituant
@@ -247,11 +245,11 @@ Comme une donnée doit être lue en temps fini, elle doit être composée d'une 
 Une conséquence directe de la proposition précédente est qu'un programme ne peut pas manipuler de nombres réels.
 
 {% retenir %}
+Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre. Bref :
+
 **Un réel ne l'est pas : c'est une limite**. 
 
-Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.
 {% endretenir %}
-
 
 
 Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80){.externe}, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :
@@ -269,21 +267,18 @@ Or :
 
 <span id="paramètres-binaires"></span>
 
-{% definition %}
-Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.
-{% enddefinition %}
 {% note "**Proposition**" %}
 
-Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)){.externe} entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout ensemble fini $\mathcal{A}$.
+Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)){.externe} entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout alphabet $\mathcal{A}$.
 
 {% endnote %}
 {% details "preuve", "open" %}
 
-On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble fini $\mathcal{A}$ est triviale.
+On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout alphabet $\mathcal{A}$ est triviale.
 
-On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe} que l'on va noter. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
+On considère l'ensemble $\mathcal{U}$ de tous les caractères de toutes les langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe} que l'on va noter. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
 
-Une chaîne de caractères $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
+un mot $(c_i)_{0\leq i < n}$ de $\mathcal{U}$, on dit une chaîne de caractères, est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
 
 <div>
 $$
@@ -322,16 +317,18 @@ Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki
 {% enddefinition %}
 
 {% note "**Proposition**" %}
-Tout ce que peut manipuler un programme est une suite finie de bits.
+Un programme ne peut manipuler que des suites finies de bits.
 {% endnote %}
 
-Cependant n'utiliser que des tableaux de bits (dont le type est `[]bit`) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
+Cependant n'utiliser que des tableaux de bits pour nos programmes les rendraient illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
 
 - un entier relatif :
   - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
   - négatif en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe} de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
 - une approximation finie d'un réel en utilisant la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754){.externe}. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html){.externe})
 - une chaîne de caractères en utilisant le code utf-8. Par exemple "Yop !" correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html){.externe}) qui en binaire vaut : `0000010110010110111101110000001000000010`
+- la vérité ou la fausseté
+- ...
 
 {% exercice %}
 Montrez qu'il existe une injection entre $\mathcal{A}^\star$ et $\\{ 1\\}^\star$.
