@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/codes-historiques/">Codes historiques</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -129,8 +129,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <a href="https://fr.wikipedia.org/wiki/ROT13" class="externe">ROT(13)</a>, César où $k=13$ (<code>A</code> est remplacé par <code>N</code>) est l'ancêtre du floutage NSFW.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le code de César est un exemple de <em><strong>Codage par flux</strong></em> (<em>stream cipher</em>) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)</p>
 <table>
 <thead>
@@ -312,8 +312,8 @@ LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres" class="externe">https://fr.wikipedia.org/wiki/Fréquence_d'apparition_des_lettres</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La lettre arrivant le plus souvent dans le message chiffré, <code>r</code> a donc toute les chances d'être <code>e</code> ce qui donne le décalage.</p>
 <h2>Vigenère</h2>
 <h3><span id="Vigenère-chiffre"></span>Chiffrement</h3>
@@ -361,8 +361,8 @@ Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est tout à fait compréhensible en utilisant <a href="https://stackoverflow.com/a/50022917" class="externe">cette remarque du thread</a> et <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02" class="externe">la documentation des substitutions de paramètres</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="Vigenère-analyse"></span>Chiffrement</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -370,8 +370,8 @@ Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re" class="externe">Chiffre de Vigenère</a></p>
-</div></div>
-
+</div>
+</div>
 <ol>
 <li>Calcul exhaustif des clés : $26^p$, si $p \geq 30$ alors environ $2^{128}$ opérations, c'est safe.</li>
 <li>si la clé est choisie de façon aléatoire, par bloc cela semble sécurisé, chaque lettre peut équiprobablement être choisie. Mais :
@@ -482,8 +482,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=yHXOnCKh4iE" class="externe">Décrypter Vigenère</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On voit que le décryptage d'un texte peut prendre des voies détournées. Il ne faut <strong>jamais</strong> sous-estimer l'intelligence et l'inventivité de l'adversaire : il est nécessaire en sécurité et en cryptographie de se munir d'outils théorique permettant de garantir et de démontrer la sécurité d'un système de chiffrement.</p>
 <h2>One time Pad (OTP)</h2>
 <p>L'idée est de faire un Vigenère avec comme taille de clé le message !</p>
@@ -494,8 +494,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Masque_jetable" class="externe">masque jetable</a>, <em>One Time Pad</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Technique utilisée pour le téléphone rouge lors de la guerre froide.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -503,8 +503,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/che" class="externe">Chiffre du Che</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce qui donne :</p>
 <pre><code>Longtemps je me suis couche de bonne heure
 ALarecher ch ed utem psperd ud eMarc elPro

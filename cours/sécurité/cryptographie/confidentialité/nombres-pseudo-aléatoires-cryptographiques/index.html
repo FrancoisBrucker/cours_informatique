@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/nombres-pseudo-aléatoires-cryptographiques/">Nombres pseudo-aléatoires cryptographique</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -115,9 +115,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>générateur de nombres pseudo-aléatoire sécurisé</em></strong> (<em>cryptographic pseudo random generator <strong>CPRNG</strong></em>) doit avoir les propriétés suivantes :</p>
 <ul>
 <li>
@@ -136,16 +135,16 @@
 <p>la variable aléatoire $x \xleftarrow{U} \{0, 1\}^t$</p>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le paramètre de $G$ est appelé <em>seed</em></p>
-</div></div>
-
+</div>
+</div>
 <p>Notez que cette condition est différente de celle des <a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-pseudo-al%C3%A9atoires/">PRNG</a> qui ne supposent que l'uniformité statistique pour $k$ fixé (passent une batterie de tests statistiques).</p>
 <p>Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s &lt; t$, voir $s &lt;&lt; t$).</p>
 <p>La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la <em>seed</em> choisie.</p>
@@ -153,12 +152,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>En cryptographie utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.</p>
-</div></div>
-
+</div>
+</div>
 <p>Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est <strong>pas</strong> uniforme :</p>
 <ul>
 <li>le nombre de chaînes atteignables depuis sa seed : $2^s$</li>
@@ -190,12 +188,11 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une suite $({x^k_i})_{i\geq 0}$ avec $k \in \{0, 1\}^s$ est <strong><em>non prédictible</em></strong> si tout algorithme efficace ne peut peut prédire $x^k_{m+1}$ sachant $x^k_1, \dots x^k_{m}$ qu'avec un avantage négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ceci disqualifie d'emblée tous les générateurs pseudo-aléatoire de type $x^k_{i+1} = a \cdot x^k_{i} + b \bmod p$, puisque connaître $x^k_i$ permet de connaître tout $x^k_j$ avec $j&gt; i$. Ceci est la principale différence entre un générateur pseudo-aléatoire et un générateur cryptographique : le premier veut obtenir une suite uniforme (ce que fait le générateur avec un modulo si $p$ est premier) alors que le second cherche à ne pas être prédictible.</p>
 <p>Commençons par montrer qu'un générateur de nombres pseudo-aléatoire sécurisé est non prédictible :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -206,8 +203,8 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un générateur de nombres pseudo-aléatoire sécurisé $G$ produit une suite $G(k)$ de $\{0, 1\}^t$ non prédictible.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -240,8 +237,8 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <p><strong>Théorème (Yao, 1982)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une suite non prédictible est un générateur de nombres pseudo-aléatoire sécurisé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -285,8 +282,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf" class="externe">Article originel de Yao, 1982</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Existence</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -294,8 +291,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators" class="externe">Existence de générateur de nombres pseudo aléatoire cryptographique</a></p>
-</div></div>
-
+</div>
+</div>
 <p>L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.</p>
 <h3><span id="construction-incrémentale"></span> Incrémentale</h3>
 <p>Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ pour tout $m\geq 1$.</p>
@@ -318,8 +315,8 @@ x^i = G(x^{i-1}[:-1])\\
 $$
 </div>
 <p>Et $G_m(k) = x^1[-1]\dots x^i[-1] \dots x^m[-1]$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -361,8 +358,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>L'opérateur $\;\|\;$  est la concaténation de chaîne.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le contraire est bien sur évident :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -372,8 +369,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^{t}$ est un générateur de nombres pseudo-aléatoire sécurisé avec $t &gt; s$ alors $G(x)[-1]$ est également un un générateur de nombres pseudo-aléatoire sécurisé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -405,8 +402,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S'il existe des générateurs de nombres pseudo-aléatoire sécurisés alors il existe des fonctions à sens unique</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -463,17 +460,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition PRF</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction implémentable par un algorithme efficace.</p>
 <p>$F$ est dite être une <strong>fonction pseudo-aléatoire sécurisée</strong> (<em>secure pseudo random function <strong>PRF</strong></em>) si tout algorithme efficace ne peut avoir qu'un avantage négligeable au <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance">jeu de la reconnaissance</a> entre :</p>
 <ul>
 <li>la variable aléatoire $F(k \xleftarrow{U} \{0, 1\}^s, \cdot)$ prenant ses valeurs dans l'ensemble $\mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$ des fonctions de $\{0, 1\}^t$ dans $\{0, 1\}^t$</li>
 <li>la variable aléatoire $f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On peut utiliser une fonction pseudo-aléatoire sécurisée pour modéliser un générateur de nombres pseudo-aléatoire sécurisé :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -483,8 +479,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \{0, 1\}^t$ ($\text{iv}$ est appelé <a href="https://en.wikipedia.org/wiki/Initialization_vector" class="externe">vecteur d'initialisation</a>).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -532,9 +528,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition PRP</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction pseudo-aléatoire sécurisée.</p>
 <p>$F$ est une <strong>permutation pseudo-aléatoire sécurisée</strong> (<em>secure <strong>PRP</strong>, pseudo random permutation</em>) si :</p>
 <ul>
@@ -546,8 +541,8 @@ $$
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Une PRP est un cas particulier de PRF, mais si $n$ est grand, elle est indistinguable d'une fonction quelconque avec un avantage non négligeable :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -557,8 +552,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong>PRP</strong> ne peut être distinguée d'une fonction <strong>PRF</strong> qu'avec un avantage non négligeable par un algorithme efficace.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -616,8 +611,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant" class="externe">chacha20</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Nous étudierons plus tard ce protocole pour des tailles de messages variables. Mais juste pour terminer cette partie c'est un PRP très simple à taille fixe 256b.</p>
 <p>Il implémente de nombreuses chose qu'on a vu dans ce cours :</p>
 <ul>
@@ -654,8 +649,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2" class="externe">exemple de modifications</a></p>
-</div></div>
-
+</div>
+</div>
 <h4>opérations ARX</h4>
 <p>Les opérations utilisés pour la permutation sont de type ARX sur 32b :</p>
 <ul>
@@ -670,8 +665,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Suffisant pour faire toutes les rotations <a href="https://eprint.iacr.org/2022/618.pdf" class="externe">https://eprint.iacr.org/2022/618.pdf</a></p>
-</div></div>
-
+</div>
+</div>
 <h4>Robustesse</h4>
 <ul>
 <li>ARX pour time attack</li>
@@ -685,8 +680,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Blum_Blum_Shub" class="externe">Blum Blum Shub</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le générateur est basé sur la récursion suivante :</p>
 <div>
 $$
@@ -720,8 +715,8 @@ $$
 <li><a href="https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf" class="externe">Preuves</a></li>
 <li><a href="https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub" class="externe">https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Attention, $M$ doit être secret. Donc pas exactement ce qu'on a vu puisque :</p>
 <ul>
 <li>soit la clé et M sont le secret mais du cop pas uniforme dans $\{0, 1\}^s$. Un autre espace</li>
@@ -739,8 +734,8 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="Rapport_de_Stage_Laura_Michelutti.pdf">Rapport Laura</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Cryptographie en python</h3>
 <blockquote>
 <p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets" class="externe">secrets</a></p>

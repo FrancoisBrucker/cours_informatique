@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/flots/">Flots</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/flots/définitions/">Définitions</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -100,16 +100,15 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>réseau</em></strong> est un graphe (simple) orienté $G=(V, E)$ avec :</p>
 <ul>
 <li>une <strong><em>capacité</em></strong> $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)</li>
 <li>deux sommets spéciaux nommées <strong><em>source</em></strong> (noté $s$) et <strong><em>puits</em></strong> (noté $p$).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>exemple de réseau :</p>
 <p><img src="flot-ex-1.png" alt="réseau"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -118,23 +117,22 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que si on veut une capacité nulle, il suffit de supprimer l'arc</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>flot</em></strong> dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :</p>
 <ul>
 <li>$0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$</li>
 <li>pour tout sommet $x$ différent de $s$ et $p$, il y a <strong><em>conservation du flot</em></strong>, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.</li>
 </ul>
 <p>On dit que pour un arc donné $u$ son <strong><em>flux</em></strong> est $f(u)$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Exemple de flot (nombres en bleu) :</p>
 <p><img src="flot-ex-2.png" alt="réseau"></p>
 <p>On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.</p>
@@ -142,12 +140,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>coupe</em></strong> est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$ est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :</p>
 <ul>
 <li>$(\{s\}, V \backslash \{s\})$ qui contient les arcs : $sa$ et $sb$</li>
@@ -158,13 +155,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>La <strong><em>capacité d'une coupe</em></strong> $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :</p>
 <p>$$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$</p>
-</div></div>
-
+</div>
+</div>
 <p>On note également pour une coupe $(S, \overline{S})$ les valeurs suivantes :</p>
 <ul>
 <li>$f(S, \overline{S})$ comme étant la somme des flux des arcs ayant pour origine $S$ et pour extrémité $\overline{S}$ (les éléments de la coupe)</li>
@@ -193,8 +189,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce qui rentre dans le réseau en ressort.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$</p>
 <h2>Flot maximum</h2>
 <p>On a clairement que :</p>
@@ -245,8 +241,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On en conclut que s'il existe une chaîne augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.</p>
-</div></div>
-
+</div>
+</div>
 <p>Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
 <ul>
 <li>pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaîne augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaîne augmentante entre $s$ et $y$</li>
@@ -260,8 +256,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les arcs d'une chaîne augmentante ne sont <strong>pas forcément</strong> tous dans le même sens ! La chaîne $sacep$ de l'exemple précédent le prouve. Cette chaîne est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Théorème des flots</h3>
 <p>Finalement :</p>
 <ul>
@@ -274,8 +270,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>La coupe minimum est le goulot d'étranglement du réseau.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-rapide/">Algorithme du tri rapide</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -111,8 +111,8 @@
 <div class="pl-8 mr-8">
 <p>Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'œil elle valent cependant le détour).</p>
 <p><strong>En revanche</strong> vous devez intégrer les preuves intuitives car les arguments exposés sont courant et vous permettront de sentir la complexité de nombreux algorithmes.</p>
-</div></div>
-
+</div>
+</div>
 <h2>pseudo-code</h2>
 <p>En pseudo-code cela pourrait donner :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
@@ -191,17 +191,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-">rapide</code> sont :</p>
 <ul>
 <li>la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,</li>
 <li>la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,</li>
 <li>la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.</p>
 <h3>Complexité (maximale) du tri rapide</h3>
 <p>Le tri rapide est un algorithme de tri bien spécial puisqu'il ne fonctionne pas bien lorsque le tableau en entrée est déjà trié :</p>
@@ -214,8 +213,8 @@ $$
 </div><div class="pl-8 mr-8">
 <p>La complexité du tri rapide est en $\Theta(n^2)$ avec $n$ la taille tu tableau à trier.</p>
 <p>Ce cas est atteint si le tableau est déjà trié (par ordre croissant ou décroissant).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -302,8 +301,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -336,8 +335,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>De façon générale, les courbes de complexités sont sans points d'inflexions (d'où viendraient-ils de toute façon ?). Les complexités plus grande que $\mathcal{O}(n)$ sont donc (quasiment) toutes convexes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -406,8 +405,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité en moyenne du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -554,8 +553,8 @@ $$</p>
 <p><strong>Fun fact</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Commencer par mélanger un tableau pour le trier avec <code class="language-">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

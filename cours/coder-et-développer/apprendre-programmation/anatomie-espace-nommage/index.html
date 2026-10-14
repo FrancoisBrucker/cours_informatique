@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/anatomie-espace-nommage/">Espace de nommage</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -118,47 +118,44 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>espace de nommage</em></strong> est constitué de deux parties :</p>
 <ul>
 <li>une table de correspondance (<a href="../conteneurs/dictionnaires">un dictionnaire</a>) associant des noms (les clés) à des objets (les valeurs).</li>
 <li>un lien vers un espace de nommage <strong><em>parent</em></strong> (qui peut être vide)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple les espaces de nommages associés aux modules on par exemple un parent vide et ceux créés par les fonctions dépendant de l'espace de nommage qui les a appelé.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les espaces de nommages sont utilisés à de nombreux endroits dans python et sont là pour :</p>
 <ol>
 <li>gérer les noms et leurs objets associés</li>
 <li>séparer les responsabilités et cloisonner les noms auxquels ont accès les différentes parties d'un programme</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>On accède aux noms (et donc aux objets qu'ils référencent) des espaces de noms d'un objet en utilisant la notation pointée :</p>
 <p><span id="définition-notation-pointée"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Le <strong><em>notation pointée</em></strong> permet d'accéder aux noms d'un espace de nommage. Si <code class="language-">o</code> est un objet contenant un espace de nom on peut :</p>
 <ul>
 <li>accéder à un nom <code class="language-">n</code> défini dans l'espace un nom de <code>o</code> avec l'instruction <code class="language-">o.n</code> (si on a importé le module random on peut utiliser la fonction <code class="language-">randrange</code> qui y est défini avec l'instruction <code class="language-">random.randrange(1, 7)</code>).</li>
 <li>affecter un nom <code class="language-">n</code> dans l'espace un nom de <code>o</code> avec l'instruction <code class="language-">o.n = &lt;objet&gt;</code> (par exemple <code class="language-">o.n = 42</code>).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.</p>
 <h2>Rappel sur les variables et les objets</h2>
 <p>Commençons par quelques rappels et précisions sur les variables et leurs liens avec les objets :</p>
@@ -170,16 +167,15 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour qu'un programme objet fonctionne, on a besoin de deux mécanismes :</p>
 <ul>
 <li>un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)</li>
 <li>un moyen d'y accéder (les variables)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Objets</h3>
 <p>Un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
 <ul>
@@ -192,12 +188,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Tout est objet dans un langage objet.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Variables</h3>
 <p>Les variables sont des références aux objets. Pour ce faire, on utilise l’opérateur d’affectation <code class="language-">=</code> :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">variable = objet</code></pre>
@@ -206,12 +201,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une variable n'est <strong>pas</strong> l'objet, c'est une référence à celui-ci</p>
-</div></div>
-
+</div>
+</div>
 <p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
 <p>Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
 <h2><span id="espace-variable"></span> Espaces des variables</h2>
@@ -220,12 +214,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Au démarrage d'une exécution d'un programme, l'espace des variables est créé. C'est un espace de nommage sans parent : c'est à partir de lui que toutes les variables doivent être atteintes.</p>
-</div></div>
-
+</div>
+</div>
 <p>Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par <code class="language-">__</code>) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.</p>
 <p>Pour voir les noms définis dans l'espace de noms des variables, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#globals" class="externe">la fonction <code class="language-">globals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -244,15 +237,15 @@ dict_keys<span class="token punctuation">(</span><span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit <strong>explicite</strong> : on a accès via ces variables spéciales, appelées <em>dunder</em> et commençant et finissant par deux <a href="https://fr.wikipedia.org/wiki/Tiret_bas" class="externe">underscores</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Regardons un peu tout ça</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>que vaut <code class="language">__main__</code> dans l'espace des variables ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -300,12 +293,11 @@ je suis un véritable hacker<span class="token punctuation">.</span></code></pre
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder à tous les objets via celui-ci.</p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="espace-modules"></span> Espaces de nommage des modules</h2>
 <p>On a vu qu'un module contenait <a href="../principes/modules/#d%C3%A9finition-espace-nommage">un espace de nommage</a> auquel on pouvait accéder via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e">la notation pointée</a>. Tout comme l'espace des variables, cet espace ne contient pas de parent.</p>
 <p>Tout comme la fonction <code class="language-">globals()</code> permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet <code class="language-">o</code> (en particulier d'un module) en utilisant <a href="https://docs.python.org/fr/3.14/library/functions.html#vars" class="externe">la fonction <code class="language-">vars(o)</code></a>.</p>
@@ -338,8 +330,8 @@ une_variable <span class="token operator">=</span> <span class="token number">42
 </li>
 </ul>
 <p>Puis exécutez le fichier avec la commande <code>python main.py</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque vous exécutez le fichier <code class="fichier">main.py</code> vous devriez voir :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
 __name__
@@ -367,8 +359,8 @@ une_fonction</code></pre>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que valent les différentes variables spéciales sauf <code class="fichier">__builtins__</code> du module <code class="language-">mon_module</code> ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -435,17 +427,16 @@ compartimenter l'usage des variables.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>L'interpréteur possède à chaque instant <strong><em>un espace de nommage courant</em></strong>  qui est l'espace par défaut des noms :</p>
 <ul>
 <li>python commence par rechercher un nom dans cet espace puis cherche dans l'espace parent s'il n'est pas trouvé</li>
 <li>python affectera toujours un nom dans cet espace (hors notation pointée)</li>
 </ul>
 <p>Par défaut l'espace de nommage courant est l'espace des variables.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#locals" class="externe">la fonction <code class="language-">locals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
 <p>Cet espace de nommage courant va changer au cours du temps selon le contexte :</p>
 <ul>
@@ -488,13 +479,12 @@ affichage depuis le main <span class="token builtin class-name">:</span> __main_
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un espace de nommage est crée lors de chaque <strong>exécution</strong> d'une fonction.</p>
 <p>Cet espace aura un parent non vide qui sera <strong>toujours le même</strong>, celui qui contient la définition de la fonction.</p>
-</div></div>
-
+</div>
+</div>
 <p>Créons un fichier <code class="fichier">main.py</code> et mettons-y le code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"espace de nommage courant :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -526,9 +516,8 @@ espace des variables <span class="token builtin class-name">:</span> dict_keys<s
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Lorsque python cherche à <strong><em>trouver l'objet associé à un nom</em></strong> il procède récursivement :</p>
 <ol>
 <li>l'espace de nommage de recherche est l'espace de nommage courant</li>
@@ -539,19 +528,18 @@ espace des variables <span class="token builtin class-name">:</span> dict_keys<s
 </ul>
 </li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>En revanche, lorsque l'on affecte un nom, la règle est simple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Lorsque python cherche à <strong><em>affecter un objet à un nom</em></strong> il rajoute la correspondance nom/objet au dictionnaire de l'<strong><em>espace de nommage courant</em></strong>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Illustrons ceci :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
       y <span class="token operator">=</span> <span class="token number">24</span>

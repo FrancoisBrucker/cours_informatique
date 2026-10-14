@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -113,8 +113,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.</p>
-</div></div>
-
+</div>
+</div>
 <p>Mais se pose alors 2 questions :</p>
 <ol>
 <li>Comment ?</li>
@@ -129,8 +129,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="pseudo-assembleur">Pseudo-assembleur</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le pseudo-assembleur a permit de montrer qu'il faut peu de choses pour pouvoir écrire et exécuter du code :</p>
 <ol>
 <li>une mémoire finie pour stocker et gérer des données</li>
@@ -144,8 +144,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="von-neumann">Architecture de Von Neumann</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>MMIX</h3>
 <p>Nous n'avons montré que le principe d'un pseudo-assembleur et de son utilisation dans un modèle de Von Neumann, juste assez pour nous convaincre que l'on peut exécuter du code.</p>
 <p>Donald Knuth a formellement décrit un pseudo-assembleur complet dans le modèle de Von Neumann, nommée <a href="https://fr.wikipedia.org/wiki/MMIX" class="externe">MMIX</a>. Il contient bien plus d'opérations que juste <code>NAND</code> et se rapproche en cela d'un véritable assembleur.</p>
@@ -156,8 +156,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://mmix.cs.hm.edu/" class="externe">https://mmix.cs.hm.edu/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Une fois que vous serez à l'aise avec cette architecture, vous pourrez vous lancer dans le grand bain et faire vos propres programme en assembleur utilisant des processeurs réels, intel ou arm.</p>
 <h3>Processeurs</h3>
 <p>Ce qui est fascinant, c'est que les choses fonctionnent quasiment à l'identique entre un pseudo-assembleur théorique et le code d'un assembleur pouvant exécuter des instructions sur un processeur ARM ou intel.</p>
@@ -189,8 +189,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
 <li><a href="https://www.youtube.com/watch?v=GYlNoAMBY6o" class="externe">transistor et processeur</a></li>
 </ul>
 <p>Je ne saurais trop vous conseiller de lire le livre <a href="https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/" class="externe">Code</a> qui part du poteau télégraphique pour arriver au 8086 d'intel.</p>
-</div></div>
-
+</div>
+</div>
 <p>Attention, il y a le système en plus (qui est aussi un programme) qui gère plusieurs exécution des programmes. Cela rajoute une couche de complexité mais à chaque moment il n'y a qu'un seul programme qui tourne en même temps par processeur. C'est une autre histoire (renvoyer au cours système)</p>
 <h2>Compilation</h2>
 <p>Un ordinateur peut exécuter du code, transcription du pseudo-assembleur, lui même équivalent à du pseudo-code. On n'écrit cependant pas de gros programme en assembleur, on utilise des langages plus proches du pseudo-code comme le python, le java ou encore le rust, le code écrit dans ces langages est ensuite transformé, on dit compilé, en assembleur lui même ensuite transformé au format binaire directement exécutable sur un processeur.</p>
@@ -204,8 +204,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
 <li><a href="https://docs.python.org/fr/3.11/reference/grammar.html" class="externe">Grammaire de python</a></li>
 <li><a href="https://docs.python.org/fr/3/reference/lexical_analysis.html" class="externe">Analyse syntaxique de python</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce processus de compilation peut être fait en une fois sur tout le programme, c'est ce qui est fait en C ou en rust par exemple. Le processus de compilation produit un <a href="https://fr.wikipedia.org/wiki/Fichier_ex%C3%A9cutable" class="externe">fichier exécutable</a> qui peut ensuite être directement exécuté. L’intérêt de cette méthode est que l'on ne fait le processus de compilation, qui est lent, qu'une seule fois, le problème est que cela dépend du système d'exploitation (un fichier exécutable windows ne fonctionnera pas sur mac et réciproquement)</p>
 <p>On peut aussi, c'est ce que font les <a href="https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)" class="externe">langages interprétés</a> comme python par exemple, compiler ligne à ligne le code pour l'exécuter au moment de l'exécution. On a alors besoin que de l'interpréteur (qui lui est un programme compilé), qui se chargera de transcrire puis d'exécuter ligne à ligne le code écrit dans le langage (souvent ce n'est pas directement en assembleur qu'est transcrit le programme mais en <a href="https://fr.wikipedia.org/wiki/Bytecode" class="externe">bytecode</a>, état intermédiaire entre pseudo-code et langage binaire). L’intérêt de cette méthode est que l'on peut donner directement le code écrit dans le langage sans avoir besoin de le compiler, le problème est que ces programmes sont souvent plus lent à exécuter puisqu'il faut compiler chaque ligne à chaque fois qu'on veut l'exécuter.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -217,8 +217,8 @@ TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.</p>
 <li>voir l'assembleur produit à partir d'un code : <a href="https://godbolt.org/" class="externe">https://godbolt.org/</a></li>
 <li><a href="https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html" class="externe">processus de compilation et d'exécution de python</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

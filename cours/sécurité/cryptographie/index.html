@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -110,8 +110,8 @@
               </li></ul>
       
 
-</div></div>
-
+</div>
+</div>
 
     
   
@@ -130,8 +130,8 @@
 <li><a href="https://cryptobook.nakov.com/" class="externe">https://cryptobook.nakov.com/</a></li>
 <li><a href="https://www.youtube.com/watch?v=oRM-gNrbcgE&amp;list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&amp;index=1" class="externe">arithmétique pour la cryptographie</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La thématique de la <em>sécurité</em> en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :</p>
 <ul>
 <li><strong><em>confidentialité</em></strong> : le message ne doit pouvoir être lu que par son destinataire.</li>
@@ -176,8 +176,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.ssi.gouv.fr/particulier/bonnes-pratiques/crypto-le-webdoc/cryptologie-art-ou-science-du-secret/" class="externe">Introduction à la cryptologie (ANSSI)</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La cryptologie, ou science du secret est l'étude des protocoles de sécurités. Elle possède deux branches :</p>
 <ul>
 <li>la <a href="https://fr.wikipedia.org/wiki/Cryptographie" class="externe">cryptographie</a> qui crée les algorithmes et protocoles de sécurité</li>
@@ -190,8 +190,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://cyber.gouv.fr/" class="externe">Site de l'ANSSI</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Cryptographie</h3>
 <p>Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit <strong><em>chiffré</em></strong> (<em>encrypted</em>) par une fonction $E(M) = C$ pendant son passage dans le canal public, puis <strong><em>déchiffré</em></strong> (<em>decrypted</em>) par une autre fonction $D(C) = M$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -200,8 +200,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les fonctions de chiffrements et de déchiffrements sont appelés <em>cipher</em> en anglais ; le message $m$ est appelé <em>plain text</em> et le message chiffré $c$ : <em>ciphertext</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $K$ connue uniquement d'Alice et Bob :</p>
 <pre><code>    Alice    |  Eve   |     Bob
 -------------|--------|--------------
@@ -256,8 +256,8 @@ espace privé | public |    privé
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="codes-historiques">Codes historiques</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Chiffre de Vernam</h3>
 <p>Formalise le One Time Pad pour un usage informatique.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -266,8 +266,8 @@ espace privé | public |    privé
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="chiffre-vernam">Chiffre de Vernam</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidentialité, intégrité et authentification sont important et peuvent être adressés indépendamment :</p>
 <ul>
 <li>le code en Vernam est confidentiel à condition que la clé ne soit jamais répétée</li>
@@ -287,16 +287,16 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="confidentialit%C3%A9">Confidentialité</a></p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="codes-actuels">Codes actuels</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Intégrité</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -304,8 +304,8 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="int%C3%A9grit%C3%A9">Intégrité</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Authentification</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -313,8 +313,8 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="authentification">Authentification</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Codes actuels</h3>
 <blockquote>
 <p>TBD AEDS et tout ce genre de choses.

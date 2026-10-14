@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/">Misc</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/aléatoire/">Aléatoire</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/aléatoire/nombres-aléatoires/">Nombres aléatoires</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -113,8 +113,8 @@
 <ul>
 <li>&quot;random number generators : principles and practices de David Johnston&quot;</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -124,8 +124,8 @@
 <li><a href="https://www.youtube.com/watch?v=qt4fYKhFhFs" class="externe">une intro</a></li>
 <li><a href="https://www.youtube.com/watch?v=tZse1YyiHdg&amp;list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP" class="externe">La playlist sur tout ce que vous avez toujours voulu savoir sur les générateurs de nombres aléatoire sans oser le demander</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La solution la plus simple est de faire $n$ pile ou face pour créer un nombre aléatoire à $n$ bits. Cette solution n'est pas réaliste mais il faut utiliser un processus physique quelque-part car tout algorithme est déterministe. Il est également exclu d'utiliser des humains pour générer des suites aléatoire car l'humain n'est pas fait pour reconnaître l'aléatoire : on cherchera à avoir des suite équilibrées de 0 et de 1 ce qui n'est pas du tout aléatoire :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -133,8 +133,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=tP-Ipsat90c" class="externe">https://www.youtube.com/watch?v=tP-Ipsat90c</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>TRNG</h2>
 <p>Il existe des moyens de générer des nombres aléatoire, on appelle ces générateur <strong><em>TRNG</em></strong> : pour True Random Generator.</p>
 <blockquote>
@@ -160,8 +160,8 @@ TBD ring oscillatro : <a href="https://www.youtube.com/watch?v=fwU8s1BMNlA" clas
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.random.org/" class="externe">https://www.random.org/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Et ces méthodes sont implémentées directement <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&amp;cats=Random" class="externe">sur le processeur</a> ou via le <a href="https://en.wikipedia.org/wiki//dev/random" class="externe">système d'exploitation</a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">xxd <span class="token operator">&lt;</span> /dev/random</code></pre>
 <p>Ou de façon plus &quot;lisible&quot; :</p>

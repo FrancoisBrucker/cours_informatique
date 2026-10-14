@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/">Méthodes de développement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/TDD/">Test Driven Development</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -108,12 +108,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Le <em><strong>But de la programmation</strong></em> est de créer du code <strong>propre</strong> qui <strong>fonctionne</strong> (<em>clean code that works</em> en version originale).</p>
-</div></div>
-
+</div>
+</div>
 <p>Outre la méthode, nous verrons également quelques techniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de <a href="https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&amp;qid=1539066441&amp;sr=8-2" class="externe">Refactoring: Improving the Design of Existing Code</a> de <a href="https://martinfowler.com" class="externe">Martin Fowler</a> (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).</p>
 <p>Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le meilleur indicateur au monde d'un bon code (issu du livre <a href="https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" class="externe">clean code</a> de <a href="https://fr.wikipedia.org/wiki/Robert_C._Martin" class="externe">Robert C. Martin</a>. Ce n'est pas un livre pour débutant mais si vous avez déjà compris le tdd, c'est un super pour finaliser votre compréhension) :</p>
 <p><img src="wtfm.jpg" alt="WTFs/minute"></p>
@@ -123,8 +122,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous lisez cette partie sans prof, faites l'effort de coder <strong>en même temps</strong> que vous la lisez. Tout est donné mais le voir fonctionner pour de vrai est plus impressionnant que de juste le lire.</p>
-</div></div>
-
+</div>
+</div>
 <p>On va exécuter les tests un million de fois. Pour éviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :</p>
 <ul>
 <li>dédiez un terminal pour cela. Une fois la commande tapée, il vous suffit de faire <em>flèche du haut</em> pour revenir à la commande précédente et l'exécuter</li>
@@ -175,12 +174,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Le but de la programmation est de produire du <em>clean code that works</em></p>
-</div></div>
-
+</div>
+</div>
 <p>Pour cela on va se fixer quelques règles :</p>
 <ul>
 <li>on écrit du code que si un test rate</li>
@@ -214,8 +212,8 @@
 </li>
 </ol>
 <p>La partie refactor, qui est la partie réelle où l'on code ne se fait <strong>que sur du vert</strong> : on est assuré de ne pas casser le code puisque les tests passent.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cela permet de prendre du plaisir à coder :</p>
 <ul>
 <li>en écrivant du code dont est sûr qu'il ne cassera rien</li>
@@ -226,29 +224,27 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Toutes les règles du TDD visent à diminuer la peur qui bloque tout progrès.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Code</h3>
 <p>On va développer petit à petit notre propre application de change en utilisant le TDD :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>chaque test couvre un petit ajout d'une fonctionnalité</li>
 <li>la première chose à faire sera de (rapidement et salement) faire fonctionner les tests</li>
 <li>toute les modifications de code sont effectuées alors que les testent passent</li>
 <li>le refactoring est fait par petites touches</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Déroulé</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -257,8 +253,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un dossier <code class="fichier">projet-tdd</code> qui contiendra votre projet.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le déroulé du projet est séparé en trois parties :</p>
 <ol>
 <li><a href="projet-tdd-1">Introduction et principes de la méthode en action</a></li>

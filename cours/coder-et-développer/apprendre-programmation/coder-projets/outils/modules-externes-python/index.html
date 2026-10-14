@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/">Outils de développement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/modules-externes-python/">Installer des modules python</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,8 +103,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il vous faudra exécuter des commandes via le terminal. Windows et macos n'aiment pas trop ça, il vous faudra explicitement autoriser à le faire.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -118,8 +118,8 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
 <p>Pour la modifier :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Set-ExecutionPolicy Unrestricted</code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -128,8 +128,8 @@
 <p>sous Macos</p>
 </div><div class="pl-8 mr-8">
 <p>Il faut vous permettre d;ajouter des modules au programme python du système : il vous faut ajouter le paramètre <code>--break-system-packages</code> à toute commande d'installation avec <code>pip</code>.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Le module pip</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -137,8 +137,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://pypi.org/project/pip/" class="externe">https://pypi.org/project/pip/</a></p>
-</div></div>
-
+</div>
+</div>
 <p><code>pip</code> est le Python Installer Package, c'est un module permettant d'installer d'autres modules. Il existe un multitude de modules python permettant de réaliser presque toutes les opérations que l'on souhaite. Citons par exemple :</p>
 <ul>
 <li>traitement des images avec <a href="https://pillow.readthedocs.io/en/stable/" class="externe">pillow</a></li>
@@ -155,8 +155,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il existe d'autres méthodes pour installer des modules, mais la technique que nous montrons ici à le mérite de tout le temps fonctionner.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour installer un module avec python, il faut taper la commande :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom du programme python> -m pip install &lt;nom du module à installer></code></pre>
 <p>Où :</p>
@@ -171,8 +171,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un module est <strong>toujours</strong> installé pour un interpréteur particulier. Si vous avez plusieurs interpréteurs, le module ne sera installé que pour celui correspondant au <code>&lt;nom du programme python&gt;</code></p>
-</div></div>
-
+</div>
+</div>
 <p>Si je veux installer le module <code>matplotlib</code> par exemple, ma ligne de commande à taper dans le terminal vscode sera :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">/usr/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> matplotlib</code></pre>
 <p>Pour vous, ce sera peut-être différent car le <code>&lt;nom du programme python&gt;</code> sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans <a href="../../%C3%A9diteur-vscode/python/#ex%C3%A9cuter-programme">la partie sur l'éditeur vscode</a>.</p>
@@ -183,8 +183,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un nouveau projet vscode et créez un fichier <code class="language-">main.py</code> à l'intérieur de celui-ci.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -213,8 +213,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le fichier <code class="language-">main.py</code> avec le triangle d'exécution pour connaître le nom complet de l'interpréteur utilisé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -242,8 +242,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Dans le terminal utilisé pour l'exécution du code python, tapez la commande permettant d'installer le module matplotlib et exécutez-la.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -275,8 +275,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Reprenez <a href="../../../concepts/tutoriel-matplotlib/">le tutoriel matplotlib</a> que vous aviez fait avec spyder et refaite le avec vscode et votre propre interpréteur.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Modules installés</h2>
 <p>Le module <code>pip</code> permet une gestion fine des modules python. On utilise ce module de la façon suivante :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom du programme python> -m pip &lt;nom de la commande pip> &lt;paramètres séparés par des espaces></code></pre>
@@ -287,8 +287,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que le module matplotlib est bien installé pour votre interpréteur.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

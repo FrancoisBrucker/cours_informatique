@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/définition-sécurité/">Sémantiquement sécurisé</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -104,30 +104,28 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une méthode de chiffrement est <strong><em>$(t, \epsilon)$-sécurisée</em></strong> si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.</p>
-</div></div>
-
+</div>
+</div>
 <p>L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite sera égale au pourcentage de clé testées :  au bout de $T$ secondes il aura testé $\frac{T}{t}$ clés, soit une proportion de  sera de $\frac{T/t}{2^s}$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(T, \frac{T}{t\cdot 2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance sur 100 milliard de déchiffrer un message avec un ordinateur à 10 GHz ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -173,9 +171,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.</p>
 <p>De façon classique, la taille de cette entrée ($n$), nommé <strong><em>paramètre de sécurité</em></strong>, consiste en la taille de la clé (valant $s$) plus la taille du message à chiffrer (valant $t$) :</p>
 <div>
@@ -183,28 +180,27 @@ $$
 n \coloneqq s+t
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <p>Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opérations.</p>
 <p>Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité de résoudre le problème pour un temps d'exécution de 1 instruction.</p>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon = \mathcal{O}(\frac{s^d}{2^{s}})$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !</p>
 <p>L'augmentation de la taille des clés va certes avoir un effet sur le temps du chiffrage mais ce sera surtout sur l'avantage d'un algorithme de décryptage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Soit un algorithme dont l'exécution prend $n^3$ instructions et qui décryptage un message avec une probabilité de  $\min(1, \frac{2^{40}}{2^n})$. Quel est son avantage ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -230,8 +226,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pour $n=40$, combien faut-il d'instructions pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien d'instruction s'exécute-t-il ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -260,8 +256,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Supposons qu'une méthode de chiffrement se chiffre et se déchiffre en $n^2$ opérations et qu'un adversaire possède un algorithme en $n^4$ pour le décrypter.</p>
 <p>Soit $n=50$. Si l'on prend un ordinateur qui va 16 fois plus vite, quelle est la taille de $n$ que l'on peut se permettre en gardant le même temps de chiffrement ? Que s'est-il passé pour l'adversaire ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -295,17 +291,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <ol>
 <li>un adversaire motivé et ayant du temps pourra toujours décrypter un message</li>
 <li>on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force</li>
 <li>La méthode de chiffrement utilisée doit être rapide : c'est un algorithme efficace</li>
 </ol>
 <p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.</p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -316,19 +311,18 @@ $$
 <li><a href="https://en.wikipedia.org/wiki/Semantic_security" class="externe">semantically secure</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Negligible_function" class="externe">fonction négligeable</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une méthode de chiffrement pourra être considéré comme  <strong><em>sécurisée</em></strong> si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <p>La sécurité sémantique stipule qu'une méthode doit être sécurisé quelque soit l'algorithme efficace utilisé. Pour obtenir ce genre de résultat sans connaître tous les algorithmes possibles on utilise une modélisation statistique cherchant à mesurer l'écart entre la distribution produite par la méthode et la loi uniforme.</p>
 <p>Classiquement ceci se formalise par la modélisation sous la forme d'un jeu.</p>
 <h3><span id="jeu-reconnaissance"></span>Jeu de la reconnaissance</h3>
@@ -338,8 +332,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire" class="externe">Indistinguabilité calculatoire</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La confidentialité peut s'écrire sous la forme d'un <em>jeu</em> à deux joueurs :</p>
 <ul>
 <li>un <strong><em>adversaire</em></strong> qui essaie de trouver une information</li>
@@ -375,17 +369,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :</p>
 <div>
 $$
 \epsilon(A) \coloneqq | (\Pr[b' = 1 \;\mid\; b = 1] + \Pr[b' = 0 \;\mid\; b = 0]) - 1 |
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <p>Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -393,8 +386,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Quelque soit l'algorithme utilisé, on pourra toujours supposer que $\Pr[b' = 1 ;\mid; b = 1] \geq 1/2$ (respectivement $\Pr[b' = 0 ;\mid; b = 0]$) car sinon il suffit de répondre le contraire de ce que l'algorithme répond pour avoir une probabilité de succès strictement plus grande que $1/2$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour se fixer les idée commençons par un exemple. On suppose que l'on cherche à différentier deux mots de $\{0, 1\}^t$, le premier issu a distribution constante de réalisation $\mathbb{0}$ ($D0$), le second d'une loi uniforme ($D1$). Comme :</p>
 <ul>
 <li>la probabilité d'obtenir n'importe quel mot de $\{0, 1\}^t$ vaut $1/2^t$ pour la loi uniforme,</li>
@@ -450,8 +443,8 @@ $$
 \end{array}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -490,17 +483,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Deux lois seront dites :</p>
 <ul>
 <li><strong><em>équivalentes</em></strong> si $D0 = D1$ : on ne peut les distinguer par le jeu de la reconnaissance</li>
 <li><strong><em>statistiquement sécurisés</em></strong> si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable</li>
 <li><strong><em>sémantiquement sécurisés</em></strong> si le meilleur algorithme <strong>efficace</strong> de reconnaissance ne peut obtenir qu'un avantage négligeable</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -523,8 +515,8 @@ $$
 </li>
 </ul>
 <p>Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces ou non, n'auront également qu'un avantage négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Jeu du chiffrement</h3>
 <p>Pour une méthode de chiffrement, trouver les distribution à tester peut se faire avec le jeu suivant où l'attaquant choisi deux mots à tester. Si la méthode est sémantiquement sécurisé cela signifie que la différence de distribution est négligeable et est donc une approximation réaliste de la <a href="../../chiffre-vernam/#confidentialit%C3%A9-parfaite">confidentialité parfaite</a>.</p>
 <p>Le jeu consiste alors en 6 étapes :</p>
@@ -553,12 +545,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si un adversaire efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.</p>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$. L'adversaire pourrait choisir <code>m0 = &quot;aa&quot;</code> et <code>m1 = &quot;ab&quot;</code> et décider de répondre 1 si <code>c[1] ≠ c[0]</code>. L'avantage de cet algorithme va être énorme puisque :</p>
 <ul>
 <li>$\Pr[b' = 1 \;\mid\; b = 1] = 1- \Pr[b' = 0 \;\mid\; b = 1]$. On ne peut répondre $b'=0$ alors que $b=1$ que si la lettre $a$ se chiffre avec la même lettre que $b$ ce qui arrive 26 fois (choisir la première lettre de $k$ entraîne sa deuxième). Donc $\Pr[b' = 1 \;\mid\; b = 1] = 1- 26/26^2 = 1-1/26$</li>
@@ -570,8 +561,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que tout adversaire ne peut avoir un avantage différent de 0 au au jeu du chiffrement utilisant le chiffre le Vernam.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

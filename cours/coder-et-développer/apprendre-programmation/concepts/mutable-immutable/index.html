@@ -102,8 +102,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/">Concepts de la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/mutable-immutable/">Mutable et immutable</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -156,8 +156,8 @@
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
 <span class="token number">4378755312</span></code></pre>
 <p>Ceci est une optimisation de l'interpréteur python. Comme les entiers sont non modifiables, on peut associer le même entier à plusieurs variables sans soucis.</p>
-</div></div>
-
+</div>
+</div>
 <p>La remarque précédente montre tout l'intérêt d'utiliser des objets non mutables. Il 'y aura jamais d'effet de bords lors de passage de paramètres. En revanche, à chaque modification, il faudra recréer un objet, ce qui peut être long. C'est un compromis à avoir : la sécurité vs la rapidité. C'est pourquoi par défaut :</p>
 <ul>
 <li>une chaîne de caractère est non modifiables (elles sont souvent crées une fois pour toute dans un programme)</li>
@@ -174,8 +174,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il n'existe pas d'équivalent non mutable aux dictionnaires.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut alors utiliser des tuples et des <code class="language-">frozenset</code> comme éléments d'un ensemble ou comme clé de dictionnaires.</p>
 <p>Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
@@ -187,8 +187,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le tuple vide s'écrira <code class="language-">(,)</code> (ou <code class="language-">tuple()</code>) pour la différentier la notation <code class="language-">()</code> qui est la parenthèse vide.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

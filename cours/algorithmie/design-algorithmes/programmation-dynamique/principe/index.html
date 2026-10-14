@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/">Programmation dynamique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/principe/">Principe</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Programmation_dynamique" class="externe">Page Wikipedia sur la programmation dynamique</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le principe de la programmation dynamique est simple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -113,8 +113,8 @@
 <p><strong>Principe</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une solution optimale à un problème est constituée de solutions optimales de sous-problèmes.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il s'applique aux problèmes d'optimisations et en particulier ceux que l'on peut écrire sous une forme récursive. Illustrons le avec la recherche de chemins le plus rapide. Supposons que le chemin le plus rapide entre la ville A et la ville B soit celui ci-dessous :</p>
 <p><img src="opti-1.png" alt="opti A˜B"></p>
 <p>Prenons une ville sur ce chemin, par exemple la ville C :</p>
@@ -143,8 +143,8 @@
 <li><strong>détermination</strong> de l'équation de récurrence liant les sous-problèmes entre eux</li>
 <li>résolution de l'équation en <strong>stockant</strong> les résultats intermédiaires (très souvent les solutions optimales des sous-problèmes) pour éviter de les recalculer</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Le gain algorithmique de l'utilisation de la programmation dynamique résulte dans le fait de stocker les résultats intermédiaires (les sous-problèmes optimaux) pour ne pas avoir à les recalculer. Cette approche est d'autant plus efficace que :</p>
 <ol>
 <li>l'équation de récurrence est simple à calculer,</li>
@@ -214,15 +214,15 @@ TBD rendu de piece par programmation dynamique</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.mathly.fr/prog_dyn.pdf" class="externe">Nombre de chemins (exercice 7)</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre de chemins différents permettant d'aller de $(0, 0)$ à $(n, n)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -268,8 +268,8 @@ TBD rendu de piece par programmation dynamique</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre maximum de points d'intérêts que l'on peut visiter pour aller de de $(0, 0)$ à $(n, n)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -319,8 +319,8 @@ TBD rendu de piece par programmation dynamique</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Modifiez l'algorithme précédent pour qu'il puisse rendre un chemin maximisant le nombre de points d'intérêts visités.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -363,8 +363,8 @@ TBD rendu de piece par programmation dynamique</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=tufup6HlwWg" class="externe">Découper un cable</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.</p>
 <p>On suppose que l'on possède un câble de $n$ mètres que l'on revendre par bouts. Pour cela on dispose d'un tableau $P$ de taille $n+1$ indiquant en $P[k]$ le prix de vendre d'une longueur de $0\leq k \leq n$ mètres de notre câble (si on ne peut pas vendre de cable de longueur $k$, on aura $P[k] = 0$).</p>
 <p>La question est de trouver un tableau $V$ de $n+1$ entiers tel que :</p>
@@ -377,8 +377,8 @@ TBD rendu de piece par programmation dynamique</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Exprimez $M_n$ en fonction de $M_m$ avec $m\leq n$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -409,8 +409,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynamique permettant de calculer $M_n$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -446,8 +446,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet algorithme soit bien de complexité $\mathcal{O}(n^2)$ en temps et $\mathcal{O}(n)$ en espace.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -497,8 +497,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la probabilité que les $n_i$ duplications du composant $i$ soient en panne ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -526,8 +526,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire la probabilité de panne du système total.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -555,8 +555,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Trouver le nombre de duplications nécessaires pour chaque composant afin de créer un système de fiabilité maximale à un coût inférieur à $C$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -587,8 +587,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante" class="externe">Problème de la sous-suite croissante maximum</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le problème est le suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -598,8 +598,8 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $T$ un tableau à $n$ éléments. On cherche la longueur de la suite ${(s_i)}_{i\geq 0}$ la plus grande possible telle que $T[s_i] &lt; T[s_{i+1}]$ pour tout $i$.</p>
-</div></div>
-
+</div>
+</div>
 <p>En reprenant l'exemple de Wikipedia la suite $(6, 1, 4, 9, 5, 11)$ possède plusieurs sous-suites croissantes, comme $(6, 9, 11)$, $(1, 4, 9, 11)$ ou encore $(1,4, 5, 11)$. Les plus longues sous-suites étant de longueur 4.</p>
 <p>Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximale de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -610,8 +610,8 @@ $$
 <li>$N[i] \geq 1$ pour tout $0\leq i &lt; n$</li>
 <li>$N[n-1] = 1$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -638,8 +638,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Déterminez une relation de récurrence entre $N[i]$ et les $N[j]$ pour les $j&gt;i$ tels que $T[i] &lt; T[j]$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -670,8 +670,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez un algorithme récursif et utilisant la mémoïsation pour résoudre le problème.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -715,8 +715,8 @@ Chaque calcul peut demander le calcul de tous les <code class="language-">sous_s
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez un algorithme itératif et bottom-up pour résoudre le problème.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

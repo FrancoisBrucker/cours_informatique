@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/bases-théoriques/définition/">Définitions d&#39;un algorithme</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,13 +103,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p>Définition du '<em>Petit Robert</em>'  d'un <strong>algorithme</strong> :</p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>algorithme</em></strong> est un ensemble des règles opératoires propres à un <em>calcul</em>.</p>
-</div></div>
-
-<p>Qu'est-ce que ça veut dire ?</p>
+</div>
+</div>
+<p>Qu'est-ce que ça veut dire ? Cherchons dans <a href="https://dictionnaire.lerobert.com/fr/">le petit robert</a> :</p>
 <ul>
 <li><strong>algorithme</strong> : ensemble des règles opératoires propres à un <strong>calcul</strong></li>
 <li><strong>calcul</strong> : enchaînement des instructions nécessaires à l'accomplissement d'une <strong>tâche</strong></li>
@@ -122,12 +121,12 @@ Entrées :
 Programme :
     1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
     2. afficher la définition à l'écran
-    3. lire la définition et pour chaque mot non compris dans la définition, exécuter : `comprendre_une_définition_du_petit_Robert(mot non compris)`</code></pre>
+    3. lire la définition puis, pour chaque mot non compris dans la définition, chercher ce mot dans le petit robert</code></pre>
 <p>C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :</p>
 <ul>
 <li>compréhensible</li>
 <li>chaque instruction (lire une définition, comprendre un mot, ...) peut être caractérisée par un petit texte en français</li>
-<li>notre algorithme est récursif (il s'appelle lui-même) s'arrête bien à un moment (au pire une fois que l'on a passé en revue tous les mots du dictionnaire, on aura compris tous les mots de toutes les définitions)</li>
+<li>notre algorithme est récursif (il s'appelle lui-même) mais s'arrête bien à un moment (au pire une fois que l'on a passé en revue et compris tous les mots du dictionnaire)</li>
 </ul>
 <p>Règles de construction de l'algorithme utilisées :</p>
 <ul>
@@ -137,6 +136,12 @@ Programme :
 <li>l'exécution d'un algorithme est signifiée par son nom suivi de parenthèses contenant ses paramètres</li>
 <li>afficher à l'écran n'est <strong>PAS</strong> un retour de fonction/méthode/algorithme : l'algorithme continue de fonctionner après l'affichage</li>
 </ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Donald Knuth (1938-) liste, comme prérequis d'un algorithme, <a href="https://fr.wikipedia.org/wiki/Algorithme#Quelques_d%C3%A9finitions_connexes" class="externe">cinq propriétés</a> :</p>
 <ul>
 <li><strong>finitude</strong> : Un algorithme doit toujours se terminer après un nombre fini d’étapes.</li>
@@ -145,15 +150,16 @@ Programme :
 <li><strong>sortie</strong> : […] des quantités ayant une relation spécifiée avec les entrées.</li>
 <li><strong>rendement</strong> : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.</li>
 </ul>
+</div>
+</div>
 <p>On peut en déduire la définition suivante : Un <strong><em>algorithme</em></strong> est une succession d'instructions simples et clairement définies. À partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :</p>
 <div id="définition-règles-générales"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>algorithme</em></strong> est défini par les 4 propriétés suivantes :</p>
 <ol>
 <li>un algorithme est constitué d'une <strong>suite finie d'instructions</strong>, chacune décrite avec <strong>un nombre fini de symboles</strong></li>
@@ -161,18 +167,17 @@ Programme :
 <li>exécuter une instruction <strong>ne doit pas nécessiter d'intelligence</strong> (à part celle pour comprendre l'instruction)</li>
 <li>l'algorithme produit un résultat et s'arrête après <strong>un nombre fini d'étapes</strong> (une étape étant l'application d'une instruction) successives.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appellera <strong><em>programme</em></strong> un texte qui ne respecte que les 3 premières propriétés : un algorithme est un programme qui s'arrête.</p>
-</div></div>
-
+</div>
+</div>
 <p>Une recette de cuisine est donc un algorithme, un trajet google maps, etc.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -180,8 +185,8 @@ Programme :
 </svg>
 <div class="pl-8 mr-8">
 <p>N'hésitez pas à regarder cette vidéo, <a href="https://www.youtube.com/watch?v=d2a4MpY7I2w" class="externe">petite biographie de Donald Knuth</a>, grand informaticien.</p>
-</div></div>
-
+</div>
+</div>
 <p>Prenons l'énoncé suivant qui décrit une procédure permettant de chercher un élément particulier dans une suite finie de nombres :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Demander à l'utilisateur :
   - de donner un entier que l'on appellera x
@@ -232,9 +237,8 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong>programme</strong> possède :</p>
 <ul>
 <li>un nom</li>
@@ -243,16 +247,16 @@ Programme :
 <li>une description qui explicite ce qu'il fait.</li>
 </ul>
 <p>Si le programme s'arrête quelles que soient ses entrées, c'est un <strong>algorithme</strong>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est <em>perdu</em>, le second peut être à nouveau utilisé par un autre programme.</p>
-</div></div>
-
+</div>
+</div>
 <p>La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :</p>
 <ol>
 <li>le pseudo-code : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.</li>
@@ -288,9 +292,8 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appelle :</p>
 <ul>
 <li><strong><em>alphabet</em></strong> est un ensemble fini $\mathcal{A}$</li>
@@ -301,8 +304,8 @@ Programme :
 <li>l'ensemble de tous les mots d'un alphabet $\mathcal{A}$ est noté $\mathcal{A}^\star$</li>
 <li>un <strong><em>langage</em></strong> est un sous-ensemble de $\mathcal{A}^\star$ (un ensemble, possiblement infini, de mots de $\mathcal{A}^\star$)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple le programme suivant qui énumère tous les entiers :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : énumère
 Programme :
@@ -325,8 +328,8 @@ Programme :
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un programme ne peut manipuler que des données de la forme d'une suite finie d'un ensemble fini.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -353,13 +356,12 @@ Programme :
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p><strong>Un réel ne l'est pas : c'est une limite</strong>.</p>
 <p>Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.</p>
-</div></div>
-
+</div>
+</div>
 <p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80" class="externe">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :</p>
 <ul>
 <li>soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est-à-dire sans jamais connaître sa valeur</li>
@@ -372,20 +374,19 @@ Programme :
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon" class="externe">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dits de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique" class="externe">stabilité numérique</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Or :</p>
 <p><span id="paramètres-binaires"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -394,8 +395,8 @@ Programme :
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)" class="externe">une injection</a> entre $\mathcal{A}^\star$ et $\{0, 1\}^\star$ pour tout ensemble fini $\mathcal{A}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -447,12 +448,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un caractère (<code>0</code> ou <code>1</code>) <a href="https://fr.wikipedia.org/wiki/Bit" class="externe">est appelé <strong><em>bit</em></strong></a>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -461,8 +461,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tout ce que peut manipuler un programme est une suite finie de bits.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cependant n'utiliser que des tableaux de bits (dont le type est <code>[bit]</code>) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :</p>
 <ul>
 <li>un entier relatif :
@@ -479,8 +479,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Montrez qu'il existe une injection entre $\mathcal{A}^\star$ et $\{ 1\}^\star$.</p>
 <p>Pourquoi s'embêter avec un deuxième symbole (le <code>0</code>) alors ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -509,13 +509,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de <code>0</code> et de <code>1</code>.</p>
 <p>Alternativement, on peut aussi supposer sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de <code>0</code> et de <code>1</code> est la représentation d'un entier en base 2.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Nombres de paramètres d'entrée d'un programme</h2>
 <p>On vient de voir que tous les objets manipulables par des programmes peuvent être assimilés à des suites finies de <code>0</code> et de <code>1</code>, bref à des entiers représentés en base 2. On peut aller plus loin en représentant les tableaux de suites finies de <code>0</code> et de <code>1</code> par une unique suite finie de <code>0</code> et de <code>1</code>.</p>
 <div id="proposition-cartésien"></div>
@@ -527,8 +526,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe une injection de $\{0, 1\}^\star \times \{0, 1\}^\star$ dans $\{0, 1\}^\star$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -569,9 +568,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Tout programme peut être écrit comme ayant :</p>
 <ul>
 <li>au plus une entrée dans $\{0, 1\}^\star$</li>
@@ -582,24 +580,24 @@ $$
 <li>au plus une entrée dans $\mathbb{N}$</li>
 <li>une sortie dans $\mathbb{N}$ s'il s'arrête</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il n'y a pas plus d'éléments dans $\mathbb{Q}$ (l'ensemble des fractions entières qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui-même en bijection avec $\{0, 1\}^\star \times \{0, 1\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec $\{0, 1\}^\star$). Étonnant, non ?</p>
 <p>Terminons avec un petit exercice pour voir si vous avez compris :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez un encodage permettant d'écrire comme une suite de <code>0</code> et de <code>1</code>  les listes imbriquées de tableaux de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Encodez chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) par son propre code sur 3 bits.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -642,8 +640,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe une infinité d'algorithmes différents.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -676,8 +674,8 @@ rend 1</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.</p>
-</div></div>
-
+</div>
+</div>
 <p>Mais, on peut aussi démontrer :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -687,8 +685,8 @@ rend 1</code></pre>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe une infinité d'algorithmes faisant des choses deux à deux différentes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -727,8 +725,8 @@ rend 1</code></pre>
 <li>$c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$</li>
 <li>avec $\mathcal{U}$ l'ensemble des caractères <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">Unicode</a>, $\vert \mathcal{U} \vert \leq 150000$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -760,8 +758,8 @@ rend 1</code></pre>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut associer à tout programme un entier unique. C'est à dire qu'il existe une injection $N$ de l'ensemble $\mathcal{P}$ de tous les programmes vers l'ensemble des entiers.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -793,8 +791,8 @@ rend 1</code></pre>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il y a exactement autant de programmes différents que de nombres entiers.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -832,12 +830,11 @@ rend 1</code></pre>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un ensemble est dénombrable s'il est en bijection avec $\mathbb{N}$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il faut faire un peu attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :</p>
 <ul>
 <li>$f(n) = 2n$ pour entier positif $n$,</li>
@@ -853,19 +850,18 @@ rend 1</code></pre>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Ceci montre que lorsqu'il y a un nombre infini d'entiers (<em>ie.</em> d'éléments d'un ensemble dénombrable), il y en a autant que d'entiers.</p>
-</div></div>
-
+</div>
+</div>
 <p>À vous, pour voir si vous avez compris :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que l'ensemble des mots d'un alphabet fini est dénombrable.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -897,8 +893,8 @@ rend 1</code></pre>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S'il y a une injection d'un ensemble $E$ dans une partie $F$ de celui-ci, alors $E$ et $F$ sont en bijection.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -961,8 +957,8 @@ $$
 <p><strong>Corollaire (Théorème de Cantor-Bernstein)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S'il y a une injection d'un ensemble $A$ dans un ensemble $B$  et une injection de $B$ dans $A$, alors $A$ et $B$ sont en bijection.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -996,8 +992,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration" class="externe">Référence</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitifs comme le résultat précédent qui montre qu'il peut y avoir autant d'éléments dans un ensemble et une partie de celui-ci.</p>
 <p>On peut grâce au résultat précédent démontrer :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1008,8 +1004,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les ensembles $\mathbb{N}$ et $\mathbb{Q}$ sont en bijection.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -1036,24 +1032,23 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On peut définir sans perte de généralité un algorithme comme étant une suite finie de <code>0</code> et de <code>1</code> qui prend en paramètre d'entrée une suite finie de <code>0</code> et de <code>1</code> et rend en sortie une suite finie de <code>0</code> et de <code>1</code>.</p>
 <p>Connaître les données ou les instructions &quot;réelles&quot; d'un algorithme se fait via des procédures qui transforment les suites finies de <code>0</code> et de <code>1</code> :</p>
 <ul>
 <li>en instructions</li>
 <li>en données</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Pour finir, un petit résultat très utile que vous pouvez démontrer :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>On peut définir sans perte de généralité un algorithme comme étant une suite finie de <code>0</code> et de <code>1</code> qui prend en paramètre d'entrée une suite finie de <code>0</code> et de <code>1</code> et rend en sortie <code>1</code> ou <code>0</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1090,8 +1085,8 @@ Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Déduire de l'exercice précédent qu'un algorithme peut être vu comme un langage de $\{0, 1\}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1129,12 +1124,11 @@ Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Algorithmes et démonstrations mathématiques sont deux notions équivalentes.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/">Couplages</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/problème/">Problème du couplage dans un graphe</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -101,17 +101,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $G=(V, E)$ un graphe. Un <strong><em>couplage</em></strong> est un ensemble $M \subseteq E$ tel que si $xy, x'y' \in E$ alors $xy \cap x'y' = \varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).</p>
 <p>Un sommet $x$ est :</p>
 <ul>
 <li><strong><em>libre</em></strong> s'il n'est pas extrémité d'une arête de $M$.</li>
 <li><strong><em>couvert</em></strong> s'il est extrémité d'une arête de $M$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, le graphe ci-dessous :</p>
 <p><span id="graphe-exemple"></span>
 <img src="graphe-exemple.png" alt="couplage exemple"></p>
@@ -122,35 +121,33 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $G=(V, E)$ un graphe. Un <strong><em>couplage</em></strong> $M$ est dit :</p>
 <ul>
 <li><strong><em>maximal</em></strong> s'il n'existe pas de couplage $M'$ l'incluant (toute arête de $G$ possède une extrémité co;;une avec une arête de $M$)</li>
 <li><strong><em>maximum</em></strong> s'il n'existe pas de couplage $M'$ tels que $\vert M'\vert &gt; \vert M\vert$</li>
 <li><strong><em>parfait</em></strong> si pour tout sommet de $V$ il existe une arête de $M$ l'ayant comme extrémité. Un couplage parfait ne peut exister que s'il y a un nombre pair de sommet et à forcément $\vert V \vert/2$ arêtes.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour tout graphe $G=(V, E)$, on note $\nu(G)$ le nombre d'arête de ses couplages maximum.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les trois types de couplages sont bien distincts. Le couplage de la figure précédente était maximal (toute arête du graphe à un sommet commun avec une arête du couplage), mais il n'est pas maximum. Il possède en effet un couplage parfait :</p>
 <p><img src="couplage-exemple-parfait-1.png" alt="couplage exemple parfait"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que le graphe précédent admet un autre couplage parfait.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -190,8 +187,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme précédent est à <a href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/#d%C3%A9finition-performance-garantie">performance garantie</a> de $1/2$ (il a au pire 2 fois moins d'arêtes qu'un couplage maximum).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -219,8 +216,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que quelques soit $n$, il existe un graphe connexe à plus de $n$ sommets tel que l'algorithme peut trouver 2 fois moins d'arête que son couplage maximum.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -255,8 +252,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -287,8 +284,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G=(V, E)$ un graphe. La cardinalité minimum de ses couvertures est plus grande la cardinalité maximum de ses couplages.</p>
-</div></div>
-
+</div>
+</div>
 <p>Attention, ce n'est pas forcément égal dans le cas général.</p>
 <p>En reprenant notre exemple de départ, le graphe admet un couplage parfait à 5 arêtes alors que la plus petite couverte possède 6 sommets :</p>
 <p><img src="couverture-min.png" alt="couverture min"></p>
@@ -306,8 +303,8 @@
 <li>l'ensemble $K = \cup_{k} \{ \{x_i, y_i\} \}$ est une couverture de $G$</li>
 <li>toute couverture de $G$ possède au moins $k$ sommets.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -347,8 +344,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes" class="externe">Tournoi toutes rondes</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Dans un championnat de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.</p>
 <p>L'algorithme est le suivant, pour $n$ pair :</p>
 <ul>

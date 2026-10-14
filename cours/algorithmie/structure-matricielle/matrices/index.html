@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-matricielle/">Structures de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-matricielle/matrices/">Matrices</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,12 +102,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une matrice de dimension $k$ est constitué d'un tableau de matrices de dimensions $k-1$</p>
-</div></div>
-
+</div>
+</div>
 <p>Ainsi une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constituée d'un tableau de $n$ lignes (chacune étant un tableau de $p$ entiers).</p>
 <h2>Matrice 2D</h2>
 <p>Une matrice d'entiers en deux dimensions sera ainsi un tableau de tableaux, donc de type :</p>
@@ -136,12 +135,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La création et l'affectation initiale d'une matrice est linéaire en sa taille : le nombre de lignes fois le nombre de colonnes.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Utilisation</h3>
 <p>Une fois la matrice créée, il est facile de lire et écrire un élément. Par exemple pour affecter puis afficher à l'écran l'élément de ligne $i$ et de colonne $j$ de la matrice $M$ :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">←</span> un <span class="token builtin">entier</span> entré par l'utilisateur
@@ -162,8 +160,8 @@ Affiche à l'écran M<span class="token punctuation">[</span>i<span class="token
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce n'est pas du tout une opération élémentaire</p>
-</div></div>
-
+</div>
+</div>
 <p>On se permettra aussi d'écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">M' <span class="token operator">←</span> M<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">:</span>d<span class="token punctuation">]</span></code></pre>
 <p>Pour remplacer le code :</p>
@@ -209,8 +207,8 @@ Ceci n'est souvent pas gênant algorithmiquement car si on utilise une matrice c
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez qu'il existe une bijection entre l'ensemble de tous les couples $(i, j)$ pour $1\leq i \leq n$ et $1\leq j \leq p$ et l'intervalle $[0, p\cdot q[$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -247,8 +245,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Déduire de la question précédente un moyen de créer une matrice de $n$ lignes et $p$ colonnes d'entier en 1 opérations.</p>
 <p>Comment accéder à l'élément de ligne $i$ et de colonne $j$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -274,8 +272,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Comment généraliser ceci à une matrice de dimension supérieure ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

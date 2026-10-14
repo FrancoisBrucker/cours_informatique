@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/partager-secret/">Partage de secret</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,8 +103,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA" class="externe">le problème en quelques vidéos</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Protocole Diffie-Hellman</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -133,8 +133,8 @@
 </li>
 </ol>
 <p>Au final, Alice et Bob partagent un nombre $K$ compris entre $0$ et $p-1$.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Pourquoi ça marche</h2>
 <ol>
 <li>si $n$ est premier, <a href="/cours_informatique/cours/misc/corps-ZpZ/#groupe-cyclique">$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique</a></li>
@@ -166,8 +166,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter <a href="/cours_informatique/cours/algorithmie/fonctions-bool%C3%A9ennes/">cette partie du cours</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.</p>
 <h3>Problème du logarithme discret</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -176,8 +176,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Logarithme_discret" class="externe">https://fr.wikipedia.org/wiki/Logarithme_discret</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> g<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     r <span class="token operator">:=</span> <span class="token number">1</span>
@@ -231,32 +231,30 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé <a href="https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire" class="externe">compromis temps/mémoire</a> est une technique importante à connaître.</p>
 <p>Elle ne fera cependant pas de miracle puisqu'elle est bornée par la taille la mémoire disponible.</p>
-</div></div>
-
+</div>
+</div>
 <p>Et tout d'un coup avec notre clé de 64b, notre algorithme n'aura plus besoin que de $2^{32}$ opérations. À raison d'une opération par microseconde, il ne faudra plus que 5 millisecondes pour résoudre le problème !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On considère actuellement que si le <a href="https://en.wikipedia.org/wiki/Key_size#Brute-force_attack" class="externe">nombre de possibilité à tester est supérieur à $2^{128}$</a>, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/" class="externe">recommendations ANSSI taille de clés</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Pour une clé de 128bit et 1 opération par microsecondes :</p>
 <ul>
 <li>l'algorithme naïf prend de l'ordre de $10^{25}$ ans</li>
@@ -270,8 +268,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Voir <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf" class="externe">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> ou encore <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf" class="externe">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a> pour d'autres algorithmes de résolution.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Attaque</h2>
 <p>Il existe beaucoup de types d'attaques possibles. Explicitons-en quelques unes.</p>
 <h3>Brute force</h3>
@@ -282,8 +280,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file" class="externe">https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.</p>
 <p>On préconise donc une taille de clé de 4096b actuellement. Voir <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile" class="externe">ce doc p35</a>.</p>
 <h3>Man in the middle</h3>
@@ -327,8 +325,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf" class="externe">Algorithmes et simple power analysis</a></p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -340,8 +338,8 @@
 <li><a href="https://www.youtube.com/watch?v=2-zQp26nbY8" class="externe">exemples de side channel attack</a></li>
 <li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU" class="externe">channel attack autres exemples</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Utilisation de courbes elliptiques</h2>
 <p>Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.</p>
 <blockquote>

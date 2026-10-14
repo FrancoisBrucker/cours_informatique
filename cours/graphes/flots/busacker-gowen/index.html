@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/flots/">Flots</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/flots/busacker-gowen/">Algorithme de Busacker et Gowen</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,32 +102,31 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Busacker_et_Gowen" class="externe">Algorithme de Busacker et Gowen</a></p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On considérera par la suite que le graphe $G$ est antisymétrique puisque l'on utilise des graphes d´écart. On a vu que ce n'était pas restrictif puisque l'on peut associer un graphe antisymétrique à tout graphe en ne changeant pas les valeurs de flots</p>
-</div></div>
-
+</div>
+</div>
 <p>Si on doit payer un coût pour faire transiter un flot par un arc, il est naturel de rechercher un flot maximum à coût minimum.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Si $\gamma : E \rightarrow \mathbb{R}^+$ est une fonction de coût sur les arc de $G$ et $f$ un de ses flot, le coût du flot est :</p>
 <div>
 $$
 \sum_{xy \in G} f(xy) \cdot \gamma(xy)
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <p>Le problème est alors :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -135,8 +134,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Parmi tous les flot maximum, un choisir un de coût minimum.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce qui est surprenant, c'est que ceci peut se faire aisément en modifiant l'algorithme de Edmonds et Karp : plutôt que de chercher un chemin de longueur minimum dans le graphe d'écart, on cherche un chemin de coût minimum en utilisant la fonction de coût suivante :</p>
 <ul>
 <li>si $xy$ est un arc de $G$ on le coût de l'arc dans le graphe d'écart est le même que pour le graphe d'origine puisque si cet arc est choisi on va augmenter le flot passant par lui</li>
@@ -148,8 +147,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme les poids peuvent être négatifs, il faut utiliser <a href="../../chemin-poids-min-cas-g%C3%A9n%C3%A9ral/">l'algorithme de Belman-ford</a> de complexité $\mathcal{O}(e(G) \cdot v(G))$ pour trouver un chemin de longueur minimum entre $s$ et $t$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, il faut partir du flot nul pour que l'optimalité soit garantie.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -157,8 +156,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cet algorithme est appelé <strong><em>algorithme de Busacker-Gowen</em></strong>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cela semble une amélioration naturelle mais la justification de sa véracité ne l'est pas vraiment.</p>
 <h2>Véracité</h2>
 <blockquote>
@@ -178,8 +177,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme de Buscker-Gowen est en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.</p>
-</div></div>
-
+</div>
+</div>
 <p>Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire" class="externe">programmation linéaire</a>, mais ceci sort du cadre d'un court de graphe.</p>
 
 

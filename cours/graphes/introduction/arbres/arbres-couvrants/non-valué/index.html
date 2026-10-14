@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/arbres-couvrants/">Arbres couvrants</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/arbres-couvrants/non-valué/">Arbres et arborescences couvrants</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -101,12 +101,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Ces parcours servent <strong>beaucoup</strong>. On va les retrouver à plein d'endroit donc connaissez les : ils sont bien plus important qu'on ne le pense au départ.</p>
-</div></div>
-
+</div>
+</div>
 <p>Nous allons expliciter les deux parcours en supposant que les graphes ne sont pas forcément connexes, ils rendront ainsi plutôt une forêt couvrant qu'un arbre couvrant. Enfin, ces deux algorithmes fonctionnent sans soucis pour des graphes orientés ou non voir des multi-graphes.</p>
 <h2>Parcours en largeur</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -115,8 +114,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur" class="externe">Parcours en largeur</a></p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
     var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>
     var s<span class="token punctuation">:</span> Sommet
@@ -156,8 +155,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur" class="externe">Parcours en profondeur</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce parcours s'écrit facilement de façon récursive :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
     var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>

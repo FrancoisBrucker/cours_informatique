@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/misc-modules/">Odds and ends sur les modules pythons</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -109,8 +109,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m" class="externe">Option <code>-m</code> de l'interpréteur Python</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On l'a déjà fait à de multiples reprises en utilisant le module pip :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip</code></pre>
 <p>Le résultat de la commande précédente dans le terminal affichera l'aide de <code class="fichier">pip</code>.</p>
@@ -121,8 +121,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le module <code class="language-">random</code> de python dans le terminal avec la commande : <code>python -m random</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Si vous exécutez le module python <code class="language-">random</code>, vous verrez s'afficher tout un tas de choses sur l'écran :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python <span class="token parameter variable">-m</span> random
 
@@ -149,8 +149,8 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette technique est très utilisée pour permettre d'effectuer des commandes directement avec le terminal (comme <code class="language-">pip</code>) ou pour montrer l'usage que l'on peut faire du module (comme <code class="language-">random</code>)</p>
-</div></div>
-
+</div>
+</div>
 <p>Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -158,8 +158,8 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3.12/library/__main__.html" class="externe"><code class="language-">__name__</code> et <code class="language-">__main__</code> en python</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Python distingue les deux types d'exécutions d'un programme via la variable spéciale <code class="language-">__name__</code> :</p>
 <ul>
 <li>elle vaut la chaîne de caractères <code class="language-">&quot;__main__&quot;</code> si le fichier est exécuté directement</li>
@@ -174,8 +174,8 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 <p>Créez un fichier nommé <code class="fichier">test_exécution.py</code> et copiez/collez y le code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></code></pre>
 <p>Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code <code class="language-">import test_exécution</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># code pouvant être importé</span>
 
@@ -189,8 +189,8 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/tutorial/modules.html#packages" class="externe">package en python</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier <code class="fichier">__init__.py</code> présent dans le dossier.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -206,8 +206,8 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 <p>exécuter le dossier avec l'interpréteur revient à exécuter le fichier <code class="fichier">__main__.py</code>.</p>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :</p>
 
 

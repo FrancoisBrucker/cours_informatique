@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/définitions/">Arbres</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -101,16 +101,15 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>arbre</em></strong> est un <em>graphe</em> $T = (V, E)$ qui est :</p>
 <ul>
 <li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-connexe">connexe</a></li>
 <li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-cycle">sans cycle</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple, seul le graphe du milieu est un arbre parmi les 3 graphes ci-dessous :</p>
 <table>
 <tbody>
@@ -131,39 +130,36 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <em>graphe</em> dont chaque partie connexe est un arbre est appelée une <strong><em>forêt</em></strong>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les définitions précédentes concernaient les graphes, il existe un pendant pour les graphes orientés, les arborescences :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <em><strong>arborescence</strong></em> est un graphe orienté $G = (V, E)$ tel que :</p>
 <ul>
 <li>si $xy \in E$ alors $yx \notin E$</li>
 <li>le graphe $T = (V, E')$ tel que $xy \in E'$ si et seulement si $xy \in E$ ou $yx \in E$ est un arbre</li>
 <li>tel qu'il existe un sommet $r$, appelé <strong><em>racine</em></strong> tel que pour tout $x \in V$ il existe un chemin allant de $r$ à $x$ dans $G$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On a parfois envie que les chemin ailles vers la racine plutôt qu'en partent et a pour ça la notion d'arbre dirigé enraciné :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <em><strong>arbre dirigé enraciné en $r$</strong></em> (on dit aussi <em><strong>arbre dirigé planté en $r$</strong></em>) est un graphe orienté $G = (V, E)$ si et seulement le graphe $G' = (V, E')$ tel que $xy \in E'$ si et seulement si $yx \in E$ est une arborescence de racine $r$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ainsi le graphe de gauche est un arbre, celui du milieu une arborescence avec le sommet rouge en racine et celui de droite un arbre dirigé enraciné en le sommet rouge :</p>
 <p><img src="arbre-arbo.png" alt="arbre et arborescence"></p>
 <h2>Propriétés fondamentales</h2>
@@ -183,8 +179,8 @@
 <li>$G=(V, E)$ est sans cycle et l'ajout d'une arête quelconque crée un cycle</li>
 <li>$G=(V, E)$ est connexe et la suppression d'une arête quelconque le déconnecte</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -217,8 +213,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que la proposition précédente permet de créer un algorithme en $\mathcal{O}(\vert V \vert)$ pour savoir si un graphe $G=(V, E)$ est un arbre.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -255,8 +251,8 @@
 <li>$G=(V, E)$ est sans circuit et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet</li>
 <li>$G=(V, E)$ est connexe et il existe un sommet $r$ pour lequel $\delta^{-}(r) = 0$ et  $\delta^{-}(x) = 1$ pour tout autre sommet</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -289,22 +285,20 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>feuille</em></strong> d'un arbre $T = (V, E)$ est un sommet de degré 1. Un <strong><em>sommet interne</em></strong> est un sommet de degré strictement supérieur à 1.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>feuille</em></strong> d'une arborescence $T = (V, E)$ est un sommet de degré sortant 0. Un <strong><em>sommet interne</em></strong> est un sommet de degré sortant strictement supérieur à 0.</p>
-</div></div>
-
+</div>
+</div>
 <p>Commençons par une propriété sympathique des feuilles d'un arbre :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -318,8 +312,8 @@
 <li>au moins 2 feuilles</li>
 <li>au moins un sommet interne.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -354,8 +348,8 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 <li>$\vert V \vert = 2p-2$</li>
 <li>$\vert E \vert = 2p-3$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -384,8 +378,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si $T = (V, E)$ est un arbre et $x\in V$ une de ses feuilles, alors $T\backslash \{x\}$ est un arbre.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -417,8 +411,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si $T = (V, E)$ est un arbre et $x\in V$ un de ses sommets internes, alors $T\backslash \{x\}$ est une forêt avec $\delta_T(x) &gt; 1$ parties connexes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -446,12 +440,11 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour tout arbre $T = (V, E)$, les ordres $x_1, \dots, x_n$ de ses sommets tels que $T \backslash \{x_1, x_2, \dots x_i\}$ est un arbre pour tout $1\leq i &lt; \vert V \vert$ sont appelées <strong><em>ordre d'effeuillage</em></strong>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les ordre d'effeuillage permettent tout un tas de raisonnements par récurrence et sont a la base de nombre d'algorithmes d'arbres car ils préserve la structure de l'arbre.</p>
 <p>Terminons cette partie par un petit exercice utilisant les feuilles et les ordres d'effeuillages.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -462,8 +455,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <li>tout parcours DFS en partant de $x$ est un effeuillage de $T$,</li>
 <li>les ensembles $S(x, y) = \{z | y \text{ est sur le chemin entre }x \text{ et } z\}$ sont des intervalles.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -499,8 +492,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe est un arbre si et seulement si quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -531,8 +524,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour une arborescence de racine $r$, pour chaque sommet $x$ il existe un unique chemin allant $r$ à $x$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -561,8 +554,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -597,8 +590,8 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé <a href="https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian" class="externe">graphes médians</a>. Les<a href="https://fr.wikipedia.org/wiki/Hypercube_(graphe)" class="externe">hypercubes</a> en sont des exemples.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Encodage</h2>
 <blockquote>
 <p>TBD écrire propre</p>

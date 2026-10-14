@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/">Couplages</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/couplage-bi-parti/">Couplages optimal pour des graphes bi-partis</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -108,8 +108,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S i l'algorithme de recherche d'un chemin augmentant trouve une fleur c'est qu'il existe un cycle de longueur impair.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -139,8 +139,8 @@
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme de recherche d'un chemin augmentant trouve un chemin augmentant s'il en existe un pour les graphes bi-partis.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -175,8 +175,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes bipartis.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -218,8 +218,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Trouver un couplage maximum dans un graphe biparti peut se faire en $\mathcal{O}(e(G)\cdot v(G))$ opérations consistant</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -247,8 +247,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette complexité est identique à celle de la méthode utilisant les flot et l'algorithme de Ford et Fulkerson puisque la coupe contenant uniquement la source est de valuation bornée par $v(G)$ puisque toutes les capacités valent 1.</p>
-</div></div>
-
+</div>
+</div>
 <p>Notez qu'il existe des algorithme meilleurs, comme <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm" class="externe">l'algorithme de Hopcroft-Karp</a> qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.</p>
 <h2>Propriétés des couplage parfait et maximum dans un graphe biparti</h2>
 <p>Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés et commençons par une constatation simple :</p>
@@ -261,8 +261,8 @@
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille inférieure ou égale à $\min(\vert A \vert, \vert B \vert)$.</p>
 <p>Cette borne est atteinte, entre autre, pour les graphes biparti complet.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -293,8 +293,8 @@
 <p><strong>corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe biparti n'admet de couplage parfait que si toute bipartition en deux stables $A$ et $B$ est telle que $\vert A \vert = \vert B \vert$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce n'est cependant pas une équivalence, comme le montre le graphe suivant :</p>
 <p><img src="bipatri-pas-parfait.png" alt="contre exemple biparti parfait"></p>
 <p>La condition nécessaire et suffisante existe cependant mais elle est plus complexe, comme on va le voir ci-après.</p>
@@ -313,8 +313,8 @@ $$
 \vert \{y | xy \in E, x \in S\}\vert \geq \vert S \vert
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -358,8 +358,8 @@ $$
 \vert \{y | xy \in E, x \in S\}\vert \geq \vert S \vert + k - \vert A \vert
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -394,8 +394,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Un graphe biparti $G=(A\cup B, E)$ tel que $\delta(x) = k &gt; 0$ pour tout sommet $x$ admet un couplage parfait.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -422,8 +422,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Si l'on distribue un jeu de 52 cartes en 13 tas de 4 cartes, on peut toujours choisir une unique carte par tas pour obtenir les 13 valeurs différentes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -460,8 +460,8 @@ Donc si p cartes différentes envoient forcément vers 4p on plus tas. On est da
 <p><strong>Théorème (König-Egerváry, 1931)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">

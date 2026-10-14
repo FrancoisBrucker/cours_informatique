@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-sac-à-dos/">Problème du sac à dos</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-sac-à-dos/étude/">Étude</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,8 +105,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues" class="externe">sac à dos fractionnel</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Commençons par une version simplifiée du problème, dit du <strong><em>sac à dos fractionnel</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -135,8 +135,8 @@
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
@@ -184,8 +184,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On trie la liste dans le code en utilisant un liste tampon.</p>
-</div></div>
-
+</div>
+</div>
 <p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle <code class="language-">for</code> est en temps constant.</p>
 <p>Testons cet algorithme sur l'exemple. Si on devait coder les données de l'exemple, on aurait quelque chose du genre :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">EXEMPLE <span class="token operator">=</span> <span class="token punctuation">[</span>
@@ -235,8 +235,8 @@
 <li>poudre 5 : 6kg et un prix de 3€ le kilo</li>
 <li>poudre 6 : 80kg et un prix de 10€ le kilo</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -273,8 +273,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme glouton précédent rend un sac à dos fractionnel optimal.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -322,8 +322,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos" class="externe">Problème du sac à dos</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -352,8 +352,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème se décline de plein de façons pratiques :</p>
 <ul>
 <li>en remplaçant le prix par la quantité nutritive et maximiser un <em>road trip</em></li>
@@ -371,8 +371,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La solution optimale d'un problème du sac à dos est inférieure à la solution optimale des mêmes données appliquée au problème du sac à dos fractionnel</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -425,8 +425,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce nouveau problème est clairement dans NP puisque vérifier qu'une solution possible $(f_1, \dots, f_n)$ d'un sac à dos est correcte il suffit de :</p>
 <ul>
 <li>faire la somme $\sum_{1\leq i \leq n} f_i \cdot k_i$ et de vérifier qu'elle est inférieure à $K$</li>
@@ -438,13 +438,12 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.</p>
 <p>On trouve alors l'optimum par dichotomie.</p>
-</div></div>
-
+</div>
+</div>
 <h3>NP-complet</h3>
 <p>Nous allons montrer ici que le problème du sac à dos est un problème NP-complet. Pour cela, nous allons montrer que <a href="../../probl%C3%A8mes-NP/#probl%C3%A8me-CE">le problème CE</a> peut se réduire au problème du sac à dos.</p>
 <p>Cette réduction est fondamentale à connaître car elle montre que l'on peut facilement passer d'unions d'ensembles à une somme d'entiers sans changer fondamentalement la nature du problème.</p>
@@ -467,8 +466,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <li>$\mathcal{S} = \{ \{1, 4, 7\}, \{1, 4\}, \{4, 5, 7\},\{3, 5, 6\},\{2, 3, 6, 7\},\{2, 7\}  \}$</li>
 </ul>
 <p>En une instance du sac à dos en utilisant la transformation précédente.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -508,8 +507,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que pour <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2" class="externe">l'exemple tiré de Wikipédia</a> transformé en sac à dos, une de ses solution correspond bien à un sac à dos optimal.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -563,8 +562,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </svg>
 <div class="pl-8 mr-8">
 <p>La structure de l'algorithme est identique à celle du sac à dos fractionnel.</p>
-</div></div>
-
+</div>
+</div>
 <p>Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une fraction de poudre :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
@@ -580,8 +579,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que pour 2 produits seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -613,8 +612,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que le rapport entre la solution optimale et la solution de l'algorithme glouton modifié peut-être aussi grand que l'on veut.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -658,8 +657,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant le fait que $a + b \leq 2\cdot \max(a, b)$, montrer la la solution de l'algorithme ne peut pas être moins que 2 fois moins bonne que la solution optimale.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -694,12 +693,11 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La technique de résolution du sac à dos par programmation dynamique est fondamentale. <strong>Retenez-là</strong> car elle peut-être utilisée dans bon nombre de problèmes concrets !</p>
-</div></div>
-
+</div>
+</div>
 <p>Le problème du sac à dos admet une solution via la programmation dynamique simple et élégante. Soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :</p>
 <ul>
 <li>soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
@@ -732,8 +730,8 @@ $$
 <li>poudre 4 : 1kg et un prix de 6€</li>
 <li>poudre 5 : 6kg et un prix de 18€</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -914,8 +912,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les produits à emporter dans le sac à dos.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1100,8 +1098,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme par programmation dynamique dépend de $n$ et de $K$. Comme $K$ peut être aussi grand qu'on veut la résolution peut être exponentielle par rapport aux nombre d'objet à à mettre dans le sac. Si $K = 2^n$ par exemple. la méthode par programmation dynamique prendra plus de temps que l'énumération de toutes les solutions possibles !</p>
-</div></div>
-
+</div>
+</div>
 <p>La remarque ci-dessus implique qu'on va avoir tendance à utiliser cette méthode pour des sac à dos donc la taille est petite (ou polynomiale) par rapport aux objets à y mettre. Dans le cas où l'on a de gros sac à dos et plein de petits objets, on pourra préférer la prochaine solution qui énumère toutes les solutions possibles.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1109,8 +1107,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Si on cherche à calculer la complexité par rapport à la taille des données, comme $K$ est stocké sur $\log_2(K)$ bits, l'algorithme de programmation dynamique peut être considéré comme exponentielle ! Comme c'est un cas limite et que souvent les valeurs entières sont bornées, on appelle <a href="https://fr.wikipedia.org/wiki/Temps_de_calcul_pseudo-polynomial" class="externe">pseudo-polynomiale</a> ce genre de complexité qui dépendent de <strong>la valeurs d'entiers</strong>.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Solutions par énumération</h2>
 <p>Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers" class="externe">problème d'optimisation linéaire en nombre entier</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1137,8 +1135,8 @@ $$
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Énumération exhaustive</h3>
 <p>Énumérer toutes les solutions possibles du sac à dos revient à choisir pour chaque $x_i$ s'il vaut 0 ou 1 puis de vérifier pour cette affectation :</p>
 <ul>
@@ -1173,16 +1171,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous faites <code class="language-">affectation_max = affectation</code> plutôt que <code class="language-">affectation_max = list(affectation)</code> vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste <code class="language-">affectation</code> ce qui est problématique puisque <code class="language-">successeur</code> la modifie.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé <a href="https://docs.python.org/fr/3/library/functions.html#zip" class="externe">la fonction <code class="language-">zip</code> de python</a> qu'il est très utile de connaitre.</p>
-</div></div>
-
+</div>
+</div>
 <p>La complexité de l'algorithme est la somme de :</p>
 <ul>
 <li>la complexité totale de tous les appels à <code class="language-">successeur</code> et que l'on a déterminé (à de multiple reprise) dans <a href="../../complexit%C3%A9-amortie/">la partie consacrée à la complexité amortie</a> étant égale à $\mathcal{O}(2^n)$</li>
@@ -1202,8 +1200,8 @@ $$
 <li>poudre 4 : 1kg et un prix de 6€</li>
 <li>poudre 5 : 6kg et un prix de 18€</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1237,8 +1235,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation" class="externe">Lien Wikipédia sur le <em>Branch and Bound</em></a></p>
-</div></div>
-
+</div>
+</div>
 <p>La méthode du <strong><em>Branch and Bound</em></strong> (ou <strong><em>Séparation et évaluation</em></strong> en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.</p>
 <p>Cette méthode est particulièrement bien adaptée au problème du sac à dos.</p>
 <h4>Bornes supérieure</h4>
@@ -1263,8 +1261,8 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Une borne supérieure à un problème du sac à dos peut être trouvé en relâchant la contrainte d'intégrité des variables et de considérer le problème comme un sac à dos fractionnel.</p>
 <p>La valeur optimale du sac à dos fractionnel associé est appelée <strong><em>borne supérieure</em></strong> du problème du sac à dos.</p>
-</div></div>
-
+</div>
+</div>
 <h4>Sous-problème</h4>
 <p>Si on fixe une variable pour un problème du sac à dos, on se ramène à un sac à dos plus petit :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1280,24 +1278,23 @@ $$
 <li>$x_1= 0$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K$</li>
 <li>$x_1= 1$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K-p_1$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On a choisi de fixer $x_1$, mais il est évident à une renumérotation prêt, que l'on peut fixer n'importe quelle variable.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut ainsi fixer n'importe quel sous-ensemble de variables et toujours avoir à résoudre un problème de sac à dos.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).</p>
 <p>Une <strong><em>solution ouverte</em></strong> est une suite $y_i$ ($1\leq i \leq n$) telle que :</p>
 <ul>
@@ -1305,8 +1302,8 @@ $$
 <li>$\sum_{i \in I} y_i \cdot k_i \leq K$ avec $I$ l'ensemble des indices $i$ tels que $y_i \neq -1$</li>
 </ul>
 <p>Une solution ouverte permet de définir un <strong><em>sous-problème associé</em></strong> où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Une solution ouverte ne possédant que des -1 correspond au problème général du sac à dos et les solutions ouvertes ayant des 0 et des 1 correspondent à un sous-problème.</p>
 <h4>Déroulement de l'algorithme</h4>
 <p>L'algorithme du Branch and bound est alors très simple : il va énumérer toutes les solutions ouvertes mais ne va les explorer que si cela en vaut le coup, c'est à dire s'il est possible de trouver une solution meilleure que celle qu'on a déjà.</p>
@@ -1352,8 +1349,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Finissez l'exploration et donnez l'arbre final.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1429,8 +1426,8 @@ $$
 <p><strong>Conclusion</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et est en pratique extrêmement efficace.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Heuristique génétique</h2>
 <blockquote>
 <p>TBD voir :</p>

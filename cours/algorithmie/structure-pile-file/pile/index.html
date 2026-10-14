@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-pile-file/">Structure de pile et file</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-pile-file/pile/">La pile</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Pile_(informatique)" class="externe">La pile</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La pile est une structure de donnée extrêmement utilisée. Elle permet de traiter en priorité la donnée <strong>la plus récemment stockée</strong>. On appelle également cette structure <strong><em>LIFO</em></strong> pour <em>last in, first out</em> : on rend toujours la donnée la plus récemment stockée. La structure d'une pile de type <code class="language-">T</code> sera alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
@@ -118,13 +118,12 @@ méthode <span class="token punctuation">(</span>p<span class="token punctuation
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La pile se comporte comme une pile d'assiettes, on prend ou on pose toujours celle du dessus de la pile.</p>
 <p>Une donnée est traité une fois toutes les données plus récentes traitées. Elle permet de traiter les objets dans l'ordre inverse de leur introduction dans la structure.</p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="structure"></span>Implémentation</h2>
 <p>Une pile générique pourra être implémentée de cette façon :</p>
 <p><span id="structure-pile"></span></p>
@@ -151,8 +150,8 @@ méthode <span class="token punctuation">(</span>p<span class="token punctuation
 </div><div class="pl-8 mr-8">
 <p>Les complexités de toutes les méthodes de la structure <code class="language-">Pile</code> sont en $\mathcal{O}(1)$.</p>
 <p>Utiliser une pile peut se voire comme une opération élémentaire.</p>
-</div></div>
-
+</div>
+</div>
 <p>Prenons un exemple avec une pile d'entiers pour comprendre comment cette implémentation fonctionne.</p>
 <p>Départ :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">          longueur
@@ -178,8 +177,8 @@ données : 0123
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez une structure de pile en python.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -270,8 +269,8 @@ données : 0123
 <li><a href="https://www.sigcis.org/files/A%20brief%20history.pdf" class="externe">Histoire de la pile en texte</a></li>
 <li><a href="https://www.youtube.com/watch?v=2vBVvQTTdXg" class="externe">Histoire de La pile en vidéo</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Exemple fondamental : décurryfication d'un algorithme récursif</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -279,8 +278,8 @@ données : 0123
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks" class="externe">Passer de récursif à itératif avec une pile</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -288,8 +287,8 @@ données : 0123
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette technique est celle inventée par Dijkstra pour les appels de fonctions. Elle a permit de structurer le code en fonctions et a fait rentrer l'informatique dans une nouvelle ère, c'est de <strong><em>la programmation structurée</em></strong> (<em>ie</em>: l'utilisation de fonctions).</p>
-</div></div>
-
+</div>
+</div>
 <h4>Factoriel</h4>
 <p>Par exemple le calcul naif de la factorielle de façon récursive :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -507,8 +506,8 @@ données : 0123
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Simplifiez le code précédent.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

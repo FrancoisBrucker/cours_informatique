@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/">Modules python</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -108,8 +108,8 @@
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/tutorial/modules.html" class="externe">Documentation python sur les modules</a></p>
-</div></div>
-
+</div>
+</div>
 <p>L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi <a href="../../outils/%C3%A9diteur-vscode/python/">les consignes du tutoriel vscode et python</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -122,8 +122,8 @@
 <li>vous exécutez le code en utilisant le triangle vert</li>
 </ol>
 <p>Ces consignes précédentes assurent que <strong>vous exécutez votre code python à partir du dossier contenant votre projet</strong>.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Création de modules</h2>
 <p>Préparons nos fichiers pour comprendre comment tout ça fonctionne :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -140,8 +140,8 @@
 <p>Fichier <code class="fichier">mon_module.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span></span>
 <span class="highlight-line">va_variable <span class="token operator">=</span> <span class="token boolean">None</span></span></code></pre>
-</div></div>
-
+</div>
+</div>
 <h2>Mécanisme d'importation de modules</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -150,8 +150,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le fichier <code class="fichier">mon_programme.py</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez voir s'afficher <code>42</code> dans le terminal de vscode. Examinons comment tout ça se passe. Lorsque l'interpréteur python exécute la première ligne du fichier :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> mon_module</span></code></pre>
 <p>Process d'import :</p>
@@ -168,8 +168,8 @@
 <li>il produit une erreur d'importation : <code class="language-">ModuleNotFoundError: No module named 'mon_module'</code></li>
 <li>il exécute le fichier <code class="fichier">mon_module.py</code> dans un nouvel espace de nommage créé pour lui.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>À la fin de l'exécution de l'instruction <code class="language-">import mon_module</code> on est dans la situation suivante :</p>
 <p><img src="import-1.png" alt="import"></p>
 <p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module contenant un espace de nommage. On peut accéder aux noms de son espace avec la <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e">notation pointée</a> :</p>
@@ -183,8 +183,8 @@
 <span class="highlight-line"></span>
 <span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span></span></code></pre>
 <p>Explicitez comment s'est exécuté le programme.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -210,8 +210,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez au projet un fichier <code class="fichier">math.py</code> vide et exécutez à nouveau le fichier <code class="fichier">main.py</code>. Que doit-il se passer ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -243,8 +243,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les fichiers utilisés comme modules ne doivent contenir que des déclarations de fonctions ou des variables. Ils ne doivent comporter aucun affichage ni interactions avec l'utilisateur (via des <code class="language-">input</code> par exemple) pour ne pas gêner le processus d'import.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

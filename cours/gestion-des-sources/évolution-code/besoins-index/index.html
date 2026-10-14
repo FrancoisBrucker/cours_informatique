@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/évolution-code/">Gestion de l&#39;évolution de son code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/évolution-code/besoins-index/">Évolution du code source : index</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,9 +102,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>commit</em></strong> d'un projet est constitué :</p>
 <ul>
 <li>d'une sauvegarde du répertoire de travail (un <strong>snapshot</strong> du working directory)</li>
@@ -113,8 +112,8 @@
 <li>du (ou des) commits <strong>PARENT(S)</strong></li>
 <li>d'un descriptif des modifications effectuées (<strong>QUOI</strong>)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p><img src="commits.png" alt="commits"></p>
 <p>Lors d'un commit on a pas forcément envie de :</p>
 <ul>
@@ -131,8 +130,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour un projet github l'index correspond aux fichiers présent sur la page du projet</p>
-</div></div>
-
+</div>
+</div>
 <p>Après un commit, l'index <strong>contient l'ensemble des fichiers sauvé dans le commit</strong>. Si ces fichiers sont également dans le répertoire de travail, ils seront tous les 3 identiques :</p>
 <p><img src="index-post-commit.png" alt="index post commit"></p>
 <p>Lorsque l'on ajoute un fichier au projet, l'index et le dossier de travail divergent (l'utilisateur vient de créer <code>fichier2.txt</code>) :</p>
@@ -154,17 +153,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appelle <strong><em><code>diff</code></em></strong> les différences entre deux commits, entre le répertoire de travail et l'index ou encore entre deux fichiers.</p>
 <p>A savoir :</p>
 <ul>
 <li>les fichiers présent dans un commit et pas dans un autre</li>
 <li>les lignes différentes dans un fichier présent dans les deux commits</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Attention cependant, ces diff ne sont que des constructions, ils ne sont pas stocké dans le système.</p>
 <h2>Fichiers ignorés</h2>
 <p>Certains fichiers ne doivent pas être suivis. Par exemple :</p>
@@ -192,12 +190,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La liste des fichier à ignorer est très pratique en code pour ignorer les environnements virtuels, les fichiers de configurations de l'IDE, les fichiers compilés, les bibliothèques partagées. Bref tout ce qui n'est pas <em>stricto sensu</em> utile au code du projet.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

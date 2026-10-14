@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/">Authentification</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/RSA/">Code RSA</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,8 +105,8 @@
 <li><a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" class="externe">Chiffrement RSA</a></li>
 <li><a href="https://www.youtube.com/watch?v=Xlal_d4zyfo" class="externe">preuves RSA</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman. Le chiffrement RSA s’appuie sur le fait que factoriser un produit de deux nombres premiers distincts est difficile.</p>
 <p>Le code RSA est basé sur des principes arithmétiques. Le message à coder/décoder sera donc un entier $m$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -122,8 +122,8 @@
 <li>$xy \pmod{n} \equiv [(x \pmod{n})\cdot(y \pmod{n})] \pmod{n}$</li>
 <li>$k (x \pmod{n}) \equiv kx \pmod{n}$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Principe</h2>
 <p>Soient $p$ et $q$ deux nombres premiers différents, strictement plus grand que 1, et tels que $pq &gt; m$. On note :</p>
 <ul>
@@ -143,8 +143,8 @@
 <p>codage</p>
 </div><div class="pl-8 mr-8">
 <p>Le couple $(e, n)$ constitue la <strong>clé de chiffrement</strong> et la fonction de codage est $f(m) = m^e \pmod{n}$</p>
-</div></div>
-
+</div>
+</div>
 <p>Soit alors $d$ l'unique entier tel que :</p>
 <ul>
 <li>un entier $0 &lt; d &lt; \phi(n)$</li>
@@ -158,8 +158,8 @@
 <p>décodage</p>
 </div><div class="pl-8 mr-8">
 <p>Le couple $(d, n)$ constitue la <strong>clé de déchiffrement</strong> et la fonction de décodage est $f^{-1}(m) = m^d \pmod{n}$</p>
-</div></div>
-
+</div>
+</div>
 <h2>Existence et calcul de $d$</h2>
 <p>L'existence de $d$ est lié à une conséquence du <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout" class="externe">théorème de Bézout</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -175,8 +175,8 @@ $$
 ax + by = 1
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -216,8 +216,8 @@ ax = 1 + by
 $$
 </div>
 <p>Avec $y$ un entier positif.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -251,8 +251,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Voir le code RSA en action :
 <a href="https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html" class="externe">https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Preuve des bijections</h2>
 <p>Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat" class="externe">petit théorème de Fermat</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -263,8 +263,8 @@ $$
 <p>petit théorème de Fermat</p>
 </div><div class="pl-8 mr-8">
 <p>Si $p$ est un nombre premier et que $a$ est un entier alors : $a^{p} - a$ est un multiple de $p$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

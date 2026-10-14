@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/">Structure chaine de caractères</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/encodage/">Encodage des caractères</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,8 +103,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)</p>
-</div></div>
-
+</div>
+</div>
 <h2>Codage des caractères</h2>
 <blockquote>
 <p>TBD un nombre pour un caractère</p>
@@ -126,8 +126,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut de votre éditeur de texte.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Unicode</h2>
 <p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.</p>
 <p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar" class="externe">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)" class="externe">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul" class="externe">Khuzdul</a> dans Unicode)</p>
@@ -139,8 +139,8 @@
 <div class="pl-8 mr-8">
 <p>On a coutume de faire précéder ce nombre par <code>U+</code> pour préciser que c'est un code Unicode écrit en hexadécimal.</p>
 <p>Ainsi <code>U+1823</code> correspond à la lettre mongole o : ᠣ, retrouvez là dans la la liste des <a href="http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html" class="externe">différents codes</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Les caractères sont organisés <a href="https://www.compart.com/fr/unicode/block" class="externe">en blocs</a>, par exemple :</p>
 <ul>
 <li>de <a href="https://www.compart.com/fr/unicode/block/U+0000" class="externe">0 à 7F</a> : Latin de base</li>
@@ -155,8 +155,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Unicode permet d'unifier tous les encodages de caractères en associant à tout caractère d'une langue humaine un numéro.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
 <h2><span id="utf8"></span>utf-8</h2>
 <blockquote>
@@ -172,8 +172,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://onlineutf8tools.com/convert-utf8-to-hexadecimal" class="externe">Convertisseur utf8 vers hexadécimal</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour cela résoudre deux problèmes épineux :</p>
 <ul>
 <li>connaître le nombre d'octets nécessaires pour décoder un caractère</li>
@@ -212,8 +212,8 @@
 <li>convertir un nombre en binaire ou en hex via les fonctions <code class="language-">bin</code> et <code class="language-">hex</code> rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi <code class="language-">bin(42)</code> donne <code class="language-">'0b101010'</code> et <code class="language-">hex(42)</code> donne <code class="language-">'0x2a'</code>.</li>
 <li>notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

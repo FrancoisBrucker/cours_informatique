@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/chiffre-vernam/">Chiffre de Vernam</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,8 +105,8 @@
 <div class="pl-8 mr-8">
 <p>Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :</p>
 <p><a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/" class="externe">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Définition</h2>
 <div>
 $$
@@ -142,8 +142,8 @@ message
 </div><div class="pl-8 mr-8">
 <p>Soit $X$ une variable aléatoire uniforme sur $\{0, 1\}$ et $Y_i$ $L$ variables aléatoires ur $\{0, 1\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.</p>
 <p>La variable aléatoire $C_1\dots C_L$ telle que $C_i = X \oplus Y_i$ pour tout $i$ est uniforme sur $\{0, 1\}^L$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -182,21 +182,19 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Tout code doit avoir une clé choisie uniformément et indépendante du message.</p>
-</div></div>
-
+</div>
+</div>
 <p><a href="https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory" class="externe">Claude Shannon</a>, dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :</p>
 <p><span id="confidentialité-parfaite"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un code $(E, D)$ assure une <strong><em>confidentialité parfaite</em></strong> si pour :</p>
 <ul>
 <li>tous messages $m$ et $m'$ de même taille</li>
@@ -209,8 +207,8 @@ $$
 \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c]
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <p>Un code assurant une confidentialité parfaite ne doit donner aucune information sur $k$ ou $m$ en ne sachant que $E(k, m)$, ce qui se traduit par le fait que :</p>
 <ul>
 <li>tout message peut donner un chiffre donné si on choisit la bonne clé et avec la même probabilité</li>
@@ -224,8 +222,8 @@ $$
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le code de Vernam assure une confidentialité parfaite.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -258,8 +256,8 @@ $$
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieur ou égal au nombre de messages à chiffrer.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -287,13 +285,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On est <strong>assuré</strong> que tout code avec une taille de clé plus petite que la longueur du message (<em>ie.</em> tout code utilisé en pratique) va laisser de l'information dans le message chiffré.</p>
 <p>Il faudra s'assurer que cette information ne puisse pas être exploitée facilement par un adversaire.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Attention aux conditions d'utilisation</h2>
 <p>Le code de Vernam est à confidentialité parfaite mais il y a des conditions d'utilisation très stricte pour que ce soit vrai. Nous allons montrer ici que si on ne les respecte pas, les conséquences peuvent être désastreuses.</p>
 <h3>xor-trick</h3>
@@ -322,8 +319,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://florian.github.io/xor-trick/" class="externe">https://florian.github.io/xor-trick/</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Ne répétez pas la clé</h3>
 <p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
 <pre><code>  Je suis très bien protégé
@@ -355,8 +352,8 @@ $$
 <div class="pl-8 mr-8">
 <p>C'est arrivé en vrai.
 <a href="https://fr.wikipedia.org/wiki/Projet_Venona" class="externe">Projet Venona</a></p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="Vernam-intégrité"></span>Intégrité</h3>
 <p>Si le message est inviolable, il n'est pas infalsifiable.</p>
 <pre><code>  Je donne 12 euros à François

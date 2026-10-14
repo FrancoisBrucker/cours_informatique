@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données/">Structures de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données/structures/">Structures de données</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -101,17 +101,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>structure de données</em></strong> est composée :</p>
 <ul>
 <li>d'<strong><em>attributs</em></strong> qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données). On accède au attributs et aux méthodes d'une structure avec la notation pointée.</li>
 <li>de <strong><em>méthodes</em></strong> qui sont des fonctions permettant d’interagir avec une donnée de cette structure.</li>
 </ul>
 <p>Une structure de donnée définit un nouveau type qui peut être utilisé ensuite comme un type de base.</p>
-</div></div>
-
+</div>
+</div>
 <p>Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :</p>
 <p>Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure et de chaque méthode de celle-ci.</p>
 <h2>Attributs</h2>
@@ -120,9 +119,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une structure de donnée est définie par ses <strong><em>attributs</em></strong> qui sont des variables. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Nom_structure</span><span class="token punctuation">:</span>
     v1<span class="token punctuation">:</span> type1
@@ -135,8 +133,8 @@ x <span class="token operator">←</span> Nom_structure<span class="token punctu
 <p>On accède à un attribut via la <strong><em>notation pointée</em></strong> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">.</span>v1 <span class="token operator">←</span> o'</code></pre>
 <p>En notation pointée <code class="language-">a.b</code> signifie que <code class="language-">b</code> est un attribut de la structure <code class="language-">a</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple si on veut définir une structure pouvant simuler des points de $\mathbb{R}^2$, on pourrait écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
     x<span class="token punctuation">:</span> <span class="token builtin">réel</span>
@@ -158,13 +156,12 @@ x <span class="token operator">←</span> Point<span class="token punctuation">{
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>Créer</em></strong> un objet d'une structure revient à créer ses attributs (des variables) <strong>et</strong> y affecter des objets.</p>
 <p>La taille en mémoire d'un objet est proportionnelle à la taille de ses attributs.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour que ce processus ne soit pas lourd à écrire on s'autorise les abus de notations suivant</p>
 <h3>Initialisation par défaut</h3>
 <p>Pour être sur que les paramètres sont initialisés par défaut, on utilise <em>l'abus</em> suivant :</p>
@@ -184,25 +181,24 @@ p <span class="token operator">←</span> Point<span class="token punctuation">{
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Processus de construction d'une structure de donnée :</p>
 <ol>
 <li>les différents attributs sont crées sous la forme de variables</li>
 <li>les initiations explicites des attributs sont effectuées</li>
 <li>les initiations par défaut des attributs <strong>sans initialisation explicite</strong> sont effectuées</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Au terme de ce processus tous les attributs sont initialisés.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le processus précédent nous permet d'écrire le pseudocode suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
     x<span class="token punctuation">:</span> <span class="token builtin">réel</span>
@@ -221,15 +217,14 @@ p <span class="token operator">←</span> Point<span class="token punctuation">{
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>méthode</em></strong> est une fonction spéciale de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">méthode <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">:</span> Struct<span class="token punctuation">)</span> nom_méthode<span class="token punctuation">(</span>p1<span class="token punctuation">:</span> type1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">:</span> typen<span class="token punctuation">)</span> <span class="token operator">→</span> type_sortie</code></pre>
 <p>Une méthode est associée à la structure (<code class="language-">Struct</code> dans notre exemple) du type du paramètre définit à gauche de son nom (<code class="language-">self</code> dans notre exemple). Son utilisation se fait via la notation pointée. Si <code class="language-">s</code> est un objet de la structure de donnée <code class="language-">Struct</code>, on pourra écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">s<span class="token punctuation">.</span>nom_méthode<span class="token punctuation">(</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">)</span></code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Transformons la fonction <code class="language-">additionne_point</code> précédente en méthode  de <code class="language-">Point</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    x<span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span></span>
@@ -253,17 +248,16 @@ p1<span class="token punctuation">.</span>addition<span class="token punctuation
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour chaque type de donnée (base ou structure) ses <strong><em>complexités</em></strong> sont  :</p>
 <ul>
 <li><strong><em>complexité de création</em></strong> d'un objet de ce type</li>
 <li><strong><em>complexité de suppression</em></strong> d'un objet de ce type</li>
 <li><strong><em>complexité d'opération</em></strong> qui regroupe la complexité de chaque opération ou méthode lié à ce type</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes.</p>
 <p>C'est d'autant plus crucial en code où l'on ne connaît pas le code des différentes méthodes que l'on utilise. Ne vous laissez pas méprendre : ce n'est pas parce qu'une instruction fait 1 seule ligne que sa complexité est en $\mathcal{O}(1)$. Par exemple en python la complexité de la méthode <code class="language-">index</code> des listes (comme une <code class="language-">l.index(&quot;?&quot;)</code>) ou encore  la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
@@ -275,8 +269,8 @@ p1<span class="token punctuation">.</span>addition<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque vous utilisez des fonctions et des méthodes en python, <strong>il faut toujours vérifier la complexité de celles-ci</strong>. Ce n'est pas toujours $\mathcal{O}(1)$.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Types spécifiques</h2>
 <p>Il peut être utile de définir des types génériques ou spécifiques pour nos structures.</p>
 <h3>Génériques</h3>
@@ -287,8 +281,8 @@ p1<span class="token punctuation">.</span>addition<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9" class="externe">type générique</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Pour être explicite, On signifie la généricité entre &quot;&lt;&gt;&quot; dans la définition de la structure, par exemple dans l'exemple suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Marque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     valeur<span class="token punctuation">:</span> T

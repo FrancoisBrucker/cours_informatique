@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-insertion/">Algorithme du tri par insertion</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -127,12 +127,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La technique <a href="https://en.wikipedia.org/wiki/Sentinel_value" class="externe">des sentinelles</a> est très pratique, cela vaut le coup de la connaître.</p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="fonctionnement-insertion"></span> Fonctionnement</h2>
 <p>Tout comme pour l'algorithme de tri par sélection :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -146,8 +145,8 @@
 <li>un petit tableau trié : <code class="language-">[1, 2, 3]</code></li>
 <li>un petit tableau non trié où le plus petit est en dernière place : <code class="language-">[3, 2, 1]</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2><span id="preuve-insertion"></span> Preuve</h2>
 <p>Le principe de programmation du tri par insertion est correct puisque <code class="language-">est_trie</code> est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.</p>
 <p>On a ici deux boucles imbriquée (boucle principale et intérieure), il nous faut donc a priori deux invariants de boucles, le second (du <code class="language-">tant que</code>) nous servant à prouver le premier (du <code class="language-">pour chaque</code>)</p>
@@ -219,8 +218,8 @@ $$
 <li>la <strong>complexité min</strong> est atteinte lorsque le tableau est déjà trié et vaut $\mathcal{O}(n)$</li>
 <li>la <strong>complexité (max)</strong> est atteinte lorsque le tableau est trié par ordre décroissant et vaut $\mathcal{O}(n^2)$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données <em>standard</em>.
 Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle de données : prenons le équiprobable.</p>
 <p>Cela signifie que pour chaque itération $i$ :</p>
@@ -240,8 +239,8 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le nombre moyen d'itérations de $K_i$ est égal à $\widehat{K_i} = \frac{i}{2}$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -308,19 +307,18 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La <strong>complexité en moyenne</strong> de l'algorithme <code class="language-">insertion</code> est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés). Cependant, <strong>si l'on change le modèle de données</strong> et que l'on considère des tableaux <em>presque triées</em>, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On utilise le tri par insertion lorsque nos données seront presque toujours soit déjà triées soit très peu en désordre.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce calcul de complexité est à ramené à la proposition suivante, qui va se révéler très utile :</p>
 <p><span id="modèle-aléatoire-50"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -331,8 +329,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $T$ un tableau suivant <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire">le modèle aléatoire</a>, il y a en moyenne 50% d'éléments de $T[1:]$ qui sont strictement plus grand que $T[0]$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">

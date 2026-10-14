@@ -100,8 +100,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/structure/">Structure d&#39;un graphe</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -120,39 +120,37 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>multi-graphe</em></strong> est un couple $G = (V, E)$ où :</p>
 <ul>
 <li>$V$ est un ensemble fini de <strong><em>sommets</em></strong> (<strong><em>vertices</em></strong>)</li>
 <li>$E$ est une liste finie de d'éléments de $V \times V$ appelés <strong><em>arcs</em></strong> (<strong><em>edges</em></strong>)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que la définition précédente s'étant sans problème aux ensemble infinis dénombrables.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois les notations suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Si $G$ est un multi-graphe, on note :</p>
 <ul>
 <li>$V(G)$ et $v(G)$ pour noter l'ensemble des sommets et leur nombre,</li>
 <li>$E(G)$ et $e(G)$ pour noter l'ensemble des arcs et leur nombre.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Exemple</h2>
 <p>Le multi-graphe $G = (V, E)$ avec :</p>
 <ul>
@@ -171,8 +169,8 @@
 <li>plusieurs fois le même arc : l'arc $(1, 2)$</li>
 <li>des <em>boucles</em> : l'arc $(2, 2)$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Utilité</h2>
 <p>Les multi-graphes sont des outils puissants de modélisation permettant de résoudre nombre de problèmes d'optimisation.</p>
 <h3>Résolution de problème</h3>
@@ -199,12 +197,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Un problème pouvant se décrire localement mais dont la solution est globale peut <strong>souvent</strong> se modéliser puis se résoudre à l'aide de graphes.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Modélisation</h3>
 <p>Ils permettent également de comprendre le réel en utilisant des classes particulières de multi-graphes. Par exemple :</p>
 <ul>
@@ -219,17 +216,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un multi-graphe sera dit :</p>
 <ul>
 <li><strong><em>sans boucles</em></strong> si es arcs commencent et finissent toujours sur nœuds différents.</li>
 <li><strong><em>sans arcs multiples</em></strong> si une arête ne peut arriver qu'une seule fois (les arêtes sont un sous-ensemble de $V \times V$ : c'est une <strong>relation</strong>).</li>
 <li><strong><em>non orienté</em></strong> si le sens d'une arête importe peu (une arête est alors un sous-ensemble à 2 éléments).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ainsi, un <strong><em>multi-graphe non orienté sans boucle</em></strong> est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.</p>
 <p>Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle <strong><em>graphes</em></strong> et on peut les définir comme suit :</p>
 <p><span id="definition-graphe"></span></p>
@@ -237,44 +233,41 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong>graphe</strong> est un couple $G = (V, E)$ où :</p>
 <ul>
 <li>$V$ est un ensemble fini. Ses éléments sont appelés <strong><em>sommets</em></strong>.</li>
 <li>$E$ est un sous-ensemble de $\{ \{x, y\} \mid x \neq y \in V \}$. Ses éléments sont appelés <strong><em>arêtes</em></strong>.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>De cette définition minimale on pourra alors définir d'autres cas, comme le <strong><em>graphe orienté</em></strong> :</p>
 <p><span id="definition-graphe-orienté"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>graphe orienté</em></strong> est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :</p>
 <ul>
 <li>$V$ est un ensemble fini</li>
 <li>$E$ est un sous-ensemble de $\{ (x, y) \mid x \neq y \in V \}$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, plus rarement, vous pourrez rencontrer des <strong>graphes mixtes</strong> qui permettent de rendre compte de situations réelles comme lorsque l'on modélise des réseaux routiers où il existe à la fois des routes à doubles sens et à sens unique et où l'on ne veut parcourir une route qu'une seule fois (pas une fois dans un sens et une fois dans l'autre pour les routes à double sens) :</p>
 <p><span id="definition-graphe-mixte"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong>graphe mixte</strong> est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un graphe non orienté et $G_2=(V, A)$ soit un graphe orienté.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ou toutes les généralisations de ceux-ci comme :</p>
 <ul>
 <li>le <strong><em>graphe avec arêtes multiples</em></strong></li>
@@ -288,12 +281,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Par abus de langage on écrira $xy$ pour designer une arête (<em>resp.</em> arc) plutôt que $\{x, y\}$ (<em>resp.</em> $(x, y)$).</p>
-</div></div>
-
+</div>
+</div>
 <h3>Parties de graphes</h3>
 <p>On a parfois envie de découper un graphe pour en étudier une partie (s'il est trop gros ou que certains sommet et/ou arêtes ne nous intéresse pas) ou au contraire de rabouter plusieurs graphes entres eux pour en former un plus gros. Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :</p>
 <div id="definition-sous-graphe"></div>
@@ -301,28 +293,26 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$, alors $\left.G\right|_{V'} = (V', E')$ est un <strong><em>sous-graphe</em></strong> de $G$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Un sous-graphe admet deux cas particuliers :</p>
 <div id="definition-graphe-partiel"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté, $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$.</p>
 <ul>
 <li>$G'=(V, E')$ est appelé <strong><em>graphe partiel</em></strong> ou encore un <strong><em>sous-graphe couvrant</em></strong> de $G$</li>
 <li>$G' = (V' , E' \cap V' \times V')$ est dit être un <strong><em>sous-graphe induit</em></strong> de $G$. On dit que $G'$ est <strong><em>la restriction</em></strong> de $G$ à $V'$ et est noté $G\vert_{V'}$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Un cas d'intérêt particulier de sous-graphes induits pour les graphes sont les cliques et les stables :</p>
 <div id="définition-clique"></div>
 <div id="définition-stable"></div>
@@ -330,16 +320,15 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un graphe. L'ensemble $V' \subseteq V$ est dit être :</p>
 <ul>
 <li>une <strong><em>clique</em></strong> de $G$ si son sous-graphe induit par $V'$ est complet,</li>
 <li>un <strong><em>stable</em></strong> de $G$ si son sous-graphe induit par $V'$ est discret.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple pour le graphe $G$ suivant :</p>
 <p><img src="losange.png" alt="losange"></p>
 <ul>
@@ -353,56 +342,52 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour un graphe (potentiellement orienté) $G = (V, E)$ on appellera :</p>
 <ul>
 <li><strong><em>ordre</em></strong> le nombre de sommets d'un graphe et on le note $n$ par défaut</li>
 <li><strong><em>taille</em></strong> le nombre d'arêtes d'un graphe et on le note $m$ par défaut</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>A ordre fixé, les graphes de taille maximum son dit <strong><em>complet</em></strong> :</p>
 <p><span id="definition-graphe-complet"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un graphe est <strong><em>complet</em></strong> s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Réciproquement, un graphe sans arête est dit <strong><em>discret</em></strong> :</p>
 <p><span id="definition-graphe-discret"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un graphe est <strong><em>discret</em></strong> s'il ne possède aucune arête.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un <strong><em>graphe orienté complet</em></strong> n'existe pas. On préfère parler de <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournoi</a> :</p>
 <p><span id="definition-tournoi"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>tournoi</em></strong> est un graphe orienté $G=(V, E)$ tel que :</p>
 <ul>
 <li>si $xy \in E$ alors $yx \notin E$</li>
 <li>pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Arcs</h3>
 <p>Un <strong><em>arc</em></strong> $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :</p>
 <p><img src="arc.png" alt="arc"></p>
@@ -411,9 +396,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>$x$ est l'<strong><em>origine</em></strong> de l'arc,</li>
 <li>$y$ est la <strong><em>destination</em></strong> de l'arc.</li>
@@ -426,22 +410,21 @@
 <p>$$N^-(y) = \{ x \mid xy \in E\}$$</p>
 <p>Son cardinal est appelé <strong><em>degré entrant</em></strong> de $y$ et on le note :</p>
 <p>$$\delta^-(y) = \vert N^-(y) \vert$$</p>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque l'on a besoin d'inclure l'élément dans le voisinage, on considère les voisinages fermés :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appelle <strong><em>voisinage fermé de $x$</em></strong> l'ensemble des arcs d'origine $x$ plus $x$ et on le note :</p>
 <p>$$N^+[x] =N^+(x) \cup \{ x \}$$</p>
 <p>et</p>
 <p>$$N^-[x] =N^-(x) \cup \{ x \}$$</p>
-</div></div>
-
+</div>
+</div>
 <h3>Arêtes</h3>
 <p>Une <strong><em>arête</em></strong> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
 <p><img src="arete.png" alt="arête"></p>
@@ -450,23 +433,22 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Le <strong><em>voisinage</em></strong> d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. On les notes :</p>
 <p>$$N(x) = \{ y \mid  xy \in E\}$$</p>
 <p>$$N[x] = N(x) \cup \{ x \}$$</p>
 <p>Le cardinal d'un voisinage est appelé <strong><em>degré</em></strong>. On le note :</p>
 <p>$$\delta(x) = \vert N(x) \vert$$</p>
-</div></div>
-
+</div>
+</div>
 <p>En remarquant que $0 \leq \delta(x) &lt; n$ pour un sommet $x$ d'un graphe à $n$ sommets, prouvez la propriété suivante :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que dans tout graphe (à au moins 2 sommets) il existe au moins deux sommets différents ayant même degré.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -495,28 +477,26 @@ Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soi
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Si $G=(V, E)$  est un graphe, on note :</p>
 <ul>
 <li>$\Delta(G) = \max(\{\delta(x) \vert x \in V\})$</li>
 <li>$\delta(G) = \min(\{\delta(x) \vert x \in V\})$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Si tous les sommets ont mêmes degré, on les appelle régulier :</p>
 <p><span id="graphe-régulier"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un graphe $G$ est dit <strong>k-<em>régulier</em></strong> (ou parfois juste <strong><em>régulier</em></strong>) si $\Delta(G) = \delta(G) = k$.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Voisinages et arêtes</h2>
 <p>Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.</p>
 <p>Avant d'énoncer la propriété, commençons par le visualiser. Considérons le graphe orienté avec boucles suivant :</p>
@@ -530,8 +510,8 @@ Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soi
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Calculez $\sum_x \delta^+(x)$ ? et $\sum_x \delta^-(x)$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -568,8 +548,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Calculez $\sum_x \delta(x)$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -604,8 +584,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <p>$$ \sum_x \delta^+(x) = \sum_x \delta^-(x) = \vert E \vert$$</p>
 <p>Pour un graphe $G=(V, E)$, on a :</p>
 <p>$$ \sum_x \delta(x) = 2\vert E \vert$$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -634,21 +614,20 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Deux graphes $G = (V, E)$ et $G' = (V', E')$ sont isomorphes s'il existe une bijection $f: V\to V'$ telle que $xy \in E$ si et seulement si $f(x)f(y) \in E'$.</p>
 <p>La fonction $f$ est appelé <strong><em>isomorphisme</em></strong> entre $G$ et $G'$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>La notion d'isomorphisme se généralise directement à des graphes orienté ou à des multigraphes.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cela revient à regarder un graphe juste structurellement, sans noms de sommets :</p>
 <p><img src="iso-3-sans-sommets.png" alt="iso sans noms"></p>
 <p>La relation d'isomorphisme est une relation d'équivalence entre les graphes : si $G$ est isomorphe à $G'$ qui est isomorphe à $G''$ alors $G$ est isomorphe à $G''$. Deux graphes isomorphes auront les mêmes propriétés (puisqu'ils sont structurellement identiques !) :</p>
@@ -670,8 +649,8 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que les deux graphes précédents sont isomorphes</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -700,12 +679,11 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un isomorphisme d'un graphe dans lui-même est appelé <strong><em>automorphisme</em></strong>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Attention, ne confonde pas isomorphe, isomorphisme et automorphisme :</p>
 <p><img src="iso-auto.png" alt="iso et automorphisme"></p>
 <p>Les 3 graphes $G_1$, $G_2$ et $G_3$ sont isomorphes (nous n'avons que renuméroté les sommets entre eux), mais seuls $G_1$ et $G_3$ sont automorphes par l'automorphisme qui échange $A$ et $C$. En effet, le graphe $G_2$ n'est pas le graphe $G_1$ puisque le degré de son sommet $B$ vaut 2 : leurs ensembles d'arêtes sont différents.</p>
@@ -713,15 +691,14 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>un isomorphisme change le nom des sommets (si les sommets sont les même être les graphes de de départ et d'arrivée, les arêtes peuvent être différentes),</li>
 <li>un automorphisme cherche les symétries dans un graphe (le graphe d'arrivée est <strong>le même</strong> que le graphe de départ (sommets <strong>et</strong> arêtes)).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

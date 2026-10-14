@@ -100,8 +100,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/fichiers-dossiers/">Naviguer dans un système de fichiers</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -113,17 +113,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Votre ordinateur est composé de <strong><em>fichiers</em></strong> et de <strong><em>dossiers</em></strong> (aussi appelé <strong><em>répertoires</em></strong>) :</p>
 <ul>
 <li>un <strong><em>dossier</em></strong> est un conteneur qui peut contenir soit d'autres dossiers, soit des fichiers</li>
 <li>un <strong><em>fichier</em></strong> est une donnée que l'on peut lire ou écrire. C'est une image, du texte, ou encore un programme.</li>
 </ul>
 <p>Il existe un dossier spécial, appelé <strong><em>racine</em></strong> qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette organisation est appelée <a href="https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)">arborescence de fichiers</a> et ressemble à <a href="https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9" class="externe">un arbre enraciné</a> où les fichiers sont des feuilles, comme dans la figure ci-dessous :</p>
 <p><img src="arborescence.png" alt="arbre des fichiers"></p>
 <h2><span id="explorateur"></span>Explorateur de fichiers</h2>
@@ -274,8 +273,8 @@
 <div class="pl-8 mr-8">
 <p>Le nom des dossiers sur le disque dur et celui qui apparaît dans l'explorateur de fichier peuvent être différents selon la langue du système d'exploitation.
 Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code class="fichier">Desktop</code> sur le disque dur.</p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="absolu-relatif"></span> Chemin</h2>
 <p>Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossiers parcourus par un <code class="fichier">/</code>. Dans l'image de la navigation vers Ada Lovelace, son chemin est :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">/Users/fbrucker/Desktop/ada_lovelace.png</code></pre>
@@ -284,32 +283,30 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Le chemin du dossier racine est <code class="fichier">/</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Un chemin qui commence par <code class="fichier">/</code> est dit <strong><em>chemin absolu</em></strong>, puisqu'il part de la racine. On a aussi souvent coutume de parler de <strong><em>chemin relatif</em></strong> lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier <code class="fichier">/Users/fbrucker</code>, le chemin relatif vers l'image d'Ada est : <code class="fichier">Desktop/ada_lovelace.png</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Un chemin absolu commence <strong>toujours</strong> par <code class="fichier">/</code>. Un chemin qui ne commence <strong>pas</strong> par <code class="fichier">/</code> est <strong>toujours</strong> un chemin relatif.</p>
 <p>Le chemin absolu commence à la racine du disque dur, le chemin relatif commence au dossier <strong>courant</strong> (qui dépend du contexte)</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Sous Windows, on utilise souvent <code class="fichier">\</code> à la place de <code class="fichier">/</code>.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Plusieurs racines</h3>
 <p>On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une <em>racine des racines</em>, qui contient le départ vers les racines particulières des différents périphériques de stockages de l'ordinateur comme les disques durs, clés usb, etc.</p>
 <p>C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaque disque dur est <a href="https://fr.wikipedia.org/wiki/Point_de_montage" class="externe">monté</a>.</p>
@@ -319,8 +316,8 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>Souvent sous windows ces racines sont explicites, c'est <code class="fichier">c:</code> par exemple pour le disque dur principal.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="block-.-.."></span> Dossiers <code class="fichier">.</code> et <code class="fichier">..</code></h3>
 <p>Les dossiers <code class="fichier">.</code> et <code class="fichier">..</code> sont des dossiers spéciaux qui signifient :</p>
 <ul>
@@ -340,19 +337,18 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>On fait souvent commencer un chemin relatif par <code class="fichier">.</code> pour bien montrer sa différence par rapport à un chemin absolu qui commence par <code class="fichier">/</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'arborescence à partir d'un dossier. Par exemple dans un projet, si l'on n'utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voire le donner à une autre personne) sans casser les liens.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Dans un projet, utilisez <strong>toujours</strong> des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Copier le chemin absolu</h2>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -428,8 +424,8 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est recommandé que ce dossier ne comporte ni espace ni accent. Cela évitera les problèmes avec l'utilisation de programmes anciens ou faisant ces présuppositions (il y en a plus qu'on ne croit).</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce dosser est représenté par le symbole <code>~</code>. Ainsi, lorsque vous verrez lun chemin de type : <code class="fichier">~/Documents/mon_cv.pdf</code> cela signifiera que le fichier <code class="fichier">mon_cv.pdf</code> est dans le dossier <code class="fichier">Document</code> de la maison.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -437,8 +433,8 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme le chemin relatif, indiquer un chemin avec <code>~</code> permet d'avoir un chemin fonctionnel pour tous les utilisateurs et potentiellement tous les ordinateurs puisque le nom de l'utilisateur n'est pas indiqué.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Fichiers</h2>
 <p>Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les éléments utiles de l'arborescences et peuvent être des applications, des fichiers de données, des programmes python, etc.</p>
 <h3>Extension de fichier</h3>
@@ -449,12 +445,11 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Fichiers exécutables</h3>
 <p>Les <strong><em>fichiers exécutables</em></strong> sont des programmes, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un Linux, même s'ils ont le même processeur.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -463,8 +458,8 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>Un fichier python n'est <strong>pas</strong> un fichier exécutable. C'est un fichier texte qui est est lu — on dit <strong>interprété</strong> — par l'<em>interpréteur python</em> qui lui est un fichier exécutable.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="fichier-cache"></span>Fichiers cachés</h3>
 <p>Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent <a href="https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9" class="externe">cachés</a> et nécessitent d'être administrateur pour y accéder.</p>
 <p>Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un <code class="fichier">.</code> et dans le monde windows, ils sont déterminés par une propriété :</p>
@@ -518,12 +513,12 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d'appuyer sur la touche <code>fn</code> en plus.</p>
-</div></div>
+</div>
 </div>
 <p>Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : <code>menu Aller &gt; Aller au dossier...</code></p>
-</details></div>
-     
-
+</div>
+</details>     
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -565,8 +560,8 @@ Ainsi, le nom <em>Bureau</em> dans l'explorateur correspondra au dossier <code c
 <li><a href="https://fr.wikipedia.org/wiki/Raccourci_(informatique)">Les raccourcis windows</a> ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <a href="https://www.malekal.com/jonctions-windows/" class="externe">https://www.malekal.com/jonctions-windows/</a></li>
 <li><a href="https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac" class="externe">Les alias de Macos</a> ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

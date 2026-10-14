@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/">Couplages</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/couplage-max-bi-parti/">Couplages de poids maximum bi-parti</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -107,8 +107,8 @@
 </div><div class="pl-8 mr-8">
 <p>Soit $K_{n,n}=(V, E)$ le graphe biparti complet valué par une fonction de préférence $p:E\to \mathbb{R}^+$.</p>
 <p>On cherche un couplage parfait $M$ tel que <strong><em>le poids du couplage</em></strong> $p(M) = \sum_{xy\in M}p(xy)$ soit maximum.</p>
-</div></div>
-
+</div>
+</div>
 <p>Notez que l'on sait déjà résoudre ce problème par une modélisation part flot et en cherchant un flot max de coût maximum. Nous allons voir ici une autre méthode appelé primal/dual qui va se généraliser aux graphes quelconques.</p>
 <h2>Dualité couverture/couplage</h2>
 <p>On va généraliser ici <a href="../couplage-bi-parti/#K%C3%B6nig-Egerv%C3%A1ry">le théorème de König-Egerváry</a> pour montrer que couverture de poids minimal va être égal à couplage de poids maximal. Cette dualité rappelle la dualité coupe minimale et flot maximum.</p>
@@ -116,13 +116,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>couverture valuée</em></strong> d'un graphe $G=(V, E)$ valué par $p$ est une fonction $c:V\to \mathbb{R}^+$ telle que : $c(x) + c(y)\geq p(xy)$ pour tout $xy \in E$.</p>
 <p>Le <strong><em>coût</em></strong> d'une couverture valué est $c(V) = \sum_{x\in V}c(x)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -136,8 +135,8 @@ $$
 c(V) \geq p(M)
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -216,8 +215,8 @@ $$
 <li><a href="https://www.youtube.com/watch?v=fMAmtE0UyzI" class="externe">Méthode hongroise</a></li>
 <li><a href="https://fr.wikipedia.org/wiki/Algorithme_hongrois" class="externe">Algorithme hongrois</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La méthode hongroise est l'application de la méthode du primal dual en utilisant des matrices de coûts, sans aucune considération de graphes. Elle se décrit plus facilement lorsque l'on cherche à minimiser le coût plutôt que de maximiser la satisfaction et c'est pourquoi nous la décrirons ainsi :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -227,8 +226,8 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit une matrice carrée $C = (c_{i, j})_{1\leq i \leq n, 1\leq i \leq m}$ de coût. On cherche à associer chaque ligne (une heroine de roman, un ouvrier, etc) à une colonne (un héros de roman, une tâche, etc) de telle sorte que la somme des coûts choisis soit minimal.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème s'écrit facilement comme la recherche d'un couplage parfait dans $K_{n, n}$ à coût minimal.</p>
 <p>Si l'on cherche à maximiser des préférences rangées dans une matrice $n \times n$ $P = (p_{i, j})$, il suffit de considérer la matrice  $n \times n$ $C = (K - p_{i, j})$ avec $K = \sum_{u, v}p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $n\cdot K-\sum_{i, j \in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.</p>
 <h3>Algorithme de la méthode hongroise</h3>
@@ -238,8 +237,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On reprend ici <a href="https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf" class="externe">l'algorithme décrit ici</a>.</p>
-</div></div>
-
+</div>
+</div>
 <div>
 $$
 \begin{array}{|c|c|c|c|c|}
@@ -268,8 +267,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On est maintenant assuré d'avoir au moins un 0 par ligne et par colonne.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette étape se réalise en $\mathcal{O}(n^2)$ opérations.</p>
 <p>Après l'étape sur les lignes :</p>
 <div>
@@ -322,8 +321,8 @@ $$
 <li>on ne peut encadrer qu'au maximum un 0 par ligne et par colonne,.</li>
 <li>Ssi on a encadré $n$ zéros, on a terminé et on a un couplage maximum de coût minimum en liant ligne et colonne de chaque 0 encadré.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Cette étape se réalise facilement en $\mathcal{O}(n^2)$ opérations en conservant deux tableaux de booléens $T_L$ et $T_C$ de taille $n+1$ tel que $T_L[i] = \text{Vrai}$ (<em>resp.</em> $T_C[i] = \text{Vrai}$) si et seulement si on a encadré un 0 à cette ligne (<em>resp.</em> cette colonne).</p>
 <div>
 $$
@@ -491,8 +490,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>À la fin de cette étape, la nouvelle matrice on a strictement plus de 0 que la précédente.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette étape est aussi clairement en $\mathcal{O}(n^2)$ opérations.</p>
 <div>
 $$

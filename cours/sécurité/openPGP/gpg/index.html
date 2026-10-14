@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/">OpenPGP</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/gpg/">OpenPGP</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -116,8 +116,8 @@
 <li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/" class="externe">tuto gpg</a></li>
 <li><a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html" class="externe">autre tuto</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le logiciel gnuPG permet de sécuriser ses fichiers et ses communications.rendre plus pratique les diverses opérations faites précédemment. Il permet également un partage de clés publique via un réseau de confiance. Une clé publique va être signée par d'autres personnes, ce qui permet de la <em>valider</em> : si une clé est signée par une personne que vous connaissez, vous aurez confiance en sa véracité.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -125,8 +125,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne signez les clés publique que des personnes que vous connaissez.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Installation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -134,8 +134,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.gnupg.org/" class="externe">https://www.gnupg.org/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On utilise la version 2.4 :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg <span class="token parameter variable">--version</span>
 gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8
@@ -177,8 +177,8 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html" class="externe">Fichiers de configurations</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce fichier va contenir et la configuration et les clés.</p>
 <ul>
 <li><code class="fichier">~/.gnupg</code> sous linux/macos</li>
@@ -191,8 +191,8 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=4z1LSbFHtQA" class="externe">Chiffrer/déchiffrer des fichiers avec GPG</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD comme chiffrement/déchiffrement  avec passphrase.
 tui puis en ligne de commande.</p>
@@ -204,8 +204,8 @@ tui puis en ligne de commande.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key" class="externe">https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key</a></p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --full-generate-key</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -305,8 +305,8 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 <li>Si vous la perdez les mots de  passe cela ne sera pas préjudiciable. Elle s'arrêtera toute seule d'être reconnue comme valide.</li>
 </ol>
 <p>Vous pourrez de toute façon modifier la date d'expiration si vous voulez conserver la clé</p>
-</div></div>
-
+</div>
+</div>
 <p>Les clés sont stockées dans le dossier de configuration, qui contient de nombreux fichiers/dossiers :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">
 ❯ <span class="token function">ls</span> <span class="token parameter variable">-la</span>
@@ -361,8 +361,8 @@ sn+OWXHkAP9t7qt97FO6kuSHrY8Hz+drPWmtHJjzFFK7SM9XMlSxuQEAmLMFLW/H
 <p><strong>Bon usage</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Placez le fichier de révocation de votre clé dans un endroit séparé. Si vous vous faites voler votre clé, vous pourrez ainsi la révoquer et éviter que des inconnus se fassent passer pour vous.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Lister ses clés</h3>
 <p>Vous pouvez voir vos clés :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --list-keys
@@ -388,8 +388,8 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 </svg>
 <div class="pl-8 mr-8">
 <p>On verra plus tard l'utilisation des sous-clés. Pour l'instant, prenons ça comme une unique clé séparé en responsabilités : une pour le chiffrement, l'autre pour l'authentification.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous pouvez aussi voir les clés privées en votre possession :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">
 ❯ gpg --list-secret-keys
@@ -466,8 +466,8 @@ mDMEaPUWEhYJKwYBBAHaRw8BAQdANlrHTZ04G9fbWXz7E1iWSN2VBOBN9VLR16cP6tGnD1u0NEZyYW7D
 </svg>
 <div class="pl-8 mr-8">
 <p>Envoyez votre clé publique à votre correspondant soit sous la forme d'un fichier binaire, soit le texte avec l'option <code>--armor</code>, et récupérez la sienne.</p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--import</span> public-key.pgp</code></pre>
 <p>Vous pouvez ensuite voir que la clé a bien été ajoutée à votre trousseau de clés :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --list-keys        </code></pre>
@@ -517,8 +517,8 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84" class="externe">https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Vous pouvez, si vous le désirez, signer sa clé avec la commande de gestion des clés <code>sign</code> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> sign
 </code></pre>
@@ -659,8 +659,8 @@ Do you really want to <span class="token builtin class-name">set</span> this key
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=eLKOIjNFwVs" class="externe">comfy guide to gpg</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Chiffrement/déchiffrement</h3>
 <p>Chiffrement. <code>&lt;recipient mail&gt;</code> doit être le mail associé à la clé que vous avez ajouté. :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient mail<span class="token operator">></span> msg.txt</code></pre>
@@ -677,8 +677,8 @@ Do you really want to <span class="token builtin class-name">set</span> this key
 </svg>
 <div class="pl-8 mr-8">
 <p>Envoyez un message chiffré à votre correspondant.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Signature</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--clearsign</span>
 -----BEGIN PGP SIGNED MESSAGE-----
@@ -725,8 +725,8 @@ zlJYun0nDYelMc26nXClw+ZDn8LpjQg<span class="token operator">=</span>
 <li>Envoyez un message en clair avec votre signature à votre correspondant</li>
 <li>envoyez un fichier pdf d'un de vos rapport avec un second fichier contenant le rapport signé de votre part</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <h3>Vérification</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--sign</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--verify</span>
 gpg: Signature made Sun Oct <span class="token number">19</span> <span class="token number">20</span>:55:32 <span class="token number">2025</span> CEST
@@ -739,8 +739,8 @@ gpg: Good signature from <span class="token string">"François Brucker &lt;franc
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez le message que vous a envoyé votre correspondant.</p>
-</div></div>
-
+</div>
+</div>
 <h2>utilitaire</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -748,8 +748,8 @@ gpg: Good signature from <span class="token string">"François Brucker &lt;franc
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/orhun/gpg-tui" class="externe">GPG TUI</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Gestion des clés</h2>
 <h3>Modifier sa clé</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --edit-key <span class="token operator">&lt;</span>key id<span class="token operator">></span></code></pre>
@@ -820,8 +820,8 @@ gpg<span class="token operator">></span> save
 </svg>
 <div class="pl-8 mr-8">
 <p>N'oubliez pas de sauver vos modifications !</p>
-</div></div>
-
+</div>
+</div>
 <h3>Préférences de clés</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --edit-key <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
 <p>L'identifiant de la clé pouvant être l'adresse mail associée ou son numéro.</p>
@@ -846,8 +846,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <li><a href="https://wiki.debian.org/fr/Subkeys" class="externe">clés et sous clés GPG</a></li>
 <li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/" class="externe">sous clés GPG</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html" class="externe">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
 </blockquote>
@@ -859,8 +859,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <div class="pl-8 mr-8">
 <p><a href="https://keyserver.ubuntu.com/" class="externe">https://keyserver.ubuntu.com/</a>
 <a href="https://www.gnupg.org/gph/en/manual/x457.html" class="externe">https://www.gnupg.org/gph/en/manual/x457.html</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD Permet d'utiliser des clés stockées dans un serveur de clé
 <a href="https://www.gnupg.org/gph/en/manual.html#AEN464" class="externe">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/graphes-planaires/">Graphes planaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/graphes-planaires/coloration/">Coloration de graphes planaires</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -137,8 +137,8 @@
 <p><strong>Proposition (Kempe, 1879)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tour graphe planaire est 5-colorable.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -175,12 +175,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Étant donné une coloratiojn d'un graphe, une <strong><em>chaîne de kempe</em></strong> entre deux sommets $x$ et $y$ est un chemin entre $x$ et $y$ dont la couleur de ses sommets alterne entre celle de $x$ et celle de $y$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Trouver une chaîne de Kempe se fait linérairement, il suffit de prendre la restriction du graphe aux deux couleurs et de chercher si $x$ est dans la composante connexe de $y$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -189,8 +188,8 @@
 <div class="pl-8 mr-8">
 <p>On serait tenté d'utiliser cette même technique en changer 2 fois une couleur pour passer de 5 à 4 couleurs.</p>
 <p><a href="https://www.youtube.com/watch?v=adZZv4eEPs8" class="externe">Cela ne fonctionne pas</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Algorithme linéaire</h3>
 <p>La démonstration du théorème des 5 couleurs donne un algorithme quadratique pour 5 colorer. On procède comme dans l'algorithme des 6 couleurs et lorsque les 5 voisins d'un sommet ont des couleurs différente on utilise des chaîne de Kempe pour réduire ce nombre à 4 couleurs, ce qui laisse toujours une 5ème couleur de disponible.</p>
 <p>On peut cependant faire mieux !</p>
@@ -296,8 +295,8 @@
 <li><a href="https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf" class="externe">les 633 configurations inévitables</a></li>
 <li><a href="https://inria.hal.science/hal-04034866/document" class="externe">comment prouver la preuve avec un ordinateur</a> (c'est différent de faire un algorithme qui vérifie les cas)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le théorème des 4 couleurs est le 1er théorème assisté par ordinateur qui vérifie tous les cas pour nous (attention ce n'est pas ici la preuve qui est transformée en algorithme). La démonstration peut être vue comme un algorithme en $\mathcal{O}(n^2)$ :</p>
 <ol>
 <li>recherche de sommets de degré ≤ 4 : on peut le supprimer et récurser sur le graphe restreint</li>
@@ -327,16 +326,16 @@
 <li><strong>Entrée</strong> : un graphe planaire $G$</li>
 <li><strong>Sortie</strong> : $G$ admet-il une $3$-coloration ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce graphe est évidemment dans NP puisque c'est un cas particulier du problème $3$-colorable, à vous de montrer qu'il est NP-complet en utilisant  le gadget suivant :</p>
 <p><img src="gadget-3-col.png" alt="gadget"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que le graphe du gadget est 3 colorable en en donnant une 3-coloration.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -366,8 +365,8 @@
 <li>la couleur de $A$ est la même que la couleur de $B$,</li>
 <li>la couleur de $1$ est la même que la couleur de $2$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -394,16 +393,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire que le problème de $3$-coloration planaire est NP-complet.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>vous pourrez utiliser le graphe 3-colorable pour transformer un dessin non planaire de $G$ en un dessin planaire.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -462,8 +461,8 @@
 <li><a href="https://www.youtube.com/watch?v=5ovdoxnfFVc" class="externe">Avi Wigderson parle des zero knowledge proof</a></li>
 <li><a href="https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf" class="externe">le papier</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard" class="externe">Curry-Howard correspondance</a></p>
 </blockquote>

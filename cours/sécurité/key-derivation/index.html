@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/key-derivation/">Key derivation</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,8 +105,8 @@
 <li><a href="https://en.wikipedia.org/wiki/Key_derivation_function" class="externe">Définition</a></li>
 <li><a href="https://blog.boot.dev/cryptography/key-derivation-functions/" class="externe">introduction</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Lors d'un session de transport on a souvent besoin de nombreuses clés, puisqu'il ne faut <strong>jamais</strong> répéter les clés. La <em>Key derivation</em> est un moyen de créer des clés à partir d'un mot de passe et de sel.</p>
 <p>Son autre avantage est de permettre de créer des clé de taille donné et de permettre de rendre plus uniforme une distribution de mots de passe (par exemple les mots de passes issus d'un échange de clé par Diffie-Hellman).</p>
 <h2>Principe</h2>
@@ -125,8 +125,8 @@
 <li><a href="https://en.wikipedia.org/wiki/PBKDF2" class="externe">PBKDF2</a></li>
 <li><a href="https://www.youtube.com/watch?v=gTaOccTY9bc" class="externe">https://www.youtube.com/watch?v=gTaOccTY9bc</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Nous allons montrer préciser le principe en explicitant le protocole <code>PBKDF2</code> encore très utilisé aujourd'hui. On lui préférera tout de même <a href="https://en.wikipedia.org/wiki/Argon2" class="externe">argon2</a>, plus complexe, pour de nouvelles applications.</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ openssl kdf <span class="token parameter variable">-keylen</span> <span class="token number">32</span> <span class="token parameter variable">-kdfopt</span> digest:SHA256 <span class="token parameter variable">-kdfopt</span> pass:<span class="token string">"password"</span> <span class="token parameter variable">-kdfopt</span> salt:<span class="token string">""</span> <span class="token parameter variable">-kdfopt</span> iter:2 PBKDF2
 8B:C2:F9:16:7A:81:CD:CF:AD:12:35:CD:90:47:F1:13:62:71:C1:F9:78:FC:FC:B3:5E:22:DB:EA:FA:46:34:F6</code></pre>
@@ -153,8 +153,8 @@
 <li><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0" class="externe">Argon2 algorithm</a></li>
 <li><a href="https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/" class="externe">Argon2 vs PBKDF2</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Argon2 est le gagnant d'une compétition visant à trouver le meilleur hash de mot de passes. Le principe est le même que pour <code>PBKDF2</code> mais utilise une matrice plutôt qu'une liste. Il cherche à empêcher le compromis temps/mémoire utilisé pour trouve des hash en :</p>
 <ol>
 <li>utilisant le plus de mémoire possible : pour qu'il soit impossible de remplacer du temps par de la mémoire</li>
@@ -181,8 +181,8 @@ Verification ok
 </svg>
 <div class="pl-8 mr-8">
 <p>Attention, tous les paramètres sont importants. Trouver le même hash avec openssl et argon2 semble impossible.</p>
-</div></div>
-
+</div>
+</div>
 <ul>
 <li>renforcement de la clé primaire : hash</li>
 <li>clé primaire puis dérivation.</li>
@@ -194,8 +194,8 @@ Verification ok
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/" class="externe">Usage</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Trois usages courant :</p>
 <ul>
 <li>password hashing</li>

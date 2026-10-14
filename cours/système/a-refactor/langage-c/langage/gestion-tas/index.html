@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/gestion-tas/">Gestion du tas</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=P0NWSHbNooA&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=26" class="externe">gestion de la mémoire</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La pile c'est chouette mais son utilisation est impossible pour des données dont on ne connaît pas la taille à la compilation, de taille changeante ou encore trop grandes (la taille de la pile est limitée).</p>
 <p>Il faut pouvoir utiliser le tas et gérer soit même ses données. Le <code>C</code> propose une gestion du tas dans la libc, sous la forme de 2 fonctions définies dans <code class="fichier">stdlib.h</code> :</p>
 <ul>
@@ -156,8 +156,8 @@
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une fois la mémoire libérée prenez l'habitude de toujours repositionner le pointeur à <code class="language-">NULL</code>. Ceci évitera des bugs futurs où utilisera <code>p</code> en oubliant que la mémoire avait été désallouée.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Gestion des erreurs</h3>
 <p>L'allocation peut échouer (s'il n'y a plus de place par exemple), il faut donc toujours vérifier que tout s'est bien passé avant de continuer :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -211,8 +211,8 @@
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il est nécessaire car un programme <code>C</code> doit pouvoir tourner indéfiniment sans gaspiller de la mémoire.</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD : memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer" class="externe">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html" class="externe">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/" class="externe">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
 </blockquote>
@@ -223,8 +223,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Malloc" class="externe">gestion mémoire en C</a></p>
-</div></div>
-
+</div>
+</div>
 <ul>
 <li><code class="language-">void *calloc(size_t nmemb, size_t size)</code> : alloue <code class="language-">size * nmemb</code> bytes contiguës en mémoire (<code class="language-">nmemb</code> éléments de taille <code class="language-">size</code>) et initialise la mémoire avec des <code>0</code></li>
 <li><code class="language-">void *realloc(void *ptr, size_t size)</code> : réalloue la place mémoire commençant au pointeur <code class="language-">ptr</code> (obtenu par un <code class="language-">malloc</code> ou <code class="language-">realloc</code>) pour en changer sa taille en <code class="language-">size</code></li>
@@ -236,8 +236,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=UTii4dyhR5c&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=27" class="externe">https://www.youtube.com/watch?v=UTii4dyhR5c&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=27</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD en dessous de malloc, il y a brk. <a href="https://www.youtube.com/watch?v=XV5sRaSVtXQ" class="externe">https://www.youtube.com/watch?v=XV5sRaSVtXQ</a></p>
 <p>TBD on a vue dans la partie noyau que le tas n'est pas tout

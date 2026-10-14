@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/reconnaissance/">Reconnaissance d&#39;un tableau trié</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -109,8 +109,8 @@
             </li></ul>
       
 
-</div></div>
-
+</div>
+</div>
 
     
   
@@ -128,8 +128,8 @@
 <li><strong>Entrée</strong> : un tableau $T$ d'entiers</li>
 <li><strong>Question</strong> : $T$ est-il trié de façon croissante ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2><span id="algorithme-est-trie"></span> Algorithme</h2>
 <p>Il existe un algorithme très simple pour le résoudre :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">est_trie</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
@@ -155,8 +155,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme <code class="language-">est_trie</code> est une solution au problème <em>&quot;est trié ?&quot;</em></p>
-</div></div>
-
+</div>
+</div>
 <h3>Complexité</h3>
 <p>Ligne à ligne :</p>
 <ol>
@@ -178,8 +178,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">est_trie</code> est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.</p>
-</div></div>
-
+</div>
+</div>
 <h4>Cas les meilleur</h4>
 <p>Dans le cas le meilleur, on s'arrête dès la première itération :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -190,8 +190,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité minimale de l'algorithme <code class="language-">est_trie</code> est $\mathcal{O}(1)$ avec $n$ la taille du tableau en entrée.</p>
-</div></div>
-
+</div>
+</div>
 <h4>Complexité en moyenne</h4>
 <p>La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :</p>
 <h5>Modèle du tableau aléatoire</h5>
@@ -200,24 +200,23 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
 <ul>
 <li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation" class="externe">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
 <li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un tableau aléatoire, toutes les valeurs sont différentes.</p>
-</div></div>
-
+</div>
+</div>
 <p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -232,8 +231,8 @@ $$
 {\Pr}[T[i] = k] = \frac{1}{n}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -265,8 +264,8 @@ $$
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, dernière propriété qui va être utile dans les calculs :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -281,8 +280,8 @@ $$
 {\Pr}[T[i] > k] = \frac{n-1-k}{n}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -322,8 +321,8 @@ $$
 {\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -409,23 +408,22 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité en moyenne du problème de la reconnaissance est en temps constant.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce résultat est remarquable :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !</li>
 <li>Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.</li>
 <li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente" class="externe">une série convergente</a> est très utile pour démontrer qu'un algorithme est en temps constant.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
 <ul>
 <li>le $i+1$ ème élément n'est pas le plus grand</li>
@@ -458,8 +456,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Testez le code suivant (chez moi le max était de 4) pour voir que le nombre maximum d'itération est très inférieur à la longueur du tableau (chez moi le max était de 4).</p>
 <p>Puis essayez avec des tableaux plus contraints (comme <code class="language-">T = 5 * list(range(4))</code> par exemple) pour voir que c'est toujours vrai si le tableau possède quelques égalités.</p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> shuffle
 
 <span class="token keyword">def</span> <span class="token function">compte</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -490,8 +488,8 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du problème <em>&quot;est trié ?&quot;</em> est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-pile-file/">Structure de pile et file</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-pile-file/file/">La file</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/File_(structure_de_donn%C3%A9es)" class="externe">La file</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La <strong><em>file</em></strong> est la structure de donnée idéale pour gérer un flux de donnée dont on doit conserver l'ordre. On appelle également cette structure <strong><em>FIFO</em></strong> pour <em>first in, first out</em> : on rend toujours la donnée la plus anciennement stockée. La structure d'une file d'entiers sera alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
@@ -118,12 +118,11 @@ méthode <span class="token punctuation">(</span>f<span class="token punctuation
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une file est <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_tampon" class="externe">un <strong><em>buffer</em></strong></a> permettant de découpler l'arrivée du traitement de données temporelles.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="structure"></span>Implémentation</h3>
 <p>On va utiliser 2 indices pour parcourir le tableau de stockage des données :</p>
 <ul>
@@ -161,8 +160,8 @@ méthode <span class="token punctuation">(</span>f<span class="token punctuation
 </div><div class="pl-8 mr-8">
 <p>Les complexités de toutes les méthodes de la structure <code class="language-">File</code> sont en $\mathcal{O}(1)$.</p>
 <p>Utiliser une file peut se voire comme une opération élémentaire.</p>
-</div></div>
-
+</div>
+</div>
 <p>Prenons un exemple de file d'entiers pour comprendre comment cette implémentation fonctionne :</p>
 <p>Départ :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">          fin
@@ -192,8 +191,8 @@ données : 0123
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Prolongez l'exemple précédent en enfilant successivement 3, 4, et 5 puis en défilant tous les élément de la file. Quel est l'état des indices après ces opérations ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -296,8 +295,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf" class="externe">Taille de la file selon le problème de transfert</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Exemple : création des entiers binaires</h3>
 <p>On peut aussi utiliser la file comme outil d'énumération. Par exemple pour faire un compteur :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">compteur</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
@@ -318,8 +317,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que pour l'algorithme précédent fonctionne, il faut une file de taille au moins $\frac{n}{2}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

@@ -104,8 +104,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/6-tests-utilisateurs/">Projet numérologie : partie 5 / tests utilisateurs</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -132,8 +132,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 </svg>
 <div class="pl-8 mr-8">
 <p>La <a href="https://www.selenium.dev/documentation/" class="externe">documentation officielle</a> est très précieuse. Il y a en effet plein de possibilités.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Installation</h3>
 <p>Pour utiliser selenum il nous <a href="https://www.selenium.dev/documentation/webdriver/getting_started/" class="externe">faudra installer</a> :</p>
 <ul>
@@ -170,8 +170,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <li>tapez <a href="https://www.google.fr" class="externe">https://www.google.fr</a></li>
 <li>vérifiez que le titre de la fenêtre contient <code class="language-">&quot;Google&quot;</code></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Testez la user story <em>&quot;à la main&quot;</em> :</p>
 <ol>
 <li>dans une fenêtre normale</li>
@@ -206,8 +206,8 @@ afterEach(async () => {
 </svg>
 <div class="pl-8 mr-8">
 <p>NOtez le 10000 à la fin du test qui donne 10secondes au test pour s'exécuter. Par défaut, jest donne 5 secondes, ce qui est souvent insuffisant pour des tests selenium.</p>
-</div></div>
-
+</div>
+</div>
 <p>On exécute le fichier avec jest :</p>
 <pre><code>npm test -- --testRegex='__user-stories__/look-at-google.js'
 </code></pre>
@@ -217,8 +217,8 @@ afterEach(async () => {
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le <code>--</code> permet d'ajouter des arguments à la commande.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -227,8 +227,8 @@ afterEach(async () => {
 <p>Pour exécuter tous les fichier d'un dossier, il faut des paramètres différents :</p>
 <pre><code>npm test -- --testMatch='**/__user-stories__/**/*.js'
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <p>On a pas mis nos tests fonctionnels dans les recherches par défaut de jest car ils prennent trop de temps.</p>
 <p>Si vous voulez utiliser Chrome à la place de Firefox, remplacez les lignes :</p>
 <ul>
@@ -250,8 +250,8 @@ afterEach(async () => {
 <li>rechercher <em>Carole Deumié</em></li>
 <li>prendre un screenshot</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Testez la user story <em>&quot;à la main&quot;</em>  dans une fenêtre de navigation privée</p>
 <p>Fichier : <code class="fichier">__user-stories__/recherche-goole.js</code> :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
@@ -332,8 +332,8 @@ Il suffit dans le code de changer les noms du driver et du navigateur.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour installer et utiliser d'autres drivers <a href="https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/" class="externe">consultez cette page</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Trouver un Élément Web</h3>
 <p>Pour naviguer sur le site, on recherche en général des éléments précis sur cette page avec lesquels interagir.
 Pour trouver un élément sur une page web, on utilise <code class="language-">findElement</code>.</p>
@@ -391,8 +391,8 @@ Les exemples les plus fréquents sont :</p>
 <p>Des actions plus précises peuvent être faites
 <a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/" class="externe">à la souris</a>
 comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/" class="externe">au clavier</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Quelques commandes utiles</h3>
 <p>Pour prendre une capture d'écran et l'enregistrer, on utilise :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -422,8 +422,8 @@ Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accé
 <li>je remarque que ce nom est associé au chiffre 4 et que la spontanéité, ce n'est pas son truc.</li>
 <li>Je vais ensuite sur la page des prénoms et je vérifie que j'ai bien &quot;Carole&quot; qui est affiché.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>On veut exécuter le test en mode test pour ne pas polluer la base de donnés. Il faut donc :</p>
 <ol>
 <li>exécuter le serveur en mode test : <code>NODE_ENV=test npm start</code> (ou <code>$env:NODE_ENV=test; npm start</code> sous powershell)</li>
@@ -490,8 +490,8 @@ process<span class="token punctuation">.</span>env<span class="token punctuation
 <div class="pl-8 mr-8">
 <p>On devrait en toute logique exécuter notre site en mode test pour ne pas polluer la base de données.</p>
 <p>On ne peut cependant pas le faire directement ici, car la base serait vide, sans messages associé aux chiffres. Il faudrait ajouter le message associé au chiffre 4 à la base avant de commencer proprement le test.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

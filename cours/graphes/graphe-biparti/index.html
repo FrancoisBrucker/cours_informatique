@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/graphe-biparti/">Graphes biparti</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -107,8 +107,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.</p>
-</div></div>
-
+</div>
+</div>
 <p>On en déduit donc immédiatement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -118,8 +118,8 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe est $k$-colorable si et seulement si il est $k$-parti.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les graphes biparti font parti de ces classes de graphes assez généraux pour être présent partout et assez spécifique pour que tous se passe bien (les principaux problèmes NP-complets dans le cas général deviennent polynomiaux voir triviaux).</p>
 <p>C'est une classe de graphe importante à connaître car, parfois curieusement, ils apparaissent dans nombre de problèmes de graphes. Parfois comme sous-cas facilement solvable, parfois comme fondement d'une preuve. Nous allons voir quelques définitions et caractérisation des graphes bi-parti ainsi que quelques exercices classiques (et élégants).</p>
 <h2>Définitions</h2>
@@ -136,15 +136,15 @@
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tous <a href="../structure/#definition-sous-graphe">sous-graphe</a> d'un graphe biparti est biparti.</p>
-</div></div>
-
+</div>
+</div>
 <p>On a déjà vu ce genre de graphe sans le savoir lors de <a href="../projet-flots-mod%C3%A9lisation/#transport-amoureux">l'étude du transport amoureux</a> : le problème du mariage entre 2 populations distinctes se modélise comme un graphe bi-parti où chaque population est un stable.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si un graphe bi-parti est connexe, sa bi-partition en deux stables est unique.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -172,8 +172,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que  le graphe discret (sans arêtes) à $n$ sommets possède $2^{n-1}-1$ bi-partitions possibles.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -232,15 +232,15 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles est appelé <a href="https://fr.wikipedia.org/wiki/Nombre_de_Stirling#Nombre_de_Stirling_de_seconde_esp%C3%A8ce" class="externe">nombre de Stirling de second espèce</a></p>
-</div></div>
-
+</div>
+</div>
 <p>En conclure :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez qu'un graphe biparti à $p$ composantes connexes possède $2^{p-1}$ bipartitions possibles.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -272,8 +272,8 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Soit $G$ un graphe biparti tel que $\delta(x) = k &gt; 0$ pour tout sommet $x$. Montrez que les deux stables ont même cardinal.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -302,12 +302,11 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>graphe biparti complet</em></strong> est le graphe $K_{p,q} = (V_p \cup V_q, V_p \times V_q)$, avec $\vert V_p \vert = p$ et $\vert V_q \vert = q$</p>
-</div></div>
-
+</div>
+</div>
 <p>Le graphe $K_{2, 3}$ est par exemple :</p>
 <p><img src="k23.png" alt="$K_{2, 3}$"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -316,15 +315,15 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les graphes bipartis complets sont aussi parfois appelé <a href="https://fr.wikipedia.org/wiki/Graphe_biparti_complet" class="externe"><strong><em>une biclique</em></strong></a></p>
-</div></div>
-
+</div>
+</div>
 <p>On retrouve les graphes bi-partis complets dans plein de champs de la théorie des graphes car ils ont plein de chouettes propriétés. Par exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si un graphe biparti est <a href="../parcours-hamiltoniens/#definition-graphe-hamiltonien">hamiltonien</a>, alors la taille des 2 stables est identique.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -351,8 +350,8 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Déduire de l'exercice précédent qu'un graphe bipartis complets $K_{p, q}$ est hamiltonien si et seulement si $p=q \geq 1$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -381,22 +380,20 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appelle <strong><em>graphe $k$-parti</em></strong> tout graphe admettant une partition de ses sommets en $k$ stables.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On appelle <strong><em>graphe $k$-parti complet</em></strong> le graphe Le graphe $K_{p_1,\dots, p_k} = (\cup_{i} V_{p_i}, \{uv \vert u\in V_{p_i}, v\in V_{p_j}, i\neq j\})$</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'œil à la page suivante :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -404,8 +401,8 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://mathworld.wolfram.com/CompleteTripartiteGraph.html" class="externe">https://mathworld.wolfram.com/CompleteTripartiteGraph.html</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Terminons par un petit exercice pour appliquer tout ça :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -419,8 +416,8 @@ mais on supprime 0000/11111 car pas bi-partition.</p>
 <p><a href="../parcours-eul%C3%A9riens/#definition-chemin-eulerien">un chemin eulérien</a></p>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -472,8 +469,8 @@ Notre algorithme nous donne quasiment sans rien faire une caractérisation des g
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur impaire.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -507,8 +504,8 @@ Notre algorithme nous donne quasiment sans rien faire une caractérisation des g
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=ZtXfGagSUlA" class="externe">Problème de Graham-Pollak</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :</p>
 <ul>
 <li>endormis</li>
@@ -522,36 +519,34 @@ Notre algorithme nous donne quasiment sans rien faire une caractérisation des g
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>partition</em></strong> d'un graphe $G=(V, E)$ est une suite $G_i=(V, E_i)$, avec $1\leq i \leq m$ telle que :</p>
 <ul>
 <li>$\cup_{1\leq i \leq m} E_i = E$</li>
 <li>$E_i \cap E_j = \varnothing$ pour tout $1\leq i \neq j \leq m$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La définition explicite le fait que l'on partitionne l'ensemble des arêtes d'un graphe. On spécifie souvent la famille de graphe à laquelle la partition doit appartenir (pour nous des graphes bipartis) et comme tout graphe à $n$ sommet est inclut dans $K_n$ la clique à $n$ sommet, c'est lui que l'on va chercher à partitionner.</p>
 <p>Notre problème de partition est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Combien faut-il au minimum de graphes bipartis (complets) pour partitionner $K_n$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme il faut minimiser le nombre d'éléments de la partition et que chaque arête du graphe complet doit être utilisé, les graphes bi-partis sont forcément complets.</p>
-</div></div>
-
+</div>
+</div>
 <p>Remarquons tout de suite que ce problème admet une solution, il en faut moins de $n(n-1)/2$ puisque les graphes G_{i,j} = (\{i, j\}, \{ij\})$ sont tous bipartis.</p>
 <p>On peut bien sur faire mieux, comme le montre l'exemple suivant qui partitionne $K_6$ en 6 graphes bi-partis complets :</p>
 <p><img src="k6-en-6.png" alt="exemple biparti"></p>
@@ -560,12 +555,11 @@ Notre algorithme nous donne quasiment sans rien faire une caractérisation des g
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>étoile</em></strong> est un graphe $G = (V, E)$ tel qu'il existe $x\in V$ avec $E = \{xy | y \in V\backslash \{x\}\}$</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut toujours décomposer $K_n$ en $n-1$ étoiles $G_i = (V_i, E_i)$ avec $1\leq i &lt; n$ :</p>
 <ul>
 <li>$V_i = \{j | j \geq i \}$</li>
@@ -582,8 +576,8 @@ Notre algorithme nous donne quasiment sans rien faire une caractérisation des g
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On ne peut décomposer $K_n$ en moins de $n-1$ graphes bipartis complets.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -653,8 +647,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Dans tout graphe $G=(V, E)$ à $m$ arêtes, il existe un <a href="../structure/#definition-sous-graphe">sous-graphe</a> bi-parti $G'$ à au moins $\frac{m}{2}$ arêtes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -717,16 +711,16 @@ $$
 </li>
 <li><strong>Question</strong> : le graphe contient-il une bipartition $V_1$ et $V_2$ de ses sommets tels que $\vert \{xy \vert xy \in V(G), x \in V_1, y in V_2 \} \geq K$ ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une coupe dans un graphe est soit une bi-partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.</p>
-</div></div>
-
+</div>
+</div>
 <p>Qui est NP-complet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -736,8 +730,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le problème MAX-CUT est NP-complet.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -792,8 +786,8 @@ $$
 <p><strong>Théorème (Kővári, Sós, Turán)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout $s\leq t$, il existe ue constante $C$ telle que tout graphe à $n$ sommet ne possédant pas $K_{s, t}$ à moins de $C\cdot n^{2-{1}/{s}}$ arêtes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -823,8 +817,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Remarquez que la borne ne dépend pas de $t$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Une application surprenante de ce théorème est une borne pour le problème consistant à trouver une configuration de $n$ points dans le plan maximisant  le nombre de distance unité entre ces points.</p>
 <p>Par exemple dans l'exemple suivant $n=2$ et on a 1 distance valant 1 unité :</p>
 <p><img src="distance-unit%C3%A9-1.png" alt="distance unité 1"></p>
@@ -856,8 +850,8 @@ $$
 plane(Spencer, Szemerédi et Trotter, 1984)</a></li>
 <li>La meilleur borne min connue est $n^{1 + \mathcal{O}(1)/log(log(n))}$ et on la doit à Erdős dans <a href="https://users.renyi.hu/~p_erdos/1946-03.pdf" class="externe">On sets of distances of n points (Erdős, 1946)</a>.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Nous allons montrer maintenant une borne min pour des graphes sans sous-graphes bi-parti complets.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -867,8 +861,8 @@ plane(Spencer, Szemerédi et Trotter, 1984)</a></li>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{s + t -2}{s\cdot t -1}}$ arêtes n'admettant pas $K_{s, t}$ comme sous-graphe.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -899,8 +893,8 @@ plane(Spencer, Szemerédi et Trotter, 1984)</a></li>
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $H$ un graphe à $v(H) \geq 2$ sommets et $e(H) \geq 3$ arêtes, il existe $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}$ arêtes n'admettant pas $H$ comme sous-graphe.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -983,8 +977,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut faire mieux en utilisant d'autres méthodes, en particulier algébrique. Regardez le lien si vous voulez plus d'infos.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour le graphe bi-parti complet $K_{s, t}$ cela nous donne l'encadrement suivant pour un graphe $G$ à $n$ sommets ne possédant pas $K_{s, t}$ comme sous-graphe :</p>
 <div>
 $$
@@ -1010,16 +1004,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut trouver des encadrement plus fin en utilisant des méthodes plus sophistiquée, si cela vous intéresse, regardez la vidéo en lien.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=crMyNv2fdkc&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=1" class="externe">https://www.youtube.com/watch?v=crMyNv2fdkc&amp;list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&amp;index=1</a></p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

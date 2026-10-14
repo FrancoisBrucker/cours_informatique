@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/">Projet : Amélioration des objets cartes</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -110,8 +110,8 @@
               </li></ul>
       
 
-</div></div>
-
+</div>
+</div>
 
     
   
@@ -199,8 +199,8 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Remplacez la méthode <code class="language-">Carte.texte()</code> par la méthode <code class="language-">Carte.__str__()</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -208,8 +208,8 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez les tests pour prendre en compte de cette nouvelle méthode.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Attribut de classes</h2>
 <p>Pour créer les cartes on utilise des constantes définies dans le fichier <code class="fichier">carte.py</code>. Commençons par mettre ces constantes directement dans la classe pour ne pas avoir à tout importer :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -219,8 +219,8 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Placez les différentes constantes relatives aux valeurs et aux couleur des cartes en attributs de classe et modifiez les tests en conséquence.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition <a href="https://docs.python.org/fr/3/library/enum.html" class="externe">les Enum</a>.</p>
 <p>On pourrait ainsi gérer les couleurs ainsi :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> enum <span class="token keyword">import</span> Enum
@@ -267,16 +267,16 @@ Couleur<span class="token punctuation">.</span>trèfle
 <span class="token comment">#     assert Carte(carte.AS, carte.PIQUE).plus_grande_ou_égale_que(Carte(carte.AS, carte.TREFLE))</span>
 <span class="token comment">#     assert not Carte(carte.VALET, carte.PIQUE).plus_grande_ou_égale_que(Carte(carte.AS, carte.TREFLE))</span>
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utiliser les <code class="language-">Enum</code> va pour l'instant casser notre méthode <code class="interne">plus_grande_ou_égale_que</code>, on commente donc <strong>pour l'instant</strong> le test.</p>
-</div></div>
-
+</div>
+</div>
 <p>À vous de modifier  le constructeur et la méthode <code class="language-">__str__()</code> pour que les tests passent :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -288,8 +288,8 @@ Couleur<span class="token punctuation">.</span>trèfle
 <li>Utilisez des <code class="language-">Enum</code> pour gérer les constantes de classes <code class="language-">VALEURS</code> et <code class="language-">COULEURS</code>, puis supprimez les constantes relatives aux différentes valeurs et couleurs individuelles (on n'utilisera que les enum et leur valeur associée).</li>
 <li>Pour le code de la méthode <code class="language-">__str__()</code>, vous pourrez utiliser l'attribut <code class="language-">value</code> d'un <code class="language-">Enum</code> pour faire le bon choix de représentation textuelle.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Cette technique est redoutable : elle est à la fois lisible, sans magic number et portable ! Utilisez-la dès que vous voulez gérer des énumérations.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -301,8 +301,8 @@ Couleur<span class="token punctuation">.</span>trèfle
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_repr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>Carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">.</span>Sept<span class="token punctuation">,</span> Carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">.</span>Trèfle<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)"</span>
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <h2>Comparaisons</h2>
 <p>Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Or pour l'instant on a directement accès aux attributs, donc rien n'interdit de le faire, rendons nos attributs privés :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -312,8 +312,8 @@ Couleur<span class="token punctuation">.</span>trèfle
 </svg>
 <div class="pl-8 mr-8">
 <p>Rendez les attributs valeurs et couleurs de chaque carte privé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -322,8 +322,8 @@ Couleur<span class="token punctuation">.</span>trèfle
 <p><strong>Méthode de conception</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Lorsque l'on crée un objet, si on a pas de raison particulière de le rendre modifiable on crée un <strong><em>value object</em></strong>. Cela évite les effets de bords (et rend la programmation concurrente et parallèle bien plus simple).</p>
-</div></div>
-
+</div>
+</div>
 <h2>Modification de la méthode <code class="interne">plus_grande_ou_égale_que</code></h2>
 <p>Pour l'instant notre méthode <code class="interne">plus_grande_ou_égale_que</code> et son test ne fonctionnent pas avec les <code class="language-">Enum</code>. Corrigeons ça pour le test :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> test_plus_grande_ou_égale_que<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -339,8 +339,8 @@ Couleur<span class="token punctuation">.</span>trèfle
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites fonctionner la méthode <code class="interne">plus_grande_ou_égale_que</code>.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Comparaisons de cartes</h2>
 <p>Ajoutez à votre classe carte les opérateurs de comparaisons :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -358,16 +358,16 @@ Couleur<span class="token punctuation">.</span>trèfle
 <li><code class="language-">&lt;=</code> qui correspond a à la méthode <code class="language-">__le__</code></li>
 <li><code class="language-">&gt;=</code> qui correspond a à la méthode <code class="language-">__ge__</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions <code class="language-">==</code> et <code class="language-">&lt;=</code> pour coder les autres les comparaisons.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

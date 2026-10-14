@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/">Méthodes de développement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/">Design Patterns</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,19 +103,18 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le terme de <em>design pattern</em> a été initialement donné dans le livre <a href="https://en.wikipedia.org/wiki/Design_Patterns" class="externe">Design Patterns: Elements of Reusable Object-Oriented Software</a> pour le langage C++.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">singleton</a> ne sont plus utilisés et d'autres, comme <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter" class="externe">MVP</a> sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les design pattern sont très utilisés par les bibliothèques (par exemple <a href="https://refine.dev/blog/react-design-patterns/" class="externe">les design pattern de react</a>), les reconnaître vous permettra 'aller vite dans la compréhension de celles-ci.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le site suivant contient une liste actualisée de design patterns :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -128,8 +127,8 @@
 <li><a href="https://refactoring.guru/design-patterns" class="externe">Refactoring GURU : design pattern</a></li>
 <li><a href="https://refactoring.guru/refactoring" class="externe">Refactoring GURU : refactoring pattern</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -142,8 +141,8 @@
 <li><a href="https://fr.wikipedia.org/wiki/Antipattern" class="externe">Définition d'un anti-pattern</a></li>
 <li><a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html" class="externe">Quelques anti-patterns classiques</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Nous allons utiliser la classe <code class="language-">Dé</code> qui nous a accompagné tout au long du cours de programmation objet et lui ajouter quelques design pattern pour encore une fois l'améliorer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -151,8 +150,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="../../../apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/">Projet Dé héritage</a></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -239,8 +238,8 @@ d_20<span class="token punctuation">.</span>lancer<span class="token punctuation
 <li><a href="https://refactoring.guru/design-patterns/factory-method" class="externe">Pattern factory</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Creational_pattern" class="externe"><em>Creational pattern</em></a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le pattern factory est un design pattern faisant parti des pattern de création d'objet. Il stipule que l'on doit créer des objets via des fonctions avec le moins de paramètres possible et avec un nom adapté plutôt qu'avec un constructeur possédant des milliers de paramètres.</p>
 <p>Dans notre cas ce pattern permet également de faire disparaître les deux classes qui n'existent que via leur constructeur :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
@@ -303,8 +302,8 @@ d_20<span class="token punctuation">.</span>lancer<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Method_chaining#Design_patterns" class="externe"><em>Method chaining</em></a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce n'est pas un design pattern <em>stricto-sensu</em>, plutôt une règle de programmation : on essaie de rendre l'utilisation des méthodes fluide, chaînables sans avoir besoin de créer des variables intermédiaires.</p>
 <p>Dans notre cas, il pourrait être intéressant de connaître la valeur du dé directement après un lancer pour pourvoir par exemple remplacer les lignes suivantes dans le fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">d_6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -318,8 +317,8 @@ d_20<span class="token punctuation">.</span>lancer<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p>Ok, ce n'est pas très impressionnant ici, mais si vous utilisez la bibliothèque pandas pour l'analyse ds données par exemple. vous verrez <a href="https://www.stat4decision.com/fr/method-chaining-avec-la-librairie-pandas/" class="externe">la puissance de ce genre d'écriture</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour ceci il suffit de changer la méthode <code class="language-">Dé.lancer</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">(</span>Stat<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -343,8 +342,8 @@ d_20<span class="token punctuation">.</span>lancer<span class="token punctuation
 <li><a href="https://refactoring.guru/design-patterns/observer" class="externe">Pattern observer</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Behavioral_pattern" class="externe"><em>Behavioural pattern</em></a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le pattern observer est à la base de <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle" class="externe">la programmation évènementielle</a> utilisée pour développer des interfaces graphique.</p>
 <p>Dans notre cas, il va être utile d'utiliser ce pattern pour supprimer l'héritage.</p>
 <p>Commençons par préparer le pattern en ajoutant la méthode permettant d'ajouter un observateur et la notification :</p>
@@ -420,8 +419,8 @@ d_20<span class="token punctuation">.</span>add<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Couplage_(informatique)" class="externe">Couplage en informatique</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Pattern composite</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -432,8 +431,8 @@ d_20<span class="token punctuation">.</span>add<span class="token punctuation">(
 <li><a href="https://refactoring.guru/design-patterns/composite" class="externe">Pattern composite</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Structural_pattern" class="externe"><em>Structural pattern</em></a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le pattern composite permet de composer deux dés de façon à pouvoir :</p>
 <ul>
 <li>les lancer simultanément</li>
@@ -553,8 +552,8 @@ somme <span class="token operator">=</span> d6<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>En implémentant une classe <code class="language-">Multiplication</code> et en utilisant la méthode spéciale <code class="language-">rmul</code> dans les dés.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -565,8 +564,8 @@ somme <span class="token operator">=</span> d6<span class="token punctuation">(<
 <li>il essaye <code class="language-">A.__mul__(B)</code></li>
 <li>si l'expression précédente rend une erreur de type <code class="language-">TypeError</code> alors python tente <code class="language-">B.__rmul__(A)</code></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <h3>Undo</h3>
 <p>On a déjà utilisé <a href="https://refactoring.guru/design-patterns/memento" class="externe">le pattern memento</a> lorsque l'on a fait de <a href="../../../apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/#memento">la compositions et de l'agrégation de dés</a>, utilisez cette partie pour créer une liste de undo :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -576,16 +575,16 @@ somme <span class="token operator">=</span> d6<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>En utilisant le design pattern memento et notre observer, créer une classe permettant de gérer les undo des dés</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous ne stockerez dans vos undos que les changements de valeurs (si un lancer garde la même valeur de dé ce n'est pas la peine de l'ajouter aux undos).</p>
-</div></div>
-
+</div>
+</div>
 <h3>Redo</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -594,8 +593,8 @@ somme <span class="token operator">=</span> d6<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez une classe permettant de gérer les redo.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Builder</h3>
 <p>Lorsqu'on joue à un jeu de dés il y a toujours plein de règles différentes pour compter les points :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -611,8 +610,8 @@ somme <span class="token operator">=</span> d6<span class="token punctuation">(<
 <li>les suites</li>
 </ul>
 <p>Et de créer des objets qui reconnaissent l'une, l'autre ou toute combinaison de ces 3 règles pour une liste de 5 dés.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Pour aller plus loin</h2>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur" class="externe">MVC</a> ou <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation" class="externe">MVP</a></li>

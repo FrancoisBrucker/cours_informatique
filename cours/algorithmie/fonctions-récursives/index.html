@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/fonctions-récursives/">Penser l&#39;algorithmie</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,8 +105,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="r%C3%A9cursive-primitive">Fonctions récursives primitives</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Nous avons vu que les fonctions primitives récursives étaient des fonctions calculable. Nous allons montrer ici qu'un modèle plus générale, les fonctions récursives, sont équivalentes au pseudo-code ! Ceci montre que l'algorithmie peut posséder de nombreuses formes, toutes équivalentes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -114,8 +114,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="fonctions-r%C3%A9cursives">Fonctions récursives</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Ackermann le retour</h2>
 <blockquote>
 <p>TBD à refaire propre
@@ -131,8 +131,8 @@ TBD en faire une partie à part.</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La fonction $A_m(n) = \text{Ack}(m, n)$ est primitive récursive pour tout $n$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -177,8 +177,8 @@ TBD en faire une partie à part.</p>
 <li>$\text{Ack}(m_1, \text{Ack}(m_2, n)) \leq \text{Ack}(m, n)$ pour tout $n \geq 0 $</li>
 <li>$\sum_i\text{Ack}(m_i, n) \leq \text{Ack}(m, n)$ pour tout $n\geq 0$</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -226,8 +226,8 @@ $$
 f(x_1, \dots, x_n) \leq \text{Ack}(K_f, \sum_{1\leq i \leq n}x_i)
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -301,8 +301,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La fonction d'Ackermann n'est pas récursive primitive.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -442,8 +442,8 @@ $$
             s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
             n <span class="token operator">-=</span> <span class="token number">1</span>
         <span class="token keyword">return</span> n</code></pre>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>pas récursivité terminale = il faut faire des trucs en plus de la récursion. Il faut se rappeler de que l'on veut faire. Avec une TODO list (faire exemple avec ack petit) = pile en informatique
 faire un item de la todo list = dépile.</p>
@@ -465,8 +465,8 @@ A'([m], n) = A(m, n) par récurrence sur m+n = k</li>
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que tout algorithme récursif peut s'écrire de façon itérative avec une TODO-list (une pile).</p>
-</div></div>
-
+</div>
+</div>
 <h2>Ackermann</h2>
 <p>La fonction d'Ackermann se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :</p>
 <div>

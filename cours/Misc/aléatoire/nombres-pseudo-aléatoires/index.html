@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/">Misc</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/aléatoire/">Aléatoire</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/aléatoire/nombres-pseudo-aléatoires/">Nombres Aléatoires</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -111,8 +111,8 @@ mersenne twister de python</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'entiers (première partie) voir juste de bits (seconde partie).</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD dire aléatoire à k=seed fixé. p61 intro modern crypto.</p>
 </blockquote>
@@ -121,27 +121,25 @@ mersenne twister de python</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une séquence $(x_i)_{i\geq 0}$ d'entiers positifs inférieur strictement à $m$ est <strong><em>aléatoire</em></strong> si elle est constituée de nombres <strong><em>indépendants</em></strong> suivant une <strong><em>loi de distribution</em></strong>.</p>
 <ul>
 <li><strong><em>indépendance</em></strong> des données : $Pr[x_i = a, x_j = b] = Pr[x_i = a] \cdot Pr[x_j = b]$</li>
 <li>une <strong><em>loi de distribution</em></strong> pour un ensemble finie est l'ensemble des probabilités : $0\leq Pr[x_i = k] = p_k \leq 1$. On a de plus $0\leq k &lt; m$ telle que $\sum_k p_k = 1$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque l'on parle d'aléatoire sans préciser la loi de distribution, on sous-entend qu'elle est <strong><em>uniforme</em></strong>, c'est à dire que tout évènement a la même probabilité de se produire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une distribution de $m$ évènements $e_k$ est <strong><em>uniforme</em></strong> si $Pr[x = e_k] = \frac{1}{m}$ pour tout $0\leq k &lt; m$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Savoir si une suite finie donnée est aléatoire est problématique, puisque chaque suite à une probabilité, même faible, d'exister. Une suite binaire de 1 million de 0 a autant de chance d'arriver qu'une suite alternant les 0 et les 1.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -149,8 +147,8 @@ mersenne twister de python</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est pourquoi les être humains ne sont pas bon pour générer des suites aléatoires. En demandant à des humains de générer des suites aléatoires, la suite constante sera sous-représentée.</p>
-</div></div>
-
+</div>
+</div>
 <p>Déterminer si une suite est aléatoire ne peut se faire que via des tests statistiques qui vont assurer de telle ou telle propriété :</p>
 <ul>
 <li>alternance de 0 et de 1,</li>
@@ -164,9 +162,8 @@ mersenne twister de python</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>test statistique</em></strong> $T(X)$ sur une suite finie $X = (x_i)_{0 \leq i &lt; n}$ peut prendre deux valeurs, vrai ou faux. On définit :</p>
 <ul>
 <li>la <strong><em>probabilité d'acceptation</em></strong> comme probabilité que $T(X)$ soit vrai</li>
@@ -178,8 +175,8 @@ mersenne twister de python</p>
 <li>le <strong><em>risque de seconde espèce</em></strong> qui est la probabilité que $T(X)$ soit vrai alors alors $X$ ne satisfait pas $H_0$ (habituellement plus compliqué à déterminer).</li>
 </ul>
 <p>On paramètre le test selon un risque de première espèce que l'on considère acceptable acceptable, souvent 5%.</p>
-</div></div>
-
+</div>
+</div>
 <p>O utilise alors un test comme suit :</p>
 <ol>
 <li>on choisit une hypothèse $H_0$ et un risque de première espace acceptable (usuellement 5%), c'est à dire le risque acceptable que l'on se donne de rejeter l'hypothèse alors qu'elle est vraie.</li>
@@ -200,8 +197,8 @@ mersenne twister de python</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2" class="externe">test du chi2</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Si l'on possède une loi de distribution discrète sur $m$ éléments $e_i$ ($0\leq i &lt; m$), telle que $Pr(x=e_i) = p_i$ et une suite finie $X=(x_i)_{0 \leq i &lt; N}$, le $\chi^2$ est un réel valant :</p>
 <div>
 $$
@@ -255,8 +252,8 @@ X <span class="token operator">=</span> <span class="token punctuation">[</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Refaite cette exercice et vérifiez que cela fonctionne aussi pour votre python.</p>
-</div></div>
-
+</div>
+</div>
 <p>Terminons cette partie avec un petit exercice où, normalement, vous devriez rejeter l'hypothèse :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -267,8 +264,8 @@ X <span class="token operator">=</span> <span class="token punctuation">[</span>
 <li>1 avec une probabilité .4</li>
 </ul>
 <p>Vérifiez que ces milles lancés ne peuvent satisfaire une loi uniforme.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -306,24 +303,23 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une séquence finie $(x_i)<em>{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **</em><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire" class="externe">pseudo-aléatoire</a>_** si elle :</p>
 <ul>
 <li>est générée par un algorithme polynomial à un paramètre, noté <strong><em>graine</em></strong> (<strong><em>seed</em></strong> en anglais)</li>
 <li>elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.</p>
-</div></div>
-
+</div>
+</div>
 <p>Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.</p>
 <p>Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :</p>
 <ul>
@@ -359,8 +355,8 @@ random<span class="token punctuation">.</span>seed<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki//dev/random" class="externe">Générateur de Linux : <code class="fichier">/dev/random</code></a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Générateurs de nombres pseudo-aléatoires</h2>
 <p>Nous allons voir trois exemples de générateurs de nombres aléatoire et en étudier les propriétés.</p>
 <h3>Générer un nombre</h3>
@@ -371,8 +367,8 @@ random<span class="token punctuation">.</span>seed<span class="token punctuation
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="modulo">Modulo comme générateur</a></p>
-</div></div>
-
+</div>
+</div>
 s
 <h3>Générer un bit</h3>
 <p>On utilise un registre à décalage pour générer une suite de bits.</p>
@@ -382,8 +378,8 @@ s
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="lfsr">Registres comme générateur</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Générateur de python</h3>
 <blockquote>
 <p>TBD : Mersenne twister</p>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/mtu/">Machine de Turing universelle</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -109,8 +109,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Nous utiliserons ici dès que nous le pourrons et sans perte de généralité les <a href="../d%C3%A9finitions-alternatives/#MT-01#">Machines de Turing <code>01#</code></a> ce qui nous permettra, entre autres, d'avoir plusieurs paramètres d'entrée.</p>
-</div></div>
-
+</div>
+</div>
 <h2>code associé à une machine</h2>
 <p>Une machine de Turing $M$, est définie par sa fonction de transition. Coder $M$ revient à lui associer de façon bijective une suite binaire, il faut donc un moyen d'encoder les 3 fonctions constituant la fonction de transition :</p>
 <ul>
@@ -212,12 +212,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>On note $&lt;M&gt;$ l'encodage de la fonction de transition associé à la machine de Turing $M$.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Décodage</h3>
 <p>Pour le décodage, on peut supposer qu'on le fait avec une machine de Turing <code>01#</code> à plusieurs rubans, donc on examine les couples $T[2i:2(i+1)]$ pour tous les $i$ de façons croissante et on associe dans un autre ruban :</p>
 <ul>
@@ -263,8 +262,8 @@ Programme :
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'exécution de <code class="language-">MTU(T, E)</code> est la même que celle de <code class="language-">T(E)</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -406,8 +405,8 @@ Ceci permet de justifier rigoureusement l'algorithme de <a href="../../recherche
 <p><strong>Théorème fondamental de l'algorithmie</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut encoder toute machine de Turing $M$ par une chaîne $&lt;M&gt;$ composée de <code>0</code> et de <code>1</code>, de telle sorte que l'exécution de la machine de Turing universelle $\text{MTU}(&lt;M&gt;, E)$ simule l'exécution de $M$ avec une entrée $E$ avec la même complexité.</p>
-</div></div>
-
+</div>
+</div>
 <p>La machine de Turing universelle est donc <a href="https://fr.wikipedia.org/wiki/Anneau_unique" class="externe">la machine qui les gouverne toutes</a> : une machine qui permet de simuler efficacement toutes les autres machine.</p>
 <p>Il suffit de construire une seule machine pour avoir toutes les machines de Turing possible via leur encodage.</p>
 

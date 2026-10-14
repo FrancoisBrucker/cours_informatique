@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-amortie/">Analyse et complexité amortie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-amortie/analyses/">Analyse amortie</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -166,8 +166,8 @@
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Trouver la complexité de l'exécution <code class="language-">tous(n)</code>, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme <code class="language-">successeur(N)</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>La difficulté du calcul vient du fait que le nombre d'opération effectuée par l'exécution de <code class="language-">successeur(N)</code> dépend de son paramètre :</p>
 <ul>
 <li>au mieux, $N[-1] = 0$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$,</li>
@@ -183,13 +183,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>L'analyse par agrégat</em></strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par agrégat</h3>
 <p>Effectuons cette analyse pour le calcul de la complexité de <code class="language-">tous(N)</code>.
 On remarque tout d'abord que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
@@ -248,16 +247,15 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>La <strong><em>méthode comptable</em></strong> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>coût amorti</em></strong> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
 <p>$$
 \sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}
 $$</p>
 <p>L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
 <h3><span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par la méthode comptable</h3>
 <p>Appliquons cette méthode pour calculer la complexité de <code class="language-">tous</code>. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
@@ -275,9 +273,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
 <p>Le <strong><em>coût amorti</em></strong> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
 <p>$$
@@ -287,8 +284,8 @@ $$</p>
 <p>$$
 \sum_{i=1}^{m} \widehat{c_i} = \sum_{i=1}^{m} ({c_i} + \Omega(i) - \Omega(i-1)) = \sum_{i=1}^{m} {c_i} + \Omega(m) - \Omega(0) \geq \sum_{i=1}^{m} {c_i}
 $$</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$. Cette énergie potentielle $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
 <p>En informatique, le potentiel sera souvent associé à la structure de donnée sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
 <p>Remarquez que toute mesure de potentielle fonctionne si $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$, mais que pour être efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant. Ce faisant, la différence de potentiel absorbera les variations de coût réel sans trop les surévaluer.</p>

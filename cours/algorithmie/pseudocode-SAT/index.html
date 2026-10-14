@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudocode-SAT/">SAT et pseudo-code</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -142,8 +142,8 @@ idem pour opération. Juste dire fonction booléenne vectorielle</p>
 <li><code class="language-">t ← nouveau [bit]</code> création d'une variable $t$ de type <code class="language-">[bit]</code> de longueur dépendant de la taille de l'entrée</li>
 </ol>
 <p>Toutes ces instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD allocation doit être connue à la &quot;compilation&quot;</p>
 </blockquote>
@@ -172,8 +172,8 @@ De même que pour les variables on se restreint aux fonction booléennes. Toute 
 </svg>
 <div class="pl-8 mr-8">
 <p>La seule instruction de contrôle utilisée sera :  <code class="language-">si b va l</code> où $b$ est une variable de type <code class="language-">bit</code> et $l$ un numéro de ligne.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Formule logique et SAT</h2>
 <p>L'exécution d'un pseudo-code consiste à exécuter une ligne du pseudo-code après l'autre jusqu'à exécuter une instruction de fin.</p>
 <blockquote>
@@ -235,8 +235,8 @@ $$
 L \coloneqq (l^1 = u(1)) \land [\bigwedge_{1\neq i \leq C(n)} L^i]
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <h3>Suivi des variables</h3>
 <p>Le programme commence par initialiser la variable d'entrée, puis chaque itération va modifier une variable. Pour rendre compte de ces modifications au cours du temps on va dupliquer chaque variables pour chaque itération. La variable $v$ aura ainsi $C(n)$ copies telle que :</p>
 <ul>
@@ -276,8 +276,8 @@ $$
 V \coloneqq (v^1_1 = e) \land (\bigwedge_{1\neq i \leq C(n)} V^i) \land (s = v^{C(n)}_2)
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <h3>Opération</h3>
 <blockquote>
 <p>TBD les seules instructions qu'il faut convertir en formule sont les affectations de variables et les fonctions booléennes</p>
@@ -355,8 +355,8 @@ $$
 \end{array}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <h4>Fonction booléennes vectorielles</h4>
 <blockquote>
 <p>TBD dire ici comme successions de projection fonctions booléennes (voir partie fonction booléennes).
@@ -383,8 +383,8 @@ $$
 V \coloneqq (v^1_1 = e) \land (\bigwedge_{1\neq i \leq C(n)} V^i) \land (s = v^{C(n)}_2)
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD dire que si on a la ligne <code class="language-">t[u(i)] ← f(t')</code> on peut considérer sans perte de généralité que l'on a les deux lignes <code class="language-">b ← f(t')</code> (avec b une variable de type bit) puis la ligne <code class="language-">t[u(i)] ← b</code> que l'on va considérer juste après</p>
 </blockquote>
@@ -399,8 +399,8 @@ $$
 <blockquote>
 <p>TBD</p>
 </blockquote>
-</div></div>
-
+</div>
+</div>
 <p>Grace à Tsteitin on peut l'écrire sous la forme CNF et donc :</p>
 <blockquote>
 <p>TBD pseudo-code = formule CNF à O de littéraux</p>

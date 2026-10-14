@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/">Composition et agrégation</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,15 +102,14 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li><strong><em>agrégation</em></strong> : quand les objets utilisés sont créés en dehors de la classe,</li>
 <li><strong><em>composition</em></strong> : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.</p>
 <p>Les exemples de composition et d'agrégation de <em>la vraie vie</em> sont souvent un peu bizarres. Mais par exemple :</p>
 <ul>
@@ -167,8 +166,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quels tests feriez vous pour vérifier la véracité de votre code ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -254,8 +253,8 @@ Un item de nom macbook valant <span class="token number">1000</span> euros.
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous remarquerez que lors de l'affichage d'une liste, c'est la méthode <code class="language-">__repr__</code> qui est utilisée et non <code class="language-">__str__</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -263,8 +262,8 @@ Un item de nom macbook valant <span class="token number">1000</span> euros.
 <li>Commentez la méthode <code class="language-">Item.__str__</code> puis exécutez à nouveau le code. Conclusion ?</li>
 <li>Décommentez la méthode <code class="language-">Item.__str__</code> et commentez maintenant la méthode <code class="language-">Item.__repr__</code> puis exécutez à nouveau le code. Conclusion ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -297,8 +296,8 @@ Un item de nom macbook valant <span class="token number">1000</span> euros.
 </svg>
 <div class="pl-8 mr-8">
 <p>Si une classe est composée d'autres objets mutables, ces parties peuvent être modifiées en dehors de la classe.</p>
-</div></div>
-
+</div>
+</div>
 <p>Dans notre cas la méthode <code class="language-">Panier.montre_panier()</code> retourne directement l'attribut <code class="language-">stock</code>. et une fois qu'un objet a été <em>donné</em> au monde extérieur on ne contrôle plus son état. Il peut être utilisé a priori par n'importe quoi d'autre dans le programme comme le montre le code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -350,19 +349,18 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une bonne façon de programmer est d'<strong>utiliser par défaut uniquement des objets non modifiables</strong> et que si le besoin s'en fait sentir de les rendre modifiables.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il ~nous~ vous reste à modifier les tests :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Modifiez les tests pour qu'ils passent avec notre nouvelle classe <code class="language-">Panier</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -418,8 +416,8 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 <li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code" class="externe">Code de la classe python</a></li>
 <li><a href="https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code?filename=projet-panier" class="externe">Téléchargement du code</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

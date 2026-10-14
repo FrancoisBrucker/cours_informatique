@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/">Améliorer ses objets</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,8 +103,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur" class="externe">Code actuel de la classe Compteur</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Paramètres par défaut</h2>
 <p>On souhaite par pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple).</p>
 <h3>Ajout d'un paramètre et vérification de sa validité</h3>
@@ -128,12 +128,11 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Notez bien que le premier paramètre de la définition de la classe est <strong>TOUJOURS</strong> self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.</p>
-</div></div>
-
+</div>
+</div>
 <p>Et il faut modifier la méthode <code class="language-">incrémente(self)</code> pour qu'elle prenne en compte le pas :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -152,8 +151,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 <p>On définira <strong>toujours</strong> les différents attributs de l'objet dans le constructeur <code class="language-">__init__</code>.
 On le fera de cette façon :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">self<span class="token punctuation">.</span>nom_attribut <span class="token operator">=</span> valeur_attribut</code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Cette façon de faire :</p>
 <ul>
 <li>attributs dans les objets</li>
@@ -164,12 +163,11 @@ On le fera de cette façon :</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Paramètre par défaut</h3>
 <p>Le souci avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code>, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values" class="externe">paramètre par défaut</a>.</p>
 <p>En python cela donne (fichier <code class="fichier">compteur.py</code>) :</p>
@@ -208,8 +206,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <li><code class="language-">Compteur(pas=3)</code> : créera un compteur de <code class="language-">valeur=0</code> et de <code class="language-">pas=3</code>,</li>
 <li><code class="language-">Compteur(valeur=12)</code> : créera un compteur de <code class="language-">valeur=12</code> et de <code class="language-">pas=1</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -290,12 +288,11 @@ AssertionError
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On peut utiliser des <code class="language-">assert</code> pour vérifier la validité d'un paramètre dans le code des fonctions, pas seulement dans les tests.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Attributs</h2>
 <p>On peut grandement améliorer la gestion des attributs des objets.</p>
 <h3><span id="privé"></span>Attributs privés</h3>
@@ -308,17 +305,16 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un attribut ou une méthode <strong><em>privée</em></strong> est un attribut/méthode qui ne doit pas être utilisé autre part que dans le code des méthodes de la classe. Les attributs/méthodes directement utilisables dans tout code sont dit <strong><em>publics</em></strong>.</p>
 <p>En UML on distingue les attributs/méthodes privés des attributs public en mettant devant le nom de l'attribut :</p>
 <ul>
 <li>un <code>-</code> si l'élément est privé</li>
 <li>rien ou un <code>+</code> si l'élément est public</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Mais rendre <code class="language-">pas</code> privé interdit complètement à l'utilisateur d'y acceder. Si on veut tout de même lui permettre de connaître et de modifier sa valeur on passe par deux méthodes spécifiques :</p>
 <ul>
 <li>ajouter une méthode publique qui rend la valeur de l'attribut <code>pas</code> appelée accesseur</li>
@@ -328,15 +324,14 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>Un <strong><em>accesseur</em></strong> (<strong><em>getter</em></strong>) est une méthode dont le but est de rendre un attribut privé. On la nomme usuellement : <code class="language-">get_[nom de l'attribut]()</code></li>
 <li>Un <strong><em>mutateur</em></strong> (<strong><em>setter</em></strong>) est une méthode dont le but est de modifier un attribut privé. On la nomme usuellement : <code class="language-">set_[nom de l'attribut](nouvelle_valeur)</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On a alors l'UML suivant :</p>
 <p><img src="compteur-priv%C3%A9.png" alt="pas privé"></p>
 <p>L'implémentation en python va passer par une convention car pour python tous les attributs sont toujours publics :</p>
@@ -344,13 +339,12 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>L'usage en python peut que les variables privées soient précédées d'un <code class="language-">_</code>. Ceci prévient le développeur qu'il ne faut pas qu'il utilise ces attributs directement.</p>
 <p>C'est une convention qui signifie : &quot;<em>on ne touche pas si on ne sait pas ce que l'on fait</em>&quot;.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce qui donne le code :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -385,13 +379,12 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>attribut de classe</em></strong> (<strong><em>getter</em></strong>) est un attribut qui est le même pour tout objet de la classe.</p>
 <p>En UML le nom d'un attribut de classe est souligné.</p>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple en python on pourrait définir un compteur à pas identique pour tous les éléments de la classe ainsi :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CompteurFixe</span><span class="token punctuation">:</span>
     PAS <span class="token operator">=</span> <span class="token number">1</span>
@@ -422,8 +415,8 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <div class="pl-8 mr-8">
 <p>En python il est tout à fait possible d'avoir un attribut de classe et un attribut d'objet de même nom mais : <strong>CE N'EST PAS UNE BONNE IDÉE</strong>.</p>
 <p>Si vous ne savez pas si c'est l'attribut de classe ou d'objet que vous appelez via <code>self.&lt;nom&gt;</code> (si <code>&lt;nom&gt;</code> est à la fois défini pour la classe et pour l'objet, l'attribut de classe va être masqué par l'attribut d'objet) vous allez forcément faire des erreurs.</p>
-</div></div>
-
+</div>
+</div>
 <h3>property</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -431,8 +424,8 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://realpython.com/python-property/" class="externe">https://realpython.com/python-property/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Les attributs de classes ont un effet de bord sympathique en python qui permet d'utiliser des mutateurs et des accesseur comme si on accédais a un attribut. Rien de tel qu'un exemple pour comprendre. Considérez l'amélioration suivante du <code class="language-">Compteur</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
@@ -465,9 +458,8 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les <code class="language-">property</code> permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut, c'est le meilleur des deux mondes !</p>
 <p>Leur fonctionnement est le suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">:</span>
@@ -485,8 +477,8 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
         self<span class="token punctuation">.</span>_attribut <span class="token operator">=</span> attribut
 
     attribut <span class="token operator">=</span> <span class="token builtin">property</span><span class="token punctuation">(</span>accesseur<span class="token punctuation">,</span> mutateur<span class="token punctuation">)</span></code></pre>
-</div></div>
-
+</div>
+</div>
 <p>On n'a plus besoin d'utiliser directement des accesseurs/mutateur on peut les rendre privé :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -520,12 +512,11 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>Les méthodes spéciales</em></strong> de python se présentent sous la forme <code class="language-">__nom_de_la_méthode__</code> et sont utilisés par python dans des cas spécifiques. <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" class="externe">La documentation officielle</a> les liste. Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).</p>
-</div></div>
-
+</div>
+</div>
 <p>On a déjà vu une méthode spéciale : <code class="language-">__init__</code> qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.</p>
 <h3><span id="str"></span>Représentation sous la forme de texte</h3>
 <p>Essayez de taper dans le fichier <code class="fichier">main.py</code> :</p>
@@ -552,16 +543,15 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La méthode <code class="language-">__str__</code> permet :</p>
 <ul>
 <li>de transformer un objet <code class="language-">o</code> en chaîne de caractères via la fonctions <code class="language-">str(o)</code></li>
 <li>de l'afficher à l'écran en utilisant  <code class="language-">print(o)</code> (qui est équivalent à <code class="language-">print(str(o))</code>).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3><span id="repr"></span>Représentation de l'objet</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -571,34 +561,32 @@ c<span class="token punctuation">.</span>set_pas<span class="token punctuation">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/3/library/functions.html#repr" class="externe">https://docs.python.org/3/library/functions.html#repr</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Si la représentation sous forme d'un texte permet à un utilisateur de &quot;lire&quot; l'objet, plusieurs objets de pas différents vont avoir la même représentation. Pour associer à chaque objet une représentation sans ambiguïté et destiné et destiné aux développeurs python fourni la fonction <code class="language">repr</code> qui utilise la méthode spéciale <code class="language-">__repr__</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La méthode <code class="language-">__repr__</code> permet :</p>
 <ul>
 <li>de transformer un objet <code class="language-">o</code> en chaîne de caractères via la fonctions <code class="language-">repr(o)</code></li>
 <li>on a coutume de représenter une chaîne de caractère permettant de recréer l'appel au constructeur permettant de recréer l'objet.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>C'est ce que l'on appelle <a href="https://en.wikipedia.org/wiki/Serialization" class="externe">sérialisation</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>La sérialisation d'un objet est sa transformation sous une forme textuelle permettant de le reconstituer.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ainsi pour le compteur :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
 
@@ -622,12 +610,11 @@ Compteur<span class="token punctuation">(</span>pas<span class="token operator">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>En première approche, codez une méthode <code class="language-">__repr__</code> pour toutes vos classes car par défaut si l'on ne définit par <code class="language-">__str__</code>, c'est <code class="language-">__repr__</code> qui est utilisé (le <code class="language-">__str__</code> de la classe object rend le résultat de son <code class="language-">__repr__</code>).</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="comparaison"></span> Comparaisons</h3>
 <p>On pourrait avoir envie de comparer des valeurs de compteurs. On pourrait comparer directement les attributs, mais ce serait tout de même plus simple si l'on pouvait écrire :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
@@ -669,14 +656,14 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
 </svg>
 <div class="pl-8 mr-8">
 <p>Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits <a href="https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__" class="externe">dans la documentation</a>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez des tests pour ces comparaisons.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -715,8 +702,8 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
 <li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur" class="externe">Code de la classe python</a></li>
 <li><a href="https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur?filename=projet-compteur" class="externe">Téléchargement du code</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

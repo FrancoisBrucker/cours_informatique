@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-amortie/">Analyse et complexité amortie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-amortie/complexité/">Complexité amortie</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,13 +103,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.</p>
 <p>Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.</p>
-</div></div>
-
+</div>
+</div>
 <p>La complexité amortie est un concept avancé, utilisée dans deux cas principalement :</p>
 <ul>
 <li>comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)</li>
@@ -160,18 +159,17 @@ $$
 <div class="pl-8 mr-8">
 <p>La complexité amortie de la méthode <code class="language-">suivant</code> est $\mathcal{O}(1)$.</p>
 <p>Lorsqu'un programme utilise de nombreuses fois la méthode <code class="language-">suivant</code>, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>La complexité amortie est <strong>une moyenne de complexités maximales</strong> et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.</p>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, remarquez que la complexité amortie de <code>suivant</code> ne dépend par de la longueur de l'attribut $N$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -179,8 +177,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Réfléchissez à ce résultat, il est assez surprenant, non ?.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Exemple 2 : la pile</h2>
 <p>On modifie <a href="../../structure-pile-file/pile/#structure-pile">la structure pile</a> pour y ajouter la méthode suivante: <code class="language-">k-dépile(k: entier) → Type</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> k<span class="token operator">-</span>dépile<span class="token punctuation">(</span>k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
@@ -198,8 +196,8 @@ $$
 <p><strong>Question ?</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Quelle est la complexité totale de ces $m$ exécutions des 2 méthodes pour $A$ ?</p>
-</div></div>
-
+</div>
+</div>
 <h3>Borner la complexité</h3>
 <p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-dépile</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">empile</code> avant de la vider entièrement avec une instruction <code class="language-">k-dépile</code>) : la complexité de <code class="language-">k-dépile</code> est bornée par $\mathcal{O}(m)$.</p>
 <p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">empile</code> et <code class="language-">k-dépile</code> donc $\mathcal{O}(m^2)$.</p>
@@ -231,8 +229,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.</p>
-</div></div>
-
+</div>
+</div>
 <p>Comme pour le compteur, remarquez que la complexité amortie de la fonction <code>k-dépile</code> ne dépend pas de $k$ puisque'elle est en temps constant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -240,8 +238,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Réfléchissez à ce résultat, il est assez surprenant, non ?.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

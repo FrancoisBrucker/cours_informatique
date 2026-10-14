@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problèmes-NP/">Problèmes NP</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -107,13 +107,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un problème algorithmique est dit <strong><em>polynomial</em></strong> s'il existe un pseudo-code de complexité polynomiale en la taille de son entrée permettant de le résoudre.</p>
 <p>L'ensemble des problèmes polynomiaux est nommé $P$.</p>
-</div></div>
-
+</div>
+</div>
 <p>On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :</p>
 <ul>
 <li>Trouver le maximum d'un tableau d'entiers dont <a href="../complexit%C3%A9-probl%C3%A8me/#recherche">on a démontré que sa complexité était linéaire</a>,</li>
@@ -130,8 +129,8 @@
 <p>Si pour être rigoureux et formel il est nécessaire de considérer qu'une case mémoire ne peut contenir qu'un seul bit plutôt qu'un entier quelconque, cela alourdit les calculs de complexité sans réel apport.
 En effet l'entier étant la donnée élémentaire, toute opération qui en manipule (c'est à dire presque toutes les opérations) devra lire chaque bits les constituant, ce qui ne fait qu'ajouter un facteur linéaire en la taille des données.</p>
 <p>Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).</p>
-</div></div>
-
+</div>
+</div>
 <h3>Vérification efficace</h3>
 <p>Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiaux pour les résoudre mais la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement, grace à un algorithme efficace de vérification nommé <strong><em>vérifieur</em></strong>, voir si proposition de solution en est une ou pas.</p>
 <div id="définition-vérifieur"></div>
@@ -139,48 +138,45 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>vérifieur</em></strong> est un algorithme de :</p>
 <p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée de l'exactitude d'une solution. Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.</p>
 <p>Mais pour que cette vérification puisse être utilisable en pratique il ne faut pas qu'elle dure trop longtemps : elle doit &quot;<em>efficace</em>&quot; (<em>ie.</em> polynomiale, donc pouvant être écrite puis lue par des humains). Formalisons cette notion de vérification efficace :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>vérifieur efficace d'un problème décidable</em></strong> $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
 <ul>
 <li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$</li>
 <li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.</p>
-</div></div>
-
+</div>
+</div>
 <p>Remarquez que l'on ne demande <strong>pas</strong> que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte. Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Si un problème décidable admet un vérifieur efficace, la taille de la sortie est polynomiale par rapport à la taille de l'entrée.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette définition est réaliste puisque si l'on possède une solution potentielle on veut pouvoir vérifier de façon efficace (<em>ie.</em> polynomialement) que c'est bien une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <p>Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.</p>
 <p>Ainsi, pour <a href="../#probl%C3%A8me-max-tableau">le problème MAX (trouver le maximum d'un tableau)</a> :</p>
@@ -192,8 +188,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que le problème <a href="../probl%C3%A8me-r%C3%A9duction/#probl%C3%A8me-3-SUM">3-SUM</a> admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -230,8 +226,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -260,12 +256,11 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>Un problème algorithmique est dit</em></strong> $NP$ s'il existe un vérifieur efficace de ses solutions.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce qui donne le schéma suivant :</p>
 <p><img src="NP-NP-1.png" alt="décidable"></p>
 <p>La définition ci-dessus appelle deux remarques :</p>
@@ -277,16 +272,15 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :</p>
 <ul>
 <li>On peut énumérer toutes les solutions possibles en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible), donc fini.</li>
 <li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution en est réellement une.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.</p>
 <p>La seule façon d'obtenir une complexité spatiale supérieure à la complexité temporelle est d'allouer de la mémoire (en $\mathcal{O}(1)$) et de ne jamais aller y voir (puisque y aller va consommer une opération). Par exemple allouer un tableau de $2^n$ cases et n'en utiliser que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial. On gaspille un nombre exponentiel de mémoire.</p>
 <p>On peut cependant changer cde genre d'algorithme grâce à la proposition suivante :</p>
@@ -302,8 +296,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>sa complexité temporelle reste polynomiale</li>
 <li>sa complexité spatiale soit inférieure à sa nouvelle complexité temporelle</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -337,8 +331,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p><strong>Théorème (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook" class="externe">Cook &amp; Levin en 1971</a>)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout problème $A$ de $NP$ il existe une <strong>réduction polynomiale</strong> de $A$ vers le problème SAT : $A \leq SAT$</p>
-</div></div>
-
+</div>
+</div>
 <p>C'est en effet surprenant qu'il n'y ait pas plusieurs élément maximaux de l'ordre induit par la réduction polynomiale.</p>
 <h3><span id="SAT"></span>Le problème SAT</h3>
 <p>Le problème SAT cherche à vérifier si une formule logique spéciale peut-être satisfaite. Formalisons ça en commençant par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
@@ -347,17 +341,16 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :</p>
 <ul>
 <li>un <strong><em>littéral</em></strong> $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$</li>
 <li>une <strong><em>clause</em></strong> comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)</li>
 <li>une <strong><em>conjonction de clauses</em></strong> comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite <strong><em>satisfiable</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -371,8 +364,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li><strong>Entrée</strong> : $f$ une conjonction de clauses sur les variables $x_1$ à $x_n$</li>
 <li><strong>Sortie</strong> : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h4>Exemple</h4>
 <p><span id="exemple-SAT"></span>
 Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :</p>
@@ -407,8 +400,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quel est l'encodage de l'exemple ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -441,8 +434,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utilisez le codage précédent pour écrire un vérifieur linéaire de SAT.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -483,12 +476,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorithme efficace pour le résoudre.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
 <p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin" class="externe">la transformation de Tseitin</a> (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.</p>
@@ -499,8 +491,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses, on se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.</p>
-</div></div>
-
+</div>
+</div>
 <h4>MAX</h4>
 <p>Montrons que l'on peut le faire pour <a href="../#probl%C3%A8me-max-tableau">le problème MAX (trouver le maximum d'un tableau)</a>. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
@@ -513,8 +505,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On encode les entiers sous la forme binaire de gauche à droite dans un tableau : l'entier 5 sera encodé par le tableau $[0, 0, 1]$ puisque $5 = T[0]\cdot 2^0 +T[1]\cdot 2^1 + T[2]\cdot 2^2$</p>
-</div></div>
-
+</div>
+</div>
 <p>Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux (on suppose que l'on écrit nos entiers avec le même nombre de bits $p$, quitte à mettre des 0 en fin de tableau pour le plus petit):</p>
 <div>
 $$
@@ -586,8 +578,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle formule doit-on satisfaire si on veut additionner le bit $x=0$ et $y=0$. Quelles sont les affectation possible des variables booléennes ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -630,8 +622,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Peut-on trouver 2 bits dont l'addition donne $11$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -745,12 +737,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un problème $A$ de NP est NP-complet si $B \leq A$ pour tout problème $B$ de NP.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :</p>
 <p><img src="NP-NP-2a.png" alt="décidable"></p>
 <p>Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.</p>
@@ -767,8 +758,8 @@ $$
 <li><strong>Entrée</strong> : $f$ une conjonction de clauses de taille 3 sur les variables $x_1$ à $x_n$</li>
 <li><strong>Sortie</strong> : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description" class="externe">Par Exemple</a> : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$</p>
 <p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :</p>
 <ul>
@@ -799,23 +790,21 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut <em>a priori</em> tout vérifier car la solution peut se trouver n'importe où <em>a contrario</em> des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.</p>
-</div></div>
-
+</div>
+</div>
 <p>Comme tout problème est un cas particulier de n'importe lequel des problème NP-Complet on a aussi :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes possibles.</p>
-</div></div>
-
+</div>
+</div>
 <h3>P et NP</h3>
 <p>Si les problèmes de $P$ sont inclus dans $NP$, on ne sait pas si l'inclusion est stricte. On a implicitement supposé que les problèmes NP-complets ne sont pas dans P, mais en vrai on en sait rien : la question est ouverte ! Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -824,20 +813,19 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc" class="externe">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
-</div></div>
-
+</div>
+</div>
 <p><img src="NP-NP-3.png" alt="décidable"></p>
 <p>Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Même si la chose n'est pas démontrée on considérera que $P \neq NP$ dans toute la suite de ce cours (et notre vie). Prouver qu'un problème est NP-complet sera donc une garantie que l'on ne pourra pas le résoudre de façon efficace et que l'on peut chercher une solution approchée via un algorithme polynomial.</p>
-</div></div>
-
+</div>
+</div>
 <p>Mais imaginons un instant que SAT soit polynomial. Vous avez sûrement remarqué que tout problème transformé en une instance de SAT est symétrique ?:</p>
 <ul>
 <li>si on fixe les entrées, la satisfiabilité de la formule donne sa sortie,</li>
@@ -855,19 +843,18 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=6OPsH8PK7xM" class="externe">Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Bref :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>P = NP ne ferait pas que des heureux.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Pas dans P ni NPC ?</h3>
 <p>Pour ne rien rendre simple, il existe de nombreux problèmes pour lesquels on ne connaît pas d'algorithme polynomiaux mais que l'on arrive pas à démontrer NP-complet. Par exemple le problème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -887,8 +874,8 @@ $$
 </li>
 <li><strong>Sortie</strong> : Rendre une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\{x, y\}$ est une arête de $G_1$ si et seulement si $\{\sigma(x), \sigma(y) \}$ est une arête de $G_2$ (ou <code class="language-">∅</code> si une elle bijection n'existe pas).</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD renvoyer à la partie graphe.</p>
 </blockquote>
@@ -898,8 +885,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=21bMUXO-QYQ" class="externe">Les définitions d'une excellente chaîne d'informatique</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont isomorphes avec une fonction $\sigma: V_1 \to V_2$ il faut montrer que :</p>
 <ul>
 <li>$\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments</li>
@@ -912,16 +899,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le problème de l'isomorphisme de graphe admet un vérifieur efficace.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
 <p><img src="NP-NP-4.png" alt="décidable"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez une réduction polynomiale permettant de résoudre l'isomorphie de graphe avec SAT.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -966,8 +953,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le lecteur intéresser pourra consulter <a href="https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9" class="externe">la page Wikipedia sur les classes de complexité</a> qui en liste certaines.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données/">Structures de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données/tuples/">Tuples</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -116,16 +116,15 @@ ps <span class="token operator">←</span> <span class="token punctuation">(</sp
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>tuple</em></strong> est un regroupement fini et ordonné d'objets de types pouvant être différent.</p>
 <ul>
 <li>Son type est composé des types des différents objets le contenant entre parenthèses et séparé par des virgules. Ce n'est <strong>pas</strong> un tableau même si on peut accéder à chaque élément d'un tuple par son indice.</li>
 <li>Un tuple est <strong>non mutable</strong> : il est impossible de changer l'objet associé à un élément du tuple.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Un tuple est un type utilisable par un algorithme. Par exemple, le type de <a href="../../prouver-un-algorithme/#algorithme-division-euclidienne">l'algorithme de la division euclidienne</a> <code class="language-">algorithme division_euclidienne(a: entier, b: entier) → [entier]</code> est bien plus explicite si on l'écrit :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">division_euclidienne</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span></code></pre>
 <p>Attention cependant :</p>
@@ -133,12 +132,11 @@ ps <span class="token operator">←</span> <span class="token punctuation">(</sp
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Ce n'est pas parce que l'on ne peut pas changer d'objet que l'objet lui même ne peut pas être modifié.</p>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">p <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token comment"># tuple composé d'un tuple et d'une chaîne de caractères</span>
 p <span class="token operator">←</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> 

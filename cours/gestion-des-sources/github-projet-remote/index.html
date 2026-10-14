@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-projet-remote/">Projet : remote github</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -111,8 +111,8 @@
 <li>contienne  un fichier readme</li>
 <li>ne contienne pas  de fichier <code class="fichier">.gitignore</code>.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Ajout de collaborateurs</h3>
 <p>Vous pouvez ajouter d'autres personnes à votre projet :</p>
 <ol>
@@ -136,8 +136,8 @@
 <img src="clone-ssh.png" alt="clone"></li>
 <li>dans un terminal placez vous dans un dossier pouvant contenir votre projet et tapez la commande : <code>git clone &lt;votre chaîne copiée&gt;</code></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -148,8 +148,8 @@
 <li>vous avez lié votre clé publique ssh à votre compte github</li>
 <li>vous avez un agent en local qui tourne avec votre clé</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Vous pouvez maintenant ouvrir ce dossier comme projet vscode.</p>
 <h3>Config</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -159,8 +159,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez la configuration de votre projet (c'est le fichier <code class="fichier">.git/config</code>).</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez voir un champ réservé au serveur distant origin.</p>
 <h2>Ajout de fichiers</h2>
 <h3>Le fichier <code class="fichier">.gitignore</code></h3>
@@ -175,16 +175,16 @@
 <li>Créez un fichier <code class="fichier">.gitignore</code> et mettez-y le contenu du lien ci-après.</li>
 <li>Ajoutez le au projet et commitez le tout</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://gist.github.com/octocat/9257657" class="externe">une liste de fichiers courant à ignorer</a></p>
-</div></div>
-
+</div>
+</div>
 <p>En faisant un <code>git status</code> vous devriez voir que vous êtes en avance de 1 commit sur l'origine :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">On branch main
 Your branch is ahead of 'origin/main' by 1 commit.
@@ -199,8 +199,8 @@ nothing to commit, working tree clean</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez la commande <code>git push</code> pour envoyer votre fichier <code class="fichier">.gitignore</code> sur github</p>
-</div></div>
-
+</div>
+</div>
 <p>Vérifiez que c'est ok !</p>
 <h3>Ajoutons d'autres fichiers</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -209,8 +209,8 @@ nothing to commit, working tree clean</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-</div></div>
-
+</div>
+</div>
 <p>Ajoutons y 3 fichiers :</p>
 <ul>
 <li>
@@ -248,8 +248,8 @@ Goéland
 <li>commit le tout avec la commande <code>git commit -m&quot;add 3 files&quot;</code></li>
 <li>push le tout sur l'origin</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <h2>Résolution de conflit</h2>
 <p>On va :</p>
 <ol>
@@ -301,8 +301,8 @@ nous   :    -> C</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>A moins que les branches soient liées au <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/" class="externe">workflow</a>, on privilégiera toujours le rebase au merge</p>
-</div></div>
-
+</div>
+</div>
 <p>On va re-écrire notre histoire en fonction de l'origine, c'est à dire transformer ça :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
           \
@@ -354,8 +354,8 @@ Pinson du nord</code></pre>
 <li>on poursuit le rebase : <code>git rebase --continue</code></li>
 <li>on git push pour envoyer notre mise à jour au serveur.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <h2>log</h2>
 <p>Au final un git log nous donne tout ce qu'on a fait :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">commit 4ec6f84ece0572b7baf01ce3468db94c5ee79692 (HEAD -> main, origin/main, origin/HEAD)

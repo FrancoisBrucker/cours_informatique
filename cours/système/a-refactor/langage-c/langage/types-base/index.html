@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/types-base/">Les variables et leurs types</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -121,12 +121,12 @@
 <li>une seule déclaration de variable par ligne.</li>
 <li>initialisez cette variable</li>
 </ul>
-</div></div>
+</div>
 </div>
 <p>Prenez l'habitude de <strong>toujours</strong> initialiser vos variables à la création.</p>
 <p>Le C permet de commencer par déclarer une variable par l'instruction  <code>type nom;</code> avant de l'utiliser plus tard, mais c'est presque toujours une mauvaise idée.</p>
 </div>
-
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -139,8 +139,8 @@
 </ul>
 <p>La durée de vie d'une variable est le bloc dans laquelle elle est définie ou le fichier si elle est définie en-dehors de tout bloc.</p>
 <p>Une variable est ainsi l'indice de la pile ou de la partie data à laquelle sa valeur est stockée.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut connaître la taille d'une variable grâce à l'opérateur <a href="https://fr.wikipedia.org/wiki/Sizeof" class="externe"><code>sizeof</code></a>.</p>
 <pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
@@ -180,14 +180,14 @@ Taille d'un caractère : 1B
 <li><code>%s</code> : pour les chaines de caractères</li>
 <li><code>%p</code> : pour les pointeurs génériques</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Plutôt que d'afficher la taille en mémoire des différentes variables dans le code précédent, affichez leurs valeurs avec le bon type.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -246,8 +246,8 @@ printf("flottant : %f\n", i);
 </svg>
 <div class="pl-8 mr-8">
 <p>La norme <code>c23</code> impose que le signe soit effectué par <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux" class="externe">complément à deux</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Types d'entiers</h3>
 <p>Ce type entier peut être spécifié pour moduler sa taille :</p>
 <ul>
@@ -259,8 +259,8 @@ printf("flottant : %f\n", i);
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la taille de ces types sur votre machine ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -297,8 +297,8 @@ printf("flottant : %f\n", i);
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant le fichier <a href="https://www.tutorialspoint.com/c_standard_library/limits_h.htm" class="externe"><code>limits.h</code></a>, vérifiez que lorsqu'on ajoute 1 à un entier non signé maximum, on obtient bien 0.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -342,16 +342,16 @@ i <span class="token operator">+=</span> <span class="token number">1</span><spa
 <li><code>unsigned</code> est équivalent à <code>unsigned int</code></li>
 </ul>
 <p>Il existe le <code>signed int</code> qui est équivalent à <code>int</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez le type <code>int</code> par défaut lorsque vous avez besoin d'entiers.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Représentation des entiers</h3>
 <blockquote>
 <p>TBD : nombre décimal, binaire, hexadécimal (pour les adresses) ou octal (utilisé pour les droits.)
@@ -371,8 +371,8 @@ little/ big endian selon le système.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez le type <code>double</code> par défaut lorsque vous avez besoin de réels.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Char</h2>
 <blockquote>
 <p>TBD en C que des nombre + représentation via son type. Donc char est un type entier avec des astuces pour en faire des caractères.</p>
@@ -388,8 +388,8 @@ little/ big endian selon le système.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le type <code>char</code> est l'unité fondamentale des chaines de caractères mais ne correspond pas toujours à un caractère.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les caractères s'écrivent entre quote <code>'</code> et sont remplacé par leur code selon l'encodage par défaut (souvent utf8).</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %c\n"</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %i\n"</span><span class="token punctuation">,</span> <span class="token char">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -399,8 +399,8 @@ little/ big endian selon le système.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les double quote (<code>&quot;</code>) servent aux chaînes de caractères et ne peuvent pas être utilisé pour représenter des caractères</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD représentation d'un char :</p>
 <ul>
@@ -426,8 +426,8 @@ double k = (double)i / 13;
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que vaut $k$ sans et avec le cast explicite</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -471,8 +471,8 @@ double k = (double)i / 13;
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créer un type <code>petit_entier</code> correspondant au plus petits entiers signé possible.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -530,8 +530,8 @@ Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifie
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=8a3HyL1VN0Q" class="externe">Bizarreries de <code>const</code> en <code>C</code></a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Opérations</h2>
 <ul>
 <li><a href="https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1042_les-bases-du-langage-c/4535_les-operations-mathematiques/" class="externe">opérations mathématiques</a></li>
@@ -549,8 +549,8 @@ Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifie
 <li>ne combinez pas cet incrément à toute autre opération</li>
 <li>si vous êtes obligé de le faire, utilisez <strong>toujours</strong> <code>++i</code></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -559,8 +559,8 @@ Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifie
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un int : %i\n"</span><span class="token punctuation">,</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un int : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

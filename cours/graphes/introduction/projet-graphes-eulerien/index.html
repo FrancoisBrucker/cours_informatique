@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/projet-graphes-eulerien/">Projet : Graphes Eulériens</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -118,8 +118,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi utiliser une telle structure ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -152,8 +152,8 @@ G2 <span class="token operator">=</span> copy<span class="token punctuation">.</
 </svg>
 <div class="pl-8 mr-8">
 <p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions" class="externe">list comprehension</a> de python : <code class="language-">G2 = {k: set(v) for k, v in G.items()}</code></p>
-</div></div>
-
+</div>
+</div>
 <h3>Algorithme de Hierholzer</h3>
 <ol>
 <li>Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).</li>
@@ -167,16 +167,16 @@ G2 <span class="token operator">=</span> copy<span class="token punctuation">.</
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites l'algorithme. Ne vous posez pas trop de question d'optimisation. Faites le déjà fonctionner.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut épuiser tous les cycles avec le premier élément, puis recentrer le cycle syr le premier élément qui a des</p>
-</div></div>
-
+</div>
+</div>
 <h3>Tests</h3>
 <p>Générez aléatoirement des graphes eulériens (comme vu en cours) et mesurez le temps mis :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
@@ -220,8 +220,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="../mots-bruijn/">Mots de Bruijn</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Toutes les suites</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -230,8 +230,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez un algorithme permettant de générer tous les mots de longueurs $p$ d'un alphabet $A$ de $n$ lettres passé en paramètre sous la forme d'une liste.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Résolution</h3>
 <p>Utilisez networkx pour générer des mots de Bruijn.</p>
 <p>Attention, ce ne sont plus des graphes mais des multi-graphes orientés (des <a href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph" class="externe"><code class="language-">MultiDigraph</code></a>).</p>

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/chemin-le-plus-long/">Chemin le plus long</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -109,15 +109,15 @@
 <li><strong>Entrées</strong> : Un graphe (<em>resp.</em> graphe orienté) $G$</li>
 <li><strong>Sortie</strong> : Un chemin élémentaire le plus long possible.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème est clairement relié au problème du chemin hamiltonien :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que le problème de la recherche d'un chemin hamiltonien est plus facile que la recherche d'un chemin le plus long.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -154,8 +154,8 @@
 <li><strong>Entrée</strong> : Un graphe (<em>resp.</em> graphe orienté) $G$</li>
 <li><strong>Question</strong> : $G$ possède-t-il un cycle hamiltonien ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Et faisons de même pour les chemins hamiltonien dans ses versions orienté et non orienté :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -169,8 +169,8 @@
 <li><strong>Entrée</strong> : Un graphe (<em>resp.</em> graphe orienté) $G$</li>
 <li><strong>Question</strong> : $G$ possède-t-il un chemin hamiltonien ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On a montré que la recherche d'un chemin  et un cycle (<em>resp.</em> d'un chemin orienté et d'un circuit) sont deux problèmes équivalents. Nous allons donc uniquement montrer la NP-complétude de la recherche de chemins orienté par une réduction depuis <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat">le problème 3-SAT</a> et conclure en montrant une reduction de la recherche de chemins orientés vers la recherche  d'un chemin hamiltonien non orienté.</p>
 <h3>3-SAT ≤ Chemin orienté hamiltonien</h3>
 <p>Pour transformer une instance de 3-SAT en une instance de recherche d'un chemin hamiltonien dans un graphe, il faut :</p>
@@ -223,8 +223,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le problème de recherche d'un chemin hamiltonien dans un graphe dirigé est NP-complet.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Circuit hamiltonien ≤ cycle hamiltonien</h3>
 <p>On doit cette réduction à Karp (1972).</p>
 <p>Soit $G = (V. E)$ un graphe orienté. On lui associe $G' = (V', E')$ le graphe (non orienté) suivant :</p>
@@ -249,8 +249,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le problème de la recherche du chemin le plus long n'est <em>a priori</em> pas dans NP.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il est en effet impossible à partir d'une sortie de ce chemin de conclure polynomialement que c'est bien le plus grand possible sinon P = NP...</p>
 <p>En revanche, le problème suivant y est clairement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -270,20 +270,19 @@ $$
 </li>
 <li><strong>Sortie</strong> : Un chemin élémentaire de longueur $K$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème est même NP-complet puisque si $K$ vaut le nombre de sommets moins 1 c'est le problème chemin hamiltonien.</p>
 <p>De plus, il est facile (par dichotomie) de résoudre le chemin le plus long à partir d'un algorithme résolvant le problème &quot;chemin de longueur donné&quot; : ces deux problèmes sont donc à un facteur log prêt de même complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un problème est dit <strong>NP-difficile</strong>. si son pendant à paramètre fixé est NP-Complet.</p>
-</div></div>
-
+</div>
+</div>
 <p>Trouver un plus long chemin  dans un graphe est donc un problème NP-difficile. Mais il existe des cas où sa résolution est toute simple ! On va en examiner deux.</p>
 <h3>Dans un arbre</h3>
 <blockquote>
@@ -330,12 +329,11 @@ Le chemin entre B et C est le chemin le plus long de l'arbre, et sa longueur est
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un graphe orienté sans circuit est appelé DAG (<em>direct acyclic graph</em>)</p>
-</div></div>
-
+</div>
+</div>
 <p>On appelle <strong><em>tri topologique</em></strong> d'un graphe orienté $G = (V, E)$ un ordre total $&lt;$ sur les sommets du graphe tel que $xy \in E$ implique $x &lt; y$ dans l'ordre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -347,8 +345,8 @@ Le chemin entre B et C est le chemin le plus long de l'arbre, et sa longueur est
 <li>en déduire qu'un DAG admet un tri topologique</li>
 <li>conclure sur le fait qu'un graphe est un DAG si et seulement s'il admet un tri topologique</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -387,8 +385,8 @@ Le chemin entre B et C est le chemin le plus long de l'arbre, et sa longueur est
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utiliser le tri pour trouver un chemin élémentaire de longueur maximum dans un DAG.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -448,8 +446,8 @@ Ordre d'ajout : B C A</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -477,8 +475,8 @@ Ordre d'ajout : B C A</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que le tri topologique est une solution au problème d'ordonnancement. Appliquez le au problème de s'habiller le matin.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

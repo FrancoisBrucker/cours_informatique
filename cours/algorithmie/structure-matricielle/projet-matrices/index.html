@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-matricielle/">Structures de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-matricielle/projet-matrices/">Utilisation des listes</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -121,8 +121,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="../../exercices-calculs-compexit%C3%A9s/#triangle-de-pascal">On a déjà vu</a> l'approche récursive. Passons à l'approche itérative.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Calcul de la matrice</h3>
 <p>Le type matrice ne spécifie pas la longueur de chaque tableau, ceci permet de créer des matrices triangulaires inférieures, dans notre cas, une partie du <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal" class="externe">triangle de Pascal</a> :</p>
 <div>
@@ -143,16 +143,16 @@ $$
 <p>Créez un algorithme rendant une matrice triangulaire inférieure $B$ telle que $B[n][k] = \binom{n}{k}$.</p>
 <p>Sa signature devra être :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez créer itérativement chaque ligne en utilisant la ligne créé à l'itération précédente.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -209,8 +209,8 @@ $$
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 <p>calculant $\binom{n}{k}$.</p>
 <p>Donnez-en sa complexité spatiale et temporelle.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -247,8 +247,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Créez l'algorithme <code class="language-">ligne_suivante(l: [entier]) → [entier]</code> qui à partir de la liste $l= [\binom{n}{0}, \dots, \binom{n}{n}]$ rend la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{n+1}]$</p>
 <p>Donnez-en sa complexité spatiale et temporelle.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -285,8 +285,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utilisez l'algorithme <code class="language-">ligne_suivante(l: [entier]) → [entier]</code> pour améliorer la complexité spatiale de l'algorithme <code class="language-">binom(n: entier, k:entier) → entier</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -322,8 +322,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Modifiez l'algorithme <code class="language-">ligne_suivante</code> pour le rendre de signature <code class="language-">ligne_suivante(l: [entier], k: entier) → [entier]</code> tel que si  $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ rend le tableau $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.</p>
 <p>Utilisez le dans <code class="language-">binom(n: entier, k:entier) → entier</code> pour que sa complexité spatiale soit en $\mathcal{O}(k)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -372,8 +372,8 @@ $$
 <div class="pl-8 mr-8">
 <p>En remplissant la ligne courante de droite à gauche montrez que l'on peut modifier <code class="language-">ligne_suivante</code> pour le rendre de signature <code class="language-">ligne_suivante(l: [entier], n:entier k: entier) → [entier]</code> telle que si $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ en entrée, elle est modifiée en la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.</p>
 <p>Utilisez le dans <code class="language-">binom(n: entier, k:entier) → entier</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -414,8 +414,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez les différents exercices en python. Vous pourrez vérifier vos algorithmes en testant que $\binom{10}{4} = 210$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -439,11 +439,11 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/pascal.py" class="externe"><code class="fichier">pascal.py</code></a></p>
-</div></div>
 </div>
-</details></div>
-     
-
+</div>
+</div>
+</details>     
+</div>
 <h2>8 reines</h2>
 <blockquote>
 <ul>
@@ -460,8 +460,8 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Quand le CEA, qui avait financé les travaux, a demandé à Colmerauer un exemple de problème pratique que pouvait résoudre son nouveau langage <a href="https://fr.wikipedia.org/wiki/Prolog" class="externe">Prolog</a>, il a répondu le problème des 8 reines.</p>
 <p>Pas sûr que les deux interlocuteurs aient la même notion de ce qu'était un <em>&quot;problème pratique&quot;</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce problème initial consiste à placer 8 reines sur un échiquier (possédant 8 lignes et 8 colonnes) sans qu'aucune reine ne puisse en prendre une autre.
 Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses diagonales.</p>
 <p>Nous verrons ici un cas un peu plus général consistant à placer $n$ reines sur un échiquier à $n$ lignes et $n$ colonnes. On vous demande de donner la complexité de vos algorithmes en fonction de cette taille $n$.</p>
@@ -471,8 +471,8 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un algorithme de signature <code class="language-">échiquier(n: entier) → [[booléen]]</code> permettant de créer un échiquier $n \times n$ vide.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -505,8 +505,8 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez un algorithme de signature <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> permettant de savoir si on peut placer une reine à la ligne <code class="language-">i</code> et la colonne <code class="language-">j</code> pour un échiquier donné (de taille quelconque). Elle rendra <code class="language-">Vrai</code> si la reine peut être placée et <code class="language-">Faux</code> sinon.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -559,8 +559,8 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -586,8 +586,8 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire un algorithme de signature <code class="language-">échiquier_correct(E: [[booléen]]) → booléen</code> qui, à partir d'un échiquier de taille quelconque $n$, rend <code class="language-">Vrai</code> si l'échiquier résout le problème des 8 reines et <code class="language-">Faux</code> sinon.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -621,8 +621,8 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">échiquier_correct(E: [[booléen]]) → booléen</code> ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -650,16 +650,16 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un algorithme récursif génère récursivement tous les échiquiers de taille $n$ avec exactement 1 reine par ligne et affiche à l'écran ceux qui sont corrects.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez créer un algorithme de signature <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> qui prend en entrée un échiquier <code class="language-">E</code> donné de taille $n$ ayant une reine sur chaque ligne d'indice strictement inférieur à $i$. Cet algorithme vérifie que $E$ est correct si $i\geq n$ et sinon génère les reines de la ligne $i$ et appelle <code class="language-">tous_les_échiquiers_rec(E, i + 1)</code> pour générer les autres</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -697,8 +697,8 @@ tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelles sont les échiquiers corrects à 4 lignes ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -728,8 +728,8 @@ tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -766,8 +766,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant l'algorithme <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> la partie précédente, améliorez l'algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en arrêtant l'ajout de reines dès que la position est incorrecte.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -806,8 +806,8 @@ tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -844,8 +844,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que l'on peut représenter le problème des $n$ reines par une permutation $P$ du tableau <code class="language-">[0, ..., n-1]</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -871,8 +871,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez l'algorithme <code class="language-">permutation_correcte(P: [entier], i: entier) → booléen</code> qui prend en paramètre une permutation $P$ et un indice de ligne $i$ et qui rend <code>Vrai</code> si la reine à la ligne d'indice $i$ n'est sur aucune diagonales des reine d'indice $j &lt; i$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -908,8 +908,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">permutation_correcte(P: [entier], i:entier) → booléen</code>  ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -949,8 +949,8 @@ $$
 
 toutes_les_permutations_rec<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -976,8 +976,8 @@ toutes_les_permutations_rec<span class="token punctuation">(</span><span class="
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la complexité de votre algorithme <code class="language-">toutes_les_permutations_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -989,8 +989,8 @@ $$
 \sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1036,8 +1036,8 @@ $$
 <li>l'optimisation de l'algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code>  est pertinente en pratique</li>
 <li>l'algorithme <code class="language-">toutes_les_permutations_rec(E: [[booléen]], i: entier)</code> est plus rapide</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -1066,8 +1066,8 @@ $$
 ▢ ▢ ▢ ▢ ♕ ▢      ▢ ▢ ▢ ♕ ▢ ▢      ▢ ▢ ♕ ▢ ▢ ▢      ▢ ♕ ▢ ▢ ▢ ▢
 
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1091,11 +1091,11 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/reines.py" class="externe"><code class="fichier">reines.py</code></a></p>
-</div></div>
 </div>
-</details></div>
-     
-
+</div>
+</div>
+</details>     
+</div>
 <h3>Généralisation</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1103,8 +1103,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://interstices.info/le-probleme-des-8-reines-et-au-dela/" class="externe">https://interstices.info/le-probleme-des-8-reines-et-au-dela/</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Multiplication de matrices</h2>
 <p>Le problème de la multiplication de matrice est un problème intéressant <a href="https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm" class="externe">avec une grande histoire</a>. Nous allons montrer ici la méthode naïve et le plus célèbre des algorithmes, celui de Strassen. Notez qu'actuellement on peut faire mieux.</p>
 <h3>Création</h3>
@@ -1112,8 +1112,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez un algorithme de signature <code class="language-">création_matrice(n: entier, m: entier)  → [[entier]]</code> qui crée une matrice à $n$ lignes et $m$ colonnes dont les valeurs valent toutes 0.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1146,8 +1146,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez un algorithme de signature <code class="language-">extraction_matrice(M: [[entier]], n1: entier, n2: entier, m1: entier, m2: entier)  → [[entier]]</code> qui rend une nouvelle matrice valant <code class="language-">M[n1:n2][m1:m2]</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1179,8 +1179,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez un algorithme de signature <code class="language-">somme(A: [[entier]], B: [[entier]])  → [[entier]]</code> qui rend une nouvelle matrice valant <code class="language-">A + B</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1214,8 +1214,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Écrivez l'algorithme naïf de la multiplication de deux matrices (sa complexité sera en $\mathcal{O}(n^3)$ avec $n$ le maximum du nombre de ligne et de colonnes dex deux matrices à multiplier). Il devra être de signature
 Écrivez un algorithme de signature <code class="language-">multiplication(A: [[entier]], B: [[entier]])  → [[entier]]</code></p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1249,8 +1249,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que pour le cas d'une multiplication de 2 matrices carrées à $n$ lignes, on peut toujours se ramener au cas où les deux matrices on un nombre de lignes égale à une puissance de 2 sans changer la complexité.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1310,8 +1310,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez un algorithme récursif de multiplication de matrices carrées (avec un nombre de lignes égale à une puissance de 2) de signature <code class="language-">multiplication_rec(A: [[entier]], B: [[entier]]) → [[entier]]</code> utilisant les matrices $A_{ij}$, $B_{ij}$ et $C_{ij}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1381,8 +1381,8 @@ C(n) = \Theta(n^2) + 8 C(n // 2)
 $$
 </div>
 <p>En conclure que sa complexité est en $Theta(n^3)$ où $n$ est le nombre de lignes des matrices.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1432,8 +1432,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen" class="externe">page Wikipédia sur l'algorithme Strassen</a></p>
-</div></div>
-
+</div>
+</div>
 <p>L'astuce qu'a utilisé Strassen est peu ou prou la même que celle utilisée par <a href="../../projet-complexit%C3%A9-probl%C3%A8me/#Karastuba">Karastuba pour multiplier des entiers</a>. En reprenant les matrices $A_{ij}$ et $B_{ij}$ précédente, il montre que l'on peut créer les matrices $C_{ij}$ en passant par 7 matrices $M_k$ :</p>
 <div>
 $$
@@ -1463,8 +1463,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer qu'il suffit de 7 récursion pour écrire l'algorithme de Strassen. En déduire l'équation de complexité que satisfait l'algorithme de Strassen.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1498,8 +1498,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que la complexité de l'algorithme de Strassen est en $\mathcal{O}(n^{2.807})$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1548,8 +1548,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez l'algorithme de Strassen et comparez son exécution à une multiplication naive pour des puissances de 2 allant jusqu'à 512. Conclusion ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1573,20 +1573,20 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py" class="externe"><code class="fichier">strassen.py</code></a></p>
-</div></div>
+</div>
 </div>
 <p>L'algorithme de Strassen possède bien plus d'additions et de créations des nouvelles matrices que l'algorithme naïf. Asymptotiquement il est meilleur mais il faut que $n$ soit grand pour ˆ´tre effectivement plus rapide : on voit en effet que le rapport de temps entre les 2 temps algorithme augmente (mais très doucement).</p>
 <p>C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire (notre code python est loin d'être optimal)</p>
-</details></div>
-     
-
+</div>
+</details>     
+</div>
 <h3>Généralisation</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Comment généraliseriez vous l'algorithme de Strassen à des matrices non carrées ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1621,8 +1621,8 @@ $$
 <li><a href="https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_la_multiplication_de_matrices#Inversion_de_matrice,_d%C3%A9terminant_et_%C3%A9limination_gaussienne" class="externe">https://fr.wikipedia.org/wiki/Complexité_de_la_multiplication_de_matrices#Inversion_de_matrice,_déterminant_et_élimination_gaussienne</a></li>
 <li><a href="https://weimann.users.lmno.cnrs.fr/CM5.pdf" class="externe">https://weimann.users.lmno.cnrs.fr/CM5.pdf</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>On peut faire mieux !</h3>
 <p>La limite théorique de la multiplication de deux matrices carrées à $n$ lignes est en $\mathcal{O}(n^2)$ et l'algorithme de Strassen est en $\mathcal{O}(n^{2.804})$. Il en existe d'autres meilleures, voir les lien ci-après :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -1634,8 +1634,8 @@ $$
 <li><a href="https://www.youtube.com/watch?v=xsZk3c7Oxyw" class="externe">histoire des différents algorithmes</a></li>
 <li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8" class="externe">Une expérimentation de <em>LaurieWired</em></a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Cependant, comme on l'a vu, ces résultats sont asymptotiques et on ne voit la différence que pour des matrices très très grandes. À l'heure où je tape ces lignes, le meilleur algorithme connu date de 2025 et est en $\mathcal{O}(n^{2.271})$.</p>
 
 

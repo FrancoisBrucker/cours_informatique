@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">Fonctions de hachage</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,9 +103,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>fonction de hachage</em></strong> est une fonction $f$ :</p>
 <div>
 $$
@@ -113,42 +112,40 @@ f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[
 $$
 </div>
 <p>où $m$ est un entier positif.</p>
-</div></div>
-
+</div>
+</div>
 <p>Une définition alternative, également souvent utilisée, est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>fonction de hachage</em></strong> est une fonction $f$ qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^k$. Avec $k$ est un entier positif.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On rappelle que que $\{0, 1\}^\star$ est l'ensemble des suites finies $s_0\dots s_n$ où $s_i \in \{0, 1\}$ pour tout $0\leq i \leq n$.</p>
-</div></div>
-
+</div>
+</div>
 <p>Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>fonction de hachage</em></strong> est une fonction qui associe à tout <strong>objet</strong> soit :</p>
 <ul>
 <li>un entier entre 0 et $m$</li>
 <li>un mot de $\{0, 1\}^k$ ($k &gt; 0$)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>En python par exemple, on peut utiliser <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash" class="externe">la fonction <code class="language-">hash</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
@@ -171,25 +168,24 @@ $$
 <p>$$
 f(a) \neq f(b) \Rightarrow a \neq b
 $$</p>
-</div></div>
-
+</div>
+</div>
 <p>Une fonction de hachage permet de partitionner les entiers (<em>ie.</em> les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une <em>bonne</em> fonction de hachage d'avoir en plus les propriétés suivantes :</p>
 <p><span id="définition-hachage-utile"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m[$ est <strong><em>utile</em></strong>, si elle est :</p>
 <ol>
 <li><strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage</li>
 <li><strong>facilement calculable</strong></li>
 <li><strong>uniforme</strong> : $\Pr[f(a) = i] = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i &lt; m$</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.</p>
 <h2>Utilisation</h2>
 <p>Si la taille du hachage est grand, la probabilité que deux objets différents aient le même hash est très faible (on le verra), c'est pourquoi on considère souvent que :</p>
@@ -199,8 +195,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$ selon la fonction utilisée</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette propriété permet d'utiliser les fonctions de hachage pour :</p>
 <ul>
 <li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques s'ils ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
@@ -308,8 +304,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise le modulo comme fonction de hachage avec un nombre $m$ premier pour s'assurer que même si les entiers pris ne sont pas équiprobables (ils sont tous pairs par exemple), ils seront tout de même bien répartis.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Hash de python</h3>
 <p>L'algorithme utilisé par python pour effectuer le hash est <a href="https://en.wikipedia.org/wiki/SipHash" class="externe">sipHash</a></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -321,8 +317,8 @@ $$
 <li><a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html" class="externe">description</a></li>
 <li><a href="https://github.com/veorq/SipHash" class="externe">Implémentation de SipHash par un de ses créateurs</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Hash de structures composées</h2>
 <p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hashs des différents types d'objets en un hash unique.</p>
 <p>En java par exemple, une façon classique de procéder est décrite par l'algorithme suivant :</p>
@@ -341,12 +337,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une <strong><em>collision</em></strong> pour une fonction de hachage $h$ est deux nombres $a$ et $b$ telle que $f(a) = f(b)$</p>
-</div></div>
-
+</div>
+</div>
 <p>On va distinguer deux types de collisions :</p>
 <ul>
 <li>celle d'obtenir un nombre précis</li>
@@ -365,8 +360,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites le test pour votre promo !</p>
-</div></div>
-
+</div>
+</div>
 <p>Calculons le précisément.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -379,8 +374,8 @@ $$
 <p>$$
 p(n, m) = \left(1-\frac{1}{m}\right)^n
 $$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -416,8 +411,8 @@ $$</p>
 <p>$$
 \bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})
 $$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -464,8 +459,8 @@ n &\simeq &-m\ln(p(n, m))\\
 \end{array}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -528,8 +523,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires" class="externe">paradoxe des anniversaires</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git" class="externe">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1" class="externe">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
 <p>$$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}
@@ -540,12 +535,11 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

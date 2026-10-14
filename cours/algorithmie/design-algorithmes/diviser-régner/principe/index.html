@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/diviser-régner/">Diviser pour régner</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/diviser-régner/principe/">Diviser pour régner</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -103,8 +103,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)" class="externe">https://fr.wikipedia.org/wiki/Diviser_pour_régner_(informatique)</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le principe du design diviser pour régner consiste à découper le problème initial en sous-problèmes que l'on peut résoudre puis, si nécessaire, les recombiner en une solution du problème initial.</p>
 <p>L'élégance de ce principe réside dans le fait que l'on peut utiliser l'algorithme que l'on est en train de construire pour résoudre les sous-problèmes ! Toute la difficulté réside dans le fait de trouver un découpage du problème initial facile à traiter.</p>
 <h3>Sous-problème</h3>
@@ -120,12 +120,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On utilise le design <strong>diviser</strong> que lorsqu'il est <em>facile</em> (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Diviser puis combiner</h3>
 <p>Mais souvent, il ne suffit pas de diviser pour trouver notre solution, il faut pouvoir recombiner des solutions partielles en une solution globale. On ajoute alors une étape de combinaison pour obtenir le principe général du design diviser pour régner :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">diviser_puis_combiner</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -141,13 +140,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On utilise le design <strong>diviser pour régner</strong> que lorsqu'il est <em>facile</em> (et rapide) algorithmiquement de combiner des solutions partielles en une solution globale.</p>
 <p>Toute la difficulté réside dans le fait de trouver un découpage du problème initial facile à combiner.</p>
-</div></div>
-
+</div>
+</div>
 <p>On l'a utilisé pour le tri car :</p>
 <ul>
 <li>il est facile de combiner deux tableaux trié si le max de l'un est inférieur au min de l'autre (tri rapide)</li>
@@ -159,8 +157,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si la seconde condition est plus générale, la première peut se faire in-place ce qui est avantageux si le tableau à trier est gigantesque.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Complexité</h2>
 <p>Pour connaître la complexité d'un algorithme sous la forme diviser pour régner il faut connaître :</p>
 <ul>
@@ -189,8 +187,8 @@ $$
 <li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
 <li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -266,8 +264,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
-</div></div>
-
+</div>
+</div>
 <p>Dans le cas du tri fusion, on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
 <h2>Exemples</h2>
 <h3>Somme</h3>
@@ -281,8 +279,8 @@ $$
 \max_{j\geq i}\sum_{i\leq k \leq j}T[k]
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -315,8 +313,8 @@ $$
 \max_{j \leq i\leq j'}\sum_{j\leq k \leq j'}T[k]
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -350,8 +348,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utiliser la méthode diviser pour régner pour créer un algorithme de complexité $\mathcal{O}(n\ln(n))$ permettant de calculer la somme précédente pour un tableau de $n$ entiers relatifs.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -384,15 +382,15 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La méthode de Strassen fonctionne de la même manière pour la multiplication de matrices non carrées ou dont le nombre de lignes n'est pas une puissance de 2, il faut juste faire attention lorsque l'on divise par 2.</p>
-</div></div>
-
+</div>
+</div>
 <h4>Algorithme naif</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donner un algorithme naïf de signature <code class="language-">multiplication(A: [[entier]], B:[[entier]]) → [[entier]]</code> et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -444,8 +442,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Exprimez ce calcul par sous-matrices dans un algorithme de type diviser pour régner</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -473,8 +471,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En donner l'équation de récurrence de sa complexité.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -502,8 +500,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire sa complexité. Conclusion ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -549,8 +547,8 @@ $$
 <li>$C_{2, 1} = M_2 + M_4$</li>
 <li>$C_{2, 2} = M_1 - M_2 - M_3 + M_6$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -578,8 +576,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Ce nouveau calcul change l'algorithme et l'équation de récursion. Que devient-elle ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -607,8 +605,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire la complexité de ce nouvel algorithme. Conclusion ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -642,8 +640,8 @@ $$
 <li><a href="https://www.youtube.com/watch?v=DruwS2_cVys" class="externe">Les méthodes de multiplications de matrices</a> par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$</li>
 <li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8" class="externe">Multiplication de matrices algorithme actuel</a>  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h4>Inversion de matrice</h4>
 <p>On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.</p>
 <p>Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion" class="externe">la formule de l'inversion par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
@@ -651,8 +649,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion" class="externe">la formule de l'inversion par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -687,8 +685,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices" class="externe">les formules de calcul d'un déterminant par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-liste-chaînée/">Liste Chaînée</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-liste-chaînée/liste-chaînée/">Liste Chaînée</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e" class="externe">Liste chaînée</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Les <strong><em>listes chaînées</em></strong> sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer ou ajouter un élément quelconque de cette liste en temps constant.</p>
 <p>Commençons par définir le type <code class="language-">ListeChaînée</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">ListeCha</span>înée<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
@@ -122,12 +122,11 @@ L<span class="token punctuation">.</span>queue <span class="token operator">←<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Une liste chaînée est un type récursif et n'a pas de notion de capacité ou de longueur : une liste chaînée est potentiellement infinie</p>
-</div></div>
-
+</div>
+</div>
 <h2>Complexité</h2>
 <p>On peut faire grossir une liste en ajoutant un élément en tête de liste en temps constant, à condition de rendre une nouvelle liste :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -146,8 +145,8 @@ L<span class="token punctuation">.</span>queue <span class="token operator">←<
 
 méthode <span class="token punctuation">(</span>l<span class="token punctuation">:</span> ListeChaînée<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> supprime<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> ListeChaînée<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token keyword">rendre</span> l<span class="token punctuation">.</span>queue</code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -163,8 +162,8 @@ méthode <span class="token punctuation">(</span>l<span class="token punctuation
         V <span class="token operator">←</span> V<span class="token punctuation">.</span>queue
     V<span class="token punctuation">.</span>queue <span class="token operator">←</span> l2 
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Les deux propositions précédentes montre que cette structure est très malléable. En revanche ceci à un coût :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -174,8 +173,8 @@ méthode <span class="token punctuation">(</span>l<span class="token punctuation
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Accéder au $i$ème élément d'une liste chaînée est de une complexité de $\mathcal{O}(i)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -207,8 +206,8 @@ méthode <span class="token punctuation">(</span>l<span class="token punctuation
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/FAT32" class="externe">Systèmes d'Allocation de fichiers FAT</a></p>
-</div></div>
-
+</div>
+</div>
 <!-- TBD
 
 > TBD décrire le principe en deux structures :
@@ -225,8 +224,8 @@ méthode <span class="token punctuation">(</span>l<span class="token punctuation
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez un algorithme récursif et sa complexité de recherche de la valeur maximale dune liste chaînée d'entiers.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -257,8 +256,8 @@ méthode <span class="token punctuation">(</span>l<span class="token punctuation
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez un algorithme récursif et sa complexité permettant de supprimer une valeur d'une liste.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

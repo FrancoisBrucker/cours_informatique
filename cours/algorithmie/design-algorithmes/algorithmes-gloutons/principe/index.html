@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/">Algorithmes gloutons</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/">Algorithmes gloutons</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -109,8 +109,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton" class="externe">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
-</div></div>
-
+</div>
+</div>
 <p>Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée <em>algorithmes gloutons</em>.</p>
 <p>Le schéma général d'un algorithme glouton est alors le suivant :</p>
 <div id="schéma-algo"></div>
@@ -144,16 +144,15 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Ce type d'algorithme est très utilisé pour :</p>
 <ol>
 <li>résoudre des problèmes ou la solution optimale peut être construite itérativement</li>
 <li>résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique" class="externe">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
 <h2>Comment concevoir un algorithme glouton</h2>
 <p>Pour construire un algorithme glouton on procède par étapes :</p>
@@ -181,8 +180,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ol>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Design de l'algorithme rendu</h3>
 <ol>
 <li><strong>écrire le problème comme un problème d'optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
@@ -203,8 +202,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme en python.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -263,8 +262,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </svg>
 <div class="pl-8 mr-8">
 <p>Le cas général est un problème <a href="../../probl%C3%A8me-sac-%C3%A0-dos">du sac à dos</a> (le <em>&quot;prix&quot;</em> de chaque pièce vaut 1 et leur <em>&quot;volume&quot;</em> est leur valeur).</p>
-</div></div>
-
+</div>
+</div>
 <h2>Optimalité d'un algorithme glouton</h2>
 <p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
@@ -279,14 +278,13 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Prouver qu'un algorithme glouton est optimal va se faire <strong>tout le temps</strong> de la même façon : par échange.</p>
 <p>On va itérativement transformer une solution optimale initiale inconnue en notre sortie de l'algorithme glouton tout en gardant l'optimalité ce qui prouvera l'optimalité du glouton.</p>
 <p>Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde" class="externe">un matroïde</a>, dont la principale propriété est d'être stable par échange.</p>
 <h3>Schéma de preuve d'optimalité par construction</h3>
 <p>En reprenant le <a href="#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a>, on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
@@ -332,8 +330,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Par exemple, en prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ la liste $I = [[-.5, .5], [1, 2], [1.99, 1.99]]$ est une solution :</p>
 <ul>
 <li>$T[0], T[1] \in I[0]$</li>
@@ -404,12 +402,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un algorithme est <strong><em>à performance garantie</em></strong> si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Problème du <em>bin packing</em></h3>
 <p>Pour illustrer cette problématique on va utiliser <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing" class="externe">le problème du <em>bin packing</em></a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -434,8 +431,8 @@ $$
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>La somme des éléments de chaque boîte est inférieure à $K$ et c'est ces boîtes qui sont utilisées en pratique.</p>
 <p>Trouver une solution au problème du <em>bin packing</em> n'est cependant vraiment pas évident. On peut en effet lui associer un problème d'existence NP-complet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -461,8 +458,8 @@ $$
 </ul>
 </li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Les problèmes d'optimisation associés à un problème d'existence NP-complet sont dit <strong><em>NP-difficile</em></strong>. Ces deux problèmes sont reliés car :</p>
 <ul>
 <li>si on a un algorithme pour résoudre le problème d'optimisation, il peut également servir à résoudre le problème d'existence</li>
@@ -499,8 +496,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On ne veut pas ordonner les éléments a priori car cela correspond à un algorithme online où les éléments &quot;arrivent&quot; les uns après les autres comme dans un déménagement ou un flux de marchandises.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Performance garantie</h3>
 <p>Pour prouver qu'un algorithme a une performance garantie sans connaître la valeur de la solution optimale, il faut ruser.</p>
 <p>On va chercher des propriétés de la solution optimale que l'on pourra rapprocher de propriétés de la solution gloutonne.</p>
@@ -513,8 +510,8 @@ $$
 <p><strong>Propriété</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le nombre minimum d'ensembles de la partition est plus grand que la somme de tous les entiers divisée par $K$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -550,7 +547,7 @@ $$
 \sum_{x \in B[i]}x + \sum_{x \in B[i+1]}x \geq K
 $$
 <div>
-</div></div>
+</div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
@@ -586,7 +583,7 @@ $$
 \sum_{i}T[i] \geq K \cdot \lfloor \frac{m}{2} \rfloor
 $$
 </div>
-</div></div>
+</div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
@@ -643,8 +640,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme glouton trouve au maximum 2 fois la solution optimale.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -678,8 +675,8 @@ $$
 <p><strong>Cas le pire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Montrez qu'en utilisant des caisses de volume 1 et $K/2$ l'ordre dans lequel les caisses sont examinées par le glouton peut aller du simple au (presque) double en nombre de solutions.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -709,8 +706,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant <strong>par volume décroissant</strong>. <a href="https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis" class="externe">Il a en effet été prouvé</a> que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Heuristique gloutonne</h2>
 <p>Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme <a href="https://fr.wikipedia.org/wiki/Heuristique" class="externe">une heuristique</a>.</p>
 <h3>Méthode de design d'un algorithme glouton comme heuristique</h3>
@@ -757,8 +754,8 @@ $$
 </li>
 <li><strong>Sortie</strong> : un ordonnancement de $V$ minimisant : $\sum_{0\leq j &lt; m}\sum_{0\leq i &lt; n-T[j]}\max(0, \sum_{i \leq k &lt; i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Prenons l'exemple donné dans <a href="https://www.csplib.org/Problems/prob001/" class="externe">la description du problème de la chaîne de montage</a>. La chaîne de montage est de ce type :</p>
 <p><img src="chaine-montage-exemple.png" alt="chaîne de montage exemple"></p>
 <p>Et on veut construire 10 voitures :</p>
@@ -1015,7 +1012,7 @@ calcul complexité.</li>
 </blockquote>
 
 
-</article>
+</div></div></article>
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">

@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -130,19 +130,18 @@ espace privé | public |    privé
 <div class="pl-8 mr-8">
 <p>Pour en savoir plus :</p>
 <p><a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-al%C3%A9atoires"><em>True Random Number Generator</em></a></p>
-</div></div>
-
+</div>
+</div>
 <p>Ce qu'il faut en retenir pour nous c'est que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Générer des nombre vraiment aléatoire avec un ordinateur est possible en utilisant des systèmes physiques embarqués. C'est cependant un processus compliqué et coûteux en temps.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Partager la clé</h2>
 <p>Il est cependant irréaliste qu'Alice et Bob aient connaissance de la clé avant de se transmettre un message, sinon aucune communication sécurisée ne serait possible entre 2 ordinateurs. Il faut utiliser un moyen pour qu'Alice et/ou Bob puissent générer une clé puis se la transmettre de façon sécurisée.</p>
 <p>Ceci est possible en utilisant des problèmes dont que l'on ne sait pas algorithmiquement résoudre efficacement :</p>
@@ -152,8 +151,8 @@ espace privé | public |    privé
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="partager-secret">Partager un secret</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Le schéma de transmission confidentiel devient alors :</p>
 <pre><code>    Alice    |         |     Bob
     privé    | public  |    privé
@@ -178,8 +177,8 @@ espace privé | public |    privé
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/One-way_function" class="externe">One way function</a></p>
-</div></div>
-
+</div>
+</div>
 <p>En gros, une fonction $f$ est à sens unique s'il est :</p>
 <ul>
 <li>facile de calculer $f(x) = y$ avec un algorithme efficace</li>
@@ -190,39 +189,37 @@ espace privé | public |    privé
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une fonction $f: \{0, 1\}^t \rightarrow \{0, 1\}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $F$, la probabilité suivante est négligeable :</p>
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <p>En utilisant les définitions de efficace et négligeable suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <ul>
 <li>une fonction $f(n)$ est <strong><em>efficace</em></strong> si $f(n) = \mathcal{O}(n^d)$ pour <strong>un</strong> entier $d$.</li>
 <li>une fonction $f(n)$ est <strong><em>négligeable</em></strong> si $f(n) = \mathcal{O}(1/n^d)$ pour <strong>tout</strong> entier $d$.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en $+\infty$ pour tout $d$.</p>
-</div></div>
-
+</div>
+</div>
 <p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme l'efficacité (somme et produit de polynôme restent des polynômes) :</p>
 <ul>
 <li>$p(n) + p(n)$ reste efficace si $p(n)$ et $p(n)$ le sont</li>
@@ -235,16 +232,15 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>On supposera toujours pour la suite que :</p>
 <ul>
 <li>les adversaires n'ont à leurs dispositions que des algorithmes <strong><em>efficaces</em></strong>, c'est à dire polynomiaux</li>
 <li>qu'on ne veut consentir qu'une possibilité de réussite <strong><em>négligeable</em></strong></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>On voit bien l'intérêt pour le chiffrement de ce type de fonction : on cache dans le résultat d'une fonction ce que l'on veut transmettre. C'est ce qu'on a fait avec le logarithme discret dans le protocole de Diffie-Hellman et que l'on fera avec le problème d la factorisation lorsque l'on étudiera le problème de l'authentification.</p>
 <p>Ces deux problèmes sont (très fortement) soupçonnées de faire partie de ce type de fonctions. Seulement soupçonné car on a la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -255,8 +251,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S'il existe des fonctions à sens unique, alors $P \neq NP$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -297,8 +293,8 @@ Ici faire directement le découpage avec des permutations. Ne plus parler des G(
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="d%C3%A9finition-s%C3%A9curit%C3%A9">Sémantiquement sécurisée</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Transmission</h2>
 <p>La méthode de chiffrement utilisant le code de Verna n'est pas directement utilisable en pratique car, la clé de chiffrement ne devant pas être répétée pour garantir l'inviolabilité du chiffrement, il faudrait utiliser le protocole de Diffie-Hellman pour générer des clés différentes pour chaque partie du message à chiffrer ce qui est trop coûteux en temps et empêcherait.</p>
 <p>On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (<em>Cryptographic Pseudo-Random Number Generator</em>) pour générer assez de bit à partir de la clé pour chiffrer le message entier :</p>
@@ -322,8 +318,8 @@ Ici faire directement le découpage avec des permutations. Ne plus parler des G(
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="nombres-pseudo-al%C3%A9atoires-cryptographiques">Nombres pseudo aléatoires cryptographiques</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Avoir un CPRNG suffit pour garantir un chiffrement de Vernam sémantiquement sécurisé :</p>
 <p><span id="chiffre-CPRNG"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -339,8 +335,8 @@ Ici faire directement le découpage avec des permutations. Ne plus parler des G(
 <li>$D(k, m) = E(k, m)$</li>
 </ul>
 <p>est une méthode de chiffrement sécurisée.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -425,8 +421,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que si l'on encode plusieurs parties de message avec la même clé, le chiffre n'est pas sémantiquement sécurisé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -464,8 +460,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce mode de chiffrement existe (ECB) est n'est <a href="https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/" class="externe">jamais recommandé</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Voyons  comment tout ceci peut se faire de façon sécurisée :</p>
 <p>Concaténer des blocs de messages chiffrés. On découpe le message à chiffrer $m$ en blocs $m_i$ de taille $t$ fixe que l'on traite séparément.</p>
 <p>Plutôt que d'utiliser un générateur on utilise une <a href="../nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRF">fonction pseudo-aléatoire sécurisée</a> (ou une <a href="../nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRP">permutation</a>) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.</p>
@@ -505,16 +501,16 @@ E(k, m) = (F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; 
 $$
 </div>
 <p>Est un chiffre sécurisé.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>L'opérateur $\;\|\;$ est la concaténation.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -615,8 +611,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/" class="externe">recommendations ANSSI taille de clés</a></p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

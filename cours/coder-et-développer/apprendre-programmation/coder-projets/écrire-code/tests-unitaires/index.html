@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/">Créer des tests</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -102,12 +102,11 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'<a href="https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/" class="externe">il ne peut pas régresser</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les tests sont de petites fonctions dont le but est de <em>tester</em> une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en <a href="https://fr.wikipedia.org/wiki/Assertion" class="externe">une assertion</a> que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.</p>
 <p>On va créer un projet pour comprendre comment tout ça fonctionne.</p>
 <p>Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle <em>workspace</em>.</p>
@@ -123,8 +122,8 @@
 <li>créez un fichier <code class="fichier">main.py</code> contenant uniquement la ligne <code class="language-">print(&quot;bonjour&quot;)</code></li>
 </ol>
 <p>Exécutez le fichier main avec vscode et le terminal pour vérifier que tout fonctionne.</p>
-</div></div>
-
+</div>
+</div>
 <h2>La commande assert</h2>
 <p>On utilise en python <a href="https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement" class="externe">la commande assert</a> pour vérifier que quelque chose est correct. Elle fonctionne ainsi :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">assert</span> <span class="token operator">&lt;</span>expression logique<span class="token operator">></span></code></pre>
@@ -156,8 +155,8 @@
 <p>Exécutez-le.</p>
 </li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">avant l'assert
 après l'assert</code></pre>
@@ -177,8 +176,8 @@ après l'assert</code></pre>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"après l'assert"</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devez obtenir le résultat suivant :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">avant l'assert
 Traceback (most recent call last):
@@ -216,8 +215,8 @@ test_somme_neutre<span class="token punctuation">(</span><span class="token punc
 test_somme_1_plus_0<span class="token punctuation">(</span><span class="token punctuation">)</span>
 test_somme_1_plus_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour tester la somme, j'ai décidé de faire 3 tests :</p>
 <ul>
 <li>le cas le plus simple où il ne se passe rien (<code class="language-">0 + 0 = 0</code>)</li>
@@ -240,8 +239,8 @@ test_somme_1_plus_2<span class="token punctuation">(</span><span class="token pu
 
 <span class="token comment"># ...</span></code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -249,8 +248,8 @@ test_somme_1_plus_2<span class="token punctuation">(</span><span class="token pu
 <div class="pl-8 mr-8">
 <p>On a coutume de mettre des <code class="language-"># ...</code> pour dire que le reste du code du fichier n’est pas changé.</p>
 <p>Ce n’est pas la peine de les copier/coller.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le code ne fonctionne plus et stope avec le message :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python ./test_projet.py
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
@@ -284,8 +283,8 @@ AssertionError
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://code.visualstudio.com/docs/python/testing" class="externe">tests avec vscode</a></p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="installation-pytest"></span> Installation</h3>
 <p>Commençons par installer le module pytest <a href="../../outils/modules-externes-python/">comme on a appris</a> (il vous faudra peut-être modifier l'instruction générique suivante) :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest</code></pre>
@@ -313,8 +312,8 @@ AssertionError
 
 <span class="token keyword">def</span> <span class="token function">test_somme_1_plus_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">3</span></code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Si vous l'exécutez, il ne va rien se passer, même si vous remettez une erreur dans l'assertion :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -323,8 +322,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez le !</p>
-</div></div>
-
+</div>
+</div>
 <p>Ceci est normal puisque le code ne fait que <strong>définir</strong> des fonctions sans jamais les exécuter. Il faut l'utiliser via la bibliothèque <code>pytest</code> que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface" class="externe">barre d'activité</a>).</p>
 <p>En suite le menu <em>TESTING</em> en haut de cette nouvelle fenêtre vous permet :</p>
 <ul>
@@ -341,18 +340,17 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez l'exécution des tests avec le terminal</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>pytest exécute toutes les fonctions commençant par <code class="fichier">test_</code> de tous les fichiers commençant par <code class="fichier">test_</code> du projet.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -360,8 +358,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez une fonction ne commençant pas par <code class="fichier">test_</code> et exécutez les tests &quot; elle ne sera pas exécutée.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Utilisation de la bibliothèque de tests</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -370,8 +368,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Tapez la commande <code>python -m pytest</code> dans un terminal.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez obtenir quelque chose du genre :</p>
 <p><img src="code-projet-pytest.png" alt="vsc-pytest"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -381,8 +379,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Corrigez le test de <code class="fichier">test_projet.py</code> qui rate et re-exécutez le code pour voir les 3 tests réussir.</p>
-</div></div>
-
+</div>
+</div>
 <p>Que fait pytest :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -390,8 +388,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Pytest exécute toutes les fonctions commençant par <code class="fichier">test_</code> de tous les fichiers commençant par <code class="fichier">test_</code> d’un projet.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur <a href="https://code.visualstudio.com/docs/python/testing#_configure-tests" class="externe">le petit erlenmeyer</a>. Vous pourrez ensuite :</p>
 <ol>
 <li>découvrir les tests du projet</li>

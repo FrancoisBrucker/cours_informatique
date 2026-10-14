@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/bases-de-données/">Utilisation de bases de données</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -115,8 +115,8 @@
 <p>Et on ajoute express :</p>
 <pre><code> npm install --save express
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <h2>SQLite</h2>
 <p>Tout ce que nous allons faire avec la base de donnée SQLite est transposable en utilisant un autre type de base de donnée utilisant un serveur dédié. SQlite sauve ses données soit en mémoire soit sur un fichier, ce qui permet d'utiliser des bases de données sans avoir à configurer un serveur dédié : c'est donc bien quand on apprend ou que l'on fait de petits sites, mais c'est souvent insuffisant pour des sites professionnels.</p>
 <h3>Installation de SQlite</h3>
@@ -130,16 +130,16 @@
 <p>Dans le dossier <code class="fichier">bd-tests</code> et avec un terminal :</p>
 <pre><code>npm install --save sqlite3
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il existe également Le module node <a href="https://www.npmjs.com/package/better-sqlite3" class="externe">better-sqlite3</a> est une version amélioré — selon ses auteurs — du module classique <a href="https://www.npmjs.com/package/sqlite3" class="externe">sqlite3</a>, mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il est parfois aussi utile d'avoir une <a href="https://fr.wikipedia.org/wiki/CLI" class="externe">cli</a> pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :</p>
 <ul>
 <li>sous windows : <a href="https://www.sqlite.org/download.html" class="externe">https://www.sqlite.org/download.html</a></li>
@@ -167,8 +167,8 @@ sqlite&gt;
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.sqlite.org/cli.html" class="externe">https://www.sqlite.org/cli.html</a></p>
-</div></div>
-
+</div>
+</div>
 <h4>fichier sous node</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -176,8 +176,8 @@ sqlite&gt;
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/" class="externe">https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/</a></p>
-</div></div>
-
+</div>
+</div>
 <h4>mémoire sous node</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -185,8 +185,8 @@ sqlite&gt;
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.sqlite.org/inmemorydb.html" class="externe">https://www.sqlite.org/inmemorydb.html</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>ORM : sequelize</h2>
 <p>Nous n'allons pas utiliser sqlite en tapant juste des commandes sql pour plusieurs raisons :</p>
 <ul>
@@ -209,8 +209,8 @@ sqlite&gt;
 <div class="pl-8 mr-8">
 <pre><code>npm install --save sequelize
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <h3>Lien à la base de données</h3>
 <p>Lien avec une base de données SQlite en mémoire :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="highlight-line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span></span>
@@ -270,8 +270,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est important d'attendre la fin de la synchronisation avant de lire ou sauver des données</p>
-</div></div>
-
+</div>
+</div>
 <p>Normalement, la synchronisation des bases ne se fait pas en production. On a un script de création des modèles et de synchronisation que l'on n'exécute que lorsque le modèle change.</p>
 <p>Comme ici on a une base de donnée en mémoire, elle est crée à chaque lancement du serveur, ce qui nous oblige à synchroniser à chaque démarrage (il faut ajouter les tables à la base fraîchement créée).</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
@@ -312,8 +312,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-basics.html#timestamps" class="externe">https://sequelize.org/master/manual/model-basics.html#timestamps</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Par défaut, sequelize ajoute deux champs spéciaux <code class="language-">createdAt</code> and <code class="language-">updatedAt</code> pour connaître la date de création et de la dernière mise à jour d'une donnée.</p>
 <p>Le type de ces champ et <code class="language-">DataTypes.DATE</code>. A chaque fois que vous devez utiliser des dates ou des heures, il est <strong>indispensable</strong> d'utiliser des types dédiées. Il est criminel d'utiliser une chaîne de caractère pour stocker des dates ou des heures : il y a trop de cas particuliers selon les pays et ou d'exception (année bissextile, etc).</p>
 <h3>Lire et sauver des données</h3>
@@ -323,8 +323,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-querying-basics.html" class="externe">https://sequelize.org/master/manual/model-querying-basics.html</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>Exemple</h2>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
 
@@ -413,8 +413,8 @@ data <span class="token operator">=</span> <span class="token keyword">await</sp
 <p>Créer un fichier <code class="fichier">ma_db_test.js</code> qui contient le code précédent et exécutez le avec la commande :</p>
 <pre><code>node ma_db_test.js
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Le code vu dans la console qui ressemble à du SQL est bien du SQL. Ce sont les commandes faites par sequelize.</p>
 <p>On crée une fonction asynchrone <code class="language-">initDB</code> dont le but est de se synchroniser puis de créer des données dans la base. A l'intérieur d'une fonction asynchrone on exécute du code avec <code class="language-">await</code>, comme ça on est sur qu'on ne passera à la ligne suivant qu'une fois la ligne avec le <code class="language-">await</code> exécutée (on est sur que l'on crée des données une fois la base synchronisée)</p>
 <p>Les données sont affichées à l'écran sous la forme d'un json. Mais vous avez accès aux différents champs (entre les deux <code class="language-">console.log(&quot;---------&quot;)</code>).</p>
@@ -422,8 +422,8 @@ data <span class="token operator">=</span> <span class="token keyword">await</sp
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Modifier le code pour qu'il utilise <code>initDB</code> via une promesse.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -544,8 +544,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement un message.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Create</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -553,8 +553,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#creating-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#creating-an-instance</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Créer une donnée en sequelize peu se faire comme ça :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token literal-property property">nom</span><span class="token operator">:</span> <span class="token string">"un nombre premier"</span><span class="token punctuation">,</span>
@@ -568,8 +568,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-" class="externe">https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Lire une instance en connaissant sa clé primaire.</p>
 <p>Asynchrone :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">await</span> MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -585,8 +585,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#updating-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#updating-an-instance</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   data<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
@@ -600,8 +600,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://sequelize.org/master/manual/model-instances.html#deleting-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#deleting-an-instance</a></p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> data<span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -621,8 +621,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le fichier <code class="language-">db.js</code> et copiez_collez-y le code suivant.</p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
@@ -677,8 +677,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>en développement : pour les petit tests lorsque l'on développe : avec une base en sqlite sous la forme d'un fichier</li>
 <li>en test : pour les tests unitaires de routes. Souvent une base en mémoire.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Initialisation de la base</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -687,8 +687,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le fichier <code class="language-">init.db.js</code> et copiez_collez-y le code suivant.</p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"./db.js"</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -723,8 +723,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le fichier <code class="language-">app.js</code> et copiez_collez-y le code suivant.</p>
-</div></div>
-
+</div>
+</div>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"./db.js"</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">utilisation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -770,8 +770,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>On est obligé de charger le modèle via le <code class="language-">import</code>, mais on est pas obligé de faire la synchronisation si le fichier de base existe déjà et est synchronisé avec le modèle.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut exécuter la modification et la visualisation du code avec :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">node</span> app.js</code></pre>
 <p>Notez qu'on a utilisé une fonction asynchrone car on veut pourvoir exécuter nos trois requêtes à la suite (d'où les <code>await</code>).</p>

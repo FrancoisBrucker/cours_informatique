@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/langage/tableaux/">Les variables et leurs types</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -116,8 +116,8 @@ int tableau[20] = {0};</code></pre>
 <p>Ceci ne fonctionne pas :</p>
 <pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">int tableau[5] = {1, 2};</code></pre>
 <p>Ou on initialise chaque valeur individuellement soit toutes les valeurs en une fois.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut aussi initialiser un tableau en omettant sa taille si elle est définie par son affectation :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> tableau<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Un tableau a une taille qui vaut le nombre de byte nécessaire à son stockage. Le tableau précédent à donc une taille de <code>2 * sizeof(int)</code>, qui est égal à *B sur ma machine (un <code class="language-">int</code> y est stocké sur 4B).</p>
@@ -143,8 +143,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Connaître le nombre d'élément d'un tableau non vide sans connaître son type ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -187,8 +187,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un programme qui vérifie les 3 égalités ci-dessus.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -247,8 +247,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pas d'incrémentation dépend du type de l'objet pointé.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ce fonctionnement est fait pour faire fonctionner de concert les pointeurs et les tableaux. Considérez par exemple le code suivant, souvent utilisé :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -296,8 +296,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Comment initialiseriez vous explicitement un tableau de type : <code>int M[4][3][2]</code> ?</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -377,8 +377,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <p>Les parenthèses sont indispensables. En effet, de part les règles de priorité on a :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token operator">*</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p>Ce qui n'est pas ce que l'on veut.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut ensuite procéder comme précédemment. Voyons si vous avez compris :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -393,8 +393,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <li><code class="language-">(*(p+1))[1]</code> ?</li>
 <li><code class="language-">(M+2)[0][0]</code> ?</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -484,8 +484,8 @@ tableau<span class="token punctuation">[</span><span class="token number">1</spa
 <div class="pl-8 mr-8">
 <p>Ce genre de typage peut vite devenir très complexe. Heureusement, il n'y a que très peu de chance que vous tombiez sur un tel
 <a href="https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#right_left_rule" class="externe">exemple bien complexe</a>.</p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

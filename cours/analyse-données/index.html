@@ -117,8 +117,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/analyse-données/">Analyse de données</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -139,8 +139,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que vous avez bien les prérequis en les relisant.</p>
-</div></div>
-
+</div>
+</div>
 <p>En particulier on suppose que :</p>
 <ol>
 <li>vous savez ce qu'est un interpréteur python et comment lui ajouter des modules</li>
@@ -152,8 +152,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/">le cours de développement</a></p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="packages-nécessaires"></span>Installation des modules pythons</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -161,8 +161,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il pourra être utile d'installer les différents modules python dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/environnements-virtuels/">un environnement virtuel</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> jupyterlab</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -171,8 +171,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement ajouter le paramètre <code>--break-system-packages</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Puis :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> jupyter lab</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -181,8 +181,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement commencer par construire jupyterlab : <code>python -m jupyter lab build</code>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous aurez besoin d'installer :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -196,8 +196,8 @@
 <li><a href="https://seaborn.pydata.org/" class="externe">seaborn</a> : <code>python -m pip install seaborn</code></li>
 <li><a href="https://scikit-learn.org/stable/" class="externe">scikit-learn</a> : <code>python -m pip install scikit-learn</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <!-- 
 
 > TBD : `scikit-learn` et `statsmodels`. Autre truc ?
@@ -209,16 +209,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fait que vous l'ayez installé, essayez d'installer les <a href="https://pypi.org/project/msvc-runtime/" class="externe">bibliothèques DLL de visual C++</a> : <code>python -m pip install msvc-runtime</code>.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous avez des &quot;sauts&quot; dans la fenêtre Jupiter lorsque vous faites défiler votre écran : <code>Settings → Settings Editor → Notebook → Windowing mode → Defer.</code></p>
-</div></div>
-
+</div>
+</div>
 <h2><span id="pandas"></span>Utilisation de pandas</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -227,8 +227,8 @@
 <div class="pl-8 mr-8">
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-pandas" class="externe">cette adresse</a>.</p>
 <p>Vous pouvez utiliser cette url <a href="https://download-directory.github.io/" class="externe">https://download-directory.github.io/</a> pour télécharger le dossier.</p>
-</div></div>
-
+</div>
+</div>
 <!-- 
 
 > TBD : tuto jupyterlab
@@ -251,8 +251,8 @@
 <li><a href="notebooks/notebooks-pandas/1_2_%C3%A0_vous_premi%C3%A8res_manipulations.ipynb" class="fichier">premières manipulations</a></li>
 <li><a href="notebooks/notebooks-pandas/3_2_%C3%A0_vous_lecture_donn%C3%A9es.ipynb" class="fichier">Lecture d'un dataframe</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -285,8 +285,8 @@
 <div class="pl-8 mr-8">
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-donn%C3%A9es" class="externe">cette adresse</a>.</p>
 <p>Vous pouvez utiliser cette url <a href="https://download-directory.github.io/" class="externe">https://download-directory.github.io/</a> pour télécharger le dossier.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Graphiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -297,8 +297,8 @@
 <li><a href="https://clauswilke.com/dataviz/" class="externe">https://clauswilke.com/dataviz/</a></li>
 <li><a href="https://seaborn.pydata.org/index.html" class="externe">https://seaborn.pydata.org/index.html</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -306,8 +306,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Reprendre les données des naissances et en utilisant le lien ci-dessus représentez-les en utilisant d'autres types de graphique. Il faudra choisir un type de graphique adapté à ce que vous voulez représenter.</p>
-</div></div>
-
+</div>
+</div>
 <!-- > TBD 
 
 Faire grossir cette partie.
@@ -327,8 +327,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="notebooks/notebooks-dataviz-donn%C3%A9es/2_1_a_vous_reduction_de_dimensions.ipynb" class="fichier">Henley et dépenses de l'état</a></li>
 <li><a href="notebooks/notebooks-dataviz-donn%C3%A9es/2_3_a_vous_texte_et_distance_de_jaccard.ipynb" class="fichier">Analyse de textes</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -360,8 +360,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-cartes" class="externe">cette adresse</a>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.</p>
 <p>Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -386,8 +386,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="https://python-visualization.github.io/folium/" class="externe"><code class="language">folium</code></a> pour gérer rapidement des cartes : <code>python -m pip install folium</code></li>
 <li><a href="https://pysal.org/mapclassify/" class="externe"><code class="language">mapclassify</code></a> pour utiliser la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html" class="externe"><code class="language">explore</code></a> de GeoPandas : <code>python -m pip install mapclassify</code></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -395,8 +395,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez ce <a href="notebooks/notebooks-dataviz-cartes/requirements.txt" class="fichier">fichier <code>requirement.txt</code></a> pour créer <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/environnements-virtuels/">un environnement virtuel</a> contenant déjà tous les modules nécessaires.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="data-viz-bases"></span>Base de la cartographie</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -404,8 +404,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://geojson.io/" class="externe">https://geojson.io/</a></p>
-</div></div>
-
+</div>
+</div>
 <ol>
 <li><a href="notebooks/notebooks-dataviz-cartes/1_cours_cartes_de_g%C3%A9ographies.ipynb" class="fichier">Cartes de géographie</a></li>
 <li><a href="notebooks/notebooks-dataviz-cartes/2_cours_crs.ipynb" class="fichier">CRS</a></li>
@@ -415,8 +415,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p><a href="notebooks/notebooks-dataviz-cartes/4_1_a_vous_cr%C3%A9ation_donn%C3%A9es_g%C3%A9ographiques.ipynb" class="fichier">carte chloroplète</a> (vous aurez besoin du jeu de données <a href="notebooks/notebooks-dataviz-cartes/villes_france_m%C3%A9tropole_30000.csv.zip" class="fichier">villes_france_métropole_30000.csv.zip</a>).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -451,8 +451,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="https://public.opendatasoft.com/explore/assets/demographyref-france-pop-legale-canton-millesime/" class="externe">population par canton</a></li>
 </ul>
 <p>Créez une carte chloroplète de la réunion avec le nombre d'habitants par canton.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="data-viz-OSM"></span>Données géographiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -460,8 +460,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.openstreetmap.fr/" class="externe">OSM</a></p>
-</div></div>
-
+</div>
+</div>
 <p><a href="notebooks/notebooks-dataviz-OSM/1_1_cours_OSM_requ%C3%AAtes.ipynb" class="fichier">requêtes OSM</a></p>
 <div id="data-viz-exercice"></div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -471,8 +471,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="notebooks/notebooks-dataviz-OSM/1_2_a_vous_donn%C3%A9es_et_cartes.ipynb" class="fichier">Données cartographiques</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h3><span id="data-viz-OSM"></span>Chemins</h3>
 <p><a href="notebooks/notebooks-dataviz-OSM/2_1_cours_OSM_r%C3%A9seau_routier.ipynb" class="fichier">réseau routier</a></p>
 <h2>Méthodes d'analyse des données</h2>
@@ -482,8 +482,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse" class="externe">cette adresse</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Partitionnement et hiérarchies</h3>
 <ol>
 <li><a href="notebooks/notebooks-analyse/4_2_cours_partitionnement.ipynb" class="fichier">Méthode de partitionnement, les $k$-means</a> (téléchargez <a href="notebooks/notebooks-analyse/ruspini.csv" class="fichier">les données</a>)</li>
@@ -498,8 +498,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="notebooks/notebooks-analyse/4_3_1_a_vous_kmeans.ipynb" class="fichier">Méthode de partitionnement et réduction de dimensions</a></li>
 <li><a href="notebooks/notebooks-analyse/4_5_1_a_vous_hierarchies_et_mds.ipynb" class="fichier">Hiérarchies et MDS</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -534,8 +534,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="notebooks/notebooks-analyse/4_6_1_a_vous_kmeans_et_images.ipynb" class="fichier">$k$-means et images</a></li>
 <li><a href="notebooks/notebooks-analyse/4_7_1_a_vous_texte_et_distance_de_jaccard.ipynb" class="fichier">Analyse de textes</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -580,8 +580,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="notebooks/notebooks-analyse/2_2_2_%C3%A0_vous_r%C3%A9gression_et_corr%C3%A9lation.ipynb" class="fichier">Régression et corrélation</a></li>
 <li><a href="notebooks/notebooks-analyse/2_3_2_%C3%A0_vous_autres_r%C3%A9gressions.ipynb" class="fichier">Autres régressions</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -625,8 +625,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li><a href="notebooks/notebooks-analyse/3_3_1_%C3%A0_vous_une_%C3%A9tude_fumeuse.ipynb" class="fichier">une étude fumeuse</a> (téléchargez <a href="notebooks/notebooks-analyse/fume.txt" class="fichier">les données</a>)</li>
 <li><a href="notebooks/notebooks-analyse/3_3_3_a_vous_donn%C3%A9es_visages.ipynb" class="fichier">ACP d'images</a></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -662,8 +662,8 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <li>de deux de ses <a href="notebooks/notebooks-analyse/donn%C3%A9es_exercices.zip" class="fichier">jeux de données exercices</a> de ce dossier</li>
 <li>d'un jeu de données à vous.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

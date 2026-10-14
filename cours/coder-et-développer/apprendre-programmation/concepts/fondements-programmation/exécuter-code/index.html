@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/">Concepts de la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/">Fondements de la programmation (avec python)</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/exécuter-code/">Exécuter du code python</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -101,17 +101,16 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur chacune de ses instructions doit être traduite en instructions machine avant son exécution. Il existe trois stratégies pour cela :</p>
 <ul>
 <li>convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit <strong><em>langages compilés</em></strong> et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).</li>
 <li>convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit <strong><em>langages interprétés</em></strong>, ou encore <strong><em>langages de script</em></strong> et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)</li>
 <li>méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé <a href="https://fr.wikipedia.org/wiki/Bytecode" class="externe">bytecode</a>. Le java ou le C# sont des langages appliquant cette stratégie.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langages :</p>
 <ul>
 <li>langages compilés :
@@ -137,9 +136,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Il n'y a pas de mauvaise stratégie, il faut utiliser le langage adapté à notre situation/projet :</p>
 <ul>
 <li>petits projets ou code devant être modifié souvent : langage de script</li>
@@ -150,8 +148,8 @@
 <blockquote>
 <p>Plus on veut du code rapide (ou optimisé) plus on va passer du temps a l'écrire et moins il sera portable.</p>
 </blockquote>
-</div></div>
-
+</div>
+</div>
 <p>Nous utiliserons ainsi ici <a href="https://fr.wikipedia.org/wiki/Python_(langage)">le langage python</a> qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -159,20 +157,19 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera <em>mutatis mutandis</em> à tout autre langage de programmation objet.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Exécuter du code python avec un interpréteur</h2>
 <p>L'utilisation d'un interpréteur pour exécuter du code est une application directe du <a href="/cours_informatique/cours/syst%C3%A8me/ordinateur-programmes-OS/#TFIL">TFIL</a> : on ajoute une indirection entre le code et son exécution.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>L'interpréteur python comme intermédiaire entre le code python et son exécution.</p>
-</div></div>
-
+</div>
+</div>
 <p>Tout code python est exécuté <em>via</em> un interpréteur dont le but est de transformer le code python en code machine :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -190,8 +187,8 @@
 </ol>
 <p>Tant que l'interpréteur est actif, un mécanisme de stockage permet de conserver des <strong><em>objets</em></strong> pour une utilisation future via des <strong><em>variables</em></strong>.</p>
 <p>L'interpréteur python est <strong>toujours</strong> présent lorsque l'on exécute du code python.</p>
-</div></div>
-
+</div>
+</div>
 <p>Il y a plusieurs façon d'exécuter du code python, celle qui montre le plus explicitement l'interpréteur est l'<strong><em>exécution en mode console</em></strong>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -201,8 +198,8 @@
 <div class="pl-8 mr-8">
 <p>Allez sur le site <a href="https://basthon.fr/" class="externe">https://basthon.fr/</a> et choisissez <em>menu console &gt; python</em>.</p>
 <p>Vous allez vous retrouver sur le site <a href="https://console.basthon.fr/" class="externe">https://console.basthon.fr/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez avoir quelque chose du genre :</p>
 <p><img src="console-1.png" alt="console python"></p>
 <p>Intéressons nous pour l'instant à la partie de droite nommée la <strong><em>console</em></strong> :</p>
@@ -218,8 +215,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>A droite du prompt, écrivez le code <code class="language-">print(&quot;Bonjour monde !&quot;)</code> puis appuyez sur la touche <em>entrée</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez obtenir quelque chose du type :</p>
 <p><img src="console-2.png" alt="hello world"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -228,8 +225,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous n'obtenez pas ça, vous pouvez toujours recharger la page (<em>menu afficher &gt; actualiser cette page</em> avec le navigateur chrome) pur recommencer avec un interpréteur vierge.</p>
-</div></div>
-
+</div>
+</div>
 <p>Le 4 étapes de l'exécution d'un code python de se sont effectuées :</p>
 <ol>
 <li>on donne une ligne de code à l'interpréteur :
@@ -258,19 +255,18 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Rechargez la page et vérifiez que la variable <code class="language-">s</code> n'existe plus.</p>
-</div></div>
-
+</div>
+</div>
 <p>Retenez donc le point essentiel :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>L'interpréteur python reste présent tout au long de l'exécution des instructions.</p>
-</div></div>
-
+</div>
+</div>
 <p>On n'est pas obligé de taper une instruction après l'autre, on peut en envoyer une série qui seront exécutées l'une à la suite de l'autre. Avec <a href="https://console.basthon.fr/" class="externe">https://console.basthon.fr/</a>, ceci se fait sur la fenêtre de gauche où on peut écrire nos différentes instructions :</p>
 <p><img src="console-5.1.png" alt="console python"></p>
 <p>Puis en appuyant sur le bouton exécuter, ces instructions sont envoyées à l'interpréteur :</p>
@@ -286,16 +282,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Téléchargez et exécutez le logiciel Spyder qui se trouve à l'adresse suivante :</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.spyder-ide.org/" class="externe">https://www.spyder-ide.org/</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Nous allons utiliser ce logiciel dans cette partie puis, lorsque nous commencerons à progresser, nous changerons de logiciel pour quelque chose de plus utile en développement. Commençons par comprendre  son fonctionnement.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -304,8 +300,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le logiciel Spyder. Et suivez la visite guidée</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -316,8 +312,8 @@
 <li>en anglais : <em>help &gt; interactive tour</em></li>
 <li>en français : <em>Aide &gt; visite interactive</em></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p><img src="spyder-1.png" alt="spyder"></p>
 <p>La visite guidée vous a donné les fonctions de différentes fenêtres :</p>
 <p><img src="spyder-2.1.png" alt="spyder"></p>
@@ -329,8 +325,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur le bouton <em>variable explorer</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez vous retrouver dans le schéma suivant :</p>
 <p><img src="spyder-2.2.png" alt="spyder"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -347,8 +343,8 @@ Spyder Editor
 This is a temporary script file.
 """</span></code></pre>
 <p>Supprimez ces lignes elles n'apportent rien.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -358,8 +354,8 @@ This is a temporary script file.
 <li>les lignes qui commencent par <code>#</code> sont des commentaires en python. Ici =on indique que l'encodage du fichier texte est <a href="https://fr.wikipedia.org/wiki/UTF-8" class="externe">utf-8</a>, qui est le format par défaut de tout fichier texte donc on peut le supprimer c'est une information inutile.</li>
 <li>les entre <code class="language-">&quot;&quot;&quot;</code> dans un fichier python font office d'information pur le lecteur. Ici on dit que c'est un fichier temporaire : c'est aussi une information inutile...</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Vous devriez vous retrouver dans le schéma suivant, qui va être le départ de tous nos exemples futurs :</p>
 <p><img src="spyder-2.3.png" alt="spyder"></p>
 <p>Ceci va nous permettre de reprendre les exemples de la partie précédente :</p>
@@ -373,8 +369,8 @@ This is a temporary script file.
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">s <span class="token operator">=</span> <span class="token string">"Bonjour monde !"</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span></code></pre>
 <p>Puis envoyez le dans la console et cliquant sur le triangle vert dans la barre de menu de la fenêtre.</p>
-</div></div>
-
+</div>
+</div>
 <p><img src="spyder-3.1.png" alt="spyder"></p>
 <p>Vous voyez que la fenêtre de variable contient la variable <code class="language-">s</code> qui est une chaîne de caractère s(le type <code class="language-">str</code> de python) et contient <code class="language-">Bonjour monde !</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -384,8 +380,8 @@ This is a temporary script file.
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la console tapez la commande <code class="language-">print(s)</code></p>
-</div></div>
-
+</div>
+</div>
 <p><img src="spyder-3.2.png" alt="spyder"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -394,16 +390,16 @@ This is a temporary script file.
 </svg>
 <div class="pl-8 mr-8">
 <p>Redémarrez un nouvel interpréteur (<em>console &gt; restart kernel</em>) ou dans les options du noyau.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Quittez et relancez spyder aura le même effet, un nouvel interpréteur est créé à chaque lancement de spyder.</p>
-</div></div>
-
+</div>
+</div>
 <p><img src="spyder-3.15.png" alt="spyder"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -417,8 +413,8 @@ This is a temporary script file.
 <li>exécutez les instructions du fichier</li>
 <li>vérifiez que la variable <code class="language-">s</code> existe.</li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p><img src="spyder-3.3.png" alt="spyder"></p>
 
 

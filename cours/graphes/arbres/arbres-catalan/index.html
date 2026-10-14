@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/arbres-catalan/">Arbres de Catalan</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -104,9 +104,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>L'ensemble des suites finies de 0 et de 1 est notée $\{0, 1\}^\star$ :</p>
 <div>
 $$
@@ -114,22 +113,21 @@ $$
 $$
 </div>
 <p>Avec $\epsilon$ la suite vide et $\{0, 1\}^n$ le produit cartésien de taille $n$ de $\{0, 1\}$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>arbre de Catalan</em></strong> (ou <strong><em>arbre binaire</em></strong>) $\tau$ est un sous ensemble de $\{0, 1\}^\star$ tel que :</p>
 <ul>
 <li>$\epsilon \in \tau$</li>
 <li>quelles que soient $u, v \in \{0, 1\}^\star$, si $uv \in \tau$ alors $u \in \tau$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Avec cette définition, les nœuds de l'arbre précédent deviennent :</p>
 <p><img src="exemple-2.png" alt="exemple suite"></p>
 <p>Que l'on écrira souvent en abrégé, en ne gardant que le dernier élément comme pour les arbres planaires :</p>
@@ -141,8 +139,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Les <a href="https://fr.wikipedia.org/wiki/Arbre_syntaxique" class="externe">parcours d'arbres de Catalan</a> sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un <a href="https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/" class="externe">arbre à partir d'une expression arithmétique</a> pour la résoudre de façon optimale en nombre d'opérations.</p>
-</div></div>
-
+</div>
+</div>
 <p>Les parcours en largeur et en profondeur des graphes peuvent s'utiliser tel quel pour les arbres de Catalan en partant de la racine (le nœud $\epsilon$) mais on a coutume d'en utiliser trois en algorithmie dont les deux premiers correspondent respectivement au parcours en largeur et en profondeur.</p>
 <p>Ces algorithmes sont récursifs et utilisent le fait que nœud ou sous-arbre sont deux notions équivalente pour les arbres de Catalan.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -152,8 +150,8 @@ $$
 <p><img src="arbre_plante.png" alt="arbre planté"></p>
 <p>On suppose que <code>Examen de la Racine</code> signifie : affiche le numéro de la racine à l'écran.</p>
 <p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique à partir de la lettre b (en oubliant la racine).</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -229,26 +227,25 @@ $$
 C_n = \frac{1}{n + 1}\binom{2n}{n}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Les $C_n$ sont appelé <a href="https://fr.wikipedia.org/wiki/Nombre_de_Catalan" class="externe">nombres de catalan</a></p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le Catalan dont on parle est <a href="https://fr.wikipedia.org/wiki/Eug%C3%A8ne_Charles_Catalan" class="externe">Eugène Charles Catalan</a>, mathématicien Franco-Belge, et ses nombres se retrouvent partout en combinatoire.</p>
-</div></div>
-
+</div>
+</div>
 <p>La figure ci-après montre les arbres de Catalan de taille 0 à 4 :</p>
 <p><img src="catalan-0-4.png" alt="Catalan"></p>
 <p>On a bien :</p>
@@ -267,8 +264,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://algo.inria.fr/flajolet/Publications/book.pdf" class="externe">Analytic Combinatorics</a></p>
-</div></div>
-
+</div>
+</div>
 <p>La méthode symbolique repose sur deux outils :</p>
 <ul>
 <li>une <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle" class="externe">série formelle</a> représentant les éléments de l'ensemble à compter</li>
@@ -314,16 +311,16 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} + \mathcal{B}$ formé de l'union disjointe de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) + B(z)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise la définition $\sum_{n\geq 0}A_nz^n + \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}(A_n + B_n)z^n$</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -358,8 +355,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} \times \mathcal{B}$ formé du produit cartésien de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) \cdot B(z)$.</p>
-</div></div>
-
+</div>
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -367,8 +364,8 @@ $$
 <div class="pl-8 mr-8">
 <p>On utilise la définition $\sum_{n\geq 0}A_nz^n \times \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}C_nz^n$ avec $C_n = \sum_{0\leq k \leq n}A_kB_{n-k}$.</p>
 <p>Notez que cette formule est uniquement l'application aux séries formelles du <a href="https://fr.wikipedia.org/wiki/Produit_de_Cauchy" class="externe">Produit de Cauchy</a> pour les séries convergentes.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -471,23 +468,22 @@ C_{n+1} = \sum_{0\leq k \leq n}C_k \cdot C_{n-k}\\
 \end{cases}
 $$
 </div>
-</div></div>
-
+</div>
+</div>
 <h2>Arbres binaires complet</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>arbre de Catalan complet</em></strong> (ou <strong><em>arbre binaire complet</em></strong>) $\tau$ est :</p>
 <ul>
 <li>un arbre de catalan</li>
 <li>quel que soit $u \in \tau$ alors $u0 \in \tau \Leftrightarrow u1 \in \tau$</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Les arbres de catalan complet forment à la fois n sous ensemble des arbres de Catalan et l'ensemble tout entier. Il est en effet possible d'associer injectivement un arbre de Catalan Complet à tout arbre de Catalan en ajoutant à chaque nœud de l'arbre de Catalan autant de feuille qu'il lui manque d'enfants :</p>
 <ul>
 <li>ajoutant une feuille à tout nœud n'ayant qu'u enfant</li>
@@ -505,8 +501,8 @@ $$
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le nombre d'arbre de Catalan complet à $n$ sommets est égal au nombre d'arbres de catalan à  $\lfloor n/2 \rfloor$ sommets.</p>
-</div></div>
-
+</div>
+</div>
 <p>Terminons cette partie en définissant la structure des arbres de Catalan complet en utilisant la méthode symbolique.</p>
 <p>Pour cela nous avons besoin de 2 nœuds spéciaux :</p>
 <ul>

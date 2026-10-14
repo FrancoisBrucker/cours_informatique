@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/processeur/core/">Core</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/processeur/core/mémoire-virtuelle/">Mémoire virtuelle</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -151,8 +151,8 @@
 <li>d'être efficace vide (peut de nœud) et plein (on accède à chaque nœud en log du nombre de nœuds)</li>
 </ul>
 <p>Cette structure possède un <a href="https://en.wikipedia.org/wiki/Overhead_(computing)" class="externe">Overhead</a> faible en temps (en log) et en place (ajout des nœuds en plus des données)</p>
-</div></div>
-
+</div>
+</div>
 <p>La structure est une <a href="https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables" class="externe">structure arborée multi-level</a>, elle comporte 4 niveaux en 64b :</p>
 <ul>
 <li>bit 0 à 11 : l'offset dans la page, 4096 possibilités</li>
@@ -203,8 +203,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer" class="externe">https://en.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
-</div></div>
-
+</div>
+</div>
 <p>POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer" class="externe">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture" class="externe">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
 <h2>Et le cache dans tout ça ?</h2>
 <p>Le problème de cette transformation est que les caches L1 et L2 sont a priori placés avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>

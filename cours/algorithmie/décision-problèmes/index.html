@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -108,8 +108,8 @@
 <li><a href="https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt" class="externe">https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt</a></li>
 <li><a href="https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH" class="externe">https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h2>Décision et algorithmes</h2>
 <p>Rappelons qu'un algorithme est <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction">dans toute sa généralité</a> une fonction qui prend et rend un mot de $\{0, 1\}$. On peut lui associer de façon équivalente la fonction $v_f : \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ ci-dessous :</p>
 <p>$$
@@ -139,13 +139,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>décideur</em></strong> est un algorithme de :</p>
 <p>$$f: \{0, 1\}^\star \rightarrow \{0, 1 \}$$</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut représenter un algorithme sous 3 formes équivalentes :</p>
 <ul>
 <li>une <strong><em>fonction</em></strong> : $f: \{0, 1\}^\star \rightarrow \{0, 1 \}^\star$ qui permettent le calcul effectif,</li>
@@ -160,12 +159,11 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>D'un point de vue théorique on peut donc uniquement considérer la version décideur d'un algorithme sans aucune perte de généralité.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Langages et Turing</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -176,24 +174,23 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <li><a href="https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf" class="externe">https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf</a></li>
 <li><a href="https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf" class="externe">https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Si on veut appliquer la notion de décideur à une machine de Turing, cela revient à ne considérer que la case du ruban sous le curseur lorsque la machine s'arrête. On dira alors :</p>
 <div id="accepte-rejette"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $M$ une machine de Turing. Une entrée $E$ est :</p>
 <ul>
 <li><strong><em>acceptée</em></strong> par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 1</li>
 <li><strong><em>rejetée</em></strong> par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 0</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD exemple avec accepte, rejette et infini.</p>
 </blockquote>
@@ -202,16 +199,15 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Soit $M$ une machine de Turing. Son <strong><em>langage</em></strong> $L$ est l'ensemble des entrées acceptées. On dira que :</p>
 <ul>
 <li>$M$ <strong><em>reconnaît</em></strong> $L$ si elle n'accepte que les élément de $L$.</li>
 <li>$M$ <strong><em>décide</em></strong> $L$ si elle si elle accepte les élément de $L$ et rejette tous les autres.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Remarquez que dans la définition précédente, <strong><em>décider un langage</em></strong> est bien plus fort qu'uniquement <strong><em>reconnaître un langage</em></strong> puisque la machine ne bouclera jamais indéfiniment.</p>
 <blockquote>
 <p>TBD reprendre exemple précédent. Puis transformer M pour qu'elle décide.</p>
@@ -221,16 +217,15 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un ensemble de mots  $L \subset \{0, 1\}^\star$ est appelé un <strong><em>langage</em></strong>. Il est :</p>
 <ul>
 <li><strong><em>reconnaissable</em></strong> s'il existe une machine de Turing qui le reconnaît</li>
 <li><strong><em>décidable</em></strong> s'il existe une machine de Turing que le décide.</li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD exemple de langages reconnaissable et décidable.</p>
 </blockquote>
@@ -241,12 +236,11 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Un <strong><em>problème de décision</em></strong> est un problème n'acceptant que deux réponses : OUI ou NON, et tel qu'il existe une machine de Turing décidant l'ensemble des entrées OUI du problème.</p>
-</div></div>
-
+</div>
+</div>
 <p>Algorithme, décision et langages sont donc trois notions équivalentes : un algorithme est caractérisé par l'ensembles des mots qu'il décide.</p>
 <h2>Complexités des problèmes de décision</h2>
 <p>La complexité d'un problème est la complexité la plus petite d'une machine de Turing qui le résout. Comme résoudre un problème de décision revient à trouver un décideur pour son langage on a :</p>
@@ -254,12 +248,11 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'une machine de Turing qui le décide.</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD à re-écrire. Déjà mis dans la partie complexité. Dire ici que le nombre de lignes est remplacé par la case mémoire car curseur.</p>
 </blockquote>
@@ -283,8 +276,8 @@ S(n) \leq C(n) \leq  Q \cdot S(n) \cdot 2^{S(n)}
 $$
 </div>
 <p>Avec $Q$ le nombre d'états.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -313,12 +306,11 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>Un langage est de la classe</em></strong> $P$ s'il existe une machine de Turing de complexité polynomiale qui le décide.</p>
-</div></div>
-
+</div>
+</div>
 <p>Pour définir précisément ce qu'est la classe NP en revanche, il faut introduire un autre modèle de Machine de Turing, les machines non déterministes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -326,19 +318,18 @@ $$
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="Turing-non-d%C3%A9terministe">Machines de Turing non déterministes</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On a alors :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p><strong><em>Un langage est de la classe</em></strong> $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui le décide.</p>
-</div></div>
-
+</div>
+</div>
 <p>La classe de problème $NP$ a été précédemment construite via l'existence d'un vérifieur polynomial qui vérifie si la solution est correcte ou pas.
 Avec cette nouvelle définition, le certificat est la suite de choix effectués par la machine de Turing non déterministe. Voyez ces choix comme un oracle (ou un prof) qui vous guide tout au long du déroulement de la machine. On peut s'en passer mais cela prendrait beaucoup de temps (faire tout les choix amène à une complexité exponentielle). Si on sait déjà ou aller en revanche, on peut trouver rapidement une solution (en temps polynomiale).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -347,8 +338,8 @@ Avec cette nouvelle définition, le certificat est la suite de choix effectués 
 </svg>
 <div class="pl-8 mr-8">
 <p>Tout ceci fonctionne car le nombre d'état est une <strong>constante</strong>, il ne dépend pas de l'entrée qui peut être aussi grande que l'on veut.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Cas du NON</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -356,8 +347,8 @@ Avec cette nouvelle définition, le certificat est la suite de choix effectués 
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="co-NP">co-NP</a></p>
-</div></div>
-
+</div>
+</div>
 <h2>SAT est NP-complet</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -365,8 +356,8 @@ Avec cette nouvelle définition, le certificat est la suite de choix effectués 
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="SAT-NPC">SAT est un problème NP-complet</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On verra qu'il y en a beaucoup, beaucoup d'autres.</p>
 <h2>Hiérarchie des complexités</h2>
 <p>Terminons cette partie en montrant qu'il existe bien d'autres algorithmes que ceux de NP. On peut même trouver des problèmes de toute complexité.</p>
@@ -376,8 +367,8 @@ Avec cette nouvelle définition, le certificat est la suite de choix effectués 
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="hi%C3%A9rarchie-complexit%C3%A9">Hiérarchie des complexités</a></p>
-</div></div>
-
+</div>
+</div>
 
 
 </article>

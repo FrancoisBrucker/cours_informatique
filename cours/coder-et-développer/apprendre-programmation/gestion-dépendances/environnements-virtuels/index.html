@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/">Gestion des dépendances</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/">Environnements virtuels</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -105,19 +105,18 @@
 <li><a href="https://docs.python.org/fr/3.13/tutorial/venv.html#" class="externe">https://docs.python.org/fr/3.13/tutorial/venv.html#</a></li>
 <li><a href="https://realpython.com/python-virtual-environments-a-primer/" class="externe">Virtual environments</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Le but d'un environnement virtuel est de créer un environnement python complet (interpréteur et modules) différent par projet. Ceci permet de contrôler les modules installés et utilisés.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Il est fortement recommandé de créer un environnement virtuel pour <strong>chaque</strong> projet.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Environnement python</h2>
 <p><a href="../version-python/#interpr%C3%A9teur-emplacement">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.</p>
 <h3>Emplacement</h3>
@@ -141,8 +140,8 @@
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"environnement :"</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>prefix<span class="token punctuation">)</span>
 </code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Vous pouvez exécuter le fichier <code class="fichier">main.py</code> pour connaître le chemin vers l'interpréteur utilisé :</p>
 <p><img src="vs-code-1.png" alt="code exécution"></p>
 <p>Remarquez que :</p>
@@ -201,8 +200,8 @@
 
 <span class="token keyword">for</span> nom_module <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>stdlib_module_names<span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">print</span><span class="token punctuation">(</span>nom_module<span class="token punctuation">)</span></code></pre>
-</div></div>
-
+</div>
+</div>
 <p>Les petites flèches que vous voyiez à côté de certains noms, par exemple la ligne 17 précédente :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">│   ├── python3 -<span class="token operator">></span> python3.13</code></pre>
 <p>Ceci correspond à <a href="https://fr.wikipedia.org/wiki/Lien_symbolique" class="externe">un lien symbolique</a> : le fichier <code class="fichier">python3</code> correspond en fait au fichier <code class="fichier">python3.13</code>. Ce mécanisme permet de conserver un même nom (<code>python3</code>) à plusieurs versions python.</p>
@@ -268,8 +267,8 @@ yarl              <span class="token number">1.9</span>.4</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il faut utiliser un outil de gestion des dépendances qui s'occupera d'installer, de maintenir à jour et d'éviter les incompatibilités d'une liste de modules dont dépend le projet.</p>
-</div></div>
-
+</div>
+</div>
 <p>La solution utilisée par python est de permettre de créer facilement un environnement python dédié pour chaque projet.</p>
 <h2>Création d'un environnement</h2>
 <p>Nous utiliserons le module <a href="https://docs.python.org/fr/3/library/venv.html" class="externe"><code>venv</code></a>, qui doit normalement être disponible.</p>
@@ -304,8 +303,8 @@ yarl              <span class="token number">1.9</span>.4</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://code.visualstudio.com/docs/python/environments#_creating-environments" class="externe">https://code.visualstudio.com/docs/python/environments#_creating-environments</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque l'on a changé d'environnement, on a vu que vscode propose de créer un nouvel environnement virtuel.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -325,8 +324,8 @@ yarl              <span class="token number">1.9</span>.4</code></pre>
 <li>L'environnement est crée. Si tout s'est bien passé, ce nouvel environnement est devenu celui de vscode :
 <img src="vscode-cr%C3%A9ation-4.png" alt="création 4"></li>
 </ol>
-</div></div>
-
+</div>
+</div>
 <p>En exécutant le programme avec vscode, on obtient bien le nouvel environnement :</p>
 <p><img src="vscode-cr%C3%A9ation-5.png" alt="création 5"></p>
 <p>Dans la liste de fichiers, on voit que le nouvel environnement a été créé dans le dossier du projet, dans un dossier nommé <code class="fichier">.venv/</code>.</p>
@@ -355,8 +354,8 @@ main.py
 </ol>
 <p>Vous devez revenir à l'état suivant :</p>
 <p><img src="terminal-cr%C3%A9ation-1.png" alt="création terminal"></p>
-</div></div>
-
+</div>
+</div>
 <p>Puis dans le terminal, on crée l'environnement en utilisant le module venv :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python <span class="token parameter variable">-m</span> venv venv/
 </code></pre>
@@ -389,8 +388,8 @@ pip     <span class="token number">24.2</span>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
 <p>Pour la modifier :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Set-ExecutionPolicy Unrestricted</code></pre>
-</div></div>
-
+</div>
+</div>
 <h3>Activation</h3>
 <p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work" class="externe">une commande qui dépend de votre environnement</a> :</p>
 <ul>
@@ -412,8 +411,8 @@ environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Do
 </svg>
 <div class="pl-8 mr-8">
 <p><strong><em>Activer</em></strong> un environnement, c'est associer le programme python avec l'environnement virtuel pour le terminal dans laquelle la commande est exécutée.</p>
-</div></div>
-
+</div>
+</div>
 <h3>ajout de modules</h3>
 <p>Peut se faire comme on fait depuis toujours :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>nom de l'interpréteur<span class="token punctuation">]</span> <span class="token parameter variable">-m</span> pip <span class="token function">install</span> <span class="token punctuation">[</span>nom <span class="token function">du</span> module<span class="token punctuation">]</span></code></pre>
@@ -438,8 +437,8 @@ environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Do
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://pip.pypa.io/en/stable/cli/pip_freeze/" class="externe">Documentation de la commande <code>pip freeze</code></a></p>
-</div></div>
-
+</div>
+</div>
 <p>Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.</p>
 <p>On procède alors comme suit :</p>
 <ol>
@@ -465,8 +464,8 @@ pytest==8.2.1</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers" class="externe">Spécification des modules</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>uv</h3>
 <p>La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -475,8 +474,8 @@ pytest==8.2.1</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/astral-sh/uv" class="externe">https://github.com/astral-sh/uv</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD un tuto à rendre plus digeste :</p>
 <ul>

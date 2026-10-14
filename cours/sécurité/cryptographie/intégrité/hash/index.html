@@ -89,8 +89,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/hash/">Hash cryptographiques</a>
 
-</div></div>
-
+</div>
+</div>
 
 
     
@@ -110,8 +110,8 @@
               </li></ul>
       
 
-</div></div>
-
+</div>
+</div>
 
     
   
@@ -125,42 +125,39 @@
 <li><a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique" class="externe">Hash cryptographique</a></li>
 <li><a href="https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf" class="externe">Hash propriétés et autres</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <p>Une fonction de hash cryptographique doit être conçue pour éviter les collisions, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une fonction $H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ est une fonction de <strong><em>hash cryptographique</em></strong> si elle est résistante aux collisions.</p>
 <p>Tout algorithme efficace ne peut rendre un couple $(x, x')$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <p>On peut relâcher la condition de résistance à la collision en :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une fonction $H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ est <strong><em>résistant à la pré-image</em></strong> si étant donné $y$, tout algorithme efficace ne peut trouver $x$ tel que $H(x) = y$ qu'avec un avantage négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <p>Ou encore :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
 <p>Une fonction $H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ est <strong><em>résistant à la seconde pré-image</em></strong> si étant donné $x$, tout algorithme efficace ne peut trouver $x'$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.</p>
-</div></div>
-
+</div>
+</div>
 <p>La résistance à la seconde pré-image condition étant plus restrictive que la résistance à la pré-image.</p>
 <h2>Usage</h2>
 <h3>Intégrité non sécurisée</h3>
@@ -176,8 +173,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Rien n'empêche un attaquant de modifier et $m$ et son hash. Cette technique est uniquement preuve de transmission correct d'un message dans un canal pouvant être bruité, mais pas susceptible d'être attaqué.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Stockage sécurisé</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -185,8 +182,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/" class="externe">stocker ses mots de passes</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voyons pourquoi.</p>
 <h4>Ne pas faire</h4>
 <ol>
@@ -207,8 +204,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Si le mot de passe est simple la probabilité de tomber sur vote mot de passe sera plus grande que la probabilité de collision. Utiliser une table de hachage ne dispense pas d'avoir un mot de passe <em>sécurisé</em>.</p>
-</div></div>
-
+</div>
+</div>
 <p>Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (<em>ie.</em> pas assez long ou sur par assez de caractères différents).</p>
 <h5>Brute force</h5>
 <p>L'attaque <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque" class="externe">Brute force si faible nombre de possibilités</a> fonctionne assez bien car :</p>
@@ -239,8 +236,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0" class="externe">argon2</a></p>
-</div></div>
-
+</div>
+</div>
 <h3>Clés</h3>
 <p>La non collision permet de rechercher les hash plutôt que les valeurs exactes dans une liste stockant toutes les données. C'est la technique utilisée par Git pour gérer les ajouts, suppressions et modifications de code dans un projet.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -249,8 +246,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Git utilise par défaut la fonction de hash <a href="https://fr.wikipedia.org/wiki/SHA-1" class="externe">SHA-1</a>.</p>
-</div></div>
-
+</div>
+</div>
 <h2>Construction</h2>
 <p>Il existe de nombreux hash. Testez les différences pour voir :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -259,8 +256,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://emn178.github.io/online-tools/sha1.html" class="externe">exemples de hash</a></p>
-</div></div>
-
+</div>
+</div>
 <p>Nous allons voir deux constructions. La première utilisée actuellement, la seconde qui vient.</p>
 <h3>Construction courante</h3>
 <blockquote>
@@ -275,8 +272,8 @@ puis on lie de façon sécurisée.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer" class="externe">Construction Davies–Meyer</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On utilise la construction Davies–Meyer qui permet de transformer <a href="../../confidentialit%C3%A9/nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRP">une permutation pseudo-aléatoire sécurisée</a> $P : \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.</p>
 <pre><code>       iv   
         |   
@@ -310,8 +307,8 @@ m---|&gt;  P  |   |
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si le bloc est une PRP, alors la résistance à la collision est maximale.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -344,8 +341,8 @@ m---|&gt;  P  |   |
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=s7arHByjSOw" class="externe">Merkel Damgard preuve</a></p>
-</div></div>
-
+</div>
+</div>
 <p>On utilise la construction de <a href="https://fr.wikipedia.org/wiki/Construction_de_Merkle-Damg%C3%A5rd" class="externe">Construction de Merkel Damgard</a> pour étendre la portée du hash à taille fixe à des messages dont la taille est un multiple de $t$. POur cela, on commence par ajouter <a href="https://fr.wikipedia.org/wiki/Remplissage_(cryptographie)" class="externe">un padding</a> à la fin qui consiste en :</p>
 <div>
 $$
@@ -372,8 +369,8 @@ m1--|&gt;  P  |   |        m2--|&gt;  P  |   |        mi--|&gt;  P  |   |       
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si un bloc est résistant à la collision, la construction entière l'est.</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -426,8 +423,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=orIgy2MjqrA" class="externe">L'algorithme sha2</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD <a href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)" class="externe">https://en.wikipedia.org/wiki/BLAKE_(hash_function)</a> et blake2 sont basés sur chacha20.</p>
 </blockquote>
@@ -441,8 +438,8 @@ BLAKE2B-512<span class="token punctuation">(</span>stdin<span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Les <a href="https://en.wikipedia.org/wiki/Sponge_function" class="externe">sponge function</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD :</p>
 <ul>
@@ -468,8 +465,8 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html" 
 <li><a href="https://people.cs.uchicago.edu/~davidcash/284-autumn-21/12-hash.pdf" class="externe">Attaque des fonctions de hash</a></li>
 <li><a href="https://www.youtube.com/watch?v=Zl1TZJGfvPo" class="externe">sha 1 collision</a></li>
 </ul>
-</div></div>
-
+</div>
+</div>
 <h3>Attaque des anniversaires</h3>
 <p>L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.</p>
 <p>Grace au <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires">paradoxe des anniversaires</a>, on sait qu'il suffit de $2^{n/2}$ mots de $\{0, 1\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.</p>
@@ -487,8 +484,8 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html" 
 <li>on a alors $H(x_{m−1}) = H(H(y_{m−1}))$ si $x_{m-1} \neq H(y_{m−1})$ (ce qui est très probable)</li>
 </ol>
 <p>Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision</p>
-</div></div>
-
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -533,8 +530,8 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html" 
 </ol>
 <p>Il suffit ensuite de faire signer la version $A$ du texte puis de présenter la version $B$, prétendument signée.</p>
 <p>Il faut toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.</p>
-</div></div>
-
+</div>
+</div>
 <h3>Brute force par Rainbow tables</h3>
 <p>On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <a href="https://en.wikipedia.org/wiki/Rainbow_table" class="externe">https://en.wikipedia.org/wiki/Rainbow_table</a> (voir aussi <a href="https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5" class="externe">https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5</a>) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -545,8 +542,8 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html" 
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le compromis temps/mémoire est une technique importante en cryptanalyse mais aussi dans tout problème d'optimisation.</p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p><a href="https://www-ee.stanford.edu/~hellman/publications/36.pdf" class="externe">Cryptanalytic Time-Memory tradeof</a> et amélioration en rainbow table : <a href="https://infoscience.epfl.ch/server/api/core/bitstreams/37cd827e-c3a6-4ba3-b68f-8ab7669b4449/content" class="externe">Making a Faster Cryptanalytic Time-Memory trdeof</a>
 TBD expliquer et faire exemple.</p>
@@ -577,8 +574,8 @@ versement : 1000000 euros
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis" class="externe">differential analysis</a></p>
-</div></div>
-
+</div>
+</div>
 <blockquote>
 <p>TBD</p>
 </blockquote>
