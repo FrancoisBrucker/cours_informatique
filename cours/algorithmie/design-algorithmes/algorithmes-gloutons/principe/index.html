@@ -118,7 +118,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
     <span class="token string">"Bien ordonner"</span> <span class="token variable parameter">E</span> en <span class="token punctuation">(</span>x_0<span class="token punctuation">,</span> x_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token punctuation">)</span>
     S <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token number">1</span> à n<span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token number">1</span> à n<span class="token punctuation">:</span>
         <span class="token keyword">si</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span> est une <span class="token string">"solution possible"</span> <span class="token punctuation">:</span>
             S <span class="token operator">←</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span>
 
@@ -193,7 +193,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
     V <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># les pièces sont triées par ordre décroissant</span>
     P <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># liste vide</span>
     
-    <span class="token keyword">pour chaque</span> <span class="token variable parameter">v</span> de V<span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">v</span> <span class="token mot-boucle keyword">de</span></span> V<span class="token punctuation">:</span>
         ajouter <span class="token variable parameter">R</span> <span class="token operator">//</span> <span class="token variable parameter">v</span> à la fin de la liste P  <span class="token comment"># division entière</span>
         <span class="token variable parameter">R</span> <span class="token operator">←</span> <span class="token variable parameter">R</span> mod <span class="token variable parameter">v</span>                           <span class="token comment"># reste de la division entière</span>
     
@@ -348,7 +348,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
     courant <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
     ajoute courant à I
 
-    <span class="token keyword">pour chaque</span> <span class="token variable parameter">x</span> de <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">x</span> ∉ courant<span class="token punctuation">:</span>
             courant <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
             ajoute courant à I
@@ -472,7 +472,7 @@ $$
     Es <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     E <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     s <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         s <span class="token operator">←</span> s <span class="token operator">+</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
         <span class="token keyword">si</span> s <span class="token operator">≤</span> K<span class="token punctuation">:</span>
             ajouter <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> à E

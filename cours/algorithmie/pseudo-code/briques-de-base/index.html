@@ -637,7 +637,7 @@
 </div>
 <h4>Boucles <code class="language-">pour chaque</code></h4>
 <p>Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token variable parameter">élément</span> x d'un tableau<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> tableau<span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction n</code></pre>
@@ -664,13 +664,13 @@
 </ul>
 <p>On peut alors écrire, par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
     x <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> x</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrire le code suivant en utilisant la notation intervalle :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token variable parameter">élément</span> x de tableau<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> élément <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> tableau<span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction n</code></pre>
@@ -695,7 +695,7 @@
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
 <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     <span class="token variable parameter">x</span> <span class="token operator">←</span> tableau<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
@@ -754,7 +754,7 @@
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
 <span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> <span class="token variable parameter">d</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">d</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">continue</span>
 
@@ -768,7 +768,7 @@
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
 <span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> <span class="token variable parameter">d</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">d</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token variable parameter">d</span> <span class="token string">" divise "</span> <span class="token variable parameter">x</span> <span class="token string">" mais pas "</span> <span class="token variable parameter">y</span></code></pre>
 <h5>Boucles imbriquées</h5>
@@ -784,8 +784,8 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 <span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-<span class="token keyword">pour chaque</span> <span class="token variable parameter">x</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token keyword">pour chaque</span> <span class="token variable parameter">y</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">y</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token string">"x = "</span> <span class="token variable parameter">x</span> <span class="token string">"; y = "</span> <span class="token variable parameter">y</span>
         <span class="token keyword">si</span> <span class="token variable parameter">x</span> <span class="token operator">*</span> <span class="token variable parameter">y</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span></code></pre>
