@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/calculabilité/">Calculabilité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/bases-théoriques/calculabilité/">Calculabilité</a>
 
 </div></div>
 
@@ -96,8 +96,8 @@
     
   
 
-  <p>On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombre.</p>
-<p>Cette introduction à ce l'on appelle <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9" class="externe">calculabilité</a> en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.</p>
+  <p>On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombres.</p>
+<p>Cette introduction à ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9" class="externe">calculabilité</a> en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -121,7 +121,7 @@
 </ul>
 </div></div>
 
-<h3>Nombres Entiers et rationnels</h3>
+<h3>Nombres entiers et rationnels</h3>
 <p>On a donc immédiatement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -199,8 +199,8 @@ Programme :
 </details>     
 </div>
 <p>En revanche, ça s'arrête là.</p>
-<h3>Nombres réel</h3>
-<p>Tous les réels ne sont pas calculables. Ceci est du au résultat suivant :</p>
+<h3>Nombres réels</h3>
+<p>Tous les réels ne sont pas calculables. Ceci est dû au résultat suivant :</p>
 <p><span id="diagonale-cantor"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -233,18 +233,18 @@ Programme :
 <p>On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
 <p>On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :</p>
 <ul>
-<li>on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$</li>
-<li>on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
+<li>on appelle $r_1$ le 1er réel, c'est-à-dire celui tel que $f(r_1) \leq f(x)$, quel que soit $x \in [0, 1]$</li>
+<li>on appelle $r_2$ le second réel $r_2$ , c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
 <li>...</li>
 <li>on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1, \dots, r_{i-1} \}$</li>
 <li>...</li>
 </ul>
-<p>Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :</p>
+<p>Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que son $i$ème chiffre après la virgule soit :</p>
 <ul>
 <li>$1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$</li>
 <li>$2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$</li>
 </ul>
-<p>Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a <a href="https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els" class="externe">un unique développement décimal</a>, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.</p>
+<p>Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quel que soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a <a href="https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els" class="externe">un unique développement décimal</a>, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.</p>
 <p>Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.</p>
 </div>
 </details>     
@@ -277,11 +277,11 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a vu <a href="../d%C3%A9finition/#proposition-nb-d%C3%A9nombrable-algorithmes">qu 'il existait au plus un nombre dénombrable de programmes</a>, donc au plus autant de programme que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.</p>
+<p>On a vu <a href="../d%C3%A9finition/#proposition-nb-d%C3%A9nombrable-algorithmes">qu'il existait au plus un nombre dénombrable de programmes</a>, donc au plus autant de programmes que de nombres entiers. Il ne peut y avoir d'injection associant à chaque réel son algorithme.</p>
 </div>
 </details>     
 </div>
-<p>Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'<a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu" class="externe">hypothèse du continu</a>.</p>
+<p>Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspens, mais on n'a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sait pas, mais on pense que non. C'est l'<a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu" class="externe">hypothèse du continu</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -291,7 +291,7 @@ Programme :
 </div></div>
 
 <p>Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).</p>
-<p>Enfin, certains réels sont calculables, même si leurs nombres de décimales sont infinis. Par exemple tous les réels qui sont des limites de suites elles mêmes calculables :</p>
+<p>Enfin, certains réels sont calculables, même si leurs nombres de décimales sont infinis. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -330,7 +330,7 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme $u_n$ converge vers $x$, pour tout $i&gt; 0$, il existe $N_i$ tel que $\mid x - u_n\mid &lt; 10^{-i}$ pour tout $n &gt; N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.</p>
+<p>Comme $u_n$ converge vers $x$, pour tout $i&gt; 0$, il existe $N_i$ tel que $\mid x - u_n\mid &lt; 10^{-i}$ pour tout $n &gt; N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, il suffit de calculer $u_{max(i, N_{i})}$ et de prendre sa $i$-ème décimale.</p>
 </div>
 </details>     
 </div>
@@ -340,16 +340,16 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Contrairement à une croyance largement rependue en europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathématicien chinois <a href="https://fr.wikipedia.org/wiki/Liu_Hui" class="externe">刘徽</a> en <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80" class="externe">proposait un algorithme</a> au troisième siècle.</p>
+<p>Contrairement à une croyance largement répandue en Europe, on sait que $\pi$ est calculable depuis bien plus longtemps que ça. Le mathématicien chinois <a href="https://fr.wikipedia.org/wiki/Liu_Hui" class="externe">刘徽</a> en <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80" class="externe">proposait un algorithme</a> au troisième siècle.</p>
 </div></div>
 
-<p><strong>Attention cependant</strong>, Il faut que <strong>le même algorithme</strong> soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des <a href="https://fr.wikipedia.org/wiki/Suite_de_Specker" class="externe">suite de speker</a> par exemple.</p>
+<p><strong>Attention cependant</strong>, il faut que <strong>le même algorithme</strong> soit utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des <a href="https://fr.wikipedia.org/wiki/Suite_de_Specker" class="externe">suites de Specker</a> par exemple.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable" class="externe">Page Wikipédia sur les réels calculables</a>, des nombres calculable.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable" class="externe">Page Wikipédia sur les réels calculables</a>, des nombres calculables.</p>
 </div></div>
 
 <p>En conclusion :</p>
@@ -360,7 +360,7 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La quasi-totalité des nombres réels utilisés en mathématiques en tant que tel ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.</p>
+<p>La quasi-totalité des nombres réels utilisés en mathématiques en tant que tels ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -368,7 +368,7 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) son symbole utilisation en calcul formel et son approximation que l'on peut utiliser dans les calculs.</p>
+<p>Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.</p>
 </div></div>
 
 <h2>Algorithmes et fonctions</h2>
@@ -416,7 +416,7 @@ Programme :
 <p>Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est <strong><em>calculable</em></strong> s'il existe un algorithme qui permet de la calculer.</p>
 </div></div>
 
-<p>Montrons tout de suite que cette notion a un sens, c'est à dire que l'ensemble des fonctions calculables est strictement inclue dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :</p>
+<p>Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement incluse dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -451,7 +451,7 @@ On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les 
 </div>
 </details>     
 </div>
-<p>Comme il existe <a href="../d%C3%A9finition/#proposition-nb-d%C3%A9nombrable-algorithmes">autant d'Algorithmes que de nombres entiers</a> :</p>
+<p>Comme il existe <a href="../d%C3%A9finition/#proposition-nb-d%C3%A9nombrable-algorithmes">autant d'algorithmes que de nombres entiers</a> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -463,14 +463,14 @@ On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les 
 </div></div>
 
 <h3>Exemple de fonction calculable</h3>
-<p>La plupart des fonctions connues sont calculables. Prenons la plus connue d'entre elle la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entier positifs $a$ et $b$.</p>
+<p>La plupart des fonctions connues sont calculables. Prenons la plus connue d'entre elles, la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entiers positifs $a$ et $b$.</p>
 <p><span id="algorithme-euclide"></span></p>
 <p>Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur (pgcd) de deux nombres ainsi :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">le pgcd de deux nombres n'est pas changé <span class="token keyword">si</span> on remplace le plus grand d'entre eux par leur différence<span class="token punctuation">.</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étape.</p>
+<p>Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étapes.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -501,7 +501,7 @@ $$
 \end{equation}
 $$
 </div>
-<p>Si $a$ et $b$ sont deux entiers positifs et tel que $\min(a, b) &gt; 0$ alors : $\max(a, b) - \min(a, b) &lt; \max(a, b) \geq 0$. Il arrivera donc forcément un moment ou $\min(a, b) = 0$.</p>
+<p>Si $a$ et $b$ sont deux entiers positifs et tels que $\min(a, b) &gt; 0$ alors : $\max(a, b) - \min(a, b) &lt; \max(a, b) \geq 0$. Il arrivera donc forcément un moment où $\min(a, b) = 0$.</p>
 </div>
 </details>     
 </div>
@@ -513,13 +513,13 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si vous pensez à une fonction il y a toute les chances qu'elle soit calculable.</p>
+<p>Si vous pensez à une fonction il y a toutes les chances qu'elle soit calculable.</p>
 </div></div>
 
 <h3>Cas limites</h3>
 <p>Il existe tout un tas de cas limites rigolos. Nous allons en voir deux.</p>
 <h4>Fonctions calculables sans algorithme connu</h4>
-<p>Il existe aussi des fonctions que l'on sait calculable mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
+<p>Il existe aussi des fonctions que l'on sait calculables mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : 5-consécutifs
 Entrées :
     n : un entier
@@ -529,8 +529,8 @@ Programme :
     sinon:
         rend 0</code></pre>
 <p>Le texte ci-dessus n'est <strong>pas</strong> un programme car le &quot;il existe&quot; n'est pas une opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du &quot;il existe&quot;, ce qui fait que s'il n'existe pas n &quot;5&quot; successifs, le programme ne s'arrêtera pas.</p>
-<p>Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.</p>
-<p>Soit existe n &quot;5&quot; consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété <a href="https://fr.wikipedia.org/wiki/Nombre_univers" class="externe">des nombres univers</a>) et alors le programme devient l'algorithme ci-dessous :</p>
+<p>Mais en vrai, le texte ci-dessus peut se réécrire de deux façons.</p>
+<p>Soit il existe n &quot;5&quot; consécutifs dans les décimales de $\pi$ quel que soit $n$ (on appelle les nombres qui vérifient cette propriété <a href="https://fr.wikipedia.org/wiki/Nombre_univers" class="externe">des nombres univers</a>) et alors le programme devient l'algorithme ci-dessous :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : 5-consécutifs
 Entrées :
     n : un entier
@@ -556,7 +556,7 @@ Programme :
 <p>Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire</p>
 </div></div>
 
-<p>On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.</p>
+<p>On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car elles sont très gourmandes en temps de calcul.</p>
 <h4>Fonction écran de fumée</h4>
 <p><span id="fonction-Takeuchi"></span></p>
 <p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi" class="externe">fonction de Takeuchi</a> est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.</p>
@@ -583,13 +583,13 @@ $$
 <p>Pour prouver que cette fonction est calculable il faut montrer deux choses :</p>
 <ol>
 <li>la véracité de la définition</li>
-<li>que le nombre de récursion n'est pas infini</li>
+<li>que le nombre de récursions n'est pas infini</li>
 </ol>
 <p>Faisons la première proposition avec un exercice :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez par récurrence sur $k = x+y+z$ que si la définition de la fonction de Takeuchi est bien définie (le nombre de récursion est fini), alors :</p>
+<p>Montrez par récurrence sur $k = x+y+z$ que si la définition de la fonction de Takeuchi est bien définie (le nombre de récursions est fini), alors :</p>
 <div>
 $$
 \tau(x, y, z) = \left\{
@@ -650,7 +650,7 @@ z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y
 </div>
 </details>     
 </div>
-<p>Il nous reste à montrer que le nombre d'itération est bien fini. Ce n'est en effet pas parce que l'équation de récurrence admet une solution qu'on peut la calculer avec un algorithme, c'est à dire en temps fini. On utilise pour cela utiliser l'exercice précédent et une récurrence :</p>
+<p>Il nous reste à montrer que le nombre d'itérations est bien fini. Ce n'est en effet pas parce que l'équation de récurrence admet une solution qu'on peut la calculer avec un algorithme, c'est-à-dire en temps fini. On utilise pour cela l'exercice précédent et une récurrence :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -658,7 +658,7 @@ z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La fonction $\tau(x, y, z)$ de Takeuchi est bien définie en un nombre fini de récursion et sa valeur vaut :</p>
+<p>La fonction $\tau(x, y, z)$ de Takeuchi est bien définie en un nombre fini de récursions et sa valeur vaut :</p>
 <div>
 $$
 \tau(x, y, z) = \left\{
@@ -719,7 +719,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> vu précédemment).</p>
+<p>Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez-le comme un exemple du <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> vu précédemment).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -727,24 +727,24 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquée.</p>
-<p>Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.</p>
+<p>La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquées.</p>
+<p>Lorsque vous essayez de résoudre un problème avec un algorithme, essayez toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt que la version simple.</p>
 </div></div>
 
 <h2><span id="non-calculable"></span>Non calculabilité</h2>
 <p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.</p>
-<p>Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.</p>
+<p>Mais ces objets existent puisqu'il y a strictement plus de fonctions et de réels que d'algorithmes.</p>
 <p>Nous allons donner un exemple de chaque ci-après.</p>
 <h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
-<p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin" class="externe">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
+<p>Nous allons montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin" class="externe">nombre oméga de Chaitin</a>, lui aussi non calculable.</p>
 <p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
-<p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
+<p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimale soit :</p>
 <ul>
 <li>égale à 1 si le programme $P_i$ s'arrête</li>
-<li>égale à 0 si le programme $P_i$ se s'arrête pas</li>
+<li>égale à 0 si le programme $P_i$ ne s'arrête pas</li>
 </ul>
 <p>Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice">le problème de l'arrêt</a> serait décidable.</p>
-<h3><span id="complexité-Kolmogorov"></span> Une Fonction non calculable : la complexité de Kolmogorov</h3>
+<h3><span id="complexité-Kolmogorov"></span> Une fonction non calculable : la complexité de Kolmogorov</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -769,12 +769,12 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.</p>
+<p>La valeur de la fonction va dépendre de la langue utilisée bien sûr. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.</p>
 </div></div>
 
-<p>La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :</p>
+<p>La définition semble idiote. Pour rendre 5 il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran la chaîne de caractères "5"</code></pre>
-<p>Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux <code>&quot;</code>). Si ce nombre est gros, on peut fait bien mieux.</p>
+<p>Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux <code>&quot;</code>). Si ce nombre est gros, on peut faire bien mieux.</p>
 <p>Par exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran 1000 caractères "1" consécutifs</code></pre>
 <p>Possède 49 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.</p>
@@ -805,11 +805,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial (le notre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+<p>En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcément trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égaux à l'algorithme trivial (le nôtre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programmes (facile, ce sont les textes qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
 </div>
 </details>     
 </div>
-<p>La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
+<p>La difficulté réside bien sûr dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
 <p>On a maintenant assez de billes pour démontrer la non-calculabilité de la complexité de Kolmogorov :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
