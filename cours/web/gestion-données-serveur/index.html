@@ -109,14 +109,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Interface_de_programmation">https://fr.wikipedia.org/wiki/Interface_de_programmation</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Interface_de_programmation" class="externe">https://fr.wikipedia.org/wiki/Interface_de_programmation</a></p>
 </div></div>
 
 <p>L'échange de données entre le client et le serveur se fait grâce à une API qui détermine les routes utilisables (en utilisant des routes paramétrables). Il existe plusieurs moyens d'organiser une API :</p>
 <ul>
-<li>par query : Une route générale est paramétrable par query. C'est la façon de faire de google maps par exemple (voir par exemple la <a href="https://developers.google.com/maps/documentation/directions/get-directions">documentation pour choisir un chemin</a>)</li>
-<li>sous la forme d'une URL. L'accès au données se fait sous la forme d'un chemin. C'est la <a href="https://developer.mozilla.org/fr/docs/Glossary/REST">façon de faire REST</a> par exemple.</li>
-<li>requête dans le corps du massage. Plutôt que d'utiliser des query, on place directement la requête dans le corps du message. C'est la façon de faire de la populaire bibliothèque <a href="https://graphql.org/">graphql</a> par exemple.</li>
+<li>par query : Une route générale est paramétrable par query. C'est la façon de faire de google maps par exemple (voir par exemple la <a href="https://developers.google.com/maps/documentation/directions/get-directions" class="externe">documentation pour choisir un chemin</a>)</li>
+<li>sous la forme d'une URL. L'accès au données se fait sous la forme d'un chemin. C'est la <a href="https://developer.mozilla.org/fr/docs/Glossary/REST" class="externe">façon de faire REST</a> par exemple.</li>
+<li>requête dans le corps du massage. Plutôt que d'utiliser des query, on place directement la requête dans le corps du message. C'est la façon de faire de la populaire bibliothèque <a href="https://graphql.org/" class="externe">graphql</a> par exemple.</li>
 </ul>
 <h2>CRUD</h2>
 <p>Cet acronyme signifie :</p>
@@ -126,26 +126,26 @@
 <li><strong>U</strong>pdate : mise à jour de la donnée</li>
 <li><strong>D</strong>elete : suppression de la donnée</li>
 </ul>
-<p>Et rappelle le cycle de vie d'une donnée. Il faut que l'API puisse permettre au client d'effectuer ces actions CRUD pour chacune des données (si possible). On a coutume d'expliciter ces requêtes en utilisant des <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol#M%C3%A9thodes">méthodes HTTP</a> différentes :</p>
+<p>Et rappelle le cycle de vie d'une donnée. Il faut que l'API puisse permettre au client d'effectuer ces actions CRUD pour chacune des données (si possible). On a coutume d'expliciter ces requêtes en utilisant des <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol#M%C3%A9thodes" class="externe">méthodes HTTP</a> différentes :</p>
 <ul>
 <li>lire une donnée se fera en utilisant la méthode <code>GET</code> (c'est ce que l'on fait habituellement)</li>
 <li>créer une donnée se fera en utilisant la méthode <code>POST</code> (c'est ce que l'on fait habituellement)</li>
 <li>mettre à jour une donnée se fera en utilisant la méthode <code>PUT</code> (c'est ce que l'on fait habituellement)</li>
 <li>supprimer une donnée se fera en utilisant la méthode <code>DELETE</code> (c'est ce que l'on fait habituellement)</li>
 </ul>
-<p>On ne peut via un navigateur qu'utiliser des méthode get. Pour utiliser les autres méthodes, on peut utiliser <a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch">fetch</a> en javascript en spécifiant la méthode à utiliser</p>
+<p>On ne peut via un navigateur qu'utiliser des méthode get. Pour utiliser les autres méthodes, on peut utiliser <a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" class="externe">fetch</a> en javascript en spécifiant la méthode à utiliser</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour tester les méthodes lorsque l'on est entrain de développer, on a coutume d'utiliser une application tierce, comme <a href="https://www.postman.com/">https://www.postman.com/</a> par exemple (on peut l'utiliser de façon gratuite sans avoir besoin de s'inscrire)</p>
+<p>Pour tester les méthodes lorsque l'on est entrain de développer, on a coutume d'utiliser une application tierce, comme <a href="https://www.postman.com/" class="externe">https://www.postman.com/</a> par exemple (on peut l'utiliser de façon gratuite sans avoir besoin de s'inscrire)</p>
 </div></div>
 
 <p>Souvent, on n'a besoin que des méthodes GET (pour lire) et POST (pour écrire et mettre à jour) la donnée. Par exemple, supposons que l'on veuille stocker une unique donnée. On veut pouvoir :</p>
 <ul>
-<li>lire la donnée avec la route : <a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a> en utilisant la méthode GET (la méthode utilisée par défaut par les navigateurs)</li>
-<li>écrire la données avec la route <a href="http://127.0.0.1:3000/?valeur=12">http://127.0.0.1:3000/?valeur=12</a> en utilisant la méthode POST</li>
+<li>lire la donnée avec la route : <a href="http://127.0.0.1:3000/" class="externe">http://127.0.0.1:3000/</a> en utilisant la méthode GET (la méthode utilisée par défaut par les navigateurs)</li>
+<li>écrire la données avec la route <a href="http://127.0.0.1:3000/?valeur=12" class="externe">http://127.0.0.1:3000/?valeur=12</a> en utilisant la méthode POST</li>
 </ul>
 <p>On peut utiliser le code express suivant :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
@@ -179,15 +179,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>Plusieurs remarques :</p>
 <ul>
 <li>vous voyez comment express permet facilement de différentier les méthodes : <code class="language-">app.get</code> pour des méthodes <code>GET</code> et <code class="language-">app.post</code> pour des méthodes <code>POST</code></li>
-<li>à la fin de la méthode post la ligne <code class="language-">res.redirect('/')</code> est importante. C'est le pattern <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get">Post/Redirect/Get</a> (aussi appelé <em>Redirect after post</em>) qu'il faut que vous utilisiez après chaque requête post. Elle permet de refaire une requête GET après la méthode post (dans notre exemple on refait une requête GET vers <code>/</code> mais cela peut différer selon ce que vous voulez faire). Ceci pour éviter — entre autre — de renvoyer une donnée lorsque l'on rafraîchit le navigateur.</li>
+<li>à la fin de la méthode post la ligne <code class="language-">res.redirect('/')</code> est importante. C'est le pattern <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get" class="externe">Post/Redirect/Get</a> (aussi appelé <em>Redirect after post</em>) qu'il faut que vous utilisiez après chaque requête post. Elle permet de refaire une requête GET après la méthode post (dans notre exemple on refait une requête GET vers <code>/</code> mais cela peut différer selon ce que vous voulez faire). Ceci pour éviter — entre autre — de renvoyer une donnée lorsque l'on rafraîchit le navigateur.</li>
 </ul>
-<p>Il nous est impossible de tester des requêtes POST directement avec le navigateur, nous les utiliserons via des requêtes fetch en javascript plus tard. Pour l'instant testons notre serveur avec <a href="https://www.postman.com/">postman</a>.</p>
+<p>Il nous est impossible de tester des requêtes POST directement avec le navigateur, nous les utiliserons via des requêtes fetch en javascript plus tard. Pour l'instant testons notre serveur avec <a href="https://www.postman.com/" class="externe">postman</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <ol>
 <li>créez le projet serveur. N'oubliez pas de faire un <code>npm init</code> et d'ajouter la ligne <code>&quot;type&quot;: &quot;module&quot;,</code> à votre fichier <code class="fichier">package.json</code> comme on <a href="../serveur-web/express/#npm-init">l'a vu en cours</a>.</li>
-<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/</code> en GET</li>
+<li>Utilisez <a href="https://www.postman.com/" class="externe">https://www.postman.com/</a> pour tester la route <code>/</code> en GET</li>
 </ol>
 </div></div>
 
@@ -220,7 +220,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en POST</li>
+<li>Utilisez <a href="https://www.postman.com/" class="externe">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en POST</li>
 <li>demandez la route <code>/</code> en GET. Est-ce cohérent ?</li>
 </ol>
 </div></div>
@@ -254,7 +254,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en GET. Que se passe-t-il ?</li>
+<li>Utilisez <a href="https://www.postman.com/" class="externe">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en GET. Que se passe-t-il ?</li>
 <li>Pourquoi la requête <code>/&amp;valeur=12</code> en POST rend-elle un résultat dans le body ?</li>
 </ol>
 </div></div>
@@ -286,7 +286,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </details>     
 </div>
 <h2>JSON pour sérialiser ses données</h2>
-<p>La <a href="https://fr.wikipedia.org/wiki/S%C3%A9rialisation">sérialisation/désérialisation</a> est l'opération consistant à transformer une donnée en un format facilement transportable/stockable et à procéder à l'opération inverse pour retrouver la donnée originelle.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/S%C3%A9rialisation" class="externe">sérialisation/désérialisation</a> est l'opération consistant à transformer une donnée en un format facilement transportable/stockable et à procéder à l'opération inverse pour retrouver la donnée originelle.</p>
 <p>Cette opération est cruciale dans toute gestion des données. Pour le web :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -297,7 +297,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>les données : des dictionnaires javascript</li>
 <li>le format facilement transportable : le texte (utf8).</li>
 </ul>
-<p>La façon de convertir les dictionnaires en texte et réciproquement est régie par le <a href="https://www.json.org/json-fr.html">json</a></p>
+<p>La façon de convertir les dictionnaires en texte et réciproquement est régie par le <a href="https://www.json.org/json-fr.html" class="externe">json</a></p>
 </div></div>
 
 <p>Le json est tellement bien fait qu'il est utilisé partout ! Il est en effet très facile à lire, à modifier avec un simple éditeur de texte, et à transférer avec une simple requête http.</p>
@@ -332,7 +332,7 @@ app<span class="token punctuation">.</span><span class="token function">post</sp
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>On utilise un middleware express <a href="https://expressjs.com/en/5x/api.html#express.json"><code>express.json()</code></a> qui ajoute un attribut body à la requête contenant ce que auà envoyé le client.</p>
+<p>On utilise un middleware express <a href="https://expressjs.com/en/5x/api.html#express.json" class="externe"><code>express.json()</code></a> qui ajoute un attribut body à la requête contenant ce que auà envoyé le client.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -96,7 +96,7 @@
     
   
 
-  <p>L'<a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">Architecture de Von Neumann</a> est une façon d'unifier code et donnée. Il est basé sur deux notions supplémentaire au pseudo-assembleur :</p>
+  <p>L'<a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann" class="externe">Architecture de Von Neumann</a> est une façon d'unifier code et donnée. Il est basé sur deux notions supplémentaire au pseudo-assembleur :</p>
 <ul>
 <li>Unification du code et des données</li>
 <li>Utilisation de la pile pour gérer la portée des variables et les appels de fonctions</li>
@@ -108,7 +108,7 @@
 <p>Où <code>OP</code> est le nom de l'instruction et <code>#1</code>, <code>#2</code> et <code>#3</code> des registres ou des constantes.</p>
 <p>Comme on a un nombre fini d'opérations et de registres, on peut associer :</p>
 <ul>
-<li>un nombre, on dit <a href="https://fr.wikipedia.org/wiki/Code_op%C3%A9ration">OPCODE</a>, à chaque opération</li>
+<li>un nombre, on dit <a href="https://fr.wikipedia.org/wiki/Code_op%C3%A9ration" class="externe">OPCODE</a>, à chaque opération</li>
 <li>un nombre à chaque registre.</li>
 </ul>
 <p>L'instruction précédente peut alors être associé à un quadruplet d'entiers $(o, r_1, r_2, r_3)$.</p>
@@ -145,7 +145,7 @@
 
 <p>L'utilisation d'un pointeur d'instruction et le fait qu'il pointe sur l'instruction suivante permet de gérer simplement les sauts : il suffit de modifier sa valeur.</p>
 <h2>Variable et pile</h2>
-<p>L'architecture de Von Neumann utilise le concept de <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a> :</p>
+<p>L'architecture de Von Neumann utilise le concept de <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)" class="externe">pile</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -175,7 +175,7 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">vidéo qui détaille l'invention et les diverses utilisations de la pile</a>.</p>
+<p>La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg" class="externe">vidéo qui détaille l'invention et les diverses utilisations de la pile</a>.</p>
 </div></div>
 
 <h3>Implémentation et fonctionnement</h3>
@@ -302,7 +302,7 @@ GOTOIFNOT ZÉRO <span class="token number">9</span></code></pre>
 <div class="pl-8 mr-8">
 <p>Ce n'est pas Von Neumann mais Dijkstra qui a a proposé cette façon de faire (utiliser la pile pour appeler des fonctions et stocker les variables locales), toujours utilisée dans nos ordinateurs actuels.</p>
 <p>Le, célèbre article où il présente cette idée est là :
-<a href="https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf">Recursive programming</a></p>
+<a href="https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf" class="externe">Recursive programming</a></p>
 </div></div>
 
 <p>Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :</p>
@@ -316,7 +316,7 @@ GOTOIFNOT ZÉRO <span class="token number">9</span></code></pre>
 <li>s'assurant que les variables locales seront crées après toutes les autres variables.</li>
 </ol>
 <p>Si le deuxième point est géré de la même manière par le modèle de Von Neumann (<em>ie.</em> c'est au développeur de faire attention), l'adresse de retour, les paramètres et les variables locales sont gérées par la pile, en associant à chaque fonction sa <strong>_frame de pile</strong>_.</p>
-<p>Nous allons montrer ici une façon générale de procéder mais il n'existe en pratique plein d'implémentation différente de ce principe général (voir par exemple <a href="https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame">les conventions d'appels pour les processeurs x64 Linux</a> où certains paramètres sont passés par des registres pour aller plus vite).</p>
+<p>Nous allons montrer ici une façon générale de procéder mais il n'existe en pratique plein d'implémentation différente de ce principe général (voir par exemple <a href="https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame" class="externe">les conventions d'appels pour les processeurs x64 Linux</a> où certains paramètres sont passés par des registres pour aller plus vite).</p>
 <ol>
 <li>paramètres de la fonction : empile les paramètres</li>
 <li>saut vers la fonction :

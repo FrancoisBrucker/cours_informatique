@@ -98,8 +98,8 @@
 
   <p>Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.</p>
 <h2>Le problème concret ou <em>&quot;comment ne pas aller se promener&quot;</em></h2>
-<p>C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg">7 ponts de Königsberg</a>, qui permit à <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Euler</a> d'inventer la théorie des graphes pour éviter d'aller se balader.</p>
-<p>La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça (<a href="https://www.google.com/maps/d/viewer?msa=0&amp;mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&amp;ll=54.708383%2C20.508084000000014&amp;z=15">cliquez pour voir les 7 ponts en vrai</a>):</p>
+<p>C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg" class="externe">7 ponts de Königsberg</a>, qui permit à <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler" class="externe">Euler</a> d'inventer la théorie des graphes pour éviter d'aller se balader.</p>
+<p>La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça (<a href="https://www.google.com/maps/d/viewer?msa=0&amp;mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&amp;ll=54.708383%2C20.508084000000014&amp;z=15" class="externe">cliquez pour voir les 7 ponts en vrai</a>):</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png" alt="ponts de Königsberg"></p>
 <p>L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de revenir à son point de départ.</p>
 <p>Personne n'y arrivant, le jeu devint fort populaire. Sauf qu'Euler, s'il y a bien une chose qu'il n'aimait pas, c'était les ballades.</p>
@@ -262,7 +262,7 @@ on concatène les cycles de la liste en un seul cycle qui est eulérien</code></
 <p><img src="euler_exemple_4.png" alt="exemple Euler"></p>
 <p>Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.</p>
 <h3>Gestion des cycles</h3>
-<p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente" class="interne"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.</p>
+<p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.</p>
 <p>Après itération des cycles, j'obtient la liste de cycles :</p>
 <div>
 $$
@@ -304,7 +304,7 @@ $$
 <p>TBD à finir.</p>
 <p>TBD écrire algo cycle partant de x</p>
 </blockquote>
-<p>On utilise <a href="https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer">l'algorithme de Hierholzer</a> qui implémente l'idée précédente mais l'optimise.</p>
+<p>On utilise <a href="https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer" class="externe">l'algorithme de Hierholzer</a> qui implémente l'idée précédente mais l'optimise.</p>
 <p>Il fonctionne via cet algorithme :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">chemin(x, G):
     
@@ -462,7 +462,7 @@ tant que i &lt; |E|:
 </summary>
 <div class="mx-8 pb-2">
 <p>Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que l'existence d'un circuit eulérien implique $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
-<p>Réciproquement, <a href="../chemins-cycles-connexite/#exercice-circuit-oriente" class="interne">l'exercice sur les degrés d'un graphe orienté</a> montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.</p>
+<p>Réciproquement, <a href="../chemins-cycles-connexite/#exercice-circuit-oriente">l'exercice sur les degrés d'un graphe orienté</a> montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.</p>
 </div>
 </details>     
 </div>
@@ -518,7 +518,7 @@ $$</p>
 <p>Tout d'abord, on peut toujours s'arranger pour que $
 \vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert$ soit positif, au pire on prend le complémentaire $S\backslash V$ de $S$.</p>
 <p>La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.</p>
-<p>Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant <a href="../chemins-cycles-connexite/#prop-cycles-graphe" class="interne">la technique classique</a> et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).</p>
+<p>Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant <a href="../chemins-cycles-connexite/#prop-cycles-graphe">la technique classique</a> et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).</p>
 <p>Le supprimer du graphe va conserver les deux propriétés puisque sur ce cycle, on va rentrer et sortir un nombre égal de fois de tout $V \subseteq V$. On peut donc procéder itérativement, comme on l'a fait pour le multi-graphe non orienté, pour trouver un circuit mixte eulérien à notre multi-graphe mixte.</p>
 </div>
 </details>     

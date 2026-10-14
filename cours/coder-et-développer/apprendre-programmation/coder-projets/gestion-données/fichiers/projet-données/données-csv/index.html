@@ -97,7 +97,7 @@
   
 
   <!-- début résumé -->
-<p>Les fichiers <a href="https://fr.wikipedia.org/wiki/Comma-separated_values">csv</a> sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.</p>
+<p>Les fichiers <a href="https://fr.wikipedia.org/wiki/Comma-separated_values" class="externe">csv</a> sont des fichiers textes permettant de stocker des données structurées comme une feuille excel.</p>
 <!-- fin résumé -->
 <p>Le format csv est utilisé pour stocker des données sous la forme d'une table. Par exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Prénom, nom, note
@@ -139,7 +139,7 @@ Gordon, Zola, 10</code></pre>
 <ul>
 <li>Le délimiteur est par défaut une <code class="language-">,</code>, mais peut tout aussi bien être un <code>;</code> (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.</li>
 <li>Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de <code>&quot;</code>. Mais ce n'est pas toujours le cas</li>
-<li>la <a href="https://fr.wikipedia.org/wiki/Retour_chariot#Informatique">fin de ligne</a>, qui est un caractère spécial est interprété différents sous unix (<code>\n</code>), sous windows (deux caractères <code>\r\n</code>) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère <code>\r</code>).</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Retour_chariot#Informatique" class="externe">fin de ligne</a>, qui est un caractère spécial est interprété différents sous unix (<code>\n</code>), sous windows (deux caractères <code>\r\n</code>) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère <code>\r</code>).</li>
 </ul>
 <p>Enfin :</p>
 <ul>
@@ -153,7 +153,7 @@ Gordon, Zola, 10</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.</p>
-<p>Il en existe de nombreux. J'ai installé le tout simple <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">rainbow CSV</a> pour rapidement connaître le format csv d'un fichier particulier.</p>
+<p>Il en existe de nombreux. J'ai installé le tout simple <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv" class="externe">rainbow CSV</a> pour rapidement connaître le format csv d'un fichier particulier.</p>
 </div></div>
 
 <h2>Python et fichier csv</h2>
@@ -162,7 +162,7 @@ Gordon, Zola, 10</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/csv.html">Documentation csv python</a></p>
+<p><a href="https://docs.python.org/fr/3/library/csv.html" class="externe">Documentation csv python</a></p>
 </div></div>
 
 <p>Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fichier <code class="fichier">notes.csv</code> contenant :</p>
@@ -192,11 +192,11 @@ lecteur <span class="token operator">=</span> csv<span class="token punctuation"
 
 <ol>
 <li><code class="language-">import csv</code> pour pouvoir utiliser le module <code class="language-">csv</code></li>
-<li>ouvrir le fichier à lire avec <a href="https://docs.python.org/fr/3/library/functions.html#open"><code class="language-">open</code></a> avec une gestion de la fin de ligne.</li>
+<li>ouvrir le fichier à lire avec <a href="https://docs.python.org/fr/3/library/functions.html#open" class="externe"><code class="language-">open</code></a> avec une gestion de la fin de ligne.</li>
 <li>placer ce fichier dans un <code class="language-">reader</code> dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.</li>
 <li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
 </ol>
-<p>Le <em>reader</em> python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">nombreuses options</a> permettant de gérer les multiples cas particuliers. Parmi les plus usités :</p>
+<p>Le <em>reader</em> python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params" class="externe">nombreuses options</a> permettant de gérer les multiples cas particuliers. Parmi les plus usités :</p>
 <ul>
 <li><code class="language-">delimiter</code>. Par défaut c'est des <code>','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code>';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
 <li><code class="language-">quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code class="language-">&quot;</code>.</li>
@@ -219,7 +219,7 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator">itérateur</a>. Il fonctionne donc aussi en remplaçant le fichier <code class="language-">f</code> par une liste de chaînes de caractères par exemple.</p>
+<p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator" class="externe">itérateur</a>. Il fonctionne donc aussi en remplaçant le fichier <code class="language-">f</code> par une liste de chaînes de caractères par exemple.</p>
 </div></div>
 
 <h3>Écrire des fichiers csv</h3>
@@ -244,7 +244,7 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Téléchargez la base officielle des codes postaux au format csv à partir de <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux">cette page</a>.</p>
+<p>Téléchargez la base officielle des codes postaux au format csv à partir de <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux" class="externe">cette page</a>.</p>
 </div></div>
 
 <p>En utilisant ce fichier csv :</p>
@@ -272,7 +272,7 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="https://www.insee.fr/fr/statistiques/7633685">cette page</a>, récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.</p>
+<p>En utilisant <a href="https://www.insee.fr/fr/statistiques/7633685" class="externe">cette page</a>, récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.</p>
 </div></div>
 
 <p>En utilisant ce fichier :</p>

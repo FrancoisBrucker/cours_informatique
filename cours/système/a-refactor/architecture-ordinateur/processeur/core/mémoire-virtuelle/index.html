@@ -130,7 +130,7 @@
 <li>un compteur du ombre de process ayant cette page</li>
 <li>...</li>
 </ul>
-<p>Pour amener à <a href="https://www.geeksforgeeks.org/page-table-entries-in-page-table/">une entrée sur 64b</a> contenant :</p>
+<p>Pour amener à <a href="https://www.geeksforgeeks.org/page-table-entries-in-page-table/" class="externe">une entrée sur 64b</a> contenant :</p>
 <ul>
 <li>l'adresse physique de la page (sur 40b)</li>
 <li>24 bit de contrôle</li>
@@ -150,10 +150,10 @@
 <li>de ne stocker que ce qui est nécessaire</li>
 <li>d'être efficace vide (peut de nœud) et plein (on accède à chaque nœud en log du nombre de nœuds)</li>
 </ul>
-<p>Cette structure possède un <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">Overhead</a> faible en temps (en log) et en place (ajout des nœuds en plus des données)</p>
+<p>Cette structure possède un <a href="https://en.wikipedia.org/wiki/Overhead_(computing)" class="externe">Overhead</a> faible en temps (en log) et en place (ajout des nœuds en plus des données)</p>
 </div></div>
 
-<p>La structure est une <a href="https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables">structure arborée multi-level</a>, elle comporte 4 niveaux en 64b :</p>
+<p>La structure est une <a href="https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables" class="externe">structure arborée multi-level</a>, elle comporte 4 niveaux en 64b :</p>
 <ul>
 <li>bit 0 à 11 : l'offset dans la page, 4096 possibilités</li>
 <li>bit 12 à 20 : 4ème page, 512 possibilités</li>
@@ -186,11 +186,11 @@
 <li>vérifie si la page 4 possède un enfant à l'entrée D.
 <ol>
 <li>si oui on trouve l'adresse physique</li>
-<li>si non lance une exception <a href="https://fr.wikipedia.org/wiki/Erreur_de_page">page fault</a> pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)</li>
+<li>si non lance une exception <a href="https://fr.wikipedia.org/wiki/Erreur_de_page" class="externe">page fault</a> pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)</li>
 </ol>
 </li>
 </ol>
-<p>Seule les associations nécessaires sont stockées au prix d'un petit <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> :</p>
+<p>Seule les associations nécessaires sont stockées au prix d'un petit <a href="https://en.wikipedia.org/wiki/Overhead_(computing)" class="externe">overhead</a> :</p>
 <ul>
 <li>en mémoire : les pages</li>
 <li>en temps : il faut parcourir les 4 pages pour chaque appel</li>
@@ -202,10 +202,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">https://en.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer" class="externe">https://en.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
 </div></div>
 
-<p>POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
+<p>POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer" class="externe">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture" class="externe">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
 <h2>Et le cache dans tout ça ?</h2>
 <p>Le problème de cette transformation est que les caches L1 et L2 sont a priori placés avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>
 <ul>

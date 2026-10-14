@@ -115,7 +115,7 @@
     
   
 
-  <p>Définissions <a href="../../complexit%C3%A9-probl%C3%A8me/#d%C3%A9finition-probl%C3%A8me-d%C3%A9cision" class="interne">le problème de décision</a> associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :</p>
+  <p>Définissions <a href="../../complexit%C3%A9-probl%C3%A8me/#d%C3%A9finition-probl%C3%A8me-d%C3%A9cision">le problème de décision</a> associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -205,7 +205,7 @@
 </div><div class="pl-8 mr-8">
 <p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
 <ul>
-<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
+<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation" class="externe">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
 <li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
 </ul>
 </div></div>
@@ -394,7 +394,7 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 \end{array}
 $$
 </div>
-<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../projet-sommes-classiques/#probl%C3%A8me-i/2%5Ei" class="interne">on le démontrera</a>) donc :</p>
+<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../projet-sommes-classiques/#probl%C3%A8me-i/2%5Ei">on le démontrera</a>) donc :</p>
 <div>
 $$
 C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
@@ -422,7 +422,7 @@ $$
 <ul>
 <li>Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !</li>
 <li>Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.</li>
-<li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente">une série convergente</a> est très utile pour démontrer qu'un algorithme est en temps constant.</li>
+<li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente" class="externe">une série convergente</a> est très utile pour démontrer qu'un algorithme est en temps constant.</li>
 </ul>
 </div></div>
 
@@ -447,7 +447,7 @@ $$
 C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum\limits_{i=0}^{n-2}(\frac{1}{i!}))
 $$
 </div>
-<p>La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ (<a href="https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re">$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$</a>) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$</p>
+<p>La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ (<a href="https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re" class="externe">$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$</a>) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$</p>
 <h5>Vérification expérimentale</h5>
 <p>Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -481,7 +481,7 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <h2>Complexité du problème de la reconnaissance</h2>
-<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche" class="interne">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
+<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

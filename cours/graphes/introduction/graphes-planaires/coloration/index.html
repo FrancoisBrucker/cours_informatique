@@ -99,8 +99,8 @@
   <p>Colorer les sommets d'un graphe planaire est similaire à colorer des faces d'une représentation graphique.  En effet, comme chaque arête du graphe est liée à seulement 2 faces on peut facilement créer un graphe dont les faces sont les sommets et on met une arêtes entre deux faces si leurs frontières partagent une arête. Ce graphe est également planaire car on peut facilement déduire une de ses représentations graphique :</p>
 <p><img src="planaire-face.png" alt="planaire face"></p>
 <h2>6-colorable</h2>
-<p>On peut utiliser notre <a href="../../coloration-sommets/#algorithme-glouton" class="interne">algorithme glouton de coloration</a> en prenant un ordre spécial : celui où le sommet à colorier à toujours au plus 5 de ses voisins coloré avant lui.</p>
-<p>Ceci est possible puisqu'on a vu qu'<a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5" class="interne">un graphe planaire possède toujours au moins un sommet de degré inférieur ou égal à 5</a>. L'algorithme suivant en est une application directe de complexité clairement linéaire $\mathcal{O}(n+m)$.</p>
+<p>On peut utiliser notre <a href="../../coloration-sommets/#algorithme-glouton">algorithme glouton de coloration</a> en prenant un ordre spécial : celui où le sommet à colorier à toujours au plus 5 de ses voisins coloré avant lui.</p>
+<p>Ceci est possible puisqu'on a vu qu'<a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5">un graphe planaire possède toujours au moins un sommet de degré inférieur ou égal à 5</a>. L'algorithme suivant en est une application directe de complexité clairement linéaire $\mathcal{O}(n+m)$.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
 <span class="token builtin">algorithme</span> coloration<span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span>Sommet<span class="token punctuation">]</span>Entier<span class="token punctuation">:</span>
 	ref c <span class="token operator">←</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">0</span> <span class="token operator">|</span> x ∈ V<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">}</span>                      <span class="token comment"># couleurs, initialement pas de couleurs</span>
@@ -158,7 +158,7 @@
 <div class="mx-8 pb-2">
 <p>On va le montrer par récurrence sur $n$. Pour $n=1$, il est clair que le graphe est 5-colorable. On suppose la propriété vraie pour $n$ et on considère un graphe planaire à $n+1$ sommets.</p>
 <p>S'il existe un sommet de degré 4 ou moins, on peut le supprimer du graphe. Comme ce nouveau graphe est planaire et à $n$ sommets, il respecte l'hypothèse de récurrence et on peut le colorer en 5 couleurs. On peut alors ajouter le sommet supprimé et comme il a au plus 4 voisins, il reste une couleur de disponible pour lui.</p>
-<p>S'il n'existe pas de sommets de degré 4 ou moins, on en prend un de degré 5 (on a a vu qu'<a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5" class="interne">il existe toujours un sommet de degré inférieur ou égal à 5</a>). En le supprimant du graphe, on respecte les hypothèse de récurrence et ce graphe réduit est 5-colorable.</p>
+<p>S'il n'existe pas de sommets de degré 4 ou moins, on en prend un de degré 5 (on a a vu qu'<a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5">il existe toujours un sommet de degré inférieur ou égal à 5</a>). En le supprimant du graphe, on respecte les hypothèse de récurrence et ce graphe réduit est 5-colorable.</p>
 <p>En remettant ce sommet, le seul cas ou il peut y avoir un soucis est lorsque les 5 couleurs ont été utilisés pour ses voisins. Regardons ce qu'il se passe pour une représentation planaire du graphe :</p>
 <p><img src="5-col-1.png" alt="5 coloration"></p>
 <p>Si on voulait changer une des couleurs du voisins, par exemple remplacer le bleu par du vert, ce serait possible si les sommets bleu et vert ne font pas partie de la même composante connexe du graphe restreint aux sommets bleus et verts. S'ils font partie de la même composante connexe ceci signifie qu'il existe une chaîne, dite <strong><em>chaîne de Kempe</em></strong>, entre ces deux sommets :</p>
@@ -188,7 +188,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On serait tenté d'utiliser cette même technique en changer 2 fois une couleur pour passer de 5 à 4 couleurs.</p>
-<p><a href="https://www.youtube.com/watch?v=adZZv4eEPs8">Cela ne fonctionne pas</a>.</p>
+<p><a href="https://www.youtube.com/watch?v=adZZv4eEPs8" class="externe">Cela ne fonctionne pas</a>.</p>
 </div></div>
 
 <h3>Algorithme linéaire</h3>
@@ -208,7 +208,7 @@
 <p><img src="lin-5-col-3.png" alt="lin 5 col 1"></p>
 <h4>Implémentation</h4>
 <p>L'idée de l'algorithme fonctionne mais savoir si un voisin d'un sommet de degré 5 est voisin d'un autre voisin prend son degré opérations qui peut être aussi grand qu'on veut...</p>
-<p>... Sauf si on se rappelle de notre propriété : <a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5-6" class="interne">il existe un sommet de degré 5 qui est voisin d'un sommet de degré 6 ou plus</a> :</p>
+<p>... Sauf si on se rappelle de notre propriété : <a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5-6">il existe un sommet de degré 5 qui est voisin d'un sommet de degré 6 ou plus</a> :</p>
 <p>on peut alors vérifier si un sommet de degré au plus 6 (disons le voisin 1 de la figure précédente) est voisin du sommet 3 en temps constant et s'ils sont voisins alors les voisins 2 et 4 ne le sont pas.</p>
 <p>Il nous reste à trouver à chaque étape un sommet de degré 5 voisin d'un sommet de degré 6. Ce se fait aisément en adaptant l'algorithme linéaire pour les 6 couleurs. Ci-après un algorithme qui donne l'ordre des sommets à colorer :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
@@ -291,10 +291,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://thomas.math.gatech.edu/FC/fourcolor.html">Page d'un des auteurs</a></li>
-<li><a href="https://thomas.math.gatech.edu/PAP/fc.pdf">le papier</a> et <a href="https://thomas.math.gatech.edu/PAP/npfc.pdf">une version courte</a></li>
-<li><a href="https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf">les 633 configurations inévitables</a></li>
-<li><a href="https://inria.hal.science/hal-04034866/document">comment prouver la preuve avec un ordinateur</a> (c'est différent de faire un algorithme qui vérifie les cas)</li>
+<li><a href="https://thomas.math.gatech.edu/FC/fourcolor.html" class="externe">Page d'un des auteurs</a></li>
+<li><a href="https://thomas.math.gatech.edu/PAP/fc.pdf" class="externe">le papier</a> et <a href="https://thomas.math.gatech.edu/PAP/npfc.pdf" class="externe">une version courte</a></li>
+<li><a href="https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf" class="externe">les 633 configurations inévitables</a></li>
+<li><a href="https://inria.hal.science/hal-04034866/document" class="externe">comment prouver la preuve avec un ordinateur</a> (c'est différent de faire un algorithme qui vérifie les cas)</li>
 </ul>
 </div></div>
 
@@ -308,7 +308,7 @@
 <li>on peut récurser sur l'intérieur plus une adaptation du cycle</li>
 </ol>
 </li>
-<li>Recherche d'une des <a href="https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf">633 configurations réductibles inévitable</a></li>
+<li>Recherche d'une des <a href="https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf" class="externe">633 configurations réductibles inévitable</a></li>
 <li>Réduction : On isole cette configuration, puis on &quot;simplifie&quot; ou retire temporairement ces sommets du graphe $G$ pour obtenir un graphe plus petit $G'$ puis on récurse sur $G'$</li>
 </ol>
 <p>Ce qui est fort et nécessite un ordinateur pour tout vérifier est qu'il est toujours possible après récursion d'ajuster les couleurs des sommets ajouté. Ceci se fait parfois en testant toutes les inversions possibles via des chaînes de Kempe (il y a pour chaque cas un nombre constant de choix, même si ce nombre peut être gros) afin de libérer une couleur valide pour les sommets réinsérés.</p>
@@ -442,7 +442,7 @@
 </div>
 <h2>Applications</h2>
 <h3>Dans des problèmes</h3>
-<p>3 colorable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
+<p>3 colorable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art" class="externe">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
 <h3>Coloration de cartes de géographie</h3>
 <p>coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :</p>
 <p><img src="pays-planaire.png" alt="pays graphe planaire"></p>
@@ -451,7 +451,7 @@
 <p>TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.</p>
 </blockquote>
 <blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance">https://fr.wikipedia.org/wiki/Preuve_à_divulgation_nulle_de_connaissance</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance" class="externe">https://fr.wikipedia.org/wiki/Preuve_à_divulgation_nulle_de_connaissance</a></p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -459,13 +459,13 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://www.youtube.com/watch?v=5ovdoxnfFVc">Avi Wigderson parle des zero knowledge proof</a></li>
-<li><a href="https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf">le papier</a></li>
+<li><a href="https://www.youtube.com/watch?v=5ovdoxnfFVc" class="externe">Avi Wigderson parle des zero knowledge proof</a></li>
+<li><a href="https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf" class="externe">le papier</a></li>
 </ul>
 </div></div>
 
 <blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry-Howard correspondance</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard" class="externe">Curry-Howard correspondance</a></p>
 </blockquote>
 <h3>Algorithmes de coloration de listes</h3>
 <blockquote>
@@ -480,9 +480,9 @@ TBD colonies lunaires</p>
 <blockquote>
 <p>TBD Coloriabilité via le problème de la galerie d'art :</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></li>
-<li>exercices : <a href="https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf">https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf</a></li>
-<li>TIPE : <a href="https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf">https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art" class="externe">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></li>
+<li>exercices : <a href="https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf" class="externe">https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf</a></li>
+<li>TIPE : <a href="https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf" class="externe">https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf</a></li>
 </ul>
 </blockquote>
 

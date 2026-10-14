@@ -335,7 +335,7 @@ $$</p>
 <p>En effet, la complexité de l'égalité entre deux liste est égale à la taille de la plus petite des listes.</p>
 <h3>Une amélioration subtile</h3>
 <p>La boucle en $j$ (lignes 4-6) de l'algorithme <code class="language-">sous_chaine_naif</code> pourrait être améliorée en l'arrêtant dès que <code class="language-">trouvé</code> est mis à <code>False</code>.</p>
-<p>On peut pour cela utiliser l'instruction <code class="language-">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
+<p>On peut pour cela utiliser l'instruction <code class="language-">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops" class="externe">documentation</a> à ce sujet, elle est éclairante.</p>
 <p>On a alors l'algorithme suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -714,7 +714,7 @@ Alors en notant :</p>
 <p>Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ <strong>et</strong> $j$ de sorte que la somme $i+j$ soit croissante.</p>
 <p>C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.</p>
 <h2>Algorithme de Knuth-Morris-Pratt</h2>
-<p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.</p>
+<p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt" class="externe">Knuth, Morris et Pratt</a> publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.</p>
 <p>Nous allons procéder par étape pour essayer de le comprendre.</p>
 <h3>Décalage adapté</h3>
 <p>L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
@@ -894,14 +894,14 @@ i/j:           i j</code></pre>
 <h2>Autres algorithmes</h2>
 <p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp">Rabin-Karp</a>. Cet algorithme est intéressant car :
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp" class="externe">Rabin-Karp</a>. Cet algorithme est intéressant car :
 <ul>
 <li>plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général</li>
-<li>la fonction de hashage utilisée (nommée <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin">empreinte de Rabin</a>) est très facilement itérativement calculable.</li>
+<li>la fonction de hashage utilisée (nommée <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin" class="externe">empreinte de Rabin</a>) est très facilement itérativement calculable.</li>
 </ul>
 </li>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique</li>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c'est dans le même article où ils présentent leur propre algorithme).</li>
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool" class="externe">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique</li>
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore" class="externe">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf" class="externe">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c'est dans le même article où ils présentent leur propre algorithme).</li>
 </ul>
 
 

@@ -108,7 +108,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton" class="externe">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
 </div></div>
 
 <p>Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée <em>algorithmes gloutons</em>.</p>
@@ -154,7 +154,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ol>
 </div></div>
 
-<p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
+<p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique" class="externe">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
 <h2>Comment concevoir un algorithme glouton</h2>
 <p>Pour construire un algorithme glouton on procède par étapes :</p>
 <ol>
@@ -262,7 +262,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le cas général est un problème <a href="../../probl%C3%A8me-sac-%C3%A0-dos" class="interne">du sac à dos</a> (le <em>&quot;prix&quot;</em> de chaque pièce vaut 1 et leur <em>&quot;volume&quot;</em> est leur valeur).</p>
+<p>Le cas général est un problème <a href="../../probl%C3%A8me-sac-%C3%A0-dos">du sac à dos</a> (le <em>&quot;prix&quot;</em> de chaque pièce vaut 1 et leur <em>&quot;volume&quot;</em> est leur valeur).</p>
 </div></div>
 
 <h2>Optimalité d'un algorithme glouton</h2>
@@ -287,7 +287,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p>Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.</p>
 </div></div>
 
-<p>Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">un matroïde</a>, dont la principale propriété est d'être stable par échange.</p>
+<p>Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde" class="externe">un matroïde</a>, dont la principale propriété est d'être stable par échange.</p>
 <h3>Schéma de preuve d'optimalité par construction</h3>
 <p>En reprenant le <a href="#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a>, on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
 <ul>
@@ -411,7 +411,7 @@ $$
 </div></div>
 
 <h3>Problème du <em>bin packing</em></h3>
-<p>Pour illustrer cette problématique on va utiliser <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing">le problème du <em>bin packing</em></a> :</p>
+<p>Pour illustrer cette problématique on va utiliser <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing" class="externe">le problème du <em>bin packing</em></a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -708,11 +708,11 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant <strong>par volume décroissant</strong>. <a href="https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis">Il a en effet été prouvé</a> que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.</p>
+<p>On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant <strong>par volume décroissant</strong>. <a href="https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis" class="externe">Il a en effet été prouvé</a> que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.</p>
 </div></div>
 
 <h2>Heuristique gloutonne</h2>
-<p>Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme <a href="https://fr.wikipedia.org/wiki/Heuristique">une heuristique</a>.</p>
+<p>Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme <a href="https://fr.wikipedia.org/wiki/Heuristique" class="externe">une heuristique</a>.</p>
 <h3>Méthode de design d'un algorithme glouton comme heuristique</h3>
 <ol>
 <li>créer un glouton pour résoudre le problème</li>
@@ -726,7 +726,7 @@ $$
 <li>il faut que les bonnes solutions ne soient pas rares sinon l'aléatoire n'aidera pas à trouver une bonne solution (il est parfois nécessaire de faire un prétraitement sur les entrées)</li>
 </ul>
 <h3>Problème de la chaîne de montage</h3>
-<p>Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer <a href="https://www.csplib.org/Problems/prob001/">le problème de la chaîne de montage</a>.</p>
+<p>Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer <a href="https://www.csplib.org/Problems/prob001/" class="externe">le problème de la chaîne de montage</a>.</p>
 <p>Pour créer une voiture on la déplace sur une chaîne de montage pour qu'elle puisse passer par chaque atelier. La figure suivante montre le schéma :</p>
 <p><img src="chaine-montage.png" alt="chaîne de montage"></p>
 <p>Les différentes voitures en court de construction ($v_1$, $v_2$ et $v_3$) se déplace d'une case sur la chaîne à chaque unité de temps pour passer d'un atelier à l'autre ($v_1$ est dans l'atelier 3 et $v_3$ arrivera à l'atelier 1 à l'unité de temps suivante). Le temps mis par un atelier est égal à sa longueur sur la chaîne (atelier 1 dure 4 unité de temps et l'atelier 4 une seule).</p>
@@ -759,7 +759,7 @@ $$
 </ul>
 </div></div>
 
-<p>Prenons l'exemple donné dans <a href="https://www.csplib.org/Problems/prob001/">la description du problème de la chaîne de montage</a>. La chaîne de montage est de ce type :</p>
+<p>Prenons l'exemple donné dans <a href="https://www.csplib.org/Problems/prob001/" class="externe">la description du problème de la chaîne de montage</a>. La chaîne de montage est de ce type :</p>
 <p><img src="chaine-montage-exemple.png" alt="chaîne de montage exemple"></p>
 <p>Et on veut construire 10 voitures :</p>
 <table>

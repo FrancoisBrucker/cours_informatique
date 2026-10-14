@@ -98,12 +98,12 @@
 
   <!-- TBD
 
-- subkeys : <https://wiki.debian.org/Subkeys>
-- list commandes : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>
-- tuto complet avec sub keys et tout : <https://www.youtube.com/watch?v=6i8vPJLAPRs&list=PLPj3KCksGbSZkVpgAZjAFfFp4D0SHLnFw>
-- revoke key : <https://superuser.com/questions/1526283/how-to-revoke-a-gpg-key-and-upload-in-gpg-server>
-- gpg config : <https://www.git-tower.com/blog/setting-up-gpg-windows>
-- <https://une-tasse-de.cafe/blog/yubikey/>
+- subkeys : <https://wiki.debian.org/Subkeys>{.externe}
+- list commandes : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>{.externe}
+- tuto complet avec sub keys et tout : <https://www.youtube.com/watch?v=6i8vPJLAPRs&list=PLPj3KCksGbSZkVpgAZjAFfFp4D0SHLnFw>{.externe}
+- revoke key : <https://superuser.com/questions/1526283/how-to-revoke-a-gpg-key-and-upload-in-gpg-server>{.externe}
+- gpg config : <https://www.git-tower.com/blog/setting-up-gpg-windows>{.externe}
+- <https://une-tasse-de.cafe/blog/yubikey/>{.externe}
 
  -->
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -112,9 +112,9 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://www.gnupg.org/">GnuPG</a></li>
-<li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/">tuto gpg</a></li>
-<li><a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">autre tuto</a></li>
+<li><a href="https://www.gnupg.org/" class="externe">GnuPG</a></li>
+<li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/" class="externe">tuto gpg</a></li>
+<li><a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html" class="externe">autre tuto</a></li>
 </ul>
 </div></div>
 
@@ -133,7 +133,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.gnupg.org/">https://www.gnupg.org/</a></p>
+<p><a href="https://www.gnupg.org/" class="externe">https://www.gnupg.org/</a></p>
 </div></div>
 
 <p>On utilise la version 2.4 :</p>
@@ -164,10 +164,10 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 <h3>Macos</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ brew <span class="token function">install</span> openssl</code></pre>
 <h3>Windows</h3>
-<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
+<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/" class="externe">winget</a>, le gestionnaire de paquet de Windows 11.</p>
 <ol>
-<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
-<li>on utilise le paquet <a href="https://winget.run/pkg/GnuPG/GnuPG"><code>GnuPG.GnuPG</code></a></li>
+<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/" class="externe">https://winget.run/</a></li>
+<li>on utilise le paquet <a href="https://winget.run/pkg/GnuPG/GnuPG" class="externe"><code>GnuPG.GnuPG</code></a></li>
 </ol>
 <p>Une fois le parquet installé, il devrait être disponible dans une <strong>nouvelle</strong> fenêtre de powershell.</p>
 <h3>Dossier de configuration/clés</h3>
@@ -176,7 +176,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html">Fichiers de configurations</a></p>
+<p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html" class="externe">Fichiers de configurations</a></p>
 </div></div>
 
 <p>Ce fichier va contenir et la configuration et les clés.</p>
@@ -190,7 +190,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=4z1LSbFHtQA">Chiffrer/déchiffrer des fichiers avec GPG</a></p>
+<p><a href="https://www.youtube.com/watch?v=4z1LSbFHtQA" class="externe">Chiffrer/déchiffrer des fichiers avec GPG</a></p>
 </div></div>
 
 <blockquote>
@@ -203,7 +203,7 @@ tui puis en ligne de commande.</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key</a></p>
+<p><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key" class="externe">https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key</a></p>
 </div></div>
 
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --full-generate-key</code></pre>
@@ -422,7 +422,7 @@ AAfCXxreu+uWC78Tn9ABAOuc1Zf2X/8aFe0K8/qcEro1s/IEJbKWlsmOvlriaY0A
 <span class="token operator">=</span>UCdl
 -----END PGP PUBLIC KEY BLOCK-----
 </code></pre>
-<p>L'option <code>--armor</code> exporte la clé sous <a href="https://fr.wikipedia.org/wiki/Base64">la forme base64</a> qui est affichable et facilement échangeable.</p>
+<p>L'option <code>--armor</code> exporte la clé sous <a href="https://fr.wikipedia.org/wiki/Base64" class="externe">la forme base64</a> qui est affichable et facilement échangeable.</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg <span class="token parameter variable">--export</span> 1746B97A12A97C32CB74C6157D305414B27F8E59 <span class="token operator">|</span> base64
 mDMEaPUWEhYJKwYBBAHaRw8BAQdANlrHTZ04G9fbWXz7E1iWSN2VBOBN9VLR16cP6tGnD1u0NEZyYW7Dp29pcyBCcnVja2VyIDxmcmFuY29pcy5icnVja2VyQGNlbnRyYWxlLW1lZC5mcj6ImQQTFgoAQRYhBBdGuXoSqXwyy3TGFX0wVBSyf45ZBQJo9ScdAhsDBQkACTqABQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEH0wVBSyf45Z3F8BAOrcosVh1tVRoONNkD3UzjyU6mXEkXXIJa9e6rjXMKaVAP48r4FOfIioLb+Yjo6YlgTRB0YMumk6xl3M4aqQxpEcBrg4BGj1FhISCisGAQQBl1UBBQEBB0CVMpSh4Y6eD0QB8uf3RwHY7Wamsd0JpnLrBFQ0+B6vWwMBCAeIfgQYFgoAJhYhBBdGuXoSqXwyy3TGFX0wVBSyf45ZBQJo9RYSAhsMBQkACTqAAAoJEH0wVBSyf45ZkMkBAKGSJlqJeJhGnfiucUcS7hSxfQAHwl8a3rvrlgu/E5/QAQDrnNWX9l//GhXtCvP6nBK6NbPyBCWylpbJjr5a4mmNAA<span class="token operator">==</span></code></pre>
 <p>Par défaut, le format est binaire :</p>
@@ -516,7 +516,7 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84">https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84</a></p>
+<p><a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84" class="externe">https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84</a></p>
 </div></div>
 
 <p>Vous pouvez, si vous le désirez, signer sa clé avec la commande de gestion des clés <code>sign</code> :</p>
@@ -658,7 +658,7 @@ Do you really want to <span class="token builtin class-name">set</span> this key
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=eLKOIjNFwVs">comfy guide to gpg</a></p>
+<p><a href="https://www.youtube.com/watch?v=eLKOIjNFwVs" class="externe">comfy guide to gpg</a></p>
 </div></div>
 
 <h3>Chiffrement/déchiffrement</h3>
@@ -747,7 +747,7 @@ gpg: Good signature from <span class="token string">"François Brucker &lt;franc
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/orhun/gpg-tui">GPG TUI</a></p>
+<p><a href="https://github.com/orhun/gpg-tui" class="externe">GPG TUI</a></p>
 </div></div>
 
 <h2>Gestion des clés</h2>
@@ -843,13 +843,13 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://wiki.debian.org/fr/Subkeys">clés et sous clés GPG</a></li>
-<li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/">sous clés GPG</a></li>
+<li><a href="https://wiki.debian.org/fr/Subkeys" class="externe">clés et sous clés GPG</a></li>
+<li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/" class="externe">sous clés GPG</a></li>
 </ul>
 </div></div>
 
 <blockquote>
-<p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
+<p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html" class="externe">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
 </blockquote>
 <h2>Serveur de clés</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -857,13 +857,13 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a>
-<a href="https://www.gnupg.org/gph/en/manual/x457.html">https://www.gnupg.org/gph/en/manual/x457.html</a></p>
+<p><a href="https://keyserver.ubuntu.com/" class="externe">https://keyserver.ubuntu.com/</a>
+<a href="https://www.gnupg.org/gph/en/manual/x457.html" class="externe">https://www.gnupg.org/gph/en/manual/x457.html</a></p>
 </div></div>
 
 <blockquote>
 <p>TBD Permet d'utiliser des clés stockées dans un serveur de clé
-<a href="https://www.gnupg.org/gph/en/manual.html#AEN464">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>
+<a href="https://www.gnupg.org/gph/en/manual.html#AEN464" class="externe">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>
 <ol>
 <li>le faire.</li>
 <li>se signer mutuellement les clés.</li>

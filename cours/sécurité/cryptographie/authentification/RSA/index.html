@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA">Chiffrement RSA</a></li>
-<li><a href="https://www.youtube.com/watch?v=Xlal_d4zyfo">preuves RSA</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" class="externe">Chiffrement RSA</a></li>
+<li><a href="https://www.youtube.com/watch?v=Xlal_d4zyfo" class="externe">preuves RSA</a></li>
 </ul>
 </div></div>
 
@@ -114,7 +114,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour bien appréhender cette partie, il faudra avoir quelques connaissances basiques sur les <a href="https://fr.wikipedia.org/wiki/Modulo_(op%C3%A9ration)">modulo</a>. En particulier :</p>
+<p>Pour bien appréhender cette partie, il faudra avoir quelques connaissances basiques sur les <a href="https://fr.wikipedia.org/wiki/Modulo_(op%C3%A9ration)" class="externe">modulo</a>. En particulier :</p>
 <ul>
 <li>$x \equiv y \pmod{n}$ signifie que $x - y$ est un multiple de $n$</li>
 <li>$x \equiv y \pmod{n} \equiv (y + kn) \pmod{n}$ pour tout entier relatif $k$</li>
@@ -161,7 +161,7 @@
 </div></div>
 
 <h2>Existence et calcul de $d$</h2>
-<p>L'existence de $d$ est lié à une conséquence du <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout">théorème de Bézout</a> :</p>
+<p>L'existence de $d$ est lié à une conséquence du <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout" class="externe">théorème de Bézout</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -243,18 +243,18 @@ $$
 </div>
 </details>     
 </div>
-<p>On vient de montrer que pour tout couple d'entiers $a &lt; b$ premiers entre eux, il existe un unique entier $a' &lt; b$ tel que : $aa' \equiv 1 \pmod{b}$. Cet entier est appelé <a href="https://fr.wikipedia.org/wiki/Inverse_modulaire">inverse modulaire</a>.</p>
+<p>On vient de montrer que pour tout couple d'entiers $a &lt; b$ premiers entre eux, il existe un unique entier $a' &lt; b$ tel que : $aa' \equiv 1 \pmod{b}$. Cet entier est appelé <a href="https://fr.wikipedia.org/wiki/Inverse_modulaire" class="externe">inverse modulaire</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Voir le code RSA en action :
-<a href="https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html">https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html</a></p>
+<a href="https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html" class="externe">https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html</a></p>
 </div></div>
 
 <h2>Preuve des bijections</h2>
-<p>Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat">petit théorème de Fermat</a> :</p>
+<p>Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat" class="externe">petit théorème de Fermat</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -330,7 +330,7 @@ $$
 </div>
 <h2>Algorithmes de calculs</h2>
 <h3>Calcul de d</h3>
-<p>Trouver l'inverse modulaire d'un nombre se fait usuellement en utilisant l'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu">algorithme d'Euclide étendu</a>, qui est une généralisation de l'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide">algorithme d'Euclide</a> qui calcule la division euclidienne.</p>
+<p>Trouver l'inverse modulaire d'un nombre se fait usuellement en utilisant l'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu" class="externe">algorithme d'Euclide étendu</a>, qui est une généralisation de l'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide" class="externe">algorithme d'Euclide</a> qui calcule la division euclidienne.</p>
 <h3>Calcul des codes</h3>
 <p>Calculer $f(m) = m^e \pmod{n}$ (ou $f^{-1}(m)$) se fait par exponentiation modulaire.</p>
 <h2>Attaques</h2>
@@ -339,12 +339,12 @@ $$
 <p>TBD RSA : bien choisir ses clés. Sinon multiplication de Fermat</p>
 </blockquote>
 <blockquote>
-<p>TBD attaques : <a href="https://www.youtube.com/watch?v=-ShwJqAalOk">casser RSA</a></p>
+<p>TBD attaques : <a href="https://www.youtube.com/watch?v=-ShwJqAalOk" class="externe">casser RSA</a></p>
 </blockquote>
-<p>pb des 0 : <a href="https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding">https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding</a></p>
-<p>Basé sur le fait qu'algorithmiquement on ne sait pas efficacement <a href="https://fr.wikipedia.org/wiki/D%C3%A9composition_en_produit_de_facteurs_premiers">décomposer un nombre en produit de ses facteurs premiers</a>.</p>
+<p>pb des 0 : <a href="https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding" class="externe">https://fr.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding</a></p>
+<p>Basé sur le fait qu'algorithmiquement on ne sait pas efficacement <a href="https://fr.wikipedia.org/wiki/D%C3%A9composition_en_produit_de_facteurs_premiers" class="externe">décomposer un nombre en produit de ses facteurs premiers</a>.</p>
 <p>Pour trouver la clé secrète $(e, pq)$ en connaissant $(d, pq)$, il faut trouver $p$ et $q$ et donc décomposer $n=pq$ en produit de ses facteurs premiers : il est donc <strong>difficile</strong> de casser le code RSA lorsque $n$ est grand.</p>
-<p><a href="https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/">https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/</a></p>
+<p><a href="https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/" class="externe">https://danielpocock.com/rsa-key-sizes-2048-or-4096-bits/</a></p>
 
 
 </article>

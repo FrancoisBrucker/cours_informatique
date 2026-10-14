@@ -96,7 +96,7 @@
     
   
 
-  <p>Un processeur possède plusieurs core qui s'exécutent de façon parallèle. Le l'<a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)">architecture ice lake (client)</a> possède 4 cœurs par exemple.</p>
+  <p>Un processeur possède plusieurs core qui s'exécutent de façon parallèle. Le l'<a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)" class="externe">architecture ice lake (client)</a> possède 4 cœurs par exemple.</p>
 <p>Pour que tout se passe au mieux, il faut garantir que les ressources partagées comme les disques et la mémoires soient parfaitement accessibles et cohérente pour chaque core.</p>
 <h2>Organisation des cores</h2>
 <p><img src="cores.png" alt="cores"></p>
@@ -110,7 +110,7 @@
 <p>Le cache L3 est partagé entre tous les cores. Il possède plusieurs accès répartis en <em>slice</em>, se répartissant l'adressage physique. Si chaque core fait tourner des process ayant une plage de mémoire physique différente, ils pourront accéder au cache en parallèle.</p>
 <h2>Multi-process</h2>
 <p>La gestion des process multiples est essentiellement traitées par le noyau ou les thread eux-même.</p>
-<p>Pour éviter tout soucis de <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, il <strong>faut</strong> utiliser des mécanismes de protection des données partagées en écriture côté code.</p>
+<p>Pour éviter tout soucis de <a href="https://en.wikipedia.org/wiki/Race_condition" class="externe">race condition</a>, il <strong>faut</strong> utiliser des mécanismes de protection des données partagées en écriture côté code.</p>
 <p>Le processeur doit juste faire attention à la cohérence des données traitées par chaque core, c'est à dire essentiellement le cache. Ceci se fait habituellement :</p>
 <ul>
 <li>en élargissant le <em>snoop filter</em> aux lignes de caches de tous les core.</li>

@@ -112,8 +112,8 @@
 <!-- fin résumé -->
 <p>Nous allons dans ce projet utiliser deux bibliothèques d'analyse des données très utilisées :</p>
 <ul>
-<li><a href="https://pandas.pydata.org/">pandas</a> pour la gestion des données sous forme de matrices nommées <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">dataframe</a></li>
-<li><a href="https://geopandas.org/en/stable/">geopandas</a> qui ajoute à pandas la gestion de données géographiques</li>
+<li><a href="https://pandas.pydata.org/" class="externe">pandas</a> pour la gestion des données sous forme de matrices nommées <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html" class="externe">dataframe</a></li>
+<li><a href="https://geopandas.org/en/stable/" class="externe">geopandas</a> qui ajoute à pandas la gestion de données géographiques</li>
 </ul>
 <p>Nous n'allons pas expliquer tous les tenants et aboutissants de ces bibliothèques mais j'espère que le fait de les utiliser vous donnera envie d'en savoir plus.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -142,7 +142,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Téléchargez le fichier <a href="villes_france_30000.csv" class="fichier"><code>villes_france_30000.csv</code></a> et placez le dans votre projet.</p>
-<p>Vous pouvez regarder le fichier dans vscode (Installez le plugin <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">Rainbow csv</a> pour visualiser plus facilement les fichiers csv)</p>
+<p>Vous pouvez regarder le fichier dans vscode (Installez le plugin <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv" class="externe">Rainbow csv</a> pour visualiser plus facilement les fichiers csv)</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -188,7 +188,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a créé un <em>dataframe</em> pandas qui contient nos données.</p>
-<p>On a utilisé le paramètre <code class="language-">skipinitialspace</code>  de la méthode <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code class="language-">read_csv</code> de pandas</a> pour avoir bien des villes qui ne commencent pas par des espaces.</p>
+<p>On a utilisé le paramètre <code class="language-">skipinitialspace</code>  de la méthode <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html" class="externe"><code class="language-">read_csv</code> de pandas</a> pour avoir bien des villes qui ne commencent pas par des espaces.</p>
 </div></div>
 
 <h4>Aperçu du contenu</h4>
@@ -224,7 +224,7 @@ dtype: object
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le <a href="https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique">code INSEE</a> n'est pas le code postal. Voir <a href="http://www.bevernage.com/curiosites/cp_insee.htm">ce lien</a> par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Code_officiel_g%C3%A9ographique" class="externe">code INSEE</a> n'est pas le code postal. Voir <a href="http://www.bevernage.com/curiosites/cp_insee.htm" class="externe">ce lien</a> par exemple pour en saisir les différences (et, au passage, faire un voyage dans le temps au niveau du site web).</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -268,11 +268,11 @@ dtype: object
 <li><em>normales</em> comme le nom u la population pour chaque ville</li>
 <li>géographes avec la latitude et la longitude</li>
 </ul>
-<p>Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque <a href="https://shapely.readthedocs.io/">Shapely</a>. Citons en 3 parmi le plus utilisées :</p>
+<p>Pour pouvoir utiliser les données géographiques de façon efficace, on a l'habitude de les regrouper en classes particulières. Toutes les classes et possibles et leurs utilisations sont décrites dans la bibliothèque <a href="https://shapely.readthedocs.io/" class="externe">Shapely</a>. Citons en 3 parmi le plus utilisées :</p>
 <ul>
-<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#points">des points</a> pour nos coordonnées GPS</li>
-<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#polygons">des Polygones</a> pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des <a href="https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons">collections de polygone</a>)</li>
-<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#linestrings">lignes</a> pour des chemins.</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#points" class="externe">des points</a> pour nos coordonnées GPS</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#polygons" class="externe">des Polygones</a> pour des surfaces connexes comme des arrondissements (pour les pays non connexes comme la France on utilisera des <a href="https://shapely.readthedocs.io/en/stable/manual.html#collections-of-polygons" class="externe">collections de polygone</a>)</li>
+<li><a href="https://shapely.readthedocs.io/en/stable/manual.html#linestrings" class="externe">lignes</a> pour des chemins.</li>
 </ul>
 <p>De plus, on utilise la bibliothèque GeoPandas (que vous avez déjà du installer) pour une utilisation aise de celle-ci.</p>
 <h3>Points à partir des coordonnées</h3>
@@ -280,7 +280,7 @@ dtype: object
 <p>La différence avec un DataFrame pandas est l'ajout d'une colonne <code>geometry</code> (<strong>obligatoire</strong> en geopandas) qui contient... La géométrie de nos données. Dans notre cas :</p>
 <ul>
 <li>géométrie est un point (longitude, latitude)</li>
-<li>le système de coordonnée est le système gps : <a href="https://epsg.io/4326">https://epsg.io/4326</a></li>
+<li>le système de coordonnée est le système gps : <a href="https://epsg.io/4326" class="externe">https://epsg.io/4326</a></li>
 </ul>
 <p>Faisons ça :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
@@ -292,7 +292,7 @@ villes<span class="token punctuation">.</span>set_crs<span class="token punctuat
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il est crucial de toujours bien renseigner le système de coordonnées (<a href="https://www.youtube.com/watch?v=xJyJlKbZFlc&amp;list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&amp;index=8">CRS</a> pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.</p>
+<p>Il est crucial de toujours bien renseigner le système de coordonnées (<a href="https://www.youtube.com/watch?v=xJyJlKbZFlc&amp;list=PLewNEVDy7gq3DjrPDxGFLbHE4G2QWe8Qh&amp;index=8" class="externe">CRS</a> pour Coordinate Reference Systems) lorsque l'on traite de données géographiques.</p>
 </div></div>
 
 <h3>Représentation graphique</h3>
@@ -373,7 +373,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Utilisez <a href="http://norbertrenner.de/osm/bbox.html">cet outil</a> pour déterminer un rectangle (une <em>bounding box</em>) englobant l'île de France</p>
+<p>Utilisez <a href="http://norbertrenner.de/osm/bbox.html" class="externe">cet outil</a> pour déterminer un rectangle (une <em>bounding box</em>) englobant l'île de France</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -398,15 +398,15 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div>
 </details>     
 </div>
-<p>Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser <a href="https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box"><code class="language-">shapely.geometry.box</code></a> dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :</p>
+<p>Il faut transcrire ce rectangle en coordonnées géographique. Ceci est facile avec la bibliothèque shapely. On peut utiliser <a href="https://shapely.readthedocs.io/en/stable/manual.html#shapely.geometry.box" class="externe"><code class="language-">shapely.geometry.box</code></a> dont les paramètres correspondant à la deuxième ligne du site déterminant les bounding box. Avec mes coordonnées ça fait :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> shapely<span class="token punctuation">.</span>geometry
 
 île_de_France <span class="token operator">=</span> shapely<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span>box<span class="token punctuation">(</span><span class="token number">2.02</span><span class="token punctuation">,</span> <span class="token number">48.7</span><span class="token punctuation">,</span> <span class="token number">2.72</span><span class="token punctuation">,</span> <span class="token number">48.98</span><span class="token punctuation">)</span></code></pre>
-<p>On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries"><code class="language-">GeoSeries</code></a> qui correspond à la colonne geometry.</p>
+<p>On peut maintenant utiliser la puissance de GeoPandas et de ses outils de gestion géographique. Ces outils sont principalement des méthodes de la classe <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.html#geopandas.GeoSeries" class="externe"><code class="language-">GeoSeries</code></a> qui correspond à la colonne geometry.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html"><code>GeoSeries.within()</code></a>, déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre <em>bounding box</em>).</p>
+<p>En utilisant la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.within.html" class="externe"><code>GeoSeries.within()</code></a>, déterminez le nombre de villes de plus de 50000 habitants en île de France (ou tout du moins dans votre <em>bounding box</em>).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -498,7 +498,7 @@ grandes_villes <span class="token operator">=</span> v2<span class="token punctu
 <div class="pl-8 mr-8">
 <p>On voit qu'en pandas et geoPandas, on peut accéder aux données en utilisant des crochets <code class="language-">[]</code> de plusieurs manières. Supposons que l'on ait un dataFrame nommée <code class="language-">df</code> :</p>
 <ul>
-<li><code class="language-">df[nom]</code> rend la colonne (qui est de type <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html">Series</a> ou <a href="https://geopandas.org/en/stable/docs/reference/geoseries.html">GeoSeries</a> si c'est une géométrie) de nom <code class="language-">nom</code>.</li>
+<li><code class="language-">df[nom]</code> rend la colonne (qui est de type <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html" class="externe">Series</a> ou <a href="https://geopandas.org/en/stable/docs/reference/geoseries.html" class="externe">GeoSeries</a> si c'est une géométrie) de nom <code class="language-">nom</code>.</li>
 <li><code class="language-">df.nom</code> où nom est un nom de colonne fonctionne aussi, même si je suis moins fan de cette notation.</li>
 <li><code class="language-">df.loc[index]</code> rend la ligne d'index <code class="language-">index</code></li>
 <li><code class="language-">df.iloc[i]</code> rend la $i$ème ligne du dataFrame</li>
@@ -678,7 +678,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce graphe est-il connexe ?</p>
-<p>Vous utiliserez l'algorithme <a href="../chemins-cycles-connexite#algorithme-connexe-toutes" class="interne">connexité</a> du cours pour déterminer les composantes connexes.</p>
+<p>Vous utiliserez l'algorithme <a href="../chemins-cycles-connexite#algorithme-connexe-toutes">connexité</a> du cours pour déterminer les composantes connexes.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

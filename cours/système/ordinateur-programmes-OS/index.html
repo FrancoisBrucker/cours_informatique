@@ -98,7 +98,7 @@
 
   <p>Nous allons présenter ici les principes d'un OS de bureau (W11, Linux Ubuntu, MacOS) actuel.</p>
 <h2>Ordinateur</h2>
-<p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est de permettre à des utilisateurs d'exécuter des applications :</p>
+<p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur" class="externe">ordinateur</a> est de permettre à des utilisateurs d'exécuter des applications :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -106,13 +106,13 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>ordinateur</em></strong> est composé de multiples composants physiques qui interagissent entre eux via <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">une carte mère</a> :</p>
+<p>Un <strong><em>ordinateur</em></strong> est composé de multiples composants physiques qui interagissent entre eux via <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re" class="externe">une carte mère</a> :</p>
 <ul>
-<li>le <a href="https://fr.wikipedia.org/wiki/Processeur"><strong><em>processeur</em></strong></a> qui exécute des instructions sur des variables appelés <strong><em>registre</em></strong> pouvant contenir 64<a href="https://fr.wikipedia.org/wiki/Bit">bit</a> d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).</li>
+<li>le <a href="https://fr.wikipedia.org/wiki/Processeur" class="externe"><strong><em>processeur</em></strong></a> qui exécute des instructions sur des variables appelés <strong><em>registre</em></strong> pouvant contenir 64<a href="https://fr.wikipedia.org/wiki/Bit" class="externe">bit</a> d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).</li>
 <li>de la mémoire que l'on sépare en 2 grande catégories :
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive"><strong><em>la mémoire vive</em></strong></a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1<a href="https://fr.wikipedia.org/wiki/Byte">Byte</a> (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse"><strong><em>la mémoire de masse</em></strong> ou de stockage</a>, non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive" class="externe"><strong><em>la mémoire vive</em></strong></a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1<a href="https://fr.wikipedia.org/wiki/Byte" class="externe">Byte</a> (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse" class="externe"><strong><em>la mémoire de masse</em></strong> ou de stockage</a>, non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
 <ul>
 <li>disques durs : plus lent que la mémoire mais non volatile</li>
 <li>USB : encore plus lent qu'un disque dur mais déplaçable facilement</li>
@@ -120,10 +120,10 @@
 </li>
 </ul>
 </li>
-<li><a href="https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique">des <strong><em>périphériques</em></strong></a>, appelés <strong><em>device</em></strong>, qui composent tout les autres composants :
+<li><a href="https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique" class="externe">des <strong><em>périphériques</em></strong></a>, appelés <strong><em>device</em></strong>, qui composent tout les autres composants :
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Carte_r%C3%A9seau">carte réseau</a> : encore plus lent que l'USB mais accessible de partout</li>
-<li><a href="https://fr.wikipedia.org/wiki/Interactions_homme-machine">interfaces</a> :
+<li><a href="https://fr.wikipedia.org/wiki/Carte_r%C3%A9seau" class="externe">carte réseau</a> : encore plus lent que l'USB mais accessible de partout</li>
+<li><a href="https://fr.wikipedia.org/wiki/Interactions_homme-machine" class="externe">interfaces</a> :
 <ul>
 <li>dont on peut uniquement lire des données (périphériques d'entrée) : clavier/souris</li>
 <li>dont on peut uniquement envoyer des données (périphériques de sortie) : écran/imprimante</li>
@@ -140,14 +140,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/misc/unit%C3%A9s-ordres-grandeur" class="interne">Unités et ordres de grandeur en informatique</a></p>
+<p><a href="/cours_informatique/cours/misc/unit%C3%A9s-ordres-grandeur">Unités et ordres de grandeur en informatique</a></p>
 </div></div>
 
 <p>Le schéma (très) simplifié suivant décrit un ordinateur :</p>
 <p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
 <p>Ce schéma s'applique à une vaste gamme d'ordinateur : ordinateur fixe ou portable, mobile, tablette, <em>etc</em>. Ce qui va différentier ce que l'on peut faire avec est certes lié aux périphériques installées et aux capacités du processeur, mais aussi et surtout du système d'exploitation utilisé pour exécuter des applications.</p>
 <h2>Programmes</h2>
-<p>Un programme est une suite d'instructions exécutée l'une après l'autre par le processeur. Ce processus (dont nous verrons (bien) plus tard le fonctionnement détaillé nommé <a href="https://en.wikipedia.org/wiki/Instruction_cycle#Summary_of_stages"><em>fetch-decode-execute</em></a>) est contraint par le schéma de l'ordinateur :</p>
+<p>Un programme est une suite d'instructions exécutée l'une après l'autre par le processeur. Ce processus (dont nous verrons (bien) plus tard le fonctionnement détaillé nommé <a href="https://en.wikipedia.org/wiki/Instruction_cycle#Summary_of_stages" class="externe"><em>fetch-decode-execute</em></a>) est contraint par le schéma de l'ordinateur :</p>
 <ol>
 <li>le seul endroit où peut être stocké un programme est en mémoire : chaque instruction du processeur doit être associé à un nombre binaire.</li>
 <li>le processeur doit connaître la prochaine instruction qu'il doit exécuter : un de ses registres spécialisé nommé <strong><em>pointeur d'instruction</em></strong> (d’abréviation <em>IP</em>) contiendra toujours l'adresse en mémoire de la <strong>prochaine</strong> instruction à exécuter.</li>
@@ -215,15 +215,15 @@
 </details>     
 </div>
 <p>De plus, un programme doit être stocké en mémoire de l'ordinateur pour être exécuté : à chaque instruction est associée une suite finie de 0 et de 1 stockée en mémoire. Par exemple considérons l'instruction
-valide pour un processeur x86 intel consistant à placer la constante 42 dans les 64bits du registre générique <code>RAX</code>. Elle s'écrit en <a href="https://fr.wikipedia.org/wiki/Assembleur">assembleur</a> (le language des processeurs) ainsi  :</p>
+valide pour un processeur x86 intel consistant à placer la constante 42 dans les 64bits du registre générique <code>RAX</code>. Elle s'écrit en <a href="https://fr.wikipedia.org/wiki/Assembleur" class="externe">assembleur</a> (le language des processeurs) ainsi  :</p>
 <pre><code>MOV RAX, 42
 </code></pre>
-<p>Et est codée en <a href="https://fr.wikipedia.org/wiki/Langage_machine">langage machine</a> (l'encodage dans la mémoire) sur 10 bytes (on a utilisé ici la notation décimale, un byte correspondant aux entiers allant de 0 255) : $72\;\;184\;\;42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ de valeurs binaires :</p>
+<p>Et est codée en <a href="https://fr.wikipedia.org/wiki/Langage_machine" class="externe">langage machine</a> (l'encodage dans la mémoire) sur 10 bytes (on a utilisé ici la notation décimale, un byte correspondant aux entiers allant de 0 255) : $72\;\;184\;\;42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ de valeurs binaires :</p>
 <pre><code>01001000  10111000  101010  00000000  00000000  00000000  00000000  00000000  00000000  00000000
 </code></pre>
 <ul>
 <li>$72\;\;184$ correspond au numéro de l'instruction : <em>&quot;place un entier sur 64b dans le registre <code>RAX</code>&quot;</em></li>
-<li>$42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ correspond à l'entier $0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;42 = 42$ en notation <a href="https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme">petit-boutisme</a> (on écrit les bytes d'un nombre de droite à gauche dans les processeurs intel)</li>
+<li>$42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ correspond à l'entier $0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;42 = 42$ en notation <a href="https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme" class="externe">petit-boutisme</a> (on écrit les bytes d'un nombre de droite à gauche dans les processeurs intel)</li>
 </ul>
 <p>Si on reprend le cycle d'exécution de cette instruction :</p>
 <ol>
@@ -341,7 +341,7 @@ ADD RAX, RBX
 <p>Le but premier d'un système d'exploitation est de faire le lien entre la partie logicielle (<em>software</em>) d'un ordinateur (les programmes qui dépendent du processeur) et sa partie matérielle (<em>hardware</em>) (les différents périphériques branchés sur l'ordinateur) :</p>
 <p><img src="os.png" alt="os"></p>
 <h3>Drivers</h3>
-<p>Lorsqu'un logiciel veut avoir accès à un périphérique (afficher une chaîne de caractère à l'écran, lire un fichier sur le disque dur, accéder au clavier, etc) il passe par l'intermédiaire du système d'exploitation via <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me">un appel système</a> qui fait l'opération pour lui. Pour que ceci fonctionne il faut que le système connaisse le fonctionnement du matériel, il faut donc installer des programmes spécifiques à son matériel pour le système d'exploitation :</p>
+<p>Lorsqu'un logiciel veut avoir accès à un périphérique (afficher une chaîne de caractère à l'écran, lire un fichier sur le disque dur, accéder au clavier, etc) il passe par l'intermédiaire du système d'exploitation via <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me" class="externe">un appel système</a> qui fait l'opération pour lui. Pour que ceci fonctionne il faut que le système connaisse le fonctionnement du matériel, il faut donc installer des programmes spécifiques à son matériel pour le système d'exploitation :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -349,8 +349,8 @@ ADD RAX, RBX
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Chaque matériel vient avec un programme nommé <a href="https://fr.wikipedia.org/wiki/Pilote_informatique"><strong><em>driver</em></strong></a> (<strong><em>pilote</em></strong> en Français) devant être utilisé par le système d'exploitation pour y acceder.</p>
-<p>Un programme demande l'accès au matériel via un <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me">appel système</a> unique pour une catégorie de périphérique donné.</p>
+<p>Chaque matériel vient avec un programme nommé <a href="https://fr.wikipedia.org/wiki/Pilote_informatique" class="externe"><strong><em>driver</em></strong></a> (<strong><em>pilote</em></strong> en Français) devant être utilisé par le système d'exploitation pour y acceder.</p>
+<p>Un programme demande l'accès au matériel via un <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me" class="externe">appel système</a> unique pour une catégorie de périphérique donné.</p>
 </div></div>
 
 <p>Un programme n'est maintenant plus dépendant du matériel de chaque ordinateur mais reste dépendant du système d'exploitation car les appels systèmes sont différents selon le système d'exploitation utilisé. Mais comme il y a moins de système d'exploitations que de matériel on y gagne en simplicité.</p>
@@ -361,7 +361,7 @@ A --------------------------------&gt; B
    simple                  simple
 A --------&gt; Intermédiaire --------&gt; B
 </code></pre>
-<p>Ce principe universel est une instanciation de la <a href="https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie">deuxième partie du discours de la méthode</a> : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément. D'un point de vue ingénierie, ceci permet en plus de clairement les responsabilités de chaque couche, une maintenance plus aisée et porte un nom c'est le <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering">Théorème Fondamental de l’Ingénierie Logicielle</a> :</p>
+<p>Ce principe universel est une instanciation de la <a href="https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie" class="externe">deuxième partie du discours de la méthode</a> : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément. D'un point de vue ingénierie, ceci permet en plus de clairement les responsabilités de chaque couche, une maintenance plus aisée et porte un nom c'est le <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering" class="externe">Théorème Fondamental de l’Ingénierie Logicielle</a> :</p>
 <div id="TFIL"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -385,7 +385,7 @@ A --------&gt; Intermédiaire --------&gt; B
 </div><div class="pl-8 mr-8">
 <p>Un système d'exploitation permet l'exécution de programmes :</p>
 <ul>
-<li>de façon <a href="https://fr.wikipedia.org/wiki/Programmation_concurrente">concurrente</a> (on peut écrire dans un gdoc tout en écoutant de la musique)</li>
+<li>de façon <a href="https://fr.wikipedia.org/wiki/Programmation_concurrente" class="externe">concurrente</a> (on peut écrire dans un gdoc tout en écoutant de la musique)</li>
 <li>de façon sécurisée : le gdoc ne peut accéder aux variables de l'application jouant de la musique</li>
 </ul>
 </div></div>
@@ -408,7 +408,7 @@ A --------&gt; Intermédiaire --------&gt; B
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=r2__Rw8vu1M">Parallèle vs concurrent</a> :</p>
+<p><a href="https://www.youtube.com/watch?v=r2__Rw8vu1M" class="externe">Parallèle vs concurrent</a> :</p>
 </div></div>
 
 <p>Enfin, le système d'exploitation doit permettre aux programmes de communiquer entre eux via un protocole commun :</p>
@@ -431,7 +431,7 @@ A --------&gt; Intermédiaire --------&gt; B
 <p>Une application est à la base un processus. De plus rien n'empêche un processus de lancer lui-même d'autres processus !</p>
 <p>Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impression qu'il est seul au monde : pour lui il est le seul processus en cours de fonctionnement sur l'ordinateur.</p>
 <h3>Noyau</h3>
-<p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le <a href="#TFIL" class="interne">TFIL</a> ces diverses responsabilités sont séparées en 3 couches :</p>
+<p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le <a href="#TFIL">TFIL</a> ces diverses responsabilités sont séparées en 3 couches :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -441,7 +441,7 @@ A --------&gt; Intermédiaire --------&gt; B
 </div><div class="pl-8 mr-8">
 <p>Un système d'exploitation est constitué de 3 couches :</p>
 <ul>
-<li><strong>le</strong> <a href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation">noyau</a> qui est le cœur du système d'exploitation et est responsable de la gestion des appels systèmes et des interactions entre processus</li>
+<li><strong>le</strong> <a href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation" class="externe">noyau</a> qui est le cœur du système d'exploitation et est responsable de la gestion des appels systèmes et des interactions entre processus</li>
 <li><strong>des</strong> <a href="https://en.wikipedia.org/wiki/Interface_(computing)#Software_interfaces">interfaces logicielles</a> qui permettent d'accéder aux devices (comme accéder à une clé usb)</li>
 <li><strong>des</strong> <a href="https://fr.wikipedia.org/wiki/Daemon_(informatique)">démons</a> qui gèrent l'environnement (le fait de réagir à l'insertion d'une clé usb dans l'ordinateur par exemple)</li>
 </ul>
@@ -458,8 +458,8 @@ A --------&gt; Intermédiaire --------&gt; B
 </div><div class="pl-8 mr-8">
 <p>On distingue deux états d'une machine :</p>
 <ul>
-<li>le <a href="https://fr.wikipedia.org/wiki/Espace_noyau"><em>kernel mode</em></a> : le noyau travail, il a accès à tout l'ordinateur</li>
-<li>le <a href="https://fr.wikipedia.org/wiki/Espace_utilisateur"><em>user mode</em></a> : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.</li>
+<li>le <a href="https://fr.wikipedia.org/wiki/Espace_noyau" class="externe"><em>kernel mode</em></a> : le noyau travail, il a accès à tout l'ordinateur</li>
+<li>le <a href="https://fr.wikipedia.org/wiki/Espace_utilisateur" class="externe"><em>user mode</em></a> : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.</li>
 </ul>
 </div></div>
 
@@ -468,7 +468,7 @@ A --------&gt; Intermédiaire --------&gt; B
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode">User et Kernel mode sous windows 11</a></p>
+<p><a href="https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode" class="externe">User et Kernel mode sous windows 11</a></p>
 </div></div>
 
 <p>La machine doit tourner le plus souvent possible en <em>user mode</em> car toute mauvaise action en kernel mode peut potentiellement être désastreux (plantage de la machine, effacement de données, etc).</p>
@@ -476,7 +476,7 @@ A --------&gt; Intermédiaire --------&gt; B
 <p>La distinction entre user et kernel mode se fait directement au démarrage de la machine :</p>
 <ol>
 <li>boot de l'ordinateur en kernel mode</li>
-<li>exécution d'un <a href="https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age">chargeur d'amorçage (<em>bootloader</em>)</a></li>
+<li>exécution d'un <a href="https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age" class="externe">chargeur d'amorçage (<em>bootloader</em>)</a></li>
 <li>charge le noyau
 <ol>
 <li>vérification du matériel</li>

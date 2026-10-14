@@ -96,7 +96,7 @@
     
   
 
-  <p>Dans les exercices de modélisation par des flots, <a href="../../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :</p>
+  <p>Dans les exercices de modélisation par des flots, <a href="../../projet-flots-mod%C3%A9lisation/#transport-amoureux">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :</p>
 <ul>
 <li>têtes bêches de la source au puits</li>
 <li>les arcs allant vers le puits sont de flot 0 et peuvent être augmentés</li>
@@ -123,7 +123,7 @@
 <ul>
 <li><strong><em>Un chemin alternant</em></strong> $x_0\dots x_k$ est tel que :
 <ul>
-<li>$x_0\dots x_k$ est un <a href="../../chemins-cycles-connexite/#d%C3%A9finition-%C3%A9l%C3%A9mentaire" class="interne">chemin élémentaire</a> de $G$</li>
+<li>$x_0\dots x_k$ est un <a href="../../chemins-cycles-connexite/#d%C3%A9finition-%C3%A9l%C3%A9mentaire">chemin élémentaire</a> de $G$</li>
 <li>si $x_{i-1}x_{i} \in M$ alors $x_{i}x_{i+1} \notin M$ pour tout $i$</li>
 <li>si $x_{i-1}x_{i} \notin M$ alors $x_{i}x_{i+1} \in M$ pour tout $i$</li>
 </ul>
@@ -230,7 +230,7 @@ $$
 
 <p>Les algorithmes permettant de trouver des couplages maximaux vont chercher à produire des chaines augmentantes. C'est parfois facile (pour les graphes biparti), parfois plus compliqué (pour les graphes ayant des cycles de longueurs impairs).</p>
 <h2>Trouver un chemin augmentant</h2>
-<p>La première idée pour trouver un chemin augmentant est de mimer <a href="../../flots/#ford-fulkerson" class="interne">l'algorithme de recherche de chaîne augmentante</a> des flots.</p>
+<p>La première idée pour trouver un chemin augmentant est de mimer <a href="../../flots/#ford-fulkerson">l'algorithme de recherche de chaîne augmentante</a> des flots.</p>
 <h3>Algorithme</h3>
 <ol>
 <li>marque tous les sommets libres $s$ par $[s, P, \varnothing]$

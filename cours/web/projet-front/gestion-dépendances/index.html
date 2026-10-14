@@ -96,10 +96,10 @@
     
   
 
-  <p>Pour gérer les dépendances de votre site front (les bibliothèques css ou javascript utilisées), on a jusqu'à présent utilisé des <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_de_diffusion_de_contenu">CDN</a>. Mais lorsque l'on veut :</p>
+  <p>Pour gérer les dépendances de votre site front (les bibliothèques css ou javascript utilisées), on a jusqu'à présent utilisé des <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_de_diffusion_de_contenu" class="externe">CDN</a>. Mais lorsque l'on veut :</p>
 <ol>
 <li>contrôlez totalement ce qui est utilisé pour votre site</li>
-<li>utiliser des outils comme <a href="https://sass-lang.com/">scss</a> pour compiler notre css.</li>
+<li>utiliser des outils comme <a href="https://sass-lang.com/" class="externe">scss</a> pour compiler notre css.</li>
 </ol>
 <p>Il est conseillé de télécharger directement les bibliothèque chez soit.</p>
 <p>Ceci pose cependant des problèmes de gestion des dépendances :</p>
@@ -108,8 +108,8 @@
 <li>on doit pouvoir gérer les versions des bibliothèques installées</li>
 <li>on doit pouvoir uniquement gérer le projet de notre code (avec git par exemple) sans avoir besoin de sauvegarder le code de personnes tierces.</li>
 </ul>
-<p>On utilise pour cela un outil de gestion de dépendances. Nous allons utiliser celui de <a href="https://nodejs.org/">https://nodejs.org/</a>, nommé <a href="https://www.npmjs.com/">npm</a>.</p>
-<h2>Projet <a href="https://nodejs.org/">https://nodejs.org/</a></h2>
+<p>On utilise pour cela un outil de gestion de dépendances. Nous allons utiliser celui de <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a>, nommé <a href="https://www.npmjs.com/" class="externe">npm</a>.</p>
+<h2>Projet <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a></h2>
 <p>Dans un terminal, placer-vous dans le dossier contenant votre site puis créez un projet node avec la commande :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">npm</span> init</code></pre>
 <p>Une fois que vous avez répondu aux questions (en appuyant juste sur la touche entrée si vous voulez), vous créez le fichier de configuration <code class="fichier">package.json</code> qui contient les informations relatives à votre projet. En appuyant tout le temps sur la touche entrée j'ai obtenu le fichier suivant  :</p>
@@ -126,16 +126,16 @@
 }
 
 </code></pre>
-<p>On peut maintenant installer un package javascript, comme <a href="https://tabulator.info/">https://tabulator.info/</a> pour rendre notre table plus jolie :</p>
+<p>On peut maintenant installer un package javascript, comme <a href="https://tabulator.info/" class="externe">https://tabulator.info/</a> pour rendre notre table plus jolie :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> tabulator-tables</code></pre>
 <p>Le fichier <code>package.json</code> a maintenant changé, il contient les trois lignes suivantes en plus :</p>
 <pre><code>  &quot;dependencies&quot;: {
     &quot;tabulator-tables&quot;: &quot;^5.5.2&quot;
   }
 </code></pre>
-<p>Ainsi qu'un fichier <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json"><code class="fichier">package-lock.json</code></a> qui contient un descriptif détaillé des bibliothèques installées.</p>
+<p>Ainsi qu'un fichier <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json" class="externe"><code class="fichier">package-lock.json</code></a> qui contient un descriptif détaillé des bibliothèques installées.</p>
 <p>Enfin, les bibliothèques téléchargées l'on été dans le dossier <code class="fichier">node_modules/</code> lui aussi nouveau. Dans notre cas, seulement trois bibliothèques ont été installées avec une seule commandes, mais cela peut être beaucoup plus.</p>
-<p>Pour utiliser tabulator comme dans l'exemple <a href="https://tabulator.info/docs/5.5/data#table">tables html</a>, il faut avoir accès :</p>
+<p>Pour utiliser tabulator comme dans l'exemple <a href="https://tabulator.info/docs/5.5/data#table" class="externe">tables html</a>, il faut avoir accès :</p>
 <ul>
 <li>à la bibliothèque css qui est dans le dossier <code class="fichier">node_modules/tabulator-tables/dist/css/tabulator.min.css</code></li>
 <li>à la bibliothèque javascript qui est dans le dossier <code class="fichier">node_modules/tabulator-tables/dist/js/tabulator.min.js</code></li>
@@ -145,7 +145,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il n'y a pas de règle pour savoir quoi récupérer. Mais normalement, vous devriez trouver ce qu'il faut dans les dossiers js ou css et prenez les fichiers <a href="https://www.cloudflare.com/fr-fr/learning/performance/why-minify-javascript-code/">minifiés</a> (moins lisible pour un humains mais plus léger pour traverser le réseau).</p>
+<p>Il n'y a pas de règle pour savoir quoi récupérer. Mais normalement, vous devriez trouver ce qu'il faut dans les dossiers js ou css et prenez les fichiers <a href="https://www.cloudflare.com/fr-fr/learning/performance/why-minify-javascript-code/" class="externe">minifiés</a> (moins lisible pour un humains mais plus léger pour traverser le réseau).</p>
 <p>Parfois, la bibliothèque vient également avec son code source, vous avez alors deux dossiers, <code class="fichier">src/</code> pour les sources et <code class="fichier">dist</code> pour les fichiers utilisables.</p>
 </div></div>
 
@@ -238,7 +238,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable">gestion du fichier</a></p>
+<p><a href="https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable" class="externe">gestion du fichier</a></p>
 </div></div>
 
 <h2>Compiler un site statique</h2>

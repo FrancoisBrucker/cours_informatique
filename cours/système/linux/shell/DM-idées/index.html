@@ -99,39 +99,39 @@
   <h2>Prénoms</h2>
 <h2>TP</h2>
 <ol start="2">
-<li>En utilisant <a href="https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html">ce tutoriel</a>, Créez un script qui récupère le tome 1 du comte de Monte-Cristo et le stocke dans un fichier temporaire créé dans <code>/tmp</code></li>
+<li>En utilisant <a href="https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html" class="externe">ce tutoriel</a>, Créez un script qui récupère le tome 1 du comte de Monte-Cristo et le stocke dans un fichier temporaire créé dans <code>/tmp</code></li>
 </ol>
 <p>but : &quot;script qui prend un texte d'un fichier ou de stdin et qui selon les options parle en toulousain (putaing cong ! à la fin de chaque ligne ), en alsacien (hopla,  en début de paragraphe (.^)) ou en marseillais (après une virgule peuchère)&quot;</p>
-<p><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a></p>
-<p>nombre de mots dans un fichier : <a href="https://www.tecmint.com/count-word-occurrences-in-linux-text-file/">https://www.tecmint.com/count-word-occurrences-in-linux-text-file/</a></p>
+<p><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph" class="externe">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a></p>
+<p>nombre de mots dans un fichier : <a href="https://www.tecmint.com/count-word-occurrences-in-linux-text-file/" class="externe">https://www.tecmint.com/count-word-occurrences-in-linux-text-file/</a></p>
 <ol>
 <li>
 <p>récupère de l'internet :</p>
 <ol>
 <li>sauve dans un fichier</li>
 <li>supprime les lignes avant le début (sed ou tail) <code>sed -n '/\*\*\*/='</code></li>
-<li>sauve dans /tmp avec un nom qui n'existe pas <a href="https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html">https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html</a></li>
+<li>sauve dans /tmp avec un nom qui n'existe pas <a href="https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html" class="externe">https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html</a></li>
 </ol>
 </li>
 <li>
 <p>prend un fichier en argument et :</p>
 <ol>
 <li>compte le nombre de mots et le nombre moyen de mot par ligne (expr ou $(())).</li>
-<li><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a> Fait un texte alsacien pour chaque début de paragraphe (ligne vide), ajoute &quot;Hopla !&quot;</li>
+<li><a href="https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph" class="externe">https://stackoverflow.com/questions/5790742/sed-how-to-get-the-first-2-sentences-of-a-paragraph</a> Fait un texte alsacien pour chaque début de paragraphe (ligne vide), ajoute &quot;Hopla !&quot;</li>
 <li>Fait un texte marseillais après chaque virgule, ajoute &quot;peuchère, &quot;</li>
-<li>options : <a href="https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/">option parsing</a></li>
+<li>options : <a href="https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/" class="externe">option parsing</a></li>
 </ol>
 </li>
 <li>
 <p>fait en sorte de soit lire un fichier en argument, soit en stdin</p>
 </li>
 <li>
-<p>naissances <a href="https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552">https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552</a> avec cut, sort et uniq</p>
+<p>naissances <a href="https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552" class="externe">https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552</a> avec cut, sort et uniq</p>
 </li>
 <li>
-<p>fichier json <a href="https://www.data.gouv.fr/fr/datasets/villes-de-france/">https://www.data.gouv.fr/fr/datasets/villes-de-france/</a></p>
+<p>fichier json <a href="https://www.data.gouv.fr/fr/datasets/villes-de-france/" class="externe">https://www.data.gouv.fr/fr/datasets/villes-de-france/</a></p>
 <ol>
-<li>utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <a href="https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script">https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script</a> <a href="https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq">https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq</a> voir aussi <a href="https://www.youtube.com/watch?v=LFlnKJjTIWU">https://www.youtube.com/watch?v=LFlnKJjTIWU</a></li>
+<li>utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <a href="https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script" class="externe">https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script</a> <a href="https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq" class="externe">https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq</a> voir aussi <a href="https://www.youtube.com/watch?v=LFlnKJjTIWU" class="externe">https://www.youtube.com/watch?v=LFlnKJjTIWU</a></li>
 </ol>
 </li>
 </ol>
@@ -139,7 +139,7 @@
 </code></pre>
 <ol>
 <li>
-<p>faire des tests : <a href="https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252">https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252</a> pour préparer faire une poubelle pour le rm <a href="https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf">https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf</a></p>
+<p>faire des tests : <a href="https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252" class="externe">https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252</a> pour préparer faire une poubelle pour le rm <a href="https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf" class="externe">https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf</a></p>
 </li>
 <li>
 <p>faire un code de sorite si ok ou pas</p>
@@ -167,12 +167,12 @@
 <li>json : nombre de villes ?</li>
 </ol>
 <blockquote>
-<p><a href="https://www.baeldung.com/linux/csv-parsing">https://www.baeldung.com/linux/csv-parsing</a>
-<a href="https://www.joeldare.com/wiki/using_awk_on_csv_files">https://www.joeldare.com/wiki/using_awk_on_csv_files</a></p>
+<p><a href="https://www.baeldung.com/linux/csv-parsing" class="externe">https://www.baeldung.com/linux/csv-parsing</a>
+<a href="https://www.joeldare.com/wiki/using_awk_on_csv_files" class="externe">https://www.joeldare.com/wiki/using_awk_on_csv_files</a></p>
 </blockquote>
 <h2>autres exos</h2>
 <ul>
-<li><a href="https://matthieu-moy.fr/cours/unix2/seance2/tp-pas-a-pas.pdf">tp ensimag</a> et <a href="https://matthieu-moy.fr/cours/unix2/">cours</a></li>
+<li><a href="https://matthieu-moy.fr/cours/unix2/seance2/tp-pas-a-pas.pdf" class="externe">tp ensimag</a> et <a href="https://matthieu-moy.fr/cours/unix2/" class="externe">cours</a></li>
 </ul>
 
 

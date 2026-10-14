@@ -111,21 +111,21 @@ TBD Faire en C :</p>
 <p>TBD limité à 1 connection. En avoir plusieurs possible avec un fork. Le faire</p>
 </blockquote>
 <ul>
-<li><a href="https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets">domain socket vs tcp socket</a></li>
-<li><a href="https://beej.us/guide/bgipc/html/#unixsock">code client/serveur simple (unix domain socket)</a></li>
-<li><a href="https://beej.us/guide/bgnet/">code client/serveur complet</a></li>
-<li><a href="https://www.youtube.com/watch?v=cex9XrZCU14">fork</a></li>
-<li><a href="https://www.youtube.com/watch?v=il4N6KjVQ-s">socket et fichier</a></li>
+<li><a href="https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets" class="externe">domain socket vs tcp socket</a></li>
+<li><a href="https://beej.us/guide/bgipc/html/#unixsock" class="externe">code client/serveur simple (unix domain socket)</a></li>
+<li><a href="https://beej.us/guide/bgnet/" class="externe">code client/serveur complet</a></li>
+<li><a href="https://www.youtube.com/watch?v=cex9XrZCU14" class="externe">fork</a></li>
+<li><a href="https://www.youtube.com/watch?v=il4N6KjVQ-s" class="externe">socket et fichier</a></li>
 <li>sur la même machine :
 <ul>
-<li>parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <a href="https://stackoverflow.com/questions/14170647/fork-parent-child-communication">https://stackoverflow.com/questions/14170647/fork-parent-child-communication</a></li>
-<li><a href="https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec">unix domain socket</a></li>
+<li>parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <a href="https://stackoverflow.com/questions/14170647/fork-parent-child-communication" class="externe">https://stackoverflow.com/questions/14170647/fork-parent-child-communication</a></li>
+<li><a href="https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec" class="externe">unix domain socket</a></li>
 </ul>
 </li>
 </ul>
 <h2>Connexion internet</h2>
 <h3>socket Client / serveur</h3>
-<p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
+<p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash" class="externe"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
 <p>Serveur :</p>
 <pre><code>nc -l -p 9090 localhost
 </code></pre>
@@ -139,7 +139,7 @@ TBD Faire en C :</p>
 <pre><code>nc localhost 9090
 </code></pre>
 <p>Les stdin/out sont liés.</p>
-<p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
+<p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat" class="externe">socat</a> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 socat tcp6-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
@@ -161,12 +161,12 @@ done
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.redhat.com/sysadmin/getting-started-socat">https://www.redhat.com/sysadmin/getting-started-socat</a></p>
+<p><a href="https://www.redhat.com/sysadmin/getting-started-socat" class="externe">https://www.redhat.com/sysadmin/getting-started-socat</a></p>
 </div></div>
 
 <ul>
-<li><a href="https://www.varonis.com/blog/netcat-commands">nc</a></li>
-<li><a href="https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/">shell server avec nc</a></li>
+<li><a href="https://www.varonis.com/blog/netcat-commands" class="externe">nc</a></li>
+<li><a href="https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/" class="externe">shell server avec nc</a></li>
 </ul>
 <h3>echo serveur</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
@@ -254,21 +254,21 @@ rm $PIPE
 <p>TBD en écrire un.</p>
 </blockquote>
 <blockquote>
-<p><a href="https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg">https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg</a></p>
+<p><a href="https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg" class="externe">https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html">https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html</a></p>
+<p><a href="https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html" class="externe">https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html</a></p>
 </blockquote>
 <ul>
-<li><a href="https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9">web minimal</a></li>
-<li><a href="https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/">https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/</a></li>
-<li><a href="https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES">https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES</a></li>
+<li><a href="https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9" class="externe">web minimal</a></li>
+<li><a href="https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/" class="externe">https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/</a></li>
+<li><a href="https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES" class="externe">https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES</a></li>
 </ul>
 <h2>bibliographie</h2>
 <ul>
-<li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></li>
-<li><a href="https://beej.us/guide/bgnet/">Beej's Guide to Network Programming Using Internet Sockets</a></li>
-<li><a href="https://opensource.com/article/19/4/interprocess-communication-linux-networking">https://opensource.com/article/19/4/interprocess-communication-linux-networking</a></li>
+<li><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html" class="externe">Linux Networking-concepts HOWTO</a></li>
+<li><a href="https://beej.us/guide/bgnet/" class="externe">Beej's Guide to Network Programming Using Internet Sockets</a></li>
+<li><a href="https://opensource.com/article/19/4/interprocess-communication-linux-networking" class="externe">https://opensource.com/article/19/4/interprocess-communication-linux-networking</a></li>
 </ul>
 <h2>client serveur</h2>
 <ol>
@@ -290,21 +290,21 @@ rm $PIPE
 <li>deux route en hop. Ramener le port 9090 de roucas sur localhost en suivant la route : localhost &lt;-&gt; ovh &lt;-&gt; sas1 &lt;-&gt; roucas101.</li>
 </ol>
 <ul>
-<li><a href="https://github.com/denehs/unix-domain-socket-example/blob/master/client.c">https://github.com/denehs/unix-domain-socket-example/blob/master/client.c</a></li>
+<li><a href="https://github.com/denehs/unix-domain-socket-example/blob/master/client.c" class="externe">https://github.com/denehs/unix-domain-socket-example/blob/master/client.c</a></li>
 <li>tcp socket</li>
-<li><a href="https://www.tala-informatique.fr/wiki/index.php/C_socket">https://www.tala-informatique.fr/wiki/index.php/C_socket</a></li>
-<li><a href="https://seriot.ch/projects/tiny_ntp_client.html">ntp client</a></li>
-<li><a href="https://www.nstec.com/how-to-disable-firewall-iphone-hotspot/">iphone firewall</a></li>
+<li><a href="https://www.tala-informatique.fr/wiki/index.php/C_socket" class="externe">https://www.tala-informatique.fr/wiki/index.php/C_socket</a></li>
+<li><a href="https://seriot.ch/projects/tiny_ntp_client.html" class="externe">ntp client</a></li>
+<li><a href="https://www.nstec.com/how-to-disable-firewall-iphone-hotspot/" class="externe">iphone firewall</a></li>
 </ul>
 <h2>tbd</h2>
 <blockquote>
-<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
+<p>en python : <a href="https://www.youtube.com/watch?v=Ftg8fjY_YWU" class="externe">https://www.youtube.com/watch?v=Ftg8fjY_YWU</a></p>
 </blockquote>
-<p><a href="https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/">https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/</a></p>
+<p><a href="https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/" class="externe">https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/</a></p>
 <h3>cours web</h3>
 <p>remplacer screen par tmux.</p>
 <p>Utiliser un shell que l'on sauve. Comme ça on peut y revenir, par exemple si virtualenv.</p>
-<p>faire un exemple complet avec <a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html">virtualenv</a></p>
+<p>faire un exemple complet avec <a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html" class="externe">virtualenv</a></p>
 <p>faire plusieurs petits serveurs avec :</p>
 <ul>
 <li>shell</li>

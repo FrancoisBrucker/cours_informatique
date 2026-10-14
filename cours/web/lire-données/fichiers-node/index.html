@@ -97,7 +97,7 @@
   
 
   <h2>Projet node</h2>
-<p>Commençons par créer un projet <a href="https://nodejs.org/">https://nodejs.org/</a> :</p>
+<p>Commençons par créer un projet <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> :</p>
 <ol>
 <li>créez un dossier <code class="fichier">fichier-node</code> où vous allez mettre les fichiers de votre projet,</li>
 <li>dans un terminal et dans ce dossier, initialisez votre projet avec la commande <code>npm init</code></li>
@@ -114,7 +114,7 @@
   "author": "",
   "license": "ISC"
 }</code></pre>
-<p>Nous allons utiliser des bibliothèques pour notre projet, bibliothèques qu'il va falloir importer. Node utilise par défaut un mode d'import nommé <a href="https://nodejs.org/api/modules.html#modules-commonjs-modules">commonjs</a>, alors que javascript en utilise une autre basée sur la norme <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules">ES6 modules</a>.</p>
+<p>Nous allons utiliser des bibliothèques pour notre projet, bibliothèques qu'il va falloir importer. Node utilise par défaut un mode d'import nommé <a href="https://nodejs.org/api/modules.html#modules-commonjs-modules" class="externe">commonjs</a>, alors que javascript en utilise une autre basée sur la norme <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules" class="externe">ES6 modules</a>.</p>
 <p>Nous allons dire à node que nous allons utiliser la gestion javascript des modules en ajoutant la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code>, juste en-dessous de la ligne 5. A la fin de cette opération, vous devriez avoir le fichier un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
 <pre class="language-json#" tabindex="0" data-language="json#"><code class="language-json#">{
   "name": "fichier-node",
@@ -203,10 +203,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous avez une version très récente de node, il existe <a href="https://nodejs.org/api/esm.html#no-__filename-or-__dirname">une alternative</a>.</p>
+<p>Si vous avez une version très récente de node, il existe <a href="https://nodejs.org/api/esm.html#no-__filename-or-__dirname" class="externe">une alternative</a>.</p>
 </div></div>
 
-<p>On peut ensuite toutes nos lectures de fichier au dossier <code class="language-">__dirname</code> en utilisant la fonction <a href="https://nodejs.org/api/path.html#pathjoinpaths"><code class="language-">path.join</code></a> qui colle des chemins entre eux.</p>
+<p>On peut ensuite toutes nos lectures de fichier au dossier <code class="language-">__dirname</code> en utilisant la fonction <a href="https://nodejs.org/api/path.html#pathjoinpaths" class="externe"><code class="language-">path.join</code></a> qui colle des chemins entre eux.</p>
 <p>On obtient alors le code final suivant :</p>
 <pre class="language-js#" tabindex="0" data-language="js#"><code class="language-js#">import fs from 'fs';
 
@@ -282,7 +282,7 @@ fs.readFile(localisation_fichier, {encoding:'utf8'}).then(data => (
 </div></div>
 
 <h3>Promesses</h3>
-<p>Le mécanisme à l'œuvre ici est appelé <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
+<p>Le mécanisme à l'œuvre ici est appelé <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises" class="externe">promesse</a>.</p>
 <p>Le retour de la fonction <code class="language-">fs.readFile</code> est une promesse qui possède une méthode <code class="language-">then</code> dont le paramètre est une fonction à un paramètre qui est exécutée à la fin de la promesse si la fonction s'est terminé sans erreur. Le retour est passé en paramètre du paramètre de <code class="language-">then</code></p>
 <p>Explicitons ceci modifiant notre code :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
@@ -306,7 +306,7 @@ promesse<span class="token punctuation">.</span><span class="token function">the
     <span class="token comment">// exécuté lorsque la longue fonction s'arrête</span>
     <span class="token comment">// le paramètre de cette fonction étant de retour de la longue fonction</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Le côté sympathique des promesses c'est qu'elle <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining">peuvent s'enchaîner</a> si le retour de <code class="language-">then</code> est aussi une promesse :</p>
+<p>Le côté sympathique des promesses c'est qu'elle <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining" class="externe">peuvent s'enchaîner</a> si le retour de <code class="language-">then</code> est aussi une promesse :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">promesse
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// then de la promesse</span>
@@ -340,7 +340,7 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 
 <span class="token keyword">let</span> localisation_fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  <span class="token string">"./fichier-texte.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> contenu <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>On ne peut cependant pas utiliser <code class="language-">await</code> partout. On ne peut le faire que dans le corps du programme ou à l'intérieur d'une fonction taguée <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"><code class="language-">async</code></a>.</p>
+<p>On ne peut cependant pas utiliser <code class="language-">await</code> partout. On ne peut le faire que dans le corps du programme ou à l'intérieur d'une fonction taguée <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" class="externe"><code class="language-">async</code></a>.</p>
 <p>Dans notre cas, si on voulait déporter la lecture de notre fichier dans une fonction séparée il faudrait l'écrire de cette façon :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token parameter">fichier</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> contenu <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

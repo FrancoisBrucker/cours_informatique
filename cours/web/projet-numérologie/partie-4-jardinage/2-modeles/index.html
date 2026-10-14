@@ -99,7 +99,7 @@
   <p>Rationalisation des différents modèles de données.</p>
 <p>Le principe qui nous a fait séparer nos routes nous fait également séparer les modèles.</p>
 <h2>Injection de dépendances</h2>
-<p>La différence par rapport aux routes est que l'on a besoin de la base de donnée (<code>sequelize</code>) pour définir le modèle. La solution élégante à ce problème est d'utiliser <a href="https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances">l'injection de dépendance</a> : <strong>on va donner notre base de donnée à l'import du modèle</strong>.</p>
+<p>La différence par rapport aux routes est que l'on a besoin de la base de donnée (<code>sequelize</code>) pour définir le modèle. La solution élégante à ce problème est d'utiliser <a href="https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances" class="externe">l'injection de dépendance</a> : <strong>on va donner notre base de donnée à l'import du modèle</strong>.</p>
 <p>Ceci peut se faire simplement en javascript en important une fonction et non plus des objets.</p>
 <p>Avant de montrer le code des modèles, créons un dossier <code class="fichier">numérologie/modèles/</code> qui va contenir nos modèles.</p>
 <h3>Modèle <code class="language-">Signification</code></h3>

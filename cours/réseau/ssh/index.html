@@ -102,13 +102,13 @@
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li><a href="https://www.youtube.com/watch?v=QGixbJ9prEc&amp;list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6">ssh en 5 parties</a></li>
-<li><a href="https://www.youtube.com/watch?v=hQWRp-FdTpc">ssh crash course</a></li>
-<li><a href="https://tusharf5.com/posts/ssh-deep-dive/">deep dive</a></li>
+<li><a href="https://www.youtube.com/watch?v=QGixbJ9prEc&amp;list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6" class="externe">ssh en 5 parties</a></li>
+<li><a href="https://www.youtube.com/watch?v=hQWRp-FdTpc" class="externe">ssh crash course</a></li>
+<li><a href="https://tusharf5.com/posts/ssh-deep-dive/" class="externe">deep dive</a></li>
 </ol>
 </div></div>
 
-<p>Le nom <a href="https://fr.wikipedia.org/wiki/Secure_Shell">ssh</a> (<em>Secure SHell</em>) permet de faire de la communication sécurisée et regroupe deux usages :</p>
+<p>Le nom <a href="https://fr.wikipedia.org/wiki/Secure_Shell" class="externe">ssh</a> (<em>Secure SHell</em>) permet de faire de la communication sécurisée et regroupe deux usages :</p>
 <ul>
 <li>communication entre deux ordinateurs via une socket chiffrée</li>
 <li>identification par paire de clés.</li>
@@ -124,7 +124,7 @@
 
 <!-- TBD 
 
-voir comment les connexion ne peuvent pas se faire via un docker ou [un compte aws](https://www.youtube.com/watch?v=u2-2c_nY6lk) 
+voir comment les connexion ne peuvent pas se faire via un docker ou [un compte aws](https://www.youtube.com/watch?v=u2-2c_nY6lk){.externe} 
 
 -->
 <blockquote>
@@ -266,7 +266,7 @@ faire dans les deux sens</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique">https://fr.wikipedia.org/wiki/Signature_numérique</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique" class="externe">https://fr.wikipedia.org/wiki/Signature_numérique</a></p>
 </div></div>
 
 <p>L'authentification d'une personne ou d'une machine s'effectue via l'interaction d'une paire de clé :</p>
@@ -289,7 +289,7 @@ ceci permet de vérifier que l'on connaît le texte sans le transmettre</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>N'hésitez pas à aller jeter un coup d'œil au cours <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9" class="interne">de sécurité</a> pour avoir tous les détails.</p>
+<p>N'hésitez pas à aller jeter un coup d'œil au cours <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9">de sécurité</a> pour avoir tous les détails.</p>
 </div></div>
 
 <h3>Processus d'identification</h3>
@@ -299,8 +299,8 @@ ceci permet de vérifier que l'on connaît le texte sans le transmettre</p>
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process">https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman" class="externe">Diffie-Hellman</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process" class="externe">https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process</a></li>
 </ul>
 </div></div>
 
@@ -325,7 +325,7 @@ The authenticity of <span class="token function">host</span> <span class="token 
 ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
 This key is not known by any other names.
 Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?</code></pre>
-<p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
+<p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA" class="externe">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
 <p>Si la clé de la machine change cela peut-être à cause d'une attaque de type <em>man in the middle</em> et ssh refuse de se connecter :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -382,7 +382,7 @@ TBD on voit qu'il demande la passphrase et plus le mot de passe du login</p>
 </ul>
 <h2>Client</h2>
 <h3>Agent</h3>
-<p>La seule chose à possiblement faire est de mettre en place le <a href="https://en.wikipedia.org/wiki/Ssh-agent">ssh-agent</a>. L'agent est un démon permettant de gérer sos clés pour vous.</p>
+<p>La seule chose à possiblement faire est de mettre en place le <a href="https://en.wikipedia.org/wiki/Ssh-agent" class="externe">ssh-agent</a>. L'agent est un démon permettant de gérer sos clés pour vous.</p>
 <p>Pour savoir si vous avez un agent ssh opérationnel, tapez la commande :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span></code></pre>
 <p>Si cette commande répond :</p>
@@ -396,10 +396,10 @@ Could not <span class="token function">open</span> a connection to your authenti
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://davidaugustat.com/windows/windows-11-setup-ssh">https://davidaugustat.com/windows/windows-11-setup-ssh</a></p>
+<p><a href="https://davidaugustat.com/windows/windows-11-setup-ssh" class="externe">https://davidaugustat.com/windows/windows-11-setup-ssh</a></p>
 </div></div>
 
-<p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>).</p>
+<p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement" class="externe">gestion des clés OpenSSH</a>).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -435,7 +435,7 @@ Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
+<p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756" class="externe">ajout ssh-agent</a></p>
 </div></div>
 
 <h2>Identification des utilisateurs</h2>
@@ -475,7 +475,7 @@ Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art">randomart</a></p>
+<p><a href="https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art" class="externe">randomart</a></p>
 </div></div>
 
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-keygen <span class="token parameter variable">-lv</span></code></pre>
@@ -526,7 +526,7 @@ clé de machine      clé d'utilisateur
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="exercices-connexion" class="interne">exercices</a></p>
+<p><a href="exercices-connexion">exercices</a></p>
 </div></div>
 
 

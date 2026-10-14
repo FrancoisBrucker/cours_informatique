@@ -96,7 +96,7 @@
     
   
 
-  <p>Nous utiliserons la bibliothèque <a href="http://pyglet.org/">pyglet</a> pour ce projet. Commencez par l'installer :</p>
+  <p>Nous utiliserons la bibliothèque <a href="http://pyglet.org/" class="externe">pyglet</a> pour ce projet. Commencez par l'installer :</p>
 <pre><code>python -m pip install pyglet
 </code></pre>
 <p>Une fois la bibliothèque installée, on peut créer notre projet :</p>
@@ -112,16 +112,16 @@
 </ol>
 </div></div>
 
-<p>La <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle">programmation événementielle</a> est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle" class="externe">programmation événementielle</a> est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.</p>
 <p>Le principe est le suivant :</p>
 <ol>
 <li>on inscrit une fonction $f$ à un type d'événement $e$</li>
 <li>lorsque l'événement $e$ arrive, la fonction $f(e)$  est exécutée</li>
 </ol>
 <p>Dans ce projet, les événements que nous aurons à manipuler seront les appuies sur les touches du clavier, le dessin de notre interface, la taille des fenêtres, etc, etc.</p>
-<p>Cette méthode de programmation est basée sur le patron de conception <a href="https://refactoring.guru/fr/design-patterns/observer">observateur</a>.</p>
-<p>Nous allons utiliser <a href="http://pyglet.org/">pyglet</a> qui est une bibliothèque permettant de créer des interfaces pour illustrer cela. Nous ne rentrerons pas dans tous les détails de son implémentation (utilisation d'<a href="https://fr.wikipedia.org/wiki/OpenGL">opengl</a>, la gestion du son, etc) mais nous utiliserons assez de ses fonctionnalités pour que vous puissiez aller plus loin de votre côté.</p>
-<p>La <a href="https://pyglet.readthedocs.io/en/latest/">documentation de pyglet</a> est très bien faite et fourmille d'<a href="https://github.com/pyglet/pyglet/tree/master/examples">exemples</a>.</p>
+<p>Cette méthode de programmation est basée sur le patron de conception <a href="https://refactoring.guru/fr/design-patterns/observer" class="externe">observateur</a>.</p>
+<p>Nous allons utiliser <a href="http://pyglet.org/" class="externe">pyglet</a> qui est une bibliothèque permettant de créer des interfaces pour illustrer cela. Nous ne rentrerons pas dans tous les détails de son implémentation (utilisation d'<a href="https://fr.wikipedia.org/wiki/OpenGL" class="externe">opengl</a>, la gestion du son, etc) mais nous utiliserons assez de ses fonctionnalités pour que vous puissiez aller plus loin de votre côté.</p>
+<p>La <a href="https://pyglet.readthedocs.io/en/latest/" class="externe">documentation de pyglet</a> est très bien faite et fourmille d'<a href="https://github.com/pyglet/pyglet/tree/master/examples" class="externe">exemples</a>.</p>
 <p>Nous allons placer les différents essais de pyglet dans un sous-dossier de notre projet. Créer un dossier <code class="fichier">essais-pyglet</code>.</p>
 <h2>Hello world</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -129,7 +129,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Méthode <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window">subclassing window</a></p>
+<p>Méthode <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/windowing.html#subclassing-window" class="externe">subclassing window</a></p>
 </div></div>
 
 <p>Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.</p>
@@ -190,7 +190,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 <p>En pyglet, il est indispensable que ce soit la première ligne, car ce constructeur va gérer tout l'affichage de la fenêtre. Si vous ne faite pas cela, vous risquez d'avoir des erreurs de contexte opengl.</p>
 </div></div>
 
-<p>La méthode <code class="language-">on_draw</code> sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 <a href="https://fr.wikipedia.org/wiki/Images_par_seconde">IPS</a> = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a>). Son code stipule que pour dessiner la fenêtre :</p>
+<p>La méthode <code class="language-">on_draw</code> sert à dessiner la fenêtre et est exécutée à chaque rafraîchissement de la fenêtre, c'est à dire beaucoup de fois par seconde (60 <a href="https://fr.wikipedia.org/wiki/Images_par_seconde" class="externe">IPS</a> = 60 images par seconde = 60 rafraîchissement de fenêtre par seconde = 60 <a href="https://en.wikipedia.org/wiki/Frame_rate" class="externe">FPS</a>). Son code stipule que pour dessiner la fenêtre :</p>
 <ol>
 <li>on efface son contenu</li>
 <li>on dessine le label</li>
@@ -239,7 +239,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now"><code class="language-">datetime.now()</code></a> du module <a href="https://docs.python.org/fr/3/library/datetime.html"><code class="language-">datetime</code></a> :</p>
+<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now" class="externe"><code class="language-">datetime.now()</code></a> du module <a href="https://docs.python.org/fr/3/library/datetime.html" class="externe"><code class="language-">datetime</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token number">2023</span><span class="token operator">-</span><span class="token number">03</span><span class="token operator">-</span><span class="token number">13</span> <span class="token number">08</span><span class="token punctuation">:</span><span class="token number">44</span><span class="token punctuation">:</span><span class="token number">13.740575</span>
@@ -295,7 +295,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window">Classe fenêtre de pyglet</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window" class="externe">Classe fenêtre de pyglet</a></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -386,7 +386,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label">Labels</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/modules/text/index.html#pyglet.text.Label" class="externe">Labels</a></p>
 </div></div>
 
 <p>Un label est un objet non modifiable qui peut-être affiché (dans la méthode <code class="language-">on_draw</code>).</p>
@@ -456,7 +456,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html">Gestion du clavier sous pyglet</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html" class="externe">Gestion du clavier sous pyglet</a></p>
 </div></div>
 
 <p>On utilise deux événements pour gérer le clavier :</p>
@@ -506,7 +506,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les code des différentes touches est disponible dans l'objet <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key">pyglet.window.key</a>.</p>
+<p>Les code des différentes touches est disponible dans l'objet <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key" class="externe">pyglet.window.key</a>.</p>
 </div></div>
 
 <p>Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante <code class="language-">pyglet.window.key.SPACE</code> correspond au nombre 32.</p>
@@ -523,7 +523,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant le fait que les deux attributs <code class="language-">x</code> et <code class="language-">y</code> contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  <code class="language-">pyglet.window.key</code> correspondant aux flèches sont disponible <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion">là</a>), le texte se déplace de 10 pixels vers la direction de la flèche.</p>
+<p>En utilisant le fait que les deux attributs <code class="language-">x</code> et <code class="language-">y</code> contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  <code class="language-">pyglet.window.key</code> correspondant aux flèches sont disponible <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion" class="externe">là</a>), le texte se déplace de 10 pixels vers la direction de la flèche.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -568,12 +568,12 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </div>
 <p>Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d'appui sur la touche. C'est le boulot de la partie suivante.</p>
 <h3>Touches de modifications</h3>
-<p>Les touches de modifications sont gérées par un <a href="https://en.wikipedia.org/wiki/Bit_field">bit field</a> : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :</p>
+<p>Les touches de modifications sont gérées par un <a href="https://en.wikipedia.org/wiki/Bit_field" class="externe">bit field</a> : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :</p>
 <ul>
 <li>de gérer plusieurs modificateurs avec un seul entier</li>
 <li>de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.</li>
 </ul>
-<p>Les différents modificateurs <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers">sont donnés</a>
+<p>Les différents modificateurs <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers" class="externe">sont donnés</a>
 :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">)</span>
@@ -591,7 +591,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://wiki.python.org/moin/BitwiseOperators">opérateurs sur bits en python</a></p>
+<p><a href="https://wiki.python.org/moin/BitwiseOperators" class="externe">opérateurs sur bits en python</a></p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -691,10 +691,10 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">Gestion du temps</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html" class="externe">Gestion du temps</a></p>
 </div></div>
 
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :</p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html" class="externe">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
@@ -846,10 +846,10 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html">Gestion de la souris</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html" class="externe">Gestion de la souris</a></p>
 </div></div>
 
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html">Pour gérer la souris</a>, comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements <code class="language-">on_mouse_press(x, y, button, modifiers)</code> et <code class="language-">on_mouse_release(x, y, button, modifiers)</code> :</p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html" class="externe">Pour gérer la souris</a>, comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements <code class="language-">on_mouse_press(x, y, button, modifiers)</code> et <code class="language-">on_mouse_release(x, y, button, modifiers)</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -930,7 +930,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant l'événement <code class="language-">on_mouse_motion(self, x, y, dx, dy)</code> repérez quand la souris rentre et sort du label. N'hésitez pas à regarder <a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion">la documentation de l'événement</a> pour comprendre la définition de chaque paramètre.</p>
+<p>En utilisant l'événement <code class="language-">on_mouse_motion(self, x, y, dx, dy)</code> repérez quand la souris rentre et sort du label. N'hésitez pas à regarder <a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion" class="externe">la documentation de l'événement</a> pour comprendre la définition de chaque paramètre.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -978,7 +978,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html">Les formes</a></p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html" class="externe">Les formes</a></p>
 </div></div>
 
 <p>La documentation permet de voir que l'on peut facilement dessiner des cercle ou des rectangles en pyglet.</p>
@@ -1025,7 +1025,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Testez l'exemple ci-dessus et comprenez ce qu'il fait.</p>
 </div></div>
 
-<p>Les couleurs sont décrites au <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu">format RGB</a> sous la forme de 3 entiers allant de 0 à 255 en base 10 :</p>
+<p>Les couleurs sont décrites au <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu" class="externe">format RGB</a> sous la forme de 3 entiers allant de 0 à 255 en base 10 :</p>
 <ul>
 <li>le premier décrit la composante rouge</li>
 <li>le second la composante verte</li>
@@ -1037,7 +1037,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel">celle d'adobe</a> par exemple.</p>
+<p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel" class="externe">celle d'adobe</a> par exemple.</p>
 </div></div>
 
 <h2>Code final</h2>
@@ -1046,7 +1046,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/principes/essais-pyglet">code pyglet du cours</a></p>
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/principes/essais-pyglet" class="externe">code pyglet du cours</a></p>
 </div></div>
 
 

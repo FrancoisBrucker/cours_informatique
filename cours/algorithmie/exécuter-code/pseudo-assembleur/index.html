@@ -143,7 +143,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette <strong>convention</strong> <a href="https://fr.wikipedia.org/wiki/Boutisme"><strong><em>big endian</em></strong> (ou gros boutisme en français)</a>.</p>
+<p>Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette <strong>convention</strong> <a href="https://fr.wikipedia.org/wiki/Boutisme" class="externe"><strong><em>big endian</em></strong> (ou gros boutisme en français)</a>.</p>
 <p>Comme toute convention, certains prennent la convention opposée, dite <strong><em>little endian</em></strong> (ou petit boutisme en français).</p>
 </div></div>
 
@@ -203,8 +203,8 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <p>L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :</p>
 <ul>
 <li>$u: \{0, 1\}^{S}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire</li>
-<li>$s: \{0, 1\}^{S}\rightarrow \mathbb{Z}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> sur $S$ bits.</li>
-<li>$b: \mathbb{Z} \rightarrow  \{0, 1\}^{S}$ qui rend la représentation binaire en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> sur $S$ bits associé à l'entier.</li>
+<li>$s: \{0, 1\}^{S}\rightarrow \mathbb{Z}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux" class="externe">le complément à deux</a> sur $S$ bits.</li>
+<li>$b: \mathbb{Z} \rightarrow  \{0, 1\}^{S}$ qui rend la représentation binaire en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux" class="externe">le complément à deux</a> sur $S$ bits associé à l'entier.</li>
 </ul>
 <p>Pour l'objet <code>o = 1011001</code> précédent, on a :</p>
 <ul>
@@ -216,7 +216,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 </code></pre>
 <p>Qui sera équivalent à <code>M[X:X+S] = 1011001</code> si $S=8$ et à <code>M[X:X+S] = 000000001011001</code> si $S=16$.</p>
 <h3>Équivalence avec le pseudo-code</h3>
-<p>On l'a vu, <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires" class="interne">un programme ne peut manipuler que des suites finies de <code>0</code> et de <code>1</code></a>. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.</p>
+<p>On l'a vu, <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires">un programme ne peut manipuler que des suites finies de <code>0</code> et de <code>1</code></a>. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.</p>
 <p>De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -351,7 +351,7 @@ GOTO <span class="token number">11</span></code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
+<p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf" class="externe">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
 </div></div>
 
 <h3>Test</h3>
@@ -376,7 +376,7 @@ GOTO <span class="token number">11</span></code></pre>
 <li>$a \leq b$ pourra être effectué en regardant la valeur du drapeau <code>NÉGATIF</code> après l'opération $b-a$.</li>
 <li>$(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau <code>ZÉRO</code> (s'il vaut <code>0</code>, c'est vrai)</li>
 </ul>
-<p>Comme les nombres négatifs seront codés en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">Complément à deux</a>, le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau <code>NÉGATIF</code>  peut donc être simulé par le drapeau <code>ZÉRO</code> en effectuant l'opération <code>x ET 01...1</code> qui vaudra 0 (le drapeau <code>ZÉRO</code> vaudra alors 1) que le si le nombre <code>u(x)</code> est positif.</p>
+<p>Comme les nombres négatifs seront codés en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux" class="externe">Complément à deux</a>, le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau <code>NÉGATIF</code>  peut donc être simulé par le drapeau <code>ZÉRO</code> en effectuant l'opération <code>x ET 01...1</code> qui vaudra 0 (le drapeau <code>ZÉRO</code> vaudra alors 1) que le si le nombre <code>u(x)</code> est positif.</p>
 <p>On peut donc faire tout nos test en utilisant uniquement le drapeau <code>ZÉRO</code> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -455,12 +455,12 @@ GOTO <span class="token number">11</span></code></pre>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span></code></pre>
 <p>Où :</p>
 <ul>
-<li><code>OP</code> est le <a href="https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique">code mnémonique</a> associée (le nom) à l'opération</li>
+<li><code>OP</code> est le <a href="https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique" class="externe">code mnémonique</a> associée (le nom) à l'opération</li>
 <li><code>#1</code>, <code>#2</code> et <code>#3</code> représentent les paramètres de l'opération et peuvent représenter soit des entrées soit une sortie selon l'opération.</li>
 </ul>
 </div></div>
 
-<p>Les paramètres d'entrées et la sortie sont stockés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a> qui sont des variables spéciales.</p>
+<p>Les paramètres d'entrées et la sortie sont stockés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur" class="externe">registres</a> qui sont des variables spéciales.</p>
 <h3>Registres</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -515,7 +515,7 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">Complément à deux</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux" class="externe">Complément à deux</a></p>
 </div></div>
 
 <p>On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits <code>M[0]</code> et <code>M[1]</code> pour rendre la valeur <code>M[3]</code> et la retenue, <code>M[2]</code>, s'il y en a une:</p>
@@ -574,7 +574,7 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 </div></div>
 
 <h2>I/O</h2>
-<p><a href="https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie">Les entrées/sorties</a> ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie" class="externe">Les entrées/sorties</a> ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.</p>
 <h2>Pseudo-assembleur minimal</h2>
 <p>On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que faire du pseudo-code :</p>
 <ol>

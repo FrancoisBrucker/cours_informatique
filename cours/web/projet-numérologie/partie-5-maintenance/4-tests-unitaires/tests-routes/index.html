@@ -99,7 +99,7 @@
   <!-- début résumé -->
 <p>Tests de routes.</p>
 <!-- fin résumé -->
-<p>On a déjà un peu regardé les route avec <a href="../../3-postman" class="interne">postman</a>, mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque <a href="https://github.com/visionmedia/supertest#readme">supertest</a> pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).</p>
+<p>On a déjà un peu regardé les route avec <a href="../../3-postman">postman</a>, mais ce n'est pas un test unitaire proprement dit, car il faut tout tester à la main. Pour automatiser tout ça nous allons utiliser la bibliothèque <a href="https://github.com/visionmedia/supertest#readme" class="externe">supertest</a> pour gérer le serveur. Supertest va créer une instance de notre serveur pour chaque test, cela nous permettra de faire plein de test en même temps (il va lancer chaque serveur sur un autre port).</p>
 <h2>Installation</h2>
 <pre><code>npm install --save-dev supertest
 </code></pre>
@@ -109,7 +109,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6">Un tutoriel</a></p>
+<p><a href="https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6" class="externe">Un tutoriel</a></p>
 </div></div>
 
 <p>On teste toutes les routes du serveur pour être sur de ne pas avoir de 404. Ce n'est pas la peine de tester l'algorithmie des routes s'il y en a, puisque ceci est fait avec des tests unitaires.</p>
@@ -213,7 +213,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <p>On utilise les méthodes <code class="language-">beforeAll</code> et <code class="language-">afterAll</code> pour gérer la création (avant tous les tests) et la suppression du serveur (après tous les tests).</p>
 <p>Gestion des promesses :</p>
 <ul>
-<li>on a passé un paramètre (<code>done</code>) dans la fonction de test. Ce paramètre est exécuté en fin de test pour montrer que le test est fini. C'est la façon qu'à jest de traiter les <a href="https://jestjs.io/docs/asynchronous">tests de fonctions asynchrones</a>, sinon il n'a aucun moyen de savoir si un test est fini ou pas.</li>
+<li>on a passé un paramètre (<code>done</code>) dans la fonction de test. Ce paramètre est exécuté en fin de test pour montrer que le test est fini. C'est la façon qu'à jest de traiter les <a href="https://jestjs.io/docs/asynchronous" class="externe">tests de fonctions asynchrones</a>, sinon il n'a aucun moyen de savoir si un test est fini ou pas.</li>
 <li>on passe l'application à supertest (<code>request.agent(app)</code>) pour créer un serveur qu'on interroge ensuite.</li>
 <li>n'oubliez pas de finir par <code>.end</code> pour récupérer les erreurs s'il y en a et exécuter <code>done</code> pour la fin de test.</li>
 </ul>
@@ -226,8 +226,8 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env">https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env</a></li>
-<li><a href="https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/">https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/</a></li>
+<li><a href="https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env" class="externe">https://rafaelalmeidatk.com/blog/why-you-should-not-use-a-custom-value-with-node-env</a></li>
+<li><a href="https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/" class="externe">https://nodejs.dev/fr/learn/how-to-read-environment-variables-from-nodejs/</a></li>
 </ul>
 </div></div>
 
@@ -257,7 +257,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> logger_choice<span class="token punctuation">;</span></code></pre>
-<p>Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque <a href="https://nodejs.org/api/process.html#process">process</a> qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode <code class="language-">&quot;test&quot;</code>, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.</p>
+<p>Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque <a href="https://nodejs.org/api/process.html#process" class="externe">process</a> qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode <code class="language-">&quot;test&quot;</code>, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.</p>
 <p>Changeons le mode d'exécution des tests pour le développement sous mac et Linux :</p>
 <pre><code>NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules npx jest
 </code></pre>

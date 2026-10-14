@@ -123,7 +123,7 @@
   <!-- début résumé -->
 <p>Une introduction au format markdown.</p>
 <!-- fin résumé -->
-<p><a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est <em>&quot;.md&quot;</em>.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Markdown" class="externe">Markdown</a> est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est <em>&quot;.md&quot;</em>.</p>
 <p>L'intérêt de ce format de fichier texte est qu'il est parfaitement lisible dans tout éditeur de texte et qu'on peut de plus le <em>compiler</em> dans un autre format comme le pdf ou encore le html si on veut le partager.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -159,7 +159,7 @@ On peut aussi écrire des blocs de code, comme :
 2. du code python
 3. du texte brut</code></pre>
 <h3>Balise à connaître</h3>
-<p>Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">cette liste</a>.</p>
+<p>Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax" class="externe">cette liste</a>.</p>
 <h4>Sections</h4>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text"># titre du document
 
@@ -185,17 +185,17 @@ On peut aussi écrire des blocs de code, comme :
 <p>Plusieurs symboles peuvent être utilisées :</p>
 <ul>
 <li>
-<p><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">code</a> :</p>
+<p><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks" class="externe">code</a> :</p>
 <p>```
 ls -la
 ```</p>
 </li>
 <li>
-<p><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">remarques</a> :</p>
+<p><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1" class="externe">remarques</a> :</p>
 <p>&gt; Pierre qui roule n'amasse pas mousse.</p>
 </li>
 <li>
-<p><a href="#latex" class="interne">latex</a> :</p>
+<p><a href="#latex">latex</a> :</p>
 <p>\$\$ \\frac{1}{2} \$\$</p>
 </li>
 </ul>
@@ -203,12 +203,12 @@ ls -la
 <p>Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :</p>
 <ul>
 <li>
-<p><a href="https://www.markdownguide.org/basic-syntax/#unordered-lists">non ordonnées</a>. Chaque item peut commencer par un <code>*</code>, un <code>-</code> ou encore un <code>+</code>. Choisissez en un et tenez vous y dans tout le document :</p>
+<p><a href="https://www.markdownguide.org/basic-syntax/#unordered-lists" class="externe">non ordonnées</a>. Chaque item peut commencer par un <code>*</code>, un <code>-</code> ou encore un <code>+</code>. Choisissez en un et tenez vous y dans tout le document :</p>
 <p>- premier élément
 - deuxième élément</p>
 </li>
 <li>
-<p><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists">ordonnées</a></p>
+<p><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists" class="externe">ordonnées</a></p>
 <ol>
 <li>on met le bon numéro</li>
 <li>on met le bon numéro</li>
@@ -218,8 +218,8 @@ ls -la
 <h3>Liens</h3>
 <p>Il y a plusieurs possibilités :</p>
 <ul>
-<li>via un nom : <code class="language-">[nom](lien)</code>. Par exemple <code class="language-">[LMGTFY](https://www.google.fr)</code> qui se compile en : <a href="https://www.google.fr">LMGTFY</a></li>
-<li>lien direct : <code class="language-">&lt;https://www.google.fr&gt;</code> qui se compile en : <a href="https://www.google.fr">https://www.google.fr</a>.</li>
+<li>via un nom : <code class="language-">[nom](lien)</code>. Par exemple <code class="language-">[LMGTFY](https://www.google.fr)</code> qui se compile en : <a href="https://www.google.fr" class="externe">LMGTFY</a></li>
+<li>lien direct : <code class="language-">&lt;https://www.google.fr&gt;</code> qui se compile en : <a href="https://www.google.fr" class="externe">https://www.google.fr</a>.</li>
 </ul>
 <p>On utilise les liens pour les images, il suffit de rajouter un <code>!</code> avant. Par exemple <code class="language-">![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)</code> qui se compile en : <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg" alt="ada lovelace"></p>
 <h2>Tableaux</h2>
@@ -255,7 +255,7 @@ ls -la
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe des extensions de markdown, comme <a href="https://spec.commonmark.org/">commonMark</a> utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.</p>
+<p>Il existe des extensions de markdown, comme <a href="https://spec.commonmark.org/" class="externe">commonMark</a> utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.</p>
 </div></div>
 
 <h2>Code</h2>
@@ -285,13 +285,13 @@ print(&quot;Donnez moi un :&quot;, l, &quot;!&quot;)
 <h2>Formules mathématiques</h2>
 <p>Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.</p>
 <h3><span id="latex"></span> Formules en Latex</h3>
-<p>Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).</p>
+<p>Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX" class="externe">Latex</a> permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</p>
+<p>L'ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX" class="externe">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX" class="externe">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth" class="externe">Donald Knuth</a> par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming" class="externe">ses livres</a> en respectant une typographie correcte.</p>
 </div></div>
 
 <p>Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d'habitude, on voit bien que : <code class="language-">$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
@@ -302,8 +302,8 @@ $$
 </div>
 <p>Quelques aides :</p>
 <ul>
-<li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">résumé</a> des possibilités</li>
-<li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
+<li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf" class="externe">résumé</a> des possibilités</li>
+<li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/" class="externe">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
 </ul>
 <h3>Formules en markdown</h3>
 <p>On peut écrire en markdown les équations latex.</p>
@@ -317,28 +317,28 @@ $$
 <pre class="language-tex" tabindex="0" data-language="tex"><code class="language-tex"><span class="token equation string">$$
 3+2
 $$</span></code></pre>
-<p>Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque <a href="https://www.mathjax.org/">Mathjax</a>.</p>
+<p>Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque <a href="https://www.mathjax.org/" class="externe">Mathjax</a>.</p>
 <h2>Plugin Markdown vscode</h2>
-<p>Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/%C3%A9diteur-vscode/" class="interne">vscode</a> :</p>
+<p>Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/%C3%A9diteur-vscode/">vscode</a> :</p>
 <ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">Markdownlint</a> qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=goessner.mdmath">Markdown+Math</a> pour gérer les maths avec Markdown</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode">Prettier</a> pour la mise en forme du code.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" class="externe">Markdown All in One</a> qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint" class="externe">Markdownlint</a> qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=goessner.mdmath" class="externe">Markdown+Math</a> pour gérer les maths avec Markdown</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode" class="externe">Prettier</a> pour la mise en forme du code.</li>
 </ul>
 <h2>Pour aller plus loin</h2>
 <h3>Guides</h3>
 <ul>
-<li>base markdown et latex : <a href="https://ashki23.github.io/markdown-latex.html">https://ashki23.github.io/markdown-latex.html</a></li>
-<li>base markdown : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</li>
-<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">Mathjax et latex</a></li>
+<li>base markdown et latex : <a href="https://ashki23.github.io/markdown-latex.html" class="externe">https://ashki23.github.io/markdown-latex.html</a></li>
+<li>base markdown : <a href="https://www.markdownguide.org/" class="externe">https://www.markdownguide.org/</a> par exemple</li>
+<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" class="externe">Mathjax et latex</a></li>
 </ul>
 <h3>Variantes de markdown</h3>
 <p>Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses possibilités. Deux d'entre elles sont devenus des standard de fait :</p>
 <ul>
-<li><a href="https://spec.commonmark.org/">commonMark</a> utilisé pour ce site.</li>
-<li><a href="https://guides.github.com/features/mastering-markdown/">github flavored markdown</a>.</li>
-<li><a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
+<li><a href="https://spec.commonmark.org/" class="externe">commonMark</a> utilisé pour ce site.</li>
+<li><a href="https://guides.github.com/features/mastering-markdown/" class="externe">github flavored markdown</a>.</li>
+<li><a href="https://kramdown.gettalong.org/documentation.html" class="externe">kramdown</a>.</li>
 </ul>
 
 

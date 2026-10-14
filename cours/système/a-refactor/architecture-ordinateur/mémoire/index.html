@@ -99,8 +99,8 @@
   <p>Les contraintes et choix matériels vont avoir des conséquence sur le code. En particulier pour la mémoire qui est au cœur du système</p>
 <h2>Type de mémoire</h2>
 <ul>
-<li>DDR5 : <a href="https://fr.wikipedia.org/wiki/DDR5_SDRAM">https://fr.wikipedia.org/wiki/DDR5_SDRAM</a></li>
-<li>fonctionnement : <a href="https://fr.wikipedia.org/wiki/Double_data_rate">https://fr.wikipedia.org/wiki/Double_data_rate</a></li>
+<li>DDR5 : <a href="https://fr.wikipedia.org/wiki/DDR5_SDRAM" class="externe">https://fr.wikipedia.org/wiki/DDR5_SDRAM</a></li>
+<li>fonctionnement : <a href="https://fr.wikipedia.org/wiki/Double_data_rate" class="externe">https://fr.wikipedia.org/wiki/Double_data_rate</a></li>
 </ul>
 <p>La vitesse d'accès et de transfert augmente.</p>
 <h2>Valeurs</h2>
@@ -121,7 +121,7 @@ Valeur b : 0000110010010001
 <p>L'unité fondamentale de lecture est <strong>toujours</strong> le byte, on inverse donc les bytes, pas les bits qui le compose.</p>
 </div></div>
 
-<p>Ceci est loin d'être anecdotique et s'appelle l'<a href="https://fr.wikipedia.org/wiki/Boutisme">Endianness</a> :</p>
+<p>Ceci est loin d'être anecdotique et s'appelle l'<a href="https://fr.wikipedia.org/wiki/Boutisme" class="externe">Endianness</a> :</p>
 <ul>
 <li>les processeurs ARM, tout comme les protocoles réseau ou PCIe sont dit <em>big endian</em> les bytes sont lu de droite à gauche (sens de lecture usuel)</li>
 <li>les processeur intel sont dit <em>little endian</em> les byte sont lu de gauche à droite (sens non usuel)</li>
@@ -164,10 +164,10 @@ valeur à lire   :     XXXX
 lecture 1       : XXXXXXXX
 recollage bus   : 0000XXXX
 </code></pre>
-<p>C'est ce que l'on appelle les <a href="https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire">problèmes d'alignement</a>. Il faut s'arranger pour que nos données soient alignées avec la mémoire pour que la lecture se fasse en 1 cycle et non 2.</p>
+<p>C'est ce que l'on appelle les <a href="https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire" class="externe">problèmes d'alignement</a>. Il faut s'arranger pour que nos données soient alignées avec la mémoire pour que la lecture se fasse en 1 cycle et non 2.</p>
 <p>Ceci se fait habituellement pour nous, les compilateurs vont s'arranger pour les stocker chaque donnée à des multiples de leur taille en mémoire quite à perdre un peu de place (c'est ce que l'on appelle le padding). Les données sont alors dites <em>bien alignées</em>.</p>
 <h2>Adressage logique et physique</h2>
-<p>Dans les OS actuels, la mémoire s'adresse sur 64b. C'est à dire qu'il est théoriquement possible d'adresser $2^{64}$ byte, c'est à dire 16<a href="https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire#Tableaux_des_pr%C3%A9fixes_binaires_et_d%C3%A9cimaux">EiB</a> et donc 16777216 TiB.</p>
+<p>Dans les OS actuels, la mémoire s'adresse sur 64b. C'est à dire qu'il est théoriquement possible d'adresser $2^{64}$ byte, c'est à dire 16<a href="https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire#Tableaux_des_pr%C3%A9fixes_binaires_et_d%C3%A9cimaux" class="externe">EiB</a> et donc 16777216 TiB.</p>
 <p>Cette limite est actuellement inatteignable en pratique, c'est pourquoi pour limiter la complexité de l'adressage les processeurs actuels autorise moins d'adresse. Pour un (<a href="https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details">https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details</a>) par exemple (pour un ARM, c'est pareil):</p>
 <ul>
 <li>seule 48bit sont adressables, des bit 0 à 47</li>

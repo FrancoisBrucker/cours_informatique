@@ -212,7 +212,7 @@
 <p>L'exemple du personnel de l'université a pour diagramme UML :</p>
 <p><img src="personnel_universit%C3%A9_UML.png" alt="personnel de l'université"></p>
 <h3>Python</h3>
-<p>L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant <a href="../classes-et-objets/#espace-nommage" class="interne">un espace de nommage</a>.</p>
+<p>L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant <a href="../classes-et-objets/#espace-nommage">un espace de nommage</a>.</p>
 <p>En reprenant l'exemple du personnel de l'université, on peut d'ore et déjà écrire la classe mère :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
 
@@ -231,7 +231,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé <a href="https://docs.python.org/fr/3/library/datetime.html#">le module <code class="language-">datetime</code> de python</a> qui est fait pour gérer les dates. Utilisez <strong>toujours</strong> des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.</p>
+<p>On a utilisé <a href="https://docs.python.org/fr/3/library/datetime.html#" class="externe">le module <code class="language-">datetime</code> de python</a> qui est fait pour gérer les dates. Utilisez <strong>toujours</strong> des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.</p>
 </div></div>
 
 <p>Pour écrire le code des classes filles il faut pouvoir faire deux choses :</p>
@@ -249,7 +249,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
+<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html" class="externe">la fonction super</a></p>
 </div></div>
 
 <p>On peut maintenant coder les deux classes filles :</p>
@@ -379,7 +379,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 </ul>
 </li>
 </ul>
-<p>On va supposer que le <a href="https://fr.wikipedia.org/wiki/Polygone_simple">polygone est simple</a> pour simplifier le calcul de l'aire...</p>
+<p>On va supposer que le <a href="https://fr.wikipedia.org/wiki/Polygone_simple" class="externe">polygone est simple</a> pour simplifier le calcul de l'aire...</p>
 <h4>Uml</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -565,7 +565,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">Héritage multiple en Pyton</a></p>
+<p><a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance" class="externe">Héritage multiple en Pyton</a></p>
 </div></div>
 
 <p>Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe <code class="language-">Doctorant</code> qui serait <strong>à la fois</strong> <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> :</p>
@@ -585,10 +585,10 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les problèmes d'ordre en héritage multiple sont décrits sous le nom de <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a>.</p>
+<p>Les problèmes d'ordre en héritage multiple sont décrits sous le nom de <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant" class="externe">problème du diamant</a>.</p>
 </div></div>
 
-<p>Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple <a href="https://realpython.com/python-super/#super-in-multiple-inheritance">cette étude</a>), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :</p>
+<p>Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple <a href="https://realpython.com/python-super/#super-in-multiple-inheritance" class="externe">cette étude</a>), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        self<span class="token punctuation">.</span>étudiant <span class="token operator">=</span> Étudiant<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span></span>

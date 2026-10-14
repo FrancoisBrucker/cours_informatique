@@ -112,7 +112,7 @@
 <!-- fin résumé -->
 <p>Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.</p>
 <h2>But du site</h2>
-<p>On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme <a href="https://www.parents.fr/prenoms/nos-conseils-prenoms/la-num%C3%A9rologie-des-prenoms-diaporama-307570">là</a>, <a href="https://www.femmeactuelle.fr/horoscope2/num%C3%A9rologie/num%C3%A9rologie-prenom-19618">ici</a> ou <a href="https://www.evozen.fr/num%C3%A9rologie/expression">encore ceci</a>) sont discordantes, nous allons créer le nôtre.</p>
+<p>On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme <a href="https://www.parents.fr/prenoms/nos-conseils-prenoms/la-num%C3%A9rologie-des-prenoms-diaporama-307570" class="externe">là</a>, <a href="https://www.femmeactuelle.fr/horoscope2/num%C3%A9rologie/num%C3%A9rologie-prenom-19618" class="externe">ici</a> ou <a href="https://www.evozen.fr/num%C3%A9rologie/expression" class="externe">encore ceci</a>) sont discordantes, nous allons créer le nôtre.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -120,7 +120,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>But</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Associer un chiffre à toute chaîne de caractère en <a href="https://unicode-table.com/fr/">Unicode</a></p>
+<p>Associer un chiffre à toute chaîne de caractère en <a href="https://unicode-table.com/fr/" class="externe">Unicode</a></p>
 </div></div>
 
 <p>Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons (enfin, surtout vous avez) tous les outils nécessaires :</p>
@@ -132,10 +132,10 @@
 </ul>
 </li>
 <li><strong>un cerveau</strong> en état de marche : pour voir les correspondances, lire la doc, et poser des questions.</li>
-<li>avoir <strong>un éditeur de texte</strong> fonctionnel. Nous utiliserons <a href="https://code.visualstudio.com/">vscode</a> dans ce cours, téléchargez le et installez le.</li>
-<li>un <strong>navigateur internet</strong> munis d'outils de développement. Tous les exemple seront fait avec <a href="https://www.google.fr/chrome/">chrome</a>.</li>
+<li>avoir <strong>un éditeur de texte</strong> fonctionnel. Nous utiliserons <a href="https://code.visualstudio.com/" class="externe">vscode</a> dans ce cours, téléchargez le et installez le.</li>
+<li>un <strong>navigateur internet</strong> munis d'outils de développement. Tous les exemple seront fait avec <a href="https://www.google.fr/chrome/" class="externe">chrome</a>.</li>
 <li>Sachez ouvrir <a href="/cours_informatique/tutoriels/terminal">une fenêtre terminal</a></li>
-<li>un interpréteur javascript. On utilisera <a href="https://nodejs.org/en/">node</a>.</li>
+<li>un interpréteur javascript. On utilisera <a href="https://nodejs.org/en/" class="externe">node</a>.</li>
 </ol>
 <h2>Installation de Node</h2>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -155,7 +155,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Vous pouvez utiliser <a href="https://github.com/nodesource/distributions/blob/master/README.md">nodesource</a> pour installer node.</p>
+<p>Vous pouvez utiliser <a href="https://github.com/nodesource/distributions/blob/master/README.md" class="externe">nodesource</a> pour installer node.</p>
 </div>
 </details>     
 </div>
@@ -176,7 +176,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme dit dans le tuto d'installation, on utilise le gestionnaire de package <a href="https://brew.sh/">brew</a>.</p>
+<p>Comme dit dans le tuto d'installation, on utilise le gestionnaire de package <a href="https://brew.sh/" class="externe">brew</a>.</p>
 <p>Une fois celui ci installé, on tape dans un <a href="/cours_informatique/tutoriels/terminal">terminal</a> la commande : <code>brew install node</code></p>
 </div>
 </details>     
@@ -198,7 +198,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Vous téléchargez la version courante de node : <a href="https://nodejs.org/en/download/current/">https://nodejs.org/en/download/current/</a>.</p>
+<p>Vous téléchargez la version courante de node : <a href="https://nodejs.org/en/download/current/" class="externe">https://nodejs.org/en/download/current/</a>.</p>
 </div>
 </details>     
 </div>
@@ -207,23 +207,23 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe 2 versions de <a href="https://nodejs.org/en/">Node</a>, la <em>LTS (long term support)</em> et la <em>current</em>. On choisira la version <em>current</em> qui est la plus récente. La version <em>LTS</em> est là pour des raisons de compatibilité.</p>
+<p>Il existe 2 versions de <a href="https://nodejs.org/en/" class="externe">Node</a>, la <em>LTS (long term support)</em> et la <em>current</em>. On choisira la version <em>current</em> qui est la plus récente. La version <em>LTS</em> est là pour des raisons de compatibilité.</p>
 </div></div>
 
 <h2>Plan</h2>
 <p>Ce projet va être séparé en cinq parties :</p>
 <ol>
-<li><a href="partie-1-front" class="interne">un premier site entièrement en front</a></li>
-<li><a href="partie-2-serveur" class="interne">on ajoute une partie back pour les calculs</a></li>
-<li><a href="partie-3-donn%C3%A9es" class="interne">gestion des données</a></li>
-<li><a href="partie-4-jardinage" class="interne">jardinage du code pour le rendre plus propre</a></li>
-<li><a href="partie-5-maintenance" class="interne">Maintenance du site</a></li>
+<li><a href="partie-1-front">un premier site entièrement en front</a></li>
+<li><a href="partie-2-serveur">on ajoute une partie back pour les calculs</a></li>
+<li><a href="partie-3-donn%C3%A9es">gestion des données</a></li>
+<li><a href="partie-4-jardinage">jardinage du code pour le rendre plus propre</a></li>
+<li><a href="partie-5-maintenance">Maintenance du site</a></li>
 </ol>
 <h2>Déploiement</h2>
 <blockquote>
 <p>TBD</p>
 <ul>
-<li>Local : différence entre fichier et via node. <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">cors</a></li>
+<li>Local : différence entre fichier et via node. <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS" class="externe">cors</a></li>
 <li>sur le serveur de l'école sans node (cyberduck/scp/git)</li>
 <li>sur l'ovh : scp/git</li>
 </ul>

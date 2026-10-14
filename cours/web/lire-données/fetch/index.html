@@ -97,7 +97,7 @@
   
 
   <p>La fonction fetch de javascript permet de charger tout un tas de choses, bien plus que juste des fichiers json.</p>
-<p>La fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> de javascript vous permet de récupérer des données et de les utiliser dans un script front.</p>
+<p>La fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch" class="externe">fetch</a> de javascript vous permet de récupérer des données et de les utiliser dans un script front.</p>
 <h2>Lecture de données distantes</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -142,8 +142,8 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous cherchez des coordonnées géographiques de la France, allez voir : <a href="https://github.com/gregoiredavid/france-geojson">https://github.com/gregoiredavid/france-geojson</a>.</p>
-<p>Le format de données utilisés est le format <a href="https://fr.wikipedia.org/wiki/GeoJSON">geojson</a> qui est un format de données json adaptés aux coordonnées géographique.</p>
+<p>Si vous cherchez des coordonnées géographiques de la France, allez voir : <a href="https://github.com/gregoiredavid/france-geojson" class="externe">https://github.com/gregoiredavid/france-geojson</a>.</p>
+<p>Le format de données utilisés est le format <a href="https://fr.wikipedia.org/wiki/GeoJSON" class="externe">geojson</a> qui est un format de données json adaptés aux coordonnées géographique.</p>
 </div></div>
 
 <p>Le code précédent explicite le faite que <code class="language-">fetch</code> est une instruction asynchrone qui s'exécute sous la forme d'une promesse : le <code>console.log</code> de la fin de l'instruction <code class="language-">fetch</code> (ligne 22) rend toujours null puisqu'elle elle est exécutée <em>avant</em> la fin de l'instruction.</p>
@@ -157,7 +157,7 @@
 </div></div>
 
 <h2>Lecture d'un fichier json</h2>
-<p>Les données sont reçues sous la forme d'un objet de type <a href="https://developer.mozilla.org/fr/docs/Web/API/Response">Response</a>. Lorsque nos données sont de type <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> — <strong>ce qui devrait toujours être le cas</strong> — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :</p>
+<p>Les données sont reçues sous la forme d'un objet de type <a href="https://developer.mozilla.org/fr/docs/Web/API/Response" class="externe">Response</a>. Lorsque nos données sont de type <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation" class="externe">json</a> — <strong>ce qui devrait toujours être le cas</strong> — nous pouvons chaîner une autre promesse pur retrouver nos données, comme le montre le code suivant :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -267,7 +267,7 @@
     </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p>Disponible <a href="projet-fetch/lire-donn%C3%A9es-url-json-liste" class="interne">ici</a></p>
+<p>Disponible <a href="projet-fetch/lire-donn%C3%A9es-url-json-liste">ici</a></p>
 </div>
 </details>     
 </div>
@@ -286,7 +286,7 @@
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2>Fetch une image</h2>
-<p>La réponse de fetch est un <em>stream</em> c'est à dire un flux de données. Les données du flux sont récupérées par les commandes <code class="language-">.json()</code> et <code class="language-">.texte()</code> vues précédemment. Dans le cas où l'on récupère des fichiers non texte (une image, une vidéo, etc) on utilise <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/blob"><code>.blob()</code></a></p>
+<p>La réponse de fetch est un <em>stream</em> c'est à dire un flux de données. Les données du flux sont récupérées par les commandes <code class="language-">.json()</code> et <code class="language-">.texte()</code> vues précédemment. Dans le cas où l'on récupère des fichiers non texte (une image, une vidéo, etc) on utilise <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/blob" class="externe"><code>.blob()</code></a></p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -325,7 +325,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les règles de transmission de fichiers s'appellent : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">CORS</a></p>
+<p>Les règles de transmission de fichiers s'appellent : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS" class="externe">CORS</a></p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">

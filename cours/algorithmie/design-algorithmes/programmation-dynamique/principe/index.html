@@ -101,7 +101,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">Page Wikipedia sur la programmation dynamique</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Programmation_dynamique" class="externe">Page Wikipedia sur la programmation dynamique</a></p>
 </div></div>
 
 <p>Le principe de la programmation dynamique est simple :</p>
@@ -127,7 +127,7 @@
 <p>En effet, s'il existait par exemple un chemin plus rapide entre A et C (le chemin rouge) :</p>
 <p><img src="opti-3.png" alt="opti A-C˜B"></p>
 <p>Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.</p>
-<p>Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien <a href="https://fr.wikipedia.org/wiki/Richard_Bellman">Richard Bellman</a>.</p>
+<p>Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien <a href="https://fr.wikipedia.org/wiki/Richard_Bellman" class="externe">Richard Bellman</a>.</p>
 <p>Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulés ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution <em>brut force</em> (énumérer et analyser tous les cas possibles).</p>
 <h2>Méthode de résolution</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -152,7 +152,7 @@
 </ol>
 <p>Enfin, la programmation dynamique nous assure de trouver <strong>un</strong> chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.</p>
 <h2>Stockage des résultats intermédiaires</h2>
-<p>Il existe deux approches pour le stockage des résultats intermédiaires : <a href="https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante"><strong><em>l'approche bottom-up</em></strong></a> et la <a href="https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation"><strong><em>mémoïsation</em></strong></a>. Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :</p>
+<p>Il existe deux approches pour le stockage des résultats intermédiaires : <a href="https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante" class="externe"><strong><em>l'approche bottom-up</em></strong></a> et la <a href="https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation" class="externe"><strong><em>mémoïsation</em></strong></a>. Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :</p>
 <p>$$
 F(n) = F(n-1) + F(n-2)
 $$</p>
@@ -177,7 +177,7 @@ $$</p>
     <span class="token keyword">rendre</span> a</code></pre>
 <p>La complexité est maintenant linéaire et ne sont stockés que les éléments nécessaires à la résolution de la prochaine étape de l'équation de récurrence (la complexité spatiale est en $\mathcal{O}(1)$).</p>
 <h3>Mémoïsation</h3>
-<p>La mémoïsation est le fait de stocker les résultats d'une fonction pour ne pas avoir à la rappeler plus tard et utiliser directement le résultat. C'est ce qui est mis en oeuvre dans les techniques de cache comme <a href="https://fr.wikipedia.org/wiki/Cache_web">le cache web</a> ou encore <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_cache">la mémoire cache</a>.</p>
+<p>La mémoïsation est le fait de stocker les résultats d'une fonction pour ne pas avoir à la rappeler plus tard et utiliser directement le résultat. C'est ce qui est mis en oeuvre dans les techniques de cache comme <a href="https://fr.wikipedia.org/wiki/Cache_web" class="externe">le cache web</a> ou encore <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_cache" class="externe">la mémoire cache</a>.</p>
 <p>C'est très utile si on a une équation de récurrence compliquée ou qu'on ne contrôle pas ce que l'on cherche.</p>
 <p>La mémoïsation est un principe fondamental en algorithmie qui permet d'échanger de la complexité temporelle (nombre d'instructions) en complexité spatiale : on échange du temps par de l'espace. Ce n'est pas toujours un échange profitable, savoir s'il faut utiliser la programmation dynamique se fait donc au cas par cas.</p>
 <p>Pour le calcul de la suite de Fibonacci, cela donne si $n$ est plus petit que $N$ :</p>
@@ -213,7 +213,7 @@ TBD rendu de piece par programmation dynamique</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.mathly.fr/prog_dyn.pdf">Nombre de chemins (exercice 7)</a></p>
+<p><a href="https://www.mathly.fr/prog_dyn.pdf" class="externe">Nombre de chemins (exercice 7)</a></p>
 </div></div>
 
 <p>On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).</p>
@@ -362,7 +362,7 @@ TBD rendu de piece par programmation dynamique</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=tufup6HlwWg">Découper un cable</a></p>
+<p><a href="https://www.youtube.com/watch?v=tufup6HlwWg" class="externe">Découper un cable</a></p>
 </div></div>
 
 <p>Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.</p>
@@ -586,7 +586,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante">Problème de la sous-suite croissante maximum</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante" class="externe">Problème de la sous-suite croissante maximum</a></p>
 </div></div>
 
 <p>Le problème est le suivant :</p>

@@ -98,25 +98,25 @@
 
   <h2>Linux/Ubuntu</h2>
 <p>Fonctionne pour une installation native ou sous wsl.</p>
-<p>Copiez coller les paquet à installer de la partie default package de la page : <a href="https://apt.llvm.org/">https://apt.llvm.org/</a>. N'oubliez pas le <code>sudo</code> :</p>
+<p>Copiez coller les paquet à installer de la partie default package de la page : <a href="https://apt.llvm.org/" class="externe">https://apt.llvm.org/</a>. N'oubliez pas le <code>sudo</code> :</p>
 <pre><code>sudo apt-get install clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 </code></pre>
 <p>Cela devrait installer tout les paquets nécessaires.</p>
 <h2>Macos</h2>
 <ol>
-<li>installer <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">xcode</a></li>
+<li>installer <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12" class="externe">xcode</a></li>
 <li>installez les <em>developper tools</em> en tapant la commande <code>xcode-select --install</code> dans un terminal</li>
 <li>si vous avez un mac avec une puce arm, il vous faudra peut-être installer Rosetta. Dans un terminal tapez la commande <code>softwareupdate --install-rosetta</code></li>
 </ol>
 <h2>Windows 11 Visual Studio</h2>
 <p>Compilation sous windows. Cela va nécessiter quelques manipulations.</p>
 <h3>Installation de visual studio</h3>
-<p>La plus simple est de télécharger la version 2022 community de visual studio à partir d'ici : <a href="https://visualstudio.microsoft.com/fr/">https://visualstudio.microsoft.com/fr/</a>. Lors de l'installation, choisissez :</p>
+<p>La plus simple est de télécharger la version 2022 community de visual studio à partir d'ici : <a href="https://visualstudio.microsoft.com/fr/" class="externe">https://visualstudio.microsoft.com/fr/</a>. Lors de l'installation, choisissez :</p>
 <ul>
 <li><code>développement desktop en C++</code></li>
 <li>cochez également <code>Outils C++ Clang pour windows</code></li>
 </ul>
-<p>Ceci installera l'ide visual studio qui permet de développer des projet en C/C++. Nous n'allons pas utiliser cet ide, on restera avec notre bon vieux visual studio code, mais on va utiliser des programmes que cet IDE installe, en particulier <a href="https://clang.llvm.org/">le compilateur clang</a>  qui nous permettra de compiler nos programmes C directement avec la ligne de commande.</p>
+<p>Ceci installera l'ide visual studio qui permet de développer des projet en C/C++. Nous n'allons pas utiliser cet ide, on restera avec notre bon vieux visual studio code, mais on va utiliser des programmes que cet IDE installe, en particulier <a href="https://clang.llvm.org/" class="externe">le compilateur clang</a>  qui nous permettra de compiler nos programmes C directement avec la ligne de commande.</p>
 <h3>Ajout du chemin vers le compilateur au path</h3>
 <p>dans le dossier d'installation de visual studio. Il faudra ensuite ajouter le dossier contenant le compilateur <code>clang</code>  PATH du système qui contient les dossiers contenant les fichiers exécutables indispensables depuis la ligne de commande ou la fenêtre de terminal. cette procédure contient plusieurs étapes :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

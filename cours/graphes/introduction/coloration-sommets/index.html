@@ -101,7 +101,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">cours sur la coloration</a></p>
+<p><a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf" class="externe">cours sur la coloration</a></p>
 </div></div>
 
 <p>Commençons par définir ce que l'on cherche à faire :</p>
@@ -149,7 +149,7 @@
 </div>
 </details>     
 </div>
-<p>Notez que l'on a déjà vu un problème de coloration. En effet <a href="../cliques-stables/#ramsey" class="interne">les nombres de Ramsey</a> correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.</p>
+<p>Notez que l'on a déjà vu un problème de coloration. En effet <a href="../cliques-stables/#ramsey">les nombres de Ramsey</a> correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.</p>
 <h2>Problème</h2>
 <p>Continuons notre exploration en essayant de chercher le nombre minimum de couleurs possible pour colorer les sommets d'un graphe. Les cycles paires admettent une 2-coloration (mais pas une 1-coloration puisqu'ils ont une arête) et les cycles impaires quant à eux uniquement une 3-coloration :</p>
 <p><img src="cycles-sommet.png" alt="cycles sommets"></p>
@@ -260,7 +260,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour un graphe $G$, $\omega(G)$ est <a href="../cliques-stables/#d%C3%A9finition-notation-clique-stable-maximum" class="interne">la taille de sa plus grande clique</a>.</p>
+<p>Pour un graphe $G$, $\omega(G)$ est <a href="../cliques-stables/#d%C3%A9finition-notation-clique-stable-maximum">la taille de sa plus grande clique</a>.</p>
 </div></div>
 
 <p>Le problème principal que l'on veut résoudre est celui-ci :</p>
@@ -437,7 +437,7 @@ $$
 </div>
 </details>     
 </div>
-<p>La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, <a href="https://fr.wikipedia.org/wiki/Gadget_(informatique)">Le gadget utilisé</a> n'étant pas trivial. Montrons ce qu'il donne sur <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple" class="interne">notre exemple fil rouge des réduction depuis 3-SAT</a> :</p>
+<p>La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, <a href="https://fr.wikipedia.org/wiki/Gadget_(informatique)" class="externe">Le gadget utilisé</a> n'étant pas trivial. Montrons ce qu'il donne sur <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple">notre exemple fil rouge des réduction depuis 3-SAT</a> :</p>
 <div>
 $$
 (x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
@@ -464,7 +464,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe $G=(V, E)$ est <strong><em>biparti</em></strong> s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux <a href="../structure/#d%C3%A9finition-stable" class="interne">stables</a>.</p>
+<p>Un graphe $G=(V, E)$ est <strong><em>biparti</em></strong> s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux <a href="../structure/#d%C3%A9finition-stable">stables</a>.</p>
 </div></div>
 
 <p>Par exemple le graphe suivant :</p>
@@ -598,7 +598,7 @@ Boucle principale <span class="token punctuation">:</span>
 <p>Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.</p>
 </div></div>
 
-<p>Cette alternance de couleur est appelé <a href="https://en.wikipedia.org/wiki/Kempe_chain">chaîne de Kempe</a> et est un outil très puissant en coloration de graphe.</p>
+<p>Cette alternance de couleur est appelé <a href="https://en.wikipedia.org/wiki/Kempe_chain" class="externe">chaîne de Kempe</a> et est un outil très puissant en coloration de graphe.</p>
 <p>Enfin l'algorithme nous donne une caractérisation des graphes bi-partis :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -642,8 +642,8 @@ Boucle principale <span class="token punctuation">:</span>
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Coloration_gloutonne">Algorithme glouton</a></li>
-<li><a href="https://www.youtube.com/watch?v=L2csXWQMsNg">Algorithme glouton en action</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Coloration_gloutonne" class="externe">Algorithme glouton</a></li>
+<li><a href="https://www.youtube.com/watch?v=L2csXWQMsNg" class="externe">Algorithme glouton en action</a></li>
 </ul>
 </div></div>
 
@@ -748,7 +748,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell">https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell" class="externe">https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell</a></p>
 </div></div>
 
 <p>L'algorithme de Welch-Powel choisi pour l'ordre celui du nombre de degré décroissants. Avec cet ordre on cherche à minimiser $\min({\delta(v_i), i-1}$ :</p>
@@ -826,7 +826,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/DSATUR">https://fr.wikipedia.org/wiki/DSATUR</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/DSATUR" class="externe">https://fr.wikipedia.org/wiki/DSATUR</a></p>
 </div></div>
 
 <p>L'algorithme DSATUR est une optimisation de l'algorithme de Welch-Powel. Il choisi à chaque étape le sommet le plus contraint.</p>
@@ -890,7 +890,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les pires nombre de couleurs sont appelé  les <a href="https://en.wikipedia.org/wiki/Grundy_number">&quot;<em>grundy numbers</em>&quot;</a>.</p>
+<p>Les pires nombre de couleurs sont appelé  les <a href="https://en.wikipedia.org/wiki/Grundy_number" class="externe">&quot;<em>grundy numbers</em>&quot;</a>.</p>
 </div></div>
 
 <h2>Coloration par composition de graphes</h2>
@@ -927,7 +927,7 @@ $$
 </details>     
 </div>
 <p>Cet proposition toute simple montre que l'on peut parfois utiliser des colorations de sous-graphes pour trouver une solution sur le graphe tout entier.</p>
-<p>Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : <a href="https://fr.wikipedia.org/wiki/Graphe_de_Mycielski">graphe de Mycielski</a> est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !</p>
+<p>Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : <a href="https://fr.wikipedia.org/wiki/Graphe_de_Mycielski" class="externe">graphe de Mycielski</a> est sans triangle (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -1508,7 +1508,7 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Conjecture de Hedetniemi :</p>
-<p><a href="https://www.youtube.com/watch?v=Tnu_Ws7Llo4">https://www.youtube.com/watch?v=Tnu_Ws7Llo4</a> et <a href="https://arxiv.org/pdf/1905.02167">https://arxiv.org/pdf/1905.02167</a></p>
+<p><a href="https://www.youtube.com/watch?v=Tnu_Ws7Llo4" class="externe">https://www.youtube.com/watch?v=Tnu_Ws7Llo4</a> et <a href="https://arxiv.org/pdf/1905.02167" class="externe">https://arxiv.org/pdf/1905.02167</a></p>
 </div></div>
 
 <h2>Applications</h2>
@@ -1528,23 +1528,23 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Graphe_du_sudoku">le graphe du sudoku</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Graphe_du_sudoku" class="externe">le graphe du sudoku</a></p>
 </div></div>
 
 <h3>Faire des plans de table</h3>
 <blockquote>
 <p>TBD ou résoudre des problèmes d'emploi du temps.
-p45 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
+p45 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf" class="externe">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 </blockquote>
 <h3>Optimiser la compilation de programmes</h3>
 <blockquote>
-<p>p4 <a href="http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf">http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf</a>
-et p49 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
+<p>p4 <a href="http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf" class="externe">http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf</a>
+et p49 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf" class="externe">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 </blockquote>
 <h3>Attention</h3>
 <blockquote>
 <p>TBD à ne pas tout modéliser par des couleurs.
-à 5min45 <a href="https://www.youtube.com/watch?v=y4RAYQjKb5Y">https://www.youtube.com/watch?v=y4RAYQjKb5Y</a></p>
+à 5min45 <a href="https://www.youtube.com/watch?v=y4RAYQjKb5Y" class="externe">https://www.youtube.com/watch?v=y4RAYQjKb5Y</a></p>
 <p>On le verra le problème général de la coloration est NP-complet donc ne modélisez pas par un problème NP-complet un problème simple. Les taxis, on l'a vu se résolvent facilement par un algorithme glouton !
 Ca arrive plus souvent qu'pon ne le pense, doc faite attention lorsque vous modélisez votre problème : essayez d'être le plus précis possible.</p>
 </blockquote>

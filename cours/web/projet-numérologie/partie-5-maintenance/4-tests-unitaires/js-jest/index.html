@@ -96,7 +96,7 @@
     
   
 
-  <p>Nous allons ajouter des tests unitaires à notre projet. Il existe de <a href="https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/">nombreuses bibliothèques</a> de tests en javascript. Nous allons nous focaliser sur <a href="https://jestjs.io/fr/">jest</a> efficace et populaire.</p>
+  <p>Nous allons ajouter des tests unitaires à notre projet. Il existe de <a href="https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/" class="externe">nombreuses bibliothèques</a> de tests en javascript. Nous allons nous focaliser sur <a href="https://jestjs.io/fr/" class="externe">jest</a> efficace et populaire.</p>
 <h2>Installation</h2>
 <h3>Bibliothèque</h3>
 <p>On installe la bibliothèque pour le développement (on en aura pas besoin en production) :</p>
@@ -113,7 +113,7 @@
 <li><code>npm install</code> : toutes les dépendances (<code>&quot;dependencies&quot;</code> et <code>&quot;devDependencies&quot;</code>) seront installées</li>
 <li><code>npm install --production</code> : uniquement les dépendances <code>&quot;dependencies&quot;</code>  seront installées</li>
 </ul>
-<p>Voir <a href="https://docs.npmjs.com/cli/v7/commands/npm-install">la documentation</a> pour de plus amples informations.</p>
+<p>Voir <a href="https://docs.npmjs.com/cli/v7/commands/npm-install" class="externe">la documentation</a> pour de plus amples informations.</p>
 <h3>Exécutable</h3>
 <p>Puis on va l'utiliser pour lancer nos tests avec la commande <code>npm run test</code>. Pour cela, modifions l'entrée test du <code class="fichier">package.json</code>  pour :</p>
 <pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
@@ -131,10 +131,10 @@
 <p>L'exécutable jest est présent dans le dossier <code class="fichier">node_modules/.bin/</code>. On peut alors l'exécuter :</p>
 <ul>
 <li>soit avec son nom complet <code>node_modules/.bin/jest</code></li>
-<li>soit en utilisant la commande <a href="https://www.npmjs.com/package/npx"><code>npx</code></a> :  <code>npx jest</code></li>
+<li>soit en utilisant la commande <a href="https://www.npmjs.com/package/npx" class="externe"><code>npx</code></a> :  <code>npx jest</code></li>
 </ul>
 <h3>vscode</h3>
-<p>Vous pouvez installer le plugin <a href="https://github.com/jest-community/vscode-jest">vscode-jest</a> pour utiliser jest dans vscode. Nous allons ici tout faire en ligne de commande, mais c'est pratique et ça permet (entre autres) :</p>
+<p>Vous pouvez installer le plugin <a href="https://github.com/jest-community/vscode-jest" class="externe">vscode-jest</a> pour utiliser jest dans vscode. Nous allons ici tout faire en ligne de commande, mais c'est pratique et ça permet (entre autres) :</p>
 <ul>
 <li>à vscode de comprendre notre code jest</li>
 <li>d'exécuter les tests quand on les crée</li>
@@ -142,7 +142,7 @@
 <blockquote>
 <p>La palette de commande permet d'accéder à toutes les commandes du plugin en tapant <em>jest</em></p>
 </blockquote>
-<p>On installera également le module <code>@types/jest</code> pour que vscode fasse la completion automatique lorsque l'on code des tests : <code>npm install --save-dev @types/jest</code> (tips pris de <a href="https://tekloon.dev/autocomplete-for-jest-in-vscode">là</a>).</p>
+<p>On installera également le module <code>@types/jest</code> pour que vscode fasse la completion automatique lorsque l'on code des tests : <code>npm install --save-dev @types/jest</code> (tips pris de <a href="https://tekloon.dev/autocomplete-for-jest-in-vscode" class="externe">là</a>).</p>
 <p>Par défaut <code>jest</code> va exécuter tous les fichiers :</p>
 <ul>
 <li>de la forme <code class="fichier">[nom].test.js</code> dans le dossier du projet et dans tout ses sous dossiers.</li>
@@ -153,7 +153,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://jestjs.io/docs/configuration/#testmatch-arraystring">Chemins par défaut des fichiers de tests</a> pour jest.</p>
+<p><a href="https://jestjs.io/docs/configuration/#testmatch-arraystring" class="externe">Chemins par défaut des fichiers de tests</a> pour jest.</p>
 </div></div>
 
 <h2>Utilisation de jest</h2>
@@ -185,7 +185,7 @@
 </div></div>
 
 <h2>Import ES6</h2>
-<p>Par défaut, <code>jest</code>ne fonctionne qu'avec les import commonJs de node. <a href="https://jestjs.io/docs/ecmascript-modules">Pour utiliser les modules ES6</a> il faut le préciser à <code>jest</code> avec une variable d'environnement :</p>
+<p>Par défaut, <code>jest</code>ne fonctionne qu'avec les import commonJs de node. <a href="https://jestjs.io/docs/ecmascript-modules" class="externe">Pour utiliser les modules ES6</a> il faut le préciser à <code>jest</code> avec une variable d'environnement :</p>
 <pre><code>NODE_OPTIONS=--experimental-vm-modules npx jest
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -222,13 +222,13 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a besoin de sous-groupes à l'intérieur d'un fichier, par exemple en faisant un groupe pour les tests d'une fonction, on peut utiliser un bloc <a href="https://jestjs.io/fr/docs/api#describename-fn">describe</a>.</p>
+<p>Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a besoin de sous-groupes à l'intérieur d'un fichier, par exemple en faisant un groupe pour les tests d'une fonction, on peut utiliser un bloc <a href="https://jestjs.io/fr/docs/api#describename-fn" class="externe">describe</a>.</p>
 <h2>Front</h2>
 <p>On peut tester de la même manière le js front. En revanche, on ne testera pas la manipulation de l'arbre DOM, il faut donc séparer les fichiers js en 2 types : ceux testables et les autres.</p>
-<p>Les fichiers js testables sont ensuite importé directement dans les fichiers html avec <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">un import classique</a>.</p>
+<p>Les fichiers js testables sont ensuite importé directement dans les fichiers html avec <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" class="externe">un import classique</a>.</p>
 <p>Ici nous n'avons que ju javascript qui manipule l'arbre DOM, il est donc inutile de le tester.</p>
 <h2>Coverage</h2>
-<p>Pour savoir si nos tests couvrent bien l'ensemble du projet, c'est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>.</p>
+<p>Pour savoir si nos tests couvrent bien l'ensemble du projet, c'est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de <a href="https://fr.wikipedia.org/wiki/Couverture_de_code" class="externe">couverture de code</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -248,7 +248,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.valentinog.com/blog/jest-coverage/">https://www.valentinog.com/blog/jest-coverage/</a></p>
+<p><a href="https://www.valentinog.com/blog/jest-coverage/" class="externe">https://www.valentinog.com/blog/jest-coverage/</a></p>
 </div></div>
 
 <p>Modifions le test de chiffreAssocie pour s'en convaincre :</p>
@@ -268,7 +268,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://jestjs.io/docs/mock-functions">https://jestjs.io/docs/mock-functions</a></p>
+<p><a href="https://jestjs.io/docs/mock-functions" class="externe">https://jestjs.io/docs/mock-functions</a></p>
 </div></div>
 
 

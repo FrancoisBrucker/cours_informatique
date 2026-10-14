@@ -96,14 +96,14 @@
     
   
 
-  <p>On montre ici la création de variables avec les shell de type <code>sh</code> qui sont très utilisés comme <a href="https://www.gnu.org/software/bash/">bash</a> (le shell par défaut sous des distribution Linux comme Ubuntu ou Debian), <a href="https://www.zsh.org/">zsh</a> (le shell par défaut sous mac) ou <a href="http://www.kornshell.com/">ksh</a> (le shell par d´´faut d'OpenBSD).</p>
+  <p>On montre ici la création de variables avec les shell de type <code>sh</code> qui sont très utilisés comme <a href="https://www.gnu.org/software/bash/" class="externe">bash</a> (le shell par défaut sous des distribution Linux comme Ubuntu ou Debian), <a href="https://www.zsh.org/" class="externe">zsh</a> (le shell par défaut sous mac) ou <a href="http://www.kornshell.com/" class="externe">ksh</a> (le shell par d´´faut d'OpenBSD).</p>
 <h2>Création de variables</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://blog.roxing.net/bash-liste-des-variables">liste des variables</a></p>
+<p><a href="https://blog.roxing.net/bash-liste-des-variables" class="externe">liste des variables</a></p>
 </div></div>
 
 <p>Il faut commencer par créer une variable :</p>
@@ -114,7 +114,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots">Pas d'espace dans la déclaration de variable en shell</a></p>
+<p><a href="https://utcc.utoronto.ca/~cks/space/blog/unix/BourneShellObscureErrorRoots" class="externe">Pas d'espace dans la déclaration de variable en shell</a></p>
 </div></div>
 
 <p>Puis on peut l'afficher en précédant sont nom d'un ${} :</p>
@@ -208,12 +208,12 @@ unset toto
 echo ${toto}
 </code></pre>
 <h2>Visualisation des variables</h2>
-<p>Avec la commande shell <a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html"><code>set</code></a>.</p>
+<p>Avec la commande shell <a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html" class="externe"><code>set</code></a>.</p>
 <h2>Existence d'une variable</h2>
 <p>Il n'y a pas de réel moyen de savoir si une variable existe ou pas. Par exemple <code>echo ${n_existe_pas}</code> ne produira pas d'erreur, le métacaractère <code>${n_existe_pas}</code> étant juste remplacé par la chaîne vide.</p>
 <h2>Affecter une variable</h2>
 <blockquote>
-<p><a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting">https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting</a></p>
+<p><a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting" class="externe">https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting</a></p>
 </blockquote>
 <h3>Commande</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span><span class="token variable">)</span></span></code></pre>

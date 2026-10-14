@@ -97,14 +97,14 @@
   
 
   <p>Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée. Les tests nous permette d'avoir confiance dans la qualité du code, mais il est parfois compliqué d'être sur que nos tests vérifient bien toutes les lignes écrites (testent-ils bien tous les blocs <code class="language-">si/alors/sinon</code> ?).</p>
-<p>Un outil pour vérifier cela est la <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>. On exécute les tests et on regarde, fichier par fichier, quelles sont les lignes qui ont été vues pour ces tests.</p>
+<p>Un outil pour vérifier cela est la <a href="https://fr.wikipedia.org/wiki/Couverture_de_code" class="externe">couverture de code</a>. On exécute les tests et on regarde, fichier par fichier, quelles sont les lignes qui ont été vues pour ces tests.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Installez l'outil de couverture de code en suivant <a href="../%C3%A9diteur-vscode/extensions/python/code-coverage" class="interne">le tutoriel d'installation de <em>code coverage</em></a>.</p>
+<p>Installez l'outil de couverture de code en suivant <a href="../%C3%A9diteur-vscode/extensions/python/code-coverage">le tutoriel d'installation de <em>code coverage</em></a>.</p>
 </div></div>
 
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -116,7 +116,7 @@
 </div></div>
 
 <h2>Fichiers exemple</h2>
-<p>Pour les besoin de cet exemple, prenons <a href="../programmation-objet/coder-ses-objets/" class="interne">le compteur (final) du cours coder ses objets</a> du cours sur les classes et les objets.</p>
+<p>Pour les besoin de cet exemple, prenons <a href="../programmation-objet/coder-ses-objets/">le compteur (final) du cours coder ses objets</a> du cours sur les classes et les objets.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -324,11 +324,11 @@ TOTAL                 26     13    50%
 </code></pre>
 <p>Ce module python installe deux choses :</p>
 <ul>
-<li>le module de couverture de code <a href="https://coverage.readthedocs.io/en/7.4.1/">coverage</a></li>
-<li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a></li>
+<li>le module de couverture de code <a href="https://coverage.readthedocs.io/en/7.4.1/" class="externe">coverage</a></li>
+<li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/" class="externe">pytest-cov</a></li>
 </ul>
 <h3>Extension vscode</h3>
-<p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
+<p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters" class="externe">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
 <h2><span id="code-coverage"></span> Avec vscode</h2>
 <h3>Utiliser coverage sans pytest</h3>
 <p>En 2 temps :</p>
@@ -342,7 +342,7 @@ TOTAL                 26     13    50%
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :</p>
-<p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
+<p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report" class="externe">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
 </div></div>
 
 <h3>Couverture de code avec pytest</h3>
@@ -350,13 +350,13 @@ TOTAL                 26     13    50%
 <p>Si l'on veut les ligne manquantes, on peut utiliser la commande : <code>--cov-report term-missing</code></p>
 <p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code>python -m pytest --cov=. --cov-report html</code>.</p>
 <h3>Utilisation de l'extension *<em>Coverage Gutters</em></h3>
-<p>La commande <code>python -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code>python -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
+<p>La commande <code>python -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language" class="externe">xml</a> avec la commande : <code>python -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si le petit <em>watch</em> n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="../../../prise-en-main/#palette-de-commande" class="interne">palette de commande</a>
+<p>Si le petit <em>watch</em> n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="../../../prise-en-main/#palette-de-commande">palette de commande</a>
 <em>Coverage Gutters: Display Coverage</em>.</p>
 </div></div>
 

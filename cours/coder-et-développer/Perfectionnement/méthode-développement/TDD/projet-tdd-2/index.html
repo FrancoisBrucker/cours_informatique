@@ -136,7 +136,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-tdd-1/#fin" class="interne">Code de la partie précédente</a></p>
+<p><a href="../projet-tdd-1/#fin">Code de la partie précédente</a></p>
 </div></div>
 
 <p>On reprend la todo list de la fin de la partie 1 :</p>
@@ -646,8 +646,8 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.</p>
-<p>Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Patron_de_conception" class="externe">design patterns</a>, ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.</p>
+<p>Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html" class="externe">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern" class="externe">anti-pattern</a>.</p>
 </div></div>
 
 <p>Le pattern que l'on va utiliser est appelé <strong>factory</strong>, puisqu'il utilise des fonctions pour créer des objets.</p>
@@ -656,7 +656,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>design pattern :</strong> <a href="https://refactoring.guru/fr/design-patterns/factory-method">factory</a></p>
+<p><strong>design pattern :</strong> <a href="https://refactoring.guru/fr/design-patterns/factory-method" class="externe">factory</a></p>
 </div><div class="pl-8 mr-8">
 <p>On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu'avec le constructeur.</p>
 <p>L'intérêt est que l'on a pas à se rappeler de toutes les possibilités du constructeur, les cas classiques d'objets sont directement accessible via une fonction.</p>
@@ -886,7 +886,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>Nos factory sont des fonctions du module python. Une autre solution possible (très utilisée en Java par exemple) est d'utiliser des méthodes de classes.</p>
-<p>En python, les méthodes de classes se définissent par le décorateur <a href="https://docs.python.org/3/library/functions.html#classmethod"><code class="language-">@classmethod</code></a>.</p>
+<p>En python, les méthodes de classes se définissent par le décorateur <a href="https://docs.python.org/3/library/functions.html#classmethod" class="externe"><code class="language-">@classmethod</code></a>.</p>
 </div></div>
 
 <p>On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.</p>
@@ -984,14 +984,14 @@ test_monnaie.py:6: AttributeError</code></pre>
 </div>
 <p>On peut maintenant travailler à faire monter les devise au niveau de la classe <code class="language-">Monnaie</code>.</p>
 <h3><span id="faire-10.2"></span> Faire</h3>
-<p>L'idée est ici de placer la bonne devise lors de la création de l'objet dans <code class="language-">Monnaie</code>. Pour faire cela dans les règle de l'art on va utiliser un <a href="https://martinfowler.com/books/refactoring.html">pattern de refactoring</a> qui permet de modifier le code sans problème.</p>
+<p>L'idée est ici de placer la bonne devise lors de la création de l'objet dans <code class="language-">Monnaie</code>. Pour faire cela dans les règle de l'art on va utiliser un <a href="https://martinfowler.com/books/refactoring.html" class="externe">pattern de refactoring</a> qui permet de modifier le code sans problème.</p>
 <p>On va utiliser :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-field">Pull Up Field</a></p>
+<p><strong>Refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-field" class="externe">Pull Up Field</a></p>
 </div><div class="pl-8 mr-8">
 <p>Le but est de faire remonter un champ de sous-classes à la classe mère.</p>
 <p>Pour cela, on rend <strong>identique</strong> le champ dans chacune des sous-classes puis on le déplace dans la classe mère.</p>
@@ -1164,7 +1164,7 @@ monnaie.py:19: TypeError</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-method">Pull Up Method</a></p>
+<p><strong>Refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-method" class="externe">Pull Up Method</a></p>
 </div><div class="pl-8 mr-8">
 <p>Le but est de faire remonter une méthode de sous-classes à la classe mère.</p>
 <p>Pour cela, on rend <strong>identique</strong> la méthode dans chacune des sous-classes puis on le déplace dans la classe mère.</p>

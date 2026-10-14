@@ -134,7 +134,7 @@ $$
 </div></div>
 
 <p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
-<p>Illustrons ceci avec l'algorithme qui calcule <a href="../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences" class="interne">le nombre d'occurrences</a> :</p>
+<p>Illustrons ceci avec l'algorithme qui calcule <a href="../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences">le nombre d'occurrences</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token punctuation">(</span>nb <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span></span>
 <span class="highlight-line">    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>e <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de T<span class="token punctuation">:</span></span>
@@ -411,7 +411,7 @@ $$
 <p>Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.</p>
 <h3>Itératif</h3>
 <p>Reprenons un de nos algorithmes fil rouge
-Reprenons l'exemple <a href="../../#algorithme-pgcd" class="interne">l'algorithme du pgcd itératif</a> :
+Reprenons l'exemple <a href="../../#algorithme-pgcd">l'algorithme du pgcd itératif</a> :
 :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
@@ -434,7 +434,7 @@ C(a, b) = \mathcal{O}(\max(a, b))
 $$
 </div>
 <h3>Récursif</h3>
-<p>Reprenons l'exemple <a href="../../prouver-un-algorithme/#algorithme-pgcd-rec" class="interne">l'algorithme du pgcd récursif</a> :</p>
+<p>Reprenons l'exemple <a href="../../prouver-un-algorithme/#algorithme-pgcd-rec">l'algorithme du pgcd récursif</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># a, b > 0</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> a</span>

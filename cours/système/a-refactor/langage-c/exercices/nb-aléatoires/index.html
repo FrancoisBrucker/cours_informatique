@@ -113,8 +113,8 @@
 <p>permettant de rendre un entier aléatoire entre <code class="language-">min</code> et <code class="language-">max</code> inclus (les deux paramètres de la fonction).</p>
 <p>Pour cela, vous pourrez utiliser les fonctions (de la <code>libc</code>) suivantes définis dans <code class="fichier">&lt;stdlib.h&gt;</code> :</p>
 <ul>
-<li><a href="https://koor.fr/C/cstdlib/srand.wp"><code class="language-">srand</code></a> dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction <code class="language-">main</code>, au tout début.</li>
-<li><a href="https://koor.fr/C/cstdlib/rand.wp"><code class="language-">rand</code></a> qui rend un entier aléatoire entre 0 et et RAND_MAX</li>
+<li><a href="https://koor.fr/C/cstdlib/srand.wp" class="externe"><code class="language-">srand</code></a> dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction <code class="language-">main</code>, au tout début.</li>
+<li><a href="https://koor.fr/C/cstdlib/rand.wp" class="externe"><code class="language-">rand</code></a> qui rend un entier aléatoire entre 0 et et RAND_MAX</li>
 <li>le  modulo  (<code class="language-">%</code>) qui permet de conserver l'équiprobabilité.</li>
 </ul>
 </div></div>
@@ -137,7 +137,7 @@
 <div class="pl-8 mr-8">
 <p>Créez une fonction de signature :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">aleatoire_tab</span><span class="token punctuation">(</span><span class="token keyword">int</span> max<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Qui tire <code class="language-">nombre</code> nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de <code class="language-">nombre</code> entiers <code class="language-">int</code> avec une <a href="../../langage/gestion-tas/" class="interne">allocation dans le tas</a>.</p>
+<p>Qui tire <code class="language-">nombre</code> nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de <code class="language-">nombre</code> entiers <code class="language-">int</code> avec une <a href="../../langage/gestion-tas/">allocation dans le tas</a>.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -209,7 +209,7 @@
 </div></div>
 
 <h2>Compilation séparée</h2>
-<p>En utilisant la partie sur <a href="../../gestion-code-source" class="interne">la gestion du code source</a> :</p>
+<p>En utilisant la partie sur <a href="../../gestion-code-source">la gestion du code source</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>

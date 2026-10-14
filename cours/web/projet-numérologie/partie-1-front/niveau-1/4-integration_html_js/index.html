@@ -161,11 +161,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Voyez comment les <a href="https://www.w3schools.com/html/html_comments.asp">commentaires html</a> sont différents des autres commentaires.</p>
+<p>Voyez comment les <a href="https://www.w3schools.com/html/html_comments.asp" class="externe">commentaires html</a> sont différents des autres commentaires.</p>
 </div></div>
 
 <h3>Console javascript</h3>
-<p>Ouvrez les <a href="https://developer.chrome.com/docs/devtools/open/">outils de développement</a> de chrome et choisissez le panel <a href="https://developer.chrome.com/docs/devtools/console/"><em>console</em></a>.</p>
+<p>Ouvrez les <a href="https://developer.chrome.com/docs/devtools/open/" class="externe">outils de développement</a> de chrome et choisissez le panel <a href="https://developer.chrome.com/docs/devtools/console/" class="externe"><em>console</em></a>.</p>
 <p>Cette console est l'interpréteur javascript de la page. On peut y écrire du javascript comme dans du node, mais l'intérêt principal est qu'il possède des objets et des attributs permettant de manipuler l'arbre DOM :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value</code></pre>
 <p>Et vous y découvrirez la valeur de votre input, qui est vide (<code class="language-">''</code>) si vous n'avez rien tapé dans ce champ.</p>
@@ -180,8 +180,8 @@
 
 <p>Comment avons-nous réalisé ce prodige ?</p>
 <ul>
-<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector"><code class="language-">document.querySelector</code></a> qui permet de retrouver un élément de l'arbre DOM par son identifiant (il faut mettre un <code class="language-">#</code> devant l'identifiant)</li>
-<li>l'attribut <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value"><code class="language-">value</code> d'un input</a> qui donne sa valeur.</li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector" class="externe"><code class="language-">document.querySelector</code></a> qui permet de retrouver un élément de l'arbre DOM par son identifiant (il faut mettre un <code class="language-">#</code> devant l'identifiant)</li>
+<li>l'attribut <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value" class="externe"><code class="language-">value</code> d'un input</a> qui donne sa valeur.</li>
 </ul>
 <p>Il faut maintenant réussir à faire ça lorsque l'on clique sur un bouton.</p>
 <h3>Événements</h3>
@@ -192,7 +192,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events" class="externe">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events</a></p>
 </div></div>
 
 <p>Dès qu'il se passe quelque chose sur la page, un évènement est lancé. Ici, pour le bouton, c'est lorsque l'on clique dessus. On va donc se greffer à cet évènement. Tapez dans la console :</p>
@@ -214,7 +214,7 @@
 <li>on récupère (comme avant) le bouton.</li>
 <li>on ajoute une fonction qui fa être exécuté lors de l'évènement &quot;click&quot;</li>
 </ol>
-<p>La notation <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions#utiliser_une_expression_de_fonction_fl%C3%A9ch%C3%A9e_"><code class="language-">(param) =&gt; {code}</code> crée une fonction javascript</a>.</p>
+<p>La notation <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions#utiliser_une_expression_de_fonction_fl%C3%A9ch%C3%A9e_" class="externe"><code class="language-">(param) =&gt; {code}</code> crée une fonction javascript</a>.</p>
 <p>La ligne <code class="language-">event.preventDefault()</code> est importante, elle empêche le comportement par défaut de l'évènement click qui recharge la page. Supprimez cette ligne pour voir le résultat.</p>
 <h3>Integration dans l'html</h3>
 <p>Le code qu'on a placé dans la console va être ajouté à notre html. Ici, on place le code javascript à la fin du <code class="language-">&lt;body&gt;&lt;/body&gt;</code> pour que les balises existent quand on va les chercher avec <code class="language-">querySelector</code>.On intègre ce code grâce à la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code>.</p>
@@ -273,7 +273,7 @@
 </div></div>
 
 <h2><span id="tache-2"></span> Tâche 2 : chargement et utilisation de fichier javascript</h2>
-<p>On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en <a href="../2-code_js" class="interne">partie 2</a>. Il faut donc charger nos fonctions javascript dans le html.</p>
+<p>On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en <a href="../2-code_js">partie 2</a>. Il faut donc charger nos fonctions javascript dans le html.</p>
 <p>Cela se fait simplement avec l'attribut <code class="language-">src</code> de la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code> qui contient un chemin relatif vers un fichier javascript :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./numérologie.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -326,7 +326,7 @@
 <p>Il nous reste à changer le chiffre lorsque l'on appuie sur le bouton. Il faut pouvoir modifier le contenu du paragraphe. Pour cela :</p>
 <ul>
 <li>on donne un identifiant unique au paragraphe à modifier</li>
-<li>on regarde la doc pour savoir quelle attribut modifier : ici c'est <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/textContent">textContent</a></li>
+<li>on regarde la doc pour savoir quelle attribut modifier : ici c'est <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/textContent" class="externe">textContent</a></li>
 </ul>
 <p>Le fichier html <code class="fichier">numérologie/index.html</code> final est alors :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>

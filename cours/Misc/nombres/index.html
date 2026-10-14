@@ -97,7 +97,7 @@
   
 
   <blockquote>
-<p>TBD y mettre la partie sur les tableaux de bits de &lt;/cours/algorithmie/fonctions-booléennes/&gt;{.interne}
+<p>TBD y mettre la partie sur les tableaux de bits de &lt;/cours/algorithmie/fonctions-booléennes/&gt;
 TBD mémoire :</p>
 <ul>
 <li>base = un octet 1B. Comme si on était en base 256. Pour avoir accès aux bits on utilise des opérations logiques.</li>
@@ -174,7 +174,7 @@ nombre plus gros que 8B rangé en little endian/big endian (intel vs le reste du
   rendre r
 </code></pre>
 <blockquote>
-<p>TBD exercice pour l'écrire dans l'autre sens voir <a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf">https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf</a></p>
+<p>TBD exercice pour l'écrire dans l'autre sens voir <a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf" class="externe">https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf</a></p>
 </blockquote>
 <h2><span id="logarithme-discret">Logarithme discret</span></h2>
 <blockquote>
@@ -199,7 +199,7 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
 <li>$b_{i} = r_{i-1} = a_{i-1} - q_{i-1}\cdot b_{i-1}$</li>
 </ul>
 <p>On peut remonter de proche en proche jusqu'à obtenir une équation du type : $\text{pgcd}(a, b) = u\cdot a + v\cdot b$</p>
-<p>De façon surprenante, cet enchaînement s'écrit très bien sous la forme de <a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code">pseudo code</a> si o peut assigner 6 variables en même temps :</p>
+<p>De façon surprenante, cet enchaînement s'écrit très bien sous la forme de <a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code" class="externe">pseudo code</a> si o peut assigner 6 variables en même temps :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token punctuation">(</span>r<span class="token punctuation">,</span> u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> <span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">tant que r2 <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
@@ -238,7 +238,7 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
       100111x  x vaut 1 si 1001111 au carré &lt;= N, vaut 0 sinon
       1001111  
 </code></pre>
-<p>On est pas obligé d'élever au carré à chaque fois, on peut s'en sortir juste avec des shift et des additions en stockant judicieusement des variables intermédiaires, voir <a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Binary_numeral_system_(base_2)">wikipedia</a>. On arrive à une formulation en $\mathcal{O}(n^2)$</p>
+<p>On est pas obligé d'élever au carré à chaque fois, on peut s'en sortir juste avec des shift et des additions en stockant judicieusement des variables intermédiaires, voir <a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Binary_numeral_system_(base_2)" class="externe">wikipedia</a>. On arrive à une formulation en $\mathcal{O}(n^2)$</p>
 <blockquote>
 <p>TBD expliciter les variables</p>
 </blockquote>
@@ -248,7 +248,7 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Integer_factorization">integer factorization</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Integer_factorization" class="externe">integer factorization</a></p>
 </div></div>
 
 <blockquote>
@@ -258,8 +258,8 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
 <blockquote>
 <p>TBD :</p>
 <ul>
-<li><a href="https://gaati.org/bisson/tea/pepites-fact.pdf">https://gaati.org/bisson/tea/pepites-fact.pdf</a></li>
-<li><a href="https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html">https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html</a></li>
+<li><a href="https://gaati.org/bisson/tea/pepites-fact.pdf" class="externe">https://gaati.org/bisson/tea/pepites-fact.pdf</a></li>
+<li><a href="https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html" class="externe">https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html</a></li>
 </ul>
 </blockquote>
 <h3>Factorisation de Fermat</h3>
@@ -268,7 +268,7 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_factorisation_de_Fermat">Factorisation de Fermat</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_factorisation_de_Fermat" class="externe">Factorisation de Fermat</a></p>
 </div></div>
 
 <p>Marche bien si $p$ est proche de $q$</p>
@@ -277,8 +277,8 @@ TBD algo de résolution puis comment voir ça comme un problème de factorisatio
 <blockquote>
 <p>TBD :</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Generation_of_primes">https://en.wikipedia.org/wiki/Generation_of_primes</a></li>
-<li><a href="https://www.baeldung.com/cs/prime-number-algorithms">algos</a>
+<li><a href="https://en.wikipedia.org/wiki/Generation_of_primes" class="externe">https://en.wikipedia.org/wiki/Generation_of_primes</a></li>
+<li><a href="https://www.baeldung.com/cs/prime-number-algorithms" class="externe">algos</a>
 4.5.4 Knuth</li>
 </ul>
 </blockquote>

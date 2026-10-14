@@ -101,7 +101,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=q7kqrGC_sXE">breaking down how Linux file permissions work!</a></p>
+<p><a href="https://www.youtube.com/watch?v=q7kqrGC_sXE" class="externe">breaking down how Linux file permissions work!</a></p>
 </div></div>
 
 <blockquote>
@@ -112,7 +112,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.cekome.com/blog/permissions-utilisateurs-linux/">https://www.cekome.com/blog/permissions-utilisateurs-linux/</a></p>
+<p><a href="https://www.cekome.com/blog/permissions-utilisateurs-linux/" class="externe">https://www.cekome.com/blog/permissions-utilisateurs-linux/</a></p>
 </div></div>
 
 <p>Dans le système Linux, (pratiquement) tout ce que l'on manipule est un fichier. Cela comporte bien sur :</p>
@@ -133,7 +133,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet <a href="https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs">Plan 9</a> dont le modo était :<em>everything is a file</em>.</p>
+<p>Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet <a href="https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs" class="externe">Plan 9</a> dont le modo était :<em>everything is a file</em>.</p>
 </div></div>
 
 <p>L'accès à ces fichiers par un utilisateur est réglementé par des droits.</p>
@@ -157,15 +157,15 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://linuxize.com/post/how-to-list-users-in-linux/">lister les utilisateurs</a></li>
-<li><a href="https://linuxize.com/post/how-to-list-groups-in-linux/">lister les groupes</a></li>
+<li><a href="https://linuxize.com/post/how-to-list-users-in-linux/" class="externe">lister les utilisateurs</a></li>
+<li><a href="https://linuxize.com/post/how-to-list-groups-in-linux/" class="externe">lister les groupes</a></li>
 </ul>
 <p>Attention, ce n'est pas pareil sous macos. Voir <code>man DirectoryService</code></p>
 </div></div>
 
 <p>Chaque utilisateur et groupe est identifié par un numéro. Son UID. Seul <code>root</code> a un UID de 0, qui est spécial : aucune vérification de sécurité n'est faite pour lui.</p>
 <h3>Voir la propriété</h3>
-<p>On utilise l'option <code>-l</code> de <a href="https://man7.org/linux/man-pages/man1/ls.1.html">la commande <code>ls</code></a>. Par exemple :</p>
+<p>On utilise l'option <code>-l</code> de <a href="https://man7.org/linux/man-pages/man1/ls.1.html" class="externe">la commande <code>ls</code></a>. Par exemple :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span> <span class="token parameter variable">-l</span>
 total <span class="token number">72</span>
 drwxr-xr-x  <span class="token number">2</span> fbrucker prof  <span class="token number">6</span> <span class="token number">16</span> déc.  <span class="token number">10</span>:12 bin
@@ -191,8 +191,8 @@ drwxr-xr-x  <span class="token number">5</span> fbrucker prof  <span class="toke
 <h3>Modifier la propriété</h3>
 <p>Si l'on est l'actuel propriétaire du fichier on peut en modifier :</p>
 <ul>
-<li>son propriétaire avec <a href="https://man7.org/linux/man-pages/man1/chown.1p.html">la commande <code>chown</code></a></li>
-<li>son groupe avec <a href="https://man7.org/linux/man-pages/man1/chgrp.1.html">la commande <code>chgrp</code></a></li>
+<li>son propriétaire avec <a href="https://man7.org/linux/man-pages/man1/chown.1p.html" class="externe">la commande <code>chown</code></a></li>
+<li>son groupe avec <a href="https://man7.org/linux/man-pages/man1/chgrp.1.html" class="externe">la commande <code>chgrp</code></a></li>
 </ul>
 <h2>Droits</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -200,7 +200,7 @@ drwxr-xr-x  <span class="token number">5</span> fbrucker prof  <span class="toke
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.cekome.com/blog/permissions-utilisateurs-linux/">https://www.cekome.com/blog/permissions-utilisateurs-linux/</a></p>
+<p><a href="https://www.cekome.com/blog/permissions-utilisateurs-linux/" class="externe">https://www.cekome.com/blog/permissions-utilisateurs-linux/</a></p>
 </div></div>
 
 <p>L'accès à un fichier peut être de 3 sortes :</p>
@@ -216,7 +216,7 @@ drwxr-xr-x  <span class="token number">5</span> fbrucker prof  <span class="toke
 <li>les autres</li>
 </ul>
 <h3>Voir les droits</h3>
-<p>On utilise l'option <code>-l</code> de <a href="https://man7.org/linux/man-pages/man1/ls.1.html">la commande <code>ls</code></a>. Par exemple :</p>
+<p>On utilise l'option <code>-l</code> de <a href="https://man7.org/linux/man-pages/man1/ls.1.html" class="externe">la commande <code>ls</code></a>. Par exemple :</p>
 <!-- TBD 
 
 refaire avec un Ubuntu à la maison.
@@ -261,7 +261,7 @@ drwxr-xr-x  <span class="token number">5</span> fbrucker prof  <span class="toke
 </ul>
 <h3>Droits par défaut</h3>
 <blockquote>
-<p>TBD droit par défaut <a href="https://en.wikipedia.org/wiki/Umask">umask</a></p>
+<p>TBD droit par défaut <a href="https://en.wikipedia.org/wiki/Umask" class="externe">umask</a></p>
 </blockquote>
 <h2>Types de fichiers</h2>
 <!-- TBD 
@@ -278,7 +278,7 @@ donner un exemple et voir son type avec ls -l
 </ul>
 <h2>Droits spéciaux</h2>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Sticky_bit">sticky bit</a> de <code>/tmp</code></li>
+<li><a href="https://en.wikipedia.org/wiki/Sticky_bit" class="externe">sticky bit</a> de <code>/tmp</code></li>
 <li>setuid</li>
 <li>setgid</li>
 </ul>

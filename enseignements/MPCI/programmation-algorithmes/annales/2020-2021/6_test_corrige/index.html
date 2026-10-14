@@ -92,7 +92,7 @@
   
 
   <h2>Introduction</h2>
-<p>Cet exercice est classique et s'appelle le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues">sac à dos fractionnel</a> (dans le test, les prix étaient déjà au kilo).</p>
+<p>Cet exercice est classique et s'appelle le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues" class="externe">sac à dos fractionnel</a> (dans le test, les prix étaient déjà au kilo).</p>
 <h3>algorithme</h3>
 <ul>
 <li>entrée : liste de produits, chaque produit étant une liste [prix au kilo, kg, nom]</li>
@@ -116,7 +116,7 @@
 <p>On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode <code class="language-">reverse()</code>) pour avoir les produit triés par prix au kilo décroissant.</p>
 <p><strong>Remarques</strong> :</p>
 <ul>
-<li>Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre lexicographique</a>. Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)</li>
+<li>Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique" class="externe">ordre lexicographique</a>. Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)</li>
 <li>attention, les méthodes de liste <code class="language-">sort</code> et <code class="language-">reverse</code> ne rendent rien. Elles modifient la liste. De là <code class="language-">l.sort().reverse()</code> <strong>ne fonctionne pas</strong> puisque cette commande signifie que l'on applique la méthode <code>reverse</code> à l'objet donné en retour de <code class="language-">l.sort()</code>. Or comme <code class="language-">l.sort()</code> ne rend rien elle retourne l'objet <code class="language-">None</code> (l'objet <em>rien du tout</em> en python) qui ne possède pas de méthode <code class="language-">reverse</code>. C'est ce que dit le message d'erreur quand on essaie de le faire : <code class="language-">AttributeError: 'NoneType' object has no attribute 'reverse'</code>  (le type de l'objet <code class="language-">None</code> (comme le tpe des entier est <code class="language-">int</code> ou le type des réels est <code class="language-">float</code>) est <code class="language-">NoneType</code> (il a un type à lui)).</li>
 </ul>
 <h4>preuve</h4>

@@ -96,13 +96,13 @@
     
   
 
-  <p>Comment se partager un secret alors que tout le monde nous espionne ? Le protocole <a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a> est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.</p>
+  <p>Comment se partager un secret alors que tout le monde nous espionne ? Le protocole <a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman" class="externe">Diffie-Hellman</a> est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA">le problème en quelques vidéos</a></p>
+<p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA" class="externe">le problème en quelques vidéos</a></p>
 </div></div>
 
 <h2>Protocole Diffie-Hellman</h2>
@@ -137,9 +137,9 @@
 
 <h2>Pourquoi ça marche</h2>
 <ol>
-<li>si $n$ est premier, <a href="/cours_informatique/cours/misc/corps-ZpZ/#groupe-cyclique" class="interne">$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique</a></li>
-<li>il est très facile de faire <a href="/cours_informatique/cours/misc/corps-ZpZ/#exponentiation-modulaire" class="interne">l'exponentiation modulaire</a> dans le cas général et encore plus rapide en notation binaire</li>
-<li><a href="/cours_informatique/cours/misc/corps-ZpZ/#logarithme-discret" class="interne">le logarithme discret</a> est une opération coûteuse</li>
+<li>si $n$ est premier, <a href="/cours_informatique/cours/misc/corps-ZpZ/#groupe-cyclique">$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique</a></li>
+<li>il est très facile de faire <a href="/cours_informatique/cours/misc/corps-ZpZ/#exponentiation-modulaire">l'exponentiation modulaire</a> dans le cas général et encore plus rapide en notation binaire</li>
+<li><a href="/cours_informatique/cours/misc/corps-ZpZ/#logarithme-discret">le logarithme discret</a> est une opération coûteuse</li>
 </ol>
 <h3>Existence</h3>
 <p>Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$</p>
@@ -149,7 +149,7 @@
 <li>soit $q$ est premier et $p+q$ est pair, donc composé, et il existe $a$ et $b$ plus petit que $p$ tel que $ab = p + q$.</li>
 </ul>
 <h3>Algorithme de transmission</h3>
-<p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/" class="interne">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
+<p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     r <span class="token operator">:=</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span> y <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -165,7 +165,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter <a href="/cours_informatique/cours/algorithmie/fonctions-bool%C3%A9ennes/" class="interne">cette partie du cours</a></p>
+<p>En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter <a href="/cours_informatique/cours/algorithmie/fonctions-bool%C3%A9ennes/">cette partie du cours</a></p>
 </div></div>
 
 <p>Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.</p>
@@ -175,7 +175,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Logarithme_discret">https://fr.wikipedia.org/wiki/Logarithme_discret</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Logarithme_discret" class="externe">https://fr.wikipedia.org/wiki/Logarithme_discret</a></p>
 </div></div>
 
 <p>Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :</p>
@@ -187,7 +187,7 @@
 </span>        r <span class="token operator">←</span> r <span class="token operator">*</span> g mod p</code></pre>
 <p>est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.</p>
 <p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}(2^{log_2(p)}) = \mathcal{O}(2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
-<p>Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Baby-step_giant-step">Baby step giant step</a> qui échange du temps contre de la mémoire.</p>
+<p>Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Baby-step_giant-step" class="externe">Baby step giant step</a> qui échange du temps contre de la mémoire.</p>
 <p>Son principe est simple.</p>
 <ol>
 <li>
@@ -234,7 +234,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé <a href="https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire">compromis temps/mémoire</a> est une technique importante à connaître.</p>
+<p>La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé <a href="https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire" class="externe">compromis temps/mémoire</a> est une technique importante à connaître.</p>
 <p>Elle ne fera cependant pas de miracle puisqu'elle est bornée par la taille la mémoire disponible.</p>
 </div></div>
 
@@ -246,7 +246,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On considère actuellement que si le <a href="https://en.wikipedia.org/wiki/Key_size#Brute-force_attack">nombre de possibilité à tester est supérieur à $2^{128}$</a>, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.</p>
+<p>On considère actuellement que si le <a href="https://en.wikipedia.org/wiki/Key_size#Brute-force_attack" class="externe">nombre de possibilité à tester est supérieur à $2^{128}$</a>, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -254,7 +254,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/">recommendations ANSSI taille de clés</a></p>
+<p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/" class="externe">recommendations ANSSI taille de clés</a></p>
 </div></div>
 
 <p>Pour une clé de 128bit et 1 opération par microsecondes :</p>
@@ -269,23 +269,23 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Voir <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> ou encore <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a> pour d'autres algorithmes de résolution.</p>
+<p>Voir <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf" class="externe">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> ou encore <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf" class="externe">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a> pour d'autres algorithmes de résolution.</p>
 </div></div>
 
 <h2>Attaque</h2>
 <p>Il existe beaucoup de types d'attaques possibles. Explicitons-en quelques unes.</p>
 <h3>Brute force</h3>
-<p>La meilleure attaque connue est l'attaque brute force en utilisant <a href="https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes">l'algorithme du crible général</a> qui est une méthode de factorisation.</p>
+<p>La meilleure attaque connue est l'attaque brute force en utilisant <a href="https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes" class="externe">l'algorithme du crible général</a> qui est une méthode de factorisation.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file">https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file</a></p>
+<p><a href="https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file" class="externe">https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file</a></p>
 </div></div>
 
 <p>Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.</p>
-<p>On préconise donc une taille de clé de 4096b actuellement. Voir <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile">ce doc p35</a>.</p>
+<p>On préconise donc une taille de clé de 4096b actuellement. Voir <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile" class="externe">ce doc p35</a>.</p>
 <h3>Man in the middle</h3>
 <p>On ne cherche pas à décrypter le code, on se place en intermédiaire de la conversation :</p>
 <pre><code>    Alice    |     Mallory       |     Bob
@@ -326,7 +326,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf">Algorithmes et simple power analysis</a></p>
+<p><a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf" class="externe">Algorithmes et simple power analysis</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -335,10 +335,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire">side channel attack</a></li>
-<li><a href="https://www.youtube.com/watch?v=3v5Von-oNUg">cours du MIT</a></li>
-<li><a href="https://www.youtube.com/watch?v=2-zQp26nbY8">exemples de side channel attack</a></li>
-<li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU">channel attack autres exemples</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire" class="externe">side channel attack</a></li>
+<li><a href="https://www.youtube.com/watch?v=3v5Von-oNUg" class="externe">cours du MIT</a></li>
+<li><a href="https://www.youtube.com/watch?v=2-zQp26nbY8" class="externe">exemples de side channel attack</a></li>
+<li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU" class="externe">channel attack autres exemples</a></li>
 </ul>
 </div></div>
 
@@ -348,12 +348,12 @@
 <p>TBD à étoffer !</p>
 </blockquote>
 <blockquote>
-<p>TBD <a href="https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/</a>
+<p>TBD <a href="https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/" class="externe">https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/</a>
 TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
 TDB exemple avec courbe elliptique.
-<a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques">https://fr.wikipedia.org/wiki/Échange_de_clés_Diffie-Hellman_basé_sur_les_courbes_elliptiques</a>
-TBD taille clé 256b actuellement (<a href="https://fr.wikipedia.org/wiki/Curve25519">courbe de Bernstein</a>)
-Renvoyer à <a href="/cours_informatique/cours/misc/courbes-elliptiques" class="interne">Courbes elliptiques</a>
+<a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques" class="externe">https://fr.wikipedia.org/wiki/Échange_de_clés_Diffie-Hellman_basé_sur_les_courbes_elliptiques</a>
+TBD taille clé 256b actuellement (<a href="https://fr.wikipedia.org/wiki/Curve25519" class="externe">courbe de Bernstein</a>)
+Renvoyer à <a href="/cours_informatique/cours/misc/courbes-elliptiques">Courbes elliptiques</a>
 pour la def et les propriétés basiques d'une courbe elliptique.</p>
 </blockquote>
 

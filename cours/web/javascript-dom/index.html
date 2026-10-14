@@ -157,7 +157,7 @@
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p>Ouvrez <a href="javascript_dom" class="interne">le</a> avec votre navigateur.</p>
+<p>Ouvrez <a href="javascript_dom">le</a> avec votre navigateur.</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -169,19 +169,19 @@
 <p>Testez le pour voir.</p>
 </div></div>
 
-<p>L'objet <a href="https://developer.mozilla.org/fr/docs/Web/API/Document"><code class="language">document</code></a> est le point d'accès à l'arbre DOM. Il nous permet de récupérer les éléments de cet arbre.</p>
-<p>Dans notre cas, nous récupérons un <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement">HTMLElement</a> qui hérite de <a href="https://developer.mozilla.org/fr/docs/Web/API/Element">Element</a>. Un <code>HTMLElement</code> possède de nombreux attributs auxquels on peut accéder, comme le <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style">style</a>.</p>
+<p>L'objet <a href="https://developer.mozilla.org/fr/docs/Web/API/Document" class="externe"><code class="language">document</code></a> est le point d'accès à l'arbre DOM. Il nous permet de récupérer les éléments de cet arbre.</p>
+<p>Dans notre cas, nous récupérons un <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement" class="externe">HTMLElement</a> qui hérite de <a href="https://developer.mozilla.org/fr/docs/Web/API/Element" class="externe">Element</a>. Un <code>HTMLElement</code> possède de nombreux attributs auxquels on peut accéder, comme le <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style" class="externe">style</a>.</p>
 <p>On peut aussi accéder aux éléments par :</p>
 <ul>
-<li>leur tag : <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByTagName"><code class="language-">document.getElementsByTagName(&quot;p&quot;)</code></a></li>
-<li>leurs classes : <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByClassName"><code class="language-">document.getElementsByClassName(&quot;milieu&quot;)</code></a> (on peut mettre plusieurs classes en les séparant par des espaces)</li>
+<li>leur tag : <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByTagName" class="externe"><code class="language-">document.getElementsByTagName(&quot;p&quot;)</code></a></li>
+<li>leurs classes : <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByClassName" class="externe"><code class="language-">document.getElementsByClassName(&quot;milieu&quot;)</code></a> (on peut mettre plusieurs classes en les séparant par des espaces)</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Seul la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById"><code class="language-">document.getElementById</code></a> rend directement un élément. Les autres méthodes rendent un conteneur de type <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection">HTMLCollection</a> que l'on peut manipuler comme un tableau :</p>
+<p>Seul la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById" class="externe"><code class="language-">document.getElementById</code></a> rend directement un élément. Les autres méthodes rendent un conteneur de type <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection" class="externe">HTMLCollection</a> que l'on peut manipuler comme un tableau :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> list <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -194,7 +194,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans la console du fichier <a href="javascript_dom" class="interne"><code class="language-">javascript_dom.html</code></a>, accédez aux éléments par leur nom et leurs classes.</p>
+<p>Dans la console du fichier <a href="javascript_dom"><code class="language-">javascript_dom.html</code></a>, accédez aux éléments par leur nom et leurs classes.</p>
 </div></div>
 
 <h2>Naviguer dans l'arbre</h2>
@@ -206,18 +206,18 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.javascript.info/dom-navigation">https://fr.javascript.info/dom-navigation</a></p>
+<p><a href="https://fr.javascript.info/dom-navigation" class="externe">https://fr.javascript.info/dom-navigation</a></p>
 </div></div>
 
-<p>On peut naviguer dans l'arbre DOM en parcourant ses <a href="https://developer.mozilla.org/fr/docs/Web/API/Node">nœuds</a>.</p>
-<p>Notez qu'un élément possède aussi un attribut <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/children">children</a>. La différence tient au fait que children ne contient <strong>que</strong> les fils qui sont eux-même des éléments. Pas les champs texte par exemple.</p>
+<p>On peut naviguer dans l'arbre DOM en parcourant ses <a href="https://developer.mozilla.org/fr/docs/Web/API/Node" class="externe">nœuds</a>.</p>
+<p>Notez qu'un élément possède aussi un attribut <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/children" class="externe">children</a>. La différence tient au fait que children ne contient <strong>que</strong> les fils qui sont eux-même des éléments. Pas les champs texte par exemple.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans la console du fichier <a href="javascript_dom" class="interne"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].childNodes</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].children</code></p>
+<p>Dans la console du fichier <a href="javascript_dom"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].childNodes</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].children</code></p>
 </div></div>
 
 <h2>Modifier des éléments</h2>
@@ -226,14 +226,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des <a href="https://developer.mozilla.org/fr/docs/Web/API/Element"><code>Element</code></a> ou des <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement"><code>HTMLElement</code></a>, elles permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.</p>
+<p>Cela vaut le coup de jeter un coup d’œil aux attributs et méthodes des <a href="https://developer.mozilla.org/fr/docs/Web/API/Element" class="externe"><code>Element</code></a> ou des <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement" class="externe"><code>HTMLElement</code></a>, elles permettent de contrôler très finement et de connaître parfaitement l'arbre DOM.</p>
 </div></div>
 
 <h3>style</h3>
-<p>Dans l'exemple précédent on a accédé au <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style">style</a> d'un <code class="language-">HTMLElement</code>.</p>
-<p>On peut aussi directement accéder à n'importe quel attribut d'un <code>Element</code> avec les méthodes <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute"><code>getAttribute</code></a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute"><code>setAttributes</code></a> qui nous permettent de changer tous les attributs.</p>
+<p>Dans l'exemple précédent on a accédé au <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/style" class="externe">style</a> d'un <code class="language-">HTMLElement</code>.</p>
+<p>On peut aussi directement accéder à n'importe quel attribut d'un <code>Element</code> avec les méthodes <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute" class="externe"><code>getAttribute</code></a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute" class="externe"><code>setAttributes</code></a> qui nous permettent de changer tous les attributs.</p>
 <h3>classes</h3>
-<p><code>element.classList</code> qui rend une <a href="https://developer.mozilla.org/fr/docs/Web/API/DOMTokenList">liste</a> permettant d'ajouter ou supprimer ue class</p>
+<p><code>element.classList</code> qui rend une <a href="https://developer.mozilla.org/fr/docs/Web/API/DOMTokenList" class="externe">liste</a> permettant d'ajouter ou supprimer ue class</p>
 <h3>texte</h3>
 <p>Attribut innerHtml ou innerText</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -242,11 +242,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans la console du fichier <a href="javascript_dom" class="interne"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].innerText</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].innerHtml</code></p>
+<p>Dans la console du fichier <a href="javascript_dom"><code class="language-">javascript_dom.html</code></a>, Remarquez la différence entre <code>document.getElementsByTagName(&quot;p&quot;)[0].innerText</code> et <code>document.getElementsByTagName(&quot;p&quot;)[0].innerHtml</code></p>
 </div></div>
 
 <h2>Créer des éléments</h2>
-<p>On peut <em>facilement</em> ajouter des éléments  à l'arbre DOM grace à la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/createElement">document.createElement</a> et à la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild">appendChild</a> des éléments.</p>
+<p>On peut <em>facilement</em> ajouter des éléments  à l'arbre DOM grace à la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/createElement" class="externe">document.createElement</a> et à la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild" class="externe">appendChild</a> des éléments.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>

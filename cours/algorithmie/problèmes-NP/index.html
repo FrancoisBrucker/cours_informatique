@@ -99,7 +99,7 @@
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, ici on considérera que les algorithmes sont écrit en pseudo-code.</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Un <a href="../#probl%C3%A8me-algorithmique" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
+<p>Un <a href="../#probl%C3%A8me-algorithmique">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : <strong>la résolution</strong>.</p>
 <h3>Résolution efficace</h3>
@@ -116,11 +116,11 @@
 
 <p>On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :</p>
 <ul>
-<li>Trouver le maximum d'un tableau d'entiers dont <a href="../complexit%C3%A9-probl%C3%A8me/#recherche" class="interne">on a démontré que sa complexité était linéaire</a>,</li>
-<li>Trier un tableau d'entiers dont <a href="../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me" class="interne">on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$</a> où $n$ est la taille du tableau,</li>
+<li>Trouver le maximum d'un tableau d'entiers dont <a href="../complexit%C3%A9-probl%C3%A8me/#recherche">on a démontré que sa complexité était linéaire</a>,</li>
+<li>Trier un tableau d'entiers dont <a href="../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me">on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$</a> où $n$ est la taille du tableau,</li>
 </ul>
 <p><img src="NP-P.png" alt="décidable"></p>
-<p>Le cas du <a href="../projet-exponentiation/%C3%A9tude-algorithmique" class="interne">problème de l'exponentiation</a> est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.</p>
+<p>Le cas du <a href="../projet-exponentiation/%C3%A9tude-algorithmique">problème de l'exponentiation</a> est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.</p>
 <p>En informatique théorique l'unité d'information est le bit, la taille de l'entrée d'un algorithme est toujours égale au nombre de bits nécessaires pour la stocker. Pour un entier il s'agit donc du logarithme en base 2 de sa valeur et donc le problème de l'exponentiation est bien polynomiale, il est même linéaire en la taille de l'entrée...</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -183,7 +183,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 
 <p>Cette définition est réaliste puisque si l'on possède une solution potentielle on veut pouvoir vérifier de façon efficace (<em>ie.</em> polynomialement) que c'est bien une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <p>Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.</p>
-<p>Ainsi, pour <a href="../#probl%C3%A8me-max-tableau" class="interne">le problème MAX (trouver le maximum d'un tableau)</a> :</p>
+<p>Ainsi, pour <a href="../#probl%C3%A8me-max-tableau">le problème MAX (trouver le maximum d'un tableau)</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_max<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   m <span class="token operator">←</span> max<span class="token punctuation">(</span>T<span class="token punctuation">)</span>  <span class="token comment"># algorithme linaire trouvant le maximum d'un tableau</span>
   <span class="token keyword">rendre</span> m <span class="token operator">==</span> sol</code></pre>
@@ -191,7 +191,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que le problème <a href="../probl%C3%A8me-r%C3%A9duction/#probl%C3%A8me-3-SUM" class="interne">3-SUM</a> admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).</p>
+<p>Montrez que le problème <a href="../probl%C3%A8me-r%C3%A9duction/#probl%C3%A8me-3-SUM">3-SUM</a> admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -220,7 +220,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </details>     
 </div>
 <h3>Vérifieur efficace et algorithme de résolution</h3>
-<p>Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur <code class="language-">stop(E: chaîne, n: entier) → booléen</code> qui rend vrai si le programme décrit par la chaîne de caractères <code class="language-">E</code> s'arrête au bout de <code class="language-">n</code> itération. Ce vérifieur correspond <a href="../bases-th%C3%A9oriques/arr%C3%AAt-rice/" class="interne">au problème de l'arrêt</a> qui est indécidable.</p>
+<p>Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur <code class="language-">stop(E: chaîne, n: entier) → booléen</code> qui rend vrai si le programme décrit par la chaîne de caractères <code class="language-">E</code> s'arrête au bout de <code class="language-">n</code> itération. Ce vérifieur correspond <a href="../bases-th%C3%A9oriques/arr%C3%AAt-rice/">au problème de l'arrêt</a> qui est indécidable.</p>
 <p>Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,14 +327,14 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </details>     
 </div>
 <h2>Structure de NP</h2>
-<p>Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : <a href="../probl%C3%A8me-r%C3%A9duction/#d%C3%A9finition-r%C3%A9duction-polynomiale" class="interne">la réduction polynomiale</a>.</p>
+<p>Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : <a href="../probl%C3%A8me-r%C3%A9duction/#d%C3%A9finition-r%C3%A9duction-polynomiale">la réduction polynomiale</a>.</p>
 <p>De façon extrêmement surprenante lorsqu'on y pense, il existe un problème de $NP$, SAT, qui majore tous les autres problèmes. Nous démontrerons ceci précisément plus tard, admettons donc (pour l'instant) le théorème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Théorème (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook">Cook &amp; Levin en 1971</a>)</strong></p>
+<p><strong>Théorème (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook" class="externe">Cook &amp; Levin en 1971</a>)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout problème $A$ de $NP$ il existe une <strong>réduction polynomiale</strong> de $A$ vers le problème SAT : $A \leq SAT$</p>
 </div></div>
@@ -491,7 +491,7 @@ $$
 
 <h3>Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
-<p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.</p>
+<p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin" class="externe">la transformation de Tseitin</a> (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.</p>
 <p>Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -502,7 +502,7 @@ $$
 </div></div>
 
 <h4>MAX</h4>
-<p>Montrons que l'on peut le faire pour <a href="../#probl%C3%A8me-max-tableau" class="interne">le problème MAX (trouver le maximum d'un tableau)</a>. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
+<p>Montrons que l'on peut le faire pour <a href="../#probl%C3%A8me-max-tableau">le problème MAX (trouver le maximum d'un tableau)</a>. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
 <li>l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i = y^i) \coloneqq (x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$. La formule logique est  n'vrai que si les deux variables booléennes sont égales.</li>
 <li>un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$</li>
@@ -691,7 +691,7 @@ $$
             retenues<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
     somme<span class="token punctuation">[</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> retenues<span class="token punctuation">[</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span>
     <span class="token keyword">rendre</span> somme</code></pre>
-<p>L'algorithme ci-dessus est une implémentation binaire de <a href="https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul">l'addition posée</a> que l'on apprend au primaire. L'addition des nombres <code>x = 1011</code> et <code>y = 0111</code> donne <code>somme = 10011</code> :</p>
+<p>L'algorithme ci-dessus est une implémentation binaire de <a href="https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul" class="externe">l'addition posée</a> que l'on apprend au primaire. L'addition des nombres <code>x = 1011</code> et <code>y = 0111</code> donne <code>somme = 10011</code> :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">   1011  = 11     x
 +  0111  =  7     y
   11110           retenue
@@ -769,14 +769,14 @@ $$
 </ul>
 </div></div>
 
-<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Par Exemple</a> : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$</p>
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description" class="externe">Par Exemple</a> : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$</p>
 <p>On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :</p>
 <ul>
 <li>clause à $n &gt; 3$ littéraux $(x_1 \lor \dots \lor x_n)$  : on la remplace par les $n-2$ clauses suivantes $(x_1 \lor x_2 \lor \alpha_1) \land  (\overline{\alpha_1} \lor x_3 \lor \alpha_2) \land (\overline{\alpha_{i-2}} \lor x_{i} \lor \alpha_{i-1}) \land \dots \land (\overline{\alpha_{n-3}} \lor x_{n-1} \lor x_{n})$ avec $n-3$ nouveaux littéraux $\alpha_i$ ($1\leq i \leq n-3$)</li>
 <li>clauses à deux littéraux $(x \lor y)$ : on la remplace par les deux clauses $(x \lor y \lor \alpha) \land (x \lor y \lor \overline{\alpha})$ avec $\alpha$ un nouveau littéral</li>
 <li>clauses à un littéral $(x)$ : on la remplace par $(x \lor \alpha \lor \beta) \land (x \lor \alpha \lor \overline{\beta}) \land (x \lor \overline{\alpha} \lor \beta) \land (x \lor \overline{\alpha} \lor \overline{\beta})$ avec $\alpha$ et $\beta$ deux nouveaux littéraux</li>
 </ul>
-<p>Reprenons <a href="#exemple-SAT" class="interne">l'exemple de SAT</a> et appliquons lui la transformation :</p>
+<p>Reprenons <a href="#exemple-SAT">l'exemple de SAT</a> et appliquons lui la transformation :</p>
 <div>
 $$
 (x_1 \lor {x_2}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5}) \land ({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})
@@ -793,8 +793,8 @@ $$
 <p><img src="NP-NP-2b.png" alt="décidable"></p>
 <p>Remarquez que notre transformation ne permet pas de passer de SAT à 2-SAT puisqu'il faut chaîner les clauses de strictement plus de 3 littéraux.</p>
 <h3>Que signifie NP-complet</h3>
-<p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
-<p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>
+<p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems" class="externe">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
+<p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent" class="externe">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -823,7 +823,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
+<p>Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc" class="externe">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 </div></div>
 
 <p><img src="NP-NP-3.png" alt="décidable"></p>
@@ -854,7 +854,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question</a></p>
+<p><a href="https://www.youtube.com/watch?v=6OPsH8PK7xM" class="externe">Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question</a></p>
 </div></div>
 
 <p>Bref :</p>
@@ -897,7 +897,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=21bMUXO-QYQ">Les définitions d'une excellente chaîne d'informatique</a></p>
+<p><a href="https://www.youtube.com/watch?v=21bMUXO-QYQ" class="externe">Les définitions d'une excellente chaîne d'informatique</a></p>
 </div></div>
 
 <p>Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont isomorphes avec une fonction $\sigma: V_1 \to V_2$ il faut montrer que :</p>
@@ -905,7 +905,7 @@ $$
 <li>$\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments</li>
 <li>que les arêtes de $V_2$ sont bien arêtes de $V_1$ envoyées via $\sigma$, donc que les deux tableaux $T'_1 = [\{\sigma(x), \sigma(y)\} \mbox{ pour chaque } x \in E_1]$ et $T_2 = [xy \mbox{ pour chaque } xy \in E_2]$ contiennent les mêmes éléments</li>
 </ul>
-<p>Ceci peut donc se faire en utilisant deux fois l'algorithme <a href="../projet-calcul-complexite/#%C3%A9galit%C3%A9-tableaux" class="interne">égalité de tableaux</a> avec une complexité totale de $\mathcal{O}(\; |\; E_1\; |^2\; + \; |\; V_1\; |^2\;)$ (en supposant que $\; |\; E_1\; |\; = \; |\; E_2\; |\;$ et $\; |\; V_1\; |\; = \; |\; V_2\; |\;$). On en conclut que :</p>
+<p>Ceci peut donc se faire en utilisant deux fois l'algorithme <a href="../projet-calcul-complexite/#%C3%A9galit%C3%A9-tableaux">égalité de tableaux</a> avec une complexité totale de $\mathcal{O}(\; |\; E_1\; |^2\; + \; |\; V_1\; |^2\;)$ (en supposant que $\; |\; E_1\; |\; = \; |\; E_2\; |\;$ et $\; |\; V_1\; |\; = \; |\; V_2\; |\;$). On en conclut que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -952,7 +952,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Même si le statut de l'isomorphie de graphe est inconnue, <a href="https://en.wikipedia.org/wiki/Graph_isomorphism_problem#Complexity_class_GI">il est très fortement suspecté</a> qu'il ne soit ni sans P ni dans NPC. Il existe de nombreux autres problèmes dans ce cas là comme <a href="https://fr.wikipedia.org/wiki/Factorisation">le problème de la factorisation</a> (alors que savoir si un nombre est premier ou pas <a href="https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf">est polynomial</a>. Mais cela dépasse de loin le cadre de ce cours introductif) ou <a href="https://fr.wikipedia.org/wiki/Logarithme_discret">le logarithme discret</a> à la base des algorithmes de chiffrement.</p>
+<p>Même si le statut de l'isomorphie de graphe est inconnue, <a href="https://en.wikipedia.org/wiki/Graph_isomorphism_problem#Complexity_class_GI" class="externe">il est très fortement suspecté</a> qu'il ne soit ni sans P ni dans NPC. Il existe de nombreux autres problèmes dans ce cas là comme <a href="https://fr.wikipedia.org/wiki/Factorisation" class="externe">le problème de la factorisation</a> (alors que savoir si un nombre est premier ou pas <a href="https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf" class="externe">est polynomial</a>. Mais cela dépasse de loin le cadre de ce cours introductif) ou <a href="https://fr.wikipedia.org/wiki/Logarithme_discret" class="externe">le logarithme discret</a> à la base des algorithmes de chiffrement.</p>
 <h2>Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
@@ -965,7 +965,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le lecteur intéresser pourra consulter <a href="https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9">la page Wikipedia sur les classes de complexité</a> qui en liste certaines.</p>
+<p>Le lecteur intéresser pourra consulter <a href="https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9" class="externe">la page Wikipedia sur les classes de complexité</a> qui en liste certaines.</p>
 </div></div>
 
 

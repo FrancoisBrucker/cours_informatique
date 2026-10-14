@@ -101,14 +101,14 @@
 <li>soit détecter les erreur de transmissions et tenter de les corriger si elles sont peu nombreuses. Ces ajoute permettent de corriger des erreurs aléatoires dues aux erreurs de transmissions (canal bruité) ou à l'usure (sur un dvd par exemple)</li>
 <li>soit uniquement vérifier de l'intégrité du message. Ceci permet de détecter a priori toute modification.</li>
 </ol>
-<p>La première approche est associée à la discipline du traitement du signal et à donné des algorithmes élégants comme les <a href="https://www.youtube.com/watch?v=X8jsijhllIA">codes de hamming</a> ou encore les code de <a href="https://www.youtube.com/watch?v=1pQJkt7-R4Q">Reed Solomon</a>. Ces structures sont cependant prédictibles et ne permettent donc pas de protéger de modifications volontaires.</p>
+<p>La première approche est associée à la discipline du traitement du signal et à donné des algorithmes élégants comme les <a href="https://www.youtube.com/watch?v=X8jsijhllIA" class="externe">codes de hamming</a> ou encore les code de <a href="https://www.youtube.com/watch?v=1pQJkt7-R4Q" class="externe">Reed Solomon</a>. Ces structures sont cependant prédictibles et ne permettent donc pas de protéger de modifications volontaires.</p>
 <p>La seconde approche, utilisée en sécurité, consiste à résumer le message envoyé par un hash bien plus petit mais non prédictible.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg">hash et sécurité</a></p>
+<p><a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg" class="externe">hash et sécurité</a></p>
 </div></div>
 
 <h2>Pourquoi c'est important</h2>
@@ -117,19 +117,19 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Mall%C3%A9abilit%C3%A9_(cryptographie)">Malléabilité</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Mall%C3%A9abilit%C3%A9_(cryptographie)" class="externe">Malléabilité</a></p>
 </div></div>
 
-<p>Si un message chiffré $c$ peut être modifié en un message chiffré $f(c)$ tout en étant encore déchiffrable, on dit que le code est malléable. Les chiffrements par flux utilisant le XOR sont par essence malléable <a href="../chiffre-vernam/#Vernam-int%C3%A9grit%C3%A9" class="interne">comme on l'a déjà vu</a>, il est donc important de pouvoir se prémunir de ce genre d'attaque.</p>
+<p>Si un message chiffré $c$ peut être modifié en un message chiffré $f(c)$ tout en étant encore déchiffrable, on dit que le code est malléable. Les chiffrements par flux utilisant le XOR sont par essence malléable <a href="../chiffre-vernam/#Vernam-int%C3%A9grit%C3%A9">comme on l'a déjà vu</a>, il est donc important de pouvoir se prémunir de ce genre d'attaque.</p>
 <p>Enfin, il faut que cette protection soit elle même chiffrée, sans quoi si Mallory peut modifier le message chiffrée $c$ en $f(c)$, il peut très bien également modifier le la protection pour qu'elle corresponde à $f(c)$</p>
 <h2>Hash et sécurité</h2>
-<p>Le principal outil pour garantir l'intégrité d'un message est <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/" class="interne">la fonction de hash</a>. Elles doivent cependant avoir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">des propriétés spécifiques</a> pour être utilisées en cryptographie.</p>
+<p>Le principal outil pour garantir l'intégrité d'un message est <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">la fonction de hash</a>. Elles doivent cependant avoir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique" class="externe">des propriétés spécifiques</a> pour être utilisées en cryptographie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="hash" class="interne">Hash cryptographiques</a></p>
+<p><a href="hash">Hash cryptographiques</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -137,7 +137,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="utilisation-sha" class="interne">Utiliser SHA</a></p>
+<p><a href="utilisation-sha">Utiliser SHA</a></p>
 </div></div>
 
 <h2>Hash chiffré</h2>
@@ -146,7 +146,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="mac" class="interne">Message Authentification Code (MAC)</a></p>
+<p><a href="mac">Message Authentification Code (MAC)</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -154,7 +154,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="poly1305" class="interne">poly1305</a></p>
+<p><a href="poly1305">poly1305</a></p>
 </div></div>
 
 <h2>AEAD</h2>
@@ -164,7 +164,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="aead" class="interne">Authenticated Encryption Associated Data</a></p>
+<p><a href="aead">Authenticated Encryption Associated Data</a></p>
 </div></div>
 
 

@@ -108,9 +108,9 @@
   
 
   <blockquote>
-<p>TBD : <a href="https://www.youtube.com/watch?v=A60q6dcoCjw">https://www.youtube.com/watch?v=A60q6dcoCjw</a></p>
+<p>TBD : <a href="https://www.youtube.com/watch?v=A60q6dcoCjw" class="externe">https://www.youtube.com/watch?v=A60q6dcoCjw</a></p>
 </blockquote>
-<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est <a href="https://fr.wikipedia.org/wiki/Algorithme_A*">l'algorithme $A^\star$</a>, qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors <em>rapidement</em> une solution <em>acceptable</em> plutôt qu'obtenir <em>lentement</em> une solution optimale.</p>
+<p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est <a href="https://fr.wikipedia.org/wiki/Algorithme_A*" class="externe">l'algorithme $A^\star$</a>, qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors <em>rapidement</em> une solution <em>acceptable</em> plutôt qu'obtenir <em>lentement</em> une solution optimale.</p>
 <p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">        <span class="token comment"># ajout d'un élément à la structure</span></span>
 <span class="highlight-line">        soit u un élément de V \ V_dijkstra tel que coût<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">+</span> h<span class="token punctuation">(</span>u<span class="token punctuation">)</span> soit minimum</span>
@@ -272,7 +272,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Voir <a href="https://en.wikipedia.org/wiki/Admissible_heuristic">https://en.wikipedia.org/wiki/Admissible_heuristic</a> et en particulier la <a href="https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof">preuve de l'optimalité</a>.</p>
+<p>Voir <a href="https://en.wikipedia.org/wiki/Admissible_heuristic" class="externe">https://en.wikipedia.org/wiki/Admissible_heuristic</a> et en particulier la <a href="https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof" class="externe">preuve de l'optimalité</a>.</p>
 </div>
 </details>     
 </div>
@@ -313,7 +313,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le <a href="https://fr.wikipedia.org/wiki/Recherche_de_chemin"><em>pathfinding</em></a> par exemple.</p>
+<p>On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le <a href="https://fr.wikipedia.org/wiki/Recherche_de_chemin" class="externe"><em>pathfinding</em></a> par exemple.</p>
 <h2>Dijkstra et BFS</h2>
 <blockquote>
 <p>TBD montrer que Dijkstra = BFS + file de priorité

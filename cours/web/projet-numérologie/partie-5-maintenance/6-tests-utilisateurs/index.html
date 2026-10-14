@@ -115,27 +115,27 @@
 <p>User stories.</p>
 <!-- fin résumé -->
 <p>Lorsque l'on fabrique un site, on a envie de l'utiliser d'une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d'utilisation
-appelées <em>user stories</em> ou <em>test fonctionnels</em>. Elles dépendent souvent de <a href="https://fr.wikipedia.org/wiki/Persona_(marketing)">persona</a>, sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.</p>
+appelées <em>user stories</em> ou <em>test fonctionnels</em>. Elles dépendent souvent de <a href="https://fr.wikipedia.org/wiki/Persona_(marketing)" class="externe">persona</a>, sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.</p>
 <p>Le but est de tester que les intentions d'un utilisateurs peuvent être satisfaites. C'est un enchaînement de tests fonctionnels qui racontent une histoire d'<strong>un</strong> utilisateur voulant réaliser <strong>une</strong> tache sur notre application/site.</p>
 <p>Comme toujours, on va automatiser ce processus en utilisant un script qui fera les manipulation et vérifiera le résultat pour nous.</p>
 <h2>User Stories et Tests Fonctionnels</h2>
 <p>Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire.</p>
 <p>Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.
 On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.</p>
-<p>Pour cela, on va utiliser <a href="https://www.selenium.dev">Selenium</a>, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.
+<p>Pour cela, on va utiliser <a href="https://www.selenium.dev" class="externe">Selenium</a>, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.
 C’est un outil très générique puisqu’il supporte de nombreux navigateurs, il est utilisable avec de nombreux langages également.</p>
 <h2>Selenium</h2>
-<p><a href="https://www.selenium.dev/">Selenium</a> est une bibliothèque permettant de contrôler les actions d'un navigateur.</p>
+<p><a href="https://www.selenium.dev/" class="externe">Selenium</a> est une bibliothèque permettant de contrôler les actions d'un navigateur.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La <a href="https://www.selenium.dev/documentation/">documentation officielle</a> est très précieuse. Il y a en effet plein de possibilités.</p>
+<p>La <a href="https://www.selenium.dev/documentation/" class="externe">documentation officielle</a> est très précieuse. Il y a en effet plein de possibilités.</p>
 </div></div>
 
 <h3>Installation</h3>
-<p>Pour utiliser selenum il nous <a href="https://www.selenium.dev/documentation/webdriver/getting_started/">faudra installer</a> :</p>
+<p>Pour utiliser selenum il nous <a href="https://www.selenium.dev/documentation/webdriver/getting_started/" class="externe">faudra installer</a> :</p>
 <ul>
 <li><code>selenium-webdriver</code>, la bibliothèque de Selenium proprement dit</li>
 <li>un navigateur web :
@@ -167,7 +167,7 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <div class="pl-8 mr-8">
 <ol>
 <li>ouvrez une nouvelle fenêtre</li>
-<li>tapez <a href="https://www.google.fr">https://www.google.fr</a></li>
+<li>tapez <a href="https://www.google.fr" class="externe">https://www.google.fr</a></li>
 <li>vérifiez que le titre de la fenêtre contient <code class="language-">&quot;Google&quot;</code></li>
 </ol>
 </div></div>
@@ -245,7 +245,7 @@ afterEach(async () => {
 <div class="pl-8 mr-8">
 <ol>
 <li>ouvrez une nouvelle fenêtre</li>
-<li>tapez <a href="https://www.google.fr">https://www.google.fr</a></li>
+<li>tapez <a href="https://www.google.fr" class="externe">https://www.google.fr</a></li>
 <li>cliquer sur le bouton <em>j'accepte</em></li>
 <li>rechercher <em>Carole Deumié</em></li>
 <li>prendre un screenshot</li>
@@ -291,7 +291,7 @@ afterEach(async () => {
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p><a href="https://www.youtube.com/watch?v=NzxejXTumLQ">Étonnant, non ?</a></p>
+<p><a href="https://www.youtube.com/watch?v=NzxejXTumLQ" class="externe">Étonnant, non ?</a></p>
 </blockquote>
 <h2>Fonctionnement de selenium</h2>
 <p>Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.
@@ -331,7 +331,7 @@ Il suffit dans le code de changer les noms du driver et du navigateur.</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour installer et utiliser d'autres drivers <a href="https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/">consultez cette page</a>.</p>
+<p>Pour installer et utiliser d'autres drivers <a href="https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/" class="externe">consultez cette page</a>.</p>
 </div></div>
 
 <h3>Trouver un Élément Web</h3>
@@ -389,8 +389,8 @@ Les exemples les plus fréquents sont :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Des actions plus précises peuvent être faites
-<a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/">à la souris</a>
-comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/">au clavier</a>.</p>
+<a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/" class="externe">à la souris</a>
+comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/" class="externe">au clavier</a>.</p>
 </div></div>
 
 <h3>Quelques commandes utiles</h3>
@@ -398,7 +398,7 @@ comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/">au
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'img.png'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe">iframe</a>.
+<p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe" class="externe">iframe</a>.
 Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accéder à son contenu :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> iframe <span class="token operator">=</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On trouve d'abord l'iframe</span>
 
@@ -479,7 +479,7 @@ process<span class="token punctuation">.</span>env<span class="token punctuation
 <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un <a href="https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait">temps d'attente explicite</a> pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode <code>getText()</code> rende une valeur non nulle, et on attend au pire 10s.</p>
+<p>Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un <a href="https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait" class="externe">temps d'attente explicite</a> pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode <code>getText()</code> rende une valeur non nulle, et on attend au pire 10s.</p>
 <blockquote>
 <p>Si on veut attendre de façon certaine, 2s par exemple, on peut utiliser une fonction qui rend toujours faux : <code>await browser.wait(() =&gt; false, 2000)</code></p>
 </blockquote>

@@ -111,7 +111,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#donn%C3%A9es" class="interne">Données du réseau ferré</a></p>
+<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#donn%C3%A9es">Données du réseau ferré</a></p>
 </div></div>
 
 <p>Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.</p>
@@ -178,7 +178,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-de-donn%C3%A9es/dictionnaire" class="interne">dictionnaire</a> :</p>
+<p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-de-donn%C3%A9es/dictionnaire">dictionnaire</a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 villes <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -227,7 +227,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
+<p>L'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale" class="externe">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
 </div></div>
 
 <p>Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nulle (si on tire au hasard des coordonnées réelles aux points), et – même si ça arrivait – il suffirait de déplacer un des trois points d'epsilon pour que ça n'arrive plus.</p>
@@ -257,7 +257,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#relation-C" class="interne">La relation <em>chemin</em></a></p>
+<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#relation-C">La relation <em>chemin</em></a></p>
 </div></div>
 
 <p>Le fait que la relation <em>chemin</em>  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).</p>
@@ -469,7 +469,7 @@ pour chaque ville u:
 
 <p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les tronçons.</p>
 <p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.</p>
-<p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a> :</p>
+<p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal" class="externe">Kruskal</a> :</p>
 <pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">pour chaque ville v : R(v) = v
 pour chaque tronçon (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
@@ -501,13 +501,13 @@ pour chaque tronçon (x, y) examiné par distance croissante:
 </summary>
 <div class="mx-8 pb-2">
 <p>On suppose que l'algorithme de Kruskal nous rend une liste <code class="language-">tronçons</code> dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.</p>
-<p>Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">fonction <code>plot</code></a>.</p>
+<p>Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html" class="externe">fonction <code>plot</code></a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On en a aussi profité pour changer de couleur en utilisant <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">cette documentation</a></p>
+<p>On en a aussi profité pour changer de couleur en utilisant <a href="https://matplotlib.org/stable/gallery/color/named_colors.html" class="externe">cette documentation</a></p>
 </div></div>
 </div>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -676,7 +676,7 @@ $$
 <div class="mx-8 pb-2">
 <p>Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :</p>
 <p><img src="croisement-segment.png" alt="croisement"></p>
-<p>Avec $uxvy$ qui forme un <a href="https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re">quadrilatère</a> convexe.</p>
+<p>Avec $uxvy$ qui forme un <a href="https://fr.wikipedia.org/wiki/Quadrilat%C3%A8re" class="externe">quadrilatère</a> convexe.</p>
 <p>En supprimant le segment $(x, y)$ du réseau on déconnecte $x$ de $y$. Les deux villes $u$ et $v$ se retrouvent alors dans la même composante connexe, disons celle de $y$. En supprimant ensuite le segment $(u, v)$ on déconnecte $u$ de $v$ et on peut supposer sans perte de généralité que $y$ se retrouve dans la composante connexe de $v$.</p>
 <p>On en conclut que les 3 segments $(x, u)$, $(x, v)$ et $(y, u)$ ne font pas partie du réseau et qu'en supprimant les segments $(x, y)$ et $(u, v)$ de celui-ci on obtient 3 composantes connexes :</p>
 <ul>
@@ -691,11 +691,11 @@ $$
 </div>
 <h2>Chemins entre villes</h2>
 <p>Le réseau de coût de construction minimal est connexe et ne contient pas de cycle. Il n'existe donc pour chaque couple de villes qu'un unique chemin.</p>
-<p>L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a>. Il est très efficace et utilisé dans de nombreuses occasions.</p>
+<p>L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur" class="externe">parcours en profondeur</a>. Il est très efficace et utilisé dans de nombreuses occasions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.</p>
+<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking" class="externe">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.</p>
 <p>Cet algorithme doit être récursif. Il doit parcourir toutes les tronçons et se relancer dès qu'il trouve un tronçon permettant de progresser, c'est à dire un tronçon dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.</p>
 <p>Cet algorithme doit donc avoir comme paramètre :</p>
 <ul>
@@ -877,7 +877,7 @@ affiche à l'écran : chemin</code></pre>
 <h2>Cycles</h2>
 <p>Le réseau ferré de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Un seul tronçon de bloqué et le réseau n'est plus connexe.</p>
 <p>L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.</p>
-<p>Ce problème est cependant souvent vu sous un autre angle, celui d'un <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a> voulant visiter toutes les villes :</p>
+<p>Ce problème est cependant souvent vu sous un autre angle, celui d'un <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce" class="externe">voyageur de commerce</a> voulant visiter toutes les villes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -958,7 +958,7 @@ $$</p>
 <p>Un cycle optimal est composé de chemins optimaux.</p>
 </div></div>
 
-<p>Cette constatation nous incite à utiliser le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique"><strong>programmation dynamique</strong></a> pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.</p>
+<p>Cette constatation nous incite à utiliser le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique" class="externe"><strong>programmation dynamique</strong></a> pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.</p>
 <p>Dans le cas de notre problème du voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$, on peut construire un algorithme de programmation dynamique en remarquant que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1061,7 +1061,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles (<a href="../complexit%C3%A9s/max-min/#n_factoriel" class="interne">$2^n$ est très petit devant $n!$</a>) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.</p>
+<p>Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles (<a href="../complexit%C3%A9s/max-min/#n_factoriel">$2^n$ est très petit devant $n!$</a>) puisque l'on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -1071,7 +1071,7 @@ $$</p>
 </div></div>
 
 <h3>Algorithme glouton</h3>
-<p>Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a> (plus précisément NP-difficile, mais ne chipotons pas).</p>
+<p>Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet" class="externe">NP-complet</a> (plus précisément NP-difficile, mais ne chipotons pas).</p>
 <p>Couramment, l'algorithme glouton utilisé pour approximer ce problème est :</p>
 <ol>
 <li>choisir une ville de départ qui constitue le départ du cycle</li>
@@ -1148,7 +1148,7 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 </div>
 </details>     
 </div>
-<p>C'est l'idée sous-jacente de la méthode d'optimisation <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
+<p>C'est l'idée sous-jacente de la méthode d'optimisation <a href="https://fr.wikipedia.org/wiki/2-opt" class="externe">2-opt</a> :</p>
 <ol>
 <li>trouver un cycle potentiel</li>
 <li>chercher un croisement et le supprimer</li>
@@ -1215,7 +1215,7 @@ $$</p>
 <p>$$
 [1, 2, 3, 4, 5, 6]
 $$</p>
-<p>Remarquez que c'est l'<a href="#profondeur" class="interne">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
+<p>Remarquez que c'est l'<a href="#profondeur">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
 <p>Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1238,11 +1238,11 @@ $$</p>
 <p>On obtient, pour K =1, un coût de construction de : 8.596669623756684</p>
 </blockquote>
 <h3>Algorithme de Christofides</h3>
-<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Christofides">algorithme de Christofides</a> est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.</p>
+<p>L'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Christofides" class="externe">algorithme de Christofides</a> est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.</p>
 <p>C'est de plus la meilleure approximation connue. Son étude nécessite cependant des connaissance en théorie des graphes que nous n'avons (pour l'instant) pas.</p>
 <h2>Autre parcours</h2>
 <blockquote>
-<p>cycle bitonique exo 9 <a href="https://wkerl.me/cours/ouv_td.pdf">https://wkerl.me/cours/ouv_td.pdf</a></p>
+<p>cycle bitonique exo 9 <a href="https://wkerl.me/cours/ouv_td.pdf" class="externe">https://wkerl.me/cours/ouv_td.pdf</a></p>
 </blockquote>
 
 

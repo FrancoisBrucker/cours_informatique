@@ -144,12 +144,12 @@
   
 
   <!-- début résumé -->
-<p>L'utilitaire <a href="https://pandoc.org/">pandoc</a> et son utilisation pour le format markdown.</p>
+<p>L'utilitaire <a href="https://pandoc.org/" class="externe">pandoc</a> et son utilisation pour le format markdown.</p>
 <!-- fin résumé -->
-<p>Pandoc est un utilitaire de conversion de fichier texte. Il peut virtuellement transformer tout format texte en un autre (voir les <a href="https://pandoc.org/demos.html">démos</a> pour différentes conversions).</p>
+<p>Pandoc est un utilitaire de conversion de fichier texte. Il peut virtuellement transformer tout format texte en un autre (voir les <a href="https://pandoc.org/demos.html" class="externe">démos</a> pour différentes conversions).</p>
 <p>Nous allons ici juste montrer ses capacités pour le markdown.</p>
 <h2>Installation</h2>
-<p>D'après la <a href="https://pandoc.org/installing.html">doc</a>, selon le système d'exploitation :</p>
+<p>D'après la <a href="https://pandoc.org/installing.html" class="externe">doc</a>, selon le système d'exploitation :</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -167,7 +167,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><code>sudo apt install pandoc</code> dans un <a href="../terminal.md" class="interne">terminal</a></p>
+<p><code>sudo apt install pandoc</code> dans un <a href="../terminal.md">terminal</a></p>
 </div>
 </details>     
 </div>
@@ -188,7 +188,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Installez <a href="https://brew.sh/">brew</a> puis <code>brew install pandoc</code> dans un <a href="../terminal.md" class="interne">terminal</a></p>
+<p>Installez <a href="https://brew.sh/" class="externe">brew</a> puis <code>brew install pandoc</code> dans un <a href="../terminal.md">terminal</a></p>
 </div>
 </details>     
 </div>
@@ -209,21 +209,21 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Téléchargez le <a href="https://github.com/jgm/pandoc/releases/tag/2.19">package windows</a> et installez le. Il vous faudra sûrement un dezippeur.(comme <a href="https://www.7-zip.org/">7zip</a>)</p>
+<p>Téléchargez le <a href="https://github.com/jgm/pandoc/releases/tag/2.19" class="externe">package windows</a> et installez le. Il vous faudra sûrement un dezippeur.(comme <a href="https://www.7-zip.org/" class="externe">7zip</a>)</p>
 </div>
 </details>     
 </div>
-<p>Selon le format d'export, il vous faudra d'autres logiciels. Je vous conseille d'ores et déjà d'<a href="https://www.latex-project.org/get/">installer latex</a> pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.</p>
+<p>Selon le format d'export, il vous faudra d'autres logiciels. Je vous conseille d'ores et déjà d'<a href="https://www.latex-project.org/get/" class="externe">installer latex</a> pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.</p>
 <h2>exemple d'utilisation</h2>
-<p>Pour exporter du markdown en html, j'utilise la ligne de commande suivante qui m'écrit de jolies équations avec <a href="https://www.mathjax.org/">https://www.mathjax.org/</a> :</p>
+<p>Pour exporter du markdown en html, j'utilise la ligne de commande suivante qui m'écrit de jolies équations avec <a href="https://www.mathjax.org/" class="externe">https://www.mathjax.org/</a> :</p>
 <p><code>pandoc --mathjax --standalone --metadata pagetitle=&quot;titre page&quot; --metadata charset=&quot;UTF-8&quot;  page.md -o page.html</code></p>
 <ul>
 <li>premier élément : le nom de la commande, ici <code>pandoc</code>.</li>
 <li>cette commande prend en entrée le fichier <code>page.md</code> qui est le dernier élément de la ligne</li>
-<li>les autres éléments de la lignes sont des <a href="https://fr.wikipedia.org/wiki/Commandes_Unix#Le_passage_d'arguments_aux_commandes">arguments</a>. Dans le monde des commandes, il y a deux types de paramètres &quot;un <code>-</code> suivit d'une lettre&quot; et &quot;deux <code>--</code> suivi d'un mot&quot; Ces paramètre peuvent être suivi d'arguments, c'est à dire des mots ne commençant pas par un <code>-</code> (<code>-o page.html</code>), ou pas (<code>--mathjax</code>) Notre commande a 4 paramètres :
+<li>les autres éléments de la lignes sont des <a href="https://fr.wikipedia.org/wiki/Commandes_Unix#Le_passage_d'arguments_aux_commandes" class="externe">arguments</a>. Dans le monde des commandes, il y a deux types de paramètres &quot;un <code>-</code> suivit d'une lettre&quot; et &quot;deux <code>--</code> suivi d'un mot&quot; Ces paramètre peuvent être suivi d'arguments, c'est à dire des mots ne commençant pas par un <code>-</code> (<code>-o page.html</code>), ou pas (<code>--mathjax</code>) Notre commande a 4 paramètres :
 <ul>
 <li><code>-o page.html</code>. <em>Un paramètre avec un argument</em>. Le fichier se sorti s'appellera <code>page.html</code>. Il determine le type de sortie (ici de l'html) et sera dans le même dossier que le fichier <code>page.md</code></li>
-<li><code>--mathjax</code>. <em>Un paramètre sans argument</em>. On utilise la <a href="https://www.mathjax.org/">bibliothèque mathjax</a> pour <em>compiler</em> les équations latex</li>
+<li><code>--mathjax</code>. <em>Un paramètre sans argument</em>. On utilise la <a href="https://www.mathjax.org/" class="externe">bibliothèque mathjax</a> pour <em>compiler</em> les équations latex</li>
 <li><code>--standalone</code>. <em>Un paramètre sans argument</em>. On crée un fichier html complet (par défaut, <code>pandoc</code> ne crée qu'un bout de html qui peut être combiner avec d'autres bout)</li>
 <li><code>--metadata pagetitle=&quot;titre page&quot;</code>. <em>Un paramètre avec un argument</em>. En combinaison avec le paramètre <code>standalone</code>. Permet de donner un titre à la page html, ici &quot;titre page&quot;.</li>
 <li><code>--metadata charset=&quot;UTF-8&quot;</code>. <em>Un paramètre avec un argument</em>. Permet de spécifier l'encodage des caractères (voir cours sur les fichiers). Devrait permettre de voir les accents.</li>

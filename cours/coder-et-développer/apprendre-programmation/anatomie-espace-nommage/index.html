@@ -98,8 +98,8 @@
 
   <p>Nous avons déjà abordé la notion d'espace de nommage lorsque :</p>
 <ul>
-<li>on a paré de modules : <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">l'espace de nommage du module</a> et de l'accès à leurs éléments via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a></li>
-<li>on a parlé des fonctions : <a href="../creation-fonctions/#espace-nommage" class="interne">l'espace de nommage et fonctions</a></li>
+<li>on a paré de modules : <a href="../principes/modules/#d%C3%A9finition-espace-nommage">l'espace de nommage du module</a> et de l'accès à leurs éléments via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e">la notation pointée</a></li>
+<li>on a parlé des fonctions : <a href="../creation-fonctions/#espace-nommage">l'espace de nommage et fonctions</a></li>
 </ul>
 <p>Les espaces de nommage permettent de lier variables et objets :</p>
 <ul>
@@ -123,7 +123,7 @@
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>espace de nommage</em></strong> est constitué de deux parties :</p>
 <ul>
-<li>une table de correspondance (<a href="../conteneurs/dictionnaires" class="interne">un dictionnaire</a>) associant des noms (les clés) à des objets (les valeurs).</li>
+<li>une table de correspondance (<a href="../conteneurs/dictionnaires">un dictionnaire</a>) associant des noms (les clés) à des objets (les valeurs).</li>
 <li>un lien vers un espace de nommage <strong><em>parent</em></strong> (qui peut être vide)</li>
 </ul>
 </div></div>
@@ -227,7 +227,7 @@
 </div></div>
 
 <p>Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par <code class="language-">__</code>) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.</p>
-<p>Pour voir les noms définis dans l'espace de noms des variables, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#globals">la fonction <code class="language-">globals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
+<p>Pour voir les noms définis dans l'espace de noms des variables, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#globals" class="externe">la fonction <code class="language-">globals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'dict'</span><span class="token operator">></span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -243,7 +243,7 @@ dict_keys<span class="token punctuation">(</span><span class="token punctuation"
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit <strong>explicite</strong> : on a accès via ces variables spéciales, appelées <em>dunder</em> et commençant et finissant par deux <a href="https://fr.wikipedia.org/wiki/Tiret_bas">underscores</a>.</p>
+<p>Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit <strong>explicite</strong> : on a accès via ces variables spéciales, appelées <em>dunder</em> et commençant et finissant par deux <a href="https://fr.wikipedia.org/wiki/Tiret_bas" class="externe">underscores</a>.</p>
 </div></div>
 
 <p>Regardons un peu tout ça</p>
@@ -307,8 +307,8 @@ je suis un véritable hacker<span class="token punctuation">.</span></code></pre
 </div></div>
 
 <h2><span id="espace-modules"></span> Espaces de nommage des modules</h2>
-<p>On a vu qu'un module contenait <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">un espace de nommage</a> auquel on pouvait accéder via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a>. Tout comme l'espace des variables, cet espace ne contient pas de parent.</p>
-<p>Tout comme la fonction <code class="language-">globals()</code> permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet <code class="language-">o</code> (en particulier d'un module) en utilisant <a href="https://docs.python.org/fr/3.14/library/functions.html#vars">la fonction <code class="language-">vars(o)</code></a>.</p>
+<p>On a vu qu'un module contenait <a href="../principes/modules/#d%C3%A9finition-espace-nommage">un espace de nommage</a> auquel on pouvait accéder via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e">la notation pointée</a>. Tout comme l'espace des variables, cet espace ne contient pas de parent.</p>
+<p>Tout comme la fonction <code class="language-">globals()</code> permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet <code class="language-">o</code> (en particulier d'un module) en utilisant <a href="https://docs.python.org/fr/3.14/library/functions.html#vars" class="externe">la fonction <code class="language-">vars(o)</code></a>.</p>
 <p>Testons cela en regardant si <code class="language-">print</code> est dans le module <code class="language-">__builtins__</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'print'</span> <span class="token keyword">in</span> <span class="token builtin">vars</span><span class="token punctuation">(</span>__builtins__<span class="token punctuation">)</span>
 <span class="token boolean">True</span></code></pre>
@@ -423,7 +423,7 @@ nom <span class="token builtin class-name">:</span> une_fonction  valeur <span c
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module
 
 mon_module<span class="token punctuation">.</span>autre_variable <span class="token operator">=</span> <span class="token string">"quarante-deux"</span></code></pre>
-<p>Il est bien sur non conseillé de le faire par ce qu'on peut <strong>Tout modifier</strong>. Par exemple se conformer à <a href="https://www.youtube.com/watch?v=1Bn50keR6UY">une loi de l'Indiana</a> :</p>
+<p>Il est bien sur non conseillé de le faire par ce qu'on peut <strong>Tout modifier</strong>. Par exemple se conformer à <a href="https://www.youtube.com/watch?v=1Bn50keR6UY" class="externe">une loi de l'Indiana</a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">import</span> math
 
@@ -446,7 +446,7 @@ compartimenter l'usage des variables.</p>
 <p>Par défaut l'espace de nommage courant est l'espace des variables.</p>
 </div></div>
 
-<p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#locals">la fonction <code class="language-">locals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
+<p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#locals" class="externe">la fonction <code class="language-">locals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
 <p>Cet espace de nommage courant va changer au cours du temps selon le contexte :</p>
 <ul>
 <li>au démarrage de l'interpréteur l'espace de nommage courant est l'espace des variables</li>
@@ -483,7 +483,7 @@ affichage depuis le main <span class="token builtin class-name">:</span> __main_
 <li>l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module (la le paramètre de la fonction <code class="language-">print</code> du module est affichée, donc exécutée)</li>
 </ul>
 <h3>Espace créés pour les fonctions</h3>
-<p><a href="../creation-fonctions/#espace-nommage" class="interne">Un espace de nommage est créé pour chaque fonction lors de son exécution</a>, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :</p>
+<p><a href="../creation-fonctions/#espace-nommage">Un espace de nommage est créé pour chaque fonction lors de son exécution</a>, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>

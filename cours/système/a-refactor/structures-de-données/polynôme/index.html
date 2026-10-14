@@ -125,7 +125,7 @@
 <p>On a clairement que : $P(x) = A(x) + X(x) \cdot R(x)$.</p>
 <p>En déduire une méthode d'évaluation de polynômes moins gourmande en multiplications.</p>
 <h2>réponses</h2>
-<p>L'exercice portait sur la structure de <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynômes</a>.</p>
+<p>L'exercice portait sur la structure de <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me" class="externe">polynômes</a>.</p>
 <p>Un polynôme est défini mathématiquement par la fonction :</p>
 <p>$$
 P(x) = \sum_{i=0}^n a_i x^i
@@ -180,7 +180,7 @@ $$</p>
 </code></pre>
 <p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
 <h2>Méthode de Horner</h2>
-<p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
+<p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point" class="externe">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
 <p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 i</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">evaluation</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>

@@ -108,7 +108,7 @@
 <p>Un <strong><em>graphe est hamiltonien</em></strong> s'il possède un cycle hamiltonien.</p>
 </div></div>
 
-<p>On doit ce problème au mathématicien <a href="https://en.wikipedia.org/wiki/William_Rowan_Hamilton">Hamilton</a> qui a proposé de le résoudre <a href="https://en.wikipedia.org/wiki/Icosian_game">sous la forme d'un casse tête</a> qu'il commercialisa et correspond à l'exercice suivant :</p>
+<p>On doit ce problème au mathématicien <a href="https://en.wikipedia.org/wiki/William_Rowan_Hamilton" class="externe">Hamilton</a> qui a proposé de le résoudre <a href="https://en.wikipedia.org/wiki/Icosian_game" class="externe">sous la forme d'un casse tête</a> qu'il commercialisa et correspond à l'exercice suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mb-2 mr-8">
@@ -157,7 +157,7 @@
 <p>Un graphe (<em>resp.</em> graphe dirigé) admet un <strong><em>chemin hamiltonien</em></strong> s'il existe un chemin élémentaire passant par tous les sommets.</p>
 </div></div>
 
-<p>Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé <a href="https://fr.wikipedia.org/wiki/Graphe_de_Petersen">graphe de Petersen</a> (que l'on est amené à revoir), n'en possède pas :</p>
+<p>Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé <a href="https://fr.wikipedia.org/wiki/Graphe_de_Petersen" class="externe">graphe de Petersen</a> (que l'on est amené à revoir), n'en possède pas :</p>
 <p><img src="petersen.png" alt="graphe de Petersen"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -211,7 +211,7 @@
 </div>
 </details>     
 </div>
-<p>Le problème du cycle ou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">le problème du voyageur de commerce</a> qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.</p>
+<p>Le problème du cycle ou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce" class="externe">le problème du voyageur de commerce</a> qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.</p>
 <h2><span id="chemin-cycle"></span>Chemin et cycles</h2>
 <p>Trouver un chemin ou un cycle hamiltonien sont deux problèmes similaires et que l'on peut résoudre l'un par l'autre. Montrons le en commençant par montrer que la recherche d'un chemin hamiltonien est quasi-identique à la recherche d'un cycle hamiltonien :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -396,7 +396,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser <a href="../chemins-cycles-connexite/#prop-connexe" class="interne">cette propriété</a> et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2&gt;  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).</p>
+<p>Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser <a href="../chemins-cycles-connexite/#prop-connexe">cette propriété</a> et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2&gt;  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).</p>
 <p>Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cycle est hamiltonien. Sinon en effet, par connexité, il existerait une arête $yx_j$ avec $y\notin C$ et le chemin suivant serait strictement plus long que $C$ : $yx_j\dots x_kx_0\dots x_{j-1}$.</p>
 <p>On suppose alors que $x_0x_k \notin E$.</p>
 <p>Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.
@@ -595,7 +595,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La suite $t_n$ est <a href="https://oeis.org/A054946">la suite A054946</a>.</p>
+<p>La suite $t_n$ est <a href="https://oeis.org/A054946" class="externe">la suite A054946</a>.</p>
 </div></div>
 
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -655,7 +655,7 @@ $$
 </div>
 <p>Si un tournoi est fortement connexe il admet au moins $n$ chemins hamiltonien. Par exemple pour le graphe ci-après ($231451$ est un circuit hamiltonien) :</p>
 <p><img src="tournoi-5.png" alt="tournoi à 5 sommets"></p>
-<p>Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste">la méthode probabiliste</a> développée par Erdös :</p>
+<p>Mais il peut en avoir bien plus (notre exemple n'en possède qu'un de plus, $43152$), comme le montre la proposition ci-après dont la démonstration est un premier exemple de <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste" class="externe">la méthode probabiliste</a> développée par Erdös :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -841,7 +841,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Held–Karp_algorithm</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm" class="externe">https://en.wikipedia.org/wiki/Held–Karp_algorithm</a></p>
 </div></div>
 
 <p>Savoir si un graphe donné possède un cycle hamiltonien nécessite a priori de vérifier <strong>tous</strong> les chemins possibles et il y en a beaucoup : $n!$. Comme chaque potentiel chemin hamiltonien se vérifie en $\mathcal{O}(n)$ opérations (il faut vérifier l'existence de $n-1$ arêtes) l'algorithme naïf est de complexité $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$</p>
@@ -886,10 +886,10 @@ C <span class="token operator">=</span> 1x
 C <span class="token operator">=</span> C <span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>La complexité de cet algorithme est négligeable devant celle du calcul de $f_1$ puisqu'il est en $\mathcal{O}(n^2)$</p>
 <p>Enfin il fonction que $G$ soit un graphe orienté ou non.</p>
-<p>La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling">la formule de Stirling</a>.</p>
+<p>La complexité peut sembler rédhibitoire (et c'est vrai) mais elle est bien plus petite que l'algorithme naïf puisque <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling" class="externe">la formule de Stirling</a>.</p>
 <h3>Approché sans performance garantie</h3>
 <blockquote>
-<p>TBD parler de <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.</p>
+<p>TBD parler de <a href="https://fr.wikipedia.org/wiki/2-opt" class="externe">2-opt</a> (dirigé ou pas) et de la 2-approximation si distance sur graphe complet.</p>
 </blockquote>
 <h3>À performance garantie dans un cas particulier</h3>
 <blockquote>

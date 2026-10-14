@@ -109,7 +109,7 @@
 <li>encore moins souvent ce texte, privé des derniers retours à la ligne est un programme écrit en pseudo-code.</li>
 <li>et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.</li>
 </ol>
-<p>Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">chaque instruction est autorisée</a> et ceci est possible avec un <a href="https://fr.wikipedia.org/wiki/Analyse_lexicale">analyseur lexical</a> de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).</p>
+<p>Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code">chaque instruction est autorisée</a> et ceci est possible avec un <a href="https://fr.wikipedia.org/wiki/Analyse_lexicale" class="externe">analyseur lexical</a> de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).</p>
 <p>Le décideur $d(e)$ est ainsi décidable avec une complexité $\mathcal{O}(\vert e \vert^2)$.</p>
 <p>Enfin, si l'entrée $e$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $[e]$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $[e]$ sera égal à $[e']$ avec $e'$ valeur $e$ concaténé à <code>00000000000000000000000000001010</code> .</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -274,7 +274,7 @@ Programme :
 <p>Pour toute fonction calculable $f$, il existe des problèmes de décision de complexité $\Omega(f(n))$.</p>
 </div></div>
 
-<p>Comme $2^n$, $n!$ voir la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a> sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !</p>
+<p>Comme $2^n$, $n!$ voir la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann" class="externe">fonction d'Ackermann</a> sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

@@ -96,9 +96,9 @@
     
   
 
-  <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>.</p>
+  <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm" class="externe">sha</a>.</p>
 <h2>Définitions</h2>
-<p>On peut définir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">une fonction de hachage</a> $f$ comme étant :</p>
+<p>On peut définir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage" class="externe">une fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -149,7 +149,7 @@ $$
 </ul>
 </div></div>
 
-<p>En python par exemple, on peut utiliser <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash">la fonction <code class="language-">hash</code></a> :</p>
+<p>En python par exemple, on peut utiliser <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash" class="externe">la fonction <code class="language-">hash</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
@@ -206,7 +206,7 @@ $$</p>
 <li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques s'ils ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
 <li>créer des structures de données avancées comme les dictionnaires</li>
 </ul>
-<p>Les fonctions de hachages sont même utilisées pour <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">stocker les mots de passe sur votre ordinateur</a>, ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9/cryptographie/int%C3%A9grit%C3%A9/hash/" class="interne">fonctions de hachage cryptographiques</a> qui assurent qu'il est <em>difficile</em> :</p>
+<p>Les fonctions de hachages sont même utilisées pour <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/" class="externe">stocker les mots de passe sur votre ordinateur</a>, ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9/cryptographie/int%C3%A9grit%C3%A9/hash/">fonctions de hachage cryptographiques</a> qui assurent qu'il est <em>difficile</em> :</p>
 <ul>
 <li>de trouver $m$ à partir de $h$ tel que $f(m) = h$</li>
 <li>de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$</li>
@@ -254,7 +254,7 @@ $$
 n = \underbracket{0 \cdots 1}_{k \times l}
 $$
 </div>
-<p>On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>) :</p>
+<p>On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme <a href="https://fr.wikipedia.org/wiki/SHA-2" class="externe">sha-2</a>) :</p>
 <div>
 $$
 n = \underbracket{0 \cdots 1}_{k}\underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
@@ -311,15 +311,15 @@ $$
 </div></div>
 
 <h3>Hash de python</h3>
-<p>L'algorithme utilisé par python pour effectuer le hash est <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a></p>
+<p>L'algorithme utilisé par python pour effectuer le hash est <a href="https://en.wikipedia.org/wiki/SipHash" class="externe">sipHash</a></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html">description</a></li>
-<li><a href="https://github.com/veorq/SipHash">Implémentation de SipHash par un de ses créateurs</a></li>
+<li><a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html" class="externe">description</a></li>
+<li><a href="https://github.com/veorq/SipHash" class="externe">Implémentation de SipHash par un de ses créateurs</a></li>
 </ul>
 </div></div>
 
@@ -527,10 +527,10 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>.</p>
+<p>Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires" class="externe">paradoxe des anniversaires</a>.</p>
 </div></div>
 
-<p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
+<p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git" class="externe">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1" class="externe">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
 <p>$$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}
 $$</p>

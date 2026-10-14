@@ -102,7 +102,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">https://fr.wikipedia.org/wiki/Diviser_pour_régner_(informatique)</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)" class="externe">https://fr.wikipedia.org/wiki/Diviser_pour_régner_(informatique)</a></p>
 </div></div>
 
 <p>Le principe du design diviser pour régner consiste à découper le problème initial en sous-problèmes que l'on peut résoudre puis, si nécessaire, les recombiner en une solution du problème initial.</p>
@@ -115,7 +115,7 @@
 
     <span class="token keyword">rendre</span> diviser<span class="token punctuation">(</span>donnee_partielle<span class="token punctuation">)</span></code></pre>
 <p>On restreint nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.</p>
-<p>On a utilisé ce principe dans <a href="../../../projet-algorithmes-classiques/#dichotomie" class="interne">la dichotomie</a> par exemple.</p>
+<p>On a utilisé ce principe dans <a href="../../../projet-algorithmes-classiques/#dichotomie">la dichotomie</a> par exemple.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -136,7 +136,7 @@
     solution <span class="token operator">←</span> combiner<span class="token punctuation">(</span>solution_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> solution_k<span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> solution</code></pre>
-<p>On a déjà vu ce design lorsque l'on a étudié <a href="../../probl%C3%A8me-tris/algorithme-fusion/" class="interne">le tri fusion</a> ou <a href="../../probl%C3%A8me-tris/algorithme-rapide/" class="interne">le tri rapide</a>.</p>
+<p>On a déjà vu ce design lorsque l'on a étudié <a href="../../probl%C3%A8me-tris/algorithme-fusion/">le tri fusion</a> ou <a href="../../probl%C3%A8me-tris/algorithme-rapide/">le tri rapide</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -168,7 +168,7 @@
 <li>le nombre d'appels récursifs</li>
 <li>le coût de la combinaison des solutions partielles en une solution globale</li>
 </ul>
-<p>La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le <strong><a href="https://fr.wikipedia.org/wiki/Master_theorem">Master theorem</a></strong>. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :</p>
+<p>La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le <strong><a href="https://fr.wikipedia.org/wiki/Master_theorem" class="externe">Master theorem</a></strong>. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :</p>
 <p><span id="master-theorem"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -376,7 +376,7 @@ $$
 </details>     
 </div>
 <h3>Multiplication de matrices</h3>
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">L'algorithme de Strassen</a> pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen" class="externe">L'algorithme de Strassen</a> pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.</p>
 <p>On suppose pour cet exercice que l'on cherche à multiplier deux matrices carrées (de dimension $n$) $A$ et $B$, avec $n$ une puissance de 2.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -639,18 +639,18 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://www.youtube.com/watch?v=DruwS2_cVys">Les méthodes de multiplications de matrices</a> par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$</li>
-<li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">Multiplication de matrices algorithme actuel</a>  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel</li>
+<li><a href="https://www.youtube.com/watch?v=DruwS2_cVys" class="externe">Les méthodes de multiplications de matrices</a> par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$</li>
+<li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8" class="externe">Multiplication de matrices algorithme actuel</a>  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel</li>
 </ul>
 </div></div>
 
 <h4>Inversion de matrice</h4>
 <p>On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.</p>
-<p>Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion">la formule de l'inversion par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
+<p>Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion" class="externe">la formule de l'inversion par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion">la formule de l'inversion par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
+<p>En utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion" class="externe">la formule de l'inversion par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -682,11 +682,11 @@ $$
 </div>
 <h4>Déterminant de matrice</h4>
 <p>On suppose que l'on possède un algorithme de multiplication de matrices carrées à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.</p>
-<p>Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices">les formules de calcul d'un déterminant par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
+<p>Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices" class="externe">les formules de calcul d'un déterminant par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices">les formules de calcul d'un déterminant par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
+<p>En utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices" class="externe">les formules de calcul d'un déterminant par bloc</a> et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -719,11 +719,11 @@ $$
 </div>
 <h3>Pavage incomplet du plan</h3>
 <blockquote>
-<p>TBD exo 3 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
+<p>TBD exo 3 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf" class="externe">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
 </blockquote>
 <h3>Nombre d'inversions</h3>
 <blockquote>
-<p>TBD exo 4 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
+<p>TBD exo 4 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf" class="externe">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
 </blockquote>
 
 

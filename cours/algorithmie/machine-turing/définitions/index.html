@@ -260,10 +260,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://turingmachine.io/">https://turingmachine.io/</a></p>
+<p><a href="https://turingmachine.io/" class="externe">https://turingmachine.io/</a></p>
 </div></div>
 
-<p>Il utilise une définition plus générale d'une machine de Turing (c'est celle - classique - de <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle">Wikipedia</a>) mais nous pouvons tout à fait utiliser notre définition.</p>
+<p>Il utilise une définition plus générale d'une machine de Turing (c'est celle - classique - de <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle" class="externe">Wikipedia</a>) mais nous pouvons tout à fait utiliser notre définition.</p>
 <p>Reprenons notre exemple et vérifions que nous avons bien compris son fonctionnement.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -271,7 +271,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Copiez/coller le code ci-dessous dans la fenêtre de texte de la page <a href="https://turingmachine.io/">https://turingmachine.io/</a> , puis cliquez sur le bouton <code>load machine</code>.</p>
+<p>Copiez/coller le code ci-dessous dans la fenêtre de texte de la page <a href="https://turingmachine.io/" class="externe">https://turingmachine.io/</a> , puis cliquez sur le bouton <code>load machine</code>.</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">blank: 0
 start state: START
 table:
@@ -696,7 +696,7 @@ table:
 </div></div>
 
 <p>Cette addition nous permet d'exécuter une machine $M$ avec autre chose que des <code>0</code> sur le ruban en exécutant la machine $M_\text{Init} + M$, avec $M_\text{Init}$ une machine qui <em>prépare</em> le ruban.</p>
-<p>Par exemple, supposons que l'on veuille exécuter la machine <a href="#exemple-oscillation" class="interne">oscillateur</a> avec la chaîne <code>0101</code> sur le ruban on peut commencer par utiliser la machine de fonction de transition :</p>
+<p>Par exemple, supposons que l'on veuille exécuter la machine <a href="#exemple-oscillation">oscillateur</a> avec la chaîne <code>0101</code> sur le ruban on peut commencer par utiliser la machine de fonction de transition :</p>
 <ul>
 <li>$\delta(\text{START}, 0) = (UN, 1, \rightarrow)$</li>
 <li>$\delta(UN, 0) = (DEUX, 0, \rightarrow)$</li>
@@ -708,7 +708,7 @@ table:
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Codez la machine ci-dessus sur sur <a href="https://turingmachine.io/">https://turingmachine.io/</a> et vérifiez son fonctionnement.</p>
+<p>Codez la machine ci-dessus sur sur <a href="https://turingmachine.io/" class="externe">https://turingmachine.io/</a> et vérifiez son fonctionnement.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -761,7 +761,7 @@ table:
 </div>
 </details>     
 </div>
-<p>On exécute ensuite, initialisation notre <a href="#exemple-oscillation" class="interne">oscillateur</a>.</p>
+<p>On exécute ensuite, initialisation notre <a href="#exemple-oscillation">oscillateur</a>.</p>
 <p>Cette succession de l'exécution de deux machines est une machine dont
 la fonction de transition complète de cette nouvelle machine serait, en respectant les règle de l'addition :</p>
 <ul>
@@ -780,7 +780,7 @@ la fonction de transition complète de cette nouvelle machine serait, en respect
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Combinez le code de la machine qui initialise et l'oscillateur pour tester le résultat sur <a href="https://turingmachine.io/">https://turingmachine.io/</a></p>
+<p>Combinez le code de la machine qui initialise et l'oscillateur pour tester le résultat sur <a href="https://turingmachine.io/" class="externe">https://turingmachine.io/</a></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -885,7 +885,7 @@ table:
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant le code <a href="https://turingmachine.io/">https://turingmachine.io/</a> de l'<a href="#exemple-oscillation-infini" class="interne">oscillateur infini</a>, ajoutez la chaîne <code>01110111</code> comme paramètre d'entrée avec le mot clé <code class="language-">input:</code></p>
+<p>En utilisant le code <a href="https://turingmachine.io/" class="externe">https://turingmachine.io/</a> de l'<a href="#exemple-oscillation-infini">oscillateur infini</a>, ajoutez la chaîne <code>01110111</code> comme paramètre d'entrée avec le mot clé <code class="language-">input:</code></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

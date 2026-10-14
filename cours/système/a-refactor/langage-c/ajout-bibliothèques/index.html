@@ -108,7 +108,7 @@
 </li>
 <li>dans un dossier connu si on veut l'inclure de façon statique dans notre code.</li>
 </ul>
-<p>Nous allons utiliser la bibliothèque <a href="https://www.openssl.org/">openssl</a> qui permet le cryptage/décryptage de données. Cette bibliothèque est souvent installée par défaut sur un système car elle est utilisée par de nombreux programmes, mais il manque souvent les fichiers de headers qui ne sont utiles que si on peut programmer avec. C'est pourquoi il y a deux paquets à installer :</p>
+<p>Nous allons utiliser la bibliothèque <a href="https://www.openssl.org/" class="externe">openssl</a> qui permet le cryptage/décryptage de données. Cette bibliothèque est souvent installée par défaut sur un système car elle est utilisée par de nombreux programmes, mais il manque souvent les fichiers de headers qui ne sont utiles que si on peut programmer avec. C'est pourquoi il y a deux paquets à installer :</p>
 <ul>
 <li><code>sudo apt install libssl</code> qui installe la bibliothèque openssl (devrait déjà être sur votre système).</li>
 <li><code>sudo apt install libssl-dev</code> qui installe les fichiers <code class="language-">.h</code></li>
@@ -122,7 +122,7 @@
 </div></div>
 
 <h2>Code</h2>
-<p>Nous allons utiliser les fonctions <a href="https://www.openssl.org/docs/man3.1/man7/evp.html">EVP</a> pour encoder et décoder une chaîne de caractères au format <a href="https://fr.wikipedia.org/wiki/Base64">base64</a></p>
+<p>Nous allons utiliser les fonctions <a href="https://www.openssl.org/docs/man3.1/man7/evp.html" class="externe">EVP</a> pour encoder et décoder une chaîne de caractères au format <a href="https://fr.wikipedia.org/wiki/Base64" class="externe">base64</a></p>
 <p>Fichier <code class="fichier">base64.c</code> :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -163,9 +163,9 @@
 <h2>Compilateur</h2>
 <p>Plusieurs options de <code>clang</code> contrôlent l'inclusion de celles-ci :</p>
 <ul>
-<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir"><code>-I</code></a> chemin vers les fichiers d'entêtes</li>
-<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir"><code>-L</code></a> chemin vers la bibliothèque à inclure</li>
-<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-l-arg"><code>-l</code></a> nom de la bibliothèque à inclure</li>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir" class="externe"><code>-I</code></a> chemin vers les fichiers d'entêtes</li>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir" class="externe"><code>-L</code></a> chemin vers la bibliothèque à inclure</li>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-l-arg" class="externe"><code>-l</code></a> nom de la bibliothèque à inclure</li>
 </ul>
 <p>Sous Linux/Ubuntu où les headers et les bibliothèques sont toutes installées dans le même dossier système, il suffit de renseigner la bibliothèque où sont définies les fonctions utilisées, ici c'est crypto :</p>
 <pre><code> clang base64.c -lcrypto
@@ -187,7 +187,7 @@
 </ul>
 </div></div>
 
-<p>Il se peut que les bibliothèques ajoutée ne soient pas trouvées par le système à l'exécution. Ceci arrive lorsqu'elles ne sont pas dans des endroits système reconnu. VOus pouvez ajouter des dossiers de recherche vec la variable d'environnement <a href="https://linuxhint.com/what-is-ld-library-path/"><code>LD_LIBRARY_PATH</code></a>.</p>
+<p>Il se peut que les bibliothèques ajoutée ne soient pas trouvées par le système à l'exécution. Ceci arrive lorsqu'elles ne sont pas dans des endroits système reconnu. VOus pouvez ajouter des dossiers de recherche vec la variable d'environnement <a href="https://linuxhint.com/what-is-ld-library-path/" class="externe"><code>LD_LIBRARY_PATH</code></a>.</p>
 <h2>Makefile</h2>
 <p>Si vous compilez vos programme via la commande <code>make</code>, on a coutume de placer les options <code>-L</code> et <code>-l</code> dans une variable nommée <code>LDFLAGS</code> et utilisée uniquement lors de règle faisant l'édition de lien.</p>
 <p>N'oubliez pas également d'ajouter l'option <code>-I</code> si nécessaire dans la variable <code>CFLAGS</code>.</p>

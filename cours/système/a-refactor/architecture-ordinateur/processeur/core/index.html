@@ -97,17 +97,17 @@
   
 
   <p>Chaque core est une unité de calcul dont le but est d'exécuter des instructions.</p>
-<p>Sont architecture suit un modèle dit : <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">modèle de Von Neumann</a> :</p>
+<p>Sont architecture suit un modèle dit : <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann" class="externe">modèle de Von Neumann</a> :</p>
 <p><img src="core.png" alt="core"></p>
 <p>Le principe est le suivant :</p>
 <ol>
-<li>l'instruction a exécuter est lue en mémoire par la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire">MMU (Memory Management Unit)</a> sous la forme d'un (ou plusieurs) entier de 64bit arrivant par le bus</li>
+<li>l'instruction a exécuter est lue en mémoire par la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire" class="externe">MMU (Memory Management Unit)</a> sous la forme d'un (ou plusieurs) entier de 64bit arrivant par le bus</li>
 <li>cet entier est passé à l'unité de contrôle qui la décode pour trouver l'instruction à réaliser</li>
 <li>cette instruction est réalisée par l'unité de calcul dans une de ses sous-unités :
 <ul>
-<li>l'<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a> pour les opérations logique et arithmétiques sur les entiers</li>
-<li>la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante">FPU</a> pour les calculs sur les flottants</li>
-<li>la <a href="https://en.wikipedia.org/wiki/Vector_processor">VPU</a> pour les opérations vectorielles</li>
+<li>l'<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique" class="externe">ALU</a> pour les opérations logique et arithmétiques sur les entiers</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante" class="externe">FPU</a> pour les calculs sur les flottants</li>
+<li>la <a href="https://en.wikipedia.org/wiki/Vector_processor" class="externe">VPU</a> pour les opérations vectorielles</li>
 </ul>
 </li>
 <li>si besoin, la MMU cherchera une donnée en mémoire pour effectuer l'opération ou enverra en mémoire son résultat.</li>
@@ -117,7 +117,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Architecture du <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram">sunny cove core</a> des architectures Ice lake d'intel.</p>
+<p>Architecture du <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Block_diagram" class="externe">sunny cove core</a> des architectures Ice lake d'intel.</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -127,7 +127,7 @@
 <div class="pl-8 mr-8">
 <ul>
 <li>Les cores 64b d'Intel s'appellent x86-64 ou encore x64. Le mode x86 peut vouloir dire 32b : faites attention.</li>
-<li>le mode des core x64, celui que nous décrivons ici, est le <a href="https://en.wikipedia.org/wiki/Long_mode">long mode</a>. Le Protected mode est un mode 32b, donc obsolete.</li>
+<li>le mode des core x64, celui que nous décrivons ici, est le <a href="https://en.wikipedia.org/wiki/Long_mode" class="externe">long mode</a>. Le Protected mode est un mode 32b, donc obsolete.</li>
 </ul>
 </div></div>
 
@@ -137,11 +137,11 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="instructions" class="interne">Instructions d'un core</a></p>
+<p><a href="instructions">Instructions d'un core</a></p>
 </div></div>
 
 <h2>Protection ring</h2>
-<p>Une instruction du core a un niveau d'accessibilité, appelé <a href="https://en.wikipedia.org/wiki/Protection_ring">cercles de protection</a>. Les core x64 en proposent 4, mais seuls deux sont utilisés :</p>
+<p>Une instruction du core a un niveau d'accessibilité, appelé <a href="https://en.wikipedia.org/wiki/Protection_ring" class="externe">cercles de protection</a>. Les core x64 en proposent 4, mais seuls deux sont utilisés :</p>
 <ul>
 <li>kernel (ring 0)</li>
 <li>user (ring 3)</li>
@@ -156,16 +156,16 @@
 <li>l'appel système</li>
 </ul>
 <h3>Interruptions</h3>
-<p>Une interruption est une demande d'action initiée par un matériel. Le core gère les interruptions en associant à chaque interruption une <a href="https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64">Table des interruptions</a> de 16B qui détermine l'action à mener (essentiellement l'adresse de la fonction du noyau qui va la gérer).</p>
-<p>Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16B = $ \text{KiB}$, nommé <a href="https://en.wikipedia.org/wiki/Interrupt_vector_table">Interrupt vector table</a> stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.</p>
+<p>Une interruption est une demande d'action initiée par un matériel. Le core gère les interruptions en associant à chaque interruption une <a href="https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64" class="externe">Table des interruptions</a> de 16B qui détermine l'action à mener (essentiellement l'adresse de la fonction du noyau qui va la gérer).</p>
+<p>Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16B = $ \text{KiB}$, nommé <a href="https://en.wikipedia.org/wiki/Interrupt_vector_table" class="externe">Interrupt vector table</a> stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.</p>
 <h3>Appel système</h3>
-<p>Un appel système est initié par l'instruction <a href="https://www.felixcloutier.com/x86/syscall.html"><code>syscall</code></a> sur les cores x64. Cette instruction est un appel d'une fonction du noyau (stockée dans un registre spécialisé).</p>
+<p>Un appel système est initié par l'instruction <a href="https://www.felixcloutier.com/x86/syscall.html" class="externe"><code>syscall</code></a> sur les cores x64. Cette instruction est un appel d'une fonction du noyau (stockée dans un registre spécialisé).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les différents paramètres de la fonction <code>syscall</code> permettent de faire plus de 300 appels différents. Voir la liste des paramètres là : <a href="https://x64.syscall.sh/">https://x64.syscall.sh/</a></p>
+<p>Les différents paramètres de la fonction <code>syscall</code> permettent de faire plus de 300 appels différents. Voir la liste des paramètres là : <a href="https://x64.syscall.sh/" class="externe">https://x64.syscall.sh/</a></p>
 </div></div>
 
 <h2>Caches</h2>
@@ -175,7 +175,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="cache" class="interne">Le cache</a></p>
+<p><a href="cache">Le cache</a></p>
 </div></div>
 
 <h2>Adresse logique vs adresse physique</h2>
@@ -184,11 +184,11 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="m%C3%A9moire-virtuelle" class="interne">Adresse logique et physique</a></p>
+<p><a href="m%C3%A9moire-virtuelle">Adresse logique et physique</a></p>
 </div></div>
 
 <h2>Hyper Threading</h2>
-<p>Un core ne peut théoriquement exécuter qu'un seul thread. L'<a href="https://en.wikipedia.org/wiki/Hyper-threading">hyper-threading</a> permet d'exécuter deux threads en concurrence, en profitant des blocages dues aux attentes des entrées/sorties. Ceci est possible lorsque l'on exécutes deux thread d'un même process, puisqu'ils se partagent tout sauf les registres et presque toute la mémoire (sauf leurs piles).</p>
+<p>Un core ne peut théoriquement exécuter qu'un seul thread. L'<a href="https://en.wikipedia.org/wiki/Hyper-threading" class="externe">hyper-threading</a> permet d'exécuter deux threads en concurrence, en profitant des blocages dues aux attentes des entrées/sorties. Ceci est possible lorsque l'on exécutes deux thread d'un même process, puisqu'ils se partagent tout sauf les registres et presque toute la mémoire (sauf leurs piles).</p>
 
 
 </article>

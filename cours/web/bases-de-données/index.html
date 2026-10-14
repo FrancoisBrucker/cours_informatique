@@ -99,7 +99,7 @@
   <p>On peut très bien uniquement stocker ses données sous la forme de variables, de liste ou encore de dictionnaires pendant l'exécution du serveur. Mais lorsque le serveur va s'arrêter on perdra toutes ses données... Pour conserver ses données il faut les stocker dans une base (il en existe de différents types selon l'usage) facilement accessible (en utilisant des requêtes facile à créer et à maintenir).</p>
 <p>Nous allons montrer ici un cas d'utilisation simple que vous pourrez adapter à vos besoins futur :</p>
 <ul>
-<li>utilisation d'une base de donnée relationnelle <a href="https://www.sqlite.org">SQLite</a>.</li>
+<li>utilisation d'une base de donnée relationnelle <a href="https://www.sqlite.org" class="externe">SQLite</a>.</li>
 <li>utilisation de sequelize pour la gestion de celle-ci</li>
 </ul>
 <p>Nous aurons besoin d'un projet pour tester ce que nous allons voir donc :</p>
@@ -137,12 +137,12 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe également Le module node <a href="https://www.npmjs.com/package/better-sqlite3">better-sqlite3</a> est une version amélioré — selon ses auteurs — du module classique <a href="https://www.npmjs.com/package/sqlite3">sqlite3</a>, mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.</p>
+<p>Il existe également Le module node <a href="https://www.npmjs.com/package/better-sqlite3" class="externe">better-sqlite3</a> est une version amélioré — selon ses auteurs — du module classique <a href="https://www.npmjs.com/package/sqlite3" class="externe">sqlite3</a>, mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.</p>
 </div></div>
 
-<p>Il est parfois aussi utile d'avoir une <a href="https://fr.wikipedia.org/wiki/CLI">cli</a> pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :</p>
+<p>Il est parfois aussi utile d'avoir une <a href="https://fr.wikipedia.org/wiki/CLI" class="externe">cli</a> pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :</p>
 <ul>
-<li>sous windows : <a href="https://www.sqlite.org/download.html">https://www.sqlite.org/download.html</a></li>
+<li>sous windows : <a href="https://www.sqlite.org/download.html" class="externe">https://www.sqlite.org/download.html</a></li>
 <li>sous mac <code>brew install sqlite</code></li>
 <li>sous Linux/Ubuntu : <code>sudo apt-get install sqlite3</code></li>
 </ul>
@@ -166,7 +166,7 @@ sqlite&gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.sqlite.org/cli.html">https://www.sqlite.org/cli.html</a></p>
+<p><a href="https://www.sqlite.org/cli.html" class="externe">https://www.sqlite.org/cli.html</a></p>
 </div></div>
 
 <h4>fichier sous node</h4>
@@ -175,7 +175,7 @@ sqlite&gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/">https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/</a></p>
+<p><a href="https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/" class="externe">https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/</a></p>
 </div></div>
 
 <h4>mémoire sous node</h4>
@@ -184,7 +184,7 @@ sqlite&gt;
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.sqlite.org/inmemorydb.html">https://www.sqlite.org/inmemorydb.html</a></p>
+<p><a href="https://www.sqlite.org/inmemorydb.html" class="externe">https://www.sqlite.org/inmemorydb.html</a></p>
 </div></div>
 
 <h2>ORM : sequelize</h2>
@@ -194,7 +194,7 @@ sqlite&gt;
 <li>impossible à déboguer ou a modifier</li>
 <li>plein de dialectes différents. Une fois qu'on a une pase très difficile d'en changer à cause des différents dialectes SQL possibles</li>
 </ul>
-<p>On utilise un <a href="https://fr.wikipedia.org/wiki/Mapping_objet-relationnel">ORM</a> (<em>Object-Relational Mapping</em>) qiu permet</p>
+<p>On utilise un <a href="https://fr.wikipedia.org/wiki/Mapping_objet-relationnel" class="externe">ORM</a> (<em>Object-Relational Mapping</em>) qiu permet</p>
 <ul>
 <li>permet d'écrire des bases et d'utiliser des requêtes comme on fait des objets</li>
 <li>pattern facade : indépendant de la base. On peut changer la base de donnée sans changer le code (juste la config)</li>
@@ -240,7 +240,7 @@ sqlite&gt;
 <li>le modèle est la classe et les attributs correspondent aux colonne de la table SQL</li>
 <li>l'objet est une donnée et il correspond à une ligne de la table SQL</li>
 </ul>
-<p>Les types possible de champs sont disponible <a href="https://sequelize.org/v5/manual/data-types.html">dans la documentation</a>.</p>
+<p>Les types possible de champs sont disponible <a href="https://sequelize.org/v5/manual/data-types.html" class="externe">dans la documentation</a>.</p>
 <p>On va par exemple créer un modèle constitué d'une chaîne de caractère (<code>STRING</code> : chaîne de caractère d'au plus 255 caractères) et d'un entier (<code>INTEGER</code>) :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
 
@@ -260,7 +260,7 @@ sqlite&gt;
     <span class="token comment">// Other model options go here</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Une fois le modèle donné, il faut <a href="https://sequelize.org/master/manual/model-basics.html#model-synchronization">synchroniser la base de donnée</a> avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse <code>sync</code> :</p>
+<p>Une fois le modèle donné, il faut <a href="https://sequelize.org/master/manual/model-basics.html#model-synchronization" class="externe">synchroniser la base de donnée</a> avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse <code>sync</code> :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">await</span> sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"synchronisation terminée."</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -311,7 +311,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-basics.html#timestamps">https://sequelize.org/master/manual/model-basics.html#timestamps</a></p>
+<p><a href="https://sequelize.org/master/manual/model-basics.html#timestamps" class="externe">https://sequelize.org/master/manual/model-basics.html#timestamps</a></p>
 </div></div>
 
 <p>Par défaut, sequelize ajoute deux champs spéciaux <code class="language-">createdAt</code> and <code class="language-">updatedAt</code> pour connaître la date de création et de la dernière mise à jour d'une donnée.</p>
@@ -322,7 +322,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-querying-basics.html">https://sequelize.org/master/manual/model-querying-basics.html</a></p>
+<p><a href="https://sequelize.org/master/manual/model-querying-basics.html" class="externe">https://sequelize.org/master/manual/model-querying-basics.html</a></p>
 </div></div>
 
 <h2>Exemple</h2>
@@ -530,7 +530,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </details>     
 </div>
 <h2>CRUD</h2>
-<p>Accéder aux données se fait, on l'a vue, en utilisant le formalisme <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>, c'est à dire que l'on veut avoir des url qui nous permettent de :</p>
+<p>Accéder aux données se fait, on l'a vue, en utilisant le formalisme <a href="https://fr.wikipedia.org/wiki/CRUD" class="externe">CRUD</a>, c'est à dire que l'on veut avoir des url qui nous permettent de :</p>
 <ul>
 <li><strong>C</strong>reate : créer un message</li>
 <li><strong>R</strong>ead : lire un message</li>
@@ -552,7 +552,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-instances.html#creating-an-instance">https://sequelize.org/master/manual/model-instances.html#creating-an-instance</a></p>
+<p><a href="https://sequelize.org/master/manual/model-instances.html#creating-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#creating-an-instance</a></p>
 </div></div>
 
 <p>Créer une donnée en sequelize peu se faire comme ça :</p>
@@ -567,7 +567,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-">https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-</a></p>
+<p><a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-" class="externe">https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-</a></p>
 </div></div>
 
 <p>Lire une instance en connaissant sa clé primaire.</p>
@@ -584,7 +584,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-instances.html#updating-an-instance">https://sequelize.org/master/manual/model-instances.html#updating-an-instance</a></p>
+<p><a href="https://sequelize.org/master/manual/model-instances.html#updating-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#updating-an-instance</a></p>
 </div></div>
 
 <p>Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :</p>
@@ -599,7 +599,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://sequelize.org/master/manual/model-instances.html#deleting-an-instance">https://sequelize.org/master/manual/model-instances.html#deleting-an-instance</a></p>
+<p><a href="https://sequelize.org/master/manual/model-instances.html#deleting-an-instance" class="externe">https://sequelize.org/master/manual/model-instances.html#deleting-an-instance</a></p>
 </div></div>
 
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">MonModèle<span class="token punctuation">.</span><span class="token function">findByPk</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>

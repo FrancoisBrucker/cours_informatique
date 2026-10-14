@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Key_derivation_function">Définition</a></li>
-<li><a href="https://blog.boot.dev/cryptography/key-derivation-functions/">introduction</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Key_derivation_function" class="externe">Définition</a></li>
+<li><a href="https://blog.boot.dev/cryptography/key-derivation-functions/" class="externe">introduction</a></li>
 </ul>
 </div></div>
 
@@ -122,12 +122,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a></li>
-<li><a href="https://www.youtube.com/watch?v=gTaOccTY9bc">https://www.youtube.com/watch?v=gTaOccTY9bc</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PBKDF2" class="externe">PBKDF2</a></li>
+<li><a href="https://www.youtube.com/watch?v=gTaOccTY9bc" class="externe">https://www.youtube.com/watch?v=gTaOccTY9bc</a></li>
 </ul>
 </div></div>
 
-<p>Nous allons montrer préciser le principe en explicitant le protocole <code>PBKDF2</code> encore très utilisé aujourd'hui. On lui préférera tout de même <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a>, plus complexe, pour de nouvelles applications.</p>
+<p>Nous allons montrer préciser le principe en explicitant le protocole <code>PBKDF2</code> encore très utilisé aujourd'hui. On lui préférera tout de même <a href="https://en.wikipedia.org/wiki/Argon2" class="externe">argon2</a>, plus complexe, pour de nouvelles applications.</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ openssl kdf <span class="token parameter variable">-keylen</span> <span class="token number">32</span> <span class="token parameter variable">-kdfopt</span> digest:SHA256 <span class="token parameter variable">-kdfopt</span> pass:<span class="token string">"password"</span> <span class="token parameter variable">-kdfopt</span> salt:<span class="token string">""</span> <span class="token parameter variable">-kdfopt</span> iter:2 PBKDF2
 8B:C2:F9:16:7A:81:CD:CF:AD:12:35:CD:90:47:F1:13:62:71:C1:F9:78:FC:FC:B3:5E:22:DB:EA:FA:46:34:F6</code></pre>
 <p><code>DK = PBKDF2(HMAC, Password, Salt, c, n)</code></p>
@@ -149,9 +149,9 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://www.password-hashing.net/argon2-specs.pdf">Argon2 specification</a></li>
-<li><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0">Argon2 algorithm</a></li>
-<li><a href="https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/">Argon2 vs PBKDF2</a></li>
+<li><a href="https://www.password-hashing.net/argon2-specs.pdf" class="externe">Argon2 specification</a></li>
+<li><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0" class="externe">Argon2 algorithm</a></li>
+<li><a href="https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/" class="externe">Argon2 vs PBKDF2</a></li>
 </ul>
 </div></div>
 
@@ -193,7 +193,7 @@ Verification ok
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/">Usage</a></p>
+<p><a href="https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/" class="externe">Usage</a></p>
 </div></div>
 
 <p>Trois usages courant :</p>

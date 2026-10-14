@@ -120,7 +120,7 @@ $$
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> x
     <span class="token keyword">rendre</span> x <span class="token operator">*</span> puissance<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-techniques-de-r%C3%A9cursion/#r%C3%A9cursion-terminale" class="interne">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre <code class="language-">r</code>) :</p>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-techniques-de-r%C3%A9cursion/#r%C3%A9cursion-terminale">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre <code class="language-">r</code>) :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">puissance_terminale</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> r<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> r
@@ -199,7 +199,7 @@ C&=& \mathcal{O}(n)\\
 $$
 </div>
 <h2><span id="algo-rapide"></span> Exponentiation indienne</h2>
-<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :</p>
+<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide" class="externe">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :</p>
 <div>
 $$
 x^n = \left\{

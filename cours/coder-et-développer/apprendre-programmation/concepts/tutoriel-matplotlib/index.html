@@ -107,7 +107,7 @@
     
   
 
-  <p>Présentation succincte du module <a href="https://matplotlib.org/">https://matplotlib.org/</a>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a>.</p>
+  <p>Présentation succincte du module <a href="https://matplotlib.org/" class="externe">https://matplotlib.org/</a>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <a href="https://seaborn.pydata.org/" class="externe">https://seaborn.pydata.org/</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -116,8 +116,8 @@
 <p>Utilisez spyder pour ce tutoriel.</p>
 </div></div>
 
-<p>Le module <a href="https://matplotlib.org/">matplotlib</a> peut être une  difficile à utiliser, ses notations ne sont pas cohérentes entre-elles, les paramètres des fonctions sont souvent abscons et il y a toujours plusieurs façon d'arriver au même résultat. Bref, cela peut être très pénible de s'en sortir.</p>
-<p>Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de <a href="https://matplotlib.org/">https://matplotlib.org/</a> nous ne saurions trop vous conseiller de lui préférer <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a> qui est une surcouche de <a href="https://matplotlib.org/">https://matplotlib.org/</a> qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.</p>
+<p>Le module <a href="https://matplotlib.org/" class="externe">matplotlib</a> peut être une  difficile à utiliser, ses notations ne sont pas cohérentes entre-elles, les paramètres des fonctions sont souvent abscons et il y a toujours plusieurs façon d'arriver au même résultat. Bref, cela peut être très pénible de s'en sortir.</p>
+<p>Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de <a href="https://matplotlib.org/" class="externe">https://matplotlib.org/</a> nous ne saurions trop vous conseiller de lui préférer <a href="https://seaborn.pydata.org/" class="externe">https://seaborn.pydata.org/</a> qui est une surcouche de <a href="https://matplotlib.org/" class="externe">https://matplotlib.org/</a> qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.</p>
 <h2>Écrire du code</h2>
 <p>Pour cette partie du cours nous aurons besoin de plus que la console. Il faudra en effet exécuter plusieurs lignes de python à la suite. Nous allons utiliser un notebook pour cela.</p>
 <p>Commençons par importer les bibliothèques  :</p>
@@ -183,7 +183,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>on peut paramétrer l'objet <code class="language-">ax</code> pour limiter le graphique.</li>
 </ul>
 </li>
-<li>la troisième partie dessine nos points (reliés par des segments) sur l'objet <code class="language-">ax</code>. La fonction <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html"><code class="language-">ax.plot</code></a> demande d'avoir 2 tableaux $x$ et $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.</li>
+<li>la troisième partie dessine nos points (reliés par des segments) sur l'objet <code class="language-">ax</code>. La fonction <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html" class="externe"><code class="language-">ax.plot</code></a> demande d'avoir 2 tableaux $x$ et $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.</li>
 <li>enfin, on représente l'objet <code class="language-">ax</code> à l'écran.</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -263,7 +263,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div>
 </details>     
 </div>
-<p>Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html">scatter</a>.</p>
+<p>Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html" class="externe">scatter</a>.</p>
 <h2>Sauver une figure</h2>
 <p>Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la partie précédente par la ligne : <code class="language-">plt.savefig(&quot;graphique.pdf&quot;, format=&quot;pdf&quot;, bbox_inches='tight')</code>.</p>
 <h2>Plusieurs figures</h2>
@@ -275,7 +275,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html">https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html</a></p>
+<p><a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html" class="externe">https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -347,7 +347,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar</a></p>
+<p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar" class="externe">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar</a></p>
 </div></div>
 
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># 1. création des données</span>
@@ -377,7 +377,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html</a></p>
+<p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html" class="externe">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html</a></p>
 </div></div>
 
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># 1. création des données</span>
@@ -402,7 +402,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">https://matplotlib.org/stable/tutorials/introductory/pyplot.html</a></p>
+<p><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html" class="externe">https://matplotlib.org/stable/tutorials/introductory/pyplot.html</a></p>
 </div></div>
 
 <p>Faire une belle figure prend du temps.</p>
@@ -431,7 +431,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le logarithme népérien est disponible dans le module math de python : <a href="https://docs.python.org/3/library/math.html#math.log"><code class="language-">math.log</code></a></p>
+<p>Le logarithme népérien est disponible dans le module math de python : <a href="https://docs.python.org/3/library/math.html#math.log" class="externe"><code class="language-">math.log</code></a></p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">

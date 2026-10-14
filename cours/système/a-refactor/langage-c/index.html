@@ -97,25 +97,25 @@
   
 
   <blockquote>
-<p>TBD comme <a href="https://www.youtube.com/watch?v=76acHVJfziw&amp;t=23s">https://www.youtube.com/watch?v=76acHVJfziw&amp;t=23s</a>, utiliser radar2 pour voir comment ça marche en mémoire. Pile et tas.
-TBD <a href="https://computergoblin.com/blog/everyone-should-learn-c-pt-1/">https://computergoblin.com/blog/everyone-should-learn-c-pt-1/</a></p>
+<p>TBD comme <a href="https://www.youtube.com/watch?v=76acHVJfziw&amp;t=23s" class="externe">https://www.youtube.com/watch?v=76acHVJfziw&amp;t=23s</a>, utiliser radar2 pour voir comment ça marche en mémoire. Pile et tas.
+TBD <a href="https://computergoblin.com/blog/everyone-should-learn-c-pt-1/" class="externe">https://computergoblin.com/blog/everyone-should-learn-c-pt-1/</a></p>
 </blockquote>
-<p>Le  <a href="https://www.youtube.com/watch?v=de2Hsvxaf8M">C a été créé pour créer Unix</a>. Son but est de créer des systèmes d'exploitation. Il :</p>
+<p>Le  <a href="https://www.youtube.com/watch?v=de2Hsvxaf8M" class="externe">C a été créé pour créer Unix</a>. Son but est de créer des systèmes d'exploitation. Il :</p>
 <ul>
 <li>est très proche de la machine</li>
 <li>fait confiance au développeur et n'effectue aucune vérification</li>
 </ul>
-<p>Le but est de ne pas avoir d'<a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.</p>
-<p>Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : <a href="https://gcc.gnu.org/">gcc</a> et <a href="https://llvm.org/">llvm</a>. Nous utiliserons ce dernier dans ce cours.</p>
+<p>Le but est de ne pas avoir d'<a href="https://en.wikipedia.org/wiki/Overhead_(computing)" class="externe">overhead</a> dans l'exécution du code. C'est donc un formidable langage pour comprendre le fonctionnement d'un ordinateur.</p>
+<p>Il existe plusieurs compilateurs permettant de produire du code machine à partir d'un programme en C. On peut en citer deux : <a href="https://gcc.gnu.org/" class="externe">gcc</a> et <a href="https://llvm.org/" class="externe">llvm</a>. Nous utiliserons ce dernier dans ce cours.</p>
 <p>C n'a cessé d'évoluer au cours du temps. La norme actuelle date de 2023 (dite <code>c23</code>), c'est elle que nous utiliserons et qui remplace la dernière spécification datant de 2017 (la <code>c17</code>).</p>
 <h2>Installation llvm</h2>
-<p>Il existe plusieurs compilateurs de <code>C</code>. Nous allons utiliser <a href="https://apt.llvm.org/">llvm</a> pour ce cours.</p>
+<p>Il existe plusieurs compilateurs de <code>C</code>. Nous allons utiliser <a href="https://apt.llvm.org/" class="externe">llvm</a> pour ce cours.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="installation" class="interne">Installation du compilateur</a></p>
+<p><a href="installation">Installation du compilateur</a></p>
 </div></div>
 
 <h2>Premier programme</h2>
@@ -171,7 +171,7 @@ int main() {
 </div></div>
 
 <h3>Exécution</h3>
-<p>On utilise le compilateur <a href="https://clang.llvm.org/">clang</a>, fait pour compiler de nombreux langages, dont le C.</p>
+<p>On utilise le compilateur <a href="https://clang.llvm.org/" class="externe">clang</a>, fait pour compiler de nombreux langages, dont le C.</p>
 <pre><code>clang hello.c
 </code></pre>
 <p>La compilation a crée un fichier exécutable <code class="fichier">a.out</code> dans le dossier courant :</p>
@@ -211,7 +211,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="compilation" class="interne">La compilation</a></p>
+<p><a href="compilation">La compilation</a></p>
 </div></div>
 
 <h2>Éléments de langage</h2>
@@ -220,7 +220,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="langage" class="interne">Langage C</a></p>
+<p><a href="langage">Langage C</a></p>
 </div></div>
 
 <h2>Gestion des sources</h2>
@@ -229,7 +229,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="gestion-code-source" class="interne">Gestion du code source</a></p>
+<p><a href="gestion-code-source">Gestion du code source</a></p>
 </div></div>
 
 <h2>Gestion des erreurs</h2>
@@ -238,7 +238,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="gestion-erreurs" class="interne">Gestion des erreurs</a></p>
+<p><a href="gestion-erreurs">Gestion des erreurs</a></p>
 </div></div>
 
 <h2>Bibliothèques</h2>
@@ -247,7 +247,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="ajout-biblioth%C3%A8ques" class="interne">Ajout de bibliothèques</a></p>
+<p><a href="ajout-biblioth%C3%A8ques">Ajout de bibliothèques</a></p>
 </div></div>
 
 <h2>Exercices</h2>
@@ -257,7 +257,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="exercices" class="interne">Exercices</a></p>
+<p><a href="exercices">Exercices</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -265,7 +265,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-algorithme-x" class="interne">Projet : Algorithme X</a></p>
+<p><a href="projet-algorithme-x">Projet : Algorithme X</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -273,7 +273,7 @@ int main() {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="examen" class="interne">Examen</a></p>
+<p><a href="examen">Examen</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -283,37 +283,37 @@ int main() {
 <div class="pl-8 mr-8">
 <p>Autres exercices (liste non exhaustive) :</p>
 <ul>
-<li><a href="https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf">https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf</a></li>
-<li><a href="https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf">https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf</a></li>
+<li><a href="https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf" class="externe">https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf</a></li>
+<li><a href="https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf" class="externe">https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf</a></li>
 </ul>
 </div></div>
 
 <h2>C art</h2>
 <ul>
-<li><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint">une histoire d'amour à sens unix</a></li>
-<li><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars">poème et ASCII art en C</a></li>
-<li><a href="https://code-poetry.com/water">encore un poème en C</a></li>
+<li><a href="https://www.cise.ufl.edu/~manuel/obfuscate/westley.hint" class="externe">une histoire d'amour à sens unix</a></li>
+<li><a href="https://www.welcometothejungle.com/fr/articles/btc-poem-code-avalanche-stars" class="externe">poème et ASCII art en C</a></li>
+<li><a href="https://code-poetry.com/water" class="externe">encore un poème en C</a></li>
 </ul>
 <h2>TBD</h2>
 <blockquote>
 <p>TBD liste de sujets non traité. Peut-être à ajouter plus tard.</p>
 </blockquote>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=l8dRF_AnFE0">python et C</a></li>
-<li>Créer une lib en <a href="https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b">static</a> avec ar</li>
-<li><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone">diff entre clone, fork, vfork</a></li>
-<li>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></li>
-<li>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4">C et segments mémoires utilisées</a></li>
-<li><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html">timer</a></li>
+<li><a href="https://www.youtube.com/watch?v=l8dRF_AnFE0" class="externe">python et C</a></li>
+<li>Créer une lib en <a href="https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b" class="externe">static</a> avec ar</li>
+<li><a href="https://www.baeldung.com/linux/fork-vfork-exec-clone" class="externe">diff entre clone, fork, vfork</a></li>
+<li>fork/clone : avec strace : <a href="https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17" class="externe">https://www.youtube.com/watch?v=uRYyj8tcDTE&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=17</a></li>
+<li>complet : <a href="https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4" class="externe">C et segments mémoires utilisées</a></li>
+<li><a href="https://0xax.gitbooks.io/linux-insides/content/Timers/linux-timers-6.html" class="externe">timer</a></li>
 </ul>
 <h2>Bibliographie</h2>
 <ul>
-<li><a href="https://learncodethehardway.org/c/">https://learncodethehardway.org/c/</a></li>
-<li><a href="https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/">effective C</a></li>
-<li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/">modern C</a></li>
-<li><a href="https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c">cours OpenClassroom</a></li>
-<li><a href="https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf">C programming a modern approach</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl">playlist sur la mémoire</a></li>
+<li><a href="https://learncodethehardway.org/c/" class="externe">https://learncodethehardway.org/c/</a></li>
+<li><a href="https://www.amazon.fr/Effective-Introduction-Professional-Robert-Seacord/dp/1718501048/" class="externe">effective C</a></li>
+<li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/" class="externe">modern C</a></li>
+<li><a href="https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c" class="externe">cours OpenClassroom</a></li>
+<li><a href="https://github.com/Embed-Threads/Learn-C/blob/main/books/c-programming-a-modern-approach-2nbsped-0393979504-9780393979503_compress.pdf" class="externe">C programming a modern approach</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjGAINguks7wyq7TAnHOZGRl" class="externe">playlist sur la mémoire</a></li>
 </ul>
 
 

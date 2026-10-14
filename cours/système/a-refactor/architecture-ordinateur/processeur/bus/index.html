@@ -109,7 +109,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Control_bus">Canal de contrôle</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Control_bus" class="externe">Canal de contrôle</a></p>
 </div></div>
 
 <p>Détermine :</p>
@@ -123,13 +123,13 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Bus_(computing)#Address_bus">Canal d'adresse</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Bus_(computing)#Address_bus" class="externe">Canal d'adresse</a></p>
 </div></div>
 
 <p>La partie adresse du bus doit permettre de déterminer à la fois déterminer le device et l'endroit sur celui-ci où lire/écrire l'information. Par exemple, si la taille du bus d'adresse est de 64 bit, on peut (c'est un exemple) :</p>
 <ul>
 <li>réserver 4bits pour le choix du device (on a $2^4=16$ possibilités, de $0000$ à $1111$)</li>
-<li>réserver 60bits pour l'adresse ce qui fait un adressage de $2^{60}$ bit, donc 4503 terabyte (voir <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes">$10^{12}$ bytes</a>). Ce qui est pas mal puisque la norme haute en RAM est actuellement 128 gigabyte ($10^{9}$ bytes).</li>
+<li>réserver 60bits pour l'adresse ce qui fait un adressage de $2^{60}$ bit, donc 4503 terabyte (voir <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Unit%C3%A9s_de_bytes" class="externe">$10^{12}$ bytes</a>). Ce qui est pas mal puisque la norme haute en RAM est actuellement 128 gigabyte ($10^{9}$ bytes).</li>
 </ul>
 <p>Ce qui nous laisse la place d'accéder à tous les devices branchés :</p>
 <ul>
@@ -143,22 +143,22 @@
 </ul>
 </li>
 </ul>
-<p>Cette technique d'adressage unifiée est appelée <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O">IO memory mapping</a>. L'intérêt est d'ajouter une couche d'indirection (rappelez vous la règle fondamentale de l’ingénierie logicielle), le processeur n'a pas à avoir plusieurs jeux d'instructions selon le device auquel il veut accéder, tout est unifié.</p>
+<p>Cette technique d'adressage unifiée est appelée <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O" class="externe">IO memory mapping</a>. L'intérêt est d'ajouter une couche d'indirection (rappelez vous la règle fondamentale de l’ingénierie logicielle), le processeur n'a pas à avoir plusieurs jeux d'instructions selon le device auquel il veut accéder, tout est unifié.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=2Cbcb2yGjiM">Mise en œuvre électronique</a></p>
+<p><a href="https://www.youtube.com/watch?v=2Cbcb2yGjiM" class="externe">Mise en œuvre électronique</a></p>
 </div></div>
 
 <p>L'exemple précédent est très simplifié car les devices hors mémoire n'ont pas besoin de beaucoup d'adressage. Il est en effet impossible d'accéder directement à tout byte. La communication avec ces devices se fait par un protocole similaire aux protocoles de communication réseaux la communication via des paquets de taille fixe, en lecture et en écriture : l'essentiel de la communication passe par la partie donnée du bus et non la partie adresse.</p>
-<p>Ceci pose cependant un problème car l'accès à chaque byte d'un disque dur va mobiliser le processeur et l'accès à un disque dur est relativement lent par rapport à la vitesse d'un processeur, ce qui ralentie inutilement le système puisque le processeur va passer son temps à attendre que l'accès disque soit terminé. Pour palier ce problème on utilise un procédé nommé <a href="https://en.wikipedia.org/wiki/Direct_memory_access">Direct Memory Access</a>. Par exemple pour lire des données :</p>
+<p>Ceci pose cependant un problème car l'accès à chaque byte d'un disque dur va mobiliser le processeur et l'accès à un disque dur est relativement lent par rapport à la vitesse d'un processeur, ce qui ralentie inutilement le système puisque le processeur va passer son temps à attendre que l'accès disque soit terminé. Pour palier ce problème on utilise un procédé nommé <a href="https://en.wikipedia.org/wiki/Direct_memory_access" class="externe">Direct Memory Access</a>. Par exemple pour lire des données :</p>
 <ol>
 <li>plutôt que d'envoyer les données lues au processeur, on les envoie en mémoire RAM</li>
-<li>plutôt que de demander 1 byte à la fois, on en demande directement 4KiB (on demande une <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)">page</a> de donnée)</li>
+<li>plutôt que de demander 1 byte à la fois, on en demande directement 4KiB (on demande une <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)" class="externe">page</a> de donnée)</li>
 <li>une fois la demande de lecture de la page faite par le processeur au device, le device communique directement avec la RAM via le System Agent pour effectuer le transfert byte à byte du device à la RAM</li>
-<li>une fois la page transférée le device génère une <a href="https://fr.wikipedia.org/wiki/Interruption_(informatique)">Interruption</a> pour prévenir le processeur de la fin du traitement.</li>
+<li>une fois la page transférée le device génère une <a href="https://fr.wikipedia.org/wiki/Interruption_(informatique)" class="externe">Interruption</a> pour prévenir le processeur de la fin du traitement.</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -167,10 +167,10 @@
 <div class="pl-8 mr-8">
 <p>Ue série de vidéos explicatives sur ces mécaniques :</p>
 <ol>
-<li><a href="https://www.youtube.com/watch?v=nnO2OfSTVbA&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=7">I/O</a></li>
-<li><a href="https://www.youtube.com/watch?v=xNH1e5snIEY&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=1">I/O memory mapping</a></li>
-<li><a href="https://www.youtube.com/watch?v=dDA3PUr16As&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=4">les interruptions</a></li>
-<li><a href="https://www.youtube.com/watch?v=M16l_ymlfcs&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=8">Direct memory Access</a></li>
+<li><a href="https://www.youtube.com/watch?v=nnO2OfSTVbA&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=7" class="externe">I/O</a></li>
+<li><a href="https://www.youtube.com/watch?v=xNH1e5snIEY&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=1" class="externe">I/O memory mapping</a></li>
+<li><a href="https://www.youtube.com/watch?v=dDA3PUr16As&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=4" class="externe">les interruptions</a></li>
+<li><a href="https://www.youtube.com/watch?v=M16l_ymlfcs&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=8" class="externe">Direct memory Access</a></li>
 </ol>
 </div></div>
 

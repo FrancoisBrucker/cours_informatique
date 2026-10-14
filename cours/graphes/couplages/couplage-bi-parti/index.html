@@ -96,8 +96,8 @@
     
   
 
-  <p>Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans <a href="../../flots/#ford-fulkerson" class="interne">l'algorithme de Ford et Fulkerson</a>, par un algorithme de marquage examen qui va faire grossir des chemins alternants.</p>
-<p>On verra qu'il est optimal pour <a href="../../graphe-biparti/" class="interne">les graphes bi-partis</a>.</p>
+  <p>Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans <a href="../../flots/#ford-fulkerson">l'algorithme de Ford et Fulkerson</a>, par un algorithme de marquage examen qui va faire grossir des chemins alternants.</p>
+<p>On verra qu'il est optimal pour <a href="../../graphe-biparti/">les graphes bi-partis</a>.</p>
 <h2>Trouver un chemin augmentant</h2>
 <p>On utilise l'algorithme de recherche de chemin augmentant précédent. On sait qu'il fonctionne s'il ne trouve pas de fleurs... qui n'existent pas dans les graphes bi-parti :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -249,7 +249,7 @@
 <p>Cette complexité est identique à celle de la méthode utilisant les flot et l'algorithme de Ford et Fulkerson puisque la coupe contenant uniquement la source est de valuation bornée par $v(G)$ puisque toutes les capacités valent 1.</p>
 </div></div>
 
-<p>Notez qu'il existe des algorithme meilleurs, comme <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm">l'algorithme de Hopcroft-Karp</a> qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.</p>
+<p>Notez qu'il existe des algorithme meilleurs, comme <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm" class="externe">l'algorithme de Hopcroft-Karp</a> qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.</p>
 <h2>Propriétés des couplage parfait et maximum dans un graphe biparti</h2>
 <p>Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés et commençons par une constatation simple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -450,7 +450,7 @@ Donc si p cartes différentes envoient forcément vers 4p on plus tas. On est da
 </details>     
 </div>
 <h3>Couplage et couvertures</h3>
-<p>La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver <a href="../probl%C3%A8me/#couverture" class="interne">la proposition générale</a>, mais on peut faire bien mieux :</p>
+<p>La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver <a href="../probl%C3%A8me/#couverture">la proposition générale</a>, mais on peut faire bien mieux :</p>
 <div id="König-Egerváry"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -482,7 +482,7 @@ Donc si p cartes différentes envoient forcément vers 4p on plus tas. On est da
 <p>Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
 Soit $M$ un couplage maximum de $A$.</p>
 <p>Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.</p>
-<p>Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un <a href="../chemins-augmentant/#d%C3%A9finition-chemin-alternant" class="interne">chemin alternant</a> (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :</p>
+<p>Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un <a href="../chemins-augmentant/#d%C3%A9finition-chemin-alternant">chemin alternant</a> (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :</p>
 <ul>
 <li>$A' = A \cap C$</li>
 <li>$B' = B \cap C$</li>

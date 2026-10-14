@@ -114,7 +114,7 @@ On utilisera pour cela 2 méthodes :</p>
 <p>TBD dire que l'on a un algo écrit en pseudo code avec fct booléenne que l'on peut écrire sous notre forme.
 Donner la complexité nouvelle nouvelle par rapport à l'ancienne en temps : même O et en mêmoire du carré.</p>
 </blockquote>
-<p>On utilise une version épurée (mais équivalente) au <a href="../fonctions-bool%C3%A9ennes" class="interne">pseudo-code utilisant des opérations de fonctions booléennes</a>.</p>
+<p>On utilise une version épurée (mais équivalente) au <a href="../fonctions-bool%C3%A9ennes">pseudo-code utilisant des opérations de fonctions booléennes</a>.</p>
 <p>Soit $A$ un algorithme (il s'arrête pour toute entrée) écrit en pseudo-code. On peut supposer sans perte de généralité que :</p>
 <ul>
 <li>son entrée est une variable <code class="language-">e:[bit:n]</code> de longueur $n$,</li>
@@ -366,7 +366,7 @@ Un pseudo-code utilisant une fonction booléenne peut s'écrire de deux façons 
 <li><code class="language">y ← f(x)</code> avec $x$ et $y$ deux variables de type <code class="language-">[bit]</code></li>
 <li><code class="language">b ← f(x)</code> avec $x$ une variable de type <code class="language-">[bit]</code> et $b$ de type <code class="language-">bit</code></li>
 </ul>
-<p>En utilisant le fait que <a href="../fonctions-bool%C3%A9ennes/#" class="interne">toute fonction booléenne peut s'écrire sous une forme normale conjonctive</a>, on peut associer à toute opération <code class="language">y ← f(x)</code> telle que <code class="language-">f(x:[bit:n]) → bit</code> une formule normale conjonctive <code class="language-">F(x)</code> telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.</p>
+<p>En utilisant le fait que <a href="../fonctions-bool%C3%A9ennes/#">toute fonction booléenne peut s'écrire sous une forme normale conjonctive</a>, on peut associer à toute opération <code class="language">y ← f(x)</code> telle que <code class="language-">f(x:[bit:n]) → bit</code> une formule normale conjonctive <code class="language-">F(x)</code> telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.</p>
 <blockquote>
 <p>TBD montrer avec <code class="language-">b ← NAND(b', b'')</code> où $b$, $b'$ et $b''$ sont des variables de type <code class="language-">bit</code>
 et dire que ça suffit puisque tout fct booléenne est un gros <code>NAND</code>.</p>
@@ -436,7 +436,7 @@ TBD pour chaque entrée on crée une clause en temps dépendant de la complexit�
 <blockquote>
 <p>TBD fct booléenne de l'addition ou du produit. Comme c'est une fonction booléenne cela permet d'avoir une réponse mais aussi d'avoir les entrées.</p>
 <p>TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.</p>
-<p>polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
+<p>polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM" class="externe">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
 </blockquote>
 <blockquote>
 <p>exemple réduction :</p>

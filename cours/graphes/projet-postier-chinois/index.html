@@ -108,7 +108,7 @@
   
 
   <p>Un problème d'optimisation où la théorie des graphes peut aider.</p>
-<p>Nous allons étudier le problème du <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois">postier chinois</a>, proposé par le mathématicien chinois <a href="https://fr.wikipedia.org/wiki/Meigu_Guan">管梅谷</a> en 1962 :</p>
+<p>Nous allons étudier le problème du <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois" class="externe">postier chinois</a>, proposé par le mathématicien chinois <a href="https://fr.wikipedia.org/wiki/Meigu_Guan" class="externe">管梅谷</a> en 1962 :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -116,7 +116,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E, A)$ un <a href="../structure#definition-graphe-mixte" class="interne">graphe mixte</a> connexe, et $f: E \cup A \rightarrow \mathbb{R}^+$ une fonction de valuation des arcs et arêtes.</p>
+<p>Soit $G = (V, E, A)$ un <a href="../structure#definition-graphe-mixte">graphe mixte</a> connexe, et $f: E \cup A \rightarrow \mathbb{R}^+$ une fonction de valuation des arcs et arêtes.</p>
 <p>Le <strong>problème du postier chinois</strong> consiste à trouver un pseudo-circuit (des arêtes/arcs peuvent apparaître plusieurs fois) passant par toutes les arêtes et les arcs du graphe mixte de coût (la somme des valuations des arcs/arêtes le constituant) minimum.</p>
 </div></div>
 
@@ -125,9 +125,9 @@
 <p>TBD à finir.
 TBD revue :</p>
 <ul>
-<li><a href="https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/7d72c3b6-c1f3-4f71-87ef-54d32aad57c5/content">https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/7d72c3b6-c1f3-4f71-87ef-54d32aad57c5/content</a></li>
-<li><a href="https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231">https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231</a></li>
-<li><a href="https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf">https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf</a> p70</li>
+<li><a href="https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/7d72c3b6-c1f3-4f71-87ef-54d32aad57c5/content" class="externe">https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/7d72c3b6-c1f3-4f71-87ef-54d32aad57c5/content</a></li>
+<li><a href="https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231" class="externe">https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231</a></li>
+<li><a href="https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf" class="externe">https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf</a> p70</li>
 </ul>
 </blockquote>
 <p>Nous nous intéresserons ici à un cas particulier du problème où $G$ est juste un graphe :</p>
@@ -148,7 +148,7 @@ TBD revue :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément <a href="../parcours-eul%C3%A9riens" class="interne">eulérien</a> : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.</p>
+<p>On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément <a href="../parcours-eul%C3%A9riens">eulérien</a> : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.</p>
 </div></div>
 
 <h2>Éléments de résolution</h2>
@@ -158,7 +158,7 @@ TBD revue :</p>
 <li>graphe orienté pondéré en $\mathcal{O}(n^3)$ également</li>
 <li>graphe mixte pair</li>
 </ul>
-<p>Il est cependant NP-complet pour les graphes mixtes dans le cas général (<a href="https://fr.wikipedia.org/wiki/Christos_Papadimitriou">Papadimitriou</a>, 1976)</p>
+<p>Il est cependant NP-complet pour les graphes mixtes dans le cas général (<a href="https://fr.wikipedia.org/wiki/Christos_Papadimitriou" class="externe">Papadimitriou</a>, 1976)</p>
 <p>Nous allons dans ce projet unique,ent nous concentrer sur le cas simple</p>
 <blockquote>
 <p>TBD renvoyer à la partie couplage pour des algos exacts</p>
@@ -209,8 +209,8 @@ TBD revue :</p>
 <p>Supposons qu'il existe un couplage de poids plus faible.</p>
 <blockquote>
 <p>TBD faire avec un heuristique pour le couplage parfait et dire qu'il existe des algos exact : on verra plus tard.
-<a href="https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w">https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w</a>
-<a href="https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf">https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf</a></p>
+<a href="https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w" class="externe">https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w</a>
+<a href="https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf" class="externe">https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf</a></p>
 </blockquote>
 <h3>Algorithme</h3>
 <blockquote>
@@ -225,8 +225,8 @@ TBD revue :</p>
 </ul>
 </blockquote>
 <blockquote>
-<p>TBD <a href="http://biblos.hec.ca/biblio/memoires/m2001no11.pdf">http://biblos.hec.ca/biblio/memoires/m2001no11.pdf</a>
-Christofides <a href="https://en.wikipedia.org/wiki/Christofides_algorithm">https://en.wikipedia.org/wiki/Christofides_algorithm</a> On verra plus tard que 3/2 approximation avec l'algo exact et 2 approximation avec la 1/2 heuristique</p>
+<p>TBD <a href="http://biblos.hec.ca/biblio/memoires/m2001no11.pdf" class="externe">http://biblos.hec.ca/biblio/memoires/m2001no11.pdf</a>
+Christofides <a href="https://en.wikipedia.org/wiki/Christofides_algorithm" class="externe">https://en.wikipedia.org/wiki/Christofides_algorithm</a> On verra plus tard que 3/2 approximation avec l'algo exact et 2 approximation avec la 1/2 heuristique</p>
 </blockquote>
 
 

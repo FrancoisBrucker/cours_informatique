@@ -111,7 +111,7 @@
 <li>un fichier <code class="fichier">readme.md</code> explicatif contenant les différentes règles du makefile permettant de générer les exécutables particuliers et la documentation pour les utiliser.</li>
 </ul>
 <h2>Problème</h2>
-<p>L'algorithme X permet de résoudre optimalement un problème NP-complet nommé <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte">problème de la couverture exacte</a>. Il admet une formulation ensembliste et une formulation matricielle.</p>
+<p>L'algorithme X permet de résoudre optimalement un problème NP-complet nommé <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte" class="externe">problème de la couverture exacte</a>. Il admet une formulation ensembliste et une formulation matricielle.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -156,7 +156,7 @@ $$
 <h2>Génération d'instances</h2>
 <p>Vous allez créez une unité fonctionnelle dont le but est de générer des instances matricielle au problème.</p>
 <p>Vous créerez également un fichier <code class="fichier">main_instance.c</code> (avec une règle spéciale dans la <code>Makefile</code>) permettant de créer un exécutable qui affiche le résultat de chacune de vos fonctions de créations d'instances.</p>
-<p>Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour avoir des choses à générer mais assez petite pour tenir sur un écran). Vous utiliserez l'implémentation sous la forme d'un pointeur opaque de l'<a href="../exercices/#matrice" class="interne">exercice matrice</a></p>
+<p>Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour avoir des choses à générer mais assez petite pour tenir sur un écran). Vous utiliserez l'implémentation sous la forme d'un pointeur opaque de l'<a href="../exercices/#matrice">exercice matrice</a></p>
 <h3>Instances quelconques</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -164,7 +164,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la fonction crée dans l'<a href="../exercices/#proba" class="interne">exercice sur les nombres aléatoires</a>, créez une fonction permettant de créer une instance du problème. Sa signature doit être :</p>
+<p>En utilisant la fonction crée dans l'<a href="../exercices/#proba">exercice sur les nombres aléatoires</a>, créez une fonction permettant de créer une instance du problème. Sa signature doit être :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_quelconque</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">,</span> <span class="token keyword">double</span> proba<span class="token punctuation">)</span></code></pre>
 <p>La fonction doit générer une matrice binaire avec une proportion de 1 égale à <code class="language-">proba</code>.</p>
 </div></div>
@@ -215,12 +215,12 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser les fonctions vues dans l'<a href="../exercices/#proba" class="interne">exercice aléatoire</a> pour vous aider. En particulier :</p>
+<p>Vous pourrez utiliser les fonctions vues dans l'<a href="../exercices/#proba">exercice aléatoire</a> pour vous aider. En particulier :</p>
 <ul>
 <li>la fonction <code class="language-">int aleatoire_int(int min, int max)</code> pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.</li>
 <li>la fonction <code class="language-">int *aléatoire_01_tab(double proba)</code> pour générer les lignes strictement plus grandes que $k$</li>
 </ul>
-<p>Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">l'algorithme de Fisher-Yates</a> pour trouver une permutation des lignes et/ou des colonnes).</p>
+<p>Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates" class="externe">l'algorithme de Fisher-Yates</a> pour trouver une permutation des lignes et/ou des colonnes).</p>
 </div></div>
 
 <h2>Algorithme</h2>
@@ -311,7 +311,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser la commande <a href="https://linuxize.com/post/linux-time-command/"><code>time</code></a> pour mesurer le temps sous unix, ou <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4">measure-Command</a> sous windows.</p>
+<p>Vous pourrez utiliser la commande <a href="https://linuxize.com/post/linux-time-command/" class="externe"><code>time</code></a> pour mesurer le temps sous unix, ou <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4" class="externe">measure-Command</a> sous windows.</p>
 </div></div>
 
 <h2>Amélioration</h2>
@@ -321,7 +321,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth">Algorithme X</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth" class="externe">Algorithme X</a></p>
 </div></div>
 
 <h3>Colonne min</h3>

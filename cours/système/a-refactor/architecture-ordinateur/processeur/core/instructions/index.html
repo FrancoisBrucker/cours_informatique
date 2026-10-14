@@ -98,8 +98,8 @@
 
   <p>Les instructions que peuvent exécuter un core vont dépendre de son modèle. Il existe deux grandes familles qui se distinguent par le choix des opérations qu'elles permettent :</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu">architecture CISC</a> (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.</li>
-<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">architecture RISC</a> (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en <a href="https://en.wikipedia.org/wiki/Classic_RISC_pipeline">pipeline</a> permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.</li>
+<li><a href="https://fr.wikipedia.org/wiki/Microprocesseur_%C3%A0_jeu_d%27instruction_%C3%A9tendu" class="externe">architecture CISC</a> (intel et AMD). Possèdent un grand nombre d'instructions, chaque instruction étant complexe. Ceci permet de dédier de la circuiterie à chaque instruction pour en accélérer son exécution.</li>
+<li><a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit" class="externe">architecture RISC</a> (ARM et Apple). Un petit nombre d'instructions simples. Le petit jeu d'instruction uniformisé en <a href="https://en.wikipedia.org/wiki/Classic_RISC_pipeline" class="externe">pipeline</a> permet théoriquement d'avoir une instruction par cycle. De plus la simplicité de chaque opération rend ces processeurs économe en énergie.</li>
 </ul>
 <p>On s'accorde à dire que le RISC est plus rapide mais consomme plus que le RISC :</p>
 <ul>
@@ -109,27 +109,27 @@
 <p>Les développement récents tendent à brouiller un peu ces différences, chaque architecture empruntant à l'autre ses points forts (le CISC scinde certaines de ses instructions pour gagner en consommation et le RISC propose quelques instructions complexes pur les optimiser).</p>
 <p>De nombreuses personnes pensent que l'avenir est aux puces RISC et que leur utilisation dans les devices mobiles n'est que le début. Par exemple apple et ses nouvelles puces M pour toutes leurs machines, ou encore Angelina Jolie et sa phrase mythique :</p>
 <blockquote>
-<p><a href="https://www.youtube.com/watch?v=yVo9_h3-zwQ"><em>&quot;RISC architecture is gonna change everything&quot;</em></a> (Angelina Jolie parlant de son portable dans <a href="https://en.wikipedia.org/wiki/Hackers_(film)">Hackers (1995)</a>).</p>
+<p><a href="https://www.youtube.com/watch?v=yVo9_h3-zwQ" class="externe"><em>&quot;RISC architecture is gonna change everything&quot;</em></a> (Angelina Jolie parlant de son portable dans <a href="https://en.wikipedia.org/wiki/Hackers_(film)" class="externe">Hackers (1995)</a>).</p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
+<p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc" class="externe">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4" class="externe">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU" class="externe">RISC-V</a></p>
 </div></div>
 
-<p>Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture <a href="https://en.wikipedia.org/wiki/X86-64">x86-64</a>, donc CISC car la majorité des pc en sont équipés.</p>
+<p>Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture <a href="https://en.wikipedia.org/wiki/X86-64" class="externe">x86-64</a>, donc CISC car la majorité des pc en sont équipés.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
+<p><a href="https://www.felixcloutier.com/x86/" class="externe">Instructions x86_64</a></p>
 </div></div>
 
 <h2>Registres</h2>
-<p>Les <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a> sont la mémoire dont dispose un core. Cette mémoire est très rapide, donc très chère : il n'y en a que peu.</p>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur" class="externe">registres</a> sont la mémoire dont dispose un core. Cette mémoire est très rapide, donc très chère : il n'y en a que peu.</p>
 <p>Un registre est un espace mémoire de 64b ou le core stocke les paramètres et les résultats de ses instructions.</p>
 <p>Par exemple l'instruction :</p>
 <pre><code>ADD RAX, 42
@@ -148,10 +148,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Toutes les façons de faire ADD : <a href="https://www.felixcloutier.com/x86/add">la commande ADD</a>.</p>
+<p>Toutes les façons de faire ADD : <a href="https://www.felixcloutier.com/x86/add" class="externe">la commande ADD</a>.</p>
 </div></div>
 
-<p>Il y a un petit nombre de <a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture">registres x86-64</a>. Les registres 64b commencent par <code>R</code>.</p>
+<p>Il y a un petit nombre de <a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture" class="externe">registres x86-64</a>. Les registres 64b commencent par <code>R</code>.</p>
 <h3>Registres généraux</h3>
 <p>Il en existe 14 de 64b. Ils sont utilisées dans une grande variété de cas.</p>
 <h4>Paramètres</h4>
@@ -184,10 +184,10 @@
 <li>RBP (adresse pile base)</li>
 </ul>
 <h3>Registre d'états (flag)</h3>
-<p>Le registre <a href="https://en.wikipedia.org/wiki/FLAGS_register">RFLAGS</a> est un registre d'états qui permet de rendre compte d'<em>états</em> arrivant en plus de l'instruction.</p>
-<p>C'est une structure de donnée de type <a href="https://en.wikipedia.org/wiki/Bit_field">bit field</a> : chaque état est codé par un bit du registre : si l'état est présent ce bit vaut 1, sinon il vaut 0.</p>
-<p>Par exemple si le résultat de l'opération précédente vaut 0, le 6ème bit de ce registre vaut 1 (c'est le <a href="https://en.wikipedia.org/wiki/Zero_flag">zéro flag</a>).</p>
-<p>Ces états permettent de faire les instructions if/then/else en laguage machine en utilisant des <a href="https://www.felixcloutier.com/x86/jcc">instructions de saut conditionnels</a>.</p>
+<p>Le registre <a href="https://en.wikipedia.org/wiki/FLAGS_register" class="externe">RFLAGS</a> est un registre d'états qui permet de rendre compte d'<em>états</em> arrivant en plus de l'instruction.</p>
+<p>C'est une structure de donnée de type <a href="https://en.wikipedia.org/wiki/Bit_field" class="externe">bit field</a> : chaque état est codé par un bit du registre : si l'état est présent ce bit vaut 1, sinon il vaut 0.</p>
+<p>Par exemple si le résultat de l'opération précédente vaut 0, le 6ème bit de ce registre vaut 1 (c'est le <a href="https://en.wikipedia.org/wiki/Zero_flag" class="externe">zéro flag</a>).</p>
+<p>Ces états permettent de faire les instructions if/then/else en laguage machine en utilisant des <a href="https://www.felixcloutier.com/x86/jcc" class="externe">instructions de saut conditionnels</a>.</p>
 <h3>Autre registres</h3>
 <p>Il existe également des registres de segments :</p>
 <ul>
@@ -195,7 +195,7 @@
 <li>FS et GS qui sont utilisés uniquement par le système d'exploitation mais ne participent à aucune instruction</li>
 </ul>
 <h2>opcode</h2>
-<p>Chaque instruction possède un code permettant de l'identifier de façon unique. On appelle ceci l'opcode. Il diffère non seulement pour chaque commande mais également pour chaque usage de la commande (chaque usage de la <a href="https://www.felixcloutier.com/x86/add">commande ADD</a> aura un opcode différent).</p>
+<p>Chaque instruction possède un code permettant de l'identifier de façon unique. On appelle ceci l'opcode. Il diffère non seulement pour chaque commande mais également pour chaque usage de la commande (chaque usage de la <a href="https://www.felixcloutier.com/x86/add" class="externe">commande ADD</a> aura un opcode différent).</p>
 <p>Le passage d'une instruction assembleur à l'opcode n'est pas triviale :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -203,8 +203,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding">Construire l'opcode d'une instruction</a></li>
-<li>liste de <a href="http://ref.x86asm.net/">toutes les instructions x86-64</a></li>
+<li><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding" class="externe">Construire l'opcode d'une instruction</a></li>
+<li>liste de <a href="http://ref.x86asm.net/" class="externe">toutes les instructions x86-64</a></li>
 </ul>
 </div></div>
 
@@ -215,7 +215,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Utilisez <a href="https://defuse.ca/online-x86-assembler.htm">ce site</a> ci-après pour connaître l'opcode de l'instruction <code>ADD RAX, 42</code> :</p>
+<p>Utilisez <a href="https://defuse.ca/online-x86-assembler.htm" class="externe">ce site</a> ci-après pour connaître l'opcode de l'instruction <code>ADD RAX, 42</code> :</p>
 <p>Attention au fait qu'il faut que vous soyez en x64, RAX n'étant pas défini en 32bits.</p>
 </div></div>
 

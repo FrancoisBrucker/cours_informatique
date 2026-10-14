@@ -106,8 +106,8 @@
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>arbre</em></strong> est un <em>graphe</em> $T = (V, E)$ qui est :</p>
 <ul>
-<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-connexe" class="interne">connexe</a></li>
-<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-cycle" class="interne">sans cycle</a></li>
+<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-connexe">connexe</a></li>
+<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-cycle">sans cycle</a></li>
 </ul>
 </div></div>
 
@@ -204,8 +204,8 @@
 <div class="mx-8 pb-2">
 <ul>
 <li>$1 \Rightarrow 2$ : par définition</li>
-<li>$2 \Rightarrow 3$ : S'il existait un cycle, on pourrait en enlever une arête et $G$ resterait connexe. Or <a href="../../chemins-cycles-connexite/#prop-connexe-min" class="interne">on a vu</a> que tout graphe connexe possède au moins $\vert V \vert - 1$ arêtes ce qui apporte une contradiction</li>
-<li>$3 \Rightarrow 4$ <a href="../../chemins-cycles-connexite/#prop-connexe-cycles" class="interne">On a vu</a> que tout graphe sans cycle possède au plus $\vert V \vert - 1$ arêtes</li>
+<li>$2 \Rightarrow 3$ : S'il existait un cycle, on pourrait en enlever une arête et $G$ resterait connexe. Or <a href="../../chemins-cycles-connexite/#prop-connexe-min">on a vu</a> que tout graphe connexe possède au moins $\vert V \vert - 1$ arêtes ce qui apporte une contradiction</li>
+<li>$3 \Rightarrow 4$ <a href="../../chemins-cycles-connexite/#prop-connexe-cycles">On a vu</a> que tout graphe sans cycle possède au plus $\vert V \vert - 1$ arêtes</li>
 <li>$4 \Rightarrow 5$ Si le graphe n'était pas connexe, on pourrait ajouter une arête reliant deux de ses composantes connexes sans rajouter de cycle</li>
 <li>$5 \Rightarrow 1$ Si le graphe possédait un cycle, on pourrait supprimer une arête de ce cycle sans déconnecter le graphe</li>
 </ul>
@@ -236,7 +236,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On commence par vérifier que le graphe a $\vert V \vert -1$ arêtes. Si c'est le cas, on utilise <a href="../../chemins-cycles-connexite/#algorithme-connexe" class="interne">l'algorithme de recherche des composantes connexes</a> qui est en $\mathcal{O}(\vert E \vert)$, donc en $\mathcal{O}(\vert V \vert)$ dans notre cas pour vérifier qu'il n'y a bien qu'une composante connexe.</p>
+<p>On commence par vérifier que le graphe a $\vert V \vert -1$ arêtes. Si c'est le cas, on utilise <a href="../../chemins-cycles-connexite/#algorithme-connexe">l'algorithme de recherche des composantes connexes</a> qui est en $\mathcal{O}(\vert E \vert)$, donc en $\mathcal{O}(\vert V \vert)$ dans notre cas pour vérifier qu'il n'y a bien qu'une composante connexe.</p>
 </div>
 </details>     
 </div>
@@ -596,7 +596,7 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé <a href="https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian">graphes médians</a>. Les<a href="https://fr.wikipedia.org/wiki/Hypercube_(graphe)">hypercubes</a> en sont des exemples.</p>
+<p>Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé <a href="https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian" class="externe">graphes médians</a>. Les<a href="https://fr.wikipedia.org/wiki/Hypercube_(graphe)" class="externe">hypercubes</a> en sont des exemples.</p>
 </div></div>
 
 <h2>Encodage</h2>

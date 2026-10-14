@@ -1180,17 +1180,17 @@ img {
 a:not([class]),
   a:not([class]):visited {
   --tw-text-opacity: 1;
-  color: rgb(6 95 70 / var(--tw-text-opacity));
+  color: rgb(107 33 168 / var(--tw-text-opacity));
   text-decoration-line: underline;
-  text-decoration-color: #10b981;
+  text-decoration-color: #a855f7;
   text-decoration-thickness: 2px;
 }
 
 a:not([class]):hover,
   a:not([class]):visited:hover {
   --tw-text-opacity: 1;
-  color: rgb(16 185 129 / var(--tw-text-opacity));
-  text-decoration-color: #065f46;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
+  text-decoration-color: #6b21a8;
 }
 
 a:not([class]):active,
@@ -1637,6 +1637,33 @@ a.interne:active,
 a.interne:visited:active,
 .interne a:active,
 .interne a:visited:active {
+  text-decoration-thickness: 4px;
+}
+
+a.externe,
+a.externe:visited,
+.externe a,
+.externe a:visited {
+  --tw-text-opacity: 1;
+  color: rgb(6 95 70 / var(--tw-text-opacity));
+  text-decoration-line: underline;
+  text-decoration-color: #10b981;
+  text-decoration-thickness: 2px;
+}
+
+a.externe:hover,
+a.externe:visited:hover,
+.externe a:hover,
+.externe a:visited:hover {
+  --tw-text-opacity: 1;
+  color: rgb(16 185 129 / var(--tw-text-opacity));
+  text-decoration-color: #065f46;
+}
+
+a.externe:active,
+a.externe:visited:active,
+.externe a:active,
+.externe a:visited:active {
   text-decoration-thickness: 4px;
 }
 

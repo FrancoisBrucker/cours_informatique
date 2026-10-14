@@ -96,13 +96,13 @@
     
   
 
-  <p>Une liste est une amélioration de <a href="../pseudo-code/briques-de-base/#tableaux" class="interne">la structure de tableau</a> et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
+  <p>Une liste est une amélioration de <a href="../pseudo-code/briques-de-base/#tableaux">la structure de tableau</a> et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/listes/" class="interne">la partie consacrée aux listes</a> du cours sur les bases du code.</p>
+<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/listes/">la partie consacrée aux listes</a> du cours sur les bases du code.</p>
 </div></div>
 
 <h2><span id="structure"></span>Définition de la structure</h2>
@@ -314,7 +314,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 \end{array}
 $$
 </div>
-<p>Comme, <a href="../projet-sommes-classiques/" class="interne">on l'a vu</a>, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :</p>
+<p>Comme, <a href="../projet-sommes-classiques/">on l'a vu</a>, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -341,7 +341,7 @@ $$
 <p>Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations, on considère (sans approximation) que <strong>la complexité de l'ajout d'un élément en fin de liste</strong> vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.</p>
 </div></div>
 
-<p>On appelle ce genre de raisonnement <a href="../complexit%C3%A9-amortie/" class="interne">analyse en complexité amortie</a> et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.</p>
+<p>On appelle ce genre de raisonnement <a href="../complexit%C3%A9-amortie/">analyse en complexité amortie</a> et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.</p>
 <p>La structure de liste est un cas <em>simple</em> où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -396,7 +396,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Voir <a href="../complexit%C3%A9-amortie/#exercice-liste-suppression-ajout" class="interne">exercice de la complexité amortie</a>.</p>
+<p>Voir <a href="../complexit%C3%A9-amortie/#exercice-liste-suppression-ajout">exercice de la complexité amortie</a>.</p>
 </div>
 </details>     
 </div>
@@ -408,7 +408,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=GZPqDvG615k">https://www.youtube.com/watch?v=GZPqDvG615k</a></p>
+<p><a href="https://www.youtube.com/watch?v=GZPqDvG615k" class="externe">https://www.youtube.com/watch?v=GZPqDvG615k</a></p>
 </div></div>
 
 <blockquote>
@@ -416,7 +416,7 @@ $$
 TBD faire une expérimentation</p>
 </blockquote>
 <ol>
-<li>pour un seul tableau : <a href="https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor">https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor</a> (qui mène à : <a href="https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/">https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/</a>). Sauvent 1.5 est pris. $S + FS ≥ F^3S$.</li>
+<li>pour un seul tableau : <a href="https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor" class="externe">https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor</a> (qui mène à : <a href="https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/" class="externe">https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/</a>). Sauvent 1.5 est pris. $S + FS ≥ F^3S$.</li>
 <li>Attention, ce n'est plus vrai si on alloue plus d'un seul tableau... pour 2 tableaux le second peux commencer dans la place laissée par l'autre.</li>
 </ol>
 <h2>Utilisation</h2>

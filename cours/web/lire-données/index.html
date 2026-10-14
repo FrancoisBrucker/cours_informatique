@@ -115,7 +115,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="fichiers-node" class="interne">Lire des fichiers avec node</a></p>
+<p><a href="fichiers-node">Lire des fichiers avec node</a></p>
 </div></div>
 
 <h3>Fichier côté front</h3>
@@ -124,18 +124,18 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="fichiers-front" class="interne">Lire des fichiers via le navigateur</a></p>
+<p><a href="fichiers-front">Lire des fichiers via le navigateur</a></p>
 </div></div>
 
 <h2>Données json</h2>
-<p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.</p>
+<p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation" class="externe">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.</p>
 <h3>format json</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.json.org/json-fr.html">description du format json</a></p>
+<p><a href="https://www.json.org/json-fr.html" class="externe">description du format json</a></p>
 </div></div>
 
 <p>Des données écrites sous un format texte comme le json sont dites <strong><em>sérialisées</em></strong>. On les <strong><em>désérialise</em></strong> pour les retransformer en js.</p>
@@ -145,9 +145,9 @@
 <p>Dans une console node :</p>
 <ol>
 <li>créez la variable <code class="language-">t</code> contenant le tableau <code class="language-">[1, &quot;deux&quot;, {x:1, y:3}]</code> contenant un entier, une chaîne de caractères et un dictionnaire.</li>
-<li>en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code class="language-">JSON.stringify()</code></a>, sérialisez <code class="language-">t</code> en une chaîne de caractères au format json que vous stockerez dans la variable <code class="language-">t_json</code></li>
-<li>En utilisant l'opérateur <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"><code class="language-">typeof</code></a> vérifiez bien que <code class="language-">t_json</code> est bien une chaîne de caractères et non un objet comme <code class="language-">t</code>, ces deux variables ne sont donc <strong><em>pas égale</em></strong></li>
-<li>désérialisez <code class="language-">t_json</code> en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code class="language-">JSON.parse()</code></a> et placez le résultat dans la variable <code class="language-">t2</code></li>
+<li>en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" class="externe"><code class="language-">JSON.stringify()</code></a>, sérialisez <code class="language-">t</code> en une chaîne de caractères au format json que vous stockerez dans la variable <code class="language-">t_json</code></li>
+<li>En utilisant l'opérateur <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof" class="externe"><code class="language-">typeof</code></a> vérifiez bien que <code class="language-">t_json</code> est bien une chaîne de caractères et non un objet comme <code class="language-">t</code>, ces deux variables ne sont donc <strong><em>pas égale</em></strong></li>
+<li>désérialisez <code class="language-">t_json</code> en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" class="externe"><code class="language-">JSON.parse()</code></a> et placez le résultat dans la variable <code class="language-">t2</code></li>
 <li>vérifiez que <code class="language-">t2</code> possède bien les mêmes valeurs que <code class="language-">t</code></li>
 </ol>
 </div></div>
@@ -192,10 +192,10 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/">vérifier l'égalité entre deux tableaux</a> est de vérifier que leur sérialisation est identique...</p>
+<p>Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/" class="externe">vérifier l'égalité entre deux tableaux</a> est de vérifier que leur sérialisation est identique...</p>
 </div></div>
 
-<p>Côté client, la façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">la fonction <code class="language-">JSON.parse</code></a> (on va voir un exemple juste après en utilisant la fonction fetch de javascript).</p>
+<p>Côté client, la façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" class="externe">la fonction <code class="language-">JSON.parse</code></a> (on va voir un exemple juste après en utilisant la fonction fetch de javascript).</p>
 <h3>Charger des fichiers avec la fonction <code class="language-">fetch</code></h3>
 <blockquote>
 <p>TBD problème de sécurité expliciter cors et htaccess</p>
@@ -206,8 +206,8 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://grafikart.fr/tutoriels/cors-http-navigateur-1180">problème CORS</a></li>
-<li><a href="https://www.mauricelargeron.com/parametrer-les-acces-a-son-serveur/">fichier htaccess</a></li>
+<li><a href="https://grafikart.fr/tutoriels/cors-http-navigateur-1180" class="externe">problème CORS</a></li>
+<li><a href="https://www.mauricelargeron.com/parametrer-les-acces-a-son-serveur/" class="externe">fichier htaccess</a></li>
 </ul>
 </div></div>
 
@@ -217,7 +217,7 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="fetch" class="interne">Accès à une ressource distance avec fetch</a></p>
+<p><a href="fetch">Accès à une ressource distance avec fetch</a></p>
 </div></div>
 
 

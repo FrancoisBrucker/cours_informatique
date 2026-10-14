@@ -114,7 +114,7 @@
 <p>En utilisant la chaîne de caractères définie dans le code précédent :</p>
 <ul>
 <li>quel est la taille de <code>s</code> ?</li>
-<li>en utilisant la fonction <a href="https://koor.fr/C/cstring/strlen.wp"><code>strlen</code></a> déterminez la taille de la chaîne de caractères contenue dans <code>s</code></li>
+<li>en utilisant la fonction <a href="https://koor.fr/C/cstring/strlen.wp" class="externe"><code>strlen</code></a> déterminez la taille de la chaîne de caractères contenue dans <code>s</code></li>
 </ul>
 </div></div>
 
@@ -158,7 +158,7 @@
 <p>En utilisant la chaîne de caractères définie dans le code précédent :</p>
 <ul>
 <li>quel est la taille de <code>s</code> ?</li>
-<li>en utilisant la fonction <a href="https://koor.fr/C/cstring/strlen.wp"><code>strlen</code></a> déterminez la taille de la chaîne de caractères contenue dans <code>s</code></li>
+<li>en utilisant la fonction <a href="https://koor.fr/C/cstring/strlen.wp" class="externe"><code>strlen</code></a> déterminez la taille de la chaîne de caractères contenue dans <code>s</code></li>
 <li>comment afficher la seconde chaîne de caractères ?</li>
 </ul>
 </div></div>
@@ -187,7 +187,7 @@
 </details>     
 </div>
 <p>Il faut cependant faire très attention, si on oublie d'ajouter <code>\0</code> à la fin du tableau, le comportement est UB (et résultera dans le meilleur des cas à un crash).</p>
-<p>Pour éviter ceci, <code>C</code> fournit l'outil des <a href="https://learn.microsoft.com/fr-fr/cpp/c-language/c-string-literals?view=msvc-170"><em>strings literals</em></a> :</p>
+<p>Pour éviter ceci, <code>C</code> fournit l'outil des <a href="https://learn.microsoft.com/fr-fr/cpp/c-language/c-string-literals?view=msvc-170" class="externe"><em>strings literals</em></a> :</p>
 <p>en écrivant <code>&quot;une chaîne&quot;</code>, le compilateur <code>C</code> crée dans la partie data du code (même une partie en lecture seule) un tableau contenant toute la chaîne suivie du caractère <code>\0</code>. Il est alors possible d'accéder à cette chaîne via un pointeur, comme le montre le code suivant :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -223,7 +223,7 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p>Ce <a href="https://www.codingninjas.com/studio/library/whats-the-difference-between-char-s-and-char-s-in-c">tutoriel</a> résume les différences dans ces deux modes de création.</p>
+<p>Ce <a href="https://www.codingninjas.com/studio/library/whats-the-difference-between-char-s-and-char-s-in-c" class="externe">tutoriel</a> résume les différences dans ces deux modes de création.</p>
 </div></div>
 
 <p>En particulier :</p>
@@ -265,7 +265,7 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
 </div></div>
 
 <p>La <code>libc</code> de possède de nombreuses fonctions permettant de gérer les chaînes de caractères. Elles sont majoritairement définies dans [<code>string.h</code>]
-(<a href="https://www.w3schools.com/c/c_strings_functions.php">https://www.w3schools.com/c/c_strings_functions.php</a>). Vous connaissez déjà <a href="https://koor.fr/C/cstring/strlen.wp"><code>strlen</code></a> mais il y en a de nombreuses autres :</p>
+(<a href="https://www.w3schools.com/c/c_strings_functions.php">https://www.w3schools.com/c/c_strings_functions.php</a>). Vous connaissez déjà <a href="https://koor.fr/C/cstring/strlen.wp" class="externe"><code>strlen</code></a> mais il y en a de nombreuses autres :</p>
 <ul>
 <li>comparer deux chaînes de caractères</li>
 <li>copier une chaîne dans une autre</li>
@@ -307,13 +307,13 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
 <h3>stdout</h3>
 <p>printf envoie les caractères lues sur stdout. Si l'encodage des caractères est en UTF8 et que stdout l'est aussi, tout se passera bien.</p>
 <h3>stdin</h3>
-<p>Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce <a href="https://www.scaler.com/topics/c/c-string-input-output-function/">tutoriel</a> explique certaines techniques pour le faire.</p>
+<p>Lire des chaînes de caractère depuis stdin peut être assez pénible. Ce <a href="https://www.scaler.com/topics/c/c-string-input-output-function/" class="externe">tutoriel</a> explique certaines techniques pour le faire.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/">https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/</a></p>
+<p><a href="https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/" class="externe">https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/jeux-de-caracteres-et-encodages/</a></p>
 </div></div>
 
 <h2>Unicode</h2>
@@ -322,7 +322,7 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html">https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html</a></p>
+<p><a href="https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html" class="externe">https://beej.us/guide/bgc/html/split/unicode-wide-characters-and-all-that.html</a></p>
 </div></div>
 
 <p>On rappelle qu'un <code>char</code> en <code>C</code> est le plus petit adressage possible. Sur (quasi) toutes les architectures, ce type est composé de 1 byte.</p>
@@ -332,11 +332,11 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/UTF-8">utf8</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/UTF-8" class="externe">utf8</a></p>
 </div></div>
 
-<p>Cet encodage est une façon de représenter des <a href="https://fr.wikipedia.org/wiki/Unicode"><em>codepoint</em> Unicode</a> par un ou plusieurs byte. Il est donc tout à fait raisonnable d'utiliser des suite de char pour représenter une chaîne de caractères encodée en utf8.</p>
-<p>Il faut cependant faire attention si l'on cherche à représenter ou afficher un caractère Unicode encodé en utf8, car les seuls caractères Unicode représentés par un unique byte (1 <code class="language-">char</code>) sont ceux de <a href="https://en.wikipedia.org/wiki/ASCII">la table ASCII</a>, de code allant de 1 à 127 (le code 0 étant égal à la fin de la chaîne).</p>
+<p>Cet encodage est une façon de représenter des <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe"><em>codepoint</em> Unicode</a> par un ou plusieurs byte. Il est donc tout à fait raisonnable d'utiliser des suite de char pour représenter une chaîne de caractères encodée en utf8.</p>
+<p>Il faut cependant faire attention si l'on cherche à représenter ou afficher un caractère Unicode encodé en utf8, car les seuls caractères Unicode représentés par un unique byte (1 <code class="language-">char</code>) sont ceux de <a href="https://en.wikipedia.org/wiki/ASCII" class="externe">la table ASCII</a>, de code allant de 1 à 127 (le code 0 étant égal à la fin de la chaîne).</p>
 <p>Le code suivant fonctionne donc uniquement avec des caractères de la table ASCII :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token char">'A'</span>
 
@@ -418,7 +418,7 @@ s<span class="token punctuation">[</span><span class="token number">0</span><spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/les-caracteres-larges/">Conversion <code class="language-">char</code> vers <code class="language-">wchar_t</code></a></p>
+<p><a href="https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/les-caracteres-larges/" class="externe">Conversion <code class="language-">char</code> vers <code class="language-">wchar_t</code></a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

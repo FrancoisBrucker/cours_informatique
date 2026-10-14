@@ -148,7 +148,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>MAC à taille fixe</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une <a href="../../confidentialit%C3%A9/chiffre-flux/#PRF" class="interne">PRF</a>, alors :</p>
+<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une <a href="../../confidentialit%C3%A9/chiffre-flux/#PRF">PRF</a>, alors :</p>
 <ul>
 <li>$S(k, m) = F(k, m)$</li>
 <li>$V(k, m, t) = (F(k, m) = t)$</li>
@@ -247,7 +247,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/HMAC">Hash-based MAC</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/HMAC" class="externe">Hash-based MAC</a></p>
 </div></div>
 
 <p>La façon la plus simple de créer un mac est d'utiliser un hash :</p>
@@ -290,20 +290,20 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie <a href="../aead" class="interne">AEAD</a>).</p>
+<p>Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie <a href="../aead">AEAD</a>).</p>
 </div></div>
 
 <blockquote>
 <p>TBD utilisé pour le AEAD de chacha20 avec poly1305</p>
 </blockquote>
 <p>Ces macs sont très simple à mettre en œuvre, mais ils sont, comme le code de Vernam très sensibles à la clé : il ne faut pas la réutiliser.</p>
-<p>Ils sont basés sur les <a href="https://fr.wikipedia.org/wiki/Hachage_universel">fonctions de hash universelles</a>, dont nous n'allons pas plus parler ici. Pour plus d'info :</p>
+<p>Ils sont basés sur les <a href="https://fr.wikipedia.org/wiki/Hachage_universel" class="externe">fonctions de hash universelles</a>, dont nous n'allons pas plus parler ici. Pour plus d'info :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g">Universal hash function</a></p>
+<p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g" class="externe">Universal hash function</a></p>
 </div></div>
 
 <p>Comme le message $m$ est une suite de 0 et de 1, on peut très bien le considérer comme un nombre. On va se placer dans le corps $\mathbb{Z}/p\mathbb{Z}$, avec $p$ premier.</p>
@@ -349,7 +349,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>exemple tiré de <a href="https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf">ce texte</a></p>
+<p>exemple tiré de <a href="https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf" class="externe">ce texte</a></p>
 </div></div>
 
 <h3>Faire grossir un MAC à taille fixe</h3>
@@ -358,7 +358,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie <a href="../aead" class="interne">AEAD</a>).</p>
+<p>Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie <a href="../aead">AEAD</a>).</p>
 </div></div>
 
 <p>Cela semble la manière la plus naturelle et cependant c'est la plus risquée. Pour garantir la sécurité du MAC, il faut en effet utiliser 2 clés de chiffrement :</p>

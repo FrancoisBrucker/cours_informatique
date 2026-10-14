@@ -108,7 +108,7 @@
 <span class="token punctuation">}</span></code></pre>
 <p>Compiler un programme C se fait en plusieurs étapes, dont les 4 principales sont :</p>
 <ol>
-<li><a href="https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C">préprocesseur</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C" class="externe">préprocesseur</a></li>
 <li>compilateur en ASM</li>
 <li>compilateur ASM vers objet</li>
 <li>édition de lien</li>
@@ -187,7 +187,7 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 <p>Par défaut la sortie de l'option <code>-S</code> est un fichier d'extension <code>.a</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.s</code></p>
 </div></div>
 
-<p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe <a href="https://www.nasm.us/">nasm</a>, il faut rajouter des options :</p>
+<p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe <a href="https://www.nasm.us/" class="externe">nasm</a>, il faut rajouter des options :</p>
 <pre><code>clang -S hello.c -masm=intel   
 </code></pre>
 <h3>Compilation en Objets</h3>
@@ -228,10 +228,10 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 </ul>
 <pre><code>clang hello.o
 </code></pre>
-<p>Le compilateur <code>clang</code> v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande <a href="https://man7.org/linux/man-pages/man1/ldd.1.html"><code>ldd</code></a>, <code>otool -L</code> sous macos):</p>
+<p>Le compilateur <code>clang</code> v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande <a href="https://man7.org/linux/man-pages/man1/ldd.1.html" class="externe"><code>ldd</code></a>, <code>otool -L</code> sous macos):</p>
 <pre><code>ldd a.out
 </code></pre>
-<p>La <a href="https://www.gnu.org/software/libc/manual/html_node/index.html">libc</a> est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de <code>C</code>. C'est en particulier elle qui contient le code de la fonction <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html"><code>printf</code></a>.</p>
+<p>La <a href="https://www.gnu.org/software/libc/manual/html_node/index.html" class="externe">libc</a> est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de <code>C</code>. C'est en particulier elle qui contient le code de la fonction <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html" class="externe"><code>printf</code></a>.</p>
 <p>On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :</p>
 <pre><code>clang hello.c -nostdlib
 </code></pre>
@@ -248,7 +248,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 </code></pre>
 <p>L'édition de lien fait deux choses :</p>
 <ul>
-<li>elle associe le code d'une fonction à son utilisation via sa <a href="https://developer.mozilla.org/fr/docs/Glossary/Signature/Function">signature</a>. C'est pourquoi il faut déclarer la fonction même si on a pas son code</li>
+<li>elle associe le code d'une fonction à son utilisation via sa <a href="https://developer.mozilla.org/fr/docs/Glossary/Signature/Function" class="externe">signature</a>. C'est pourquoi il faut déclarer la fonction même si on a pas son code</li>
 <li>elle donne le point d'entrée du programme, la fonction <code>main</code></li>
 </ul>
 <h2>Règles de survie</h2>
@@ -269,7 +269,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>A quoi correspondent les <a href="https://clang.llvm.org/docs/UsersManual.html">options llvm</a> ajoutées ?</p>
+<p>A quoi correspondent les <a href="https://clang.llvm.org/docs/UsersManual.html" class="externe">options llvm</a> ajoutées ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -304,15 +304,15 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour référence :</p>
-<p><a href="https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23">https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23</a></p>
+<p><a href="https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23" class="externe">https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23</a></p>
 <p>Pour l'instant cela doit vous sembler incompréhensible, c'est normal.</p>
 </div></div>
 
 <p>De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.</p>
 <h2>Détails</h2>
 <ul>
-<li><a href="pr%C3%A9processeur" class="interne">préprocesseur</a></li>
-<li><a href="%C3%A9dition-liens" class="interne">Édition de liens</a></li>
+<li><a href="pr%C3%A9processeur">préprocesseur</a></li>
+<li><a href="%C3%A9dition-liens">Édition de liens</a></li>
 </ul>
 
 

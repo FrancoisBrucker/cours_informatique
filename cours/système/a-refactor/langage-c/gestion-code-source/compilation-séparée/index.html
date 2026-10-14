@@ -96,7 +96,7 @@
     
   
 
-  <p>Reprenons <a href="../#code" class="interne">le code vu précédemment</a> et séparons le code du fichier <code class="fichiers">degres.c</code> en unités fonctionnelles :</p>
+  <p>Reprenons <a href="../#code">le code vu précédemment</a> et séparons le code du fichier <code class="fichiers">degres.c</code> en unités fonctionnelles :</p>
 <ol>
 <li>un fichier <code class="fichier">main.c</code> qui regroupera uniquement le programme principal</li>
 <li>un fichier <code class="fichier">celcius.c</code> qui regroupera uniquement les fonctions de conversions</li>
@@ -197,7 +197,7 @@ return 0;
 
 </code></pre>
 <p>Qui inclut bien deux fois dans le même fichier le fichier <code class="fichier">celcius.h</code>.</p>
-<p>POur éviter ceci on ajoute <a href="https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html">une astuce</a> qui utilise le préprocesseur. Le fichier <code class="fichier">celcius.h</code> sera écrit :</p>
+<p>POur éviter ceci on ajoute <a href="https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html" class="externe">une astuce</a> qui utilise le préprocesseur. Le fichier <code class="fichier">celcius.h</code> sera écrit :</p>
 <pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_CELCIUS</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">FILE_CELCIUS</span></span>
 

@@ -125,20 +125,20 @@
 <li>Copiez le fichier <code>/etc/passwd</code> dans le dossier <code class="fichier">${HOME}/temporaire</code> créé précédemment et appelez le mot-de-passe, le tout en une seule commande</li>
 <li>Supprimez le dossier <code class="fichier">${HOME}/temporaire</code> en une seule commande <code>rm</code></li>
 <li>Créez un dossier <code>private</code> dans maison et modifiez ses droits pour qu'il ne soit accessible que de vous même. Faites cette modification en utilisant la notation symbolique.</li>
-<li>À quoi correspondent ces droits en notation <a href="https://docs.oracle.com/cd/E19504-01/802-5750/6i9g464pv/index.html">octale</a> ?</li>
+<li>À quoi correspondent ces droits en notation <a href="https://docs.oracle.com/cd/E19504-01/802-5750/6i9g464pv/index.html" class="externe">octale</a> ?</li>
 <li>Créez un fichier nommé <code>hello.txt</code> dans votre dossier maison contenant le texte &quot;bonjour&quot; avec un éditeur de texte (nano par exemple)</li>
 <li>Ajoutez &quot; monde !&quot; à la fin du fichier <code>hello.txt</code> avec une commande commande echo</li>
 <li>Déplacez le fichier <code>hello.txt</code> dans le dossier <code>private</code></li>
 <li>Créez un lien symbolique dans votre maison vers le fichier <code>hello.txt</code> de votre dossier private.</li>
-<li>Modifiez le contenu du fichier symbolique pour son contenu soit sur une seule ligne (vous pourrez vous aider de la commande <code>tr</code> et de <a href="https://www.baeldung.com/linux/join-multiple-lines">ce tutoriel</a>)</li>
+<li>Modifiez le contenu du fichier symbolique pour son contenu soit sur une seule ligne (vous pourrez vous aider de la commande <code>tr</code> et de <a href="https://www.baeldung.com/linux/join-multiple-lines" class="externe">ce tutoriel</a>)</li>
 <li>Afficher, avec la commande <code>cat</code>, le contenu du fichier dans <code>private/hello.txt</code></li>
 <li>Que se passe-t-il pour le lien si vous supprimez ou renommez le fichier original ?</li>
-<li>Créez avec <code>nano</code> un fichier nommé <code ,.fichier="">brise marine.txt</code> et mettez-y le <a href="https://www.poetica.fr/poeme-109/stephane-mallarme-brise-marine/">poème de Mallarmé</a></li>
-<li>Affichez ce fichier avec la commande <code>cat</code> en <a href="https://www.shellscript.sh/escape.html">escapant</a> le métacaractère espace</li>
+<li>Créez avec <code>nano</code> un fichier nommé <code ,.fichier="">brise marine.txt</code> et mettez-y le <a href="https://www.poetica.fr/poeme-109/stephane-mallarme-brise-marine/" class="externe">poème de Mallarmé</a></li>
+<li>Affichez ce fichier avec la commande <code>cat</code> en <a href="https://www.shellscript.sh/escape.html" class="externe">escapant</a> le métacaractère espace</li>
 <li>renommez, avec la commande <code>mv</code> le fichier <code class="fichier">brise marine.txt</code> en <code class="fichier">brise_marine.txt</code></li>
 </ol>
 <h2>find</h2>
-<p><a href="https://shapeshed.com/unix-find/">find</a>
+<p><a href="https://shapeshed.com/unix-find/" class="externe">find</a>
 trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)</p>
 <p>Déterminez quel est le dossier contenant le plus de méga de votre système.(du -h | sort -h | tail)</p>
 <blockquote>

@@ -129,7 +129,7 @@
 </div></div>
 
 <h2><span id="données"></span> Données</h2>
-<p>Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a> et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :</p>
+<p>Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation" class="externe">json</a> et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token string">"voisins"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
         <span class="token string">"Aix-en-Provence"</span><span class="token punctuation">,</span>
@@ -196,7 +196,7 @@
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Marseille"</span><span class="token punctuation">,</span> <span class="token string">":"</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> clé<span class="token punctuation">,</span> valeur <span class="token keyword">in</span> villes<span class="token punctuation">[</span><span class="token string">"Marseille"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span></code></pre>
-<p>On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir <a href="https://docs.python.org/3/tutorial/datastructures.html#looping-techniques">la doc</a>)</p>
+<p>On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir <a href="https://docs.python.org/3/tutorial/datastructures.html#looping-techniques" class="externe">la doc</a>)</p>
 </div>
 </details>     
 </div>
@@ -210,7 +210,7 @@
 <div class="pl-8 mr-8">
 <p>En utilisant les données charges précédemment :</p>
 <ul>
-<li>créez un graphe non orienté $G$ (<a href="../../encodage#dict" class="interne">encodé par un dictionnaire</a>) dont les sommets sont les noms de villes et ses voisins, les voisins.</li>
+<li>créez un graphe non orienté $G$ (<a href="../../encodage#dict">encodé par un dictionnaire</a>) dont les sommets sont les noms de villes et ses voisins, les voisins.</li>
 <li>créez une fonction $f$ qui prend en paramètres deux villes et rend la distances entre ces deux villes.</li>
 </ul>
 </div></div>
@@ -282,7 +282,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Modifiez l'<a href="../valuation-positive#implementation-Dijkstra-python" class="interne">algorithme du cours</a> pour qu'il puisse utiliser notre fonction de valuation.</p>
+<p>Modifiez l'<a href="../valuation-positive#implementation-Dijkstra-python">algorithme du cours</a> pour qu'il puisse utiliser notre fonction de valuation.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -352,7 +352,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez l'<a href="../valuation-positive#a-star" class="interne">algorithme $A^\star$</a> pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.</p>
+<p>Créez l'<a href="../valuation-positive#a-star">algorithme $A^\star$</a> pour résoudre notre problème de chemin de poids minimum. Vérifiez bien que votre heuristique est consistante.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

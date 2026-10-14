@@ -146,7 +146,7 @@
 <p>Le paramètre de $G$ est appelé <em>seed</em></p>
 </div></div>
 
-<p>Notez que cette condition est différente de celle des <a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-pseudo-al%C3%A9atoires/" class="interne">PRNG</a> qui ne supposent que l'uniformité statistique pour $k$ fixé (passent une batterie de tests statistiques).</p>
+<p>Notez que cette condition est différente de celle des <a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-pseudo-al%C3%A9atoires/">PRNG</a> qui ne supposent que l'uniformité statistique pour $k$ fixé (passent une batterie de tests statistiques).</p>
 <p>Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s &lt; t$, voir $s &lt;&lt; t$).</p>
 <p>La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la <em>seed</em> choisie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -284,7 +284,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf">Article originel de Yao, 1982</a></p>
+<p><a href="https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf" class="externe">Article originel de Yao, 1982</a></p>
 </div></div>
 
 <h2>Existence</h2>
@@ -293,7 +293,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators">Existence de générateur de nombres pseudo aléatoire cryptographique</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators" class="externe">Existence de générateur de nombres pseudo aléatoire cryptographique</a></p>
 </div></div>
 
 <p>L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.</p>
@@ -424,7 +424,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $G: \{0, 1\}^s \rightarrow \{0, 1\}^{2s}$, un générateur de nombres pseudo-aléatoire sécurisé. <a href="#construction-incr%C3%A9mentale" class="interne">La partie précédente</a> montre que cela existe.</p>
+<p>Soit $G: \{0, 1\}^s \rightarrow \{0, 1\}^{2s}$, un générateur de nombres pseudo-aléatoire sécurisé. <a href="#construction-incr%C3%A9mentale">La partie précédente</a> montre que cela existe.</p>
 <p>Soit maintenant la fonction $f: \{0, 1\}^s \rightarrow \{0, 1\}^{s}$ telle que $f(x) = G(x)[:s]$.</p>
 <p>On suppose que $f$ n'est pas à sens unique et on exhibe un algorithme $A$ efficace telle que :</p>
 <div>
@@ -467,7 +467,7 @@ $$
 <p><strong>Définition PRF</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction implémentable par un algorithme efficace.</p>
-<p>$F$ est dite être une <strong>fonction pseudo-aléatoire sécurisée</strong> (<em>secure pseudo random function <strong>PRF</strong></em>) si tout algorithme efficace ne peut avoir qu'un avantage négligeable au <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance" class="interne">jeu de la reconnaissance</a> entre :</p>
+<p>$F$ est dite être une <strong>fonction pseudo-aléatoire sécurisée</strong> (<em>secure pseudo random function <strong>PRF</strong></em>) si tout algorithme efficace ne peut avoir qu'un avantage négligeable au <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance">jeu de la reconnaissance</a> entre :</p>
 <ul>
 <li>la variable aléatoire $F(k \xleftarrow{U} \{0, 1\}^s, \cdot)$ prenant ses valeurs dans l'ensemble $\mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$ des fonctions de $\{0, 1\}^t$ dans $\{0, 1\}^t$</li>
 <li>la variable aléatoire $f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$</li>
@@ -482,7 +482,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \{0, 1\}^t$ ($\text{iv}$ est appelé <a href="https://en.wikipedia.org/wiki/Initialization_vector">vecteur d'initialisation</a>).</p>
+<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \{0, 1\}^t$ ($\text{iv}$ est appelé <a href="https://en.wikipedia.org/wiki/Initialization_vector" class="externe">vecteur d'initialisation</a>).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -577,7 +577,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On considère le jeu de la reconnaissance où un algorithme efficace cherche à distinguer une permutation $F(k, \cdot)$ pour un $k$ uniformément choisi d'une fonction $f$ uniformément choisie parmi toutes les fonctions de $\{0, 1\}^t$ dans $\{0, 1\}^t$.</p>
-<p>La seule façon de distinguer une permutation d'une simple fonction est de chercher des points fixes : s'il existe $x\neq y$ tel que $f(x) = f(y)$, $f$ n'est pas une permutation. Comme les fonctions sont tirées aléatoirement, vérifier si $N$ éléments ont des images différentes a la même probabilité que savoir si $N$ éléments tirés aléatoirement sont différents. En reprenant la démonstration du <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires" class="interne">paradoxe des anniversaires</a>, cette probabilité vaut :</p>
+<p>La seule façon de distinguer une permutation d'une simple fonction est de chercher des points fixes : s'il existe $x\neq y$ tel que $f(x) = f(y)$, $f$ n'est pas une permutation. Comme les fonctions sont tirées aléatoirement, vérifier si $N$ éléments ont des images différentes a la même probabilité que savoir si $N$ éléments tirés aléatoirement sont différents. En reprenant la démonstration du <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires">paradoxe des anniversaires</a>, cette probabilité vaut :</p>
 <div>
 $$
 \bar{p}(N, 2^t) = \prod_{i=1}^{N}(1-\frac{i-1}{2^t})
@@ -608,14 +608,14 @@ $$
 </ol>
 <h3>Chacha20</h3>
 <blockquote>
-<p>TBD <a href="https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/">https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/</a> <a href="https://www.youtube.com/watch?v=G0O0VHVtNuM">https://www.youtube.com/watch?v=G0O0VHVtNuM</a></p>
+<p>TBD <a href="https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/" class="externe">https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/</a> <a href="https://www.youtube.com/watch?v=G0O0VHVtNuM" class="externe">https://www.youtube.com/watch?v=G0O0VHVtNuM</a></p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant">chacha20</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant" class="externe">chacha20</a></p>
 </div></div>
 
 <p>Nous étudierons plus tard ce protocole pour des tailles de messages variables. Mais juste pour terminer cette partie c'est un PRP très simple à taille fixe 256b.</p>
@@ -626,14 +626,14 @@ $$
 <li>robuste à de nombreuses attaques :
 <ul>
 <li>time et side channel attack : toutes les opérations sont de même complexité</li>
-<li>opérations non linéaires pour éviter <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire">la cryptanalyse linéaire</a></li>
+<li>opérations non linéaires pour éviter <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire" class="externe">la cryptanalyse linéaire</a></li>
 <li>vol de l'état interne</li>
 </ul>
 </li>
 </ul>
 <p>Nous allons uniquement survoler son principe, nous y reviendrons en détail lorsque nous étudierons son implémentation dns un chiffrement réel et complet.</p>
 <h4>Principe</h4>
-<p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \;\|\; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
+<p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20" class="externe">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \;\|\; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
 <p>Le chiffre final est obtenu en additionnant la permutation à l'entrée :</p>
 <div>
 $$
@@ -653,7 +653,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2">exemple de modifications</a></p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2" class="externe">exemple de modifications</a></p>
 </div></div>
 
 <h4>opérations ARX</h4>
@@ -669,7 +669,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Suffisant pour faire toutes les rotations <a href="https://eprint.iacr.org/2022/618.pdf">https://eprint.iacr.org/2022/618.pdf</a></p>
+<p>Suffisant pour faire toutes les rotations <a href="https://eprint.iacr.org/2022/618.pdf" class="externe">https://eprint.iacr.org/2022/618.pdf</a></p>
 </div></div>
 
 <h4>Robustesse</h4>
@@ -684,7 +684,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Blum_Blum_Shub" class="externe">Blum Blum Shub</a></p>
 </div></div>
 
 <p>Le générateur est basé sur la récursion suivante :</p>
@@ -700,8 +700,8 @@ $$
 <ul>
 <li>$M = p \cdot q$ et $p$ et $q$ premiers tels que :
 <ul>
-<li>$p \bmod M = q \bmod M = 3\bmod 4$ (un liste <a href="http://villemin.gerard.free.fr/aNombre/TYPDIVIS/Blum.htm">ici</a>)</li>
-<li>$2p + 1$ et $2q +1$ doivent aussi être premiers (<a href="https://fr.wikipedia.org/wiki/Nombre_premier_de_Sophie_Germain">nombres premiers de Sophie Germain</a>), <a href="https://en.wikipedia.org/wiki/Safe_and_Sophie_Germain_primes#Cryptography">safe prime</a></li>
+<li>$p \bmod M = q \bmod M = 3\bmod 4$ (un liste <a href="http://villemin.gerard.free.fr/aNombre/TYPDIVIS/Blum.htm" class="externe">ici</a>)</li>
+<li>$2p + 1$ et $2q +1$ doivent aussi être premiers (<a href="https://fr.wikipedia.org/wiki/Nombre_premier_de_Sophie_Germain" class="externe">nombres premiers de Sophie Germain</a>), <a href="https://en.wikipedia.org/wiki/Safe_and_Sophie_Germain_primes#Cryptography" class="externe">safe prime</a></li>
 </ul>
 </li>
 <li>la seed $x_0 &gt; 1$ premier avec $M$</li>
@@ -709,16 +709,16 @@ $$
 <li>la sortie du générateur est la suite $(g_i)_{i\geq 1}$</li>
 </ul>
 <p>Si la factorisation est une fonction à sens unique, alors l'algorithme Blum Blum Shub est un CPRNG. Il n'est pas utilisé en pratique car lent, mais il est marrant.</p>
-<p>Sa période vaut $\lambda(M)$ où $\lambda$ est la <a href="https://en.wikipedia.org/wiki/Carmichael_function">fonction de Carmichael</a>.</p>
+<p>Sa période vaut $\lambda(M)$ où $\lambda$ est la <a href="https://en.wikipedia.org/wiki/Carmichael_function" class="externe">fonction de Carmichael</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://iczelia.net/posts/bbs-survey/">https://iczelia.net/posts/bbs-survey/</a></li>
-<li><a href="https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf">Preuves</a></li>
-<li><a href="https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub">https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub</a></li>
+<li><a href="https://iczelia.net/posts/bbs-survey/" class="externe">https://iczelia.net/posts/bbs-survey/</a></li>
+<li><a href="https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf" class="externe">Preuves</a></li>
+<li><a href="https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub" class="externe">https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub</a></li>
 </ul>
 </div></div>
 
@@ -743,7 +743,7 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
 
 <h3>Cryptographie en python</h3>
 <blockquote>
-<p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets">secrets</a></p>
+<p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets" class="externe">secrets</a></p>
 </blockquote>
 <!-- ## Attaques
 
@@ -753,8 +753,8 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
 
 ### Utiliser des PRNG à la place de CPRNG
 
-- <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>
-- <https://www.schutzwerk.com/en/blog/attacking-a-rng/>
+- <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>{.externe}
+- <https://www.schutzwerk.com/en/blog/attacking-a-rng/>{.externe}
  -->
 
 

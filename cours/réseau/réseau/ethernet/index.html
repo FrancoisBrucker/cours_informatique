@@ -101,7 +101,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="ethernet" class="interne">Ethernet</a></p>
+<p><a href="ethernet">Ethernet</a></p>
 </div></div>
 
 <p>Le schema classique d'un réseau Ethernet est :</p>
@@ -113,7 +113,7 @@
 </code></pre>
 <p>Toutes les machines sont connectées deux à deux, Le hub permettant de retransmettre une donnée arrivant à tous les participants du réseau. Il n'est donc pas nécessaire d'avoir de routage puisque toutes les données sont envoyées à tout le monde, mais il faut tout de même un protocole pour s'assurer que chaque participant puisse reconnaître les données qui lui sont adressées. Ceci se fait via l'adresse MAC de la carte réseau.</p>
 <h2>Adresse MAC</h2>
-<p>Chaque <code>interface</code> (ie carte réseau, comme <code>en0</code> par exemple) a une <a href="https://fr.wikipedia.org/wiki/Adresse_MAC">adresse MAC</a> :</p>
+<p>Chaque <code>interface</code> (ie carte réseau, comme <code>en0</code> par exemple) a une <a href="https://fr.wikipedia.org/wiki/Adresse_MAC" class="externe">adresse MAC</a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ip</span> <span class="token function">link</span> show en1
 en1: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">886</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST<span class="token operator">></span> mtu <span class="token number">1500</span>
 	<span class="token assign-left variable">options</span><span class="token operator">=</span><span class="token number">40</span><span class="token operator"><span class="token file-descriptor important">0</span>&lt;</span>CHANNEL_IO<span class="token operator">></span>
@@ -128,7 +128,7 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://aruljohn.com/mac.pl">MAC address lookup</a></p>
+<p><a href="https://aruljohn.com/mac.pl" class="externe">MAC address lookup</a></p>
 </div></div>
 
 <p>L'idée est que dans un réseau local, il n'y ait pas deux machine avec la même adresse MAC, ce qui va identifier de façon unique un ordinateur.</p>
@@ -137,11 +137,11 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut changer la mac adresse de façon logicielle, et donc se faire passer pour quelqu'un d'autre sur un réseau Ethernet. C'est le <a href="https://wiki.archlinux.org/title/MAC_address_spoofing_(Fran%C3%A7ais)">MAC spoofing</a>.</p>
+<p>On peut changer la mac adresse de façon logicielle, et donc se faire passer pour quelqu'un d'autre sur un réseau Ethernet. C'est le <a href="https://wiki.archlinux.org/title/MAC_address_spoofing_(Fran%C3%A7ais)" class="externe">MAC spoofing</a>.</p>
 </div></div>
 
 <h2>Ethernet</h2>
-<p>On parle de <em><strong>trame Ethernet</strong></em> (<em>Ethernet frame</em>) et non pas de paquet Ethernet. L'<a href="https://fr.wikipedia.org/wiki/Ethernet#Trames_Ethernet">entête</a> du paquet Ethernet contient principalement :</p>
+<p>On parle de <em><strong>trame Ethernet</strong></em> (<em>Ethernet frame</em>) et non pas de paquet Ethernet. L'<a href="https://fr.wikipedia.org/wiki/Ethernet#Trames_Ethernet" class="externe">entête</a> du paquet Ethernet contient principalement :</p>
 <ul>
 <li>l'adresse MAC source</li>
 <li>l'adresse MAC destination</li>
@@ -149,7 +149,7 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
 <li>un checksum</li>
 </ul>
 <p>Le paquet est émit sur toute la lan et seule la machine correspondant à l'adresse MAC destination l'ouvre. Ce protocole est donc tout simple : on hurle dans le réseau et celui qui doit écouter entent, les autres font semblant de ne rien avoir entendu.</p>
-<p>Le problème arrive quand deux ordinateurs parlent en même temps. Les deux messages vont arriver détériorés à l'arrivée. Le protocole Ethernet gère cela de façon simple, en utilisant l'algorithme dit <a href="https://fr.wikipedia.org/wiki/Carrier_Sense_Multiple_Access_with_Collision_Detection">CSMA/CD</a>, comme on le ferait dans une salle bondée :</p>
+<p>Le problème arrive quand deux ordinateurs parlent en même temps. Les deux messages vont arriver détériorés à l'arrivée. Le protocole Ethernet gère cela de façon simple, en utilisant l'algorithme dit <a href="https://fr.wikipedia.org/wiki/Carrier_Sense_Multiple_Access_with_Collision_Detection" class="externe">CSMA/CD</a>, comme on le ferait dans une salle bondée :</p>
 <ol>
 <li>on commence par attendre que personne n'émette</li>
 <li>puis on envoie son message par trame, en attendant entre chaque trame un temps déterminé</li>
@@ -164,19 +164,19 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=UgQM0rVDIQE">hidden node problem</a></p>
+<p><a href="https://www.youtube.com/watch?v=UgQM0rVDIQE" class="externe">hidden node problem</a></p>
 </div></div>
 
 <p>Plus le réseau est brouillé, plus il va y avoir de collisions et, pire encore, il va s'adapter à l'émetteur le plus lent. C'est pourquoi il ne faut pas jouer sur un réseau Wifi : trop de paquets sont perdus.</p>
 <p>Il reste un problème à résoudre, comment connaître l'adresse MAC du destinataire alors que l'on a que son adresse IP à disposition.</p>
 <h2>ARP et NDS</h2>
-<p>IL existe un protocole spéciale lié à IP pour retrouver l'adresse MAC à partir d'une adresse IP. Ce protocole s'appelle <a href="https://fr.wikipedia.org/wiki/Address_Resolution_Protocol">ARP</a> pour IPv4 et <a href="https://fr.wikipedia.org/wiki/Neighbor_Discovery_Protocol">NDP</a> pour IVv6</p>
+<p>IL existe un protocole spéciale lié à IP pour retrouver l'adresse MAC à partir d'une adresse IP. Ce protocole s'appelle <a href="https://fr.wikipedia.org/wiki/Address_Resolution_Protocol" class="externe">ARP</a> pour IPv4 et <a href="https://fr.wikipedia.org/wiki/Neighbor_Discovery_Protocol" class="externe">NDP</a> pour IVv6</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></p>
+<p><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html" class="externe">NDP vs arp</a></p>
 </div></div>
 
 <p>Ce protocole envoie simplement une requête sur la LAN et demande qui possède cette adresse IP. Pour éviter de faire cette demande à chaque fois, l'ordinateur demandeur va conserver une table de correspondance.</p>

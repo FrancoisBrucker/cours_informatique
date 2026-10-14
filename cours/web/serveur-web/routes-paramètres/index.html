@@ -100,7 +100,7 @@
 <p>Gestion des routes avec paramètres avec express.</p>
 <!-- fin résumé -->
 <p>Nous utiliserons ici la bibliothèque express pour montrer ces concepts, mais ils existent dans toute bibliothèque permettant de créer des serveurs webs.</p>
-<p>Les routes que nous avons vus pour l'instant sont <em>statiques</em>, il faut créer une route pour chaque cas possible. Par exemple le site sous express suivant répond uniquement à 2 routes <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> et <a href="http://127.0.0.1:3000/bonjour">http://127.0.0.1:3000/bonjour</a> (le reste fait un 404) :</p>
+<p>Les routes que nous avons vus pour l'instant sont <em>statiques</em>, il faut créer une route pour chaque cas possible. Par exemple le site sous express suivant répond uniquement à 2 routes <a href="http://127.0.0.1:3000/aurevoir" class="externe">http://127.0.0.1:3000/aurevoir</a> et <a href="http://127.0.0.1:3000/bonjour" class="externe">http://127.0.0.1:3000/bonjour</a> (le reste fait un 404) :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -138,7 +138,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous exécutez ce code, et utilisez les outils de développement pour voir le résultat de la requête <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> par exemple, vos verrez que le navigateur chrome ajoute des choses au texte pour le transformer en html. Ce n'est <strong>pas</strong> le serveur qui le fait.</p>
+<p>Si vous exécutez ce code, et utilisez les outils de développement pour voir le résultat de la requête <a href="http://127.0.0.1:3000/aurevoir" class="externe">http://127.0.0.1:3000/aurevoir</a> par exemple, vos verrez que le navigateur chrome ajoute des choses au texte pour le transformer en html. Ce n'est <strong>pas</strong> le serveur qui le fait.</p>
 </div></div>
 
 <p>Si on veut ajouter un prénom, il faut ajouter des routes. Par exemple si on veut dire saluer toutes les Carole :</p>
@@ -164,8 +164,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <span class="token comment">// ...</span></code></pre>
 <p>Ceci n'est évidemment pas une solution acceptable si l'on veut dire bonjour à tout le monde sans avoir besoin de créer une route spécifique pour tous les prénoms du monde. Il faut pouvoir rendre nos urls paramétrables afin qu'elles puissent s'adapter au prénom de la route. Il y a plusieurs possibilités et nous allons en voir 2, les plus classiques. Supposons que l'on cherche à obtenir le code associé au prénom &quot;François&quot;. On peut :</p>
 <ul>
-<li>encoder le prénom dans l'url : <a href="http://localhost:3000/bonjour/fran%C3%A7ois">http://localhost:3000/bonjour/françois</a></li>
-<li>encoder le prénom dans une query : <a href="http://localhost:3000/bonjour?prenom=fran%C3%A7ois">http://localhost:3000/bonjour?prenom=françois</a></li>
+<li>encoder le prénom dans l'url : <a href="http://localhost:3000/bonjour/fran%C3%A7ois" class="externe">http://localhost:3000/bonjour/françois</a></li>
+<li>encoder le prénom dans une query : <a href="http://localhost:3000/bonjour?prenom=fran%C3%A7ois" class="externe">http://localhost:3000/bonjour?prenom=françois</a></li>
 </ul>
 <p>Dans le premier cas, la demande est explicitée directement dans l'url, dans la seconde elle est encodée dans une demande.</p>
 <h2>Encodage des paramètres dans l'url</h2>
@@ -176,7 +176,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://expressjs.com/en/guide/routing.html#route-parameters">https://expressjs.com/en/guide/routing.html#route-parameters</a></p>
+<p><a href="https://expressjs.com/en/guide/routing.html#route-parameters" class="externe">https://expressjs.com/en/guide/routing.html#route-parameters</a></p>
 </div></div>
 
 <p>Pour la route bonjour par exemple :</p>
@@ -199,15 +199,15 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est triste mais il est impossible d'utiliser des variables accentuées. En remplaçant <code class="language-">:prenom</code> par <code class="language-">:prénom</code> le code ne fonctionne plus. C'est lié à la façon dont express gère les urls.</p>
-<p>En revanche, la requête <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois">http://127.0.0.1:3000/bonjour/François</a> fonctionne parfaitement, les paramètre étant eux bien traité en utf8.</p>
+<p>En revanche, la requête <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois" class="externe">http://127.0.0.1:3000/bonjour/François</a> fonctionne parfaitement, les paramètre étant eux bien traité en utf8.</p>
 </div></div>
 
-<p>Notez que comme on a juste ajouté la route paramétrée, notre serveur sert bien les  deux routes <a href="http://127.0.0.1:3000/bonjour/">http://127.0.0.1:3000/bonjour/</a> <strong>et</strong> <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois">http://127.0.0.1:3000/bonjour/François</a> !</p>
+<p>Notez que comme on a juste ajouté la route paramétrée, notre serveur sert bien les  deux routes <a href="http://127.0.0.1:3000/bonjour/" class="externe">http://127.0.0.1:3000/bonjour/</a> <strong>et</strong> <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois" class="externe">http://127.0.0.1:3000/bonjour/François</a> !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez une route qui prend également en compte le nom de famille. On doit pouvoir effectuer des routes de style :</p>
-<p><a href="http://127.0.0.1:3000/bonjour/Jimi/Hendrix">http://127.0.0.1:3000/bonjour/Jimi/Hendrix</a></p>
+<p><a href="http://127.0.0.1:3000/bonjour/Jimi/Hendrix" class="externe">http://127.0.0.1:3000/bonjour/Jimi/Hendrix</a></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -238,7 +238,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment">// ...</span></code></pre>
-<p>On a utilisé ici un propriété bien sympathique du javascript qui permet de <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings#concatenating_strings">mettre des paramètres directement dans une chaîne de caractères</a>.</p>
+<p>On a utilisé ici un propriété bien sympathique du javascript qui permet de <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings#concatenating_strings" class="externe">mettre des paramètres directement dans une chaîne de caractères</a>.</p>
 </div>
 </details>     
 </div>
@@ -250,13 +250,13 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Query_string">https://en.wikipedia.org/wiki/Query_string</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Query_string" class="externe">https://en.wikipedia.org/wiki/Query_string</a></p>
 </div></div>
 
-<p>Cette méthode, appelée <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>, est utilisée par exemple par google maps ou encore amazon pour spécifier ses requêtes. Elle consiste à donner explicitement les paramètres dans la requête sous la forme d'un couple <code class="language">clé=valeur</code>.</p>
+<p>Cette méthode, appelée <a href="https://en.wikipedia.org/wiki/Query_string" class="externe">query string</a>, est utilisée par exemple par google maps ou encore amazon pour spécifier ses requêtes. Elle consiste à donner explicitement les paramètres dans la requête sous la forme d'un couple <code class="language">clé=valeur</code>.</p>
 <p>Dans notre ças, cela correspondrait à des routes du style :</p>
 <ul>
-<li><a href="http://localhost:3000/bonjour?pr%C3%A9nom=Fran%C3%A7ois">http://localhost:3000/bonjour?prénom=François</a></li>
+<li><a href="http://localhost:3000/bonjour?pr%C3%A9nom=Fran%C3%A7ois" class="externe">http://localhost:3000/bonjour?prénom=François</a></li>
 <li>&lt;<a href="http://127.0.0.1:3000/bonjour?pr%C3%A9nom=Sam">http://127.0.0.1:3000/bonjour?prénom=Sam</a> junior&gt;</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -286,14 +286,14 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <p>Plusieurs remarques :</p>
 <ul>
 <li>La route ci-dessus remplace notre route initiale : à ma connaissance, il n'y a aucun moyen de différentier les routes avec et sans query en express</li>
-<li>Si l'on appelle la route sans query <a href="http://localhost:3000/bonjour">http://localhost:3000/bonjour</a>, le dictionnaire n'a pas de champ <code class="language-">prénom</code>, il est donc <code class="language-">undefined</code></li>
+<li>Si l'on appelle la route sans query <a href="http://localhost:3000/bonjour" class="externe">http://localhost:3000/bonjour</a>, le dictionnaire n'a pas de champ <code class="language-">prénom</code>, il est donc <code class="language-">undefined</code></li>
 <li>on a pu mettre des accents aux paramètres ! C'est en effet des valeurs qui vont être interprétées par express (elle ne sont pas présente dans la création de la route avec <code class="language-">app.get</code>)</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez une route qui prend également en compte le nom de famille. On doit pouvoir effectuer des routes de style :</p>
-<p><a href="http://localhost:3000/bonjour?pr%C3%A9nom=Harry&amp;nom=Cover">http://localhost:3000/bonjour?prénom=Harry&amp;nom=Cover</a></p>
+<p><a href="http://localhost:3000/bonjour?pr%C3%A9nom=Harry&amp;nom=Cover" class="externe">http://localhost:3000/bonjour?prénom=Harry&amp;nom=Cover</a></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

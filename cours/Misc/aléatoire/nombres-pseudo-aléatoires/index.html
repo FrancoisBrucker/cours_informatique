@@ -102,7 +102,7 @@ ex mod
 xorshift
 mersenne twister de python</p>
 </blockquote>
-<p>D. Knuth cite dans le volume 2 de <a href="https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/">Art of computer programming</a> près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel">générateurs aléatoires physiques</a> ou encore l'utilisation de <a href="https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires">tables</a>, l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.</p>
+<p>D. Knuth cite dans le volume 2 de <a href="https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/" class="externe">Art of computer programming</a> près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel" class="externe">générateurs aléatoires physiques</a> ou encore l'utilisation de <a href="https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires" class="externe">tables</a>, l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.</p>
 <p>Si un algorithme ne ne peut &quot;créer&quot; de nombres aléatoires, le relancer avec les mêmes paramètres redonnera exactement les mêmes résultats, on peut cependant des nombres ayant <em>l'air</em> d'être aléatoire. Ces nombres sont alors appelés <strong><em>nombres pseudo-aléatoires</em></strong>.</p>
 <p>Il nous faut cependant avant tout définir précisément ce qu'aléatoire veut dire avant de montrer deux méthodes permettant d'en générer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -158,7 +158,7 @@ mersenne twister de python</p>
 <li>...</li>
 </ul>
 <h3>Test statistique</h3>
-<p>Un <a href="https://fr.wikipedia.org/wiki/Test_statistique">test statistique</a> permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Test_statistique" class="externe">test statistique</a> permet de déterminer avec une probabilité donnée si une hypothèse est vérifiée ou non.</p>
 <p>Nous allons ici nous restreindre aux tests sur les suites finies d'entiers $(x_i)_{0 \leq i &lt; n}$, on peut bien sur mathématiquement les définir de façon plus générale.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -199,7 +199,7 @@ mersenne twister de python</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2">test du chi2</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2" class="externe">test du chi2</a></p>
 </div></div>
 
 <p>Si l'on possède une loi de distribution discrète sur $m$ éléments $e_i$ ($0\leq i &lt; m$), telle que $Pr(x=e_i) = p_i$ et une suite finie $X=(x_i)_{0 \leq i &lt; N}$, le $\chi^2$ est un réel valant :</p>
@@ -223,7 +223,7 @@ $$
 <p>TBD règles de validité.</p>
 </blockquote>
 <h4>Chi2 en python</h4>
-<p>On installe la bibliothèque <a href="https://scipy.org/">scipy</a> :</p>
+<p>On installe la bibliothèque <a href="https://scipy.org/" class="externe">scipy</a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> scipy</code></pre>
 <p>Et vérifions que la fonction randint de python soit bien uniforme.</p>
 <p>Commençons par tirer 1000 nombre entre 0 (inclus) et 10 (exclus) :</p>
@@ -240,7 +240,7 @@ X <span class="token operator">=</span> <span class="token punctuation">[</span>
 <span class="token keyword">for</span> x <span class="token keyword">in</span> X<span class="token punctuation">:</span>
   O<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>O<span class="token punctuation">)</span>  <span class="token comment"># [111, 103, 103, 101, 87, 77, 110, 97, 115, 96]</span></code></pre>
-<p>Il nous reste à calculer le risque de première espèce du test du $\chi^2$ en utilisant <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy-stats-chisquare"><code class="language-">scipy.stats.chisquare</code></a>. On veut un risque inférieure à 5% de rejeter l'uniformité alors qu'elle est vraie :</p>
+<p>Il nous reste à calculer le risque de première espèce du test du $\chi^2$ en utilisant <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy-stats-chisquare" class="externe"><code class="language-">scipy.stats.chisquare</code></a>. On veut un risque inférieure à 5% de rejeter l'uniformité alors qu'elle est vraie :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>scipy<span class="token punctuation">.</span>stats<span class="token punctuation">.</span>chisquare<span class="token punctuation">(</span>O<span class="token punctuation">,</span> E<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># Power_divergenceResult(statistic=11.88, pvalue=0.22015919911793527)</span></code></pre>
 <p>Ce qui donne (pour mon cas, lorsque vous ferez l'exercice vous même vous devriez trouver quelque chose d'un peu différent) :</p>
 <ul>
@@ -261,7 +261,7 @@ X <span class="token operator">=</span> <span class="token punctuation">[</span>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.random"><code class="language-">random.random()</code></a> générez 1000 entiers valant :</p>
+<p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.random" class="externe"><code class="language-">random.random()</code></a> générez 1000 entiers valant :</p>
 <ul>
 <li>0 avec une probabilité .6</li>
 <li>1 avec une probabilité .4</li>
@@ -309,7 +309,7 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une séquence finie $(x_i)<em>{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **</em><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a>_** si elle :</p>
+<p>Une séquence finie $(x_i)<em>{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **</em><a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire" class="externe">pseudo-aléatoire</a>_** si elle :</p>
 <ul>
 <li>est générée par un algorithme polynomial à un paramètre, noté <strong><em>graine</em></strong> (<strong><em>seed</em></strong> en anglais)</li>
 <li>elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.</li>
@@ -339,7 +339,7 @@ O <span class="token operator">=</span> <span class="token punctuation">[</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.</p>
-<p>On peut la réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed"><code class="language-">random.seed</code></a>.</p>
+<p>On peut la réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed" class="externe"><code class="language-">random.seed</code></a>.</p>
 <p>Le code suivant doit donner deux fois le même rel :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -358,7 +358,7 @@ random<span class="token punctuation">.</span>seed<span class="token punctuation
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki//dev/random">Générateur de Linux : <code class="fichier">/dev/random</code></a></p>
+<p><a href="https://en.wikipedia.org/wiki//dev/random" class="externe">Générateur de Linux : <code class="fichier">/dev/random</code></a></p>
 </div></div>
 
 <h2>Générateurs de nombres pseudo-aléatoires</h2>
@@ -388,7 +388,7 @@ s
 <blockquote>
 <p>TBD : Mersenne twister</p>
 </blockquote>
-<p><a href="https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf">Intro, exemples et tests pour la validité de PRNG</a></p>
+<p><a href="https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf" class="externe">Intro, exemples et tests pour la validité de PRNG</a></p>
 <ul>
 <li>différence entre
 <ul>
@@ -398,7 +398,7 @@ s
 </li>
 <li>entropie ?</li>
 </ul>
-<p><a href="https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire">Registre à décalage</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Registre_%C3%A0_d%C3%A9calage_%C3%A0_r%C3%A9troaction_lin%C3%A9aire" class="externe">Registre à décalage</a></p>
 
 
 </article>

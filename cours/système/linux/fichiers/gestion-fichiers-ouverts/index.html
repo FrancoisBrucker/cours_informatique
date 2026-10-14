@@ -99,7 +99,7 @@
   <p>Dans un système unix ce sont les process qui ouvrent des fichiers, mais le noyaux en garde en sous-main le contrôle pour permettre à des process différents de se partager les ressources ouvertes.</p>
 <h2>Process</h2>
 <p>Chaque process doit garder une liste des fichiers qu'il a ouvert et peut donc utiliser.</p>
-<p>A chaque fichier ouvert est associé un numéro nommé Un <a href="https://fr.wikipedia.org/wiki/Descripteur_de_fichier">descripteur de fichier (<em>file descriptor</em>)</a>. Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs <code class="fichier">/proc</code> :</p>
+<p>A chaque fichier ouvert est associé un numéro nommé Un <a href="https://fr.wikipedia.org/wiki/Descripteur_de_fichier" class="externe">descripteur de fichier (<em>file descriptor</em>)</a>. Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs <code class="fichier">/proc</code> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd</code></pre>
 <p>Tout process a toujours 3 file descriptors :</p>
 <ul>
@@ -108,7 +108,7 @@
 <li>2 qui est stderr</li>
 <li>255 uniquement si vous utilisez bash (utilisé pour ses besoins internes)</li>
 </ul>
-<p>Ces fichiers ouverts sont des redirections vers le <a href="https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/">fichier tty</a> correspondant.</p>
+<p>Ces fichiers ouverts sont des redirections vers le <a href="https://www.malekal.com/quest-ce-que-tty-comment-utiliser-commande-tty-sur-linux/" class="externe">fichier tty</a> correspondant.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -164,7 +164,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=Gr2IbTZdnvI">Commande lsof</a></p>
+<p><a href="https://www.youtube.com/watch?v=Gr2IbTZdnvI" class="externe">Commande lsof</a></p>
 </div></div>
 
 <p>Si vous utilisez la commande <code>lsof -p $$</code> vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :</p>
@@ -202,7 +202,7 @@ COMMAND    PID     <span class="token environment constant">USER</span>   FD   T
 </ol>
 </div></div>
 
-<p>On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande <a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command"><code>fuser</code></a> :</p>
+<p>On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande <a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command" class="externe"><code>fuser</code></a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">fuser</span> <span class="token parameter variable">-v</span> /usr/bin/bash
                      UTIL.       PID ACCÈS  COMMANDE
 /usr/bin/bash:       fbrucker  <span class="token number">928549</span> <span class="token punctuation">..</span>.e. <span class="token function">bash</span></code></pre>
@@ -233,7 +233,7 @@ Max realtime <span class="token function">timeout</span>      unlimited         
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=rW_NV6rf0rM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=21">FD et FT</a></p>
+<p><a href="https://www.youtube.com/watch?v=rW_NV6rf0rM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=21" class="externe">FD et FT</a></p>
 </div></div>
 
 <p>Le noyau maintient à jour une table globale contenant tous les fichiers ouverts par tous les process. Cette table, nommé <em><strong>file table</strong></em> contient :</p>

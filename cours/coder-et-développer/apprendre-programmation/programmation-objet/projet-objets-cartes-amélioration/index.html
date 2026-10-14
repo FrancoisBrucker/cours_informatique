@@ -221,7 +221,7 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">(
 <p>Placez les différentes constantes relatives aux valeurs et aux couleur des cartes en attributs de classe et modifiez les tests en conséquence.</p>
 </div></div>
 
-<p>Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition <a href="https://docs.python.org/fr/3/library/enum.html">les Enum</a>.</p>
+<p>Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition <a href="https://docs.python.org/fr/3/library/enum.html" class="externe">les Enum</a>.</p>
 <p>On pourrait ainsi gérer les couleurs ainsi :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> enum <span class="token keyword">import</span> Enum
 <span class="token operator">>></span><span class="token operator">></span> couleur <span class="token operator">=</span> Enum<span class="token punctuation">(</span><span class="token string">"Couleur"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"Pique"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"Cœur"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"Carreau"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"Trèfle"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -349,7 +349,7 @@ Couleur<span class="token punctuation">.</span>trèfle
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez et testez les <a href="../am%C3%A9liorer-ses-objets#comparaison" class="interne">opérateurs de comparaisons</a> :</p>
+<p>Codez et testez les <a href="../am%C3%A9liorer-ses-objets#comparaison">opérateurs de comparaisons</a> :</p>
 <ul>
 <li><code class="language-">==</code> qui correspond a à la méthode <code class="language-">__eq__</code></li>
 <li><code class="language-">!=</code> qui correspond a à la méthode <code class="language-">__ne__</code></li>

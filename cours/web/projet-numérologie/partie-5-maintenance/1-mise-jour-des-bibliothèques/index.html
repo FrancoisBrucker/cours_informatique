@@ -109,7 +109,7 @@
 <li>les mise à jour des bibliothèques par les développeurs</li>
 </ol>
 <h2>Mise à jour</h2>
-<p>En reprenant le code de la <a href="../../partie-4-jardinage/4-structures" class="interne">partie 4</a>, on voit que certains packages ont été mis à jour.</p>
+<p>En reprenant le code de la <a href="../../partie-4-jardinage/4-structures">partie 4</a>, on voit que certains packages ont été mis à jour.</p>
 <p><code class="fichier">package.json</code> :</p>
 <pre class="language-json" tabindex="0" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"numérologie"</span><span class="token punctuation">,</span>
@@ -131,14 +131,14 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Voir les <a href="https://docs.npmjs.com/cli/v8/commands/npm-outdated">packages mis à jour</a> avec :</p>
+<p>Voir les <a href="https://docs.npmjs.com/cli/v8/commands/npm-outdated" class="externe">packages mis à jour</a> avec :</p>
 <pre><code>» npm outdated                     
 Package    Current  Wanted  Latest  Location                Depended by
 sequelize   6.25.6  6.29.3  6.29.3  node_modules/sequelize  numérologie
 sqlite3      5.1.2   5.1.6   5.1.6  node_modules/sqlite3    numérologie
 </code></pre>
 <p>On voit de plus que la version installée de <code>sequelize</code> était plus la minimum demandée. Voir <code class="fichier">package-lock.json</code> pour avoir les version effectivement installées de tous les packages.</p>
-<p><a href="https://docs.npmjs.com/cli/v8/commands/npm-update">Mise à jour</a> des packages installées (<code class="fichier">package-lock.json</code>) :</p>
+<p><a href="https://docs.npmjs.com/cli/v8/commands/npm-update" class="externe">Mise à jour</a> des packages installées (<code class="fichier">package-lock.json</code>) :</p>
 <pre><code>npm update
 </code></pre>
 <p>Cela change les version installées, mais ne met pas à jour le fichier <code class="fichier">package.json</code>. Pour le faire :</p>
@@ -150,12 +150,12 @@ sqlite3      5.1.2   5.1.6   5.1.6  node_modules/sqlite3    numérologie
 </svg>
 <div class="pl-8 mr-8">
 <p>Voir :</p>
-<p><a href="https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365">https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365</a></p>
+<p><a href="https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365" class="externe">https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version/23391365#23391365</a></p>
 <p>Attention, la question est vielle, donc les premières réponses ne sont plus exactes.</p>
 </div></div>
 
 <p>On peut aussi changer le <code class="fichier">package.json</code> pour qu'il ait toujours la dernière version d'installée (mais attention aux incompatibilités de versions) :</p>
-<p>Dans le fichier <code class="fichier">package.json</code> (voir <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json">doc</a> ):</p>
+<p>Dans le fichier <code class="fichier">package.json</code> (voir <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json" class="externe">doc</a> ):</p>
 <pre class="language-json" tabindex="0" data-language="json"><code class="language-json">... 
 
 <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>

@@ -119,10 +119,10 @@
 <p><strong>Tutoriels généraux sur javascript</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>Si vous ne deviez faire qu'un seul tutoriel : <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">https://developer.mozilla.org/fr/docs/Web/JavaScript</a> qui contient tout ce qu'il faut</li>
-<li><a href="https://fr.javascript.info/">https://fr.javascript.info/</a></li>
-<li><a href="https://grafikart.fr/tutoriels/javascript">https://grafikart.fr/tutoriels/javascript</a> en revanche, je ne sais pas si tout est gratuit.</li>
-<li><a href="https://www.tutorialspoint.com/javascript/index.htm">https://www.tutorialspoint.com/javascript/index.htm</a></li>
+<li>Si vous ne deviez faire qu'un seul tutoriel : <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" class="externe">https://developer.mozilla.org/fr/docs/Web/JavaScript</a> qui contient tout ce qu'il faut</li>
+<li><a href="https://fr.javascript.info/" class="externe">https://fr.javascript.info/</a></li>
+<li><a href="https://grafikart.fr/tutoriels/javascript" class="externe">https://grafikart.fr/tutoriels/javascript</a> en revanche, je ne sais pas si tout est gratuit.</li>
+<li><a href="https://www.tutorialspoint.com/javascript/index.htm" class="externe">https://www.tutorialspoint.com/javascript/index.htm</a></li>
 </ul>
 </div></div>
 
@@ -134,10 +134,10 @@
 <p>Avant de choisir un tuto, Vérifier bien cependant qu'ils ne soient pas trop vieux, javascript a beaucoup évolué au cours des années.</p>
 </div></div>
 
-<p><a href="https://fr.wikipedia.org/wiki/JavaScript">Javascript</a> n'est *<em>pas</em>- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dans le web :</p>
+<p><a href="https://fr.wikipedia.org/wiki/JavaScript" class="externe">Javascript</a> n'est *<em>pas</em>- java. Ça n'a même rien à voir. C'est en revanche un langage de script objet (comme python) qui est peut être utilisé partout et que l'on retrouve souvent dans le web :</p>
 <ul>
-<li><em>côté front</em> : c'est le navigateur qui exécutera le code javascript de la page sur l'<a href="https://fr.wikipedia.org/wiki/Client_(informatique)">ordinateur client</a> (c'est à dire celui qui qui exécute le navigateur).</li>
-<li><em>côté back</em> : C'est le <a href="https://fr.wikipedia.org/wiki/Serveur_informatique">serveur</a> qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <a href="https://nodejs.org/">https://nodejs.org/</a> pour cela.</li>
+<li><em>côté front</em> : c'est le navigateur qui exécutera le code javascript de la page sur l'<a href="https://fr.wikipedia.org/wiki/Client_(informatique)" class="externe">ordinateur client</a> (c'est à dire celui qui qui exécute le navigateur).</li>
+<li><em>côté back</em> : C'est le <a href="https://fr.wikipedia.org/wiki/Serveur_informatique" class="externe">serveur</a> qui exécutera le code (c'est à dire celui qui possède la ressource que va chercher le navigateur). On utilise souvent <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> pour cela.</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -149,10 +149,10 @@
 
 <p>Nous verrons ici ce que ça veut dire qu'exécuter du javascript et le strict nécessaire pour pouvoir faire illusion en soirée.</p>
 <h2>L'interpréteur javascript</h2>
-<p>Tout comme python, javascript est un <a href="https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)">langage interprété</a>. Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :</p>
+<p>Tout comme python, javascript est un <a href="https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)" class="externe">langage interprété</a>. Chaque ligne de javascript est exécutée dans un programme appelé interpréteur.  Il en existe essentiellement deux :</p>
 <ul>
 <li>votre navigateur web</li>
-<li>celui de <a href="https://nodejs.org/">https://nodejs.org/</a></li>
+<li>celui de <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a></li>
 </ul>
 <h3>Javascript dans un navigateur</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -160,17 +160,17 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La plupart du temps, c'est l'interpréteur de la <a href="https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)">V8</a> qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé <a href="https://fr.wikipedia.org/wiki/ECMAScript">ecmascript</a> (les évolutions de cette norme sont visible <a href="https://www.w3schools.com/js/js_versions.asp">là</a> par exemple)</p>
+<p>La plupart du temps, c'est l'interpréteur de la <a href="https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)" class="externe">V8</a> qui est utilisé. Il existe plusieurs interpréteurs javascript, ils sont tous aussi valables les uns que les autres s'il respectent les spécifications du langage javascript appelé <a href="https://fr.wikipedia.org/wiki/ECMAScript" class="externe">ecmascript</a> (les évolutions de cette norme sont visible <a href="https://www.w3schools.com/js/js_versions.asp" class="externe">là</a> par exemple)</p>
 </div></div>
 
 <h4>Directement depuis la console</h4>
-<p>L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux <a href="../outils-de-d%C3%A9veloppement/" class="interne">outils de développement</a> (<em>&quot;... du menu &gt; show console drawer&quot;</em>, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).</esc></p>
+<p>L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux <a href="../outils-de-d%C3%A9veloppement/">outils de développement</a> (<em>&quot;... du menu &gt; show console drawer&quot;</em>, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).</esc></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://developer.chrome.com/docs/devtools/console/">Console avec chrome</a></p>
+<p><a href="https://developer.chrome.com/docs/devtools/console/" class="externe">Console avec chrome</a></p>
 </div></div>
 
 <p>Il est indispensable de connaître cette méthode car elle permet d'accéder directement au javascript de la page pour analyse les composant de la page et/ou débeuguer son code.</p>
@@ -198,12 +198,12 @@
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p>Puis ouvrez <a href="hello_javascript" class="interne">le</a>. Ouvrez le dans un navigateur.</p>
+<p>Puis ouvrez <a href="hello_javascript">le</a>. Ouvrez le dans un navigateur.</p>
 </div></div>
 
 <p>Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code>. On place généralement le code javascript à exécuter à la fin de la page comme ça il pourra avoir accès à tout le contenu de la page.</p>
 <p>En effet, le code est exécuté au <strong>moment où il est lu</strong>. Si vous le placer au début de votre page, il sera exécuté avant que le contenu de la page ne soit affiché.</p>
-<p>On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <a href="https://tabulator.info/">https://tabulator.info/</a>, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :</p>
+<p>On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <a href="https://tabulator.info/" class="externe">https://tabulator.info/</a>, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <p>Il y a donc deux façon d'inclure du javascript dans vos fichiers html via la balise script :</p>
@@ -244,7 +244,7 @@
 </div></div>
 
 <p>Il est <strong>indispensable</strong> d'exécuter le code javascript dans un html avec les outils de développement pour savoir quand il y a eu une erreur. Sans ça, il est impossible de dire si tout s'est bien passé.</p>
-<p>Si vous tentez d'exécuter le code précédent dans un <a href="https://nodejs.org/">https://nodejs.org/</a>, vous obtiendrez l'erreur : <code>Uncaught ReferenceError: window is not defined</code>. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur <a href="https://nodejs.org/">https://nodejs.org/</a>.</p>
+<p>Si vous tentez d'exécuter le code précédent dans un <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a>, vous obtiendrez l'erreur : <code>Uncaught ReferenceError: window is not defined</code>. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -253,7 +253,7 @@
 <p>l'utilisation de <code class="language-">window.alert</code> est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur <code>OK</code>), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction <code class="language-">console.log()</code>.</p>
 </div></div>
 
-<h3>Javascript avec <a href="https://nodejs.org/">https://nodejs.org/</a></h3>
+<h3>Javascript avec <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a></h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -261,10 +261,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p>installation</p>
 </div><div class="pl-8 mr-8">
-<p>Commencez par télécharger installer la version current de <a href="https://nodejs.org/">https://nodejs.org/</a> : <a href="https://nodejs.org/en/download/current">https://nodejs.org/en/download/current</a>.</p>
+<p>Commencez par télécharger installer la version current de <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> : <a href="https://nodejs.org/en/download/current" class="externe">https://nodejs.org/en/download/current</a>.</p>
 </div></div>
 
-<p><a href="https://nodejs.org/">https://nodejs.org/</a> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :</p>
+<p><a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -288,19 +288,19 @@ Bonjour de node
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour quitter l'interpréteur <a href="https://nodejs.org/">https://nodejs.org/</a> vous pouvez :</p>
+<p>Pour quitter l'interpréteur <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> vous pouvez :</p>
 <ul>
 <li>soit taper <code>ctrl+D</code></li>
 <li>soit exécuter la commande <code class="language-">.exit</code></li>
 </ul>
 </div></div>
 
-<p>Tout comme l'interpréteur python, <a href="https://nodejs.org/">https://nodejs.org/</a> exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :</p>
+<p>Tout comme l'interpréteur python, <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> exécute ligne à ligne du code puis affiche son résultat. Dans l'exemple précédent on exécute deux commandes :</p>
 <ol>
 <li><code class="language-">console.log(&quot;Bonjour de node&quot;)</code></li>
 <li><code class="language-">x = 40 + 2</code></li>
 </ol>
-<p>A chaque fois l'interpréteur <a href="https://nodejs.org/">https://nodejs.org/</a> exécute la commande :</p>
+<p>A chaque fois l'interpréteur <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> exécute la commande :</p>
 <ol>
 <li>affiche à l'écran <code>&quot;Bonjour de node&quot;</code></li>
 <li>affecte à la variable <code>x</code> la somme 40 plus 2</li>
@@ -316,7 +316,7 @@ x <span class="token operator">=</span> <span class="token number">40</span> <sp
 <p>Puis placez vous dans le dossier contenant ce fichier dans le terminal et exécutez la comande suite :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">node</span> exemple.js 
 Bonjour de <span class="token function">node</span></code></pre>
-<p>Vous ne verrez ni <code>undefined</code> ni <code>42</code>. Dans le mode exécution de fichier, <a href="https://nodejs.org/">https://nodejs.org/</a> exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.</p>
+<p>Vous ne verrez ni <code>undefined</code> ni <code>42</code>. Dans le mode exécution de fichier, <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a> exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -326,7 +326,7 @@ Bonjour de <span class="token function">node</span></code></pre>
 </div></div>
 
 <h2>Langage</h2>
-<p>Faites vos différents essais avec <a href="https://nodejs.org/">https://nodejs.org/</a></p>
+<p>Faites vos différents essais avec <a href="https://nodejs.org/" class="externe">https://nodejs.org/</a></p>
 <h3>Variables et Fonctions</h3>
 <p>Utilisons la console javascript de notre navigateur.</p>
 <h4>Blocs</h4>
@@ -347,7 +347,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>C'est en revanche une erreur de redéclarer la même variable. Le code suivant va produire une erreur :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"trois virgule quatorze !"</span></code></pre>
-<p>Enfin, <a href="https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)">la portée</a> d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :</p>
+<p>Enfin, <a href="https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)" class="externe">la portée</a> d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :</p>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"po"</span>
@@ -362,7 +362,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables">https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables" class="externe">https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Variables</a></p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -403,7 +403,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics">objet</a>. Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a> : <code>typeof {a:1}</code>.</p>
+<p>Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics" class="externe">objet</a>. Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof" class="externe">typeof</a> : <code>typeof {a:1}</code>.</p>
 </div></div>
 
 <h4>Constantes</h4>
@@ -417,7 +417,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions" class="externe">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions</a></p>
 </div></div>
 
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -495,7 +495,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles" class="externe">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles</a></p>
 </div></div>
 
 <p>javascript utilise deux forme d'égalité :</p>
@@ -524,7 +524,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration" class="externe">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Loops_and_iteration</a></p>
 </div></div>
 
 <p>Différence avec python :</p>
@@ -534,7 +534,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>for in et for on</li>
 </ul>
 <h3>Fonctions anonymes</h3>
-<p>En paramètres de fonctions et utilisées une seule fois. Très utiles pour la gestion des événements (on le verra) et les itérateurs <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">exemple</a></p>
+<p>En paramètres de fonctions et utilisées une seule fois. Très utiles pour la gestion des événements (on le verra) et les itérateurs <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" class="externe">exemple</a></p>
 
 
 </article>

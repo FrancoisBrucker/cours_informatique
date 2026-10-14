@@ -97,7 +97,7 @@
   
 
   <p>Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le dictionnaire (<em>hash map</em>) aussi appelé le tableau associatif.</p>
-<p>Cette structure utilise de façon sous-jacente une <a href="../fonctions-hash" class="interne">fonctions de hachage</a>.</p>
+<p>Cette structure utilise de façon sous-jacente une <a href="../fonctions-hash">fonctions de hachage</a>.</p>
 <h2>Fonction de hachage utilisée</h2>
 <p>On supposera l'existence de fonction de hachage :</p>
 <div>
@@ -109,7 +109,7 @@ $$
 <ul>
 <li>d'être calculable : on peut leur associer un algorithme <code class="language-">f(d: K) → entier</code>,</li>
 <li>d'être rapidement calculable : de complexité linéaire dans la taille de $d$.</li>
-<li>d'être <a href="../fonctions-hash/#d%C3%A9finition-hachage-utile" class="interne">utiles</a>.</li>
+<li>d'être <a href="../fonctions-hash/#d%C3%A9finition-hachage-utile">utiles</a>.</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -142,7 +142,7 @@ méthode <span class="token punctuation">(</span>d<span class="token punctuation
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On utilise <a href="../../structure-liste/#structure-getter-setter" class="interne">le même abus que pour les listes</a> : pour un dictionnaire <code class="language-">d</code> on écrira toujours <code class="language-">d[clé]</code> à la place de <code class="language-">d.get(clé)</code> ou de <code class="language-">d.set(clé, valeur)</code>.</p>
+<p>On utilise <a href="../../structure-liste/#structure-getter-setter">le même abus que pour les listes</a> : pour un dictionnaire <code class="language-">d</code> on écrira toujours <code class="language-">d[clé]</code> à la place de <code class="language-">d.get(clé)</code> ou de <code class="language-">d.set(clé, valeur)</code>.</p>
 </div></div>
 
 <p>Enfin, Comme un dictionnaire est un type classique :</p>
@@ -186,7 +186,7 @@ rgb<span class="token punctuation">[</span><span class="token string">"bleu"</sp
 <p>Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilisé quotidiennement pas des millions de personnes ne fait pas de gestion de collision car les probabilités de collision sont trop faibles.</p>
 </div></div>
 
-<p>Pour gérer les collisions, on utilise <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering">le théorème fondamental du développement logiciel</a> :</p>
+<p>Pour gérer les collisions, on utilise <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering" class="externe">le théorème fondamental du développement logiciel</a> :</p>
 <p><span id="théorème-fondamental-développement-logiciel"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -271,8 +271,8 @@ rgb<span class="token punctuation">[</span><span class="token string">"bleu"</sp
 </div></div>
 
 <h2>Taille de la structure</h2>
-<p>Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a>, la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.</p>
-<p>Pour résoudre ce problème on va encore une fois utiliser <a href="#th%C3%A9or%C3%A8me-fondamental-d%C3%A9veloppement-logiciel" class="interne">le TFDL</a> et ajouter une indirection.</p>
+<p>Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour <a href="https://en.wikipedia.org/wiki/SipHash" class="externe">sipHash</a>, la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.</p>
+<p>Pour résoudre ce problème on va encore une fois utiliser <a href="#th%C3%A9or%C3%A8me-fondamental-d%C3%A9veloppement-logiciel">le TFDL</a> et ajouter une indirection.</p>
 <p>On utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> m'<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 <p>Et correspond à une famille de fonctions de hachage <strong>utiles</strong> $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :</p>
@@ -434,7 +434,7 @@ On va estimer la complexité des opérations suivantes :</p>
 <li>cas le pire : $\mathcal{O}(\mbox{longueur})$ (en considérant que la complexité de l'opérateur <code class="language-">==</code> vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{longueur}$, le nombre d'éléments stockés.</li>
 <li>cas moyen : $\mathcal{O}(\frac{\mbox{longueur}}{T.\mbox{\small capacité}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{longueur}}{T.\mbox{\small capacité}}$ éléments dans la liste $L[fa(f(c), m)]$.</li>
 </ul>
-<p>Comme $\frac{\mbox{longueur}}{T.\mbox{\small capacité}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des <a href="../../structure-liste/#preuve-liste-ajout" class="interne">$N$ ajouts successifs pour une liste</a> montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{longueur})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :</p>
+<p>Comme $\frac{\mbox{longueur}}{T.\mbox{\small capacité}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des <a href="../../structure-liste/#preuve-liste-ajout">$N$ ajouts successifs pour une liste</a> montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{longueur})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

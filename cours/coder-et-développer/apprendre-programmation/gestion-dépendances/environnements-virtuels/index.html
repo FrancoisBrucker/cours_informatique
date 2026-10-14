@@ -102,8 +102,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li><a href="https://docs.python.org/fr/3.13/tutorial/venv.html#">https://docs.python.org/fr/3.13/tutorial/venv.html#</a></li>
-<li><a href="https://realpython.com/python-virtual-environments-a-primer/">Virtual environments</a></li>
+<li><a href="https://docs.python.org/fr/3.13/tutorial/venv.html#" class="externe">https://docs.python.org/fr/3.13/tutorial/venv.html#</a></li>
+<li><a href="https://realpython.com/python-virtual-environments-a-primer/" class="externe">Virtual environments</a></li>
 </ul>
 </div></div>
 
@@ -119,7 +119,7 @@
 </div></div>
 
 <h2>Environnement python</h2>
-<p><a href="../version-python/#interpr%C3%A9teur-emplacement" class="interne">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.</p>
+<p><a href="../version-python/#interpr%C3%A9teur-emplacement">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.</p>
 <h3>Emplacement</h3>
 <p>L'ensemble constitué de l'interpréteur python et des modules est appelé <strong><em>environnement python</em></strong> et est placé dans un dossier. Le code suivant permet de l'expliciter :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
@@ -150,7 +150,7 @@
 <li>un nouveau terminal a été crée par vscode pour ses exécutions</li>
 <li>que le nom correspond à celui du bas.</li>
 </ul>
-<p>En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)">tree</a> dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :</p>
+<p>En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)" class="externe">tree</a> dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="highlight-line">❯ tree <span class="token parameter variable">-L</span> <span class="token number">2</span> /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 </span>
 <span class="highlight-line">/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13</span>
 <span class="highlight-line">├── Headers -<span class="token operator">></span> include/python3.13</span>
@@ -205,7 +205,7 @@
 
 <p>Les petites flèches que vous voyiez à côté de certains noms, par exemple la ligne 17 précédente :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">│   ├── python3 -<span class="token operator">></span> python3.13</code></pre>
-<p>Ceci correspond à <a href="https://fr.wikipedia.org/wiki/Lien_symbolique">un lien symbolique</a> : le fichier <code class="fichier">python3</code> correspond en fait au fichier <code class="fichier">python3.13</code>. Ce mécanisme permet de conserver un même nom (<code>python3</code>) à plusieurs versions python.</p>
+<p>Ceci correspond à <a href="https://fr.wikipedia.org/wiki/Lien_symbolique" class="externe">un lien symbolique</a> : le fichier <code class="fichier">python3</code> correspond en fait au fichier <code class="fichier">python3.13</code>. Ce mécanisme permet de conserver un même nom (<code>python3</code>) à plusieurs versions python.</p>
 <p>Si je change d'interpréteur (en cliquant sur la ligne en bas de vscode) :</p>
 <p><img src="vs-code-environnements.png" alt="Différents environnements"></p>
 <p>Vscode a trouvé plein d'environnements différents (et il ne les a pas trouvés tous). Si je change d'environnement et que je re-exécute le code :</p>
@@ -272,7 +272,7 @@ yarl              <span class="token number">1.9</span>.4</code></pre>
 
 <p>La solution utilisée par python est de permettre de créer facilement un environnement python dédié pour chaque projet.</p>
 <h2>Création d'un environnement</h2>
-<p>Nous utiliserons le module <a href="https://docs.python.org/fr/3/library/venv.html"><code>venv</code></a>, qui doit normalement être disponible.</p>
+<p>Nous utiliserons le module <a href="https://docs.python.org/fr/3/library/venv.html" class="externe"><code>venv</code></a>, qui doit normalement être disponible.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -303,7 +303,7 @@ yarl              <span class="token number">1.9</span>.4</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://code.visualstudio.com/docs/python/environments#_creating-environments">https://code.visualstudio.com/docs/python/environments#_creating-environments</a></p>
+<p><a href="https://code.visualstudio.com/docs/python/environments#_creating-environments" class="externe">https://code.visualstudio.com/docs/python/environments#_creating-environments</a></p>
 </div></div>
 
 <p>Lorsque l'on a changé d'environnement, on a vu que vscode propose de créer un nouvel environnement virtuel.</p>
@@ -384,7 +384,7 @@ pip     <span class="token number">24.2</span>
 <div class="pl-8 mb-2 mr-8">
 <p>sous Windows</p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4">Script execution policy</a> sous windows.</p>
+<p><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4" class="externe">Script execution policy</a> sous windows.</p>
 <p>Pour la connaître :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
 <p>Pour la modifier :</p>
@@ -392,7 +392,7 @@ pip     <span class="token number">24.2</span>
 </div></div>
 
 <h3>Activation</h3>
-<p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work">une commande qui dépend de votre environnement</a> :</p>
+<p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work" class="externe">une commande qui dépend de votre environnement</a> :</p>
 <ul>
 <li>sous mac : <code>source venv/bin/activate</code></li>
 <li>sous windows : <code>venv\Scripts\Activate.ps1</code></li>
@@ -437,7 +437,7 @@ environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Do
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pip.pypa.io/en/stable/cli/pip_freeze/">Documentation de la commande <code>pip freeze</code></a></p>
+<p><a href="https://pip.pypa.io/en/stable/cli/pip_freeze/" class="externe">Documentation de la commande <code>pip freeze</code></a></p>
 </div></div>
 
 <p>Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.</p>
@@ -464,7 +464,7 @@ pytest==8.2.1</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers">Spécification des modules</a></p>
+<p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers" class="externe">Spécification des modules</a></p>
 </div></div>
 
 <h3>uv</h3>
@@ -474,17 +474,17 @@ pytest==8.2.1</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/astral-sh/uv">https://github.com/astral-sh/uv</a></p>
+<p><a href="https://github.com/astral-sh/uv" class="externe">https://github.com/astral-sh/uv</a></p>
 </div></div>
 
 <blockquote>
 <p>TBD un tuto à rendre plus digeste :</p>
 <ul>
-<li><a href="https://blog.stephane-robert.info/docs/developper/programmation/python/uv/">https://blog.stephane-robert.info/docs/developper/programmation/python/uv/</a></li>
-<li><a href="https://www.youtube.com/watch?v=AIYBol5HEog">https://www.youtube.com/watch?v=AIYBol5HEog</a></li>
+<li><a href="https://blog.stephane-robert.info/docs/developper/programmation/python/uv/" class="externe">https://blog.stephane-robert.info/docs/developper/programmation/python/uv/</a></li>
+<li><a href="https://www.youtube.com/watch?v=AIYBol5HEog" class="externe">https://www.youtube.com/watch?v=AIYBol5HEog</a></li>
 </ul>
 </blockquote>
-<p>Il en existent d'autre, comme <a href="https://python-poetry.org/">poetry</a> par exemple.</p>
+<p>Il en existent d'autre, comme <a href="https://python-poetry.org/" class="externe">poetry</a> par exemple.</p>
 
 
 </article>

@@ -96,7 +96,7 @@
     
   
 
-  <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple <a href="#diviser-pour-r%C3%A9gner" class="interne">d'algorithme diviser pour régner</a> et, surtout, le calcul de ses complexités est très intéressant.</p>
+  <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple <a href="#diviser-pour-r%C3%A9gner">d'algorithme diviser pour régner</a> et, surtout, le calcul de ses complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
 <ul>
 <li>toutes les valeurs de <code class="language-">T1</code> soient plus petites que <code class="language-">pivot</code></li>
@@ -142,7 +142,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>En utilisant <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension" class="interne">des list comprehension</a> de python, le code est plus compacte et plus clair que sa version en pseudocode :</p>
+<p>En utilisant <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension">des list comprehension</a> de python, le code est plus compacte et plus clair que sa version en pseudocode :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
@@ -323,7 +323,7 @@ $$
 <div class="mx-8 pb-2">
 <p>Comme $C(n)$ est une fonction croissante et que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.</p>
 <p><img src="tris-4.png" alt="croissance convexe"></p>
-<p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et <a href="../algorithme-fusion/#complexit%C3%A9s-fusion" class="interne">la preuve de l'algorithme fusion</a> nous permet de conclure que :</p>
+<p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et <a href="../algorithme-fusion/#complexit%C3%A9s-fusion">la preuve de l'algorithme fusion</a> nous permet de conclure que :</p>
 <p>$$
 C_{\min(n)} = \mathcal{O}(n\ln(n))
 $$</p>
@@ -393,7 +393,7 @@ $$
 C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1 = \mathcal{O}(n\log_2(n))
 $$
 </div>
-<p>On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ (<a href="../../projet-sommes-classiques/" class="interne">on le démontrera</a>).</p>
+<p>On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ (<a href="../../projet-sommes-classiques/">on le démontrera</a>).</p>
 </div>
 </details>     
 </div>
@@ -425,7 +425,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>on utilise <a href="../algorithme-insertion/#mod%C3%A8le-al%C3%A9atoire-50" class="interne">l'argument utilisé</a> pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
+<p>on utilise <a href="../algorithme-insertion/#mod%C3%A8le-al%C3%A9atoire-50">l'argument utilisé</a> pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
 </div>
 </details>     
@@ -453,7 +453,7 @@ $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 $$
 </div>
-<p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire" class="interne">le modèle aléatoire</a> et donc que $p_i = \frac{1}{n}$ pour tout $i$.</p>
+<p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire">le modèle aléatoire</a> et donc que $p_i = \frac{1}{n}$ pour tout $i$.</p>
 <div>
 $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n) + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
@@ -513,7 +513,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 \end{array}
 $$
 </div>
-<p>On peut facilement montrer (<a href="../../projet-sommes-classiques/" class="interne">on le démontrera</a>) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :</p>
+<p>On peut facilement montrer (<a href="../../projet-sommes-classiques/">on le démontrera</a>) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -525,8 +525,8 @@ A(n) &=& 2K\sum_{i=1}^{n}\frac{1}{(i+1)} + \mathcal{O}(1)\\
 $$
 </div>
 <p>La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.</p>
-<p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,
-et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, <a href="../../projet-sommes-classiques/" class="interne">on le démontrera</a>).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :</p>
+<p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique" class="externe">série harmonique</a>,
+et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent" class="externe">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, <a href="../../projet-sommes-classiques/">on le démontrera</a>).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :</p>
 <p>$$
 A(n) = \mathcal{O}(\ln(n))
 $$</p>

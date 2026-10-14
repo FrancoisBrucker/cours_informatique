@@ -101,12 +101,12 @@
 - ajouter sub-keys avec acron2.
 `❯ echo "coucou" | openssl base64 | openssl base64 -d`
 
-- signature avec openssl <https://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl>
+- signature avec openssl <https://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl>{.externe}
  -->
-<p>Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par <a href="https://www.openssl.org/">openSSL</a> pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme <a href="https://www.gnupg.org/">Gnupg</a>, ci-après.</p>
+<p>Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par <a href="https://www.openssl.org/" class="externe">openSSL</a> pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme <a href="https://www.gnupg.org/" class="externe">Gnupg</a>, ci-après.</p>
 <p>Placez vous dans un dossier où vous pourrez placer tous les fichiers nécessaires</p>
 <blockquote>
-<p>TBD <a href="https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl">https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl</a></p>
+<p>TBD <a href="https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl" class="externe">https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl</a></p>
 </blockquote>
 <h2>Installation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -114,7 +114,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+<p><a href="https://www.openssl.org/" class="externe">https://www.openssl.org/</a></p>
 </div></div>
 
 <p>On utilise la version 3 d'openssl :</p>
@@ -125,15 +125,15 @@ OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</sp
 <h3>Macos</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ brew <span class="token function">install</span> openssl</code></pre>
 <h3>Windows</h3>
-<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
+<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/" class="externe">winget</a>, le gestionnaire de paquet de Windows 11.</p>
 <ol>
-<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
-<li>on utilise le paquet <a href="https://winget.run/pkg/ShiningLight/OpenSSL.Light"><code>OpenSSL.Light</code></a></li>
+<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/" class="externe">https://winget.run/</a></li>
+<li>on utilise le paquet <a href="https://winget.run/pkg/ShiningLight/OpenSSL.Light" class="externe"><code>OpenSSL.Light</code></a></li>
 </ol>
 <p>Une fois le parquet installé, il faut encore ajouter le chemin d'exécution. Pour cela :</p>
 <ol>
 <li>commencez par trouver l'endroit où est installé openssl (qui moi c'est<code class="fichier">C:\Program Files\OpenSSL-Win64\bin\</code>)</li>
-<li>utilisez <a href="https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/">ce tutoriel</a> pour l'ajouter aux chemins d'exécution</li>
+<li>utilisez <a href="https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/" class="externe">ce tutoriel</a> pour l'ajouter aux chemins d'exécution</li>
 </ol>
 <h2>Clés du chiffrement asymétrique</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -141,13 +141,13 @@ OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</sp
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL">RSA openSSL</a></p>
+<p><a href="https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL" class="externe">RSA openSSL</a></p>
 </div></div>
 
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl genpkey <span class="token parameter variable">-help</span></code></pre>
-<p>On commence par <a href="https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html">générer un couple de clés publique/privée</a> avec RSA :</p>
+<p>On commence par <a href="https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html" class="externe">générer un couple de clés publique/privée</a> avec RSA :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl genpkey <span class="token parameter variable">-algorithm</span> RSA <span class="token parameter variable">-out</span> private_key.pem <span class="token parameter variable">-pkeyopt</span> rsa_keygen_bits:2048</code></pre>
-<p>Cette commande va produire un fichier <code class="fichier">private_key.pem</code> au format <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">PEM</a>. Ce fichier va faire office de clé privée mais <strong>il contient bien le couple des clés publique et privée</strong> :</p>
+<p>Cette commande va produire un fichier <code class="fichier">private_key.pem</code> au format <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail" class="externe">PEM</a>. Ce fichier va faire office de clé privée mais <strong>il contient bien le couple des clés publique et privée</strong> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl rsa <span class="token parameter variable">-in</span> private_key.pem <span class="token parameter variable">-text</span></code></pre>
 <p>Extrayons la clé publique du fichier <code class="fichier">private_key.pem</code> et stockons là dans le fichier <code class="fichier">public_key.pem</code> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl rsa <span class="token parameter variable">-pubout</span> <span class="token parameter variable">-in</span> private_key.pem <span class="token parameter variable">-out</span> public_key.pem</code></pre>

@@ -142,7 +142,7 @@
 </details>     
 </div>
 <p>Attention cependant, cette structure est mutable : on peut modifier les sommets et les voisins. donc pour copier un graphe il faudra non seulement faire un nouveau dictionnaire mais aussi des nouveaux ensembles de voisins !</p>
-<p>Pour tout copier en une seule fois on utilisera <a href="https://docs.python.org/fr/3.14/library/copy.html">le module copy</a> de python :</p>
+<p>Pour tout copier en une seule fois on utilisera <a href="https://docs.python.org/fr/3.14/library/copy.html" class="externe">le module copy</a> de python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> copy
 
 G2 <span class="token operator">=</span> copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span>G<span class="token punctuation">)</span></code></pre>
@@ -151,7 +151,7 @@ G2 <span class="token operator">=</span> copy<span class="token punctuation">.</
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> de python : <code class="language-">G2 = {k: set(v) for k, v in G.items()}</code></p>
+<p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions" class="externe">list comprehension</a> de python : <code class="language-">G2 = {k: set(v) for k, v in G.items()}</code></p>
 </div></div>
 
 <h3>Algorithme de Hierholzer</h3>
@@ -205,13 +205,13 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <h2>Networkx</h2>
 <h3>Bases</h3>
 <ul>
-<li>la bibliothèque : <a href="https://networkx.org/documentation/stable/index.html">https://networkx.org/documentation/stable/index.html</a></li>
-<li>tuto : <a href="https://networkx.org/documentation/stable/tutorial.html#nx-guides">https://networkx.org/documentation/stable/tutorial.html#nx-guides</a> (notez que l'on peut produire facilement un graphe de Networkx avec notre structure : <code class="language-">Gnx = nx.Graph(G)</code> fonctionne)</li>
-<li>Dessiner : <a href="https://networkx.org/documentation/stable/tutorial.html#drawing-graphs">https://networkx.org/documentation/stable/tutorial.html#drawing-graphs</a> et <a href="https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html">https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html</a></li>
-<li>graphe aléatoire :<a href="https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html">https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html</a></li>
+<li>la bibliothèque : <a href="https://networkx.org/documentation/stable/index.html" class="externe">https://networkx.org/documentation/stable/index.html</a></li>
+<li>tuto : <a href="https://networkx.org/documentation/stable/tutorial.html#nx-guides" class="externe">https://networkx.org/documentation/stable/tutorial.html#nx-guides</a> (notez que l'on peut produire facilement un graphe de Networkx avec notre structure : <code class="language-">Gnx = nx.Graph(G)</code> fonctionne)</li>
+<li>Dessiner : <a href="https://networkx.org/documentation/stable/tutorial.html#drawing-graphs" class="externe">https://networkx.org/documentation/stable/tutorial.html#drawing-graphs</a> et <a href="https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html" class="externe">https://networkx.org/documentation/stable/auto_examples/drawing/plot_labels_and_colors.html</a></li>
+<li>graphe aléatoire :<a href="https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html" class="externe">https://networkx.org/documentation/stable/auto_examples/graph/plot_erdos_renyi.html</a></li>
 </ul>
 <h3>Euler</h3>
-<p><a href="https://networkx.org/documentation/stable/reference/algorithms/euler.html">https://networkx.org/documentation/stable/reference/algorithms/euler.html</a></p>
+<p><a href="https://networkx.org/documentation/stable/reference/algorithms/euler.html" class="externe">https://networkx.org/documentation/stable/reference/algorithms/euler.html</a></p>
 <p>comparer avec votre implémentation ainsi que le temps mis pour résoudre.</p>
 <h2>Mot de Bruijn</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -219,7 +219,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="../mots-bruijn/" class="interne">Mots de Bruijn</a></p>
+<p><a href="../mots-bruijn/">Mots de Bruijn</a></p>
 </div></div>
 
 <h3>Toutes les suites</h3>
@@ -234,7 +234,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
 <h3>Résolution</h3>
 <p>Utilisez networkx pour générer des mots de Bruijn.</p>
-<p>Attention, ce ne sont plus des graphes mais des multi-graphes orientés (des <a href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph"><code class="language-">MultiDigraph</code></a>).</p>
+<p>Attention, ce ne sont plus des graphes mais des multi-graphes orientés (des <a href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph" class="externe"><code class="language-">MultiDigraph</code></a>).</p>
 
 
 </article>
