@@ -8,7 +8,7 @@ import filtersConfig from "./config/filters.js";
 
 import postCompilation from "./config/post-build.js";
 import typstConfig from "./config/typst.js";
-import pseudocode from "./config/pseudocode.js";
+import pseudocode, { installerHooks } from "./config/pseudocode.js";
 
 export default function(eleventyConfig) {
 
@@ -38,6 +38,7 @@ export default function(eleventyConfig) {
     // init callback lets you customize Prism
     init: function({ Prism }) {
       Prism.languages.pseudocode = pseudocode;
+      installerHooks(Prism);
     },
 
     // Added in 3.1.1, add HTML attributes to the <pre> or <code> tags

@@ -128,6 +128,11 @@ code .highlight-line:before {
 	color: #549441;
 }
 
+/* paramètres d'une signature de pseudocode (variable a la couleur du texte dans latte) */
+.token.parameter {
+	color: #209fb5;
+}
+
 .percent50 {
   transform: scale(.5)
 }
