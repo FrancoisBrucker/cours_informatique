@@ -106,13 +106,13 @@
 </div>
 <p>La pile est une structure de donnée extrêmement utilisée. Elle permet de traiter en priorité la donnée <strong>la plus récemment stockée</strong>. On appelle également cette structure <strong><em>LIFO</em></strong> pour <em>last in, first out</em> : on rend toujours la donnée la plus récemment stockée. La structure d'une pile de type <code class="language-">T</code> sera alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
         
     <span class="token comment">#  autres attributs</span>
 
-méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
-méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span></code></pre>
+méthode <span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span><span class="token variable parameter">donnée</span><span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
+méthode <span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span></code></pre>
 <p>La taille de la pile doit être déterminée à la création. L'implémentation d'une pile nécessitera d'autres attributs comme on va le voir.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -128,18 +128,18 @@ méthode <span class="token punctuation">(</span>p<span class="token punctuation
 <p>Une pile générique pourra être implémentée de cette façon :</p>
 <p><span id="structure-pile"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
 
-    <span class="token punctuation">(</span>données<span class="token punctuation">:</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> capacité<span class="token punctuation">}</span>
+    <span class="token punctuation">(</span><span class="token variable parameter">données</span><span class="token punctuation">:</span> <span class="token type class-name">[]T</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token type class-name">[]T</span><span class="token punctuation">{</span><span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token variable parameter">capacité</span><span class="token punctuation">}</span>
 
-méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    p<span class="token punctuation">.</span>données<span class="token punctuation">[</span>p<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
-    p<span class="token punctuation">.</span>longueur <span class="token operator">←</span> p<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span>
+méthode <span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span><span class="token variable parameter">donnée</span><span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">données</span><span class="token punctuation">[</span><span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">donnée</span>
+    <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span> <span class="token operator">←</span> <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span> <span class="token operator">+</span> <span class="token number">1</span>
 
-méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
-    p<span class="token punctuation">.</span>longueur <span class="token operator">←</span> p<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">rendre</span> p<span class="token punctuation">.</span>données<span class="token punctuation">[</span>p<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span></code></pre>
+méthode <span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+    <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span> <span class="token operator">←</span> <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">données</span><span class="token punctuation">[</span><span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">longueur</span><span class="token punctuation">]</span></code></pre>
 <p>On voit facilement que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -230,16 +230,16 @@ données : 0123
 <li><code>1 - (2 + 4)</code> on écrit <code>[1, 2, 4, +, -]</code></li>
 </ul>
 <p>On évalue ensuite l'expression avec une pile <code>P</code>. On suppose que l'on a un type de donnée <code class="language-">Expression</code> qui permet stocker et des entiers et des opérations.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> évaluation<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">évaluation</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span>Expression<span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
-    <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> x est un opérateur<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">x</span> de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">x</span> est un opérateur<span class="token punctuation">:</span>
             b <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
             a <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            y <span class="token operator">←</span> a `x` b                          <span class="token comment"># effectue l'opération décrite par `x`</span>
+            y <span class="token operator">←</span> a `<span class="token variable parameter">x</span>` b                          <span class="token comment"># effectue l'opération décrite par `x`</span>
             P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
         <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Faisons l'expérience avec l'expression <code>1 + 2 - (3+4) * (5 + 6)</code> qui devient le tableau <code>[1, 2, +, 3, 4, +, 5, 6, +, *, -]</code>. Les différentes opérations sur la pile par itération de la boucle <code class="language-">pour chaque</code> sont :</p>
@@ -291,20 +291,20 @@ données : 0123
 </div>
 <h4>Factoriel</h4>
 <p>Par exemple le calcul naif de la factorielle de façon récursive :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> fact_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+        <span class="token keyword">rendre</span> n <span class="token operator">*</span> fact_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <p>Pour mettre en place une pile de récursion, il faut bien décorréler les appels récursifs, le retour de la fonction et les autres opérations. Ce qui donne :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     <span class="token comment"># pos = 1 : début de la fonction</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
         r <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         r' <span class="token operator">←</span> fact_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token comment"># pos = 2 : après la récursion</span>
-        r <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">*</span> r'  <span class="token comment"># retour de la fonction</span>
+        r <span class="token operator">←</span> n <span class="token operator">*</span> r'  <span class="token comment"># retour de la fonction</span>
     <span class="token keyword">rendre</span> r</code></pre>
 <p>On peut maintenant mettre en place une pile qui va stocker :</p>
 <ul>
@@ -314,21 +314,21 @@ données : 0123
 </ul>
 <p>Le retour de la fonction récursive, <code class="language-">r</code>, ne sera jamais empilé.</p>
 <p>On obtient le code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>  <span class="token comment"># variables locales : n, r', pos</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>                   <span class="token comment"># début de la fonction</span>
-            <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
+            <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
                 r <span class="token operator">←</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment"># on continue l'appel courant</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># une fois l'appel récursif fini</span>
         <span class="token keyword">sinon si</span> pos <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>             <span class="token comment"># après la récursion</span>
             r' <span class="token operator">←</span> r                     <span class="token comment"># le résultat de la récursion précédente</span>
-            r <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">*</span> r'                 <span class="token comment"># le résultat actuel</span>
+            r <span class="token operator">←</span> n <span class="token operator">*</span> r'                 <span class="token comment"># le résultat actuel</span>
     <span class="token keyword">rendre</span> r</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -372,20 +372,20 @@ données : 0123
 <li>l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : <code class="language-">P.empile((n-1, r1, 1))</code></li>
 </ol>
 <p>Enfin, on remarque que la variable locale  <code class="language-">r'</code> n'est jamais utilisé dans la récursion. On n'est donc pas obligé de l'empiler :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         n<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
+            <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
                 r <span class="token operator">←</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
         <span class="token keyword">sinon si</span> pos <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
-            r <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">*</span> r
+            r <span class="token operator">←</span> n <span class="token operator">*</span> r
     <span class="token keyword">rendre</span> r</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -424,14 +424,14 @@ données : 0123
 </div>
 <h4>Fibonacci</h4>
 <p>Fonctionne aussi avec plusieurs récursions :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fibo_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> fibo_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibo_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></code></pre>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fibo_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     <span class="token comment"># pos = 1</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
         r <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         r' <span class="token operator">←</span> fibo_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -441,14 +441,14 @@ données : 0123
         r <span class="token operator">←</span> r' <span class="token operator">+</span> r''
     <span class="token keyword">rendre</span> r</code></pre>
 <p>Ce qui donne :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n<span class="token punctuation">}</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> r''<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
                 r <span class="token operator">←</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> r''<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -526,14 +526,14 @@ données : 0123
 </summary>
 <div class="mx-8 pb-2">
 <p>On a pas besoin de <code class="language-">r''</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n <span class="token punctuation">}</span>  <span class="token comment"># n, r', pos</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
                 r <span class="token operator">←</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>

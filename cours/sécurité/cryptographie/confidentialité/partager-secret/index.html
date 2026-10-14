@@ -150,15 +150,15 @@
 </ul>
 <h3>Algorithme de transmission</h3>
 <p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-    <span class="token keyword">tant que</span> y <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">si</span> y est impair<span class="token punctuation">:</span>
-            r <span class="token operator">←</span> r <span class="token operator">*</span> x mod p     <span class="token comment"># MULTIPLY</span>
-            y <span class="token operator">←</span> y <span class="token operator">-</span> <span class="token number">1</span>
-        x <span class="token operator">←</span> x <span class="token operator">*</span> x mod p         <span class="token comment"># SQUARE</span>
-        y <span class="token operator">←</span> y <span class="token operator">/</span> <span class="token number">2</span>
-    <span class="token keyword">rendre</span> r</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token variable parameter">r</span> <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token keyword">tant que</span> <span class="token variable parameter">y</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">y</span> est impair<span class="token punctuation">:</span>
+            <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token variable parameter">r</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> mod p     <span class="token comment"># MULTIPLY</span>
+            <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token variable parameter">y</span> <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token variable parameter">x</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> mod p         <span class="token comment"># SQUARE</span>
+        <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token variable parameter">y</span> <span class="token operator">/</span> <span class="token number">2</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">r</span></code></pre>
 <p>En supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$, la complexité de l'algorithme est en $\mathcal{O}(\log_2(y))$ qui correspond au nombre maximum d'itérations dans la boucle.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -179,12 +179,12 @@
 </div>
 </div>
 <p>Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> g<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">0</span> à p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">si</span> r <span class="token operator">==</span> y<span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span><span class="token number"> i
-</span>        r <span class="token operator">←</span> r <span class="token operator">*</span> g mod p</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">log</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">g</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token variable parameter">r</span> <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token number">0</span> à p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">r</span> <span class="token operator">==</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token variable parameter">i</span>
+        <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token variable parameter">r</span> <span class="token operator">*</span> <span class="token variable parameter">g</span> mod p</code></pre>
 <p>est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.</p>
 <p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}(2^{log_2(p)}) = \mathcal{O}(2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
 <p>Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Baby-step_giant-step" class="externe">Baby step giant step</a> qui échange du temps contre de la mémoire.</p>
@@ -202,24 +202,23 @@
 </li>
 </ol>
 <p>Ce qui donne :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">steps</span><span class="token punctuation">(</span>y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> g<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    d <span class="token operator">:=</span> Dict<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    c <span class="token operator">:=</span> <span class="token number">1</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">steps</span><span class="token punctuation">(</span><span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">g</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token variable parameter">d</span> <span class="token operator">:=</span> Dict<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token variable parameter">c</span> <span class="token operator">:=</span> <span class="token number">1</span>
     
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">0</span> à p<span class="token operator">/</span>m<span class="token punctuation">:</span>       <span class="token comment"># baby step</span>
-        d<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token number"> i
-</span>        c <span class="token operator">←</span> g <span class="token operator">*</span> c 
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token number">0</span> à p<span class="token operator">/</span>m<span class="token punctuation">:</span>       <span class="token comment"># baby step</span>
+        <span class="token variable parameter">d</span><span class="token punctuation">[</span><span class="token variable parameter">c</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable parameter">i</span>
+        <span class="token variable parameter">c</span> <span class="token operator">←</span> <span class="token variable parameter">g</span> <span class="token operator">*</span> <span class="token variable parameter">c</span> 
 
-    <span class="token keyword">si</span> y est une clé de d<span class="token punctuation">:</span>          <span class="token comment"># g^i = y  => x = i * m + 0</span>
-        <span class="token keyword">rendre</span> d<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">*</span> m
+    <span class="token keyword">si</span> <span class="token variable parameter">y</span> est une clé de <span class="token variable parameter">d</span><span class="token punctuation">:</span>          <span class="token comment"># g^i = y  => x = i * m + 0</span>
+        <span class="token keyword">rendre</span> <span class="token variable parameter">d</span><span class="token punctuation">[</span><span class="token variable parameter">y</span><span class="token punctuation">]</span> <span class="token operator">*</span> m
 
-    c <span class="token operator">←</span> expo<span class="token punctuation">(</span>expo<span class="token punctuation">(</span>g<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>       <span class="token comment"># 1/g = g^(n-2) puisque g^(n-1) = 1 (petit thm Fermat)</span>
+    <span class="token variable parameter">c</span> <span class="token operator">←</span> expo<span class="token punctuation">(</span>expo<span class="token punctuation">(</span><span class="token variable parameter">g</span><span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>       <span class="token comment"># 1/g = g^(n-2) puisque g^(n-1) = 1 (petit thm Fermat)</span>
 
-    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token number">1</span> à m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>       <span class="token comment"># giant step</span>
-        y <span class="token operator">←</span> y <span class="token operator">*</span> c
-        <span class="token keyword">si</span> c est une clé de d<span class="token punctuation">:</span>  <span class="token comment"># g^i = y  => x = i * m + j</span>
-            <span class="token keyword">rendre</span> d<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">*</span> m <span class="token operator">+</span><span class="token number"> j
-</span></code></pre>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">j</span> de <span class="token number">1</span> à m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>       <span class="token comment"># giant step</span>
+        <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token variable parameter">y</span> <span class="token operator">*</span> <span class="token variable parameter">c</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">c</span> est une clé de <span class="token variable parameter">d</span><span class="token punctuation">:</span>  <span class="token comment"># g^i = y  => x = i * m + j</span>
+            <span class="token keyword">rendre</span> <span class="token variable parameter">d</span><span class="token punctuation">[</span><span class="token variable parameter">y</span><span class="token punctuation">]</span> <span class="token operator">*</span> m <span class="token operator">+</span> <span class="token variable parameter">j</span></code></pre>
 <p>La complexité de l'algorithme est alors clairement de :</p>
 <ul>
 <li>$\mathcal{O}(m)$ en mémoire pour stocker toutes les valeurs dans le dictionnaire</li>
@@ -304,8 +303,8 @@
 <p>Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne possède pas un mécanisme d'authentification.</p>
 <h3><span id="side-channel-attack"></span>Side channel attack</h3>
 <p>L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe <a href="/cours_informatique/cours/misc/nombres/#exponentiation">MULTIPLY and SQUARE</a>.</p>
-<pre><code>algorithme expo(x: [entier], y: [entier]) → [entier]:
-  r := [entier]
+<pre><code>algorithme expo(x: []entier, y: []entier) → []entier:
+  r := []entier
   r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:

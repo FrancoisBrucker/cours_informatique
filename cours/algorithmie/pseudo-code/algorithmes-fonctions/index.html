@@ -120,13 +120,13 @@ Programme :
     Sinon rendre "Faux"</code></pre>
 <p>En pseudo-code, cela va donner ça :</p>
 <div id="problème-recherche"></div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>     # entier recherché dans t
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
 
-    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+    <span class="token variable parameter">e</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">e</span> de <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <p>Le programme est un bloc. La definition du bloc (jusqu'aux <code class="language-">:</code>) est constitué :</p>
@@ -146,12 +146,12 @@ Programme :
 </div>
 </div>
 <p>Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction <code class="language-">rendre</code>. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra <strong>toujours</strong> 42 :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> réponse<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span> 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">réponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span> 
 
     <span class="token keyword">rendre</span> <span class="token number">42</span>
     <span class="token keyword">rendre</span> <span class="token number">0</span>    <span class="token comment"># ne sera jamais exécuté</span></code></pre>
 <p>Ne cofondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> réponse<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span> 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">réponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span> 
 
     <span class="token keyword">affiche</span> <span class="token number">42</span>
     <span class="token keyword">rendre</span> <span class="token number">0</span>    <span class="token comment"># ne sera jamais exécuté</span></code></pre>
@@ -170,8 +170,8 @@ Programme :
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Adaptez le pseudo code de l'algorithme <code class="language-">recherche(T: [entier], x: entier) → booléen</code> précédent pour créer l'algorithme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Adaptez le pseudo code de l'algorithme <code class="language-">recherche(T: []entier, x: entier) → booléen</code> précédent pour créer l'algorithme :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 <p>Cet algorithme  rend le nombre de fois où <code class="language-">x</code> est présent dans <code class="language-">T</code></p>
 </div>
 </div>
@@ -192,15 +192,15 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    nb <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    nb <span class="token operator">←</span> <span class="token number">0</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token variable parameter">nb</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token number">0</span>
 
-    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            nb <span class="token operator">←</span> nb <span class="token operator">+</span> <span class="token number">1</span>
-    <span class="token keyword">rendre</span> nb</code></pre>
+    <span class="token variable parameter">e</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">e</span> de <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">nb</span></code></pre>
 </div>
 </details>     
 </div>
@@ -225,23 +225,23 @@ Programme :
 </div>
 <h3>Appels de fonctions</h3>
 <p>On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme de recherche :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
 
-    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+    <span class="token variable parameter">e</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">e</span> de <span class="token variable parameter">t</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <p>On peut utiliser le pseudo code de nom <em>recherche</em> dans d'autres pseudo-code comme une fonction. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-t <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
-t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token variable parameter">t</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+<span class="token variable parameter">t</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
 
-trouve <span class="token operator">:=</span> <span class="token builtin">booléen</span>
-trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-<span class="token keyword">affiche</span> à l'écran trouve</code></pre>
+<span class="token variable parameter">trouve</span> <span class="token operator">:=</span> <span class="token builtin">booléen</span>
+<span class="token variable parameter">trouve</span> <span class="token operator">←</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">t</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token keyword">affiche</span> à l'écran <span class="token variable parameter">trouve</span></code></pre>
 <p>Est un pseudo-code valide puisque <code class="language-">recherche</code> est bien défini et utilisé correctement (le type de ses paramètres est correct).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -264,20 +264,20 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 <p>Dans l'exemple précédent, la variable <code class="language-">e</code> définie dans l'algorithme <code class="language-">recherche</code> n'est pas visible depuis le pseudo-code. En revanche, l'objet booléen de retour est lui transmis au pseudo-code via l'instruction <code class="language-pseudocode">rendre</code>.</p>
 <h3>Pseudo-code avec fonctions</h3>
 <p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                   x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-                  <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
+                   <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
+                  <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
 
-    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+    <span class="token variable parameter">e</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">e</span> de <span class="token variable parameter">t</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 
-<span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">chaîne</span><span class="token punctuation">:</span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">chaîne</span></span><span class="token punctuation">:</span>
 
-    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">t</span><span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token string">"Aspergez votre ordinateur d'eau bénite. Vite !"</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token string">"Tout va bien, le tableau n'est pas possédé. Ouf."</span></code></pre>
@@ -285,19 +285,19 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que va afficher l'exécution de l'algorithme suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">affiche_double</span><span class="token punctuation">(</span>e<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">affiche_double</span><span class="token punctuation">(</span><span class="token parameter variable">e</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    x <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">    x <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> e</span>
-<span class="highlight-line">    <span class="token keyword">affiche</span> x</span>
+<span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">e</span></span>
+<span class="highlight-line">    <span class="token keyword">affiche</span> <span class="token variable parameter">x</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">calculatrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span></span>
+<span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">calculatrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    x <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    x <span class="token operator">←</span> demande un <span class="token builtin">entier</span> à l'utilisateur</span>
-<span class="highlight-line">    affiche_double<span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
-<span class="highlight-line">    <span class="token keyword">affiche</span> x</span></code></pre>
+<span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">←</span> demande un <span class="token builtin">entier</span> à l'utilisateur</span>
+<span class="highlight-line">    affiche_double<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">affiche</span> <span class="token variable parameter">x</span></span></code></pre>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -336,21 +336,21 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 </div>
 </div>
 <p>Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">modif</span><span class="token punctuation">(</span>U<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">modif</span><span class="token punctuation">(</span><span class="token parameter variable">U</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
 
-    U<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> U<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> U<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
-<span class="token builtin">algorithme</span> <span class="token function">tableau</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">tableau</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
 
-    T <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-    T <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+    <span class="token variable parameter">T</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span>
+    <span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 
-    T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
-    T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
-    T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token keyword">affiche</span> T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
-    modif<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    <span class="token keyword">affiche</span> T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span></code></pre>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+    modif<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">)</span>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span></code></pre>
 <p>Va afficher 0 puis 3. En effet :</p>
 <ul>
 <li>lors de l'exécution de la fonction <code class="language-">modif</code> la <strong>variable</strong> <code class="language-">U</code> va être associée à l'<strong>objet</strong> tableau de l'algorithme : la variable <code class="language-">T</code> de l'algorithme est différente de la variable <code class="language-">U</code> de la fonction mais est associé au <strong>même</strong> objet.</li>
@@ -383,7 +383,7 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 <p>On le représente ainsi :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span>type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
 <p>Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span>nom_premier_paramètre<span class="token punctuation">:</span> type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> nom_premier_paramètre<span class="token punctuation">:</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span><span class="token variable parameter">nom_premier_paramètre</span><span class="token punctuation">:</span> type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token variable parameter">nom_premier_paramètre</span><span class="token punctuation">:</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -397,8 +397,8 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 </div>
 <p>Par exemple pour l'algorithme <code class="language-">recherche</code> :</p>
 <ul>
-<li>sa signature est <code class="language-">recherche([entier], entier) → booléen</code></li>
-<li>son type est <code class="language-">([entier], entier) → booléen</code></li>
+<li>sa signature est <code class="language-">recherche([]entier, entier) → booléen</code></li>
+<li>son type est <code class="language-">([]entier, entier) → booléen</code></li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -409,10 +409,10 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 </div>
 </div>
 <p>Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">f</span> <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
 
-f <span class="token operator">←</span> recherche
-<span class="token keyword">affiche</span> f<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token variable parameter">f</span> <span class="token operator">←</span> recherche
+<span class="token keyword">affiche</span> <span class="token variable parameter">f</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -434,16 +434,16 @@ f <span class="token operator">←</span> recherche
 </div>
 <p>Par exemple l'algorithme suivant est une implémentation récursive de l'algorithme <code class="language-">recherche</code> :</p>
 <p><span id="algorithme-recherche-rec"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>     # entier recherché dans t
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
 
-    <span class="token keyword">si</span> T<span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-    <span class="token keyword">sinon si</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">:</span>
+    <span class="token keyword">sinon si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> recherche<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span></code></pre>
+        <span class="token keyword">rendre</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">)</span></code></pre>
 
 
 </article>

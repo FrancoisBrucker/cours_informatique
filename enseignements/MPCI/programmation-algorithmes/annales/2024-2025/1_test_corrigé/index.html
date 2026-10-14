@@ -179,14 +179,13 @@
 <p>En utilisant l'invariant de la question 1.1 on a <code class="language-">a' + i' = j'</code> à la sortie de l'algorithme. À ce moment là $i = b$ et donc le retour de l'algorithme, j, vaut bien $a+b$.</p>
 <h3>Question 2</h3>
 <p>L'algorithme est presque identique à somme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">produit</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">0</span>
-   <span class="token number"> j </span><span class="token operator">:=</span> <span class="token number">0</span>
-    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≠</span> b<span class="token punctuation">:</span>
-       <span class="token number"> i </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-       <span class="token number"> j </span><span class="token operator">←</span> somme<span class="token punctuation">(</span>j<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-    <span class="token keyword">rendre</span><span class="token number"> j
-</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">produit</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span>
+    <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token variable parameter">j</span> <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≠</span> <span class="token variable parameter">b</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">i</span> <span class="token operator">←</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span>
+        <span class="token variable parameter">j</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span><span class="token variable parameter">j</span><span class="token punctuation">,</span> <span class="token variable parameter">a</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">j</span></code></pre>
 <p>L'invariant que l'on va utiliser est : <code class="language-">a * i = j</code>.</p>
 <p>Il se démontre de façon identique à la question 1.1. en remplaçant les <code class="language-">+ 1</code> par des <code class="language-">+ a</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -199,32 +198,32 @@
 </div>
 <h3>Question 3</h3>
 <p>En utilisant uniquement <code class="language-">succ</code> comme opération arithmétique donnez un algorithme permettant de calculer le prédécesseur d'un entier positif passé en paramètre. Sa signature doit être :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">pred</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-    <span class="token keyword">si</span> a <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pred</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span>
+    <span class="token keyword">si</span> <span class="token variable parameter">a</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
 
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">0</span>
-    <span class="token keyword">tant que</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">≠</span> a<span class="token punctuation">:</span>
-       <span class="token number"> i </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-    <span class="token keyword">rendre</span><span class="token number"> i
-</span></code></pre>
+    <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">tant que</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token variable parameter">a</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">i</span> <span class="token operator">←</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">i</span>
+</code></pre>
 <p>Le programme va s'arrêter puisque a est un entier positif. De plus, si $a = 0$ on a bien <code class="language-">pred(a) = 0</code> et sinon, la boucle s'arrête lorsque <code class="language-">succ(i) == a</code> et on rend donc bien <code class="language-">pred(a) = a - 1</code>.</p>
 <h3>Question 4</h3>
 <h4>4.1</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_rec</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> a
-    <span class="token keyword">rendre</span> somme_rec<span class="token punctuation">(</span>succ<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> pred<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme_rec</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">b</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token variable parameter">a</span>
+    <span class="token keyword">rendre</span> somme_rec<span class="token punctuation">(</span>succ<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pred<span class="token punctuation">(</span><span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $a + b = (a + 1) + (b-1)$</p>
 <h4>4.2</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">produit_rec</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">produit_rec</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">b</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
-    <span class="token keyword">si</span> pred<span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> a
+    <span class="token keyword">si</span> pred<span class="token punctuation">(</span><span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token variable parameter">a</span>
 
-    <span class="token keyword">rendre</span> somme_rec<span class="token punctuation">(</span>produit_rec<span class="token punctuation">(</span>a<span class="token punctuation">,</span> pred<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> somme_rec<span class="token punctuation">(</span>produit_rec<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> pred<span class="token punctuation">(</span><span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable parameter">a</span><span class="token punctuation">)</span></code></pre>
 <p>La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $ab = a(b-1) + a$. Attention au cas $b=0$ qui doit rendre 0 et pas a.</p>
 
 

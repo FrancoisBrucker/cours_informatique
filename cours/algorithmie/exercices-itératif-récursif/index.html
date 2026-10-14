@@ -105,7 +105,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">base10(entier) -&gt; [entier]</code> rendant la forme décimale (un tableau de chiffres allant de 0 à 9) d'un entier. On doit avoir :</p>
+<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">base10(entier) -&gt; []entier</code> rendant la forme décimale (un tableau de chiffres allant de 0 à 9) d'un entier. On doit avoir :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">base10<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 </div>
 </div>
@@ -116,7 +116,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">étendre([entier], n) -&gt; [entier]</code> qui ajoute n 0 en à la fin du tableau. Par exemple :</p>
+<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">étendre([]entier, n) -&gt; []entier</code> qui ajoute n 0 en à la fin du tableau. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">étendre<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span></code></pre>
 </div>
 </div>
@@ -127,7 +127,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">entier([entier]) -&gt; entier</code> rendant la valeur d'un entier écrit en forme décimale. On doit avoir :</p>
+<p>Écrivez (et prouvez) un algorithme de signature <code class="language-">entier([]entier) -&gt; entier</code> rendant la valeur d'un entier écrit en forme décimale. On doit avoir :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">entier</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">123</span></code></pre>
 </div>
 </div>
@@ -138,7 +138,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Écrivez (et prouvez) un algorithme permettant de calculer la somme de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : <code class="language-">somme([entier], [entier]) -&gt; [entier]</code></p>
+<p>Écrivez (et prouvez) un algorithme permettant de calculer la somme de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : <code class="language-">somme([]entier, []entier) -&gt; []entier</code></p>
 </div>
 </div>
 <h3>Soustraction</h3>
@@ -148,7 +148,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme permettant de calculer la soustraction de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : <code class="language-">soustraction(n: [entier], m: [entier]) -&gt; [entier]</code> et tel que <code class="language-">soustraction(n, m) = base10(|entier(n)-entier(m)|)</code></p>
+<p>Écrivez un algorithme permettant de calculer la soustraction de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : <code class="language-">soustraction(n: []entier, m: []entier) -&gt; []entier</code> et tel que <code class="language-">soustraction(n, m) = base10(|entier(n)-entier(m)|)</code></p>
 </div>
 </div>
 <h2><span id="parenthésage"></span>Bon parenthésage</h2>

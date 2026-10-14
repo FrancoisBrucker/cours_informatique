@@ -98,9 +98,9 @@
 
   <p>La liste doublement chaînée est très utilisée en algorithmie. Elle permet un traitement plus itératif des listes chaînées en utilisant décomposant la liste en maillons :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Maillon</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    valeur<span class="token punctuation">:</span> T <span class="token operator">←</span> ∅
-    précédent<span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">←</span> ∅
-    suivant<span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">←</span> ∅</code></pre>
+    <span class="token variable parameter">valeur</span><span class="token punctuation">:</span> T <span class="token operator">←</span> ∅
+    <span class="token variable parameter">précédent</span><span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">←</span> ∅
+    <span class="token variable parameter">suivant</span><span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">←</span> ∅</code></pre>
 <p>Chaque maillon contient :</p>
 <ul>
 <li>sa valeur</li>
@@ -108,22 +108,22 @@
 <li>le maillon suivant de la chaîne</li>
 </ul>
 <p>Une liste doublement chaînée commence par un maillon vide puis on accole les différentes valeurs a la suite :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>L <span class="token operator">:=</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">←</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span><span class="token variable parameter">L</span> <span class="token operator">:=</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">←</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-<span class="token punctuation">(</span>M <span class="token operator">:=</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">←</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
-L<span class="token punctuation">.</span>suivant <span class="token operator">←</span> M</code></pre>
+<span class="token punctuation">(</span><span class="token variable parameter">M</span> <span class="token operator">:=</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">←</span> Maillon<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+<span class="token variable parameter">L</span><span class="token punctuation">.</span>suivant <span class="token operator">←</span> <span class="token variable parameter">M</span></code></pre>
 <p>L'exemple précédent crée une liste doublement chaînée à 1 élément.</p>
 <p>L'intérêt de ce double lien est que l'pon peut maintenant créer des méthodes qui modifient directement la liste sans avoir besoin de rendre de nouvelles listes :</p>
 <p><span id="structure-liste-chaînée"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">méthode <span class="token punctuation">(</span>l Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> ajoute<span class="token punctuation">(</span>M<span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    l<span class="token punctuation">.</span>suivant <span class="token operator">=</span> M
-    M<span class="token punctuation">.</span>précédent <span class="token operator">=</span> l
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">méthode <span class="token punctuation">(</span>l Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> ajoute<span class="token punctuation">(</span><span class="token variable parameter">M</span><span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    l<span class="token punctuation">.</span>suivant <span class="token operator">=</span> <span class="token variable parameter">M</span>
+    <span class="token variable parameter">M</span><span class="token punctuation">.</span>précédent <span class="token operator">=</span> l
 
-<span class="token builtin">fonction</span> <span class="token function">supprime</span><span class="token punctuation">(</span>M<span class="token punctuation">:</span> Maillon<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    <span class="token keyword">si</span> M<span class="token punctuation">.</span>précédent <span class="token operator">≠</span> ∅<span class="token punctuation">:</span>
-        M<span class="token punctuation">.</span>précédent<span class="token punctuation">.</span>suivant <span class="token operator">←</span> M<span class="token punctuation">.</span>suivant
-    M<span class="token punctuation">.</span>précédent <span class="token operator">←</span> ∅
-    M<span class="token punctuation">.</span>suivant <span class="token operator">←</span> ∅
+<span class="token signature"><span class="token builtin">fonction</span> <span class="token function">supprime</span><span class="token punctuation">(</span><span class="token parameter variable">M</span><span class="token punctuation">:</span> <span class="token type class-name">Maillon</span>&lt;T><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">M</span><span class="token punctuation">.</span>précédent <span class="token operator">≠</span> ∅<span class="token punctuation">:</span>
+        <span class="token variable parameter">M</span><span class="token punctuation">.</span>précédent<span class="token punctuation">.</span>suivant <span class="token operator">←</span> <span class="token variable parameter">M</span><span class="token punctuation">.</span>suivant
+    <span class="token variable parameter">M</span><span class="token punctuation">.</span>précédent <span class="token operator">←</span> ∅
+    <span class="token variable parameter">M</span><span class="token punctuation">.</span>suivant <span class="token operator">←</span> ∅
 </code></pre>
 
 

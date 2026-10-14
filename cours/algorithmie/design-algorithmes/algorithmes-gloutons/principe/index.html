@@ -114,11 +114,11 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p>Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée <em>algorithmes gloutons</em>.</p>
 <p>Le schéma général d'un algorithme glouton est alors le suivant :</p>
 <div id="schéma-algo"></div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> glouton_archétypal<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span>fragments de solutions<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span>fragments de solutions<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># une solution est constituée d'un ensemble de fragments</span>
-    <span class="token string">"Bien ordonner"</span> E en <span class="token punctuation">(</span>x_0<span class="token punctuation">,</span> x_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">glouton_archétypal</span><span class="token punctuation">(</span><span class="token parameter variable">E</span><span class="token punctuation">:</span> [fragments de solutions]<span class="token punctuation">)</span></span> <span class="token operator">→</span> <span class="token punctuation">[</span>fragments de solutions<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># une solution est constituée d'un ensemble de fragments</span>
+    <span class="token string">"Bien ordonner"</span> <span class="token variable parameter">E</span> en <span class="token punctuation">(</span>x_0<span class="token punctuation">,</span> x_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token punctuation">)</span>
     S <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">1</span> à n<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token number">1</span> à n<span class="token punctuation">:</span>
         <span class="token keyword">si</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span> est une <span class="token string">"solution possible"</span> <span class="token punctuation">:</span>
             S <span class="token operator">←</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span>
 
@@ -189,15 +189,15 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <li><strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
 </ol>
 <h3>Algorithme : rendu de pièce</h3>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">rendu</span><span class="token punctuation">(</span><span class="token parameter variable">R</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span></span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     V <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># les pièces sont triées par ordre décroissant</span>
     P <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># liste vide</span>
     
-    <span class="token keyword">pour chaque</span> v de V<span class="token punctuation">:</span>
-        ajouter R <span class="token operator">//</span> v à la fin de la liste P  <span class="token comment"># division entière</span>
-        R <span class="token operator">←</span> R mod v                           <span class="token comment"># reste de la division entière</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">v</span> de V<span class="token punctuation">:</span>
+        ajouter <span class="token variable parameter">R</span> <span class="token operator">//</span> <span class="token variable parameter">v</span> à la fin de la liste P  <span class="token comment"># division entière</span>
+        <span class="token variable parameter">R</span> <span class="token operator">←</span> <span class="token variable parameter">R</span> mod <span class="token variable parameter">v</span>                           <span class="token comment"># reste de la division entière</span>
     
-    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>R<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> R<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> R<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span><span class="token variable parameter">R</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">R</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">R</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -342,19 +342,18 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p>C'est un cas courant en optimisation discrète : il existe de nombreuses solutions optimales et sont toutes équivalentes.</p>
 <h3>Algorithme de recouvrement</h3>
 <p>On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recouvrement</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">réel</span><span class="token punctuation">,</span> <span class="token builtin">réel</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    trie T par ordre croissant<span class="token punctuation">.</span>
-   <span class="token number"> I </span><span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    courant <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
-    ajoute courant à<span class="token number"> I
-</span>
-    <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> x ∉ courant<span class="token punctuation">:</span>
-            courant <span class="token operator">←</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
-            ajoute courant à<span class="token number"> I
-</span>    
-    <span class="token keyword">rendre</span><span class="token number"> I
-</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recouvrement</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]réel</span><span class="token punctuation">)</span></span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">réel</span><span class="token punctuation">,</span> <span class="token builtin">réel</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    trie <span class="token variable parameter">T</span> par ordre croissant<span class="token punctuation">.</span>
+    I <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    courant <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+    ajoute courant à I
+
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">x</span> de <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">x</span> ∉ courant<span class="token punctuation">:</span>
+            courant <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+            ajoute courant à I
+    
+    <span class="token keyword">rendre</span> I</code></pre>
 <p>En prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ l'algorithme glouton de recouvrement rend la liste $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$. Notez, on va en avoir besoin dans les preuves, que pour tout $0 \leq i &lt; I.\mbox{\small longueur}$ :</p>
 <ul>
 <li>$I[i]$ est un intervalle</li>
@@ -469,19 +468,19 @@ $$
 <p>Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale par un algorithme glouton, de complexité polynomiale. Mais dans le cas du <em>bin packing</em> on peut designer un algorithme glouton à performance garantie.</p>
 <h3>Algorithme glouton pour résoudre le <em>bin packing</em></h3>
 <p>Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">bin_packing</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">bin_packing</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[][]entier</span></span>
     Es <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     E <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     s <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        s <span class="token operator">←</span> s <span class="token operator">+</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        s <span class="token operator">←</span> s <span class="token operator">+</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
         <span class="token keyword">si</span> s <span class="token operator">≤</span> K<span class="token punctuation">:</span>
-            ajouter T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> à E
+            ajouter <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> à E
         <span class="token keyword">sinon</span><span class="token punctuation">:</span>
             trie E par ordre croissant  <span class="token comment"># étape facultative</span>
             ajoute E à Es
-            E <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-            s <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            E <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+            s <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
     <span class="token keyword">rendre</span> Es</code></pre>
 <p>Par exemple avec $T = [2, 11, 1, 4, 5]$ et $K = 12$ l'algorithme va rendre une liste de 3 boîtes  $[[2], [1, 11], [4, 5]]$.</p>
 <p>Remarquez que selon l'ordre des éléments de $T$, les boites et leurs nombres vont être différentes :</p>
@@ -963,22 +962,22 @@ $$
 <blockquote>
 <p>TBD refaire avec échange pour ne pas recréer de données.</p>
 </blockquote>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">ordonnancement</span><span class="token punctuation">(</span>V<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> O<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    V' <span class="token operator">←</span> une nouvelle liste de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">ordonnancement</span><span class="token punctuation">(</span><span class="token parameter variable">V</span><span class="token punctuation">:</span> <span class="token type class-name">[][]entier</span><span class="token punctuation">,</span> <span class="token parameter variable">O</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[][]entier</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    V' <span class="token operator">←</span> une nouvelle liste de <span class="token type class-name">[]entier</span></span>
 <span class="highlight-line">    </span>
 <span class="highlight-line">    <span class="token comment"># initialisation</span></span>
-<span class="highlight-line">   <span class="token number"> i0 </span><span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">    ajouter V<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> à V'</span>
-<span class="highlight-line">    supprimer la ligne d'indice<span class="token number"> i0 </span>de V</span>
+<span class="highlight-line">    i0 <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    ajouter <span class="token variable parameter">V</span><span class="token punctuation">[</span>i0<span class="token punctuation">]</span> à V'</span>
+<span class="highlight-line">    supprimer la ligne d'indice i0 de <span class="token variable parameter">V</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token comment">#  ajout itératif</span></span>
-<span class="highlight-line">    <span class="token keyword">tant que</span> V est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> <span class="token variable parameter">V</span> est non vide<span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">        <span class="token comment"># choix de la voiture à ajouter</span></span>
-<span class="highlight-line">        iv <span class="token operator">←</span> l'indice d'une voiture de V minimisant les retards <span class="token keyword">si</span> on l'ajoute à V'</span>
+<span class="highlight-line">        iv <span class="token operator">←</span> l'indice d'une voiture de <span class="token variable parameter">V</span> minimisant les retards <span class="token keyword">si</span> on l'ajoute à V'</span>
 <span class="highlight-line">        </span>
-<span class="highlight-line">        ajouter V<span class="token punctuation">[</span>iv<span class="token punctuation">]</span> à V'</span>
-<span class="highlight-line">        supprimer la ligne d'indice iv de V</span>
+<span class="highlight-line">        ajouter <span class="token variable parameter">V</span><span class="token punctuation">[</span>iv<span class="token punctuation">]</span> à V'</span>
+<span class="highlight-line">        supprimer la ligne d'indice iv de <span class="token variable parameter">V</span></span>
 <span class="highlight-line">    </span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> V'</span></code></pre>
 <blockquote>

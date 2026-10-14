@@ -116,21 +116,21 @@
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur" class="externe">Parcours en largeur</a></p>
 </div>
 </div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
-    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span><span class="token parameter variable">G</span><span class="token punctuation">:</span> <span class="token type class-name">Graphe</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">Sommet</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span> Graphe
+    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span><span class="token variable parameter">x</span><span class="token punctuation">}</span>
     var s<span class="token punctuation">:</span> Sommet
-    var E<span class="token punctuation">:</span> <span class="token punctuation">[</span>Arête<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    var E<span class="token punctuation">:</span> <span class="token type class-name">[]Arête</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     marque<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> F est non vide<span class="token punctuation">:</span>
         s <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        Pour chaque v<span class="token punctuation">:</span> Sommet de G<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        Pour chaque v<span class="token punctuation">:</span> Sommet de <span class="token variable parameter">G</span><span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> v est non marqué <span class="token punctuation">:</span>
                 ajoute xv à E
                 marque<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
                 F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
 
-    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span><span class="token variable parameter">G</span><span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
 <p>Le code précédent va rendre :</p>
 <ul>
 <li>un arbre couvrant de $G$ de la partie connexe de $G$ contenant $x$</li>
@@ -158,21 +158,21 @@
 </div>
 </div>
 <p>Ce parcours s'écrit facilement de façon récursive :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> x<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span> Graphe
-    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span>x<span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">largeur</span><span class="token punctuation">(</span><span class="token parameter variable">G</span><span class="token punctuation">:</span> <span class="token type class-name">Graphe</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">Sommet</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span> Graphe
+    var F<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">{</span><span class="token variable parameter">x</span><span class="token punctuation">}</span>
     var s<span class="token punctuation">:</span> Sommet
-    var E<span class="token punctuation">:</span> <span class="token punctuation">[</span>Arête<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    var E<span class="token punctuation">:</span> <span class="token type class-name">[]Arête</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     marque<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
     <span class="token keyword">tant que</span> F est non vide<span class="token punctuation">:</span>
         s <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        Pour chaque v<span class="token punctuation">:</span> Sommet de G<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        Pour chaque v<span class="token punctuation">:</span> Sommet de <span class="token variable parameter">G</span><span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> v est non marqué <span class="token punctuation">:</span>
                 ajoute xv à E
                 marque<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
                 F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
 
-    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>V<span class="token punctuation">(</span><span class="token variable parameter">G</span><span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span></code></pre>
 <h3>Preuve</h3>
 <blockquote>
 <p>TBD arborescence</p>

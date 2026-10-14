@@ -267,7 +267,7 @@
 </div>
 <h3>Définition d'une variable</h3>
 <p>Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définie une variable de nom $a$ pouvant référencer un objet de type entier :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token builtin">entier</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></code></pre>
 <p>La ligne précédente crée une nouvelle variable nommée <code class="language-">a</code> pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que <code class="language-">a</code> contient une valeur entière.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -276,7 +276,7 @@
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
 <p>On utilise l'<strong><em>opérateur de définition</em></strong> <code class="language-">:=</code> pour créer une variable. Le format général d'une définition de variable est :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_la_variable <span class="token operator">:=</span> type_des_objets_qu_elle_peut_référencer</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">nom_de_la_variable</span> <span class="token operator">:=</span> type_des_objets_qu_elle_peut_référencer</code></pre>
 </div>
 </div>
 <p>En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
@@ -304,11 +304,11 @@
 </div>
 </div>
 <p>Une variable est une opération temporaire. On peut réaffecter une variable à un autre objet au cours du pseudo-code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 <span class="token comment"># des instructions</span>
-a <span class="token operator">←</span> <span class="token number">4</span>
+<span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">4</span>
 <span class="token comment"># des instructions</span>
-a <span class="token operator">←</span> <span class="token number">2</span></code></pre>
+<span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">2</span></code></pre>
 <p>Après la troisième ligne, le code précédent associe la variable <code class="language-">a</code> à un entier valant 4 et à un entier valant 2 après la cinquième ligne. Il est important de noter que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -322,9 +322,9 @@ a <span class="token operator">←</span> <span class="token number">2</span></c
 </div>
 <h3>Utilisation</h3>
 <p>Utiliser une variable consiste à la remplacer dans l'instruction par l'objet qu'elle référence. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token builtin">entier</span>
-a <span class="token operator">←</span> <span class="token number">42</span>
-<span class="token keyword">affiche</span> a</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">42</span>
+<span class="token keyword">affiche</span> <span class="token variable parameter">a</span></code></pre>
 <p>Le code précédent affiche l'objet référencé par $a$. Il est équivalent à : <code class="language-">affiche 42</code>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -336,20 +336,20 @@ a <span class="token operator">←</span> <span class="token number">42</span>
 </div>
 </div>
 <p>Regardons ceci avec quelques exemples :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">a <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">a <span class="token operator">←</span> <span class="token number">42</span></span>
-<span class="highlight-line">b <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">b <span class="token operator">←</span> a</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">42</span></span>
+<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">a</span></span></code></pre>
 <p>La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :</p>
 <ol>
 <li>on commence par retrouver objet à droite de l'opérateur <code class="language-">←</code>. C'est une variable : on récupère son objet, un entier valant 42</li>
 <li>on affecte cet objet à la variable à gauche de l'opérateur <code class="language-">←</code>, la variable <code class="language-">b</code></li>
 </ol>
 <p>Autre exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">a <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">a <span class="token operator">←</span> <span class="token number">41</span></span>
-<span class="highlight-line">b <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">b <span class="token operator">←</span> a <span class="token operator">+</span> <span class="token number">1</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">41</span></span>
+<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">a</span> <span class="token operator">+</span> <span class="token number">1</span></span></code></pre>
 <p>La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :</p>
 <ol>
 <li>on commence par retrouver objet à droite de l'opérateur <code class="language-">←</code>. C'est le résultat d'une opération :
@@ -372,8 +372,8 @@ a <span class="token operator">←</span> <span class="token number">42</span>
 </div>
 <h3>Type d'un objet</h3>
 <p>On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée <code class="language-">type</code> qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple <code class="language-">type 42</code> va rendre <code>entier</code>. Ceci permet d'écrire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token builtin">entier</span>
-b <span class="token operator">:=</span> type a</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">b</span> <span class="token operator">:=</span> type <span class="token variable parameter">a</span></code></pre>
 <h2><span id="tableaux"></span>Tableaux</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -388,13 +388,13 @@ b <span class="token operator">:=</span> type a</code></pre>
 <li>$T[i]$ est sa variable d'indice $i$ si $0 \leq i &lt; n$</li>
 <li>$T[-i]$ vaut $t[n-i]$ si si $0 &lt; i  \leq n$</li>
 </ul>
-<p>Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : <code class="language-">[type]</code>.</p>
+<p>Le type d'un tableau est défini par le type des objets qu'il contient, précédé de crochets : <code class="language-">[]type</code>. Un tableau de tableaux d'entiers est ainsi de type <code class="language-">[][]entier</code>.</p>
 </div>
 </div>
 <p>Créons un objet tableau pouvant contenir 13 variables de type entier :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>  <span class="token comment"># création de la variable pouvant accueillir un tableau d'entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">T</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span>  <span class="token comment"># création de la variable pouvant accueillir un tableau d'entier</span>
 
-T <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">13</span><span class="token punctuation">}</span>  <span class="token comment"># création d'un tableau pouvant contenir 13 variables entières</span></code></pre>
+<span class="token variable parameter">T</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">13</span><span class="token punctuation">}</span>  <span class="token comment"># création d'un tableau pouvant contenir 13 variables entières</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -402,8 +402,8 @@ T <span class="token operator">&lt;</span><span class="token operator">-</span> 
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
 <ul>
-<li>le format général de la création d'une variable tableau : <code class="language-">nom_du_tableau := [type]</code></li>
-<li>création d'un tableau de longueur $n$  : <code class="language-">[type]{longueur: n}</code></li>
+<li>le format général de la création d'une variable tableau : <code class="language-">nom_du_tableau := []type</code></li>
+<li>création d'un tableau de longueur $n$  : <code class="language-">[]type{longueur: n}</code></li>
 </ul>
 </div>
 </div>
@@ -432,12 +432,12 @@ T <span class="token operator">&lt;</span><span class="token operator">-</span> 
 </div>
 </div>
 <p>On utilise un tableau comme une collection de variables, par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-T <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">T</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span>
+<span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 
-T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">41</span>
-T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
-T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">41</span>
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 <p>La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -519,7 +519,7 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Le type <code class="language-">chaîne</code> peut être vu comme un synonyme <code class="language-">[caractère]</code> sauf que l'on ne peut pas modifier un de ses indices (<code class="language-">s[2] ← &quot;p&quot;</code> ne sera pas une instruction valide), bien que l'on puisse y accéder (<code class="language-">affiche s[2]</code> sera une instruction valide). Un tableau de chaînes sera de type <code class="language-">[chaîne]</code>.</p>
+<p>Le type <code class="language-">chaîne</code> peut être vu comme un synonyme <code class="language-">[]caractère</code> sauf que l'on ne peut pas modifier un de ses indices (<code class="language-">s[2] ← &quot;p&quot;</code> ne sera pas une instruction valide), bien que l'on puisse y accéder (<code class="language-">affiche s[2]</code> sera une instruction valide). Un tableau de chaînes sera de type <code class="language-">[]chaîne</code>.</p>
 </div>
 </div>
 <h2><span id="instruction-contrôle"></span> Instructions de contrôle</h2>
@@ -537,12 +537,11 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">type_de_bloc<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">type_de_bloc</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     instruction <span class="token number">2</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 <p>On décale les instructions du bloc de sa définition.</p>
 </div>
 </div>
@@ -559,30 +558,27 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
     instruction <span class="token number">1</span>
 
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 </div>
 </div>
 <p>Cette instruction basique suffit pour gérer toutes les exécutions de bloc conditionnelles, mais pour plus de lisibilité on admettra plein de variantes comme la variante &quot;si-sinon&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">si</span> <span class="token punctuation">(</span>condition logique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span><span class="token keyword">sinon</span><span class="token punctuation">:</span>
+    instruction n
+<span class="token keyword">sinon</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n'
-</span></code></pre>
+    instruction n'</code></pre>
 <p>ou encore &quot;si-sinon si&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">si</span> <span class="token punctuation">(</span>condition logique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span><span class="token keyword">sinon si</span> <span class="token punctuation">(</span>autre condition logique<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    instruction n
+<span class="token keyword">sinon si</span> <span class="token punctuation">(</span>autre condition logique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n'
-</span></code></pre>
+    instruction n'</code></pre>
 <p>Ou tout mix de tout ça (comme &quot;si-sinon si-sinon&quot;), du moment que c'est clair !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -635,32 +631,30 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">tant que</span> <span class="token punctuation">(</span>condition logique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 <p>Le ploc précédent est exécuté tant que la condition logique est vraie.</p>
 </div>
 </div>
 <h4>Boucles <code class="language-">pour chaque</code></h4>
 <p>Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> élément x d'un tableau<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token variable parameter">élément</span> x d'un tableau<span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 <p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 <p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-i <span class="token operator">←</span> <span class="token number">0</span>
-<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
-    x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token number">0</span>
+<span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+    <span class="token variable parameter">x</span> <span class="token operator">←</span> tableau<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span>
-   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+    instruction n
+
+    <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :</p>
 <ul>
 <li><code class="language-">[a .. b]</code> pour représenter l'intervalle formé des entiers allant de <code>a</code> à <code>b</code> (cet intervalle peut être vide) par incrément de +1,</li>
@@ -669,18 +663,17 @@ i <span class="token operator">←</span> <span class="token number">0</span>
 <li><code class="language-">]a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b -1</code> (cet intervalle peut être vide).</li>
 </ul>
 <p>On peut alors écrire, par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
-    x <span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> x</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+    x <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> x</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrire le code suivant en utilisant la notation intervalle :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> élément x de tableau<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token variable parameter">élément</span> x de tableau<span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -700,15 +693,14 @@ i <span class="token operator">←</span> <span class="token number">0</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
-i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
+<span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> <span class="token variable parameter">i</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token variable parameter">x</span> <span class="token operator">←</span> tableau<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction<span class="token number"> n
-</span></code></pre>
+    instruction n</code></pre>
 </div>
 </details>     
 </div>
@@ -721,64 +713,64 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 <p>Ces instructions sont utiles si elles permettent de rendre le pseudo-code plus lisible, en séparant le cas général (la condition de la boucle) des cas particuliers (traités avec un <code class="language-">break</code> ou un <code class="language-">continue</code>)</p>
 <h5><code class="language-">break</code></h5>
 <p>Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
-y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-d <span class="token operator">:=</span> <span class="token builtin">entier</span>
-d <span class="token operator">←</span> min<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">d</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">)</span>
 
-<span class="token keyword">tant que</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
+<span class="token keyword">tant que</span> <span class="token punctuation">(</span><span class="token variable parameter">d</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> <span class="token variable parameter">d</span>
         <span class="token keyword">break</span>
-    d <span class="token operator">←</span> d <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+    <span class="token variable parameter">d</span> <span class="token operator">←</span> <span class="token variable parameter">d</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <p>Qui est équivalent au code suivant, moins lisible :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
-y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-d <span class="token operator">:=</span> <span class="token builtin">entier</span>
-d <span class="token operator">←</span> min<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">d</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">)</span>
 
-sortir <span class="token operator">:=</span> boolean
-sortir <span class="token operator">←</span> <span class="token boolean">Faux</span>
-<span class="token keyword">tant que</span> <span class="token punctuation">(</span>sortir <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
-        sortir <span class="token operator">←</span> <span class="token boolean">Vrai</span>
-    <span class="token keyword">si</span> sortir <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        d <span class="token operator">←</span> d <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+<span class="token variable parameter">sortir</span> <span class="token operator">:=</span> boolean
+<span class="token variable parameter">sortir</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
+<span class="token keyword">tant que</span> <span class="token punctuation">(</span><span class="token variable parameter">sortir</span> <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">d</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> <span class="token variable parameter">d</span>
+        <span class="token variable parameter">sortir</span> <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">sortir</span> <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">d</span> <span class="token operator">←</span> <span class="token variable parameter">d</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <h5><code class="language-">continue</code></h5>
 <p>Par exemple le code suivant qui va afficher tous les diviseurs de x qui ne sont pas des diviseurs de y :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
-y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-d <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> d de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> <span class="token variable parameter">d</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">continue</span>
 
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">affiche</span> d <span class="token string">" divise "</span> x <span class="token string">" mais pas "</span> y</code></pre>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token variable parameter">d</span> <span class="token string">" divise "</span> <span class="token variable parameter">x</span> <span class="token string">" mais pas "</span> <span class="token variable parameter">y</span></code></pre>
 <p>Qui est équivalent au code suivant, moins lisible :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
-y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-d <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span> d de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">affiche</span> d <span class="token string">" divise "</span> x <span class="token string">" mais pas "</span> y</code></pre>
+<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> <span class="token variable parameter">d</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token variable parameter">d</span> <span class="token string">" divise "</span> <span class="token variable parameter">x</span> <span class="token string">" mais pas "</span> <span class="token variable parameter">y</span></code></pre>
 <h5>Boucles imbriquées</h5>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -789,13 +781,13 @@ d <span class="token operator">:=</span> <span class="token builtin">entier</spa
 </div>
 </div>
 <p>Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-<span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token keyword">pour chaque</span> y de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">affiche</span> <span class="token string">"x = "</span> x <span class="token string">"; y = "</span> y
-        <span class="token keyword">si</span> x <span class="token operator">*</span> y <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
+<span class="token keyword">pour chaque</span> <span class="token variable parameter">x</span> de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> <span class="token variable parameter">y</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"x = "</span> <span class="token variable parameter">x</span> <span class="token string">"; y = "</span> <span class="token variable parameter">y</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">x</span> <span class="token operator">*</span> <span class="token variable parameter">y</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span></code></pre>
 <p>Va afficher :</p>
 <ul>
