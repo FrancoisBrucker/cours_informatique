@@ -128,10 +128,11 @@ code .highlight-line:before {
 	color: #549441;
 }
 
-/* paramètres d'une signature de pseudocode (variable a la couleur du texte dans latte) */
-.token.parameter {
-	color: #209fb5;
-}
+/* variables et paramètres du pseudocode (variable a la couleur du texte dans latte,
+   et sapphire se confond avec les opérateurs en sky) */
+/* .token.parameter {
+	color: #ea76cb;
+} */
 
 .percent50 {
   transform: scale(.5)

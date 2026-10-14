@@ -251,7 +251,7 @@ En java par exemple, une façon classique de procéder est décrite par l'algori
 
 ```pseudocode
 (res := entier) ← 0
-pour chaque (e := entier) du tuple:
+pour chaque (e := entier) de tuple:
     res ← hash(31 * res + hash(e))
 
 ```

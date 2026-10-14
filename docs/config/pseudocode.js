@@ -1,6 +1,6 @@
 // Langage Prism « pseudocode » pour la coloration du pseudo-code (mots-clés en français).
 
-export default {
+const grammaire = {
   'comment': {
     pattern: /(^|[^\\])#.*/,
     lookbehind: true,
@@ -9,6 +9,17 @@ export default {
   'string': {
     pattern: /(?:[rub]|br|rb)?(")(?:\\.|(?!\1)[^\\\r\n])*\1/i,
     greedy: true
+  },
+  // boucle : pour chaque <variable> de <objet>
+  'boucle': {
+    pattern: /\bpour chaque[ \t]+(?:\((?:[^()\n]|\([^()\n]*\))*\)|[^():\n]+?)[ \t]+de\b/u,
+    greedy: true,
+    inside: {
+      'mot-boucle': {
+        pattern: /^pour chaque|de$/,
+        alias: 'keyword'
+      }
+    }
   },
   // définition : algorithme nom(p1: type1, p2: []type2) → type:
   'signature': {
@@ -47,6 +58,10 @@ export default {
   'operator': /[-+%=]=?|←|→|!=|≠|≤|≥|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
   'punctuation': /[{}[\];(),.:]/
 };
+// le reste de la boucle (variable, type, …) suit la grammaire générale
+grammaire.boucle.inside.rest = grammaire;
+
+export default grammaire;
 
 // Coloration des variables déclarées dans un bloc pseudocode :
 // paramètres de la signature, `x := …`, `x: type` en début de ligne, `pour (chaque) x de`.
@@ -54,10 +69,10 @@ const IDENT = /[\p{L}_][\p{L}\p{N}_']*/gu;
 const RESERVES = new Set(["algorithme", "fonction", "programme", "méthode", "structure", "attributs", "méthodes",
   "si", "sinon", "pour", "chaque", "de", "rendre", "répéter", "tant", "que", "et", "ou", "ET", "OU", "affiche", "donne",
   "self", "break", "continue", "tout", "toute", "un", "une", "else", "Else", "Vrai", "Faux", "Type", "entier", "chiffre", "booléen", "bit", "réel", "caractère", "chaîne"]);
+const BOUCLE = /\bpour[ \t]+(?:chaque|tout|toute)[ \t]+(\((?:[^()\n]|\([^()\n]*\))*\)|[^():\n]+?)[ \t]+de\b/gu;
 const DECLARATIONS = [
   /([\p{L}_][\p{L}\p{N}_']*)\s*:=/gu,                                   // x := …
   /(?:^|[(,])[ \t]*([\p{L}_][\p{L}\p{N}_']*)[ \t]*:(?!=)/gmu,            // paramètres, x: type
-  /\bpour(?:[ \t]+(?:chaque|tout|toute))?[ \t]+\(?([\p{L}_][\p{L}\p{N}_']*)/gu,        // pour chaque x de
 ];
 
 function variablesDéclarées(code) {
@@ -65,6 +80,15 @@ function variablesDéclarées(code) {
   for (const re of DECLARATIONS) {
     for (const m of code.matchAll(re)) {
       if (!RESERVES.has(m[1])) noms.add(m[1]);
+    }
+  }
+  // variables de boucle : pour chaque x de, pour chaque x, y de, pour chaque voisin v de, pour chaque ((c, v) := …) de
+  for (const m of code.matchAll(BOUCLE)) {
+    const avant = m[1].startsWith("(") ? m[1].slice(1).split(":=")[0] : m[1];
+    for (const morceau of avant.split(",")) {
+      const mots = morceau.match(IDENT) || [];
+      const nom = mots[mots.length - 1];
+      if (nom && !RESERVES.has(nom)) noms.add(nom);
     }
   }
   return noms;

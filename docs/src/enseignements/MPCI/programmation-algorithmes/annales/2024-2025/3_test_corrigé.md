@@ -131,14 +131,14 @@ algorithme mul(Tx: []bit, Ty: []bit) → []bit:
 
     Ty'[i] ← 0 si i > Ty.longueur
 
-    pour chaque i dans [0, Tx.longueur + Ty.longueur[:
+    pour chaque i de [0 .. Tx.longueur + Ty.longueur[:
         R[i] ← 0
         si i <Ty.longueur:
             Ty'[i] ← Ty[i]
         sinon:
             Ty'[i] ← 0
 
-    pour chaque i dans [0, Tx.longueur[:
+    pour chaque i de [0 .. Tx.longueur[:
         si Tx[i] == 1:
             add(R, T'y)
         mul2(T'y)

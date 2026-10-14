@@ -47,7 +47,7 @@ méthode (self: Liste<T>) pop()  → T:
 
 méthode (self: Liste<T>) insert(pos: entier, x: T) → ∅:
     self.append(∅)
-    pour chaque (i:= entier) allant de self.longueur - 1 à pos + 1 par pas de -1:
+    pour chaque (i := entier) de [self.longueur - 1 .. pos + 1] par pas de -1:
         self.données[i] ← self.données[i-1]
     self.données[pos] ← x
 

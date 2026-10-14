@@ -567,7 +567,7 @@ Le ploc précédent est exécuté tant que la condition logique est vraie.
 Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :
 
 ```pseudocode
-pour chaque élément x d'un tableau:
+pour chaque x de tableau:
     instruction 1
     ...
     instruction n
