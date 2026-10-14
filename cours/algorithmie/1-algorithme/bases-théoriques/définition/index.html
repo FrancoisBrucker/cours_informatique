@@ -291,9 +291,8 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>On appelle :</p>
 <ul>
-<li><strong><em>alphabet</em></strong> est un ensemble fini $\mathcal{A}$</li>
+<li>un <strong><em>alphabet</em></strong> est un ensemble fini non vide</li>
 <li>une <strong><em>lettre</em></strong> est un élément d'un alphabet</li>
 <li>un <strong><em>mot</em></strong> d'un alphabet $\mathcal{A}$ est une suite finie d'éléments de $\mathcal{A}$</li>
 <li>la <strong><em>longueur</em></strong> d'un mot est le nombre d'éléments de la suite le constituant</li>
@@ -355,8 +354,8 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
+<p>Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre. Bref :</p>
 <p><strong>Un réel ne l'est pas : c'est une limite</strong>.</p>
-<p>Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.</p>
 </div>
 </div>
 <p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80" class="externe">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :</p>
@@ -375,15 +374,6 @@ Programme :
 </div>
 <p>Or :</p>
 <p><span id="paramètres-binaires"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-<p>Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.</p>
-</div>
-</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -391,7 +381,7 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)" class="externe">une injection</a> entre $\mathcal{A}^\star$ et $\{0, 1\}^\star$ pour tout ensemble fini $\mathcal{A}$.</p>
+<p>Il existe <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)" class="externe">une injection</a> entre $\mathcal{A}^\star$ et $\{0, 1\}^\star$ pour tout alphabet $\mathcal{A}$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -411,9 +401,9 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble fini $\mathcal{A}$ est triviale.</p>
-<p>On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">des caractères UNICODE</a> que l'on va noter. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.</p>
-<p>Une chaîne de caractères $(c_i)_{0\leq i &lt; n}$ est alors une suite de $6n$ chiffres. Par exemple : &quot;Coucou toi !&quot; correspond au nombre :</p>
+<p>On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout alphabet $\mathcal{A}$ est triviale.</p>
+<p>On considère l'ensemble $\mathcal{U}$ de tous les caractères de toutes les langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">des caractères UNICODE</a> que l'on va noter. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.</p>
+<p>un mot $(c_i)_{0\leq i &lt; n}$ de $\mathcal{U}$, on dit une chaîne de caractères, est alors une suite de $6n$ chiffres. Par exemple : &quot;Coucou toi !&quot; correspond au nombre :</p>
 <div>
 $$
 \underbracket{000067}_{\text{C}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000099}_{\text{c}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000032}_{\text{ }}\underbracket{000116}_{\text{t}}\underbracket{000111}_{\text{o}}\underbracket{000105}_{\text{i}}\underbracket{000032}_{\text{ }}\underbracket{000033}_{\text{!}}
@@ -457,10 +447,10 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Tout ce que peut manipuler un programme est une suite finie de bits.</p>
+<p>Un programme ne peut manipuler que des suites finies de bits.</p>
 </div>
 </div>
-<p>Cependant n'utiliser que des tableaux de bits (dont le type est <code>[]bit</code>) pour nos programmes les rendrait illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :</p>
+<p>Cependant n'utiliser que des tableaux de bits pour nos programmes les rendraient illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :</p>
 <ul>
 <li>un entier relatif :
 <ul>
@@ -470,6 +460,8 @@ $$
 </li>
 <li>une approximation finie d'un réel en utilisant la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754" class="externe">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html" class="externe">un convertisseur</a>)</li>
 <li>une chaîne de caractères en utilisant le code utf-8. Par exemple &quot;Yop !&quot; correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html" class="externe">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
+<li>la vérité ou la fausseté</li>
+<li>...</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
