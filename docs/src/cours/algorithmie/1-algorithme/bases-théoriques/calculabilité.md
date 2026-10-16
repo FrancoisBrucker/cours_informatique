@@ -9,9 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On a vu qu'il y a plus de nombres réels que d'algorithmes : il existe donc forcément des choses que ne peut pas calculer un algorithme. On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombres.
-
-Cette introduction à ce que l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9){.externe} en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
+On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombres. Cette introduction à ce que l'on appelle [calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9){.externe} en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.
 
 {% lien %}
 
@@ -21,7 +19,7 @@ Vous pouvez [consulter ce lien](https://perso.ens-lyon.fr/pierre.lescanne/PUBLIC
 ## Algorithmes et nombres
 
 {% definition %}
-Un nombre $x$ est **_calculable_** s'il existe un algorithme $A$ tel que :
+Un réel $x$ est **_calculable_** s'il existe un algorithme $A$ tel que :
 
 - $A(0)$ rend la partie entière de $x$
 - $A(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
@@ -93,7 +91,7 @@ Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0
 - $1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$
 - $2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$
 
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quel que soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els){.externe}, il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
+Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quel que soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els){.externe} et apparaît donc forcément dans notre liste). Notre hypothèse est fausse : il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
 Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
@@ -118,9 +116,7 @@ Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doi
 Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/){.externe}, très bien faite.
 {% endinfo %}
 
-Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
-
-Enfin, certains réels sont calculables, même si leurs nombres de décimales sont infinis. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :
+Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard). Attention, ce n'est pas parce qu'un réel a un no,bre infini de décimal qu'il n'est pas calculable. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :
 
 {% note "**Proposition**" %}
 Soit $(u_n)_{n \geq 1}$ une suite réelle.
@@ -161,13 +157,12 @@ En conclusion :
 La quasi-totalité des nombres réels utilisés en mathématiques en tant que tels ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
 {% endretenir %}
 {% info %}
-Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.
+Attention cependant à ne pas confondre le réel en tant que tel (non utilisable dans un algorithme puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.
 {% endinfo %}
-
 
 ## Algorithmes et fonctions
 
-On a vu qu'un algorithme et tout ce qu'il manipulait [pouvait être considéré comme une suite finie de 0 et de 1](../définition/#définition-algorithme-canonique). On en déduit immédiatement la proposition suivante :
+On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :
 
 <span id="algorithme-fonction"></span>
 
@@ -213,9 +208,9 @@ Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que 
 
 {% endnote %}
 {% details "preuve", "open" %}
-La preuve est identique à celle du [Théorème montrant qu'il y a strictement plus de réels que d'entiers](../définition/#diagonale-cantor).
+La preuve est identique à celle du [Théorème montrant qu'il y a strictement plus de réels que d'entiers](./#diagonale-cantor).
 
-Comme les fonctions $\widetilde{k}: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $\widetilde{k}(x) = k$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
+Comme les fonctions $\widetilde{k}: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $\widetilde{k}(x) = k$ pour tout $x$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
 On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ et les nombres entiers.
 
 On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre nous permet de construire la fonction $g: \mathbb{N} \rightarrow \mathbb{N}$ telle que $g(i) = f_i(i) + 1$ pour tout $i \in \mathbb{N}$. Mais ceci est impossible puisque $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
@@ -320,8 +315,6 @@ Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si
 {% retenir %}
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
 {% endretenir %}
-
-On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car elles sont très gourmandes en temps de calcul.
 
 #### Fonction écran de fumée
 
@@ -444,9 +437,7 @@ Lorsque vous essayez de résoudre un problème avec un algorithme, essayez toujo
 
 ## <span id="non-calculable"></span>Non calculabilité
 
-Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.
-
-Mais ces objets existent puisqu'il y a strictement plus de fonctions et de réels que d'algorithmes.
+Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire. Mais ces objets existent puisqu'il y a strictement plus de fonctions et de réels que d'algorithmes.
 
 Nous allons donner un exemple de chaque ci-après.
 

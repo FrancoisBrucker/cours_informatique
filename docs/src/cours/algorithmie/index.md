@@ -47,53 +47,6 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 > TBD en chantier : la partie I migre vers le lien ci-dessus
 
-### Algorithmes et programmes
-
-#### Pseudo code
-
-> TBD ici `ref x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
-> TBD tout est ue référence vers un objet en mémoire
-
-On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
-
-{% aller %}
-[Écrire les algorithmes en pseudo code](./pseudo-code)
-{% endaller %}
-
-#### Thèse de Church-Turing
-
-Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
-
-Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
-
-{% note "**Proposition**" %}
-Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.
-{% endnote %}
-
-La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plusieurs dans la seconde partie de ce cours) tendent à penser que c'est vrai. On supposera donc vrai la proposition suivante, communément admise :
-
-{% note "**Thèse de Church-Turing**" %}
-Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.
-{% endnote %}
-{% lien %}
-[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church){.externe}.
-{% endlien %}
-
-La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
-
-{% lien %}
-
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws){.externe} pour une introduction en douceur à la problématique.
-
-{% endlien %}
-
-#### Autres modèles
-
-Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres tous équivalent entre eux :
-
-{% aller %}
-[Autres modèles](./autres-modèles)
-{% endaller %}
 
 ### Problème algorithmique
 

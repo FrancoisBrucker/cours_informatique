@@ -234,7 +234,7 @@ Même si le programme ne s'arrête pas, chaque étape est bien finie :
 La conséquence fondamentale de ceci est que :
 
 {% note "**Proposition**" %}
-Un programme ne peut manipuler que des données de la forme d'une suite finie d'un ensemble fini.
+Un programme ne peut manipuler que des données écrites sous forme d'une suite finie d'un ensemble fini.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -320,7 +320,7 @@ Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki
 Un programme ne peut manipuler que des suites finies de bits.
 {% endnote %}
 
-Cependant n'utiliser que des tableaux de bits pour nos programmes les rendraient illisibles. On définit donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
+Cependant n'utiliser que des suites finies de bits pour nos programmes les rendraient illisibles. On définit donc d'autres types qui représentent nos données. Une suite finie de bits pourra alors être interprété selon les cas comme :
 
 - un entier relatif :
   - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
@@ -330,20 +330,26 @@ Cependant n'utiliser que des tableaux de bits pour nos programmes les rendraient
 - la vérité ou la fausseté
 - ...
 
+On pourrait se poser la question de pourquoi utiliser des bits alors que :
+
 {% exercice %}
 Montrez qu'il existe une injection entre $\mathcal{A}^\star$ et $\\{ 1\\}^\star$.
 
-Pourquoi s'embêter avec un deuxième symbole (le `0`) alors ?
 {% endexercice %}
 {% details "corrigé" %}
 Toute suite binaire est un nombre $n$ écrit en base 2. On peut donc représenter cette suite par $n$ `1` successifs.
 
-On a cependant besoin d'un second caractère pour terminer la séquence lorsqu'on l'écrit ! Sinon, comment savoir lorsque le mot est fini ? On ne peut donc pas écrire toutes les suites juste avec un seul caractère puisqu'il en faut au moins un deuxième qui détermine la fin de la chaîne.
-
-Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} les données de la machine sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs `1` et ` ` (blanc).
-
 {% enddetails %}
 
+Le second symbole n'est pas là pour coder la donnée mais pour la terminer ! Si l'on avait qu'un seul symbole, comment savoir lorsque la séquence est finie ? Il faut explicitement déterminer la fin de ce qu'on écrit.
+
+{% info %}
+Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} qui représentent un ordinateur théorique minimal, les données de la machine sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs :
+
+- `1` pour encoder les données,
+- ` ` (dit le symbole _blanc_) pour séparer les différentes entrées.
+
+{% endinfo %}
 
 Au final :
 
@@ -352,7 +358,6 @@ On peut sans perte de généralité supposer que les seuls objets manipulables p
 
 Alternativement, on peut aussi supposer sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
 {% endretenir %}
-
 
 ## Nombres de paramètres d'entrée d'un programme
 
@@ -383,10 +388,13 @@ Il est clair que cet encodage est unique puisque :
 Ce qui assure que l'on peut retrouver le couple initial à partir de la suite finale.
 
 {% enddetails %}
+{% info %}
+Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontrer : il n'y a pas plus d'éléments dans $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$ que dans $\\{0, 1\\}^\star$. Ce qui peut également se dire, en utilisant l'écriture en base 2 des entiers qu'il n'y a pas plus d'éléments dans  $\mathbb{Q}$ (l'ensemble des fractions entières qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$)  que dans $\mathbb{N}$ (qui est en bijection avec $\\{0, 1\\}^\star$). Étonnant, non ?
+{% endinfo %}
 
-Cette proposition est vraiment importante car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au début de l'algorithme !
+Cette proposition montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres (en utilisant l'injection définie dans la proposition précédente). On pourra ensuite retrouver ces deux paramètres en utilisant la procédure inverse au début de l'algorithme.
 
-Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quitte à retrouver les paramètres initiaux en utilisant la réciproque de notre procédure de compactage des paramètres. Comme les suites finies de `0` et de `1` sont des entiers écrits en base 2, on obtient le résultat fondamental :
+De là, tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quitte à retrouver les paramètres initiaux en utilisant la réciproque de notre procédure de compactage des paramètres. Comme les suites finies de `0` et de `1` sont des entiers écrits en base 2, on obtient le résultat fondamental :
 
 {% retenir %}
 
@@ -403,15 +411,13 @@ Tout programme peut être écrit comme ayant :
 
 {% endretenir %}
 
-Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il n'y a pas plus d'éléments dans $\mathbb{Q}$ (l'ensemble des fractions entières qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui-même en bijection avec $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec $\\{0, 1\\}^\star$). Étonnant, non ?
-
 Terminons avec un petit exercice pour voir si vous avez compris :
 
 {% exercice %}
 Donnez un encodage permettant d'écrire comme une suite de `0` et de `1`  les listes imbriquées de tableaux de 0 et de 1, comme `[0, [1, [1]], 0]`.
 {% endexercice %}
 {% info %}
-Encodez chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) par son propre code sur 3 bits. 
+Vous pourrez Encoder chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) par un code sur 3 bits. 
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -429,9 +435,11 @@ Par exemple `[0, [1, [1]], 0]` sera encodé par : `11010000011010100011010111111
 
 ## Nombre de programmes
 
-La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
+La définition générale d'un programme stipule qu'il doit être constitué d'**un nombre fini** d'instructions, chaque instruction décrite par **un nombre fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
 
+{% attention %}
 On se place ici dans le cadre précédent où un programme prend en paramètre un entier et rend un entier.
+{% endattention %}
 
 ### Une infinité de programmes différents
 
@@ -448,24 +456,23 @@ Ne fait rien
 rend 1
 ```
 
-En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite suivi de l'instruction `rend 1` (l'algorithme précédent est $R_1$).
-
-Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
+En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite suivi de l'instruction `rend 1` (l'algorithme précédent est $R_1$), tous les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes. Il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
 
-La preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien puis rendent 1.
+La preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien, puis rendent 1.
 
 {% info %}
 On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.
 {% endinfo %}
 
-Mais, on peut aussi démontrer :
+On peut cependant aussi démontrer  que :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes faisant des choses deux à deux différentes.
 {% endnote %}
 {% details "preuve", "open" %}
-On peut par exemple considérer la famille $A_k$ d'algorithmes ($k > 0$) définis tels que $A_k$ soit constitué d'une seule instruction :
+
+Considérons la famille $A_k$ d'algorithmes ($k > 0$) définis tels que $A_k$ soit constitué d'une seule instruction :
 
 ```text
 Rend l'entier k
@@ -497,10 +504,10 @@ Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaîne
 
 <div id="proposition-encodage-algorithme"></div>
 {% note "**Proposition**" %}
-On peut associer à tout programme un entier unique. C'est à dire qu'il existe une injection $N$ de l'ensemble $\mathcal{P}$ de tous les programmes vers l'ensemble des entiers.
+On peut associer à tout programme un entier unique. C'est à dire qu'il existe une injection $f$ de l'ensemble $\mathcal{P}$ de tous les programmes vers l'ensemble des entiers.
 {% endnote %}
 {% details "preuve", "open" %}
-Comme tout programme est une suite finie $c_1 \dots c_n$ de caractères Unicode, on utilise la technique de [la proposition sur les suites binaires](./#paramètres-binaires) puis lui associer un nombre unique.
+Comme tout programme est une suite finie $c_1 \dots c_n$ de caractères Unicode, on utilise la technique de [la proposition sur les suites binaires](./#paramètres-binaires) puis lui associer un nombre unique écrit en base 2.
 
 {% enddetails %}
 
@@ -515,17 +522,17 @@ Il y a exactement autant de programmes différents que de nombres entiers.
 
 Soit $f: \mathcal{P} \rightarrow \mathbb{N}$ une injection permettant d'associer un entier à un programme donné.
 
-On peut alors ordonner les programmes selon l'ordre induit par $N$. On note :
+On peut alors ordonner les programmes selon l'ordre induit par $f$. On note :
 
-- $A_1$ est le programme de plus petit nombre associé
-- pour $k > 1$, $A_k$ est l'algorithme dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{k-1}$
+- $P_1$ est le programme de plus petit nombre associé
+- pour $k > 1$, $P_k$ est l'algorithme dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $P_{k-1}$
 
 On a alors :
 
-- $A_k$ existe pour tout entier $k$ (puisqu'il y a une infinité de programmes différents, donc de descriptions différentes)
-- pour tout programme $P$, il existe $k$ tel que $P=A_k$
+- $P_k$ existe pour tout entier $k$ (puisqu'il y a une infinité de programmes différents, donc de descriptions différentes)
+- pour tout programme $P$, il existe $k$ tel que $P=P_k$
 
-Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des programmes et l'ensemble des entiers strictement positifs.
+Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(P_k)_{k \geq 1}$ est une bijection entre l'ensemble des programmes et l'ensemble des entiers strictement positifs.
 
 {% enddetails %}
 
@@ -538,34 +545,14 @@ Un ensemble est dénombrable s'il est en bijection avec $\mathbb{N}$.
 Il faut faire un peu attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :
 
 - $f(n) = 2n$ pour entier positif $n$,
-- $g(n) = 2n-1$ pour entier positif $n$.
+- $g(n) = 2n+1$ pour entier positif.
 
 Ceci montre que :
 
-- les entiers sont en bijection avec $f(\mathbb{N})$ c'est-à-dire les entiers pairs
-- les entiers sont en bijection avec $g(\mathbb{N})$ c'est-à-dire les entiers impairs
+- il n'y a pas plus d'entiers que d'entiers pairs,
+- il n'y a pas plus d'entiers que d'entiers impair.
 
-Bref : il y a autant d'entiers que d'entiers pairs et que d'entiers impairs !
-
-{% retenir %}
-Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'éléments d'un ensemble dénombrable), il y en a autant que d'entiers. 
-{% endretenir %}
-
-À vous, pour voir si vous avez compris :
-
-{% exercice %}
-Montrez que l'ensemble des mots d'un alphabet fini est dénombrable.
-{% endexercice %}
-
-{% details "corrigé" %}
-
-L'alphabet est fini on peut donc ordonner ses lettres, puis ordonner ses mots dans l'ordre du dictionnaire :
-
-le mot vide, puis tous les mots de longueur 1, puis tous ceux de longueur 2, etc.
-
-{% enddetails %}
-
-La remarque précédente est un cas particulier d'[un théorème plus général que l'on doit à Cantor et Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein){.externe} :
+On peut alors utiliser le théorème suivant pour en conclure qu'il il y a autant d'entiers que d'entiers pairs et que d'entiers impairs !
 
 {% note "**Proposition**" %}
 S'il y a une injection d'un ensemble $E$ dans une partie $F$ de celui-ci, alors $E$ et $F$ sont en bijection.
@@ -584,11 +571,11 @@ G_i \coloneqq \begin{cases}
 $$
 </div>
 
-On note alors 
+On note alors :
 
 <div>
 $$
-G \coloneqq \cup_{i \in \mathbb{N}} G_i \subseteq F
+G \coloneqq \bigcup_{i \in \mathbb{N}} G_i
 $$
 </div> 
 
@@ -606,12 +593,16 @@ $$
 Nous allons montrer que $g$ est une bijection de $E$ dans $F$, ce qui conclura la preuve :
 
 - $g$ est une injection car :
+  - $G \subseteq F$
   - si $x \in G$, alors $g(x) = f(x) \in G$ et $g$ est une injection de $G$ dans $G$
   - si $x \notin G$, $g(x)$ est l'identité $E\backslash G$ dans $E\backslash G$
 - $g$ est une surjection car si $x \in F$, alors il existe un entier $i$ tel que $x \in G_i$. Soit $i^\star$ le plus petit $i^\star$ tel que $x \in G_{i^\star}$. On a $i^\star > 0$ puisque $F \cap G_0 = \varnothing$ et donc il existe $y \in G_{i^\star -1}$ tel que $f(y) = x$
 
 {% enddetails %}
-{% note "**Corollaire (Théorème de Cantor-Bernstein)**" %}
+
+Dont on déduit le célèbre théorème :
+
+{% note "**Théorème (Cantor-Bernstein)**" %}
 S'il y a une injection d'un ensemble $A$ dans un ensemble $B$  et une injection de $B$ dans $A$, alors $A$ et $B$ sont en bijection.
 {% endnote %}
 {% details "preuve" %}
@@ -630,9 +621,26 @@ Comme $f$ est une bijection de $f$ dans son image $f(A)$, $h^{-1} \circ f$ est u
 [Référence](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration){.externe}
 {% endinfo %}
 
-Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitifs comme le résultat précédent qui montre qu'il peut y avoir autant d'éléments dans un ensemble et une partie de celui-ci. 
+Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitifs comme le résultat précédent qui montre qu'il peut y avoir autant d'éléments dans un ensemble et une partie de celui-ci. Par exemple nos injections précédentes montrent qu'il y a autant d'entiers pairs que d'entiers impairs que d'entiers !
 
-On peut grâce au résultat précédent démontrer :
+{% retenir %}
+Lorsqu'il y a un nombre infini d'entiers (_ie._ d'éléments d'un ensemble dénombrable), il y en a autant que d'entiers. 
+{% endretenir %}
+
+À vous, pour voir si vous avez compris :
+
+{% exercice %}
+Montrez que l'ensemble des mots d'un alphabet fini non vide est dénombrable.
+{% endexercice %}
+
+{% details "corrigé" %}
+
+On peut utiliser [notre injection](./#proposition-encodage-algorithme) pour passer des mots aux entiers avec une et par exemple passer des entiers au mots par l'injection qui associe à tout entier $k$ le mots formé de $k$ fois le même caractère choisi à l'avance.
+
+{% enddetails %}
+
+
+Enfin, ce théorème permet de démontrer démontrer que :
 
 {% note "**Proposition**" %}
 
@@ -658,45 +666,9 @@ Connaître les données ou les instructions "réelles" d'un algorithme se fait v
 
 {% endretenir %}
 
-
-Pour finir, un petit résultat très utile que vous pouvez démontrer :
-
-{% exercice %}
-On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie `1` ou `0`.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Soit $A$ un algorithme qui à partir d'une entrée $E$ donne une sortie $S$.
-Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la suite finie de `0` et de `1` à un nombre écrit en base 2). En utilisant une bijection $f$ entre $\mathbb{Q}$ et $\mathbb{N}$ on peut lui associer un nombre $F(E, S)$ donc une suite finie de `0` et de `1`.
-
-De là on peut associer à notre algorithme l'unique algorithme :
-
-```
-A'(E):
-    E', S' = f^{-1}(E)
-    S'' = A(E')
-
-    Si S' == S'':
-        rendre 1
-    sinon:
-        rendre 0
-```
-
-
-{% enddetails %}
-{% exercice %}
-Déduire de l'exercice précédent qu'un algorithme peut être vu comme un langage de $\\{0, 1\\}$.
-{% endexercice %}
-{% details "corrigé" %}
-On considère les algorithmes comme vu dans l'exercice précédent, c'est-à-dire une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite finie de `0` et de `1` et rend en sortie `1` ou `0`.
-
-Et on associe à un algorithme $A$ le langage formé de toutes les entrées pour lesquelles il rend `1`.
-{% enddetails %}
-
 ## Algorithmes et démonstrations mathématiques
 
-On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de logique ou de calculabilité) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).
+On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de logique ou de calculabilité) mais, en gros, les mathématiques sont une partie de l'informatique (certains, Des mathématiciens certainement, diraient même, et réciproquement...).
 
 De façon plus précise on a la suite d'équivalences :
 
