@@ -174,9 +174,12 @@ Les opérations correspondant au second moyen de créer des objets. Par exemple 
   - comparaisons : maximum (`max(x, y)`{.language-}), minimum (`min(x, y)`{.language-})
 - pour les caractères :
   - logique : égalité (avec le signe `==`{.language-})
+- pour les chaînes de caractères :
+  - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-}) en utilisant l'[ordre du dictionnaire](https://fr.wikipedia.org/wiki/Ordre_lexicographique){.externe}
+  - opération de concaténation (avec l'opérateur `+`{.language-}) : `"comment vas-tu" + " yau d’poêle ?"`{.language-} vaut la chaîne de caractères `"comment vas-tu yau d’poêle ?"`{.language-}
 - opérations sur les bits et les booléens :
-  - "négation logique" (non, `NON`{.language-}, `NOT`{.language-}, $\neg$),
-  - "et logique" (et, `ET`{.language-}, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `OU`{.language-}, `||`{.language-}, `OR`{.language-} ou $\lor$)
+  - "négation logique" (non, `NON`{.language-}, `NOT`{.language-} ou encore $\neg$),
+  - "et logique" (et, `ET`{.language-}, `&&`{.language-}, `AND`{.language-} ou encore $\land$), "ou logique" (ou, `OU`{.language-}, `||`{.language-}, `OR`{.language-} ou encore $\lor$)
 
 ```pseudocode
 40 + 2  # rendra l'objet entier 42
@@ -238,7 +241,7 @@ La ligne précédente crée une nouvelle variable nommée `a`{.language-} pouvan
 On utilise l'**_opérateur de définition_** `ref`{.language-} pour créer une variable. Le format général d'une définition de variable est :
 
 ```pseudocode
-ref <nom de la variable> <type des objets qu 'elle peut référencer>
+ref <nom de la variable> <type d'objet qu'elle peut référencer>
 ```
 
 {% enddefinition %}
@@ -259,7 +262,7 @@ La ligne précédente associe à la variable `a`{.language-} un objet entier val
 On utilise l'**_opérateur d'affectation_** `←`{.language-} pour affecter une variable. Le format général de l'affectation d'un objet à une variable est :
 
 ```pseudocode
-<nom de la variable> ← <objets qu'elle va référencer>
+<nom de la variable> ← <objet qu'elle va référencer>
 ```
 
 {% enddefinition %}
@@ -303,7 +306,7 @@ affiche a
 Le code précédent affiche l'objet référencé par $a$. Il est équivalent à : `affiche 42`{.language-}.
 
 {% definition %}
-**_Utiliser_** une variable dans un code revient à la remplacer par l'objet qu'elle référence. Ce remplacement se fait **avant** l'exécution de l'instruction.
+**_Utiliser_** une variable dans un code revient à la remplacer par l'objet qu'elle référence. Ce remplacement **se fait avant** l'exécution de l'instruction.
 
 {% enddefinition %}
 
@@ -330,7 +333,7 @@ ref b int
 b ← a + 1
 ```
 
-La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :
+La ligne 4, une instruction composée d'une opération puis d'une affectation, s'exécute de la façon suivante :
 
 1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est le résultat d'une opération :
    1. pour effectuer l'opération, il faut commencer par retrouver l'objet associé à `a`{.language-} : un entier valant 41
@@ -346,17 +349,19 @@ On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une varia
 
 ### Type d'un objet
 
-On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple `type 42`{.language-} va rendre `entier`. Ceci permet d'écrire :
+On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple `type 42`{.language-} va rendre `int`{.language-}. Ceci permet d'écrire :
 
 ```pseudocode
 ref a int
-ref b type a
+ref b (type a)
 ``` 
 
 ## <span id="tableaux"></span>Tableaux
 
 {% definition %}
-Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables **de même type**. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
+Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables **de même type**, où $n$ est la **_longueur_** ou la **_taille_** du tableau. 
+
+La longueur d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
 
 Si le tableau est nommé $T$ :
 
@@ -364,7 +369,13 @@ Si le tableau est nommé $T$ :
 - $T[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
 - $T[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
 
-Le type d'un tableau est défini par le type des objets qu'il contient, précédé de crochets : `[]type`{.language-}. Un tableau de tableaux d'entiers est ainsi de type `[][]entier`{.language-}.
+Le type d'un tableau est défini par le type `T`{.language-} des objets qu'il contient précédé de crochets : 
+
+```pseudocode
+[]T
+```
+
+Un tableau d'entiers est ainsi de type `[]int`{.language-}.
 
 {% enddefinition %}
 
@@ -373,19 +384,21 @@ Créons un objet tableau pouvant contenir 13 variables de type entier :
 ```pseudocode
 ref T []int  # création de la variable pouvant accueillir un tableau d'entier
 
-T <- []entier{longueur: 13}  # création d'un tableau pouvant contenir 13 variables entières
+T ← [13]entier  # création d'un tableau pouvant contenir 13 variables entières
 ```
 
 {% definition %}
 
-- le format général de la création d'une variable tableau : `ref nom_du_tableau []type`{.language-}
-- création d'un tableau de longueur $n$  : `[]type{longueur: n}`{.language-}
+- le format général de la création d'une variable tableau : `ref nom_du_tableau []T`{.language-}
+- création d'un tableau de longueur $n$  : `[n]T`{.language-}
+
+Une fois le tableau crée, chaque case du tableau vaut `∅`{.language-}. Comme pour les variables, il **faut** les initialiser avant de ls utiliser.
 {% enddefinition %}
 
-Un tableau est un mix entre variables et objet : c'est un objet contenant des variables de même type. 
+Un tableau est un mix entre variables et objets : c'est un objet contenant des variables de même type. 
 
 {% attention %}
-Lors de la définition d'un tableau on crée à la fois la variable contenant le tableau et le tableau lui-même qui est une suite de $n$ variables.
+Lors de la définition d'un tableau on crée à la fois la variable contenant le tableau et le tableau lui-même qui est une suite de $n$ variables valant initialement `∅`{.language-}.
 
 {% endattention %}
 
@@ -399,45 +412,36 @@ Une façon d'implémenter cette structure en pratique est de stocker les différ
 
 L'implémentation en python est simple et générale mais nécessite une indirection : avant d'accéder à un objet on passe d'abord par son adresse.
 
-Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
-
-Mais cette rapidité interne vient avec une complexité supplémentaire : la nécessité d'avoir un nouveau type d'objet appelé pointeur (qui correspond à une adresse en mémoire) mais que nous n'aborderons que bien plus tard.
 {% endinfo %}
 
 On utilise un tableau comme une collection de variables, par exemple :
 
 ```pseudocode
 ref T []int
-T ← []entier{longueur: 3}
+T ← [3]entier
 
 T[0] ← 41
 T[1] ← 1
 T[2] ← T[0] + T[1]
 ```
 
-La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser.
-
-{% retenir %}
-Tout comme une variable, une fois le tableau créé, la valeur de chaque case est **indéterminée !** Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
-{% endretenir %}
-
-Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
+La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser. Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
 {% retenir %}
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
 {% endretenir %}
 
-Ainsi, on ne peut **pas** affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+Ainsi, on ne peut **pas** affecter un tableau à un autre. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 
 On considère que :
 
 {% note %}
-- créer un tableau ne prend pas plus de temps que de créer une variable (1 instruction) car sa longueur est fixée et que les variables qui le constitue ne sont pas initialisées,
+- créer un tableau prend autant de temps que de créer une variable (1 instruction) fois sa longueur, puisque'il faut affecter chaque case du tableau à `∅`{.language-},
 - la taille en mémoire d'un tableau est proportionnelle à la taille d'une variable fois sa longueur,
-- accéder à une variable d'indice donné d'un tableau ne prend pas plus de temps que d'accéder à l'objet d'une simple variable (1 instruction).
+- accéder à une variable d'indice donné d'un tableau ne prend pas plus de temps que d'accéder à l'objet d'une simple variable (1 instruction) car sa position en mémoire est connue.
 {% endnote %}
 
-Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. 
+Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau (on y reviendra). 
 
 ### Tranches
 
@@ -451,34 +455,14 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 Tout comme pour les tableaux, **on ne peut pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
-### <span id="str"></span>Chaînes de caractères
+### Chaînes de caractères et tableaux
 
-Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.
+Les chaines de caractères, une fois crées, peuvent être utilisées comme un tableau composés de caractères. On peut :
 
-Une **_chaîne de caractères_** est un tableau constitué uniquement de caractères.
-
-Comme ce sont des tableaux, on peut :
-
-- créer une chaîne de caractères : `"salut"`{.language-} crée la chaîne contenant les caractères `"s"`{.language-}, `"a"`{.language-}, `"l"`{.language-}, `"u"`{.language-} et `"t"`{.language-} de façon contiguë en mémoire.
-- affecter une chaîne de caractères à une variable prend 1 instruction : `s ← "salut"`{.language-} prend 2 instructions, une pour la création et une pour l'affectation.
 - accéder à un caractère particulier en utilisant les crochets : `s[2]`{.language-} vaut le caractère `"l"`{.language-}
 - connaître la longueur de la chaîne avec : `s.longueur`{.language-}
 
-Les chaines étant très utilisées, des langages comme python les considèrent comme un type de base et considèrent les caractères comme étant des chaîne de langueur 1.
-
-{% note %}
-Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
-{% endnote %}
-
-La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
-
-- de définir une chaîne directement : `ref s str`{.language-} en utilisant le type chaîne
-- puis de l'affecter : `s ← "Salut"`{.language-}
-- on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"comment vas-tu" + " yau d’poêle ?"`{.language-} vaut la chaîne de caractères `"comment vas-tu yau d’poêle ?"`{.language-}
-
-{% definition %}
-Le type `chaîne`{.language-} peut être vu comme un synonyme `[]caractère`{.language-} sauf que l'on ne peut pas modifier un de ses indices (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[]chaîne`{.language-}.
-{% enddefinition %}
+On ne peut cependant pas : modifier un caractère de la chaîne. Elle est crée une fois pour toute.
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 
@@ -489,33 +473,34 @@ Si un des deux buts d'une instruction est de créer des objets à partir d'autre
 
 Ces formes d'instruction nécessitent de grouper les instructions en blocs.
 
-### Blocs
+## Blocs
 
-Lier les instructions en blocs :
+Lier les instructions en blocs. Ce formalisme a été popularisé par python et permet de voir du premier coup d'œil un bloc eet ses instructions:
+
 
 {% definition %}
+**_Un bloc d'instruction_** est une suite d'instruction décalées. 
+
 ```pseudocode
-type_de_bloc:
+<type de bloc>:
     instruction 1
     instruction 2
     ...
     instruction n
 ```
 
-On décale les instructions du bloc de sa définition.
-
 {% enddefinition %}
 
-Ce formalisme a été popularisé par python et permet de voir du premier coup d'œil les instructions d'un bloc.
+Les blocs vont être utile dans les très nombreuses situations où l'on veut, par exemple, répéter une suite d'instructions ou encore exécuter des instructions conditionnellement.
 
 ### <span id="tests"></span> Exécution conditionnelle d’instructions
 
-On veut pouvoir exécuter un bloc de code si une condition logique est VRAIE :
+On veut pouvoir exécuter des instructions si une condition logique est VRAIE :
 
 {% definition %}
 
 ```pseudocode
-si (condition logique):
+si <condition logique>:
     instruction 1
 
     ...
@@ -524,71 +509,93 @@ si (condition logique):
 
 {% enddefinition %}
 
-Cette instruction basique suffit pour gérer toutes les exécutions de bloc conditionnelles, mais pour plus de lisibilité on admettra plein de variantes comme la variante "si-sinon" :
+Par exemple :
 
 ```pseudocode
-si (condition logique):
+si (age ≥ 18):
+    affiche "Tu peux voter !"
+
+```
+
+Cette instruction basique suffit pour gérer toutes les exécutions de bloc conditionnelles, par exemple :
+
+```pseudocode
+si (age ≥ 18):
+    affiche "Tu peux voter !"
+si (age < 18):
+    affiche "Tu ne peux pas jouer au Loto."
+
+```
+
+Mais pour plus de lisibilité on admettra plein de variantes comme la variante "si-sinon" :
+
+```pseudocode
+si <condition logique>:
     instruction 1
     ...
     instruction n
-sinon:
+sinon:                      # <condition logique> est fausse
     instruction 1
     ...
     instruction n'
 ```
 
-ou encore "si-sinon si" :
+ou encore "si-sinon-si" :
 
 ```pseudocode
-si (condition logique):
+si <condition logique>:
     instruction 1
     ...
     instruction n
-sinon si (autre condition logique):
+sinon si <autre condition logique>:
     instruction 1
     ...
     instruction n'
 ```
 
-Ou tout mix de tout ça (comme "si-sinon si-sinon"), du moment que c'est clair !
+Ou tout mix de tout ça (comme "si-sinon si-sinon"), du moment que c'est clair :
+
+
+```pseudocode
+si <condition logique A>:
+    # instructions A
+sinon si <condition logique B>:
+    # instructions B
+sinon:                            # <condition logique A> et <condition logique B> sont fausses
+    # instructions C
+```
 
 {% exercice %}
-Écrire la variante `si, sinon si, sinon`{.language-pseudocode} avec la forme initiale `si`{.language-pseudocode}.
+Écrire la variante `si, sinon si, sinon`{.language-pseudocode} précédente en utilisant uniquement  la forme initiale `si`{.language-pseudocode}.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-si (conditionA):
+si <condition logique A>:
     # instructions A
-sinon si (conditionB):
+si ((NON <condition logique A>) ET (<condition logique B>)):
     # instructions B
-sinon:
-    # instructions C
-```
-
-Se traduit en :
-
-```pseudocode
-si (conditionA):
-    # instructions A
-si ((NON (conditionA)) ET (conditionB)):
-    # instructions B
-si ((NON (conditionA)) ET (NON (conditionB))):
+si ((NON <condition logique A>) ET (NON <condition logique B>)):
     # instructions C
 ```
 
 {% enddetails %}
 
+
+{% retenir %}
+Les différentes formes d'instruction conditionnelle peuvent toutes s'écrire uniquement avec la forme simple `si`{.language-pseudocode}.
+{% endretenir %}
+
 ### <span id="répétition"></span> Répétitions
 
-On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée. Les répétitions en pseudo-code vont prendre deux formes.
+On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée. Les répétitions en pseudo-code vont prendre deux formes dont l'une est un cas particulier de l'autre.
 
 #### Boucles `tant que`{.language-}
 
 {% definition %}
 
 ```pseudocode
-tant que (condition logique):
+tant que <condition logique>:
     instruction 1
     ...
     instruction n
@@ -603,69 +610,64 @@ Le ploc précédent est exécuté tant que la condition logique est vraie.
 Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :
 
 ```pseudocode
-pour chaque x de tableau:
+pour chaque x de <objet pouvant être énuméré>:
     instruction 1
     ...
     instruction n
 ```
 
-On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
+On exécutera alors le bloc autant de fois qu'il y a d'éléments dans l'`<objet pouvant être énuméré> `{.language-} et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément de l'objet. 
 
-Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes : 
+Typiquement l'`<objet pouvant être énuméré> `{.language-} est un tableau ou une chaîne de caractères que l'on parcours par ordre d'indice croissant. 
+
+{% info %}
+Notez que type de la variable utilisée pour la boucle est sous-entendu mais clairement défini puisque le type de l'objet sur lequel on itère est connu.
+
+{% endinfo %}
+
+Les deux code suivant sont équivalents. Le second, moins élégant, explicite le numéro de l'itération courante d'un tableau de chaînes.
+
+Code `pour chaque`{.language-} : 
+
+```pseudocode
+pour chaque x de T:
+    affiche x
+```
+
+
+Code `tant que`{.language-} : 
 
 ```pseudocode
 ref x int
 
 ref i int
 i ← 0
-tant que i < tableau.longueur:
-    x ← tableau[i]
-
-    instruction 1
-    ...
-    instruction n
-
+tant que i < T.longueur:
+    x ← T[i]
+    affiche x
     i ← i + 1
 ```
+
+{% retenir %}
+La boucle `pour chaque`{.language-} peut s'écrire avec la boucle `tant que`{.language-}.
+{% endretenir %}
 
 Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :
 
 - `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide) par incrément de +1,
 - `[a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
 - `]a .. b]`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
-- `]a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide).
+- `]a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide),
 
 On peut alors écrire, par exemple :
 
 ```pseudocode
-ref x, i int
+ref x int
+x ← 0
+
 pour chaque i de [0 .. 10000[:
     x ← i + x
 ```
-
-{% exercice %}
-Écrire le code suivant en utilisant la notation intervalle : 
-
-```pseudocode
-pour chaque élément x de tableau:
-    instruction 1
-    ...
-    instruction n
-```
-{% endexercice %}
-{% details "corrigé" %}
-```pseudocode
-ref x str
-ref i int
-pour chaque i de [0 .. tableau.longueur[:
-    x ← tableau[i]
-
-    instruction 1
-    ...
-    instruction n
-```
-
-{% enddetails %}
 
 #### Sortir d'une boucle avant la fin
 
@@ -678,80 +680,105 @@ Ces instructions sont utiles si elles permettent de rendre le pseudo-code plus l
 
 ##### `break`{.language-}
 
-Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :
+Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur dont [on a déjà vu l'algorithme](../../bases-théoriques/calculabilité/#algorithme-euclide)) entre deux nombres :
 
 ```pseudocode
 ref x int
 ref y int
 
-x ← donne entier
-y ← donne entier
+x ← donne int
+y ← donne int
 
 ref d int
 d ← min(x, y)
 
-tant que (d>0):
+tant que (d > 0):
     si (x mod d == 0) ET (y mod d == 0):
-        affiche "le pgcd vaut " d
         break
     d ← d - 1
+
+affiche "le pgcd entre " x " et " y " vaut " d
 ```
 
 Qui est équivalent au code suivant, moins lisible :
 
 ```pseudocode
 ref x int
-ref y int
+x ← donne int
 
-x ← donne entier
-y ← donne entier
+ref y int
+y ← donne int
 
 ref d int
 d ← min(x, y)
 
 ref sortir bool
 sortir ← Faux
-tant que (sortir == Faux) ET (d>0):
+
+tant que (sortir == Faux) ET (d > 0):
     si (x mod d == 0) ET (y mod d == 0):
-        affiche "le pgcd vaut " d
         sortir ← Vrai
-    si sortir == Faux:
+    sinon:
         d ← d - 1
+
+affiche "le pgcd entre " x " et " y " vaut " d
+```
+
+Et qui donne en python :
+
+```python
+x = int(input("Donne un entier : "))
+y = int(input("Donne un entier : "))
+
+d = min(x, y)
+
+while (d > 0):
+    if (x % d == 0) and (y % d == 0):
+        break
+    d -= 1
+
+print("le pgcd entre", x, "et", y, "vaut", d)
+
 ```
 
 ##### `continue`{.language-}
 
-Par exemple le code suivant qui va afficher tous les diviseurs de x qui ne sont pas des diviseurs de y :
+Par exemple le code suivant qui va afficher tous les diviseurs de x. Le continue permet d'expliciter les cas rejetés  :
 
 ```pseudocode
 ref x int
-ref y int
+x ← donne int
 
-x ← donne entier
-y ← donne entier
-
-ref d int
 pour chaque d de [1 .. x]:
-    si (y mod d == 0):
+    si (x mod d != 0):
         continue
 
-    si (x mod d == 0):
-        affiche d " divise " x " mais pas " y
+    affiche d " divise " x
 ```
 
-Qui est équivalent au code suivant, moins lisible :
+Qui est équivalent au code suivant, un peu moins lisible :
 
 ```pseudocode
 ref x int
-ref y int
+x ← donne int
 
-x ← donne entier
-y ← donne entier
-
-ref d int
 pour chaque d de [1 .. x]:
-    si (x mod d == 0) ET (y mod d ≠ 0):
-        affiche d " divise " x " mais pas " y
+    si (x mod d == 0):
+        affiche d " divise " x
+```
+
+
+Et qui donne en python :
+
+```python
+x = int(input("Donne un entier : "))
+
+for d in range(1, x + 1):
+    if (x % d != 0):
+        continue
+    
+    print(d, "divise", x)
+
 ```
 
 ##### Boucles imbriquées
@@ -763,15 +790,25 @@ Les instructions `break`{.language-} et `continue`{.language-} n'agissent que da
 Par exemple :
 
 ```pseudocode
-ref x int
-ref y int
-
 pour chaque x de [1 .. 3]:
     pour chaque y de [0 .. 3]:
-        affiche "x = " x "; y = " y
         si x * y > 2:
             break
+        affiche "x = " x "; y = " y
 ```
+
+{% details "code python" %}
+```python
+for x in range(1, 4):
+    for y in range(4):
+        if x * y > 2:
+            break
+
+        print("x =", x, "; y =", y)
+
+```
+
+{% enddetails %}
 
 Va afficher :
 

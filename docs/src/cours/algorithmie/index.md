@@ -412,11 +412,20 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 > TBD la parie C sera : avancé
 
 ## <span id="partie-3"></span>Partie III : structures de données arborées
+
 >TBD transférer ici de la partie graphe.
 > TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s>{.externe} y sont.
 > 
 
+> TBD plan :
+> 1. structure de données arborées
+> 2. pointeurs pour gérer la mémoire
+> 3. problèmes
 > TBD ICI parler pointeur. Faire commencer la partie B.
+
+<!-- Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
+
+Mais cette rapidité interne vient avec une complexité supplémentaire : la nécessité d'avoir un nouveau type d'objet appelé pointeur (qui correspond à une adresse en mémoire) mais que nous n'aborderons que bien plus tard. -->
 
 
 ## <span id="problèmes"></span><span id="partie-4"></span>Partie IV : problèmes

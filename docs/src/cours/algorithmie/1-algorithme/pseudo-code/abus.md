@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Abus de notation
+title: '"Abus" de notation'
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,8 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD ref a, b, c type
 
 Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible. 
 
@@ -23,24 +21,58 @@ Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 - les variables doivent être définies avant d'être utilisée
 - une variable ne peut contenir que des objets d'un type donné
 
-Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme : 
+Mais cela ne doit pas rendre le code lourd. On se permettra donc plusieurs abus de notations
+
+### Déclarer plusieurs variables
+
+{% definition "**Abus de notation**" %}
+On déclare plusieurs variables du même type :
 
 ```pseudocode
-ref a int ← 3
+ref a, b, c <type>
 ```
 
-**Lorsqu'il n'y a pas d’ambiguïté possible**, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :
+{% enddefinition %}
+
+Par exemple 
+
+```pseudocode
+ref i, j, k int
+```
+
+### Déclarer puis affecter une variable
+
+{% definition "**Abus de notation**" %}
+On déclare et on affecte directement :
+
+```pseudocode
+ref a <type> ← <objet>
+```
+
+{% enddefinition %}
+
+
+Par exemple
+
+```pseudocode
+ref réponse int ← 42
+```
+
+Pour ce type de déclaration/affectation il n'y a pas d’ambiguïté sur le type de la variable, on se permettre ainsi d'écrire directement :
+
+{% definition "**Abus de notation**" %}
+Type implicite si déclaration et affectation d'un objet de type connu :
+
+```pseudocode
+ref a ← <objet de type connu>
+```
+
+{% enddefinition %}
+
+Par exemple :
 
 - `ref a ← 3`{.language-} 
-- `ref T ← []int{longueur: 3}`{.language-} 
-
-Qui crée la variable, l'objets et les affecte l'un à l'autre
-
-Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :
-
-```pseudocode
-ref a, b, c int
-```
+- `ref T ← [3]int`{.language-} 
 
 {% attention %}
 
@@ -49,11 +81,17 @@ En pseudo-code on ne se permettra cependant jamais d'affecter une variable avant
 {% endattention %}
 
 
-## Affectations multiples
+### Affectations multiples
+
+{% definition "**Abus de notation**" %}
+Plusieurs affectation en même temps :
 
 ```pseudocode
 a, b ← c, d
 ```
+
+{% enddefinition %}
+
 
 pour :
 
@@ -68,100 +106,27 @@ b ← b'
 On utilise des variables intermédiaires pour garantir que `a, b ← b, a`{.language-} échange bien les valeurs des deux variables.
 {% endinfo %}
 
-## Répétitions
+## Tableaux
 
-### Déclaration des variables
-
-On écrira :
-
-```pseudocode
-
-pour chaque i de [a .. b]:
-    # ...
-```
-
-À la place de : 
-
-```pseudocode
-
-ref i int
-pour chaque i de [a .. b]:
-    # ...
-```
-
-Cependant on n'écrira cet abus que lorsque la variable de la boucle n'est utilisé que dans la boucle. Pour que ce soit clair il ne faut pas qui'il existe d'autres variables valant i et utilisées hors de la boucle.
+On va souvent manipuler (affecter, copier, créer) des parties de tableaux. Plutôt que d'expliciter les différentes boucles nécessaires à ces opérations qui alourdissent le pseudo code on aime à les remplacer par des notations plus compactes.
 
 {% attention %}
-Plus généralement on ne définira pas de variable à l'intérieur d'un bloc si :
-
-- ce bloc est une répétition (cela redéfinirait plusieurs fois la variable)
-- la variable est ensuite utilisée en-dehors du bloc
+Ces différentes affectations ne sont **pas** des instructions simples, mais nécessitent des boucles. 
 
 {% endattention %}
 
-### Nombre constant de répétitions
+### Affectation d'une tranche de tableau
 
-Si on n'utilise pas la variable de boucle :
-
-```pseudocode
-répéter k fois:
-    # ...
-```
-
-Pour :
-
-```pseudocode
-ref i ← 0
-tant que (i < k):
-    i ← i + 1 
-    # ...
-```
-
-### Répétitions à pas fixé
-
-On a parfois besoin d'utiliser des intervalles _"à trous"_. Par exemple tous les multiples de 3, ou tous les entiers pairs. On se permettra d'utiliser une variante des boucles comme :
-
-```pseudocode
-ref i int
-pour i de a à b par par pas de k:
-    # ...
-```
-
-ou encore :
-
-```pseudocode
-ref i int
-pour chaque i de [a .. b] par pas de k:
-    # ...
-```
-
-Pour :
-
-```pseudocode
-ref i ← a
-tant que i ≤ b:
-  # ...
-
-  i ← i + k
-```
-
-Vous pourrez aussi utiliser la notation `[a .. b : p]`{.language-} qui étend la notation d'intervalle vu précédemment. et correspond à la liste : contenant les entiers : $a, a + p, \dots, a + ip, a + kp$ avec $a + kp$ le plus grand entier plus petit ou égal à $b$. On pourra alors utiliser le concis et explicite :
-
-```pseudocode
-ref i int
-pour chaque i de [a .. b : k]:
-    # ...
-```
-
-à la place des notations précédentes
-
-## Affectation d'une tranche de tableau
+{% definition "**Abus de notation**" %}
+Plusieurs affectation en même temps :
 
 ```pseudocode
 T[a:b] ← k
 ```
 
-pour :
+{% enddefinition %}
+
+Pour remplacer :
 
 ```pseudocode
 pour chaque i de [a .. b[:
@@ -195,7 +160,7 @@ pour chaque i de [0 .. b-a[:
 ```
 
 {% attention %}
-Les affectations de tranches ne sont **pas** une instruction simple, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.
+Les affectations de tranches ne sont **pas** des instructions simples, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.
 
 Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
 
@@ -205,18 +170,78 @@ T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
 
 {% endattention %}
 
-## Concaténation
+### Création de tableaux
 
-Avec deux tableaux :
+{% definition "**Abus de notation**" %}
+Création directe d'objets tableaux :
+
+```pseudocode
+[1, 2, 3]
+```
+
+{% enddefinition %}
+
+Pour remplacer :
+
+```pseudocode
+T ← [3]int
+T[0] ← 1
+T[1] ← 2
+T[2] ← 3
+```
+
+On pourra alors aussi directement créer un nouveau tableau et l'affecter :
+
+{% definition "**Abus de notation**" %}
+Création directe d'objets tableaux :
+
+```pseudocode
+ref T []int ← [1, 2, 3]
+ref T' []int ← [1 .. 10[
+```
+
+voir encore plus directement :
+
+```pseudocode
+ref T ← [1, 2, 3]
+ref T' ← [1 .. 10[
+```
+
+{% enddefinition %}
+
+Pour remplacer :
+
+```pseudocode
+ref T []int
+T ← [3]int
+
+T[0] ← 1
+T[1] ← 2
+T[2] ← 3
+
+ref T' []int
+T ← [9]int
+
+pour chaque i de [0 .. 9[:
+    T[i] ← i + 1
+
+```
+
+### Concaténation
+
+{% definition "**Abus de notation**" %}
+Création de tableau par concaténation de deux tableaux de même type :
 
 ```pseudocode
 ref T ← T1 + T2
 ```
 
-pour :
+{% enddefinition %}
+
+Pour remplacer :
 
 ```pseudocode
-T ← un nouveau tableau de taille T1.longueur + T2.longueur
+ref T ← [T1.longueur + T2.longueur](type T1)
 
 pour chaque i de [0 .. T1.longueur[:
     T[i] ← T1[i]
@@ -224,3 +249,53 @@ pour chaque i de [0 .. T2.longueur[:
     T[T1.longueur + i] ← T2[i]
 
 ```
+
+### Liste en comprehension
+
+{% lien %}
+[Liste en comprehension](https://www.docstring.fr/glossaire/comprehension-de-liste/){.externe}
+{% endlien %}
+
+On pourra aussi utiliser les listes en comprehension (_list comprehension_) popularisés apr python. De nombreux formats existent, du moment que c'est compréhensible :
+
+{% definition "**Abus de notation**" %}
+Écriture à la python :
+
+```pseudocode
+[<expression> pour chaque <variable> de <énumérable> si <condition logique>]
+```
+
+On plus ensembliste :
+
+```pseudocode
+[<expression> | <variable> ∈ <énumérable>, <condition logique>]
+```
+{% enddefinition %}
+
+Par exemples :
+
+```pseudocode
+[2 * x pour chaque x de [1 .. 5]]   # [2, 4, 6, 8, 10]
+[2 * x | x ∈ [1 .. 5]] 
+```
+
+Ou, avec la notation mathématique :
+
+```pseudocode
+[1 + 4 * k pour chaque k de [1 .. ] si 1 + 4 * k < 20]   # [5, 9, 13, 17]
+[1 + 4 * k | k ∈ [1 .. ], 1 + 4 * k < 20]  
+[1 + 4 * k |  1 ≤ k ≤ 4]  
+```
+
+Pour la notation mathématique soit déterministe, on suppose que la variable sera énumérer selon l'ordre sous-jacent de l'ensemble.
+
+## Variable muette
+
+Si on n'utilise pas la variable de boucle on utilise une variable muette `_` :
+
+```pseudocode
+pour chaque _ de [1 .. k]:
+    # ...
+```
+
+

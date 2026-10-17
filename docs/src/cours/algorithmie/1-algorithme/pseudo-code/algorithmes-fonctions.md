@@ -39,8 +39,8 @@ En pseudo-code, cela va donner ça :
 
 ```pseudocode
 algorithme recherche(T: []entier,
-                     x: entier     # entier recherché dans t
-                    ) → booléen:   # Vrai si x est dans t
+                     x: entier,     # entier recherché dans t
+                    ) → booléen:    # Vrai si x est dans t
 
     ref e int
     pour chaque e de T:

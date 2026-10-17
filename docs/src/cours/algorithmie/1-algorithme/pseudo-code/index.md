@@ -42,7 +42,8 @@ Si le but premier d'un pseudo-code est d'être compris par un humain, Les langag
 Commençons par décrire la _grammaire de base_ du pseudo-code :
 
 {% aller %}
-[Briques de base](briques-de-base)
+1. [Briques de base](briques-de-base)
+2. [Abus de notation](abus)
 {% endaller %}
 
 On peut maintenant utiliser les différentes instructions du pseudo-code pour écrire nos algorithmes :
