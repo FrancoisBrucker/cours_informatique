@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Abus de notation</title>
+    <title>&quot;Abus&quot; de notation</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Abus de notation</h1>
+  <h1>&quot;Abus&quot; de notation</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/abus/">Abus de notation</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/abus/">&quot;Abus&quot; de notation</a>
 
 </div>
 </div>
@@ -96,10 +96,7 @@
     
   
 
-  <blockquote>
-<p>TBD ref a, b, c type</p>
-</blockquote>
-<p>Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible.</p>
+  <p>Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible.</p>
 <p>Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.</p>
 <h2>Définitions de variables</h2>
 <p>Le but d'un pseudo-code est d'être explicite, c'est pourquoi :</p>
@@ -107,16 +104,52 @@
 <li>les variables doivent être définies avant d'être utilisée</li>
 <li>une variable ne peut contenir que des objets d'un type donné</li>
 </ul>
-<p>Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span> <span class="token operator">←</span> <span class="token number">3</span></code></pre>
-<p><strong>Lorsqu'il n'y a pas d’ambiguïté possible</strong>, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :</p>
+<p>Mais cela ne doit pas rendre le code lourd. On se permettra donc plusieurs abus de notations</p>
+<h3>Déclarer plusieurs variables</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On déclare plusieurs variables du même type :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">,</span> <span class="token variable parameter">c</span></span> <span class="token operator">&lt;</span><span class="token keyword">type</span><span class="token operator">></span></code></pre>
+</div>
+</div>
+<p>Par exemple</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span><span class="token punctuation">,</span> <span class="token variable parameter">j</span><span class="token punctuation">,</span> <span class="token variable parameter">k</span> <span class="token type class-name">int</span></span></code></pre>
+<h3>Déclarer puis affecter une variable</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On déclare et on affecte directement :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span></span> <span class="token operator">&lt;</span><span class="token keyword">type</span><span class="token operator">></span> <span class="token operator">←</span> <span class="token operator">&lt;</span>objet<span class="token operator">></span></code></pre>
+</div>
+</div>
+<p>Par exemple</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">réponse</span> <span class="token type class-name">int</span></span> <span class="token operator">←</span> <span class="token number">42</span></code></pre>
+<p>Pour ce type de déclaration/affectation il n'y a pas d’ambiguïté sur le type de la variable, on se permettre ainsi d'écrire directement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Type implicite si déclaration et affectation d'un objet de type connu :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span></span> <span class="token operator">←</span> <span class="token operator">&lt;</span>objet de <span class="token keyword">type</span> connu<span class="token operator">></span></code></pre>
+</div>
+</div>
+<p>Par exemple :</p>
 <ul>
 <li><code class="language-">ref a ← 3</code></li>
-<li><code class="language-">ref T ← []int{longueur: 3}</code></li>
+<li><code class="language-">ref T ← [3]int</code></li>
 </ul>
-<p>Qui crée la variable, l'objets et les affecte l'un à l'autre</p>
-<p>Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">,</span> <span class="token variable parameter">c</span> <span class="token type class-name">int</span></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -125,11 +158,21 @@
 <p>En pseudo-code on ne se permettra cependant jamais d'affecter une variable avant de l'avoir définie (comme on le ferait en python).</p>
 </div>
 </div>
-<h2>Affectations multiples</h2>
+<h3>Affectations multiples</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Plusieurs affectation en même temps :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a<span class="token punctuation">,</span> b <span class="token operator">←</span> c<span class="token punctuation">,</span> d</code></pre>
+</div>
+</div>
 <p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a'</span></span> <span class="token operator">←</span> c
-<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">b'</span></span> <span class="token operator">←</span> d
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a'</span></span> <span class="token operator">←</span> c
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">b'</span></span> <span class="token operator">←</span> d
 a <span class="token operator">←</span> <span class="token variable parameter">a'</span>
 b <span class="token operator">←</span> <span class="token variable parameter">b'</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -140,62 +183,29 @@ b <span class="token operator">←</span> <span class="token variable parameter"
 <p>On utilise des variables intermédiaires pour garantir que <code class="language-">a, b ← b, a</code> échange bien les valeurs des deux variables.</p>
 </div>
 </div>
-<h2>Répétitions</h2>
-<h3>Déclaration des variables</h3>
-<p>On écrira :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>À la place de :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
-<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>Cependant on n'écrira cet abus que lorsque la variable de la boucle n'est utilisé que dans la boucle. Pour que ce soit clair il ne faut pas qui'il existe d'autres variables valant i et utilisées hors de la boucle.</p>
+<h2>Tableaux</h2>
+<p>On va souvent manipuler (affecter, copier, créer) des parties de tableaux. Plutôt que d'expliciter les différentes boucles nécessaires à ces opérations qui alourdissent le pseudo code on aime à les remplacer par des notations plus compactes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Plus généralement on ne définira pas de variable à l'intérieur d'un bloc si :</p>
-<ul>
-<li>ce bloc est une répétition (cela redéfinirait plusieurs fois la variable)</li>
-<li>la variable est ensuite utilisée en-dehors du bloc</li>
-</ul>
+<p>Ces différentes affectations ne sont <strong>pas</strong> des instructions simples, mais nécessitent des boucles.</p>
 </div>
 </div>
-<h3>Nombre constant de répétitions</h3>
-<p>Si on n'utilise pas la variable de boucle :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>Pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">0</span>
-<span class="token keyword">tant que</span> <span class="token punctuation">(</span><span class="token variable parameter">i</span> <span class="token operator">&lt;</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span> 
-    <span class="token comment"># ...</span></code></pre>
-<h3>Répétitions à pas fixé</h3>
-<p>On a parfois besoin d'utiliser des intervalles <em>&quot;à trous&quot;</em>. Par exemple tous les multiples de 3, ou tous les entiers pairs. On se permettra d'utiliser une variante des boucles comme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
-<span class="token keyword">pour</span> <span class="token variable parameter">i</span> de a à b par par pas de k<span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>ou encore :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
-<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span> par pas de k<span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>Pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> a
-<span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≤</span> b<span class="token punctuation">:</span>
-  <span class="token comment"># ...</span>
-
-  <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> k</code></pre>
-<p>Vous pourrez aussi utiliser la notation <code class="language-">[a .. b : p]</code> qui étend la notation d'intervalle vu précédemment. et correspond à la liste : contenant les entiers : $a, a + p, \dots, a + ip, a + kp$ avec $a + kp$ le plus grand entier plus petit ou égal à $b$. On pourra alors utiliser le concis et explicite :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
-<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b <span class="token punctuation">:</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>à la place des notations précédentes</p>
-<h2>Affectation d'une tranche de tableau</h2>
+<h3>Affectation d'une tranche de tableau</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Plusieurs affectation en même temps :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
-<p>pour :</p>
+</div>
+</div>
+<p>Pour remplacer :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span>
     T<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
 <p>Fonctionne aussi pour :</p>
@@ -213,22 +223,113 @@ b <span class="token operator">←</span> <span class="token variable parameter"
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les affectations de tranches ne sont <strong>pas</strong> une instruction simple, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.</p>
+<p>Les affectations de tranches ne sont <strong>pas</strong> des instructions simples, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.</p>
 <p>Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T' <span class="token operator">←</span> un nouveau tableau contenant T<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">]</span>  <span class="token comment"># j - i + 1 instructions en 1 ligne</span></code></pre>
 </div>
 </div>
-<h2>Concaténation</h2>
-<p>Avec deux tableaux :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> T1 <span class="token operator">+</span> T2</code></pre>
-<p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">←</span> un nouveau tableau de taille T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur
+<h3>Création de tableaux</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Création directe d'objets tableaux :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
+</div>
+</div>
+<p>Pour remplacer :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
+T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">3</span></code></pre>
+<p>On pourra alors aussi directement créer un nouveau tableau et l'affecter :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Création directe d'objets tableaux :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T'</span> <span class="token type class-name">[]int</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10</span><span class="token punctuation">[</span></code></pre>
+<p>voir encore plus directement :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T'</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10</span><span class="token punctuation">[</span></code></pre>
+</div>
+</div>
+<p>Pour remplacer :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>
+<span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
+<span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">3</span>
+
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T'</span> <span class="token type class-name">[]int</span></span>
+<span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+
+<span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span>
+</code></pre>
+<h3>Concaténation</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Création de tableau par concaténation de deux tableaux de même type :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> T1 <span class="token operator">+</span> T2</code></pre>
+</div>
+</div>
+<p>Pour remplacer :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span>T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">type</span> T1<span class="token punctuation">)</span>
 
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T1<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T2<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
+    <span class="token variable parameter">T</span><span class="token punctuation">[</span>T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 </code></pre>
+<h3>Liste en comprehension</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.docstring.fr/glossaire/comprehension-de-liste/" class="externe">Liste en comprehension</a></p>
+</div>
+</div>
+<p>On pourra aussi utiliser les listes en comprehension (<em>list comprehension</em>) popularisés apr python. De nombreux formats existent, du moment que c'est compréhensible :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Abus de notation</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Écriture à la python :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token operator">&lt;</span>expression<span class="token operator">></span> <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token operator">&lt;</span><span class="token variable parameter">variable</span><span class="token operator">></span> <span class="token mot-boucle keyword">de</span></span> <span class="token operator">&lt;</span>énumérable<span class="token operator">></span> <span class="token keyword">si</span> <span class="token operator">&lt;</span>condition logique<span class="token operator">></span><span class="token punctuation">]</span></code></pre>
+<p>On plus ensembliste :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token operator">&lt;</span>expression<span class="token operator">></span> <span class="token operator">|</span> <span class="token operator">&lt;</span>variable<span class="token operator">></span> ∈ <span class="token operator">&lt;</span>énumérable<span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>condition logique<span class="token operator">></span><span class="token punctuation">]</span></code></pre>
+</div>
+</div>
+<p>Par exemples :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span>   <span class="token comment"># [2, 4, 6, 8, 10]</span>
+<span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> <span class="token operator">|</span> <span class="token variable parameter">x</span> ∈ <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span> </code></pre>
+<p>Ou, avec la notation mathématique :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token variable parameter">k</span> <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">k</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token keyword">si</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token variable parameter">k</span> <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">]</span>   <span class="token comment"># [5, 9, 13, 17]</span>
+<span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token variable parameter">k</span> <span class="token operator">|</span> <span class="token variable parameter">k</span> ∈ <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token variable parameter">k</span> <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">]</span>  
+<span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token variable parameter">k</span> <span class="token operator">|</span>  <span class="token number">1</span> <span class="token operator">≤</span> <span class="token variable parameter">k</span> <span class="token operator">≤</span> <span class="token number">4</span><span class="token punctuation">]</span>  </code></pre>
+<p>Pour la notation mathématique soit déterministe, on suppose que la variable sera énumérer selon l'ordre sous-jacent de l'ensemble.</p>
+<h2>Variable muette</h2>
+<p>Si on n'utilise pas la variable de boucle on utilise une variable muette <code>_</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">_</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span></code></pre>
 
 
 </article>

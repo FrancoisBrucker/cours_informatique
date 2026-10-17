@@ -121,10 +121,10 @@ Programme :
 <p>En pseudo-code, cela va donner ça :</p>
 <div id="problème-recherche"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
-                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>     # entier recherché dans t
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span>     <span class="token comment"># entier recherché dans t</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>    <span class="token comment"># Vrai si x est dans t</span>
 
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
@@ -193,10 +193,10 @@ Programme :
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">nb</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span> <span class="token type class-name">int</span></span>
     <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token number">0</span>
 
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span>
@@ -229,17 +229,17 @@ Programme :
                      <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
                     <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">t</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <p>On peut utiliser le pseudo code de nom <em>recherche</em> dans d'autres pseudo-code comme une fonction. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">t</span></span> <span class="token operator">←</span> <span class="token type class-name">[]int</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">t</span></span> <span class="token operator">←</span> <span class="token type class-name">[]int</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 <span class="token variable parameter">t</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
 
-<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">trouve</span> <span class="token type class-name">bool</span></span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">trouve</span> <span class="token type class-name">bool</span></span>
 <span class="token variable parameter">trouve</span> <span class="token operator">←</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">t</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 <span class="token keyword">affiche</span> à l'écran <span class="token variable parameter">trouve</span></code></pre>
 <p>Est un pseudo-code valide puisque <code class="language-">recherche</code> est bien défini et utilisé correctement (le type de ses paramètres est correct).</p>
@@ -268,7 +268,7 @@ Programme :
                    <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
                   <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">t</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
@@ -287,13 +287,13 @@ Programme :
 <p>Que va afficher l'exécution de l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">affiche_double</span><span class="token punctuation">(</span><span class="token parameter variable">e</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">e</span></span>
 <span class="highlight-line">    <span class="token keyword">affiche</span> <span class="token variable parameter">x</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">calculatrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">←</span> demande un <span class="token builtin">entier</span> à l'utilisateur</span>
 <span class="highlight-line">    affiche_double<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">)</span></span>
@@ -342,7 +342,7 @@ Programme :
 
 <span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">tableau</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>
     <span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 
     <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -409,7 +409,7 @@ Programme :
 </div>
 </div>
 <p>Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token punctuation">(</span><span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">bool</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token punctuation">(</span><span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">bool</span>
 
 <span class="token variable parameter">f</span> <span class="token operator">←</span> recherche
 <span class="token keyword">affiche</span> <span class="token variable parameter">f</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
@@ -435,7 +435,7 @@ Programme :
 <p>Par exemple l'algorithme suivant est une implémentation récursive de l'algorithme <code class="language-">recherche</code> :</p>
 <p><span id="algorithme-recherche-rec"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
-                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>     # entier recherché dans t
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>     <span class="token comment"># entier recherché dans t</span>
                     <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
 
     <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>

@@ -1723,6 +1723,12 @@ code .highlight-line:before {
   color: #549441;
 }
 
+/* mot-clé ref du pseudocode (pink de latte) */
+
+.token.ref {
+  color: #ea76cb;
+}
+
 /* variables et paramètres du pseudocode (variable a la couleur du texte dans latte,
    et sapphire se confond avec les opérateurs en sky) */
 

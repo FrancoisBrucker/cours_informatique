@@ -207,7 +207,7 @@ dans la partie 4 :
 <p>Par exemple l'algorithme suivant :</p>
 <p><span id="algorithme-pgcd"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
-    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a'</span><span class="token punctuation">,</span> <span class="token variable parameter">b'</span> <span class="token type class-name">int</span></span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a'</span><span class="token punctuation">,</span> <span class="token variable parameter">b'</span> <span class="token type class-name">int</span></span>
     <span class="token keyword">tant que</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token variable parameter">a'</span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
         <span class="token variable parameter">b'</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
@@ -584,8 +584,17 @@ puis résolutions de pbs.</p>
 TBD voir si les parties 2 et 3 voient toutes ces structures de <a href="https://www.youtube.com/watch?v=6fnmXX8RK0s" class="externe">https://www.youtube.com/watch?v=6fnmXX8RK0s</a> y sont.</p>
 </blockquote>
 <blockquote>
-<p>TBD ICI parler pointeur. Faire commencer la partie B.</p>
+<p>TBD plan :</p>
+<ol>
+<li>structure de données arborées</li>
+<li>pointeurs pour gérer la mémoire</li>
+<li>problèmes
+TBD ICI parler pointeur. Faire commencer la partie B.</li>
+</ol>
 </blockquote>
+<!-- Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
+
+Mais cette rapidité interne vient avec une complexité supplémentaire : la nécessité d'avoir un nouveau type d'objet appelé pointeur (qui correspond à une adresse en mémoire) mais que nous n'aborderons que bien plus tard. -->
 <h2><span id="problèmes"></span><span id="partie-4"></span>Partie IV : problèmes</h2>
 <p>On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.</p>
 <p>On a vu au début de ce cours que certains problèmes <a href="bases-th%C3%A9oriques/calculabilit%C3%A9">ne pouvaient pas être résolu par un algorithme</a> (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si <a href="complexit%C3%A9-calculs/importance">sa complexité est exponentielle</a> le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.</p>
