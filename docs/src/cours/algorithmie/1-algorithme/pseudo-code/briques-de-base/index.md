@@ -610,13 +610,25 @@ Le ploc précédent est exécuté tant que la condition logique est vraie.
 Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :
 
 ```pseudocode
-pour chaque x de <objet pouvant être énuméré>:
+pour chaque <variable> de <objet pouvant être énuméré>:
     instruction 1
     ...
     instruction n
 ```
 
-On exécutera alors le bloc autant de fois qu'il y a d'éléments dans l'`<objet pouvant être énuméré> `{.language-} et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément de l'objet. 
+On exécutera alors le bloc autant de fois qu'il y a d'éléments dans l'`<objet pouvant être énuméré> `{.language-} et à chaque itération du bloc, la variable (de type de celui des objets stockés dans le tableau) vaudra un autre élément de l'objet. 
+
+Par exemple : 
+
+```pseudocode
+pour chaque x de [1 .. 10]:
+    affiche x
+```
+
+
+{% attention %}
+Si la variable de l'itération n'est pas déclarée avant la boucle, elle sera déclarée et  utilisable que pendant l'exécution de la boucle.
+{% endattention %}
 
 Typiquement l'`<objet pouvant être énuméré> `{.language-} est un tableau ou une chaîne de caractères que l'on parcours par ordre d'indice croissant. 
 
