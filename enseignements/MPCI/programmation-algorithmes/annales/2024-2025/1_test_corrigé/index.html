@@ -180,8 +180,8 @@
 <h3>Question 2</h3>
 <p>L'algorithme est presque identique à somme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">produit</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span>
-    <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token number">0</span>
-    <span class="token variable parameter">j</span> <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">j</span></span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≠</span> <span class="token variable parameter">b</span><span class="token punctuation">:</span>
         <span class="token variable parameter">i</span> <span class="token operator">←</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span>
         <span class="token variable parameter">j</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span><span class="token variable parameter">j</span><span class="token punctuation">,</span> <span class="token variable parameter">a</span><span class="token punctuation">)</span>
@@ -202,7 +202,7 @@
     <span class="token keyword">si</span> <span class="token variable parameter">a</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
 
-    <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token variable parameter">a</span><span class="token punctuation">:</span>
         <span class="token variable parameter">i</span> <span class="token operator">←</span> succ<span class="token punctuation">(</span><span class="token variable parameter">i</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">i</span>

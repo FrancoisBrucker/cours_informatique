@@ -128,7 +128,7 @@
 </code></pre>
 <p>Définit <strong><em>une structure</em></strong> de nom <code class="language-">Nom_structure</code> ayant deux attributs nommés <code class="language-">v1</code> (de type <code class="language-">type1</code>) et <code class="language-">v2</code> (de type <code class="language-">type2</code>).</p>
 <p>On crée un objet de la structure en affectant toutes ses variables :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> Nom_structure
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">Nom_structure</span></span>
 <span class="token variable parameter">x</span> <span class="token operator">←</span> Nom_structure<span class="token punctuation">{</span>v1<span class="token punctuation">:</span> o1<span class="token punctuation">,</span> <span class="token variable parameter">v2</span><span class="token punctuation">:</span> o2<span class="token punctuation">}</span></code></pre>
 <p>On accède à un attribut via la <strong><em>notation pointée</em></strong> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">.</span>v1 <span class="token operator">←</span> o'</code></pre>
@@ -140,7 +140,7 @@
     <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">réel</span>
     <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span></code></pre>
 <p>Que l'on crée en affectant tous ses attributs :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> Point
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">x</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span><span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token number">3.1</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span><span class="token number">0.0</span><span class="token punctuation">}</span></code></pre>
 <p>Par rapport au tuple, les attributs sont des variables et possèdent ainsi des noms, ce qui rend l'accès aux attributs bien plus simple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">affiche_point</span><span class="token punctuation">(</span><span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">Point</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
@@ -170,10 +170,10 @@
     <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span>
 </code></pre>
 <p>Ce qui nous permettra d'écrire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">p</span> <span class="token operator">:=</span> Point
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">p</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
 <p>Qui correspond au code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">p</span> <span class="token operator">:=</span> Point
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">p</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span><span class="token number">0.0</span><span class="token punctuation">}</span></code></pre>
 <h3>Constructeur</h3>
 <p>On utilisera tout au long de ce cours le processus de construction d'objets suivant :</p>
@@ -205,10 +205,10 @@
     <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span>
 </code></pre>
 <p>Qui nous permet d'écrire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">p</span> <span class="token operator">:=</span> Point 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">p</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">3.1</span><span class="token punctuation">}</span></code></pre>
 <p>Le code précédent affectera bien 6.2 à <code class="language-">p.y</code>. Notez que l'on peut aussi écrire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">p</span> <span class="token operator">:=</span> Point 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">p</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">3.1</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span></code></pre>
 <p>Comme l'attribut <code>y</code> est affecté à la construction, l'initiation par défaut de <code>y</code> n'est pas utilisée. Enfin, comme <code>x</code> n'a pas de valeur par défaut, il est indispensable de l'initialiser à la construction.</p>
 <h2>Méthodes</h2>
@@ -236,8 +236,8 @@
 <span class="highlight-line"></span></code></pre>
 <p>Et utilisons là :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token punctuation">(</span><span class="token variable parameter">p1</span> <span class="token operator">:=</span> Point<span class="token punctuation">)</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
-<span class="token punctuation">(</span><span class="token variable parameter">p2</span> <span class="token operator">:=</span> Point<span class="token punctuation">)</span> <span class="token operator">←</span> Point <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">}</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p1</span></span> <span class="token operator">←</span> Point<span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">p2</span></span> <span class="token operator">←</span> Point <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">}</span>
 
 <span class="token keyword">affiche</span> <span class="token variable parameter">p1</span><span class="token punctuation">.</span>x <span class="token keyword">et</span> <span class="token variable parameter">p1</span><span class="token punctuation">.</span><span class="token variable parameter">y</span>  <span class="token comment"># affiche 1 et 0</span>
 <span class="token variable parameter">p1</span><span class="token punctuation">.</span>addition<span class="token punctuation">(</span><span class="token variable parameter">p2</span><span class="token punctuation">)</span>

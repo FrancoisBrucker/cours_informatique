@@ -151,7 +151,7 @@
 <h3>Algorithme de transmission</h3>
 <p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">r</span> <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span> <span class="token variable parameter">y</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">y</span> est impair<span class="token punctuation">:</span>
             <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token variable parameter">r</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> mod p     <span class="token comment"># MULTIPLY</span>
@@ -180,7 +180,7 @@
 </div>
 <p>Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">log</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">g</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">r</span> <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token number">0</span> à p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">r</span> <span class="token operator">==</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token variable parameter">i</span>
@@ -203,8 +203,8 @@
 </ol>
 <p>Ce qui donne :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">steps</span><span class="token punctuation">(</span><span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">g</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">d</span> <span class="token operator">:=</span> Dict<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token variable parameter">c</span> <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">d</span></span> <span class="token operator">←</span> Dict<span class="token operator">&lt;</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">c</span></span> <span class="token operator">←</span> <span class="token number">1</span>
     
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token number">0</span> à p<span class="token operator">/</span>m<span class="token punctuation">:</span>       <span class="token comment"># baby step</span>
         <span class="token variable parameter">d</span><span class="token punctuation">[</span><span class="token variable parameter">c</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable parameter">i</span>
@@ -304,7 +304,7 @@
 <h3><span id="side-channel-attack"></span>Side channel attack</h3>
 <p>L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe <a href="/cours_informatique/cours/misc/nombres/#exponentiation">MULTIPLY and SQUARE</a>.</p>
 <pre><code>algorithme expo(x: []entier, y: []entier) → []entier:
-  r := []entier
+  ref r []int
   r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:

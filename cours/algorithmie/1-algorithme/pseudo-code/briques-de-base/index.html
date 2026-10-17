@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/briques-de-base/">Briques de base</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/briques-de-base/">Briques de base</a>
 
 </div>
 </div>
@@ -96,7 +96,39 @@
     
   
 
-  <p>Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :</p>
+  <!-- 
+> TBD ici `ref x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
+> TBD tout est ue référence vers un objet en mémoire
+
+Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.
+
+
+Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
+
+Une variable vaut None lorsqu'elle est crée.
+Puis affectée à l'adresse d'un objet en mémoire explicitement. 
+
+- Il ne faut pas utiliser des variables non initialisées
+- None est réservé aux variables non initialisées (?)
+- un tableau est un objet composé de variables de même type.
+
+- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique. 
+
+
+
+- int et str pas de taille finies
+- dire mémoire = tableau avec indice
+- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
+- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
+- float est aussi fini : approximation d'un réel.
+- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
+- un tableau est un objet qui contient des variables :
+  - déclaré vaut None
+  - crée chaque case vaut None
+- toute variable déclarée doit être affectée.
+
+-->
+<p>Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :</p>
 <ul>
 <li>de manipuler des objets (création, affectation ou lecture)</li>
 <li>de contrôler le flux d'instructions (test et boucles).</li>
@@ -109,14 +141,14 @@
 <p>Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici <em>&quot;mon&quot;</em> pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.</p>
 </div>
 </div>
-<p>Nous allons monter ici une version de pseudo-code sans accès direct à la mémoire (<em>ie.</em> sans pointeur). Ce modèle est tout à fait fonctionnel et est utilisé dans les langages de programmation comme python par exemple. Nous ajouterons l'accès direct à la mémoire (bien) plus tard dans ce cours. Ce modèle est plus simple à comprendre et à implémenter que le modèle avec pointeur et ne change rien algorithmiquement. Il va cependant nécessiter des opérations élémentaires supplémentaires (on appelle ceci des <em>overheads</em>) pour trouver la valeur de la variable en mémoire par rapport à l'utilisation directe de pointeurs.</p>
+<p>Nous allons montrer ici une version de pseudo-code sans accès direct à la mémoire (<em>ie.</em> sans pointeur). Ce modèle est tout à fait fonctionnel et est utilisé dans les langages de programmation comme python ou javascript par exemple. Nous ajouterons l'accès direct à la mémoire (bien) plus tard dans ce cours. Ce modèle est plus simple à comprendre et à implémenter que le modèle avec pointeur et ne change rien algorithmiquement. Il va cependant nécessiter des opérations élémentaires supplémentaires (on appelle ceci des <em>overheads</em>) pour trouver la valeur de la variable en mémoire par rapport à l'utilisation directe de pointeurs.</p>
 <h2>Commentaires</h2>
 <p>Comme en python, on considérera que tout ce qui suit le caractère <code class="language-">#</code> est considéré comme un commentaire dont le but est d'éclairer le lecteur.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token comment"># un commentaire</span></code></pre>
 <h2>Objets et opérations</h2>
 <p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
 <h3>Objets</h3>
-<p>Les objets sont ce que l'on manipule en algorithmie. On a vu qu'a priori on peut n'utiliser que des entiers (ou de façon équivalente des suites de 0 et de 1), mais cela nuirait grandement à la lisibilité. En pseudo code on se permet d'utiliser d'autres formes d'objets appartenant à 5 types fondamentaux.</p>
+<p>Les objets sont ce que l'on manipule en algorithmie. <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#manipuler-01">On a vu</a> qu'a priori on peut n'utiliser que des suites finies de <code>0</code> et de <code>1</code> (ou de façon équivalente des entiers), mais cela nuirait grandement à la lisibilité. En pseudo code on se permet d'utiliser d'autres formes d'objets appartenant à 5 types fondamentaux.</p>
 <h4><span id="objets-basiques"></span> Objets basiques</h4>
 <p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et correspondent aux cinq <strong><em>types</em></strong> suivant</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -125,20 +157,21 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>objets basiques</em></strong> peut être d'un des cinq <strong><em>types</em></strong> suivant :
+<p>Un <strong><em>objet basique</em></strong> peut être d'un des six <strong><em>types</em></strong> suivant :
 :</p>
 <ul>
-<li>le type <code class="language-">booléen</code> qui contient deux objets : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
+<li>le type <code class="language-">bool</code> (booléen) qui contient deux objets : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
 <li>le type <code class="language-">bit</code> qui contient les 2 entiers : <code class="language-">0</code> et <code class="language-">1</code></li>
-<li>le type <code class="language-">entier</code> qui contient tous les entiers relatifs</li>
-<li>le type <code class="language-">réel</code> qui contient un ensemble dénombrable d'approximations de réels (un nombre fini de décimales)</li>
-<li>le type <code class="language-">caractère</code> qui contient l'ensemble des glyphes UNICODE : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
+<li>le type <code class="language-">int</code> (entier) qui contient tous les entiers relatifs</li>
+<li>le type <code class="language-">float</code> (réel) qui contient un ensemble dénombrable d'approximations de réels (un nombre fini de décimales)</li>
+<li>le type <code class="language-">char</code> (caractère) qui contient l'ensemble des glyphes UNICODE : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
+<li>le type <code class="language-">str</code> (chaîne de caractères) qui contient l'<a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#d%C3%A9finition-mot">ensemble des mots</a> dont l'alphabet est l'ensemble des caractères.</li>
 </ul>
 </div>
 </div>
 <p>Un type peut être vu comme un ensemble d'objets : le type entier contient tous les entiers possibles.</p>
 <h4>Le vide</h4>
-<p>En algorithmie on a également coutume de se doter d'un élément vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui peut être à la fois considéré comme un type ou un objet :</p>
+<p>En algorithmie on a également coutume de se doter d'un élément vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui sera être à la fois considéré comme un type ou un objet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -147,47 +180,48 @@
 <div class="pl-8 mr-8">
 <ul>
 <li><strong>le type vide</strong> <code class="language-">∅</code> ne contient aucun objet. On l'utilise pour des fonctions ne rendant aucun objet par exemple</li>
-<li><strong>l'objet vide</strong> <code class="language-">∅</code> est de tous les types (le <code class="language-">∅</code> entier, bit, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.</li>
+<li><strong>l'objet vide</strong> <code class="language-">∅</code> est de tous les types (le <code class="language-">∅</code> <code class="language-">int</code>, <code class="language-">bit</code>, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.</li>
 </ul>
 </div>
 </div>
-<h4>Autres types</h4>
-<p>Tous les autres types d'objets que l'on peut imaginer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est un tableau de caractères, etc).</p>
 <h4>Taille et stockage des objets</h4>
-<p>Tous les objets basiques sont considérés de taille fixe. Classiquement :</p>
+<p>La plupart des objets basiques sont de taille fixe :</p>
 <ul>
-<li>un booléen à une taille de 1bit</li>
-<li>un caractère à une taille de 32bit si on utilise <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">les caractères Unicode</a></li>
+<li>un booléen à une taille de 1bit (<code>0</code> pour faux, <code>1</code> pour vrai)</li>
+<li>un caractère à une taille de 32bit puisqu'on utilise <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">les caractères Unicode</a></li>
 <li>un réel à une taille 64bit si on utilise <a href="https://fr.wikipedia.org/wiki/IEEE_754" class="externe">la norme IEEE 754 double précision</a></li>
-<li>un entier à une taille de 64bit</li>
 </ul>
-<p>Se restreindre aux entiers entre $-2^{63}$ à $2^{63}$ n'est pas contraignant en pratique et c'est d'ailleurs ce que beaucoup de langages de programmation font (même souvent ils sont codés sur 32b). Les languages de programmation comme python pour lesquels un entier n'est pas borné considèrent en interne qu'un entier est en fait une suite d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur.</p>
+<p>D'autres n'ont pas de limite fixée :</p>
+<ul>
+<li>les entiers</li>
+<li>les chaînes de caractères</li>
+</ul>
+<p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme mais que cela n'interférera pas avec son exécution (on ne créera par exemple pas d'entiers trop grands par exemple).</p>
+<p>On considérera toujours que l'on possède assez de mémoire pour pouvoir exécuter nos programmes.</p>
 </div>
 </div>
-<p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Implémentation en python</strong></p>
+<p><strong>Implémentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En python, les objets sont stockés dans une partie de la mémoire nommée <strong>tas</strong> (le tas est un tableau où chaque case contient 1 byte = 8 bit).</p>
+<p>En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée <strong>tas</strong>. Chaque case du tas peut contenir <a href="https://fr.wikipedia.org/wiki/Byte">1 byte</a> qui correspond à 8 bits.</p>
 <p><img src="tas.png" alt="tas"></p>
-<p>Les objets sont stockées dans le tas. Notez que le tas peut contenir des &quot;trous&quot;, c'est à dire des endroits sans objets.</p>
+<p>Notez que le tas peut contenir des &quot;trous&quot;, c'est à dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.</p>
 </div>
 </div>
 <h3><span id="opérations"></span> Opérations</h3>
 <p>Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :</p>
 <ul>
-<li><strong><em>créer des objets</em></strong> : le caractère &quot;Ç&quot;, l'entier <code>42</code>, etc...</li>
+<li><strong><em>créer des objets</em></strong> : le caractère &quot;Ç&quot;, l'entier <code class="language-">42</code>, etc...</li>
 <li><strong><em>opérer sur des objets</em></strong> : rendre la somme de deux entiers, le résultat d'une formule logique, etc</li>
 <li><strong><em>afficher un objet</em></strong>. On suppose que l'on possède une opération unaire spéciale nommée <code class="language-">affiche</code> qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple <code class="language-">affiche 42</code> va afficher l'objet entier valant 42 à l'écran.</li>
 </ul>
@@ -196,9 +230,8 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token number">42</span></code></pre>
 <p>Crée un objet entier de valeur <code>42</code>.</p>
 <p>On peut aussi demander à l'utilisateur de créer un objet d'un type donné (on suppose que l'utilisateur de ne se trompe pas) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">donne</span> <span class="token builtin">entier</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">donne</span> <span class="token builtin">int</span></code></pre>
 <h4>Opérations</h4>
-<p>De façon formelle :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -208,13 +241,13 @@
 <p>une <strong><em>opération</em></strong> est une fonction dont l'espace de départ est un produit cartésien de types et l'espace d'arrivée un type donné. Elle prend en paramètre des objets (de l'espace de départ) et produit un objet du type de l'espace d'arrivée.</p>
 </div>
 </div>
-<p>Les opérations sont le second moyen de créer des objets. Par exemple le booléen Vrai est créé comme résultat de l'opération <code>40 &gt; 2</code>. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :</p>
+<p>Les opérations correspondant au second moyen de créer des objets. Par exemple le booléen Vrai est créé comme résultat de l'opération <code class="language-">40 &gt; 2</code>. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :</p>
 <ul>
 <li>pour les entiers et les réels :
 <ul>
 <li>arithmétique : addition (<code class="language-">x + y</code>), soustraction (<code class="language-">x - y</code>), multiplication (<code class="language-">x * y</code>), division (<code class="language-">x / y</code>)</li>
 <li>opérations usuelles comme prendre la valeur entière, la valeur absolue, ...</li>
-<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">mod</code> ou <code class="language-">%</code>)</li>
+<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">mod</code> ou <code class="language-">%</code>) qui correspond au reste de la division entière</li>
 <li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
 <li>comparaisons : maximum (<code class="language-">max(x, y)</code>), minimum (<code class="language-">min(x, y)</code>)</li>
 </ul>
@@ -226,7 +259,7 @@
 </li>
 <li>opérations sur les bits et les booléens :
 <ul>
-<li>&quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$),</li>
+<li>&quot;négation logique&quot; (non, <code class="language-">NON</code>, <code class="language-">NOT</code>, $\neg$),</li>
 <li>&quot;et logique&quot; (et, <code class="language-">ET</code>, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code> ou $\land$), &quot;ou logique&quot; (ou, <code class="language-">OU</code>, <code class="language-">||</code>, <code class="language-">OR</code> ou $\lor$)</li>
 </ul>
 </li>
@@ -236,7 +269,7 @@
 <h4>Affichage</h4>
 <p>Enfin, la dernière opération autorisée pour les objet est l'affichage :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">affiche</span> <span class="token number">42</span></code></pre>
-<p>L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.</p>
+<p>L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ce qui est affiché sort du contrôle du pseudo-code : dans l'exemple précédent l'entier 42 est affiché, le pseudo-code n'en a pas conscience.</p>
 <p>On peux afficher plusieurs objets à la suite, par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">affiche</span> <span class="token number">40</span> <span class="token string">" plus "</span> <span class="token number">2</span> <span class="token string">" égal "</span> <span class="token number">42</span></code></pre>
 <p>Qui va afficher àla suite les cinq objets : <code class="language-">40</code>, <code class="language-">&quot; plus &quot;</code>, <code class="language-">2</code>, <code class="language-">&quot; égal &quot;</code> et <code class="language-">42</code></p>
@@ -248,26 +281,26 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Une <strong><em>variable</em></strong> est un nom auquel est associé un objet d'<strong>un type donné</strong>.</p>
+<p>Une <strong><em>variable</em></strong> est une référence contenant l'endroit en mémoire où est stocké un objet d'<strong>un type donné</strong>.</p>
 </div>
 </div>
-<p>Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont juste des <strong>liens vers</strong> les objets qu'elles référencent.</p>
+<p>Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont des <strong>liens vers</strong> les objets qu'elles référencent.</p>
 <p>En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment de où sont stockés les variables. On sait qu'elles existent elles sont rangés dans une partie de la mémoire différentes des objets (les variables ne sont pas considérés comme des objets).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Implémentation en python</strong></p>
+<p><strong>Implémentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En python, elles sont stockées dans une partie de la mémoire nommée <strong>pile</strong> et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}$byte = 18446744073709551616B = 16777216 terabyte).</p>
+<p>En python, elles sont stockées dans une partie de la mémoire nommée <strong>pile</strong> et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est de taille fixe, 64bit pour les ordinateurs actuels. Ceci limite la taille maximale de mémoire que peut posséder un ordinateur : $2^{64}$byte = 18446744073709551616B = 16777216 terabyte.</p>
 <p><img src="pile.png" alt="pile"></p>
-<p>Chaque variable a la même taille et sont stockées de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.</p>
+<p>Les variables sont stockées de façon consécutives dans la pile : toutes les variables sont crées au début de l'algorithme et sont toutes supprimées en même temps à la fin de l'algorithme.</p>
 </div>
 </div>
 <h3>Définition d'une variable</h3>
 <p>Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définie une variable de nom $a$ pouvant référencer un objet de type entier :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span></code></pre>
 <p>La ligne précédente crée une nouvelle variable nommée <code class="language-">a</code> pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que <code class="language-">a</code> contient une valeur entière.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -275,15 +308,15 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>On utilise l'<strong><em>opérateur de définition</em></strong> <code class="language-">:=</code> pour créer une variable. Le format général d'une définition de variable est :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">nom_de_la_variable</span> <span class="token operator">:=</span> type_des_objets_qu_elle_peut_référencer</code></pre>
+<p>On utilise l'<strong><em>opérateur de définition</em></strong> <code class="language-">ref</code> pour créer une variable. Le format général d'une définition de variable est :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">ref</span> <span class="token operator">&lt;</span>nom de la variable<span class="token operator">></span> <span class="token operator">&lt;</span>type des objets qu 'elle peut référencer<span class="token operator">></span></code></pre>
 </div>
 </div>
 <p>En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
 <h3>Affectation</h3>
-<p>Une fois la variable crée, on peut lui <strong><em>affecter</em></strong> des objets, par exemple pour notre variable <code class="language-">a</code> crée précédemment :</p>
+<p>Une fois la variable crée, sa valeur est <code class="language-">∅</code> : elle est non affectée. Pour l'utiliser dans un programme il faut lui <strong><em>affecter</em></strong> un objets, par exemple pour notre variable <code class="language-">a</code> crée précédemment :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">←</span> <span class="token number">3</span></code></pre>
-<p>La ligne précédente La ligne précédente associe ainsi à la variable <code class="language-">a</code> un objet entier valant 3.</p>
+<p>La ligne précédente associe à la variable <code class="language-">a</code> un objet entier valant 3.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -291,23 +324,26 @@
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
 <p>On utilise l'<strong><em>opérateur d'affectation</em></strong> <code class="language-">←</code> pour affecter une variable. Le format général de l'affectation d'un objet à une variable est :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_la_variable <span class="token operator">←</span> objets_qu_elle_va_référencer</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token operator">&lt;</span>nom de la variable<span class="token operator">></span> <span class="token operator">←</span> <span class="token operator">&lt;</span>objets qu'elle va référencer<span class="token operator">></span></code></pre>
 </div>
 </div>
-<p>On n'utilisera pas le signe <code>=</code> en pseudo-code pour l'affectation car cette opération n'est pas symétrique : à gauche une variable à droite un objet.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Comme le symbole <code class="language-">←</code> n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant le signe <code class="language-">=</code> pour une affectation.</p>
+<p>On n'utilisera pas le signe <code>=</code> en pseudo-code pour l'affectation car cette opération n'est pas symétrique : à gauche une variable à droite un objet, mais comme le symbole <code class="language-">←</code> n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant <code class="language-">=</code> pour une affectation.</p>
 </div>
 </div>
-<p>Une variable est une opération temporaire. On peut réaffecter une variable à un autre objet au cours du pseudo-code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token comment"># des instructions</span>
+<p>L'affectation d'une variable est une opération répétable, on peut la réaffecter à un autre objet au cours du pseudo-code :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span>
+
+<span class="token comment"># ... des instructions</span>
+
 <span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">4</span>
-<span class="token comment"># des instructions</span>
+
+<span class="token comment"># ... des instructions</span>
+
 <span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">2</span></code></pre>
 <p>Après la troisième ligne, le code précédent associe la variable <code class="language-">a</code> à un entier valant 4 et à un entier valant 2 après la cinquième ligne. Il est important de noter que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -317,12 +353,12 @@
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
 <p>Une variable n'est <strong>pas</strong> un objet, c'est un lien vers un objet qui pourra changer au cours du temps.</p>
-<p>Après la définition d'une variable, elle n'est encore liée à aucun objet, va valeur est <strong>indéfinie</strong>. Il ne faut pas l'utiliser avant sa première affectation.</p>
+<p>Après la définition d'une variable, elle n'est encore liée à aucun objet, va valeur est <strong>vide</strong>. Il ne faut pas l'utiliser avant sa première affectation.</p>
 </div>
 </div>
 <h3>Utilisation</h3>
 <p>Utiliser une variable consiste à la remplacer dans l'instruction par l'objet qu'elle référence. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span>
 <span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">42</span>
 <span class="token keyword">affiche</span> <span class="token variable parameter">a</span></code></pre>
 <p>Le code précédent affiche l'objet référencé par $a$. Il est équivalent à : <code class="language-">affiche 42</code>.</p>
@@ -336,9 +372,9 @@
 </div>
 </div>
 <p>Regardons ceci avec quelques exemples :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">42</span></span>
-<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">b</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">a</span></span></code></pre>
 <p>La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :</p>
 <ol>
@@ -346,9 +382,9 @@
 <li>on affecte cet objet à la variable à gauche de l'opérateur <code class="language-">←</code>, la variable <code class="language-">b</code></li>
 </ol>
 <p>Autre exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line"><span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token number">41</span></span>
-<span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">b</span> <span class="token type class-name">int</span></span></span>
 <span class="highlight-line"><span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">a</span> <span class="token operator">+</span> <span class="token number">1</span></span></code></pre>
 <p>La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :</p>
 <ol>
@@ -372,8 +408,8 @@
 </div>
 <h3>Type d'un objet</h3>
 <p>On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée <code class="language-">type</code> qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple <code class="language-">type 42</code> va rendre <code>entier</code>. Ceci permet d'écrire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">a</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">b</span> <span class="token operator">:=</span> type <span class="token variable parameter">a</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">b</span> <span class="token type class-name">type</span></span> <span class="token variable parameter">a</span></code></pre>
 <h2><span id="tableaux"></span>Tableaux</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -392,7 +428,7 @@
 </div>
 </div>
 <p>Créons un objet tableau pouvant contenir 13 variables de type entier :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">T</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span>  <span class="token comment"># création de la variable pouvant accueillir un tableau d'entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>  <span class="token comment"># création de la variable pouvant accueillir un tableau d'entier</span>
 
 <span class="token variable parameter">T</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">13</span><span class="token punctuation">}</span>  <span class="token comment"># création d'un tableau pouvant contenir 13 variables entières</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -402,7 +438,7 @@
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
 <ul>
-<li>le format général de la création d'une variable tableau : <code class="language-">nom_du_tableau := []type</code></li>
+<li>le format général de la création d'une variable tableau : <code class="language-">ref nom_du_tableau []type</code></li>
 <li>création d'un tableau de longueur $n$  : <code class="language-">[]type{longueur: n}</code></li>
 </ul>
 </div>
@@ -432,7 +468,7 @@
 </div>
 </div>
 <p>On utilise un tableau comme une collection de variables, par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">T</span> <span class="token operator">:=</span> <span class="token type class-name">[]entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>
 <span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 
 <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">41</span>
@@ -509,7 +545,7 @@
 </div>
 <p>La chaîne de caractère étant très utilisée, on se permettra les abus suivant :</p>
 <ul>
-<li>de définir une chaîne directement : <code class="language-">s := chaîne</code> en utilisant le type chaîne</li>
+<li>de définir une chaîne directement : <code class="language-">ref s str</code> en utilisant le type chaîne</li>
 <li>puis de l'affecter : <code class="language-">s ← &quot;Salut&quot;</code></li>
 <li>on définit l'opération de concaténation avec l'opérateur <code class="language-">+</code> : <code class="language-">&quot;comment vas-tu&quot; + &quot; yau d’poêle ?&quot;</code> vaut la chaîne de caractères <code class="language-">&quot;comment vas-tu yau d’poêle ?&quot;</code></li>
 </ul>
@@ -643,9 +679,9 @@
     instruction n</code></pre>
 <p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 <p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
 
-<span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
 <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token number">0</span>
 <span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
     <span class="token variable parameter">x</span> <span class="token operator">←</span> tableau<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
@@ -663,9 +699,9 @@
 <li><code class="language-">]a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b -1</code> (cet intervalle peut être vide).</li>
 </ul>
 <p>On peut alors écrire, par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
-    x <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> x</code></pre>
+    <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">x</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -693,8 +729,8 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
-<span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">str</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">i</span> <span class="token type class-name">int</span></span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     <span class="token variable parameter">x</span> <span class="token operator">←</span> tableau<span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
 
@@ -713,13 +749,13 @@
 <p>Ces instructions sont utiles si elles permettent de rendre le pseudo-code plus lisible, en séparant le cas général (la condition de la boucle) des cas particuliers (traités avec un <code class="language-">break</code> ou un <code class="language-">continue</code>)</p>
 <h5><code class="language-">break</code></h5>
 <p>Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">y</span> <span class="token type class-name">int</span></span>
 
 <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">d</span> <span class="token type class-name">int</span></span>
 <span class="token variable parameter">d</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">)</span>
 
 <span class="token keyword">tant que</span> <span class="token punctuation">(</span><span class="token variable parameter">d</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -728,16 +764,16 @@
         <span class="token keyword">break</span>
     <span class="token variable parameter">d</span> <span class="token operator">←</span> <span class="token variable parameter">d</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <p>Qui est équivalent au code suivant, moins lisible :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">y</span> <span class="token type class-name">int</span></span>
 
 <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">d</span> <span class="token type class-name">int</span></span>
 <span class="token variable parameter">d</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">)</span>
 
-<span class="token variable parameter">sortir</span> <span class="token operator">:=</span> boolean
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">sortir</span> <span class="token type class-name">bool</span></span>
 <span class="token variable parameter">sortir</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
 <span class="token keyword">tant que</span> <span class="token punctuation">(</span><span class="token variable parameter">sortir</span> <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">d</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -747,13 +783,13 @@
         <span class="token variable parameter">d</span> <span class="token operator">←</span> <span class="token variable parameter">d</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <h5><code class="language-">continue</code></h5>
 <p>Par exemple le code suivant qui va afficher tous les diviseurs de x qui ne sont pas des diviseurs de y :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">y</span> <span class="token type class-name">int</span></span>
 
 <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">d</span> <span class="token type class-name">int</span></span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">d</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">continue</span>
@@ -761,13 +797,13 @@
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token variable parameter">d</span> <span class="token string">" divise "</span> <span class="token variable parameter">x</span> <span class="token string">" mais pas "</span> <span class="token variable parameter">y</span></code></pre>
 <p>Qui est équivalent au code suivant, moins lisible :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">y</span> <span class="token type class-name">int</span></span>
 
 <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 <span class="token variable parameter">y</span> <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
 
-<span class="token variable parameter">d</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">d</span> <span class="token type class-name">int</span></span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">d</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">x</span> mod <span class="token variable parameter">d</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">y</span> mod <span class="token variable parameter">d</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token variable parameter">d</span> <span class="token string">" divise "</span> <span class="token variable parameter">x</span> <span class="token string">" mais pas "</span> <span class="token variable parameter">y</span></code></pre>
@@ -781,8 +817,8 @@
 </div>
 </div>
 <p>Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token variable parameter">x</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token variable parameter">y</span> <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
+<span class="token definition"><span class="token keyword">ref</span> <span class="token variable parameter">y</span> <span class="token type class-name">int</span></span>
 
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">y</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>

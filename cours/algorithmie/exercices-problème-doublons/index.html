@@ -149,8 +149,8 @@
 <li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
 </ul>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">doppelganger_naif</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token punctuation">(</span><span class="token variable parameter">i</span> <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token punctuation">(</span><span class="token variable parameter">j</span> <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span></code></pre>
 <h3>I.3 Complexité du problème</h3>
@@ -193,7 +193,7 @@
 <p><strong>I.4.1 (vérification)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Créez une fonction python vérifiera qu'un tableau passé en paramètre est une entrée valide du problème doppelganger Qui devra rendre une entrée du problème. Sa signature doit être :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_valide<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> bool</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_valide<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">bool</span></code></pre>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -205,7 +205,7 @@
 <p><strong>I.4.2 (entrée)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Créez une fonction python qui devra rendre une entrée du problème. Sa signature doit être :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_entrée<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]int</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_entrée<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]int</span></code></pre>
 <p>Vous ferez en sorte que la probabilité $\Pr(T[i] =  x)$ soit de $1/(n-1)$ quelques soient $x$ et $i$.</p>
 </div>
 </div>
@@ -226,7 +226,7 @@
 <p><strong>I.4.3 (sortie)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Implémentez l'algorithme du I.2 dans une fonction de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_naif<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> int</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_naif<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span></code></pre>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -275,7 +275,7 @@
 <p><strong>II.1.2</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Implémentez un algorithme du II.1.2 dans une fonction de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_tri<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> int</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_tri<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span></code></pre>
 <p>Qui commence par trier la liste $T$ passée en entrée puis utilise votre algorithme du II.1.1 pour résoudre le problème.</p>
 </div>
 </div>

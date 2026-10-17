@@ -128,544 +128,121 @@
 <p><a href="bases-th%C3%A9oriques">Bases théoriques</a></p>
 </div>
 </div>
-<!-- 
-### Pseudo code
-
-> TBD ici `ref x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
-> TBD tout est ue référence vers un objet en mémoire
-
-On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
-
-
+<h3>Pseudo code</h3>
+<p>On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-
-
-[Écrire les algorithmes en pseudo code](./pseudo-code)
-
-
+<p><a href="pseudo-code">Écrire les algorithmes en pseudo code</a></p>
 </div>
 </div>
-
-
-### Thèse de Church-Turing
-
-Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
-
-Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
-
-
+<h3>Thèse de Church-Turing</h3>
+<p>Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation" class="externe">un langage de programmation</a>.</p>
+<p>Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-
-**Proposition**
-
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-
-
-Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.
-
-
+<p>Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.</p>
 </div>
 </div>
-
-
-La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plusieurs dans la seconde partie de ce cours) tendent à penser que c'est vrai. On supposera donc vrai la proposition suivante, communément admise :
-
-
+<p>La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plusieurs dans la seconde partie de ce cours) tendent à penser que c'est vrai. On supposera donc vrai la proposition suivante, communément admise :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-
-**Thèse de Church-Turing**
-
+<p><strong>Thèse de Church-Turing</strong></p>
 </div><div class="pl-8 mr-8">
-
-
-Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.
-
-
+<p>Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.</p>
 </div>
 </div>
-
-
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-
-
-[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church){.externe}.
-
-
+<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church" class="externe">Thèse de Church-Turing</a>.</p>
 </div>
 </div>
-
-
-La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
-
-
+<p>La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-
-
-
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws){.externe} pour une introduction en douceur à la problématique.
-
-
-
+<p>Voir <a href="https://www.youtube.com/watch?v=Zci9m08HQws" class="externe">cette excellente vidéo d'Arte</a> pour une introduction en douceur à la problématique.</p>
 </div>
 </div>
-
-
-### Autres modèles
-
-Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres tous équivalent entre eux :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Autres modèles](./autres-modèles)
-
-
-</div>
-</div>
-
-
-## Problème algorithmique
-
-Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
-
-
+<h3>Autres modèles</h3>
+<p>Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra bien plus tard en est un exemple. Mais il y en a beaucoup, beaucoup d'autres tous équivalent entre eux. Nous ne rentrerons pas dans les détails ici, nous voulons juste montrer que l'on peut très bien écrire des algorithmes en utilisant autre chose que du pseudo-code. En revanche tous les modèles que nous verrons ne peuvent pas coder plus de choses, ils permettent juste d'écrire différemment les mêmes programmes.</p>
+<p>Les programmes écrit sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dit <strong><em>Turing complet</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-
-
-Un **_problème_** est un texte composé de 3 parties :
-
-- **Nom** : le nom du problème
-- **Entrées** : les paramètres dont on a besoin
-- **Sortie** : la solution recherchée
-
-
-
+<p>Un système est dit <a href="https://fr.wikipedia.org/wiki/Turing-complet" class="externe">Turing complet</a> si tout programme du système peut s'écrire en pseudo-code et réciproquement.</p>
 </div>
 </div>
-
-
-Par exemple :
-
-<span id="problème-max-tableau"></span>
-
-
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-<div class="pl-8 mb-2 mr-8">
-
-**Problème**
-
-</div><div class="pl-8 mr-8">
-
-
-
-- **Nom** : MAX
-- **Entrée** : un tableau d'entiers
-- **Sortie** : l'entier maximum du tableau
-
-
-
-</div>
-</div>
-
-
-Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov), ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11){.externe} ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4){.externe}), on se restreindra ici aux problèmes algorithmiques :
-
-<span id="problème-algorithmique"></span>
-
-
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-
-
-**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
-
-- prend en paramètres les entrées du problème
-- donne en sortie la solution recherchée.
-
-
-
-</div>
-</div>
-
-
-Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. 
-
-## Preuve d'algorithme
-
-
-<!-- TBD 
-
-expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence>{.externe} : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
-
--->
-<!-- Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice) on ne peut jamais être sur _a priori_ qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
-
-Par exemple l'algorithme suivant :
-
-<span id="algorithme-pgcd"></span>
-
-```pseudocode
-algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
-    a', b' := entier
-    tant que min(a, b) > 0:
-        a' ← max(a, b) - min(a, b)
-        b' ← min(a, b)
-        a, b ← a', b'
-    
-    rendre max(a, b)
-```
-
-On peut facilement prouver qu'il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide). Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
-
-Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Prouver des algorithmes](./prouver-un-algorithme)
-
-
-</div>
-</div>
-
-
-## <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
-
-Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites.
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif)
-
-
-</div>
-</div>
-
-
-Techniques à connaître pour la mise en oeuvre et l'utilisation d'algorithmes récursifs :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Projet : techniques de récursion](./projet-techniques-de-récursion)
-
-
-</div>
-</div>
-
-
-On vérifie qu'on sait faire :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[exercices non corrigés](./exercices-itératif-récursif)
-
-
-</div>
-</div>
-
-
-## Complexité d'un algorithme
-
-
+<p>Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.</p>
+<h3>Lambda calcul</h3>
+<p>Le lambda calcul est une autre forme d'écriture équivalent au pseudo-code. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus <em>matheuse</em> de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.</p>
+<p>On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le <a href="https://www.haskell.org/" class="externe">Haskell</a> (il en existe d'autres, comme le <a href="https://ocaml.org/" class="externe">Ocaml</a> par exemple (n')utilisé (qu')en prépa).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-
-
-[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12){.externe}
-
-
+<p>Pour apprendre Haskell et les langages fonctionnels :</p>
+<ol>
+<li><a href="https://github.com/system-f/fp-course" class="externe">https://github.com/system-f/fp-course</a></li>
+<li><a href="https://haskell.mooc.fi/" class="externe">https://haskell.mooc.fi/</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3" class="externe">https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3</a></li>
+<li><a href="https://www.youtube.com/watch?v=UhM_H3lFk_Q" class="externe">introduction au langage Haskell</a> et au <a href="https://www.youtube.com/watch?v=_n4LIt2WPzE" class="externe">lambda calcul</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV" class="externe">playlist</a></li>
+<li><a href="https://learnyouahaskell.com/" class="externe">https://learnyouahaskell.com/</a></li>
+</ol>
 </div>
 </div>
-
-
-Cette partie s'intéresse à la notion de complexités pour un algorithme.
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
+<p>Cette façon de programmer est très liée aux types et a permis quelques avancées dans la vérification automatique des types.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
-
-
-[Calcul de complexité d'un algorithme](./complexité-calculs)
-
-
+<ul>
+<li><a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/" class="externe">Catégories et types</a></li>
+<li><a href="https://ncatlab.org/nlab/show/computational+trilogy" class="externe">preuve de programme et types</a></li>
+</ul>
 </div>
 </div>
-
-
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif) :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
+<h3>Automates cellulaires</h3>
+<p>La plupart des <a href="https://fr.wikipedia.org/wiki/Automate_cellulaire" class="externe">automates cellulaires</a> sont Turing-complet. C'est le cas du célèbre <a href="https://fr.wikipedia.org/wiki/Jeu_de_la_vie" class="externe">jeu de la vie</a>, mais aussi d'automates bien plus simple :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
-
-
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite)
-
-
+<p>L'exemple de système Turing complet le plus simple que je connaisse est l'automate uni-dimensionnel respectant la <a href="https://en.wikipedia.org/wiki/Rule_110" class="externe">règle 110</a>.</p>
+<p>Jetez-y un coup d'œil, c'est assez bluffant.</p>
 </div>
 </div>
-
-
-On vérifie qu'on sait faire :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[exercices non corrigés](./exercices-calculs-compexités)
-
-
-</div>
-</div>
-
-
-## Complexité d'un problème
-
-Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Complexité d'un problème algorithmique](./complexité-problème)
-
-
-</div>
-</div>
-
-
-Projets :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-1. [Calculer $x^n$](./projet-exponentiation)
-2. [Les suites additives](./projet-suite-additive)
-
-
-</div>
-</div>
-
-
-On s'entraîne :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Projet : calculs de complexités de problèmes algorithmiques](./projet-complexité-problème)
-
-
-</div>
-</div>
-
-
-On vérifie qu'on sait faire avec un projet sans corrigé :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[exercices : problème du doublon](./exercices-problème-doublons)
-
-
-</div>
-</div>
-
-
-## Complexité en moyenne
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Complexité en moyenne](./complexité-moyenne)
-
-
-</div>
-</div>
- -->
-<!-- TBD
-
-- ajouter un projet de de code. avec tableaux numpy, split de valeurs, enlever le ramasse=miette etc pour bien calculer en moyenne en code
-
-- ajouter des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
-
-## Problème du tri
-
--->
-<!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
-<!-- 
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Problème du tri](./problème-tris)
-
-
-</div>
-</div>
-
-
-
-> TBD ici complexité amortie.
-
-## On s'entraîne
-
-### Complexité
-
-Comme exercice et pour référence, calcul de sommes classiques et utiles en complexité :
-
-<span id="sommes-classiques"></span>
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Calcul de sommes classiques](./projet-sommes-classiques/)
-
-
-</div>
-</div>
-
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Calcul d'équations classiques](./projet-équations-classiques/)
-
-
-</div>
-</div>
-
-
-### Résolution d'algorithmes classiques
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Algorithmes classiques](./projet-algorithmes-classiques)
-
-
-</div>
-</div>
-
-
-### On vérifie qu'on sait faire
-
-> TBD ajouter permutations ET MPCI 2025
- -->
+<h3>Langages exotiques</h3>
+<p>Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique" class="externe">langages de programmation exotiques</a>, qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instructions comme le célèbre <a href="https://www.google.com/search?q=brainfuck" class="externe">Brainfuck</a>, à être marrant comme le <a href="https://www.dangermouse.net/esoteric/piet.html" class="externe">Piet</a> dont le but est de créer des programmes sous la forme d'un tableau de <a href="https://fr.wikipedia.org/wiki/Piet_Mondrian" class="externe">Piet Mondrian</a> ou encore à faire des ponts entre disciplines comme le <a href="https://www.youtube.com/watch?v=GIPtnEIQCBM" class="externe">Fractran</a>.</p>
+<h3>Turing complet par inadvertence</h3>
+<p>Ne nombreuses applications ou jeux sont Turing-complet par inadvertence. Par exemple :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=5u6BN1p0Uo8" class="externe">Legend of Zelda: Tears of the Kingdom</a></li>
+<li><a href="https://www.youtube.com/watch?v=uNjxe8ShM-8" class="externe">Powerpoint</a></li>
+<li><a href="https://www.youtube.com/watch?v=NCC2Fd8qxv4" class="externe">Les trains de Factorio</a></li>
+</ul>
 
 
 </article>
