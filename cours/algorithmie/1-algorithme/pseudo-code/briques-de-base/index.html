@@ -662,11 +662,22 @@ Puis affectée à l'adresse d'un objet en mémoire explicitement.
 </div>
 <h4>Boucles <code class="language-">pour chaque</code></h4>
 <p>Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token operator">&lt;</span>objet pouvant être énuméré<span class="token operator">></span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token operator">&lt;</span><span class="token variable parameter">variable</span><span class="token operator">></span> <span class="token mot-boucle keyword">de</span></span> <span class="token operator">&lt;</span>objet pouvant être énuméré<span class="token operator">></span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction n</code></pre>
-<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans l'<code class="language-">&lt;objet pouvant être énuméré&gt; </code> et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> (de type de celui des objets stockés dans le tableau) vaudra un autre élément de l'objet.</p>
+<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans l'<code class="language-">&lt;objet pouvant être énuméré&gt; </code> et à chaque itération du bloc, la variable (de type de celui des objets stockés dans le tableau) vaudra un autre élément de l'objet.</p>
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">x</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si la variable de l'itération n'est pas déclarée avant la boucle, elle sera déclarée et  utilisable que pendant l'exécution de la boucle.</p>
+</div>
+</div>
 <p>Typiquement l'<code class="language-">&lt;objet pouvant être énuméré&gt; </code> est un tableau ou une chaîne de caractères que l'on parcours par ordre d'indice croissant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

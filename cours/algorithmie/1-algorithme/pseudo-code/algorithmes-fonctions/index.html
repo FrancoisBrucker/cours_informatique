@@ -104,7 +104,17 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>algorithme</em></strong> est une suite d'instructions de pseudo-code qui, a partir de paramètres d'entrées de type déterminé, rend une sortie de type déterminé.</p>
+<p>Un <strong><em>algorithme</em></strong> est une suite d'instructions de pseudo-code qui, a partir de paramètres d'entrées de type déterminé, rend une sortie de type déterminé. En pseudocode comme un bloc :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token operator">&lt;</span>nom<span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span>nom paramètre<span class="token operator">></span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> paramètre<span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> de sortie<span class="token operator">></span>
+    <span class="token comment"># ... instructions</span>
+
+    <span class="token keyword">rendre</span> <span class="token operator">&lt;</span>objet<span class="token operator">></span></code></pre>
+<p>Il est défini avec :</p>
+<ul>
+<li>son nom,</li>
+<li>ses paramètres (0, 1 ou plusieurs séparés par des virgules) et son type de retour</li>
+<li>la dernière instruction d'un algorithme est l'instruction <code class="language-">rendre &lt;objet&gt;</code></li>
+</ul>
 </div>
 </div>
 <p>Considérons par exemple la description de  l'algorithme de recherche d'un élément dans une liste :</p>
@@ -120,20 +130,19 @@ Programme :
     Sinon rendre "Faux"</code></pre>
 <p>En pseudo-code, cela va donner ça :</p>
 <div id="problème-recherche"></div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
-                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span>     <span class="token comment"># entier recherché dans t</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>    <span class="token comment"># Vrai si x est dans t</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span>      <span class="token comment"># entier recherché dans t</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>    <span class="token comment"># Vrai si x est dans t</span>
 
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-<p>Le programme est un bloc. La definition du bloc (jusqu'aux <code class="language-">:</code>) est constitué :</p>
+<p>La definition du bloc algorithme (jusqu'aux <code class="language-">:</code>) est constitué :</p>
 <ol>
 <li>du mot-clé <code class="language-">algorithme</code> qui détermine la nature du bloc</li>
-<li>suit le du nom du programme</li>
-<li>puis ses paramètres d'entrées entre parenthèses. Chaque paramètre est décrit par son nom suivit de son type</li>
+<li>du nom de l'algorithme : <code class="language-">recherche</code></li>
+<li>puis ses 3 paramètres d'entrées. Chaque paramètre est décrit par son nom suivit de son type.</li>
 <li>enfin, le type de sortie de l'algorithme qu'on fait précéder d'une flèche.</li>
 </ol>
 <p>Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un <code class="language-">#</code>.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doit suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrées.</p>
@@ -150,7 +159,7 @@ Programme :
 
     <span class="token keyword">rendre</span> <span class="token number">42</span>
     <span class="token keyword">rendre</span> <span class="token number">0</span>    <span class="token comment"># ne sera jamais exécuté</span></code></pre>
-<p>Ne cofondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :</p>
+<p>Ne confondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">réponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span> 
 
     <span class="token keyword">affiche</span> <span class="token number">42</span>
@@ -170,9 +179,7 @@ Programme :
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Adaptez le pseudo code de l'algorithme <code class="language-">recherche(T: []entier, x: entier) → booléen</code> précédent pour créer l'algorithme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-<p>Cet algorithme  rend le nombre de fois où <code class="language-">x</code> est présent dans <code class="language-">T</code></p>
+<p>Adaptez le pseudo code de l'algorithme <code class="language-">recherche(T: []entier, x: entier) → booléen</code> précédent pour créer l'algorithme qui rend le nombre d’occurrences d'une valeur dans un tableau d'entier.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -192,11 +199,10 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span> <span class="token type class-name">int</span></span>
-    <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token number">0</span>
+<p>L'algorithme rend le nombre de fois où <code class="language-">x</code> est présent dans <code class="language-">T</code></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span>
 
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span>
@@ -212,7 +218,7 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Une fonction est un programme. Elle a ainsi :</p>
+<p>Une <strong><em>fonction</em></strong> est un algorithme. Elle a ainsi :</p>
 <ul>
 <li>un nom</li>
 <li>des paramètres d'entrée</li>
@@ -220,27 +226,24 @@ Programme :
 <li>des instructions, appelées <strong><em>corps de la fonction</em></strong></li>
 </ul>
 <p>Une fois définie, on peut l'appeler comme une instruction (sa sortie est affectée à la variable <code class="language-">sortie</code> dans l'exemple ci-après) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> nom_fonction<span class="token punctuation">(</span>entrée_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> entrée_n<span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> <span class="token operator">&lt;</span>nom <span class="token builtin">fonction</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span>paramètre <span class="token number">1</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>paramètre n<span class="token operator">></span><span class="token punctuation">)</span></code></pre>
 </div>
 </div>
 <h3>Appels de fonctions</h3>
 <p>On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme de recherche :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
-                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span>
+                     <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">t</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <p>On peut utiliser le pseudo code de nom <em>recherche</em> dans d'autres pseudo-code comme une fonction. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">t</span></span> <span class="token operator">←</span> <span class="token type class-name">[]int</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
-<span class="token variable parameter">t</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">trouve</span></span> <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 
-<span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">trouve</span> <span class="token type class-name">bool</span></span>
-<span class="token variable parameter">trouve</span> <span class="token operator">←</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">t</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 <span class="token keyword">affiche</span> à l'écran <span class="token variable parameter">trouve</span></code></pre>
 <p>Est un pseudo-code valide puisque <code class="language-">recherche</code> est bien défini et utilisé correctement (le type de ses paramètres est correct).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -264,20 +267,15 @@ Programme :
 <p>Dans l'exemple précédent, la variable <code class="language-">e</code> définie dans l'algorithme <code class="language-">recherche</code> n'est pas visible depuis le pseudo-code. En revanche, l'objet booléen de retour est lui transmis au pseudo-code via l'instruction <code class="language-pseudocode">rendre</code>.</p>
 <h3>Pseudo-code avec fonctions</h3>
 <p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">,</span>
-                   <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>
-                  <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">e</span> <span class="token type class-name">int</span></span>
-    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">t</span><span class="token punctuation">:</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 
-<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">chaîne</span></span><span class="token punctuation">:</span>
-
-    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">t</span><span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">str</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token string">"Aspergez votre ordinateur d'eau bénite. Vite !"</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token string">"Tout va bien, le tableau n'est pas possédé. Ouf."</span></code></pre>
@@ -287,8 +285,7 @@ Programme :
 <p>Que va afficher l'exécution de l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">affiche_double</span><span class="token punctuation">(</span><span class="token parameter variable">e</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span></span>
-<span class="highlight-line">    <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">e</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">e</span></span>
 <span class="highlight-line">    <span class="token keyword">affiche</span> <span class="token variable parameter">x</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">calculatrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span></span>
@@ -336,14 +333,13 @@ Programme :
 </div>
 </div>
 <p>Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">modif</span><span class="token punctuation">(</span><span class="token parameter variable">U</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">modif</span><span class="token punctuation">(</span><span class="token parameter variable">U</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
 
     <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token variable parameter">U</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
 <span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">tableau</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
 
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span> <span class="token type class-name">[]int</span></span>
-    <span class="token variable parameter">T</span> <span class="token operator">←</span> <span class="token type class-name">[]entier</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span>
 
     <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
@@ -363,7 +359,7 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !</p>
+<p>Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableaux que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !</p>
 </div>
 </div>
 <h2><span id="type"></span>Signature d'un algorithme ou d'une fonction</h2>
@@ -381,9 +377,9 @@ Programme :
 <li>le type de sortie</li>
 </ul>
 <p>On le représente ainsi :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span>type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token operator">&lt;</span>nom de l'<span class="token builtin">algorithme</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">type</span> premier paramètre<span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> dernier paramètre<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> de sortie<span class="token operator">></span></code></pre>
 <p>Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span><span class="token variable parameter">nom_premier_paramètre</span><span class="token punctuation">:</span> type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token variable parameter">nom_premier_paramètre</span><span class="token punctuation">:</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token operator">&lt;</span>nom de l'<span class="token builtin">algorithme</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span>nom premier paramètre<span class="token operator">></span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> premier paramètre<span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>nom dernier paramètre<span class="token operator">></span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> dernier paramètre<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token operator">&lt;</span><span class="token keyword">type</span> de sortie<span class="token operator">></span></code></pre>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -397,17 +393,9 @@ Programme :
 </div>
 <p>Par exemple pour l'algorithme <code class="language-">recherche</code> :</p>
 <ul>
-<li>sa signature est <code class="language-">recherche([]entier, entier) → booléen</code></li>
-<li>son type est <code class="language-">([]entier, entier) → booléen</code></li>
+<li>sa signature est <code class="language-">recherche(T []int, x int) → bool</code> ou <code class="language-">recherche([]int, int) → bool</code></li>
+<li>son type est <code class="language-">([]int, int) → bool</code></li>
 </ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Lorsque le nom des paramètres est significatif, on les ajoutera à la signature. On écrira par exemple <code class="language-">division(dividende: réel, diviseur: réel) → réel</code> plutôt que <code class="language-">division(réel, réel) → réel</code> qui ne nous permet pas directement d'utiliser la fonction.</p>
-</div>
-</div>
 <p>Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token punctuation">(</span><span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">bool</span>
 
@@ -419,11 +407,11 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ne confondez pas <code class="language-">nom</code> qui est l'algorithme et <code class="language-">nom(a, b)</code> qui est le résultat de son exécution avec les paramètres <code class="language-">a</code> et <code class="language-">b</code>.</p>
+<p>Ne confondez pas <code class="language-">nom_algorithme</code> qui est l'algorithme et <code class="language-">nom_algorithme(a, b)</code> qui est le résultat de son exécution avec les paramètres <code class="language-">a</code> et <code class="language-">b</code>.</p>
 </div>
 </div>
 <h2>Récursivité</h2>
-<p>Le fait que les variables et les noms définies dans les fonctions restent dans le cadre de la fonction actuellement exécuté nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
+<p>Le fait que les variables et les noms définis dans les fonctions restent dans le cadre de la fonction actuellement exécutée nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
