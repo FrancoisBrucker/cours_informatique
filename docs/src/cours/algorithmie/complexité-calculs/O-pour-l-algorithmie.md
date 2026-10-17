@@ -54,7 +54,7 @@ L'exécution d'**un nombre constant de fois** un bloc d'instruction :
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant [l'exemple initial de calcul de complexité](../définitions) :
 
 ```pseudocode/
-age := entier
+ref age int
 age ← 16
 si ((age ≥ 12) et (age < 18)):
     personne ← "adolescent"

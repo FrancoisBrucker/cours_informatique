@@ -72,7 +72,7 @@ Ce permet d'écrire la version itérative par un simple jeu de réécriture :
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
-    (r := entier) ← x
+    ref r ← x
     tant que n > 1:
         r ← r * x
         n ← n - 1
@@ -134,8 +134,8 @@ On propose l'algorithme itératif suivant pour résoudre le problème :
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
-    (r := entier) ← x
-    (c := entier) ← n - 1
+    ref r ← x
+    ref c ← n - 1
 
     tant que c > 0:
         si c mod 2 == 1:

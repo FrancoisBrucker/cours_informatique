@@ -31,7 +31,7 @@ Chaque Liste chaînée contient :
 Par exemple une liste chaînée à 2 éléments :
 
 ```pseudocode
-(L := ListeChaînée<entier>) ← ListeChaînée<entier>{tête: 4}
+ref L ← ListeChaînée<int>{tête: 4}
 L.queue ← ListeChaînée<entier>{tête: 2}
 
 ```
@@ -49,7 +49,7 @@ Ajouter ou supprimer un élément en tête de liste se fait en $\mathcal{O}(1)$ 
 
 ```pseudocode
 méthode (l: ListeChaînée<T>) ajoute(valeur: T) → ListeChaînée<T>:
-    (V := ListeChaînée<T>) ← ListeChaînée<T>{tête: valeur}
+    ref V ← ListeChaînée<T>{tête: valeur}
     V.queue ← l
 
     rendre V
@@ -66,7 +66,7 @@ Concaténer une liste à une autre est de complexité $\mathcal{O}(n)$ où $n$ e
 ```pseudocode
 méthode (l: ListeChaînée<T>) concatène(l2: ListeChaînée<T>):
 
-    (V := ListeChaînée<T>) ← l
+    ref V ← l
     tant que V.queue ≠ ∅:
         V ← V.queue
     V.queue ← l2 

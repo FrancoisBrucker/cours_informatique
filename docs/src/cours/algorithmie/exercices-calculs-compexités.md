@@ -40,10 +40,10 @@ Le but de cette partie est d'estimer le nombre (en $\mathcal{O}$) de multiplicat
 
 ```pseudocode
 algorithme valeur_naif(P: []entier, x: réel) → réel:
-    (v := réel) ← 0
-    pour chaque (i := entier) de [0 .. P.longueur[:
-        m := P[i]
-        pour chaque (i := entier) de [0 .. i[:
+    ref v ← 0
+    pour chaque i de [0 .. P.longueur[:
+        ref m ← P[i]
+        pour chaque i de [0 .. i[:
             m ← m * x
         v ← v + m
     
@@ -69,9 +69,9 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 
 ```pseudocode
 algorithme valeur_itéré(P: []entier, x: réel) → réel:
-    (v := réel) ← P[0]
+    ref v ← P[0]
     xi ← x
-    pour chaque (i := entier) de [1 .. P.longueur[:
+    pour chaque i de [1 .. P.longueur[:
         v ← v + P[i] * xi
         xi ← xi * x
     
@@ -102,8 +102,8 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 
 ```pseudocode
 algorithme valeur_horner(P: []entier, x: entier) → entier:
-    i := P.longueur -1
-    (v := réel) ← P[i]
+    ref i ← P.longueur -1
+    ref v ← P[i]
     tant que i > 0:
         v ← v * x
         i ← i - 1
@@ -135,36 +135,36 @@ On considère le pseudo-code suivant :
 ```pseudocode
 fonction copie(T: []entier) → []entier:
 
-    T' := []entier{longueur: T.longueur}
+    ref T' ← []int{longueur: T.longueur}
     T' ← T[:]
 
     rendre T'
 
 
 fonction maximum(T: []entier) → entier:
-    m := 0
-    pour chaque (i := entier) de [0 .. T.longueur[:
+    ref m ← 0
+    pour chaque i de [0 .. T.longueur[:
         if T[m] < T[i]:
             m ← i
     rendre m
 
 
 fonction minimum(T):
-    m := 0
-    pour chaque (i := entier) de [0 .. T.longueur[:
+    ref m ← 0
+    pour chaque i de [0 .. T.longueur[:
         if T[m] > T[i]:
             m ← i
     rendre m
 
 
 algorithme recherche(T: []entier, k: entier) → entier:
-    max_value := T[maximum(T)]
-    min := 0
+    ref max_value ← T[maximum(T)]
+    ref min ← 0
 
-    T_copie := copie(T)
-    pour chaque (i := entier) de [0 .. k - 1[:
+    ref T_copie ← copie(T)
+    pour chaque i de [0 .. k - 1[:
         min ← minimum(T_copie)
-        T_copie[min] := max_value + 1
+        T_copie[min] ← max_value + 1
 
     rendre minimum(T_copie)
 ```

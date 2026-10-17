@@ -12,7 +12,7 @@ eleventyComputed:
 Les tuples permettent de créer des types composés. C'est un regroupement d'objets qu'on représente en algorithmie avec des parenthèses :
 
 ```pseudocode
-p := (entier, entier) # tuple de 2 entiers
+ref p (int, int) # tuple de 2 entiers
 p ← (34, 25)  
 ```
 
@@ -26,7 +26,7 @@ anniversaire ← (10, "janvier", 1938)
 On peut accéder à chaque élément du tuple comme un tableau :
 
 ```pseudocode
-(p := (entier, entier)) ← (34, 25)  # tuple de 2 entiers
+ref p ← (34, 25)  # tuple de 2 entiers
 affiche à l'écran p[0]  # va afficher 34
 affiche à l'écran p[1]  # va afficher 25
 ```
@@ -34,7 +34,7 @@ affiche à l'écran p[1]  # va afficher 25
 Enfin, un tuple peut bien sur être composé d'autres tuples :
 
 ```pseudocode
-ps := ((entier, entier), chaîne)  # tuple composé d'un tuple et d'une chaîne de caractères
+ref ps ((int, int), str)  # tuple composé d'un tuple et d'une chaîne de caractères
 ps ← ((0, 0), "origine") 
 affiche à l'écran p[0]  # va afficher (0, 0)
 affiche à l'écran p[1]  # va afficher 25
@@ -65,7 +65,7 @@ Ce n'est pas parce que l'on ne peut pas changer d'objet que l'objet lui même ne
 Par exemple :
 
 ```pseudocode
-p := ([]entier, entier)  # tuple composé d'un tuple et d'une chaîne de caractères
+ref p ([]int, int)  # tuple composé d'un tuple et d'une chaîne de caractères
 p ← ([0, 0], 2) 
 affiche à l'écran p[0]  # va afficher [0, 0]
 p[0][0] ← 12

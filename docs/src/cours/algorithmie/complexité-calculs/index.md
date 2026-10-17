@@ -39,7 +39,7 @@ On a considéré que cette instruction nécessitait 3 lectures de la variable `i
 Ou encore le code suivant :
 
 ```pseudocode
-pour chaque (i := entier) de [2 .. 9]:
+pour chaque i de [2 .. 9]:
   affiche i
 ```
 
@@ -57,14 +57,14 @@ Il aurait été tout aussi légitime de compter différemment, en créant tout l
 Reprenons l'exemple précédent :
 
 ```pseudocode
-pour chaque (i := entier) de [2 .. 9]:
+pour chaque i de [2 .. 9]:
   affiche i
 ```
 
 En remplaçant la boucle `pour chaque`{.language-} par une boucle `tant que`{.language-} pour expliciter le calcul, on obtient :
 
 ```pseudocode
-(i := entier) ← 2
+ref i ← 2
 tant que i ≤ 9:
   affiche i
   i ← i + 1

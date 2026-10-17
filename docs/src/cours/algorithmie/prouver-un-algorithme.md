@@ -89,7 +89,7 @@ algorithme factorielle(n: entier  # n ≥ 1
                       ) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
-    f := factorielle(n-1)  # récursion
+    ref f ← factorielle(n-1)  # récursion
     rendre n * f
 ```
 
@@ -120,8 +120,8 @@ Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarqu
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    (r := entier) ← 1  # initialisation
-    (i := entier) ← 1
+    ref r ← 1  # initialisation
+    ref i ← 1
     tant que i ≤ n:  # condition d'arrêt
         r ← r * i
         i ← i + 1
@@ -197,7 +197,7 @@ Considérons l'algorithme suivant, variation de la version itérative de factori
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:  # n ≥ 1
-    (produit := entier) ← 1
+    ref produit ← 1
     pour chaque i de [2 .. n]:
         produit ← produit * i
 
@@ -218,7 +218,7 @@ algorithme factorielle(n: entier
                       ) → entier:
     si n ≤ 1:
         rendre 1
-    f := factorielle(n-1)
+    ref f ← factorielle(n-1)
     rendre n * f
 ```
 
@@ -238,7 +238,7 @@ L'idée est de démontrer la finitude par récurrence sur $n$.
 
 1. **initialisation** de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.
 2. **hypothèse de récurrence** : pour tout entier plus petit que $n-1\geq 1$, l'algorithme va avoir un nombre fini de récursions.
-3. **pour $n$** : `factorielle(n)`{.language-} va exécuter la ligne 4 (`f := factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n)`{.language-} va également se terminer.
+3. **pour $n$** : `factorielle(n)`{.language-} va exécuter la ligne 4 (`ref f ← factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n)`{.language-} va également se terminer.
 
 La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :
 
@@ -268,8 +268,8 @@ Considérons l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    (r := entier) ← 1
-    (i := entier) ← 1
+    ref r ← 1
+    ref i ← 1
     tant que i ≤ n:
         r ← r * i
         i ← i + 1
@@ -286,8 +286,8 @@ Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il p
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    (r := entier) ← 1
-    (i := entier) ← 1
+    ref r ← 1
+    ref i ← 1
     tant que i ≤ n - 1:
         r ← r * i
         i ← i + 1
@@ -308,8 +308,8 @@ Refaisons la preuve précédente en utilisant un invariant de boucle pour montre
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    (r := entier) ← 1
-    (i := entier) ← 1
+    ref r ← 1
+    ref i ← 1
 
     tant que i ≤ n:
         r ← r * i
@@ -371,8 +371,8 @@ Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme 
 
 ```pseudocode
 algorithme factorielle_variante(n: entier):
-    (r := entier) ← 1
-    (i := entier) ← n
+    ref r ← 1
+    ref i ← n
     tant que i ≥ 1:
         r ← r * i
         i ← i - 1
@@ -454,7 +454,7 @@ On considère l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme maximum(t: []entier) → entier:
-    (m := entier) ← t[0]
+    ref m ← t[0]
     pour chaque x de t:
         si m < x:
             m ← x
@@ -494,8 +494,8 @@ Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers élém
 
 ```pseudocode
 algorithme maximum(t: []entier) → entier:
-    (m := entier) ← t[0]
-    x := entier
+    ref m ← t[0]
+    ref x int
     pour chaque i de [0 .. t.longueur[:
         x ← t[i]
         si m < x:
@@ -552,7 +552,7 @@ Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](..
 
 ```pseudocode/
 algorithme nombre(T: []entier, x: entier) → entier:
-    (nb := entier) ← 0
+    ref nb ← 0
     pour chaque e de T:
         si e == x:
             nb ← nb + 1
@@ -599,8 +599,8 @@ Vous trouverez ci-après une version itérative de l'algorithme de la division e
 ```pseudocode
 algorithme division_euclidienne(a: entier,
                                 b: entier) → []entier:
-    (r := entier) ← a
-    (q := entier) ← 0
+    ref r ← a
+    ref q ← 0
     
     tant que r ≥ b:
         r ← r - b

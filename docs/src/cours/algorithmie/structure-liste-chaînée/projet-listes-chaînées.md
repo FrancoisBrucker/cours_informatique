@@ -26,7 +26,7 @@ algorithme retourne(L: ListeChaînée<T>) → ListeChaînée<T>:
     si L == ∅:
         rendre ∅
     
-    (L2 := ListeChaînée<T>) ← retourne(L.queue)
+    ref L2 ← retourne(L.queue)
     L.queue ← ∅
     L2.concatène(L)
     rendre L2

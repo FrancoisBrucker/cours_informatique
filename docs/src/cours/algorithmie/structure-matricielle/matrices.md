@@ -26,7 +26,7 @@ Ainsi une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constituée d'
 Une matrice d'entiers en deux dimensions sera ainsi un tableau de tableaux, donc de type :
 
 ```pseudocode
-M := [][]entier
+ref M [][]int
 ```
 
 ### Création
@@ -35,10 +35,10 @@ La création d'une matrice $M$ se fait ligne à ligne :
 
 ```pseudocode
 algorithme creation_matrice(n: entier, p:entier) → [][]entier:
-    M := [][]entier
+    ref M [][]int
     M ← [][]entier{longueur: n}
 
-    pour chaque (i := entier) de [0 .. n[:
+    pour chaque i de [0 .. n[:
         M[i] ← []entier{longueur: p}
     rendre M
 ```
@@ -49,9 +49,9 @@ Comme lors de la création de tableaux les valeurs sont indéterminées, on a co
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [][]entier:
     M ← un nouveau tableau de l tableaux d'entiers
 
-    pour chaque (i := entier) de [0 .. nb_lignes[:
+    pour chaque i de [0 .. nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
-        pour chaque (j := entier) de [0 .. nb_colonnes[:
+        pour chaque j de [0 .. nb_colonnes[:
             L[j] ← valeur
         M[i] ← L
     rendre M
@@ -92,8 +92,8 @@ M[a:b][c:d] ← 0
 Correspondra aux operations suivantes :
 
 ```pseudocode
-pour chaque (i := entier) de [a .. b[:
-    pour chaque (j := entier) de [c .. d[:
+pour chaque i de [a .. b[:
+    pour chaque j de [c .. d[:
         M[i][j] ← 0
 ```
 
@@ -113,9 +113,9 @@ Pour remplacer le code :
 ```pseudocode
 M' ← [][]entier{longueur: d-c}
 
-pour chaque (i := entier) de [c .. d[:
+pour chaque i de [c .. d[:
     M'[i - c] ← []entier{longueur: b-a}
-    pour chaque (j := entier) de [a .. b[:
+    pour chaque j de [a .. b[:
         M'[i-c][j-a] ← M[i][j]
 ```
 
@@ -125,13 +125,13 @@ On se permettra aussi des abus de notation pour la création. On se permettra ai
 
 
 ```pseudocode
-(M := [][]entier) ← []([]entier{longueur: l}){longueur: c}
+ref M ← []([]int{longueur: l}){longueur: c}
 ```
 
 à la place de :
 
 ```pseudocode
-    M := [][]entier
+    ref M [][]int
     M ← [][]entier{longueur: l}
 
     pour chaque i de [0 .. l[:
@@ -152,12 +152,12 @@ M: [][][]entier
 On procède en deux boucles imbriquées :
 
 ```pseudocode
-M3 := [][][]entier
+ref M3 [][][]int
 M3 ← [][][]entier{longueur: d1}
 
-pour chaque (i := entier) de [0 .. d1[:
+pour chaque i de [0 .. d1[:
     M3[i] ← [][]entier{longueur: d2}
-    pour chaque (j := entier) de [0 .. d2[:
+    pour chaque j de [0 .. d2[:
         M3[i][j] ← []entier{longueur: d3}
 ```
 

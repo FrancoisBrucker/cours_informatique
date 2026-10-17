@@ -9,63 +9,35 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- TBD
+[La définition générale d'un programme](../bases-théoriques/définition/#définition-règles-générales) ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **_pseudo-code_** est une proposition d'instructions possibles pour décrire un programme, compréhensibles par un humain.
 
-Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.
-
-
-Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
-
-Une variable vaut None lorsqu'elle est crée.
-Puis affectée à l'adresse d'un objet en mémoire explicitement. 
-
-- Il ne faut pas utiliser des variables non initialisées
-- None est réservé aux variables non initialisées (?)
-- un tableau est un objet composé de variables de même type.
-
-- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique. 
-
-
-
-- int et str pas de taille finies
-- dire mémoire = tableau avec indice
-- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
-- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
-- float est aussi fini : approximation d'un réel.
-- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
-- un tableau est un objet qui contient des variables :
-  - déclaré vaut None
-  - crée chaque case vaut None
-- toute variable déclarée doit être affectée.
-
--->
-
-
-
+Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni pour l'interprétation : tout doit y être rigoureusement défini et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
 {% lien %}
 [On the foolishness of "_natural language programming_"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html){.externe}
 {% endlien %}
 
-[La définition générale d'un algorithme](../bases-théoriques/définition/#définition-règles-générales) ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **_pseudo-code_** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
+Ce n'est pas non plus un langage informatique dont le but est d'être exécuté par un ordinateur.  Le but d'un pseudo-code est d'être compris par d'autres humains et doit être vu comme une démonstration mathématique : un algorithme prouve à d'autres humains qu'un problème est solvable par un ordinateur.
 
-Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
+<div id="définition-pseudo-code"></div>
 
-Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur. Il est communément admis que tout algorithme peut être écrit en **_pseudo-code_** :
-
-<span id="règles"></span>
 {% definition %}
-Un pseudo-code est une succession de lignes qui seront exécutées **_en séquence_** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante.
+Un **_pseudo-code_** est une succession de lignes qui seront exécutées **_en séquence_**.
+
+- chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante,
+- chaque instruction est clairement définie et est réalisable par un humain muni d'un papier et d'un crayon
 {% enddefinition %}
 
-Les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement. Ce sont deux notions équivalentes :
+Si le but premier d'un pseudo-code est d'être compris par un humain, Les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement (ce sont deux notions équivalentes).
+
+{% retenir %}
 
 - on utilisera le pseudo-code pour l'étude théorique des algorithmes
-- on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python.
+- on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python, puis le go et enfin le rust.
 
-## Éléments de pseudo-code
+{% endretenir %}
 
-### Briques de base
+## Écrire du pseudo-code
 
 Commençons par décrire la _grammaire de base_ du pseudo-code :
 
@@ -73,22 +45,18 @@ Commençons par décrire la _grammaire de base_ du pseudo-code :
 [Briques de base](briques-de-base)
 {% endaller %}
 
-### Algorithmes en pseudo-code
-
 On peut maintenant utiliser les différentes instructions du pseudo-code pour écrire nos algorithmes :
 
 {% aller %}
 [Algorithmes et Fonctions en pseudo-code](algorithmes-fonctions)
 {% endaller %}
 
-## Écrire du bon pseudo-code
-
 Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires.
 
 Pour cela il faut :
 
-- expliciter la signature de vos algorithmes
-- utiliser des noms de variables ou de fonctions explicites et utile à la compréhension
+- expliciter la signature de vos algorithmes,
+- utiliser des noms de variables ou de fonctions explicites et utile à la compréhension,
 - séparer les différentes parties d'un algorithmes en fonctions au nom explicite.
 
 Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
@@ -97,7 +65,7 @@ Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez do
 
 Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, attention à bien comprendre leurs différences.
 
-- `x := y`{.language-} : on définie `x`{.language-} comme étant `y`{.language-}
+- `ref x T`{.language-} : on définit la variable `x`{.language-} pouvant référencer des objets de type `T`{.language-}
 - `x ← y`{.language-} : on affecte `x`{.language-} à la valeur de `y`{.language-}
 - `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des eux variables sont toujours égales. C'est une conséquence.
 - `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. vrai si la valeur de x vaut la valeur de y et faux sinon

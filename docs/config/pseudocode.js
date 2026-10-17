@@ -10,6 +10,20 @@ const grammaire = {
     pattern: /(?:[rub]|br|rb)?(")(?:\\.|(?!\1)[^\\\r\n])*\1/i,
     greedy: true
   },
+  // définition de variables : ref a type, ref a, b, c []type
+  'definition': {
+    pattern: /\bref[ \t]+[\p{L}_][\p{L}\p{N}_']*(?:[ \t]*,[ \t]*[\p{L}_][\p{L}\p{N}_']*)*(?:[ \t]+(?:\[\])*[\p{L}_∅][\p{L}\p{N}_]*)?/u,
+    greedy: true,
+    inside: {
+      'keyword': /^ref/,
+      'type': {
+        pattern: /([\p{L}\p{N}_'][ \t]+)(?:\[\])*(?:[\p{L}_][\p{L}\p{N}_]*|∅)$/u,
+        lookbehind: true,
+        alias: 'class-name'
+      },
+      'punctuation': /,/
+    }
+  },
   // boucle : pour chaque <variable> de <objet>
   'boucle': {
     pattern: /\bpour chaque[ \t]+(?:\((?:[^()\n]|\([^()\n]*\))*\)|[^():\n]+?)[ \t]+de\b/u,
@@ -51,11 +65,11 @@ const grammaire = {
     pattern: /(\bstructure\s+)\w+/i,
     lookbehind: true
   },
-  'keyword': /\b(?:_(?=\s*:)|affiche|donne|et|ET|ou|OU|si|sinon si|sinon|répéter|pour chaque|pour|rendre|tant que|self|break|continue)\b/,
-  'builtin': /\b(?:Type|entier|chiffre|booléen|bit|réel|caractère|chaîne|algorithme|fonction|structure|attributs|méthodes)\b/,
+  'keyword': /\b(?:_(?=\s*:)|affiche|donne|et|ET|ou|OU|si|sinon si|sinon|répéter|pour chaque|pour|rendre|ref|tant que|self|break|continue)\b/,
+  'builtin': /\b(?:Type|bool|bit|int|char|float|str|entier|chiffre|booléen|bit|réel|caractère|chaîne|algorithme|fonction|structure|attributs|méthodes)\b/,
   'boolean': /\b(?:Faux|∅|Vrai)\b/,
   'number': /\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i,
-  'operator': /[-+%=]=?|←|→|!=|≠|≤|≥|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
+  'operator': /[-+%=]=?|←|→|!=|≠|≤|≥|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
   'punctuation': /[{}[\];(),.:]/
 };
 // le reste de la boucle (variable, type, …) suit la grammaire générale
@@ -64,14 +78,14 @@ grammaire.boucle.inside.rest = grammaire;
 export default grammaire;
 
 // Coloration des variables déclarées dans un bloc pseudocode :
-// paramètres de la signature, `x := …`, `x: type` en début de ligne, `pour (chaque) x de`.
+// paramètres de la signature, `ref x type`, `x: type` en début de ligne, `pour (chaque) x de`.
 const IDENT = /[\p{L}_][\p{L}\p{N}_']*/gu;
 const RESERVES = new Set(["algorithme", "fonction", "programme", "méthode", "structure", "attributs", "méthodes",
-  "si", "sinon", "pour", "chaque", "de", "rendre", "répéter", "tant", "que", "et", "ou", "ET", "OU", "affiche", "donne",
+  "ref", "si", "sinon", "pour", "chaque", "de", "rendre", "répéter", "tant", "que", "et", "ou", "ET", "OU", "affiche", "donne",
   "self", "break", "continue", "tout", "toute", "un", "une", "else", "Else", "Vrai", "Faux", "Type", "entier", "chiffre", "booléen", "bit", "réel", "caractère", "chaîne"]);
 const BOUCLE = /\bpour[ \t]+(?:chaque|tout|toute)[ \t]+(\((?:[^()\n]|\([^()\n]*\))*\)|[^():\n]+?)[ \t]+de\b/gu;
+const DEFINITION = /\bref[ \t]+([\p{L}_][\p{L}\p{N}_']*(?:[ \t]*,[ \t]*[\p{L}_][\p{L}\p{N}_']*)*)/gu;
 const DECLARATIONS = [
-  /([\p{L}_][\p{L}\p{N}_']*)\s*:=/gu,                                   // x := …
   /(?:^|[(,])[ \t]*([\p{L}_][\p{L}\p{N}_']*)[ \t]*:(?!=)/gmu,            // paramètres, x: type
 ];
 
@@ -82,10 +96,15 @@ function variablesDéclarées(code) {
       if (!RESERVES.has(m[1])) noms.add(m[1]);
     }
   }
-  // variables de boucle : pour chaque x de, pour chaque x, y de, pour chaque voisin v de, pour chaque ((c, v) := …) de
+  // définitions : ref a type, ref a, b, c type
+  for (const m of code.matchAll(DEFINITION)) {
+    for (const nom of m[1].split(",")) {
+      if (!RESERVES.has(nom.trim())) noms.add(nom.trim());
+    }
+  }
+  // variables de boucle : pour chaque x de, pour chaque x, y de, pour chaque voisin v de
   for (const m of code.matchAll(BOUCLE)) {
-    const avant = m[1].startsWith("(") ? m[1].slice(1).split(":=")[0] : m[1];
-    for (const morceau of avant.split(",")) {
+    for (const morceau of m[1].split(",")) {
       const mots = morceau.match(IDENT) || [];
       const nom = mots[mots.length - 1];
       if (nom && !RESERVES.has(nom)) noms.add(nom);

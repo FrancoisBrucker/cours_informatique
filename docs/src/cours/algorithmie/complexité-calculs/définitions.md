@@ -24,7 +24,7 @@ La complexité d'un pseudo-code est la complexité en temps de celui-ci.
 Par exemple le pseudo-code suivant :
 
 ```pseudocode/
-age := entier
+ref age int
 age ← 16
 si ((age ≥ 12) et (age < 18)):
     personne ← "adolescent"
@@ -63,14 +63,14 @@ Reprenons par exemple [le code de l'algorithme recherche](../../bases-théorique
 
 ```pseudocode/
 fonction recherche(T: []entier, x: entier) → booléen:
-    pour chaque (e := entier) de T:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
 
-T := []entier 
+ref T []int
 T ← [1, 2, 6]
-trouve := entier
+ref trouve int
 trouve ← recherche(T, 6)
 affiche à l'écran trouve
 ```
@@ -136,12 +136,12 @@ De là l'instruction :
 Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :
 
 ```pseudocode/
-F := []entier
+ref F []int
 F ← []entier{longueur: 10}
 F[0] ← 1
 F[1] ← 1
 
-i := 2
+ref i ← 2
 tant que i ≤ 9 :
   F[i] ← F[i - 1] + F[i - 2]
   i ← i + 1
@@ -197,12 +197,12 @@ Mais souvent la complexité dépend des paramètres du programme, comme par exem
 
 ```pseudocode/
 algorithme fibonacci(n: entier) → entier:
-  F := []entier
+  ref F []int
   F ← []entier{longueur: n}
   F[0] ← 1
   F[1] ← 1
 
-  i := 2
+  ref i ← 2
   tant que i < n :
     F[i] ← F[i - 1] + F[i - 2]    
     i ← i + 1
@@ -237,7 +237,7 @@ Enfin, en règle générale, la complexité dépend trop profondément de la nat
 
 ```pseudocode/
 algorithme recherche(T: []entier, x: entier) → booléen:
-    pour chaque (e := entier) de T:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -343,11 +343,11 @@ Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la 
 
 ```pseudocode/
 algorithme fibonacci_sobre(n):
-  (a := entier) ← 1
-  (b := entier) ← 1
-  c := entier
+  ref a ← 1
+  ref b ← 1
+  ref c int
 
-  (i := entier) ← 2
+  ref i ← 2
   tant que i < n :
     c ← a + b
     a ← b

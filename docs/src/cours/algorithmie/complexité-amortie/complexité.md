@@ -53,7 +53,7 @@ La méthode `suivant`{.language-} n'a pas de paramètres, analysons sa complexit
 Par exemple le code suivant :
 
 ```pseudocode
-(c := Compteur) ← Compteur{N: [1, 0, 0, 1]}
+ref c ← Compteur{N: [1, 0, 0, 1]}
 
 pour chaque i de [1 .. 9]:
     c.suivant()
@@ -107,7 +107,7 @@ On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile) p
 
 ```pseudocode
 méthode (p: Pile<T>) k-dépile(k: entier) → T:
-    (k := entier) ← min(k, p.longueur)
+    ref k ← min(k, p.longueur)
     répéter k fois:
         x ← p.dépile()
     rendre x

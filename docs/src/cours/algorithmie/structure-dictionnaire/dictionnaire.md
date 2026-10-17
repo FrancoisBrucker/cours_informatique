@@ -73,13 +73,13 @@ Enfin, Comme un dictionnaire est un type classique :
 Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
 ```pseudocode
-x := {K: V}
+ref x {K: V}
 ```
 
 À la place de :
 
 ```pseudocode
-x := Dictionnaire<K, V>
+ref x Dictionnaire<K, V>
 ```
 
 On initialisera un dictionnaire vide ainsi :
@@ -94,13 +94,13 @@ x ← {:}
 On peut ainsi écrire :
 
 ```pseudocode
-(rgb := {chaîne: entier}) ← {:} 
+ref rgb ← {:} 
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
 rgb["bleu"] ← 255
 
-(couleur := entier) ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + rgb["bleu"]
+ref couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + rgb["bleu"]
 ```
 
 On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionnaire.f("bleu")`{.language-} =  `Dictionnaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
@@ -137,13 +137,13 @@ structure Dictionnaire<K, V>:
 méthode (d: Dictionnaire<K, V>) f(clé: K) → [0 .. m[ 
 
 méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
-    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé)]:
+    pour chaque (c, v) de d.T[d.f(clé)]:
         si c == clé:
             rendre v
 
 méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
-    (l := [(K, V)]) ← d.T[d.f(clé)]
-    pour chaque (i := entier) de [0 à l.longueur[ :
+    ref l ← d.T[d.f(clé)]
+    pour chaque i de [0 à l.longueur[ :
         c, v ← l[i]
         si c == clé:
             l[i] ← (clé, valeur)
@@ -152,15 +152,15 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
     d.T[d.f(clé)].append((clé, valeur))
 
 méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
-    (l := [(K, V)]) ← d.T[d.f(clé)]
-    pour chaque ((c, v) := (K, V)) de l :
+    ref l ← d.T[d.f(clé)]
+    pour chaque (c, v) de l :
         si c == clé:
             rendre Vrai
     rendre Faux
 méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
-    (l := [(K, V)]) ← d.T[d.f(clé)]
+    ref l ← d.T[d.f(clé)]
     pour chaque i de [0 .. l.longueur[:
-        ((c, v) := (K, V)) ← l[i]:
+        ref c, v ← l[i]
         si c == clé:
             l[i], l[-1] = l[-1], l[i]   # astuce pour supprimer en O(1)
             l.pop()
@@ -174,7 +174,7 @@ Comme on peut ajouter des clés, on a ajouté deux méthodes `Dictionnaire.in`{.
 Reprenons l'exemple précédent :
 
 ```pseudocode
-(rgb := {chaîne: entier}) ← {:}
+ref rgb ← {:}
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
@@ -245,7 +245,7 @@ La version finale de la structure de dictionnaire est alors :
 
 ```pseudocode
 fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
-m0 := entier                     # capacité par défaut d'un dictionnaire
+ref m0 int                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
     capacité: entier ← m0
@@ -255,13 +255,13 @@ méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction
 
 
 méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
-    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé, d.capacité)]:
+    pour chaque (c, v) de d.T[d.f(clé, d.capacité)]:
         si c == clé:
             rendre v
 
 méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
-    pour chaque (i := entier) de [0 à l.longueur[ :
+    ref l ← d.T[d.f(clé, d.capacité)]
+    pour chaque i de [0 à l.longueur[ :
         c, v ← l[i]
         si c == clé:
             l[i] ← (clé, valeur)
@@ -270,15 +270,15 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
     d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
 méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
-    pour chaque ((c, v) := (K, V)) de l :
+    ref l ← d.T[d.f(clé, d.capacité)]
+    pour chaque (c, v) de l :
         si c == clé:
             rendre Vrai
     rendre Faux
 méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    ref l ← d.T[d.f(clé, d.capacité)]
     pour chaque i de [0 .. l.longueur[:
-        ((c, v) := (K, V)) ← l[i]:
+        ref c, v ← l[i]
         si c == clé:
             l[i], l[-1] = l[-1], l[i]   # astuce pour supprimer en O(1)
             l.pop()
@@ -298,7 +298,7 @@ Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le no
 
 ```pseudocode
 fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
-m0 := entier                     # capacité par défaut d'un dictionnaire
+ref m0 int                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
     capacité: entier ← m0
@@ -309,27 +309,27 @@ méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction
 
 
 méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
-    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé, d.capacité)]:
+    pour chaque (c, v) de d.T[d.f(clé, d.capacité)]:
         si c == clé:
             rendre v
 
 méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
-    pour chaque (i := entier) de [0 à l.longueur[ :
+    ref l ← d.T[d.f(clé, d.capacité)]
+    pour chaque i de [0 à l.longueur[ :
         c, v ← l[i]
         si c == clé:
             l[i] ← (clé, valeur)
             rendre ∅
 
     si d.longueur == d.capacité:
-        (T2 := [Liste<(K, V)>]) ← d.T
+        ref T2 ← d.T
 
         d.capacité ← 2 * d.capacité
         d.T ← [Liste<(K, V)>]{longueur: d.capacité}
         d.T[:] ← []{}
                 
-        pour chaque (l := [(K, V)]) de T2:
-            pour chaque ((c, v) := (K, V)) de l:
+        pour chaque l de T2:
+            pour chaque (c, v) de l:
                 d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
     d.longueur ← d.longueur + 1
@@ -337,15 +337,15 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
 
 
 méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
-    pour chaque ((c, v) := (K, V)) de l :
+    ref l ← d.T[d.f(clé, d.capacité)]
+    pour chaque (c, v) de l :
         si c == clé:
             rendre Vrai
     rendre Faux
 méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
-    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    ref l ← d.T[d.f(clé, d.capacité)]
     pour chaque i de [0 .. l.longueur[:
-        ((c, v) := (K, V)) ← l[i]:
+        ref c, v ← l[i]
         si c == clé:
             d.longueur ← d.longueur - 1
             l[i], l[-1] ← l[-1], l[i]   # astuce pour supprimer en O(1)
@@ -418,7 +418,7 @@ Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoi
 Par exemple :
 
 ```pseudocode
-nombre_pommes := {chaîne: entier} ← {:}
+ref nombre_pommes ← {:}
 
 nombre_pommes["fuji"] ← 12
 nombre_pommes["gala"] ← 3
@@ -428,8 +428,8 @@ nombre_pommes["pink lady"] ← 42
 Plutôt que de d'abord associer un indice aux données :
 
 ```pseudocode
-pommes_indirection := []chaîne ← ["fuji", "gala", "pink lady"]
-nombre_pommes := []entier ← []entier{longueur: 3}
+ref pommes_indirection ← ["fuji", "gala", "pink lady"]
+ref nombre_pommes ← []int{longueur: 3}
 nombre_pommes[0] ← 12
 nombre_pommes[1] ← 3
 nombre_pommes[2] ← 42
@@ -443,5 +443,5 @@ Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'i
 Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :
 
 ```pseudocode
-nombre_pommes := {chaîne: entier} ← {"fuji": 12, "gala": 3, "pink lady": 42}
+ref nombre_pommes ← {"fuji": 12, "gala": 3, "pink lady": 42}
 ```

@@ -33,10 +33,10 @@ méthode (self: Liste<T>) set(i: entier, valeur: T) → ∅:  # self[i] ← vale
 
 méthode (self: Liste<T>) append(x: T)  → ∅:
     si self.longueur == self.capacité:
-        (T2 := []T) ← self.données
+        ref T2 ← self.données
         self.capacité ← 2 * self.capacité 
         self.données ← []T{longueur: self.capacité}
-        pour chaque (i:= entier) de T2.longueur:
+        pour chaque i de T2.longueur:
             self.données[i] ← T2[i]
     self.données[self.longueur] ← x
     self.longueur ← self.longueur + 1
@@ -47,13 +47,13 @@ méthode (self: Liste<T>) pop()  → T:
 
 méthode (self: Liste<T>) insert(pos: entier, x: T) → ∅:
     self.append(∅)
-    pour chaque (i := entier) de [self.longueur - 1 .. pos + 1] par pas de -1:
+    pour chaque i de [self.longueur - 1 .. pos + 1] par pas de -1:
         self.données[i] ← self.données[i-1]
     self.données[pos] ← x
 
 méthode (self: Liste<T>) delete(pos: entier) → T:
-    (r := T) ← self.données[pos]
-    pour chaque (i := entier) de [pos .. self.longueur - 1[:
+    ref r ← self.données[pos]
+    pour chaque i de [pos .. self.longueur - 1[:
         self.données[i] ← self.données[i+1]
     self.pop()
 
@@ -101,7 +101,7 @@ La liste est une généralisation du tableau permettant de modifier sa longueur.
 Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
 ```pseudocode
-x := []entier
+ref x []int
 ```
 
 Pour décrire soit un tableau, soit une liste. On pourra voir la différence pendant son initialisation avec l'utilisation ou non de l'attribut `longueur`{.language-} :

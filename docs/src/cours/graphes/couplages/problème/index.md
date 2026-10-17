@@ -62,7 +62,7 @@ Le problème du couplage admet un algorithme glouton très simple permettant de 
 ```pseudocode
 
 algorithme couplage_glouton(G: Graphe<Sommet>) → { {Sommet} }
-   M := { {Sommet} }
+   ref M { {Sommet} }
    M ← ∅
    pour chaque arête xy de G:
       si x et y ne sont pas couverts par M:

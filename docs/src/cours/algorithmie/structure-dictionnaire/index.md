@@ -65,8 +65,8 @@ méthode (e: ensemble<T>)intersection(e': Ensemble<T>) → Ensemble<T>:
         a, b ← e', e
     sinon:
         a, b ← e, e'
-    c := Ensemble<T> ← Ensemble<T>{}
-    pour chaque (x:= T) de a:
+    ref c ← Ensemble<T>{}
+    pour chaque x de a:
         si x est dans b:
             c.add(x)
     rendre c
@@ -105,13 +105,13 @@ Les ensembles étant une structure extrêmement utilisée, on s'autorisera l'abu
 On écrira :
 
 ```pseudocode
-x := {T}
+ref x {T}
 ```
 
 À la place de :
 
 ```pseudocode
-x := Ensemble<T>
+ref x Ensemble<T>
 ```
 
 On initialisera un ensemble vide ainsi :

@@ -75,10 +75,10 @@ Première version qui calcule toute la matrice triangulaire inférieure :
 
 ```pseudocode/
 algorithme binom_matrice(n: entier) → [][]entier:
-    matrice := [][]entier
+    ref matrice [][]int
     matrice ← [][]entier{longueur: n+1}
 
-    ligne := []entier
+    ref ligne []int
     pour chaque i de [0 .. n]:
         ligne ← []entier{longueur: i+1} 
 
@@ -154,7 +154,7 @@ On va créer un algorithme qui rend uniquement la dernière ligne de la matrice 
 
 ```pseudocode
 algorithme ligne_suivante(l: []entier) → []entier:
-    (l2 := []entier) ← []entier{longueur: l.longueur +1}
+    ref l2 ← []int{longueur: l.longueur +1}
 
     l2[0] ← 1
     l2[-1] ← 1
@@ -180,7 +180,7 @@ On a alors la version améliorée de `binom(n: entier, k:entier) → entier`{.la
 
 ```pseudocode
 algorithme binom(n: entier, k:entier) → entier:
-    (l := []entier) ← [0]
+    ref l ← [0]
     répéter n fois:
        l ← ligne_suivante(l)
 
@@ -206,7 +206,7 @@ On peut faire mieux en ne calculant que les $k+1$ premiers éléments de chaque 
 
 ```pseudocode
 fonction ligne_suivante(l: []entier, k: entier) → []entier:
-    (l2 := []entier) ← []entier{longueur: min(k + 1, l.longueur + 1)}
+    ref l2 ← []int{longueur: min(k + 1, l.longueur + 1)}
 
     l2[0] ← 1
     l2[-1] ← 1
@@ -217,7 +217,7 @@ fonction ligne_suivante(l: []entier, k: entier) → []entier:
     rendre l2
 
 algorithme binom(n: entier, k:entier) → entier:
-    (l := []entier) ← [0]
+    ref l ← [0]
     répéter n fois:
        l ← ligne_suivante(l, k)
 
@@ -248,7 +248,7 @@ fonction ligne_suivante(l: []entier, n: entier, k: entier) → ∅:
         l[j] ← l[j] + l[j-1]
 
 algorithme binom(n: entier, k:entier) → entier:
-    (l := []entier) ← []entier{longueur: k+1}
+    ref l ← []int{longueur: k+1}
     l[:] ← 1
 
     pour j dans [0 .. n-1] fois:
@@ -303,7 +303,7 @@ Créez un algorithme de signature `échiquier(n: entier) → [][]booléen`{.lang
 
 ```pseudocode
 algorithme échiquier(n: entier) → [][]booléen:
-    (E := [][]booléen) ← [][]booléen{longueur: n}
+    ref E ← [][]bool{longueur: n}
 
     pour chaque i de [0 .. n[:
         E[i] ← []booléen{longueur: n}
@@ -326,8 +326,8 @@ On regarde les lignes, les colonnes et les diagonales. Il faut faire attention �
 
 ```pseudocode
 algorithme position_correcte(E: [][]booléen, i: entier, j: entier) → booléen:
-    (n := entier) ← E.longueur
-    k := entier
+    ref n ← E.longueur
+    ref k int
 
     pour k dans [0 .. n[:
         si (k ≠i) ET E[k][j]:
@@ -366,10 +366,10 @@ En déduire un algorithme de signature `échiquier_correct(E: [][]booléen) → 
 
 ```pseudocode
 algorithme échiquier_correct(E: [][]booléen) → booléen:
-    (n := entier) ← E.longueur
+    ref n ← E.longueur
 
-    pour (i:= entier) de [0 .. n[:
-        pour (j:= entier) de [0 .. n[:
+    pour i de [0 .. n[:
+        pour j de [0 .. n[:
             si E[i][j] ET (NON position_correcte(E, i, j)):
                 rendre Faux
         
@@ -400,13 +400,13 @@ Vous pourrez créer un algorithme de signature `tous_les_échiquiers_rec(E: [][]
 
 ```pseudocode
 algorithme tous_les_échiquiers_rec(E: [][]booléen, i: entier):
-    (n := entier) ← E.longueur
+    ref n ← E.longueur
 
     si i ≥ n:
         si échiquier_correct(E):
             affiche E à l'écran
         rendre ∅
-    pour (j := entier) de [0 .. n[:
+    pour j de [0 .. n[:
         E[i][j] ← Vrai
         tous_les_échiquiers_rec(E, i+1)
         E[i][j] ← Faux
@@ -457,12 +457,12 @@ En utilisant l'algorithme `position_correcte(E: [][]booléen, i: entier, j: enti
 {% details "corrigé" %}
 ```pseudocode
 algorithme tous_les_échiquiers_rec(E: [][]booléen, i: entier):
-    (n := entier) ← E.longueur
+    ref n ← E.longueur
 
     si i ≥ n:
         affiche E à l'écran
         rendre ∅
-    pour (j := entier) de [0 .. n[:
+    pour j de [0 .. n[:
         
         si position_correcte(E, i, j):
           E[i][j] ← Vrai
@@ -510,9 +510,9 @@ Créez l'algorithme `permutation_correcte(P: []entier, i: entier) → booléen`{
 
 ```pseudocode
 algorithme permutation_correcte(P: []entier, i:entier) → booléen:
-    (n := entier) ← P.longueur
+    ref n ← P.longueur
 
-    pour (k:= entier) de [0 .. i[:
+    pour k de [0 .. i[:
         si (0 ≤ P[i] - i + k < n) ET (P[i] - i + k == P[k]):
             rendre Faux
         si (0 ≤ P[i] + i - k < n) ET (P[i] + i - k == P[k]):
@@ -537,12 +537,12 @@ Montrez que l'algorithme suivant permet de résoudre le problème des $n$ reine.
 
 ```pseudocode
 algorithme toutes_les_permutations_rec(P: []entier, i: entier) → booléen:
-    (n := entier) ← P.longueur
+    ref n ← P.longueur
 
     si i == n:
         affiche_permutation(P)
         return
-    pour (j:= entier) dans [i .. n[:
+    pour j dans [i .. n[:
         P[i], P[j] ← P[j], P[i]
         Si permutation_correcte(P, i):
             toutes_les_permutations_rec(P, i+1)
@@ -659,7 +659,7 @@ Le problème de la multiplication de matrice est un problème intéressant [avec
 
 ```pseudocode
 algorithme création_matrice(n: entier, m: entier)  → [][]entier:
-    M := [][]entier
+    ref M [][]int
     M  ← [][]entier{longueur: n}
     pour i dans [0 .. m[:
         M[i] ← []entier{longueur: m}
@@ -697,8 +697,8 @@ algorithme extraction_matrice(M: [][]entier, n1: entier, n2: entier, m1: entier,
 algorithme somme(A: [][]entier, B: [][]entier)  → [][]entier:
     C ← création_matrice(A.longueur, A[0].longueur)
 
-    pour (i:= entier) dans [0 .. C.longueur[:
-        pour (j:= entier) dans [0 .. C[0].longueur[:
+    pour i dans [0 .. C.longueur[:
+        pour j dans [0 .. C[0].longueur[:
             C[i][j] ← A[i][j] + B[i][j]
     rendre C
 ```
@@ -716,8 +716,8 @@ algorithme somme(A: [][]entier, B: [][]entier)  → [][]entier:
 algorithme multiplication(A: [][]entier, B: [][]entier) → [][]entier:
     C ← création_matrice(A.longueur, B[0].longueur)
 
-    pour (i:= entier) dans [0 .. C.longueur[:
-        pour (j:= entier) dans [0 .. C[0].longueur[:
+    pour i dans [0 .. C.longueur[:
+        pour j dans [0 .. C[0].longueur[:
             pour k dans [0 .. B.longueur[:
                 C[i][j] ← C[i][j] + A[i][k] * B[k][j]
     rendre C
@@ -783,35 +783,35 @@ Avec $A_{ij}$, $B_{ij}$ et $C_{ij}$ des matrices carrées telles que pour $1\leq
 
 ```pseudocode
 algorithme multiplication_rec(A: [][]entier, B: [][]entier) → [][]entier:
-    (n := entier) ← A.longueur
+    ref n ← A.longueur
 
     Si n ≤ 1:
         rendre [[A[0][0] * B[0][0]]]
     
-    (A11 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref A11 ← []([]int{longueur: n // 2}){longueur: n // 2}
     A11[:][:] ← A[:n //2][:n //2]
-    (A12 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref A12 ← []([]int{longueur: n // 2}){longueur: n // 2}
     A12[:][:] ← A[:n //2][n //2:]
-    (A21 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref A21 ← []([]int{longueur: n // 2}){longueur: n // 2}
     A21[:][:] ← A[n //2:][:n //2]
-    (A22 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref A22 ← []([]int{longueur: n // 2}){longueur: n // 2}
     A22[:][:] ← A[n //2:][n //2:]
 
-    (B11 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref B11 ← []([]int{longueur: n // 2}){longueur: n // 2}
     B11[:][:] ← B[:n //2][:n //2]
-    (B12 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref B12 ← []([]int{longueur: n // 2}){longueur: n // 2}
     B12[:][:] ← B[:n //2][n //2:]
-    (B21 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref B21 ← []([]int{longueur: n // 2}){longueur: n // 2}
     B21[:][:] ← B[n //2:][:n //2]
-    (B22 := [][]entier) ← []([]entier{longueur: n // 2}){longueur: n // 2}
+    ref B22 ← []([]int{longueur: n // 2}){longueur: n // 2}
     B22[:][:] ← B[n //2:][n //2:]
 
-    (C11 := [][]entier) ← somme(multiplication_rec(A11, B11), multiplication_rec(A12, B21))
-    (C12 := [][]entier) ← somme(multiplication_rec(A11, B12), multiplication_rec(A12, B22))
-    (C21 := [][]entier) ← somme(multiplication_rec(A21, B11), multiplication_rec(A22, B21))
-    (C22 := [][]entier) ← somme(multiplication_rec(A21, B12), multiplication_rec(A22, B22))
+    ref C11 ← somme(multiplication_rec(A11, B11), multiplication_rec(A12, B21))
+    ref C12 ← somme(multiplication_rec(A11, B12), multiplication_rec(A12, B22))
+    ref C21 ← somme(multiplication_rec(A21, B11), multiplication_rec(A22, B21))
+    ref C22 ← somme(multiplication_rec(A21, B12), multiplication_rec(A22, B22))
 
-    (C := [][]entier) ← []([]entier{longueur: n}){longueur: n}
+    ref C ← []([]int{longueur: n}){longueur: n}
     C[:n // 2][:n // 2] ← C11[:][:]
     C[:n // 2][n // 2:] ← C12[:][:]
     C[n // 2]:[:n // 2] ← C21[:][:]

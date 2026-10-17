@@ -202,11 +202,11 @@ De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} 
 
 ```pseudocode
 algorithme modulo(n: []entier, base) → entier:
-    (e := entier) ← base mod m
-    (exp := entier) ← 1
-    (res := entier) ← n[0] mod m
-    c := entier
-    pour chaque (i := entier) de [1 .. n.longueur[:
+    ref e ← base mod m
+    ref exp ← 1
+    ref res ← n[0] mod m
+    ref c int
+    pour chaque i de [1 .. n.longueur[:
         exp ← (exp * e) mod m
         c ← (exp * n[i]) mod m
         res ← (res + c) mod m
@@ -250,8 +250,8 @@ Par exemple considérons le tuple suivant : `(1, 'un', 3.14)`{.language-}. Il co
 En java par exemple, une façon classique de procéder est décrite par l'algorithme suivant :
 
 ```pseudocode
-(res := entier) ← 0
-pour chaque (e := entier) de tuple:
+ref res ← 0
+pour chaque e de tuple:
     res ← hash(31 * res + hash(e))
 
 ```

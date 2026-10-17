@@ -215,7 +215,7 @@ Début et fin sont décalé de 1 par rapport à la construction de la structure.
 Cet exemple montre l'usage classique d'une file. On traite de façon différée les entrées et les sorties dans l'ordre d'arrivée en stockant les données dans une file.
 
 ```pseudocode
-(buffer := File<entier>) ← File<entier>{capacité: n}
+ref buffer ← File<int>{capacité: n}
 
 fonction écrire(donnée: entier) → ∅:
     buffer.enfile(donnée)
@@ -260,9 +260,9 @@ On peut aussi utiliser la file comme outil d'énumération. Par exemple pour fai
 algorithme compteur(n: entier) → ∅:
     F ← File<chaîne> {capacité: K}
     F.enfile("1")
-    (i:= entier) ← 1
+    ref i ← 1
 
-    c := chaîne 
+    ref c str
     répéter n fois:
         c ← F.défile()
         afficher à l'écran c

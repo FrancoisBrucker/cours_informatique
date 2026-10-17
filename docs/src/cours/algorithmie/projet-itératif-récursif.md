@@ -46,7 +46,7 @@ Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \
 
 ```pseudocode
 algorithme maximum_rec(T: []réel, n: entier) → entier:
-    x := entier
+    ref x int
 
     si n == 0:
         rendre 0
@@ -87,14 +87,14 @@ Vous utiliserez des invariants de boucle pour le prouver.
 
 ```pseudocode/
 algorithme concaténation(début: []entier, fin: []entier) → []entier
-    (t := []entier) ← []entier{longueur: début.longueur + fin.longueur}
-    (i := entier) ← -1
+    ref t ← []int{longueur: début.longueur + fin.longueur}
+    ref i ← -1
 
-    pour chaque (j := entier) de [0 .. début.longueur[:
+    pour chaque j de [0 .. début.longueur[:
         i ← i + 1
         t[i] ← début[j]
 
-    pour chaque (j := entier) de [0 .. fin.longueur[:
+    pour chaque j de [0 .. fin.longueur[:
         i ← i + 1
         t[i] ← fin[j]
 
@@ -153,8 +153,8 @@ Permettant de vérifier s'il existe un élément de `T1`{.language-} qui est ég
 
 ```pseudocode/
 algorithme intersection_non_vide(T1: []entier, T2: []entier) → booléen
-    pour chaque (x := entier) de T1:
-        pour chaque (y := entier) de T2:
+    pour chaque x de T1:
+        pour chaque y de T2:
             si x == y:
                 rendre Vrai
     rendre Faux
@@ -188,10 +188,10 @@ Il faut vérifier que pour pour tout $0\leq i < T1.\text{\small longueur}$ il ex
 
 ```pseudocode/
 algorithme égalité_valeurs(T1: []entier, T2: []entier) → booléen
-    trouvé := booléen
-    pour chaque (x := entier) de T1:
+    ref trouvé bool
+    pour chaque x de T1:
         trouvé ← Faux
-        pour chaque (y := entier) de T2:
+        pour chaque y de T2:
             si x == y:
                 trouvé ← Vrai
         si trouvé == Faux:
@@ -232,7 +232,7 @@ Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'
 
 ```pseudocode
 algorithme égalité(T1: []entier, T2: []entier) → entier
-    pour chaque  (x := entier) de T1:
+    pour chaque x de T1:
         si nombre(T1, x) ≠ nombre(T2, x):
             rendre Faux
     rendre Vrai
@@ -264,10 +264,10 @@ Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du 
 
 ```pseudocode/
 algorithme supprime(T: []entier, v: entier) → []entier
-    (T2 := []entier) ← []entier{longueur: taille t.longueur - nombre(T, v)}
+    ref T2 ← []int{longueur: taille t.longueur - nombre(T, v)}
 
-    (j := entier) ← 0
-    pour chaque (i := entier) de [0, t.longueur[:
+    ref j ← 0
+    pour chaque i de [0, t.longueur[:
         si T[i] ≠ v:
             T2[j] ← t[i]
             j ← j + 1
@@ -308,7 +308,7 @@ algorithme supprime_rec(t: []entier, v: entier) → []entier
     si t.longueur == 0:
         rendre t
 
-    (t2 := []entier) ← []entier{longueur: t.longueur - 1}
+    ref t2 ← []int{longueur: t.longueur - 1}
     pour i de [0, t2.longueur[:
         t2[i] ← t[i + 1]
     
@@ -342,7 +342,7 @@ Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte 
 ```pseudocode/
 algorithme retournement_indice(T: []entier, i: entier) → ∅
     si T.longueur - 1 - i > i:
-        (temp := entier) ← T[i]
+        ref temp ← T[i]
         T[i] ← T[T.longueur - 1 - i]
         T[T.longueur - 1 - i] ← temp
 
@@ -417,7 +417,7 @@ algorithme M(n: entier) → entier:
     si n > 100:
         rendre n - 10
     sinon:
-        (x := entier) ← M(n + 11)
+        ref x ← M(n + 11)
         rendre M(x)
 ```
 
@@ -449,7 +449,7 @@ En déduire une version itérative pour résoudre McCarty.
 
 ```pseudocode/
 algorithme M(n: entier) → entier:
-    (c := entier) ← 1
+    ref c ← 1
 
     tant que c ≠ 0:
         si n > 100:

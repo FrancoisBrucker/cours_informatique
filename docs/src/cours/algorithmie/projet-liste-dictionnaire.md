@@ -41,8 +41,8 @@ Créer cet algorithme et calculez-en sa complexité.
 
 ```pseudocode
 algorithme recherche(p : []entier, C: entier) → (entier, entier):
-    pour chaque (i := entier) de [0 .. p.longueur[:
-        pour chaque (j := entier) de [i+1 .. p.longueur[:
+    pour chaque i de [0 .. p.longueur[:
+        pour chaque j de [i+1 .. p.longueur[:
             si p[i] + p[j] == C:
                 rendre (i, j)
     
@@ -76,8 +76,8 @@ algorithme recherche(p : []entier, C: entier) → (entier, entier):
 
     trie p2 par ordre lexicographique croissant  
 
-    (i := entier) ← 0
-    (j := entier) ← p2.longueur -1
+    ref i ← 0
+    ref j ← p2.longueur -1
 
     tant que (i < j) et (p2[i][0] + p2[j][0] != C):
         si p2[i][0] + p2[j][0] < C:
@@ -110,10 +110,10 @@ Première version :
 algorithme recherche(p : []entier, C: entier) → (entier, entier):
     d ← nouveau Dictionnaire<entier, entier>
 
-    pour chaque (i := entier) de [0 .. p.longueur[:
+    pour chaque i de [0 .. p.longueur[:
         d[p[i]] ← i
 
-    pour chaque (u := entier) de [0 .. p.longueur[:
+    pour chaque u de [0 .. p.longueur[:
         p2 ← C - p[u] 
         si p2 est dans d:
             v ← d[p2]
@@ -126,7 +126,7 @@ Seconde version sans tout remplir, qui évite les `min`{.language-} et `min`{.la
 algorithme recherche(p : []entier, C: entier) → (entier, entier):
     d ← nouveau Dictionnaire<entier, entier>
 
-    pour chaque (i := entier) de [0 .. p.longueur[:
+    pour chaque i de [0 .. p.longueur[:
         si C - p[i] est dans d:
             rendre (d[C-p[i]], i)
         d[p[i]] ← i

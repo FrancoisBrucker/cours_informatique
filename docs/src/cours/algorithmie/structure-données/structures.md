@@ -45,7 +45,7 @@ Définit **_une structure_** de nom `Nom_structure`{.language-} ayant deux attri
 On crée un objet de la structure en affectant toutes ses variables :
 
 ```pseudocode
-x := Nom_structure
+ref x Nom_structure
 x ← Nom_structure{v1: o1, v2: o2}
 ```
 
@@ -69,7 +69,7 @@ structure Point:
 Que l'on crée en affectant tous ses attributs :
 
 ```pseudocode
-x := Point
+ref x Point
 x ← Point{x: 3.1, y:0.0}
 ```
 
@@ -115,14 +115,14 @@ structure Point:
 Ce qui nous permettra d'écrire :
 
 ```pseudocode
-p := Point
+ref p Point
 p ← Point{}
 ```
 
 Qui correspond au code :
 
 ```pseudocode
-p := Point
+ref p Point
 p ← Point{x: 0.0, y:0.0}
 ```
 
@@ -156,14 +156,14 @@ Qui nous permet d'écrire :
 
 
 ```pseudocode
-p := Point 
+ref p Point
 p ← Point{x: 3.1}
 ```
 
 Le code précédent affectera bien 6.2 à `p.y`{.language-}. Notez que l'on peut aussi écrire :
 
 ```pseudocode
-p := Point 
+ref p Point
 p ← Point{x: 3.1, y:0}
 ```
 
@@ -206,8 +206,8 @@ Et utilisons là :
 
 ```pseudocode
 
-(p1 := Point) ← Point{x: 1}
-(p2 := Point) ← Point {x: 4, y: 7}
+ref p1 ← Point{x: 1}
+ref p2 ← Point {x: 4, y: 7}
 
 affiche p1.x et p1.y  # affiche 1 et 0
 p1.addition(p2)

@@ -97,7 +97,7 @@ Par exemple l'algorithme suivant :
 
 ```pseudocode
 algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
-    a', b' := entier
+    ref a', b' int
     tant que min(a, b) > 0:
         a' ← max(a, b) - min(a, b)
         b' ← min(a, b)
@@ -242,6 +242,17 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 > TBD ajouter plein d'exercices sir pile et file et listes chaînées.
 
+
+
+<!-- TBD
+
+faire 
+
+1. matrices
+2. liste et dict
+3. structures de données
+4. structures locales pile/file/listes chaînées 
+-->
 
 <!-- 
 dans la partie 2 :

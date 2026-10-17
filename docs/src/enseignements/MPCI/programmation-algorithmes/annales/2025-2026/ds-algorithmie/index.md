@@ -45,9 +45,9 @@ Je suis un peu déçu. Il y a beaucoup d'imprécisions dans vos réponses et en 
 
 ```pseudocode
 algorithme est_sous_chaîne(a: chaîne, b: chaîne) → booléen:
-    trouvé := booléen
-    j := entier
-    pour chaque (i := entier) de [0 .. a.longueur - b.longueur + 1[:
+    ref trouvé bool
+    ref j int
+    pour chaque i de [0 .. a.longueur - b.longueur + 1[:
         trouvé ← Vrai
         j ← 0
         tant que j < b.longueur:
@@ -77,9 +77,9 @@ Il faut rendre un indice, pas juste un booléen :
 
 ```pseudocode
 algorithme sous_chaîne(a: chaîne, b: chaîne) → entier:
-    trouvé := booléen
-    j := entier
-    pour chaque (i := entier) de [0 .. a.longueur - b.longueur + 1[:
+    ref trouvé bool
+    ref j int
+    pour chaque i de [0 .. a.longueur - b.longueur + 1[:
         trouvé ← Vrai
         j ← 0
         tant que j < b.longueur:
@@ -197,11 +197,11 @@ Le décalage pour l'indice $i$ de $a$ ne dépend que des caractères de $b$ et d
 
 ```pseudocode
 algorithme décalage(b: chaîne) → []entier:
-    (m := entier) ← b.longueur
-    T := []entier ← []entier{longueur: L}
-    pour chaque (i := entier) de [0 .. L[:
+    ref m ← b.longueur
+    ref T ← []int{longueur: L}
+    pour chaque i de [0 .. L[:
         T[i] ← m
-    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+    pour chaque k de [0 .. b.longueur - 1[:
         T[ord(b[k])] ← m - k - 1
 
     rendre T
@@ -220,21 +220,21 @@ Comme le nombre de caractères pouvant à priori être aussi grand qu'on veut, $
 
 ```pseudocode
 fonction décalage(b: chaîne) → []entier:
-    (m := entier) ← b.longueur
-    T := []entier ← []entier{longueur: L}
-    pour chaque (i := entier) de [0 .. L[:
+    ref m ← b.longueur
+    ref T ← []int{longueur: L}
+    pour chaque i de [0 .. L[:
         T[i] ← m
-    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+    pour chaque k de [0 .. b.longueur - 1[:
         T[ord(b[k])] ← min(T[ord(b[k])], m - k - 1)
 
     rendre T
 
 algorithme BMH(a: chaîne, b: chaîne) → []entier:
-    (m := entier) ← b.longueur
-    T := []entier ← []entier{longueur: L}
-    pour chaque (i := entier) de [0 .. L[:
+    ref m ← b.longueur
+    ref T ← []int{longueur: L}
+    pour chaque i de [0 .. L[:
         T[i] ← m
-    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+    pour chaque k de [0 .. b.longueur - 1[:
         T[b[k]] ← min(T[b[k]], m - k - 1)
 
     rendre T

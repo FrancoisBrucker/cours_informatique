@@ -36,8 +36,8 @@ On utilise une troisième pile où on va placer tous les nombres impairs :
 
 ```pseudocode
 algorithme parité(P1: Pile<entier>, P2: Pile<entier>) → ∅:
-    (P3 := Pile<entier>) ← Pile<entier>{capacité: P1.capacité}
-    x := entier
+    ref P3 ← Pile<int>{capacité: P1.capacité}
+    ref x int
 
     tant que P1.longueur > 0:
         x ← P1.dépile()
@@ -62,15 +62,15 @@ Montrer que l'on peut trouver si une chaîne de caractères est un palindrome en
 
 ```pseudocode
 algorithme palindrome(s: chaîne) → booléen:
-    (P := Pile<caractère> )← Pile<caractère> {capacité: |s|}
-    (F := File<caractère>) ← File<caractère> {capacité: |s|}
+    ref P ← Pile<char> {capacité: |s|}
+    ref F ← File<char> {capacité: |s|}
 
     pour chaque c de s:
         P.empile(c)
         F.enfile(c)
 
-    c1 := caractère
-    c2 := caractère
+    ref c1 char
+    ref c2 char
     tant que P.longueur > 0:
         c1 ← P.dépile()
         c2 ← F.defile()
@@ -102,9 +102,9 @@ En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{
 
 ```pseudocode
 algorithme permutation(T: []entier, k: entier) → ∅:
-    (F := File<entier>) ← File<entier>{capacité: T.longueur}
+    ref F ← File<int>{capacité: T.longueur}
 
-    pour chaque (i:= entier) de [0 .. T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         F.enfile(T[i])
     répéter k fois:
         x ← F.défile()
@@ -181,8 +181,8 @@ Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équ
 
 ```pseudocode
 algorithme parenthèse(C: chaîne) → booléen:
-    (P := Pile<caractère>) ← Pile<caractère>{capacité: |C|}
-    pour chaque (c := caractère) de C:
+    ref P ← Pile<char>{capacité: |C|}
+    pour chaque c de C:
         si c == "(" ou c == "[":
             P.empile(c)
         sinon si c == ")":
@@ -225,12 +225,12 @@ Il faut faire attention au fait que `*` a une priorité supérieure à `+` : `3 
 ```pseudocode
 
 algorithme évalue(expression: chaîne) → entier:
-    op := opérateur ou parenthèse
-    x := entier
-    y := entier
+    ref op opérateur ou parenthèse
+    ref x int
+    ref y int
 
-    (P1 := Pile<opérateur ou parenthèse>) ← Pile<opérateurs ou parenthèse>{capacité: |expression|}
-    (P2 := Pile<entier>) ← Pile<entier>{capacité: |expression|}
+    ref P1 ← Pile<opérateurs ou parenthèse>{capacité: |expression|}
+    ref P2 ← Pile<int>{capacité: |expression|}
     pour chaque c de expression:
         si c est un entier:
             P2.empile(c)

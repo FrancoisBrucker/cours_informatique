@@ -55,7 +55,7 @@ L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cou
 
 ```pseudocode
 algorithme expo(x: entier, y: entier) → entier:
-    r := 1
+    ref r ← 1
     tant que y > 0:
         si y est impair:
             r ← r * x mod p     # MULTIPLY
@@ -83,7 +83,7 @@ Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorith
 
 ```pseudocode
 algorithme log(x: entier, y: entier, g: entier) → entier:
-    r := 1
+    ref r ← 1
     pour chaque i de 0 à p-1:
         si r == y:
             rendre i
@@ -110,8 +110,8 @@ Ce qui donne :
 
 ```pseudocode
 algorithme steps(y: entier, g: entier) → entier:
-    d := Dict<entier, entier>()
-    c := 1
+    ref d ← Dict<int, int>()
+    ref c ← 1
     
     pour chaque i de 0 à p/m:       # baby step
         d[c] = i
@@ -214,7 +214,7 @@ L'exponentiation indienne peut s'écrire de façon binaire en utilisant le princ
 
 ```
 algorithme expo(x: []entier, y: []entier) → []entier:
-  r := []entier
+  ref r []int
   r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:

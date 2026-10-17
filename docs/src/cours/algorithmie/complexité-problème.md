@@ -81,7 +81,7 @@ Ce qu'on peut déjà dire de notre problème :
 
 ```pseudocode/
 algorithme recherche(T: []entier, x: entier) → booléen:
-    pour chaque (e := entier) de T:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -181,9 +181,9 @@ Ce principe donne l'algorithme suivant :
 
 ```pseudocode
 algorithme recherche_dichotomique(T: []entier, x: entier) → booléen:
-  (a := entier) ← 0
-  (b := entier) ← T.longueur - 1
-  m := entier
+  ref a ← 0
+  ref b ← T.longueur - 1
+  ref m int
 
   tant que a ≤ b:
       m ← (a + b) // 2  # division entière

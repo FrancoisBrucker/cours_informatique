@@ -52,8 +52,8 @@ Montrez que l'algorithme suivant permet de résoudre le problème _Doppelganger_
 
 ```pseudocode
 algorithme doppelganger_naif(T: []entier) → entier:
-    pour chaque (i := entier) de [0 .. T.longueur[:
-        pour chaque (j := entier) de [i+1 .. T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
+        pour chaque j de [i+1 .. T.longueur[:
             si T[i] == T[j]:
                 rendre T[i]
 ```

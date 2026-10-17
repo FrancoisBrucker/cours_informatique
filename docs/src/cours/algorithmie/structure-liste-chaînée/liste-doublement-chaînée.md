@@ -27,9 +27,9 @@ Chaque maillon contient :
 Une liste doublement chaînée commence par un maillon vide puis on accole les différentes valeurs a la suite :
 
 ```pseudocode
-(L := Maillon<entier>) ← Maillon<entier>{}
+ref L ← Maillon<int>{}
 
-(M := Maillon<entier>) ← Maillon<entier>{valeur: 1}
+ref M ← Maillon<int>{valeur: 1}
 L.suivant ← M
 ```
 

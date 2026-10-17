@@ -64,7 +64,7 @@ Il est facile, itérativement à partir d'une clique possiblement réduite à un
 ```pseudocode
 algorithme clique_maximale(G: Graphe<sommet>, x:sommet) -> {sommet}
 
-C := {sommet}
+ref C {sommet}
 C <- {x}
 tant qu'il existe un sommet y de G \ C tel que C U {y} est une clique:
     C <- C U {y}

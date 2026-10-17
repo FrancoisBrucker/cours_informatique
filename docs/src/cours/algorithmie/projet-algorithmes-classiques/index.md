@@ -209,8 +209,8 @@ On adapte l'algorithme en récursion terminale :
 
 ```pseudocode
 algorithme fibonacci(n: entier) → entier:
-    (acc_n_1 := entier) ← 1
-    (acc_n_2 := entier) ← 1
+    ref acc_n_1 ← 1
+    ref acc_n_2 ← 1
 
     tant que n > 1:
         temp ← acc_n_1 
@@ -274,7 +274,7 @@ L'algorithme `algorithme successeur(N: []bit) → vide:`{.language-} suivant pre
 Cette fonction permet d'écrire le code suivant :
 
 ```pseudocode
-(n := entier) ← [1, 1, 0, 0, 1]
+ref n ← [1, 1, 0, 0, 1]
 successeur(n)
 affiche n à l'écran
 ```
@@ -289,7 +289,7 @@ Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
 
 ```pseudocode
 algorithme successeur(N: []bit) → vide:
-    (i := entier) ← 0
+    ref i ← 0
 
     tant que (i ≤ N.longueur - 1) et (N[i] == 1):
         N[i] ← 0
@@ -448,7 +448,7 @@ fonction tous_rec(N: []bit, i: entier) → vide:
     si i == -1:
         affiche à l'écran N
     sinon:
-        pour chaque (x:= entier) de [0 .. 1]:
+        pour chaque x de [0 .. 1]:
         N[i] ← x
         tous_rec(N, i - 1)
 
@@ -568,15 +568,15 @@ On peut utiliser l'algorithme suivant, qui modifie le tableau passé en paramèt
 
 ```pseudocode
 algorithme tri_paquet(E: []entier, f:(entier) → entier) → ∅:
-    (m := entier) ← max(f(x) | x de E)
+    ref m ← max(f(x) | x de E)
     (T = []entier) ← []entier{longueur: m + 1}
     T[:] ← ∅  # ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers
 
-    pour chaque (x:= entier) de E:
+    pour chaque x de E:
         T[f(x)] ← x
     
-    (i := entier) ← 0
-    pour chaque (x:= entier) de T:
+    ref i ← 0
+    pour chaque x de T:
         si x ≠ ∅:
             E[i] ← x
             i ← i + 1
@@ -708,13 +708,13 @@ L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos don
 algorithme tri_base(T: []entier,
                     N: entier     # T[i] < 2^N pour tout i
                    ) → ∅
-    (T0 := []entier) ← []entier{longueur: T.longueur}
-    (i0 := entier) ← 0
+    ref T0 ← []int{longueur: T.longueur}
+    ref i0 ← 0
 
-    (T1 := []entier) ← []entier{longueur: T.longueur}
-    (i1 := entier) ← 0
+    ref T1 ← []int{longueur: T.longueur}
+    ref i1 ← 0
 
-    pour (i:= entier) de [0 .. N[:
+    pour i de [0 .. N[:
         pour chaque x de T:
             si x // 2^i est pair:  # (x // 2^i) mod 2 == 0
                 T0[i0] ← x
@@ -770,8 +770,8 @@ Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_
 {% details "corrigé" %}
 ```pseudocode
 algorithme sous_sequence(S1: chaîne, S2: chaîne) → booléen:
-    (i1 := entier) ← 0
-    (i2 := entier) ← 0
+    ref i1 ← 0
+    ref i2 ← 0
     tant que i1 < S1.longueur et i2 < S2.longueur:
         si S2[i2] == S1[i1]:
             i2 ← i2 + 1
@@ -812,8 +812,8 @@ L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'être un sous
 algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
     
     pour chaque i1 de [0 .. S1.longueur[:
-        (i2 := entier) ← 0
-        (stop := booléen) ← Faux
+        ref i2 ← 0
+        ref stop ← Faux
         tant que (stop == Faux) et (i2 < S2.longueur):
             si S2[i2] == S1[i1 + i2]:
                 i2 ← i2 + 1
@@ -830,8 +830,8 @@ Si tous les caractères de $S_2$ sont différents, il n'est pas nécessaire de t
 
 ```pseudocode
 algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
-    (i1, i2 := entier) ← 0, 0
-    stop := booléen
+    ref i1, i2 ← 0, 0
+    ref stop bool
 
     tant que i1 < S1.longueur:
         i2 ← 0        
@@ -947,7 +947,7 @@ On a déjà vu une version de l'algorithme du pgcd. Rappelons -là :
 
 ```pseudocode
 algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
-    a', b' := entier
+    ref a', b' int
 
     tant que min(a, b) > 0:
         a' ← max(a, b) - min(a, b)

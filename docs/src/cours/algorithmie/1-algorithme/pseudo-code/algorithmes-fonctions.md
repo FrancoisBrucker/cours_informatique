@@ -42,7 +42,7 @@ algorithme recherche(T: []entier,
                      x: entier     # entier recherché dans t
                     ) → booléen:   # Vrai si x est dans t
 
-    e := entier
+    ref e int
     pour chaque e de T:
         si e == x:
             rendre Vrai
@@ -104,10 +104,10 @@ Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `T`
 
 ```pseudocode
 algorithme nombre(T: []entier, x: entier) → entier:
-    nb := entier
+    ref nb int
     nb ← 0
 
-    e := entier
+    ref e int
     pour chaque e de T:
         si e == x:
             nb ← nb + 1
@@ -145,7 +145,7 @@ algorithme recherche(t: []entier,
                      x: entier
                     ) → booléen:
 
-    e := entier
+    ref e int
     pour chaque e de t:
         si e == x:
             rendre Vrai
@@ -156,10 +156,10 @@ On peut utiliser le pseudo code de nom _recherche_ dans d'autres pseudo-code com
 
 ```pseudocode
 
-t := []entier{longueur: 3}
+ref t ← []int{longueur: 3}
 t ← [1, 2, 6]
 
-trouve := booléen
+ref trouve bool
 trouve ← recherche(t, 6)
 affiche à l'écran trouve
 ```
@@ -189,7 +189,7 @@ fonction recherche(t: []entier,
                    x: entier
                   ) → booléen:
 
-    e := entier
+    ref e int
     pour chaque e de t:
         si e == x:
             rendre Vrai
@@ -210,13 +210,13 @@ Que va afficher l'exécution de l'algorithme suivant :
 ```pseudocode/
 fonction affiche_double(e: entier) → ∅:
 
-    x := entier
+    ref x int
     x ← 2 * e
     affiche x
 
 algorithme calculatrice() → ∅:
 
-    x := entier
+    ref x int
 
     x ← demande un entier à l'utilisateur
     affiche_double(x)
@@ -247,7 +247,7 @@ fonction modif(U: []entier) → ∅:
 
 algorithme tableau() → ∅:
 
-    T := []entier
+    ref T []int
     T ← []entier{longueur: 3}
 
     T[0] ← 1
@@ -311,7 +311,7 @@ Lorsque le nom des paramètres est significatif, on les ajoutera à la signature
 Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
 
 ```pseudocode
-f := ([]entier, entier) → booléen
+ref f ([]int, int) → bool
 
 f ← recherche
 affiche f([1, 2, 6], 6)

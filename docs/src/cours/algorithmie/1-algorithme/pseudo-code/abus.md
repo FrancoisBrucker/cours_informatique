@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ref a, b, c type
+
 Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible. 
 
 Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.
@@ -23,20 +26,20 @@ Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme : 
 
 ```pseudocode
-(a := entier) ← 3
+ref a int ← 3
 ```
 
 **Lorsqu'il n'y a pas d’ambiguïté possible**, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :
 
-- `a := 3`{.language-} 
-- `T := []entier{longueur: 3}`{.language-} 
+- `ref a ← 3`{.language-} 
+- `ref T ← []int{longueur: 3}`{.language-} 
 
 Qui crée la variable, l'objets et les affecte l'un à l'autre
 
 Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :
 
 ```pseudocode
-a, b, c := entier
+ref a, b, c int
 ```
 
 {% attention %}
@@ -55,8 +58,8 @@ a, b ← c, d
 pour :
 
 ```pseudocode
-a' := c
-b' := d
+ref a' ← c
+ref b' ← d
 a ← a'
 b ← b'
 ```
@@ -73,7 +76,7 @@ On écrira :
 
 ```pseudocode
 
-pour chaque (i := entier) de [a .. b]:
+pour chaque i de [a .. b]:
     # ...
 ```
 
@@ -81,7 +84,7 @@ pour chaque (i := entier) de [a .. b]:
 
 ```pseudocode
 
-i := entier
+ref i int
 pour chaque i de [a .. b]:
     # ...
 ```
@@ -108,7 +111,7 @@ répéter k fois:
 Pour :
 
 ```pseudocode
-(i := entier) ← 0
+ref i ← 0
 tant que (i < k):
     i ← i + 1 
     # ...
@@ -119,7 +122,7 @@ tant que (i < k):
 On a parfois besoin d'utiliser des intervalles _"à trous"_. Par exemple tous les multiples de 3, ou tous les entiers pairs. On se permettra d'utiliser une variante des boucles comme :
 
 ```pseudocode
-i := entier
+ref i int
 pour i de a à b par par pas de k:
     # ...
 ```
@@ -127,7 +130,7 @@ pour i de a à b par par pas de k:
 ou encore :
 
 ```pseudocode
-i := entier
+ref i int
 pour chaque i de [a .. b] par pas de k:
     # ...
 ```
@@ -135,7 +138,7 @@ pour chaque i de [a .. b] par pas de k:
 Pour :
 
 ```pseudocode
-(i := entier) ← a
+ref i ← a
 tant que i ≤ b:
   # ...
 
@@ -145,7 +148,7 @@ tant que i ≤ b:
 Vous pourrez aussi utiliser la notation `[a .. b : p]`{.language-} qui étend la notation d'intervalle vu précédemment. et correspond à la liste : contenant les entiers : $a, a + p, \dots, a + ip, a + kp$ avec $a + kp$ le plus grand entier plus petit ou égal à $b$. On pourra alors utiliser le concis et explicite :
 
 ```pseudocode
-i := entier
+ref i int
 pour chaque i de [a .. b : k]:
     # ...
 ```
@@ -207,7 +210,7 @@ T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
 Avec deux tableaux :
 
 ```pseudocode
-T := T1 + T2
+ref T ← T1 + T2
 ```
 
 pour :

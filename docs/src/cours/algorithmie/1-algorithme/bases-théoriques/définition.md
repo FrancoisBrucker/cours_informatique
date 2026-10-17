@@ -201,6 +201,8 @@ Le terme **fini** de la définition d'un programme/algorithme est crucial : pour
 
 Donc la description du programme ainsi que les données doivent être décrites avec un _"langage"_ formé avec des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>).
 
+<div id="définition-mot"></div>
+
 {% definition %}
 
 - un **_alphabet_** est un ensemble fini non vide
@@ -395,6 +397,9 @@ Arrêtez-vous un instant sur les conséquences de ce que l'on vient de démontre
 Cette proposition montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres (en utilisant l'injection définie dans la proposition précédente). On pourra ensuite retrouver ces deux paramètres en utilisant la procédure inverse au début de l'algorithme.
 
 De là, tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quitte à retrouver les paramètres initiaux en utilisant la réciproque de notre procédure de compactage des paramètres. Comme les suites finies de `0` et de `1` sont des entiers écrits en base 2, on obtient le résultat fondamental :
+
+
+<div id="manipuler-01"></div>
 
 {% retenir %}
 

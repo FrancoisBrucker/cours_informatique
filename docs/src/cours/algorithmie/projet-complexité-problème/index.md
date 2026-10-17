@@ -93,7 +93,7 @@ algorithme trouve(T: []entier) → entier:  # T.longueur > 1
     si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
-    pour chaque (i := entier) de [1 .. T.longueur - 1[:
+    pour chaque i de [1 .. T.longueur - 1[:
         si T[i] ≤ min(T[i-1], T[i + 1]):
             rendre i
 ```
@@ -122,7 +122,7 @@ algorithme trouve(T: []entier) → entier:  # T.longueur > 1
     si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
-    pour chaque (i := entier) de [1 .. T.longueur - 1[:
+    pour chaque i de [1 .. T.longueur - 1[:
         si T[i] ≤ T[i + 1]:
             rendre i
 
@@ -144,8 +144,8 @@ algorithme trouve_vite(T: []entier) → entier:    # T.longueur > 1
     si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
-    (début := entier) ← 0
-    (fin := entier) ← T.longueur - 1
+    ref début ← 0
+    ref fin ← T.longueur - 1
 
     tant que Vrai:
         milieu ← (fin + début) // 2
@@ -281,7 +281,7 @@ On a donc l'algorithme suivant :
 
 ```pseudocode
 fonction déplace(départ: []entier, arrivée: []entier):
-    (disque := entier) ← départ[départ[0]]
+    ref disque ← départ[départ[0]]
     départ[0] ← départ[0] - 1 
     arrivée[0] ← arrivée[0] + 1 
     arrivée[arrivée[0]] ← disque
@@ -488,8 +488,8 @@ Résoudre le problème du point fixe va nécessiter un de travail. Commençons p
 
 ```pseudocode
 algorithme point_fixe_naïf(a: (int) → int) → int
-    (i := entier) ← 1
-    (j := entier)
+    ref i ← 1
+    ref j int
 
     tant que Vrai:
         i ← i + 1
@@ -563,8 +563,8 @@ L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet alg
 ```pseudocode
 programme lièvre_tortue(a: (entier) → entier) → entier:
 
-    (tortue := entier) ← 1
-    (lièvre := entier) ← 2
+    ref tortue ← 1
+    ref lièvre ← 2
 
     tant que a(tortue) ≠ a(lièvre):
         tortue ← tortue + 1
@@ -637,8 +637,8 @@ On applique directement ce que l'on a vu en effectuant deux fois l'algorithme du
 ```pseudocode
 fonction lièvre_tortue(a: (entier) → entier, départ_tortue: entier, départ_lièvre: entier) → entier:
 
-    (tortue := entier) ← départ_tortue
-    (lièvre := entier) ← départ_lièvre
+    ref tortue ← départ_tortue
+    ref lièvre ← départ_lièvre
 
     tant que a(tortue) ≠ a(lièvre):
         tortue ← tortue + 1
@@ -648,7 +648,7 @@ fonction lièvre_tortue(a: (entier) → entier, départ_tortue: entier, départ_
 
 
 algorithme mu(a: (entier) → entier) → entier:
-    (m_star := entier) ← lièvre_tortue(a, 1, 2)
+    ref m_star ← lièvre_tortue(a, 1, 2)
     rendre lièvre_tortue(a, 0, m_star)
 ```
 
@@ -700,8 +700,8 @@ On calcule itérativement les éléments de la suite ce qui permet de ne pas exp
 
 ```pseudocode
 fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier) → []entier:
-    (x := entier)
-    (y := entier)
+    ref x int
+    ref y int
 
     tant que tortue ≠ lièvre:
         x ← tortue
@@ -716,7 +716,7 @@ fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier)
 algorithme point_fixe(f: (entier) → entier, a1: entier)  # on suppose que a1 ≠ f(a1)
                       → entier:
 
-    (m_star := entier) ← lièvre_tortue(f, a1, f(a1))[0]
+    ref m_star ← lièvre_tortue(f, a1, f(a1))[0]
     rendre lièvre_tortue(f, a1, m_star)
 ```
 
@@ -764,9 +764,9 @@ Commençons par écrire la bijection permettant de passer d'un entier à un tabl
 
 ```pseudocode
 algorithme u(x: []bit) → entier:
-    (v := entier) ← 0
-    (puissance_2 := entier) ← 1
-    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+    ref v ← 0
+    ref puissance_2 ← 1
+    pour chaque i de [0 .. x.longueur - 1[:
         si (x[i] == 1):
             v ← v + puissance_2
         puissance_2 ← 2 * puissance_2
@@ -785,14 +785,14 @@ La finitude du programme est clair. L'invariant de boucle permettant de prouver 
 
 ```pseudocode/
 algorithme u_moins_1(n: entier) → []bit:
-    (k := entier) ← 0
-    (puissance_2 := entier) ← 1
+    ref k ← 0
+    ref puissance_2 ← 1
     tant que puissance_2 ≤ n:
         puissance_2 ← 2 * puissance_2
-        (k := entier) ← k + 1
+        ref k ← k + 1
     
-    (T := []bit) ← []bit{longueur: k}
-    (i := entier) ← 0
+    ref T ← []bit{longueur: k}
+    ref i ← 0
     tant que n > 0:
         si n est impair:
             T[i] ← 1
@@ -851,10 +851,10 @@ algorithme addition(x: []bit,
                     y: []bit)  # on suppose x et y de même taille
                     → []bit    # de la taille de x et y + 1
 
-    (somme := []bit) ← []bit{longueur: x.longueur + 1}
-    (retenue := bit) ← 0
+    ref somme ← []bit{longueur: x.longueur + 1}
+    ref retenue ← 0
 
-    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+    pour chaque i de [0 .. x.longueur - 1[:
         si (x[i] == 1) et (y[i] == 1) et (retenue == 1):
             somme[i]  ← 1
             retenue ← 1
@@ -913,10 +913,10 @@ algorithme soustraction(x: []bit,
                         y: []bit)  # on suppose x et y de même taille et que u(x) ≥ u(y)
                         → []bit    # de la taille de x et y
 
-    (différence := []bit) ← []bit{longueur: x.longueur}
-    (retenue := bit) ← 0
+    ref différence ← []bit{longueur: x.longueur}
+    ref retenue ← 0
 
-    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+    pour chaque i de [0 .. x.longueur - 1[:
         si (x[i] == 1) et (y[i] == 1) et (retenue == 1):
             différence[i]  ← 0
             retenue ← 1
@@ -981,13 +981,13 @@ algorithme opération(x: []bit,
                      y: []bit)  # on suppose x et y de même taille
                      → []bit    # de la taille de x et y + 1
 
-    (x' := []bit) ← []bit{longueur: max(x.longueur, y.longueur)}
+    ref x' ← []bit{longueur: max(x.longueur, y.longueur)}
     x'[:] ← 0
-    pour chaque (i := entier) de [0 .. x.longueur[:
+    pour chaque i de [0 .. x.longueur[:
         x'[i] ← x[i]
-    (y' := []bit) ← []bit{longueur: max(x.longueur, y.longueur)}
+    ref y' ← []bit{longueur: max(x.longueur, y.longueur)}
     y'[:] ← 0
-    pour chaque (i := entier) de [0 .. x.longueur[:
+    pour chaque i de [0 .. x.longueur[:
         y'[i] ← y[i]
 
     #  ... reste de l'algorithme
@@ -1004,8 +1004,8 @@ algorithme opération(x: []bit,
 
     #  ... début de l'algorithme
 
-    (i := entier) ← résultat.longueur
-    (on_reste := booléen) ← Vrai
+    ref i ← résultat.longueur
+    ref on_reste ← Vrai
 
     tant que on_reste:
         si (i == 0) ou (résultat[i-1] == 1):  # on s'arrête au premier 1 ou si résultat ne contient que des 0
@@ -1013,7 +1013,7 @@ algorithme opération(x: []bit,
         sinon:
             i ← i - 1
     
-    (résultat' := []bit) ← []bit{longueur: i}
+    ref résultat' ← []bit{longueur: i}
 
     pour chaque i de [0 .. résultat'.longueur[:
         résultat'[i] ← résultat[i]
@@ -1108,11 +1108,11 @@ On obtient l'algorithme suivant :
 ```pseudocode
 algorithme multiplication(x: []bit, y: []bit) → []bit
 
-    (résultat := []bit) ← []bit{longueur: 2 * x.longueur}
+    ref résultat ← []bit{longueur: 2 * x.longueur}
     résultat[:] ← 0
 
-    retenue := entier
-    temp := entier
+    ref retenue int
+    ref temp int
     pour chaque k de [0 .. x.longueur[:
         retenue ← 0
         pour chaque i de [0 .. y.longueur[:
@@ -1186,12 +1186,12 @@ Pour transformer cette égalité en pseudocode il faut faire un peu attention à
 Montrez que l'astuce suivante permet de séparer un tableau $x$ en 2 sous-tableaux de même taille quelque soit sa longueur $n$ :
 
 ```pseudocode
-(x := entier) ← x.longueur
+ref x ← x.longueur
 
-(x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+ref x1 ← []bit{longueur: n // 2 + (n mod 1)}
 x1[-1] ← 0
 x1[: n // 2] ← x[: n // 2]
-(x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+ref x2 ← []bit{longueur: n // 2 + (n mod 1)}
 x2[n // 2 :] ← x[n // 2 :]
 
 ```
@@ -1213,28 +1213,28 @@ On peut maintenant écrire le pseudo-code associé à notre équation :
 
 ```pseudocode
 algorithme Karatsuba(x: []bit, y: []bit) → []bit:  # x et y de même longueur
-    (n := entier) ← x.longueur
+    ref n ← x.longueur
 
     # astuce pour garantir une même taille aux tableaux si la longueur est impaire
-    (x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref x1 ← []bit{longueur: n // 2 + (n mod 1)}
     x1[-1] ← 0
     x1[: n // 2] ← x[: n // 2]
-    (x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref x2 ← []bit{longueur: n // 2 + (n mod 1)}
     x2[n // 2 :] ← x[n // 2 :]
 
-    (y1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref y1 ← []bit{longueur: n // 2 + (n mod 1)}
     y1[-1] ← 0
     y1[: n // 2] ← y[: n // 2]
-    (y2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref y2 ← []bit{longueur: n // 2 + (n mod 1)}
     y2[n // 2 :] ← y[n // 2 :]
 
-    (x2y2 := []bit) ← Karatsuba(x2, y2)
-    (x1y1 := []bit) ← Karatsuba(x1, y1)
+    ref x2y2 ← Karatsuba(x2, y2)
+    ref x1y1 ← Karatsuba(x1, y1)
 
-    (x1y2 := []bit) ← Karatsuba(x1, y2)
-    (x2y1 := []bit) ← Karatsuba(x2, y1)
+    ref x1y2 ← Karatsuba(x1, y2)
+    ref x2y1 ← Karatsuba(x2, y1)
 
-    résultat := []bit
+    ref résultat []bit
 
     résultat ← puissance(n, x2y2)
     résultat ← somme(résultat, puissance(n // 2, somme(x1y2, x2y1)))
@@ -1318,29 +1318,29 @@ Modifiez votre algorithme de Karatsuba pour qu'il intègre l'astuce précédente
 
 ```pseudocode
 algorithme Karatsuba(x: []bit, y: []bit) → []bit:  # x et y de même longueur
-    (n := entier) ← x.longueur
+    ref n ← x.longueur
 
     # astuce pour garantir une même taille aux tableaux si la longueur est impaire
-    (x1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref x1 ← []bit{longueur: n // 2 + (n mod 1)}
     x1[-1] ← 0
     x1[: n // 2] ← x[: n // 2]
-    (x2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref x2 ← []bit{longueur: n // 2 + (n mod 1)}
     x2[n // 2 :] ← x[n // 2 :]
 
-    (y1 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref y1 ← []bit{longueur: n // 2 + (n mod 1)}
     y1[-1] ← 0
     y1[: n // 2] ← y[: n // 2]
-    (y2 := []bit) ← []bit{longueur: n // 2 + (n mod 1)}
+    ref y2 ← []bit{longueur: n // 2 + (n mod 1)}
     y2[n // 2 :] ← y[n // 2 :]
 
-    (x2y2 := []bit) ← Karatsuba(x2, y2)
-    (x1y1 := []bit) ← Karatsuba(x1, y1)
+    ref x2y2 ← Karatsuba(x2, y2)
+    ref x1y1 ← Karatsuba(x1, y1)
 
-    (s1 := []bit) ← somme(x1, x2)
-    (s2 := []bit) ← somme(y1, y2)
-    (p := []bit) ← Karatsuba(s1, s2)
+    ref s1 ← somme(x1, x2)
+    ref s2 ← somme(y1, y2)
+    ref p ← Karatsuba(s1, s2)
 
-    résultat := []bit
+    ref résultat []bit
 
     résultat ← puissance(n, x2y2)
     résultat ← somme(résultat, puissance(n // 2, x2y2))
