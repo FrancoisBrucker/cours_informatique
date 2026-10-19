@@ -10,9 +10,7 @@ eleventyComputed:
 ---
 
 
-Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible. 
-
-Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.
+Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible. Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.
 
 ## Définitions de variables
 

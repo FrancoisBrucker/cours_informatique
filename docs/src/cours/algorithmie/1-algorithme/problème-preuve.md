@@ -1,17 +1,107 @@
 ---
 layout: layout/post.njk
-title: Prouver un algorithme
 
-eleventyComputed:
+title: "Problème algorithmique et preuve d'algorithme"
+
+eleventyComputed:  
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :
+Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme.
+
+
+## Problème algorithmique
 
 {% definition %}
+Un **_problème_** est un texte composé de 3 parties :
+
+- **Nom** : le nom du problème
+- **Entrées** : les paramètres dont on a besoin
+- **Sortie** : la solution recherchée
+
+{% enddefinition %}
+
+Par exemple :
+
+<span id="problème-max-tableau"></span>
+
+{% note "**Problème**" %}
+
+- **Nom** : MAX
+- **Entrée** : un tableau d'entiers
+- **Sortie** : l'entier maximum du tableau
+
+{% endnote %}
+
+Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov), ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11){.externe} ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4){.externe}), on se restreindra ici aux problèmes algorithmiques :
+
+<span id="problème-algorithmique"></span>
+
+{% definition %}
+**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
+
+- prend en paramètres les entrées du problème
+- donne en sortie la solution recherchée.
+
+{% enddefinition %}
+
+Il est clair qu'un problème algorithmique est [une propriété](../bases-théoriques/arrêt-rice/#définition-propriété), il n'existe donc aucun moyen automatique de savoir si un algorithme donné résout un problème : il faut le prouver à chaque fois.
+
+
+## Preuve d'algorithme
+
+Par exemple l'algorithme suivant :
+
+> TBD algorithme déjà à vue.
+> 
+<span id="algorithme-pgcd-naif"></span>
+
+```pseudocode
+algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
+    ref pgcd int
+
+    pour chaque k de [1 .. min(a, b)]:
+        si (a mod k == 0) ET (b mod k == 0):
+            pgcd ← k
+    
+    rendre pgcd
+```
+{% details "code python" %}
+
+```python
+def pgcd(a, b):
+    pgcd = 0
+    for k in range(1, min(a, b) + 1):
+        if (a % k == 0) and (b % k == 0):
+            pgcd = k
+    
+    return pgcd
+```
+
+{% enddetails %}
+
+
+Et démontrons qu'il fait partie de l'ensemble des algorithmes trouvant le plus grand commun diviseur de deux entiers :
+
+{% note "**Problème**" %}
+
+- **Nom** : Plus Grand Commun Diviseur ($\operatorname{pgcd}$)
+- **Entrée** : deux entiers $a$ et $b$
+- **Sortie** : le plus grand entier $k$ qui divise à la fois x et y.
+
+{% endnote %}
+
+On peut facilement prouver qu'il calcule bien le $\operatorname{pgcd}$ de deux nombres positifs car :
+
+- `a mod 1 == 0`{.language-} et `b mod 1 == 0`{.language-}, donc la variable `pgcd`{.language-} sera bien initialisée,
+- la boucle pour chaque parcourt toutes les possibilités pour le $\operatorname{pgcd}$ par ordre croissant. Il rendra bien le plus grand entier possible.
+
+De façon générale, prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :
+
+{% retenir %}
 
 Prouver un algorithme $A$ c'est démontrer qu'il résout un problème $P$. Pour cela :
 
@@ -21,7 +111,7 @@ Prouver un algorithme $A$ c'est démontrer qu'il résout un problème $P$. Pour 
    - sa sortie
 2. on démontrera que le résultat de l'exécution de $A$ avec une instance d'entrées de $P$ est bien une réponse à $P$.
 
-{% enddefinition %}
+{% endretenir %}
 
 A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :
 
@@ -31,11 +121,11 @@ A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre 
 
 Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidable en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont sensés s'arrêter et il sera (normalement) facile de le voir.
 
-En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate.
+En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. On peut en revanche donner ds règles générales de preuve qui fonctionnent souvent (en tous cas pour les algorithmes du cours).
 
-## Types d'algorithme
+## Prouver des algorithmes récursif et itératifs
 
-Il y a deux sortes d'algorithmes :
+Il y a deux grandes familles d'algorithmes :
 
 - les algorithmes itératifs, c'est à dire utilisant des boucles
 - les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.
@@ -51,7 +141,7 @@ Adaptation d'un algorithme aux données :
 1. pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),
 2. pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).
 
-La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.
+**La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.**
 
 {% endretenir %}
 
@@ -63,11 +153,11 @@ $$
 
 ### Récursif
 
-{% note %}
+{% definition %}
 
-**Un algorithme récursif** va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une **_récursion_**) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une **_condition d'arrêt_**). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.
+**Un algorithme récursif** va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une **_récursion_**) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une **_condition d'arrêt_** pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.
 
-{% endnote %}
+{% enddefinition %}
 
 Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :
 
@@ -85,11 +175,11 @@ Qui permet d'écrire l'algorithme récursif suivant :
 <div id="algorithme-factorielle-rec"></div>
 
 ```pseudocode
-algorithme factorielle(n: entier  # n ≥ 1
-                      ) → entier:
-    si n == 1:  # condition d'arrêt
+algorithme factorielle(n: int     # n ≥ 1
+                      ) → int:
+    si n == 1:                    # condition d'arrêt
         rendre 1
-    ref f ← factorielle(n-1)  # récursion
+    ref f ← factorielle(n-1)      # récursion
     rendre n * f
 ```
 
@@ -106,6 +196,20 @@ def factorielle(n):
 {% enddetails %}
 
 L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper si nécessaire.
+
+
+> TBD exercice avec Euclide.
+
+<span id="algorithme-pgcd"></span>
+
+```pseudocode
+algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
+    ref a', b' int
+    tant que min(a, b) > 0:
+        a, b ← max(a, b) - min(a, b), min(a, b)
+    
+    rendre max(a, b)
+```
 
 ### Itératif
 
@@ -148,10 +252,13 @@ On voit que la forme d'un algorithme itératif est inversé par rapport à un al
 
 ## Preuve
 
+{% retenir %}
 Prouver qu'un programme résout un problème algorithmique nécessite deux vérifications :
 
 - **_la finitude_** : le programme s'arrête pour toute entrée, c'est un algorithme
 - **_la correction_** : sa sortie est une solution du problème
+
+{% endretenir %}
 
 ### Finitude
 

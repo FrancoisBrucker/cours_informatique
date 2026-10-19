@@ -49,7 +49,8 @@ Commençons par décrire la _grammaire de base_ du pseudo-code :
 On peut maintenant utiliser les différentes instructions du pseudo-code pour écrire nos algorithmes :
 
 {% aller %}
-[Algorithmes et Fonctions en pseudo-code](algorithmes-fonctions)
+1. [Algorithmes et Fonctions en pseudo-code](algorithmes-fonctions)
+2. [Algorithmes itératifs et récursifs](algorithme-récursifs-itératifs)
 {% endaller %}
 
 Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires.
@@ -68,13 +69,9 @@ Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, 
 
 - `ref x T`{.language-} : on définit la variable `x`{.language-} pouvant référencer des objets de type `T`{.language-}
 - `x ← y`{.language-} : on affecte `x`{.language-} à la valeur de `y`{.language-}
-- `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des eux variables sont toujours égales. C'est une conséquence.
-- `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. vrai si la valeur de x vaut la valeur de y et faux sinon
+- `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. L'expression est vraie si la valeur de x vaut la valeur de y et faux sinon. Par exemple ` 2 * x + 2 == 10`{.language-}
 
-## _"Abus"_ de notation
+Les autres opérateurs possible en algorithmie sont :
 
-On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !
-
-{% aller %}
-[Abus de notation](abus)
-{% endaller %}
+- `x := y`{.language-} : on définit `x`{.language-} comme étant `y`{.language-}. Par exemple $f(x) \coloneqq max(x, 10)$
+- `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des eux variables sont toujours égales. C'est une conséquence comme $\cos(\pi) = -1$.

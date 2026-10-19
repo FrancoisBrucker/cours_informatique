@@ -161,6 +161,8 @@ S'il est impossible de savoir a priori si un programme s'arrête ou pas, il est 
 
 Commençons par définir ce qu'est une propriété :
 
+<div id="définition-propriété"></div>
+
 {% definition %}
 Une **_propriété_** $P$ est un sous-ensemble non trivial d'algorithmes, c'est à dire que :
 

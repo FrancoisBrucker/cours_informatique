@@ -229,12 +229,44 @@ La plupart des fonctions connues sont calculables. Prenons la plus connue d'entr
 
 <span id="algorithme-euclide"></span>
 
-Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur (pgcd) de deux nombres ainsi :
+Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur ($\operatorname{pgcd}$) de deux nombres ainsi :
 
-```pseudocode
-le pgcd de deux nombres n'est pas changé si on remplace le plus grand d'entre eux par leur différence.
+```text
+- le pgcd de deux entiers identiques est cet entier,
+- le pgcd de deux entiers différent est inchangé changé si on remplace le plus grand d'entre eux par leur différence.
 ```
 
+{% exercice %}
+Montrez que l'algorithme d'Euclide trouve bien le $\operatorname{pgcd}$ de deux entiers.
+{% endexercice %}
+{% details "corrigé" %}
+Soit $k$ le $\operatorname{pgcd}$ de $a$ et $b$ : $k$ est le plus grand entier tel que $a = k \cdot a'$ et $b = k \cdot b'$ avec #a'$ et $b'$ entiers.
+
+ Si $a = b$ on a bien $k = a = b$ et si $a > b$ on a :
+
+ <div>
+$$
+\begin{cases}
+a - b = \operatorname{pgcd}(a, b) \cdot(a' - b') > 0\\
+b = \operatorname{pgcd}(a, b) \cdot b' > 0\\
+\end{cases}
+$$
+ </div>
+
+Ce qui prouve que $\operatorname{pgcd}(a, b) \leq \operatorname{pgcd}(a-b, b)$. Réciproquement :
+
+<div>
+$$
+\begin{cases}
+a = \operatorname{pgcd}(a-b, b) \cdot c + b = \operatorname{pgcd}(a-b, b) \cdot (c + b'')\\
+b = \operatorname{pgcd}(a-b, b) \cdot b''\\
+\end{cases}
+$$
+</div>
+
+Donc $\operatorname{pgcd}(a-b, b) \leq \operatorname{pgcd}(a, b)$ ce qui conclut la preuve.
+
+{% enddetails %}
 {% exercice %}
 Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étapes.
 {% endexercice %}
@@ -243,10 +275,10 @@ Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation 
 <div>
 $$
 \begin{equation}
-  \mbox{pgcd}(a, b) =
+  \operatorname{pgcd}(a, b) =
   \begin{cases}
     \max(a, b) & \text{si $\min(a, b) = 0$}\\
-    \mbox{pgcd}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
+    \operatorname{pgcd}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
   \end{cases}
 \end{equation}
 $$
