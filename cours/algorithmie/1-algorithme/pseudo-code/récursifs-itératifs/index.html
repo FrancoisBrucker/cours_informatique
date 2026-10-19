@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/algorithme-récursifs-itératifs/">Algorithmes récursifs et itératifs</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/récursifs-itératifs/">Algorithmes récursifs et itératifs</a>
 
 </div>
 </div>
@@ -244,7 +244,7 @@
 <li><code class="language-">pgcd(8, 6)</code> attend en ligne 7 que la fonction <code class="language-">pgcd(4, 3)</code> se termine pour continuer</li>
 </ul>
 <p>Lorsque la dernière récursion s'arrête : <code class="language-">pgcd(1, 1)</code> rend 1 sans récursion, qui permet à l'algorithme <code class="language-">pgcd(1, 2)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(1, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(2, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(4, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(8, 6)</code> de s'arrêter.</p>
-<p>Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Pour la complétion de cette partie, faisons le :</p>
+<p>Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Démontrons le :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -377,6 +377,54 @@ $$
 <div class="pl-8 mr-8">
 <p>Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'es pas sous la forme récursive terminale en ligne 7.</p>
 </div>
+</div>
+<h2>Récursion croisée</h2>
+<p>Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :</p>
+<p><span id="algorithme-pair-impair"></span></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire les deux fonctions récursives suivantes sans utiliser de division entière :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span></code></pre>
+<p>Vous pourrez utiliser le fait que <code class="language-">pair(0)</code> est <code class="language-pseudocode">Vrai</code> alors que <code class="language-">impair(0)</code> est <code class="language-pseudocode">Faux</code>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
+    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> NON impair<span class="token punctuation">(</span><span class="token variable parameter">n</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
+    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+    <span class="token keyword">rendre</span> NON pair<span class="token punctuation">(</span><span class="token variable parameter">n</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>La finitude est claire puisque :</p>
+<ol>
+<li>il n'y a qu'un appel récursif</li>
+<li>chaque appel se rapproche strictement de la condition d'arrêt</li>
+</ol>
+<p>La correction est évidente par définition de la parité.</p>
+</div>
+</details>     
 </div>
 
 
