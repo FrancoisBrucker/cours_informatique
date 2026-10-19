@@ -17,7 +17,7 @@ eleventyComputed:
 
 {% faire %}
 
-Écrivez (et prouvez) un algorithme de signature `base10(entier) -> []entier`{.language-} rendant la forme décimale (un tableau de chiffres allant de 0 à 9) d'un entier. On doit avoir :
+Écrivez (et prouvez) un algorithme de signature `base10(int) -> []int`{.language-} rendant la forme décimale (un tableau de chiffres allant de 0 à 9) d'un entier. On doit avoir :
 
 ```pseudocode
 base10(123) = [3, 2, 1]
@@ -29,7 +29,7 @@ base10(123) = [3, 2, 1]
 
 {% faire %}
 
-Écrivez (et prouvez) un algorithme de signature `étendre([]entier, n) -> []entier`{.language-} qui ajoute n 0 en à la fin du tableau. Par exemple :
+Écrivez (et prouvez) un algorithme de signature `étendre([]int, n) -> []int`{.language-} qui ajoute n 0 en à la fin du tableau. Par exemple :
 
 ```pseudocode
 étendre([3, 2, 1], 4) = [3, 2, 1, 0, 0, 0, 0]
@@ -41,7 +41,7 @@ base10(123) = [3, 2, 1]
 
 {% faire %}
 
-Écrivez (et prouvez) un algorithme de signature `entier([]entier) -> entier`{.language-} rendant la valeur d'un entier écrit en forme décimale. On doit avoir :
+Écrivez (et prouvez) un algorithme de signature `entier([]int) -> int`{.language-} rendant la valeur d'un entier écrit en forme décimale. On doit avoir :
 
 ```pseudocode
 entier([3, 2, 1]) = 123
@@ -54,7 +54,7 @@ entier([3, 2, 1]) = 123
 
 {% faire %}
 
-Écrivez (et prouvez) un algorithme permettant de calculer la somme de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : `somme([]entier, []entier) -> []entier`{.language-}
+Écrivez (et prouvez) un algorithme permettant de calculer la somme de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : `somme([]int, []int) -> []int`{.language-}
 
 {% endfaire %}
 
@@ -62,7 +62,7 @@ entier([3, 2, 1]) = 123
 
 {% faire %}
 
-Écrivez un algorithme permettant de calculer la soustraction de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : `soustraction(n: []entier, m: []entier) -> []entier`{.language-} et tel que `soustraction(n, m) = base10(|entier(n)-entier(m)|)`{.language-}
+Écrivez un algorithme permettant de calculer la soustraction de 2 nombres donnés sous leur forme décimale (un tableau de chiffres allant de 0 à 9). Cet algorithme devra être de signature : `soustraction(n: []int, m: []int) -> []int`{.language-} et tel que `soustraction(n, m) = base10(|entier(n) - entier(m)|)`{.language-}
 
 {% endfaire %}
 
@@ -85,7 +85,7 @@ entier([3, 2, 1]) = 123
 
 {% faire %}
 
-Si `s`{.language-} est une chaîne de caractères uniquement formée de parenthèses ouvrante et fermante, écrivez un algorithme de signature `couple(s: chaîne, i: entier) -> entier`{.language-} qui rend l'index de la parenthèse associée à celle d'indice `i`{.language-} ou -1 si elle n'existe pas (et `s`{.language-} n'est pas un bon parenthésage). Par exemple :
+Si `s`{.language-} est une chaîne de caractères uniquement formée de parenthèses ouvrante et fermante, écrivez un algorithme de signature `couple(s: chaîne, i: int) -> int`{.language-} qui rend l'index de la parenthèse associée à celle d'indice `i`{.language-} ou -1 si elle n'existe pas (et `s`{.language-} n'est pas un bon parenthésage). Par exemple :
 
 - `parenthèses("(())()", 0) = 3`{.language-}
 - `parenthèses("(())()(", 5) = 4`{.language-}

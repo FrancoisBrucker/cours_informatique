@@ -45,6 +45,14 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./1-algorithme/)
 {% endaller %}
 
+## <span id="partie-1"></span>Partie II : Mesures de complexités
+
+{% aller %}
+[Calculs de complexités](./2-complexités/)
+{% endaller %}
+
+
+
 > TBD en chantier : la partie I migre vers le lien ci-dessus
 
 
