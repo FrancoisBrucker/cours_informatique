@@ -53,34 +53,9 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 
 
-> TBD en chantier : la partie I migre vers le lien ci-dessus
+> TBD en chantier : les parties I et II migrent vers les liens ci-dessus
 
 
-
-
-### Complexité d'un algorithme
-
-{% lien %}
-[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12){.externe}
-{% endlien %}
-
-Cette partie s'intéresse à la notion de complexités pour un algorithme.
-
-{% aller %}
-[Calcul de complexité d'un algorithme](./complexité-calculs)
-{% endaller %}
-
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif) :
-
-{% aller %}
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite)
-{% endaller %}
-
-On vérifie qu'on sait faire :
-
-{% aller %}
-[exercices non corrigés](./exercices-calculs-compexités)
-{% endaller %}
 
 ### Complexité d'un problème
 
