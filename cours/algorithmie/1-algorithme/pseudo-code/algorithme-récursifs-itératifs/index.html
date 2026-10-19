@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithmes récursifs et itératifs</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Algorithmes récursifs et itératifs</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/algorithme-récursifs-itératifs/">Algorithmes récursifs et itératifs</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Il y a deux grandes familles d'algorithmes :</p>
+<ul>
+<li>les algorithmes itératifs, c'est à dire utilisant des boucles</li>
+<li>les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.</li>
+</ul>
+<p>Tout algorithme pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que l'autre.</p>
+<p>Avant de définir formellement les deux approches commençons par deux remarques importantes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Adaptation d'un algorithme aux données :</p>
+<ol>
+<li>pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),</li>
+<li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).</li>
+</ol>
+<p><strong>La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.</strong></p>
+</div>
+</div>
+<p>Pour expliciter la différence entre les deux approches nous allons utiliser notre exemple fil rouge <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">du calcul du $\operatorname{pgcd}$</a>.</p>
+<h2>Algorithmes Itératif</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p><strong>Un algorithme itératif</strong> va gérer les 2 points d'adaptation aux données en modifiant des variables locales et en utilisant des boucles <code class="language-pseudocode">pour chaque</code> et <code class="language-">tant que</code>. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.</p>
+</div>
+</div>
+<p>Pour le calcul du $\operatorname{pgcd}$, l'algorithme itératif va tester tous les cas possibles :</p>
+<p><span id="algorithme-pgcd-naif"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">pgcd</span> <span class="token type class-name">int</span></span>
+
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">k</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">a</span> mod <span class="token variable parameter">k</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">b</span> mod <span class="token variable parameter">k</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">pgcd</span> <span class="token operator">←</span> <span class="token variable parameter">k</span>
+    
+    <span class="token keyword">rendre</span> <span class="token variable parameter">pgcd</span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    pgcd <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            pgcd <span class="token operator">=</span> k
+    
+    <span class="token keyword">return</span> pgcd</code></pre>
+</div>
+</details>     
+</div>
+<p>Lorsque l'on construit un algorithme itératif, il faut faire attention au fait que les boucles finissent bien. C'est bien sur toujours le cas avec les boucles de type <code class="language-">pour chaque</code> mais pour des boucles de type <code class="language-">tant que</code> ce n'est pas toujours évident.</p>
+<h2>Algorithmes Récursif</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong> pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
+</div>
+</div>
+<p>Pour le calcul du $\operatorname{pgcd}$ on va utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD" class="externe">l'algorithme binaire de Stein</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span> <span class="token variable parameter">a</span> <span class="token operator">==</span> <span class="token variable parameter">b</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token variable parameter">a</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token variable parameter">a</span> mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">b</span> mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">2</span> <span class="token operator">*</span> pgcd<span class="token punctuation">(</span><span class="token variable parameter">a</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token variable parameter">a</span> mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span><span class="token variable parameter">a</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token variable parameter">b</span> mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span>  <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span> <span class="token variable parameter">a</span> <span class="token operator">></span> <span class="token variable parameter">b</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span><span class="token variable parameter">a</span> <span class="token operator">-</span> <span class="token variable parameter">b</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">-</span> <span class="token variable parameter">a</span><span class="token punctuation">)</span></span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>                     
+        <span class="token keyword">return</span> <span class="token builtin">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> a    
+    <span class="token keyword">elif</span> <span class="token punctuation">(</span>a <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span> <span class="token operator">*</span> pgcd<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> <span class="token punctuation">(</span>a <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pgcd<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pgcd<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b  <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> a <span class="token operator">></span> b<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pgcd<span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pgcd<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">-</span> a<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>À chaque récursion soit $a$ soit $b$ (<a href="https://www.youtube.com/watch?v=mIUwEoG7ssM&amp;t=59s" class="externe">ou les deux</a>) diminue strictement : à chaque itération on se rapproche donc des deux cas sans récursion qui mettent fin à l'algorithme.</p>
+<p>Notre algorithme effectue 5 récursions avant de terminer pour calculer le pgcd entre 8 et 6 :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pgcd(8, 6) = 2 * pgcd(4, 3)
+                 pgcd(4, 3) = pgcd(2, 3)
+                              pgcd(2, 3) = pgcd(1, 3)
+                                           pgcd(1, 3) = pgcd(1, 2)
+                                                        pgcd(1, 2) = pgcd(1, 1)
+                                                                     pgcd(1, 1) = 1</code></pre>
+<p>Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme passe à la ligne suivante <strong>que</strong> si l'instruction est terminée : lors d'une récursion l'algorithme attend que la récursion se termine pour continuer. Ainsi lors du 5 appel de récursion, il y a 5 algorithmes qui attentent :</p>
+<ul>
+<li><code class="language-">pgcd(1, 2)</code> attend en ligne 11 que la fonction <code class="language-">pgcd(1, 1)</code> se termine pour continuer</li>
+<li><code class="language-">pgcd(1, 3)</code> attend en ligne 15 que la fonction <code class="language-">pgcd(1, 2)</code> se termine pour continuer</li>
+<li><code class="language-">pgcd(2, 3)</code> attend en ligne 9 que la fonction <code class="language-">pgcd(1, 3)</code> se termine pour continuer</li>
+<li><code class="language-">pgcd(4, 3)</code> attend en ligne 9 que la fonction <code class="language-">pgcd(2, 3)</code> se termine pour continuer</li>
+<li><code class="language-">pgcd(8, 6)</code> attend en ligne 7 que la fonction <code class="language-">pgcd(4, 3)</code> se termine pour continuer</li>
+</ul>
+<p>Lorsque la dernière récursion s'arrête : <code class="language-">pgcd(1, 1)</code> rend 1 sans récursion, qui permet à l'algorithme <code class="language-">pgcd(1, 2)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(1, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(2, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(4, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(8, 6)</code> de s'arrêter.</p>
+<p>Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Pour la complétion de cette partie, faisons le :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donné en paramètre.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme effectue plusieurs cas que nous allons examiner :</p>
+<ul>
+<li>si <code class="language-">min(a, b) == 0</code> : le $\operatorname{pgcd}$ est clairement $\max(a, b)$,</li>
+<li>si <code class="language-">min(a, b) &gt; 0</code> et <code class="language-">a == b</code> : le $\operatorname{pgcd}$ est clairement $a$,</li>
+<li>si <code class="language-">a</code> et <code class="language-">b</code> sont pairs 2 est un diviseur commun</li>
+<li>si seul <code class="language-">a</code> ou <code class="language-">b</code> est pair, 2 n'est pas un diviseur commun</li>
+<li>sinon, on retrouve <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">l'algorithme d'Euclide</a> que l'on a démontré correct.</li>
+</ul>
+</div>
+</details>     
+</div>
+<h2><span id="récursion-terminale"></span>Récursion terminale</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale" class="externe">Récursion terminale</a></p>
+</div>
+</div>
+<p>La récursion terminale est un algorithme écrit sous une forme récursive pouvant facilement se mettre sous forme itérative :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit l'algorithme <code class="language-">f</code> suivant où <code class="language-">c: A → Booléen</code>, <code class="language-">g: A → B</code> et <code class="language-">h: A → A</code> sont trois fonctions parfaitement définies :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">A</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">B</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> c<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">Vrai</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> g<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> f<span class="token punctuation">(</span>h<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>L'algorithme <code class="language-">f</code> est sous la forme d'une <strong><em>récursion terminale</em></strong>, c'est à dire que :</p>
+<ol>
+<li><strong>soit</strong> il s'arrête si une condition d'arrêt est vérifiée</li>
+<li><strong>soit</strong> il rend une récursion de lui même</li>
+</ol>
+<p>Pour que la définition de <code class="language-">f</code> ait du sens il faut bien sur que chaque récursion se <em>rapproche</em> de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.</p>
+</div>
+</div>
+<p>La récursion terminale est sympathique car équivalente à la forme itérative suivante :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">A</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">B</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">tant que</span> c<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">n</span> <span class="token operator">←</span> h<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> g<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span></code></pre>
+<p>Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateurs lorsque'ils repèrent une telle forme).</p>
+<p>Illustrons ceci en utilisant directement <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">l'algorithme d'Euclide</a> pour le calcul du $\operatorname{pgcd}$. On peut en effet écrire cet algorithme sous la forme d'une équation récurrente :</p>
+<div>
+$$
+\begin{equation}
+  \operatorname{pgcd}(a, b) =
+  \begin{cases}
+    \max(a, b) & \text{si $\min(a, b) = 0$}\\
+    \operatorname{pgcd}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
+  \end{cases}
+\end{equation}
+$$
+</div>
+<p>On a montré en exercice que cette équation est correcte et qu'il se termine en un nombre fini d'étape, c'est donc bien un algorithme qui s'écrit:</p>
+<p><span id="algorithme-pgcd-rec"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span>max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pgcd<span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Il est écrit sous forme terminale et est donc équivalent à l'algorithme itératif suivant :</p>
+<p><span id="algorithme-pgcd"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'es pas sous la forme récursive terminale en ligne 7.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

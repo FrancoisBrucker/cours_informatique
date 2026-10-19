@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Prouver un algorithme</title>
+    <title>Problème algorithmique et preuve d&#39;algorithme</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Prouver un algorithme</h1>
+  <h1>Problème algorithmique et preuve d&#39;algorithme</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/prouver-un-algorithme/">Prouver un algorithme</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/">Partie I : Écrire des algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/1-algorithme/problème-preuve/">Problème algorithmique et preuve d&#39;algorithme</a>
 
 </div>
 </div>
@@ -96,12 +96,121 @@
     
   
 
-  <p>Prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :</p>
+  <p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme.</p>
+<h2>Problème algorithmique</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Un <strong><em>problème</em></strong> est un texte composé de 3 parties :</p>
+<ul>
+<li><strong>Nom</strong> : le nom du problème</li>
+<li><strong>Entrées</strong> : les paramètres dont on a besoin</li>
+<li><strong>Sortie</strong> : la solution recherchée</li>
+</ul>
+</div>
+</div>
+<p>Par exemple :</p>
+<p><span id="problème-max-tableau"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : MAX</li>
+<li><strong>Entrée</strong> : un tableau d'entiers</li>
+<li><strong>Sortie</strong> : l'entier maximum du tableau</li>
+</ul>
+</div>
+</div>
+<p>Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov">la complexité de Kolmogorov</a>, <a href="https://www.youtube.com/watch?v=w1hdRjPVejA&amp;list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&amp;index=11" class="externe">&quot;quand est-ce qu'on mange ?&quot;</a> ou encore <a href="https://www.youtube.com/watch?v=LAwDWZoETk4" class="externe">&quot;le sens de la vie ?&quot;</a>), on se restreindra ici aux problèmes algorithmiques :</p>
+<p><span id="problème-algorithmique"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
+<ul>
+<li>prend en paramètres les entrées du problème</li>
+<li>donne en sortie la solution recherchée.</li>
+</ul>
+</div>
+</div>
+<p>Il est clair qu'un problème algorithmique est <a href="../bases-th%C3%A9oriques/arr%C3%AAt-rice/#d%C3%A9finition-propri%C3%A9t%C3%A9">une propriété</a>, il n'existe donc aucun moyen automatique de savoir si un algorithme donné résout un problème : il faut le prouver à chaque fois.</p>
+<h2>Preuve d'algorithme</h2>
+<p>Par exemple l'algorithme suivant :</p>
+<blockquote>
+<p>TBD algorithme déjà à vue.</p>
+</blockquote>
+<p><span id="algorithme-pgcd-naif"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">pgcd</span> <span class="token type class-name">int</span></span>
+
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">k</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">a</span> mod <span class="token variable parameter">k</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">b</span> mod <span class="token variable parameter">k</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">pgcd</span> <span class="token operator">←</span> <span class="token variable parameter">k</span>
+    
+    <span class="token keyword">rendre</span> <span class="token variable parameter">pgcd</span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    pgcd <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            pgcd <span class="token operator">=</span> k
+    
+    <span class="token keyword">return</span> pgcd</code></pre>
+</div>
+</details>     
+</div>
+<p>Et démontrons qu'il fait partie de l'ensemble des algorithmes trouvant le plus grand commun diviseur de deux entiers :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : Plus Grand Commun Diviseur ($\operatorname{pgcd}$)</li>
+<li><strong>Entrée</strong> : deux entiers $a$ et $b$</li>
+<li><strong>Sortie</strong> : le plus grand entier $k$ qui divise à la fois x et y.</li>
+</ul>
+</div>
+</div>
+<p>On peut facilement prouver qu'il calcule bien le $\operatorname{pgcd}$ de deux nombres positifs car :</p>
+<ul>
+<li><code class="language-">a mod 1 == 0</code> et <code class="language-">b mod 1 == 0</code>, donc la variable <code class="language-">pgcd</code> sera bien initialisée,</li>
+<li>la boucle pour chaque parcourt toutes les possibilités pour le $\operatorname{pgcd}$ par ordre croissant. Il rendra bien le plus grand entier possible.</li>
+</ul>
+<p>De façon générale, prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
 <p>Prouver un algorithme $A$ c'est démontrer qu'il résout un problème $P$. Pour cela :</p>
 <ol>
@@ -123,9 +232,9 @@
 <li>montrer qu'il résout le problème demandé.</li>
 </ol>
 <p>Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidable en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont sensés s'arrêter et il sera (normalement) facile de le voir.</p>
-<p>En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate.</p>
-<h2>Types d'algorithme</h2>
-<p>Il y a deux sortes d'algorithmes :</p>
+<p>En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. On peut en revanche donner ds règles générales de preuve qui fonctionnent souvent (en tous cas pour les algorithmes du cours).</p>
+<h2>Prouver des algorithmes récursif et itératifs</h2>
+<p>Il y a deux grandes familles d'algorithmes :</p>
 <ul>
 <li>les algorithmes itératifs, c'est à dire utilisant des boucles</li>
 <li>les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.</li>
@@ -143,7 +252,7 @@
 <li>pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),</li>
 <li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).</li>
 </ol>
-<p>La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.</p>
+<p><strong>La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.</strong></p>
 </div>
 </div>
 <p>Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :</p>
@@ -151,12 +260,13 @@
 n! \coloneqq \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
 $$</p>
 <h3>Récursif</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong>). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
+<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong> pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
 </div>
 </div>
 <p>Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :</p>
@@ -170,11 +280,11 @@ $$
 </div>
 <p>Qui permet d'écrire l'algorithme récursif suivant :</p>
 <div id="algorithme-factorielle-rec"></div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span>  <span class="token comment"># n ≥ 1</span>
-                      <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  <span class="token comment"># condition d'arrêt</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span>     <span class="token comment"># n ≥ 1</span>
+                      <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>                    <span class="token comment"># condition d'arrêt</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token operator">←</span> factorielle<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># récursion</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token operator">←</span> factorielle<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment"># récursion</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">n</span> <span class="token operator">*</span> <span class="token variable parameter">f</span></code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -202,6 +312,16 @@ $$
 </details>     
 </div>
 <p>L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper si nécessaire.</p>
+<blockquote>
+<p>TBD exercice avec Euclide.</p>
+</blockquote>
+<p><span id="algorithme-pgcd"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a'</span><span class="token punctuation">,</span> <span class="token variable parameter">b'</span> <span class="token type class-name">int</span></span>
+    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></code></pre>
 <h3>Itératif</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -250,11 +370,19 @@ $$
 </div>
 <p>On voit que la forme d'un algorithme itératif est inversé par rapport à un algorithme récursif.</p>
 <h2>Preuve</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>Prouver qu'un programme résout un problème algorithmique nécessite deux vérifications :</p>
 <ul>
 <li><strong><em>la finitude</em></strong> : le programme s'arrête pour toute entrée, c'est un algorithme</li>
 <li><strong><em>la correction</em></strong> : sa sortie est une solution du problème</li>
 </ul>
+</div>
+</div>
 <h3>Finitude</h3>
 <p>Un programme récursif est un algorithme s'il n'existe pas de récursion infinie :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

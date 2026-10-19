@@ -153,7 +153,10 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="algorithmes-fonctions">Algorithmes et Fonctions en pseudo-code</a></p>
+<ol>
+<li><a href="algorithmes-fonctions">Algorithmes et Fonctions en pseudo-code</a></li>
+<li><a href="algorithme-r%C3%A9cursifs-it%C3%A9ratifs">Algorithmes itératifs et récursifs</a></li>
+</ol>
 </div>
 </div>
 <p>Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires.</p>
@@ -169,19 +172,13 @@
 <ul>
 <li><code class="language-">ref x T</code> : on définit la variable <code class="language-">x</code> pouvant référencer des objets de type <code class="language-">T</code></li>
 <li><code class="language-">x ← y</code> : on affecte <code class="language-">x</code> à la valeur de <code class="language-">y</code></li>
-<li><code class="language-">x = y</code> : avec les définitions et les propriétés de <code class="language-">x</code> et <code class="language-">y</code> les valeurs des eux variables sont toujours égales. C'est une conséquence.</li>
-<li><code class="language-">x == y</code> : on teste l'égalité entre les valeurs de <code class="language-">x</code> et de <code class="language-">y</code>. vrai si la valeur de x vaut la valeur de y et faux sinon</li>
+<li><code class="language-">x == y</code> : on teste l'égalité entre les valeurs de <code class="language-">x</code> et de <code class="language-">y</code>. L'expression est vraie si la valeur de x vaut la valeur de y et faux sinon. Par exemple <code class="language-"> 2 * x + 2 == 10</code></li>
 </ul>
-<h2><em>&quot;Abus&quot;</em> de notation</h2>
-<p>On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="abus">Abus de notation</a></p>
-</div>
-</div>
+<p>Les autres opérateurs possible en algorithmie sont :</p>
+<ul>
+<li><code class="language-">x := y</code> : on définit <code class="language-">x</code> comme étant <code class="language-">y</code>. Par exemple $f(x) \coloneqq max(x, 10)$</li>
+<li><code class="language-">x = y</code> : avec les définitions et les propriétés de <code class="language-">x</code> et <code class="language-">y</code> les valeurs des eux variables sont toujours égales. C'est une conséquence comme $\cos(\pi) = -1$.</li>
+</ul>
 
 
 </article>
