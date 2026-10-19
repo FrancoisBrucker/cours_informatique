@@ -37,7 +37,7 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 Créez une fonction de signature :
 
 ```pseudocode
-parenthèses(s: chaîne) → chaîne  # la sortie est uniquement composée de parenthèses
+parenthèses(s: str) → str  # la sortie est uniquement composée de parenthèses
 ```
 
 Qui rend la restriction de la chaînes `s`{.language-} à ses parenthèses ouvrantes et fermantes.
@@ -68,7 +68,7 @@ La chaîne contient la suite de parenthèses : ())
 Créez une fonction de signature :
 
 ```pseudocode
-suite(s: chaîne) → []entier  # l'entrée est uniquement composée de parenthèses
+suite(s: str) → []int  # l'entrée est uniquement composée de parenthèses
 ```
 
 Qui rend à partir d'une chaîne de caractères `s`{.language-} uniquement constituée de parenthèses ouvrantes et fermantes un tableau d'entier `t`{.language-} de même longueur tel que `t[i] = 1`{.language-} si `s[i] = '('`{.language-} et `t[i] = -1`{.language-} si `s[i] = ')'`{.language-}
@@ -112,7 +112,7 @@ Une telle liste est appelée liste de Dyck.
 Créez une fonction de signature :
 
 ```pseudocode
-bon_parenthésage(l: []entier) → booléen  # l'entrée est uniquement composée de 1 et de -1
+bon_parenthésage(l: []int) → bool  # l'entrée est uniquement composée de 1 et de -1
 ```
 
 Qui rend à partir d'une liste de 1 et de -1 :

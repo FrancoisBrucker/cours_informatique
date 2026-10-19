@@ -38,7 +38,7 @@ Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on t
 L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :
 
 ```pseudocode/
-algorithme combiner(T1: []entier, T2: []entier) → []entier:
+algorithme combiner(T1: []int, T2: []int) → []int:
     ref i1 ← 0
     ref i2 ← 0
     ref T ← []int{longueur: T1.longueur + T2.longueur}
@@ -94,7 +94,7 @@ Faites très attention aux conditions lors de votre implémentation. C'est très
 Montrer que l'algorithme combiner précédent **n'est pas équivalent** à celui-ci :
 
 ```pseudocode/
-algorithme combiner_faux(T1: []entier, T2: []entier) → []entier:
+algorithme combiner_faux(T1: []int, T2: []int) → []int:
     ref i1 ← 0
     ref i2 ← 0
     ref T ← []int{longueur: T1.longueur + T2.longueur}
@@ -121,7 +121,7 @@ Si `i2 < T2.longueur`{.language-} mais que `i1 = T1.longueur`{.language-} l'algo
 Avec notre fonction `combiner(T1, T2)`{.language-} le pseudo code de l'algorithme fusion est :
 
 ```pseudocode
-algorithme fusion(T: []entier) → []entier:
+algorithme fusion(T: []int) → []int:
     si T.longueur < 2:
         rendre nouveau tableau contenant T
     sinon:

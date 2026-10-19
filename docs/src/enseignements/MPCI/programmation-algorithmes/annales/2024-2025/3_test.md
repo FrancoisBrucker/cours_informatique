@@ -28,7 +28,7 @@ Ne tartinez pas des pages et des pages de démonstration. Allez directement au f
 ### 1 un algorithme de multiplication
 
 ```pseudocode
-programme mul(x: entier, y: entier) → entier:
+programme mul(x: int, y: int) → int:
     r ← 0
     tant que x ≠ 0:
         si x est impair:
@@ -97,7 +97,7 @@ Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers `x`{.la
 
 #### 3.1
 
-Modifiez l'algorithme `mul(x: entier, y: entier) → entier`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: []bit, Ty: []bit) → []bit`{.language-}
+Modifiez l'algorithme `mul(x: int, y: int) → int`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: []bit, Ty: []bit) → []bit`{.language-}
 
 #### 3.2
 

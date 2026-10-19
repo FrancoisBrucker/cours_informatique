@@ -53,7 +53,7 @@ Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{
 Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) :
 
 ```pseudocode/
-algorithme nombre(T: []entier, x: entier) → entier:
+algorithme nombre(T: []int, x: int) → int:
     ref nb ← 0
     pour chaque e de T:
         si e == x:
@@ -236,7 +236,7 @@ Pour calculer la complexité d'un algorithme récursif en fonction de la taille 
 Pour illustrer ce calcul, reprenons [le calcul récursif de la factorielle](../prouver-un-algorithme/#algorithme-factorielle-rec) :
 
 ```pseudocode/
-algorithme factorielle(n: entier) → entier:
+algorithme factorielle(n: int) → int:
     si n == 1:
         rendre 1
 
@@ -340,7 +340,7 @@ Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd) :
  :
 
 ```pseudocode/
-algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
     tant que min(a, b) > 0:
         ref a' ← max(a, b) - min(a, b)
         ref b' ← min(a, b)

@@ -44,7 +44,7 @@ Je suis un peu déçu. Il y a beaucoup d'imprécisions dans vos réponses et en 
 ##### 1.1.1
 
 ```pseudocode
-algorithme est_sous_chaîne(a: chaîne, b: chaîne) → booléen:
+algorithme est_sous_chaîne(a: str, b: str) → bool:
     ref trouvé bool
     ref j int
     pour chaque i de [0 .. a.longueur - b.longueur + 1[:
@@ -68,7 +68,7 @@ algorithme est_sous_chaîne(a: chaîne, b: chaîne) → booléen:
 ##### 1.1.3
 
 ```pseudocode
-sous_chaîne(a: chaîne, b: chaîne) → entier
+sous_chaîne(a: str, b: str) → int
 ```
 
 ##### 1.1.4
@@ -76,7 +76,7 @@ sous_chaîne(a: chaîne, b: chaîne) → entier
 Il faut rendre un indice, pas juste un booléen :
 
 ```pseudocode
-algorithme sous_chaîne(a: chaîne, b: chaîne) → entier:
+algorithme sous_chaîne(a: str, b: str) → int:
     ref trouvé bool
     ref j int
     pour chaque i de [0 .. a.longueur - b.longueur + 1[:
@@ -196,7 +196,7 @@ Le décalage pour l'indice $i$ de $a$ ne dépend que des caractères de $b$ et d
 - si le caractère est dans $b$ on décale de $m - k - 1$ où $k$ est le plus grand indice où apparaît le caractère. Ceci donne l'algorithme suivant :
 
 ```pseudocode
-algorithme décalage(b: chaîne) → []entier:
+algorithme décalage(b: str) → []int:
     ref m ← b.longueur
     ref T ← []int{longueur: L}
     pour chaque i de [0 .. L[:
@@ -219,7 +219,7 @@ Comme le nombre de caractères pouvant à priori être aussi grand qu'on veut, $
 ##### 2.3.1
 
 ```pseudocode
-fonction décalage(b: chaîne) → []entier:
+fonction décalage(b: str) → []int:
     ref m ← b.longueur
     ref T ← []int{longueur: L}
     pour chaque i de [0 .. L[:
@@ -229,7 +229,7 @@ fonction décalage(b: chaîne) → []entier:
 
     rendre T
 
-algorithme BMH(a: chaîne, b: chaîne) → []entier:
+algorithme BMH(a: str, b: str) → []int:
     ref m ← b.longueur
     ref T ← []int{longueur: L}
     pour chaque i de [0 .. L[:

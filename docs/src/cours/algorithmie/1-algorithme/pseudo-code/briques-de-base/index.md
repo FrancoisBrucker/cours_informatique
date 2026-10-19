@@ -12,10 +12,10 @@ eleventyComputed:
 Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :
 
 - de manipuler des objets (création, affectation ou lecture)
-- de contrôler le flux d'instructions (test et boucles).
+- de contrôler le flux d'instructions (tests et boucles).
 
 {% attention %}
-Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.
+Vous trouverez autant de types de pseudo-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonnés si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.
 {% endattention %}
 
 Nous allons montrer ici une version de pseudo-code sans accès direct à la mémoire (_ie._ sans pointeur). Ce modèle est tout à fait fonctionnel et est utilisé dans les langages de programmation comme python ou javascript par exemple. Nous ajouterons l'accès direct à la mémoire (bien) plus tard dans ce cours. Ce modèle est plus simple à comprendre et à implémenter que le modèle avec pointeur et ne change rien algorithmiquement. Il va cependant nécessiter des opérations élémentaires supplémentaires (on appelle ceci des _overheads_) pour trouver la valeur de la variable en mémoire par rapport à l'utilisation directe de pointeurs.
@@ -34,16 +34,15 @@ Commençons par décrire les objets que l'on peut manipuler en pseudo-code et le
 
 ### Objets
 
-Les objets sont ce que l'on manipule en algorithmie. [On a vu](../../bases-théoriques/définition/#manipuler-01) qu'a priori on peut n'utiliser que des suites finies de `0` et de `1` (ou de façon équivalente des entiers), mais cela nuirait grandement à la lisibilité. En pseudo code on se permet d'utiliser d'autres formes d'objets appartenant à 5 types fondamentaux. 
+Les objets sont ce que l'on manipule en algorithmie. [On a vu](../../bases-théoriques/définition/#manipuler-01) qu'a priori on peut n'utiliser que des suites finies de `0` et de `1` (ou de façon équivalente des entiers), mais cela nuirait grandement à la lisibilité. En pseudo code on se permet d'utiliser d'autres formes d'objets appartenant à 6 types fondamentaux. 
 
 #### <span id="objets-basiques"></span> Objets basiques
 
-Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et correspondent aux cinq **_types_** suivant
+Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et correspondent aux six **_types_** suivants :
 
 {% definition %}
 
-Un **_objet basique_** peut être d'un des six **_types_** suivant :
-:
+Un **_objet basique_** peut être d'un des six **_types_** suivants :
 
 - le type `bool`{.language-} (booléen) qui contient deux objets : `vrai`{.language-} et `faux`{.language-}
 - le type `bit`{.language-} qui contient les 2 entiers : `0`{.language-} et `1`{.language-}
@@ -58,12 +57,12 @@ Un type peut être vu comme un ensemble d'objets : le type entier contient tous 
 
 #### Le vide
 
-En algorithmie on a également coutume de se doter d'un élément vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui sera être à la fois considéré comme un type ou un objet :
+En algorithmie on a également coutume de se doter d'un élément vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui sera à la fois considéré comme un type ou un objet :
 
 {% definition %}
 
 - **le type vide** `∅`{.language-} ne contient aucun objet. On l'utilise pour des fonctions ne rendant aucun objet par exemple
-- **l'objet vide** `∅`{.language-} est de tous les types (le `∅`{.language-} `int`{.language-}, `bit`{.language-}, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
+- **l'objet vide** `∅`{.language-} est de tous les types (le `∅`{.language-} `int`{.language-}, `bit`{.language-}, ...). Utilisé pour simuler un souci ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
 
 {% enddefinition %}
 
@@ -71,9 +70,9 @@ En algorithmie on a également coutume de se doter d'un élément vide `∅`{.la
 
 La plupart des objets basiques sont de taille fixe :
 
-- un booléen à une taille de 1bit (`0` pour faux, `1` pour vrai)
-- un caractère à une taille de 32bit puisqu'on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}
-- un réel à une taille 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754){.externe}
+- un booléen a une taille de 1bit (`0` pour faux, `1` pour vrai)
+- un caractère a une taille de 32bit puisqu'on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}
+- un réel a une taille de 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754){.externe}
 
 D'autres n'ont pas de limite fixée :
 
@@ -81,7 +80,7 @@ D'autres n'ont pas de limite fixée :
 - les chaînes de caractères
 
 
-Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.
+Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace de stockage, que l'on nomme **_une mémoire_**, est identifié, d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. En algorithmie, on ne se préoccupe pas vraiment de ce qu'est la mémoire : cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.
 
 {% retenir %}
 On considérera toujours que l'on possède assez de mémoire pour pouvoir exécuter nos programmes.
@@ -94,7 +93,7 @@ En réalité, les objets sont stockés dans une partie de la mémoire de l'ordin
 
 ![tas](tas.png)
 
-Notez que le tas peut contenir des "trous", c'est à dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.
+Notez que le tas peut contenir des "trous", c'est-à-dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.
 
 {% endinfo %}
 
@@ -116,7 +115,7 @@ La seule façon de créer un objet à partir de rien est d'écrire sa valeur. Pa
 
 Crée un objet entier de valeur `42`.
 
-On peut aussi demander à l'utilisateur de créer un objet d'un type donné (on suppose que l'utilisateur de ne se trompe pas) :
+On peut aussi demander à l'utilisateur de créer un objet d'un type donné (on suppose que l'utilisateur ne se trompe pas) :
 
 ```pseudocode
 donne int
@@ -126,16 +125,16 @@ donne int
 
 {% definition %}
 
-une **_opération_** est une fonction dont l'espace de départ est un produit cartésien de types et l'espace d'arrivée un type donné. Elle prend en paramètre des objets (de l'espace de départ) et produit un objet du type de l'espace d'arrivée.
+Une **_opération_** est une fonction dont l'espace de départ est un produit cartésien de types et l'espace d'arrivée un type donné. Elle prend en paramètre des objets (de l'espace de départ) et produit un objet du type de l'espace d'arrivée.
 
 {% enddefinition %}
 
-Les opérations correspondant au second moyen de créer des objets. Par exemple le booléen Vrai est créé comme résultat de l'opération `40 > 2`{.language-}. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :
+Les opérations correspondent au second moyen de créer des objets. Par exemple le booléen Vrai est créé comme résultat de l'opération `40 > 2`{.language-}. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :
 
 - pour les entiers et les réels :
   - arithmétique : addition (`x + y`{.language-}), soustraction (`x - y`{.language-}), multiplication (`x * y`{.language-}), division (`x / y`{.language-})
   - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
-  - la division entière de deux nombre (`//`{.language-}) et le modulo (`mod`{.language-} ou `%`{.language-}) qui correspond au reste de la division entière
+  - la division entière de deux nombres (`//`{.language-}) et le modulo (`mod`{.language-} ou `%`{.language-}) qui correspond au reste de la division entière
   - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
   - comparaisons : maximum (`max(x, y)`{.language-}), minimum (`min(x, y)`{.language-})
 - pour les caractères :
@@ -155,21 +154,21 @@ Toutes les autres opérations devront être définies soit dans le pseudo-code (
 
 #### Affichage
 
-Enfin, la dernière opération autorisée pour les objet est l'affichage :
+Enfin, la dernière opération autorisée pour les objets est l'affichage :
 
 ```pseudocode
 affiche 42
 ```
 
-L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ce qui est affiché sort du contrôle du pseudo-code : dans l'exemple précédent l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
+L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressants lors de l'exécution du pseudo-code. Ce qui est affiché sort du contrôle du pseudo-code : dans l'exemple précédent l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
 
-On peux afficher plusieurs objets à la suite, par exemple :
+On peut afficher plusieurs objets à la suite, par exemple :
 
 ```pseudocode
 affiche 40 " plus " 2 " égal " 42
 ```
 
-Qui va afficher àla suite les cinq objets : `40`{.language-}, `" plus "`{.language-}, `2`{.language-}, `" égal "`{.language-} et `42`{.language-}
+Qui va afficher à la suite les cinq objets : `40`{.language-}, `" plus "`{.language-}, `2`{.language-}, `" égal "`{.language-} et `42`{.language-}
 
 ## Variables
 
@@ -181,27 +180,27 @@ Une **_variable_** est une référence contenant l'endroit en mémoire où est s
 
 Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont des **liens vers** les objets qu'elles référencent.
 
-En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment de où sont stockés les variables. On sait qu'elles existent elles sont rangés dans une partie de la mémoire différentes des objets (les variables ne sont pas considérés comme des objets).
+En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment de l'endroit où sont stockées les variables. On sait qu'elles existent : elles sont rangées dans une partie de la mémoire différente de celle des objets (les variables ne sont pas considérées comme des objets).
 
 {% info "**Implémentation**" %}
 
-En python, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est de taille fixe, 64bit pour les ordinateurs actuels. Ceci limite la taille maximale de mémoire que peut posséder un ordinateur : $2^{64}$byte = 18446744073709551616B = 16777216 terabyte.
+En python, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire du tas où commence l'objet qu'elles référencent. Chaque variable est de taille fixe, 64bit pour les ordinateurs actuels. Ceci limite la taille maximale de mémoire que peut posséder un ordinateur : $2^{64}$byte = 18446744073709551616B = 16777216 terabytes.
 
 ![pile](pile.png)
 
-Les variables sont stockées de façon consécutives dans la pile : toutes les variables sont crées au début de l'algorithme et sont toutes supprimées en même temps à la fin de l'algorithme.
+Les variables sont stockées de façon consécutive dans la pile : toutes les variables sont créées au début de l'algorithme et sont toutes supprimées en même temps à la fin de l'algorithme.
 
 {% endinfo %}
 
 ### Définition d'une variable
 
-Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définie une variable de nom $a$ pouvant référencer un objet de type entier :
+Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définit une variable de nom $a$ pouvant référencer un objet de type entier :
 
 ```pseudocode
 ref a int
 ```
 
-La ligne précédente crée une nouvelle variable nommée `a`{.language-} pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que `a`{.language-} contient une valeur entière.
+La ligne précédente crée une nouvelle variable nommée `a`{.language-} pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sûr que `a`{.language-} contient une valeur entière.
 
 {% definition %}
 On utilise l'**_opérateur de définition_** `ref`{.language-} pour créer une variable. Le format général d'une définition de variable est :
@@ -212,11 +211,11 @@ ref <nom de la variable> <type d'objet qu'elle peut référencer>
 
 {% enddefinition %}
 
-En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
+En pseudo-code, comme le principal souci est la non-ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas dans d'autres comme le python où une variable peut être associée à des objets de types différents.
 
 ### Affectation
 
-Une fois la variable crée, sa valeur est `∅`{.language-} : elle est non affectée. Pour l'utiliser dans un programme il faut lui **_affecter_** un objets, par exemple pour notre variable `a`{.language-} crée précédemment :
+Une fois la variable créée, sa valeur est `∅`{.language-} : elle est non affectée. Pour l'utiliser dans un programme il faut lui **_affecter_** un objet, par exemple pour notre variable `a`{.language-} créée précédemment :
 
 ```pseudocode
 a ← 3
@@ -233,7 +232,7 @@ On utilise l'**_opérateur d'affectation_** `←`{.language-} pour affecter une 
 
 {% enddefinition %}
 {% attention %}
-On n'utilisera pas le signe `=` en pseudo-code pour l'affectation car cette opération n'est pas symétrique : à gauche une variable à droite un objet, mais comme le symbole `←`{.language-} n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant `=`{.language-} pour une affectation.
+On n'utilisera pas le signe `=` en pseudo-code pour l'affectation car cette opération n'est pas symétrique : à gauche une variable, à droite un objet. Mais comme le symbole `←`{.language-} n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant `=`{.language-} pour une affectation.
 
 {% endattention %}
 
@@ -256,7 +255,7 @@ Après la troisième ligne, le code précédent associe la variable `a`{.languag
 {% retenir %}
 Une variable n'est **pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
 
-Après la définition d'une variable, elle n'est encore liée à aucun objet, va valeur est **vide**. Il ne faut pas l'utiliser avant sa première affectation.
+Après la définition d'une variable, elle n'est encore liée à aucun objet, sa valeur est **vide**. Il ne faut pas l'utiliser avant sa première affectation.
 {% endretenir %}
 
 ### Utilisation
@@ -287,7 +286,7 @@ b ← a
 
 La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :
 
-1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est une variable : on récupère son objet, un entier valant 42
+1. on commence par retrouver l'objet à droite de l'opérateur `←`{.language-}. C'est une variable : on récupère son objet, un entier valant 42
 2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
 
 Autre exemple :
@@ -301,7 +300,7 @@ b ← a + 1
 
 La ligne 4, une instruction composée d'une opération puis d'une affectation, s'exécute de la façon suivante :
 
-1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est le résultat d'une opération :
+1. on commence par retrouver l'objet à droite de l'opérateur `←`{.language-}. C'est le résultat d'une opération :
    1. pour effectuer l'opération, il faut commencer par retrouver l'objet associé à `a`{.language-} : un entier valant 41
    2. on peut maintenant effectuer l'opération d'addition qui rend un objet de type entier valant 42
 2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
@@ -333,7 +332,7 @@ Si le tableau est nommé $T$ :
 
 - $T.\mbox{longueur}$ sera égal à sa taille.
 - $T[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
-- $T[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
+- $T[-i]$ vaut $T[n-i]$ si $0 < i \leq n$
 
 Le type d'un tableau est défini par le type `T`{.language-} des objets qu'il contient précédé de crochets : 
 
@@ -348,17 +347,17 @@ Un tableau d'entiers est ainsi de type `[]int`{.language-}.
 Créons un objet tableau pouvant contenir 13 variables de type entier :
 
 ```pseudocode
-ref T []int  # création de la variable pouvant accueillir un tableau d'entier
+ref T []int  # création de la variable pouvant accueillir un tableau d'entiers
 
-T ← [13]entier  # création d'un tableau pouvant contenir 13 variables entières
+T ← [13]int  # création d'un tableau pouvant contenir 13 variables entières
 ```
 
 {% definition %}
 
 - le format général de la création d'une variable tableau : `ref nom_du_tableau []T`{.language-}
-- création d'un tableau de longueur $n$  : `[n]T`{.language-}
+- création d'un tableau de longueur $n$ : `[n]T`{.language-}
 
-Une fois le tableau crée, chaque case du tableau vaut `∅`{.language-}. Comme pour les variables, il **faut** les initialiser avant de ls utiliser.
+Une fois le tableau créé, chaque case du tableau vaut `∅`{.language-}. Comme pour les variables, il **faut** les initialiser avant de les utiliser.
 {% enddefinition %}
 
 Un tableau est un mix entre variables et objets : c'est un objet contenant des variables de même type. 
@@ -368,11 +367,11 @@ Lors de la définition d'un tableau on crée à la fois la variable contenant le
 
 {% endattention %}
 
-La remarque ci-dessus est cruciale à comprendre car cela peut entraîner tout un tas d'effet de bord incompréhensible sinon. Pour comprendre ce qu'il se passe, voyez comment python gère les tableaux :
+La remarque ci-dessus est cruciale à comprendre car cela peut entraîner tout un tas d'effets de bord incompréhensibles sinon. Pour comprendre ce qui se passe, voyez comment python gère les tableaux :
 
 {% info "**Implémentation en python**" %}
 
-Une façon d'implémenter cette structure en pratique est de stocker les différentes références des variables du tableau de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lue ou modifiée :
+Une façon d'implémenter cette structure en pratique est de stocker les différentes références des variables du tableau de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lues ou modifiées :
 
 ![tableau](tableau.png)
 
@@ -384,17 +383,17 @@ On utilise un tableau comme une collection de variables, par exemple :
 
 ```pseudocode
 ref T []int
-T ← [3]entier
+T ← [3]int
 
 T[0] ← 41
 T[1] ← 1
 T[2] ← T[0] + T[1]
 ```
 
-La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser. Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
+La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser. Toutes les autres opérations sur les tableaux sont faites grâce aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
 {% retenir %}
-Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
+Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituant.
 {% endretenir %}
 
 Ainsi, on ne peut **pas** affecter un tableau à un autre. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
@@ -402,7 +401,7 @@ Ainsi, on ne peut **pas** affecter un tableau à un autre. Il faut créer un nou
 On considère que :
 
 {% note %}
-- créer un tableau prend autant de temps que de créer une variable (1 instruction) fois sa longueur, puisque'il faut affecter chaque case du tableau à `∅`{.language-},
+- créer un tableau prend autant de temps que de créer une variable (1 instruction) fois sa longueur, puisqu'il faut affecter chaque case du tableau à `∅`{.language-},
 - la taille en mémoire d'un tableau est proportionnelle à la taille d'une variable fois sa longueur,
 - accéder à une variable d'indice donné d'un tableau ne prend pas plus de temps que d'accéder à l'objet d'une simple variable (1 instruction) car sa position en mémoire est connue.
 {% endnote %}
@@ -411,7 +410,7 @@ Les tableaux peuvent être simples comme une suite finie d'entiers ou des types 
 
 ### Tranches
 
-On utilisera parfois, comme en python par exemple des sous tableaux via des **_tranches_** (**_slices_** en anglais) :
+On utilisera parfois, comme en python par exemple, des sous-tableaux via des **_tranches_** (**_slices_** en anglais) :
 
 - `T[i:]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à la fin
 - `T[:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice 0 **inclus** jusqu'à j **exclu**
@@ -424,12 +423,12 @@ Tout comme pour les tableaux, **on ne peut pas** affecter une tranche de tableau
 
 ### Chaînes de caractères et tableaux
 
-Les chaines de caractères, une fois crées, peuvent être utilisées comme un tableau composés de caractères. On peut :
+Les chaînes de caractères, une fois créées, peuvent être utilisées comme un tableau composé de caractères. On peut :
 
 - accéder à un caractère particulier en utilisant les crochets : `s[2]`{.language-} vaut le caractère `"l"`{.language-}
 - connaître la longueur de la chaîne avec : `s.longueur`{.language-}
 
-On ne peut cependant pas : modifier un caractère de la chaîne. Elle est crée une fois pour toute.
+On ne peut cependant pas : modifier un caractère de la chaîne. Elle est créée une fois pour toutes.
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 
@@ -442,11 +441,11 @@ Ces formes d'instruction nécessitent de grouper les instructions en blocs.
 
 ## Blocs
 
-Lier les instructions en blocs. Ce formalisme a été popularisé par python et permet de voir du premier coup d'œil un bloc eet ses instructions:
+Lier les instructions en blocs. Ce formalisme a été popularisé par python et permet de voir du premier coup d'œil un bloc et ses instructions :
 
 
 {% definition %}
-**_Un bloc d'instruction_** est une suite d'instruction décalées. 
+**_Un bloc d'instructions_** est une suite d'instructions décalées. 
 
 ```pseudocode
 <type de bloc>:
@@ -458,7 +457,7 @@ Lier les instructions en blocs. Ce formalisme a été popularisé par python et 
 
 {% enddefinition %}
 
-Les blocs vont être utile dans les très nombreuses situations où l'on veut, par exemple, répéter une suite d'instructions ou encore exécuter des instructions conditionnellement.
+Les blocs vont être utiles dans les très nombreuses situations où l'on veut, par exemple, répéter une suite d'instructions ou encore exécuter des instructions conditionnellement.
 
 ### <span id="tests"></span> Exécution conditionnelle d’instructions
 
@@ -533,7 +532,7 @@ sinon:                            # <condition logique A> et <condition logique 
 ```
 
 {% exercice %}
-Écrire la variante `si, sinon si, sinon`{.language-pseudocode} précédente en utilisant uniquement  la forme initiale `si`{.language-pseudocode}.
+Écrire la variante `si, sinon si, sinon`{.language-pseudocode} précédente en utilisant uniquement la forme initiale `si`{.language-pseudocode}.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -568,13 +567,13 @@ tant que <condition logique>:
     instruction n
 ```
 
-Le ploc précédent est exécuté tant que la condition logique est vraie.
+Le bloc précédent est exécuté tant que la condition logique est vraie.
 
 {% enddefinition %}
 
 #### Boucles `pour chaque`{.language-}
 
-Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :
+Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possibles, mais on admet la variation suivante, très utile :
 
 ```pseudocode
 pour chaque <variable> de <objet pouvant être énuméré>:
@@ -594,17 +593,17 @@ pour chaque x de [1 .. 10]:
 
 
 {% attention %}
-Si la variable de l'itération n'est pas déclarée avant la boucle, elle sera déclarée et  utilisable que pendant l'exécution de la boucle.
+Si la variable de l'itération n'est pas déclarée avant la boucle, elle sera déclarée et utilisable uniquement pendant l'exécution de la boucle.
 {% endattention %}
 
-Typiquement l'`<objet pouvant être énuméré> `{.language-} est un tableau ou une chaîne de caractères que l'on parcours par ordre d'indice croissant. 
+Typiquement l'`<objet pouvant être énuméré> `{.language-} est un tableau ou une chaîne de caractères que l'on parcourt par ordre d'indice croissant. 
 
 {% info %}
-Notez que type de la variable utilisée pour la boucle est sous-entendu mais clairement défini puisque le type de l'objet sur lequel on itère est connu.
+Notez que le type de la variable utilisée pour la boucle est sous-entendu mais clairement défini puisque le type de l'objet sur lequel on itère est connu.
 
 {% endinfo %}
 
-Les deux code suivant sont équivalents. Le second, moins élégant, explicite le numéro de l'itération courante d'un tableau de chaînes.
+Les deux codes suivants sont équivalents. Le second, moins élégant, explicite le numéro de l'itération courante d'un tableau de chaînes.
 
 Code `pour chaque`{.language-} : 
 
@@ -634,9 +633,9 @@ La boucle `pour chaque`{.language-} peut s'écrire avec la boucle `tant que`{.la
 Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :
 
 - `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide) par incrément de +1,
-- `[a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
-- `]a .. b]`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
-- `]a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide),
+- `[a .. b[`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
+- `]a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
+- `]a .. b[`{.language-} pour représenter l'intervalle formé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide),
 
 On peut alors écrire, par exemple :
 
@@ -650,7 +649,7 @@ pour chaque i de [0 .. 10000[:
 
 #### Sortir d'une boucle avant la fin
 
-On a parfois besoin de sortir d'un bloc de boucle avant la fin de sa condition. On utilise pour cela deux instruction spéciale de sorite de boucle :
+On a parfois besoin de sortir d'un bloc de boucle avant la fin de sa condition. On utilise pour cela deux instructions spéciales de sortie de boucle :
 
 - `break`{.language-} : qui termine l'exécution du bloc
 - `continue`{.language-} : qui termine l'itération courante du bloc
@@ -722,7 +721,7 @@ print("le pgcd entre", x, "et", y, "vaut", d)
 
 ##### `continue`{.language-}
 
-Par exemple le code suivant qui va afficher tous les diviseurs de x. Le continue permet d'expliciter les cas rejetés  :
+Par exemple le code suivant qui va afficher tous les diviseurs de x. Le `continue`{.language-} permet d'expliciter les cas rejetés :
 
 ```pseudocode
 ref x int
@@ -763,7 +762,7 @@ for d in range(1, x + 1):
 ##### Boucles imbriquées
 
 {% attention %}
-Les instructions `break`{.language-} et `continue`{.language-} n'agissent que dans le bloc dans lequel ils sont définis, ils n'affectent pas les boucles extérieures
+Les instructions `break`{.language-} et `continue`{.language-} n'agissent que dans le bloc dans lequel elles sont définies, elles n'affectent pas les boucles extérieures.
 {% endattention %}
 
 Par exemple :

@@ -118,10 +118,10 @@ $$
 Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :
 
 ```pseudocode
-algorithme composition(n : entier,
-                       x: []entier,         # un tableau de m entiers
-                       f: ([]entier) → ∅,   # une fonction à n paramètres
-                       g: [([]entier) → ∅]. # un tableau de n fonctions à m paramètres
+algorithme composition(n : int,
+                       x: []int,         # un tableau de m entiers
+                       f: ([]int) → ∅,   # une fonction à n paramètres
+                       g: [([]int) → ∅]. # un tableau de n fonctions à m paramètres
                        ) → ∅:
     y ← un tableau de taille n entiers
     pour chaque i de [0 .. n[:

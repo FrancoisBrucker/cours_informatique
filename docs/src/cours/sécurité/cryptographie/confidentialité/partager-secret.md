@@ -54,7 +54,7 @@ $ab$ permet bien d'obtenir tout nombre $q$ entre $0$ et $p-1$ car :
 L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/) en utilisant le principe dit de "_square and multiply_" :
 
 ```pseudocode
-algorithme expo(x: entier, y: entier) → entier:
+algorithme expo(x: int, y: int) → int:
     ref r ← 1
     tant que y > 0:
         si y est impair:
@@ -82,7 +82,7 @@ Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale pu
 Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :
 
 ```pseudocode
-algorithme log(x: entier, y: entier, g: entier) → entier:
+algorithme log(x: int, y: int, g: int) → int:
     ref r ← 1
     pour chaque i de 0 à p-1:
         si r == y:
@@ -109,7 +109,7 @@ Son principe est simple.
 Ce qui donne :
 
 ```pseudocode
-algorithme steps(y: entier, g: entier) → entier:
+algorithme steps(y: int, g: int) → int:
     ref d ← Dict<int, int>()
     ref c ← 1
     
@@ -213,7 +213,7 @@ Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne pos
 L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe [MULTIPLY and SQUARE](/cours/misc/nombres/#exponentiation).
 
 ```
-algorithme expo(x: []entier, y: []entier) → []entier:
+algorithme expo(x: []int, y: []int) → []int:
   ref r []int
   r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:

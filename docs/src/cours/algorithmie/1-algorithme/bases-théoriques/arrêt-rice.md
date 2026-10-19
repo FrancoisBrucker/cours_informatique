@@ -16,15 +16,15 @@ La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un ca
 - la description de chaque instruction et leurs enchaînements soient compréhensibles s'il doit être exécuté par un humain
 - le code soit syntaxiquement correct s'il est écrit sous la forme d'un programme.
 
-Mais qu'en est-il de condition de terminaison (le programme s'arrête après un temps fini quelle que soit son entrée) pour définir un algorithme ? Cette question est cruciale et... compliquée. 
+Mais qu'en est-il de la condition de terminaison (le programme s'arrête après un temps fini quelle que soit son entrée) pour définir un algorithme ? Cette question est cruciale et... compliquée. 
 
 {% attention %}
-On se placer ici, sans perte de généralité, dans le cadre des programmes prenant un entier en paramètre et rendant un entier (par défaut `0`).
+On se place ici, sans perte de généralité, dans le cadre des programmes prenant un entier en paramètre et rendant un entier (par défaut `0`).
 {% endattention %}
 
 ## Problème de l'arrêt
 
-Savoir si un programme va s'arrêter, peut-être très simple. Le programme suivant s'arrête tout le temps :
+Savoir si un programme va s'arrêter peut être très simple. Le programme suivant s'arrête tout le temps :
 
 ```text
 Nom : compte à rebours
@@ -41,7 +41,7 @@ Programme :
     rendre 0
 ```
 
-Alors que celui ci ne s'arrête jamais :
+Alors que celui-ci ne s'arrête jamais :
 
 <div id="syracuse"></div>
 
@@ -104,7 +104,7 @@ Le problème de l'arrêt d'un programme n'est donc pas simple. On ne peut pas le
 Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  [calculatrice ancienne tentant de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg){.externe}
 {% endlien %}
 
-Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le `stop`{.language-}. Il prendrait  en paramètre un entier représentant un programme ([on sait qu'on peut le faire](../définition/#proposition-encodage-algorithme)) et rendrait 1 si le programme en paramètre serait un algorithme et 0 sinon :
+Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le `stop`{.language-}. Il prendrait en paramètre un entier représentant un programme ([on sait qu'on peut le faire](../définition/#proposition-encodage-algorithme)) et rendrait 1 si le programme en paramètre est un algorithme et 0 sinon :
 
 <div id="algorithme-STOP"></div>
 
@@ -145,7 +145,7 @@ Si `oups`{.language-} ne peut pas exister, `stop`{.language-} ne le peut pas non
 
 {% enddetails %}
 
-Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tous les algorithmes et qui les différencieraient des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.
+Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tous les algorithmes et qui les différencierait des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.
 
 {% retenir %}
 Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'arrêtent. 
@@ -164,7 +164,7 @@ Commençons par définir ce qu'est une propriété :
 <div id="définition-propriété"></div>
 
 {% definition %}
-Une **_propriété_** $P$ est un sous-ensemble non trivial d'algorithmes, c'est à dire que :
+Une **_propriété_** $P$ est un sous-ensemble non trivial d'algorithmes, c'est-à-dire que :
 
 - il existe au moins un algorithme dans $P$
 - il existe au moins un algorithme qui n'est pas dans $P$
@@ -176,13 +176,13 @@ La notion de propriété permet de rendre compte du sens des algorithmes, de ce 
 
 - l'ensemble des algorithmes calculant le double d'un entier passé en paramètre est une propriété :
   - il existe des algorithmes permettant de le faire (on peut utiliser [l'algorithme de l'addition posée](https://fr.wikipedia.org/wiki/Technique_de_l%27addition){.externe} des cours de primaire en additionnant deux fois le même nombre)
-  - il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser [un de ces algorithme](https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers){.externe} avec 2 et le nombre comme paramètres)
+  - il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser [un de ces algorithmes](https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers){.externe} avec 2 et le nombre comme paramètres)
 - l'ensemble des algorithmes de valeurs de retour bornées par $K$ est une propriété :
   - l'algorithme constant rendant $K$ satisfait la propriété
   - l'algorithme constant rendant $K+1$ ne satisfait pas la propriété
 
 
-On va la aussi donner un résultat négatif : il n'existe pas d'algorithme permettant de savoir si un programme respecte une propriété donnée. Il faut faire la démonstration pour chaque programme **et** chaque propriété.
+On va là aussi donner un résultat négatif : il n'existe pas d'algorithme permettant de savoir si un programme respecte une propriété donnée. Il faut faire la démonstration pour chaque programme **et** chaque propriété.
 
 <div id="théorème-rice"></div>
 {% note "**Théorème (Rice, 1953)**" %}

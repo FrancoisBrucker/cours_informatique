@@ -21,14 +21,14 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 
 ```pseudocode
 structure Liste<T>:
-    longueur: entier ← 0
-    capacité: entier ← 0
+    longueur: int ← 0
+    capacité: int ← 0
     données: []T ← []T{longueur: capacité}
 
-méthode (self: Liste<T>) get(i: entier) → T:  # valeur ← self[i] = valeur ← self.get(i)
+méthode (self: Liste<T>) get(i: int) → T:  # valeur ← self[i] = valeur ← self.get(i)
     rendre self.données[i]
 
-méthode (self: Liste<T>) set(i: entier, valeur: T) → ∅:  # self[i] ← valeur = self.set(i, valeur)
+méthode (self: Liste<T>) set(i: int, valeur: T) → ∅:  # self[i] ← valeur = self.set(i, valeur)
     self.données[i] ← valeur
 
 méthode (self: Liste<T>) append(x: T)  → ∅:
@@ -45,13 +45,13 @@ méthode (self: Liste<T>) pop()  → T:
             self.longueur ← self.longueur - 1
             rendre self.données[self.longueur]
 
-méthode (self: Liste<T>) insert(pos: entier, x: T) → ∅:
+méthode (self: Liste<T>) insert(pos: int, x: T) → ∅:
     self.append(∅)
     pour chaque i de [self.longueur - 1 .. pos + 1] par pas de -1:
         self.données[i] ← self.données[i-1]
     self.données[pos] ← x
 
-méthode (self: Liste<T>) delete(pos: entier) → T:
+méthode (self: Liste<T>) delete(pos: int) → T:
     ref r ← self.données[pos]
     pour chaque i de [pos .. self.longueur - 1[:
         self.données[i] ← self.données[i+1]
@@ -81,7 +81,7 @@ Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthod
 Lorsque la longueur du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de longueur double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :
 
 ```pseudocode
-l ← Liste<entier>
+l ← Liste<int>
 pour chaque i de [0 .. 2^42]:
     l.append(i)
 
@@ -109,10 +109,10 @@ Pour décrire soit un tableau, soit une liste. On pourra voir la différence pen
 - un tableau doit avoir sa longueur définie,
 - la longueur d'une liste correspond aux nombres d'éléments dans la structure et est donc vide à l'initialisation.
 
-On se permettra alors les abus de languages suivant pour remplacer l'initialisation `x ← Liste<entier>{}`{.language-} :
+On se permettra alors les abus de languages suivant pour remplacer l'initialisation `x ← Liste<int>{}`{.language-} :
 
-- `x ← []entier{}`{.language-}
-- `x ← []entier{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
+- `x ← []int{}`{.language-}
+- `x ← []int{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
 
 {% endnote %}
 

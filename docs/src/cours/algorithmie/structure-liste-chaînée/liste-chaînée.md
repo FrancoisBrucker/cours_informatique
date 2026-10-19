@@ -32,7 +32,7 @@ Par exemple une liste chaînée à 2 éléments :
 
 ```pseudocode
 ref L ← ListeChaînée<int>{tête: 4}
-L.queue ← ListeChaînée<entier>{tête: 2}
+L.queue ← ListeChaînée<int>{tête: 2}
 
 ```
 
@@ -120,7 +120,7 @@ Donnez un algorithme récursif et sa complexité de recherche de la valeur maxim
 L'algorithme suivant est clairement correct :
 
 ```pseudocode
-algorithme maximum(L: ListeChaînée<entier>) → entier:
+algorithme maximum(L: ListeChaînée<int>) → int:
     si L.suivant == ∅:
         rendre L.tête
     rendre max(L.tête, maximum(L.queue))

@@ -99,7 +99,7 @@ Pour se fixer les idées regardons comment appliquer ces différentes étapes da
 ### Algorithme : rendu de pièce
 
 ```pseudocode
-algorithme rendu(R: entier) → (entier, entier, entier):
+algorithme rendu(R: int) → (int, int, int):
     V ← [5, 2, 1]  # les pièces sont triées par ordre décroissant
     P ← []  # liste vide
     
@@ -235,7 +235,7 @@ C'est un cas courant en optimisation discrète : il existe de nombreuses solutio
 On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.
 
 ```pseudocode
-algorithme recouvrement(T: []réel) → [(réel, réel)]:
+algorithme recouvrement(T: []float) → [(float, float)]:
     trie T par ordre croissant.
     I ← []
     courant ← [T[0], T[0] + 1]
@@ -364,7 +364,7 @@ Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale
 Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :
 
 ```pseudocode
-algorithme bin_packing(T: []entier) → [][]entier
+algorithme bin_packing(T: []int) → [][]int
     Es ← []
     E ← []
     s ← 0
@@ -601,8 +601,8 @@ L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissé
 > TBD refaire avec échange pour ne pas recréer de données.
 
 ```pseudocode/
-algorithme ordonnancement(V: [][]entier, O: []entier, T: []entier) → [][]entier:
-    V' ← une nouvelle liste de []entier
+algorithme ordonnancement(V: [][]int, O: []int, T: []int) → [][]int:
+    V' ← une nouvelle liste de []int
     
     # initialisation
     i0 ← 0

@@ -12,10 +12,10 @@ eleventyComputed:
 
 Il y a deux grandes familles d'algorithmes :
 
-- les algorithmes itératifs, c'est à dire utilisant des boucles
-- les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.
+- les algorithmes itératifs, c'est-à-dire utilisant des boucles
+- les algorithmes récursifs, c'est-à-dire écrits sous la forme d'une fonction qui s'appelle elle-même.
 
-Tout algorithme pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que l'autre.
+Tout algorithme pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que sous l'autre.
 
 Avant de définir formellement les deux approches commençons par deux remarques importantes :
 
@@ -24,16 +24,16 @@ Avant de définir formellement les deux approches commençons par deux remarques
 Adaptation d'un algorithme aux données :
 
 1. pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),
-2. pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).
+2. pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).
 
-**La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.**
+**La différence entre les approches itératives et récursives est liée au traitement des deux points précédents.**
 
 {% endretenir %}
 
 Pour expliciter la différence entre les deux approches nous allons utiliser notre exemple fil rouge [du calcul du $\operatorname{pgcd}$](../../bases-théoriques/calculabilité/#algorithme-euclide).
 
 
-## Algorithmes Itératif
+## Algorithmes itératifs
 
 {% definition %}
 
@@ -69,13 +69,13 @@ def pgcd(a, b):
 
 {% enddetails %}
 
-Lorsque l'on construit un algorithme itératif, il faut faire attention au fait que les boucles finissent bien. C'est bien sur toujours le cas avec les boucles de type `pour chaque`{.language-} mais pour des boucles de type `tant que`{.language-} ce n'est pas toujours évident.
+Lorsque l'on construit un algorithme itératif, il faut faire attention au fait que les boucles finissent bien. C'est bien sûr toujours le cas avec les boucles de type `pour chaque`{.language-} mais pour des boucles de type `tant que`{.language-} ce n'est pas toujours évident.
 
-## Algorithmes Récursif
+## Algorithmes récursifs
 
 {% definition %}
 
-**Un algorithme récursif** va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une **_récursion_**) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une **_condition d'arrêt_** pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.
+**Un algorithme récursif** va gérer les 2 points d'adaptation aux données en se rappelant lui-même (une **_récursion_**) avec de nouveaux paramètres d'entrée un nombre fini de fois (nécessite une **_condition d'arrêt_** pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrée.
 
 {% enddefinition %}
 
@@ -133,7 +133,7 @@ pgcd(8, 6) = 2 * pgcd(4, 3)
                                                                      pgcd(1, 1) = 1
 ```
 
-Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme passe à la ligne suivante **que** si l'instruction est terminée : lors d'une récursion l'algorithme attend que la récursion se termine pour continuer. Ainsi lors du 5 appel de récursion, il y a 5 algorithmes qui attentent :
+Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme passe à la ligne suivante **que** si l'instruction est terminée : lors d'une récursion l'algorithme attend que la récursion se termine pour continuer. Ainsi lors du 5e appel de récursion, il y a 5 algorithmes qui attendent :
 
 - `pgcd(1, 2)`{.language-} attend en ligne 11 que la fonction `pgcd(1, 1)`{.language-} se termine pour continuer
 - `pgcd(1, 3)`{.language-} attend en ligne 15 que la fonction `pgcd(1, 2)`{.language-} se termine pour continuer
@@ -143,10 +143,10 @@ Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme pas
 
 Lorsque la dernière récursion s'arrête : `pgcd(1, 1)`{.language-} rend 1 sans récursion, qui permet à l'algorithme `pgcd(1, 2)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(1, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(2, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(4, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(8, 6)`{.language-} de s'arrêter.
 
-Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Démontrons le :
+Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelles que soient ses entrées et donc que c'est un algorithme. Démontrons-le :
 
 {% note "**Proposition**" %}
-L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donné en paramètre.
+L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donnés en paramètre.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -154,7 +154,7 @@ L'algorithme effectue plusieurs cas que nous allons examiner :
 
 - si `min(a, b) == 0`{.language-} : le $\operatorname{pgcd}$ est clairement $\max(a, b)$,
 - si `min(a, b) > 0`{.language-} et `a == b`{.language-} : le $\operatorname{pgcd}$ est clairement $a$,
-- si `a`{.language-} et `b`{.language-} sont pairs 2 est un diviseur commun
+- si `a`{.language-} et `b`{.language-} sont pairs, 2 est un diviseur commun
 - si seul `a`{.language-} ou `b`{.language-} est pair, 2 n'est pas un diviseur commun
 - sinon, on retrouve [l'algorithme d'Euclide](../../bases-théoriques/calculabilité/#algorithme-euclide) que l'on a démontré correct.
 {% enddetails %}
@@ -180,12 +180,12 @@ algorithme f(n: A) → B:
         rendre f(h(n))
 ```
 
-L'algorithme `f`{.language-} est sous la forme d'une **_récursion terminale_**, c'est à dire que :
+L'algorithme `f`{.language-} est sous la forme d'une **_récursion terminale_**, c'est-à-dire que :
 
 1. **soit** il s'arrête si une condition d'arrêt est vérifiée
-2. **soit** il rend une récursion de lui même
+2. **soit** il rend une récursion de lui-même
 
-Pour que la définition de `f`{.language-} ait du sens il faut bien sur que chaque récursion se _rapproche_ de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.
+Pour que la définition de `f`{.language-} ait du sens il faut bien sûr que chaque récursion se _rapproche_ de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.
 
 {% enddefinition %}
 
@@ -198,7 +198,7 @@ algorithme f(n: A) → B:
     rendre g(n)
 ```
 
-Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateurs lorsque'ils repèrent une telle forme). 
+Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateurs lorsqu'ils repèrent une telle forme). 
 
 Illustrons ceci en utilisant directement [l'algorithme d'Euclide](../../bases-théoriques/calculabilité/#algorithme-euclide) pour le calcul du $\operatorname{pgcd}$. On peut en effet écrire cet algorithme sous la forme d'une équation récurrente :
 
@@ -214,7 +214,7 @@ $$
 $$
 </div>
 
-On a montré en exercice que cette équation est correcte et qu'il se termine en un nombre fini d'étape, c'est donc bien un algorithme qui s'écrit:
+On a montré en exercice que cette équation est correcte et qu'elle se termine en un nombre fini d'étapes, c'est donc bien un algorithme qui s'écrit :
 
 <span id="algorithme-pgcd-rec"></span>
 
@@ -250,12 +250,12 @@ algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
 ```
 
 {% attention %}
-Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'es pas sous la forme récursive terminale en ligne 7.
+Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'est pas sous la forme récursive terminale en ligne 7.
 {% endattention %}
 
 ## Récursion croisée
 
-Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
+Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définit une fonction par rapport à une autre et réciproquement :
 
 <span id="algorithme-pair-impair"></span>
 
@@ -263,8 +263,8 @@ Une dernière utilisation de la récursion qui peut être utile est la récursio
 Écrire les deux fonctions récursives suivantes sans utiliser de division entière :
 
 ```pseudocode
-algorithme pair(n: entier) → booléen
-algorithme impair(n: entier) → booléen
+algorithme pair(n: int) → bool
+algorithme impair(n: int) → bool
 ```
 
 Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que `impair(0)`{.language-} est `Faux`{.language-pseudocode}.
@@ -273,12 +273,12 @@ Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pse
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme pair(n: entier) → booléen
+algorithme pair(n: int) → bool
     si n == 0:
         rendre Vrai
     rendre NON impair(n - 1)
 
-algorithme impair(n: entier) → booléen
+algorithme impair(n: int) → bool
     si n == 0:
         rendre Faux
     rendre NON pair(n - 1)

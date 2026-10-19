@@ -25,7 +25,7 @@ Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas
 
 ### Pseudo code
 
-On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
+On peut maintenant définir une grammaire permettant de décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
 
 {% aller %}
 1. [Écrire les algorithmes en pseudo code](./pseudo-code)
@@ -41,9 +41,9 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 
 ### <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
 
-> TBD à regrouper en seul gros truc.
+> TBD à regrouper en un seul gros truc.
 
-Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris.
+Une série de problèmes algorithmiques à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris.
 
 {% aller %}
 1. [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif)
@@ -57,7 +57,3 @@ On vérifie qu'on sait faire :
 {% aller %}
 [exercices non corrigés](./exercices-itératif-récursif)
 {% endaller %}
-
-## Complexité
-
-> TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)

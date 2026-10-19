@@ -62,7 +62,7 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 Reprenons par exemple [le code de l'algorithme recherche](../../bases-théoriques/définition/#algorithme-recherche) et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
-fonction recherche(T: []entier, x: entier) → booléen:
+fonction recherche(T: []int, x: int) → bool:
     pour chaque e de T:
         si e == x:
             rendre Vrai
@@ -137,7 +137,7 @@ Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci 
 
 ```pseudocode/
 ref F []int
-F ← []entier{longueur: 10}
+F ← []int{longueur: 10}
 F[0] ← 1
 F[1] ← 1
 
@@ -196,9 +196,9 @@ $$
 Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :
 
 ```pseudocode/
-algorithme fibonacci(n: entier) → entier:
+algorithme fibonacci(n: int) → int:
   ref F []int
-  F ← []entier{longueur: n}
+  F ← []int{longueur: n}
   F[0] ← 1
   F[1] ← 1
 
@@ -236,7 +236,7 @@ $$
 Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur `v`{.language-} est dans un tableau `T`{.language-} :
 
 ```pseudocode/
-algorithme recherche(T: []entier, x: entier) → booléen:
+algorithme recherche(T: []int, x: int) → bool:
     pour chaque e de T:
         si e == x:
             rendre Vrai

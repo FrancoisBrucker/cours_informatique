@@ -17,7 +17,7 @@ On va définir dans cette partie ce que sont des programmes et des algorithmes.
 2. [Problème de l'arrêt d'un programme](./arrêt-rice)
 {% endaller %}
 
-Enfin, on montrera qu'un algorithme ne peut pas tout faire et, enfin, que savoir ce que fait un algorithme n'est pas un problème simple (c'est pour ça qu'il existe des algorithmiciens) :
+Enfin, on montrera qu'un algorithme ne peut pas tout faire et que savoir ce que fait un algorithme n'est pas un problème simple (c'est pour ça qu'il existe des algorithmiciens) :
 
 {% aller %}
 

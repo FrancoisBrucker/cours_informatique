@@ -88,7 +88,7 @@ Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter
 Ainsi, pour [le problème MAX (trouver le maximum d'un tableau)](../#problème-max-tableau) :
 
 ```pseudocode
-algorithme vérification_max(T: []entier, sol: entier) → booléen:
+algorithme vérification_max(T: []int, sol: int) → bool:
   m ← max(T)  # algorithme linaire trouvant le maximum d'un tableau
   rendre m == sol
 ```
@@ -101,7 +101,7 @@ Montrez que le problème [3-SUM](../problème-réduction/#problème-3-SUM) admet
 {% details "solution" %}
 
 ```pseudocode
-algorithme vérification_3_SUM(T: []entier, sol: (entier, entier, entier)) → booléen:
+algorithme vérification_3_SUM(T: []int, sol: (int, int, int)) → bool:
   i, j, k ← sol
   si T[i] + T[j] + T[k] == 0:
       rendre Vrai
@@ -112,7 +112,7 @@ algorithme vérification_3_SUM(T: []entier, sol: (entier, entier, entier)) → b
 
 ### Vérifieur efficace et algorithme de résolution
 
-Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur `stop(E: chaîne, n: entier) → booléen`{.language-} qui rend vrai si le programme décrit par la chaîne de caractères `E`{.language-} s'arrête au bout de `n`{.language-} itération. Ce vérifieur correspond [au problème de l'arrêt](../bases-théoriques/arrêt-rice/) qui est indécidable.
+Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur `stop(E: str, n: int) → bool`{.language-} qui rend vrai si le programme décrit par la chaîne de caractères `E`{.language-} s'arrête au bout de `n`{.language-} itération. Ce vérifieur correspond [au problème de l'arrêt](../bases-théoriques/arrêt-rice/) qui est indécidable.
 
 Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :
 
@@ -277,9 +277,9 @@ Utilisez le codage précédent pour écrire un vérifieur linéaire de SAT.
 On propose l'algorithme suivant :
 
 ```pseudocode
-algorithme vérif_SAT(conj_clauses: [][]entier, # [c_1, ..., c_m]
-                     solution: []booléen) # [x_1, ..., x_n]
-                     → booléen:
+algorithme vérif_SAT(conj_clauses: [][]int, # [c_1, ..., c_m]
+                     solution: []bool) # [x_1, ..., x_n]
+                     → bool:
     pour chaque c de conj_clauses:
         sat ← Faux
         pour chaque l de c:

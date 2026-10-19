@@ -263,7 +263,7 @@ Terminons cette partie avec un piège classique dans lequel tombent (pratiquemen
 Quelle équation de complexité $C(n)$ vérifie l'algorithme suivant ?
 
 ```pseudocode
-algorithme f(n: entier) → entier:
+algorithme f(n: int) → int:
     si n < 2:
         rendre 1
     rendre f(n // 2) * f(n // 4)

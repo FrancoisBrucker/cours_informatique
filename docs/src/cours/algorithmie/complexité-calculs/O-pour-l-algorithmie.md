@@ -118,7 +118,7 @@ En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsqu
 Prenons par exemple notre algorithme fétiche :
 
 ```pseudocode/
-algorithme recherche(T: []entier, x: entier) → booléen:
+algorithme recherche(T: []int, x: int) → bool:
     pour chaque e de T:
         si e == x:
             rendre Vrai

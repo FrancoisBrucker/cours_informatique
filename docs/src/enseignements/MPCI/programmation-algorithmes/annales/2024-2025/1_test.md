@@ -28,7 +28,7 @@ Ne tartinez pas des pages et des pages de démonstration. Allez directement au f
 Dans la suite de ce test, on supposera connu l'algorithme suivant qui rend le successeur d'un entier positif :
 
 ```pseudocode
-algorithme succ(n: entier) → entier:
+algorithme succ(n: int) → int:
     rendre n + 1
 ```
 
@@ -37,7 +37,7 @@ algorithme succ(n: entier) → entier:
 On considère le programme suivant définis pour tous `a`{.language-} et `b`{.language-} entiers positifs :
 
 ```pseudocode
-programme somme(a: entier, b: entier) → entier:
+programme somme(a: int, b: int) → int:
     ref i ← 0
     ref j ← a
     tant que i ≠ b:
@@ -59,7 +59,7 @@ Montrez que `somme`{.language-} est un algorithme et utilisez l'invariant de la 
 En utilisant uniquement `somme`{.language-}, donnez un algorithme itératif permettant de calculer le produit de deux entiers passés en paramètre. Sa signature doit être :
 
 ```pseudocode
-produit(a: entier, b: entier) → entier
+produit(a: int, b: int) → int
 ```
 
 Et on doit avoir l'égalité `produit(a, b) = a * b`{.language-} pour tous `a`{.language-} et `b`{.language-} entiers positifs ou nuls.
@@ -69,7 +69,7 @@ Et on doit avoir l'égalité `produit(a, b) = a * b`{.language-} pour tous `a`{.
 En utilisant uniquement `succ`{.language-} comme opération arithmétique donnez un algorithme permettant de calculer le prédécesseur d'un entier positif passé en paramètre. Sa signature doit être :
 
 ```pseudocode
-pred(a: entier) → entier
+pred(a: int) → int
 ```
 
 Et on doit avoir pour tout `a`{.language-} entier positif ou nul :
@@ -84,7 +84,7 @@ Et on doit avoir pour tout `a`{.language-} entier positif ou nul :
 En utilisant `succ`{.language-} et `pred`{.language-} comme opérations arithmétiques, donnez un algorithme récursif permettant de calculer la somme de deux entiers passés en paramètre. Sa signature doit être :
 
 ```pseudocode
-somme_rec(a: entier, b: entier) → entier
+somme_rec(a: int, b: int) → int
 ```
 
 Et on doit avoir l'égalité `somme_rec(a, b) = a + b`{.language-} pour tous `a`{.language-} et `b`{.language-} entiers positifs ou nuls.
@@ -94,7 +94,7 @@ Et on doit avoir l'égalité `somme_rec(a, b) = a + b`{.language-} pour tous `a`
 En utilisant uniquement `somme_rec`{.language-} et `pred`{.language-}, donnez un algorithme récursif permettant le produit de deux entiers passés en paramètre. Sa signature doit être :
 
 ```pseudocode
-produit_rec(a: entier, b: entier) → entier
+produit_rec(a: int, b: int) → int
 ```
 
 Et on doit avoir l'égalité `produit_rec(a, b) = a * b`{.language-} pour tous `a`{.language-} et `b`{.language-} entiers positifs ou nuls.

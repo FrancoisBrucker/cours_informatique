@@ -18,8 +18,8 @@ La **_file_** est la structure de donnée idéale pour gérer un flux de donnée
 
 ```pseudocode
 structure Pile<T>:
-    longueur: entier
-    capacité: entier
+    longueur: int
+    capacité: int
         
     #  autres attributs
 
@@ -47,12 +47,12 @@ Ces deux indices coïncidaient avec la longueur pour la pile.
 
 ```pseudocode
 structure File<T>:
-    longueur: entier
-    capacité: entier
+    longueur: int
+    capacité: int
 
     (données: []T) ← []T{longueur: capacité}
-    début: entier ← capacité - 1
-    fin: entier ← 0
+    début: int ← capacité - 1
+    fin: int ← 0
 
 méthode (f: File<T>) enfile(donnée: T) → ∅:
     f.données[f.fin] ← donnée
@@ -217,10 +217,10 @@ Cet exemple montre l'usage classique d'une file. On traite de façon différée 
 ```pseudocode
 ref buffer ← File<int>{capacité: n}
 
-fonction écrire(donnée: entier) → ∅:
+fonction écrire(donnée: int) → ∅:
     buffer.enfile(donnée)
 
-fonction lire() → entier:
+fonction lire() → int:
     rendre buffer.défile()
 ```
 
@@ -257,8 +257,8 @@ Dans les cas réels, les données sont envoyés par _burst_ continu de $K$ entie
 On peut aussi utiliser la file comme outil d'énumération. Par exemple pour faire un compteur :
 
 ```pseudocode
-algorithme compteur(n: entier) → ∅:
-    F ← File<chaîne> {capacité: K}
+algorithme compteur(n: int) → ∅:
+    F ← File<str> {capacité: K}
     F.enfile("1")
     ref i ← 1
 

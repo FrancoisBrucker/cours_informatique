@@ -35,7 +35,7 @@ Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ n
 L'algorithme suivant, dérivant directement de la définition (donc correct) permet de calculer la puissance de deux nombres :
 
 ```pseudocode
-algorithme puissance(x: entier, n: entier) → entier:
+algorithme puissance(x: int, n: int) → int:
     si n == 1:
         rendre x
     rendre x * puissance(x, n - 1)
@@ -44,12 +44,12 @@ algorithme puissance(x: entier, n: entier) → entier:
 Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-techniques-de-récursion/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre `r`{.language-}) :
 
 ```pseudocode
-fonction puissance_terminale(x: entier, n: entier, r: entier) → entier:
+fonction puissance_terminale(x: int, n: int, r: int) → int:
     si n == 1:
         rendre r
     rendre puissance_terminale(x, n - 1, x * r)
 
-algorithme puissance(x: entier, n: entier) → entier:
+algorithme puissance(x: int, n: int) → int:
     rendre puissance_terminale(x, n, x)
 ```
 
@@ -71,7 +71,7 @@ Ce permet d'écrire la version itérative par un simple jeu de réécriture :
 <span id="algorithme-puissance-naif"></span>
 
 ```pseudocode/
-algorithme puissance(x: entier, n: entier) → entier:
+algorithme puissance(x: int, n: int) → int:
     ref r ← x
     tant que n > 1:
         r ← r * x
@@ -133,7 +133,7 @@ On propose l'algorithme itératif suivant pour résoudre le problème :
 <span id="algorithme-puissance-indienne"></span>
 
 ```pseudocode/
-algorithme puissance(x: entier, n: entier) → entier:
+algorithme puissance(x: int, n: int) → int:
     ref r ← x
     ref c ← n - 1
 

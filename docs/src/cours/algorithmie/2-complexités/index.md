@@ -18,4 +18,5 @@ eleventyComputed:
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.
 
-> TBD ici
+
+> TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)

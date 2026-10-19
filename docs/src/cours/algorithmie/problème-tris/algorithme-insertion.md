@@ -34,7 +34,7 @@ Ce qui se traduit en pseudo-code :
 <span id="algorithme-tri-insertion"></span>
 
 ```pseudocode
-algorithme insertion(T: []entier)  → ∅:
+algorithme insertion(T: []int)  → ∅:
     ref i, j int
     pour chaque i de [1 .. T.longueur[:  # boucle principale
         j ← i
@@ -211,7 +211,7 @@ Comme ${\Pr}(T[0] > T[i]) = \frac{1}{2}$ pour tout $i < T.\mbox{\small longueur}
 Une implémentation courante du tri par insertion est la suivante :
 
 ```pseudocode
-algorithme insertion(T: []entier)  → ∅:
+algorithme insertion(T: []int)  → ∅:
     ref i, j, courant int
     
     pour chaque i de [1 .. T.longueur[:

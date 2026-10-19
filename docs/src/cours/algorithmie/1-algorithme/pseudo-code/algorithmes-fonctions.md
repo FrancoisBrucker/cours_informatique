@@ -9,12 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le pseudo-code permet d'écrire des algorithmes de façon claire et sans ambiguïtés.
+Le pseudo-code permet d'écrire des algorithmes de façon claire et sans ambiguïté.
 
 ## Algorithme
 
 {% definition %}
-Un **_algorithme_** est une suite d'instructions de pseudo-code qui, a partir de paramètres d'entrées de type déterminé, rend une sortie de type déterminé. En pseudocode comme un bloc :
+Un **_algorithme_** est une suite d'instructions de pseudo-code qui, à partir de paramètres d'entrée de type déterminé, rend une sortie de type déterminé. En pseudocode comme un bloc :
 
 ```pseudocode
 algorithme <nom>(<nom paramètre>: <type paramètre>, ...) → <type de sortie>
@@ -61,14 +61,14 @@ algorithme recherche(T: []int,
     rendre Faux
 ```
 
-La definition du bloc algorithme (jusqu'aux `:`{.language-}) est constitué :
+La définition du bloc algorithme (jusqu'aux `:`{.language-}) est constituée :
 
 1. du mot-clé `algorithme`{.language-} qui détermine la nature du bloc
 2. du nom de l'algorithme : `recherche`{.language-}
-3. puis ses 3 paramètres d'entrées. Chaque paramètre est décrit par son nom suivit de son type. 
+3. puis ses 2 paramètres d'entrée. Chaque paramètre est décrit par son nom suivi de son type. 
 4. enfin, le type de sortie de l'algorithme qu'on fait précéder d'une flèche.
 
-Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un `#`{.language-}.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doit suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrées.
+Si on a besoin d'informations supplémentaires pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un `#`{.language-}.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doivent suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrée.
 
 {% lien %}
 La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>{.externe}
@@ -77,7 +77,7 @@ La description des types de paramètres est reprise du format python : <https://
 Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction `rendre`{.language-}. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra **toujours** 42 :
 
 ```pseudocode
-algorithme réponse() → entier: 
+algorithme réponse() → int: 
 
     rendre 42
     rendre 0    # ne sera jamais exécuté
@@ -86,10 +86,10 @@ algorithme réponse() → entier:
 Ne confondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :
 
 ```pseudocode
-algorithme réponse() → entier: 
+algorithme réponse() → int: 
 
     affiche 42
-    rendre 0    # ne sera jamais exécuté
+    rendre 0
 ```
 
 L'affichage à l'écran est une **information donnée à l'utilisateur**, l'algorithme s'en fiche et fonctionne tout à fait sans.
@@ -100,7 +100,7 @@ Pour distinguer le retour de fonction d'un affichage supprimez tous les affichag
 
 ## Fonctions
 
-Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des _sous-programmes_ réutilisables à volonté, appelés **_fonctions_**.
+Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définit des _sous-programmes_ réutilisables à volonté, appelés **_fonctions_**.
 
 {% definition %}
 Une **_fonction_** est un algorithme. Elle a ainsi :
@@ -133,7 +133,7 @@ algorithme recherche(t: []int,
     rendre Faux
 ```
 
-On peut utiliser le pseudo code de nom _recherche_ dans d'autres pseudo-code comme une fonction. Par exemple :
+On peut utiliser le pseudo code de nom _recherche_ dans d'autres pseudo-codes comme une fonction. Par exemple :
 
 ```pseudocode
 
@@ -146,12 +146,12 @@ affiche à l'écran trouve
 Est un pseudo-code valide puisque `recherche`{.language-} est bien défini et utilisé correctement (le type de ses paramètres est correct).
 
 {% retenir %}
-- Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.
+- Les différentes exécutions de fonctions au sein d'un même algorithme ne partagent pas leurs variables.
 - Les paramètres sont **des variables** qui sont initialisées au début de l'exécution de la fonction.
 - **Seuls** les objets peuvent être transmis.
 {% endretenir %}
 
-Dans l'exemple précédent, tout ce passe comme si on disposait de deux ordinateurs, un qui exécute le pseudo-code, l'autre la fonction `recherche`{.language-} :
+Dans l'exemple précédent, tout se passe comme si on disposait de deux ordinateurs, un qui exécute le pseudo-code, l'autre la fonction `recherche`{.language-} :
 
 1. le passage de l'ordinateur effectuant le pseudo-code à l'ordinateur exécutant l'algorithme `recherche`{.language-} se fait en affectant les paramètres de la fonction recherche (ce sont des variables) à des objets manipulés par le pseudo-code : ici un tableau valant `[1, 2, 3]`{.language-}
 2. le passage de l'ordinateur effectuant l'algorithme `recherche`{.language-} à l'ordinateur exécutant le pseudo-code se fait par le retour de la fonction
@@ -181,7 +181,7 @@ algorithme exorcisme(T: []int) → str:
 Que va afficher l'exécution de l'algorithme suivant :
 
 ```pseudocode/
-fonction affiche_double(e: entier) → ∅:
+fonction affiche_double(e: int) → ∅:
 
     ref x ← 2 * e
     affiche x
@@ -207,7 +207,7 @@ L'entier `x`{.language-} de la fonction est indépendant de l'entier `x`{.langua
 ### Tableaux et fonctions
 
 {% retenir %}
-Les objets sont communs à toutes les exécutions d'un même algorithmes. Ils peuvent passer d'une fonction à une autre via les variables.
+Les objets sont communs à toutes les exécutions d'un même algorithme. Ils peuvent passer d'une fonction à une autre via les variables.
 {% endretenir %}
 
 Par exemple :
@@ -231,10 +231,10 @@ algorithme tableau() → ∅:
 
 Va afficher 0 puis 3. En effet :
 
-- lors de l'exécution de la fonction `modif`{.language-} la **variable** `U`{.language-} va être associée à l'**objet** tableau de l'algorithme : la variable `T`{.language-} de l'algorithme est différente de la variable `U`{.language-} de la fonction mais est associé au **même** objet.
+- lors de l'exécution de la fonction `modif`{.language-} la **variable** `U`{.language-} va être associée à l'**objet** tableau de l'algorithme : la variable `T`{.language-} de l'algorithme est différente de la variable `U`{.language-} de la fonction mais est associée au **même** objet.
 - on associe à la variable d'indice 2 de l'objet tableau un nouvel entier valant 3 : on a modifié le tableau défini dans l'algorithme.
 
-Les tableaux sont les seuls objets défini en pseudo-code qui peuvent être modifiés, ce n'est pas le cas ni des 5 types basiques ni des chaînes.
+Les tableaux sont les seuls objets définis en pseudo-code qui peuvent être modifiés, ce n'est pas le cas ni des 5 types basiques ni des chaînes.
 
 {% retenir %}
 Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableaux que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !
@@ -242,7 +242,7 @@ Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des t
 
 ## <span id="type"></span>Signature d'un algorithme ou d'une fonction
 
-Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie :
+Lorsque l'on définit un algorithme ou un pseudo-code on explicite le type des objets en entrée et en sortie :
 
 {% definition %}
 Une **_signature de fonction_** associe :
@@ -257,7 +257,7 @@ On le représente ainsi :
 <nom de l'algorithme>(<type premier paramètre>, ..., <type dernier paramètre>) → <type de sortie>
 ```
 
-Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :
+Ou, lorsque le nom des paramètres peut être utile on pourra les ajouter ainsi :
 
 ```pseudocode
 <nom de l'algorithme>(<nom premier paramètre>: <type premier paramètre>, ..., <nom dernier paramètre>: <type dernier paramètre>) → <type de sortie>
@@ -275,7 +275,7 @@ Par exemple pour l'algorithme `recherche`{.language-} :
 - sa signature est `recherche(T []int, x int) → bool`{.language-} ou `recherche([]int, int) → bool`{.language-}
 - son type est `([]int, int) → bool`{.language-}
 
-Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
+Associer un type à une fonction lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
 
 ```pseudocode
 ref f ([]int, int) → bool
@@ -291,10 +291,10 @@ Ne confondez pas `nom_algorithme`{.language-} qui est l'algorithme et `nom_algor
 
 ## Récursivité
 
-Le fait que les variables et les noms définis dans les fonctions restent dans le cadre de la fonction actuellement exécutée nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
+Le fait que les variables et les noms définis dans les fonctions restent dans le cadre de la fonction actuellement exécutée nous donne accès à la récursivité : il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
 
 {% attention %}
-Attention aux conditions d'arrêts pour garantir qu'une fonction ne s'appelle pas indéfiniment.
+Attention aux conditions d'arrêt pour garantir qu'une fonction ne s'appelle pas indéfiniment.
 {% endattention %}
 
 Par exemple l'algorithme suivant est une implémentation récursive de l'algorithme `recherche`{.language-} :
@@ -302,9 +302,9 @@ Par exemple l'algorithme suivant est une implémentation récursive de l'algorit
 <span id="algorithme-recherche-rec"></span>
 
 ```pseudocode
-algorithme recherche(T: []entier,
-                     x: entier     # entier recherché dans t
-                    ) → booléen:   # Vrai si x est dans t
+algorithme recherche(T: []int,
+                     x: int     # entier recherché dans t
+                    ) → bool:   # Vrai si x est dans t
 
     si T.longueur == 0:
         rendre Faux

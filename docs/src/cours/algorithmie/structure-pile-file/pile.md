@@ -17,8 +17,8 @@ La pile est une structure de donnée extrêmement utilisée. Elle permet de trai
 
 ```pseudocode
 structure Pile<T>:
-    longueur: entier
-    capacité: entier
+    longueur: int
+    capacité: int
         
     #  autres attributs
 
@@ -42,8 +42,8 @@ Une pile générique pourra être implémentée de cette façon :
 
 ```pseudocode
 structure Pile<T>:
-    longueur: entier ← 0
-    capacité: entier
+    longueur: int ← 0
+    capacité: int
 
     (données: []T) ← []T{longueur: capacité}
 
@@ -244,7 +244,7 @@ On obtient le code :
 
 ```pseudocode
 algorithme fact(n):
-    P ← Pile<(entier, entier, entier)>{capacité: n}  # variables locales : n, r', pos
+    P ← Pile<(int, int, int)>{capacité: n}  # variables locales : n, r', pos
     P.empile((n, ∅, 1))
     tant que P.longueur > 0:
         n, r', pos ← P.dépile()
@@ -293,7 +293,7 @@ Enfin, on remarque que la variable locale  `r'`{.language-} n'est jamais utilis�
 
 ```pseudocode
 algorithme fact(n):
-    P ← Pile<(entier, entier)>{capacité: n}
+    P ← Pile<(int, int)>{capacité: n}
     P.empile((n, 1))
     tant que P.longueur > 0:
         n, pos ← P.dépile()
@@ -361,7 +361,7 @@ Ce qui donne :
 
 ```pseudocode
 algorithme fibo(n):
-    P ← Pile<(entier, entier, entier, entier)> {capacité: 2^n}
+    P ← Pile<(int, int, int, int)> {capacité: 2^n}
     P.empile((n, ∅, ∅, 1))
     tant que P.longueur > 0:
         n, r', r'', pos ← P.dépile()
@@ -420,7 +420,7 @@ Simplifiez le code précédent.
 
 ```pseudocode
 algorithme fibo(n):
-    P ← Pile<(entier, entier, entier)> {capacité: 2^n }  # n, r', pos
+    P ← Pile<(int, int, int)> {capacité: 2^n }  # n, r', pos
     P.empile((n, ∅, 1))
     tant que P.longueur > 0:
         n, r', pos ← P.dépile()

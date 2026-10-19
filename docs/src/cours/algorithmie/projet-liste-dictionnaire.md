@@ -40,7 +40,7 @@ Créer cet algorithme et calculez-en sa complexité.
 {% details "solution" %}
 
 ```pseudocode
-algorithme recherche(p : []entier, C: entier) → (entier, entier):
+algorithme recherche(p : []int, C: int) → (int, int):
     pour chaque i de [0 .. p.longueur[:
         pour chaque j de [i+1 .. p.longueur[:
             si p[i] + p[j] == C:
@@ -68,9 +68,9 @@ Créer cet algorithme et calculez-en sa complexité.
 On utilise une astuce permettant de trier le tableau tout en conservant les indices.
 
 ```pseudocode
-algorithme recherche(p : []entier, C: entier) → (entier, entier):
+algorithme recherche(p : []int, C: int) → (int, int):
 
-    p2 ← tableau de (entier, entier) p.longueur élément  # astuce !
+    p2 ← tableau de (int, int) p.longueur élément  # astuce !
     pour chaque i de [0 .. p.longueur[:
         p2[i] ← (p[i], i)
 
@@ -107,8 +107,8 @@ Créer cet algorithme et calculez-en sa complexité.
 Première version :
 
 ```python
-algorithme recherche(p : []entier, C: entier) → (entier, entier):
-    d ← nouveau Dictionnaire<entier, entier>
+algorithme recherche(p : []int, C: int) → (int, int):
+    d ← nouveau Dictionnaire<int, int>
 
     pour chaque i de [0 .. p.longueur[:
         d[p[i]] ← i
@@ -123,8 +123,8 @@ algorithme recherche(p : []entier, C: entier) → (entier, entier):
 Seconde version sans tout remplir, qui évite les `min`{.language-} et `min`{.language-} et somme toute plus élégante :
 
 ```python
-algorithme recherche(p : []entier, C: entier) → (entier, entier):
-    d ← nouveau Dictionnaire<entier, entier>
+algorithme recherche(p : []int, C: int) → (int, int):
+    d ← nouveau Dictionnaire<int, int>
 
     pour chaque i de [0 .. p.longueur[:
         si C - p[i] est dans d:

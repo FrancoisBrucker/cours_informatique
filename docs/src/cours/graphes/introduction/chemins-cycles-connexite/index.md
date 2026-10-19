@@ -414,7 +414,7 @@ L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../en
 Pour garantir la complexité en nombre d'arêtes du graphe on suppose que nos sommets sont les entiers allant de 0 à $n-1$
 
 ```pseudocode
-algorithme composante_connexe(G: Graphe, origine: entier) -> liste<entier>:
+algorithme composante_connexe(G: Graphe, origine: int) -> liste<int>:
     composante <- [False .. False] tableau de taille n de booléen
     suivant = [origine]
 

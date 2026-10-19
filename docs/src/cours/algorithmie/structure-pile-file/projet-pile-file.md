@@ -14,7 +14,7 @@ Les piles et les files sont deux structures fondamentales en algorithmie utilis�
 
 ## Parités
 
-On se donne deux `Pile<entier>`{.language-} :
+On se donne deux `Pile<int>`{.language-} :
 
 - `P1`{.language-} contenant des entiers positifs
 - `P2`{.language-} une pile d'entier initialement vide
@@ -35,7 +35,7 @@ Vous pourrez utiliser une troisième pile.
 On utilise une troisième pile où on va placer tous les nombres impairs :
 
 ```pseudocode
-algorithme parité(P1: Pile<entier>, P2: Pile<entier>) → ∅:
+algorithme parité(P1: Pile<int>, P2: Pile<int>) → ∅:
     ref P3 ← Pile<int>{capacité: P1.capacité}
     ref x int
 
@@ -61,7 +61,7 @@ Montrer que l'on peut trouver si une chaîne de caractères est un palindrome en
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme palindrome(s: chaîne) → booléen:
+algorithme palindrome(s: str) → bool:
     ref P ← Pile<char> {capacité: |s|}
     ref F ← File<char> {capacité: |s|}
 
@@ -101,7 +101,7 @@ En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme permutation(T: []entier, k: entier) → ∅:
+algorithme permutation(T: []int, k: int) → ∅:
     ref F ← File<int>{capacité: T.longueur}
 
     pour chaque i de [0 .. T.longueur[:
@@ -130,8 +130,8 @@ On dispose uniquement de la structure de donnée de Pile et on souhaite impléme
 
 ```pseudocode
 structure File<T>:
-    capacité : entier
-    longueur : entier ← 0
+    capacité : int
+    longueur : int ← 0
 
     P1 : Pile<T> ← Pile<T>{capacité: capacité}
     P2 : Pile<T> ← Pile<T>{capacité: capacité}
@@ -180,7 +180,7 @@ Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équ
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme parenthèse(C: chaîne) → booléen:
+algorithme parenthèse(C: str) → bool:
     ref P ← Pile<char>{capacité: |C|}
     pour chaque c de C:
         si c == "(" ou c == "[":
@@ -224,7 +224,7 @@ Il faut faire attention au fait que `*` a une priorité supérieure à `+` : `3 
 
 ```pseudocode
 
-algorithme évalue(expression: chaîne) → entier:
+algorithme évalue(expression: str) → int:
     ref op opérateur ou parenthèse
     ref x int
     ref y int

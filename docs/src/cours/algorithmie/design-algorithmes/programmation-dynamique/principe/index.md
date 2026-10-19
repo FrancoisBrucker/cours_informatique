@@ -73,7 +73,7 @@ $$
 L'algorithme récursif naïf calculant $F(n)$ est :
 
 ```pseudocode
-algorithme F(n: entier) → entier:
+algorithme F(n: int) → int:
     si n ≤ 2:
         rendre 1
     sinon:
@@ -90,7 +90,7 @@ La première optimisation possible est l'approche bottom-up, qui consiste à com
 Pour la suite de Fibonacci cela donne :
 
 ```pseudocode
-algorithme F(n: entier) → entier:
+algorithme F(n: int) → int:
     a ← 1
     b ← 0
     
@@ -116,7 +116,7 @@ Pour le calcul de la suite de Fibonacci, cela donne si $n$ est plus petit que $N
 cache ← un tableau d'entiers de taille N
 cache[:] ← -1
 
-algorithme F(n: entier) → entier:
+algorithme F(n: int) → int:
     si cache[n] ≠ -1:
         rendre cache[n]
 
@@ -166,8 +166,8 @@ On construit une matrice carrée $N$ à $n+1$ lignes telle que $N[i][j]$ contien
 On peut alors remplir la matrice ligne à ligne (ou colonne par colonne) :
 
 ```pseudocode
-algorithme nombre_chemins(n: entier) → entier:
-    N ← un tableau de []entier de taille n+1
+algorithme nombre_chemins(n: int) → int:
+    N ← un tableau de []int de taille n+1
     N[:] ← un tableau de n+1 entiers
 
     pour chaque j de [0 .. n]:
@@ -194,8 +194,8 @@ Créez un algorithme utilisant la programmation dynamique permettant de calculer
 Une petite modification de l'algorithme précédent permet de répondre à la question :
 
 ```pseudocode
-algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
-    N ← un tableau de []entier de taille n+1
+algorithme nombre_chemins(n: int, P: [(int, entiers)]) → int:
+    N ← un tableau de []int de taille n+1
     N[:] ← un tableau de n+1 entiers
 
     si (0, 0) est dans P:
@@ -284,7 +284,7 @@ En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynam
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme vente(n: entier, P: []entier) → entier:
+algorithme vente(n: int, P: []int) → int:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
 
@@ -307,7 +307,7 @@ Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet 
 On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
 
 ```pseudocode
-algorithme vente(n: entier, P: []entier) → []entier:
+algorithme vente(n: int, P: []int) → []int:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
     D ← un tableau d'entiers de taille n + 1

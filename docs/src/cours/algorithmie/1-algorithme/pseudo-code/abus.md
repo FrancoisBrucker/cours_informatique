@@ -10,16 +10,16 @@ eleventyComputed:
 ---
 
 
-Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible. Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.
+Il sera parfois plus simple d'écrire des raccourcis dans un pseudo-code pour le rendre plus lisible. Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.
 
 ## Définitions de variables
 
 Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 
-- les variables doivent être définies avant d'être utilisée
+- les variables doivent être définies avant d'être utilisées
 - une variable ne peut contenir que des objets d'un type donné
 
-Mais cela ne doit pas rendre le code lourd. On se permettra donc plusieurs abus de notations
+Mais cela ne doit pas rendre le code lourd. On se permettra donc plusieurs abus de notation :
 
 ### Déclarer plusieurs variables
 
@@ -56,7 +56,7 @@ Par exemple
 ref réponse int ← 42
 ```
 
-Pour ce type de déclaration/affectation il n'y a pas d’ambiguïté sur le type de la variable, on se permettre ainsi d'écrire directement :
+Pour ce type de déclaration/affectation il n'y a pas d’ambiguïté sur le type de la variable, on peut ainsi se permettre d'écrire directement :
 
 {% definition "**Abus de notation**" %}
 Type implicite si déclaration et affectation d'un objet de type connu :
@@ -82,7 +82,7 @@ En pseudo-code on ne se permettra cependant jamais d'affecter une variable avant
 ### Affectations multiples
 
 {% definition "**Abus de notation**" %}
-Plusieurs affectation en même temps :
+Plusieurs affectations en même temps :
 
 ```pseudocode
 a, b ← c, d
@@ -116,7 +116,7 @@ Ces différentes affectations ne sont **pas** des instructions simples, mais né
 ### Affectation d'une tranche de tableau
 
 {% definition "**Abus de notation**" %}
-Plusieurs affectation en même temps :
+Plusieurs affectations en même temps :
 
 ```pseudocode
 T[a:b] ← k
@@ -158,7 +158,7 @@ pour chaque i de [0 .. b-a[:
 ```
 
 {% attention %}
-Les affectations de tranches ne sont **pas** des instructions simples, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.
+Les affectations de tranches ne sont **pas** des instructions simples, mais nécessitent plusieurs instructions : celles de la boucle sous-jacente.
 
 Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
 
@@ -198,7 +198,7 @@ ref T []int ← [1, 2, 3]
 ref T' []int ← [1 .. 10[
 ```
 
-voir encore plus directement :
+voire encore plus directement :
 
 ```pseudocode
 ref T ← [1, 2, 3]
@@ -218,7 +218,7 @@ T[1] ← 2
 T[2] ← 3
 
 ref T' []int
-T ← [9]int
+T' ← [9]int
 
 pour chaque i de [0 .. 9[:
     T[i] ← i + 1
@@ -248,13 +248,13 @@ pour chaque i de [0 .. T2.longueur[:
 
 ```
 
-### Liste en comprehension
+### Liste en compréhension
 
 {% lien %}
-[Liste en comprehension](https://www.docstring.fr/glossaire/comprehension-de-liste/){.externe}
+[Liste en compréhension](https://www.docstring.fr/glossaire/comprehension-de-liste/){.externe}
 {% endlien %}
 
-On pourra aussi utiliser les listes en comprehension (_list comprehension_) popularisés apr python. De nombreux formats existent, du moment que c'est compréhensible :
+On pourra aussi utiliser les listes en compréhension (_list comprehension_) popularisées par python. De nombreux formats existent, du moment que c'est compréhensible :
 
 {% definition "**Abus de notation**" %}
 Écriture à la python :
@@ -263,14 +263,14 @@ On pourra aussi utiliser les listes en comprehension (_list comprehension_) popu
 [<expression> pour chaque <variable> de <énumérable> si <condition logique>]
 ```
 
-On plus ensembliste :
+Ou plus ensembliste :
 
 ```pseudocode
 [<expression> | <variable> ∈ <énumérable>, <condition logique>]
 ```
 {% enddefinition %}
 
-Par exemples :
+Par exemple :
 
 ```pseudocode
 [2 * x pour chaque x de [1 .. 5]]   # [2, 4, 6, 8, 10]
@@ -285,7 +285,7 @@ Ou, avec la notation mathématique :
 [1 + 4 * k |  1 ≤ k ≤ 4]  
 ```
 
-Pour la notation mathématique soit déterministe, on suppose que la variable sera énumérer selon l'ordre sous-jacent de l'ensemble.
+Pour que la notation mathématique soit déterministe, on suppose que la variable sera énumérée selon l'ordre sous-jacent de l'ensemble.
 
 ## Variable muette
 

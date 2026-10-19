@@ -29,7 +29,7 @@ base10(123) = [3, 2, 1]
 
 {% faire %}
 
-Écrivez (et prouvez) un algorithme de signature `étendre([]int, n) -> []int`{.language-} qui ajoute n 0 en à la fin du tableau. Par exemple :
+Écrivez (et prouvez) un algorithme de signature `étendre([]int, n) -> []int`{.language-} qui ajoute n 0 à la fin du tableau. Par exemple :
 
 ```pseudocode
 étendre([3, 2, 1], 4) = [3, 2, 1, 0, 0, 0, 0]
@@ -85,7 +85,7 @@ entier([3, 2, 1]) = 123
 
 {% faire %}
 
-Si `s`{.language-} est une chaîne de caractères uniquement formée de parenthèses ouvrante et fermante, écrivez un algorithme de signature `couple(s: chaîne, i: int) -> int`{.language-} qui rend l'index de la parenthèse associée à celle d'indice `i`{.language-} ou -1 si elle n'existe pas (et `s`{.language-} n'est pas un bon parenthésage). Par exemple :
+Si `s`{.language-} est une chaîne de caractères uniquement formée de parenthèses ouvrantes et fermantes, écrivez un algorithme de signature `couple(s: str, i: int) -> int`{.language-} qui rend l'index de la parenthèse associée à celle d'indice `i`{.language-} ou -1 si elle n'existe pas (et `s`{.language-} n'est pas un bon parenthésage). Par exemple :
 
 - `parenthèses("(())()", 0) = 3`{.language-}
 - `parenthèses("(())()(", 5) = 4`{.language-}
@@ -106,7 +106,7 @@ Si `s`{.language-} est une chaîne de caractères uniquement formée de parenth�
 
 {% faire %}
 
-Même question que précédemment mais la chaîne de caractère contient des crochets ouvrants (`"["`{.language-}) et fermants (`"]"`{.language-}) en plus des lettres de l'alphabet et des parenthèses ouvrantes et fermantes.
+Même question que précédemment mais la chaîne de caractères contient des crochets ouvrants (`"["`{.language-}) et fermants (`"]"`{.language-}) en plus des lettres de l'alphabet et des parenthèses ouvrantes et fermantes.
 {% endfaire %}
 {% info %}
 Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaînes `s1`{.language-} et `s2`{.language-} sont des parenthésages corrects alors :
@@ -122,7 +122,7 @@ Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaî
 ### Valeur
 
 {% faire %}
-écrivez une fonction `valeur`{.language-} telle que
+Écrivez une fonction `valeur`{.language-} telle que
 
 - **paramètres d'entrée** :
 

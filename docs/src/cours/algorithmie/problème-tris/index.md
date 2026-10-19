@@ -172,7 +172,7 @@ Vous allez voir quelques variantes surprenante de tris simple.
 Commençons par un petit échauffement. Sélection est identique à l'algorithme ci-dessous :
 
 ```pseudocode/
-algorithme sélection(T: []entier) → ∅:
+algorithme sélection(T: []int) → ∅:
     pour chaque i de [0 .. T.longueur[:
         pour chaque j de [i + 1 .. T.longueur[:
             si T[j] < T[i]:
@@ -191,7 +191,7 @@ L'invariant de la boucle 2-5 est donc identique à celui de l'algorithme par sé
 Et maintenant un peu de magie :
 
 ```pseudocode/
-algorithme sélection_opposé(T: []entier) → ∅:
+algorithme sélection_opposé(T: []int) → ∅:
     pour chaque i de [0 .. T.longueur[:
         pour chaque j de [0 .. T.longueur[:
             si T[j] < T[i]:
@@ -234,7 +234,7 @@ Par récurrence, on suppose vrai à la fin de l'itération $i$. Au début de l'i
 Et terminons cette partie en montrant que cette dernière itération est bien un algorithme de tri nommé **_tri par permutation_** :
 
 ```pseudocode/
-algorithme sélection_opposé(T: []entier) → ∅:
+algorithme sélection_opposé(T: []int) → ∅:
     pour chaque i de [0 .. T.longueur[:
         pour chaque j de [0 .. T.longueur[:
             si T[i] < T[j]:

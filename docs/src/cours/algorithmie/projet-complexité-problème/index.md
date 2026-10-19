@@ -86,7 +86,7 @@ Vous expliciterez :
 La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
 
 ```pseudocode/
-algorithme trouve(T: []entier) → entier:  # T.longueur > 1
+algorithme trouve(T: []int) → int:  # T.longueur > 1
     si T[0] ≤ T[1]:
         rend 0
 
@@ -115,7 +115,7 @@ $$
 On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `pour chaque`{.language-} en gardant la même complexité :
 
 ```pseudocode
-algorithme trouve(T: []entier) → entier:  # T.longueur > 1
+algorithme trouve(T: []int) → int:  # T.longueur > 1
     si T[0] ≤ T[1]:
         rend 0
 
@@ -137,7 +137,7 @@ Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'enti
 
 
 ```pseudocode
-algorithme trouve_vite(T: []entier) → entier:    # T.longueur > 1
+algorithme trouve_vite(T: []int) → int:    # T.longueur > 1
     si T[0] ≤ T[1]:
         rendre 0
 
@@ -280,13 +280,13 @@ On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on ve
 On a donc l'algorithme suivant :
 
 ```pseudocode
-fonction déplace(départ: []entier, arrivée: []entier):
+fonction déplace(départ: []int, arrivée: []int):
     ref disque ← départ[départ[0]]
     départ[0] ← départ[0] - 1 
     arrivée[0] ← arrivée[0] + 1 
     arrivée[arrivée[0]] ← disque
 
-algorithme Hanoï(nombre: entier, départ: []entier, arrivée: []entier, intermédiaire: []entier):
+algorithme Hanoï(nombre: int, départ: []int, arrivée: []int, intermédiaire: []int):
     si nombre > 0:
         Hanoï(nombre - 1, départ, intermédiaire, arrivée)  # déplace n-1 à intermédiaire
         déplace(départ, arrivée)                           # place le premier disque
@@ -561,7 +561,7 @@ Le lapin et la tortue sont sur la même valeur.
 L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet algorithme s'appelle [l'algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue){.externe} et est décrit ci-après :
 
 ```pseudocode
-programme lièvre_tortue(a: (entier) → entier) → entier:
+programme lièvre_tortue(a: (int) → int) → int:
 
     ref tortue ← 1
     ref lièvre ← 2
@@ -628,14 +628,14 @@ On a alors  $2\mu \bmod \lambda = -k \bmod \lambda$ et donc :  $m^\star + 2\mu \
 <div id="point-fixe-mu"></div>
 
 {% exercice %}
-Déduire de ce qui précède un algorithme de signature `mu(a: (entier) → entier) → entier`{.language-} qui résout le problème du point fixe avec une complexité temporelle $\Theta(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$.
+Déduire de ce qui précède un algorithme de signature `mu(a: (int) → int) → int`{.language-} qui résout le problème du point fixe avec une complexité temporelle $\Theta(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$.
 
 {% endexercice %}
 {% details "corrigé" %}
 On applique directement ce que l'on a vu en effectuant deux fois l'algorithme du lièvre et de la tortue avec des départ différents :
 
 ```pseudocode
-fonction lièvre_tortue(a: (entier) → entier, départ_tortue: entier, départ_lièvre: entier) → entier:
+fonction lièvre_tortue(a: (int) → int, départ_tortue: int, départ_lièvre: int) → int:
 
     ref tortue ← départ_tortue
     ref lièvre ← départ_lièvre
@@ -647,7 +647,7 @@ fonction lièvre_tortue(a: (entier) → entier, départ_tortue: entier, départ_
     rendre tortue
 
 
-algorithme mu(a: (entier) → entier) → entier:
+algorithme mu(a: (int) → int) → int:
     ref m_star ← lièvre_tortue(a, 1, 2)
     rendre lièvre_tortue(a, 0, m_star)
 ```
@@ -690,7 +690,7 @@ Il nous faut juste garantir que la place mémoire n'est pas rédhibitoire en cal
 
 {% exercice %}
 
-Adaptez l'algorithme `mu(a: (entier) → entier) → entier`{.language-} pour qu'il puisse trouver le point fixe d'une fonction passée en paramètre et d'un $a_0$. Sa complexité en mémoire doit être en $\mathcal{O}(1)$.
+Adaptez l'algorithme `mu(a: (int) → int) → int`{.language-} pour qu'il puisse trouver le point fixe d'une fonction passée en paramètre et d'un $a_0$. Sa complexité en mémoire doit être en $\mathcal{O}(1)$.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -699,7 +699,7 @@ On calcule itérativement les éléments de la suite ce qui permet de ne pas exp
 
 
 ```pseudocode
-fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier) → []entier:
+fonction lièvre_tortue(f: (int) → int, tortue: int, lièvre: int) → []int:
     ref x int
     ref y int
 
@@ -713,8 +713,8 @@ fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier)
     rendre [x, y]
 
 
-algorithme point_fixe(f: (entier) → entier, a1: entier)  # on suppose que a1 ≠ f(a1)
-                      → entier:
+algorithme point_fixe(f: (int) → int, a1: int)  # on suppose que a1 ≠ f(a1)
+                      → int:
 
     ref m_star ← lièvre_tortue(f, a1, f(a1))[0]
     rendre lièvre_tortue(f, a1, m_star)
@@ -758,12 +758,12 @@ Nous allons voir dans la suite les complexités des opération de somme et de mu
 Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,
 
 {% exercice %}
-Écrivez un algorithme de signature `u(x: []bit) → entier`{.language-} de complexité $\Omega(x.\text{longueur})$ qui rend l'entier positif associé au tableau de bits.
+Écrivez un algorithme de signature `u(x: []bit) → int`{.language-} de complexité $\Omega(x.\text{longueur})$ qui rend l'entier positif associé au tableau de bits.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme u(x: []bit) → entier:
+algorithme u(x: []bit) → int:
     ref v ← 0
     ref puissance_2 ← 1
     pour chaque i de [0 .. x.longueur - 1[:
@@ -779,12 +779,12 @@ La finitude du programme est clair. L'invariant de boucle permettant de prouver 
 {% enddetails %}
 
 {% exercice %}
-Écrivez un algorithme de signature `u_moins_1(n: entier) → []bit`{.language-} qui rend le tableau de bits associé à l'entier en paramètre. Sa complexité doit être en $\mathcal{O}(\ln(n))$.
+Écrivez un algorithme de signature `u_moins_1(n: int) → []bit`{.language-} qui rend le tableau de bits associé à l'entier en paramètre. Sa complexité doit être en $\mathcal{O}(\ln(n))$.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme u_moins_1(n: entier) → []bit:
+algorithme u_moins_1(n: int) → []bit:
     ref k ← 0
     ref puissance_2 ← 1
     tant que puissance_2 ≤ n:
@@ -1063,7 +1063,7 @@ Montrez que multiplier un nombre par une puissance de 2 revient à ajouter des 0
 
 {% enddetails %}
 {% exercice %}
-En déduire un algorithme de signature `puissance(n: entier, x: []bit) → []bit`{.language-} permettant de rendre $u(2^n \cdot u^{-1}(x))$ avec une complexité optimale.
+En déduire un algorithme de signature `puissance(n: int, x: []bit) → []bit`{.language-} permettant de rendre $u(2^n \cdot u^{-1}(x))$ avec une complexité optimale.
 
 {% endexercice %}
 {% details "corrigé" %}

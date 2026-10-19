@@ -77,7 +77,7 @@ En utilisant l'invariant de la question 1.1 on a `a' + i' = j'`{.language-} à l
 L'algorithme est presque identique à somme :
 
 ```pseudocode
-algorithme produit(a: entier, b: entier) → entier
+algorithme produit(a: int, b: int) → int
     ref i ← 0
     ref j ← 0
     tant que i ≠ b:
@@ -99,7 +99,7 @@ Si la démonstration du 1.1 est bien faite, la _démonstration_ précédente suf
 En utilisant uniquement `succ`{.language-} comme opération arithmétique donnez un algorithme permettant de calculer le prédécesseur d'un entier positif passé en paramètre. Sa signature doit être :
 
 ```pseudocode
-algorithme pred(a: entier) → entier
+algorithme pred(a: int) → int
     si a == 0:
         rendre 0
 
@@ -117,7 +117,7 @@ Le programme va s'arrêter puisque a est un entier positif. De plus, si $a = 0$ 
 #### 4.1
 
 ```pseudocode
-algorithme somme_rec(a: entier, b: entier) → entier:
+algorithme somme_rec(a: int, b: int) → int:
     si b == 0:
         rendre a
     rendre somme_rec(succ(a), pred(b))
@@ -129,7 +129,7 @@ La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que 
 #### 4.2
 
 ```pseudocode
-algorithme produit_rec(a: entier, b: entier) → entier:
+algorithme produit_rec(a: int, b: int) → int:
     si b == 0:
         rendre 0
     si pred(b) == 0:

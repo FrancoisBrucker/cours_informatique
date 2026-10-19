@@ -26,7 +26,7 @@ $$
 
 Où $\mathcal{K}$ sera l'ensemble des objets de type $K$. Comme on va les utiliser dans des algorithmes, ces fonctions auraient comme propriétés :
 
-- d'être calculable : on peut leur associer un algorithme `f(d: K) → entier`{.language-},
+- d'être calculable : on peut leur associer un algorithme `f(d: K) → int`{.language-},
 - d'être rapidement calculable : de complexité linéaire dans la taille de $d$.
 - d'être [utiles](../fonctions-hash/#définition-hachage-utile).
 
@@ -151,7 +151,7 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
 
     d.T[d.f(clé)].append((clé, valeur))
 
-méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+méthode (d: Dictionnaire<K, V>) in(clé: K) → bool:  # x est dans d = d.in(x)
     ref l ← d.T[d.f(clé)]
     pour chaque (c, v) de l :
         si c == clé:
@@ -222,7 +222,7 @@ Pour résoudre ce problème on va encore une fois utiliser [le TFDL](./#théorè
 On utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :
 
 ```pseudocode
-f(x: entier, m': entier) → entier
+f(x: int, m': int) → int
 ```
 
 Et correspond à une famille de fonctions de hachage **utiles** $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :
@@ -244,14 +244,14 @@ Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{
 La version finale de la structure de dictionnaire est alors :
 
 ```pseudocode
-fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+fonction f(clé: []bit) → int  # fonction de hachage utile de {0, 1}^* dans [0, m[
 ref m0 int                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
-    capacité: entier ← m0
+    capacité: int ← m0
     T: [Liste<(K, V)>]<longueur: capacité>  ← [[] .. []]  # tableau de m entrées de listes vides
 
-méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction d'adressage
+méthode (d: Dictionnaire<K, V>) fa(clé: K, m: int) → [0 .. m[  # fonction d'adressage
 
 
 méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
@@ -269,7 +269,7 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
 
     d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
-méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+méthode (d: Dictionnaire<K, V>) in(clé: K) → bool:  # x est dans d = d.in(x)
     ref l ← d.T[d.f(clé, d.capacité)]
     pour chaque (c, v) de l :
         si c == clé:
@@ -297,15 +297,15 @@ Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le no
 <span id="structure-dictionnaire"></span>
 
 ```pseudocode
-fonction f(clé: []bit) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+fonction f(clé: []bit) → int  # fonction de hachage utile de {0, 1}^* dans [0, m[
 ref m0 int                     # capacité par défaut d'un dictionnaire
 
 structure Dictionnaire<K, V>:
-    capacité: entier ← m0
-    longueur: entier ← 0
+    capacité: int ← m0
+    longueur: int ← 0
     T: [Liste<(K, V)>]<longueur: capacité>  ← [[] .. []]  # tableau de m entrées de listes vides
 
-méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction d'adressage
+méthode (d: Dictionnaire<K, V>) fa(clé: K, m: int) → [0 .. m[  # fonction d'adressage
 
 
 méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
@@ -336,7 +336,7 @@ méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ←
     d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
 
-méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+méthode (d: Dictionnaire<K, V>) in(clé: K) → bool:  # x est dans d = d.in(x)
     ref l ← d.T[d.f(clé, d.capacité)]
     pour chaque (c, v) de l :
         si c == clé:

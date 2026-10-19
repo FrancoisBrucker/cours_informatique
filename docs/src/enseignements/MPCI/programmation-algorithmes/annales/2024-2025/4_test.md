@@ -41,7 +41,7 @@ Donnez une définition (rapide) de la complexité en moyenne d'un algorithme. Po
 ### 2 Algorithme
 
 ```pseudocode
-algorithme tri(T: []entier):
+algorithme tri(T: []int):
    i ← 1
    tant que i < T.longueur:
       si T[i - 1] ≤ T[i]:

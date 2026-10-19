@@ -102,7 +102,7 @@ $$
 <span id="algorithme-fibonacci-rec"></span>
 
 ```pseudocode/
-algorithme fibonacci_rec(n: entier) → entier:
+algorithme fibonacci_rec(n: int) → int:
     si n ≤ 2:
         rendre 1
     rendre fibonacci_rec(n-1) + fibonacci_rec(n-2)
@@ -162,7 +162,7 @@ Utilisez [la transformation en récursion terminale](../projet-itératif-récurs
 <span id="algorithme-fibonacci-rec-terminale"></span>
 
 ```pseudocode
-fonction fibonacci_rec_terminale(n: entier, acc_n_1: entier, acc_n_2: entier) → entier:
+fonction fibonacci_rec_terminale(n: int, acc_n_1: int, acc_n_2: int) → int:
      si n == 2:
           rendre acc_n_1
      sinon si n ≤ 1:
@@ -171,7 +171,7 @@ fonction fibonacci_rec_terminale(n: entier, acc_n_1: entier, acc_n_2: entier) �
      rendre fibonacci_rec_terminale(n-1, acc_n_1 + acc_n_2, acc_n_1)
 
 
-algorithme fibonacci_rec(n: entier) → entier:
+algorithme fibonacci_rec(n: int) → int:
     rendre fibonacci_rec_terminale(n, 1, 1)
 
 ```
@@ -208,7 +208,7 @@ On adapte l'algorithme en récursion terminale :
 <span id="algorithme-fibonacci-itératif"></span>
 
 ```pseudocode
-algorithme fibonacci(n: entier) → entier:
+algorithme fibonacci(n: int) → int:
     ref acc_n_1 ← 1
     ref acc_n_2 ← 1
 
@@ -443,7 +443,7 @@ print(x)
 <span id="algorithme-compteur-binaire-rec"></span>
 
 ```pseudocode
-fonction tous_rec(N: []bit, i: entier) → vide:
+fonction tous_rec(N: []bit, i: int) → vide:
 
     si i == -1:
         affiche à l'écran N
@@ -502,7 +502,7 @@ Modifiez `tous(n: []bit)  → vide`{.language-} pour afficher l'ensemble des jet
 Clairement, l'algorithme suivant fonctionne :
 
 ```pseudocode
-fonction tous_rec(N: []caractère, i: entier) → vide:
+fonction tous_rec(N: []char, i: int) → vide:
 
     si i == -1:
         affiche à l'écran N
@@ -567,9 +567,9 @@ On peut utiliser l'algorithme suivant, qui modifie le tableau passé en paramèt
 <span id="algorithme-tri-paquet"></span>
 
 ```pseudocode
-algorithme tri_paquet(E: []entier, f:(entier) → entier) → ∅:
+algorithme tri_paquet(E: []int, f:(int) → int) → ∅:
     ref m ← max(f(x) | x de E)
-    (T = []entier) ← []entier{longueur: m + 1}
+    (T = []int) ← []int{longueur: m + 1}
     T[:] ← ∅  # ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers
 
     pour chaque x de E:
@@ -610,7 +610,7 @@ Cet algorithme est utile si on doit trier des objets via une fonction $f: \mathc
 Si l'on veut trier des entiers pouvant être égaux, on peut utiliser l'algorithme suivant qui compte dans $T[i]$ le nombre de fois où $i$ est présent dans $E$.
 
 ```pseudocode
-algorithme tri_paquet(E: []entier) → ∅:
+algorithme tri_paquet(E: []int) → ∅:
     m ← max(x | x de E)
     T ← un nouveau tableau d'entier de taille m + 1
     T[:] ← 0  # ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers
@@ -705,8 +705,8 @@ L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos don
 <span id="algorithme-tri-base"></span>
 
 ```pseudocode
-algorithme tri_base(T: []entier,
-                    N: entier     # T[i] < 2^N pour tout i
+algorithme tri_base(T: []int,
+                    N: int     # T[i] < 2^N pour tout i
                    ) → ∅
     ref T0 ← []int{longueur: T.longueur}
     ref i0 ← 0
@@ -769,7 +769,7 @@ Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_
 {% endexercice %}
 {% details "corrigé" %}
 ```pseudocode
-algorithme sous_sequence(S1: chaîne, S2: chaîne) → booléen:
+algorithme sous_sequence(S1: str, S2: str) → bool:
     ref i1 ← 0
     ref i2 ← 0
     tant que i1 < S1.longueur et i2 < S2.longueur:
@@ -809,7 +809,7 @@ La chaîne $S_2$ est un **_sous-mot_** de $S_1$ s'il existe un indice $i$ tel qu
 L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'être un sous-mot de $S_1$. Il s'arrête à la première possibilité. Dans le pire des cas, il va effectuer $\mathcal{O}(n_1 \cdot n_2)$ opérations.
 
 ```pseudocode
-algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
+algorithme sous_mot(S1: str, S2: str) → bool:
     
     pour chaque i1 de [0 .. S1.longueur[:
         ref i2 ← 0
@@ -829,7 +829,7 @@ algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
 Si tous les caractères de $S_2$ sont différents, il n'est pas nécessaire de tout recommencer. On peut utiliser l'optimisation suivante, qui donne la complexité voulue :
 
 ```pseudocode
-algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
+algorithme sous_mot(S1: str, S2: str) → bool:
     ref i1, i2 ← 0, 0
     ref stop bool
 
@@ -857,14 +857,14 @@ algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
 
 {% exercice %}
 
-Donnez un algorithme optimal simple, `permutation(S: []caractère, k: entier) →[]caractère`{.language-} qui rend à partir de $S$ et de $k$, un nouveau tableau permutation circulaire de $S$ de $k$ caractères.
+Donnez un algorithme optimal simple, `permutation(S: []char, k: int) →[]char`{.language-} qui rend à partir de $S$ et de $k$, un nouveau tableau permutation circulaire de $S$ de $k$ caractères.
 {% endexercice %}
 {% details "corrigé" %}
 
 La solution est optimale puisqu'elle est en $\mathcal{O}(n)$
 
 ```pseudocode
-algorithme permutation(S: []caractère, k: entier) → []caractère:
+algorithme permutation(S: []char, k: int) → []char:
     S2 ← un tableau de n caractères
 
     pour chaque i de [0 .. k [:
@@ -884,14 +884,14 @@ remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières 
 
 {% exercice %}
 
-Donnez un algorithme `retournement(S: []caractère) → ∅`{.language-} en $\mathcal{O}(n)$ et utilisant $\mathcal{O}(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
+Donnez un algorithme `retournement(S: []char) → ∅`{.language-} en $\mathcal{O}(n)$ et utilisant $\mathcal{O}(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
 
 {% endexercice %}
 {% details "corrigé" %}
 Si on droit qu'à un nombre constant de variables ceci n'est plus possible. Il faut ruser en utilisant des retournements
 
 ```pseudocode
-algorithme retournement(S: []caractère) → ∅:
+algorithme retournement(S: []char) → ∅:
     pour chaque i de [0 .. S.longueur // 2[:
     S[i], S[S.longueur - 1 - i] ← S[S.longueur - 1 - i], S[i]
 
@@ -925,7 +925,7 @@ L'algorithme de permutation est alors tout simple :
 <span id="algorithme-permutation"></span>
 
 ```pseudocode
-algorithme permutation(S: []caractère, k: entier) → ∅:
+algorithme permutation(S: []char, k: int) → ∅:
     retournement(S[:-k])
     retournement(S[k:])
     retournement(S)
@@ -946,7 +946,7 @@ Et sa complexité est bien $\mathcal{O}(n-k) + \mathcal{O}(k) + \mathcal{O}(n) =
 On a déjà vu une version de l'algorithme du pgcd. Rappelons -là :
 
 ```pseudocode
-algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
     ref a', b' int
 
     tant que min(a, b) > 0:
@@ -969,7 +969,7 @@ Donnez un algorithme récursif calculant le pgcd en utilisant le modulo.
 <span id="algorithme-pgcd-modulo"></span>
 
 ```pseudocode
-algorithme pgcd_mod(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd_mod(a: int, b: int) → int:  # a, b ≥ 0
     si b == 0:
         rendre a
     si a < b:
@@ -1082,7 +1082,7 @@ Cet algorithme, répertorié dès le 1er siècle (Knuth cite le [九章算术](h
 <span id="algorithme-pgcd-binaire"></span>
 
 ```pseudocode
-algorithme pgcd_binaire(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd_binaire(a: int, b: int) → int:  # a, b ≥ 0
 
     si b == 0:
         rendre a

@@ -16,7 +16,7 @@ On en déduit l'algorithme en pseudo-code suivant :
 <span id="algorithme-tri-sélection"></span>
 
 ```pseudocode
-algorithme sélection(T: []entier) → ∅:
+algorithme sélection(T: []int) → ∅:
     ref min_index int
     pour chaque i de [0 .. T.longueur[:  # boucle principale
         min_index ← i

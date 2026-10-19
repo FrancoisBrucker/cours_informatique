@@ -39,7 +39,7 @@ Le but de cette partie est d'estimer le nombre (en $\mathcal{O}$) de multiplicat
 ### Algorithme naïf
 
 ```pseudocode
-algorithme valeur_naif(P: []entier, x: réel) → réel:
+algorithme valeur_naif(P: []int, x: float) → float:
     ref v ← 0
     pour chaque i de [0 .. P.longueur[:
         ref m ← P[i]
@@ -68,7 +68,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 ### Algorithme puissances itérées
 
 ```pseudocode
-algorithme valeur_itéré(P: []entier, x: réel) → réel:
+algorithme valeur_itéré(P: []int, x: float) → float:
     ref v ← P[0]
     xi ← x
     pour chaque i de [1 .. P.longueur[:
@@ -101,7 +101,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 {% endlien %}
 
 ```pseudocode
-algorithme valeur_horner(P: []entier, x: entier) → entier:
+algorithme valeur_horner(P: []int, x: int) → int:
     ref i ← P.longueur -1
     ref v ← P[i]
     tant que i > 0:
@@ -133,7 +133,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 On considère le pseudo-code suivant :
 
 ```pseudocode
-fonction copie(T: []entier) → []entier:
+fonction copie(T: []int) → []int:
 
     ref T' ← []int{longueur: T.longueur}
     T' ← T[:]
@@ -141,7 +141,7 @@ fonction copie(T: []entier) → []entier:
     rendre T'
 
 
-fonction maximum(T: []entier) → entier:
+fonction maximum(T: []int) → int:
     ref m ← 0
     pour chaque i de [0 .. T.longueur[:
         if T[m] < T[i]:
@@ -157,7 +157,7 @@ fonction minimum(T):
     rendre m
 
 
-algorithme recherche(T: []entier, k: entier) → entier:
+algorithme recherche(T: []int, k: int) → int:
     ref max_value ← T[maximum(T)]
     ref min ← 0
 
@@ -231,7 +231,7 @@ $$
 <span id="algorithme-binom-rec"></span>
 
 ```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
+algorithme binom(n: int, k: int) → int:
     si (n == k) ou (k == 0):
         rendre 1
     sinon:
@@ -240,7 +240,7 @@ algorithme binom(n: entier, k: entier) → entier:
 
 {% faire %}
 
-Démontrez que l'algorithme `binom(n: entier, k: entier) → entier`{.language-} calcule bien la binomiale.
+Démontrez que l'algorithme `binom(n: int, k: int) → int`{.language-} calcule bien la binomiale.
 {% endfaire %}
 
 {% faire %}

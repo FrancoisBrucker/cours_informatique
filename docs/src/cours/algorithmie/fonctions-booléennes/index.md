@@ -626,7 +626,7 @@ $$
 Avec :
 
 ```pseudocode
-algorithme LSHIFT(x: []bit, k: entier)  → []bit:
+algorithme LSHIFT(x: []bit, k: int)  → []bit:
     z ← un tableau de bit de taille x.longueur
 
     z[:k] ← 0
@@ -635,7 +635,7 @@ algorithme LSHIFT(x: []bit, k: entier)  → []bit:
 
     rendre z
 
-algorithme RSHIFT(x: []bit, k: entier)  → []bit:
+algorithme RSHIFT(x: []bit, k: int)  → []bit:
     z ← un tableau de bit de taille x.longueur
 
     z[-k:] ← 0
@@ -679,7 +679,7 @@ $$
 </div>
 
 {% exercice %}
-Donnez un algorithme linéaire pour calculer la rotation. Il devra être de signature : `LROT(x: []bit, k: entier)  → []bit`{.language-}
+Donnez un algorithme linéaire pour calculer la rotation. Il devra être de signature : `LROT(x: []bit, k: int)  → []bit`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 

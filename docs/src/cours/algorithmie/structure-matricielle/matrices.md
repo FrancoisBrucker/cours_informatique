@@ -34,19 +34,19 @@ ref M [][]int
 La création d'une matrice $M$ se fait ligne à ligne :
 
 ```pseudocode
-algorithme creation_matrice(n: entier, p:entier) → [][]entier:
+algorithme creation_matrice(n: int, p:int) → [][]int:
     ref M [][]int
-    M ← [][]entier{longueur: n}
+    M ← [][]int{longueur: n}
 
     pour chaque i de [0 .. n[:
-        M[i] ← []entier{longueur: p}
+        M[i] ← []int{longueur: p}
     rendre M
 ```
 
 Comme lors de la création de tableaux les valeurs sont indéterminées, on a coutume d'initialiser les valeurs de la matrice lors de sa création :
 
 ```pseudocode
-algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [][]entier:
+algorithme creation_matrice(nb_lignes: int, nb_colonnes:int, valeur: int) → [][]int:
     M ← un nouveau tableau de l tableaux d'entiers
 
     pour chaque i de [0 .. nb_lignes[:
@@ -111,10 +111,10 @@ Pour remplacer le code :
 
 
 ```pseudocode
-M' ← [][]entier{longueur: d-c}
+M' ← [][]int{longueur: d-c}
 
 pour chaque i de [c .. d[:
-    M'[i - c] ← []entier{longueur: b-a}
+    M'[i - c] ← []int{longueur: b-a}
     pour chaque j de [a .. b[:
         M'[i-c][j-a] ← M[i][j]
 ```
@@ -132,10 +132,10 @@ ref M ← []([]int{longueur: l}){longueur: c}
 
 ```pseudocode
     ref M [][]int
-    M ← [][]entier{longueur: l}
+    M ← [][]int{longueur: l}
 
     pour chaque i de [0 .. l[:
-        M[i] ← []entier{longueur: c}
+        M[i] ← []int{longueur: c}
     rendre M
 ```
 
@@ -146,19 +146,19 @@ Cette méthode se généralise aisément à des matrices de dimensions supérieu
 Pour créer une matrice de dimension 3 (d1, d2 et d3) dont le type sera un tableau de tableaux de tableaux d'entiers :
 
 ```pseudocode
-M: [][][]entier
+M: [][][]int
 ```
 
 On procède en deux boucles imbriquées :
 
 ```pseudocode
 ref M3 [][][]int
-M3 ← [][][]entier{longueur: d1}
+M3 ← [][][]int{longueur: d1}
 
 pour chaque i de [0 .. d1[:
-    M3[i] ← [][]entier{longueur: d2}
+    M3[i] ← [][]int{longueur: d2}
     pour chaque j de [0 .. d2[:
-        M3[i][j] ← []entier{longueur: d3}
+        M3[i][j] ← []int{longueur: d3}
 ```
 
 Une fois la matrice créée, son utilisation est identique à une matrice en deux dimensions :

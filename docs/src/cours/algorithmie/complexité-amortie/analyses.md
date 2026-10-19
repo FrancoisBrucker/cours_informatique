@@ -33,7 +33,7 @@ fonction successeur(N: []bit) → vide:
     si i ≥ 0:
         N[i] ← 1
 
-algorithme tous(n: entier) → vide:
+algorithme tous(n: int) → vide:
     ref N ← []bit{longueur: n}
     N[:] ← 0
 

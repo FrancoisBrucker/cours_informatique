@@ -59,8 +59,8 @@ Souvent, la pile et la file sont réunies en une seule structure : [le **_deque_
 
 ```pseudocode
 structure Deque<T>:
-    longueur: entier
-    capacité: entier
+    longueur: int
+    capacité: int
 
     # ...
 
@@ -77,12 +77,12 @@ Montrer que l'on peut facilement créer une structure de Deck en ajoutant des m�
 
 ```pseudocode
 structure Deque<T>:
-    longueur: entier
-    capacité: entier
+    longueur: int
+    capacité: int
 
     (données: []T) ← []T{longueur: capacité}
-    début: entier ← capacité - 1
-    fin: entier ← 0
+    début: int ← capacité - 1
+    fin: int ← 0
 
 méthode (d: Deque<T>) enfile(donnée: T) → ∅:
     d.données[d.fin] ← donnée

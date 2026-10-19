@@ -204,7 +204,7 @@ De plus ce graphe est sans cycle car sinon le cycle dans $G'$ induirait un cycle
 Trouver les composantes 2-connexes d'un graphe peut se faire linéairement en utilisant un DFS astucieux. C'est l'algorithme de Hopcroft et Tarjan (1973).
 
 ```pseudocode
-fonction DFS(u: Sommet, t: entier, G: Graphe, 
+fonction DFS(u: Sommet, t: int, G: Graphe, 
              pos: *[]Sommet, pred: *[]Sommet, low: *[]Sommet, P: *Pile<(Sommet, Sommet)>) → [:]{Sommet}:
 
     pos[u] ← t

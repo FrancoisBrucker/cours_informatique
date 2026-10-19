@@ -62,7 +62,7 @@ Créez un algorithme rendant une matrice triangulaire inférieure $B$ telle que 
 Sa signature devra être :
 
 ```pseudocode
-algorithme binom_matrice(n: entier) → [][]entier:
+algorithme binom_matrice(n: int) → [][]int:
 ```
 {% endexercice %}
 {% info %}
@@ -74,13 +74,13 @@ Première version qui calcule toute la matrice triangulaire inférieure :
 <span id="algorithme-binom-matrice"></span>
 
 ```pseudocode/
-algorithme binom_matrice(n: entier) → [][]entier:
+algorithme binom_matrice(n: int) → [][]int:
     ref matrice [][]int
-    matrice ← [][]entier{longueur: n+1}
+    matrice ← [][]int{longueur: n+1}
 
     ref ligne []int
     pour chaque i de [0 .. n]:
-        ligne ← []entier{longueur: i+1} 
+        ligne ← []int{longueur: i+1} 
 
         matrice[i] ← ligne
         pour chaque j de [0 .. i]:
@@ -108,10 +108,10 @@ Ce dernier invariant est évidemment vrai par construction de la boucle (c'est l
 {% enddetails %}
 
 {% exercice %}
-Utilisez l'algorithme `binom_matrice(n: entier) → [][]entier`{.language-} pour créer l'algorithme itératif de signature :
+Utilisez l'algorithme `binom_matrice(n: int) → [][]int`{.language-} pour créer l'algorithme itératif de signature :
 
 ```pseudocode
-algorithme binom(n: entier, k:entier) → entier
+algorithme binom(n: int, k:int) → int
 ```
 
 calculant $\binom{n}{k}$.
@@ -125,13 +125,13 @@ On utilise alors l'algorithme précédent pour déterminer la binomiale :
 <span id="algorithme-binom-1"></span>
 
 ```pseudocode
-algorithme binom(n: entier, k:entier) → entier:
+algorithme binom(n: int, k:int) → int:
     matrice ← binom_matrice(n)
 
     rendre matrice[n][k]
 ```
 
-La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction `binom_matrice(n: entier) → [][]entier`{.language-}.
+La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction `binom_matrice(n: int) → [][]int`{.language-}.
 
 En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/complexité-algorithmes/#règle-croissance), cette complexité est en $\mathcal{O}(n^2)$.
 
@@ -141,10 +141,10 @@ On en déduit que la complexité de l'algorithme `binom`{.language-} est en $\ma
 
 ### Deux lignes suffisent
 
-Comme l'algorithme `binom_matrice(n: entier) → [][]entier`{.language-} n'a besoin que de la ligne précédente pour créer la ligne de l'itération actuelle, on peut améliorer la complexité spatiale de l'algorithme `binom(n: entier, k:entier) → entier`{.language-} :
+Comme l'algorithme `binom_matrice(n: int) → [][]int`{.language-} n'a besoin que de la ligne précédente pour créer la ligne de l'itération actuelle, on peut améliorer la complexité spatiale de l'algorithme `binom(n: int, k:int) → int`{.language-} :
 
 {% exercice %}
-Créez l'algorithme `ligne_suivante(l: []entier) → []entier`{.language-} qui à partir de la liste $l= [\binom{n}{0}, \dots, \binom{n}{n}]$ rend la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{n+1}]$
+Créez l'algorithme `ligne_suivante(l: []int) → []int`{.language-} qui à partir de la liste $l= [\binom{n}{0}, \dots, \binom{n}{n}]$ rend la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{n+1}]$
 
 Donnez-en sa complexité spatiale et temporelle.
 
@@ -153,7 +153,7 @@ Donnez-en sa complexité spatiale et temporelle.
 On va créer un algorithme qui rend uniquement la dernière ligne de la matrice :
 
 ```pseudocode
-algorithme ligne_suivante(l: []entier) → []entier:
+algorithme ligne_suivante(l: []int) → []int:
     ref l2 ← []int{longueur: l.longueur +1}
 
     l2[0] ← 1
@@ -165,21 +165,21 @@ algorithme ligne_suivante(l: []entier) → []entier:
     rendre l2
 ```
 
-L'algorithme `ligne_suivante(l: []entier) → []entier`{.language-} est correct si $l= [\binom{n}{0}, \dots, \binom{n}{n}]$ puisque on applique directement l'équation de récursion. Sa complexité spatiale et temporelle est en $\mathcal{O}(l.\text{\small longueur})$.
+L'algorithme `ligne_suivante(l: []int) → []int`{.language-} est correct si $l= [\binom{n}{0}, \dots, \binom{n}{n}]$ puisque on applique directement l'équation de récursion. Sa complexité spatiale et temporelle est en $\mathcal{O}(l.\text{\small longueur})$.
 
 {% enddetails %}
 
 {% exercice %}
-Utilisez l'algorithme `ligne_suivante(l: []entier) → []entier`{.language-} pour améliorer la complexité spatiale de l'algorithme `binom(n: entier, k:entier) → entier`{.language-}.
+Utilisez l'algorithme `ligne_suivante(l: []int) → []int`{.language-} pour améliorer la complexité spatiale de l'algorithme `binom(n: int, k:int) → int`{.language-}.
 
 {% endexercice %}
 {% details "corrigé" %}
-On a alors la version améliorée de `binom(n: entier, k:entier) → entier`{.language-} :
+On a alors la version améliorée de `binom(n: int, k:int) → int`{.language-} :
 
 <span id="algorithme-binom-2"></span>
 
 ```pseudocode
-algorithme binom(n: entier, k:entier) → entier:
+algorithme binom(n: int, k:int) → int:
     ref l ← [0]
     répéter n fois:
        l ← ligne_suivante(l)
@@ -192,20 +192,20 @@ Si la complexité temporelle ne change pas, la complexité spatiale est maintena
 {% enddetails %}
 
 
-Enfin, pour calculer `binom(n: entier, k:entier) → entier`{.language-} on a pas besoin de toute la ligne de la matrice :
+Enfin, pour calculer `binom(n: int, k:int) → int`{.language-} on a pas besoin de toute la ligne de la matrice :
 
 {% exercice %}
-Modifiez l'algorithme `ligne_suivante`{.language-} pour le rendre de signature `ligne_suivante(l: []entier, k: entier) → []entier`{.language-} tel que si  $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ rend le tableau $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.
+Modifiez l'algorithme `ligne_suivante`{.language-} pour le rendre de signature `ligne_suivante(l: []int, k: int) → []int`{.language-} tel que si  $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ rend le tableau $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.
 
-Utilisez le dans `binom(n: entier, k:entier) → entier`{.language-} pour que sa complexité spatiale soit en $\mathcal{O}(k)$.
+Utilisez le dans `binom(n: int, k:int) → int`{.language-} pour que sa complexité spatiale soit en $\mathcal{O}(k)$.
 {% endexercice %}
 {% details "corrigé" %}
-On peut faire mieux en ne calculant que les $k+1$ premiers éléments de chaque ligne. Il faut pour cela modifier l'algorithme en créant une version alternative de `ligne_suivante`{.language-} : `ligne_suivante(l: []entier) → []entier`{.language-}
+On peut faire mieux en ne calculant que les $k+1$ premiers éléments de chaque ligne. Il faut pour cela modifier l'algorithme en créant une version alternative de `ligne_suivante`{.language-} : `ligne_suivante(l: []int) → []int`{.language-}
 
 <span id="algorithme-binom-3"></span>
 
 ```pseudocode
-fonction ligne_suivante(l: []entier, k: entier) → []entier:
+fonction ligne_suivante(l: []int, k: int) → []int:
     ref l2 ← []int{longueur: min(k + 1, l.longueur + 1)}
 
     l2[0] ← 1
@@ -216,7 +216,7 @@ fonction ligne_suivante(l: []entier, k: entier) → []entier:
 
     rendre l2
 
-algorithme binom(n: entier, k:entier) → entier:
+algorithme binom(n: int, k:int) → int:
     ref l ← [0]
     répéter n fois:
        l ← ligne_suivante(l, k)
@@ -234,20 +234,20 @@ La partie précédente montre que l'on peut se passer de matrices et n'utiliser 
 On va ici utiliser un tableau de taille $k + 1$ qui va contenir tout ce qu'on a besoin, l'astuce étant de commencer à remplir la ligne à la fin.
 
 {% exercice %}
-En remplissant la ligne courante de droite à gauche montrez que l'on peut modifier `ligne_suivante`{.language-} pour le rendre de signature `ligne_suivante(l: []entier, n:entier k: entier) → []entier`{.language-} telle que si $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ en entrée, elle est modifiée en la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.
+En remplissant la ligne courante de droite à gauche montrez que l'on peut modifier `ligne_suivante`{.language-} pour le rendre de signature `ligne_suivante(l: []int, n:int k: int) → []int`{.language-} telle que si $l= [\binom{n}{0}, \dots, \binom{n}{\min(k, n)}]$ en entrée, elle est modifiée en la liste $[\binom{n+1}{0}, \dots, \binom{n+1}{\min(k, n+1)}]$.
 
-Utilisez le dans `binom(n: entier, k:entier) → entier`{.language-}.
+Utilisez le dans `binom(n: int, k:int) → int`{.language-}.
 
 {% endexercice %}
 {% details "corrigé" %}
 <span id="algorithme-binom"></span>
 
 ```pseudocode
-fonction ligne_suivante(l: []entier, n: entier, k: entier) → ∅:
+fonction ligne_suivante(l: []int, n: int, k: int) → ∅:
     de j=min(n, k) à j=1 par pas de -1:
         l[j] ← l[j] + l[j-1]
 
-algorithme binom(n: entier, k:entier) → entier:
+algorithme binom(n: int, k:int) → int:
     ref l ← []int{longueur: k+1}
     l[:] ← 1
 
@@ -297,16 +297,16 @@ Nous verrons ici un cas un peu plus général consistant à placer $n$ reines su
 On modélise l'échiquier par une matrice `E` à $n$ lignes et $n$ colonnes ($n=8$ pour un échiquier traditionnel): `E[i][j]` correspond à la case à l'intersection de la ligne `i` et de la colonne `j`. Cette case est vraie si une reine y est placée et fausse sinon.
 
 {% exercice %}
-Créez un algorithme de signature `échiquier(n: entier) → [][]booléen`{.language-} permettant de créer un échiquier $n \times n$ vide.
+Créez un algorithme de signature `échiquier(n: int) → [][]bool`{.language-} permettant de créer un échiquier $n \times n$ vide.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme échiquier(n: entier) → [][]booléen:
+algorithme échiquier(n: int) → [][]bool:
     ref E ← [][]bool{longueur: n}
 
     pour chaque i de [0 .. n[:
-        E[i] ← []booléen{longueur: n}
+        E[i] ← []bool{longueur: n}
         E[:] ← Faux
 
     rendre E
@@ -315,7 +315,7 @@ algorithme échiquier(n: entier) → [][]booléen:
 {% enddetails %}
 
 {% exercice %}
-Écrivez un algorithme de signature `position_correcte(E: [][]booléen, i: entier, j: entier) → booléen`{.language-} permettant de savoir si on peut placer une reine à la ligne `i`{.language-} et la colonne `j`{.language-} pour un échiquier donné (de taille quelconque). Elle rendra `Vrai`{.language-} si la reine peut être placée et `Faux`{.language-} sinon.
+Écrivez un algorithme de signature `position_correcte(E: [][]bool, i: int, j: int) → bool`{.language-} permettant de savoir si on peut placer une reine à la ligne `i`{.language-} et la colonne `j`{.language-} pour un échiquier donné (de taille quelconque). Elle rendra `Vrai`{.language-} si la reine peut être placée et `Faux`{.language-} sinon.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -325,7 +325,7 @@ On regarde les lignes, les colonnes et les diagonales. Il faut faire attention �
 - rester dans les bornes de l'échiquier
 
 ```pseudocode
-algorithme position_correcte(E: [][]booléen, i: entier, j: entier) → booléen:
+algorithme position_correcte(E: [][]bool, i: int, j: int) → bool:
     ref n ← E.longueur
     ref k int
 
@@ -352,20 +352,20 @@ algorithme position_correcte(E: [][]booléen, i: entier, j: entier) → booléen
 
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `position_correcte(E: [][]booléen, i: entier, j: entier) → booléen`{.language-} ?
+Quelle est la complexité de votre algorithme `position_correcte(E: [][]bool, i: int, j: int) → bool`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 Elle est en $\mathcal{O}(n)$ avec $n$ le nombre de lignes de l'échiquier.
 {% enddetails %}
 
 {% exercice %}
-En déduire un algorithme de signature `échiquier_correct(E: [][]booléen) → booléen`{.language-} qui, à partir d'un échiquier de taille quelconque $n$, rend `Vrai`{.language-} si l'échiquier résout le problème des 8 reines et `Faux`{.language-} sinon.
+En déduire un algorithme de signature `échiquier_correct(E: [][]bool) → bool`{.language-} qui, à partir d'un échiquier de taille quelconque $n$, rend `Vrai`{.language-} si l'échiquier résout le problème des 8 reines et `Faux`{.language-} sinon.
 {% endexercice %}
 {% details "corrigé" %}
 
 
 ```pseudocode
-algorithme échiquier_correct(E: [][]booléen) → booléen:
+algorithme échiquier_correct(E: [][]bool) → bool:
     ref n ← E.longueur
 
     pour i de [0 .. n[:
@@ -377,7 +377,7 @@ algorithme échiquier_correct(E: [][]booléen) → booléen:
 ```
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `échiquier_correct(E: [][]booléen) → booléen`{.language-} ?
+Quelle est la complexité de votre algorithme `échiquier_correct(E: [][]bool) → bool`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 Elle est en $\mathcal{O}(n^2)$ avec $n$ le nombre de lignes de l'échiquier.
@@ -393,13 +393,13 @@ Comme toute solution correcte ne peut contenir plus d'une reine par ligne, on pe
 Créez un algorithme récursif génère récursivement tous les échiquiers de taille $n$ avec exactement 1 reine par ligne et affiche à l'écran ceux qui sont corrects.
 {% endexercice %}
 {% info %}
-Vous pourrez créer un algorithme de signature `tous_les_échiquiers_rec(E: [][]booléen, i: entier)`{.language-} qui prend en entrée un échiquier `E`{.language-} donné de taille $n$ ayant une reine sur chaque ligne d'indice strictement inférieur à $i$. Cet algorithme vérifie que $E$ est correct si $i\geq n$ et sinon génère les reines de la ligne $i$ et appelle `tous_les_échiquiers_rec(E, i + 1)`{.language-} pour générer les autres
+Vous pourrez créer un algorithme de signature `tous_les_échiquiers_rec(E: [][]bool, i: int)`{.language-} qui prend en entrée un échiquier `E`{.language-} donné de taille $n$ ayant une reine sur chaque ligne d'indice strictement inférieur à $i$. Cet algorithme vérifie que $E$ est correct si $i\geq n$ et sinon génère les reines de la ligne $i$ et appelle `tous_les_échiquiers_rec(E, i + 1)`{.language-} pour générer les autres
 
 {% endinfo %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme tous_les_échiquiers_rec(E: [][]booléen, i: entier):
+algorithme tous_les_échiquiers_rec(E: [][]bool, i: int):
     ref n ← E.longueur
 
     si i ≥ n:
@@ -428,7 +428,7 @@ Quelles sont les échiquiers corrects à 4 lignes ?
 ```
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `tous_les_échiquiers_rec(E: [][]booléen, i: entier)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
+Quelle est la complexité de votre algorithme `tous_les_échiquiers_rec(E: [][]bool, i: int)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
 {% endexercice %}
 {% details "corrigé" %}
 Il génère tous les échiquiers possibles avec 1 reine par ligne, il y en a $n^n$ et les vérifient en $\mathcal{O}(n^2)$. Sa complexité est donc égale à $\mathcal{O}(n^2 \cdot n^n)$.
@@ -452,11 +452,11 @@ $$
 Il n'est souvent pas nécessaire de générer toutes les $n$ reines avant de savoir si la position est correcte ou non (par exemple dès que l'on a deux reines sur une même colonne) : 
 
 {% exercice %}
-En utilisant l'algorithme `position_correcte(E: [][]booléen, i: entier, j: entier) → booléen`{.language-} la partie précédente, améliorez l'algorithme `tous_les_échiquiers_rec(E: [][]booléen, i: entier)`{.language-} en arrêtant l'ajout de reines dès que la position est incorrecte.
+En utilisant l'algorithme `position_correcte(E: [][]bool, i: int, j: int) → bool`{.language-} la partie précédente, améliorez l'algorithme `tous_les_échiquiers_rec(E: [][]bool, i: int)`{.language-} en arrêtant l'ajout de reines dès que la position est incorrecte.
 {% endexercice %}
 {% details "corrigé" %}
 ```pseudocode
-algorithme tous_les_échiquiers_rec(E: [][]booléen, i: entier):
+algorithme tous_les_échiquiers_rec(E: [][]bool, i: int):
     ref n ← E.longueur
 
     si i ≥ n:
@@ -474,7 +474,7 @@ tous_les_échiquiers_rec(échiquier(n), 0)
 
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `tous_les_échiquiers_rec(E: [][]booléen, i: entier)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
+Quelle est la complexité de votre algorithme `tous_les_échiquiers_rec(E: [][]bool, i: int)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
 {% endexercice %}
 {% details "corrigé" %}
 On vérifie à chaque positionnement de reines en $\mathcal{O}(i)$, l'équation de complexité satisfaite par l'algorithme est alors :
@@ -504,12 +504,12 @@ Comme deux reines ne peuvent partager une même ligne ou une même colonne : cha
 {% enddetails %}
 
 {% exercice %}
-Créez l'algorithme `permutation_correcte(P: []entier, i: entier) → booléen`{.language-} qui prend en paramètre une permutation $P$ et un indice de ligne $i$ et qui rend `Vrai` si la reine à la ligne d'indice $i$ n'est sur aucune diagonales des reine d'indice $j < i$.
+Créez l'algorithme `permutation_correcte(P: []int, i: int) → bool`{.language-} qui prend en paramètre une permutation $P$ et un indice de ligne $i$ et qui rend `Vrai` si la reine à la ligne d'indice $i$ n'est sur aucune diagonales des reine d'indice $j < i$.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme permutation_correcte(P: []entier, i:entier) → booléen:
+algorithme permutation_correcte(P: []int, i:int) → bool:
     ref n ← P.longueur
 
     pour k de [0 .. i[:
@@ -524,7 +524,7 @@ algorithme permutation_correcte(P: []entier, i:entier) → booléen:
 
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `permutation_correcte(P: []entier, i:entier) → booléen`{.language-}  ? 
+Quelle est la complexité de votre algorithme `permutation_correcte(P: []int, i:int) → bool`{.language-}  ? 
 {% endexercice %}
 {% details "corrigé" %}
 Elle est clairement en $\mathcal{O}(n^2)$.
@@ -536,7 +536,7 @@ Elle est clairement en $\mathcal{O}(n^2)$.
 Montrez que l'algorithme suivant permet de résoudre le problème des $n$ reine. Quelle est sa complexité ?
 
 ```pseudocode
-algorithme toutes_les_permutations_rec(P: []entier, i: entier) → booléen:
+algorithme toutes_les_permutations_rec(P: []int, i: int) → bool:
     ref n ← P.longueur
 
     si i == n:
@@ -557,7 +557,7 @@ toutes_les_permutations_rec([0 .. n-1])
 Si $P$ est une permutation et si les $i-1$ premières reines sont placées dans la permutation, les valeurs de $P[i:]$ contiennent toutes les positions restantes possible pour la reine que l'on doit placer à la ligne d'indice $i$. L'algorithme teste alors toutes les possibilités et ne continue que lorsqu'il a trouvé une position cohérente pour la reine de la ligne d'indice $i$.
 {% enddetails %}
 {% exercice %}
-Quelle est la complexité de votre algorithme `toutes_les_permutations_rec(E: [][]booléen, i: entier)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
+Quelle est la complexité de votre algorithme `toutes_les_permutations_rec(E: [][]bool, i: int)`{.language-} en supposant que l'affichage se fait en $\mathcal{O}(1)$ ? 
 {% endexercice %}
 {% info %}
 Vous pourrez utiliser le fait que : 
@@ -598,8 +598,8 @@ Ce résultat est très bon puisqu'a priori il faut considérer toutes les permut
 {% exercice %}
 Codez les différents exercices en python. Vérifiez expérimentalement que :
 
-- l'optimisation de l'algorithme `tous_les_échiquiers_rec(E: [][]booléen, i: entier)`{.language-}  est pertinente en pratique
-- l'algorithme `toutes_les_permutations_rec(E: [][]booléen, i: entier)`{.language-} est plus rapide
+- l'optimisation de l'algorithme `tous_les_échiquiers_rec(E: [][]bool, i: int)`{.language-}  est pertinente en pratique
+- l'algorithme `toutes_les_permutations_rec(E: [][]bool, i: int)`{.language-} est plus rapide
 
 {% endexercice %}
 {% info %}
@@ -653,16 +653,16 @@ Le problème de la multiplication de matrice est un problème intéressant [avec
 ### Création
 
 {% exercice %}
-Écrivez un algorithme de signature `création_matrice(n: entier, m: entier)  → [][]entier`{.language-} qui crée une matrice à $n$ lignes et $m$ colonnes dont les valeurs valent toutes 0.
+Écrivez un algorithme de signature `création_matrice(n: int, m: int)  → [][]int`{.language-} qui crée une matrice à $n$ lignes et $m$ colonnes dont les valeurs valent toutes 0.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme création_matrice(n: entier, m: entier)  → [][]entier:
+algorithme création_matrice(n: int, m: int)  → [][]int:
     ref M [][]int
-    M  ← [][]entier{longueur: n}
+    M  ← [][]int{longueur: n}
     pour i dans [0 .. m[:
-        M[i] ← []entier{longueur: m}
+        M[i] ← []int{longueur: m}
         M[i][:] ← 0
 
     rendre M
@@ -670,12 +670,12 @@ algorithme création_matrice(n: entier, m: entier)  → [][]entier:
 
 {% enddetails %}
 {% exercice %}
-Écrivez un algorithme de signature `extraction_matrice(M: [][]entier, n1: entier, n2: entier, m1: entier, m2: entier)  → [][]entier`{.language-} qui rend une nouvelle matrice valant `M[n1:n2][m1:m2]`{.language-}
+Écrivez un algorithme de signature `extraction_matrice(M: [][]int, n1: int, n2: int, m1: int, m2: int)  → [][]int`{.language-} qui rend une nouvelle matrice valant `M[n1:n2][m1:m2]`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme extraction_matrice(M: [][]entier, n1: entier, n2: entier, m1: entier, m2: entier)  → [][]entier:
+algorithme extraction_matrice(M: [][]int, n1: int, n2: int, m1: int, m2: int)  → [][]int:
     C = création_matrice(n2-n1, m2-m1)
     pour chaque i de [n1, n2[:
         pour chaque j de [m1, m2[:
@@ -688,13 +688,13 @@ algorithme extraction_matrice(M: [][]entier, n1: entier, n2: entier, m1: entier,
 ### Somme 
 
 {% exercice %}
-Écrivez un algorithme de signature `somme(A: [][]entier, B: [][]entier)  → [][]entier`{.language-} qui rend une nouvelle matrice valant `A + B`{.language-}
+Écrivez un algorithme de signature `somme(A: [][]int, B: [][]int)  → [][]int`{.language-} qui rend une nouvelle matrice valant `A + B`{.language-}
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme somme(A: [][]entier, B: [][]entier)  → [][]entier:
+algorithme somme(A: [][]int, B: [][]int)  → [][]int:
     C ← création_matrice(A.longueur, A[0].longueur)
 
     pour i dans [0 .. C.longueur[:
@@ -708,12 +708,12 @@ algorithme somme(A: [][]entier, B: [][]entier)  → [][]entier:
 
 {% exercice %}
 Écrivez l'algorithme naïf de la multiplication de deux matrices (sa complexité sera en $\mathcal{O}(n^3)$ avec $n$ le maximum du nombre de ligne et de colonnes dex deux matrices à multiplier). Il devra être de signature 
-Écrivez un algorithme de signature `multiplication(A: [][]entier, B: [][]entier)  → [][]entier`{.language-}
+Écrivez un algorithme de signature `multiplication(A: [][]int, B: [][]int)  → [][]int`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme multiplication(A: [][]entier, B: [][]entier) → [][]entier:
+algorithme multiplication(A: [][]int, B: [][]int) → [][]int:
     C ← création_matrice(A.longueur, B[0].longueur)
 
     pour i dans [0 .. C.longueur[:
@@ -777,12 +777,12 @@ $$
 Avec $A_{ij}$, $B_{ij}$ et $C_{ij}$ des matrices carrées telles que pour $1\leq i, j \leq 2$ : $C_{ij} = A_{i1} \cdot B_{1j} + A_{i2} \cdot B_{2j}$
 
 {% exercice %}
-Écrivez un algorithme récursif de multiplication de matrices carrées (avec un nombre de lignes égale à une puissance de 2) de signature `multiplication_rec(A: [][]entier, B: [][]entier) → [][]entier`{.language-} utilisant les matrices $A_{ij}$, $B_{ij}$ et $C_{ij}$.
+Écrivez un algorithme récursif de multiplication de matrices carrées (avec un nombre de lignes égale à une puissance de 2) de signature `multiplication_rec(A: [][]int, B: [][]int) → [][]int`{.language-} utilisant les matrices $A_{ij}$, $B_{ij}$ et $C_{ij}$.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme multiplication_rec(A: [][]entier, B: [][]entier) → [][]entier:
+algorithme multiplication_rec(A: [][]int, B: [][]int) → [][]int:
     ref n ← A.longueur
 
     Si n ≤ 1:

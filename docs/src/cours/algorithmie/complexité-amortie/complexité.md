@@ -103,10 +103,10 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 
 ## Exemple 2 : la pile
 
-On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile) pour y ajouter la méthode suivante: `k-dépile(k: entier) → Type`{.language-} :
+On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile) pour y ajouter la méthode suivante: `k-dépile(k: int) → Type`{.language-} :
 
 ```pseudocode
-méthode (p: Pile<T>) k-dépile(k: entier) → T:
+méthode (p: Pile<T>) k-dépile(k: int) → T:
     ref k ← min(k, p.longueur)
     répéter k fois:
         x ← p.dépile()

@@ -28,7 +28,7 @@ Définissions [le problème de décision](../../complexité-problème/#définiti
 Il existe un algorithme très simple pour le résoudre :
 
 ```pseudocode/
-algorithme est_trie(T: []entier) → booléen:
+algorithme est_trie(T: []int) → bool:
     pour chaque i de [1 .. T.longueur[:
         si T[i] < T[i-1]:
             rendre Faux

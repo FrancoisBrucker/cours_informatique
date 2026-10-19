@@ -40,7 +40,7 @@ On a uniquement besoin des clés.
 
 ```pseudocode
 structure Ensemble<T>:
-    T: Dictionnaire<T, booléen>
+    T: Dictionnaire<T, bool>
 
 
 méthode (e: ensemble<T>) add(x: K) → ∅:
@@ -48,7 +48,7 @@ méthode (e: ensemble<T>) add(x: K) → ∅:
 méthode (e: ensemble<T>) delete(x: T) → ∅: # supprime x de self = e.delete(x)
     e.T.delete(x)
 
-méthode (e: ensemble<T>) in(x: T) → booléen:  # x est dans self = self.in(x)
+méthode (e: ensemble<T>) in(x: T) → bool:  # x est dans self = self.in(x)
     rendre e.T.in(x)
 
 ```

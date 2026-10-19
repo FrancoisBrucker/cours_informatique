@@ -32,7 +32,7 @@ Les preuves formelles de complexités sont ardues. On ne vous demande pas de les
 En pseudo-code cela pourrait donner :
 
 ```pseudocode/
-algorithme rapide(T: []entier) → []entier:
+algorithme rapide(T: []int) → []int:
     si T.longueur <= 1:
         rendre une copie de T
 

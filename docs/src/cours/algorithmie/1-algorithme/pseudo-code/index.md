@@ -28,12 +28,12 @@ Un **_pseudo-code_** est une succession de lignes qui seront exécutées **_en s
 - chaque instruction est clairement définie et est réalisable par un humain muni d'un papier et d'un crayon
 {% enddefinition %}
 
-Si le but premier d'un pseudo-code est d'être compris par un humain, Les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement (ce sont deux notions équivalentes).
+Si le but premier d'un pseudo-code est d'être compris par un humain, les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement (ce sont deux notions équivalentes).
 
 {% retenir %}
 
 - on utilisera le pseudo-code pour l'étude théorique des algorithmes
-- on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python, puis le go et enfin le rust.
+- on codera ces algorithmes dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python, puis le go et enfin le rust.
 
 {% endretenir %}
 
@@ -58,10 +58,10 @@ Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires
 Pour cela il faut :
 
 - expliciter la signature de vos algorithmes,
-- utiliser des noms de variables ou de fonctions explicites et utile à la compréhension,
-- séparer les différentes parties d'un algorithmes en fonctions au nom explicite.
+- utiliser des noms de variables ou de fonctions explicites et utiles à la compréhension,
+- séparer les différentes parties d'un algorithme en fonctions au nom explicite.
 
-Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
+Leurs noms importent peu, seules leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensibles pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
 
 ## Opérateurs utilisés en pseudo-code
 
@@ -69,9 +69,9 @@ Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, 
 
 - `ref x T`{.language-} : on définit la variable `x`{.language-} pouvant référencer des objets de type `T`{.language-}
 - `x ← y`{.language-} : on affecte `x`{.language-} à la valeur de `y`{.language-}
-- `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. L'expression est vraie si la valeur de x vaut la valeur de y et faux sinon. Par exemple ` 2 * x + 2 == 10`{.language-}
+- `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. L'expression est vraie si la valeur de x vaut la valeur de y et fausse sinon. Par exemple ` 2 * x + 2 == 10`{.language-}
 
-Les autres opérateurs possible en algorithmie sont :
+Les autres opérateurs possibles en algorithmie sont :
 
 - `x := y`{.language-} : on définit `x`{.language-} comme étant `y`{.language-}. Par exemple $f(x) \coloneqq max(x, 10)$
-- `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des eux variables sont toujours égales. C'est une conséquence comme $\cos(\pi) = -1$.
+- `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des deux variables sont toujours égales. C'est une conséquence comme $\cos(\pi) = -1$.

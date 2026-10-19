@@ -62,8 +62,8 @@ Par exemple si on veut définir une structure pouvant simuler des points de $\ma
 
 ```pseudocode
 structure Point:
-    x: réel
-    y: réel
+    x: float
+    y: float
 ```
 
 Que l'on crée en affectant tous ses attributs :
@@ -107,8 +107,8 @@ Pour être sur que les paramètres sont initialisés par défaut, on utilise _l'
 
 ```pseudocode
 structure Point:
-    x: réel ← 0.0
-    y: réel ← 0.0
+    x: float ← 0.0
+    y: float ← 0.0
 
 ```
 
@@ -147,8 +147,8 @@ Le processus précédent nous permet d'écrire le pseudocode suivant :
 
 ```pseudocode
 structure Point:
-    x: réel
-    y: réel ← 2 * x
+    x: float
+    y: float ← 2 * x
 
 ```
 
@@ -193,8 +193,8 @@ Transformons la fonction `additionne_point`{.language-} précédente en méthode
 
 ```pseudocode/
 structure Point:
-    x: réel ← 0.0
-    y: réel ← 0.0
+    x: float ← 0.0
+    y: float ← 0.0
 
 méthode (self: Point) addition(p: Point) → ∅:
     self.x ← self.x + p.x
@@ -262,22 +262,22 @@ Pour être explicite, On signifie la généricité entre "<>" dans la définitio
 structure Marque<T>:
     valeur: T
 
-    x: entier ← 0
-    y: entier ← 0
+    x: int ← 0
+    y: int ← 0
 
 ```
 
 L'attribut valeur est du **_type générique_** `T`{.language-}. Ce type est abstrait et doit être défini explicitement à l'utilisation. Par exemples :
 
 ```pseudocode
-utm ← Marque<chaîne> {valeur: "Marseille", x: 694669, y: 4796927}
-masse ← Marque<réel> {valeur: 3.14}
+utm ← Marque<str> {valeur: "Marseille", x: 694669, y: 4796927}
+masse ← Marque<float> {valeur: 3.14}
 ```
 
 On peut bien sur combiner le tout avec des exemples plus ou moins tordu comme :
 
-- `[Marque<réel>]`{.language-} : un tableau de Marques à valeurs réelles
-- `Marque<[Marque<Marque<chaîne>>]>`{.language-} : une Marque à valeurs valant un tableau de Marque à valeur de Marque de chaînes.
+- `[Marque<float>]`{.language-} : un tableau de Marques à valeurs réelles
+- `Marque<[Marque<Marque<str>>]>`{.language-} : une Marque à valeurs valant un tableau de Marque à valeur de Marque de chaînes.
 
 Mais la plupart du temps, on reste simple.
 
@@ -287,7 +287,7 @@ On aura parfois besoin de spécifier dans nos structures des attributs dont les 
 
 ```pseudocode
 structure Point:
-    coords: []entier<longueur: 2>
+    coords: []int<longueur: 2>
 ```
 
 L'exemple précédent spécifie que la longueur du tableau est forcément de 2.

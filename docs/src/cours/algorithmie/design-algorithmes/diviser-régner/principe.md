@@ -174,7 +174,7 @@ Dans le cas du tri fusion, on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 Soit $T$ un tableau de $n$ entiers relatifs.
 
 {% exercice %}
-Donnez un algorithme en $\mathcal{O}(n)$ de signature `max_somme(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+Donnez un algorithme en $\mathcal{O}(n)$ de signature `max_somme(T: [int relatif], i: int) → int relatif`{.language-} qui calcule :
 
 <div>
 $$
@@ -189,7 +189,7 @@ $$
 
 {% enddetails %}
 {% exercice %}
-En déduire un algorithme en $\mathcal{O}(n)$ de signature `max_somme2(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+En déduire un algorithme en $\mathcal{O}(n)$ de signature `max_somme2(T: [int relatif], i: int) → int relatif`{.language-} qui calcule :
 
 <div>
 $$
@@ -234,7 +234,7 @@ La méthode de Strassen fonctionne de la même manière pour la multiplication d
 #### Algorithme naif
 
 {% exercice %}
-Donner un algorithme naïf de signature `multiplication(A: [][]entier, B:[][]entier) → [][]entier`{.language-} et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.
+Donner un algorithme naïf de signature `multiplication(A: [][]int, B:[][]int) → [][]int`{.language-} et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.
 {% endexercice %}
 {% details "corrigé" %}
 

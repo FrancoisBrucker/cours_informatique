@@ -135,7 +135,7 @@ Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons
 Les deux problèmes sont clairement dans NP puisque vérifier qu'un ensemble est une clique/stable se résout polynomialement (il suffit de compter le nombre d'arêtes) :
 
 ```pseudocode
-algorithme compte(G: Graphe<Sommet>, A: {}Sommet, clique: booléen) → entier:
+algorithme compte(G: Graphe<Sommet>, A: {}Sommet, clique: bool) → int:
   ref m ← 0
 
   pour chaque x de A:
@@ -145,10 +145,10 @@ algorithme compte(G: Graphe<Sommet>, A: {}Sommet, clique: booléen) → entier:
                 m ← m+1
   retourne m
 
-algorithme vérification_clique(G: Graphe<Sommet>, A: {}Sommet) → booléen:
+algorithme vérification_clique(G: Graphe<Sommet>, A: {}Sommet) → bool:
   retourne |A| * (|A|-1) == 2 * compte(G, A)
 
-algorithme vérification_stable(G: graphe<sommet>, A: {}Sommet) → booléen:
+algorithme vérification_stable(G: graphe<sommet>, A: {}Sommet) → bool:
   retourne compte(G, A) == 0
 
 ```
@@ -264,7 +264,7 @@ Montrez que le problème couverture est dans NP.
 {% endexercice %}
 {% details "corrigé" %}
 ```pseudocode
-algorithme vérification_couverture(G: Graphe<Sommet>, A: {}Sommet, K: entier) → booléen:
+algorithme vérification_couverture(G: Graphe<Sommet>, A: {}Sommet, K: int) → bool:
   si |A| > K:
     rendre Faux
   
@@ -302,10 +302,10 @@ On peut combiner les problèmes de la clique et du stable de taille au moins $K$
 
 {% endnote %}
 
-Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes `vérification_clique(G: Graphe<Sommet>, A: {}Sommet)  → booléen`{.language-} et  `vérification_stable(G: Graphe<Sommet>, A: {}Sommet)  → booléen`{.language-} :
+Le problème est clairement dans NP puisqu'on peut vérifier une solution potentielle en utilisant nos algorithmes `vérification_clique(G: Graphe<Sommet>, A: {}Sommet)  → bool`{.language-} et  `vérification_stable(G: Graphe<Sommet>, A: {}Sommet)  → bool`{.language-} :
 
 ```pseudocode
-algorithme vérification_clique_ou_stable(G: Graphe<Sommet>, A: {}Sommet)  → booléen:
+algorithme vérification_clique_ou_stable(G: Graphe<Sommet>, A: {}Sommet)  → bool:
     rendre vérification_clique(G, A) OU vérification_stable(G, A)
 ```
 À vous pour la partie NP-Complet !

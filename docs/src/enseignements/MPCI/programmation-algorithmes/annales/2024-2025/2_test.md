@@ -39,7 +39,7 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 Créez une fonction de signature :
 
 ```pseudocode
-alternante(n: entier, a: caractère, b: caractère) → chaîne
+alternante(n: int, a: char, b: char) → str
 ```
 
 Elle devra rendre une chaîne de caractères de longueur `n`{.language-} alternant les caractères `a`{.language-} et `b`{.language-} et en commençant par `a`{.language-}.
@@ -74,7 +74,7 @@ Vous pourrez utiliser le fait que `int(c)`{.language-} rendra un entier si `c`{.
 Créez une fonction de signature :
 
 ```pseudocode
-croissante_alternante(n: entier, c: chiffre) → chaîne
+croissante_alternante(n: int, c: chiffre) → str
 ```
 
 Qui devra rendre :

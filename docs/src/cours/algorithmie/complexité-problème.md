@@ -80,7 +80,7 @@ Ce qu'on peut déjà dire de notre problème :
 - une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche)) résout le problème
 
 ```pseudocode/
-algorithme recherche(T: []entier, x: entier) → booléen:
+algorithme recherche(T: []int, x: int) → bool:
     pour chaque e de T:
         si e == x:
             rendre Vrai
@@ -180,7 +180,7 @@ Ce principe donne l'algorithme suivant :
 <span id="algorithme-dichotomie"></span>
 
 ```pseudocode
-algorithme recherche_dichotomique(T: []entier, x: entier) → booléen:
+algorithme recherche_dichotomique(T: []int, x: int) → bool:
   ref a ← 0
   ref b ← T.longueur - 1
   ref m int

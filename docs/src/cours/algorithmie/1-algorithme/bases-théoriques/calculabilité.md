@@ -81,7 +81,7 @@ On commence en remarquant que l'on peut associer à tout entier $i$ formé des c
 On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :
 
 - on appelle $r_1$ le 1er réel, c'est-à-dire celui tel que $f(r_1) \leq f(x)$, quel que soit $x \in [0, 1]$
-- on appelle $r_2$ le second réel $r_2$ , c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
+- on appelle $r_2$ le second réel, c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
 - ...
 - on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
 - ...
@@ -116,7 +116,7 @@ Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doi
 Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/){.externe}, très bien faite.
 {% endinfo %}
 
-Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard). Attention, ce n'est pas parce qu'un réel a un no,bre infini de décimal qu'il n'est pas calculable. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :
+Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard). Attention, ce n'est pas parce qu'un réel a un nombre infini de décimales qu'il n'est pas calculable. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :
 
 {% note "**Proposition**" %}
 Soit $(u_n)_{n \geq 1}$ une suite réelle.
@@ -201,7 +201,7 @@ Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est **_calculable_** s'il ex
 
 {% enddefinition %}
 
-Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement incluse dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :
+Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement inclus dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :
 
 {% note "**Proposition**" %}
 Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
@@ -233,14 +233,14 @@ Euclide (environ -300) décrit son algorithme permettant de calculer le plus gra
 
 ```text
 - le pgcd de deux entiers identiques est cet entier,
-- le pgcd de deux entiers différent est inchangé changé si on remplace le plus grand d'entre eux par leur différence.
+- le pgcd de deux entiers différents est inchangé si on remplace le plus grand d'entre eux par leur différence.
 ```
 
 {% exercice %}
 Montrez que l'algorithme d'Euclide trouve bien le $\operatorname{pgcd}$ de deux entiers.
 {% endexercice %}
 {% details "corrigé" %}
-Soit $k$ le $\operatorname{pgcd}$ de $a$ et $b$ : $k$ est le plus grand entier tel que $a = k \cdot a'$ et $b = k \cdot b'$ avec #a'$ et $b'$ entiers.
+Soit $k$ le $\operatorname{pgcd}$ de $a$ et $b$ : $k$ est le plus grand entier tel que $a = k \cdot a'$ et $b = k \cdot b'$ avec $a'$ et $b'$ entiers.
 
  Si $a = b$ on a bien $k = a = b$ et si $a > b$ on a :
 
@@ -345,7 +345,7 @@ Programme :
 Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers){.externe} et donc on ne sait pas lequel des deux algorithmes est le bon.
 
 {% retenir %}
-Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
+Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire.
 {% endretenir %}
 
 #### Fonction écran de fumée
