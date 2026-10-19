@@ -269,9 +269,9 @@
 <p>Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
 <h4>III.2.2</h4>
 <p>Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme lièvre_tortue<span class="token punctuation">(</span><span class="token variable parameter">f</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span><span class="token punctuation">,</span>
-                        <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
-                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">programme</span> <span class="token function">lièvre_tortue</span><span class="token punctuation">(</span><span class="token parameter variable">f</span><span class="token punctuation">:</span> <span class="token type class-name"><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">→</span> int</span><span class="token punctuation">,</span>
+                        <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span>
+                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     tortue <span class="token operator">←</span> <span class="token variable parameter">f</span><span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">)</span>
     lièvre <span class="token operator">←</span> <span class="token variable parameter">f</span><span class="token punctuation">(</span><span class="token variable parameter">f</span><span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
