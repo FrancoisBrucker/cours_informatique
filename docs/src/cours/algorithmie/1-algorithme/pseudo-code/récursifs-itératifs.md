@@ -143,7 +143,7 @@ Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme pas
 
 Lorsque la dernière récursion s'arrête : `pgcd(1, 1)`{.language-} rend 1 sans récursion, qui permet à l'algorithme `pgcd(1, 2)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(1, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(2, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(4, 3)`{.language-} de s'arrêter qui permet à l'algorithme `pgcd(8, 6)`{.language-} de s'arrêter.
 
-Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Pour la complétion de cette partie, faisons le :
+Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Démontrons le :
 
 {% note "**Proposition**" %}
 L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donné en paramètre.
@@ -252,3 +252,44 @@ algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
 {% attention %}
 Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'es pas sous la forme récursive terminale en ligne 7.
 {% endattention %}
+
+## Récursion croisée
+
+Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
+
+<span id="algorithme-pair-impair"></span>
+
+{% exercice %}
+Écrire les deux fonctions récursives suivantes sans utiliser de division entière :
+
+```pseudocode
+algorithme pair(n: entier) → booléen
+algorithme impair(n: entier) → booléen
+```
+
+Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que `impair(0)`{.language-} est `Faux`{.language-pseudocode}.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme pair(n: entier) → booléen
+    si n == 0:
+        rendre Vrai
+    rendre NON impair(n - 1)
+
+algorithme impair(n: entier) → booléen
+    si n == 0:
+        rendre Faux
+    rendre NON pair(n - 1)
+
+```
+
+La finitude est claire puisque :
+
+1. il n'y a qu'un appel récursif
+2. chaque appel se rapproche strictement de la condition d'arrêt
+
+La correction est évidente par définition de la parité.
+
+{% enddetails %}

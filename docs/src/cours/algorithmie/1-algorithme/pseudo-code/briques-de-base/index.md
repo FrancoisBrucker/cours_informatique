@@ -9,40 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- 
-> TBD ici `ref x type`{.language-} ceci permettra de définir plus tard var avec les pointeurs.
-> TBD tout est ue référence vers un objet en mémoire
-
-Mettre en info une structure plus avancé que l'on verra plus tard avec les pointeurs. Pa utile pour les complexité en O et les langages de script (python, js ne font pas la diff) amis si on veut faire des programmes plus optimisé voir systeme c'est important.
-
-
-Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
-
-Une variable vaut None lorsqu'elle est crée.
-Puis affectée à l'adresse d'un objet en mémoire explicitement. 
-
-- Il ne faut pas utiliser des variables non initialisées
-- None est réservé aux variables non initialisées (?)
-- un tableau est un objet composé de variables de même type.
-
-- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique. 
-
-
-
-- int et str pas de taille finies
-- dire mémoire = tableau avec indice
-- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
-- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
-- float est aussi fini : approximation d'un réel.
-- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
-- un tableau est un objet qui contient des variables :
-  - déclaré vaut None
-  - crée chaque case vaut None
-- toute variable déclarée doit être affectée.
-
--->
-
-
 Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :
 
 - de manipuler des objets (création, affectation ou lecture)
@@ -454,6 +420,7 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 {% attention %}
 Tout comme pour les tableaux, **on ne peut pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
+
 
 ### Chaînes de caractères et tableaux
 

@@ -32,7 +32,7 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 2. [Pseudo-code = algorithme](./thèse-church-turing)
 {% endaller %}
 
-### Problème algorithmique
+### Prouver des algorithmes
 
 {% aller %}
 [Problème algorithmique et preuve d'algorithmes](./problème-preuve)

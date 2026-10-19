@@ -98,31 +98,6 @@ L'affichage à l'écran est une **information donnée à l'utilisateur**, l'algo
 Pour distinguer le retour de fonction d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
 {% endretenir %}
 
-Terminons par un petit exercice :
-
-<span id="algorithme-nombre-occurrences"></span>
-
-{% exercice %}
-Adaptez le pseudo code de l'algorithme `recherche(T: []entier, x: entier) → booléen`{.language-} précédent pour créer l'algorithme qui rend le nombre d’occurrences d'une valeur dans un tableau d'entier.
-
-
-{% endexercice %}
-{% details "corrigé" %}
-
-L'algorithme rend le nombre de fois où `x`{.language-} est présent dans `T`{.language-}
-
-```pseudocode
-algorithme nombre(T: []int, x: int) → int:
-    ref nb ← 0
-
-    pour chaque e de T:
-        si e == x:
-            nb ← nb + 1
-    rendre nb
-```
-
-{% enddetails %}
-
 ## Fonctions
 
 Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des _sous-programmes_ réutilisables à volonté, appelés **_fonctions_**.

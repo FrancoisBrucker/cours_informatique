@@ -50,7 +50,7 @@ On peut maintenant utiliser les différentes instructions du pseudo-code pour é
 
 {% aller %}
 1. [Algorithmes et Fonctions en pseudo-code](algorithmes-fonctions)
-2. [Algorithmes itératifs et récursifs](algorithme-récursifs-itératifs)
+2. [Algorithmes itératifs et récursifs](récursifs-itératifs)
 {% endaller %}
 
 Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires.
