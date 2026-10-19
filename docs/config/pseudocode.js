@@ -1,5 +1,14 @@
 // Langage Prism « pseudocode » pour la coloration du pseudo-code (mots-clés en français).
 
+// expressions de type : int, []int, {}Sommet, Liste<T>, ∅, (int, int), (int) → int
+const TYPE_SIMPLE = String.raw`(?:\[\]|\{\})*(?:∅|[\p{L}_][\p{L}\p{N}_]*(?:<[^<>\n]*>)?)`;
+const TUPLE = String.raw`(?:\[\]|\{\})*\((?:[^()\n]|\([^()\n]*\))*\)`;
+const TYPE = String.raw`(?:${TUPLE}(?:[ \t]*→[ \t]*(?:${TUPLE}|${TYPE_SIMPLE}))?|${TYPE_SIMPLE})`;
+const typeInside = {
+  'operator': /→/,
+  'punctuation': /[()<>,]/
+};
+
 const grammaire = {
   'comment': {
     pattern: /(^|[^\\])#.*/,
@@ -12,7 +21,7 @@ const grammaire = {
   },
   // définition de variables : ref a type, ref a, b, c []type
   'definition': {
-    pattern: /\bref[ \t]+[\p{L}_][\p{L}\p{N}_']*(?:[ \t]*,[ \t]*[\p{L}_][\p{L}\p{N}_']*)*(?:[ \t]+(?:\[\])*[\p{L}_∅][\p{L}\p{N}_]*)?/u,
+    pattern: RegExp(String.raw`\bref[ \t]+[\p{L}_][\p{L}\p{N}_']*(?:[ \t]*,[ \t]*[\p{L}_][\p{L}\p{N}_']*)*(?:[ \t]+${TYPE})?`, "u"),
     greedy: true,
     inside: {
       'ref': {
@@ -20,9 +29,10 @@ const grammaire = {
         alias: 'keyword'
       },
       'type': {
-        pattern: /([\p{L}\p{N}_'][ \t]+)(?:\[\])*(?:[\p{L}_][\p{L}\p{N}_]*|∅)$/u,
+        pattern: RegExp(String.raw`([\p{L}\p{N}_'][ \t]+)${TYPE}$`, "u"),
         lookbehind: true,
-        alias: 'class-name'
+        alias: 'class-name',
+        inside: typeInside
       },
       'punctuation': /,/
     }
@@ -39,31 +49,33 @@ const grammaire = {
     }
   },
   // définition : algorithme nom(p1: type1, p2: []type2) → type:
+  //              méthode (self: Liste<T>) nom(p: (int) → int) → (int, int):
   'signature': {
-    pattern: /(^|\s)(?:algorithme|fonction|programme|méthode)[ \t]+[\p{L}_][\p{L}\p{N}_-]*\s*\([^()]*\)(?:\s*→\s*(?:\[\])*[\p{L}_∅][\p{L}\p{N}_]*)?/u,
+    pattern: RegExp(String.raw`(^|\s)(?:algorithme|fonction|programme|méthode)[ \t]+(?:\([^()]*\)[ \t]*)?[\p{L}_][\p{L}\p{N}_'-]*[ \t]*\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)(?:[ \t]*→[ \t]*${TYPE})?`, "u"),
     lookbehind: true,
     greedy: true,
     inside: {
       // commentaires au milieu d'une signature sur plusieurs lignes
       'comment': /#.*/,
       'builtin': /^(?:algorithme|fonction|programme|méthode)/,
-      'function': /[\p{L}_][\p{L}\p{N}_-]*(?=\s*\()/u,
-      'parameter': {
-        pattern: /[\p{L}_][\p{L}\p{N}_]*(?=\s*:)/u,
-        alias: 'variable'
-      },
       'type': {
-        pattern: /((?::|→)\s*)(?:\[\])*(?:[\p{L}_][\p{L}\p{N}_]*|∅)/u,
+        pattern: RegExp(String.raw`((?::|→)[ \t]*)${TYPE}`, "u"),
         lookbehind: true,
-        alias: 'class-name'
+        alias: 'class-name',
+        inside: typeInside
+      },
+      'function': /[\p{L}_][\p{L}\p{N}_'-]*(?=[ \t]*\()/u,
+      'parameter': {
+        pattern: /[\p{L}_][\p{L}\p{N}_']*(?=\s*[:,)])/u,
+        alias: 'variable'
       },
       'operator': /→/,
       'punctuation': /[(),:]/
     }
   },
-  // type tableau hors signature : []entier, [][]booléen, []T
+  // type tableau ou ensemble hors signature : []int, [][]bool, {}T
   'type': {
-    pattern: /(?:\[\])+[\p{L}_][\p{L}\p{N}_]*/u,
+    pattern: /(?:\[\]|\{\})+[\p{L}_][\p{L}\p{N}_]*/u,
     alias: 'class-name'
   },
   'class-name': {
@@ -134,7 +146,7 @@ function colorier(tokens, noms, Prism) {
       if (dernier < t.length) morceaux.push(t.slice(dernier));
       tokens.splice(i, 1, ...morceaux);
       i += morceaux.length - 1;
-    } else if (Array.isArray(t.content) && t.type !== "comment" && t.type !== "string") {
+    } else if (Array.isArray(t.content) && t.type !== "comment" && t.type !== "string" && t.type !== "type") {
       colorier(t.content, noms, Prism);
     }
   }
