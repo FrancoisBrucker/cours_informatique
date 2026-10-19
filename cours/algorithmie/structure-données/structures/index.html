@@ -137,8 +137,8 @@
 </div>
 <p>Par exemple si on veut définir une structure pouvant simuler des points de $\mathbb{R}^2$, on pourrait écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">réel</span>
-    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span></code></pre>
+    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">float</span>
+    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">float</span></code></pre>
 <p>Que l'on crée en affectant tous ses attributs :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">Point</span></span>
 <span class="token variable parameter">x</span> <span class="token operator">←</span> Point<span class="token punctuation">{</span><span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token number">3.1</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span><span class="token number">0.0</span><span class="token punctuation">}</span></code></pre>
@@ -166,8 +166,8 @@
 <h3>Initialisation par défaut</h3>
 <p>Pour être sur que les paramètres sont initialisés par défaut, on utilise <em>l'abus</em> suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span>
-    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span>
+    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">←</span> <span class="token number">0.0</span>
+    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">←</span> <span class="token number">0.0</span>
 </code></pre>
 <p>Ce qui nous permettra d'écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
@@ -201,8 +201,8 @@
 </div>
 <p>Le processus précédent nous permet d'écrire le pseudocode suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">réel</span>
-    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span>
+    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">float</span>
+    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span>
 </code></pre>
 <p>Qui nous permet d'écrire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">p</span> <span class="token type class-name">Point</span></span>
@@ -227,8 +227,8 @@
 </div>
 <p>Transformons la fonction <code class="language-">additionne_point</code> précédente en méthode  de <code class="language-">Point</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span></span>
-<span class="highlight-line">    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">réel</span> <span class="token operator">←</span> <span class="token number">0.0</span></span>
+<span class="highlight-line">    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">←</span> <span class="token number">0.0</span></span>
+<span class="highlight-line">    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">←</span> <span class="token number">0.0</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">méthode <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">:</span> Point<span class="token punctuation">)</span> addition<span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token variable parameter">x</span> <span class="token operator">+</span> <span class="token variable parameter">p</span><span class="token punctuation">.</span><span class="token variable parameter">x</span></span>
@@ -287,22 +287,22 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Marque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token variable parameter">valeur</span><span class="token punctuation">:</span> T
 
-    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token number">0</span>
 </code></pre>
 <p>L'attribut valeur est du <strong><em>type générique</em></strong> <code class="language-">T</code>. Ce type est abstrait et doit être défini explicitement à l'utilisation. Par exemples :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">utm <span class="token operator">←</span> Marque<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token operator">></span> <span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token string">"Marseille"</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token number">694669</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token number">4796927</span><span class="token punctuation">}</span>
-masse <span class="token operator">←</span> Marque<span class="token operator">&lt;</span><span class="token builtin">réel</span><span class="token operator">></span> <span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token number">3.14</span><span class="token punctuation">}</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">utm <span class="token operator">←</span> Marque<span class="token operator">&lt;</span><span class="token builtin">str</span><span class="token operator">></span> <span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token string">"Marseille"</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span> <span class="token number">694669</span><span class="token punctuation">,</span> <span class="token variable parameter">y</span><span class="token punctuation">:</span> <span class="token number">4796927</span><span class="token punctuation">}</span>
+masse <span class="token operator">←</span> Marque<span class="token operator">&lt;</span><span class="token builtin">float</span><span class="token operator">></span> <span class="token punctuation">{</span>valeur<span class="token punctuation">:</span> <span class="token number">3.14</span><span class="token punctuation">}</span></code></pre>
 <p>On peut bien sur combiner le tout avec des exemples plus ou moins tordu comme :</p>
 <ul>
-<li><code class="language-">[Marque&lt;réel&gt;]</code> : un tableau de Marques à valeurs réelles</li>
-<li><code class="language-">Marque&lt;[Marque&lt;Marque&lt;chaîne&gt;&gt;]&gt;</code> : une Marque à valeurs valant un tableau de Marque à valeur de Marque de chaînes.</li>
+<li><code class="language-">[Marque&lt;float&gt;]</code> : un tableau de Marques à valeurs réelles</li>
+<li><code class="language-">Marque&lt;[Marque&lt;Marque&lt;str&gt;&gt;]&gt;</code> : une Marque à valeurs valant un tableau de Marque à valeur de Marque de chaînes.</li>
 </ul>
 <p>Mais la plupart du temps, on reste simple.</p>
 <h3>Sous-structures</h3>
 <p>On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire aux génériques en spécifiant le paramètre qui doit être fixé ou contraint :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-    <span class="token variable parameter">coords</span><span class="token punctuation">:</span> <span class="token type class-name">[]entier</span><span class="token operator">&lt;</span>longueur<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">></span></code></pre>
+    <span class="token variable parameter">coords</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token operator">&lt;</span>longueur<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">></span></code></pre>
 <p>L'exemple précédent spécifie que la longueur du tableau est forcément de 2.</p>
 
 

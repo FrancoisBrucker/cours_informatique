@@ -106,8 +106,8 @@
 </div>
 <p>La <strong><em>file</em></strong> est la structure de donnée idéale pour gérer un flux de donnée dont on doit conserver l'ordre. On appelle également cette structure <strong><em>FIFO</em></strong> pour <em>first in, first out</em> : on rend toujours la donnée la plus anciennement stockée. La structure d'une file d'entiers sera alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
         
     <span class="token comment">#  autres attributs</span>
 
@@ -132,12 +132,12 @@ méthode <span class="token punctuation">(</span><span class="token variable par
 <p>Ces deux indices coïncidaient avec la longueur pour la pile.</p>
 <p><span id="structure-file"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">File</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
 
     <span class="token punctuation">(</span><span class="token variable parameter">données</span><span class="token punctuation">:</span> <span class="token type class-name">[]T</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token type class-name">[]T</span><span class="token punctuation">{</span><span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token variable parameter">capacité</span><span class="token punctuation">}</span>
-    <span class="token variable parameter">début</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token variable parameter">capacité</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token variable parameter">fin</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token variable parameter">début</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token variable parameter">capacité</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token variable parameter">fin</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token number">0</span>
 
 méthode <span class="token punctuation">(</span><span class="token variable parameter">f</span><span class="token punctuation">:</span> File<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span><span class="token variable parameter">donnée</span><span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
     <span class="token variable parameter">f</span><span class="token punctuation">.</span><span class="token variable parameter">données</span><span class="token punctuation">[</span><span class="token variable parameter">f</span><span class="token punctuation">.</span><span class="token variable parameter">fin</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">donnée</span>
@@ -267,10 +267,10 @@ données : 0123</code></pre>
 <p>Cet exemple montre l'usage classique d'une file. On traite de façon différée les entrées et les sorties dans l'ordre d'arrivée en stockant les données dans une file.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">buffer</span></span> <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">int</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
 
-<span class="token signature"><span class="token builtin">fonction</span> <span class="token function">écrire</span><span class="token punctuation">(</span><span class="token parameter variable">donnée</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
+<span class="token signature"><span class="token builtin">fonction</span> <span class="token function">écrire</span><span class="token punctuation">(</span><span class="token parameter variable">donnée</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
     <span class="token variable parameter">buffer</span><span class="token punctuation">.</span>enfile<span class="token punctuation">(</span><span class="token variable parameter">donnée</span><span class="token punctuation">)</span>
 
-<span class="token signature"><span class="token builtin">fonction</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+<span class="token signature"><span class="token builtin">fonction</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">buffer</span><span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Ceci ce passe constamment lorsque l'on lit une vidéo, télécharge un fichier, etc.</p>
 <p>La principale problématique est alors, quelle taille de file choisir pour ne pas perdre des données ?</p>
@@ -299,8 +299,8 @@ $$
 </div>
 <h3>Exemple : création des entiers binaires</h3>
 <p>On peut aussi utiliser la file comme outil d'énumération. Par exemple pour faire un compteur :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">compteur</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
-    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> K<span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">compteur</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">∅</span></span><span class="token punctuation">:</span>
+    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">str</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> K<span class="token punctuation">}</span>
     F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">1</span>
 

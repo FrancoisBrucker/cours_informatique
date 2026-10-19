@@ -104,7 +104,7 @@
 <p>Ne tartinez pas des pages et des pages de démonstration. Allez directement au fait et si c'est évident, dites le.</p>
 <h2>Sujet</h2>
 <h3>1 un algorithme de multiplication</h3>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">programme</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">entier</span></span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">programme</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     r <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span> <span class="token variable parameter">x</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">x</span> est impair<span class="token punctuation">:</span>
@@ -145,7 +145,7 @@ $$
 <p>Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers <code class="language-">x</code> et <code class="language-">y</code> sont tels que $T_x[-1] = T_y[-1] = 1$, quelle est la taille du tableau représentant l'entier $x\cdot y$ ?</p>
 <h3>3 adaptation de l'algorithme</h3>
 <h4>3.1</h4>
-<p>Modifiez l'algorithme <code class="language-">mul(x: entier, y: entier) → entier</code> de la question 1 pour qu'il soit de signature : <code class="language-">mul(Tx: []bit, Ty: []bit) → []bit</code></p>
+<p>Modifiez l'algorithme <code class="language-">mul(x: int, y: int) → int</code> de la question 1 pour qu'il soit de signature : <code class="language-">mul(Tx: []bit, Ty: []bit) → []bit</code></p>
 <h4>3.2</h4>
 <p>Déduire des questions précédentes la complexité de ce nouvel algorithme par rapport à <code class="language-">Tx.longueur</code> et <code class="language-">Ty.longueur</code>.</p>
 <!--

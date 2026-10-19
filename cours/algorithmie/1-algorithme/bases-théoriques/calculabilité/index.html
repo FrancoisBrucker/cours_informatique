@@ -232,7 +232,7 @@ Programme :
 <p>On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :</p>
 <ul>
 <li>on appelle $r_1$ le 1er réel, c'est-à-dire celui tel que $f(r_1) \leq f(x)$, quel que soit $x \in [0, 1]$</li>
-<li>on appelle $r_2$ le second réel $r_2$ , c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
+<li>on appelle $r_2$ le second réel, c'est-à-dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
 <li>...</li>
 <li>on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1, \dots, r_{i-1} \}$</li>
 <li>...</li>
@@ -288,7 +288,7 @@ Programme :
 <p>Pour une introduction en douceur sur ces sujets, consulter <a href="https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/" class="externe">cette émission d'Arte</a>, très bien faite.</p>
 </div>
 </div>
-<p>Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard). Attention, ce n'est pas parce qu'un réel a un no,bre infini de décimal qu'il n'est pas calculable. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :</p>
+<p>Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard). Attention, ce n'est pas parce qu'un réel a un nombre infini de décimales qu'il n'est pas calculable. Par exemple tous les réels qui sont des limites de suites elles-mêmes calculables :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -411,7 +411,7 @@ Programme :
 <p>Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est <strong><em>calculable</em></strong> s'il existe un algorithme qui permet de la calculer.</p>
 </div>
 </div>
-<p>Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement incluse dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :</p>
+<p>Montrons tout de suite que cette notion a un sens, c'est-à-dire que l'ensemble des fonctions calculables est strictement inclus dans l'ensemble des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -461,7 +461,7 @@ On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les 
 <p><span id="algorithme-euclide"></span></p>
 <p>Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur ($\operatorname{pgcd}$) de deux nombres ainsi :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">- le pgcd de deux entiers identiques est cet entier,
-- le pgcd de deux entiers différent est inchangé changé si on remplace le plus grand d'entre eux par leur différence.</code></pre>
+- le pgcd de deux entiers différents est inchangé si on remplace le plus grand d'entre eux par leur différence.</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -485,7 +485,7 @@ On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $k$ le $\operatorname{pgcd}$ de $a$ et $b$ : $k$ est le plus grand entier tel que $a = k \cdot a'$ et $b = k \cdot b'$ avec #a'$ et $b'$ entiers.</p>
+<p>Soit $k$ le $\operatorname{pgcd}$ de $a$ et $b$ : $k$ est le plus grand entier tel que $a = k \cdot a'$ et $b = k \cdot b'$ avec $a'$ et $b'$ entiers.</p>
 <p>Si $a = b$ on a bien $k = a = b$ et si $a &gt; b$ on a :</p>
  <div>
 $$
@@ -592,7 +592,7 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire</p>
+<p>Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire.</p>
 </div>
 </div>
 <h4>Fonction écran de fumée</h4>

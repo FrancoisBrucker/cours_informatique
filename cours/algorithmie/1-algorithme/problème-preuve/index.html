@@ -96,7 +96,7 @@
     
   
 
-  <p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme.</p>
+  <p>Un algorithme est censé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme.</p>
 <h2>Problème algorithmique</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -136,7 +136,7 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
+<p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est-à-dire que cet algorithme :</p>
 <ul>
 <li>prend en paramètres les entrées du problème</li>
 <li>donne en sortie la solution recherchée.</li>
@@ -164,13 +164,13 @@
 </ol>
 </div>
 </div>
-<p>A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :</p>
+<p>À chaque fois que l'on nous demandera de créer un algorithme pour résoudre un problème il nous faudra :</p>
 <ol>
 <li>s'assurer que l'on écrit un programme</li>
 <li>s'assurer que ce programme s'arrête pour toute entrée (et donc que c'est un algorithme)</li>
 <li>montrer qu'il résout le problème demandé.</li>
 </ol>
-<p>Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidable en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont sensés s'arrêter et il sera (normalement) facile de le voir.</p>
+<p>Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidables en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont censés s'arrêter et il sera (normalement) facile de le voir.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -184,7 +184,7 @@
 </ul>
 </div>
 </div>
-<p>En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. On peut en revanche donner ds règles générales de preuve qui fonctionnent (souvent) pour des algorithmes récursif ou itératifs.</p>
+<p>En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. On peut cependant donner des règles générales de preuve qui fonctionnent (souvent) pour des algorithmes récursifs ou itératifs.</p>
 <p>Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :</p>
 <p>$$
 n! \coloneqq \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
@@ -240,14 +240,14 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Un programme récursif est un algorithme si quelque soient ses entrées il n'y aura qu'un nombre fini de récursions.</p>
+<p>Un programme récursif est un algorithme si quelles que soient ses entrées il n'y aura qu'un nombre fini de récursions.</p>
 </div>
 </div>
-<p>Notre programme factorielle est bien  un algorithme puisque la récursion va se rapprocher strictement de sa condition d'arrêt ($n = 1$). On peut le prouver rapidement par récurrence sur $n$.</p>
+<p>Notre programme factorielle est bien un algorithme puisque la récursion va se rapprocher strictement de sa condition d'arrêt ($n = 1$). On peut le prouver rapidement par récurrence sur $n$.</p>
 <ol>
-<li><strong>initialisation</strong> de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.</li>
+<li><strong>initialisation</strong> de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursions.</li>
 <li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n-1\geq 1$, l'algorithme va avoir un nombre fini de récursions.</li>
-<li><strong>pour $n$</strong> : <code class="language-">factorielle(n)</code> va exécuter la ligne 4 (<code class="language-">ref f ← factorielle(n-1)</code>) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme <code class="language-">factorielle(n)</code> va également se terminer.</li>
+<li><strong>pour $n$</strong> : <code class="language-">factorielle(n)</code> va exécuter la ligne 4 (<code class="language-">ref f ← factorielle(n-1)</code>) qui, par hypothèse de récurrence, va se terminer au bout d'un nombre fini de récursions : le programme <code class="language-">factorielle(n)</code> va également se terminer.</li>
 </ol>
 <p>La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -313,19 +313,19 @@ $$
 </div>
 </details>     
 </div>
-<p>On voit que la forme d'un algorithme itératif est inversé par rapport à un algorithme récursif.</p>
+<p>On voit que la forme d'un algorithme itératif est inversée par rapport à un algorithme récursif.</p>
 <h3>Finitude</h3>
-<p>Un programme récursif est un algorithme s'il n'existe pas de récursion infinie :</p>
+<p>Un programme itératif est un algorithme s'il n'existe pas de boucle infinie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles <code class="language-">tant que</code> : il faut garantir que leurs conditions d'arrêt soient vérifiées  au court de l'exécution du programme quelque soit ses entrées.</p>
+<p>Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles <code class="language-">tant que</code> : il faut garantir que leurs conditions d'arrêt soient vérifiées au cours de l'exécution du programme quelles que soient ses entrées.</p>
 </div>
 </div>
-<p>Notre algorithme va forcément s'arrêter puisque $i$ croit strictement à chaque itération.</p>
+<p>Notre algorithme va forcément s'arrêter puisque $i$ croît strictement à chaque itération.</p>
 <h3>Correction</h3>
 <p>Démontrer la correction d'un algorithme itératif est souvent plus compliqué que celle d'un algorithme récursif. Une méthode qui se révèle souvent efficace consiste à trouver des propriétés qui sont conservées à chaque itération.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -334,7 +334,7 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou récursion. Pour cela on utilisera plusieurs techniques, par ordre de difficulté :</p>
+<p>Pour prouver un algorithme on cherchera à prouver ce que fait chaque boucle ou récursion. Pour cela on utilisera plusieurs techniques, par ordre de difficulté :</p>
 <ol>
 <li>une relation évidente caractérisant le but de la boucle</li>
 <li>une équation de récurrence plus une condition d'arrêt pour prouver une boucle itérative pouvant être écrite sous forme récursive</li>
@@ -342,7 +342,7 @@ $$
 </ol>
 </div>
 </div>
-<p>A part les recommandations ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.</p>
+<p>À part les recommandations ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seules l'expérience et l'étude des algorithmes classiques vous permettront de trouver facilement comment prouver un algorithme.</p>
 <p>Nous allons montrer les 3 façons de faire avec notre algorithme.</p>
 <h4>Correction par relation évidente</h4>
 <p>L'algorithme suivant est une réécriture directe de la version <code class="language-">tant que</code> de factorielle précédente :</p>
@@ -352,9 +352,9 @@ $$
         <span class="token variable parameter">produit</span> <span class="token operator">←</span> <span class="token variable parameter">produit</span> <span class="token operator">*</span> <span class="token variable parameter">i</span>
 
     <span class="token keyword">rendre</span> <span class="token variable parameter">produit</span></code></pre>
-<p>La preuve d'exactitude est alors évidente puisque l'on a juste réécrit la définition  de $n!$.</p>
+<p>La preuve d'exactitude est alors évidente puisque l'on a juste réécrit la définition de $n!$.</p>
 <h4>Correction par une équation de récurrence</h4>
-<p>Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :</p>
+<p>Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se réécrire de cette façon :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>                 
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -363,7 +363,7 @@ $$
         <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token variable parameter">r</span> <span class="token operator">*</span> <span class="token variable parameter">i</span>
         <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span>
     
-    <span class="token comment"># ici r et i sont égaux ceux de la sortie de la boucle de factorielle(n - 1)</span>
+    <span class="token comment"># ici r et i sont égaux à ceux de la sortie de la boucle de factorielle(n - 1)</span>
 
     <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token variable parameter">r</span> <span class="token operator">*</span> <span class="token variable parameter">i</span>
     <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span>
@@ -371,7 +371,7 @@ $$
     <span class="token keyword">rendre</span> <span class="token variable parameter">r</span></code></pre>
 <p>On retrouve la boucle de <code class="language-">factorielle(n-1)</code> dans <code class="language-">factorielle(n)</code> ce qui montre que si <code class="language-">factorielle(n-1)</code> fonctionne et rend $(n-1)!$ alors <code class="language-">factorielle(n)</code> rendra bien $n\cdot (n-1)! = n!$. On est ramené à une preuve par récurrence, comme pour le cas récursif.</p>
 <h4>Correction par invariant</h4>
-<p>Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrences, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.</p>
+<p>Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrence, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.</p>
 <p>Refaisons la preuve précédente en utilisant un invariant de boucle pour montrer comment tout ceci peut se faire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -388,13 +388,13 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Schéma de preuve des algorithmes itératifs par invariant :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables. Une fois l'invariant trouvé on commence par le démontrer :</p>
+<p>Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiée, même si on modifie des variables. Une fois l'invariant trouvé on commence par le démontrer :</p>
 <ol>
 <li>on vérifie que l'invariant est vrai à la fin de la première itération de la boucle</li>
 <li>on suppose l'invariant à la fin de l'itération $k$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $k + 1$.</li>
 </ol>
-<p>Une fois l'invariant démontré, il va être toujours vrai, de la première itération à la sortie de la boucle. A ce moment là, sa valeur doit servir à démontrer le résultat voulu.</p>
-<p>Pour simplifier l'écriture, on note avec un <code>'</code> (prim) les variables à la fin de la boucle d'itération $k+1$ pour les différentier des variables de la fin de l'itération $k$.</p>
+<p>Une fois l'invariant démontré, il va être toujours vrai, de la première itération à la sortie de la boucle. À ce moment-là, sa valeur doit servir à démontrer le résultat voulu.</p>
+<p>Pour simplifier l'écriture, on note avec un <code>'</code> (prime) les variables à la fin de la boucle d'itération $k+1$ pour les différencier des variables de la fin de l'itération $k$.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -402,7 +402,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe des variantes dans les preuves par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser l'une que l'autre.</p>
+<p>Il existe des variantes dans les preuves par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisé d'utiliser l'une que l'autre.</p>
 </div>
 </div>
 <p>Un invariant possible est :</p>
@@ -438,14 +438,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Démontrons le :</p>
+<p>Démontrons-le :</p>
 <ol>
 <li>c'est vrai à la fin de la 1ère itération</li>
 <li>si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
 <ul>
 <li>$r'=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)</li>
 <li>$i' = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)</li>
-<li>$r = (i-1)!$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)</li>
+<li>$r = (i-1)!$ (c'est notre invariant, vrai à la fin de l'itération $k$ par hypothèse)</li>
 </ul>
 </li>
 <li>on a donc : $r' = (i-1)! \cdot i = i! = (i'-1)!$ : <strong>notre invariant est vérifié</strong>.</li>
@@ -475,7 +475,7 @@ $$
 <li>$r$ est multiplié par $i$ à chaque itération</li>
 <li>$i$ est incrémenté de 1 à chaque itération et commence à 1.</li>
 </ol>
-<p>On doit donc avoir un invariant du type <strong>$r \simeq i!$ à la fin de chaque itération</strong> à <em>plus ou moins 1 près</em>. Pour en être sur regardons ce que valent nos variables à la fin de la première itération :</p>
+<p>On doit donc avoir un invariant du type <strong>$r \simeq i!$ à la fin de chaque itération</strong> à <em>plus ou moins 1 près</em>. Pour en être sûr regardons ce que valent nos variables à la fin de la première itération :</p>
 <ul>
 <li>$r = 1$</li>
 <li>$i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)</li>
@@ -484,12 +484,12 @@ $$
 </div>
 </details>     
 </div>
-<p>L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. À ce moment là on a $i=n+1$ et donc $r = n!$ : notre algorithme calcule bien la factorielle de son entrée.</p>
+<p>L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. À ce moment-là on a $i=n+1$ et donc $r = n!$ : notre algorithme calcule bien la factorielle de son entrée.</p>
 <h2>Trouver des invariants de boucles</h2>
 <p>Trouver un invariant de boucle est souvent intimidant pour des débutants. Nous allons nous entraîner un peu pour acquérir quelques automatismes. L'idée principale pour trouver un invariant est de procéder par étapes :</p>
 <ol>
 <li>comprendre l'algorithme</li>
-<li>comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucle on refait l'analyse pour chaque boucle)</li>
+<li>comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucles on refait l'analyse pour chaque boucle)</li>
 <li>voir comment on pourrait prouver l'algorithme</li>
 <li>utiliser cette idée de preuve pour créer un invariant</li>
 <li>prouver l'invariant</li>
@@ -504,7 +504,7 @@ $$
 <p>Trouver l'invariant est <strong>à la fin du processus de création de la preuve</strong>. C'est un moyen d'écrire une preuve que l'on a comprise (certainement) autrement.</p>
 </div>
 </div>
-<p>Appliquons ces recommendations sur l'algorithme itératif suivant :</p>
+<p>Appliquons ces recommandations sur l'algorithme itératif suivant :</p>
 <p><span id="algorithme-max-tableau-iter"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">t</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
@@ -540,12 +540,12 @@ $$
 </div>
 <h3>1. Comprendre l'algorithme</h3>
 <p>L'algorithme va itérer sur chaque élément du tableau et conserver dans la variable <code class="language-">m</code> la plus grande des valeurs vues jusqu'à présent.</p>
-<h3>2. Comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucle on refait l'analyse pour chaque boucle)</h3>
+<h3>2. Comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucles on refait l'analyse pour chaque boucle)</h3>
 <p>Il faut parcourir tous les éléments du tableau pour connaître la plus grande des valeurs.</p>
 <h3>3. Voir comment on pourrait prouver l'algorithme</h3>
-<p>Il faut montrer que la variable <code class="language-">m</code> contient la valeur maximale pour toutes les éléments de <code class="language-">t</code> vues jusqu'à présent. Comme à la fin de l'algorithme on aura vu toutes lees valeurs de <code class="language-">t</code> on aura prouvé que <code class="language-">m</code> est bien le maximum.</p>
+<p>Il faut montrer que la variable <code class="language-">m</code> contient la valeur maximale pour tous les éléments de <code class="language-">t</code> vus jusqu'à présent. Comme à la fin de l'algorithme on aura vu toutes les valeurs de <code class="language-">t</code> on aura prouvé que <code class="language-">m</code> est bien le maximum.</p>
 <h3>4. Utiliser cette idée de preuve pour créer un invariant</h3>
-<p>Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableaux (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle <code class="language-">pour chaque</code>. On modifie alors notre algorithme pour rendre $i$ explicite :</p>
+<p>Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableau (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle <code class="language-">pour chaque</code>. On modifie alors notre algorithme pour rendre $i$ explicite :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">t</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
@@ -583,19 +583,19 @@ $$
 </div>
 <p>Ce qui permet d'écrire l'invariant :</p>
 <blockquote>
-<p><strong>Invariant de boucle :</strong>  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.</p>
+<p><strong>Invariant de boucle :</strong>  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers éléments du tableau.</p>
 </blockquote>
 <h4>5. Prouver l'invariant</h4>
 <p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.</p>
-<p>On suppose l'invariant vrai à la fin d'une itération. A la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
+<p>On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
 <ul>
 <li>$m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)</li>
-<li>$m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qu'il se passe dans l'itération suivante)</li>
+<li>$m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qui se passe dans l'itération suivante)</li>
 </ul>
 <p>On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.</p>
 <p>Notre invariant est vérifié.</p>
 <h4>6. Prouver la correction de l'algorithme</h4>
-<p>Cette partie là est facile si on a le bon invariant. Il suffit de regarder la valeur de l'invariant à la fin de la boucle. Dans notre cas $m$ vaut le maximum de tous les éléments du tableau tableau, c'est le maximum.</p>
+<p>Cette partie-là est facile si on a le bon invariant. Il suffit de regarder la valeur de l'invariant à la fin de la boucle. Dans notre cas $m$ vaut le maximum de tous les éléments du tableau, c'est le maximum.</p>
 
 
 </article>

@@ -98,10 +98,10 @@
 
   <p>Il y a deux grandes familles d'algorithmes :</p>
 <ul>
-<li>les algorithmes itératifs, c'est à dire utilisant des boucles</li>
-<li>les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.</li>
+<li>les algorithmes itératifs, c'est-à-dire utilisant des boucles</li>
+<li>les algorithmes récursifs, c'est-à-dire écrits sous la forme d'une fonction qui s'appelle elle-même.</li>
 </ul>
-<p>Tout algorithme pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que l'autre.</p>
+<p>Tout algorithme pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que sous l'autre.</p>
 <p>Avant de définir formellement les deux approches commençons par deux remarques importantes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -112,13 +112,13 @@
 <p>Adaptation d'un algorithme aux données :</p>
 <ol>
 <li>pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),</li>
-<li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).</li>
+<li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).</li>
 </ol>
-<p><strong>La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.</strong></p>
+<p><strong>La différence entre les approches itératives et récursives est liée au traitement des deux points précédents.</strong></p>
 </div>
 </div>
 <p>Pour expliciter la différence entre les deux approches nous allons utiliser notre exemple fil rouge <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">du calcul du $\operatorname{pgcd}$</a>.</p>
-<h2>Algorithmes Itératif</h2>
+<h2>Algorithmes itératifs</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -165,15 +165,15 @@
 </div>
 </details>     
 </div>
-<p>Lorsque l'on construit un algorithme itératif, il faut faire attention au fait que les boucles finissent bien. C'est bien sur toujours le cas avec les boucles de type <code class="language-">pour chaque</code> mais pour des boucles de type <code class="language-">tant que</code> ce n'est pas toujours évident.</p>
-<h2>Algorithmes Récursif</h2>
+<p>Lorsque l'on construit un algorithme itératif, il faut faire attention au fait que les boucles finissent bien. C'est bien sûr toujours le cas avec les boucles de type <code class="language-">pour chaque</code> mais pour des boucles de type <code class="language-">tant que</code> ce n'est pas toujours évident.</p>
+<h2>Algorithmes récursifs</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong> pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
+<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptation aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrée un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong> pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrée.</p>
 </div>
 </div>
 <p>Pour le calcul du $\operatorname{pgcd}$ on va utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD" class="externe">l'algorithme binaire de Stein</a> :</p>
@@ -235,7 +235,7 @@
                                            pgcd(1, 3) = pgcd(1, 2)
                                                         pgcd(1, 2) = pgcd(1, 1)
                                                                      pgcd(1, 1) = 1</code></pre>
-<p>Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme passe à la ligne suivante <strong>que</strong> si l'instruction est terminée : lors d'une récursion l'algorithme attend que la récursion se termine pour continuer. Ainsi lors du 5 appel de récursion, il y a 5 algorithmes qui attentent :</p>
+<p>Pour comprendre comment cela fonctionne il faut se rappeler qu'un algorithme passe à la ligne suivante <strong>que</strong> si l'instruction est terminée : lors d'une récursion l'algorithme attend que la récursion se termine pour continuer. Ainsi lors du 5e appel de récursion, il y a 5 algorithmes qui attendent :</p>
 <ul>
 <li><code class="language-">pgcd(1, 2)</code> attend en ligne 11 que la fonction <code class="language-">pgcd(1, 1)</code> se termine pour continuer</li>
 <li><code class="language-">pgcd(1, 3)</code> attend en ligne 15 que la fonction <code class="language-">pgcd(1, 2)</code> se termine pour continuer</li>
@@ -244,7 +244,7 @@
 <li><code class="language-">pgcd(8, 6)</code> attend en ligne 7 que la fonction <code class="language-">pgcd(4, 3)</code> se termine pour continuer</li>
 </ul>
 <p>Lorsque la dernière récursion s'arrête : <code class="language-">pgcd(1, 1)</code> rend 1 sans récursion, qui permet à l'algorithme <code class="language-">pgcd(1, 2)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(1, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(2, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(4, 3)</code> de s'arrêter qui permet à l'algorithme <code class="language-">pgcd(8, 6)</code> de s'arrêter.</p>
-<p>Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelque soit ses entrées et donc que c'est un algorithme. Démontrons le :</p>
+<p>Notez que nous n'avons pas prouvé que le programme trouve bien le plus grand diviseur commun de deux entiers, juste qu'il se termine quelles que soient ses entrées et donc que c'est un algorithme. Démontrons-le :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -252,7 +252,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donné en paramètre.</p>
+<p>L'algorithme binaire de Stein calcule bien le $\operatorname{pgcd}$ de deux entiers positifs donnés en paramètre.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -276,7 +276,7 @@
 <ul>
 <li>si <code class="language-">min(a, b) == 0</code> : le $\operatorname{pgcd}$ est clairement $\max(a, b)$,</li>
 <li>si <code class="language-">min(a, b) &gt; 0</code> et <code class="language-">a == b</code> : le $\operatorname{pgcd}$ est clairement $a$,</li>
-<li>si <code class="language-">a</code> et <code class="language-">b</code> sont pairs 2 est un diviseur commun</li>
+<li>si <code class="language-">a</code> et <code class="language-">b</code> sont pairs, 2 est un diviseur commun</li>
 <li>si seul <code class="language-">a</code> ou <code class="language-">b</code> est pair, 2 n'est pas un diviseur commun</li>
 <li>sinon, on retrouve <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">l'algorithme d'Euclide</a> que l'on a démontré correct.</li>
 </ul>
@@ -306,12 +306,12 @@
         <span class="token keyword">rendre</span> g<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> f<span class="token punctuation">(</span>h<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<p>L'algorithme <code class="language-">f</code> est sous la forme d'une <strong><em>récursion terminale</em></strong>, c'est à dire que :</p>
+<p>L'algorithme <code class="language-">f</code> est sous la forme d'une <strong><em>récursion terminale</em></strong>, c'est-à-dire que :</p>
 <ol>
 <li><strong>soit</strong> il s'arrête si une condition d'arrêt est vérifiée</li>
-<li><strong>soit</strong> il rend une récursion de lui même</li>
+<li><strong>soit</strong> il rend une récursion de lui-même</li>
 </ol>
-<p>Pour que la définition de <code class="language-">f</code> ait du sens il faut bien sur que chaque récursion se <em>rapproche</em> de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.</p>
+<p>Pour que la définition de <code class="language-">f</code> ait du sens il faut bien sûr que chaque récursion se <em>rapproche</em> de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.</p>
 </div>
 </div>
 <p>La récursion terminale est sympathique car équivalente à la forme itérative suivante :</p>
@@ -319,7 +319,7 @@
     <span class="token keyword">tant que</span> c<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
         <span class="token variable parameter">n</span> <span class="token operator">←</span> h<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> g<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span></code></pre>
-<p>Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateurs lorsque'ils repèrent une telle forme).</p>
+<p>Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateurs lorsqu'ils repèrent une telle forme).</p>
 <p>Illustrons ceci en utilisant directement <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide">l'algorithme d'Euclide</a> pour le calcul du $\operatorname{pgcd}$. On peut en effet écrire cet algorithme sous la forme d'une équation récurrente :</p>
 <div>
 $$
@@ -332,7 +332,7 @@ $$
 \end{equation}
 $$
 </div>
-<p>On a montré en exercice que cette équation est correcte et qu'il se termine en un nombre fini d'étape, c'est donc bien un algorithme qui s'écrit:</p>
+<p>On a montré en exercice que cette équation est correcte et qu'elle se termine en un nombre fini d'étapes, c'est donc bien un algorithme qui s'écrit :</p>
 <p><span id="algorithme-pgcd-rec"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
     <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -375,18 +375,18 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'es pas sous la forme récursive terminale en ligne 7.</p>
+<p>Tous les algorithmes récursifs ne sont pas sous la forme terminale. Par exemple l'algorithme binaire de Stein n'est pas sous la forme récursive terminale en ligne 7.</p>
 </div>
 </div>
 <h2>Récursion croisée</h2>
-<p>Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :</p>
+<p>Une dernière utilisation de la récursion qui peut être utile est la récursion croisée qui définit une fonction par rapport à une autre et réciproquement :</p>
 <p><span id="algorithme-pair-impair"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrire les deux fonctions récursives suivantes sans utiliser de division entière :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
-<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span></code></pre>
 <p>Vous pourrez utiliser le fait que <code class="language-">pair(0)</code> est <code class="language-pseudocode">Vrai</code> alors que <code class="language-">impair(0)</code> est <code class="language-pseudocode">Faux</code>.</p>
 </div>
 </div>
@@ -407,12 +407,12 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span>
     <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> NON impair<span class="token punctuation">(</span><span class="token variable parameter">n</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">booléen</span></span>
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">impair</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span>
     <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
     <span class="token keyword">rendre</span> NON pair<span class="token punctuation">(</span><span class="token variable parameter">n</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>

@@ -102,17 +102,17 @@
 <li>la description de chaque instruction et leurs enchaînements soient compréhensibles s'il doit être exécuté par un humain</li>
 <li>le code soit syntaxiquement correct s'il est écrit sous la forme d'un programme.</li>
 </ul>
-<p>Mais qu'en est-il de condition de terminaison (le programme s'arrête après un temps fini quelle que soit son entrée) pour définir un algorithme ? Cette question est cruciale et... compliquée.</p>
+<p>Mais qu'en est-il de la condition de terminaison (le programme s'arrête après un temps fini quelle que soit son entrée) pour définir un algorithme ? Cette question est cruciale et... compliquée.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On se placer ici, sans perte de généralité, dans le cadre des programmes prenant un entier en paramètre et rendant un entier (par défaut <code>0</code>).</p>
+<p>On se place ici, sans perte de généralité, dans le cadre des programmes prenant un entier en paramètre et rendant un entier (par défaut <code>0</code>).</p>
 </div>
 </div>
 <h2>Problème de l'arrêt</h2>
-<p>Savoir si un programme va s'arrêter, peut-être très simple. Le programme suivant s'arrête tout le temps :</p>
+<p>Savoir si un programme va s'arrêter peut être très simple. Le programme suivant s'arrête tout le temps :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : compte à rebours
 Entrée :
     n : un entier strictement positif
@@ -125,7 +125,7 @@ Programme :
         décrémenter la valeur de n de 1
     dire à voix haute : "BOUM."
     rendre 0</code></pre>
-<p>Alors que celui ci ne s'arrête jamais :</p>
+<p>Alors que celui-ci ne s'arrête jamais :</p>
 <div id="syracuse"></div>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérité
 Entrée :
@@ -186,7 +186,7 @@ syracuse<span class="token punctuation">(</span>x<span class="token punctuation"
 <p>Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  <a href="https://www.youtube.com/watch?v=JU9ICaPZUCg" class="externe">calculatrice ancienne tentant de diviser par zéro</a></p>
 </div>
 </div>
-<p>Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le <code class="language-">stop</code>. Il prendrait  en paramètre un entier représentant un programme (<a href="../d%C3%A9finition/#proposition-encodage-algorithme">on sait qu'on peut le faire</a>) et rendrait 1 si le programme en paramètre serait un algorithme et 0 sinon :</p>
+<p>Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le <code class="language-">stop</code>. Il prendrait en paramètre un entier représentant un programme (<a href="../d%C3%A9finition/#proposition-encodage-algorithme">on sait qu'on peut le faire</a>) et rendrait 1 si le programme en paramètre est un algorithme et 0 sinon :</p>
 <div id="algorithme-STOP"></div>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : stop
 Entrée :
@@ -240,7 +240,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tous les algorithmes et qui les différencieraient des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.</p>
+<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tous les algorithmes et qui les différencierait des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -268,7 +268,7 @@ Programme :
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Une <strong><em>propriété</em></strong> $P$ est un sous-ensemble non trivial d'algorithmes, c'est à dire que :</p>
+<p>Une <strong><em>propriété</em></strong> $P$ est un sous-ensemble non trivial d'algorithmes, c'est-à-dire que :</p>
 <ul>
 <li>il existe au moins un algorithme dans $P$</li>
 <li>il existe au moins un algorithme qui n'est pas dans $P$</li>
@@ -281,7 +281,7 @@ Programme :
 <li>l'ensemble des algorithmes calculant le double d'un entier passé en paramètre est une propriété :
 <ul>
 <li>il existe des algorithmes permettant de le faire (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Technique_de_l%27addition" class="externe">l'algorithme de l'addition posée</a> des cours de primaire en additionnant deux fois le même nombre)</li>
-<li>il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers" class="externe">un de ces algorithme</a> avec 2 et le nombre comme paramètres)</li>
+<li>il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers" class="externe">un de ces algorithmes</a> avec 2 et le nombre comme paramètres)</li>
 </ul>
 </li>
 <li>l'ensemble des algorithmes de valeurs de retour bornées par $K$ est une propriété :
@@ -291,7 +291,7 @@ Programme :
 </ul>
 </li>
 </ul>
-<p>On va la aussi donner un résultat négatif : il n'existe pas d'algorithme permettant de savoir si un programme respecte une propriété donnée. Il faut faire la démonstration pour chaque programme <strong>et</strong> chaque propriété.</p>
+<p>On va là aussi donner un résultat négatif : il n'existe pas d'algorithme permettant de savoir si un programme respecte une propriété donnée. Il faut faire la démonstration pour chaque programme <strong>et</strong> chaque propriété.</p>
 <div id="théorème-rice"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

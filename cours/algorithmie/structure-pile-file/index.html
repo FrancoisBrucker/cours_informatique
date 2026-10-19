@@ -153,8 +153,8 @@
 <h2>Deques</h2>
 <p>Souvent, la pile et la file sont réunies en une seule structure : <a href="https://en.wikipedia.org/wiki/Double-ended_queue" class="externe">le <strong><em>deque</em></strong> (<em>&quot;doubled ended queue&quot;</em>)</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
 
     <span class="token comment"># ...</span>
 
@@ -186,12 +186,12 @@ méthode <span class="token punctuation">(</span><span class="token variable par
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
+    <span class="token variable parameter">capacité</span><span class="token punctuation">:</span> <span class="token builtin">int</span>
 
     <span class="token punctuation">(</span><span class="token variable parameter">données</span><span class="token punctuation">:</span> <span class="token type class-name">[]T</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token type class-name">[]T</span><span class="token punctuation">{</span><span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token variable parameter">capacité</span><span class="token punctuation">}</span>
-    <span class="token variable parameter">début</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token variable parameter">capacité</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token variable parameter">fin</span><span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token variable parameter">début</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token variable parameter">capacité</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token variable parameter">fin</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token number">0</span>
 
 méthode <span class="token punctuation">(</span><span class="token variable parameter">d</span><span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span><span class="token variable parameter">donnée</span><span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
     <span class="token variable parameter">d</span><span class="token punctuation">.</span><span class="token variable parameter">données</span><span class="token punctuation">[</span><span class="token variable parameter">d</span><span class="token punctuation">.</span><span class="token variable parameter">fin</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">donnée</span>
