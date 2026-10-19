@@ -714,7 +714,7 @@ algorithme palindrome(T: str) → bool
 
 {% exercice %}
 
-L'algorithme `palindrome_rec(s: str, i: int) → bool`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
+L'algorithme `palindrome_rec(s: str, i: int) → bool`{.language-pseudocode} devrait être écrit sous une forme de [récursion terminale](../pseudo-code/récursifs-itératifs/#récursion-terminale), transformez le en programme itératif.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -730,13 +730,14 @@ algorithme palindrome_pas_rec(s: str, i: int) → bool
 
 {% enddetails %}
 
+
 ## Construire un algorithme sous forme terminale
 
 {% exercice %}
-Écrivez sous la forme d'une récursion terminale l'algorithme de signature :
+Écrivez sous la forme d'une [récursion terminale](../pseudo-code/récursifs-itératifs/#récursion-terminale) l'algorithme de signature :
 
 ```pseudocode
-algorithme puissance_2(m: entier, n: entier) → entier
+algorithme puissance_2(m: int, n: int) → int
 ```
 
 Qui rend le plus grand entier de la forme $2^p \cdot m$ plus petit que $n$.
@@ -745,7 +746,7 @@ Qui rend le plus grand entier de la forme $2^p \cdot m$ plus petit que $n$.
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme puissance_2(m: entier, n: entier) → entier:
+algorithme puissance_2(m: int, n: int) → int:
     si 2 * m ≥ n:
         rendre m
     sinon:
@@ -755,13 +756,13 @@ algorithme puissance_2(m: entier, n: entier) → entier:
 C'est bien une récursion terminale puisque le code est équivalent à :
 
 ```pseudocode
-fonction c(m: entier, n: entier) → booléen:
+fonction c(m: int, n: int) → booléen:
     rendre 2 * m ≥ n
 
-fonction g(m: entier, n: entier) → entier:
+fonction g(m: int, n: int) → int:
     rendre m
 
-algorithme puissance_2(m: entier, n: entier) → entier:
+algorithme puissance_2(m: int, n: int) → int:
     si c(m, n) == Vrai:
         rendre g(m, n)
     sinon:
@@ -774,10 +775,10 @@ Avec le type `A` étant un couple d'entier et `B` le type entier.
 
 ### <span id="transformer-rec-terminale"></span>Transformer en une forme terminale
 
-La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre [fonction factorielle récursive](../prouver-un-algorithme/#algorithme-factorielle-rec) n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
+La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre fonction factorielle récursive n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
 
 ```pseudocode
-algorithme factorielle(n: entier) → entier:
+algorithme factorielle(n: int) → int:
     si n == 1:  # condition d'arrêt
         rendre 1
     ref f ← factorielle(n-1)
@@ -787,14 +788,14 @@ algorithme factorielle(n: entier) → entier:
 Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé **_accumulateur_** qui va transmettre à la fonction récursive les calculs intermédiaires, dans notre cas le début du calcul de factoriel. Dans notre cas :
 
 ```pseudocode
-fonction factorielle_term(n: entier, acc: entier) → entier:
+fonction factorielle_term(n: int, acc: int) → int:
     si n == 1:
         rendre acc
     rendre factorielle(n-1, n * acc)
 
 
-algorithme factorielle(n: entier  # n > 1
-                      ) → entier:
+algorithme factorielle(n: int  # n > 1
+                      ) → int:
     rendre factorielle_term(n, 1)
 ```
 
@@ -835,19 +836,19 @@ $$
 {% details "corrigé" %}
 
 ```pseudocode
-fonction u_n_term(n: entier, 
-                 u0: entier, 
-                 r: entier, 
-                 acc: entier) → entier:
+fonction u_n_term(n: int, 
+                 u0: int, 
+                 r: int, 
+                 acc: int) → int:
     si n == 0:
         rendre u0 + acc
     rendre u_n_term(n-1, u0, r, r + acc)
 
 
-algorithme u_n(n : entier, 
-               u0: entier, 
-               r : entier
-              ) → entier:
+algorithme u_n(n : int, 
+               u0: int, 
+               r : int
+              ) → int:
     rendre u_n_term(n, u0, r, 0)
 ```
 
@@ -862,10 +863,10 @@ Transformez l'algorithme récursif précédent en un algorithme itératif.
 Le but de la récursion terminale est de facile,ent transformer un algorithme récursif en un algorithme itératif cr la récursion est une boucle `tant que`{.language-pseudocode}.
 
 ```pseudocode
-algorithme u_n(n : entier, 
-               u0: entier, 
-               r : entier
-              ) → entier:
+algorithme u_n(n : int, 
+               u0: int, 
+               r : int
+              ) → int:
     ref acc ← 0
     tant que n > 0:
         acc ← r + acc
@@ -881,9 +882,6 @@ Transformer un algorithme récursif en un algorithme avec une récursion termina
 {% retenir %}
 La technique de l'accumulateur (_ie._ l'ajout de variables) est fondamentale pour la création d'algorithme récursif.
 {% endretenir %}
-
-
-
 
 ## <span id="fonction-McCarty"></span>Fonction 91 de McCarty
 
