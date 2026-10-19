@@ -731,7 +731,7 @@ algorithme palindrome_pas_rec(s: str, i: int) → bool
 {% enddetails %}
 
 
-## Construire un algorithme sous forme terminale
+## Construire un algorithme sous forme terminale avec un accumulateur
 
 {% exercice %}
 Écrivez sous la forme d'une [récursion terminale](../pseudo-code/récursifs-itératifs/#récursion-terminale) l'algorithme de signature :
@@ -772,8 +772,6 @@ algorithme puissance_2(m: int, n: int) → int:
 Avec le type `A` étant un couple d'entier et `B` le type entier.
 
 {% enddetails %}
-
-### <span id="transformer-rec-terminale"></span>Transformer en une forme terminale
 
 La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre fonction factorielle récursive n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
 
@@ -819,7 +817,7 @@ La récursion terminale est un moyen efficace d'implémenter des [suites arithm�
 
 {% exercice %}
 
-Donner un prouvez un algorithme écrit sous la forme d'une récursion terminale permettant de calculer tout élément $u_n$ d'une suite arithmétique définie telle que :
+Donner un prouvez un algorithme écrit sous la forme d'une récursion terminale (avec accumulateur) permettant de calculer tout élément $u_n$ d'une suite arithmétique définie telle que :
 
 <div>
 $$
@@ -855,7 +853,7 @@ algorithme u_n(n : int,
 {% enddetails %}
 {% exercice %}
 
-Transformez l'algorithme récursif précédent en un algorithme itératif.
+Transformez l'algorithme récursif précédent en un algorithme itératif (l'accumulateur devient une variable).
 
 {% endexercice %}
 {% details "corrigé" %}
