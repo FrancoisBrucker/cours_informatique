@@ -18,7 +18,6 @@ eleventyComputed:
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.
 
-
 ## Complexité d'un algorithme
 
 Cette partie s'intéresse à la notion de complexité d'un algorithme et donne les moyens de la calculer.
