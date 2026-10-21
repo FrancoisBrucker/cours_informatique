@@ -1,5 +1,6 @@
 from time import perf_counter
 import random
+import numpy as np
 
 def recherche(T, x):
     for e in T:
@@ -10,7 +11,6 @@ def recherche(T, x):
 
 def calcule_max(n, rep=5):
     T = list(range(n))
-    # random.shuffle(T)
 
     s = 0
     for _ in range(rep):
@@ -23,7 +23,6 @@ def calcule_max(n, rep=5):
 
 def calcule_min(n, rep=5):
     T = list(range(n))
-    # random.shuffle(T)
 
     s = 0
     for _ in range(rep):
@@ -47,34 +46,34 @@ def calcule_moyenne(n, rep=5):
 
 
 
-x = []
+x = np.linspace(1000, 1000000, 10)
 t_min = []
 t_max = []
 t_moy = []
 
-step = 1000000
 print("calculs pour", end=" ")
-for n in range(1, 10 * step, step):
+for n in x:
     print(n, end=" ")
-    x.append(x)
-    t_min.append(calcule_min(n))
-    t_max.append(calcule_max(n))
-    t_moy.append(calcule_moyenne(n))
+
+    t_min.append(calcule_min(int(n)))
+    t_max.append(calcule_max(int(n)))
+    t_moy.append(calcule_moyenne(int(n)))
 print()
 
-# for n in range(1, 10 * step, step):
-#     print(calcule_max(n) / calcule_moyenne(n), calcule_moyenne(n) / n, calcule_max(n) / n)
 
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(20, 5))
 
 ax.set_title("complexités temporelles")
-ax.set_xlabel("valeur de l'exposant")
-ax.set_ylabel("temps de calcul")
+ax.set_xlabel("taille du tableau")
+ax.set_ylabel("temps de calcul en s")
 
-ax.plot(x, t_min, 'o-')
-ax.plot(x, t_max, 'o-')
-ax.plot(x, t_moy, 'o-')
+p1, = ax.plot(x, t_min, 'o-', label="min")
+p2, = ax.plot(x, t_moy, 'o-', label="moyenne")
+p3, = ax.plot(x, t_max, 'o-', label="max")
+
+
+ax.legend(handles=(p1, p2, p3))
 
 plt.show()

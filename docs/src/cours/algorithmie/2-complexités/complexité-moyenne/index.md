@@ -185,19 +185,95 @@ La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).
 
-```python
+![figure](./Figure_1.png)
 
+On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est en environ 2 fois plus petite.
+
+
+Le code qui a permit de générer le graphique est ci-dessous. Il est en python et utilise les modules <https://matplotlib.org/> et <https://numpy.org/>. Nous allons faire un projet pour détailler tout ça juste après.
+
+{% details "code python" %}
+
+```python
+from time import perf_counter
+import random
+import numpy as np
+
+def recherche(T, x):
+    for e in T:
+        if e == x:
+            return True
+    return False
+
+
+def calcule_max(n, rep=5):
+    T = list(range(n))
+
+    s = 0
+    for _ in range(rep):
+        début = perf_counter()
+        recherche(T, n)
+        fin = perf_counter()
+        s += fin - début
+    return s / rep
+
+
+def calcule_min(n, rep=5):
+    T = list(range(n))
+
+    s = 0
+    for _ in range(rep):
+        début = perf_counter()
+        recherche(T, T[0])
+        fin = perf_counter()
+        s += fin - début
+    return s / rep
+
+
+def calcule_moyenne(n, rep=5):
+    T = list(range(n))
+
+    s = 0
+    for _ in range(rep):
+        début = perf_counter()
+        recherche(T, random.randrange(n+1))
+        fin = perf_counter()
+        s += fin - début
+    return s / rep
+
+
+
+x = np.linspace(1000, 1000000, 10)
+t_min = []
+t_max = []
+t_moy = []
+
+print("calculs pour", end=" ")
+for n in x:
+    print(n, end=" ")
+
+    t_min.append(calcule_min(int(n)))
+    t_max.append(calcule_max(int(n)))
+    t_moy.append(calcule_moyenne(int(n)))
+print()
+
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(20, 5))
+
+ax.set_title("complexités temporelles")
+ax.set_xlabel("taille du tableau")
+ax.set_ylabel("temps de calcul en s")
+
+p1, = ax.plot(x, t_min, 'o-', label="min")
+p2, = ax.plot(x, t_moy, 'o-', label="moyenne")
+p3, = ax.plot(x, t_max, 'o-', label="max")
+
+
+ax.legend(handles=(p1, p2, p3))
+
+plt.show()
 
 ```
-
-> TBD on va faire un vrai projet plus tard. Ici juste un exemple pour voir les différentes valeurs.
->
-> Ici pas de dessin. juste voir :
-> - cte pour min : T = cts
-> - max linéaire T/n = cte 
-> - moy un facteur 2 avec max : T'/n = cte et T/T' = 2
-
-
-> TBD code, random avec tout. Dire que l'on va expliciter tout ça dans un projet qui arrive.
-> TBD dire que c'est un moyen simple de mesurer l'implémentation d'un algo. et c'est au final la complexité "utile en pratique".
-> TBD dire que c'est pas en O là : on a vraiment le nb d'opérations.
+{% enddetails %}
