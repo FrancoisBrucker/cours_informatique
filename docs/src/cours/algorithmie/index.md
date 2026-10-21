@@ -52,6 +52,17 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 {% endaller %}
 
 
+> TBD III problème
+> TBD IV structure de donnée :
+>   commencer par complexité amortie pour dire calcul fin de complexité
+>   parler de la première structure de donnée linéaire : la chaine de caractère. Puis algo texte.
+>    ajouter partie complexité amortie avec:
+>    - compteur
+>    - permutations lexicographiques
+>    - KMP.
+
+
+
 
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
 
@@ -84,19 +95,6 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 [exercices : problème du doublon](./exercices-problème-doublons)
 {% endaller %}
 
-### Complexité en moyenne
-
-{% aller %}
-[Complexité en moyenne](./complexité-moyenne)
-{% endaller %}
-
-<!-- TBD
-
-- ajouter un projet de de code. avec tableaux numpy, split de valeurs, enlever le ramasse=miette etc pour bien calculer en moyenne en code
-
-- ajouter des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
-
--->
 
 ### Problème du tri
 
@@ -321,6 +319,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 > 2. pointeurs pour gérer la mémoire
 > 3. problèmes
 > TBD ICI parler pointeur. Faire commencer la partie B.
+> TBD dire que si pointeur et variable pas initialisée ! On ne fait que réserver de la place. Dans le pseudo-code avec ref on mettait tout à None.
 
 <!-- Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
 

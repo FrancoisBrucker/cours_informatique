@@ -34,15 +34,15 @@ Remarquez que si $n$ représente la taille des données, un algorithme de comple
 Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.
 {% endinfo %}
 
-Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability){.externe}. Ce qu'il faut retenir :
+Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability){.externe}. Comme on va le voir :
 
-{% note %}
+{% retenir %}
 
 - il y a une **gigantesque différence** entre complexité logarithmique et complexité linéaire
 - il y a une **énorme différence** entre complexité linéaire et complexité polynomiale, mais moins grande qu'entre logarithmique et linéaire
 - il y a une **gigantesque différence** entre complexité polynomiale et complexité exponentielle (qu'il ne faut donc jamais avoir si possible)
 
-{% endnote %}
+{% endretenir %}
 
 ## Temps pour résoudre un problème de taille $n$
 

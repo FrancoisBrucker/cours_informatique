@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
+Lorsque le nombre d'opérations d'un algorithme varie fortement selon ses entrées ou que l'on veut mesurer physiquement le temps mis par un code pour être exécuté  on a coutume d'utiliser la mesure de complexité en moyenne  qui permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.:
 
 {% definition %}
 La **_complexité en moyenne_** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à toutes les entrées de mêmes paramètres.
@@ -17,8 +17,6 @@ La **_complexité en moyenne_** d'un algorithme est le nombre moyen d'opération
 {% info %}
 Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.
 {% endinfo %}
-
-Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.
 
 ## Calcul de la complexité en moyenne
 
@@ -60,7 +58,7 @@ $$
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche) :
+Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../../1-algorithme/bases-théoriques/définition/#algorithme-recherche) :
 
 ```pseudocode
 algorithme recherche(T: []int, x: int) → bool:
@@ -80,7 +78,7 @@ Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableau de longueur $n$, il 
 {% retenir %}
 Pour calculer facilement une complexité en moyenne il faut pourvoir partitionner l'ensemble des entrées un nombre fini de classes dont :
 
-- la complexité est la même pour des entrées de la même classe, 
+- la complexité est la même pour chaque entrée de la même classe, 
 - il est facile de calculer la probabilité qu'une entrée fasse partie d'une classe donnée
 
 {% endretenir %}
@@ -131,7 +129,7 @@ C & = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
 $$
 </div>
 
-Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `x`{.language-} dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$. On a alors :
+Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `x`{.language-} dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :
 
 <div>
 $$
@@ -161,6 +159,7 @@ On utilisera souvent ce genre de raisonnement si les données sont équiprobable
 
 ## Intérêt
 
+{% note %}
 Pour tout algorithme, on a les inégalités suivantes :
 
 <div>
@@ -169,7 +168,9 @@ $$
 $$
 </div>
 
-La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on exécute l'algorithme (et qu'on a ni beaucoup de chance pour tomber sur la complexité minimale ni pas de chance du tout pour tomber sur la complexité maximale). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :
+{% endnote %}
+
+La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on exécute l'algorithme (et qu'on a ni beaucoup de chance (et qu'on tombe sur la complexité minimale) ni pas de chance du (tout pour tomber sur la complexité maximale)). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :
 
 
 {% retenir %}
@@ -180,4 +181,23 @@ La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on
 
 {% endretenir %}
 
+## En pratique
+
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).
+
+```python
+
+
+```
+
+> TBD on va faire un vrai projet plus tard. Ici juste un exemple pour voir les différentes valeurs.
+>
+> Ici pas de dessin. juste voir :
+> - cte pour min : T = cts
+> - max linéaire T/n = cte 
+> - moy un facteur 2 avec max : T'/n = cte et T/T' = 2
+
+
+> TBD code, random avec tout. Dire que l'on va expliciter tout ça dans un projet qui arrive.
+> TBD dire que c'est un moyen simple de mesurer l'implémentation d'un algo. et c'est au final la complexité "utile en pratique".
+> TBD dire que c'est pas en O là : on a vraiment le nb d'opérations.

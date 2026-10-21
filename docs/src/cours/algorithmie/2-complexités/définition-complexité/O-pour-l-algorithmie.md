@@ -99,7 +99,7 @@ Calculer avec les fonction asymptotiques va nous permettre de donner la complexi
 On cherchera à borner la complexité par une allure de complexité :
 
 - ***complexité constante*** en $\mathcal{O}(1)$
-- ***complexité logarithmique*** en $\mathcal{O}(\log_2(n))$
+- ***complexité logarithmique*** en $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$
 - ***complexité linéaire*** en $\mathcal{O}(n)$
 - ***complexité polynomiale*** en $\mathcal{O}(n^k)$ avec $k>1$ constant le plus petit possible
 - ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible

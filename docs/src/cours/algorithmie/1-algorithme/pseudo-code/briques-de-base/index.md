@@ -42,18 +42,21 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 
 {% definition %}
 
-Un **_objet basique_** peut être d'un des six **_types_** suivants :
+Un **_objet basique_** peut être d'un des cinq **_types_** suivants :
 
 - le type `bool`{.language-} (booléen) qui contient deux objets : `vrai`{.language-} et `faux`{.language-}
 - le type `bit`{.language-} qui contient les 2 entiers : `0`{.language-} et `1`{.language-}
 - le type `int`{.language-} (entier) qui contient tous les entiers relatifs
 - le type `float`{.language-} (réel) qui contient un ensemble dénombrable d'approximations de réels (un nombre fini de décimales)
 - le type `char`{.language-} (caractère) qui contient l'ensemble des glyphes UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
-- le type `str`{.language-} (chaîne de caractères) qui contient l'[ensemble des mots](../../bases-théoriques/définition/#définition-mot) dont l'alphabet est l'ensemble des caractères.
 
 {% enddefinition %}
 
 Un type peut être vu comme un ensemble d'objets : le type entier contient tous les entiers possibles.
+
+#### Chaîne de caractères
+
+Le type `str`{.language-} (chaîne de caractères) représente contient l'[ensemble des mots](../../bases-théoriques/définition/#définition-mot) dont l'alphabet est l'ensemble des caractères. Ce n'est pas un type basique en tant que tel mais est tellement utilisé qu'il fait parti des types toujours présent.
 
 #### Le vide
 
@@ -96,6 +99,14 @@ En réalité, les objets sont stockés dans une partie de la mémoire de l'ordin
 Notez que le tas peut contenir des "trous", c'est-à-dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.
 
 {% endinfo %}
+
+On verra d'autres modèles de pseudo-code plus tard qui gèrent la mémoire de façon plus réaliste mais pour celui que nous présentons maintenant on considérera que :
+
+{% retenir %}
+- la taille en mémoire des objets de type basique (`bool`{.language-} (booléen), `bit`{.language-}, `int`{.language-}, `float`{.language-} et `char`{.language-}) est de 1
+- la taille en mémoire d'une chaîne de caractère est le nombre de caractères qui la compose.
+{% endretenir %}
+
 
 ### <span id="opérations"></span> Opérations
 
@@ -192,6 +203,17 @@ Les variables sont stockées de façon consécutive dans la pile : toutes les va
 
 {% endinfo %}
 
+Concernant la taille en mémoire d'une variable, on considérera pour notre modèle de pseudo-code que :
+
+{% retenir %}
+Toutes les variables ont la même taille : 1 case mémoire.
+
+La valeur d'une variables sera :
+
+- soit `∅`{.language-} (correspond à une variable non associée à un objet), 
+- soit l'indice dans le tableau de la mémoire où commence l'objet qui lui est associé.
+{% endretenir %}
+
 ### Définition d'une variable
 
 Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définit une variable de nom $a$ pouvant référencer un objet de type entier :
@@ -209,9 +231,15 @@ On utilise l'**_opérateur de définition_** `ref`{.language-} pour créer une v
 ref <nom de la variable> <type d'objet qu'elle peut référencer>
 ```
 
+Après sa définition, la valeur de la variable est `∅`{.language-} (elle ne référence aucun objet).
 {% enddefinition %}
 
-En pseudo-code, comme le principal souci est la non-ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas dans d'autres comme le python où une variable peut être associée à des objets de types différents.
+En pseudo-code, comme le principal souci est la non-ambiguïté, une variable ne peut référencer que des objets du type spécifié lors de sa définition. 
+
+{% info %}
+Ce mode de fonctionnement n'est pas utilisé en python où une variable peut être associée à des objets de types différents, mais est suivi par la plupart des langages compilé comme java, rust ou go.
+
+{% endinfo %}
 
 ### Affectation
 

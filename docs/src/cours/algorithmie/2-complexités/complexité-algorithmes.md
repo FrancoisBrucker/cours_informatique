@@ -10,33 +10,35 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.
+On va donner ici quelques règles de calcul de complexité pour que vous puissiez calculer rapidement la complexité d'un algorithme.
 
 ## Une boucle simple
 
+{% retenir "**Quand utiliser**" %}
 Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.
+{% endretenir %}
 
 Par exemple :
 
 ```pseudocode
-tant que condition:
-    bloc d'instructions
+tant que <condition>:
+    # bloc d'instructions
 ```
 
 {% note "**Complexité d'une boucle tant que**" %}
 
 <div>
 $$
-\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
+\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité des instructions du bloc}))
 $$
 </div>
 {% endnote %}
 
-Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :
+Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et on pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autres, pour une boucle `pour chaque`{.language-} :
 
 ```pseudocode
-pour chaque élément de structure:
-    bloc d'instructions
+pour chaque e de <itérable>:
+    # bloc d'instructions
 ```
 
 {% note "**Complexité d'une boucle pour chaque**" %}
@@ -50,7 +52,7 @@ $$
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
-Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences) :
+Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../1-algorithme/projet-itératif-récursif/#algorithme-nombre-occurrences) :
 
 ```pseudocode/
 algorithme nombre(T: []int, x: int) → int:
@@ -85,14 +87,18 @@ Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O
 
 ### Boucles imbriquées indépendantes
 
-Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :
+{% retenir "**Quand utiliser**" %}
+Lorsque plusieurs boucles imbriquées où le nombre de fois où l'on rentre dans chaque boucle est indépendant des autres. 
+{% endretenir %}
+
+Par exemple :
 
 ```pseudocode
 boucle 1 exécutée n1 fois:
     boucle 2 exécutée n2 fois:
         ...
             boucle i exécutée ni fois:
-                bloc d'instructions
+                # bloc d'instructions
 ```
 
 On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.
@@ -102,7 +108,13 @@ On peut utiliser la règle précédente de façon récursive, la partie $\mathca
 La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
 {% endnote %}
 
-Exemple le calcul de $\sum_{1\leq i \leq n}\sum_{1\leq j \leq n} (i+j)$ :
+Exemple le calcul de :
+
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))
+$$
+</div>
 
 ```pseudocode
 ref total ← 0
@@ -112,7 +124,7 @@ pour chaque i de [1 .. n]:
 rendre total
 ```
 
-La boucle en $i$ est exécuté $n$ fois ($i$ va de 1 à $n$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :
+La boucle en $i$ est exécutée $n$ fois ($i$ va de 1 à $n$) donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :
 
 <p>
 \[
@@ -132,19 +144,29 @@ Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendante
 
 Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :
 
+{% retenir "**Quand utiliser**" %}
+Lorsqu'une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (_respectivement_ décroissante).
+{% endretenir %}
+
 {% note "**Complexité de boucles dépendantes monotones**" %}
-Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois et se ramener au cas [des boucles indépendantes](./#complexité-boucles-indépendantes).
+Si une boucle s'exécute un nombre croissant (respectivement décroissant) de fois, on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre de son maximum et se ramener au cas [des boucles indépendantes](./#complexité-boucles-indépendantes).
 {% endnote %}
 
-Exemple le calcul de $\sum_{1\leq i < n}\sum_{i < j \leq n} (i+j)$ :
-On va vérifier cela avec un exemple :
+
+Exemple le calcul de (notez la dépendance de $j$ par rapport à $i$) :
+
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{i < j \leq n} (i+j))
+$$
+</div>
 
 ```pseudocode
 ref total ← 0
 pour chaque i de [1 .. n-1]:
     pour chaque j de [i+1 .. n]:
         total ← i + j
-Rendre total
+affiche total
 ```
 
 Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
@@ -175,65 +197,97 @@ Refaisons le calcul en décomposant toutes les instructions, comme on le ferait 
 
 Notre complexité totale est donc :
 
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
-    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 2) \\
     \dots\\
-  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) +\\
+    (\mathcal{O}(1) + (n-i) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 
 Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :
 
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) + \\
-    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) &+ & (i = 2) \\
     \dots\\
- (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) +\\
+    (\mathcal{O}(1) + (n-i) \cdot \mathcal{O}(1)) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 
 Ce qui donne :
 
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    n \cdot \mathcal{O}(1) + \\
-    (n-1) \cdot \mathcal{O}(1) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    n \cdot \mathcal{O}(1) &+ & (i = 1) \\
+    (n-1) \cdot \mathcal{O}(1) &+ & (i = 2) \\
     \dots\\
+    (n-i) \cdot \mathcal{O}(1) &+  \\
+    \dots\\
+    2 \cdot \mathcal{O}(1) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 
 et donc notre complexité vaut :
 
-$$\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)$$
+<div>
+$$
+\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)
+$$
+</div>
 
 Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :
 
-$$\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)$$
+<div>
+$$
+\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)
+$$
+</div>
 
 Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :
 
-$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$
+<div>
+$$
+\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)
+$$
+</div>
 
 On retrouve bien le résultat attendu.
 
 ### Complexité d'algorithmes récursifs
 
-Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :
 
-{% retenir %}
-Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
+Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. 
+
+{% retenir "**Quand utiliser**" %}
+Pour calculer la complexité d'un algorithme récursif.
 {% endretenir %}
 
-Pour illustrer ce calcul, reprenons [le calcul récursif de la factorielle](../prouver-un-algorithme/#algorithme-factorielle-rec) :
+
+
+{% note "**Complexité d'un algorithme récursif**" %}
+Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
+{% endnote %}
+
+Pour illustrer ce calcul, reprenons [le calcul récursif de la factorielle](../../1-algorithme/problème-preuve/#algorithme-factorielle-rec) :
 
 ```pseudocode/
 algorithme factorielle(n: int) → int:
@@ -244,7 +298,7 @@ algorithme factorielle(n: int) → int:
     rendre n * f
 ```
 
-On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`{.language-} de taille `n = t.longueur - 1`{.language-}. On sait que cet algorithme fonctionne (on l'a déjà prouvé). Le calcul de la complexité se fait en résolvant une équation de récurrence. On pose que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :
+On exécute cette fonction avec un entier $n$ comme paramètre initial. On sait que cet algorithme fonctionne (on l'a déjà prouvé) et on pose que sa complexité est $C(n)$. Son calcul effectif se fait en calculant $C(n)$ comme on le ferait avec un algorithme itératif, ligne à ligne :
 
 1. définition d'une fonction $\mathcal{O}(1)$
 2. une comparaison entre une constante et une variable : $\mathcal{O}(1)$
@@ -253,7 +307,8 @@ On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`
 5. une affectation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$
 6. une multiplication et un retour de fonction : $\mathcal{O}(1)$
 
-Ce qui donne en sommant le tout :
+
+On a alors :
 
 <div>
 $$
@@ -269,9 +324,8 @@ C(n) & = & \mathcal{O}(1) + \\
 $$
 </div>
 
-La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour `n`{.language-} valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$
 
-Trouver $C(n)$ revient à résoudre :
+L'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. peut se résoudre en y ajoutant notre condition d'arrêt (obtenue pour `n`{.language-} valant 1) qui va nous donner $C(1) = \mathcal{O}(1)$ comme condition limite :
 
 <div>
 $$
@@ -284,7 +338,7 @@ $$
 $$
 </div>
 
-On a alors :
+On résout le tout en appliquant itérativement l'équation :
 
 <div>
 $$
@@ -295,8 +349,20 @@ $$
     & = & \dots \\
     & = & i \cdot \mathcal{O}(1) + C(n-i) \\
     & = & \dots \\
-    & = & (n-1) \cdot \mathcal{O}(1) + C(1) = (n-1) \cdot \mathcal{O}(1) + \mathcal{O}(1) \\
-    & = & n \cdot \mathcal{O}(1) = \mathcal{O}(n) \\
+    & = & (n-1) \cdot \mathcal{O}(1) + C(1)\\
+    & = & \mathcal{O}(n) + C(1)\\
+\end{array}
+$$
+</div>
+
+Et on conclut avec notre condition limite :
+
+<div>
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(n) + C(1)\\
+    & = & \mathcal{O}(n) + \mathcal{O}(1)\\
+    & = & \mathcal{O}(n) \\
 \end{array}
 $$
 </div>
@@ -317,7 +383,7 @@ $$
 $$
 </div>
 
-Sont :
+Est :
 
 <div>
 $$
@@ -331,21 +397,23 @@ $$
 
 On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais come le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des donnant engendrant le plus d'instructions.
 
+{% retenir "**Quand utiliser**" %}
+Lorsque l'on peut borner le nombre d'itérations et/ou de récursions d'un algorithme.
+{% endretenir %}
+
+
 Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.
 
 ### Itératif
 
 Reprenons un de nos algorithmes fil rouge
-Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd) :
+Reprenons l'exemple [l'algorithme du pgcd itératif](../../1-algorithme/pseudo-code/récursifs-itératifs/#algorithme-pgcd) :
  :
 
 ```pseudocode/
 algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
     tant que min(a, b) > 0:
-        ref a' ← max(a, b) - min(a, b)
-        ref b' ← min(a, b)
-        a, b ← a', b'
-    
+        a, b ← max(a, b) - min(a, b), min(a, b)
     rendre max(a, b)
 ```
 
@@ -357,9 +425,9 @@ C(a, b) = K \cdot \mathcal{O}(1)
 $$
 </div>
 
-On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération $\max(a, b)$ va décroître strictement jusqu'à ce que $\max(a, b) = \min(a, b)$ ce qui stoppera la boucle à l'itération suivante.
+On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération soit $a$ soit $b$ va décroître strictement jusqu'à ce que $\min(a, b) = 0$ ce qui stoppera la boucle.
 
-On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que :
+Donc au bout de $K = \mathcal{O}(\max(a, b))$ itérations on aura forcément soit $a$ soit $b$ qui vaudra 0 (pas la peine d'être plus précis que cela)  :
 
 <div>
 $$
@@ -369,19 +437,17 @@ $$
 
 ### Récursif
 
-Reprenons l'exemple [l'algorithme du pgcd récursif](../../prouver-un-algorithme/#algorithme-pgcd-rec) :
+Reprenons l'exemple [l'algorithme du pgcd récursif](../../1-algorithme/pseudo-code/récursifs-itératifs/#algorithme-pgcd-rec) :
 
-```pseudocode/
-algorithme pgcd(a, b):  # a, b > 0
-    si a == b:
-        rendre a
-    si a < b:
-        rendre pgcd(b-a, a)
-    sinon
-        rendre pgcd(a-b, b)
+```pseudocode
+algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
+    si min(a, b) == 0:
+        rendre max(a, b)
+    sinon:
+        rendre pgcd(max(a, b) - min(a, b), min(a, b))
 ```
 
-La complexité de cet algorithme dépend de ses paramètres. Notons là : $C(a, b)$. Comme toutes les lignes sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :
+La complexité de cet algorithme dépend de ses paramètres, notons là : $C(a, b)$. Comme toutes les opérations hors récursion sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :
 
 <div>
 $$
@@ -389,7 +455,7 @@ C(a, b) = \mathcal{O}(1) + C(\max(a, b) - \min(a, b), \min(a, b))
 $$
 </div>
 
-En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité l'algorithme factoriel récursif on obtient :
+En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité de l'algorithme factoriel récursif on obtient :
 
 <div>
 $$
@@ -397,7 +463,7 @@ C(a, b) = K(a, b) \cdot \mathcal{O}(1)
 $$
 </div>
 
-Où $K(a, b)$ est le nombre de récursion de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif on peut montrer que $\max(a, b)$ va décroître strictement à chaque itération, et donc que $K(a, b) \leq \max(a, b)$. De là :
+Où $K(a, b)$ est le nombre de récursions de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif soit $a$ soit $b$ va décroître strictement à chaque récursion, donc que $K(a, b) \leq \max(a, b)$, ce qui implique :
 
 <div>
 $$

@@ -10,11 +10,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente.
+{% lien %}
+[comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe}.
+{% endlien %}
 
-On considérera dans la suite de ce cours uniquement des fonctions **positives**, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :
+
+
+Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.
 
 {% attention %}
+On considérera dans la suite de ce cours uniquement des fonctions **positives**, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :
+
 Certaines équivalences ci-dessous ne sont vraies que dans le cas de fonctions positives.
 {% endattention %}
 
@@ -139,12 +145,16 @@ De même, pour tout $N>0$, $A\cdot f(N) \geq c_0\cdot f(N)$ avec $c_0 = A$ ce qu
 Enfin, les règles suivantes (si les fonctions sont positives) permettent de combiner les fonctions asymptotiquement comparables. Elles sont explicitées avec les $\mathcal{O}()$ mais fonctionnent également avec les $\Omega()$ et les $\Theta$ :
 <span id="OA-sommes"></span>
 {% note "**Règle des sommes**" %}
-En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
+En combinant les $\mathcal{O}$, $\Omega$ et $\Theta$ pour $f$ et $g$, deux fonctions positives :
 
-$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
+- $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
+- $\Omega(f(N)) + \Omega(g(N)) \Rightarrow \Omega(f(N) + g(N))$
+- $\Theta(f(N)) + \Theta(g(N)) \Rightarrow \Theta(f(N) + g(N))$
 
 {% endnote %}
 {% details  "preuve", "open" %}
+On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$  ce qui implique le résultat pour les $\Theta$.
+
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
@@ -156,25 +166,33 @@ On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.
 
 <span id="OA-produits"></span>
 {% note "**Règle des produits**" %}
-En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
+En combinant les $\mathcal{O}$, $\Omega$ et $\Theta$ pour $f$ et $g$, deux fonctions positives :
 
-$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
+
+- $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
+- $\Omega(f(N)) \cdot \Omega(g(N)) \Rightarrow \Omega(f(N) \cdot g(N))$
+- $\Theta(f(N)) \cdot \Theta(g(N)) \Rightarrow \Theta(f(N) \cdot g(N))$
 
 {% endnote %}
 {% details  "preuve", "open" %}
+On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$  ce qui implique le résultat pour les $\Theta$.
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
 On a alors $f'(N) \cdot g'(N) \leq c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N > \max(N_0, N'_0)$.
+
 
 {% enddetails %}
 
 Les trois règles suivantes permettent de négliger les fonctions majorées. Elles fonctionnent dans l'autre sens pour les $\Omega$ et ne fonctionnent pas pour les $\Theta$ :
 
 {% note "**Règle des polynômes**" %}
-$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
+- $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $p \leq q$
+- $\Omega(N^q) \Rightarrow \Omega(N^p)$ pour $p \leq q$
 {% endnote %}
 {% details "preuve", "open" %}
+On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$.
+
 
 Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot N^p$ pour $N > N_0$.
 
