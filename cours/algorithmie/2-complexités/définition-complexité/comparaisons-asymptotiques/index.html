@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-calculs/comparaisons-asymptotiques/">Comparaisons asymptotiques</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/définition-complexité/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/définition-complexité/comparaisons-asymptotiques/">Comparaisons asymptotiques</a>
 
 </div>
 </div>
@@ -96,13 +96,21 @@
     
   
 
-  <p>Les comparaisons asymptotiques servent à comparer l'<em>allure</em> de deux fonctions à l'infini : plus grande, plus petite ou équivalente.</p>
-<p>On considérera dans la suite de ce cours uniquement des fonctions <strong>positives</strong>, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :</p>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Comparaison_asymptotique" class="externe">comparaisons asymptotiques</a>.</p>
+</div>
+</div>
+<p>Les comparaisons asymptotiques servent à comparer l'<em>allure</em> de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
+<p>On considérera dans la suite de ce cours uniquement des fonctions <strong>positives</strong>, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :</p>
 <p>Certaines équivalences ci-dessous ne sont vraies que dans le cas de fonctions positives.</p>
 </div>
 </div>
@@ -368,8 +376,12 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Règle des sommes</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :</p>
-<p>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</p>
+<p>En combinant les $\mathcal{O}$, $\Omega$ et $\Theta$ pour $f$ et $g$, deux fonctions positives :</p>
+<ul>
+<li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</li>
+<li>$\Omega(f(N)) + \Omega(g(N)) \Rightarrow \Omega(f(N) + g(N))$</li>
+<li>$\Theta(f(N)) + \Theta(g(N)) \Rightarrow \Theta(f(N) + g(N))$</li>
+</ul>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -389,6 +401,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$  ce qui implique le résultat pour les $\Theta$.</p>
 <p>Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N &gt; N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N &gt; N'_0$.</p>
 <p>On a alors $f'(N) + g'(N) \leq c_0 f(N) +  c'_0 g(N) \leq \max(c_0, c'_0) \cdot (f(N) + g(N))$ pour $N &gt; \max( N_0, N'_0)$.</p>
 <p>On a bien : $f'(N) + g'(N) = \mathcal{O}(f(N) + g(N))$.</p>
@@ -403,8 +416,12 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Règle des produits</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :</p>
-<p>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</p>
+<p>En combinant les $\mathcal{O}$, $\Omega$ et $\Theta$ pour $f$ et $g$, deux fonctions positives :</p>
+<ul>
+<li>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</li>
+<li>$\Omega(f(N)) \cdot \Omega(g(N)) \Rightarrow \Omega(f(N) \cdot g(N))$</li>
+<li>$\Theta(f(N)) \cdot \Theta(g(N)) \Rightarrow \Theta(f(N) \cdot g(N))$</li>
+</ul>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -424,6 +441,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$  ce qui implique le résultat pour les $\Theta$.</p>
 <p>Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N &gt; N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N &gt; N'_0$.</p>
 <p>On a alors $f'(N) \cdot g'(N) \leq c_0f(N) \cdot c'_0g(N) = c_0c'_0 \cdot (f(N)g(N)) $ pour $N &gt; \max(N_0, N'_0)$.</p>
 </div>
@@ -437,7 +455,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Règle des polynômes</strong></p>
 </div><div class="pl-8 mr-8">
-<p>$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$</p>
+<ul>
+<li>$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $p \leq q$</li>
+<li>$\Omega(N^q) \Rightarrow \Omega(N^p)$ pour $p \leq q$</li>
+</ul>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -457,6 +478,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$.</p>
 <p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot N^p$ pour $N &gt; N_0$.</p>
 <p>Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p \leq N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$ et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
 </div>

@@ -96,7 +96,8 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+  <p>Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
@@ -104,7 +105,6 @@
 <p><a href="https://www.youtube.com/watch?v=n8Z7v09zrl0&amp;list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&amp;index=12" class="externe">une intro très bien faite sur la complexité des problèmes algorithmiques</a></p>
 </div>
 </div>
-<p>Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.</p>
 <h2>Complexité d'un algorithme</h2>
 <p>Cette partie s'intéresse à la notion de complexité d'un algorithme et donne les moyens de la calculer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -112,10 +112,37 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="complexit%C3%A9-calculs">Calcul de complexité d'un algorithme</a></p>
+<ol>
+<li><a href="d%C3%A9finition-complexit%C3%A9">Définition et outil de mesure</a></li>
+<li><a href="complexit%C3%A9-algorithmes">Calcul de complexités avec des $\mathcal{O}$</a></li>
+<li><a href=".">Complexité en moyenne</a></li>
+</ol>
 </div>
 </div>
-<p>Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que <a href="projet-it%C3%A9ratif-r%C3%A9cursif">nous avons crées précédemment</a> :</p>
+<p>Utilisation pour calculer théoriquement et en pratique la complexité d'algorithmes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="complexit%C3%A9-algorithmes">Calcul de complexités avec des $\mathcal{O}$</a></li>
+<li><a href="complexit%C3%A9-moyenne">Complexité en moyenne</a></li>
+</ol>
+</div>
+</div>
+<h2>On s'entraîne</h2>
+<h3>Projet</h3>
+<blockquote>
+<p>TBD code
+voir qu'il y a une légère variation à chaque appel même avec les même données. DOnc faire une moyenne.
+pyperf</p>
+</blockquote>
+<h3>Calculs</h3>
+<blockquote>
+<p>TBD exo recherche : min/max/moyenne. Un autre ou moyenne proche du min
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que <a href="projet-it%C3%A9ratif-r%C3%A9cursif">nous avons crées précédemment</a> :</p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -136,15 +163,16 @@
 <blockquote>
 <p>TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)</p>
 </blockquote>
-<blockquote>
-<p>TBD ajouter partie complexité amortie avec:</p>
-<ul>
-<li>compteur</li>
-<li>permutations lexicographiques</li>
-<li>KMP.</li>
-</ul>
-</blockquote>
+<!-- TBD
 
+- ajouter un projet de de code. avec tableaux numpy, split de valeurs, enlever le ramasse=miette etc pour bien calculer en moyenne en code
+- tbd ajouter voir si for est pareil que while en pratique.
+- tbd gagner un peu est non optimal par rapport à ganger un ordre de grandeur.
+- tbd coder les calcul des boucles du cours et voir que effectivement les sommes sont proches.
+
+- ajouter des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
+
+-->
 
 </article>
     </main>

@@ -125,18 +125,19 @@
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>objet basique</em></strong> peut être d'un des six <strong><em>types</em></strong> suivants :</p>
+<p>Un <strong><em>objet basique</em></strong> peut être d'un des cinq <strong><em>types</em></strong> suivants :</p>
 <ul>
 <li>le type <code class="language-">bool</code> (booléen) qui contient deux objets : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
 <li>le type <code class="language-">bit</code> qui contient les 2 entiers : <code class="language-">0</code> et <code class="language-">1</code></li>
 <li>le type <code class="language-">int</code> (entier) qui contient tous les entiers relatifs</li>
 <li>le type <code class="language-">float</code> (réel) qui contient un ensemble dénombrable d'approximations de réels (un nombre fini de décimales)</li>
 <li>le type <code class="language-">char</code> (caractère) qui contient l'ensemble des glyphes UNICODE : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
-<li>le type <code class="language-">str</code> (chaîne de caractères) qui contient l'<a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#d%C3%A9finition-mot">ensemble des mots</a> dont l'alphabet est l'ensemble des caractères.</li>
 </ul>
 </div>
 </div>
 <p>Un type peut être vu comme un ensemble d'objets : le type entier contient tous les entiers possibles.</p>
+<h4>Chaîne de caractères</h4>
+<p>Le type <code class="language-">str</code> (chaîne de caractères) représente contient l'<a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#d%C3%A9finition-mot">ensemble des mots</a> dont l'alphabet est l'ensemble des caractères. Ce n'est pas un type basique en tant que tel mais est tellement utilisé qu'il fait parti des types toujours présent.</p>
 <h4>Le vide</h4>
 <p>En algorithmie on a également coutume de se doter d'un élément vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui sera à la fois considéré comme un type ou un objet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -183,6 +184,19 @@
 <p>En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée <strong>tas</strong>. Chaque case du tas peut contenir <a href="https://fr.wikipedia.org/wiki/Byte">1 byte</a> qui correspond à 8 bits.</p>
 <p><img src="tas.png" alt="tas"></p>
 <p>Notez que le tas peut contenir des &quot;trous&quot;, c'est-à-dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.</p>
+</div>
+</div>
+<p>On verra d'autres modèles de pseudo-code plus tard qui gèrent la mémoire de façon plus réaliste mais pour celui que nous présentons maintenant on considérera que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<ul>
+<li>la taille en mémoire des objets de type basique (<code class="language-">bool</code> (booléen), <code class="language-">bit</code>, <code class="language-">int</code>, <code class="language-">float</code> et <code class="language-">char</code>) est de 1</li>
+<li>la taille en mémoire d'une chaîne de caractère est le nombre de caractères qui la compose.</li>
+</ul>
 </div>
 </div>
 <h3><span id="opérations"></span> Opérations</h3>
@@ -271,6 +285,21 @@
 <p>Les variables sont stockées de façon consécutive dans la pile : toutes les variables sont créées au début de l'algorithme et sont toutes supprimées en même temps à la fin de l'algorithme.</p>
 </div>
 </div>
+<p>Concernant la taille en mémoire d'une variable, on considérera pour notre modèle de pseudo-code que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Toutes les variables ont la même taille : 1 case mémoire.</p>
+<p>La valeur d'une variables sera :</p>
+<ul>
+<li>soit <code class="language-">∅</code> (correspond à une variable non associée à un objet),</li>
+<li>soit l'indice dans le tableau de la mémoire où commence l'objet qui lui est associé.</li>
+</ul>
+</div>
+</div>
 <h3>Définition d'une variable</h3>
 <p>Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définit une variable de nom $a$ pouvant référencer un objet de type entier :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span> <span class="token type class-name">int</span></span></code></pre>
@@ -283,9 +312,18 @@
 <div class="pl-8 mr-8">
 <p>On utilise l'<strong><em>opérateur de définition</em></strong> <code class="language-">ref</code> pour créer une variable. Le format général d'une définition de variable est :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">ref</span> <span class="token operator">&lt;</span>nom de la variable<span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">type</span> d'objet qu'elle peut référencer<span class="token operator">></span></code></pre>
+<p>Après sa définition, la valeur de la variable est <code class="language-">∅</code> (elle ne référence aucun objet).</p>
 </div>
 </div>
-<p>En pseudo-code, comme le principal souci est la non-ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas dans d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
+<p>En pseudo-code, comme le principal souci est la non-ambiguïté, une variable ne peut référencer que des objets du type spécifié lors de sa définition.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce mode de fonctionnement n'est pas utilisé en python où une variable peut être associée à des objets de types différents, mais est suivi par la plupart des langages compilé comme java, rust ou go.</p>
+</div>
+</div>
 <h3>Affectation</h3>
 <p>Une fois la variable créée, sa valeur est <code class="language-">∅</code> : elle est non affectée. Pour l'utiliser dans un programme il faut lui <strong><em>affecter</em></strong> un objet, par exemple pour notre variable <code class="language-">a</code> créée précédemment :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">←</span> <span class="token number">3</span></code></pre>

@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-moyenne/">Complexité en moyenne</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-moyenne/">Complexité en moyenne</a>
 
 </div>
 </div>
@@ -96,7 +96,7 @@
     
   
 
-  <p>Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :</p>
+  <p>Lorsque le nombre d'opérations d'un algorithme varie fortement selon ses entrées ou que l'on veut mesurer physiquement le temps mis par un code pour être exécuté  on a coutume d'utiliser la mesure de complexité en moyenne  qui permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.:</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -114,7 +114,6 @@
 <p>Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.</p>
 </div>
 </div>
-<p>Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.</p>
 <h2>Calcul de la complexité en moyenne</h2>
 <p>Soit $A$ un algorithme dont on veut calculer sa complexité par rapport au paramètre $n$ (par exemple la taille des données). Si $\mathcal{E}_n$ est l'ensemble contenant toutes ses entrées de paramètre $n$ et s'il faut $N(e)$ opérations pour exécuter l'algorithme $A$ avec l'entrée $e$, on a :</p>
 <ul>
@@ -157,7 +156,7 @@ $$
 </div>
 </div>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
-<p>Reprenons l'exemple de <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche">la recherche d'un élément d'un un tableau</a> :</p>
+<p>Reprenons l'exemple de <a href="../../1-algorithme/bases-th%C3%A9oriques/d%C3%A9finition/#algorithme-recherche">la recherche d'un élément d'un un tableau</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
@@ -177,7 +176,7 @@ $$
 <div class="pl-8 mr-8">
 <p>Pour calculer facilement une complexité en moyenne il faut pourvoir partitionner l'ensemble des entrées un nombre fini de classes dont :</p>
 <ul>
-<li>la complexité est la même pour des entrées de la même classe,</li>
+<li>la complexité est la même pour chaque entrée de la même classe,</li>
 <li>il est facile de calculer la probabilité qu'une entrée fasse partie d'une classe donnée</li>
 </ul>
 </div>
@@ -222,7 +221,7 @@ C & = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
 \end{array}
 $$
 </div>
-<p>Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de <code class="language-">x</code> dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$. On a alors :</p>
+<p>Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de <code class="language-">x</code> dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :</p>
 <div>
 $$
 C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
@@ -255,13 +254,20 @@ $$
 </div>
 </div>
 <h2>Intérêt</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p>Pour tout algorithme, on a les inégalités suivantes :</p>
 <div>
 $$
 \mbox{complexité minimale} \leq \mbox{complexité en moyenne} \leq \mbox{complexité (maximale)}
 $$
 </div>
-<p>La complexité en moyenne nous donne <strong><em>le nombre d'opérations attendu</em></strong> si on exécute l'algorithme (et qu'on a ni beaucoup de chance pour tomber sur la complexité minimale ni pas de chance du tout pour tomber sur la complexité maximale). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :</p>
+</div>
+</div>
+<p>La complexité en moyenne nous donne <strong><em>le nombre d'opérations attendu</em></strong> si on exécute l'algorithme (et qu'on a ni beaucoup de chance (et qu'on tombe sur la complexité minimale) ni pas de chance du (tout pour tomber sur la complexité maximale)). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -275,7 +281,24 @@ $$
 </ul>
 </div>
 </div>
+<h2>En pratique</h2>
 <p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+</code></pre>
+<blockquote>
+<p>TBD on va faire un vrai projet plus tard. Ici juste un exemple pour voir les différentes valeurs.</p>
+<p>Ici pas de dessin. juste voir :</p>
+<ul>
+<li>cte pour min : T = cts</li>
+<li>max linéaire T/n = cte</li>
+<li>moy un facteur 2 avec max : T'/n = cte et T/T' = 2</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>TBD code, random avec tout. Dire que l'on va expliciter tout ça dans un projet qui arrive.
+TBD dire que c'est un moyen simple de mesurer l'implémentation d'un algo. et c'est au final la complexité &quot;utile en pratique&quot;.
+TBD dire que c'est pas en O là : on a vraiment le nb d'opérations.</p>
+</blockquote>
 
 
 </div></article>

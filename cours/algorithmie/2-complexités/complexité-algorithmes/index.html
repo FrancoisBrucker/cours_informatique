@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-calculs/complexité-algorithmes/">Calculer la complexité d&#39;algorithmes avec les O</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-algorithmes/">Calculer la complexité d&#39;algorithmes avec les O</a>
 
 </div>
 </div>
@@ -96,12 +96,21 @@
     
   
 
-  <p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d'un algorithme simple.</p>
+  <p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez calculer rapidement la complexité d'un algorithme.</p>
 <h2>Une boucle simple</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.</p>
+</div>
+</div>
 <p>Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">tant que</span> condition<span class="token punctuation">:</span>
-    bloc d'instructions</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">tant que</span> <span class="token operator">&lt;</span>condition<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token comment"># bloc d'instructions</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -111,14 +120,14 @@
 </div><div class="pl-8 mr-8">
 <div>
 $$
-\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
+\mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité des instructions du bloc}))
 $$
 </div>
 </div>
 </div>
-<p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">élément</span> <span class="token mot-boucle keyword">de</span></span> <span class="token builtin">structure</span><span class="token punctuation">:</span>
-    bloc d'instructions</code></pre>
+<p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et on pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autres, pour une boucle <code class="language-">pour chaque</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token operator">&lt;</span>itérable<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token comment"># bloc d'instructions</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -134,7 +143,7 @@ $$
 </div>
 </div>
 <p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
-<p>Illustrons ceci avec l'algorithme qui calcule <a href="../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences">le nombre d'occurrences</a> :</p>
+<p>Illustrons ceci avec l'algorithme qui calcule <a href="../../1-algorithme/projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-nombre-occurrences">le nombre d'occurrences</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
 <span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span></span>
@@ -167,12 +176,22 @@ $$
 </div>
 </div>
 <h3>Boucles imbriquées indépendantes</h3>
-<p>Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque plusieurs boucles imbriquées où le nombre de fois où l'on rentre dans chaque boucle est indépendant des autres.</p>
+</div>
+</div>
+<p>Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
     boucle <span class="token number">2</span> exécutée n2 fois<span class="token punctuation">:</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
             boucle i exécutée ni fois<span class="token punctuation">:</span>
-                bloc d'instructions</code></pre>
+                <span class="token comment"># bloc d'instructions</span></code></pre>
 <p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.</p>
 <div id="complexité-boucles-indépendantes"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -185,13 +204,18 @@ $$
 <p>La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
 </div>
 </div>
-<p>Exemple le calcul de $\sum_{1\leq i \leq n}\sum_{1\leq j \leq n} (i+j)$ :</p>
+<p>Exemple le calcul de :</p>
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))
+$$
+</div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">total</span></span> <span class="token operator">←</span> <span class="token number">0</span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token variable parameter">total</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">j</span>
 <span class="token keyword">rendre</span> <span class="token variable parameter">total</span></code></pre>
-<p>La boucle en $i$ est exécuté $n$ fois ($i$ va de 1 à $n$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :</p>
+<p>La boucle en $i$ est exécutée $n$ fois ($i$ va de 1 à $n$) donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :</p>
 <p>
 \[
 \underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{ligne 5}}
@@ -210,6 +234,16 @@ $$
 <h3><span id="règle-croissance"></span>Boucles dépendantes mais monotones</h3>
 <p>Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.</p>
 <p>Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsqu'une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (<em>respectivement</em> décroissante).</p>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -217,16 +251,20 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Complexité de boucles dépendantes monotones</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois et se ramener au cas <a href="#complexit%C3%A9-boucles-ind%C3%A9pendantes">des boucles indépendantes</a>.</p>
+<p>Si une boucle s'exécute un nombre croissant (respectivement décroissant) de fois, on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre de son maximum et se ramener au cas <a href="#complexit%C3%A9-boucles-ind%C3%A9pendantes">des boucles indépendantes</a>.</p>
 </div>
 </div>
-<p>Exemple le calcul de $\sum_{1\leq i &lt; n}\sum_{i &lt; j \leq n} (i+j)$ :
-On va vérifier cela avec un exemple :</p>
+<p>Exemple le calcul de (notez la dépendance de $j$ par rapport à $i$) :</p>
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{i < j \leq n} (i+j))
+$$
+</div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">total</span></span> <span class="token operator">←</span> <span class="token number">0</span>
 <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token variable parameter">total</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">j</span>
-Rendre <span class="token variable parameter">total</span></code></pre>
+<span class="token keyword">affiche</span> <span class="token variable parameter">total</span></code></pre>
 <p>Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.</p>
 <p>Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :</p>
 <ul>
@@ -271,63 +309,99 @@ Rendre <span class="token variable parameter">total</span></code></pre>
 <li>ligne 5 : $\mathcal{O}(1)$</li>
 </ul>
 <p>Notre complexité totale est donc :</p>
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
-    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 2) \\
     \dots\\
-  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) +\\
+    (\mathcal{O}(1) + (n-i) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 <p>Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :</p>
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) + \\
-    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) &+ & (i = 2) \\
     \dots\\
- (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) +\\
+    (\mathcal{O}(1) + (n-i) \cdot \mathcal{O}(1)) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 <p>Ce qui donne :</p>
-<p>\[
-\begin{aligned}
-    \mathcal{O}(1) + \\
-    n \cdot \mathcal{O}(1) + \\
-    (n-1) \cdot \mathcal{O}(1) + \\
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    n \cdot \mathcal{O}(1) &+ & (i = 1) \\
+    (n-1) \cdot \mathcal{O}(1) &+ & (i = 2) \\
     \dots\\
+    (n-i) \cdot \mathcal{O}(1) &+  \\
+    \dots\\
+    2 \cdot \mathcal{O}(1) &+ & (i = n-1) \\
  \mathcal{O}(1)
-\end{aligned}
-\]</p>
+\end{array}
+$$
+</div>
 <p>et donc notre complexité vaut :</p>
-<p>$$\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)$$</p>
+<div>
+$$
+\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)
+$$
+</div>
 <p>Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :</p>
-<p>$$\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)$$</p>
+<div>
+$$
+\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)
+$$
+</div>
 <p>Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :</p>
-<p>$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$</p>
+<div>
+$$
+\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)
+$$
+</div>
 <p>On retrouve bien le résultat attendu.</p>
 <h3>Complexité d'algorithmes récursifs</h3>
-<p>Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :</p>
+<p>Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour calculer la complexité d'un algorithme récursif.</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité d'un algorithme récursif</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.</p>
 </div>
 </div>
-<p>Pour illustrer ce calcul, reprenons <a href="../prouver-un-algorithme/#algorithme-factorielle-rec">le calcul récursif de la factorielle</a> :</p>
+<p>Pour illustrer ce calcul, reprenons <a href="../../1-algorithme/probl%C3%A8me-preuve/#algorithme-factorielle-rec">le calcul récursif de la factorielle</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token operator">←</span> factorielle<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">n</span> <span class="token operator">*</span> <span class="token variable parameter">f</span></span></code></pre>
-<p>On exécute cette fonction avec comme paramètres initiaux un tableau nommé <code class="language-">t</code> de taille <code class="language-">n = t.longueur - 1</code>. On sait que cet algorithme fonctionne (on l'a déjà prouvé). Le calcul de la complexité se fait en résolvant une équation de récurrence. On pose que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :</p>
+<p>On exécute cette fonction avec un entier $n$ comme paramètre initial. On sait que cet algorithme fonctionne (on l'a déjà prouvé) et on pose que sa complexité est $C(n)$. Son calcul effectif se fait en calculant $C(n)$ comme on le ferait avec un algorithme itératif, ligne à ligne :</p>
 <ol>
 <li>définition d'une fonction $\mathcal{O}(1)$</li>
 <li>une comparaison entre une constante et une variable : $\mathcal{O}(1)$</li>
@@ -336,7 +410,7 @@ Rendre <span class="token variable parameter">total</span></code></pre>
 <li>une affectation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$</li>
 <li>une multiplication et un retour de fonction : $\mathcal{O}(1)$</li>
 </ol>
-<p>Ce qui donne en sommant le tout :</p>
+<p>On a alors :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -350,8 +424,7 @@ C(n) & = & \mathcal{O}(1) + \\
 \end{array}
 $$
 </div>
-<p>La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour <code class="language-">n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
-<p>Trouver $C(n)$ revient à résoudre :</p>
+<p>L'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. peut se résoudre en y ajoutant notre condition d'arrêt (obtenue pour <code class="language-">n</code> valant 1) qui va nous donner $C(1) = \mathcal{O}(1)$ comme condition limite :</p>
 <div>
 $$
 \left\{
@@ -362,7 +435,7 @@ $$
 \right.
 $$
 </div>
-<p>On a alors :</p>
+<p>On résout le tout en appliquant itérativement l'équation :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -372,8 +445,18 @@ $$
     & = & \dots \\
     & = & i \cdot \mathcal{O}(1) + C(n-i) \\
     & = & \dots \\
-    & = & (n-1) \cdot \mathcal{O}(1) + C(1) = (n-1) \cdot \mathcal{O}(1) + \mathcal{O}(1) \\
-    & = & n \cdot \mathcal{O}(1) = \mathcal{O}(n) \\
+    & = & (n-1) \cdot \mathcal{O}(1) + C(1)\\
+    & = & \mathcal{O}(n) + C(1)\\
+\end{array}
+$$
+</div>
+<p>Et on conclut avec notre condition limite :</p>
+<div>
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(n) + C(1)\\
+    & = & \mathcal{O}(n) + \mathcal{O}(1)\\
+    & = & \mathcal{O}(n) \\
 \end{array}
 $$
 </div>
@@ -395,7 +478,7 @@ $$
 \right.
 $$
 </div>
-<p>Sont :</p>
+<p>Est :</p>
 <div>
 $$
 C(n) = \mathcal{O}(n)
@@ -405,17 +488,24 @@ $$
 </div>
 <h2>Cas le pire</h2>
 <p>On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais come le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des donnant engendrant le plus d'instructions.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l'on peut borner le nombre d'itérations et/ou de récursions d'un algorithme.</p>
+</div>
+</div>
 <p>Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.</p>
 <h3>Itératif</h3>
 <p>Reprenons un de nos algorithmes fil rouge
-Reprenons l'exemple <a href="../../#algorithme-pgcd">l'algorithme du pgcd itératif</a> :
+Reprenons l'exemple <a href="../../1-algorithme/pseudo-code/r%C3%A9cursifs-it%C3%A9ratifs/#algorithme-pgcd">l'algorithme du pgcd itératif</a> :
 :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a'</span></span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">        <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">b'</span></span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">        <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">a'</span><span class="token punctuation">,</span> <span class="token variable parameter">b'</span></span>
-<span class="highlight-line">    </span>
+<span class="highlight-line">        <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span></code></pre>
 <p>En notant $K$ le nombre d'itérations de la boucle tant que, comme toutes les lignes sont en $\mathcal{O}(1)$ itérations, la complexité $C(a, b)$ de l'algorithme vaut :</p>
 <div>
@@ -423,35 +513,33 @@ $$
 C(a, b) = K \cdot \mathcal{O}(1)
 $$
 </div>
-<p>On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération $\max(a, b)$ va décroître strictement jusqu'à ce que $\max(a, b) = \min(a, b)$ ce qui stoppera la boucle à l'itération suivante.</p>
-<p>On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que :</p>
+<p>On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération soit $a$ soit $b$ va décroître strictement jusqu'à ce que $\min(a, b) = 0$ ce qui stoppera la boucle.</p>
+<p>Donc au bout de $K = \mathcal{O}(\max(a, b))$ itérations on aura forcément soit $a$ soit $b$ qui vaudra 0 (pas la peine d'être plus précis que cela)  :</p>
 <div>
 $$
 C(a, b) = \mathcal{O}(\max(a, b))
 $$
 </div>
 <h3>Récursif</h3>
-<p>Reprenons l'exemple <a href="../../prouver-un-algorithme/#algorithme-pgcd-rec">l'algorithme du pgcd récursif</a> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b > 0</span></span>
-<span class="highlight-line">    <span class="token keyword">si</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> a</span>
-<span class="highlight-line">    <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span>b<span class="token operator">-</span>a<span class="token punctuation">,</span> a<span class="token punctuation">)</span></span>
-<span class="highlight-line">    <span class="token keyword">sinon</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span>a<span class="token operator">-</span>b<span class="token punctuation">,</span> b<span class="token punctuation">)</span></span></code></pre>
-<p>La complexité de cet algorithme dépend de ses paramètres. Notons là : $C(a, b)$. Comme toutes les lignes sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :</p>
+<p>Reprenons l'exemple <a href="../../1-algorithme/pseudo-code/r%C3%A9cursifs-it%C3%A9ratifs/#algorithme-pgcd-rec">l'algorithme du pgcd récursif</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span>max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité de cet algorithme dépend de ses paramètres, notons là : $C(a, b)$. Comme toutes les opérations hors récursion sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :</p>
 <div>
 $$
 C(a, b) = \mathcal{O}(1) + C(\max(a, b) - \min(a, b), \min(a, b))
 $$
 </div>
-<p>En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité l'algorithme factoriel récursif on obtient :</p>
+<p>En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité de l'algorithme factoriel récursif on obtient :</p>
 <div>
 $$
 C(a, b) = K(a, b) \cdot \mathcal{O}(1)
 $$
 </div>
-<p>Où $K(a, b)$ est le nombre de récursion de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif on peut montrer que $\max(a, b)$ va décroître strictement à chaque itération, et donc que $K(a, b) \leq \max(a, b)$. De là :</p>
+<p>Où $K(a, b)$ est le nombre de récursions de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif soit $a$ soit $b$ va décroître strictement à chaque récursion, donc que $K(a, b) \leq \max(a, b)$, ce qui implique :</p>
 <div>
 $$
 C(a, b) = K(a, b) \cdot \mathcal{O}(1) \leq \max(a, b) \cdot \mathcal{O}(1) = \mathcal{O}(\max(a, b))

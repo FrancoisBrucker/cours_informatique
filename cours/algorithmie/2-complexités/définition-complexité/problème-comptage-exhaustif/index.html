@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mesures de complexités</title>
+    <title>Problème du comptage exhaustif de la compelxité</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Mesures de complexités</h1>
+  <h1>Problème du comptage exhaustif de la compelxité</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/complexité-calculs/">Mesures de complexités</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/définition-complexité/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/2-complexités/définition-complexité/problème-comptage-exhaustif/">Problème du comptage exhaustif de la compelxité</a>
 
 </div>
 </div>
@@ -96,107 +96,78 @@
     
   
 
-  <p>Le calcul de la complexité d'un algorithme est une part importante de l'algorithmie. Elle met en oeuvre des outils puissant et peut nécessiter des des analyses et des raisonnements fins.</p>
-<h2>Complexité algorithmique</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="d%C3%A9finitions">Définitions</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="importance">Importance</a></p>
-</div>
-</div>
-<h2>Problème du comptage exhaustif de la complexité</h2>
-<p>Nous avons calculé explicitement des complexité dans la partie précédente. Vous avez du vous en rendre compte, c'est assez pénible car plusieurs problèmes surviennent.</p>
-<h3>Ligne au compte incertain</h3>
-<p>Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte. Reprenons par exemple un compte que l'on a fait précédemment :</p>
+  <p>Nous avons calculé explicitement des complexités d'algorithmes dans la partie précédente. Vous avez du vous en rendre compte, c'est assez pénible et pose quelques problèmes.</p>
+<h2>Ligne au compte exact incertain</h2>
+<h3>Plusieurs fois la même variable sur ue instruction</h3>
+<p>Certaines lignes n'ont pas le même nombre d'instruction selon comment on compte. Reprenons par exemple un compte que l'on a fait précédemment :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">F<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span></code></pre>
 <p>On a considéré que cette instruction nécessitait 3 lectures de la variable <code class="language-">i</code>. Mais dire que l'on ne lit <code class="language-">i</code> qu'une seule fois aurait-été tout aussi légitime.</p>
-<p>Ou encore le code suivant :</p>
+<h3>itérateurs</h3>
+<p>Considérons le code suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> <span class="token variable parameter">i</span></code></pre>
-<p>Où l'on a considéré que l'on ne calculait pas tout l'intervalle à chaque itération et que l'on savait quel était l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot 3 = 29$ :</p>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">i</span></code></pre>
+<p>On peut très bien considérer que l'on ne calcule pas tout l'intervalle à chaque itération et que l'on sait quel est l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot (1 + 2) = 26$ :</p>
 <ul>
 <li>la première ligne est constituée de :
 <ul>
 <li>2 création de bornes</li>
-<li>8 affectations</li>
+<li>8 affectations de la variable <code class="language-">i</code></li>
 </ul>
 </li>
-<li>l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$</li>
+<li>8 affichages sur la seconde ligne d'une variable qu'il faut aller chercher</li>
 </ul>
-<p>Il aurait été tout aussi légitime de compter différemment, en créant tout le tableau, en stockant la valeur courante, etc. Selon ce que l'on considère le compte serait très différent.</p>
-<h3>Algorithmes équivalents aux comptes très différents</h3>
-<p>Reprenons l'exemple précédent :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> <span class="token variable parameter">i</span></code></pre>
-<p>En remplaçant la boucle <code class="language-">pour chaque</code> par une boucle <code class="language-">tant que</code> pour expliciter le calcul, on obtient :</p>
+<p>Il aurait été tout aussi légitime de compter différemment, en créant et en affectant tout le tableau, en stockant la valeur courante, etc. On aurait eu un compte de :</p>
+<ul>
+<li>création de la variable <code class="language-">i</code></li>
+<li>création d'une variable pour accéder au tableau : 1 instruction</li>
+<li>création du tableau : 8 instructions</li>
+<li>affectations des valeurs au tableau : 2 * 8 instructions (création de l'entier et affectation)</li>
+<li>à chaque itération :
+<ul>
+<li>affectation la variable <code class="language-">i</code></li>
+<li>lecture puis affichage de <code class="language-">i</code></li>
+</ul>
+</li>
+</ul>
+<p>Pour un total de $2 + 8 \cdot 3 + 8 \cdot 3 = 50$ instructions !</p>
+<p>Du simple au double. Et encore, que ce serait il passé si on avait écrit la boucle avec un <code class="language-">tant que</code> ?</p>
+<h2>Algorithmes équivalents aux comptes très différents</h2>
+<p>Remplaçons le code précédent par celui-ci qui lui est équivalent :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">2</span>
 <span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≤</span> <span class="token number">9</span><span class="token punctuation">:</span>
   <span class="token keyword">affiche</span> <span class="token variable parameter">i</span>
   <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !</p>
-<p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>
-<h3>Dépend du code/pseudo-code</h3>
+<h2>Dépend du code/pseudo-code</h2>
 <p>En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.</p>
 <p>L'instruction python <code class="language-">x = 1</code> en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code <code class="language-">x ← 1</code>. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça. Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC). Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).</p>
-<h3>Beaucoup de calcul pour par grand chose</h3>
-<p>Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. En effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :</p>
+<h2>Beaucoup de calcul pour par grand chose</h2>
+<p>Pour notre exemple remplaçons la borne max par n :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">i</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">2</span>
+<span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≤</span> n<span class="token punctuation">:</span>
+  <span class="token keyword">affiche</span> <span class="token variable parameter">i</span>
+  <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>Et reprenons les calculs :</p>
+<ul>
+<li>1er code, méthode de calcul 1. La complexité devient : $2+ 3\cdot n$</li>
+<li>1er code, méthode de calcul 2. La complexité devient : $2 + 6 \cdot n$</li>
+<li>2er code. La complexité devient : $6 + 9n$</li>
+</ul>
+<p>Ces trois codes sont de complexité linéaire en la taille du tableau ce qui suffit largement en algorithmie où c'est l'évolution de la complexité par rapport à la taille des données qui nous intéresse.</p>
+<p>On ne peut de toute façon par faire beaucoup mieux sans connaître exactement sur quelle machine sera exécuté le code. POur nos exemple, quelques soient les choix effectués ils sont tous de complexité linéaire ce qui nous suffit.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.</p>
+<p>En algorithmie, seule l'allure générale et asymptotique de la complexité importe.</p>
 </div>
 </div>
-<h2>Comparaisons asymptotiques</h2>
-<p>Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des <a href="https://fr.wikipedia.org/wiki/Comparaison_asymptotique" class="externe">comparaisons asymptotiques</a>. Avant de les utiliser en algorithmie, commençons par les définir formellement.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="comparaisons-asymptotiques"><em>fonctions</em> de comparaisons asymptotiques</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="O-pour-l-algorithmie">Les $\mathcal{O}$ pour l'algorithmie</a></p>
-</div>
-</div>
-<h2>Comment calculer la complexité d'algorithmes</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="complexit%C3%A9-algorithmes">Calcul de complexités avec des $\mathcal{O}$</a></p>
-</div>
-</div>
-<h2>Complexité d'un code</h2>
-<p>En code, on utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées que des tableaux (des listes ou des dictionnaires en python par exemple). Il faut connaître la complexité de chacune de ces fonctions et de la manipulation de ces structures pour pouvoir calculer la complexité du code produit, utiliser une méthode plutôt qu'une autre pouvant mener à une augmentation dramatique de la complexité.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Lorsque l'on calcule la complexité d'un pseudocode, toutes les méthodes et fonctions doivent être examinées.</p>
-</div>
-</div>
+<p>Si l'optimisation du nombre exacte d'instruction peut-être utile cela ne va servir que pour un code particulier exécuté sur une machine particulière en ayant au départ choisi l'algorithme ayant la meilleure courbe asymptotique possible !</p>
+<p>On l'a vu changer la courbe fait gagner énormément, jouer sur la constante multiplicative ou additive ne fait ganger qu'un peu.</p>
 
 
 </article>
