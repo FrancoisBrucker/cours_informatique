@@ -22,9 +22,7 @@ Cette partie s'intéresse à la notion de complexités pour un algorithme qui pe
 Cette partie s'intéresse à la notion de complexité d'un algorithme et donne les moyens de la calculer.
 
 {% aller %}
-1. [Définition et outil de mesure](./définition-complexité)
-2. [Calcul de complexités avec des $\mathcal{O}$](./complexité-algorithmes)
-3. [Complexité en moyenne]()
+[Définition et outil de mesure](./définitions-mesure-O)
 {% endaller %}
 
 Utilisation pour calculer théoriquement et en pratique la complexité d'algorithmes :
@@ -38,6 +36,7 @@ Utilisation pour calculer théoriquement et en pratique la complexité d'algorit
 
 ### Projet 
 
+> TBD pour aller plus loin timeit et pypertf.
 > TBD code
 > voir qu'il y a une légère variation à chaque appel même avec les même données. DOnc faire une moyenne.
 > pyperf
