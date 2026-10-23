@@ -53,6 +53,7 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 
 > TBD III problème
+> TBD Intermède I : exercices/problèmes et autres
 > TBD IV structure de donnée :
 >   commencer par complexité amortie pour dire calcul fin de complexité
 >   parler de la première structure de donnée linéaire : la chaine de caractère. Puis algo texte.
@@ -60,8 +61,6 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 >    - compteur
 >    - permutations lexicographiques
 >    - KMP.
-
-
 
 
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus

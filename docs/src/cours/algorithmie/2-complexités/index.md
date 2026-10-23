@@ -36,6 +36,10 @@ Utilisation pour calculer théoriquement et en pratique la complexité d'algorit
 
 ### Projet 
 
+{% aller %}
+[Mesurer du code](./compexités-code)
+{% endaller %}
+
 > TBD pour aller plus loin timeit et pypertf.
 > TBD code
 > voir qu'il y a une légère variation à chaque appel même avec les même données. DOnc faire une moyenne.
@@ -47,13 +51,13 @@ Utilisation pour calculer théoriquement et en pratique la complexité d'algorit
 Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif) :
 
 {% aller %}
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite)
+[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./complexités-projet)
 {% endaller %}
 
 On vérifie qu'on sait faire :
 
 {% aller %}
-[exercices non corrigés](./exercices-calculs-compexités)
+[exercices non corrigés](./compexités-exercices)
 {% endaller %}
 
 > TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)
