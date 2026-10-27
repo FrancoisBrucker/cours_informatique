@@ -97,6 +97,9 @@
   
 
   <p>Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :</p>
+<blockquote>
+<p>TBD voir par rapport à au cours algo 1 : turing church.</p>
+</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -124,7 +127,7 @@
 </ul>
 </div>
 </div>
-<p>Une machine c'est donc un <strong>programme</strong> (la fonction de transition) qui agit à partir de <strong>données</strong> (le ruban et l'état interne de la machine). Une machine de Turing n'a d'intérêt que si elle est <strong>exécutée</strong> :</p>
+<p>Une machine c'est donc un <strong>programme</strong> (la fonction de transition) qui agit à partir de <strong>données</strong> (le ruban). Une machine de Turing n'a d'intérêt que si elle est <strong>exécutée</strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -640,7 +643,10 @@ table:
 </div>
 <h2>Sortie et Entrée d'une machine</h2>
 <h3>Sortie</h3>
-<p>Mais si la machine s'arrête, le ruban constitue sa <strong><em>sortie</em></strong>. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :</p>
+<blockquote>
+<p>TBD attention, j'ai changé de convention pour la sortie dans Turing/church// prendre celle là car elle est classique et défini une configuration.
+Mais si la machine s'arrête, le ruban constitue sa <strong><em>sortie</em></strong>. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :</p>
+</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -650,7 +656,7 @@ table:
 <p>La <strong><em>sortie</em></strong> d'une machine de Turing est constituée la partie finie du ruban entourant le curseur allant de :</p>
 <ul>
 <li>la case contenant le caractère <code>1</code> le plus à gauche du curseur ou la case contenant le curseur s'il n'y a que des <code>0</code> à gauche du curseur</li>
-<li>à la case contenant le caractère <code>1</code> le plus à droite la case contenant le curseur s'il n'y a que des <code>0</code> à droite du curseur</li>
+<li>à la case contenant le caractère <code>1</code> le plus à droite du curseur ou la case contenant le curseur s'il n'y a que des <code>0</code> à à droite du curseur.</li>
 </ul>
 </div>
 </div>

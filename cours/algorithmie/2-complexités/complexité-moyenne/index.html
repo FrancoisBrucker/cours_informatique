@@ -285,7 +285,12 @@ $$
 <p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
 <p><img src="Figure_1.png" alt="figure"></p>
 <p>On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est en environ 2 fois plus petite.</p>
-<p>Le code qui a permit de générer le graphique est ci-dessous. Il est en python et utilise les modules <a href="https://matplotlib.org/">https://matplotlib.org/</a> et <a href="https://numpy.org/">https://numpy.org/</a>. Nous allons faire un projet pour détailler tout ça juste après.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le code qui a permit de générer le graphique est ci-dessous. Il est en python et utilise les modules <a href="https://matplotlib.org/">https://matplotlib.org/</a> et <a href="https://numpy.org/">https://numpy.org/</a>. Nous allons faire un projet pour détailler tout ça.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -303,8 +308,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 <span class="token keyword">import</span> random
+<span class="token keyword">import</span> gc
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
 <span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -314,41 +320,40 @@ $$
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 
 
-<span class="token keyword">def</span> <span class="token function">calcule_max</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> f_params<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    gc_actif <span class="token operator">=</span> gc<span class="token punctuation">.</span>isenabled<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
+        gc<span class="token punctuation">.</span>disable<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    s <span class="token operator">=</span> <span class="token number">0</span>
+    t <span class="token operator">=</span> <span class="token boolean">None</span>
     <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        début <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-        fin <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        s <span class="token operator">+=</span> fin <span class="token operator">-</span> début
-    <span class="token keyword">return</span> s <span class="token operator">/</span> rep
+        début <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">(</span><span class="token operator">*</span>f_params<span class="token punctuation">)</span>
+        fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>t <span class="token operator">></span> fin <span class="token operator">-</span> début<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            t <span class="token operator">=</span> fin <span class="token operator">-</span> début
 
-<span class="token keyword">def</span> <span class="token function">calcule_min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
+        gc<span class="token punctuation">.</span>enable<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> t
+
+<span class="token keyword">def</span> <span class="token function">calcule_max</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    s <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        début <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        fin <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        s <span class="token operator">+=</span> fin <span class="token operator">-</span> début
-    <span class="token keyword">return</span> s <span class="token operator">/</span> rep
-
-
-<span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">calcule_min</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    s <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        début <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        fin <span class="token operator">=</span> perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        s <span class="token operator">+=</span> fin <span class="token operator">-</span> début
-    <span class="token keyword">return</span> s <span class="token operator">/</span> rep
-
+<span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    t <span class="token operator">=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">+=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> t <span class="token operator">/</span> rep
 
 
 x <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
@@ -356,13 +361,14 @@ t_min <span class="token operator">=</span> <span class="token punctuation">[</s
 t_max <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 t_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"calculs pour"</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"calculs pour :"</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> n <span class="token keyword">in</span> x<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 
     t_min<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_min<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     t_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_max<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     t_moy<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_moyenne<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    "</span><span class="token punctuation">,</span> t_min<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> t_moy<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> t_max<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 
@@ -372,7 +378,7 @@ fig<span class="token punctuation">,</span> ax <span class="token operator">=</s
 
 ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"complexités temporelles"</span><span class="token punctuation">)</span>
 ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"taille du tableau"</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"temps de calcul en s"</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"temps de calcul en ns"</span><span class="token punctuation">)</span>
 
 p1<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> t_min<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"min"</span><span class="token punctuation">)</span>
 p2<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> t_moy<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"moyenne"</span><span class="token punctuation">)</span>
@@ -381,10 +387,11 @@ p3<span class="token punctuation">,</span> <span class="token operator">=</span>
 
 ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
+</div>
+</div>
 </div>
 
 

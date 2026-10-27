@@ -127,7 +127,7 @@
 <p><a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church" class="externe">Thèse de Church-Turing</a>.</p>
 </div>
 </div>
-<p>La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.</p>
+<p>La thèse de Church-Turing a été initialement formulée pour les machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -148,9 +148,514 @@
 </div>
 </div>
 <p>Avoir un modèle Turing complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.</p>
+<h2>Machine de Turing</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=kMHCl2PGloQ">Des machines de Turing et des castors</a></p>
+</div>
+</div>
+<p>Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Une <strong><em>machine de Turing</em></strong> est composée :</p>
+<ul>
+<li>d'un <strong><em>ruban</em></strong> (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère <code>0</code> soit le caractère <code>1</code></li>
+<li>d'un <strong><em>curseur</em></strong> qui est positionné sur une case du ruban (on suppose que le ruban est infini à gauche et à droite du curseur)</li>
+<li>d'un ensemble fini $Q$ d'<strong><em>états possibles</em></strong> dont on marque un état comme étant l'<strong><em>état initial</em></strong></li>
+<li>d'un <strong><em>état d'acceptation</em></strong>, noté <code class="language-">STOP</code> qui n'est pas dans $Q$</li>
+<li>d'un <strong><em>état courant</em></strong> $q \in Q$</li>
+<li>d'une <strong><em>fonction de transition</em></strong> $\delta(q, r) = (\delta_c(q, r), \delta_d(q, r), \delta_e(q, r))$ dépendant de l'état $q$ de la machine et du caractère $r$ contenu dans la case du ruban pointée par le curseur. Cette fonction définie sur $Q \times \{0, 1\}$ permet de modifier :
+<ul>
+<li>le caractère à écrire sur la case du ruban pointée par le curseur : $\delta_c : Q \times \{0, 1\} \mapsto \{0, 1\}$</li>
+<li>le déplacement du curseur : $\delta_d : Q \times \{0, 1\} \mapsto \{\leftarrow, \rightarrow\}$</li>
+<li>le nouvel état de la machine : $\delta_e : Q \times \{0, 1\} \mapsto Q$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>On peut représenter très simplement une machine de Turing par <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_automates">un automate</a>, par exemple <a href="https://bbchallenge.org/1RB1LB_1LA0LC_1RZ1LD_1RD0RA">cette machine de Turing</a> (l'état initial est $A$) :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center" colspan="2">Départ</th>
+<th style="text-align:center" colspan="3">Arrivée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">état</td>
+<td style="text-align:center">ruban</td>
+<td style="text-align:center">ruban</td>
+<td style="text-align:center">direction</td>
+<td style="text-align:center">état</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">→</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">←</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">←</td>
+<td style="text-align:center">A</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">←</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">→</td>
+<td style="text-align:center">Stop</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">←</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">→</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">→</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>Par l'automate :</p>
+<p><img src="1RB1LB_1LA0LC_1RZ1LD_1RD0RA.png" alt="1RB1LB_1LA0LC_1RZ1LD_1RD0RA">
+Une machine c'est donc un <strong>programme</strong> (la fonction de transition) qui agit à partir de <strong>données</strong> (le ruban). Une machine de Turing n'a d'intérêt que si elle est <strong>exécutée</strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>L'<strong><em>exécution</em></strong> d'une machine de Turing se déroule comme suit :</p>
+<ol>
+<li>initialisation :
+<ol>
+<li>le ruban est constitué uniquement de <code>0</code></li>
+<li>l'état courant de la machine est l'état initial.</li>
+<li>le curseur est placé sur une case du ruban</li>
+</ol>
+</li>
+<li>étape :
+<ol>
+<li>on lit l'état courant $q$ de la machine</li>
+<li>si $q$ vaut l'état d'acceptation <code class="language-">STOP</code> on arrête l'exécution de la machine</li>
+<li>on lit le caractère $r$ dans la case du ruban pointée par le curseur</li>
+<li>on écrit le caractère $\delta_c(q, r)$ dans la case du ruban pointée par le curseur</li>
+<li>on déplace le curseur d'une case à droite ou à gauche selon la valeur de $\delta_d(q, r)$ (à gauche si $\leftarrow$, à droite si $\rightarrow$)</li>
+<li>on change l'état courant de la machine en $\delta_e(q, r)$</li>
+<li>retour en 2.1</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<p>L'exécution d'une machine de Turing ne s'arrête pas forcément. Elle ne le fait que si elle atteint l'état <code class="language-">STOP</code>, ce qui peut ne jamais arriver.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez la machine précédente sur <a href="https://turingmachine.io/">https://turingmachine.io/</a> et attendez qu'elle s'arrête. Son code dans le format du site est :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">blank: '0'
+start state: A
+table:
+  A:
+    0: {write: 1, R: B}
+    1: {write: 1, L: B}
+  B:
+    0: {write: 1, L: A}
+    1: {write: 0, L: C}
+  C:
+    1: {write: 1, L: D}
+  D:
+    0: {write: 1, R: D}
+    1: {write: 0, R: A}
+</code></pre>
+</div>
+</div>
+<p>Remarquez la minimalité du fonctionnement :</p>
+<ul>
+<li>on ne peut déplacer la tête de lecture que d'une case vers la gauche ou vers la droite (il est impossible d'écrire où l'on veut dans la mémoire comme on peut le faire avec un ordinateur classique)</li>
+<li>on ne peut écrire qu'un caractère à la fois (pas d'entier, de réel, rien que <code>0</code> ou <code>1</code>)</li>
+<li>pas de variables</li>
+<li>pas de boucle <code class="language-">while</code> ni de saut</li>
+<li>un unique test entre un état et une case du ruban</li>
+</ul>
+<p>Et pourtant (nous le verrons dans quelque temps), elle capte toutes les possibilités d'un algorithme. Voyons juste ici comment ajouter une entrée et une sortie à une machine de Turing et faisons tourner le tout sur un exemple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Le <strong><em>paramètre d'entrée</em></strong> de l'exécution d'une machine de Turing $M$ est une suite <strong>finie</strong> $E$ (pouvant être vide) de caractères <code>0</code> et <code>1</code>.</p>
+<p>Lors de l'initialisation de l'exécution de la machine on rajoute deux étapes :</p>
+<ol>
+<li>inscription de la chaîne <code>E</code> sur le ruban</li>
+<li>positionnement du curseur sur la case contenant le premier élément de la chaîne.</li>
+</ol>
+<p>L'exécution de la machine $M$ avec l'entrée $E$ s'écrit : $M(E)$</p>
+</div>
+</div>
+<p>Il existe plusieurs définitions de la sortie d'une machine de Turing, nous prenons celle-ci, qui est symétrique à l'entrée :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>La <strong><em>sortie</em></strong> d'une machine de Turing est constituée de la partie finie du ruban allant du curseur à la case contenant le caractère <code>1</code> le plus à droite de celui-ci.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette définition impose que la sortie soit soit <code>0</code> soit finisse par un <code>1</code>. Ce n'est pas forcément gênant puisqu'on peut le supprimer a posteriori.</p>
+</div>
+</div>
+<p>Par exemple si le ruban est :</p>
+<pre><code>···0110001101010000···
+        ^
+</code></pre>
+<p>la sortie sera : <code>0110101</code></p>
+<p>Et si le ruban vaut :</p>
+<pre><code>···0110001101010000···
+                ^
+</code></pre>
+<p>La sortie sera : <code>0</code></p>
+<p>Terminons cette partie avec un exemple de machine qui double l'entrée (doublement unaire) :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="exemple-doublement-batons/">Création d'une machine de Turing doublant son entrée</a></p>
+</div>
+</div>
+<p>On obtient la machine suivante :</p>
+<p><img src="double.png" alt="doublement unaire"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez la machine précédente sur <a href="https://turingmachine.io/">https://turingmachine.io/</a> et attendez qu'elle s'arrête. Son code dans le format du site est ci-après :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">blank: 0
+start state: START
+input: '111'
+table:
+  START:
+    0: {
+      write: 0,
+      R: STOP
+    }
+    1: {
+      write: 0,
+      R: 1
+    }
+  1:
+    0: {
+      write: 0,
+      R: 2
+    }
+    1: {
+      write: 1,
+      R: 1
+    }
+  2:
+    0: {
+      write: 1,
+      R: 3
+    }
+    1: {
+      write: 1,
+      R: 2
+    }
+  3:
+    0: {
+      write: 1,
+      R: 4
+    }
+  4:
+    0: {
+      write: 0,
+      L: 5
+    }
+  5:
+    0: {
+      write: 0,
+      L: 6
+    }
+    1: {
+      write: 1,
+      L: 5
+    }
+  6:
+    0: {
+      write: 0,
+      R: START
+    }
+    1: {
+      write: 1,
+      L: 6
+    }
+
+  STOP:</code></pre>
+</div>
+</details>     
+</div>
+</div>
+</div>
 <h2>Lambda calcul</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://lsv.ens-paris-saclay.fr/~goubault/Lambda/lambda.pdf">https://lsv.ens-paris-saclay.fr/~goubault/Lambda/lambda.pdf</a></p>
+</div>
+</div>
 <p>Le lambda calcul est une autre forme d'écriture équivalente au pseudo-code. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus <em>matheuse</em> de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.</p>
-<p>On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le <a href="https://www.haskell.org/" class="externe">Haskell</a> (il en existe d'autres, comme le <a href="https://ocaml.org/" class="externe">Ocaml</a> par exemple (n')utilisé (qu')en prépa).</p>
+<p>Le lambda calcul est formé d'un ensemble (les $\lambda$-termes) et de deux opérations (les $\alpha-$ et $\beta-$ réductions) sur celui-ci.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $\mathcal{V}$ un ensemble infini dénombrable appelé <strong><em>variables</em></strong>. L'ensemble des <strong><em>$\lambda$-termes</em></strong> sur $\mathcal{V}$ est le plus petit ensemble $\Lambda$ tel que :</p>
+<ul>
+<li>$\mathcal{V} \subset \Lambda$</li>
+<li>si $x, y \in \Lambda$ alors $xy \in \Lambda$ : ce sont <strong><em>les applications</em></strong></li>
+<li>si $x \in \mathcal{V}$ et $u\in \Lambda$, alors $\lambda x \cdot u \in \Lambda$ : ce sont <strong><em>les abstractions</em></strong></li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilisera les parenthèses pour désambiguïser les $\lambda$-termes, mais :</p>
+<ul>
+<li>par défaut une abstraction ira aussi loin que possible. Ainsi $\lambda x \cdot uv = \lambda x \cdot (uv)$ (et pas $(\lambda x \cdot u)v$),</li>
+<li>par défaut une association sera parenthésée à gauche $u_1 u_2 \dots u_n = ((u_1u_2) \dots u_{n-1}) u_n$.</li>
+</ul>
+</div>
+</div>
+<p>On peut voir les abstractions $\lambda x \cdot u$ comme des fonctions de paramètre $x$. Le but du lambda calcul est alors de remplacer ces paramètres par des $\lambda$-termes -- remplacer la variable $x$ par le $\lambda$-terme $v$ dans le $\lambda$-terme $u$ -- pour produire soit d'autres abstractions soit des mots formés de variables.</p>
+<p>C'est ce que modélisent les applications $(\lambda x \cdot u)v$ que l'on peut voir comme le fait d'exécuter $\lambda x \cdot u$ avec $v$ comme paramètre. Par exemple le lambda terme $(\lambda x \cdot ((\lambda y \cdot y)x)) z$ signifie que l'on exécute la fonction $\lambda x \cdot ((\lambda y \cdot y)x)$ avec $z$ comme valeur de paramètre. On obtient ainsi $(\lambda y \cdot y) z$ qui correspond à l'exécution du $\lambda$-terme $\lambda y \cdot y$ et on obtient au final : $z$.</p>
+<p>Notez que le parenthésage est important puisque $(\lambda x \cdot \lambda y \cdot yx)z$ donnerait $\lambda y \cdot yz$ qui ne correspond plus à une exécution mais à un lambda terme <em>irréductible</em>.</p>
+<p>On ne peut cependant pas exécuter, on dit <em>réduire</em> puisqu'on les raccourcit, n'importe quel $\lambda$-terme. Par exemple :</p>
+<div>
+$$
+(\lambda x \cdot x \lambda x \cdot {\color{red}x})z
+$$
+</div>
+<p>est ambigu. Le $x$ rouge correspond-il au paramètre de la première ou de la seconde abstraction ? Comme on ne peut se permettre d'ambiguïté, on se rajoute une règle de construction de combinaisons de nos abstractions qui s'assure que l'on ne réutilise pas des variables déjà utilisées comme paramètre :</p>
+<ul>
+<li>on ne peut écrire $\lambda x \cdot u$ que si $x$ n'est pas un paramètre d'une abstraction présente dans $u$,</li>
+<li>on ne peut écrire $(\lambda x \cdot u) v$ que si aucun paramètre d'une abstraction présente dans $u$ n'est une variable utilisée dans $v$.</li>
+</ul>
+<p>Comme on a une infinité de variables à notre disposition, c'est toujours possible en renommant si nécessaire les paramètres de $u$ par une variable non encore utilisée. Formalisons cette opération :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Pour un $\lambda$-terme $u$ on définit ses <strong><em>variables libres $\operatorname{fv}(u)$</em></strong>  (<em>free variable</em>) et ses <strong><em>variables liées $\operatorname{bv}(u)$</em></strong> (<em>bound variable</em>) récursivement :</p>
+<ul>
+<li>$\operatorname{fv}(x) = \{x\}$ et $\operatorname{bv}(x) = \emptyset$ si $x$ est une variable,</li>
+<li>$\operatorname{fv}(uv) = \operatorname{fv}(u) \cup \operatorname{fv}(v)$ et $\operatorname{bv}(uv) = \operatorname{bv}(u) \cup \operatorname{bv}(v)$ pour deux $\lambda$-termes $u$ et $v$</li>
+<li>$\operatorname{fv}(\lambda x\cdot u) = \operatorname{fv}(u) \backslash\{x\}$ et $\operatorname{bv}(\lambda x\cdot u) = \operatorname{bv}(u) \cup \{x\}$</li>
+</ul>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $x\in \mathcal{V}$ et $u$, $v$ deux $\lambda$-termes tels que :</p>
+<ul>
+<li>$x \notin \operatorname{bv}(u)$</li>
+<li>$\operatorname{fv}(v) \cap \operatorname{bv}(u) = \emptyset$</li>
+</ul>
+<p><strong><em>une substitution</em></strong> de $x$ par $v$ dans $u$ est l'opération définie récursivement telle que :</p>
+<div>
+$$
+u[x \coloneqq v] \coloneqq 
+\begin{cases}
+v & \text{si } u = x\\
+u & \text{si } x \neq u \in \mathcal{V}\\ 
+(u_1[x \coloneqq v])(u_2[x \coloneqq v]) & \text{si } u = u_1u_2\\ 
+\lambda y \cdot (u'[x \coloneqq v]) & \text{si } u = \lambda y \cdot u'\\ 
+\end{cases}
+$$
+</div>
+</div>
+</div>
+<p>On peut maintenant définir le renommage d'un paramètre :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $\lambda x \cdot u$ une abstraction et $y$ une variable tels que $x, y \notin \operatorname{bv}(u)$, un <strong><em>$\alpha$-renommage</em></strong> est l'opération qui consiste à remplacer : $\lambda x \cdot u$ par $\lambda y \cdot u[x \coloneqq y]$.</p>
+</div>
+</div>
+<p>Toutes ces précautions nous permettent de définir proprement une &quot;<em>exécution</em>&quot; d'un $\lambda$-terme, appelée $\beta$-réduction :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>La <strong><em>$\beta$-réduction</em></strong> d'un $\lambda$-terme $(\lambda x \cdot u) v$ tel que $x \notin \operatorname{bv}(u)$ et $\operatorname{fv}(v) \cap \operatorname{bv}(u) = \emptyset$, est l'opération qui la remplace par $u[x \coloneqq v]$.</p>
+</div>
+</div>
+<p>En lambda calcul on ne manipule que des abstractions. Elles vont nous servir à la fois à créer des algorithmes et des objets. Deux abstractions sont égales à un renommage près de leurs paramètres, ce qui est aisé à faire. Montrons un peu son fonctionnement en créant les entiers grâce aux abstractions suivantes :</p>
+<ul>
+<li>$\lceil 0\rceil \coloneqq \lambda f \cdot\lambda x \cdot x$</li>
+<li>$\operatorname{succ} \coloneqq \lambda n \cdot\lambda f\cdot\lambda x \cdot f (n f x) $</li>
+<li>$\lceil i+1 \rceil \coloneqq \operatorname{succ} \lceil i \rceil$</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On a alors :</p>
+<div>
+$$
+\lceil i \rceil = \lambda f \cdot \lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots))
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Par récurrence :</p>
+<div>
+$$
+\begin{array}{lcl}
+\lceil i+1 \rceil &=& \operatorname{succ} \lceil i \rceil\\
+&=& \operatorname{succ} (\lambda f \cdot \lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots)))\\
+&=& (\lambda n \cdot\lambda f\cdot\lambda x \cdot f (n f x)) (\lambda f \cdot \lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots)))\\
+&=& \lambda f\cdot\lambda x \cdot f ((\lambda f \cdot \lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots)))) f x) \\
+&=& \lambda f\cdot\lambda x \cdot f (((\lambda f \cdot \lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots)))) f) x) \\
+&=& \lambda f\cdot\lambda x \cdot f ((\lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots)))) x) \\
+&=& \lambda f\cdot\lambda x \cdot f(\underbracket{f(f( \dots (f}_{\text{i>0 fois}}x)\dots))) \\
+&=& \lambda f\cdot\lambda x \cdot \underbracket{f(f( \dots (f}_{\text{i+1 fois}}x)\dots))) \\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>La preuve de la proposition précédente montre bien la façon de procéder avec les abstractions : on commence par supprimer les paramètres pour obtenir une suite de variables qu'on recombine ensuite en abstractions. Ce processus de réécriture est tellement puissant qu'il permet de faire exactement la même chose qu'avec des machines de Turing !</p>
+<p>Maintenant qu'on a des entiers, on peut définir une abstraction qui va nous faire le doublement d'un entier :</p>
+<div>
+$$
+\operatorname{dbl} \coloneqq \lambda n \lambda f \lambda x \cdot n f (n f x)
+$$
+</div>
+<p>Vérifions-le :</p>
+<div>
+$$
+\begin{array}{lcl}
+\operatorname{dbl} \lceil n \rceil
+&=& (\lambda n \lambda f \lambda x \cdot n f (n f x)) \lceil n \rceil\\
+&=& \lambda f \lambda x \cdot \lceil n \rceil f (\lceil n \rceil f x)\\
+&=& \lambda f \lambda x \cdot \lceil n \rceil f (f(f(f(\dots (fx) \dots))))\\
+&=& \lambda f \lambda x \cdot (\lceil n \rceil f) [f(f(f(\dots (fx) \dots)))]\\
+&=& \lambda f \lambda x \cdot (\lambda x \cdot f(f(f(\dots (fx) \dots)))) [f(f(f(\dots (fx) \dots)))]\\
+&=& \lambda f \lambda x  \cdot f(f(f(\dots (fx) \dots))))\\
+&=& \lceil 2n \rceil
+\end{array}
+$$
+</div>
+<p>L'abstraction $\operatorname{dbl}$ peut être réduite par des entiers pour recréer d'autres entiers. En lambda calcul un type d'objet est une famille d'abstractions qui peut être appliquée à d'autres abstractions les acceptant. Définir des types, des objets et des algorithmes est donc identique : ce sont des abstractions.</p>
+<p>Cet exemple avec des entiers se généralise aux boucles, conditions et même à la récursion. On peut ainsi coder tout ce que l'on peut faire avec un pseudo-code, et cela s'implémente en pratique sous forme du paradigme de programmation appelé <strong><em>programmation fonctionnelle</em></strong>. Le tout premier langage de programmation, <a href="https://fr.wikipedia.org/wiki/Lisp">le LISP</a> était d'ailleurs de ce type car faire un interpréteur pour ce type de programmation est &quot;facile&quot;. Actuellement, les principaux représentants de ce style de programmation sont le <a href="https://www.haskell.org/" class="externe">Haskell</a> ou encore le <a href="https://ocaml.org/" class="externe">Ocaml</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -167,7 +672,7 @@
 </ol>
 </div>
 </div>
-<p>Cette façon de programmer est très liée aux types et a permis quelques avancées dans la vérification automatique des types.</p>
+<p>Enfin, cette façon de programmer est très liée aux types et a permis quelques avancées dans leur vérification automatique en programmation &quot;<em>normale</em>&quot;.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -186,12 +691,62 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'exemple de système Turing complet le plus simple que je connaisse est l'automate uni-dimensionnel respectant la <a href="https://en.wikipedia.org/wiki/Rule_110" class="externe">règle 110</a>.</p>
+<p>L'exemple de système Turing complet le plus simple que je connaisse est l'automate unidimensionnel respectant la <a href="https://en.wikipedia.org/wiki/Rule_110" class="externe">règle 110</a>.</p>
 <p>Jetez-y un coup d'œil, c'est assez bluffant.</p>
 </div>
 </div>
+<p>Comme le jeu de la vie est Turing complet, on peut coder le doublement de bâtons !</p>
+<p><img src="double-jeu-de-la-vie.png" alt="doublement de bâtons avec le jeu de la vie"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Copiez/collez le code suivant dans <a href="https://copy.sh/life/">https://copy.sh/life/</a> pour tester par vous-même.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Doublement de 3 bâtons au <a href="https://conwaylife.com/wiki/Run_Length_Encoded" class="externe">format RLE</a>.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">#C Doubleur de batons : 3 planeurs NE -> 6 planeurs SW
+x = 231, y = 164, rule = B3/S23
+206bo$206bobo$42bo152b2o12b2o6b2o$40bobo152b2o12b2o4bo3bo$30b2o6b2o12b
+2o155b2o3bo5bo8b2o$29bo3bo4b2o12b2o152bobo4b2obo3bo8b2o$18b2o8bo5bo3b
+2o166bo7bo5bo$18b2o8bo3bob2o4bobo172bo3bo$28bo5bo7bo174b2o$29bo3bo$30b
+2o121$31bo$31b2o$30bobo13$16bo$16b2o$15bobo13$bo$b2o$obo!</code></pre>
+<p>Le code a été créé par Claude.</p>
+</div>
+</details>     
+</div>
+</div>
+</div>
+<p>Le mode de fonctionnement est très proche d'un ordinateur. On a deux générateurs de <a href="https://fr.wikipedia.org/wiki/Planeur_(jeu_de_la_vie)" class="externe">planeurs</a> (en haut à gauche et à droite) cadencés à la même fréquence. Notre entrée (les 3 planeurs en bas à gauche) va retarder le générateur de gauche pour ne produire que 6 planeurs en sortie (en bas à droite). C'est malin et se généralise à tout algorithme.</p>
 <h2>Langages exotiques</h2>
 <p>Si la plupart des langages informatiques sont clairement Turing complets, il existe des langages bizarres, nommés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique" class="externe">langages de programmation exotiques</a>, qui sont aussi Turing complets. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instructions comme le célèbre <a href="https://www.google.com/search?q=brainfuck" class="externe">Brainfuck</a>, à être marrants comme le <a href="https://www.dangermouse.net/esoteric/piet.html" class="externe">Piet</a> dont le but est de créer des programmes sous la forme d'un tableau de <a href="https://fr.wikipedia.org/wiki/Piet_Mondrian" class="externe">Piet Mondrian</a> ou encore à faire des ponts entre disciplines comme le <a href="https://www.youtube.com/watch?v=GIPtnEIQCBM" class="externe">Fractran</a>.</p>
+<p>En Fractran par exemple, le doublement de bâtons peut s'écrire avec l'algorithme $[\frac{9}{2}]$. Avec une entrée de type $2^n$, l'algorithme rendra une sortie de type $3^{2n}$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que notre algorithme de doublement de bâtons fonctionne.</p>
+</div>
+</div>
 <h2>Turing complet par inadvertence</h2>
 <p>De nombreuses applications ou jeux sont Turing-complets par inadvertence. Par exemple :</p>
 <ul>
