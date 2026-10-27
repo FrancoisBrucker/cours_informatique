@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Exemple du doublement de batons"
+title: "Exemple du doublement de bâtons"
 
 eleventyNavigation:
   order: 1
@@ -16,20 +16,20 @@ Faire de l'arithmétique avec une machine de Turing. Comme on ne peut qu'écrire
 
 ## Problème
 
-Nous voulons créer une machine de Turing qui prend en entrée un suite finie de $k$ `1` ($k$ _bâtons_) et rend comme sortie une suite de $2k$ `1` ($2k$ _bâtons_).
+Nous voulons créer une machine de Turing qui prend en entrée une suite finie de $k$ `1` ($k$ _bâtons_) et rend comme sortie une suite de $2k$ `1` ($2k$ _bâtons_).
 
 Cette machine fait l'opération _multiplier par 2 unaire_.
 
 ## Idée
 
-Chaque baton en entrée doit être doublé, mais :
+Chaque bâton en entrée doit être doublé, mais :
 
 - comme une machine de Turing n'a pas de variable on ne peut pas utiliser de compteur de boucle
-- que le nombre d'état est constant : on ne peut pas les utiliser pour faire un compteur de boucle ($n$ états ne permettraient que de traiter les nombre de taille au plus $n$)
+- le nombre d'états est constant : on ne peut pas les utiliser pour faire un compteur de boucle ($n$ états ne permettraient que de traiter les nombres de taille au plus $n$)
 
 Il faut pouvoir trouver une boucle principale d'action et avoir un moyen simple de vérifier les fins de boucle et de revenir en début de boucle si nécessaire.
 
-L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérativement un bâton à l'entrée et d'en ajouter 2 à la sortie. Lorsque l'on aura supprimé tous les bâtons de l'entrée, il ne restera que la sortie et la machine s'arrêtera :
+L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérativement un bâton à l'entrée et en en ajoutant 2 à la sortie. Lorsque l'on aura supprimé tous les bâtons de l'entrée, il ne restera que la sortie et la machine s'arrêtera :
 
 ```
 000①10000000000
@@ -60,7 +60,7 @@ L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérati
 000000①11100000
 ```
 
-Ou de façon animée avec 3 batons :
+Ou de façon animée avec 3 bâtons :
 
 ![doublement de bâtons](./turing_double_batons.gif)
 
@@ -127,7 +127,7 @@ TROIS|   0  |  QUATRE     |     1    |  droite
 
 ### On remonte la sortie
 
-Il faut maintenant remonter l'entrée :
+Il faut maintenant remonter la sortie :
 
 ```
 ...
@@ -208,7 +208,7 @@ Ce qui permet de continuer comme si de rien n'était :
 
 ### On STOP si on a fini
 
-Il nous reste plus qu'à gérer le stop :
+Il ne nous reste plus qu'à gérer le stop :
 
 ```
 ...
@@ -268,76 +268,3 @@ ce qui donne comme exécution complète en 25 opérations :
 24 : 00⓪11110  START
 25 : 000①1110  STOP
 ```
-
-Et maintenant le code :
-
-{% exercice %}
-Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/>{.externe} et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.
-{% endexercice %}
-{% details "solution" %}
-
-```
-blank: 0
-start state: START
-input: '111'
-table:
-  START:
-    0: {
-      write: 0,
-      R: STOP
-    }
-    1: {
-      write: 0,
-      R: UN
-    }
-  UN:
-    0: {
-      write: 0,
-      R: DEUX
-    }
-    1: {
-      write: 1,
-      R: UN
-    }
-  DEUX:
-    0: {
-      write: 1,
-      R: TROIS
-    }
-    1: {
-      write: 1,
-      R: DEUX
-    }
-  TROIS:
-    0: {
-      write: 1,
-      R: QUATRE
-    }
-  QUATRE:
-    0: {
-      write: 0,
-      L: CINQ
-    }
-  CINQ:
-    0: {
-      write: 0,
-      L: SIX
-    }
-    1: {
-      write: 1,
-      L: CINQ
-    }
-  SIX:
-    0: {
-      write: 0,
-      R: START
-    }
-    1: {
-      write: 1,
-      L: SIX
-    }
-
-  STOP:
-```
-
-{% enddetails %}

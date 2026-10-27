@@ -14,6 +14,8 @@ eleventyComputed:
 
 Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :
 
+
+> TBD voir par rapport à au cours algo 1 : turing church.
 {% definition %}
 Une **_machine de Turing_** est composée :
 
@@ -29,7 +31,7 @@ Une **_machine de Turing_** est composée :
   - la position du curseur : $\delta_d : Q \times \\{0, 1\\} \mapsto \\{\leftarrow, \rightarrow\\}$
     {% enddefinition %}
 
-Une machine c'est donc un **programme** (la fonction de transition) qui agit à partir de **données** (le ruban et l'état interne de la machine). Une machine de Turing n'a d'intérêt que si elle est **exécutée** :
+Une machine c'est donc un **programme** (la fonction de transition) qui agit à partir de **données** (le ruban). Une machine de Turing n'a d'intérêt que si elle est **exécutée** :
 
 {% definition %}
 L'**_exécution_** d'une machine de Turing se déroule comme suit :
@@ -45,7 +47,7 @@ L'**_exécution_** d'une machine de Turing se déroule comme suit :
    5. on déplace le curseur d'une case à droite ou à gauche selon la valeur de $\delta_d(q, r)$ (à gauche si $\leftarrow$, à droite si $\rightarrow$)
    6. on change l'état courant de la machine en $\delta_e(q, r)$
    7. retour en 2.1
-      {% enddefinition %}
+{% enddefinition %}
 
 L'exécution d'une machine de Turing ne s'arrête pas forcément. Elle ne le fait que si elle atteint l'état `STOP`{.language-}, ce qui peut ne jamais arriver.
 
@@ -354,14 +356,15 @@ table:
 
 ### Sortie
 
+> TBD attention, j'ai changé de convention pour la sortie dans Turing/church// prendre celle là car elle est classique et défini une configuration.
 Mais si la machine s'arrête, le ruban constitue sa **_sortie_**. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :
 
 {% definition %}
 La **_sortie_** d'une machine de Turing est constituée la partie finie du ruban entourant le curseur allant de :
 
 - la case contenant le caractère `1` le plus à gauche du curseur ou la case contenant le curseur s'il n'y a que des `0` à gauche du curseur
-- à la case contenant le caractère `1` le plus à droite la case contenant le curseur s'il n'y a que des `0` à droite du curseur
-  {% enddefinition %}
+- à la case contenant le caractère `1` le plus à droite du curseur ou la case contenant le curseur s'il n'y a que des `0` à à droite du curseur.
+{% enddefinition %}
 
 Par exemple si le ruban est :
 

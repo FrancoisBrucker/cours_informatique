@@ -3,6 +3,11 @@ layout: layout/post.njk
 
 title: Mesures de complexités
 
+eleventyNavigation:
+  prerequis: 
+    - "/cours/coder-et-développer/apprendre-programmation/coder-projets/"
+
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -37,31 +42,35 @@ Utilisation pour calculer théoriquement et en pratique la complexité d'algorit
 ### Projet 
 
 {% aller %}
-[Mesurer du code](./compexités-code)
+[Mesurer du code](./projet-code)
 {% endaller %}
 
 > TBD pour aller plus loin timeit et pypertf.
 > TBD code
 > voir qu'il y a une légère variation à chaque appel même avec les même données. DOnc faire une moyenne.
 > pyperf
-
+ 
 ### Calculs
 
 > TBD exo recherche : min/max/moyenne. Un autre ou moyenne proche du min
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif) :
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](../1-algorithme/projet) :
 
 {% aller %}
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./complexités-projet)
+[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet)
 {% endaller %}
 
+> TBD k-moyenne de la partie non corrigée. Elle mérite d'être corrigée
+> TBD ne garder que les exos qui font sens. Et de difficulté croissante.
+> 
 On vérifie qu'on sait faire :
 
 {% aller %}
-[exercices non corrigés](./compexités-exercices)
+[exercices non corrigés](./exercices-non-corrigés)
 {% endaller %}
 
 > TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)
-
+> TBD égalité de mots binaires. max O(n) en moyenne O(2)
+> 
 <!-- TBD
 
 - ajouter un projet de de code. avec tableaux numpy, split de valeurs, enlever le ramasse=miette etc pour bien calculer en moyenne en code

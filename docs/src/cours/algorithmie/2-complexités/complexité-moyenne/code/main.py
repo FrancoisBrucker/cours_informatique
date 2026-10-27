@@ -10,7 +10,7 @@ def recherche(T, x):
     return False
 
 
-def calcul(f, param, rep=5):
+def calcul(f, f_params, rep=5):
     
     gc_actif = gc.isenabled()
     if gc_actif:
@@ -19,7 +19,7 @@ def calcul(f, param, rep=5):
     t = None
     for _ in range(rep):
         début = perf_counter_ns()
-        f(*param)
+        f(*f_params)
         fin = perf_counter_ns()
 
         if (t is None) or (t > fin - début):
@@ -51,13 +51,14 @@ t_min = []
 t_max = []
 t_moy = []
 
-print("calculs pour", end=" ")
+print("calculs pour :")
 for n in x:
-    print(n, end=" ")
+    print(n)
 
     t_min.append(calcule_min(int(n)))
     t_max.append(calcule_max(int(n)))
     t_moy.append(calcule_moyenne(int(n)))
+    print("    ", t_min[-1], t_moy[-1], t_max[-1])
 print()
 
 

@@ -2,6 +2,7 @@
 layout: layout/post.njk
 
 title: "Partie I : Écrire des algorithmes"
+
 eleventyNavigation:
   prerequis: 
     - "/cours/coder-et-développer/apprendre-programmation/concepts/"
@@ -41,19 +42,15 @@ On peut maintenant définir une grammaire permettant de décrire des algorithmes
 
 ### <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
 
-> TBD à regrouper en un seul gros truc.
-
 Une série de problèmes algorithmiques à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris.
 
 {% aller %}
-1. [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif)
-2. [Projet : techniques de récursion](./projet-techniques-de-récursion)
+[Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet)
 {% endaller %}
-
 
 
 On vérifie qu'on sait faire :
 
 {% aller %}
-[exercices non corrigés](./exercices-itératif-récursif)
+[exercices non corrigés](./exercices-non-corrigés)
 {% endaller %}

@@ -207,21 +207,22 @@ def recherche(T, x):
     return False
 
 
-def calcul(f, param, rep=5):
-    gc_actif = gc.isenabled()    # déactive si nécessaire le ramasse-miette
+def calcul(f, f_params, rep=5):
+    
+    gc_actif = gc.isenabled()
     if gc_actif:
         gc.disable()
 
     t = None
     for _ in range(rep):
         début = perf_counter_ns()
-        f(*param)
+        f(*f_params)
         fin = perf_counter_ns()
 
-        if (t is None) or (t > fin - début): 
+        if (t is None) or (t > fin - début):
             t = fin - début
 
-    if gc_actif:               # réactive si nécessaire le ramasse-miette
+    if gc_actif:
         gc.enable()
     
     return t
@@ -236,7 +237,6 @@ def calcule_min(n):
 
 def calcule_moyenne(n, rep=10):
     T = list(range(n))
-
     t = calcul(recherche, (T, random.randrange(n+1)))
     for _ in range(rep-1):
         t += calcul(recherche, (T, random.randrange(n+1)))
