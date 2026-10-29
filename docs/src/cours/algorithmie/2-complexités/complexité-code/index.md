@@ -408,4 +408,4 @@ Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temp
 
 ## Représentation graphique
 
-> TBD numpy linearsplit.
+> TBD numpy linearsplit ? (à regarder par rapport à ce que l'on a fait en exponentiation)
