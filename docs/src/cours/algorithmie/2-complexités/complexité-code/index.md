@@ -3,6 +3,10 @@ layout: layout/post.njk
 
 title: "Projet : mesurer la complexité d'un code"
 
+eleventyNavigation:
+  prerequis: 
+    - "/cours/système/ordinateur-programmes-OS/"
+
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,7 +19,7 @@ Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu
 
 1. les instructions basiques durent un temps similaire,
 2. l'on ait un moyen efficace de mesurer le temps
-3. le système ne doit exécuter que l'algorithme et n'avoir aucun autre [processus concurrent](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (en temps partagé).
+3. le système ne doit exécuter que l'algorithme et n'avoir aucun autre [processus concurrent](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (en temps partagé) (voir prérequis système)
 4. les paramètres d'entrées doivent  :
   - réaliser le maximum si on cherche à mesurer la complexité (maximum),
   - réaliser le minimum si on cherche à mesurer la complexité minimum,
