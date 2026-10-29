@@ -24,7 +24,7 @@ Dernière partie en python avant d'apprendre un nouveau langage. On montre comme
 
 > TBD 
 >
-> le go
+> le go <https://google.github.io/styleguide/go/>
 >
 > - prérequis : git
 > - outils de la partie A : 

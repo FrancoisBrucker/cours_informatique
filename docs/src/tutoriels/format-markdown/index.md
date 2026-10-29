@@ -39,7 +39,7 @@ Le texte ci-après est un exemple de ce que l'on peut écrire en markdown.
 
 ## quoi ?
 
-Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte éditable et visualisable dans tout éditeur.
+Le [Markdown](https://fr.wikipedia.org/wiki/Markdown){.externe} est un format texte éditable et visualisable dans tout éditeur.
 
 ## comment ?
 

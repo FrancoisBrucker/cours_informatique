@@ -11,7 +11,8 @@ eleventyComputed:
 
 Les listes, les dictionnaires et les ensembles permettent d'écrire bien plus facilement des algorithmes qu'avec des tableaux. S'il n'y a aucune contre-indication pour l'utilisation de listes (les complexités sont les mêmes qu'avec un tableau), il faut cependant être contient que l'utilisation de dictionnaires n'est optimale (en $\mathcal{O}(1)$) qu'en moyenne.
 
-
+> TBD <https://www.youtube.com/watch?v=gh7iboMmHYg>
+> 
 ## <span id="exercice-fondamental"></span>Exercice fondamental
 
 Exercice fondamental pour comprendre l'intérêt des dictionnaires et des listes.

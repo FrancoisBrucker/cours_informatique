@@ -15,9 +15,6 @@ eleventyComputed:
 
 
 > TBD <https://www.youtube.com/watch?v=TdtNViWk45I>{.externe} implémentation go
-{% lien %}
-[Structures arborées](structures-arborées)
-{% endlien %}
 
 ## hash 2.0 améliorations
 
@@ -29,6 +26,8 @@ eleventyComputed:
 {% lien %}
 [Universal & Perfect Hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g){.externe}
 {% endlien %}
+
+> TBD circulaire + Knutheries.
 
 ### Hash universel
 

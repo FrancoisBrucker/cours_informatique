@@ -145,8 +145,7 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 > TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)
 > 
 > 
-Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
-) pour convertir les formules
+Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable){.externe} pour convertir les formules
 
 ## <span id="algorithme-SAT"></span>Algorithme et SAT
 

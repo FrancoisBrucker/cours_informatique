@@ -49,7 +49,7 @@ Avoir un modèle Turing complet nous assure, en suivant la thèse de Church-Turi
 ## Machine de Turing
 
 {% lien %}
-[Des machines de Turing et des castors](https://www.youtube.com/watch?v=kMHCl2PGloQ)
+[Des machines de Turing et des castors](https://www.youtube.com/watch?v=kMHCl2PGloQ){.externe}
 {% endlien %}
 
 Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :
@@ -70,7 +70,7 @@ Une **_machine de Turing_** est composée :
 {% enddefinition %}
 
 
-On peut représenter très simplement une machine de Turing par [un automate](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_automates), par exemple [cette machine de Turing](https://bbchallenge.org/1RB1LB_1LA0LC_1RZ1LD_1RD0RA) (l'état initial est $A$) :
+On peut représenter très simplement une machine de Turing par [un automate](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_automates){.externe}, par exemple [cette machine de Turing](https://bbchallenge.org/1RB1LB_1LA0LC_1RZ1LD_1RD0RA){.externe} (l'état initial est $A$) :
 
 
 |Départ || Arrivée |||
@@ -181,6 +181,8 @@ Et si le ruban vaut :
 La sortie sera : `0`
 
 Terminons cette partie avec un exemple de machine qui double l'entrée (doublement unaire) :
+
+![doublement](./exemple-doublement-batons/turing_double_batons.gif)
 
 {% aller %}
 [Création d'une machine de Turing doublant son entrée](./exemple-doublement-batons/)
@@ -401,12 +403,12 @@ Vérifions-le :
 $$
 \begin{array}{lcl}
 \operatorname{dbl} \lceil n \rceil
-&=& (\lambda n \lambda f \lambda x \cdot n f (n f x)) \lceil n \rceil\\
-&=& \lambda f \lambda x \cdot \lceil n \rceil f (\lceil n \rceil f x)\\
-&=& \lambda f \lambda x \cdot \lceil n \rceil f (f(f(f(\dots (fx) \dots))))\\
-&=& \lambda f \lambda x \cdot (\lceil n \rceil f) [f(f(f(\dots (fx) \dots)))]\\
-&=& \lambda f \lambda x \cdot (\lambda x \cdot f(f(f(\dots (fx) \dots)))) [f(f(f(\dots (fx) \dots)))]\\
-&=& \lambda f \lambda x  \cdot f(f(f(\dots (fx) \dots))))\\
+&=& (\lambda n \cdot\lambda f \lambda x \cdot n f (n f x)) \lceil n \rceil\\
+&=& \lambda f \cdot\lambda x \cdot \lceil n \rceil f (\lceil n \rceil f x)\\
+&=& \lambda f \cdot\lambda x \cdot \lceil n \rceil f (f(f(f(\dots (fx) \dots))))\\
+&=& \lambda f \cdot\lambda x \cdot (\lceil n \rceil f) [f(f(f(\dots (fx) \dots)))]\\
+&=& \lambda f \cdot\lambda x \cdot (\lambda x \cdot f(f(f(\dots (fx) \dots)))) [f(f(f(\dots (fx) \dots)))]\\
+&=& \lambda f \cdot\lambda x  \cdot f(f(f(\dots (fx) \dots))))\\
 &=& \lceil 2n \rceil
 \end{array}
 $$
@@ -415,7 +417,7 @@ $$
 L'abstraction $\operatorname{dbl}$ peut être réduite par des entiers pour recréer d'autres entiers. En lambda calcul un type d'objet est une famille d'abstractions qui peut être appliquée à d'autres abstractions les acceptant. Définir des types, des objets et des algorithmes est donc identique : ce sont des abstractions.
 
 
-Cet exemple avec des entiers se généralise aux boucles, conditions et même à la récursion. On peut ainsi coder tout ce que l'on peut faire avec un pseudo-code, et cela s'implémente en pratique sous forme du paradigme de programmation appelé **_programmation fonctionnelle_**. Le tout premier langage de programmation, [le LISP](https://fr.wikipedia.org/wiki/Lisp) était d'ailleurs de ce type car faire un interpréteur pour ce type de programmation est "facile". Actuellement, les principaux représentants de ce style de programmation sont le [Haskell](https://www.haskell.org/){.externe} ou encore le [Ocaml](https://ocaml.org/){.externe}.
+Cet exemple avec des entiers se généralise aux boucles, conditions et même à la récursion. On peut ainsi coder tout ce que l'on peut faire avec un pseudo-code, et cela s'implémente en pratique sous forme du paradigme de programmation appelé **_programmation fonctionnelle_**. Le tout premier langage de programmation, [le LISP](https://fr.wikipedia.org/wiki/Lisp){.externe} était d'ailleurs de ce type car faire un interpréteur pour ce type de programmation est "facile". Actuellement, les principaux représentants de ce style de programmation sont le [Haskell](https://www.haskell.org/){.externe} ou encore le [Ocaml](https://ocaml.org/){.externe}.
 
 {% lien %}
 
@@ -482,7 +484,7 @@ Si la plupart des langages informatiques sont clairement Turing complets, il exi
 En Fractran par exemple, le doublement de bâtons peut s'écrire avec l'algorithme $[\frac{9}{2}]$. Avec une entrée de type $2^n$, l'algorithme rendra une sortie de type $3^{2n}$.
 
 {% faire %}
-Démontrez que notre algorithme de doublement de bâtons fonctionne.
+Démontrez que notre algorithme de doublement de bâtons en Fractran fonctionne.
 {% endfaire %}
 
 ## Turing complet par inadvertence

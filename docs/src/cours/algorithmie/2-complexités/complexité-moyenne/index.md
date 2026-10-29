@@ -181,7 +181,7 @@ La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on
 
 {% endretenir %}
 
-## En pratique
+## <span id="mesure"></span>En pratique
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).
 
@@ -207,7 +207,7 @@ def recherche(T, x):
     return False
 
 
-def calcul(f, f_params, rep=5):
+def calcul(f, f_params, rep=10):
     
     gc_actif = gc.isenabled()
     if gc_actif:

@@ -92,7 +92,7 @@ On considérera toujours que l'on possède assez de mémoire pour pouvoir exécu
 
 {% info "**Implémentation**" %}
 
-En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée **tas**. Chaque case du tas peut contenir [1 byte](https://fr.wikipedia.org/wiki/Byte) qui correspond à 8 bits.
+En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée **tas**. Chaque case du tas peut contenir [1 byte](https://fr.wikipedia.org/wiki/Byte){.externe} qui correspond à 8 bits.
 
 ![tas](tas.png)
 

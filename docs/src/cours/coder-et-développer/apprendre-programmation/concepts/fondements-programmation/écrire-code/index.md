@@ -18,6 +18,7 @@ eleventyComputed:
 
 On va lister les concepts fondamentaux qui permettent d'écrire du code python que l'on pourra faire exécuter par l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.
 
+<span id='convention-exemples'></span>
 {% retenir %}
 Dans tous les exemples de code qui suivront, lorsque la ligne de code commencera par `>>>`{.language-} cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :
 

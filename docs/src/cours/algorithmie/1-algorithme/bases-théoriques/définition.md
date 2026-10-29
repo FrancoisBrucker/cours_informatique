@@ -19,7 +19,7 @@ On va montrer quelques propriétés générales d'un programme et d'un algorithm
 Un **_algorithme_** est un ensemble des règles opératoires propres à un _calcul_.
 {% enddefinition %}
 
-Qu'est-ce que ça veut dire ? Cherchons dans [le Petit Robert](https://dictionnaire.lerobert.com/fr/) :
+Qu'est-ce que ça veut dire ? Cherchons dans [le Petit Robert](https://dictionnaire.lerobert.com/fr/){.externe} :
 
 - **algorithme** : ensemble des règles opératoires propres à un **calcul**
 - **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
