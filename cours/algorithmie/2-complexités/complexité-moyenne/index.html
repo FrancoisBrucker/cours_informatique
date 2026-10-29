@@ -281,7 +281,7 @@ $$
 </ul>
 </div>
 </div>
-<h2>En pratique</h2>
+<h2><span id="mesure"></span>En pratique</h2>
 <p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
 <p><img src="Figure_1.png" alt="figure"></p>
 <p>On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est en environ 2 fois plus petite.</p>
@@ -320,7 +320,7 @@ $$
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 
 
-<span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> f_params<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> f_params<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     
     gc_actif <span class="token operator">=</span> gc<span class="token punctuation">.</span>isenabled<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
