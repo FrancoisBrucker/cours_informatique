@@ -405,3 +405,7 @@ Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temp
 >   - recherche (retrouve-t-on les graphiques du cours ?)
 
 > min/max/moyenne (plusieurs essai et moyenne).
+
+## Représentation graphique
+
+> TBD numpy linearsplit.
