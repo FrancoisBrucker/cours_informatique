@@ -156,6 +156,20 @@
 </div>
 </div>
 <p>Attention, selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
+<p>Il vous faudra aussi installer deux modules pour votre interpréteur python :</p>
+<ul>
+<li><a href="https://matplotlib.org/">https://matplotlib.org/</a></li>
+<li><a href="https://numpy.org/">https://numpy.org/</a></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).</p>
+</div>
+</div>
 <h2>Comment mesurer la complexité</h2>
 <p>Reprenons les 4 conditions que l'on vient d'expliciter.</p>
 <p>Nous allons utiliser <a href="../complexit%C3%A9-moyenne/#mesure">les mesures de l'algorithme</a> recherche que l'on a déjà vu :</p>
@@ -387,6 +401,7 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et pus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)</p>
 <h2>Une fonction de mesure</h2>
 <p>Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser. Créez un fichier <code class="fichier">mesure_temps.py</code> et copiez-collez y le code suivant :</p>
+<p><span id="calcul"></span></p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 <span class="token keyword">import</span> gc
 
@@ -431,15 +446,7 @@ t <span class="token operator">=</span> mesure_temps<span class="token punctuati
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec la notation <code class="language-">*args</code></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://believemy.com/fr/glossaires/python/args" class="externe">Comment utiliser la fonctionnalité <code class="language-">*args</code></a></p>
+<p>On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec <a href="https://believemy.com/fr/glossaires/python/args" class="externe">la notation <code class="language-">*args</code></a>.</p>
 </div>
 </div>
 <p>Dans un terminal :</p>
@@ -454,21 +461,343 @@ l'exécution de la fonction à duré <span class="token builtin class-name">:</s
 <p>Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projet ultérieurs où nous aurons besoin de mesurer la complexité.</p>
 </div>
 </div>
-<h2>Paramètres</h2>
-<blockquote>
-<p>TBD recherche
-TBD faire sauvegarde fichier (pdf et png)</p>
+<h2>Complexité maximum et minimum</h2>
+<p>Le but est de pouvoir mesurer la complexité maximale, minimale et moyenne d'un algorithme codé. <a href="../d%C3%A9finitions-mesure-O/d%C3%A9finitions/#complexit%C3%A9">La complexité dépendant d'un paramètre</a> il faudra le faire varier pour déterminer la courbe de complexité (pour notre exemple de l'algorithme recherche, le paramètre était la longueur du tableau).</p>
+<p>Pour que tout soit homogène, on crée alors deux fonctions dédiées prenant uniquement ce paramètre plutôt que les différents paramètres initiaux de l'algorithme :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcule_max</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">calcule_min</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité max est en effet atteinte pour la recherche d'un élément qui n'est pas dans le tableau (ici -1) et la complexité minimale est atteinte pour la recherche du premier élément du tableau.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Pour le calcul des complexités min et max on se crée de fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial qu calcul recherché.</p>
+</div>
+</div>
+<p>On cherche à représenter graphiquement la durée par rapport au paramètre. Pour que notre courbe soit représentative :</p>
 <ul>
-<li>recherche (retrouve-t-on les graphiques du cours ?)</li>
+<li>il faut qu'il y a it assez de points : on se fixe ce nombre $K$,</li>
+<li>il faut que le paramètre puisse varier grandement sans que cela ne prenne trop de temps : on se fixe un temps de calcul $T_MAX$ maximum.</li>
 </ul>
-</blockquote>
-<blockquote>
-<p>min/max/moyenne (plusieurs essai et moyenne).</p>
-</blockquote>
+<p>Pour trouver rapidement le nombre <code class="language-">N_max</code> correspondant à <code class="language-">T_MAX</code>, on utilise l'algorithme suivant, qui double $n$ à chaque itération :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul_n_max</span><span class="token punctuation">(</span>f_calcul_temps_complexité<span class="token punctuation">,</span> n_min<span class="token punctuation">,</span> T_MAX<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n_max <span class="token operator">=</span> n_min
+    <span class="token keyword">while</span> f_calcul_temps_complexité<span class="token punctuation">(</span>n_max<span class="token punctuation">)</span> <span class="token operator">&lt;</span> T_MAX<span class="token punctuation">:</span>
+        n_max <span class="token operator">*=</span> <span class="token number">2</span>
+
+    <span class="token keyword">return</span> n_max</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajouter cet algorithme au fichier <code class="fichier">mesure_temps.py</code>. Et testez le dans le fichier <code class="fichier">main.py</code> pour un temps max de 1seconde.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Je trouve un N_max = 16777216 avec un temps max de 0.1s et le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> mesure_temps <span class="token keyword">import</span> calcul_n_max
+
+
+N_min <span class="token operator">=</span> <span class="token number">1</span>
+
+T_max <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">**</span> <span class="token number">8</span>  <span class="token comment"># 0.1s</span>
+N_max <span class="token operator">=</span> calcul_n_max<span class="token punctuation">(</span>calcule_max<span class="token punctuation">,</span> N_min<span class="token punctuation">,</span> T_max<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Pour un dixième de seconde N_max ="</span><span class="token punctuation">,</span> N_max<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</div>
+<p>On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html" class="externe">la fonction <code class="language-">linspace</code></a> du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en <code class="language-">K</code> points d'un intervalle allant de <code class="language-">N_min</code> à <code class="language-">N_max</code>, en gardant le fait que ce sont des entiers :</p>
+<pre><code>import numpy as np
+
+K = 10
+Ns = [int(x) for x in np.linspace(N_min, N_max, K)]
+
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentation $K$ pour déterminer les $K$ différentes mesures de temps à faire.</p>
+<p>Déterminez les tailles min et max de paramètre <strong>une</strong> fois, ne refaite pas le calcul à chaque lancement.</p>
+</div>
+</div>
+<p>On peut enfin calculer les temps min et max :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> n <span class="token keyword">in</span> Ns<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"taille"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     max :"</span><span class="token punctuation">,</span> calcule_max<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     min :"</span><span class="token punctuation">,</span> calcule_min<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ce qui donne chez moi :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">taille 1
+     max : 83
+     min : 42
+taille 14913081
+     max : 131349625
+     min : 42
+taille 29826162
+     max : 262013875
+     min : 83
+taille 44739243
+     max : 394027000
+     min : 83
+taille 59652324
+     max : 526060458
+     min : 83
+taille 74565404
+     max : 655763916
+     min : 42
+taille 89478485
+     max : 795593000
+     min : 41
+taille 104391566
+     max : 930963834
+     min : 83
+taille 119304647
+     max : 1064934541
+     min : 83
+taille 134217728
+     max : 1199735750
+     min : 83</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :</p>
+<ul>
+<li>soit diminuez le nombre maximum d'éléments dans le tableau,</li>
+<li>soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)</li>
+</ul>
+</div>
+</div>
+<h2>Complexité en moyenne</h2>
+<p>Pour calculer la complexité en moyenne, il faut chercher un entier quelconque du tableau ou pas. On peut par exemple utiliser le code suivant, utilisant la fonction <code class="language-">randrange</code> <a href="https://docs.python.org/fr/3/library/random.html" class="externe">du module random</a> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. On effectue alors plusieurs essais (par défaut 10) et on prend la moyenne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    t <span class="token operator">=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">+=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> t <span class="token operator">/</span> rep
+</code></pre>
+<p>On peut alors ajouter la moyenne à notre calcul :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> n <span class="token keyword">in</span> Ns<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"taille"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     max :"</span><span class="token punctuation">,</span> calcule_max<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     moy :"</span><span class="token punctuation">,</span> calcule_moyenne<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     min :"</span><span class="token punctuation">,</span> calcule_min<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Chez moi j'obtiens :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">taille 1
+     max : 83
+     moyenne : 58.1
+     min : 41
+taille 14913081
+     max : 129418084
+     moyenne : 62261433.3
+     min : 42
+taille 29826162
+     max : 259101583
+     moyenne : 114150833.3
+     min : 42
+taille 44739243
+     max : 388659917
+     moyenne : 163993899.7
+     min : 42
+taille 59652324
+     max : 516515208
+     moyenne : 210178308.4
+     min : 42
+taille 74565404
+     max : 645720458
+     moyenne : 307273212.3
+     min : 41
+taille 89478485
+     max : 785189500
+     moyenne : 503277858.3
+     min : 42
+taille 104391566
+     max : 915702833
+     moyenne : 420030974.9
+     min : 42
+taille 119304647
+     max : 1045916584
+     moyenne : 506352900.1
+     min : 42
+taille 134217728
+     max : 1185341667
+     moyenne : 497359804.2
+     min : 41</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de 10 x .1s. Si vous voulez accélérer le process :</p>
+<ul>
+<li>soit diminuez le nombre maximum d'éléments dans le tableau,</li>
+<li>soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)</li>
+</ul>
+</div>
+</div>
 <h2>Représentation graphique</h2>
-<blockquote>
-<p>TBD numpy linearsplit ? (à regarder par rapport à ce que l'on a fait en exponentiation)</p>
-</blockquote>
+<p>Enfin, on peut représenter graphiquement les résultats. Pour cala, il faut commencer pas stocker les résultat de nos mesures et pas juste les afficher :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c_min <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+c_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+c_max <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> Ns<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"taille"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    c_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_max<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     max :"</span><span class="token punctuation">,</span> c_max<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    c_moy<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_moyenne<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     moy :"</span><span class="token punctuation">,</span> c_moy<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    c_min<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_min<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     min :"</span><span class="token punctuation">,</span> c_min<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Et on utilise la fonction de dessin suivante, que l'on pourra ajouter qu fichier <code class="fichier">mesure_temps.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<span class="token keyword">def</span> affiche_complexité<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> c_max<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    _<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"complexités temporelles"</span><span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"taille du tableau"</span><span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"temps de calcul en ns"</span><span class="token punctuation">)</span>
+
+    p1<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"min"</span><span class="token punctuation">)</span>
+    p2<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"moyenne"</span><span class="token punctuation">)</span>
+    p3<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_max<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"max"</span><span class="token punctuation">)</span>
+
+
+    ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2>Fichiers finaux</h2>
+<h3><code class="language-">mesure_temps.py</code></h3>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
+<span class="token keyword">import</span> gc
+
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+
+<span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> f_params<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    gc_actif <span class="token operator">=</span> gc<span class="token punctuation">.</span>isenabled<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
+        gc<span class="token punctuation">.</span>disable<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    t <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        début <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">(</span><span class="token operator">*</span>f_params<span class="token punctuation">)</span>
+        fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        delta <span class="token operator">=</span> fin <span class="token operator">-</span> début
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>delta <span class="token operator">&lt;</span> t<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          t <span class="token operator">=</span> delta
+
+    <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
+        gc<span class="token punctuation">.</span>enable<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> t
+
+<span class="token keyword">def</span> <span class="token function">calcul_n_max</span><span class="token punctuation">(</span>f_calcul_temps_complexité<span class="token punctuation">,</span> n_min<span class="token punctuation">,</span> T_MAX<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n_max <span class="token operator">=</span> n_min
+    <span class="token keyword">while</span> f_calcul_temps_complexité<span class="token punctuation">(</span>n_max<span class="token punctuation">)</span> <span class="token operator">&lt;</span> T_MAX<span class="token punctuation">:</span>
+        n_max <span class="token operator">*=</span> <span class="token number">2</span>
+
+    <span class="token keyword">return</span> n_max
+
+<span class="token keyword">def</span> affiche_complexité<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> c_max<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    _<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"complexités temporelles"</span><span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"taille du tableau"</span><span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"temps de calcul en ns"</span><span class="token punctuation">)</span>
+
+    p1<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"min"</span><span class="token punctuation">)</span>
+    p2<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"moyenne"</span><span class="token punctuation">)</span>
+    p3<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_max<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"max"</span><span class="token punctuation">)</span>
+
+
+    ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3><code class="language-">main.py</code></h3>
+<p>Avec une réduction du nombre de répétitions et un temps max de 1 centième de seconde :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">from</span> mesure_temps <span class="token keyword">import</span> calcul<span class="token punctuation">,</span> calcul_n_max<span class="token punctuation">,</span> affiche_complexité
+
+
+<span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> e <span class="token keyword">in</span> T<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+
+<span class="token keyword">def</span> <span class="token function">calcule_max</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">calcule_min</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    t <span class="token operator">=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">+=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> t <span class="token operator">/</span> rep
+
+N_min <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token comment"># T_max = 10 ** 7  # 0.01s</span>
+<span class="token comment"># N_max = calcul_n_max(calcule_max, N_min, T_max)</span>
+<span class="token comment"># print("Pour un centième de seconde N_max =", N_max)</span>
+
+N_max <span class="token operator">=</span> <span class="token number">2097152</span> <span class="token comment"># déterminé par le code précédent.</span>
+K <span class="token operator">=</span> <span class="token number">6</span>
+Ns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token keyword">for</span> n <span class="token keyword">in</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>N_min<span class="token punctuation">,</span> N_max<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>Ns<span class="token punctuation">)</span>
+
+c_min <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+c_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+c_max <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> Ns<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"taille"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    c_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_max<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     max :"</span><span class="token punctuation">,</span> c_max<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    c_moy<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_moyenne<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     moy :"</span><span class="token punctuation">,</span> c_moy<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    c_min<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_min<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     min :"</span><span class="token punctuation">,</span> c_min<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+affiche_complexité<span class="token punctuation">(</span>Ns<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> c_max<span class="token punctuation">)</span></code></pre>
 
 
 </article>
