@@ -229,7 +229,7 @@ def calcul(f, f_params, rep=10):
 
 def calcule_max(n):
     T = list(range(n))
-    return calcul(recherche, (T, n))
+    return calcul(recherche, (T, -1))
 
 def calcule_min(n):
     T = list(range(n))

@@ -42,6 +42,15 @@ On présuppose que vous avec fait les prérequis du cours d'algorithmie, en part
 
 Attention, selon [notre convention](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#convention-exemples/#convention-exemples), les exemples de code qui commencent par `>>>` ont été exécutés directement dans un interpréteur.
 
+Il vous faudra aussi installer deux modules pour votre interpréteur python :
+
+- <https://matplotlib.org/>
+- <https://numpy.org/>
+
+{% faire %}
+[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).
+{% endfaire %}
+
 ## Comment mesurer la complexité
 
 Reprenons les 4 conditions que l'on vient d'expliciter.
@@ -334,6 +343,8 @@ On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on
 
 Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser. Créez un fichier `mesure_temps.py`{.fichier} et copiez-collez y le code suivant :
 
+<span id="calcul"></span>
+
 ```python
 from time import perf_counter_ns
 import gc
@@ -381,11 +392,8 @@ print("l'exécution de la fonction à duré :", t, "ns")
 ```
 
 {% info %}
-On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec la notation `*args`{.language-}
+On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec [la notation `*args`{.language-}](https://believemy.com/fr/glossaires/python/args){.externe}.
 {% endinfo %}
-{% aller %}
-[Comment utiliser la fonctionnalité `*args`{.language-}](https://believemy.com/fr/glossaires/python/args){.externe}
-{% endaller %}
 
 Dans un terminal :
 
@@ -398,14 +406,375 @@ l'exécution de la fonction à duré : 416 ns
 Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projet ultérieurs où nous aurons besoin de mesurer la complexité.
 {% endretenir %}
 
-## Paramètres
+## Complexité maximum et minimum
 
-> TBD recherche
-> TBD faire sauvegarde fichier (pdf et png)
->   - recherche (retrouve-t-on les graphiques du cours ?)
+Le but est de pouvoir mesurer la complexité maximale, minimale et moyenne d'un algorithme codé. [La complexité dépendant d'un paramètre](../définitions-mesure-O/définitions/#complexité) il faudra le faire varier pour déterminer la courbe de complexité (pour notre exemple de l'algorithme recherche, le paramètre était la longueur du tableau). 
 
-> min/max/moyenne (plusieurs essai et moyenne).
+Pour que tout soit homogène, on crée alors deux fonctions dédiées prenant uniquement ce paramètre plutôt que les différents paramètres initiaux de l'algorithme :
+
+```python 
+def calcule_max(n):
+    T = list(range(n))
+    return calcul(recherche, (T, -1))
+
+
+def calcule_min(n):
+    T = list(range(n))
+    return calcul(recherche, (T, 0))
+```
+
+La complexité max est en effet atteinte pour la recherche d'un élément qui n'est pas dans le tableau (ici -1) et la complexité minimale est atteinte pour la recherche du premier élément du tableau.
+
+{% retenir %}
+Pour le calcul des complexités min et max on se crée de fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial qu calcul recherché.
+{% endretenir %}
+
+On cherche à représenter graphiquement la durée par rapport au paramètre. Pour que notre courbe soit représentative :
+
+- il faut qu'il y a it assez de points : on se fixe ce nombre $K$,
+- il faut que le paramètre puisse varier grandement sans que cela ne prenne trop de temps : on se fixe un temps de calcul $T_MAX$ maximum.
+
+Pour trouver rapidement le nombre `N_max`{.language-} correspondant à `T_MAX`{.language-}, on utilise l'algorithme suivant, qui double $n$ à chaque itération :
+
+```python
+def calcul_n_max(f_calcul_temps_complexité, n_min, T_MAX):
+    n_max = n_min
+    while f_calcul_temps_complexité(n_max) < T_MAX:
+        n_max *= 2
+
+    return n_max
+```
+
+{% faire %}
+Ajouter cet algorithme au fichier `mesure_temps.py`{.fichier}. Et testez le dans le fichier `main.py`{.fichier} pour un temps max de 1seconde.
+{% endfaire %}
+{% info %}
+Je trouve un N_max = 16777216 avec un temps max de 0.1s et le code suivant :
+
+```python
+from mesure_temps import calcul_n_max
+
+
+N_min = 1
+
+T_max = 10 ** 8  # 0.1s
+N_max = calcul_n_max(calcule_max, N_min, T_max)
+print("Pour un dixième de seconde N_max =", N_max)
+
+```
+
+{% endinfo %}
+
+On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise [la fonction `linspace`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html){.externe} du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en `K`{.language-} points d'un intervalle allant de `N_min`{.language-} à `N_max`{.language-}, en gardant le fait que ce sont des entiers :
+
+```
+import numpy as np
+
+K = 10
+Ns = [int(x) for x in np.linspace(N_min, N_max, K)]
+
+```
+
+{% retenir %}
+Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentation $K$ pour déterminer les $K$ différentes mesures de temps à faire. 
+
+Déterminez les tailles min et max de paramètre **une** fois, ne refaite pas le calcul à chaque lancement.
+{% endretenir %}
+
+On peut enfin calculer les temps min et max :
+
+```python
+for n in Ns:
+    print("taille", n)
+    print("     max :", calcule_max(n))
+    print("     min :", calcule_min(n))
+
+```
+
+Ce qui donne chez moi :
+
+```text
+taille 1
+     max : 83
+     min : 42
+taille 14913081
+     max : 131349625
+     min : 42
+taille 29826162
+     max : 262013875
+     min : 83
+taille 44739243
+     max : 394027000
+     min : 83
+taille 59652324
+     max : 526060458
+     min : 83
+taille 74565404
+     max : 655763916
+     min : 42
+taille 89478485
+     max : 795593000
+     min : 41
+taille 104391566
+     max : 930963834
+     min : 83
+taille 119304647
+     max : 1064934541
+     min : 83
+taille 134217728
+     max : 1199735750
+     min : 83
+```
+
+{% info %}
+Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :
+
+- soit diminuez le nombre maximum d'éléments dans le tableau,
+- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)
+{% endinfo %}
+
+## Complexité en moyenne
+
+Pour calculer la complexité en moyenne, il faut chercher un entier quelconque du tableau ou pas. On peut par exemple utiliser le code suivant, utilisant la fonction `randrange`{.language-} [du module random](https://docs.python.org/fr/3/library/random.html){.externe} :
+
+```python
+import random
+
+def calcule_moyenne(n, rep=10):
+    T = list(range(n))
+    return calcul(recherche, (T, random.randrange(-1, n)))
+```
+
+Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. On effectue alors plusieurs essais (par défaut 10) et on prend la moyenne :
+
+```python
+def calcule_moyenne(n, rep=10):
+    T = list(range(n))
+    t = calcul(recherche, (T, random.randrange(-1, n)))
+    for _ in range(rep-1):
+        t += calcul(recherche, (T, random.randrange(-1, n)))
+    return t / rep
+
+```
+
+On peut alors ajouter la moyenne à notre calcul :
+
+```python
+for n in Ns:
+    print("taille", n)
+    print("     max :", calcule_max(n))
+    print("     moy :", calcule_moyenne(n))
+    print("     min :", calcule_min(n))
+
+```
+
+Chez moi j'obtiens :
+
+```text
+taille 1
+     max : 83
+     moyenne : 58.1
+     min : 41
+taille 14913081
+     max : 129418084
+     moyenne : 62261433.3
+     min : 42
+taille 29826162
+     max : 259101583
+     moyenne : 114150833.3
+     min : 42
+taille 44739243
+     max : 388659917
+     moyenne : 163993899.7
+     min : 42
+taille 59652324
+     max : 516515208
+     moyenne : 210178308.4
+     min : 42
+taille 74565404
+     max : 645720458
+     moyenne : 307273212.3
+     min : 41
+taille 89478485
+     max : 785189500
+     moyenne : 503277858.3
+     min : 42
+taille 104391566
+     max : 915702833
+     moyenne : 420030974.9
+     min : 42
+taille 119304647
+     max : 1045916584
+     moyenne : 506352900.1
+     min : 42
+taille 134217728
+     max : 1185341667
+     moyenne : 497359804.2
+     min : 41
+```
+
+
+{% info %}
+Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de 10 x .1s. Si vous voulez accélérer le process :
+
+- soit diminuez le nombre maximum d'éléments dans le tableau,
+- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)
+{% endinfo %}
 
 ## Représentation graphique
 
-> TBD numpy linearsplit ? (à regarder par rapport à ce que l'on a fait en exponentiation)
+Enfin, on peut représenter graphiquement les résultats. Pour cala, il faut commencer pas stocker les résultat de nos mesures et pas juste les afficher :
+
+
+```python
+c_min = []
+c_moy = []
+c_max = []
+for n in Ns:
+    print("taille", n)
+    c_max.append(calcule_max(n))
+    print("     max :", c_max[-1])
+    c_moy.append(calcule_moyenne(n))
+    print("     moy :", c_moy[-1])
+    c_min.append(calcule_min(n))
+    print("     min :", c_min[-1])
+
+```
+
+Et on utilise la fonction de dessin suivante, que l'on pourra ajouter qu fichier `mesure_temps.py`{.fichier} :
+
+```python
+import matplotlib.pyplot as plt
+
+def affiche_complexité(N, c_min, c_moy, c_max):
+    _, ax = plt.subplots(figsize=(20, 5))
+
+    ax.set_title("complexités temporelles")
+    ax.set_xlabel("taille du tableau")
+    ax.set_ylabel("temps de calcul en ns")
+
+    p1, = ax.plot(N, c_min, 'o-', label="min")
+    p2, = ax.plot(N, c_moy, 'o-', label="moyenne")
+    p3, = ax.plot(N, c_max, 'o-', label="max")
+
+
+    ax.legend(handles=(p1, p2, p3))
+
+    plt.show()
+```
+
+
+## Fichiers finaux
+
+### `mesure_temps.py`{.language-}
+
+```python
+from time import perf_counter_ns
+import gc
+
+import matplotlib.pyplot as plt
+
+
+def calcul(f, f_params, rep=10):
+    
+    gc_actif = gc.isenabled()
+    if gc_actif:
+        gc.disable()
+
+    t = None
+    for _ in range(rep):
+        début = perf_counter_ns()
+        f(*f_params)
+        fin = perf_counter_ns()
+
+        delta = fin - début
+        if (t is None) or (delta < t):
+          t = delta
+
+    if gc_actif:
+        gc.enable()
+    
+    return t
+
+def calcul_n_max(f_calcul_temps_complexité, n_min, T_MAX):
+    n_max = n_min
+    while f_calcul_temps_complexité(n_max) < T_MAX:
+        n_max *= 2
+
+    return n_max
+
+def affiche_complexité(N, c_min, c_moy, c_max):
+    _, ax = plt.subplots(figsize=(20, 5))
+
+    ax.set_title("complexités temporelles")
+    ax.set_xlabel("taille du tableau")
+    ax.set_ylabel("temps de calcul en ns")
+
+    p1, = ax.plot(N, c_min, 'o-', label="min")
+    p2, = ax.plot(N, c_moy, 'o-', label="moyenne")
+    p3, = ax.plot(N, c_max, 'o-', label="max")
+
+
+    ax.legend(handles=(p1, p2, p3))
+
+    plt.show()
+```
+
+### `main.py`{.language-}
+
+Avec une réduction du nombre de répétitions et un temps max de 1 centième de seconde :
+
+```python
+import random
+import numpy as np
+
+from mesure_temps import calcul, calcul_n_max, affiche_complexité
+
+
+def recherche(T, x):
+    for e in T:
+        if e == x:
+            return True
+    return False
+
+
+def calcule_max(n):
+    T = list(range(n))
+    return calcul(recherche, (T, -1), rep=5)
+
+def calcule_min(n):
+    T = list(range(n))
+    return calcul(recherche, (T, 0))
+
+def calcule_moyenne(n, rep=10):
+    T = list(range(n))
+    t = calcul(recherche, (T, random.randrange(-1, n)), rep=5)
+    for _ in range(rep-1):
+        t += calcul(recherche, (T, random.randrange(-1, n)), rep=5)
+    return t / rep
+
+N_min = 1
+
+# T_max = 10 ** 7  # 0.01s
+# N_max = calcul_n_max(calcule_max, N_min, T_max)
+# print("Pour un centième de seconde N_max =", N_max)
+
+N_max = 2097152 # déterminé par le code précédent.
+K = 6
+Ns = [int(n) for n in np.linspace(N_min, N_max, K)]
+print(Ns)
+
+c_min = []
+c_moy = []
+c_max = []
+for n in Ns:
+    print("taille", n)
+    c_max.append(calcule_max(n))
+    print("     max :", c_max[-1])
+    c_moy.append(calcule_moyenne(n))
+    print("     moy :", c_moy[-1])
+    c_min.append(calcule_min(n))
+    print("     min :", c_min[-1])
+
+affiche_complexité(Ns, c_min, c_moy, c_max)
+```
