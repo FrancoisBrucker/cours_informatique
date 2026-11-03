@@ -23,7 +23,7 @@ Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu
 4. les paramètres d'entrées doivent  :
   - réaliser le maximum si on cherche à mesurer la complexité (maximum),
   - réaliser le minimum si on cherche à mesurer la complexité minimum,
-  - être aléatoire si on cherche à mesurer la complexité moyenne.
+  - être aléatoire et uniforme si on cherche à mesurer la complexité moyenne.
 
 ## Projet python
 
@@ -337,7 +337,7 @@ Qui donne chez moi :
 l'exécution de la fonction à duré : 459 ns
 ```
 
-On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et pus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)
+On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)
 
 ## Une fonction de mesure
 
@@ -431,10 +431,10 @@ Pour le calcul des complexités min et max on se crée de fonctions ayant unique
 
 On cherche à représenter graphiquement la durée par rapport au paramètre. Pour que notre courbe soit représentative :
 
-- il faut qu'il y a it assez de points : on se fixe ce nombre $K$,
-- il faut que le paramètre puisse varier grandement sans que cela ne prenne trop de temps : on se fixe un temps de calcul $T_MAX$ maximum.
+- il faut qu'il y ait assez de points : on se fixe ce nombre `K`{.language-},
+- il faut que le paramètre puisse varier grandement sans que cela ne prenne trop de temps : on se fixe un temps de calcul `T_MAX`{.language-} maximum.
 
-Pour trouver rapidement le nombre `N_max`{.language-} correspondant à `T_MAX`{.language-}, on utilise l'algorithme suivant, qui double $n$ à chaque itération :
+Pour trouver rapidement le nombre `N_max`{.language-} correspondant à `T_MAX`{.language-}, on utilise l'algorithme suivant, qui double $n$ à chaque itération et s'arrête au premier $n$ dont la mesure prend plus que le temps maximum alloué :
 
 ```python
 def calcul_n_max(f_calcul_temps_complexité, n_min, T_MAX):
@@ -527,10 +527,12 @@ taille 134217728
 ```
 
 {% info %}
-Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :
+Les derniers calculs peuvent prendre du temps puisque l'on fait 10 fois un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :
 
 - soit diminuez le nombre maximum d'éléments dans le tableau,
-- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)
+- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),
+- soit les deux.
+
 {% endinfo %}
 
 ## Complexité en moyenne
@@ -545,7 +547,22 @@ def calcule_moyenne(n, rep=10):
     return calcul(recherche, (T, random.randrange(-1, n)))
 ```
 
-Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. On effectue alors plusieurs essais (par défaut 10) et on prend la moyenne :
+Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. Ci-après le temps pris pour un tableau de 100000 éléments, on va de 2208ns à prêt de 500000ns :
+
+```text
+409500.0
+488959.0
+146625.0
+93791.0
+225209.0
+422500.0
+22125.0
+317041.0
+227875.0
+2208.0
+```
+
+La solution est de moyenner le résultat (par défaut 10 essais) :
 
 ```python
 def calcule_moyenne(n, rep=10):
@@ -618,7 +635,10 @@ taille 134217728
 Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de 10 x .1s. Si vous voulez accélérer le process :
 
 - soit diminuez le nombre maximum d'éléments dans le tableau,
-- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple)
+- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),
+- soit diminuez le nombre d'essais pour la moyenne (passer de 10 à 5 par exemple),
+- soit deux des trois,
+- soit les trois.
 {% endinfo %}
 
 ## Représentation graphique
@@ -665,6 +685,8 @@ def affiche_complexité(N, c_min, c_moy, c_max):
 
 
 ## Fichiers finaux
+
+Gardez le fichier `mesure_temps.py`{.language-} sous le coude, on va l'utiliser plus tard lors de nos projets.
 
 ### `mesure_temps.py`{.language-}
 
