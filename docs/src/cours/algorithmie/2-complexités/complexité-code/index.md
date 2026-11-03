@@ -755,11 +755,14 @@ def calcule_moyenne(n, rep=10):
 
 N_min = 1
 
-# T_max = 10 ** 7  # 0.01s
-# N_max = calcul_n_max(calcule_max, N_min, T_max)
-# print("Pour un centième de seconde N_max =", N_max)
+T_max = 10 ** 7  # 0.01s
+N_max = calcul_n_max(calcule_max, N_min, T_max)
 
-N_max = 2097152 # déterminé par le code précédent.
+# N_max = 2097152 # déterminé par le code précédent.
+print("Pour", T_max / 10**9, "seconde, N_max =", N_max)
+
+
+
 K = 6
 Ns = [int(n) for n in np.linspace(N_min, N_max, K)]
 print(Ns)
