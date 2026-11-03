@@ -776,11 +776,14 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
 
 N_min <span class="token operator">=</span> <span class="token number">1</span>
 
-<span class="token comment"># T_max = 10 ** 7  # 0.01s</span>
-<span class="token comment"># N_max = calcul_n_max(calcule_max, N_min, T_max)</span>
-<span class="token comment"># print("Pour un centième de seconde N_max =", N_max)</span>
+T_max <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">**</span> <span class="token number">7</span>  <span class="token comment"># 0.01s</span>
+N_max <span class="token operator">=</span> calcul_n_max<span class="token punctuation">(</span>calcule_max<span class="token punctuation">,</span> N_min<span class="token punctuation">,</span> T_max<span class="token punctuation">)</span>
 
-N_max <span class="token operator">=</span> <span class="token number">2097152</span> <span class="token comment"># déterminé par le code précédent.</span>
+<span class="token comment"># N_max = 2097152 # déterminé par le code précédent.</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Pour"</span><span class="token punctuation">,</span> T_max <span class="token operator">/</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token string">"seconde, N_max ="</span><span class="token punctuation">,</span> N_max<span class="token punctuation">)</span>
+
+
+
 K <span class="token operator">=</span> <span class="token number">6</span>
 Ns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token keyword">for</span> n <span class="token keyword">in</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>N_min<span class="token punctuation">,</span> N_max<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>Ns<span class="token punctuation">)</span>
