@@ -11,62 +11,196 @@ eleventyComputed:
 ---
 
 
-## Exercices du cours
+## Prérequis : fichiers du cours
+
+Commençons par faire en sorte d'avoir le code du cours sur [les mesures de complexités](../complexité-code/) qui fonctionne.
+
+### Projet python
+
+On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi [le cours d'introduction à python](/cours/coder-et-développer/apprendre-programmation/), en particulier les parties 1 et 2.
+
+{% prerequis %}
+- [Installation d'un ide et de modules python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
+- [Écriture de projets informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/),
+- [créer un projet vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/)
+{% endprerequis %}
+
+Il vous faudra aussi installer deux modules pour votre interpréteur python :
+
+- <https://matplotlib.org/>{.externe}
+- <https://numpy.org/>{.externe}
+
+{% faire %}
+[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).
+{% endfaire %}
+
+### Code du cours
+
+{% faire %}
+1. téléchargez [les fichiers du cours](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/2-complexit%C3%A9s/complexit%C3%A9-code/code?filename=projet-code){.externe},
+2. créez un projet vscode dans ce dossier,
+3. exécutez le fichier `main.py`{.fichier} en faisant en sorte que tout fonctionne,
+4. exécutez [les tests unitaires](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/) (vous aurez bien au préalable installé le module <https://docs.pytest.org/en/stable/>) et vérifiez qu'ils passent.
+{% endfaire %}
 
 
-> 1. boucles /n = cte sum_{k \leq i \leq n}
+Nous allons vérifier expérimentalement que les calculs de $\mathcal{O}$ faites dans le cours sont corrects.
 
-> 4. faire varier k aléatoirement et montrer que du coup il faut prendre la moyenne.
->   - boucles imbriquées dépendantes = n^2
+## Complexité de deux boucles indépendantes
 
-### Recherche dichotomique
+{% faire %}
+Vérifiez que [complexité de deux boucles indépendantes](../complexité-algorithmes/#complexité-boucles-indépendantes) est bien de l'ordre du produit des longueurs de chaque boucle.
 
-> TBD théorique puis en pratique. Vérifier que log ok avec régression linéaire
+En reprenant et en modifiant le code du cours, représentez sur un graphique le temps mis pour calculer $\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))$.
 
-## Mot de 01
+Vous prendrez comme paramètres :
 
-> égalité mots de 01
-> max/moyenne ?
-> TBD faire les tests et séparer main et fct pour qu'ils puissent reprendre le code fait dans les prochains tds.
+- `T_max = 10**8 # 0.1s`{.language-},
+- `K = 10`{.language-}.
+
+{% endfaire %}
+
+Vous devriez obtenir une courbe qui ressemble à la fonction $y = x^2$ :
+
+![figure n2](./Figure_n2_1.png)
+
+Pour en être sur, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée [régression polynomiale](https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale){.externe} et qui est très facile à faire avec numpy.
+
+Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plu proche possible de $Y[i]$, on peut utiliser [`np.polyfit`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyfit.html){.externe} :
+
+```python
+import numpy as np
+
+coefs = np.polyfit(X, Y, n)
+```
+
+Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction [`np.polyval`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyval.htm){.externe} :
+
+```python
+Y2 = np.polyval(coefs, X)
+```
+
+{% faire %}
+Tracez un graphique superposant la complexité mesurée et sa complexité théorique (la regression polynomiale avec un polynôme de degré 2).
+{% endfaire %}
+
+Vous devriez obtenir une courbe qui ressemble ça :
+
+![figure n2](./Figure_n2_2.png)
+
+## Complexité de deux boucles monotone
+
+{% faire %}
+Vérifiez que [complexité de deux boucles dépendante mais monotone](../complexité-algorithmes/#règle-croissance) est bien de l'ordre du produit des longueurs de chaque boucle.
+
+En reprenant et en modifiant le code du cours, représentez sur un graphique le temps mis pour calculer $\sum\limits_{1\leq i \leq n}(\sum\limits_{i < j \leq n} (i+j))$ ainsi que sa courbe théorique en $\mathcal{O}(n^2)$.
+
+Vous prendrez comme paramètres :
+
+- `T_max = 10**8 # 0.1s`{.language-},
+- `K = 10`{.language-}.
+
+{% endfaire %}
 
 
-## Maximum d'un tableau
+## Complexité d'un algorithme récursif
 
-> 
-> TBD nb de mise à jour du maximum. 
-> 1. calcul max
-> 2. nombre de mise a jour de l'algo simple : Max n et en moyenne ln(n) (Knuth) (avec les main le prochain > est à la moitié.)
+{% faire %}
+En remarquant que :
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j)) = \sum\limits_{1\leq i \leq n-1}(\sum\limits_{1\leq j \leq n-1} (i+j)) + n \cdot (3n-1)
+$$
+</div>
+
+Écrivez un algorithme récursif permettant de calculer $\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))$
+{% endfaire %}
+
+Le nombre de récursions que permet python par défaut est très faible (1000 par défaut) :
+
+```python
+import sys
+print(sys.getrecursionlimit())
+```
+
+Afin de mesurer la complexité on aura besoin de bien plus de profondeur. On peut l'augmenter avec les commandes suivantes :
+
+```python
+import sys
+sys.setrecursionlimit(20010)
+```
+
+{% faire %}
+En fixant le no,bre maximum de récursion à 20010 et `N_max = 20000`{.language-},
+vérifier expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.
+{% endfaire %}
+
+## Factoriel et nombres gigantesques
+
+Mesurons le temps mis pour exécuter notre algorithme récursif calculant la factorielle :
+
+{% faire %}
+Mesurez  [la complexité de l'algorithme récursif](../complexité-algorithmes/#règle-récursif) et comparez là à sa complexité théorique de  $\mathcal{O}(n)$.
+
+Pour ceci :
+
+- augmentez la récursion à 20000,
+- mettez un `T_max = 10**7`{.language-}
+{% endfaire %}
+
+Vous devriez obtenir une courbe qui ne fonctionne pas du tout :
+
+![fact](./Figure_fact.png)
+
+Ceci est du au fait que les nombres deviennent absurdement grand et que le calcul de la multiplication ne peut plus être considéré comme étant $\mathcal{O}(1)$. 
 
 
-
-
-> TBD pour aller plus loin
-> TBD ajouter pyperf pour les perf d'un programme et cprofile pour le profilage des bootleneck <https://www.stephane-robert.info/docs/developper/programmation/python/profiling/>
-> 3. modif pour mise a jour dans une fonction et vérifier que cprofile ou pyperf le voit
-
->
-
-<span id="algorithme-max-tableau-complexité"></span>
 {% exercice %}
- Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
+L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\log(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$
 
 {% endexercice %}
 {% details "corrigé" %}
 
-Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :
+
+Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\log(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\log(k!))$.
+
+Un petit calcul (à retenir, il revient souvent) donne alors : 
 
 <div>
 $$
-C(n) = \mathcal{O}(1) + C(n-1)
+\begin{array}{lcl}
+\sum_{1\leq k \leq n}\log(k!)
+&= & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(p))\\
+&\leq & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(k))\\
+&\leq & \sum_{1\leq k \leq n}k\log(k)\\
+&\leq & \sum_{1\leq k \leq n}n\log(n)\\
+&\leq & n^2\log(n)\\
+\end{array}
 $$
 </div>
 
-On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
-
+Ce qui permet de conclure.
 {% enddetails %}
 
-> TBD pour aller plus loin timeit et pypertf.
-> TBD code
-> voir qu'il y a une légère variation à chaque appel même avec les même données. DOnc faire une moyenne.
-> pyperf
-> - ajouter des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
+$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\log(n)$ augmente très lentement par rapport à $n$.
+
+{% faire %}
+Montrez expérimentalement que notre courbe est en $\mathcal{O}(n^2\ln(n))$.
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser une régression avec un polynôme $P(X')$ de degré 1 en prenant $X' = X^2\ln(X)$.
+{% endinfo %}
+{% faire %}
+Montrez que les courbes $y = x^2$ et $y=x^2\log(x)$ sont très proches.
+{% endfaire %}
+
+{% faire %}
+Montrez que ceci est toujours valable pour un algorithme itératif calculant la factorielle.
+{% endfaire %}
+
+En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et es même vrai si nos entiers sont petits (_ie._ plus petit que $2^{64}$ ce qui est quand même assez grand, voir [le problème de l'échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa){.externe}) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.
+
+
+{% retenir %}
+En règle générale la multiplication est bien en $\mathcal{O}(1)$, cela cesse d'être vrai lorsque les nombres manipulés deviennent absurdement grand, ce qui est très rare en pratique, en tout cas assez rare pour être ignoré en première approche.
+{% endretenir %}

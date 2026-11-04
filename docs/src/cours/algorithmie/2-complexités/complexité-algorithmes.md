@@ -104,6 +104,7 @@ boucle 1 exécutée n1 fois:
 On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.
 
 <div id="complexité-boucles-indépendantes"></div>
+
 {% note "**Complexité de boucles imbriquées indépendantes**" %}
 La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
 {% endnote %}
@@ -272,7 +273,7 @@ $$
 
 On retrouve bien le résultat attendu.
 
-### Complexité d'algorithmes récursifs
+### C<span id="règle-récursif"></span>omplexité d'algorithmes récursifs
 
 
 Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. 

@@ -25,31 +25,18 @@ Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu
   - réaliser le minimum si on cherche à mesurer la complexité minimum,
   - être aléatoire et uniforme si on cherche à mesurer la complexité moyenne.
 
-## Projet python
+## Code python
 
-On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi [le cours d'introduction à python](/cours/coder-et-développer/apprendre-programmation/), en particulier les parties 1 et 2.
+On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi [le cours d'introduction à python](/cours/coder-et-développer/apprendre-programmation/). Selon [notre convention](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#convention-exemples/#convention-exemples), les exemples de code qui commencent par `>>>` ont été exécutés directement dans un interpréteur.
 
-{% prerequis %}
-- [Installation d'un ide et de modules python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/)
-- [Écriture de projets informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/),
-- [créer un projet vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/)
-{% endprerequis %}
-
-{% faire %}
-1. Créez-vous un projet vscode,
-2. créez un fichier `main.py`{.language-} dans ce projet pour copier/coller puis exécuter le code ci-après.
-{% endfaire %}
-
-Attention, selon [notre convention](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#convention-exemples/#convention-exemples), les exemples de code qui commencent par `>>>` ont été exécutés directement dans un interpréteur.
-
-Il vous faudra aussi installer deux modules pour votre interpréteur python :
+On utilisera deux modules très utiles :
 
 - <https://matplotlib.org/>
 - <https://numpy.org/>
 
-{% faire %}
-[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).
-{% endfaire %}
+{% info %}
+On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique ce code.
+{% endinfo %}
 
 ## Comment mesurer la complexité
 
@@ -228,12 +215,12 @@ def recherche(T, x):
 T = list(range(100))
 
 for _ in range(5):
-  début = perf_counter_ns()
-  recherche(T, 42)
-  fin = perf_counter_ns()
-  t = fin - début
+    début = perf_counter_ns()
+    recherche(T, 42)
+    fin = perf_counter_ns()
+    t = fin - début
 
-  print("l'exécution de la fonction à duré :", t, "ns")
+    print("l'exécution de la fonction à duré :", t, "ns")
 ```
 
 Par exemple :
@@ -341,7 +328,7 @@ On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on
 
 ## Une fonction de mesure
 
-Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser. Créez un fichier `mesure_temps.py`{.fichier} et copiez-collez y le code suivant :
+Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser :
 
 <span id="calcul"></span>
 
@@ -371,34 +358,23 @@ def calcul(f, f_params, rep=10):
     return t
 ```
 
-On pourra l'utiliser dans un fichier `main.py`{.language-} :
-
-```python
-import mesure_temps
-
-def recherche(T, x):
-    for e in T:
-        if e == x:
-            return True
-    return False
-
-T = list(range(100))
-
-
-t = mesure_temps.calcul(recherche, (T, 42))
-
-print("l'exécution de la fonction à duré :", t, "ns")
-
-```
-
 {% info %}
 On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec [la notation `*args`{.language-}](https://believemy.com/fr/glossaires/python/args){.externe}.
 {% endinfo %}
 
-Dans un terminal :
+On pourra l'utiliser ainsi :
 
-```sh
-❯ python main.py
+```python
+
+T = list(range(100))
+t = calcul(recherche, (T, 42))
+print("l'exécution de la fonction à duré :", t, "ns")
+
+```
+
+Ce qui donne chez moi :
+
+```text
 l'exécution de la fonction à duré : 416 ns
 ```
 
@@ -445,16 +421,9 @@ def calcul_n_max(f_calcul_temps_complexité, n_min, T_MAX):
     return n_max
 ```
 
-{% faire %}
-Ajouter cet algorithme au fichier `mesure_temps.py`{.fichier}. Et testez le dans le fichier `main.py`{.fichier} pour un temps max de 1seconde.
-{% endfaire %}
-{% info %}
-Je trouve un N_max = 16777216 avec un temps max de 0.1s et le code suivant :
+Je trouve un `N_max = 16777216`{.language-} avec un temps max de 0.1s et le code suivant :
 
 ```python
-from mesure_temps import calcul_n_max
-
-
 N_min = 1
 
 T_max = 10 ** 8  # 0.1s
@@ -463,11 +432,9 @@ print("Pour un dixième de seconde N_max =", N_max)
 
 ```
 
-{% endinfo %}
-
 On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise [la fonction `linspace`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html){.externe} du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en `K`{.language-} points d'un intervalle allant de `N_min`{.language-} à `N_max`{.language-}, en gardant le fait que ce sont des entiers :
 
-```
+```python
 import numpy as np
 
 K = 10
@@ -661,7 +628,7 @@ for n in Ns:
 
 ```
 
-Et on utilise la fonction de dessin suivante, que l'on pourra ajouter qu fichier `mesure_temps.py`{.fichier} :
+Et on utilise la fonction de dessin suivante qui affiche les 3 courbes de complexité :
 
 ```python
 import matplotlib.pyplot as plt
@@ -686,7 +653,11 @@ def affiche_complexité(N, c_min, c_moy, c_max):
 
 ## Fichiers finaux
 
-Gardez le fichier `mesure_temps.py`{.language-} sous le coude, on va l'utiliser plus tard lors de nos projets.
+On a séparé notre code en 3 fichiers :
+
+- `algorithmes.py`{.language-} qui contient le code à mesurer et `test_algorithmes.py`{.language-} qui contient les lests,
+- `mesure_temps.py`{.language-} qui contient les fonctions utiles pour les mesures,
+- `main.py`{.language-} qui est le programme principal.
 
 ### `algorithmes.py`{.language-}
 

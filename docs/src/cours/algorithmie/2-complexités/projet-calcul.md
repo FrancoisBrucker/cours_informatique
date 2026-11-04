@@ -16,6 +16,54 @@ eleventyComputed:
 
 
 
+## Recherche dichotomique
+
+> TBD théorique puis en pratique. Vérifier que log ok avec régression linéaire
+
+## Mot de 01
+
+> égalité mots de 01
+> max/moyenne ?
+> TBD faire les tests et séparer main et fct pour qu'ils puissent reprendre le code fait dans les prochains tds.
+
+
+## Maximum d'un tableau
+
+> TBD no,bre de d'exécution d'une f
+> TBD nb de mise à jour du maximum. 
+> 1. calcul max
+> 2. nombre de mise a jour de l'algo simple : Max n et en moyenne ln(n) (Knuth) (avec les main le prochain > est à la moitié.)
+
+
+
+
+> TBD pour aller plus loin
+> TBD ajouter pyperf pour les perf d'un programme et cprofile pour le profilage des bootleneck <https://www.stephane-robert.info/docs/developper/programmation/python/profiling/>
+> 3. modif pour mise a jour dans une fonction et vérifier que cprofile ou pyperf le voit
+
+>
+
+<span id="algorithme-max-tableau-complexité"></span>
+{% exercice %}
+ Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(n-1)
+$$
+</div>
+
+On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
+
+{% enddetails %}
+
+
+
 > TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)
 > TBD égalité de mots binaires. max O(n) en moyenne O(2)
 > TBD faire 2 parties. Une avec ceux d'avant et une nouvelle avec de nouveaux algorithmes
