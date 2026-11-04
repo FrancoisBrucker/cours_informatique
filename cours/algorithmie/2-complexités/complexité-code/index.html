@@ -128,46 +128,19 @@
 <li>réaliser le minimum si on cherche à mesurer la complexité minimum,</li>
 <li>être aléatoire et uniforme si on cherche à mesurer la complexité moyenne.</li>
 </ul>
-<h2>Projet python</h2>
-<p>On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>, en particulier les parties 1 et 2.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Prérequis</strong></div>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/">Installation d'un ide et de modules python</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/">Écriture de projets informatique</a>,</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-informatique/">créer un projet vscode</a></li>
-</ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ol>
-<li>Créez-vous un projet vscode,</li>
-<li>créez un fichier <code class="language-">main.py</code> dans ce projet pour copier/coller puis exécuter le code ci-après.</li>
-</ol>
-</div>
-</div>
-<p>Attention, selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
-<p>Il vous faudra aussi installer deux modules pour votre interpréteur python :</p>
+<h2>Code python</h2>
+<p>On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>. Selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
+<p>On utilisera deux modules très utiles :</p>
 <ul>
 <li><a href="https://matplotlib.org/">https://matplotlib.org/</a></li>
 <li><a href="https://numpy.org/">https://numpy.org/</a></li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).</p>
+<p>On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique ce code.</p>
 </div>
 </div>
 <h2>Comment mesurer la complexité</h2>
@@ -303,12 +276,12 @@ t <span class="token operator">=</span> fin <span class="token operator">-</span
 T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-  début <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
-  recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span>
-  fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
-  t <span class="token operator">=</span> fin <span class="token operator">-</span> début
+    début <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span>
+    fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    t <span class="token operator">=</span> fin <span class="token operator">-</span> début
 
-  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
 <p>Par exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 24500 ns
 l'exécution de la fonction à duré : 3333 ns
@@ -400,7 +373,7 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 459 ns</code></pre>
 <p>On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)</p>
 <h2>Une fonction de mesure</h2>
-<p>Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser. Créez un fichier <code class="fichier">mesure_temps.py</code> et copiez-collez y le code suivant :</p>
+<p>Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser :</p>
 <p><span id="calcul"></span></p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 <span class="token keyword">import</span> gc
@@ -425,22 +398,6 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
         gc<span class="token punctuation">.</span>enable<span class="token punctuation">(</span><span class="token punctuation">)</span>
     
     <span class="token keyword">return</span> t</code></pre>
-<p>On pourra l'utiliser dans un fichier <code class="language-">main.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mesure_temps
-
-<span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> e <span class="token keyword">in</span> T<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-t <span class="token operator">=</span> mesure_temps<span class="token punctuation">.</span>calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span>
-</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -449,9 +406,14 @@ t <span class="token operator">=</span> mesure_temps<span class="token punctuati
 <p>On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec <a href="https://believemy.com/fr/glossaires/python/args" class="externe">la notation <code class="language-">*args</code></a>.</p>
 </div>
 </div>
-<p>Dans un terminal :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ python main.py
-l'exécution de la fonction à duré <span class="token builtin class-name">:</span> <span class="token number">416</span> ns</code></pre>
+<p>On pourra l'utiliser ainsi :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+t <span class="token operator">=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Ce qui donne chez moi :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 416 ns</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -494,38 +456,18 @@ l'exécution de la fonction à duré <span class="token builtin class-name">:</s
         n_max <span class="token operator">*=</span> <span class="token number">2</span>
 
     <span class="token keyword">return</span> n_max</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ajouter cet algorithme au fichier <code class="fichier">mesure_temps.py</code>. Et testez le dans le fichier <code class="fichier">main.py</code> pour un temps max de 1seconde.</p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Je trouve un N_max = 16777216 avec un temps max de 0.1s et le code suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> mesure_temps <span class="token keyword">import</span> calcul_n_max
-
-
-N_min <span class="token operator">=</span> <span class="token number">1</span>
+<p>Je trouve un <code class="language-">N_max = 16777216</code> avec un temps max de 0.1s et le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">N_min <span class="token operator">=</span> <span class="token number">1</span>
 
 T_max <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">**</span> <span class="token number">8</span>  <span class="token comment"># 0.1s</span>
 N_max <span class="token operator">=</span> calcul_n_max<span class="token punctuation">(</span>calcule_max<span class="token punctuation">,</span> N_min<span class="token punctuation">,</span> T_max<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Pour un dixième de seconde N_max ="</span><span class="token punctuation">,</span> N_max<span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
 <p>On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html" class="externe">la fonction <code class="language-">linspace</code></a> du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en <code class="language-">K</code> points d'un intervalle allant de <code class="language-">N_min</code> à <code class="language-">N_max</code>, en gardant le fait que ce sont des entiers :</p>
-<pre><code>import numpy as np
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
-K = 10
-Ns = [int(x) for x in np.linspace(N_min, N_max, K)]
-
+K <span class="token operator">=</span> <span class="token number">10</span>
+Ns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>N_min<span class="token punctuation">,</span> N_max<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">]</span>
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -690,7 +632,7 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
     c_min<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_min<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"     min :"</span><span class="token punctuation">,</span> c_min<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Et on utilise la fonction de dessin suivante, que l'on pourra ajouter qu fichier <code class="fichier">mesure_temps.py</code> :</p>
+<p>Et on utilise la fonction de dessin suivante qui affiche les 3 courbes de complexité :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 <span class="token keyword">def</span> affiche_complexité<span class="token punctuation">(</span>N<span class="token punctuation">,</span> c_min<span class="token punctuation">,</span> c_moy<span class="token punctuation">,</span> c_max<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -709,7 +651,12 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
 
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h2>Fichiers finaux</h2>
-<p>Gardez le fichier <code class="language-">mesure_temps.py</code> sous le coude, on va l'utiliser plus tard lors de nos projets.</p>
+<p>On a séparé notre code en 3 fichiers :</p>
+<ul>
+<li><code class="language-">algorithmes.py</code> qui contient le code à mesurer et <code class="language-">test_algorithmes.py</code> qui contient les lests,</li>
+<li><code class="language-">mesure_temps.py</code> qui contient les fonctions utiles pour les mesures,</li>
+<li><code class="language-">main.py</code> qui est le programme principal.</li>
+</ul>
 <h3><code class="language-">algorithmes.py</code></h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
