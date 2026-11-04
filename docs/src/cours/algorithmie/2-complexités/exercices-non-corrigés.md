@@ -12,7 +12,6 @@ eleventyComputed:
 
 Quelques exercices non corrigé de calculs de complexité.
 
-
 ## Polynômes
 
 En complément de :
@@ -41,9 +40,10 @@ Le but de cette partie est d'estimer le nombre (en $\mathcal{O}$) de multiplicat
 ```pseudocode
 algorithme valeur_naif(P: []int, x: float) → float:
     ref v ← 0
+    ref m int
     pour chaque i de [0 .. P.longueur[:
-        ref m ← P[i]
-        pour chaque i de [0 .. i[:
+        m ← P[i]
+        pour chaque _ de [0 .. i[:
             m ← m * x
         v ← v + m
     
@@ -69,8 +69,8 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 
 ```pseudocode
 algorithme valeur_itéré(P: []int, x: float) → float:
-    ref v ← P[0]
-    xi ← x
+    ref v, xi ← P[0], x
+
     pour chaque i de [1 .. P.longueur[:
         v ← v + P[i] * xi
         xi ← xi * x
@@ -102,7 +102,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 
 ```pseudocode
 algorithme valeur_horner(P: []int, x: int) → int:
-    ref i ← P.longueur -1
+    ref i ← P.longueur - 1
     ref v ← P[i]
     tant que i > 0:
         v ← v * x
@@ -114,99 +114,18 @@ algorithme valeur_horner(P: []int, x: int) → int:
 
 {% faire %}
 
-Prouver que l'algorithme `valeur_itéré`{.language-} est une solution au problème algorithmique valeur.
+Prouver que l'algorithme `valeur_horner`{.language-} est une solution au problème algorithmique valeur.
 
 {% endfaire %}
 {% faire %}
 
 Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur du polynôme :
 
-- la complexité de l'algorithme `valeur_itéré`{.language-}
-- le nombre de multiplication utilisée par l'algorithme `valeur_itéré`{.language-}
-- le nombre d'additions utilisée par l'algorithme `valeur_itéré`{.language-}
+- la complexité de l'algorithme `valeur_horner`{.language-}
+- le nombre de multiplication utilisée par l'algorithme `valeur_horner`{.language-}
+- le nombre d'additions utilisée par l'algorithme `valeur_horner`{.language-}
 
 {% endfaire %}
-
-
-## $k$-ème plus petit élément
-
-On considère le pseudo-code suivant :
-
-```pseudocode
-fonction copie(T: []int) → []int:
-
-    ref T' ← []int{longueur: T.longueur}
-    T' ← T[:]
-
-    rendre T'
-
-
-fonction maximum(T: []int) → int:
-    ref m ← 0
-    pour chaque i de [0 .. T.longueur[:
-        if T[m] < T[i]:
-            m ← i
-    rendre m
-
-
-fonction minimum(T):
-    ref m ← 0
-    pour chaque i de [0 .. T.longueur[:
-        if T[m] > T[i]:
-            m ← i
-    rendre m
-
-
-algorithme recherche(T: []int, k: int) → int:
-    ref max_value ← T[maximum(T)]
-    ref min ← 0
-
-    ref T_copie ← copie(T)
-    pour chaque i de [0 .. k - 1[:
-        min ← minimum(T_copie)
-        T_copie[min] ← max_value + 1
-
-    rendre minimum(T_copie)
-```
-
-### 1
-
-{% faire %}
-
-Donnez la complexité de l'algorithme `recherche(T, k)`{.language-}
-
-{% endfaire %}
-{% info %}
-Pour calculer la complexité de l'algorithme, il vous faudra également calculer les complexités des fonctions utilisées par celui-ci.
-{% endinfo %}
-
-### 2
-
-{% faire %}
-
-Quel est l'intérêt de la fonction `copie(T)`{.language-} ?
-
-{% endfaire %}
-
-### 3
-
-{% faire %}
-
-Démontrez que l'algorithme `recherche(T, k)`{.language-} rend l'indice du $k$ème plus petit élément de $T$.
-
-{% endfaire %}
-{% info %}
-Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celui-ci.
-{% endinfo %}
-
-### 4
-
-{% faire %}
-
-Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)){.externe}. Quelle est sa complexité ?
-
-{% endfaire %}
-
 
 ## <span id="triangle-de-pascal"></span>Triangle de Pascal
 
@@ -307,3 +226,94 @@ Modifier l'algorithme pour qu'il utilise tout le temps des entiers.
 Vous pourrez remarquer que si $\frac{n}{k}$ n'est pas entier, une autre division l'est forcément. 
 {% endinfo %}
 
+## Multiplication d'entiers
+
+{% attention %}
+On supposera dans tout cet exercice que nos entiers sont positifs.
+{% endattention %}
+
+### Multiplication naïve
+
+```pseudocode
+algorithme mul(x: int, y: int) → int:
+    ref r ← 0
+    tant que x ≠ 0:
+        x ← x - 1
+        r ← r + y
+    
+    rendre r
+```
+
+{% faire %}
+Donnez la complexité de l'algorithme `mul`{.language-} en fonction de `x`{.language-}.
+{% endfaire %}
+{% faire %}
+Démontrez que `mul(x, y) = x * y`{.language-}.
+{% endfaire %}
+
+### Multiplication russe
+
+Une petite variation (astucieuse) de l'algorithme naïf :
+
+```pseudocode
+programme mul_russe(x: int, y: int) → int:
+    ref r ← 0
+    tant que x ≠ 0:
+        si x est impair:
+            x ← x - 1
+            r ← r + y
+        x ← x / 2
+        y ← y * 2
+    
+    rendre r
+```
+
+{% faire %}
+Donnez la complexité de l'algorithme `mul_russe`{.language-} en fonction de `x`{.language-}.
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser le fait que $x = \sum_{0\leq i \leq p} x_i 2^i$ avec $x_i \in \\{0, 1\\}$, et $p = \lfloor \log_2(x)\rfloor$
+{% endinfo %}
+{% faire %}
+Démontrez que `mul(x, y) = x * y`{.language-}.
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser l'invariant : `X * Y = r + x * y`{.language-} avec `X`{.language-} et `Y`{.language-} les paramètres initiaux.
+{% endinfo %}
+
+### Multiplication binaire
+
+Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. En réalité nos entiers sont codés sous la forme de tableaux $T$ de bits (0 ou 1) tels que  :
+
+<div>
+$$
+x = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]
+$$
+</div>
+
+```pseudocode
+algorithme mul2(T: []bit):
+    pour chaque i de [1 .. T.longueur - 1]:
+        T[i] ← T[i-1]
+    T[0] ← 0
+```
+
+{% faire %}
+Quel est la complexité de l'algorithme `mul2(T: []bit)`{.language-} ?
+{% endfaire %}
+{% faire %}
+Montrez que l'algorithme `mul2(T: []bit)`{.language-} multiplie par deux l'entier représenté par $T$ si $T[-1] = 0$.
+{% endfaire %}
+{% faire %}
+Donnez un algorithme `div2(T: []bit)`{.language-} ainsi que sa complexité permettant de diviser par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.
+{% endfaire %}
+{% faire %}
+Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers `x`{.language-} et `y`{.language-} sont tels que $T_x[-1] = T_y[-1] = 1$, quelle est la taille du tableau représentant l'entier $x\cdot y$ ?
+{% endfaire %}
+{% faire %}
+Modifiez l'algorithme `mul(x: int, y: int) → int`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: []bit, Ty: []bit) → []bit`{.language-}
+{% endfaire %}
+{% faire %}
+Donnez la complexité de ce nouvel algorithme par rapport à `Tx.longueur`{.language-} et `Ty.longueur`{.language-}.
+
+{% endfaire %}

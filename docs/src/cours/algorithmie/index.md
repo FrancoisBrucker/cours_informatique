@@ -45,14 +45,17 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./1-algorithme/)
 {% endaller %}
 
-## <span id="partie-1"></span>Partie II : Mesures de complexités
+## <span id="partie-2"></span>Partie II : Mesures de complexités
 
 {% aller %}
 [Calculs de complexités](./2-complexités/)
 {% endaller %}
 
 
-> TBD III problème
+> TBD III problème algorithmiques : trouver le meilleur algorithme.
+> III.1 définitions
+> III.2 exponentiation
+> III.3 tris
 > TBD Intermède I : exercices/problèmes et autres
 > TBD IV structure de donnée :
 >   commencer par complexité amortie pour dire calcul fin de complexité

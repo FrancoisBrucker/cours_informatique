@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "Projet : calcul de complexité"
+title: "Projet : calcul de complexités"
 
 eleventyNavigation:
   prerequis:
@@ -16,6 +16,8 @@ eleventyComputed:
 
 
 
+> TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)
+> TBD égalité de mots binaires. max O(n) en moyenne O(2)
 > TBD faire 2 parties. Une avec ceux d'avant et une nouvelle avec de nouveaux algorithmes
 > 
 Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons reprendre les algorithmes que nous avons crée précédemment (voir prérequis) en utilisant ceux proposés dans la correction.
@@ -53,8 +55,11 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 
 > Naif et en moyenne
 ### sous-mot
+1 seul puis tous.
 
 ### sous-sequence
+
+complexité en moyenne.
 
 ### Egalité 
 
@@ -291,3 +296,85 @@ print("max =", max_compte)
 ```
 
 {% enddetails %}
+
+
+## $k$-ème plus petit élément
+
+> TBD corrigé dans 20/21 test. Ajouter complexité min et en moyenne.
+> 
+On considère le pseudo-code suivant :
+
+```pseudocode
+fonction copie(T: []int) → []int:
+
+    ref T' ← []int{longueur: T.longueur}
+    T' ← T[:]
+
+    rendre T'
+
+
+fonction maximum(T: []int) → int:
+    ref m ← 0
+    pour chaque i de [0 .. T.longueur[:
+        if T[m] < T[i]:
+            m ← i
+    rendre m
+
+
+fonction minimum(T):
+    ref m ← 0
+    pour chaque i de [0 .. T.longueur[:
+        if T[m] > T[i]:
+            m ← i
+    rendre m
+
+
+algorithme recherche(T: []int, k: int) → int:
+    ref max_value ← T[maximum(T)]
+    ref min ← 0
+
+    ref T_copie ← copie(T)
+    pour chaque i de [0 .. k - 1[:
+        min ← minimum(T_copie)
+        T_copie[min] ← max_value + 1
+
+    rendre minimum(T_copie)
+```
+
+### 1
+
+{% faire %}
+
+Donnez la complexité de l'algorithme `recherche(T, k)`{.language-}
+
+{% endfaire %}
+{% info %}
+Pour calculer la complexité de l'algorithme, il vous faudra également calculer les complexités des fonctions utilisées par celui-ci.
+{% endinfo %}
+
+### 2
+
+{% faire %}
+
+Quel est l'intérêt de la fonction `copie(T)`{.language-} ?
+
+{% endfaire %}
+
+### 3
+
+{% faire %}
+
+Démontrez que l'algorithme `recherche(T, k)`{.language-} rend l'indice du $k$ème plus petit élément de $T$.
+
+{% endfaire %}
+{% info %}
+Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celui-ci.
+{% endinfo %}
+
+### 4
+
+{% faire %}
+
+Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)){.externe}. Quelle est sa complexité ?
+
+{% endfaire %}

@@ -688,6 +688,38 @@ def affiche_complexité(N, c_min, c_moy, c_max):
 
 Gardez le fichier `mesure_temps.py`{.language-} sous le coude, on va l'utiliser plus tard lors de nos projets.
 
+### `algorithmes.py`{.language-}
+
+```python
+import random
+
+from mesure_temps import calcul
+
+def recherche(T, x):
+    for e in T:
+        if e == x:
+            return True
+    return False
+
+
+def calcule_max(n):
+    T = list(range(n))
+    return calcul(recherche, (T, -1), rep=5)
+
+
+def calcule_min(n):
+    T = list(range(n))
+    return calcul(recherche, (T, 0))
+
+
+def calcule_moyenne(n, rep=10):
+    T = list(range(n))
+    t = calcul(recherche, (T, random.randrange(-1, n)), rep=5)
+    for _ in range(rep-1):
+        t += calcul(recherche, (T, random.randrange(-1, n)), rep=5)
+    return t / rep
+```
+
 ### `mesure_temps.py`{.language-}
 
 ```python
@@ -747,43 +779,16 @@ def affiche_complexité(N, c_min, c_moy, c_max):
 Avec une réduction du nombre de répétitions et un temps max de 1 centième de seconde :
 
 ```python
-import random
 import numpy as np
 
-from mesure_temps import calcul, calcul_n_max, affiche_complexité
-
-
-def recherche(T, x):
-    for e in T:
-        if e == x:
-            return True
-    return False
-
-
-def calcule_max(n):
-    T = list(range(n))
-    return calcul(recherche, (T, -1), rep=5)
-
-def calcule_min(n):
-    T = list(range(n))
-    return calcul(recherche, (T, 0))
-
-def calcule_moyenne(n, rep=10):
-    T = list(range(n))
-    t = calcul(recherche, (T, random.randrange(-1, n)), rep=5)
-    for _ in range(rep-1):
-        t += calcul(recherche, (T, random.randrange(-1, n)), rep=5)
-    return t / rep
+from mesure_temps import calcul_n_max, affiche_complexité
+from algorithmes import calcule_max, calcule_min, calcule_moyenne
 
 N_min = 1
 
-T_max = 10 ** 7  # 0.01s
+T_max = 10**7  # 0.01s
 N_max = calcul_n_max(calcule_max, N_min, T_max)
-
-# N_max = 2097152 # déterminé par le code précédent.
 print("Pour", T_max / 10**9, "seconde, N_max =", N_max)
-
-
 
 K = 6
 Ns = [int(n) for n in np.linspace(N_min, N_max, K)]
