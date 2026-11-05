@@ -990,7 +990,7 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$ et on a :
 Calculer le produit de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} et la fonction booléenne sur 1 bit `NAND`.
 {% endretenir %}
 {% info %}
-Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
+Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\ln(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
 
 #### Division euclidienne

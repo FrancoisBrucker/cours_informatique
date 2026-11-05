@@ -16,61 +16,13 @@ eleventyComputed:
 
 
 
-## Recherche dichotomique
+On reprend ici les exercices que nous avons crée précédemment (voir prérequis) et on en calcule la complexité. On utilisera les algorithmes donnés dans le corrigé mais faites également le calcul avec vos propres algorithmes pour vous entraîner.
 
-> TBD théorique puis en pratique. Vérifier que log ok avec régression linéaire
+{% retenir %}
+Rappelez vous, lorsque l'on parle de complexité sans plus de précision, ce sera toujours la complexité maximale en nombre d'opération dont on parle, que l'on calculera toujours en $\mathcal{O}$.
+{% endretenir %}
 
-## Mot de 01
-
-> égalité mots de 01
-> max/moyenne ?
-> TBD faire les tests et séparer main et fct pour qu'ils puissent reprendre le code fait dans les prochains tds.
-
-
-## Maximum d'un tableau
-
-> TBD no,bre de d'exécution d'une f
-> TBD nb de mise à jour du maximum. 
-> 1. calcul max
-> 2. nombre de mise a jour de l'algo simple : Max n et en moyenne ln(n) (Knuth) (avec les main le prochain > est à la moitié.)
-
-
-
-
-> TBD pour aller plus loin
-> TBD ajouter pyperf pour les perf d'un programme et cprofile pour le profilage des bootleneck <https://www.stephane-robert.info/docs/developper/programmation/python/profiling/>
-> 3. modif pour mise a jour dans une fonction et vérifier que cprofile ou pyperf le voit
-
->
-
-<span id="algorithme-max-tableau-complexité"></span>
-{% exercice %}
- Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :
-
-<div>
-$$
-C(n) = \mathcal{O}(1) + C(n-1)
-$$
-</div>
-
-On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
-
-{% enddetails %}
-
-
-
-> TBD : une fois qu'on a un algorithme qui fait ce qu'on veut on essaie de le faire le plus vite possible (en moins d'instruction possible)
-> TBD égalité de mots binaires. max O(n) en moyenne O(2)
-> TBD faire 2 parties. Une avec ceux d'avant et une nouvelle avec de nouveaux algorithmes
-> 
-Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons reprendre les algorithmes que nous avons crée précédemment (voir prérequis) en utilisant ceux proposés dans la correction.
-
-Nous allons aller de plus en plus vite, à mesure que nous gagnerons en confiance et que nous aurons acquis les automatismes de calculs.
+Nous allons aller de plus en plus vite dans le corrigé, à mesure que nous gagnerons en confiance et que nous aurons acquis les automatismes de calculs.
 
 ## Concaténation
 
@@ -98,22 +50,6 @@ Enfin, les lignes du paquet 3 vont toutes être exécutées 1 fois : la complexi
 La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fin.longueur})$.
 
 {% enddetails %}
-
-## Algorithme de texte
-
-> Naif et en moyenne
-### sous-mot
-1 seul puis tous.
-
-### sous-sequence
-
-complexité en moyenne.
-
-### Egalité 
-
-> TBD ressemble à égalité de tableau.
-> TBD moyenne pour mot aléatoire
-> 
 
 ## <span id="égalité-tableaux"></span>Égalité de tableaux
 
@@ -344,85 +280,3 @@ print("max =", max_compte)
 ```
 
 {% enddetails %}
-
-
-## $k$-ème plus petit élément
-
-> TBD corrigé dans 20/21 test. Ajouter complexité min et en moyenne.
-> 
-On considère le pseudo-code suivant :
-
-```pseudocode
-fonction copie(T: []int) → []int:
-
-    ref T' ← []int{longueur: T.longueur}
-    T' ← T[:]
-
-    rendre T'
-
-
-fonction maximum(T: []int) → int:
-    ref m ← 0
-    pour chaque i de [0 .. T.longueur[:
-        if T[m] < T[i]:
-            m ← i
-    rendre m
-
-
-fonction minimum(T):
-    ref m ← 0
-    pour chaque i de [0 .. T.longueur[:
-        if T[m] > T[i]:
-            m ← i
-    rendre m
-
-
-algorithme recherche(T: []int, k: int) → int:
-    ref max_value ← T[maximum(T)]
-    ref min ← 0
-
-    ref T_copie ← copie(T)
-    pour chaque i de [0 .. k - 1[:
-        min ← minimum(T_copie)
-        T_copie[min] ← max_value + 1
-
-    rendre minimum(T_copie)
-```
-
-### 1
-
-{% faire %}
-
-Donnez la complexité de l'algorithme `recherche(T, k)`{.language-}
-
-{% endfaire %}
-{% info %}
-Pour calculer la complexité de l'algorithme, il vous faudra également calculer les complexités des fonctions utilisées par celui-ci.
-{% endinfo %}
-
-### 2
-
-{% faire %}
-
-Quel est l'intérêt de la fonction `copie(T)`{.language-} ?
-
-{% endfaire %}
-
-### 3
-
-{% faire %}
-
-Démontrez que l'algorithme `recherche(T, k)`{.language-} rend l'indice du $k$ème plus petit élément de $T$.
-
-{% endfaire %}
-{% info %}
-Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celui-ci.
-{% endinfo %}
-
-### 4
-
-{% faire %}
-
-Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)){.externe}. Quelle est sa complexité ?
-
-{% endfaire %}

@@ -123,7 +123,7 @@ def valeur(coefficients, x):
 
 ```
 
-En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
+En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\ln(i)$ multiplications. On effectue donc au total de l'ordre $n\ln(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 
 ## Méthode de Horner
 

@@ -130,7 +130,7 @@ Montrer que si le tableau en entrée du problème est trié, on peut résoudre l
 
 Déduire de la question précédente un algorithme modifiant le tableau en entrée et résolvant le problème Doppelganger avec une complexité :
 
-- temporelle en $\mathcal{O}(n\log(n))$
+- temporelle en $\mathcal{O}(n\ln(n))$
 - spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
 
 #### II.1.3
@@ -387,7 +387,7 @@ Créez un programme principal dans un fichier `main_IV.py`{.fichier} qui compare
 Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le cas le pire.
 
 {% attention %}
-Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
+Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\ln(n))$ sinon.
 
 Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle){.externe} pour mélanger un tableau trié).
 

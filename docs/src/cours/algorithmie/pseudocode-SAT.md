@@ -123,7 +123,7 @@ Le but de ce qui va suivre est de terminer le travail, c'est à dire de passer d
 
 ### Suivi des instructions
 
-Il faut pouvoir garder trace de chaque instruction tout au long de l'exécution de l'algorithme. Pour cela on peut définir une variable spéciale $l$ de type `[bit:log(L)]`{.language-} qui va contenir le numéro de la ligne exécuté. On aura besoin de la fonction booléenne $(l == m)$ définie de $\\{0, 1\\}^{\log(L)} \rightarrow \\{0, 1\\}$. Et que l'on peut écrire avec $\mathcal{O}(\log(L)) = \mathcal{O}(1)$ littéraux.
+Il faut pouvoir garder trace de chaque instruction tout au long de l'exécution de l'algorithme. Pour cela on peut définir une variable spéciale $l$ de type `[bit:log(L)]`{.language-} qui va contenir le numéro de la ligne exécuté. On aura besoin de la fonction booléenne $(l == m)$ définie de $\\{0, 1\\}^{\ln(L)} \rightarrow \\{0, 1\\}$. Et que l'on peut écrire avec $\mathcal{O}(\ln(L)) = \mathcal{O}(1)$ littéraux.
 
 Comme on doit modifier cette ligne après chaque instruction, on va considérer la variable $l^i$ qui est la ligne de l'algorithme exécutée à l'itération $i$ :
 

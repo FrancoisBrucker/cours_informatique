@@ -334,7 +334,7 @@ La condition d'arrêt est pour des tailles de tableaux égales à $1 = 2^0$. Pou
 
 On suppose alors par récurrence que l'algoerithme fonctionne pour $n = 2^i$ et on vérifie qu'il continue de fnctionner pour $n'=2^{i+1}$. Ceci est évidant car on applique directement la condition de 3.2.2
 
-La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de `compte`{.language-} est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\log(n))$.
+La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de `compte`{.language-} est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\ln(n))$.
 
 #### 3.3.1
 

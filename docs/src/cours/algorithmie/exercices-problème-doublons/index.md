@@ -160,9 +160,9 @@ Vous pourrez lire [technique de tri](https://docs.python.org/fr/3.14/howto/sorti
 
 {% faire "**II.1.3**" %}
 
-Le tri utilisé par python est de complexité $\mathcal{O}(n\log(n))$. En déduire que le problème Doppelganger peut être résolu avec une complexité :
+Le tri utilisé par python est de complexité $\mathcal{O}(n\ln(n))$. En déduire que le problème Doppelganger peut être résolu avec une complexité :
 
-- temporelle en $\mathcal{O}(n\log(n))$
+- temporelle en $\mathcal{O}(n\ln(n))$
 - spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
 
 {% endfaire %}
@@ -414,7 +414,7 @@ Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le c
 
 {% endfaire %}
 {% attention %}
-Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
+Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\ln(n))$ sinon.
 
 Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle){.externe} pour mélanger un tableau trié).
 

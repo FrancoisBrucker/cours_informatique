@@ -552,7 +552,7 @@ def versEntier(L):
 
 #### <span id="rq-q22"></span> Remarques suite à la correction des copies
 
-Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\log(n))$ et **pas** en $\mathcal{O}(n)$ :
+Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\ln(n))$ et **pas** en $\mathcal{O}(n)$ :
 
 ```python
 def f(n):

@@ -135,7 +135,7 @@ En fixant le no,bre maximum de récursion à 20010 et `N_max = 20000`{.language-
 vérifier expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.
 {% endfaire %}
 
-## Factoriel et nombres gigantesques
+## Nombres gigantesques, exemple avec le calcul de la factorielle
 
 Mesurons le temps mis pour exécuter notre algorithme récursif calculant la factorielle :
 
@@ -156,25 +156,25 @@ Ceci est du au fait que les nombres deviennent absurdement grand et que le calcu
 
 
 {% exercice %}
-L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\log(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$
+L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\ln(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$
 
 {% endexercice %}
 {% details "corrigé" %}
 
 
-Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\log(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\log(k!))$.
+Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\ln(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\ln(k!))$.
 
 Un petit calcul (à retenir, il revient souvent) donne alors : 
 
 <div>
 $$
 \begin{array}{lcl}
-\sum_{1\leq k \leq n}\log(k!)
-&= & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(p))\\
-&\leq & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(k))\\
-&\leq & \sum_{1\leq k \leq n}k\log(k)\\
-&\leq & \sum_{1\leq k \leq n}n\log(n)\\
-&\leq & n^2\log(n)\\
+\sum_{1\leq k \leq n}\ln(k!)
+&= & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\ln(p))\\
+&\leq & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\ln(k))\\
+&\leq & \sum_{1\leq k \leq n}k\ln(k)\\
+&\leq & \sum_{1\leq k \leq n}n\ln(n)\\
+&\leq & n^2\ln(n)\\
 \end{array}
 $$
 </div>
@@ -182,16 +182,20 @@ $$
 Ce qui permet de conclure.
 {% enddetails %}
 
-$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\log(n)$ augmente très lentement par rapport à $n$.
+$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\ln(n)$ augmente très lentement par rapport à $n$.
 
 {% faire %}
 Montrez expérimentalement que notre courbe est en $\mathcal{O}(n^2\ln(n))$.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser une régression avec un polynôme $P(X')$ de degré 1 en prenant $X' = X^2\ln(X)$.
+Vous pourrez utiliser une régression avec un polynôme de degré 1 $P(X') = \alpha (X') + \beta$ avec $X' = X^2\ln(X)$.
 {% endinfo %}
 {% faire %}
-Montrez que les courbes $y = x^2$ et $y=x^2\log(x)$ sont très proches.
+Montrez que les courbes $y = x^2$ et $y=x^2\ln(x)$ sont très proches en représentation sur un même graphique :
+
+- la mesure de la complexité,
+- la régression de cette courbe par un polynôme P(X) = \alpha (X^2\ln(X)) + \beta$,
+- la régression de cette courbe par un polynôme P'(X) = \alpha' (X^2) + \beta' \cdot X + \delta'$,
 {% endfaire %}
 
 {% faire %}

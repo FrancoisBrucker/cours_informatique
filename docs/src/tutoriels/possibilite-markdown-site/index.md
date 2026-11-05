@@ -186,7 +186,7 @@ On a pas mis de `..` ici car le fichier est un index.
 
 $$2+2 = \frac{1}{2}$$
 
-Et un $\log(3)^2$ dans une phrase.
+Et un $\ln(3)^2$ dans une phrase.
 
 {% attention "Il faut escaper les caractères de contrôle" %}
 

@@ -161,106 +161,11 @@ Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on 
 
 Cependant on utilise souvent un autre algorithme : la recherche dichotomique.
 
+> TBD ref aux exercices.
+> 
 #### Algorithme de la recherche dichotomique
 
-Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entier trié.
 
-On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
-
-- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] = x$ on a trouvé l'élément
-- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] > x$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
-  - $a = \lfloor (a + b)/2 \rfloor + 1$
-  - $b$ inchangé
-- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] < x$, l'indice recherché est forcément **après** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
-  - $a$ inchangé
-  - $b' = \\,\lfloor (a + b)/2 \rfloor\\, - 1$
-
-Ce principe donne l'algorithme suivant :
-
-<span id="algorithme-dichotomie"></span>
-
-```pseudocode
-algorithme recherche_dichotomique(T: []int, x: int) → bool:
-  ref a ← 0
-  ref b ← T.longueur - 1
-  ref m int
-
-  tant que a ≤ b:
-      m ← (a + b) // 2  # division entière
-
-      si (t[m] == x):
-          rendre Vrai  # m est l'indice
-      si (t[m] < x):
-          a ← m + 1
-      si (t[m] > x):
-          b ← m - 1
-
-  rendre Faux
-
-```
-
-Étudions l'algorithme :
-
-- **fonctionnement**. On vérifie que pour :
-  - un tableau `[1, 3, 7]`{.language-} l'algorithme trouve bien `7`{.language-} et ne trouve pas `8`{.language-}
-  - un tableau `[1, 3, 3, 7]`{.language-} l'algorithme trouve bien `7`{.language-} et ne trouve pas `9`{.language-}
-- **preuve** :
-  - **finitude**. La quantité entière `b - a`{.language-} **décroît strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.
-  - **preuve**.
-    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `T`{.language-}, alors sa position est plus grande que `a`{.language-} et plus petite que `b`{.language-}
-    2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `x`{.language-} ne peut être dans `T`{.language-}
-
-Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} résout bien le problème _"recherche ordonnée"_.
-
-Étudions sa complexité. Ligne à ligne :
-
-1. initiation de la fonction $\mathcal{O}(1)$
-2. affection : $\mathcal{O}(1)$
-3. affection : $\mathcal{O}(1)$
-4. —
-5. boucle de $K$ itérations (pour l'instant, la valeur de $K$ est **inconnue**)
-6. affection : $\mathcal{O}(1)$
-7. —
-8. test d'une valeur dans un tableau : $\mathcal{O}(1)$
-9. retour de fonction : $\mathcal{O}(1)$
-10. test d'une valeur dans un tableau : $\mathcal{O}(1)$
-11. addition plus une affectation : $\mathcal{O}(1)$
-12. —
-13. soustraction plus une affectation : $\mathcal{O}(1)$
-14. retour de fonction : $\mathcal{O}(1)$
-
-Ce qui donne comme complexité :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & 3 \cdot \mathcal{O}(1) + \\
-& & K \cdot (6 \cdot \mathcal{O}(1)) + \\
-& & \mathcal{O}(1) \\
-& = & \mathcal{O}(K)
-\end{array}
-$$
-</div>
-
-Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2.
-
-Si $K$ est ce nombre d'itérations, on a que : $2^{K} \leq T.\mbox{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq T.\mbox{\small longueur} < 2^{p + 1}$. On ne peut donc pas diviser $T.\mbox{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(T.\mbox{\small longueur})$ puisque :
-
-<div>
-$$
-\begin{array}{lcccl}
-    2^p &\leq &T.\mbox{\small longueur} &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(T.\mbox{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(T.\mbox{\small longueur}) &<& p + 1
-\end{array}
-$$
-</div>
-
-On en conclut le théorème fondamental de la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n) + 1$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :
-
-{% note "**Proposition**" %}
-L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).
-{% endnote %}
 
 #### <span id="complexité-recherche-ordonnée"></span> Complexité du problème "recherche ordonnée"
 

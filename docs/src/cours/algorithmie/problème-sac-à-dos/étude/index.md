@@ -241,7 +241,7 @@ Ce nouveau problème est clairement dans NP puisque vérifier qu'une solution po
 
 Cette vérification se fait en $\mathcal{O}(n)$.
 
-De là, un algorithme résolvant le problème du sac à dos peut-être utilisé pour résoudre le problème du sac à dos optimal en faisant une dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P on double le prix et sinon on le divise par deux. On aura besoin au maximum $\log(sum_{1\leq i \leq n} p_i)$ itérations de l'algorithme de résolution du sac à dos pour trouver une solution au problème du sac à dos optimal.
+De là, un algorithme résolvant le problème du sac à dos peut-être utilisé pour résoudre le problème du sac à dos optimal en faisant une dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P on double le prix et sinon on le divise par deux. On aura besoin au maximum $\ln(sum_{1\leq i \leq n} p_i)$ itérations de l'algorithme de résolution du sac à dos pour trouver une solution au problème du sac à dos optimal.
 
 {% retenir %}
 Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
@@ -763,7 +763,7 @@ def branch_and_bound(produits, masse_totale):
     return sac_à_dos
 ```
 
-Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possibles multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
+Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possibles multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \ln(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \ln(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
 
 Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.
 

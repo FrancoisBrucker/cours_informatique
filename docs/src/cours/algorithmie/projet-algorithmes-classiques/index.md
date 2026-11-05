@@ -543,9 +543,9 @@ tous(5)
 > - **Utilité** : tris pouvant être utile dans des cas particuliers et surtout à la base de nombreux pièges
 > - **Difficulté** : moyen
 
-Des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\log(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.
+Des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\ln(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.
 
-Les tris spéciaux ont des complexités inférieures à $\mathcal{O}(n\log(n))$, ce qui n'est bien sur possible que si l'on se place dans des cas particuliers d'entrées.
+Les tris spéciaux ont des complexités inférieures à $\mathcal{O}(n\ln(n))$, ce qui n'est bien sur possible que si l'on se place dans des cas particuliers d'entrées.
 
 ### <span id="tri-paquets"></span>Tri par paquets (bucket sort)
 

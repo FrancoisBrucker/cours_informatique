@@ -490,7 +490,7 @@ $$
 $$
 </div>
 
-Ce qui donne une solution en $\mathcal{O}(n\log(n))$.
+Ce qui donne une solution en $\mathcal{O}(n\ln(n))$.
 
 On peut borner le nombre de solution en remarquant que le graphe dont les sommets représentent les points et les arêtes les distances unités ne contient par le graphe $K_{2, 3}$. En effet la figure suivante le montre, l'intersection de 2 cercles de rayon unités est uniquement 2 points, deux sommets ne peuvent avoir 3 voisins à distance unité :
 

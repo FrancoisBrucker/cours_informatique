@@ -120,9 +120,9 @@ On peut être plus précis quand à la complexité de $cf(n)$ :
 
 1. il doit calculer $f(n)$.
 2. il doit savoir si $f(n)$ correspond à un pseudo-code, ce qui peut se faire en carré de la longueur binaire de $f(n)$ : $\mathcal{O}(\log^2(f(n)))$.
-3. il exécute au pire $f(n)$ instructions de a $\[e\](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\log(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \log(f(n))$ opérations.
+3. il exécute au pire $f(n)$ instructions de a $\[e\](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\ln(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \ln(f(n))$ opérations.
 
-La complexité théorique de $cf(n)$ est donc $C_{cf}(n) = \Theta(f(n) \cdot \log(f(n)))$.
+La complexité théorique de $cf(n)$ est donc $C_{cf}(n) = \Theta(f(n) \cdot \ln(f(n)))$.
 
 Terminons en montrant que le langage de $cf$ est de complexité supérieure à $f(n)$ :
 

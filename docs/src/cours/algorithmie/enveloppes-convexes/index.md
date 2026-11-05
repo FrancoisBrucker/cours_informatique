@@ -527,7 +527,7 @@ Pour ne pas alourdir les notations, on considérera que tous les indices sont mo
 ### Min / Max
 
 {% exercice %}
-Montrez que l'on peut trouver $\min(\\{ p_i^x \mid 1 \leq i \leq h \\})$ en $\mathcal{O}(\log(h))$ opérations.
+Montrez que l'on peut trouver $\min(\\{ p_i^x \mid 1 \leq i \leq h \\})$ en $\mathcal{O}(\ln(h))$ opérations.
 {% endexercice %}
 {% details "Solution" %}
 
@@ -552,7 +552,7 @@ Remarquez que l'on peut de la même manière trouver le minimum en $y$, ou le ma
 L'une pour laquelle tous les points du polygone sont à sa droite (la droite verte), l'autre pour laquelle tous les points du polygone sont à gauche (la droite rouge).
 
 {% exercice %}
-Montrez que l'on peut trouver la tangente rouge (_resp._ verte) en $\mathcal{O}(\log(h))$ opérations.
+Montrez que l'on peut trouver la tangente rouge (_resp._ verte) en $\mathcal{O}(\ln(h))$ opérations.
 {% endexercice %}
 {% details "Solution" %}
 
@@ -564,7 +564,7 @@ En prenant les deux sommets $p_{i}$ et $p_{i + h/2}$, soit un des deux est une t
 
 {% enddetails %}
 
-Un corollaire à cet exercice est que l'on peut déterminer si une droite intersecte un polygone convexe en $\mathcal{O}(\log(h))$ opérations. Il suffit en effet de prendre un sommet de la droite qui n'est pas sur le polygone (d’abscisse inférieure au minimum) puis de calculer les tangentes. si la pente de la droite n'est pas dans l'angle formé par les deux tangentes, elle ne coupe pas le polygone.
+Un corollaire à cet exercice est que l'on peut déterminer si une droite intersecte un polygone convexe en $\mathcal{O}(\ln(h))$ opérations. Il suffit en effet de prendre un sommet de la droite qui n'est pas sur le polygone (d’abscisse inférieure au minimum) puis de calculer les tangentes. si la pente de la droite n'est pas dans l'angle formé par les deux tangentes, elle ne coupe pas le polygone.
 
 ### Dedans ou dehors ?
 
@@ -588,7 +588,7 @@ On peut donc cycler sur tous les triplets $(p_{i-1}, p_i, p_{i+1})$ et regarder 
 Sans surprise :
 
 {% exercice %}
-Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(\log(h))$ opérations.
+Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(\ln(h))$ opérations.
 
 {% endexercice %}
 {% details "Solution" %}
@@ -635,13 +635,13 @@ Pour alléger les algorithmes, on considérera que tous les points de $\mathcal{
 
 En utilisant ce que nous avons fait précédemment, il est facile de savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ :
 
-- on vérifie pour chaque point en $\mathcal{O}(\log(h))$ s'il est dans le convexe
+- on vérifie pour chaque point en $\mathcal{O}(\ln(h))$ s'il est dans le convexe
 - lors de la vérification d'un point, on pourra également savoir si c'est un point du polygone. Si à la fin de la vérification, on a $h$ points sur l'enveloppe, tous les points de $P$ sont dans $\mathcal{P}$
 
 On conclut de ce qui précède que :
 
 {% note %}
-savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ se fait en $\mathcal{O}(n\log(h))$ opérations.
+savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ se fait en $\mathcal{O}(n\ln(h))$ opérations.
 {% endnote %}
 
 ### Marche de Jarvis
@@ -728,21 +728,21 @@ De là, l'enveloppe convexe des points est :
 
 ![tri et enveloppe convexe](./tri-enveloppe-2.png)
 
-Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
+Une fois le maximum des points trouvé (en $\mathcal{O}(\ln(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
 
 {% note %}
 Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que [la complexité du problème du tri](../problème-tris/complexité-problème/#complexité-problème) :
 
-Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\log(n))$ si les $n$ points sont sur l'enveloppe.
+Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\ln(n))$ si les $n$ points sont sur l'enveloppe.
 {% endnote %}
 
 Comme l'algorithme suivant atteint cette borne, on peut écrire :
 
 {% note %}
-La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\log(n))$.
+La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\ln(n))$.
 {% endnote %}
 
-Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(n + h\log(h))$ ou encore $\mathcal{O}(n\log(h))$.
+Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(n + h\ln(h))$ ou encore $\mathcal{O}(n\ln(h))$.
 
 ### Parcours de Graham
 
@@ -831,7 +831,7 @@ Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un 
 La complexité du parcours de Graham réside dans le tri :
 
 {% note %}
-Le parcours de Graham trouve l'enveloppe convexe de $n$ points en $\mathcal{O}(n\log(n))$ opérations.
+Le parcours de Graham trouve l'enveloppe convexe de $n$ points en $\mathcal{O}(n\ln(n))$ opérations.
 
 {% endnote %}
 
@@ -1093,14 +1093,14 @@ Soit $p_i$ le dernier point ajouté à l'enveloppe convexe. Le point suivant de 
 Supposons que $p_i$ soit le point $p^1_j$ du polygone $P_1$ :
 
 - le point de $P_1$ maximisant l'angle est $p^1_{j+1}$
-- le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\log(h_2))$ opérations.
+- le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\ln(h_2))$ opérations.
 
 Le prochain point $p_{i+1}$ est donc soit $p^1_{j+1}$ soit $p^2_{k}$.
 
-Trouver $p_{i+1}$ se trouve donc en $\mathcal{O}(\log(h_1))$ ou en $\mathcal{O}(\log(h_2))$ selon l'enveloppe convexe sur laquelle se trouve $p_i$. Comme tous les points de $P_1$ et tous les points de $P_2$ peuvent faire parti de l'enveloppe finale, on a :
+Trouver $p_{i+1}$ se trouve donc en $\mathcal{O}(\ln(h_1))$ ou en $\mathcal{O}(\ln(h_2))$ selon l'enveloppe convexe sur laquelle se trouve $p_i$. Comme tous les points de $P_1$ et tous les points de $P_2$ peuvent faire parti de l'enveloppe finale, on a :
 
 {% note %}
-La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seule de taille $h$ se fait, en utilisant la marche de Jarvis en : $\mathcal{O}(h\cdot (\log(h_1) + \log(h_2))) \leq \mathcal{O}((h_1 + h_2) \cdot (\log(h_1) + \log(h_2)))$ opérations.
+La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seule de taille $h$ se fait, en utilisant la marche de Jarvis en : $\mathcal{O}(h\cdot (\ln(h_1) + \ln(h_2))) \leq \mathcal{O}((h_1 + h_2) \cdot (\ln(h_1) + \ln(h_2)))$ opérations.
 
 {% endnote %}
 
@@ -1136,12 +1136,12 @@ $$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$
 
-[Le master theorem](../problème-tris/algorithme-fusion/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\log(n)$.
+[Le master theorem](../problème-tris/algorithme-fusion/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\ln(n)$.
 
-Le tri initial des points (en $\mathcal{O}(n\log(n))$ opérations) n'a pas dégradé la complexité :
+Le tri initial des points (en $\mathcal{O}(n\ln(n))$ opérations) n'a pas dégradé la complexité :
 
 {% note %}
-L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\mathcal{O}(n\log(n))$ opérations
+L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\mathcal{O}(n\ln(n))$ opérations
 {% endnote %}
 
 #### <span id="méthode-2"></span> Méthode 2 : polygones convexes quelconques
@@ -1149,7 +1149,7 @@ L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\
 Si l'on utilise des polygones quelconques, on a pas besoin de trier les éléments au début, mais chaque recollement coûte pus cher dans le cas le pire. On obtient une équation de complexité valant :
 
 $$
-C(n) = \mathcal{O}(n\log(n)) + 2\cdot C(\frac{n}{2})
+C(n) = \mathcal{O}(n\ln(n)) + 2\cdot C(\frac{n}{2})
 $$
 
 [L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral){.externe} nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
@@ -1160,34 +1160,34 @@ $$
 [Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan){.externe}, 1996.
 {% endlien %}
 
-L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\log(h))$ où $n$ est le nombre de points et $h$ la taille de l'enveloppe convexe résultante.
+L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\ln(h))$ où $n$ est le nombre de points et $h$ la taille de l'enveloppe convexe résultante.
 
 Cette complexité est la meilleure complexité connue.
 
 {% info %}
-Le premier algorithme de complexité $\mathcal{O}(n\log(h))$ connu est celui de [Kirkpatrick et Seidel](https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm){.externe} en 1986. Il est cependant plus ardu à comprendre.
+Le premier algorithme de complexité $\mathcal{O}(n\ln(h))$ connu est celui de [Kirkpatrick et Seidel](https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm){.externe} en 1986. Il est cependant plus ardu à comprendre.
 {% endinfo %}
 
 1. partitionnez les $n$ points en $\frac{n}{m}$ paquets de $m$ points. Coût de cette étape : $\mathcal{O}(n)$
-2. trouver avec le parcours de Graham l'enveloppe convexe de chaque paquet en $\mathcal{O}(m\log(m))$ opérations. Coût de cette étape : $\mathcal{O}(\frac{n}{m}m\log(m)) = \mathcal{O}(\frac{n}\log(m))$ opérations
+2. trouver avec le parcours de Graham l'enveloppe convexe de chaque paquet en $\mathcal{O}(m\ln(m))$ opérations. Coût de cette étape : $\mathcal{O}(\frac{n}{m}m\ln(m)) = \mathcal{O}(\frac{n}\ln(m))$ opérations
 3. Trouver l'enveloppe convexe globale en utilisant la marche de Jarvis ([la méthode 2](./#méthode-2)) :
    1. le premier point est le point tout à gauche : $\mathcal{O}(n)$ opérations
-   2. trouver le prochain élément de la marche prend $\mathcal{O}(\frac{n}{m}\log(m))$ opérations car il y a $\frac{n}{m}$ enveloppes et la taille de l'enveloppe convexe de chaque enveloppe est au maximum $m$
-   3. au total, trouver l'enveloppe convexe prend : $\mathcal{O}(h\frac{n}{m}\log(m))$ opération
+   2. trouver le prochain élément de la marche prend $\mathcal{O}(\frac{n}{m}\ln(m))$ opérations car il y a $\frac{n}{m}$ enveloppes et la taille de l'enveloppe convexe de chaque enveloppe est au maximum $m$
+   3. au total, trouver l'enveloppe convexe prend : $\mathcal{O}(h\frac{n}{m}\ln(m))$ opération
 
 Pour un $m$ donné, cet algorithme prend un nombre d'opérations de l'ordre de :
 
 $$
-\mathcal{O}(n + n\log(m) + h\cdot \frac{n}{m}\log(m)) = \mathcal{O}(n\log(m) + h\cdot \frac{n}{m}\log(m))
+\mathcal{O}(n + n\ln(m) + h\cdot \frac{n}{m}\ln(m)) = \mathcal{O}(n\ln(m) + h\cdot \frac{n}{m}\ln(m))
 $$
 
-- Si $m = h$ l'algorithme prend $\mathcal{O}(n\log(h))$ opérations
-- Si $m < h$ alors $n\log(m) <  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations
-- Si $m > h$ alors $n\log(m) >  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations
+- Si $m = h$ l'algorithme prend $\mathcal{O}(n\ln(h))$ opérations
+- Si $m < h$ alors $n\ln(m) <  h\cdot \frac{n}{m}\ln(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\ln(m)$ opérations
+- Si $m > h$ alors $n\ln(m) >  h\cdot \frac{n}{m}\ln(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\ln(m))$ opérations
 
 La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. **Mais** lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
 
-L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\log(m))$. On a deux cas :
+L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\ln(m))$. On a deux cas :
 
 - soit $m$ est plus petit que $h$. On aura pas construit l'enveloppe convexe car on ne sera pas revenu au point de départ de la marche
 - soit $m$ est plus grand que $h$. On aura construit l'enveloppe convexe car on sera revenu au point de départ de la marche à une étape donnée. On pourra alors stopper l'algorithme à ce moment là.
@@ -1220,7 +1220,7 @@ $$
 &=&\mathcal{O}(n(2^{i^\star + 1} - 2))=\\
 &=&\mathcal{O}(n(2^{2 + \log_2(\log_2(h))} - 2))\\
 &=&\mathcal{O}(n(4\cdot \log_2(h) - 2))\\
-&=&\mathcal{O}(n\cdot \log(h))
+&=&\mathcal{O}(n\cdot \ln(h))
 \end{array}
 $$
 </div>
