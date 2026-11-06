@@ -83,9 +83,6 @@ Prouver qu'un programme résout un problème algorithmique nécessite deux véri
 
 En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate. On peut cependant donner des règles générales de preuve qui fonctionnent (souvent) pour des algorithmes récursifs ou itératifs.
 
-
-
-
 Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :
 
 $$
@@ -212,9 +209,6 @@ Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ce
 {% endretenir %}
 
 Notre algorithme va forcément s'arrêter puisque $i$ croît strictement à chaque itération.
-
-
-
 
 ### Correction
 
@@ -348,7 +342,6 @@ L'invariant étant vérifié à la fin de chaque itération, il est donc aussi v
 
 ## Trouver des invariants de boucles
 
-
 Trouver un invariant de boucle est souvent intimidant pour des débutants. Nous allons nous entraîner un peu pour acquérir quelques automatismes. L'idée principale pour trouver un invariant est de procéder par étapes :
 
 1. comprendre l'algorithme
@@ -368,9 +361,9 @@ Appliquons ces recommandations sur l'algorithme itératif suivant :
 <span id="algorithme-max-tableau-iter"></span>
 
 ```pseudocode
-algorithme maximum(t: []int) → int:
-    ref m ← t[0]
-    pour chaque x de t:
+algorithme maximum(T: []int) → int:
+    ref m ← T[0]
+    pour chaque x de T:
         si m < x:
             m ← x
     rendre m
@@ -379,9 +372,9 @@ algorithme maximum(t: []int) → int:
 {% details "code python" %}
 
 ```python
-def maximum(t):
-    m = t[0]
-    for x in t:
+def maximum(T):
+    m = T[0]
+    for x in T:
         if m < x:
             m = x
     return m
@@ -406,11 +399,11 @@ Il faut montrer que la variable `m`{.language-} contient la valeur maximale pour
 Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableau (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle `pour chaque`{.language-}. On modifie alors notre algorithme pour rendre $i$ explicite :
 
 ```pseudocode
-algorithme maximum(t: []int) → int:
-    ref m ← t[0]
+algorithme maximum(T: []int) → int:
+    ref m ← T[0]
     ref x int
-    pour chaque i de [0 .. t.longueur[:
-        x ← t[i]
+    pour chaque i de [0 .. T.longueur[:
+        x ← T[i]
         si m < x:
             m ← x
     rendre m
@@ -419,10 +412,10 @@ algorithme maximum(t: []int) → int:
 {% details "code python" %}
 
 ```python
-def maximum(t):
-    m = t[0]
-    for i in range(len(t)):
-        x = t[i]
+def maximum(T):
+    m = T[0]
+    for i in range(len(T)):
+        x = T[i]
         if m < x:
             m = x
     return m
@@ -436,12 +429,12 @@ Ce qui permet d'écrire l'invariant :
 
 #### 5. Prouver l'invariant
 
-Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.
+Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=T[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.
 
-On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :
+On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=T[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :
 
 - $m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)
-- $m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qui se passe dans l'itération suivante)
+- $m' = \max(m, x') = \max(m, T[i']) = \max(m, T[i + 1])$ (ce qui se passe dans l'itération suivante)
 
 On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.
 

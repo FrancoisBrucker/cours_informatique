@@ -21,7 +21,7 @@ Ces exercice sont plus durs que ceux précédemment vus. Faites et comprenez bie
 
 Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entier trié.
 
-On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
+On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $T[\lfloor (a + b)/2 \rfloor]$ :
 
 - si $T[\\,\lfloor (a + b)/2 \rfloor\\,] = x$ on a trouvé l'élément
 - si $T[\\,\lfloor (a + b)/2 \rfloor\\,] > x$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
@@ -37,15 +37,14 @@ Ce principe donne l'algorithme suivant :
 
 ```pseudocode
 algorithme recherche_dichotomique(T: []int, x: int) → bool:
-  ref a ← 0
-  ref b ← T.longueur - 1
+  ref a, b ← 0, T.longueur - 1
   ref m int
 
   tant que a ≤ b:
       m ← (a + b) // 2  # division entière
 
       si (t[m] == x):
-          rendre Vrai  # m est l'indice
+          rendre Vrai
       si (t[m] < x):
           a ← m + 1
       si (t[m] > x):
@@ -55,18 +54,39 @@ algorithme recherche_dichotomique(T: []int, x: int) → bool:
 
 ```
 
-Étudions l'algorithme :
+Commençons par se persuader qu'il fonctionne (et commencer à se forger une intuition de son fonctionnement) avec de petits exemples :
 
-- **fonctionnement**. On vérifie que pour :
-  - un tableau `[1, 3, 7]`{.language-} l'algorithme trouve bien `7`{.language-} et ne trouve pas `8`{.language-}
-  - un tableau `[1, 3, 3, 7]`{.language-} l'algorithme trouve bien `7`{.language-} et ne trouve pas `9`{.language-}
+{% faire %}
+Déroulez l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} pour ces différentes valeurs de `T`{.language-} et de `x`{.language-} :
+
+- `T = [1, 3, 7]`{.language-} et `x = 7`{.language-} ou `x = 8`{.language-} l'algorithme fonctionne
+- `T =[1, 3, 3, 7]`{.language-} et `x = 7`{.language-} ou `x = 9`{.language-} l'algorithme fonctionne
+{% endfaire %}
+
+On peut maintenant passer à sa preuve :
+
+{% exercice %}
+Démontrez que l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} :
+
+- termine quelque soient ses entrées,
+- est bien un algorithme de recherche.
+{% endexercice %}
+{% details "corrigé" %}
+
+- **finitude**. La quantité entière `b - a`{.language-} **décroît strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opérations et l'algorithme s'arrêtera.
 - **preuve** :
-  - **finitude**. La quantité entière `b - a`{.language-} **décroît strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.
-  - **preuve**.
-    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `T`{.language-}, alors sa position est plus grande que `a`{.language-} et plus petite que `b`{.language-}
-    2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `x`{.language-} ne peut être dans `T`{.language-}
+  1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `T`{.language-}, alors sa position est plus grande ou égale à `a`{.language-} et plus petite ou égale à `b`{.language-}
+  2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `x`{.language-} ne peut être dans `T`{.language-}
 
-Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} résout bien le problème _"recherche ordonnée"_.
+Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} fonctionne.
+{% enddetails %}
+
+
+{% exercice %}
+Démontrez que la complexité de l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} vaut $\mathcal{O}(K)$ avec $K$ le nombre de fois où l'algorithme rentre dans la boucle `tant que`{.language-}
+
+{% endexercice %}
+{% details "corrigé" %}
 
 Étudions sa complexité. Ligne à ligne :
 
@@ -97,67 +117,139 @@ C(n) & = & 3 \cdot \mathcal{O}(1) + \\
 \end{array}
 $$
 </div>
+{% enddetails %}
 
-Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2.
+Avant de conclure, démontrons une petite proposition qui sera utile tout au long de ce cours :
 
-Si $K$ est ce nombre d'itérations, on a que : $2^{K} \leq T.\mbox{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq T.\mbox{\small longueur} < 2^{p + 1}$. On ne peut donc pas diviser $T.\mbox{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(T.\mbox{\small longueur})$ puisque :
+
+{% note "**Proposition**" %}
+Le plus grand entier $k$ tel que $\frac{n}{p^k} \geq 1$ pour deux entiers $n\geq p$ vaut  $k = \lfloor\log_p(n)\rfloor$.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Le nombre $k$ recherché est tel que $p^k \leq n < p^{k + 1}$. On a alors :
 
 <div>
 $$
 \begin{array}{lcccl}
-    2^p &\leq &T.\mbox{\small longueur} &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(T.\mbox{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(T.\mbox{\small longueur}) &<& p + 1
+    p^k &\leq &n &<& p^{k + 1}\\
+    \log_p(p^k) &\leq & \log_p(n) &< &\log_p(p^{k + 1}) \mbox{ (car la fonction $\log_p$ est croissante)} \\
+    k\cdot \log_p(p) &\leq & \log_p(n) &< &(k + 1)\cdot \log_p(p) \\
+    k &\leq &\log_p(n) &<& k + 1
 \end{array}
 $$
 </div>
+{% enddetails %}
 
-On en conclut le théorème fondamental de la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n) + 1$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :
+La proposition précédente nous permet de conclure sur la complexité :
 
-{% note "**Proposition**" %}
-L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).
-{% endnote %}
+{% exercice %}
+Démontrez que la complexité de l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} vaut $\mathcal{O}(\ln(T.\mbox{\small longueur}))$.
 
-L'algorithme recherche que l'on a déjà utilisé à ne nombreuses reprise
+{% endexercice %}
+{% details "corrigé" %}
+Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2,  donc au plus $\log_2(T.\mbox{\small longueur}) + 1$ itérations . Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a bien la complexité recherchée.
 
-> TBD théorique puis en pratique. Vérifier que log ok avec régression linéaire
+{% enddetails  %}
+
+Cette complexité est vraiment très bonne ! La valeur de $\ln(n)$ est en effet très petite devant $n$, Pour se fixer les idée et comme tous les log sont proportionnels pensez à la différence entre :
+
+- $t = 4.35 \cdot 10^{17}$ secondes qui est l'age estimé de l'univers ($1.38 \cdot 10^8$ siècles),
+- $\log_10(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel){.externe} de physique en 2015, on peut estimer cette durée à 21s±13s)
 
 ## Maximum d'un tableau
 
-> TBD no,bre de d'exécution d'une f
-> TBD nb de mise à jour du maximum. 
-> 1. calcul max
-> 2. nombre de mise a jour de l'algo simple : Max n et en moyenne ln(n) (Knuth) (avec les main le prochain > est à la moitié.)
+On pourrait penser que l'on a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà un [une version itérative](../../1-algorithme/problème-preuve/#algorithme-max-tableau-iter) et [une version récursive](../../1-algorithme/projet/#algorithme-max-tableau-rec)), mais si si il nous reste au moins un résultat intéressant à démontrer. 
 
+On va utiliser ici la version itérative de l'algorithme :
 
+```pseudocode
+algorithme maximum(T: []int) → int:
+    ref m ← T[0]
+    pour chaque x de T:
+        si m < x:
+            m ← x
+    rendre m
+```
 
+Un petit échauffement avant le vrai résultat :
 
-> TBD pour aller plus loin
-> TBD ajouter pyperf pour les perf d'un programme et cprofile pour le profilage des bootleneck <https://www.stephane-robert.info/docs/developper/programmation/python/profiling/>
-> 3. modif pour mise a jour dans une fonction et vérifier que cprofile ou pyperf le voit
-
->
-
-<span id="algorithme-max-tableau-complexité"></span>
 {% exercice %}
- Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
+Donnez les complexités minimale, maximale et en moyenne de l'algorithme `maximum([]int) → int`{.language-}
 
 {% endexercice %}
 {% details "corrigé" %}
 
-Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :
+- complexité minimale et maximale $\mathcal{O}(n)$ puisqu'il faut parcourir chaque élément du tableau et que le reste des lignes est en $\mathcal{O}(1)$
+- la complexité moyenne étant forcément entre la complexité minimale et maximale elle est également en $\mathcal{O}(n)$.
+
+{% enddetails  %}
+
+Maintenant regardons combien de fois la variable `m`{.language-} est affectée,
+
+{% exercice %}
+Donnez les nombres minimaux et maximaux de fois où la variable `m`{.language-} est affectée.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+La variable `m`{.language-} est affectée est affecté dans tous les cas au moins une fois. De plus :
+
+- si le tableau est trié par ordre décroissant, `m`{.language-} n'est affecté qu'une fois
+- si le tableau est trié par ordre croissant, `m`{.language-} est affecté à chaque itération, donc la longueur du tableau fois.
+
+{% enddetails  %}
+
+On s'intéresse à la complexité en moyenne de ce nombre d'affectation. Pour cela on va considérer que le tableau $T$ est une permutation aléatoire de [1 .. n].
+
+{% exercice %}
+Donnez un argument pour lequel sous ce modèle la complexité en moyenne du nombre d'affectation est $\log_2(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+Lorsque l'on met à jour $m$, c'est pour une valeur strictement plus grande. La probabilité que cette valeur soit $m+1$, $m+2$, ..., $T.\mbox{\small longueur}$ est la même, donc en moyenne elle sera de l'ordre de la moitié : $\frac{T.\mbox{\small longueur} + m}{2}$. À chaque affectation on divise par deux le nombre de valeurs plus grandes restantes : on le fait donc au maximum $\log_2(T.\mbox{\small longueur})$.
+{% enddetails  %}
+{% info %}
+Il est important de retenir cet argument. Il va servir à de nombreuse reprises pour estimer des complexités en moyenne.
+{% endinfo %}
+
+L'argument précédent est souvent suffisant, mais, pour cette fois, faites le proprement pour vous convaincre que l'argument est bon :
+
+{% exercice %}
+Démontrez que sous ce modèle, la probabilité que $T[i] = \max(T[:i])$ pour $0 \leq i < n$ vaut $\frac{1}{i+1}$.
+{% endexercice %}
+{% info %}
+Vous pourrez lier cette complexité au nombres de fois où $T[i] = \max(T[:i])$ pour $0 \leq i < n$ et au fait ([démontré là](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique#%C3%89quivalent_de_Hn){.externe}) que $\sum_{1\leq i \leq n} \frac{1}{i}$ est équivalent à $\ln(n)$ en $+\infty$.
+{% endinfo %}
+{% details "corrigé" %}
+Pour construire une permutation $T$ de $[1 .. n]$ telle que $T[i] = \max(T[:i])$ il faut :
+
+1. choisir les $i+1$ premiers éléments $T$ : il y a $\binom{n}{i+1}$ choix possible.
+2. placer le plus grand des éléments choisi en 1. à la position $T[i]$ : 1 choix possible
+3. placer les $i$ éléments restant aux $i$ premières places : $(i)!$ choix possible
+4. placer les $n-i-1$ éléments restant aux $n-i-1$ dernières places : $(n-i-1)!$ choix possible
+
+Il y a donc : $\binom{n}{i+1} \cdot 1 \cdot (i)! \cdot (n-i-1)! = \frac{n!}{(i+1)! \cdot (n-i-1)!} \cdot i! \cdot (n-i-1)! = \frac{n!}{i+1}$.
+
+On en conclut que la probabilité $p_i$ qu'une permutation $T$ soit telle que $T[i] = \max(T[:i-1])$ vaut $\frac{\frac{n!}{i+1}}{n!} = \frac{1}{i+1}$.
+
+{% enddetails  %}
+
+De là, la complexité en moyenne $C_{\text{moy}}(n)$ pour une longueur $n$ de tableau vaut : 
 
 <div>
 $$
-C(n) = \mathcal{O}(1) + C(n-1)
+C_{\text{moy}}(n) = \sum_{0\leq i < n} p_i\cdot 1 = \sum_{1\leq i \leq n} \frac{1}{i}
 $$
 </div>
 
-On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
+Et on conclut en utilisant [le fait que](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique#%C3%89quivalent_de_Hn){.externe} (on le démontrera plus tard) $\sum_{1\leq i \leq n} \frac{1}{i}$ est équivalent à $\ln(n)$ en $+\infty$.
 
-{% enddetails %}
+On en conclut que la complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$.
 
-
+{% info %}
+Retenez (on le démontrera plus tard) que $\sum_{1\leq i \leq n} \frac{1}{i}$ est équivalent à $\ln(n)$ en $+\infty$, cela est souvent utile.
+{% endinfo %}
 
 ## Algorithme de texte
 

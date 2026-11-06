@@ -286,6 +286,12 @@ $$
 $$
 </div>
 
+> TBD il y a plus simple :
+> 1. ln(1 + x) ≤ x par étude de fonction.
+> 2. 1/(k+1) ≤ ln((1+k)/k) ≤ 1/k
+> 3. série télescopique puisque ln((1+k)/k) = ln(1+k) - ln(k)
+
+
 On peut alors utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale){.externe} pour en déduire que pour tout $n> 0$ :
 
 {% exercice %}
