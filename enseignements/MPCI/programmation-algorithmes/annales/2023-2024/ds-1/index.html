@@ -588,7 +588,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
     <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
 <p>La condition d'arrêt est pour des tailles de tableaux égales à $1 = 2^0$. Pour laquelle on trouve bien l'élément majoritaire.</p>
 <p>On suppose alors par récurrence que l'algoerithme fonctionne pour $n = 2^i$ et on vérifie qu'il continue de fnctionner pour $n'=2^{i+1}$. Ceci est évidant car on applique directement la condition de 3.2.2</p>
-<p>La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de <code class="language-">compte</code> est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\log(n))$.</p>
+<p>La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de <code class="language-">compte</code> est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\ln(n))$.</p>
 <h4>3.3.1</h4>
 <blockquote>
 <p>Reprenez cet exercice sans supposer que $n$ est une puissance de 2. Que faut-il changer pour que l'algorithme continue de fonctionner ?</p>

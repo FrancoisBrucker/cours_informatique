@@ -295,9 +295,9 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>II.1.3</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le tri utilisé par python est de complexité $\mathcal{O}(n\log(n))$. En déduire que le problème Doppelganger peut être résolu avec une complexité :</p>
+<p>Le tri utilisé par python est de complexité $\mathcal{O}(n\ln(n))$. En déduire que le problème Doppelganger peut être résolu avec une complexité :</p>
 <ul>
-<li>temporelle en $\mathcal{O}(n\log(n))$</li>
+<li>temporelle en $\mathcal{O}(n\ln(n))$</li>
 <li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
 </ul>
 </div>
@@ -650,7 +650,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Assurez vous d'être <strong>effectivement</strong> dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.</p>
+<p>Assurez vous d'être <strong>effectivement</strong> dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\ln(n))$ sinon.</p>
 <p>Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode <a href="https://docs.python.org/fr/3.13/library/random.html#random.shuffle" class="externe">random.shuffle</a> pour mélanger un tableau trié).</p>
 </div>
 </div>

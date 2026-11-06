@@ -205,7 +205,7 @@ $$
 </div>
 <p>Le but de ce qui va suivre est de terminer le travail, c'est à dire de passer de l'exécution d'une ligne à l'exécution de tout un algorithme. Ceci va être possible en conservant toutes les itérations de l'exécution de l'algorithme en une seule formule.</p>
 <h3>Suivi des instructions</h3>
-<p>Il faut pouvoir garder trace de chaque instruction tout au long de l'exécution de l'algorithme. Pour cela on peut définir une variable spéciale $l$ de type <code class="language-">[bit:log(L)]</code> qui va contenir le numéro de la ligne exécuté. On aura besoin de la fonction booléenne $(l == m)$ définie de $\{0, 1\}^{\log(L)} \rightarrow \{0, 1\}$. Et que l'on peut écrire avec $\mathcal{O}(\log(L)) = \mathcal{O}(1)$ littéraux.</p>
+<p>Il faut pouvoir garder trace de chaque instruction tout au long de l'exécution de l'algorithme. Pour cela on peut définir une variable spéciale $l$ de type <code class="language-">[bit:log(L)]</code> qui va contenir le numéro de la ligne exécuté. On aura besoin de la fonction booléenne $(l == m)$ définie de $\{0, 1\}^{\ln(L)} \rightarrow \{0, 1\}$. Et que l'on peut écrire avec $\mathcal{O}(\ln(L)) = \mathcal{O}(1)$ littéraux.</p>
 <p>Comme on doit modifier cette ligne après chaque instruction, on va considérer la variable $l^i$ qui est la ligne de l'algorithme exécutée à l'itération $i$ :</p>
 <ul>
 <li>soit l'instruction n'était pas une instruction de saut et $l^{i+1} ← \text{INC}(l^i)$ avec INC la fonction booléenne vectorielle sur des tableaux de longueur $\log_2(L)$</li>

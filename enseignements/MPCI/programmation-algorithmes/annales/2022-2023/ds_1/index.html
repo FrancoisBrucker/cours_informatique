@@ -469,7 +469,7 @@ $$</p>
     
     <span class="token keyword">return</span> entier  </code></pre>
 <h4><span id="rq-q22"></span> Remarques suite à la correction des copies</h4>
-<p>Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\log(n))$ et <strong>pas</strong> en $\mathcal{O}(n)$ :</p>
+<p>Le calcul de $2^i$ ne compte pas pour $\mathcal{O}(1)$. On a vu en cours qu'il faut toujours au minimum $\log_2(i)$ opérations pour cela. La complexité de la fonction suivante est donc en $\mathcal{O}(n\ln(n))$ et <strong>pas</strong> en $\mathcal{O}(n)$ :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     s <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>

@@ -835,7 +835,7 @@ $$
 \frac{m_i}{n_i} = \frac{m_{i-1}}{n_{i-1}} + 1 = \dots = \frac{0}{1} + i = \log_2(n_i)
 $$
 </div>
-<p>Ce qui donne une solution en $\mathcal{O}(n\log(n))$.</p>
+<p>Ce qui donne une solution en $\mathcal{O}(n\ln(n))$.</p>
 <p>On peut borner le nombre de solution en remarquant que le graphe dont les sommets représentent les points et les arêtes les distances unités ne contient par le graphe $K_{2, 3}$. En effet la figure suivante le montre, l'intersection de 2 cercles de rayon unités est uniquement 2 points, deux sommets ne peuvent avoir 3 voisins à distance unité :</p>
 <p><img src="distance-unit%C3%A9-5.png" alt="distance unité 5"></p>
 <p>Le théorème précédent nous donne donc une borne max du nombre d'arêtes : $\mathcal{O}(n^{2-1/2}) = \mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$.</p>

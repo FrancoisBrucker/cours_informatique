@@ -822,7 +822,7 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'on peut trouver $\min(\{ p_i^x \mid 1 \leq i \leq h \})$ en $\mathcal{O}(\log(h))$ opérations.</p>
+<p>Montrez que l'on peut trouver $\min(\{ p_i^x \mid 1 \leq i \leq h \})$ en $\mathcal{O}(\ln(h))$ opérations.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -863,7 +863,7 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'on peut trouver la tangente rouge (<em>resp.</em> verte) en $\mathcal{O}(\log(h))$ opérations.</p>
+<p>Montrez que l'on peut trouver la tangente rouge (<em>resp.</em> verte) en $\mathcal{O}(\ln(h))$ opérations.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -889,7 +889,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Un corollaire à cet exercice est que l'on peut déterminer si une droite intersecte un polygone convexe en $\mathcal{O}(\log(h))$ opérations. Il suffit en effet de prendre un sommet de la droite qui n'est pas sur le polygone (d’abscisse inférieure au minimum) puis de calculer les tangentes. si la pente de la droite n'est pas dans l'angle formé par les deux tangentes, elle ne coupe pas le polygone.</p>
+<p>Un corollaire à cet exercice est que l'on peut déterminer si une droite intersecte un polygone convexe en $\mathcal{O}(\ln(h))$ opérations. Il suffit en effet de prendre un sommet de la droite qui n'est pas sur le polygone (d’abscisse inférieure au minimum) puis de calculer les tangentes. si la pente de la droite n'est pas dans l'angle formé par les deux tangentes, elle ne coupe pas le polygone.</p>
 <h3>Dedans ou dehors ?</h3>
 <p>Le dernier problème que nous allons aborder est de savoir si un point est dans le polygone convexe ou pas.</p>
 <p>Commençons simplement :</p>
@@ -926,7 +926,7 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(\log(h))$ opérations.</p>
+<p>Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(\ln(h))$ opérations.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -993,7 +993,7 @@ $$</p>
 <h3>Reconnaissance</h3>
 <p>En utilisant ce que nous avons fait précédemment, il est facile de savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ :</p>
 <ul>
-<li>on vérifie pour chaque point en $\mathcal{O}(\log(h))$ s'il est dans le convexe</li>
+<li>on vérifie pour chaque point en $\mathcal{O}(\ln(h))$ s'il est dans le convexe</li>
 <li>lors de la vérification d'un point, on pourra également savoir si c'est un point du polygone. Si à la fin de la vérification, on a $h$ points sur l'enveloppe, tous les points de $P$ sont dans $\mathcal{P}$</li>
 </ul>
 <p>On conclut de ce qui précède que :</p>
@@ -1002,7 +1002,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ se fait en $\mathcal{O}(n\log(h))$ opérations.</p>
+<p>savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ se fait en $\mathcal{O}(n\ln(h))$ opérations.</p>
 </div>
 </div>
 <h3>Marche de Jarvis</h3>
@@ -1086,14 +1086,14 @@ $$
 <p>Tout se passe comme si on avait placer les points à trier sur une parabole.</p>
 <p>De là, l'enveloppe convexe des points est :</p>
 <p><img src="tri-enveloppe-2.png" alt="tri et enveloppe convexe"></p>
-<p>Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.</p>
+<p>Une fois le maximum des points trouvé (en $\mathcal{O}(\ln(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que <a href="../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-probl%C3%A8me">la complexité du problème du tri</a> :</p>
-<p>Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\log(n))$ si les $n$ points sont sur l'enveloppe.</p>
+<p>Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\ln(n))$ si les $n$ points sont sur l'enveloppe.</p>
 </div>
 </div>
 <p>Comme l'algorithme suivant atteint cette borne, on peut écrire :</p>
@@ -1102,10 +1102,10 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\log(n))$.</p>
+<p>La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\ln(n))$.</p>
 </div>
 </div>
-<p>Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(n + h\log(h))$ ou encore $\mathcal{O}(n\log(h))$.</p>
+<p>Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(n + h\ln(h))$ ou encore $\mathcal{O}(n\ln(h))$.</p>
 <h3>Parcours de Graham</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1233,7 +1233,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le parcours de Graham trouve l'enveloppe convexe de $n$ points en $\mathcal{O}(n\log(n))$ opérations.</p>
+<p>Le parcours de Graham trouve l'enveloppe convexe de $n$ points en $\mathcal{O}(n\ln(n))$ opérations.</p>
 </div>
 </div>
 <p>Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins grande que l'algorithme de Jarvis.</p>
@@ -1517,16 +1517,16 @@ $$
 <p>Supposons que $p_i$ soit le point $p^1_j$ du polygone $P_1$ :</p>
 <ul>
 <li>le point de $P_1$ maximisant l'angle est $p^1_{j+1}$</li>
-<li>le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\log(h_2))$ opérations.</li>
+<li>le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\ln(h_2))$ opérations.</li>
 </ul>
 <p>Le prochain point $p_{i+1}$ est donc soit $p^1_{j+1}$ soit $p^2_{k}$.</p>
-<p>Trouver $p_{i+1}$ se trouve donc en $\mathcal{O}(\log(h_1))$ ou en $\mathcal{O}(\log(h_2))$ selon l'enveloppe convexe sur laquelle se trouve $p_i$. Comme tous les points de $P_1$ et tous les points de $P_2$ peuvent faire parti de l'enveloppe finale, on a :</p>
+<p>Trouver $p_{i+1}$ se trouve donc en $\mathcal{O}(\ln(h_1))$ ou en $\mathcal{O}(\ln(h_2))$ selon l'enveloppe convexe sur laquelle se trouve $p_i$. Comme tous les points de $P_1$ et tous les points de $P_2$ peuvent faire parti de l'enveloppe finale, on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seule de taille $h$ se fait, en utilisant la marche de Jarvis en : $\mathcal{O}(h\cdot (\log(h_1) + \log(h_2))) \leq \mathcal{O}((h_1 + h_2) \cdot (\log(h_1) + \log(h_2)))$ opérations.</p>
+<p>La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seule de taille $h$ se fait, en utilisant la marche de Jarvis en : $\mathcal{O}(h\cdot (\ln(h_1) + \ln(h_2))) \leq \mathcal{O}((h_1 + h_2) \cdot (\ln(h_1) + \ln(h_2)))$ opérations.</p>
 </div>
 </div>
 <p>Cette complexité dépend de la taille de la sortie. Elle est donc plus importante que la première méthode lorsque $h$ est de l'ordre de $h_1 + h_2$ mais plus petite lorsque $h$ est petit.</p>
@@ -1551,20 +1551,20 @@ $$
 <p>$$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$</p>
-<p><a href="../probl%C3%A8me-tris/algorithme-fusion/#master-theorem">Le master theorem</a> nous indique que cette complexité vaut : $C(n) = n\log(n)$.</p>
-<p>Le tri initial des points (en $\mathcal{O}(n\log(n))$ opérations) n'a pas dégradé la complexité :</p>
+<p><a href="../probl%C3%A8me-tris/algorithme-fusion/#master-theorem">Le master theorem</a> nous indique que cette complexité vaut : $C(n) = n\ln(n)$.</p>
+<p>Le tri initial des points (en $\mathcal{O}(n\ln(n))$ opérations) n'a pas dégradé la complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\mathcal{O}(n\log(n))$ opérations</p>
+<p>L'algorithme diviser pour régner en utilisant des polygones disjoints est en $\mathcal{O}(n\ln(n))$ opérations</p>
 </div>
 </div>
 <h4><span id="méthode-2"></span> Méthode 2 : polygones convexes quelconques</h4>
 <p>Si l'on utilise des polygones quelconques, on a pas besoin de trier les éléments au début, mais chaque recollement coûte pus cher dans le cas le pire. On obtient une équation de complexité valant :</p>
 <p>$$
-C(n) = \mathcal{O}(n\log(n)) + 2\cdot C(\frac{n}{2})
+C(n) = \mathcal{O}(n\ln(n)) + 2\cdot C(\frac{n}{2})
 $$</p>
 <p><a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral" class="externe">L'énoncé général du master theorem</a> nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.</p>
 <h2>Algorithme <em>optimal</em></h2>
@@ -1576,38 +1576,38 @@ $$</p>
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Chan" class="externe">Algorithme de Chan</a>, 1996.</p>
 </div>
 </div>
-<p>L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\log(h))$ où $n$ est le nombre de points et $h$ la taille de l'enveloppe convexe résultante.</p>
+<p>L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\ln(h))$ où $n$ est le nombre de points et $h$ la taille de l'enveloppe convexe résultante.</p>
 <p>Cette complexité est la meilleure complexité connue.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le premier algorithme de complexité $\mathcal{O}(n\log(h))$ connu est celui de <a href="https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm" class="externe">Kirkpatrick et Seidel</a> en 1986. Il est cependant plus ardu à comprendre.</p>
+<p>Le premier algorithme de complexité $\mathcal{O}(n\ln(h))$ connu est celui de <a href="https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm" class="externe">Kirkpatrick et Seidel</a> en 1986. Il est cependant plus ardu à comprendre.</p>
 </div>
 </div>
 <ol>
 <li>partitionnez les $n$ points en $\frac{n}{m}$ paquets de $m$ points. Coût de cette étape : $\mathcal{O}(n)$</li>
-<li>trouver avec le parcours de Graham l'enveloppe convexe de chaque paquet en $\mathcal{O}(m\log(m))$ opérations. Coût de cette étape : $\mathcal{O}(\frac{n}{m}m\log(m)) = \mathcal{O}(\frac{n}\log(m))$ opérations</li>
+<li>trouver avec le parcours de Graham l'enveloppe convexe de chaque paquet en $\mathcal{O}(m\ln(m))$ opérations. Coût de cette étape : $\mathcal{O}(\frac{n}{m}m\ln(m)) = \mathcal{O}(\frac{n}\ln(m))$ opérations</li>
 <li>Trouver l'enveloppe convexe globale en utilisant la marche de Jarvis (<a href="#m%C3%A9thode-2">la méthode 2</a>) :
 <ol>
 <li>le premier point est le point tout à gauche : $\mathcal{O}(n)$ opérations</li>
-<li>trouver le prochain élément de la marche prend $\mathcal{O}(\frac{n}{m}\log(m))$ opérations car il y a $\frac{n}{m}$ enveloppes et la taille de l'enveloppe convexe de chaque enveloppe est au maximum $m$</li>
-<li>au total, trouver l'enveloppe convexe prend : $\mathcal{O}(h\frac{n}{m}\log(m))$ opération</li>
+<li>trouver le prochain élément de la marche prend $\mathcal{O}(\frac{n}{m}\ln(m))$ opérations car il y a $\frac{n}{m}$ enveloppes et la taille de l'enveloppe convexe de chaque enveloppe est au maximum $m$</li>
+<li>au total, trouver l'enveloppe convexe prend : $\mathcal{O}(h\frac{n}{m}\ln(m))$ opération</li>
 </ol>
 </li>
 </ol>
 <p>Pour un $m$ donné, cet algorithme prend un nombre d'opérations de l'ordre de :</p>
 <p>$$
-\mathcal{O}(n + n\log(m) + h\cdot \frac{n}{m}\log(m)) = \mathcal{O}(n\log(m) + h\cdot \frac{n}{m}\log(m))
+\mathcal{O}(n + n\ln(m) + h\cdot \frac{n}{m}\ln(m)) = \mathcal{O}(n\ln(m) + h\cdot \frac{n}{m}\ln(m))
 $$</p>
 <ul>
-<li>Si $m = h$ l'algorithme prend $\mathcal{O}(n\log(h))$ opérations</li>
-<li>Si $m &lt; h$ alors $n\log(m) &lt;  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations</li>
-<li>Si $m &gt; h$ alors $n\log(m) &gt;  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations</li>
+<li>Si $m = h$ l'algorithme prend $\mathcal{O}(n\ln(h))$ opérations</li>
+<li>Si $m &lt; h$ alors $n\ln(m) &lt;  h\cdot \frac{n}{m}\ln(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\ln(m)$ opérations</li>
+<li>Si $m &gt; h$ alors $n\ln(m) &gt;  h\cdot \frac{n}{m}\ln(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\ln(m))$ opérations</li>
 </ul>
 <p>La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. <strong>Mais</strong> lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.</p>
-<p>L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\log(m))$. On a deux cas :</p>
+<p>L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\ln(m))$. On a deux cas :</p>
 <ul>
 <li>soit $m$ est plus petit que $h$. On aura pas construit l'enveloppe convexe car on ne sera pas revenu au point de départ de la marche</li>
 <li>soit $m$ est plus grand que $h$. On aura construit l'enveloppe convexe car on sera revenu au point de départ de la marche à une étape donnée. On pourra alors stopper l'algorithme à ce moment là.</li>
@@ -1635,7 +1635,7 @@ $$
 &=&\mathcal{O}(n(2^{i^\star + 1} - 2))=\\
 &=&\mathcal{O}(n(2^{2 + \log_2(\log_2(h))} - 2))\\
 &=&\mathcal{O}(n(4\cdot \log_2(h) - 2))\\
-&=&\mathcal{O}(n\cdot \log(h))
+&=&\mathcal{O}(n\cdot \ln(h))
 \end{array}
 $$
 </div>

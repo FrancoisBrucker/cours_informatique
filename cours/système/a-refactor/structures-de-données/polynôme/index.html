@@ -178,7 +178,7 @@ $$</p>
         résultat <span class="token operator">+=</span> coefficients<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> x <span class="token operator">**</span> i
     <span class="token keyword">return</span> résultat
 </code></pre>
-<p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
+<p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\ln(i)$ multiplications. On effectue donc au total de l'ordre $n\ln(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
 <h2>Méthode de Horner</h2>
 <p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point" class="externe">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
 <p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.

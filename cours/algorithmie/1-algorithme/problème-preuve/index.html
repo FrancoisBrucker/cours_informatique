@@ -506,9 +506,9 @@ $$
 </div>
 <p>Appliquons ces recommandations sur l'algorithme itératif suivant :</p>
 <p><span id="algorithme-max-tableau-iter"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">t</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">t</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">m</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token variable parameter">x</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">m</span></code></pre>
@@ -529,9 +529,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m <span class="token operator">=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> t<span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
         <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
             m <span class="token operator">=</span> x
     <span class="token keyword">return</span> m</code></pre>
@@ -546,11 +546,11 @@ $$
 <p>Il faut montrer que la variable <code class="language-">m</code> contient la valeur maximale pour tous les éléments de <code class="language-">t</code> vus jusqu'à présent. Comme à la fin de l'algorithme on aura vu toutes les valeurs de <code class="language-">t</code> on aura prouvé que <code class="language-">m</code> est bien le maximum.</p>
 <h3>4. Utiliser cette idée de preuve pour créer un invariant</h3>
 <p>Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableau (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle <code class="language-">pour chaque</code>. On modifie alors notre algorithme pour rendre $i$ explicite :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">t</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">t</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span> <span class="token type class-name">int</span></span>
-    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">t</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token variable parameter">t</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
         <span class="token keyword">si</span> <span class="token variable parameter">m</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token variable parameter">x</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">m</span></code></pre>
@@ -571,10 +571,10 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m <span class="token operator">=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        x <span class="token operator">=</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
             m <span class="token operator">=</span> x
     <span class="token keyword">return</span> m</code></pre>
@@ -586,11 +586,11 @@ $$
 <p><strong>Invariant de boucle :</strong>  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers éléments du tableau.</p>
 </blockquote>
 <h4>5. Prouver l'invariant</h4>
-<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.</p>
-<p>On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=T[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.</p>
+<p>On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=T[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
 <ul>
 <li>$m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)</li>
-<li>$m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qui se passe dans l'itération suivante)</li>
+<li>$m' = \max(m, x') = \max(m, T[i']) = \max(m, T[i + 1])$ (ce qui se passe dans l'itération suivante)</li>
 </ul>
 <p>On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.</p>
 <p>Notre invariant est vérifié.</p>

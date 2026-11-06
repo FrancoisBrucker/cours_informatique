@@ -227,7 +227,7 @@ sys<span class="token punctuation">.</span>setrecursionlimit<span class="token p
 vérifier expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.</p>
 </div>
 </div>
-<h2>Factoriel et nombres gigantesques</h2>
+<h2>Nombres gigantesques, exemple avec le calcul de la factorielle</h2>
 <p>Mesurons le temps mis pour exécuter notre algorithme récursif calculant la factorielle :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -249,7 +249,7 @@ vérifier expérimentalement que la complexité de votre algorithme récursif es
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\log(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$</p>
+<p>L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\ln(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -269,17 +269,17 @@ vérifier expérimentalement que la complexité de votre algorithme récursif es
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\log(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\log(k!))$.</p>
+<p>Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\ln(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\ln(k!))$.</p>
 <p>Un petit calcul (à retenir, il revient souvent) donne alors :</p>
 <div>
 $$
 \begin{array}{lcl}
-\sum_{1\leq k \leq n}\log(k!)
-&= & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(p))\\
-&\leq & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\log(k))\\
-&\leq & \sum_{1\leq k \leq n}k\log(k)\\
-&\leq & \sum_{1\leq k \leq n}n\log(n)\\
-&\leq & n^2\log(n)\\
+\sum_{1\leq k \leq n}\ln(k!)
+&= & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\ln(p))\\
+&\leq & \sum_{1\leq k \leq n}(\sum_{1\leq p \leq k}\ln(k))\\
+&\leq & \sum_{1\leq k \leq n}k\ln(k)\\
+&\leq & \sum_{1\leq k \leq n}n\ln(n)\\
+&\leq & n^2\ln(n)\\
 \end{array}
 $$
 </div>
@@ -287,7 +287,7 @@ $$
 </div>
 </details>     
 </div>
-<p>$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\log(n)$ augmente très lentement par rapport à $n$.</p>
+<p>$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\ln(n)$ augmente très lentement par rapport à $n$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -302,7 +302,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser une régression avec un polynôme $P(X')$ de degré 1 en prenant $X' = X^2\ln(X)$.</p>
+<p>Vous pourrez utiliser une régression avec un polynôme de degré 1 $P(X') = \alpha (X') + \beta$ avec $X' = X^2\ln(X)$.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -311,7 +311,12 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrez que les courbes $y = x^2$ et $y=x^2\log(x)$ sont très proches.</p>
+<p>Montrez que les courbes $y = x^2$ et $y=x^2\ln(x)$ sont très proches en représentation sur un même graphique :</p>
+<ul>
+<li>la mesure de la complexité,</li>
+<li>la régression de cette courbe par un polynôme P(X) = \alpha (X^2\ln(X)) + \beta$,</li>
+<li>la régression de cette courbe par un polynôme P'(X) = \alpha' (X^2) + \beta' \cdot X + \delta'$,</li>
+</ul>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
