@@ -56,7 +56,7 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 > III.1 définitions
 > III.2 exponentiation
 > III.3 tris
-> TBD Intermède I : exercices/problèmes et autres
+> TBD Intermède I : exercices/problèmes/sommes classiques
 > TBD IV structure de donnée :
 >   commencer par complexité amortie pour dire calcul fin de complexité
 >   parler de la première structure de donnée linéaire : la chaine de caractère. Puis algo texte.
