@@ -99,7 +99,7 @@
   <h2>Prérequis : fichiers du cours</h2>
 <p>Commençons par faire en sorte d'avoir le code du cours sur <a href="../complexit%C3%A9-code/">les mesures de complexités</a> qui fonctionne.</p>
 <h3>Projet python</h3>
-<p>On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>, en particulier les parties 1 et 2.</p>
+<p>On présuppose que vous avez fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>, en particulier les parties 1 et 2.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -108,7 +108,7 @@
 <div class="pl-8 mr-8">
 <ul>
 <li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/">Installation d'un ide et de modules python</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/">Écriture de projets informatique</a>,</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/">Écriture de projets informatiques</a>,</li>
 <li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-informatique/">créer un projet vscode</a></li>
 </ul>
 </div>
@@ -124,7 +124,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>[En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/ modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).</p>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/modules-externes-python/">En utilisant le cours</a>, installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).</p>
 </div>
 </div>
 <h3>Code du cours</h3>
@@ -142,7 +142,7 @@
 </ol>
 </div>
 </div>
-<p>Nous allons vérifier expérimentalement que les calculs de $\mathcal{O}$ faites dans le cours sont corrects.</p>
+<p>Nous allons vérifier expérimentalement que les calculs de $\mathcal{O}$ faits dans le cours sont corrects.</p>
 <h2>Complexité de deux boucles indépendantes</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -150,7 +150,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que <a href="../complexit%C3%A9-algorithmes/#complexit%C3%A9-boucles-ind%C3%A9pendantes">complexité de deux boucles indépendantes</a> est bien de l'ordre du produit des longueurs de chaque boucle.</p>
+<p>Vérifiez que <a href="../complexit%C3%A9-algorithmes/#complexit%C3%A9-boucles-ind%C3%A9pendantes">la complexité de deux boucles indépendantes</a> est bien de l'ordre du produit des longueurs de chaque boucle.</p>
 <p>En reprenant et en modifiant le code du cours, représentez sur un graphique le temps mis pour calculer $\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))$.</p>
 <p>Vous prendrez comme paramètres :</p>
 <ul>
@@ -161,12 +161,12 @@
 </div>
 <p>Vous devriez obtenir une courbe qui ressemble à la fonction $y = x^2$ :</p>
 <p><img src="Figure_n2_1.png" alt="figure n2"></p>
-<p>Pour en être sur, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée <a href="https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale" class="externe">régression polynomiale</a> et qui est très facile à faire avec numpy.</p>
-<p>Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plu proche possible de $Y[i]$, on peut utiliser <a href="https://numpy.org/devdocs/reference/generated/numpy.polyfit.html" class="externe"><code class="language-">np.polyfit</code></a> :</p>
+<p>Pour en être sûr, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée <a href="https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale" class="externe">régression polynomiale</a> et qui est très facile à faire avec numpy.</p>
+<p>Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plus proche possible de $Y[i]$, on peut utiliser <a href="https://numpy.org/devdocs/reference/generated/numpy.polyfit.html" class="externe"><code class="language-">np.polyfit</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
 coefs <span class="token operator">=</span> np<span class="token punctuation">.</span>polyfit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> Y<span class="token punctuation">,</span> n<span class="token punctuation">)</span></code></pre>
-<p>Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction <a href="https://numpy.org/devdocs/reference/generated/numpy.polyval.htm" class="externe"><code class="language-">np.polyval</code></a> :</p>
+<p>Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction <a href="https://numpy.org/devdocs/reference/generated/numpy.polyval.html" class="externe"><code class="language-">np.polyval</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">Y2 <span class="token operator">=</span> np<span class="token punctuation">.</span>polyval<span class="token punctuation">(</span>coefs<span class="token punctuation">,</span> X<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -174,19 +174,19 @@ coefs <span class="token operator">=</span> np<span class="token punctuation">.<
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Tracez un graphique superposant la complexité mesurée et sa complexité théorique (la regression polynomiale avec un polynôme de degré 2).</p>
+<p>Tracez un graphique superposant la complexité mesurée et sa complexité théorique (la régression polynomiale avec un polynôme de degré 2).</p>
 </div>
 </div>
-<p>Vous devriez obtenir une courbe qui ressemble ça :</p>
+<p>Vous devriez obtenir une courbe qui ressemble à ça :</p>
 <p><img src="Figure_n2_2.png" alt="figure n2"></p>
-<h2>Complexité de deux boucles monotone</h2>
+<h2>Complexité de deux boucles monotones</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que <a href="../complexit%C3%A9-algorithmes/#r%C3%A8gle-croissance">complexité de deux boucles dépendante mais monotone</a> est bien de l'ordre du produit des longueurs de chaque boucle.</p>
+<p>Vérifiez que <a href="../complexit%C3%A9-algorithmes/#r%C3%A8gle-croissance">la complexité de deux boucles dépendantes mais monotones</a> est bien de l'ordre du produit des longueurs de chaque boucle.</p>
 <p>En reprenant et en modifiant le code du cours, représentez sur un graphique le temps mis pour calculer $\sum\limits_{1\leq i \leq n}(\sum\limits_{i &lt; j \leq n} (i+j))$ ainsi que sa courbe théorique en $\mathcal{O}(n^2)$.</p>
 <p>Vous prendrez comme paramètres :</p>
 <ul>
@@ -223,8 +223,8 @@ sys<span class="token punctuation">.</span>setrecursionlimit<span class="token p
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En fixant le no,bre maximum de récursion à 20010 et <code class="language-">N_max = 20000</code>,
-vérifier expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.</p>
+<p>En fixant le nombre maximum de récursions à 20010 et <code class="language-">N_max = 20000</code>,
+vérifiez expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.</p>
 </div>
 </div>
 <h2>Nombres gigantesques, exemple avec le calcul de la factorielle</h2>
@@ -235,7 +235,7 @@ vérifier expérimentalement que la complexité de votre algorithme récursif es
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Mesurez  <a href="../complexit%C3%A9-algorithmes/#r%C3%A8gle-r%C3%A9cursif">la complexité de l'algorithme récursif</a> et comparez là à sa complexité théorique de  $\mathcal{O}(n)$.</p>
+<p>Mesurez <a href="../complexit%C3%A9-algorithmes/#r%C3%A8gle-r%C3%A9cursif">la complexité de l'algorithme récursif</a> et comparez-la à sa complexité théorique de $\mathcal{O}(n)$.</p>
 <p>Pour ceci :</p>
 <ul>
 <li>augmentez la récursion à 20000,</li>
@@ -245,11 +245,11 @@ vérifier expérimentalement que la complexité de votre algorithme récursif es
 </div>
 <p>Vous devriez obtenir une courbe qui ne fonctionne pas du tout :</p>
 <p><img src="Figure_fact.png" alt="fact"></p>
-<p>Ceci est du au fait que les nombres deviennent absurdement grand et que le calcul de la multiplication ne peut plus être considéré comme étant $\mathcal{O}(1)$.</p>
+<p>Ceci est dû au fait que les nombres deviennent absurdement grands et que le calcul de la multiplication ne peut plus être considéré comme étant $\mathcal{O}(1)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est à dire de l'ordre de $\mathcal{O}(\ln(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$</p>
+<p>L'algorithme de multiplication pour de grandes valeurs de $n$ prend de l'ordre du nombre de chiffres de $n$ à être exécuté, c'est-à-dire de l'ordre de $\mathcal{O}(\ln(n))$ opérations. En déduire que la complexité de notre algorithme est de l'ordre de $\mathcal{O}(n^2\ln(n))$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -269,7 +269,7 @@ vérifier expérimentalement que la complexité de votre algorithme récursif es
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\ln(k!))$  (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est à dire $\mathcal{O}(\sum_{1\leq k \leq n}\ln(k!))$.</p>
+<p>Chaque récursion va effectuer une multiplication de complexité $\mathcal{O}(\ln(k!))$ (avec $k$ son paramètre d'entrée). La complexité totale de l'algorithme est alors la somme de la complexité de toutes ces multiplications, c'est-à-dire $\mathcal{O}(\sum_{1\leq k \leq n}\ln(k!))$.</p>
 <p>Un petit calcul (à retenir, il revient souvent) donne alors :</p>
 <div>
 $$
@@ -287,7 +287,7 @@ $$
 </div>
 </details>     
 </div>
-<p>$\mathcal{O}(n^2\ln(n))$ est tres très proche de $\mathcal{O}(n^2)$ car le $\ln(n)$ augmente très lentement par rapport à $n$.</p>
+<p>$\mathcal{O}(n^2\ln(n))$ est très proche de $\mathcal{O}(n^2)$ car le $\ln(n)$ augmente très lentement par rapport à $n$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -314,8 +314,8 @@ $$
 <p>Montrez que les courbes $y = x^2$ et $y=x^2\ln(x)$ sont très proches en représentation sur un même graphique :</p>
 <ul>
 <li>la mesure de la complexité,</li>
-<li>la régression de cette courbe par un polynôme P(X) = \alpha (X^2\ln(X)) + \beta$,</li>
-<li>la régression de cette courbe par un polynôme P'(X) = \alpha' (X^2) + \beta' \cdot X + \delta'$,</li>
+<li>la régression de cette courbe par un polynôme $P(X) = \alpha (X^2\ln(X)) + \beta$,</li>
+<li>la régression de cette courbe par un polynôme $P'(X) = \alpha' (X^2) + \beta' \cdot X + \delta'$,</li>
 </ul>
 </div>
 </div>
@@ -328,14 +328,14 @@ $$
 <p>Montrez que ceci est toujours valable pour un algorithme itératif calculant la factorielle.</p>
 </div>
 </div>
-<p>En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et es même vrai si nos entiers sont petits (<em>ie.</em> plus petit que $2^{64}$ ce qui est quand même assez grand, voir <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa" class="externe">le problème de l'échiquier de Sissa</a>) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.</p>
+<p>En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et est même vrai si nos entiers sont petits (<em>ie.</em> plus petits que $2^{64}$ ce qui est quand même assez grand, voir <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa" class="externe">le problème de l'échiquier de Sissa</a>) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>En règle générale la multiplication est bien en $\mathcal{O}(1)$, cela cesse d'être vrai lorsque les nombres manipulés deviennent absurdement grand, ce qui est très rare en pratique, en tout cas assez rare pour être ignoré en première approche.</p>
+<p>En règle générale la multiplication est bien en $\mathcal{O}(1)$, cela cesse d'être vrai lorsque les nombres manipulés deviennent absurdement grands, ce qui est très rare en pratique, en tout cas assez rare pour être ignoré en première approche.</p>
 </div>
 </div>
 

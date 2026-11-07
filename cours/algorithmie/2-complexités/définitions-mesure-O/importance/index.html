@@ -96,7 +96,7 @@
     
   
 
-  <p>Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :</p>
+  <p>Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -114,7 +114,7 @@
 </div>
 </div>
 <p>Les types de complexités ci-dessus sont rangés par ordre, de la moins grande à la plus grande.</p>
-<p>Remarquez que si $n$ représente la taille des données, un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :</p>
+<p>Remarquez que si $n$ représente la taille des données, un algorithme de complexité linéaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :</p>
 <ul>
 <li>trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme <code class="language-">recherche</code>,</li>
 <li>trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique" class="externe">recherche dichotomique</a></li>
@@ -124,10 +124,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.</p>
+<p>Notez bien que la complexité logarithmique est la même quelle que soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.</p>
 </div>
 </div>
-<p>Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre <a href="https://en.wikipedia.org/wiki/Computers_and_Intractability" class="externe">Computer and intractability</a>. Comme on va le voir :</p>
+<p>Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montrent les deux tableaux ci-dessous, repris du livre <a href="https://en.wikipedia.org/wiki/Computers_and_Intractability" class="externe">Computer and intractability</a>. Comme on va le voir :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -142,7 +142,7 @@
 </div>
 </div>
 <h2>Temps pour résoudre un problème de taille $n$</h2>
-<p>Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant, que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.</p>
+<p>Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.</p>
 <p>En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes.</p>
 <table>
 <thead>
@@ -228,11 +228,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour générer le tableau, on voit que le temps $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 opérations, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$</p>
+<p>Pour générer le tableau, on voit que le temps $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 ms, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$</p>
 </div>
 </div>
 <h2>Nombre de problèmes résolus par heure</h2>
-<p>En colonne la rapidité de la machine, en ligne la taille maximale d'un problème que l'on peut résoudre en 1heure.</p>
+<p>En colonne la rapidité de la machine, en ligne la taille maximale d'un problème que l'on peut résoudre en 1 heure.</p>
 <table>
 <thead>
 <tr>
@@ -287,13 +287,13 @@
 </tr>
 </tbody>
 </table>
-<p>La encore, l'évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problèmes augmente d'un facteur multiplicatif lorsque la vitesse augmente, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.</p>
+<p>Là encore, l'évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problèmes augmente d'un facteur multiplicatif lorsque la vitesse augmente, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.</p>
+<p>Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1 heure, la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois plus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.</p>
 </div>
 </div>
 <h2>Le cas particulier de $n!$</h2>
@@ -326,7 +326,7 @@ $$</p>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$ Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.</p>
+<p>Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$, réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'en est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.</p>
 </div>
 </div>
 

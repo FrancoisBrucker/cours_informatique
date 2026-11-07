@@ -96,7 +96,7 @@
     
   
 
-  <p>Lorsque le nombre d'opérations d'un algorithme varie fortement selon ses entrées ou que l'on veut mesurer physiquement le temps mis par un code pour être exécuté  on a coutume d'utiliser la mesure de complexité en moyenne  qui permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.:</p>
+  <p>Lorsque le nombre d'opérations d'un algorithme varie fortement selon ses entrées ou que l'on veut mesurer physiquement le temps mis par un code pour être exécuté, on a coutume d'utiliser la mesure de complexité en moyenne qui permet de connaître le nombre d'opérations espéré pour un tableau quelconque de taille donnée :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -111,16 +111,16 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.</p>
+<p>Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce qui est (très) souvent le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.</p>
 </div>
 </div>
 <h2>Calcul de la complexité en moyenne</h2>
-<p>Soit $A$ un algorithme dont on veut calculer sa complexité par rapport au paramètre $n$ (par exemple la taille des données). Si $\mathcal{E}_n$ est l'ensemble contenant toutes ses entrées de paramètre $n$ et s'il faut $N(e)$ opérations pour exécuter l'algorithme $A$ avec l'entrée $e$, on a :</p>
+<p>Soit $A$ un algorithme dont on veut calculer la complexité par rapport au paramètre $n$ (par exemple la taille des données). Si $\mathcal{E}_n$ est l'ensemble contenant toutes ses entrées de paramètre $n$ et s'il faut $N(e)$ opérations pour exécuter l'algorithme $A$ avec l'entrée $e$, on a :</p>
 <ul>
 <li>la complexité $C_\max(n)$ de l'algorithme vaut $C_\max(n) = \max \{N(e) \mid e \in \mathcal{E}_n\}$</li>
 <li>la complexité minimum $C_\min(n)$ de l'algorithme vaut $C_\min(n) = \min \{N(e) \mid e \in \mathcal{E}_n\}$</li>
 </ul>
-<p><a href="https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique" class="externe">L'espérance</a> de la complexité, c'est à dire la complexité <em>attendue</em> ou <em>normale</em> si l'algorithme est exécutée pour une entrée au hasard, est appelée <strong>complexité en moyenne</strong>.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique" class="externe">L'espérance</a> de la complexité, c'est-à-dire la complexité <em>attendue</em> ou <em>normale</em> si l'algorithme est exécuté pour une entrée au hasard, est appelée <strong>complexité en moyenne</strong>.</p>
 <p>Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -138,7 +138,7 @@ $$
 <ul>
 <li>$\mathcal{E}_n$ l'ensemble des données de paramètre $n$,</li>
 <li>$p_n(e)$ la probabilité de choisir $e \in \mathcal{E}_n$ comme entrée de l'algorithme</li>
-<li>$N(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.</li>
+<li>$N(e)$ le nombre d'opérations utilisées par l'algorithme pour se terminer avec l'entrée $e$.</li>
 </ul>
 </div>
 </div>
@@ -147,7 +147,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée $e$ de $\mathcal{E}_n$ a la même probabilité d'être choisie :</p>
+<p>Si l'on n'a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée $e$ de $\mathcal{E}_n$ a la même probabilité d'être choisie :</p>
 <div>
 $$
 p_n(e) = \frac{1}{\vert \mathcal{E}_n \vert}
@@ -156,7 +156,7 @@ $$
 </div>
 </div>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
-<p>Reprenons l'exemple de <a href="../../1-algorithme/bases-th%C3%A9oriques/d%C3%A9finition/#algorithme-recherche">la recherche d'un élément d'un un tableau</a> :</p>
+<p>Reprenons l'exemple de <a href="../../1-algorithme/bases-th%C3%A9oriques/d%C3%A9finition/#algorithme-recherche">la recherche d'un élément dans un tableau</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
@@ -167,14 +167,14 @@ $$
 <li>la complexité (maximale) de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver <code class="language-">x</code>)</li>
 <li>la complexité minimale de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(1)$ (<code class="language-">x</code> est le premier élément du tableau)</li>
 </ul>
-<p>Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableau de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :</p>
+<p>Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour calculer facilement une complexité en moyenne il faut pourvoir partitionner l'ensemble des entrées un nombre fini de classes dont :</p>
+<p>Pour calculer facilement une complexité en moyenne il faut pouvoir partitionner l'ensemble des entrées en un nombre fini de classes dont :</p>
 <ul>
 <li>la complexité est la même pour chaque entrée de la même classe,</li>
 <li>il est facile de calculer la probabilité qu'une entrée fasse partie d'une classe donnée</li>
@@ -207,12 +207,12 @@ C & = & \sum\limits_{e \in \mathcal{E}_n} p_n(e) \cdot C(e) \\
 \end{array}
 $$
 </div>
-<p>On note $p_{i}$ la probabilité qu'à une entrée d'être dans $\mathcal{E}^i_n$ :</p>
+<p>On note $p_{i}$ la probabilité qu'a une entrée d'être dans $\mathcal{E}^i_n$ :</p>
 <div>
 $$
 p_i =\sum\limits_{e \in \mathcal{E}^i_n} p_n(e)
 $$
-
+</div>
 <p>Ce qui donne :</p>
 <div>
 $$
@@ -221,7 +221,7 @@ C & = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
 \end{array}
 $$
 </div>
-<p>Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de <code class="language-">x</code> dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :</p>
+<p>Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on n'a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ a la même probabilité d'être choisi et donc que la position de <code class="language-">x</code> dans le tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :</p>
 <div>
 $$
 C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
@@ -243,14 +243,14 @@ $$
 <p>La <strong>complexité en moyenne</strong> de l'algorithme <code class="language-">recherche</code> est la même que la complexité maximale.</p>
 </div>
 </div>
-<p>On peut comprendre ce résultat ainsi : si notre modèle est équiprobable, <code class="language-">s</code> va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de <code class="language-">T</code>, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.</p>
+<p>On peut comprendre ce résultat ainsi : si notre modèle est équiprobable, <code class="language-">x</code> va se trouver en moyenne au milieu de notre tableau, et donc il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de <code class="language-">T</code>, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>On utilisera souvent ce genre de raisonnement si les données sont équiprobable : en moyenne il faut parcourir la moitié des possibilités avant de trouver la solution.</p>
+<p>On utilisera souvent ce genre de raisonnement si les données sont équiprobables : en moyenne il faut parcourir la moitié des possibilités avant de trouver la solution.</p>
 </div>
 </div>
 <h2>Intérêt</h2>
@@ -267,7 +267,7 @@ $$
 </div>
 </div>
 </div>
-<p>La complexité en moyenne nous donne <strong><em>le nombre d'opérations attendu</em></strong> si on exécute l'algorithme (et qu'on a ni beaucoup de chance (et qu'on tombe sur la complexité minimale) ni pas de chance du (tout pour tomber sur la complexité maximale)). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :</p>
+<p>La complexité en moyenne nous donne <strong><em>le nombre d'opérations attendu</em></strong> si on exécute l'algorithme (et qu'on n'a ni beaucoup de chance (pour tomber sur la complexité minimale) ni pas de chance du tout (pour tomber sur la complexité maximale)). La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -282,15 +282,15 @@ $$
 </div>
 </div>
 <h2><span id="mesure"></span>En pratique</h2>
-<p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code.  Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et d'en faire la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
+<p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code. Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et on en fait la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
 <p><img src="Figure_1.png" alt="figure"></p>
-<p>On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est en environ 2 fois plus petite.</p>
+<p>On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est environ 2 fois plus petite.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le code qui a permit de générer le graphique est ci-dessous. Il est en python et utilise les modules <a href="https://matplotlib.org/">https://matplotlib.org/</a> et <a href="https://numpy.org/">https://numpy.org/</a>. Nous allons faire un projet pour détailler tout ça.</p>
+<p>Le code qui a permis de générer le graphique est ci-dessous. Il est en python et utilise les modules <a href="https://matplotlib.org/">https://matplotlib.org/</a> et <a href="https://numpy.org/">https://numpy.org/</a>. Nous allons faire un projet pour détailler tout ça.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -395,7 +395,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div>
 
 
-</div></article>
+</article>
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">

@@ -116,20 +116,20 @@
     
   
 
-  <p>Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu'il met à être exécuté. Pour la mesure soit conforme à la complexité il faut que :</p>
+  <p>Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu'il met à être exécuté. Pour que la mesure soit conforme à la complexité il faut que :</p>
 <ol>
 <li>les instructions basiques durent un temps similaire,</li>
 <li>l'on ait un moyen efficace de mesurer le temps</li>
 <li>le système ne doit exécuter que l'algorithme et n'avoir aucun autre <a href="https://fr.wikipedia.org/wiki/Programmation_concurrente" class="externe">processus concurrent</a> (en temps partagé) (voir prérequis système)</li>
-<li>les paramètres d'entrées doivent  :</li>
+<li>les paramètres d'entrée doivent :</li>
 </ol>
 <ul>
 <li>réaliser le maximum si on cherche à mesurer la complexité (maximum),</li>
 <li>réaliser le minimum si on cherche à mesurer la complexité minimum,</li>
-<li>être aléatoire et uniforme si on cherche à mesurer la complexité moyenne.</li>
+<li>être aléatoires et uniformes si on cherche à mesurer la complexité moyenne.</li>
 </ul>
 <h2>Code python</h2>
-<p>On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>. Selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
+<p>On présuppose que vous avez fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>. Selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
 <p>On utilisera deux modules très utiles :</p>
 <ul>
 <li><a href="https://matplotlib.org/">https://matplotlib.org/</a></li>
@@ -140,29 +140,29 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique ce code.</p>
+<p>On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique de ce code.</p>
 </div>
 </div>
 <h2>Comment mesurer la complexité</h2>
 <p>Reprenons les 4 conditions que l'on vient d'expliciter.</p>
-<p>Nous allons utiliser <a href="../complexit%C3%A9-moyenne/#mesure">les mesures de l'algorithme</a> recherche que l'on a déjà vu :</p>
+<p>Nous allons utiliser <a href="../complexit%C3%A9-moyenne/#mesure">les mesures de l'algorithme</a> recherche que l'on a déjà vues :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> e <span class="token keyword">in</span> T<span class="token punctuation">:</span>
         <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <h3>1. durée d'une instruction basique</h3>
-<p>Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langages le code source est soit :</p>
+<p>Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langage, le code source est :</p>
 <ul>
-<li>soit converties en <a href="https://fr.wikipedia.org/wiki/Bytecode" class="externe">bytecode</a> (comme <a href="https://www.python.org/" class="externe">le python</a> ou <a href="https://www.java.com/fr/" class="externe">le java</a>), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur</li>
-<li>directement converti en langage machine (comme <a href="https://go.dev/" class="externe">le go</a> ou encore <a href="https://rust-lang.org/fr/" class="externe">le rust</a>), c'est à dire en <a href="https://fr.wikipedia.org/wiki/Jeu_d%27instructions" class="externe">instructions processeurs</a>,</li>
+<li>soit converti en <a href="https://fr.wikipedia.org/wiki/Bytecode" class="externe">bytecode</a> (comme <a href="https://www.python.org/" class="externe">le python</a> ou <a href="https://www.java.com/fr/" class="externe">le java</a>), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur</li>
+<li>soit directement converti en langage machine (comme <a href="https://go.dev/" class="externe">le go</a> ou encore <a href="https://rust-lang.org/fr/" class="externe">le rust</a>), c'est-à-dire en <a href="https://fr.wikipedia.org/wiki/Jeu_d%27instructions" class="externe">instructions processeurs</a>,</li>
 </ul>
 <p>Ces deux approches nécessitent une étape de conversion :</p>
 <ul>
 <li>la première est plus rapide à la conversion (souvent faite au moment même de l'exécution pour le python) mais (un peu) plus lente à l'exécution</li>
 <li>la seconde est plus rapide à l'exécution mais plus longue à la conversion</li>
 </ul>
-<p>Enfin, la première approche permet de créer un code portable, seul l'interpréteur doit-être prévu pour le système (windows, lLinux ou mac) et le type de processeur utilisé (x86 ou arm essentiellement).</p>
+<p>Enfin, la première approche permet de créer un code portable, seul l'interpréteur doit être prévu pour le système (windows, Linux ou mac) et le type de processeur utilisé (x86 ou arm essentiellement).</p>
 <h4>Instruction python</h4>
 <p>Pour voir le bytecode python, on peut utiliser <a href="https://docs.python.org/fr/3.15/library/dis.html" class="externe">le module <code class="language-">dis</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> dis
@@ -208,24 +208,24 @@
               BINARY_OP                <span class="token number">0</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token punctuation">)</span>
               RETURN_VALUE
 </code></pre>
-<p>Qui utilise l'instruction de bytecode <code>BINARY_OP</code> est un algorithme qui va prendre un temps proportionnel aux nombres de chiffres de ses paramètres. Pour le vérifier on peut utiliser <a href="https://docs.python.org/fr/3.15/library/timeit.html" class="externe">le module <code class="language-">timeit</code></a> qui va mesurer le temps mis pour exécuter du code python <code class="language-">number</code> fois :</p>
+<p>L'instruction de bytecode <code>BINARY_OP</code> utilisée est un algorithme qui va prendre un temps proportionnel au nombre de chiffres de ses paramètres. Pour le vérifier on peut utiliser <a href="https://docs.python.org/fr/3.15/library/timeit.html" class="externe">le module <code class="language-">timeit</code></a> qui va mesurer le temps mis pour exécuter du code python <code class="language-">number</code> fois :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> timeit
 
 <span class="token operator">>></span><span class="token operator">></span> timeit<span class="token punctuation">.</span>timeit<span class="token punctuation">(</span><span class="token string">"a + b"</span><span class="token punctuation">,</span> setup<span class="token operator">=</span><span class="token string">"a, b = 1, 1"</span><span class="token punctuation">,</span> number<span class="token operator">=</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token number">0.0007226660382002592</span>
 <span class="token operator">>></span><span class="token operator">></span> timeit<span class="token punctuation">.</span>timeit<span class="token punctuation">(</span><span class="token string">"a + b"</span><span class="token punctuation">,</span> setup<span class="token operator">=</span><span class="token string">"a, b = 10**100000, 10**100000"</span><span class="token punctuation">,</span> number<span class="token operator">=</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token number">1.1451560839777812</span></code></pre>
-<p>On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépend de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.</p>
+<p>On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépendent de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.</p>
 <h4>Instructions processeur</h4>
-<p>Une instruction du processeur va durer un certains nombre de cycle processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu" class="externe">processeur CISC</a> qui possèdent des instructions complexes et les processeur ARM (portables, tablettes et mac) sont à contrario des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit" class="externe">processeurs RISC</a> avec peu d'instructions.</p>
-<p>Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour test booléen, quelques dizaine de cycle pour une division de deux nombres codés sur 64 bit à plusieurs millions de cycle pour <a href="https://www.felixcloutier.com/x86/wbinvd" class="externe">l'instruction <code>WBINVD</code></a>.</p>
+<p>Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu" class="externe">processeurs CISC</a> qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit" class="externe">processeurs RISC</a> avec peu d'instructions.</p>
+<p>Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour un test booléen, quelques dizaines de cycles pour une division de deux nombres codés sur 64 bits à plusieurs millions de cycles pour <a href="https://www.felixcloutier.com/x86/wbinvd" class="externe">l'instruction <code>WBINVD</code></a>.</p>
 <h4>En pratique</h4>
 <p>En pratique ceci importe peu puisque :</p>
 <ol>
 <li>on veut de toute façon avoir le code le plus rapide possible,</li>
-<li>ces variations ne vont influer sur les constantes additives et multiplicatives du code, pas sur l'allure générale de la courbe</li>
+<li>ces variations ne vont influer que sur les constantes additives et multiplicatives du code, pas sur l'allure générale de la courbe</li>
 </ol>
-<p>Enfin, d'un point de vue algorithmique, l'ordre de grandeur en $\mathcal{O}$ sera conservé quelque soit l'ordinateur sur lequel le code sera exécuté.</p>
+<p>Enfin, d'un point de vue algorithmique, l'ordre de grandeur en $\mathcal{O}$ sera conservé quel que soit l'ordinateur sur lequel le code sera exécuté.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -235,14 +235,14 @@
 <p>Même si les instructions processeurs sont très différentes du pseudo-code et que leur durée d'exécution n'est pas homogène, mesurer le temps permet d'avoir l'allure générale de la courbe de complexité.</p>
 </div>
 </div>
-<p>Trouver un bon algorithme peut faire gagner un ordre de grandeur optimiser le code ne va faire gagner qu'un facteur au mieux multiplicatif. On ne cherchera à optimiser le code processeur qu'après avoir choisi le bon algorithme et, surtout, on ne le fera jamais directement : on laissera le compilateur faire.</p>
+<p>Trouver un bon algorithme peut faire gagner un ordre de grandeur, optimiser le code ne va faire gagner qu'un facteur au mieux multiplicatif. On ne cherchera à optimiser le code processeur qu'après avoir choisi le bon algorithme et, surtout, on ne le fera jamais directement : on laissera le compilateur faire.</p>
 <h3>2. mesure du temps</h3>
-<p>On possède de deux outils pour mesurer le temps :</p>
+<p>On dispose de deux outils pour mesurer le temps :</p>
 <ul>
 <li>une horloge : <a href="https://docs.python.org/fr/3.15/library/datetime.html">https://docs.python.org/fr/3.15/library/datetime.html</a></li>
 <li>un chronomètre : <a href="https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns">https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns</a></li>
 </ul>
-<p>Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du <a href="https://fr.wikipedia.org/wiki/Fuseau_horaire" class="externe">fuseau horaire</a> et  finalement moins précise (à la microseconde prêt) qu'un chronomètre (à la nanoseconde prêt).</p>
+<p>Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du <a href="https://fr.wikipedia.org/wiki/Fuseau_horaire" class="externe">fuseau horaire</a> et finalement moins précise (à la microseconde près) qu'un chronomètre (à la nanoseconde près).</p>
 <p>On a déjà vu un exemple de mesure d'un code python avec le module <code class="language-">timeit</code>. Il n'est cependant pas pratique car il faut mettre le code sous la forme d'une chaîne à exécuter ou d'une fonction sans paramètre. Il est plus simple d'utiliser le chronomètre <a href="https://docs.python.org/fr/3.15/library/time.html" class="externe">du module <code class="language-">time</code></a>.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 
@@ -258,10 +258,10 @@ recherche<span class="token punctuation">(</span>T<span class="token punctuation
 fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
 t <span class="token operator">=</span> fin <span class="token operator">-</span> début
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction a duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
 <p>Ce qui donne chez moi :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 50458 ns</code></pre>
-<p>L'exécution de la fonction <code class="language-">perf_counter_ns()</code> rend un entier qui augmente de 1 toute les nanosecondes. Si on exécute cette méthode juste avant et juste après l'exécution de la fonction <code class="language-">recherche</code> sa différence nous donne le temps d'exécution en nano-secondes.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 50458 ns</code></pre>
+<p>L'exécution de la fonction <code class="language-">perf_counter_ns()</code> rend un entier qui augmente de 1 toutes les nanosecondes. Si on exécute cette méthode juste avant et juste après l'exécution de la fonction <code class="language-">recherche</code> sa différence nous donne le temps d'exécution en nanosecondes.</p>
 <h3>3. Isoler l'algorithme du système</h3>
 <h4>Isoler des autres programmes</h4>
 <p>Si vous relancez le code précédent plusieurs fois, vous constaterez que le temps mis n'est pas une constante :</p>
@@ -281,22 +281,22 @@ T <span class="token operator">=</span> <span class="token builtin">list</span><
     fin <span class="token operator">=</span> perf_counter_ns<span class="token punctuation">(</span><span class="token punctuation">)</span>
     t <span class="token operator">=</span> fin <span class="token operator">-</span> début
 
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction a duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
 <p>Par exemple :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 24500 ns
-l'exécution de la fonction à duré : 3333 ns
-l'exécution de la fonction à duré : 1875 ns
-l'exécution de la fonction à duré : 2166 ns
-l'exécution de la fonction à duré : 2125 ns</code></pre>
-<p>La première instruction a duré presque 10 fois plus de temps que les 4 suivante. Ceci est du au fait que notre programme python ne tourne pas tout seul sur l'ordinateur, de nombreux autres programme fonctionnent en concurrence, c'est à dire que chacun va tourner une fraction du temps puis passer la main à un autre programme. Cela va si vite qu'on ne se rend pas compte qu'il n'y a qu'un seul programme qui tourne sur 1 processeur.</p>
-<p>Notre chronomètre ne mesure donc pas le temps qu'à mis uniquement notre programme pour tourner mais également l'ensemble des programme du système qui tournaient en même temps. Comme tout ces temps sont ajoutés, on peut relancer le programme plusieurs fois et prendre le minimum.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 24500 ns
+l'exécution de la fonction a duré : 3333 ns
+l'exécution de la fonction a duré : 1875 ns
+l'exécution de la fonction a duré : 2166 ns
+l'exécution de la fonction a duré : 2125 ns</code></pre>
+<p>La première instruction a duré presque 10 fois plus de temps que les 4 suivantes. Ceci est dû au fait que notre programme python ne tourne pas tout seul sur l'ordinateur, de nombreux autres programmes fonctionnent en concurrence, c'est-à-dire que chacun va tourner une fraction du temps puis passer la main à un autre programme. Cela va si vite qu'on ne se rend pas compte qu'il n'y a qu'un seul programme qui tourne sur 1 processeur.</p>
+<p>Notre chronomètre ne mesure donc pas le temps qu'a mis uniquement notre programme pour tourner mais également l'ensemble des programmes du système qui tournaient en même temps. Comme tous ces temps sont ajoutés, on peut relancer le programme plusieurs fois et prendre le minimum.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour minimiser les variations dues aux exécutions d'autres programmes concurrent, on mesure l'exécution plusieurs fois (typiquement 10 fois, mais on peut diminuer ce temps si l'exécution est longue de notre mesure est longue) et on prend le minimum.</p>
+<p>Pour minimiser les variations dues aux exécutions d'autres programmes concurrents, on mesure l'exécution plusieurs fois (typiquement 10 fois, mais on peut diminuer ce temps si l'exécution de notre mesure est longue) et on prend le minimum.</p>
 </div>
 </div>
 <p>Le code devient :</p>
@@ -319,9 +319,9 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>delta <span class="token operator">&lt;</span> t<span class="token punctuation">)</span><span class="token punctuation">:</span>
     t <span class="token operator">=</span> delta
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction a duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
 <p>Et il donne chez moi :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 500 ns</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 500 ns</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -331,7 +331,7 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 </div>
 </div>
 <h4>Isoler de python</h4>
-<p>Maintenant que notre programme est isolé du reste du système une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'apple <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)" class="externe">le ramasse-miettes</a> et est un mécanisme fondamental qui permet de minimiser la mémoire utilisées. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise <a href="https://docs.python.org/fr/3.15/library/gc.html">le module <code class="language-">gc</code></a> qui ous permet de controller ce mécanisme.</p>
+<p>Maintenant que notre programme est isolé du reste du système, une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'appelle <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)" class="externe">le ramasse-miettes</a> et est un mécanisme fondamental qui permet de minimiser la mémoire utilisée. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise <a href="https://docs.python.org/fr/3.15/library/gc.html">le module <code class="language-">gc</code></a> qui nous permet de contrôler ce mécanisme.</p>
 <p>Le code devient maintenant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 <span class="token keyword">import</span> gc
@@ -360,18 +360,18 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <span class="token keyword">if</span> gc_actif<span class="token punctuation">:</span>
     gc<span class="token punctuation">.</span>enable<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction a duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Notez que l'on ne réactive le ramasse-miette que s'il était actif avant notre manipulation (on stocke l'état courant dans la variable <code class="language-">gc_actif</code>).</p>
+<p>Notez que l'on ne réactive le ramasse-miettes que s'il était actif avant notre manipulation (on stocke l'état courant dans la variable <code class="language-">gc_actif</code>).</p>
 </div>
 </div>
 <p>Qui donne chez moi :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 459 ns</code></pre>
-<p>On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 459 ns</code></pre>
+<p>On gagne un petit peu. Vous verrez que plus la taille du tableau augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)</p>
 <h2>Une fonction de mesure</h2>
 <p>Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser :</p>
 <p><span id="calcul"></span></p>
@@ -410,17 +410,17 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 t <span class="token operator">=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction à duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"l'exécution de la fonction a duré :"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"ns"</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Ce qui donne chez moi :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction à duré : 416 ns</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 416 ns</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projet ultérieurs où nous aurons besoin de mesurer la complexité.</p>
+<p>Gardez-vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projets ultérieurs où nous aurons besoin de mesurer la complexité.</p>
 </div>
 </div>
 <h2>Complexité maximum et minimum</h2>
@@ -441,7 +441,7 @@ t <span class="token operator">=</span> calcul<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour le calcul des complexités min et max on se crée de fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial qu calcul recherché.</p>
+<p>Pour le calcul des complexités min et max on se crée des fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial au calcul recherché.</p>
 </div>
 </div>
 <p>On cherche à représenter graphiquement la durée par rapport au paramètre. Pour que notre courbe soit représentative :</p>
@@ -475,8 +475,8 @@ Ns <span class="token operator">=</span> <span class="token punctuation">[</span
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentation $K$ pour déterminer les $K$ différentes mesures de temps à faire.</p>
-<p>Déterminez les tailles min et max de paramètre <strong>une</strong> fois, ne refaite pas le calcul à chaque lancement.</p>
+<p>Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentations $K$ pour déterminer les $K$ différentes mesures de temps à faire.</p>
+<p>Déterminez les tailles min et max de paramètre <strong>une</strong> fois, ne refaites pas le calcul à chaque lancement.</p>
 </div>
 </div>
 <p>On peut enfin calculer les temps min et max :</p>
@@ -524,7 +524,7 @@ taille 134217728
 <p>Les derniers calculs peuvent prendre du temps puisque l'on fait 10 fois un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :</p>
 <ul>
 <li>soit diminuez le nombre maximum d'éléments dans le tableau,</li>
-<li>soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),</li>
+<li>soit diminuez le nombre de répétitions (passer de 10 à 5 par exemple),</li>
 <li>soit les deux.</li>
 </ul>
 </div>
@@ -536,7 +536,7 @@ taille 134217728
 <span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<p>Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. Ci-après le temps pris pour un tableau de 100000 éléments, on va de 2208ns à prêt de 500000ns :</p>
+<p>Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. Ci-après le temps pris pour un tableau de 100000 éléments, on va de 2208ns à près de 500000ns :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">409500.0
 488959.0
 146625.0
@@ -611,7 +611,7 @@ taille 134217728
 <p>Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de 10 x .1s. Si vous voulez accélérer le process :</p>
 <ul>
 <li>soit diminuez le nombre maximum d'éléments dans le tableau,</li>
-<li>soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),</li>
+<li>soit diminuez le nombre de répétitions (passer de 10 à 5 par exemple),</li>
 <li>soit diminuez le nombre d'essais pour la moyenne (passer de 10 à 5 par exemple),</li>
 <li>soit deux des trois,</li>
 <li>soit les trois.</li>
@@ -619,7 +619,7 @@ taille 134217728
 </div>
 </div>
 <h2>Représentation graphique</h2>
-<p>Enfin, on peut représenter graphiquement les résultats. Pour cala, il faut commencer pas stocker les résultat de nos mesures et pas juste les afficher :</p>
+<p>Enfin, on peut représenter graphiquement les résultats. Pour cela, il faut commencer par stocker les résultats de nos mesures et pas juste les afficher :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c_min <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 c_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 c_max <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -653,7 +653,7 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
 <h2>Fichiers finaux</h2>
 <p>On a séparé notre code en 3 fichiers :</p>
 <ul>
-<li><code class="language-">algorithmes.py</code> qui contient le code à mesurer et <code class="language-">test_algorithmes.py</code> qui contient les lests,</li>
+<li><code class="language-">algorithmes.py</code> qui contient le code à mesurer et <code class="language-">test_algorithmes.py</code> qui contient les tests,</li>
 <li><code class="language-">mesure_temps.py</code> qui contient les fonctions utiles pour les mesures,</li>
 <li><code class="language-">main.py</code> qui est le programme principal.</li>
 </ul>

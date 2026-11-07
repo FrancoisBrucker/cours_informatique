@@ -96,7 +96,7 @@
     
   
 
-  <p>On appelle complexité le nombre d'instructions basiques utilisé pour exécuter un pseudo-code. La complexité est proportionnelle au temps mis pour l'exécuter en supposant que que toutes les instructions basiques prennent le même temps (au pire on prend le temps max).</p>
+  <p>On appelle complexité le nombre d'instructions basiques utilisé pour exécuter un pseudo-code. La complexité est proportionnelle au temps mis pour l'exécuter en supposant que toutes les instructions basiques prennent le même temps (au pire on prend le temps max).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -140,16 +140,16 @@
 <li>faire l'instruction <code class="language-">si</code> : 1 instruction</li>
 </ol>
 </li>
-<li>troisième ligne : 2 instructions
+<li>quatrième ligne : 2 instructions
 <ol>
 <li>on crée la chaîne : 1 instruction</li>
 <li>puis affiche le résultat : 1 instruction</li>
 </ol>
 </li>
 </ul>
-<p>Sa complexité vaut le nombre total d'instructions, c'est à dire 13.</p>
+<p>Sa complexité vaut le nombre total d'instructions, c'est-à-dire 13.</p>
 <h2>Complexité d'un pseudo-code</h2>
-<p>La notion d'instruction à effectuer dépend du pseudo-code utilisé. On verra plus tard un moyen radical de simplifier la définition (temps constant vs temps dépendant de paramètres) mais pour l'instant on va supposer qu'un instruction élémentaire correspond à celles que l'on a donné lorsque l'on a <a href="../../../1-algorithme/pseudo-code/briques-de-base">défini le pseudo-code</a> :</p>
+<p>La notion d'instruction à effectuer dépend du pseudo-code utilisé. On verra plus tard un moyen radical de simplifier la définition (temps constant vs temps dépendant de paramètres) mais pour l'instant on va supposer qu'une instruction élémentaire correspond à celles que l'on a données lorsque l'on a <a href="../../../1-algorithme/pseudo-code/briques-de-base">défini le pseudo-code</a> :</p>
 <ul>
 <li>création d'une variable ou d'un objet</li>
 <li>affectation d'une variable</li>
@@ -158,21 +158,21 @@
 <li>l'affichage d'un objet à l'écran</li>
 </ul>
 <h3>Boucles</h3>
-<p>On compte bien toutes les instructions et pas seulement ceux qui le constitue, donc pour le pseudo-code suivant :</p>
+<p>On compte bien toutes les instructions et pas seulement celles qui la constituent, donc pour le pseudo-code suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">message</span></span> <span class="token operator">←</span> <span class="token string">"j'aime me répéter"</span></span>
 <span class="highlight-line"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line"><span class="token keyword">tant que</span> <span class="token variable parameter">i</span> <span class="token operator">≤</span> <span class="token number">10000</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">affiche</span> <span class="token variable parameter">message</span></span>
 <span class="highlight-line">    <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span></span></code></pre>
-<p>Chaque ligne va prendre  :</p>
+<p>Chaque ligne va prendre :</p>
 <ul>
 <li>3 instructions pour la première ligne : création de variable, de la chaîne et son affectation</li>
 <li>3 instructions pour la deuxième ligne : création de variable, de la chaîne et son affectation</li>
 <li>4 instructions pour la troisième ligne : recherche de la variable, création de l'entier,  test et saut si nécessaire</li>
 <li>2 instructions pour la quatrième ligne : recherche de la variable et affichage</li>
-<li>4 instructions pour la quatrième ligne : recherche de la variable, création de l'entier,  addition et affectation</li>
+<li>4 instructions pour la cinquième ligne : recherche de la variable, création de l'entier,  addition et affectation</li>
 </ul>
-<p>Mais comme les lignes 4, et 5 sont exécutées 10000 fois et la ligne 3 10001 fois (ne pas oublier le test final lorsque $i &gt; 10000$), la complexité du pseudo-code vaut :</p>
+<p>Mais comme les lignes 4 et 5 sont exécutées 10000 fois et la ligne 3 10001 fois (ne pas oublier le test final lorsque $i &gt; 10000$), la complexité du pseudo-code vaut :</p>
 <div>
 $$
 3 + 3 + 4 \cdot 10001 + (2+4) \cdot 10000 = 100010
@@ -200,13 +200,13 @@ $$
 </div>
 <p>L'accès à un indice particulier du tableau est rapide et ne nécessite qu'une seule instruction. Ainsi :</p>
 <ul>
-<li>accéder à un indice donnée en lecture nécessite 1 instruction</li>
-<li>accéder à un indice donnée pour une affectation nécessite 1 instruction</li>
+<li>accéder à un indice donné en lecture nécessite 1 instruction</li>
+<li>accéder à un indice donné pour une affectation nécessite 1 instruction</li>
 </ul>
 <p>De là l'instruction :</p>
 <ul>
-<li>créer une variable de type tableau nécessite  1 instruction</li>
-<li>créer un tableau de taille 42 nécessite  42 instructions</li>
+<li>créer une variable de type tableau nécessite 1 instruction</li>
+<li>créer un tableau de taille 42 nécessite 42 instructions</li>
 <li><code class="language-">afficher F[3]</code> nécessite 2 instructions : une pour retrouver l'objet associé à <code class="language-">F[3]</code> et l'autre pour l'afficher (on accède au quatrième élément du tableau, d'indice valant 3, on n'a pas besoin de créer un entier valant 3)</li>
 <li><code class="language-">F[3] ← 42</code> nécessite aussi 2 instructions : une pour créer l'entier <code class="language-">42</code> l'autre pour l'affecter au quatrième élément du tableau</li>
 <li><code class="language-">F[i] ← 42</code> nécessite en revanche 3 instructions, une pour créer l'entier <code class="language-">42</code>, une pour trouver l'objet associé à <code class="language-">i</code> (ce n'est pas une constante) l'autre pour l'affecter</li>
@@ -214,7 +214,7 @@ $$
 <li><code class="language-">F ← [1 .. 42]</code> nécessite 127 instructions :
 <ul>
 <li>42 pour la création de l'objet tableau de longueur 42</li>
-<li>42 pour la création des entiers  allant de 1 à 42</li>
+<li>42 pour la création des entiers allant de 1 à 42</li>
 <li>42 pour l'affectation des entiers aux éléments du tableau</li>
 <li>1 pour l'affectation du tableau à la variable <code class="language-">F</code> (que l'on suppose déjà créée)</li>
 </ul>
@@ -231,7 +231,7 @@ $$
 </div>
 </div>
 <h3>Appels de fonctions</h3>
-<p>La plupart du temps on utilise plus que les instructions basiques comme des fonctions que l'on suppose accessible (comme le min ou le max) ou des algorithmes que l'on a défini nous même. Il ne faut pas oublier d'ajouter leurs complexités au calcul.</p>
+<p>La plupart du temps on utilise plus que les instructions basiques comme des fonctions que l'on suppose accessibles (comme le min ou le max) ou des algorithmes que l'on a définis nous-mêmes. Il ne faut pas oublier d'ajouter leurs complexités au calcul.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -254,7 +254,7 @@ $$
 <span class="highlight-line"><span class="token variable parameter">trouve</span> <span class="token operator">←</span> recherche<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
 <span class="highlight-line"><span class="token keyword">affiche</span> <span class="token variable parameter">trouve</span></span></code></pre>
 <ol>
-<li>exécution de la ligne 7 : 1 instructions ; création d'une variable tableau</li>
+<li>exécution de la ligne 7 : 1 instruction ; création d'une variable tableau</li>
 <li>exécution de la ligne 8 : 10 instructions
 <ul>
 <li>création et initialisation à <code class="language-">∅</code> d'un tableau à 3 indices</li>
@@ -263,7 +263,7 @@ $$
 <li>affectation du tableau à une variable : 1 instruction</li>
 </ul>
 </li>
-<li>exécution de la ligne 9 : 1 instructions ; création d'une variable</li>
+<li>exécution de la ligne 9 : 1 instruction ; création d'une variable</li>
 <li>exécution de la ligne 10 :
 <ol>
 <li>exécution de la fonction recherche (ligne à ligne) :
@@ -292,7 +292,7 @@ $$
 </li>
 <li>exécution de la ligne 3 (3 fois) : un test
 <ul>
-<li>on trouve les objets associées à <code class="language-">t</code> et <code class="language-">e</code> : 2 instructions</li>
+<li>on trouve les objets associés à <code class="language-">t</code> et <code class="language-">e</code> : 2 instructions</li>
 <li>on teste l'égalité : 1 instruction</li>
 <li>on fait le <code class="language-">si</code> : 1 instruction</li>
 </ul>
@@ -300,18 +300,18 @@ $$
 <li>exécution de la ligne 4 (1 fois) : on arrive à cette ligne à la troisième itération : 2 instructions (une pour créer le booléen, l'autre pour le rendre)</li>
 </ol>
 </li>
-<li>affection de la variable <code class="language-">trouve</code> : 1 instruction</li>
+<li>affectation de la variable <code class="language-">trouve</code> : 1 instruction</li>
 </ol>
 </li>
 <li>afficher quelque chose à l'écran :
 <ul>
 <li>1 instruction pour trouver l'objet à afficher</li>
-<li>1 instruction pour trouver l'afficher</li>
+<li>1 instruction pour l'afficher</li>
 </ul>
 </li>
 </ol>
-<p>Au total on eu besoin de $1+10+1+\underbracket{(4 + 1 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
-instructions c'est à dire $46$ instructions.</p>
+<p>Au total on a eu besoin de $1+10+1+\underbracket{(4 + 1 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
+instructions c'est-à-dire $46$ instructions.</p>
 <h2>Complexité d'un algorithme</h2>
 <p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 159$ :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">F</span> <span class="token type class-name">[]int</span></span></span>
@@ -350,7 +350,7 @@ instructions c'est à dire $46$ instructions.</p>
 <div class="mx-8 pb-2">
 <p>La complexité de chaque ligne :</p>
 <ul>
-<li>ligne 1 : 1 instructions</li>
+<li>ligne 1 : 1 instruction</li>
 <li>ligne 2 : 10 instructions</li>
 <li>ligne 3 : 2 instructions (une création et une affectation)</li>
 <li>ligne 4 : 2 instructions (une création et une affectation)</li>
@@ -381,7 +381,7 @@ instructions c'est à dire $46$ instructions.</p>
 <li>1 affectation</li>
 </ul>
 </li>
-<li>ligne 10 : 0 instructions</li>
+<li>ligne 10 : 0 instruction</li>
 <li>ligne 11 : 2 instructions
 <ul>
 <li>1 récupération de l'objet associé à <code class="language-">F[9]</code></li>
@@ -398,8 +398,8 @@ $$
 </div>
 </details>     
 </div>
-<p>Mais souvent on ne va pas utiliser juste un pseudo-code, on crée des algorithmes pour être utilisé avec différents objets, ou dans d'autres algorithmes. On ne cherche alors plus à calculer la complexité de l'exécution effective d'un pseudo-code mais de l'exécution potentielle d'un code selon ses paramètres.</p>
-<p>Transformons le pseudo-code précédent en algorithme pour qu'il puisse calculer tous les fermes de la suite de Fibonacci et pas uniquement le 10ème :</p>
+<p>Mais souvent on ne va pas utiliser juste un pseudo-code, on crée des algorithmes pour être utilisés avec différents objets, ou dans d'autres algorithmes. On ne cherche alors plus à calculer la complexité de l'exécution effective d'un pseudo-code mais de l'exécution potentielle d'un code selon ses paramètres.</p>
+<p>Transformons le pseudo-code précédent en algorithme pour qu'il puisse calculer tous les termes de la suite de Fibonacci et pas uniquement le 10ème :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">F</span> <span class="token type class-name">[]int</span></span></span>
 <span class="highlight-line">    <span class="token variable parameter">F</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token variable parameter">n</span><span class="token punctuation">]</span><span class="token builtin">int</span></span>
@@ -427,8 +427,8 @@ $$
 <span class="highlight-line">        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
-<p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la longueur $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres <code class="language-">T</code> et <code class="language-">x</code> ; la création de <code class="language-">e</code> ; trouver <code class="language-">t[0]</code> puis l'affecter à <code class="language-">e</code> ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6\cdot n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de <code class="language-">e</code> ; $2n$ instruction de l'affectation de la boucle <code class="language-">pour chaque</code> ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.</p>
-<p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour l'algorithme <code class="language-">rechercher</code> on sait que l'on a un tableau et un entier en paramètres mais pas la nature des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il est plus intéressant de connaître la complexité de l'algorithme pour un tableau d'une longueur donnée.</p>
+<p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la longueur $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres <code class="language-">T</code> et <code class="language-">x</code> ; la création de <code class="language-">e</code> ; trouver <code class="language-">t[0]</code> puis l'affecter à <code class="language-">e</code> ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6\cdot n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de <code class="language-">e</code> ; $2n$ instructions de l'affectation de la boucle <code class="language-">pour chaque</code> ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.</p>
+<p>Lorsque l'on utilise un algorithme on n'a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour l'algorithme <code class="language-">rechercher</code> on sait que l'on a un tableau et un entier en paramètres mais pas la nature des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il est plus intéressant de connaître la complexité de l'algorithme pour un tableau d'une longueur donnée.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -451,8 +451,8 @@ $$
 </div>
 <p>Dans la partie pseudo-code on a considéré deux types de données :</p>
 <ul>
-<li>les types simples que sont les nombres, les booléens, les approximation de réels et les caractères qui sont stockable sur 1 unité de mémoire,</li>
-<li>les tableaux et les chaînes de caractères dont la taille est leur longueur multiplié par la taille de leurs données.</li>
+<li>les types simples que sont les nombres, les booléens, les approximations de réels et les caractères qui sont stockables sur 1 unité de mémoire,</li>
+<li>les tableaux et les chaînes de caractères dont la taille est leur longueur multipliée par la taille de leurs données.</li>
 </ul>
 <h3>Complexité algorithmique</h3>
 <p>En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :</p>
@@ -467,7 +467,7 @@ $$
 </div>
 </div>
 <p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">recherche</code> vaut $6N+5$, en utilisant la longueur du tableau passé en entrée comme paramètre : pour tout tableau de longueur $N$ passé en paramètre, la complexité maximale est de $6N+5$ instructions.</p>
-<p>Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prise par les données comme paramètre. C'est le cas de la fonction <code class="language-">fibonacci(n)</code>, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de de $18n - 21$.</p>
+<p>Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prise par les données comme paramètre. C'est le cas de la fonction <code class="language-">fibonacci(n)</code>, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle-même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de $18n - 21$.</p>
 <p>Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -486,7 +486,7 @@ $$
 <h2>Autres types de complexités</h2>
 <p>Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant la définition précédente. Il existe cependant d'autres types de complexité que l'on pourra utiliser.</p>
 <h2>Complexité min</h2>
-<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">recherche</code> par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">recherche</code>) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme <code class="language-">recherche</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
+<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisés (l'algorithme <code class="language-">recherche</code> par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la taille du tableau en entrée pour l'algorithme <code class="language-">recherche</code>) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme <code class="language-">recherche</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -514,12 +514,12 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Le temps mis pour un code à être exécuté est proportionnelle au nombre d'instructions exécutés de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).</p>
+<p>Le temps mis pour un code à être exécuté est proportionnel au nombre d'instructions exécutées de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).</p>
 </div>
 </div>
 <p>Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.</p>
 <h2>Complexité spatiale</h2>
-<p>Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.</p>
+<p>Enfin, l'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est-à-dire la taille des variables dont il a eu besoin pour fonctionner.</p>
 <div id="complexité-spatiale"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -552,13 +552,13 @@ $$
 <span class="highlight-line">    <span class="token variable parameter">i</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">  <span class="token keyword">rendre</span> <span class="token variable parameter">b</span></span></code></pre>
-<p>Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
+<p>Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grandes que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.</p>
+<p>Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.</p>
 </div>
 </div>
 <p>Complexité et complexité spatiale sont liées :</p>
@@ -628,7 +628,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On sait déjà que $S(N) \leq C(N)$.</p>
-<p>Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(N)}$ fois qui correspond aux nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.</p>
+<p>Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(N)}$ fois qui correspond au nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.</p>
 </div>
 </details>     
 </div>

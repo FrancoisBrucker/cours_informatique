@@ -116,14 +116,14 @@
     
   
 
-  <p>On reprend ici les exercices que nous avons crée précédemment (voir prérequis) et on en calcule la complexité. On utilisera les algorithmes donnés dans le corrigé mais faites également le calcul avec vos propres algorithmes pour vous entraîner.</p>
+  <p>On reprend ici les exercices que nous avons créés précédemment (voir prérequis) et on en calcule la complexité. On utilisera les algorithmes donnés dans le corrigé mais faites également le calcul avec vos propres algorithmes pour vous entraîner.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Rappelez vous, lorsque l'on parle de complexité sans plus de précision, ce sera toujours la complexité maximale en nombre d'opération dont on parle, que l'on calculera toujours en $\mathcal{O}$.</p>
+<p>Rappelez-vous, lorsque l'on parle de complexité sans plus de précision, ce sera toujours la complexité maximale en nombre d'opérations dont on parle, que l'on calculera toujours en $\mathcal{O}$.</p>
 </div>
 </div>
 <p>Nous allons aller de plus en plus vite dans le corrigé, à mesure que nous gagnerons en confiance et que nous aurons acquis les automatismes de calculs.</p>
@@ -159,14 +159,14 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les lignes 1, 5 et 9 définissent des blocs, les autres sont des instructions composées d'instructions basiques (affectations, sommes et lectures) toutes en $\mathcal{O}(1)$ : la complexité va être égale au nombre de fois où chaque ligne est exécutée. Calculons la en regroupant les lignes de l'algorithme en <em>paquets</em> :</p>
+<p>Les lignes 1, 5 et 9 définissent des blocs, les autres sont des instructions composées d'instructions basiques (affectations, sommes et lectures) toutes en $\mathcal{O}(1)$ : la complexité va être égale au nombre de fois où chaque ligne est exécutée. Calculons-la en regroupant les lignes de l'algorithme en <em>paquets</em> :</p>
 <ol>
 <li>boucle 5-7</li>
 <li>boucle 9-11</li>
 <li>le reste</li>
 </ol>
-<p>Les lignes du paquet 1 vont être exécutées autant de fois que la boucle va itérer, c'est à dire <code class="language-">début.longueur</code> fois. La complexité du paquet 1 est donc : $\mathcal{O}(1) \cdot \mbox{début.longueur} = \mathcal{O}(\mbox{début.longueur})$</p>
-<p>De la même manière, les lignes du paquet 2 vont être exécutées autant de fois que la boucle va itérer, c'est à dire <code class="language-">fin.longueur</code> fois. La complexité du paquet 2 est donc : $\mathcal{O}(\mbox{fin.longueur})$.</p>
+<p>Les lignes du paquet 1 vont être exécutées autant de fois que la boucle va itérer, c'est-à-dire <code class="language-">début.longueur</code> fois. La complexité du paquet 1 est donc : $\mathcal{O}(1) \cdot \mbox{début.longueur} = \mathcal{O}(\mbox{début.longueur})$</p>
+<p>De la même manière, les lignes du paquet 2 vont être exécutées autant de fois que la boucle va itérer, c'est-à-dire <code class="language-">fin.longueur</code> fois. La complexité du paquet 2 est donc : $\mathcal{O}(\mbox{fin.longueur})$.</p>
 <p>Enfin, les lignes du paquet 3 vont toutes être exécutées 1 fois : la complexité totale de l'exécution de toutes les lignes du paquet 3 va être $\mathcal{O}(1)$.</p>
 <p>La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fin.longueur})$.</p>
 </div>
@@ -218,7 +218,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../../1-algorithme/projet/#algorithme-intersection-non-vide">Création et preuve de l'égalités des valeurs</a></p>
+<p><a href="../../1-algorithme/projet/#algorithme-intersection-non-vide">Création et preuve de l'égalité des valeurs</a></p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -261,7 +261,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../../1-algorithme/projet/#algorithme-intersection-non-vide">Création et preuve de l'égalités des éléments</a></p>
+<p><a href="../../1-algorithme/projet/#algorithme-intersection-non-vide">Création et preuve de l'égalité des éléments</a></p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -292,7 +292,7 @@
 <p>Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend <code>Faux</code> le plus vite possible. L'algorithme fait une seule itération de la première boucle et une vérification de <code class="language-">nombre</code> : la complexité min est $\mathcal{O}(T1.\mbox{\small longueur} + T2.\mbox{\small longueur})$</p>
 </li>
 <li>
-<p>dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme <code class="language-">nombre</code>, de complexité min et max égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$</p>
+<p>dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme <code class="language-">nombre</code>, de complexité min et max égale à la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$</p>
 </li>
 </ul>
 </div>
@@ -378,7 +378,7 @@ toutes les autres lignes sont en $\mathcal{O}(1)$ et une boucle de $\mathcal{O}(
 </ul>
 <p>Il faut faire <strong>très attention</strong> pour ce genre de lignes car :</p>
 <ul>
-<li>un des paramètres de l'appel à <code class="language-">concaténation</code>le résultat de l'appel récursif</li>
+<li>un des paramètres de l'appel à <code class="language-">concaténation</code> est le résultat de l'appel récursif</li>
 <li>la complexité de la fonction <code class="language-">concaténation</code> n'est <strong>pas</strong> $\mathcal{O}(1)$, on ne peut donc pas l'ignorer dans nos calculs.</li>
 </ul>
 <p>Ces deux lignes sont de même complexité : $C(n-1) + \mathcal{O}(n)$. Le premier terme correspond au calcul du second paramètre de l'appel à la fonction <code class="language-">concaténation</code> et le second à la complexité de l'exécution de <code class="language-">concaténation</code>.</p>
@@ -434,7 +434,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>L'algorithme itératif est bien meilleur que l'algorithme récursif : $\mathcal{O}(n)$ versus $\mathcal{O}(n^2)$ si $n$ est la taille du tableau passé en paramètre.</p>
-<p>Ceci est du à la duplication du tableau dans la version récursive qui ajoute un facteur $\mathcal{O}(n)$ à chaque récursion.</p>
+<p>Ceci est dû à la duplication du tableau dans la version récursive qui ajoute un facteur $\mathcal{O}(n)$ à chaque récursion.</p>
 <p>Pour que les complexités soient comparables il faudrait pouvoir ajouter petit à petit des éléments au tableau ce qui est impossible. Les algorithmes récursifs préfèrent utiliser des structures dynamiques comme les listes qui permettent d'ajouter efficacement des objets à un conteneur. Nous verrons ces structures plus tard dans le cours.</p>
 </div>
 </details>     
@@ -517,7 +517,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Dérive directement de la définition et du fait que on a démontré que :</p>
+<p>Dérive directement de la définition et du fait qu'on a démontré que :</p>
 <ul>
 <li>pour tout $90 \leq n &lt; 101$, on a $M(n) = M(n+1) = \dots = M(101) = 91$</li>
 <li>pour tout $n &lt; 101$, il existe $k\geq 1$ et $90 \leq n' &lt; 101$ tels que $M(n) = M^k(n')$</li>
@@ -577,11 +577,11 @@ $$
 <div class="mx-8 pb-2">
 <ul>
 <li>si $n &gt; 100$ il y a 1 appel,</li>
-<li>si $101 &gt; n &gt; 90$, il y 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.</li>
+<li>si $101 &gt; n &gt; 90$, il y a 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.</li>
 <li>sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 &lt; n' &lt; 101$. Le maximum sera atteint pour $n=1$ en 11 appels, $M^{11}(111) = M^{10}(101) = M^{9}(91)$.</li>
 </ul>
-<p>Le nombre d'appel maximum sera atteint pour $n=1$. Dans ce cas là
-Au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.</p>
+<p>Le nombre d'appels maximum sera atteint pour $n=1$. Dans ce cas-là,
+au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.</p>
 <p>Une borne sera donc de $13 + 21 \cdot 8 + 20 = 201$ appels.</p>
 <p>Une vérification expérimentale possible en python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">compte <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
