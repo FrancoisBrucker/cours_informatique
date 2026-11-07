@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Quelques exercices non corrigé de calculs de complexité.
+Quelques exercices non corrigés de calcul de complexité.
 
 ## Polynômes
 
@@ -60,8 +60,8 @@ Prouver que l'algorithme `valeur_naif`{.language-} est une solution au problème
 Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur du polynôme :
 
 - la complexité de l'algorithme `valeur_naif`{.language-}
-- le nombre de multiplication utilisée par l'algorithme `valeur_naif`{.language-}
-- le nombre d'additions utilisée par l'algorithme `valeur_naif`{.language-}
+- le nombre de multiplications utilisées par l'algorithme `valeur_naif`{.language-}
+- le nombre d'additions utilisées par l'algorithme `valeur_naif`{.language-}
 
 {% endfaire %}
 
@@ -88,8 +88,8 @@ Prouver que l'algorithme `valeur_itéré`{.language-} est une solution au probl�
 Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur du polynôme :
 
 - la complexité de l'algorithme `valeur_itéré`{.language-}
-- le nombre de multiplication utilisée par l'algorithme `valeur_itéré`{.language-}
-- le nombre d'additions utilisée par l'algorithme `valeur_itéré`{.language-}
+- le nombre de multiplications utilisées par l'algorithme `valeur_itéré`{.language-}
+- le nombre d'additions utilisées par l'algorithme `valeur_itéré`{.language-}
 
 {% endfaire %}
 
@@ -122,8 +122,8 @@ Prouver que l'algorithme `valeur_horner`{.language-} est une solution au problè
 Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur du polynôme :
 
 - la complexité de l'algorithme `valeur_horner`{.language-}
-- le nombre de multiplication utilisée par l'algorithme `valeur_horner`{.language-}
-- le nombre d'additions utilisée par l'algorithme `valeur_horner`{.language-}
+- le nombre de multiplications utilisées par l'algorithme `valeur_horner`{.language-}
+- le nombre d'additions utilisées par l'algorithme `valeur_horner`{.language-}
 
 {% endfaire %}
 
@@ -193,7 +193,7 @@ $$
 
 {% endfaire %}
 {% faire %}
-Que pensez vous de cette complexité ?
+Que pensez-vous de cette complexité ?
 {% endfaire %}
 
 ### Algorithme v2
@@ -212,7 +212,7 @@ $$
 Utilisez le résultat précédent pour créer un algorithme récursif de complexité $\mathcal{O}(n)$ pour calculer $\binom{n}{k}$.
 {% endfaire %}
 {% faire %}
-En utilisant le fait que $\binom{n}{k} = \binom{n}{n-k}$, donnez une borne exacte au nombre de récursion.
+En utilisant le fait que $\binom{n}{k} = \binom{n}{n-k}$, donnez une borne exacte au nombre de récursions.
 {% endfaire %}
 
 {% faire %}
@@ -283,7 +283,7 @@ Vous pourrez utiliser l'invariant : `X * Y = r + x * y`{.language-} avec `X`{.la
 
 ### Multiplication binaire
 
-Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. En réalité nos entiers sont codés sous la forme de tableaux $T$ de bits (0 ou 1) tels que  :
+Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. En réalité nos entiers sont codés sous la forme de tableaux $T$ de bits (0 ou 1) tels que :
 
 <div>
 $$
@@ -299,7 +299,7 @@ algorithme mul2(T: []bit):
 ```
 
 {% faire %}
-Quel est la complexité de l'algorithme `mul2(T: []bit)`{.language-} ?
+Quelle est la complexité de l'algorithme `mul2(T: []bit)`{.language-} ?
 {% endfaire %}
 {% faire %}
 Montrez que l'algorithme `mul2(T: []bit)`{.language-} multiplie par deux l'entier représenté par $T$ si $T[-1] = 0$.

@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le calcul de la complexité d'un algorithme est une part importante de l'algorithmie. Elle met en oeuvre des outils puissant et peut nécessiter des des analyses et des raisonnements fins.
+Le calcul de la complexité d'un algorithme est une part importante de l'algorithmie. Elle met en œuvre des outils puissants et peut nécessiter des analyses et des raisonnements fins.
 
 ## Complexité algorithmique
 

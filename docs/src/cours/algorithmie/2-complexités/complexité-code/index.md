@@ -15,19 +15,19 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu'il met à être exécuté. Pour la mesure soit conforme à la complexité il faut que :
+Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu'il met à être exécuté. Pour que la mesure soit conforme à la complexité il faut que :
 
 1. les instructions basiques durent un temps similaire,
 2. l'on ait un moyen efficace de mesurer le temps
 3. le système ne doit exécuter que l'algorithme et n'avoir aucun autre [processus concurrent](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (en temps partagé) (voir prérequis système)
-4. les paramètres d'entrées doivent  :
+4. les paramètres d'entrée doivent :
   - réaliser le maximum si on cherche à mesurer la complexité (maximum),
   - réaliser le minimum si on cherche à mesurer la complexité minimum,
-  - être aléatoire et uniforme si on cherche à mesurer la complexité moyenne.
+  - être aléatoires et uniformes si on cherche à mesurer la complexité moyenne.
 
 ## Code python
 
-On présuppose que vous avec fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi [le cours d'introduction à python](/cours/coder-et-développer/apprendre-programmation/). Selon [notre convention](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#convention-exemples/#convention-exemples), les exemples de code qui commencent par `>>>` ont été exécutés directement dans un interpréteur.
+On présuppose que vous avez fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi [le cours d'introduction à python](/cours/coder-et-développer/apprendre-programmation/). Selon [notre convention](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#convention-exemples/#convention-exemples), les exemples de code qui commencent par `>>>` ont été exécutés directement dans un interpréteur.
 
 On utilisera deux modules très utiles :
 
@@ -35,14 +35,14 @@ On utilisera deux modules très utiles :
 - <https://numpy.org/>
 
 {% info %}
-On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique ce code.
+On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique de ce code.
 {% endinfo %}
 
 ## Comment mesurer la complexité
 
 Reprenons les 4 conditions que l'on vient d'expliciter.
 
-Nous allons utiliser [les mesures de l'algorithme](../complexité-moyenne/#mesure) recherche que l'on a déjà vu :
+Nous allons utiliser [les mesures de l'algorithme](../complexité-moyenne/#mesure) recherche que l'on a déjà vues :
 
 ```python
 def recherche(T, x):
@@ -54,17 +54,17 @@ def recherche(T, x):
 
 ### 1. durée d'une instruction basique
 
-Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langages le code source est soit :
+Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langage, le code source est :
 
-- soit converties en [bytecode](https://fr.wikipedia.org/wiki/Bytecode){.externe} (comme [le python](https://www.python.org/){.externe} ou [le java](https://www.java.com/fr/){.externe}), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur
-- directement converti en langage machine (comme [le go](https://go.dev/){.externe} ou encore [le rust](https://rust-lang.org/fr/){.externe}), c'est à dire en [instructions processeurs](https://fr.wikipedia.org/wiki/Jeu_d%27instructions){.externe},
+- soit converti en [bytecode](https://fr.wikipedia.org/wiki/Bytecode){.externe} (comme [le python](https://www.python.org/){.externe} ou [le java](https://www.java.com/fr/){.externe}), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur
+- soit directement converti en langage machine (comme [le go](https://go.dev/){.externe} ou encore [le rust](https://rust-lang.org/fr/){.externe}), c'est-à-dire en [instructions processeurs](https://fr.wikipedia.org/wiki/Jeu_d%27instructions){.externe},
 
 Ces deux approches nécessitent une étape de conversion :
 
 - la première est plus rapide à la conversion (souvent faite au moment même de l'exécution pour le python) mais (un peu) plus lente à l'exécution
 - la seconde est plus rapide à l'exécution mais plus longue à la conversion 
 
-Enfin, la première approche permet de créer un code portable, seul l'interpréteur doit-être prévu pour le système (windows, lLinux ou mac) et le type de processeur utilisé (x86 ou arm essentiellement).
+Enfin, la première approche permet de créer un code portable, seul l'interpréteur doit être prévu pour le système (windows, Linux ou mac) et le type de processeur utilisé (x86 ou arm essentiellement).
 
 #### Instruction python
 
@@ -124,7 +124,7 @@ Les instructions élémentaires de python ne sont donc pas celles du pseudo-code
 
 ```
 
-Qui utilise l'instruction de bytecode `BINARY_OP` est un algorithme qui va prendre un temps proportionnel aux nombres de chiffres de ses paramètres. Pour le vérifier on peut utiliser [le module `timeit`{.language-}](https://docs.python.org/fr/3.15/library/timeit.html){.externe} qui va mesurer le temps mis pour exécuter du code python `number`{.language-} fois :
+L'instruction de bytecode `BINARY_OP` utilisée est un algorithme qui va prendre un temps proportionnel au nombre de chiffres de ses paramètres. Pour le vérifier on peut utiliser [le module `timeit`{.language-}](https://docs.python.org/fr/3.15/library/timeit.html){.externe} qui va mesurer le temps mis pour exécuter du code python `number`{.language-} fois :
 
 ```python
 >>> import timeit
@@ -136,38 +136,38 @@ Qui utilise l'instruction de bytecode `BINARY_OP` est un algorithme qui va prend
 ```
 
 
-On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépend de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.
+On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépendent de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.
 
 
 #### Instructions processeur
 
-Une instruction du processeur va durer un certains nombre de cycle processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des [processeur CISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu){.externe} qui possèdent des instructions complexes et les processeur ARM (portables, tablettes et mac) sont à contrario des [processeurs RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit){.externe} avec peu d'instructions.
+Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des [processeurs CISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu){.externe} qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des [processeurs RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit){.externe} avec peu d'instructions.
 
-Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour test booléen, quelques dizaine de cycle pour une division de deux nombres codés sur 64 bit à plusieurs millions de cycle pour [l'instruction `WBINVD`](https://www.felixcloutier.com/x86/wbinvd){.externe}. 
+Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour un test booléen, quelques dizaines de cycles pour une division de deux nombres codés sur 64 bits à plusieurs millions de cycles pour [l'instruction `WBINVD`](https://www.felixcloutier.com/x86/wbinvd){.externe}. 
 
 #### En pratique
 
 En pratique ceci importe peu puisque :
 
 1. on veut de toute façon avoir le code le plus rapide possible,
-2. ces variations ne vont influer sur les constantes additives et multiplicatives du code, pas sur l'allure générale de la courbe
+2. ces variations ne vont influer que sur les constantes additives et multiplicatives du code, pas sur l'allure générale de la courbe
 
-Enfin, d'un point de vue algorithmique, l'ordre de grandeur en $\mathcal{O}$ sera conservé quelque soit l'ordinateur sur lequel le code sera exécuté.
+Enfin, d'un point de vue algorithmique, l'ordre de grandeur en $\mathcal{O}$ sera conservé quel que soit l'ordinateur sur lequel le code sera exécuté.
 
 {% retenir %}
 Même si les instructions processeurs sont très différentes du pseudo-code et que leur durée d'exécution n'est pas homogène, mesurer le temps permet d'avoir l'allure générale de la courbe de complexité.
 {% endretenir %}
 
-Trouver un bon algorithme peut faire gagner un ordre de grandeur optimiser le code ne va faire gagner qu'un facteur au mieux multiplicatif. On ne cherchera à optimiser le code processeur qu'après avoir choisi le bon algorithme et, surtout, on ne le fera jamais directement : on laissera le compilateur faire.
+Trouver un bon algorithme peut faire gagner un ordre de grandeur, optimiser le code ne va faire gagner qu'un facteur au mieux multiplicatif. On ne cherchera à optimiser le code processeur qu'après avoir choisi le bon algorithme et, surtout, on ne le fera jamais directement : on laissera le compilateur faire.
 
 ### 2. mesure du temps
 
-On possède de deux outils pour mesurer le temps :
+On dispose de deux outils pour mesurer le temps :
 
 - une horloge : <https://docs.python.org/fr/3.15/library/datetime.html>
 - un chronomètre : <https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns>
 
-Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du [fuseau horaire](https://fr.wikipedia.org/wiki/Fuseau_horaire){.externe} et  finalement moins précise (à la microseconde prêt) qu'un chronomètre (à la nanoseconde prêt).
+Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du [fuseau horaire](https://fr.wikipedia.org/wiki/Fuseau_horaire){.externe} et finalement moins précise (à la microseconde près) qu'un chronomètre (à la nanoseconde près).
 
 On a déjà vu un exemple de mesure d'un code python avec le module `timeit`{.language-}. Il n'est cependant pas pratique car il faut mettre le code sous la forme d'une chaîne à exécuter ou d'une fonction sans paramètre. Il est plus simple d'utiliser le chronomètre [du module `time`{.language-}](https://docs.python.org/fr/3.15/library/time.html){.externe}.
 
@@ -186,16 +186,16 @@ recherche(T, 42)
 fin = perf_counter_ns()
 t = fin - début
 
-print("l'exécution de la fonction à duré :", t, "ns")
+print("l'exécution de la fonction a duré :", t, "ns")
 ```
 
 Ce qui donne chez moi :
 
 ```text
-l'exécution de la fonction à duré : 50458 ns
+l'exécution de la fonction a duré : 50458 ns
 ```
 
-L'exécution de la fonction `perf_counter_ns()`{.language-} rend un entier qui augmente de 1 toute les nanosecondes. Si on exécute cette méthode juste avant et juste après l'exécution de la fonction `recherche`{.language-} sa différence nous donne le temps d'exécution en nano-secondes.
+L'exécution de la fonction `perf_counter_ns()`{.language-} rend un entier qui augmente de 1 toutes les nanosecondes. Si on exécute cette méthode juste avant et juste après l'exécution de la fonction `recherche`{.language-} sa différence nous donne le temps d'exécution en nanosecondes.
 
 ### 3. Isoler l'algorithme du système
 
@@ -220,25 +220,25 @@ for _ in range(5):
     fin = perf_counter_ns()
     t = fin - début
 
-    print("l'exécution de la fonction à duré :", t, "ns")
+    print("l'exécution de la fonction a duré :", t, "ns")
 ```
 
 Par exemple :
 
 ```text
-l'exécution de la fonction à duré : 24500 ns
-l'exécution de la fonction à duré : 3333 ns
-l'exécution de la fonction à duré : 1875 ns
-l'exécution de la fonction à duré : 2166 ns
-l'exécution de la fonction à duré : 2125 ns
+l'exécution de la fonction a duré : 24500 ns
+l'exécution de la fonction a duré : 3333 ns
+l'exécution de la fonction a duré : 1875 ns
+l'exécution de la fonction a duré : 2166 ns
+l'exécution de la fonction a duré : 2125 ns
 ```
 
-La première instruction a duré presque 10 fois plus de temps que les 4 suivante. Ceci est du au fait que notre programme python ne tourne pas tout seul sur l'ordinateur, de nombreux autres programme fonctionnent en concurrence, c'est à dire que chacun va tourner une fraction du temps puis passer la main à un autre programme. Cela va si vite qu'on ne se rend pas compte qu'il n'y a qu'un seul programme qui tourne sur 1 processeur.
+La première instruction a duré presque 10 fois plus de temps que les 4 suivantes. Ceci est dû au fait que notre programme python ne tourne pas tout seul sur l'ordinateur, de nombreux autres programmes fonctionnent en concurrence, c'est-à-dire que chacun va tourner une fraction du temps puis passer la main à un autre programme. Cela va si vite qu'on ne se rend pas compte qu'il n'y a qu'un seul programme qui tourne sur 1 processeur.
 
-Notre chronomètre ne mesure donc pas le temps qu'à mis uniquement notre programme pour tourner mais également l'ensemble des programme du système qui tournaient en même temps. Comme tout ces temps sont ajoutés, on peut relancer le programme plusieurs fois et prendre le minimum.
+Notre chronomètre ne mesure donc pas le temps qu'a mis uniquement notre programme pour tourner mais également l'ensemble des programmes du système qui tournaient en même temps. Comme tous ces temps sont ajoutés, on peut relancer le programme plusieurs fois et prendre le minimum.
 
 {% retenir %}
-Pour minimiser les variations dues aux exécutions d'autres programmes concurrent, on mesure l'exécution plusieurs fois (typiquement 10 fois, mais on peut diminuer ce temps si l'exécution est longue de notre mesure est longue) et on prend le minimum.
+Pour minimiser les variations dues aux exécutions d'autres programmes concurrents, on mesure l'exécution plusieurs fois (typiquement 10 fois, mais on peut diminuer ce temps si l'exécution de notre mesure est longue) et on prend le minimum.
 {% endretenir %}
 
 Le code devient :
@@ -263,13 +263,13 @@ for _ in range(10):
   if (t is None) or (delta < t):
     t = delta
 
-print("l'exécution de la fonction à duré :", t, "ns")
+print("l'exécution de la fonction a duré :", t, "ns")
 ```
 
 Et il donne chez moi :
 
 ```text
-l'exécution de la fonction à duré : 500 ns
+l'exécution de la fonction a duré : 500 ns
 ```
 
 {% info %}
@@ -279,7 +279,7 @@ Notez qu'on a initialisé le temps à `None`{.language-} pour toujours prendre l
 
 #### Isoler de python
 
-Maintenant que notre programme est isolé du reste du système une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'apple [le ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)){.externe} et est un mécanisme fondamental qui permet de minimiser la mémoire utilisées. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise [le module `gc`{.language-}](https://docs.python.org/fr/3.15/library/gc.html) qui ous permet de controller ce mécanisme.
+Maintenant que notre programme est isolé du reste du système, une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'appelle [le ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)){.externe} et est un mécanisme fondamental qui permet de minimiser la mémoire utilisée. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise [le module `gc`{.language-}](https://docs.python.org/fr/3.15/library/gc.html) qui nous permet de contrôler ce mécanisme.
 
 Le code devient maintenant :
 
@@ -312,19 +312,19 @@ for _ in range(10):
 if gc_actif:
     gc.enable()
 
-print("l'exécution de la fonction à duré :", t, "ns")
+print("l'exécution de la fonction a duré :", t, "ns")
 ```
 {% info %}
-Notez que l'on ne réactive le ramasse-miette que s'il était actif avant notre manipulation (on stocke l'état courant dans la variable `gc_actif`{.language-}).
+Notez que l'on ne réactive le ramasse-miettes que s'il était actif avant notre manipulation (on stocke l'état courant dans la variable `gc_actif`{.language-}).
 {% endinfo %}
 
 Qui donne chez moi :
 
 ```text
-l'exécution de la fonction à duré : 459 ns
+l'exécution de la fonction a duré : 459 ns
 ```
 
-On gagne un petit peu. Vous verrez que plus la taille du table augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)
+On gagne un petit peu. Vous verrez que plus la taille du tableau augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)
 
 ## Une fonction de mesure
 
@@ -368,18 +368,18 @@ On pourra l'utiliser ainsi :
 
 T = list(range(100))
 t = calcul(recherche, (T, 42))
-print("l'exécution de la fonction à duré :", t, "ns")
+print("l'exécution de la fonction a duré :", t, "ns")
 
 ```
 
 Ce qui donne chez moi :
 
 ```text
-l'exécution de la fonction à duré : 416 ns
+l'exécution de la fonction a duré : 416 ns
 ```
 
 {% retenir %}
-Gardez vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projet ultérieurs où nous aurons besoin de mesurer la complexité.
+Gardez-vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projets ultérieurs où nous aurons besoin de mesurer la complexité.
 {% endretenir %}
 
 ## Complexité maximum et minimum
@@ -402,7 +402,7 @@ def calcule_min(n):
 La complexité max est en effet atteinte pour la recherche d'un élément qui n'est pas dans le tableau (ici -1) et la complexité minimale est atteinte pour la recherche du premier élément du tableau.
 
 {% retenir %}
-Pour le calcul des complexités min et max on se crée de fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial qu calcul recherché.
+Pour le calcul des complexités min et max on se crée des fonctions ayant uniquement comme paramètre celui utilisé pour le calcul de la complexité et on adapte les entrées de l'algorithme initial au calcul recherché.
 {% endretenir %}
 
 On cherche à représenter graphiquement la durée par rapport au paramètre. Pour que notre courbe soit représentative :
@@ -443,9 +443,9 @@ Ns = [int(x) for x in np.linspace(N_min, N_max, K)]
 ```
 
 {% retenir %}
-Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentation $K$ pour déterminer les $K$ différentes mesures de temps à faire. 
+Fixez-vous une taille min et max de paramètre et donnez-vous un nombre d'expérimentations $K$ pour déterminer les $K$ différentes mesures de temps à faire. 
 
-Déterminez les tailles min et max de paramètre **une** fois, ne refaite pas le calcul à chaque lancement.
+Déterminez les tailles min et max de paramètre **une** fois, ne refaites pas le calcul à chaque lancement.
 {% endretenir %}
 
 On peut enfin calculer les temps min et max :
@@ -497,7 +497,7 @@ taille 134217728
 Les derniers calculs peuvent prendre du temps puisque l'on fait 10 fois un calcul qui va prendre de l'ordre de .1s. Si vous voulez accélérer le process :
 
 - soit diminuez le nombre maximum d'éléments dans le tableau,
-- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),
+- soit diminuez le nombre de répétitions (passer de 10 à 5 par exemple),
 - soit les deux.
 
 {% endinfo %}
@@ -514,7 +514,7 @@ def calcule_moyenne(n, rep=10):
     return calcul(recherche, (T, random.randrange(-1, n)))
 ```
 
-Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. Ci-après le temps pris pour un tableau de 100000 éléments, on va de 2208ns à prêt de 500000ns :
+Mais ceci n'est pas suffisant car il peut y avoir de grandes variations selon l'élément à rechercher. Ci-après le temps pris pour un tableau de 100000 éléments, on va de 2208ns à près de 500000ns :
 
 ```text
 409500.0
@@ -602,7 +602,7 @@ taille 134217728
 Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qui va prendre de l'ordre de 10 x .1s. Si vous voulez accélérer le process :
 
 - soit diminuez le nombre maximum d'éléments dans le tableau,
-- soit diminuez le nombre de répétition (passer de 10 à 5 par exemple),
+- soit diminuez le nombre de répétitions (passer de 10 à 5 par exemple),
 - soit diminuez le nombre d'essais pour la moyenne (passer de 10 à 5 par exemple),
 - soit deux des trois,
 - soit les trois.
@@ -610,7 +610,7 @@ Les derniers calculs peuvent prendre du temps puisque l'on fait 10x un calcul qu
 
 ## Représentation graphique
 
-Enfin, on peut représenter graphiquement les résultats. Pour cala, il faut commencer pas stocker les résultat de nos mesures et pas juste les afficher :
+Enfin, on peut représenter graphiquement les résultats. Pour cela, il faut commencer par stocker les résultats de nos mesures et pas juste les afficher :
 
 
 ```python
@@ -655,7 +655,7 @@ def affiche_complexité(N, c_min, c_moy, c_max):
 
 On a séparé notre code en 3 fichiers :
 
-- `algorithmes.py`{.language-} qui contient le code à mesurer et `test_algorithmes.py`{.language-} qui contient les lests,
+- `algorithmes.py`{.language-} qui contient le code à mesurer et `test_algorithmes.py`{.language-} qui contient les tests,
 - `mesure_temps.py`{.language-} qui contient les fonctions utiles pour les mesures,
 - `main.py`{.language-} qui est le programme principal.
 

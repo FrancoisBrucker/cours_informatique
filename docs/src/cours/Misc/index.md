@@ -33,7 +33,7 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 - dénombrable
 - autres infinis
 
-## Probabilités discrètes
+## Langage go
 
 {% aller %}
 [Go](golang)

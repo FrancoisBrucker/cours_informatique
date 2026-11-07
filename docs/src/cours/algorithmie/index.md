@@ -63,7 +63,7 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 >    ajouter partie complexité amortie avec:
 >    - compteur
 >    - permutations lexicographiques
->    - KMP.
+>    - KMP (dire hypothèse de la complexité en moyenne de l'algorithme fait partie II pas réaliste pour des mots d'une langue humaine (mots pas équiprobables !). Plein de mots commencent pareil. Donc on doit trouver un algo linéaire au max)
 
 
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
@@ -322,7 +322,8 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 > 3. problèmes
 > TBD ICI parler pointeur. Faire commencer la partie B.
 > TBD dire que si pointeur et variable pas initialisée ! On ne fait que réserver de la place. Dans le pseudo-code avec ref on mettait tout à None.
-
+> TBD huffman : <https://ldm_terminale.forge.apps.education.fr/terminale-old/07_Les_arbres/08_Codage_Huffman/>
+> 
 <!-- Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
 
 Mais cette rapidité interne vient avec une complexité supplémentaire : la nécessité d'avoir un nouveau type d'objet appelé pointeur (qui correspond à une adresse en mémoire) mais que nous n'aborderons que bien plus tard. -->

@@ -16,10 +16,10 @@ eleventyComputed:
 
 
 
-On reprend ici les exercices que nous avons crée précédemment (voir prérequis) et on en calcule la complexité. On utilisera les algorithmes donnés dans le corrigé mais faites également le calcul avec vos propres algorithmes pour vous entraîner.
+On reprend ici les exercices que nous avons créés précédemment (voir prérequis) et on en calcule la complexité. On utilisera les algorithmes donnés dans le corrigé mais faites également le calcul avec vos propres algorithmes pour vous entraîner.
 
 {% retenir %}
-Rappelez vous, lorsque l'on parle de complexité sans plus de précision, ce sera toujours la complexité maximale en nombre d'opération dont on parle, que l'on calculera toujours en $\mathcal{O}$.
+Rappelez-vous, lorsque l'on parle de complexité sans plus de précision, ce sera toujours la complexité maximale en nombre d'opérations dont on parle, que l'on calculera toujours en $\mathcal{O}$.
 {% endretenir %}
 
 Nous allons aller de plus en plus vite dans le corrigé, à mesure que nous gagnerons en confiance et que nous aurons acquis les automatismes de calculs.
@@ -35,15 +35,15 @@ Quelle est la complexité de l'algorithme `concaténation`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Les lignes 1, 5 et 9 définissent des blocs, les autres sont des instructions composées d'instructions basiques (affectations, sommes et lectures) toutes en $\mathcal{O}(1)$ : la complexité va être égale au nombre de fois où chaque ligne est exécutée. Calculons la en regroupant les lignes de l'algorithme en _paquets_ :
+Les lignes 1, 5 et 9 définissent des blocs, les autres sont des instructions composées d'instructions basiques (affectations, sommes et lectures) toutes en $\mathcal{O}(1)$ : la complexité va être égale au nombre de fois où chaque ligne est exécutée. Calculons-la en regroupant les lignes de l'algorithme en _paquets_ :
 
 1. boucle 5-7
 2. boucle 9-11
 3. le reste
 
-Les lignes du paquet 1 vont être exécutées autant de fois que la boucle va itérer, c'est à dire `début.longueur`{.language-} fois. La complexité du paquet 1 est donc : $\mathcal{O}(1) \cdot \mbox{début.longueur} = \mathcal{O}(\mbox{début.longueur})$
+Les lignes du paquet 1 vont être exécutées autant de fois que la boucle va itérer, c'est-à-dire `début.longueur`{.language-} fois. La complexité du paquet 1 est donc : $\mathcal{O}(1) \cdot \mbox{début.longueur} = \mathcal{O}(\mbox{début.longueur})$
 
-De la même manière, les lignes du paquet 2 vont être exécutées autant de fois que la boucle va itérer, c'est à dire `fin.longueur`{.language-} fois. La complexité du paquet 2 est donc : $\mathcal{O}(\mbox{fin.longueur})$.
+De la même manière, les lignes du paquet 2 vont être exécutées autant de fois que la boucle va itérer, c'est-à-dire `fin.longueur`{.language-} fois. La complexité du paquet 2 est donc : $\mathcal{O}(\mbox{fin.longueur})$.
 
 Enfin, les lignes du paquet 3 vont toutes être exécutées 1 fois : la complexité totale de l'exécution de toutes les lignes du paquet 3 va être $\mathcal{O}(1)$.
 
@@ -71,7 +71,7 @@ Quelle est la complexité min et max de l'algorithme `intersection_non_vide`{.la
 ### Mêmes valeurs
 
 {% aller %}
-[Création et preuve de l'égalités des valeurs](../../1-algorithme/projet/#algorithme-intersection-non-vide)
+[Création et preuve de l'égalité des valeurs](../../1-algorithme/projet/#algorithme-intersection-non-vide)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité min et max de l'algorithme `égalité_valeurs`{.language-} ?
@@ -87,7 +87,7 @@ Quelle est la complexité min et max de l'algorithme `égalité_valeurs`{.langua
 ### Permutations
 
 {% aller %}
-[Création et preuve de l'égalités des éléments](../../1-algorithme/projet/#algorithme-intersection-non-vide)
+[Création et preuve de l'égalité des éléments](../../1-algorithme/projet/#algorithme-intersection-non-vide)
 {% endaller %}
 {% exercice %}
 Quelle est la complexité min et max de l'algorithme `permutation`{.language-} ?
@@ -96,7 +96,7 @@ Quelle est la complexité min et max de l'algorithme `permutation`{.language-} ?
 
 - Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend `Faux` le plus vite possible. L'algorithme fait une seule itération de la première boucle et une vérification de `nombre`{.language-} : la complexité min est $\mathcal{O}(T1.\mbox{\small longueur} + T2.\mbox{\small longueur})$
 
-- dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme `nombre`{.language-}, de complexité min et max égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$
+- dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme `nombre`{.language-}, de complexité min et max égale à la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$
 
 {% enddetails %}
 
@@ -140,7 +140,7 @@ Regardons la complexité de l'algorithme ligne à ligne :
 
 Il faut faire **très attention** pour ce genre de lignes car :
 
-- un des paramètres de l'appel à `concaténation`{.language-}le résultat de l'appel récursif
+- un des paramètres de l'appel à `concaténation`{.language-} est le résultat de l'appel récursif
 - la complexité de la fonction `concaténation`{.language-} n'est **pas** $\mathcal{O}(1)$, on ne peut donc pas l'ignorer dans nos calculs.
 
 Ces deux lignes sont de même complexité : $C(n-1) + \mathcal{O}(n)$. Le premier terme correspond au calcul du second paramètre de l'appel à la fonction `concaténation`{.language-} et le second à la complexité de l'exécution de `concaténation`{.language-}.
@@ -183,7 +183,7 @@ Quel algorithme est préférable pour résoudre le problème de la suppression ?
 {% details "corrigé" %}
 L'algorithme itératif est bien meilleur que l'algorithme récursif : $\mathcal{O}(n)$ versus $\mathcal{O}(n^2)$ si $n$ est la taille du tableau passé en paramètre.
 
-Ceci est du à la duplication du tableau dans la version récursive qui ajoute un facteur $\mathcal{O}(n)$ à chaque récursion.
+Ceci est dû à la duplication du tableau dans la version récursive qui ajoute un facteur $\mathcal{O}(n)$ à chaque récursion.
 
 Pour que les complexités soient comparables il faudrait pouvoir ajouter petit à petit des éléments au tableau ce qui est impossible. Les algorithmes récursifs préfèrent utiliser des structures dynamiques comme les listes qui permettent d'ajouter efficacement des objets à un conteneur. Nous verrons ces structures plus tard dans le cours.
 
@@ -227,7 +227,7 @@ En utilisant uniquement la relation de récurrence, résolvez les exercices suiv
 Montrer que le calcul de $M(n)$ passe par le calcul de $M^{k}(91)$ pour tout $n\leq 100$.
 {% endexercice %}
 {% details "corrigé" %}
-Dérive directement de la définition et du fait que on a démontré que :
+Dérive directement de la définition et du fait qu'on a démontré que :
 
 - pour tout $90 \leq n < 101$, on a $M(n) = M(n+1) = \dots = M(101) = 91$
 - pour tout $n < 101$, il existe $k\geq 1$ et $90 \leq n' < 101$ tels que $M(n) = M^k(n')$
@@ -247,11 +247,11 @@ En déduire que le nombre maximum d'appels à $M$ pour calculer $M(n)$ est 201.
 {% details "corrigé" %}
 
 - si $n > 100$ il y a 1 appel,
-- si $101 > n > 90$, il y 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.
+- si $101 > n > 90$, il y a 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.
 - sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 < n' < 101$. Le maximum sera atteint pour $n=1$ en 11 appels, $M^{11}(111) = M^{10}(101) = M^{9}(91)$.
 
-Le nombre d'appel maximum sera atteint pour $n=1$. Dans ce cas là
-Au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.
+Le nombre d'appels maximum sera atteint pour $n=1$. Dans ce cas-là,
+au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.
 
 Une borne sera donc de $13 + 21 \cdot 8 + 20 = 201$ appels.
 

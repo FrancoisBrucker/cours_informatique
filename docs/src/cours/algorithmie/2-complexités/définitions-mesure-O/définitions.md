@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On appelle complexité le nombre d'instructions basiques utilisé pour exécuter un pseudo-code. La complexité est proportionnelle au temps mis pour l'exécuter en supposant que que toutes les instructions basiques prennent le même temps (au pire on prend le temps max).
+On appelle complexité le nombre d'instructions basiques utilisé pour exécuter un pseudo-code. La complexité est proportionnelle au temps mis pour l'exécuter en supposant que toutes les instructions basiques prennent le même temps (au pire on prend le temps max).
 
 {% retenir %}
 La complexité d'un pseudo-code est le nombre d'instructions qu'il effectue lors de son exécution.
@@ -42,15 +42,15 @@ Si on compte le nombre d'instructions utilisées pour son exécution :
        - on effectue la comparaison : 1 instruction
   3. faire l'instruction `ET`{.language-} : 1 instruction
   4. faire l'instruction `si`{.language-} : 1 instruction
-- troisième ligne : 2 instructions
+- quatrième ligne : 2 instructions
   1. on crée la chaîne : 1 instruction
   2. puis affiche le résultat : 1 instruction
 
-Sa complexité vaut le nombre total d'instructions, c'est à dire 13.
+Sa complexité vaut le nombre total d'instructions, c'est-à-dire 13.
 
 ## Complexité d'un pseudo-code
 
-La notion d'instruction à effectuer dépend du pseudo-code utilisé. On verra plus tard un moyen radical de simplifier la définition (temps constant vs temps dépendant de paramètres) mais pour l'instant on va supposer qu'un instruction élémentaire correspond à celles que l'on a donné lorsque l'on a [défini le pseudo-code](../../../1-algorithme/pseudo-code/briques-de-base) :
+La notion d'instruction à effectuer dépend du pseudo-code utilisé. On verra plus tard un moyen radical de simplifier la définition (temps constant vs temps dépendant de paramètres) mais pour l'instant on va supposer qu'une instruction élémentaire correspond à celles que l'on a données lorsque l'on a [défini le pseudo-code](../../../1-algorithme/pseudo-code/briques-de-base) :
 
 - création d'une variable ou d'un objet
 - affectation d'une variable
@@ -60,7 +60,7 @@ La notion d'instruction à effectuer dépend du pseudo-code utilisé. On verra p
 
 ### Boucles
 
-On compte bien toutes les instructions et pas seulement ceux qui le constitue, donc pour le pseudo-code suivant :
+On compte bien toutes les instructions et pas seulement celles qui la constituent, donc pour le pseudo-code suivant :
 
 ```pseudocode/
 ref message ← "j'aime me répéter"
@@ -70,15 +70,15 @@ tant que i ≤ 10000:
     i ← i + 1
 ```
 
-Chaque ligne va prendre  :
+Chaque ligne va prendre :
 
 - 3 instructions pour la première ligne : création de variable, de la chaîne et son affectation
 - 3 instructions pour la deuxième ligne : création de variable, de la chaîne et son affectation
 - 4 instructions pour la troisième ligne : recherche de la variable, création de l'entier,  test et saut si nécessaire
 - 2 instructions pour la quatrième ligne : recherche de la variable et affichage
-- 4 instructions pour la quatrième ligne : recherche de la variable, création de l'entier,  addition et affectation
+- 4 instructions pour la cinquième ligne : recherche de la variable, création de l'entier,  addition et affectation
 
-Mais comme les lignes 4, et 5 sont exécutées 10000 fois et la ligne 3 10001 fois (ne pas oublier le test final lorsque $i > 10000$), la complexité du pseudo-code vaut :
+Mais comme les lignes 4 et 5 sont exécutées 10000 fois et la ligne 3 10001 fois (ne pas oublier le test final lorsque $i > 10000$), la complexité du pseudo-code vaut :
 
 <div>
 $$
@@ -102,20 +102,20 @@ On verra bien plus tard un autre modèle de pseudo-code où les variables ne son
 
 L'accès à un indice particulier du tableau est rapide et ne nécessite qu'une seule instruction. Ainsi :
 
-- accéder à un indice donnée en lecture nécessite 1 instruction
-- accéder à un indice donnée pour une affectation nécessite 1 instruction
+- accéder à un indice donné en lecture nécessite 1 instruction
+- accéder à un indice donné pour une affectation nécessite 1 instruction
 
 De là l'instruction :
 
-- créer une variable de type tableau nécessite  1 instruction
-- créer un tableau de taille 42 nécessite  42 instructions
+- créer une variable de type tableau nécessite 1 instruction
+- créer un tableau de taille 42 nécessite 42 instructions
 - `afficher F[3]`{.language-} nécessite 2 instructions : une pour retrouver l'objet associé à `F[3]`{.language-} et l'autre pour l'afficher (on accède au quatrième élément du tableau, d'indice valant 3, on n'a pas besoin de créer un entier valant 3)
 - `F[3] ← 42`{.language-} nécessite aussi 2 instructions : une pour créer l'entier `42`{.language-} l'autre pour l'affecter au quatrième élément du tableau
 - `F[i] ← 42`{.language-} nécessite en revanche 3 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-} (ce n'est pas une constante) l'autre pour l'affecter
 - `F[i-1] ← 42`{.language-} nécessite 5 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-}, une pour créer l'entier 1, une pour l'addition et la dernière pour l'affectation.
 - `F ← [1 .. 42]`{.language-} nécessite 127 instructions :
   -  42 pour la création de l'objet tableau de longueur 42
-  -  42 pour la création des entiers  allant de 1 à 42
+  -  42 pour la création des entiers allant de 1 à 42
   -  42 pour l'affectation des entiers aux éléments du tableau
   -  1 pour l'affectation du tableau à la variable `F`{.language-} (que l'on suppose déjà créée)
 
@@ -128,7 +128,7 @@ Pour le reste accéder (en lecture ou en écriture) à une case du tableau prend
 
 ### Appels de fonctions
 
-La plupart du temps on utilise plus que les instructions basiques comme des fonctions que l'on suppose accessible (comme le min ou le max) ou des algorithmes que l'on a défini nous même. Il ne faut pas oublier d'ajouter leurs complexités au calcul.
+La plupart du temps on utilise plus que les instructions basiques comme des fonctions que l'on suppose accessibles (comme le min ou le max) ou des algorithmes que l'on a définis nous-mêmes. Il ne faut pas oublier d'ajouter leurs complexités au calcul.
 
 {% retenir %}
 Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
@@ -150,13 +150,13 @@ trouve ← recherche(T, 6)
 affiche trouve
 ```
 
-1. exécution de la ligne 7 : 1 instructions ; création d'une variable tableau
+1. exécution de la ligne 7 : 1 instruction ; création d'une variable tableau
 2. exécution de la ligne 8 : 10 instructions
    - création et initialisation à `∅`{.language-} d'un tableau à 3 indices 
    - création de 3 entiers : 3 instructions
    - affectation des 3 entiers aux indices du tableau :  3 instructions
    - affectation du tableau à une variable : 1 instruction
-3. exécution de la ligne 9 : 1 instructions ; création d'une variable
+3. exécution de la ligne 9 : 1 instruction ; création d'une variable
 4. exécution de la ligne 10 :
    1. exécution de la fonction recherche (ligne à ligne) :
       1. exécution de la ligne 1 : affectation des paramètres
@@ -170,17 +170,17 @@ affiche trouve
          1. uniquement la première fois : on crée la variable `e`{.language-} ; 1 instruction
          2. les 3 fois : trouver l'objet du tableau puis l'affecter à `e`{.language-} ; $2$ instructions 
       3. exécution de la ligne 3 (3 fois) : un test
-         - on trouve les objets associées à `t`{.language-} et `e`{.language-} : 2 instructions
+         - on trouve les objets associés à `t`{.language-} et `e`{.language-} : 2 instructions
          - on teste l'égalité : 1 instruction
          - on fait le `si`{.language-} : 1 instruction
       4. exécution de la ligne 4 (1 fois) : on arrive à cette ligne à la troisième itération : 2 instructions (une pour créer le booléen, l'autre pour le rendre)
-   2. affection de la variable `trouve`{.language-} : 1 instruction
+   2. affectation de la variable `trouve`{.language-} : 1 instruction
 5. afficher quelque chose à l'écran :
    - 1 instruction pour trouver l'objet à afficher
-   - 1 instruction pour trouver l'afficher
+   - 1 instruction pour l'afficher
 
-Au total on eu besoin de $1+10+1+\underbracket{(4 + 1 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
-instructions c'est à dire $46$ instructions.
+Au total on a eu besoin de $1+10+1+\underbracket{(4 + 1 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
+instructions c'est-à-dire $46$ instructions.
 
 ## Complexité d'un algorithme
 
@@ -207,7 +207,7 @@ Explicitez les différentes instructions élémentaires pour justifier la valeur
 
 La complexité de chaque ligne :
 
-- ligne 1 : 1 instructions
+- ligne 1 : 1 instruction
 - ligne 2 : 10 instructions
 - ligne 3 : 2 instructions (une création et une affectation)
 - ligne 4 : 2 instructions (une création et une affectation)
@@ -229,7 +229,7 @@ La complexité de chaque ligne :
   - 1 récupération de la variable `i`{.language-}
   - 1 opération `+`{.language-}
   - 1 affectation
-- ligne 10 : 0 instructions
+- ligne 10 : 0 instruction
 - ligne 11 : 2 instructions
   - 1 récupération de l'objet associé à `F[9]`{.language-}
   - 1 instruction `rendre`{.language-}
@@ -244,9 +244,9 @@ $$
 
 {% enddetails %}
 
-Mais souvent on ne va pas utiliser juste un pseudo-code, on crée des algorithmes pour être utilisé avec différents objets, ou dans d'autres algorithmes. On ne cherche alors plus à calculer la complexité de l'exécution effective d'un pseudo-code mais de l'exécution potentielle d'un code selon ses paramètres.
+Mais souvent on ne va pas utiliser juste un pseudo-code, on crée des algorithmes pour être utilisés avec différents objets, ou dans d'autres algorithmes. On ne cherche alors plus à calculer la complexité de l'exécution effective d'un pseudo-code mais de l'exécution potentielle d'un code selon ses paramètres.
 
-Transformons le pseudo-code précédent en algorithme pour qu'il puisse calculer tous les fermes de la suite de Fibonacci et pas uniquement le 10ème :
+Transformons le pseudo-code précédent en algorithme pour qu'il puisse calculer tous les termes de la suite de Fibonacci et pas uniquement le 10ème :
 
 
 ```pseudocode/
@@ -285,9 +285,9 @@ algorithme recherche(T: []int, x: int) → bool:
     rendre Faux
 ```
 
-La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la longueur $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres `T`{.language-} et `x`{.language-} ; la création de `e`{.language-} ; trouver `t[0]`{.language-} puis l'affecter à `e`{.language-} ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6\cdot n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de `e`{.language-} ; $2n$ instruction de l'affectation de la boucle `pour chaque`{.language-} ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.
+La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la longueur $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres `T`{.language-} et `x`{.language-} ; la création de `e`{.language-} ; trouver `t[0]`{.language-} puis l'affecter à `e`{.language-} ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6\cdot n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de `e`{.language-} ; $2n$ instructions de l'affectation de la boucle `pour chaque`{.language-} ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.
 
-Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un tableau et un entier en paramètres mais pas la nature des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il est plus intéressant de connaître la complexité de l'algorithme pour un tableau d'une longueur donnée.
+Lorsque l'on utilise un algorithme on n'a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un tableau et un entier en paramètres mais pas la nature des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il est plus intéressant de connaître la complexité de l'algorithme pour un tableau d'une longueur donnée.
 
 
 {% retenir %}
@@ -305,8 +305,8 @@ Les connaissances minimales que l'on possède sur les données sont leurs taille
 
 Dans la partie pseudo-code on a considéré deux types de données :
 
-- les types simples que sont les nombres, les booléens, les approximation de réels et les caractères qui sont stockable sur 1 unité de mémoire,
-- les tableaux et les chaînes de caractères dont la taille est leur longueur multiplié par la taille de leurs données.
+- les types simples que sont les nombres, les booléens, les approximations de réels et les caractères qui sont stockables sur 1 unité de mémoire,
+- les tableaux et les chaînes de caractères dont la taille est leur longueur multipliée par la taille de leurs données.
 
 ### Complexité algorithmique
 
@@ -321,7 +321,7 @@ En prenant en compte les connaissances minimales que l'on a sur les entrées d'u
 
 En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+5$, en utilisant la longueur du tableau passé en entrée comme paramètre : pour tout tableau de longueur $N$ passé en paramètre, la complexité maximale est de $6N+5$ instructions.
 
-Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prise par les données comme paramètre. C'est le cas de la fonction `fibonacci(n)`{.language-}, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de de $18n - 21$.
+Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prise par les données comme paramètre. C'est le cas de la fonction `fibonacci(n)`{.language-}, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle-même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de $18n - 21$.
 
 Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :
 
@@ -340,7 +340,7 @@ Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant 
 
 ## Complexité min
 
-Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
+Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisés (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
 
 {% definition %}
 
@@ -359,14 +359,14 @@ Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exéc
 Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :
 
 {% retenir %}
-Le temps mis pour un code à être exécuté est proportionnelle au nombre d'instructions exécutés de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).
+Le temps mis pour un code à être exécuté est proportionnel au nombre d'instructions exécutées de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).
 {% endretenir %}
 
 Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.
 
 ## Complexité spatiale
 
-Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.
+Enfin, l'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est-à-dire la taille des variables dont il a eu besoin pour fonctionner.
 
 <div id="complexité-spatiale"></div>
 {% definition %}
@@ -401,10 +401,10 @@ algorithme fibonacci_sobre(n):
   rendre b
 ```
 
-Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
+Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grandes que la taille mémoire de l'ordinateur qui exécutera le code associé.
 
 {% info %}
-Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
+Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
 {% endinfo %}
 
 Complexité et complexité spatiale sont liées :
@@ -435,7 +435,7 @@ Avec $L$ le nombre de lignes de l'algorithme.
 
 On sait déjà que $S(N) \leq C(N)$.
 
-Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(N)}$ fois qui correspond aux nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.
+Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(N)}$ fois qui correspond au nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.
 
 {% enddetails %}
 

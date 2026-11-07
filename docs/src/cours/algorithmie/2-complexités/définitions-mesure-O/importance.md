@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :
+Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité :
 
 {% definition %}
 On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe}) :
@@ -25,16 +25,16 @@ On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que 
 
 Les types de complexités ci-dessus sont rangés par ordre, de la moins grande à la plus grande.
 
-Remarquez que si $n$ représente la taille des données, un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :
+Remarquez que si $n$ représente la taille des données, un algorithme de complexité linéaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :
 
 - trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme `recherche`{.language-},
 - trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe}
 
 {% info %}
-Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.
+Notez bien que la complexité logarithmique est la même quelle que soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.
 {% endinfo %}
 
-Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability){.externe}. Comme on va le voir :
+Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montrent les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability){.externe}. Comme on va le voir :
 
 {% retenir %}
 
@@ -46,7 +46,7 @@ Il est crucial de chercher la meilleure complexité pour un algorithme car ses p
 
 ## Temps pour résoudre un problème de taille $n$
 
-Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant, que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.
+Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.
 
 En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes.
 
@@ -63,12 +63,12 @@ En colonnes le nombre $n$ de données, en lignes les complexités des algorithme
 L'évolution est dramatique plus la complexité augmente. Pour une complexité logarithmique, le temps _semble_ constant et pour une complexité polynomiale, la croissance reste maîtrisée même s'il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) en revanche, la durée est tout simplement rédhibitoire.
 
 {% info %}
-Pour générer le tableau, on voit que le temps $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 opérations, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$
+Pour générer le tableau, on voit que le temps $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 ms, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$
 {% endinfo %}
 
 ## Nombre de problèmes résolus par heure
 
-En colonne la rapidité de la machine, en ligne la taille maximale d'un problème que l'on peut résoudre en 1heure.
+En colonne la rapidité de la machine, en ligne la taille maximale d'un problème que l'on peut résoudre en 1 heure.
 
 | complexité | machine actuelle | 100x plus rapide   | 1000x plus rapide   |
 | ---------- | ---------------- | ------------------ | ------------------- |
@@ -80,10 +80,10 @@ En colonne la rapidité de la machine, en ligne la taille maximale d'un problèm
 | $2^n$      | $N5$             | $N5 + 6.64$        | $N5 + 9.97$         |
 | $3^n$      | $N6$             | $N6 + 4.19$        | $N6 + 6.29$         |
 
-La encore, l'évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problèmes augmente d'un facteur multiplicatif lorsque la vitesse augmente, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.
+Là encore, l'évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problèmes augmente d'un facteur multiplicatif lorsque la vitesse augmente, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.
 
 {% info %}
-Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.
+Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1 heure, la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois plus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.
 {% endinfo %}
 
 ## Le cas particulier de $n!$
@@ -111,5 +111,5 @@ Et la différence s’accroît exponentiellement avec le nombre :
 - $2^{74} = 18889465931478580854784$
 
 {% retenir %}
-Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$ Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.
+Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$, réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'en est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.
 {% endretenir %}

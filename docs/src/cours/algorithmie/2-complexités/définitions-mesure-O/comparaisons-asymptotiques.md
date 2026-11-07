@@ -19,21 +19,21 @@ eleventyComputed:
 Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.
 
 {% attention %}
-On considérera dans la suite de ce cours uniquement des fonctions **positives**, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :
+On considérera dans la suite de ce cours uniquement des fonctions **positives**, ce qui est le cas lorsque l'on les appliquera à la mesure de complexité. Donc :
 
 Certaines équivalences ci-dessous ne sont vraies que dans le cas de fonctions positives.
 {% endattention %}
 
 ## _Fonctions_ asymptotiques
 
-On montre 3 _fonctions_ asymptotiques, a plus utilisée étant la fonction $\mathcal{O}()$
+On montre 3 _fonctions_ asymptotiques, la plus utilisée étant la fonction $\mathcal{O}()$
 
 ### Les $\mathcal{O}()$ pour majorer
 
 Les _grand O_, $\mathcal{O}()$, permettent de caractériser les fonctions qui en majorent une autre.
 
 {% definition %}
-Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot f'(N)$ pour tout $N > N_0$.
+Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ telles que $f(N) \leq c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% enddefinition %}
 
 Connaître le comportement en $\mathcal{O}$ de $f(N)$ nous donne un majorant de son _allure_ lorsque $N$ devient grand.
@@ -47,10 +47,10 @@ Par abus de langage, on notera :
 
 ### Les $\Omega()$ pour minorer
 
-De façon symétrique, on défini les _grand Omega_, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
+De façon symétrique, on définit les _grand Omega_, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
 
 {% definition %}
-Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \geq c_0 \cdot f'(N)$ pour tout $N > N_0$.
+Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ telles que $f(N) \geq c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% enddefinition %}
 
 La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
@@ -75,13 +75,13 @@ Une fonction <span>$f(N)$</span> est en $\Theta(f'(N))$ si :
 - <span>$f(N)$</span> est en $\Omega(f'(N))$
   {% enddefinition %}
 
-La fonction $\Omega$ rend compte de fonctions aux allures similaires :
+La fonction $\Theta$ rend compte de fonctions aux allures similaires :
 
 {% note "**Proposition**" %}
 $f(N) = \Theta(g(N)) \Rightarrow g(N) = \Theta(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Clair grace à [la propriété précédente](./#omega-GO) qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
+Clair grâce à [la propriété précédente](./#omega-GO) qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
 
 - <span>$f'(N)$</span> est en $\Omega(f(N))$
 - <span>$f'(N)$</span> est en $\mathcal{O}(f(N))$
@@ -89,7 +89,7 @@ Clair grace à [la propriété précédente](./#omega-GO) qui montre que si <spa
 et donc <span>$f'(N)$</span> est en $\Theta(f(N))$
 {% enddetails  %}
 
-## <span id="règles"></span>Règles de transitions entre fonctions asymptotiques
+## <span id="règles"></span>Règles de transition entre fonctions asymptotiques
 
 ### Liens entre fonctions asymptotiques
 
@@ -99,19 +99,19 @@ Commençons par deux règles liant les 3 fonctions :
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \Omega(g(N)) \text{ et } g(N) = \Omega(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
+Immédiat grâce à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
 {% enddetails  %}
 {% note "**Proposition**" %}
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \mathcal{O}(g(N)) \text{ et } g(N) = \mathcal{O}(f(N))$
 {% endnote %}
 {% details  "preuve", "open" %}
-Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
+Immédiat grâce à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO).
 
 {% enddetails  %}
 
 ### Cas des constantes
 
-La règle suivante va se retrouver fort utile :
+La règle suivante va se révéler fort utile :
 
 <span id="OA-constantes-additives"></span>
 {% note "**Règle des constantes additives**" %}
@@ -221,7 +221,7 @@ $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'
 {% endnote %}
 {% details  "preuve", "open" %}
 
-Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
+Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on peut considérer sans perte de généralité que $c_0 > 1$
 
 Si $f'(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h'(N))$ il existe $c'_0$ et $N'_0$ tels que $f'(N) \leq c'_0(f(N) \cdot g(N) \cdot h(N) + h'(N))$ pour $N > N_0$.
 
@@ -235,6 +235,6 @@ On a bien : $f'(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h'(N))$
 
 Les fonctions asymptotiques permettent d'utiliser :
 
-- des fonctions plus simple que les solution exactes.
-- de ne pas s'occuper des constantes puisque une fonction en $\mathcal{O}(\text{constante})$ est également en $\mathcal{O}(1)$
-- de ne pas s'occuper de la proportionnalité puisqu'une une fonction en $\mathcal{O}(\text{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
+- des fonctions plus simples que les solutions exactes ;
+- de ne pas s'occuper des constantes puisqu'une fonction en $\mathcal{O}(\text{constante})$ est également en $\mathcal{O}(1)$
+- de ne pas s'occuper de la proportionnalité puisqu'une fonction en $\mathcal{O}(\text{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$

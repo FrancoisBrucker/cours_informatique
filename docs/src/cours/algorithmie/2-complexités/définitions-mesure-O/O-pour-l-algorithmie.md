@@ -11,11 +11,11 @@ eleventyComputed:
 ---
 
 
-Les comparaisons asymptotiques sont plutôt intéressantes en algorithmie car elles permettent de supprimer les effets négatifs du comptage explicite de la complexité. La comparaisons la plus utilisée, et de loin, est le $\mathcal{O}$. Elle nous permettra de majorer par rapport à la taille $N$ de l'entrée de l'algorithme :
+Les comparaisons asymptotiques sont plutôt intéressantes en algorithmie car elles permettent de supprimer les effets négatifs du comptage explicite de la complexité. La comparaison la plus utilisée, et de loin, est le $\mathcal{O}$. Elle nous permettra de majorer par rapport à la taille $N$ de l'entrée de l'algorithme :
 
 - le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter
 - le temps mis par l'algorithme pour s'exécuter
-- la taille de la mémoire utilisée pour par l'algorithme
+- la taille de la mémoire utilisée par l'algorithme
 
 Si le majorant n'est pas trop éloigné du compte exact, cela nous donne une **idée générale** de la valeur lorsque $N$ devient grand.
 
@@ -42,10 +42,10 @@ Un nombre constant d'instructions basiques nécessite $\Theta(1)$ (donc égaleme
 Enfin, [la règle des constantes multiplicatives](../comparaisons-asymptotiques/#OA-constantes-multiplicatives) montre la proposition suivante :
 
 {% note "**Proposition**" %}
-L'exécution un nombre constant de fois d'un bloc d'instruction de complexité $f(N)$ nécessite $\Theta(f(N))$ (donc également $\mathcal{O}(f(N))$) opérations.
+L'exécution un nombre constant de fois d'un bloc d'instructions de complexité $f(N)$ nécessite $\Theta(f(N))$ (donc également $\mathcal{O}(f(N))$) opérations.
 {% endnote %}
 {% note "**Corollaire**" %}
-L'exécution d'**un nombre constant de fois** un bloc d'instruction :
+L'exécution d'**un nombre constant de fois** d'un bloc d'instructions :
 
 - de complexité $\Theta(f(N))$ nécessite $\Theta(f(N))$ opérations.
 - de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.
@@ -62,7 +62,7 @@ si ((age ≥ 12) et (age < 18)):
 
 - première ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.
 - deuxième ligne : 8 instructions donc $\mathcal{O}(1)$ instructions.
-- troisième ligne : 2 instructions  donc $\mathcal{O}(1)$ instructions.
+- troisième ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.
 
 Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ instructions.
 
@@ -74,7 +74,7 @@ Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{
 
 ## Gérer des polynômes
 
-Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec [les différentes règles *fonctions* asymptotiques](../comparaisons-asymptotiques/#règles) que :
+Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec [les différentes règles des *fonctions* asymptotiques](../comparaisons-asymptotiques/#règles) que :
 
 {% exercice %}
 
@@ -84,7 +84,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 {% details "corrigé" %}
 
 1. $\sum_{i=0}^na_i x^i = \mathcal{O}(\sum_{i=0}^na_i x^i)$
-2. la règle des constantes multiplicative liée à la règle des polynômes montre que $\mathcal{O}(a_ix^i) = \mathcal{O}(a_jx^j)$ pour tout $i \leq j$.  
+2. la règle des constantes multiplicatives liée à la règle des polynômes montre que $\mathcal{O}(a_ix^i) = \mathcal{O}(a_jx^j)$ pour tout $i \leq j$.  
 3. on peut alors appliquer itérativement la règle des sommes négligeables pour montrer que $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(\sum_{i=j}^na_i x^i)$ pour tout $j \leq n$
 4. pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(a_nx^n) = \mathcal{O}(x^n)$
 5. Donc $\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)$
@@ -92,7 +92,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 ## Voir l'infini
 
-Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
+Calculer avec les fonctions asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
 
 {% retenir %}
 
@@ -105,13 +105,13 @@ On cherchera à borner la complexité par une allure de complexité :
 - ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible
 {% endretenir %}
 
-Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
+Si nos approximations ne sont pas disproportionnées (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
 
 ## Usage de $\Omega$ et $\Theta$
 
-On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.
+On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer une complexité et non de la minorer et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.
 
-En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de problèmes algorithmiques où il faudra comparer plusieurs algorithmes entre eux.
+En revanche, ces deux *fonctions* asymptotiques trouveront leur utilité lorsque l'on étudiera des complexités de problèmes algorithmiques où il faudra comparer plusieurs algorithmes entre eux.
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
@@ -137,14 +137,14 @@ Calculons ses complexités maximale et minimale. Commençons par regarder les co
 
 Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :
 
-- $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
+- $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on n'est jamais passé par la ligne 4)
 - $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `pour chaque`{.language-} de la ligne 2
 
 Les deux cas se simplifient en : $\mathcal{O}(k)$
 
-En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
+En effet, comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
 
-On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `pour chaque`{.language-} parcourt tout le tableau, c'est à dire pour deux cas :
+On cherche le cas le pire, c'est-à-dire lorsque $k$ est maximum, donc lorsque la boucle `pour chaque`{.language-} parcourt tout le tableau, c'est-à-dire pour deux cas :
 
 - l'élément recherché n'est pas dans le tableau
 - l'élément recherché est le dernier élément du tableau
@@ -155,7 +155,7 @@ On en conclut que :
 La complexité de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
 {% endnote %}
 
-La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :
+La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est-à-dire lorsque la valeur recherchée est la 1ère valeur du tableau :
 
 {% note %}
 La complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$.

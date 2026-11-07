@@ -214,6 +214,7 @@ $$
 >
 > - linéarité de l'espérance
 > - il existe 1 qui vaut l'espérance
+> E[X] = \sumP(x≥k) = \sum k P(X = k)
 
 ### Exemple
 
