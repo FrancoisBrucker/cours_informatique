@@ -51,24 +51,29 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Calculs de complexités](./2-complexités/)
 {% endaller %}
 
+## <span id="partie-3"></span>Partie III : Problèmes algorithmiques
 
-> TBD III problème algorithmiques : trouver le meilleur algorithme.
-> III.1 définitions
-> III.2 exponentiation
-> III.3 tris
+{% aller %}
+[Problèmes algorithmiques](./3-problèmes-algorithmiques/)
+{% endaller %}
+
 > TBD Intermède I : exercices/problèmes/sommes classiques
-> TBD IV structure de donnée :
->   commencer par complexité amortie pour dire calcul fin de complexité
->   parler de la première structure de donnée linéaire : la chaine de caractère. Puis algo texte.
->    ajouter partie complexité amortie avec:
->    - compteur
->    - permutations lexicographiques
->    - KMP (dire hypothèse de la complexité en moyenne de l'algorithme fait partie II pas réaliste pour des mots d'une langue humaine (mots pas équiprobables !). Plein de mots commencent pareil. Donc on doit trouver un algo linéaire au max)
+> TBD IV structure de données :
+>   ne pas parler de complexité amortie. Juste faire calcul avec augmentation
 
+> Partie V : complexité amortie
+> - complexité amortie
+> - exercice amortie (compteur/ permuation lexico-graphique)
+> - liste ajout et suppression
+> - KMP avec analyse amortie (dire hypothèse de la complexité en moyenne de l'algorithme fait partie II pas réaliste pour des mots d'une langue humaine (mots pas équiprobables !). Plein de mots commencent pareil. Donc on doit trouver un algo linéaire au max)
 
+> Partie VI : intermède II : problèmes classiques (mais dur)
+> - médiane en temps linéaire
+> - col de matrices
+> - enveloppe convexe (les exos durs)
+> Partie VII : structure arborées
+> Partie VIII : Structure des problèmes algorithmique
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
-
-
 
 ### Complexité d'un problème
 
