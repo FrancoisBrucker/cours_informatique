@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "Projet : mesurer la complexité d'un code"
+title: "Mesurer la complexité d'un code"
 
 eleventyNavigation:
   prerequis: 
