@@ -21,3 +21,4 @@ def puissance_rapide(nombre, exposant):
             compteur /= 2
 
     return résultat
+

@@ -1,64 +1,40 @@
 import time
+import numpy as np
 from exponentiation import puissance_naif, puissance_rapide
-from mesure_temps import calcul
+from mesure_temps import calcul, calcul_n_max, affiche_complexité, affiche_complexité_2, affiche_complexité_twinx
 
 def calcule_max_naif(n):
     return calcul(puissance_naif, (3, n), rep=5)
 
 
+def calcule_max_rapide(n):
+    return calcul(puissance_rapide, (3, n), rep=5)
+
+
 
 N_min = 1
 
-T_max = 10**7  # 0.01s
-N_max = calcul_n_max(calcule_max, N_min, T_max)
+T_max = 10**8  # 0.1s
+N_max = calcul_n_max(calcule_max_naif, N_min, T_max)
 print("Pour", T_max / 10**9, "seconde, N_max =", N_max)
 
 
+K = 10
+Ns = [int(n) for n in np.linspace(N_min, N_max, K)]
+print(Ns)
 
-correct = False
-temps = 0
+c_naif = []
+c_rapide = []
+for n in Ns:
+    print("taille", n)
+    c_naif.append(calcule_max_naif(n))
+    print("     max naif :", c_naif[-1])
+    c_rapide.append(calcule_max_rapide(n))
+    print("     max naif :", c_rapide[-1])
 
-while not correct:
-    correct = True
-    chaîne = input("Donnez un temps en seconde :")
-    try:
-        temps = float(chaîne)
-    except ValueError:
-        correct = False
-        print("ce n'est pas un réel. Essayez encore une fois.")
-    if temps < 0:
-        correct = False
-        print("ce n'est pas un réel positif. Essayez encore une fois.")
+# affiche_complexité(Ns, c_naif)
+# affiche_complexité(Ns, c_rapide)
 
+# affiche_complexité_2(Ns, c_naif, c_rapide)
 
-delta = 0
-K = 0
-n = 1
-
-while delta < temps:
-    t1 = time.perf_counter()
-    puissance_naif(3, n)
-    t2 = time.perf_counter()
-
-    delta = t2 - t1
-    K += 1
-    n *= 2
-
-
-print("pour exécuter puissance_naif(3, y) en ", temps, "secondes, il faut K = ", K)
-
-t1 = time.perf_counter()
-puissance_naif(3, 2 ** K)
-t2 = time.perf_counter()
-
-delta = t2 - t1
-
-print("Temps mis pour exécuter puissance_naif(3, 2 ** ", K, ") est", delta, "secondes")
-
-t1 = time.perf_counter()
-puissance_rapide(3, temps)
-t2 = time.perf_counter()
-
-delta = t2 - t1
-
-print("temps mis pour exécuter puissance_rapide(3,", temps, ") est", delta, "secondes")
+affiche_complexité_twinx(Ns, c_naif, c_rapide)

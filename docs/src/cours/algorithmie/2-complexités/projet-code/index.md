@@ -135,7 +135,7 @@ En fixant le nombre maximum de récursions à 20010 et `N_max = 20000`{.language
 vérifiez expérimentalement que la complexité de votre algorithme récursif est $\mathcal{O}(n)$.
 {% endfaire %}
 
-## Nombres gigantesques, exemple avec le calcul de la factorielle
+## <span id="nombres-gigantesques"></span>Nombres gigantesques, exemple avec le calcul de la factorielle
 
 Mesurons le temps mis pour exécuter notre algorithme récursif calculant la factorielle :
 
