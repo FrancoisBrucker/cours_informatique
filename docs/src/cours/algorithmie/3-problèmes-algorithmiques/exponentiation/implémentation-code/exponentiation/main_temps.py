@@ -1,5 +1,18 @@
 import time
 from exponentiation import puissance_naif, puissance_rapide
+from mesure_temps import calcul
+
+def calcule_max_naif(n):
+    return calcul(puissance_naif, (3, n), rep=5)
+
+
+
+N_min = 1
+
+T_max = 10**7  # 0.01s
+N_max = calcul_n_max(calcule_max, N_min, T_max)
+print("Pour", T_max / 10**9, "seconde, N_max =", N_max)
+
 
 
 correct = False

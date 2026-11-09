@@ -16,7 +16,7 @@ Les exercices ci-après sont fondamentaux pour le calcul de complexités, en par
 Ces exercices sont plus durs que ceux précédemment vus et sont de difficulté croissante. Faites et, surtout, comprenez bien les exercices précédents avant de vous lancer dans la résolution de ceux-ci.
 {% endattention %}
 
-## Recherche dichotomique
+## <span id="dichotomie"></span>Recherche dichotomique
 
 Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entiers trié.
 
@@ -120,6 +120,7 @@ $$
 
 Avant de conclure, démontrons une petite proposition qui sera utile tout au long de ce cours :
 
+<div id="proposition-log"></div>
 
 {% note "**Proposition**" %}
 Le plus grand entier $k$ tel que $\frac{n}{p^k} \geq 1$ pour deux entiers $n\geq p$ vaut $k = \lfloor\log_p(n)\rfloor$.
@@ -151,12 +152,19 @@ Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant
 
 {% enddetails  %}
 
-Cette complexité est vraiment très bonne ! La valeur de $\ln(n)$ est en effet très petite devant $n$. Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :
+Cette complexité est vraiment très bonne ! La valeur de $\ln(n)$ est en effet très petite devant $n$. 
+
+
+<div id="importance-log"></div>
+
+{% retenir %}
+Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :
 
 - $t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),
-- $\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel){.externe} de physique en 2015, on peut estimer cette durée à 21s±13s)
+- $\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel){.externe} de physique en 2015)
+{% endretenir %}
 
-## Maximum d'un tableau
+## <span id="max-tableau"></span> Maximum d'un tableau
 
 On pourrait penser que l'on n'a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà [une version itérative](../../1-algorithme/problème-preuve/#algorithme-max-tableau-iter) et [une version récursive](../../1-algorithme/projet/#algorithme-max-tableau-rec)), mais si, si, il nous reste au moins un résultat intéressant à démontrer. 
 

@@ -9,10 +9,59 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Un problème algorithmique](../1-algorithme/problème-preuve/#problème-algorithmique) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+[Un problème algorithmique](../../1-algorithme/problème-preuve/#problème-algorithmique) est une question solvable par un algorithme. 
+
+## Définitions
 
 {% definition %}
-La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.
+La **_Un problème algorithmique_** possède : 
+- un nom,
+- des paramètres d'entrée,
+- une sortie qui doit vérifier des conditions que l'on explicite,
+- un algorithme dont les entrée et la sortie satisfont le problème.
+
+{% enddefinition %}
+
+Par exemple :
+
+{% note "**Problème**" %}
+
+- **Nom** : max
+- **Entrée** :
+  - un tableau d'entiers $T$
+- **Sortie** : la valeur valant $\max(\\{T[i] \mid 0\leq i < T.\text{\small longueur}\\})$ ?
+
+{% endnote %}
+
+Le problème _max_ est bien algorithmique puisqu'il existe un algorithme pour le résoudre : [lui par exemple](../../1-algorithme/problème-preuve/#algorithme-max-tableau-iter).
+
+Lorsque la sortie est un booléen, on parlera alors plutôt de problèmes de décision :
+
+{% definition %}
+La **_Un problème de décision_** est un problème algorithmique dont la sortie est un booléen. Plutôt qu'une sortie, on parle pour ces problèmes de **_question_**.
+{% enddefinition %}
+{% info %}
+[Les problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision){.externe} sont très important en informatique théorique. On le verra (bien) plus tard.
+{% endinfo %}
+
+Par exemple :
+
+<span id="définition-problème-décision"></span>
+
+{% note "**Problème de décision**" %}
+
+- **Nom** : recherche
+- **Entrées** :
+  - un entier $x$
+  - un tableau d'entiers $T$
+- **Question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
+
+{% endnote %}
+
+Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+
+{% definition %}
+La **_complexité (maximale) d'un problème_** algorithmique est **la complexité du meilleur algorithme** (celui de complexité maximale la plus faible) qui le résout.
 {% enddefinition %}
 
 Cette complexité existe toujours car :
@@ -52,60 +101,37 @@ on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'alg
 
 {% endretenir %}
 
-Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau. Cette étude nous permettra de voir plusieurs facettes de ce qu'est un problème algorithmique.
+Nous illustrerons ici cette problématique avec deux exemples qui nous permettrons de voir plusieurs techniques de calcul de la complexité d'un problème algorithmique.
 
-## <span id="recherche"></span>Exemple : recherche d'un élément dans un tableau
-
-On va chercher à résoudre le problème suivant :
-<span id="définition-problème-décision"></span>
-
-{% note "**Problème**" %}
-
-- **Nom** : recherche
-- **Entrées** :
-  - un entier $x$
-  - un tableau d'entiers $T$
-- **Question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
-
-{% endnote %}
-{% info %}
-On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
-
-On appelle ce genre de problème des [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision){.externe} et ils sont très important en informatique théorique. On le verra (bien) plus tard.
-{% endinfo %}
+## <span id="max"></span> Complexité du problème max
 
 Ce qu'on peut déjà dire de notre problème :
 
-- une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche)) résout le problème
+- une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un entier
+- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../../2-complexités/projet-calcul-max-min-moy/#max-tableau)) résout le problème
 
-```pseudocode/
-algorithme recherche(T: []int, x: int) → bool:
-    pour chaque e de T:
-        si e == x:
-            rendre Vrai
-    rendre Faux
+```pseudocode
+algorithme maximum(T: []int) → int:
+    ref m ← T[0]
+    pour chaque x de T:
+        si m < x:
+            m ← x
+    rendre m
 ```
-
-### <spans id="complexité-recherche"></span> Complexité du problème "recherche"
 
 Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons en effet qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : l'algorithme $A$ n'a pas besoin de regarder toutes les cases du tableau de longueur $n$ en entrée pour répondre.
 
-Soit alors un tableau $T$ de longueur $n$ qui ne contient pas `x`{.language-}. Notre algorithme va répondre NON à la question _"est-ce que valeur est dans $T$ ?"_ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
+Soit alors un tableau $T$ de longueur $n$ dont le max est `m`{.language-}. Notre algorithme va rendre $m$ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
 
 On crée alors un tableau $T'$ de $n$ cases tel que :
 
 - $T'[i] = T[i]$ si $i \neq i^\star$
-- $T'[i^\star] = x$
+- $T'[i^\star] = m + 1$
 
 Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,
-si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.
+si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est $m$ pour $T$ et $m+1$ pour $T'$.
 
-Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau passé en entrée. Tout algorithme résolvant le problème recherche doit au moins être de complexité $\mathcal{O}(n)$. On peut donc une nouvelle borne minimale pour notre problème : $\Omega(n)$.
-
-{% attention %}
-Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute longueur $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).
-{% endattention %}
+Notre hypothèse était fausse : un algorithme qui résout le problème max doit accéder au moins une fois à toutes les cases du tableau passé en entrée. Tout algorithme résolvant le problème max doit au moins être de complexité $\mathcal{O}(n)$. On peut donc une nouvelle borne minimale pour notre problème : $\Omega(n)$.
 
 Au final on a :
 
@@ -115,7 +141,7 @@ Au final on a :
 Donc :
 
 {% note "**Proposition**" %}
-La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la longueur du tableau passé en entrée.
+La complexité du problème max est en $\Theta(n)$ où $n$ est la longueur du tableau passé en entrée.
 {% endnote %}
 
 On peut en déduire une règle générale de la complexité d'un problème :
@@ -126,56 +152,90 @@ Si les données n'ont pas de structure particulière — très souvent — la co
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
 {% endretenir %}
 
-À vous :
+## <span id="recherche"></span> Complexités des problèmes recherche et recherche ordonnée
+
+Ce qu'on peut déjà dire de notre problème :
+
+- une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
+- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../../2-complexités/complexité-moyenne/#exemple-recherche)) résout le problème
+
+```pseudocode/
+algorithme recherche(T: []int, x: int) → bool:
+    pour chaque e de T:
+        si e == x:
+            rendre Vrai
+    rendre Faux
+```
 
 <span id="problème-max-tableau-complexité"></span>
 {% exercice %}
-Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau) est en $\Theta(n)$
+Montrer que la complexité du problème recherche est en $\Theta(n)$
 {% endexercice %}
 {% details "corrigé" %}
 
 Il faut montrer deux choses :
 
-1. une borne minimale de la complexité de la recherche de $\Omega(n)$
-2. un algorithme qui résout le problème en $\mathcal{O}(n)$
+1. un algorithme qui résout le problème en $\mathcal{O}(n)$
+2. une borne minimale de la complexité de la recherche de $\Omega(n)$
 
-Pour le premier point on raisonne exactement comme pour le problème de la recherche. Pour le second point [on a déjà vu un algorithme](../projet-calcul-complexite/#algorithme-max-tableau-complexité) de ce type.
+Pour le premier point, l'algorithme juste au-dessus fonctionne et pour le second point on raisonne exactement comme pour le problème max :
+
+1. Supposons qu'il existe un algorithme résolvant le problème recherche en strictement moins de $n$ opérations.
+2. On prend un tableau $T$ de longueur $n$ et ne contenant pas $x$. L'algorithme hypothétique répond NON à la présence de $x$ dans $T$ en strictement moins de $n$ opérations : il n'a pas regardé la case $T[i^\star]$ lors de son exécution.
+3. On crée le tableau $T'$ de longueur $n$ tel que :
+   - $T'[i] = T[i]$ si $i \neq i^\star$
+   - $T'[i^\star] = x$
+4. Comme  $T'$ et  $T'$ ne diffèrent que d'une case que l'algorithme hypothétique n'a pas examiné, il va donner la même réponse pour les entrées $(T, x)$ et $(T', x)$ ce qui est impossible.
+5. on arrive à une contradiction : l'algorithme hypothétique n'existe pas et tout algorithme résolvant recherche est en $\Omega(n)$.
 
 {% enddetails %}
 
-### Cas particulier des tableaux ordonnés
+{% attention %}
+Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute longueur $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).
+{% endattention %}
 
-Un cas particulier courant de recherche est le problème :
+On va s'intéresser maintenant à un cas particulier de problème recherche, celui où le tableau en entrée est tré par ordre croissant :
 
 {% note "**Problème de décision**" %}
 
 - **Nom** : recherche ordonnée
 - **Entrées** :
   - un entier $x$
-  - un tableau d'entiers $T$
+  - un tableau d'entiers $T$ trié par ordre croissant
 - **Question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
 
 {% endnote %}
 
-Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `est_dans_tableau(T)`{.language-}.
+Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `recherche(T)`{.language-}.
 
-Cependant on utilise souvent un autre algorithme : la recherche dichotomique.
+On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : [la recherche dichotomique](../../2-complexités/projet-calcul-max-min-moy/#dichotomie). Rappelons cet algorithme :
 
-#### Algorithme de la recherche dichotomique
+```pseudocode
+algorithme recherche_dichotomique(T: []int, x: int) → bool:
+  ref a, b ← 0, T.longueur - 1
+  ref m int
 
-> TBD mettre ref.
+  tant que a ≤ b:
+      m ← (a + b) // 2  # division entière
 
-#### <span id="complexité-recherche-ordonnée"></span> Complexité du problème "recherche ordonnée"
+      si (T[m] == x):
+          rendre Vrai
+      si (T[m] < x):
+          a ← m + 1
+      si (T[m] > x):
+          b ← m - 1
 
-L'algorithme de la recherche dichotomique résout le problème de la "recherche ordonnée" de façon bien plus efficace que l'algorithme `recherche`{.language-} : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème "recherche ordonnée" est alors $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).
+  rendre Faux
 
-Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.
+```
+
+Sa complexité est en $\mathcal{O}(\ln(n))$ : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème "recherche ordonnée" est alors $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau). Nous allons montrer que l'on ne peut pas faire mieux !
 
 {% info %}
 Remarquez bien que la preuve que l'on a donné pour la complexité de _"recherche"_ ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.
 {% endinfo %}
 
-Commençons par remarquer que `x`{.language-} peut se trouver à chaque position du tableau. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
+Commençons par remarquer que `x`{.language-} peut se trouver à chaque position du tableau de longueur $n$. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
 
 - soit `x`{.language-} n'est pas dans tableau
 - soit `x`{.language-} est à l'indice 0 du tableau
@@ -212,31 +272,12 @@ Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\lo
 
 Comme dans le cas de la recherche il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 
-
-> TBD mettre un retenir.
-
-Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ éléments :
+Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ éléments  est de complexité $\mathcal{O}(\ln(n))$ :
 
 - une borne minimale de complexité égal à $\Omega(\ln(n))$
 - la complexité de l'algorithme `recherche_dichotomique`{.language-} est en $\mathcal{O}(\ln(n))$
 
-{% note "**Proposition**" %}
-La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))$ où $n$ est la longueur du tableau.
-{% endnote %}
 
-
-
-À vous :
-
-<span id="problème-max-tableau-complexité"></span>
-
-{% exercice %}
-Montrer que le problème de la recherche d'un élément maximal d'un tableau d'entiers ordonné est en $\Theta(1)$
-{% endexercice %}
-{% details "corrigé" %}
-
-Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.
-
-À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer) ici on sait où il est : il n'y a aucun cas à distinguer, juste à rendre le dernier élément du tableau.
-{% enddetails %}
-
+{% retenir %}
+La borne minimale d'un problème est supérieure au log du nombre de cas à distinguer parmi ses entrées.
+{% endretenir %}

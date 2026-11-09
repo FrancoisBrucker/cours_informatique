@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va étudier deux algorithmes permettant de calculer $a^b$ à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :
+On va étudier deux algorithmes permettant de calculer $x^n$ à partir de deux entiers $x$ et $n$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :
 
 - fonctionnement
 - preuve
@@ -41,7 +41,7 @@ algorithme puissance(x: int, n: int) → int:
     rendre x * puissance(x, n - 1)
 ```
 
-Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-techniques-de-récursion/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre `r`{.language-}) :
+Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../../1-algorithme/pseudo-code/récursifs-itératifs/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre `r`{.language-}) :
 
 ```pseudocode
 fonction puissance_terminale(x: int, n: int, r: int) → int:
@@ -241,27 +241,7 @@ On a donc que : **le nombre d'itérations où compteur est impair est au pire é
 
 #### Nombre de fois où le compteur est pair
 
-A chaque fois où compteur est pair, on le divise par 2. Si $K_p$ est le nombre de fois où le compteur a été pair, on a que : $2^{K_p} \leq n$.
-
-Comme $n$ est un entier, il existe un nombre $p$ tel que $2^p \leq n < 2^{p + 1}$.
-
-On ne peut donc pas diviser $n$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :
-
-<div>
-$$
-\begin{array}{lcccl}
-    2^p &\leq &n &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(n) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(n) &<& p + 1
-\end{array}
-$$
-</div>
-
-{% info %}
-Pour tout nombre $x$, le nombre de fois où on peut diviser le diviser par $d$ est $\log_d(x)$
-{% endinfo %}
-
-On a donc que : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
+A chaque fois où compteur est pair, on le divise par 2. En reprenant [la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique](../../../2-complexités/projet-calcul-max-min-moy/#proposition-log) : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
 
 #### Nombre de fois où l'on rentre dans la boucle
 
@@ -271,9 +251,7 @@ Comme `c`{.language-} vaut initialement `n`{.language-}, le nombre de fois où l
 
 Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.
 
-Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.
-
-Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations
+[Cette complexité est très faible !](../../../2-complexités/projet-calcul-max-min-moy/#importance-log)
 
 ## Complexité du problème
 

@@ -1,11 +1,10 @@
 ---
 layout: layout/post.njk
-title: Projet exponentiation
+title: "Projet : implémentation des algorithmes d'exponentiation"
 
 eleventyNavigation:
   prerequis:
-    - /cours/coder-et-développer/tutoriel-matplotlib/
-    - /cours/coder-et-développer/débogueur/
+    - /cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,18 +13,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- 
-
-> TBD refaire en :
->
-> - utilisant numpy pour les indices
-> - donner le code des fonctions numpy etc.
-> -->
-
-
 On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.
 
 ## Mise en place
+
+On va utiliser les méthodes d'écriture de code déjà vues. Pour une piqûre de rappel :
+
+{% prerequis %}
+[Écrire du code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/)
+{% endprerequis %}
 
 ### Structures
 
@@ -37,7 +33,6 @@ On vérifie expérimentalement que nos calculs théoriques sont validés expéri
    - `main.py`{.fichier}
    - `exponentiation.py`{.fichier}
    - `test_exponentiation.py`{.fichier}
-
 {% endfaire %}
 
 ### Vérifications
@@ -48,10 +43,6 @@ On vérifie expérimentalement que nos calculs théoriques sont validés expéri
 - on vérifie que le linter est actif dans vscode
 - on vérifie que les tests fonctionnent (en créant un test bidon dans `tests_exponentiation.py`{.fichier} et en vérifiant que `pytest` et vscode le trouvent)
 
-{% endfaire %}
-
-{% faire %}
-On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.
 {% endfaire %}
 
 ## Le code
@@ -112,7 +103,41 @@ En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (p
 
 {% endfaire %}
 
-## Complexité temporelle
+### Programme principal
+
+{% faire %}
+
+Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite résultat et le temps mis (utilisez le chronomètre [`time.perf_counter_ns`{.language-}](https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns) pour mesurer le temps avant et après exécution du code) pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.
+
+{% endfaire %}
+
+## Mesure de complexité
+
+On va utiliser ce que l'on a fait lorsque l'on a appris à mesurer des complexités :
+
+{% prerequis %}
+[Mesures de complexités](../../../2-complexités/complexité-code/)
+{% endprerequis %}
+
+Commençons par ajouter nos méthodes de mesures :
+
+{% faire %}
+
+1. Ajoutez [le fichier `mesure_temps.py`{.fichier}](../../../2-complexités/complexité-code/#fichier-mesure-temps) au projet.
+2. Créez un fichier `main_temps.py`{.fichier} qui va contenir notre code de mesure.
+
+{% endfaire %}
+
+### Temps de calcul
+
+{% faire %}
+
+Dans le fichier `main_temps.py`{.fichier} déterminez l'exposant max pour  calculer $3^n$ en 0.01 secondes.
+
+{% endfaire %}
+
+> TBD ici
+
 
 La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../complexité-calculs/définitions/#complexité-temps) de celui-ci pour une entrée réalisant la complexité maximale.
 
@@ -189,11 +214,6 @@ Lorsque l'on calcule des complexités temporelles, on réalise plusieurs mesures
 
 #### Un temps d'exécution
 
-{% faire %}
-
-Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite le temps mis pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.
-
-{% endfaire %}
 
 #### Temps max
 

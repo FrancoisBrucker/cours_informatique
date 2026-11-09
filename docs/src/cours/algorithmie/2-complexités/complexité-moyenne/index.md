@@ -68,10 +68,21 @@ algorithme recherche(T: []int, x: int) → bool:
     rendre Faux
 ```
 
-On avait déterminé ses complexités par rapport à la longueur $n$ du tableau :
+Commençons par calculer ses complexités.
 
-- la complexité (maximale) de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver `x`{.language-})
-- la complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$ (`x`{.language-} est le premier élément du tableau)
+{% exercice %}
+Montrez que, si $n$ est la longueur du tableau, on a que :
+
+- la complexité (maximale) de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$,
+- la complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$.
+{% endexercice %}
+{% details "corrigé" %}
+Toutes les instructions de l'algorithme sont en $\mathcal{O}(1)$ (un test et un retour), sa complexité viendra du nombre de fois où ou la boucle tant que est exécutée :
+
+- la complexité minimale sera atteinte si elle n'exécutée qu'une fois (si `x`{.language-} est le premier élément du tableau) :  $\mathcal{O}(1)$ 
+- la complexité (maximale) sera atteinte si on exécute la boucle $n$ fois (on parcourt tout le tableau sans trouver `x`{.language-}) :  $\mathcal{O}(n)$ 
+
+{% enddetails %}
 
 Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :
 

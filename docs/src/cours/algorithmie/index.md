@@ -71,13 +71,12 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 > - KMP avec analyse amortie (dire hypothèse de la complexité en moyenne de l'algorithme fait partie II pas réaliste pour des mots d'une langue humaine (mots pas équiprobables !). Plein de mots commencent pareil. Donc on doit trouver un algo linéaire au max)
 
 > Partie VI : structure arborées
+> TBD : huffman
 > 
 > Intermède II : problèmes classiques (mais dur)
 > - médiane en temps linéaire
 > - col de matrices
-> - enveloppe convexe (les exos durs)
 > - union-find
-> - huffman
 > - plus petit ancêtre commun en O(1) <https://www.youtube.com/watch?v=IePrsH3gU_A>
 
 
@@ -86,15 +85,17 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 > Partie VIII : Structure des problèmes algorithmique
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
 
-### Complexité d'un problème
 
+### Problème du tri
 
-Projets :
+<!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
 
 {% aller %}
-1. [Calculer $x^n$](./projet-exponentiation)
-2. [Les suites additives](./projet-suite-additive)
+[Problème du tri](./problème-tris)
 {% endaller %}
+
+
+### Complexité d'un problème
 
 On s'entraîne :
 
@@ -108,17 +109,6 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 [exercices : problème du doublon](./exercices-problème-doublons)
 {% endaller %}
 
-
-### Problème du tri
-
-<!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
-
-{% aller %}
-[Problème du tri](./problème-tris)
-{% endaller %}
-
-
-> TBD ici complexité amortie.
 
 ### On s'entraîne
 

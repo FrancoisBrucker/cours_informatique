@@ -691,7 +691,7 @@ def calcule_moyenne(n, rep=10):
     return t / rep
 ```
 
-### `mesure_temps.py`{.language-}
+### <span id="fichier-mesure-temps"></span> `mesure_temps.py`{.language-}
 
 ```python
 from time import perf_counter_ns

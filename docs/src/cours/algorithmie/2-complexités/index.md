@@ -58,5 +58,5 @@ Quelques exercices classiques à connaître :
 On vérifie qu'on sait faire :
 
 {% aller %}
-1. [exercices non corrigés](./exercices-non-corrigés)
+[exercices non corrigés](./exercices-non-corrigés)
 {% endaller %}

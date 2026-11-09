@@ -18,20 +18,20 @@ while not correct:
         print("ce n'es`t pas un entier positif. Essayez encore une fois.")
 
 
-t1 = time.perf_counter()
-puissance_naif(3, entier)
-t2 = time.perf_counter()
+t1 = time.perf_counter_ns()
+r = puissance_naif(3, entier)
+t2 = time.perf_counter_ns()
 
 delta = t2 - t1
 
-print("temps mis pour exécuter puissance_naif(3,", entier, ") est",
+print("temps mis pour exécuter puissance_naif( 3,", entier, ")   =", r, "est",
       delta, "secondes")
 
-t1 = time.perf_counter()
-puissance_rapide(3, entier)
-t2 = time.perf_counter()
+t1 = time.perf_counter_ns()
+r = puissance_rapide(3, entier)
+t2 = time.perf_counter_ns()
 
 delta = t2 - t1
 
-print("temps mis pour exécuter puissance_rapide(3,", entier, ") est",
+print("temps mis pour exécuter puissance_rapide( 3,", entier, ") =", r, "est",
       delta, "secondes")

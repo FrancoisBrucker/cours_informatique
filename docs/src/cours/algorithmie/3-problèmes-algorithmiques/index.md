@@ -22,15 +22,27 @@ Cette notion est centrale en algorithmie, nous l'avons déjà abordé en creux e
 
 ## Exemples
 
-> TBD va varier de problème en problème. On va montrer deux exemple paradigmatiques.
+On va illustrer la recherche de la complexité d'un problème via trois exemples paradigmatiques.
 
-### Problèmes liés à l'exponentiation
+### Problèmes de l'exponentiation
 
-> III.2 exponentiation
+{% aller %}
+[Problème de l'exponentiation](./exponentiation)
+{% endaller %}
 
 ### Problème du tri
 
-> III.3 tris
+{% aller %}
+[Problème du tri](./tris)
+{% endaller %}
+
+
+### Problème de l'enveloppe  convexe
+
+{% aller %}
+[Problème de l'enveloppe convexe](./tris)
+{% endaller %}
+
 
 ## On s'entraîne
 
