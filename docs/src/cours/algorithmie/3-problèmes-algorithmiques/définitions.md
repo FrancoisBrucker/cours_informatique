@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Un problème algorithmique](../écrire-algorithmes/problème/) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+[Un problème algorithmique](../1-algorithme/problème-preuve/#problème-algorithmique) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
 {% definition %}
 La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.
@@ -161,11 +161,9 @@ Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on 
 
 Cependant on utilise souvent un autre algorithme : la recherche dichotomique.
 
-> TBD ref aux exercices.
-> 
 #### Algorithme de la recherche dichotomique
 
-
+> TBD mettre ref.
 
 #### <span id="complexité-recherche-ordonnée"></span> Complexité du problème "recherche ordonnée"
 
@@ -214,6 +212,9 @@ Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\lo
 
 Comme dans le cas de la recherche il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 
+
+> TBD mettre un retenir.
+
 Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ éléments :
 
 - une borne minimale de complexité égal à $\Omega(\ln(n))$
@@ -222,6 +223,7 @@ Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ él�
 {% note "**Proposition**" %}
 La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))$ où $n$ est la longueur du tableau.
 {% endnote %}
+
 
 
 À vous :

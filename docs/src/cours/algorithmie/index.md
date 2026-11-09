@@ -19,9 +19,6 @@ eleventyComputed:
 
 <!-- TBD 
 
-
-expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence>{.externe} : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
-
 Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
 
 dans la partie 4 :
@@ -39,19 +36,23 @@ _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
 
-## <span id="partie-1"></span>Partie I : algorithmes
+## <span id="partie-A"></span>Partie A : Bases
+
+Briques de base que toute personne créant ou codant des algorithmes devrait connaître.
+
+### <span id="partie-1"></span>Partie I : algorithmes
 
 {% aller %}
 [Écrire des algorithmes](./1-algorithme/)
 {% endaller %}
 
-## <span id="partie-2"></span>Partie II : Mesures de complexités
+### <span id="partie-2"></span>Partie II : Mesures de complexités
 
 {% aller %}
 [Calculs de complexités](./2-complexités/)
 {% endaller %}
 
-## <span id="partie-3"></span>Partie III : Problèmes algorithmiques
+### <span id="partie-3"></span>Partie III : Problèmes algorithmiques
 
 {% aller %}
 [Problèmes algorithmiques](./3-problèmes-algorithmiques/)
@@ -61,27 +62,32 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 > TBD IV structure de données :
 >   ne pas parler de complexité amortie. Juste faire calcul avec augmentation
 
+> Partie IV : structure de données linéaires
+> 
 > Partie V : complexité amortie
 > - complexité amortie
 > - exercice amortie (compteur/ permuation lexico-graphique)
 > - liste ajout et suppression
 > - KMP avec analyse amortie (dire hypothèse de la complexité en moyenne de l'algorithme fait partie II pas réaliste pour des mots d'une langue humaine (mots pas équiprobables !). Plein de mots commencent pareil. Donc on doit trouver un algo linéaire au max)
 
-> Partie VI : intermède II : problèmes classiques (mais dur)
+> Partie VI : structure arborées
+> 
+> Intermède II : problèmes classiques (mais dur)
 > - médiane en temps linéaire
 > - col de matrices
 > - enveloppe convexe (les exos durs)
-> Partie VII : structure arborées
+> - union-find
+> - huffman
+> - plus petit ancêtre commun en O(1) <https://www.youtube.com/watch?v=IePrsH3gU_A>
+
+
+> Partie B
+> pointeurs.
 > Partie VIII : Structure des problèmes algorithmique
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
 
 ### Complexité d'un problème
 
-Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
-
-{% aller %}
-[Complexité d'un problème algorithmique](./complexité-problème)
-{% endaller %}
 
 Projets :
 

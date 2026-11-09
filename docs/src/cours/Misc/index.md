@@ -17,6 +17,8 @@ eleventyComputed:
 
 > TBD mettre de l'ordre.
 
+> TBD expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence>{.externe} : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
+
 Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, définitions et quelques propriétés sur les probabilités, _etc_) dont nous aurons besoin aux cours des sujets traités. Ils sont assez généraux pour avoir leurs parties à eux mais pas assez _"informatique"_ pour être traité de façon extensive.
 
 ## Unités
