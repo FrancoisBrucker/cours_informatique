@@ -96,14 +96,90 @@
     
   
 
-  <p><a href="../1-algorithme/probl%C3%A8me-preuve/#probl%C3%A8me-algorithmique">Un problème algorithmique</a> est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
+  <p><a href="../../1-algorithme/probl%C3%A8me-preuve/#probl%C3%A8me-algorithmique">Un problème algorithmique</a> est une question solvable par un algorithme.</p>
+<h2>Définitions</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.</p>
+<p>La <strong><em>Un problème algorithmique</em></strong> possède :</p>
+<ul>
+<li>un nom,</li>
+<li>des paramètres d'entrée,</li>
+<li>une sortie qui doit vérifier des conditions que l'on explicite,</li>
+<li>un algorithme dont les entrée et la sortie satisfont le problème.</li>
+</ul>
+</div>
+</div>
+<p>Par exemple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : max</li>
+<li><strong>Entrée</strong> :
+<ul>
+<li>un tableau d'entiers $T$</li>
+</ul>
+</li>
+<li><strong>Sortie</strong> : la valeur valant $\max(\{T[i] \mid 0\leq i &lt; T.\text{\small longueur}\})$ ?</li>
+</ul>
+</div>
+</div>
+<p>Le problème <em>max</em> est bien algorithmique puisqu'il existe un algorithme pour le résoudre : <a href="../../1-algorithme/probl%C3%A8me-preuve/#algorithme-max-tableau-iter">lui par exemple</a>.</p>
+<p>Lorsque la sortie est un booléen, on parlera alors plutôt de problèmes de décision :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>La <strong><em>Un problème de décision</em></strong> est un problème algorithmique dont la sortie est un booléen. Plutôt qu'une sortie, on parle pour ces problèmes de <strong><em>question</em></strong>.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision" class="externe">Les problèmes de décision</a> sont très important en informatique théorique. On le verra (bien) plus tard.</p>
+</div>
+</div>
+<p>Par exemple :</p>
+<p><span id="définition-problème-décision"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème de décision</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : recherche</li>
+<li><strong>Entrées</strong> :
+<ul>
+<li>un entier $x$</li>
+<li>un tableau d'entiers $T$</li>
+</ul>
+</li>
+<li><strong>Question</strong> : existe-t-il un indice $0\leq i &lt; T.\mbox{\small longueur}$ tel que $T[i] = x$  ?</li>
+</ul>
+</div>
+</div>
+<p>Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est <strong>la complexité du meilleur algorithme</strong> (celui de complexité maximale la plus faible) qui le résout.</p>
 </div>
 </div>
 <p>Cette complexité existe toujours car :</p>
@@ -141,67 +217,29 @@ $$</p>
 <p>on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.</p>
 </div>
 </div>
-<p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau. Cette étude nous permettra de voir plusieurs facettes de ce qu'est un problème algorithmique.</p>
-<h2><span id="recherche"></span>Exemple : recherche d'un élément dans un tableau</h2>
-<p>On va chercher à résoudre le problème suivant :
-<span id="définition-problème-décision"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>Nom</strong> : recherche</li>
-<li><strong>Entrées</strong> :
-<ul>
-<li>un entier $x$</li>
-<li>un tableau d'entiers $T$</li>
-</ul>
-</li>
-<li><strong>Question</strong> : existe-t-il un indice $0\leq i &lt; T.\mbox{\small longueur}$ tel que $T[i] = x$  ?</li>
-</ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On a utilisé ici le mot clé <strong>question</strong> plutôt que <strong>sortie</strong>. On utilisera cette convention lorsque la sortie est soit OUI soit NON.</p>
-<p>On appelle ce genre de problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision" class="externe">problèmes de décision</a> et ils sont très important en informatique théorique. On le verra (bien) plus tard.</p>
-</div>
-</div>
+<p>Nous illustrerons ici cette problématique avec deux exemples qui nous permettrons de voir plusieurs techniques de calcul de la complexité d'un problème algorithmique.</p>
+<h2><span id="max"></span> Complexité du problème max</h2>
 <p>Ce qu'on peut déjà dire de notre problème :</p>
 <ul>
-<li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
-<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche">on a déjà calculé la complexité</a>) résout le problème</li>
+<li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un entier</li>
+<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#max-tableau">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
-<h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">m</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token variable parameter">x</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">m</span></code></pre>
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons en effet qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : l'algorithme $A$ n'a pas besoin de regarder toutes les cases du tableau de longueur $n$ en entrée pour répondre.</p>
-<p>Soit alors un tableau $T$ de longueur $n$ qui ne contient pas <code class="language-">x</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+<p>Soit alors un tableau $T$ de longueur $n$ dont le max est <code class="language-">m</code>. Notre algorithme va rendre $m$ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 <p>On crée alors un tableau $T'$ de $n$ cases tel que :</p>
 <ul>
 <li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
-<li>$T'[i^\star] = x$</li>
+<li>$T'[i^\star] = m + 1$</li>
 </ul>
 <p>Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,
-si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.</p>
-<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau passé en entrée. Tout algorithme résolvant le problème recherche doit au moins être de complexité $\mathcal{O}(n)$. On peut donc une nouvelle borne minimale pour notre problème : $\Omega(n)$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute longueur $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).</p>
-</div>
-</div>
+si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est $m$ pour $T$ et $m+1$ pour $T'$.</p>
+<p>Notre hypothèse était fausse : un algorithme qui résout le problème max doit accéder au moins une fois à toutes les cases du tableau passé en entrée. Tout algorithme résolvant le problème max doit au moins être de complexité $\mathcal{O}(n)$. On peut donc une nouvelle borne minimale pour notre problème : $\Omega(n)$.</p>
 <p>Au final on a :</p>
 <ul>
 <li>une borne minimale de la complexité de la recherche de $\Omega(n)$</li>
@@ -215,7 +253,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la longueur du tableau passé en entrée.</p>
+<p>La complexité du problème max est en $\Theta(n)$ où $n$ est la longueur du tableau passé en entrée.</p>
 </div>
 </div>
 <p>On peut en déduire une règle générale de la complexité d'un problème :</p>
@@ -229,12 +267,22 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.</p>
 </div>
 </div>
-<p>À vous :</p>
+<h2><span id="recherche"></span> Complexités des problèmes recherche et recherche ordonnée</h2>
+<p>Ce qu'on peut déjà dire de notre problème :</p>
+<ul>
+<li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
+<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../../2-complexit%C3%A9s/complexit%C3%A9-moyenne/#exemple-recherche">on a déjà calculé la complexité</a>) résout le problème</li>
+</ul>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <p><span id="problème-max-tableau-complexité"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que le problème de <a href="../#probl%C3%A8me-max-tableau">la recherche d'un élément maximal d'un tableau d'entiers</a> est en $\Theta(n)$</p>
+<p>Montrer que la complexité du problème recherche est en $\Theta(n)$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -256,15 +304,34 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <div class="mx-8 pb-2">
 <p>Il faut montrer deux choses :</p>
 <ol>
-<li>une borne minimale de la complexité de la recherche de $\Omega(n)$</li>
 <li>un algorithme qui résout le problème en $\mathcal{O}(n)$</li>
+<li>une borne minimale de la complexité de la recherche de $\Omega(n)$</li>
 </ol>
-<p>Pour le premier point on raisonne exactement comme pour le problème de la recherche. Pour le second point <a href="../projet-calcul-complexite/#algorithme-max-tableau-complexit%C3%A9">on a déjà vu un algorithme</a> de ce type.</p>
+<p>Pour le premier point, l'algorithme juste au-dessus fonctionne et pour le second point on raisonne exactement comme pour le problème max :</p>
+<ol>
+<li>Supposons qu'il existe un algorithme résolvant le problème recherche en strictement moins de $n$ opérations.</li>
+<li>On prend un tableau $T$ de longueur $n$ et ne contenant pas $x$. L'algorithme hypothétique répond NON à la présence de $x$ dans $T$ en strictement moins de $n$ opérations : il n'a pas regardé la case $T[i^\star]$ lors de son exécution.</li>
+<li>On crée le tableau $T'$ de longueur $n$ tel que :
+<ul>
+<li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
+<li>$T'[i^\star] = x$</li>
+</ul>
+</li>
+<li>Comme  $T'$ et  $T'$ ne diffèrent que d'une case que l'algorithme hypothétique n'a pas examiné, il va donner la même réponse pour les entrées $(T, x)$ et $(T', x)$ ce qui est impossible.</li>
+<li>on arrive à une contradiction : l'algorithme hypothétique n'existe pas et tout algorithme résolvant recherche est en $\Omega(n)$.</li>
+</ol>
 </div>
 </details>     
 </div>
-<h3>Cas particulier des tableaux ordonnés</h3>
-<p>Un cas particulier courant de recherche est le problème :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute longueur $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).</p>
+</div>
+</div>
+<p>On va s'intéresser maintenant à un cas particulier de problème recherche, celui où le tableau en entrée est tré par ordre croissant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -277,22 +344,32 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <li><strong>Entrées</strong> :
 <ul>
 <li>un entier $x$</li>
-<li>un tableau d'entiers $T$</li>
+<li>un tableau d'entiers $T$ trié par ordre croissant</li>
 </ul>
 </li>
 <li><strong>Question</strong> : existe-t-il un indice $0\leq i &lt; T.\mbox{\small longueur}$ tel que $T[i] = x$  ?</li>
 </ul>
 </div>
 </div>
-<p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
-<p>Cependant on utilise souvent un autre algorithme : la recherche dichotomique.</p>
-<h4>Algorithme de la recherche dichotomique</h4>
-<blockquote>
-<p>TBD mettre ref.</p>
-</blockquote>
-<h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
-<p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">recherche</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).</p>
-<p>Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
+<p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">recherche(T)</code>.</p>
+<p>On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : <a href="../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#dichotomie">la recherche dichotomique</a>. Rappelons cet algorithme :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
+  <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span></span> <span class="token operator">←</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span> <span class="token type class-name">int</span></span>
+
+  <span class="token keyword">tant que</span> <span class="token variable parameter">a</span> <span class="token operator">≤</span> <span class="token variable parameter">b</span><span class="token punctuation">:</span>
+      <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token punctuation">(</span><span class="token variable parameter">a</span> <span class="token operator">+</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
+
+      <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">m</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+      <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">m</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token variable parameter">a</span> <span class="token operator">←</span> <span class="token variable parameter">m</span> <span class="token operator">+</span> <span class="token number">1</span>
+      <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">m</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token variable parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token variable parameter">b</span> <span class="token operator">←</span> <span class="token variable parameter">m</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+  <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+</code></pre>
+<p>Sa complexité est en $\mathcal{O}(\ln(n))$ : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau). Nous allons montrer que l'on ne peut pas faire mieux !</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -301,7 +378,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Remarquez bien que la preuve que l'on a donné pour la complexité de <em>&quot;recherche&quot;</em> ne fonctionne pas dans le cas de &quot;recherche ordonnée&quot;. On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.</p>
 </div>
 </div>
-<p>Commençons par remarquer que <code class="language-">x</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
+<p>Commençons par remarquer que <code class="language-">x</code> peut se trouver à chaque position du tableau de longueur $n$. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
 <ul>
 <li>soit <code class="language-">x</code> n'est pas dans tableau</li>
 <li>soit <code class="language-">x</code> est à l'indice 0 du tableau</li>
@@ -369,53 +446,19 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </details>     
 </div>
 <p>Comme dans le cas de la recherche il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.</p>
-<blockquote>
-<p>TBD mettre un retenir.</p>
-</blockquote>
-<p>Au final, le problème de la <em>&quot;recherche ordonnée&quot;</em> pour un tableau à $n$ éléments :</p>
+<p>Au final, le problème de la <em>&quot;recherche ordonnée&quot;</em> pour un tableau à $n$ éléments  est de complexité $\mathcal{O}(\ln(n))$ :</p>
 <ul>
 <li>une borne minimale de complexité égal à $\Omega(\ln(n))$</li>
 <li>la complexité de l'algorithme <code class="language-">recherche_dichotomique</code> est en $\mathcal{O}(\ln(n))$</li>
 </ul>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>La complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> est en $\Theta(\ln(n))$ où $n$ est la longueur du tableau.</p>
-</div>
-</div>
-<p>À vous :</p>
-<p><span id="problème-max-tableau-complexité"></span></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Montrer que le problème de la recherche d'un élément maximal d'un tableau d'entiers ordonné est en $\Theta(1)$</p>
+<p>La borne minimale d'un problème est supérieure au log du nombre de cas à distinguer parmi ses entrées.</p>
 </div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.</p>
-<p>À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer) ici on sait où il est : il n'y a aucun cas à distinguer, juste à rendre le dernier élément du tableau.</p>
-</div>
-</details>     
 </div>
 
 

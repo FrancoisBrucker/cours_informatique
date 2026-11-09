@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Projet exponentiation</title>
+    <title>Projet : implémentation des algorithmes d&#39;exponentiation</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Projet exponentiation</h1>
+  <h1>Projet : implémentation des algorithmes d&#39;exponentiation</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/">Problème de l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/implémentation-code/">Projet exponentiation</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/">Complexité de problèmes algorithmiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/">Problèmes liés à l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/implémentation-code/">Projet : implémentation des algorithmes d&#39;exponentiation</a>
 
 </div>
 </div>
@@ -104,12 +104,10 @@
 
 
       <ul>
-            <li>
-              <a href="/cours_informatique/cours/coder-et-développer/tutoriel-matplotlib/">/cours/coder-et-développer/tutoriel-matplotlib/</a>
-            </li>
-            <li>
-              <a href="/cours_informatique/cours/coder-et-développer/débogueur/">/cours/coder-et-développer/débogueur/</a>
-            </li></ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/">Déboguer son code</a>
+              </li></ul>
       
 
 </div>
@@ -118,15 +116,18 @@
     
   
 
-  <!-- 
-
-> TBD refaire en :
->
-> - utilisant numpy pour les indices
-> - donner le code des fonctions numpy etc.
-> -->
-<p>On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.</p>
+  <p>On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.</p>
 <h2>Mise en place</h2>
+<p>On va utiliser les méthodes d'écriture de code déjà vues. Pour une piqûre de rappel :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Prérequis</strong></div>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/">Écrire du code</a></p>
+</div>
+</div>
 <h3>Structures</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -159,15 +160,6 @@
 <li>on vérifie que le linter est actif dans vscode</li>
 <li>on vérifie que les tests fonctionnent (en créant un test bidon dans <code class="fichier">tests_exponentiation.py</code> et en vérifiant que <code>pytest</code> et vscode le trouvent)</li>
 </ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.</p>
 </div>
 </div>
 <h2>Le code</h2>
@@ -241,7 +233,53 @@
 <p>En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).</p>
 </div>
 </div>
-<h2>Complexité temporelle</h2>
+<h3>Programme principal</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créer un programme principal (dans le fichier <code class="fichier">main.py</code>) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite résultat et le temps mis (utilisez le chronomètre <a href="https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns"><code class="language-">time.perf_counter_ns</code></a> pour mesurer le temps avant et après exécution du code) pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.</p>
+</div>
+</div>
+<h2>Mesure de complexité</h2>
+<p>On va utiliser ce que l'on a fait lorsque l'on a appris à mesurer des complexités :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Prérequis</strong></div>
+<div class="pl-8 mr-8">
+<p><a href="../../../2-complexit%C3%A9s/complexit%C3%A9-code/">Mesures de complexités</a></p>
+</div>
+</div>
+<p>Commençons par ajouter nos méthodes de mesures :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Ajoutez <a href="../../../2-complexit%C3%A9s/complexit%C3%A9-code/#fichier-mesure-temps">le fichier <code class="fichier">mesure_temps.py</code></a> au projet.</li>
+<li>Créez un fichier <code class="fichier">main_temps.py</code> qui va contenir notre code de mesure.</li>
+</ol>
+</div>
+</div>
+<h3>Temps de calcul</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans le fichier <code class="fichier">main_temps.py</code> déterminez l'exposant max pour  calculer $3^n$ en 0.01 secondes.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
 <p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-temps">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
 <p>Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :</p>
 <ul>
@@ -332,15 +370,6 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </div>
 <h3>Expérimentations</h3>
 <h4>Un temps d'exécution</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créer un programme principal (dans le fichier <code class="fichier">main.py</code>) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite le temps mis pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.</p>
-</div>
-</div>
 <h4>Temps max</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

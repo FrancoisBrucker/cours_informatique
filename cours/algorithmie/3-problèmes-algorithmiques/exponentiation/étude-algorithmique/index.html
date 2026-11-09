@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/">Problème de l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/étude-algorithmique/">Étude : exponentiation</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/">Complexité de problèmes algorithmiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/">Problèmes liés à l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/étude-algorithmique/">Étude : exponentiation</a>
 
 </div>
 </div>
@@ -96,7 +96,7 @@
     
   
 
-  <p>On va étudier deux algorithmes permettant de calculer $a^b$ à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :</p>
+  <p>On va étudier deux algorithmes permettant de calculer $x^n$ à partir de deux entiers $x$ et $n$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :</p>
 <ul>
 <li>fonctionnement</li>
 <li>preuve</li>
@@ -120,7 +120,7 @@ $$
     <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token variable parameter">x</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">x</span> <span class="token operator">*</span> puissance<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">n</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-techniques-de-r%C3%A9cursion/#r%C3%A9cursion-terminale">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre <code class="language-">r</code>) :</p>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../../1-algorithme/pseudo-code/r%C3%A9cursifs-it%C3%A9ratifs/#r%C3%A9cursion-terminale">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre <code class="language-">r</code>) :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">puissance_terminale</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">r</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token variable parameter">r</span>
@@ -314,33 +314,12 @@ $$
 <p>Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car <code class="language-">c' = c - 1</code> dans ce cas là.</p>
 <p>On a donc que : <strong>le nombre d'itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
 <h4>Nombre de fois où le compteur est pair</h4>
-<p>A chaque fois où compteur est pair, on le divise par 2. Si $K_p$ est le nombre de fois où le compteur a été pair, on a que : $2^{K_p} \leq n$.</p>
-<p>Comme $n$ est un entier, il existe un nombre $p$ tel que $2^p \leq n &lt; 2^{p + 1}$.</p>
-<p>On ne peut donc pas diviser $n$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(n)$. En effet :</p>
-<div>
-$$
-\begin{array}{lcccl}
-    2^p &\leq &n &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(n) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(n) &<& p + 1
-\end{array}
-$$
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour tout nombre $x$, le nombre de fois où on peut diviser le diviser par $d$ est $\log_d(x)$</p>
-</div>
-</div>
-<p>On a donc que : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
+<p>A chaque fois où compteur est pair, on le divise par 2. En reprenant <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#proposition-log">la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique</a> : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
 <h4>Nombre de fois où l'on rentre dans la boucle</h4>
 <p>Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(c)$ pour la valeur initiale de compteur.</p>
 <p>Comme <code class="language-">c</code> vaut initialement <code class="language-">n</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$ (puisque $\log_2(n) = \ln(n)/\ln(2)$).</p>
 <p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.</p>
-<p>Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
-<p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
+<p><a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#importance-log">Cette complexité est très faible !</a></p>
 <h2>Complexité du problème</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
