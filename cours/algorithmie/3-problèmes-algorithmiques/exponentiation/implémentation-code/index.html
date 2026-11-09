@@ -274,61 +274,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans le fichier <code class="fichier">main_temps.py</code> déterminez l'exposant max pour  calculer $3^n$ en 0.01 secondes.</p>
-</div>
-</div>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
-<p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-temps">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
-<p>Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :</p>
-<ul>
-<li>nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9" class="externe">partageant du temps de processeur</a> : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.</li>
-<li>python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.</li>
-</ul>
-<p>Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces <em>temps parasites</em> :</p>
-<ul>
-<li>on peut uniquement mesurer le temps pris par le programme python</li>
-<li>les opérations régulières de python sont négligeables lorsque la taille des entrées deviennent grandes</li>
-<li>ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.</li>
-</ul>
-<p>Le protocole de calcul sera alors le suivant :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Pour mesurer le temps d'exécution d'un algorithme :</p>
-<ol>
-<li>on note le nombre de secondes $t_1$ utilisées par le programme python juste avant d'exécuter l'algorithme</li>
-<li>on exécute l'algorithme</li>
-<li>on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme</li>
-</ol>
-<p>La complexité temporelle sera alors : $\Delta = t_2 - t_1$.</p>
-</div>
-</div>
-<h3><span id="temporelle-comment-faire"></span>Comment faire</h3>
-<p>On va utiliser les fonctions simple du module <a href="https://docs.python.org/fr/3/library/time.html" class="externe">time</a>. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un fichier <code class="fichier">temps_mesure.py</code> et mettez y le code suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Avant l'attente"</span><span class="token punctuation">)</span>
-x <span class="token operator">=</span> <span class="token number">1000</span>
-t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-x <span class="token operator">**</span> x <span class="token operator">**</span> <span class="token number">2</span>
-t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Après l'attente"</span><span class="token punctuation">)</span>
-
-delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Temps d'attente :"</span><span class="token punctuation">,</span> delta<span class="token punctuation">)</span></code></pre>
+<p>Dans le fichier <code class="fichier">main_temps.py</code> déterminez l'exposant max pour  calculer $3^n$ en 0.1 secondes.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -336,48 +282,17 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.</p>
+<p>Je trouve <code class="language-">N_max = 6553</code> sur mon ordinateur.</p>
 </div>
 </div>
-<p>Le code précédent utilise une fonction du module <a href="https://docs.python.org/fr/3/library/time.html" class="externe"><code class="language-">time</code></a> : <a href="https://docs.python.org/3/library/time.html#time.perf_counter" class="externe"><code class="language-">perf_counter</code></a> qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (Youtube, Instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)</p>
+<p>On peut maintenant représenter les courbes de complexité :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li>Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à calculer $1000^{1000^2}$.</li>
-<li>Faites pour dix essais :
-<ul>
-<li>le temps maximum de calcul</li>
-<li>le minimum maximum de calcul</li>
-<li>le temps moyen de calcul</li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-<p>Vous devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Lorsque l'on calcule des complexités temporelles, on réalise plusieurs mesures pour en rendre la moyenne et ainsi atténuer les fluctuations.</p>
-</div>
-</div>
-<h3>Expérimentations</h3>
-<h4>Un temps d'exécution</h4>
-<h4>Temps max</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créer dans un fichier nommé <code class="fichier">main_temps.py</code> un programme permettant de trouver $K$ et $N$ tels que $N = 2^K$ soit la première puissance de 2 pour laquelle le temps mis pour exécuter l’exponentiation naïve de $3^N$ dure plus de 1 seconde.</p>
+<p>Dans le fichier <code class="fichier">main_temps.py</code>, procédez comme dans le cours pour afficher la courbe de complexité de l'algorithme naïf (faites 10 mesures).</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -385,163 +300,50 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On trouve que $K$ vaut de l'ordre de 20.</p>
+<p>Je trouve <code class="language-">N_max = 6553</code> sur mon ordinateur.</p>
 </div>
 </div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">temps <span class="token operator">=</span> <span class="token number">1</span>
-
-delta <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment"># valeur par défaut pour rentrer dans la boucle while</span>
-K <span class="token operator">=</span> <span class="token number">0</span>
-N <span class="token operator">=</span> <span class="token number">1</span>
-
-<span class="token keyword">while</span> delta <span class="token operator">&lt;</span> temps<span class="token punctuation">:</span>
-    t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    puissance_naif<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> N<span class="token punctuation">)</span>
-    t2 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
-    K <span class="token operator">+=</span> <span class="token number">1</span>
-    N <span class="token operator">*=</span> <span class="token number">2</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h4><span id="mesure-temps"></span> Liste de temps</h4>
-<p>On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $n=2$ à $n=N$ (avec le $N$ calculé dans la partie précédente). Ceci nous permettra d'avoir quelques points de contrôles espacés dans le temps et nécessitant chacun peu de temps de calcul (moins d'une seconde pour chaque mesure).</p>
-<p>Commençons par créer les points de contrôles sous la forme d'un tableau d'exposants à calculer :</p>
+<p>La courbe devrait être linéaire alors qu'elle ne l'est pas. <a href="../../../2-complexit%C3%A9s/projet-code/#nombres-gigantesques">On a déjà vu ce phénomène</a>, corrigeons le :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez (et testez) une fonction <code class="language-">donne_pas(nombre_pas: int, min_valeur: int, max_valeur: int) -&gt; []int</code> qui rend une liste d'entiers allant de <code class="language-">min_valeur</code> à au plus <code class="language-">max_valeur</code> par pas de <code class="language-">(max_valeur - min_valeur) //  nombre_pas</code></p>
+<p>Dans le fichier <code class="fichier">exponentiation.py</code>, commentez la ligne effectuant la multiplication et refaite le graphique.</p>
 </div>
 </div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><code class="language-">donne_pas(4, 2, 23)</code> rendra la liste <code class="language-">[2, 7, 12, 17, 22]</code>. Elle est très facile à créer avec la fonction <code class="language-">range</code></p>
-</div>
-</div>
-<p>Puis mesurons le temps pris pour calculer $3^n$, pour 20 points de contrôles entre $1$ et $N$ :</p>
+<p>Comme les multiplication de nombres gigantesques seront aussi effectués par l'exponentiation rapide et que l'on veut que notre algorithme calcule bien ce qu'il doit faire :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez au programme du fichier <code class="fichier">temps_exponentiation.py</code> trois nouvelles listes :</p>
-<ul>
-<li>la liste <code class="language-">exposant</code> qui est le retour de la fonction <code class="language-">donne_pas(20, 1, N)</code> (avec le $N$ calculé la partie précédente)</li>
-<li>la liste <code class="language-">mesures_temps_naif</code> telle que <code class="language-">mesures_temps_naif[i]</code> corresponde au temps mis pour exécuter la fonction calculer <code class="language-">puissance_naif(3, exposant[i])</code></li>
-<li>la liste <code class="language-">mesures_temps_rapide</code>corresponde au temps mis pour exécuter la fonction calculer <code class="language-">puissance_rapide(3, exposant[i])</code></li>
-</ul>
+<p>Dé-commentez la ligne effectuant la multiplication et assurez vous que les tests passent.</p>
 </div>
 </div>
-<p>La complexité de l'algorithme naif doit être linéaire et celui de l'algorithme rapide logarithmique, donc :</p>
+<p>On peut maintenant voir le temps mis pour l'exponentiation rapide :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que le rapport <code class="language-">mesures_temps_naif[i] / mesures_temps_rapide[i]</code> augmente lorsque $i$ augmente (il doit tendre vers l'infini).</p>
+<p>En gardant le <code class="language-">N_max</code> déterminé en utilisant l'algorithme naïf, procédez comme dans le cours pour afficher la courbe de complexité de l'exponentiation indienne  (faites 10 mesures).</p>
 </div>
 </div>
+<p>Maintenant que l'on a les deux graphiques séparé, on peut rassembler les deux graphiques :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que le rapport :</p>
-<ul>
-<li><code class="language-">mesures_temps_naif[i] / exposant[i]</code> reste à peut prêt constant</li>
-<li><code class="language-">mesures_temps_rapide[i] / log(exposant[i])</code> reste à peut prêt constant (<code class="language-">log</code> est une fonction du <a href="https://docs.python.org/fr/3/library/math.html" class="externe">module <code class="language-">math</code> de python</a>)</li>
-</ul>
+<p>Mettez les mesures pour l'algorithme naïf et rapide sur le même graphique</p>
 </div>
 </div>
-<h2>Graphiques</h2>
-<p>Nous allons dans cette partie représenter graphiquement nos mesures. Nous utiliserons pour cela la bibliothèque <a href="https://matplotlib.org/" class="externe">Matplotlib</a>.</p>
-<h3><span id="Matplotlib"></span>Bibliothèque Matplotlib</h3>
-<p>Si ce n'est ps déjà fait, installez la bibliothèque :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Dans un terminal, tapez la commande suivante pour installer <a href="https://matplotlib.org/" class="externe">Matplotlib</a> :</p>
-<pre><code>python -m pip install matplotlib
-</code></pre>
-</div>
-</div>
-<p>Utiliser cette bibliothèque ne s'improvise pas. <strong>Commencez par faire le tutoriel en prérequis</strong> pour en comprendre les bases.</p>
-<h3>Temps naïf</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ajoutez le code suivant au code du fichier <code class="fichier">temps_exponentiation.py</code> pour afficher le temps mis pour afficher le temps mis pour calculer <code class="language-">puissance_naif(3, exposant[i])</code> en fonction de <code class="language-">exposant[i]</code>.</p>
-<p>Est-ce conforme à ce qui était attendu ?</p>
-</div>
-</div>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-
-fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"complexités temporelles"</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"valeur de l'exposant"</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"temps de calcul"</span><span class="token punctuation">)</span>
-
-ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>exposant<span class="token punctuation">,</span> mesures_temps_naif<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">)</span>
-
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h3>Temps exponentiel</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Adaptez le code précédent pour afficher les mesures de temps pour l'exponentiation rapide.</p>
-<p>Est-ce conforme à ce qui était attendu ?</p>
-</div>
-</div>
-<h3>Combinaison des deux</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Superposez en un seul graphique les deux courbes (on pourra faire deux plot l'un à la suite des autres).</p>
-</div>
-</div>
-<p>Le temps mis par l'exponentiation rapide est très inférieur à celui effectué par l'algorithme d'exponentiation naif, on ne le voit pratiquement p[as.</p>
-<h3>Deux axes des ordonnées</h3>
+<p>Le temps mis par l'exponentiation rapide est très inférieur à celui effectué par l'algorithme d'exponentiation naif, on ne le voit pratiquement pas (la courbe semble toute plate).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -549,7 +351,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez le code de <a href="https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines" class="externe">ce lien</a> pour utiliser <code class="language-">ax.twinx</code> qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.</p>
-<p>Vous pourrez également changer la couleur d'un des dessins en remplaçant le paramètre <code class="language-">'o-'</code> d'un des 2 plot par <code class="language-">'ro-'</code> pour dessiner en rouge (red).</p>
+<p>Vous pourrez également changer la couleur d'un des dessins en ajoutant le paramètre <code class="language-">color=&quot;orange&quot;</code> d'un des 2 plot par pour dessiner en orange.</p>
 </div>
 </div>
 
