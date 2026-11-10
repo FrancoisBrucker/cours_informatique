@@ -115,10 +115,11 @@
 <li><a href="https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability" class="externe">proba discrete</a></li>
 <li><a href="https://www.amazon.fr/Probabilit%C3%A9s-pour-probabilistes-Walter-Appel/dp/2351412982" class="externe">Probabilités pour les non-probabilistes</a></li>
 <li><a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf" class="externe">https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf</a></li>
+<li><a href="http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf" class="externe">http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf</a></li>
 </ul>
 </div>
 </div>
-<p>Comme on est en informatique, on va considérer des ensembles finis ou au pire dénombrable.</p>
+<p>Comme on est en informatique, on va considérer des ensembles finis ou au pire dénombrables.</p>
 <h2>Probabilités</h2>
 <h3>Définitions</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -129,19 +130,20 @@
 <div class="pl-8 mr-8">
 <ul>
 <li><strong><em>univers</em></strong> : $\Omega$ un ensemble fini.</li>
-<li><strong><em>probabilité</em></strong> : $p : \Omega \rightarrow [0, 1]$ telle que $\sum_{x \in \Omega} p(x) = 1$.</li>
+<li><strong><em>probabilité</em></strong> : $p : \Omega \rightarrow [0, 1]$ telle que $\sum\limits_{x \in \Omega} p(x) = 1$.</li>
 </ul>
+<p>La probabilité $p$ est dite <strong><em>uniforme</em></strong> si $p(x) = \frac{1}{\vert \Omega \vert}$ pour tout $x \in \Omega$.</p>
 </div>
 </div>
-<p>La probabilité $p$ est dite <strong><em>uniforme</em></strong> si $p(x) = \frac{1}{\vert \Omega \vert}$ pour tout $x \in \Omega$. Par défaut, toutes les probabilités seront uniforme.</p>
-<p>On étant la notion de probabilité aux ensembles :</p>
+<p>Par défaut, toutes les probabilités seront uniformes.</p>
+<p>On étend la notion de probabilité aux ensembles :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>évènement</em></strong> $A \subseteq \Omega$ est de <strong><em>probabilité</em></strong> $\mathbb{P}(A)$ définie telle que :</p>
+<p>On définit la <strong><em>probabilité</em></strong> $\mathbb{P}(A)$ d'un <strong><em>évènement</em></strong> $A \subseteq \Omega$ comme étant :</p>
 <div>
 $$
 \mathbb{P}(A) \coloneqq \sum_{x \in A}p(x)
@@ -149,7 +151,7 @@ $$
 </div>
 </div>
 </div>
-<p>Cette définition se généralise simplement aux ensembles dénombrables (ce qui est réaliste (à défaut d'être réel) en informatique) :</p>
+<p>Cette définition se généralise simplement aux ensembles dénombrables (ce qui est réaliste, à défaut d'être réel, en informatique) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -161,60 +163,25 @@ $$
 <li><strong><em>probabilité</em></strong> : $\mathbb{P} : \mathcal{P}(\Omega) \rightarrow [0, 1]$ telle que :
 <ul>
 <li>$\mathbb{P}(\Omega) = 1$.</li>
-<li>Pour toute suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$, on a : $\mathbb{P}(\cup_n A_n) = \sum_n \mathbb{P}(A_n)$</li>
+<li>Pour toute suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$, on a : $\mathbb{P}(\bigcup\limits_n A_n) = \sum\limits_n \mathbb{P}(A_n)$</li>
 </ul>
 </li>
 </ul>
-<p>Le couple $(\Omega, \mathbb{P})$ est appelé <strong><em>espace probabilité</em></strong>.</p>
+<p>Le couple $(\Omega, \mathbb{P})$ est appelé <strong><em>espace probabilisé</em></strong>. On dit aussi que $\mathbb{P}$ est une probabilité sur $\Omega$.</p>
 </div>
 </div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
 <p>Notez que la définition dénombrable généralise bien la définition du cas fini puisqu'une suite finie $(A_n)_{1\leq n \leq N}$ d'éléments deux à deux disjoints peut s'écrire comme une suite infinie où $A_n =\emptyset$ pour tout $n &gt; N$.</p>
-</div>
-</div>
-<blockquote>
-<p>TBD exemple avec P(n) = 1/(n + 1)^2 et P(0) = 0</p>
-</blockquote>
-<p>On a les propriétés suivantes :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On a :</p>
-<ul>
-<li>$\mathbb{P}(\Omega) = 1$</li>
-<li>$\mathbb{P}(\Omega\backslash A) = 1 - \mathbb{P}(A)$</li>
-<li>$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$</li>
-<li>$A$ et $B$ sont <strong><em>indépendants</em></strong> si $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$</li>
-</ul>
-</div>
-</div>
-<blockquote>
-<p>TBD reprendre les propositions de : <a href="http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf" class="externe">http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf</a></p>
-</blockquote>
-<h3>Conditionnement</h3>
+<p>Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec $\mathbb{P}$ défini uniquement sur les entiers : $\mathbb{P}(\{n\}) = \frac{n}{2^{n+1}}$. On a alors $\mathbb{P}(A) = \sum_{x\in A} \mathbb{P}(\{x\})$. Cet exemple montre que, comme dans le cas fini, on n'a besoin que de peu d'évènements pour inférer toute la probabilité. Ce ne sont plus les singletons mais des suites que l'on appelle <strong>systèmes complets d'évènements</strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Soit $\mathbb{P}$ une probabilité sur $\Omega$. La <strong><em>probabilité de $A$ sachant $B$</em></strong> est définie (pour $A, B \subseteq \Omega$) telle que :</p>
-<div>
-$$
-\mathbb{P}_B(A) = \mathbb{P}(A \vert B)\coloneqq \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
-$$
+<p>Soit $\Omega$ un ensemble dénombrable. Un <strong>système complet d'évènements</strong> est une suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$ telle que $\bigcup_n A_n = \Omega$.</p>
 </div>
 </div>
-</div>
-<p>Cette probabilité décrit le fait que l'on ne considère que les évènements où $A$ est réalisé. C'est bien une probabilité :</p>
+<p>On a les propriétés suivantes dont les preuves sont triviales :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -222,8 +189,56 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit un univers $(\Omega, P)$ un espace probabilisé.</p>
-<p>Pour tout $A \subseteq \Omega$ la fonction $\mathbb{P}_A : \mathcal{P}(\Omega) \rightarrow [0, 1]$.</p>
+<p>Pour tout espace probabilisé $(\Omega, \mathbb{P})$ on a :</p>
+<ul>
+<li>$\mathbb{P}(\varnothing) = 0$</li>
+<li>$\mathbb{P}(\Omega) = 1$</li>
+<li>$\mathbb{P}(\Omega\backslash A) = 1 - \mathbb{P}(A)$</li>
+<li>$\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$</li>
+</ul>
+</div>
+</div>
+<h3>Indépendance</h3>
+<p>Une notion que l'on utilisera souvent est <strong><em>la notion d'indépendance entre 2 ensembles</em></strong>. L'ensemble $A$ est dit indépendant de l'ensemble $B$ si la probabilité d'être dans $A$ pour un élément de l'univers ($\frac{\mathbb{P}(A)}{\mathbb{P}(\Omega)}$) est la même que la probabilité d'être dans $A$ pour les éléments de $B$ ($\frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$). Comme $\mathbb{P}(\Omega) = 1$ on utilise la définition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $\mathbb{P}$ une probabilité sur $\Omega$. Les ensembles $A$ et $B$ sont dits <strong><em>indépendants</em></strong> si :</p>
+<div>
+$$
+\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
+$$
+</div>
+</div>
+</div>
+<h3>Conditionnement</h3>
+<p>Le pendant de l'indépendance est le conditionnement où on ne considère que les probabilités où un évènement donné est réalisé. Cela permet de répondre aux questions de type <em>&quot;quelle est la probabilité de $A$ sachant que $B$ est vrai ?&quot;</em>. On peut alors définir la notion ainsi :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $\mathbb{P}$ une probabilité sur $\Omega$ et $B$ un évènement tel que $\mathbb{P}(B) &gt; 0$. La <strong><em>probabilité de $A$ sachant $B$</em></strong> est définie telle que :</p>
+<div>
+$$
+\mathbb{P}_B(A) \coloneqq \mathbb{P}(A \vert B)\coloneqq \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
+$$
+</div>
+</div>
+</div>
+<p>C'est bien une probabilité :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $(\Omega, \mathbb{P})$ est un espace probabilisé alors $\mathbb{P}_B$ est une probabilité sur $\Omega$ quel que soit $B \subseteq \Omega$ tel que $\mathbb{P}(B) &gt; 0$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -243,15 +258,97 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>clair.</p>
+<ul>
+<li>$\mathbb{P}_B(\Omega) = \frac{\mathbb{P}(B\cap \Omega)}{\mathbb{P}(B)} = 1$.</li>
+<li>Pour toute suite $(A_n)$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$ la restriction de la suite $(A^\prime_n)_{n\in \mathbb{N}}$ définie telle que $A^\prime_n = A_n \cap B$ est également d'éléments deux à deux disjoints. De là : $\mathbb{P}_B(\bigcup\limits_n A_n) = \frac{\mathbb{P}((\bigcup\limits_n A_n) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup\limits_n (A_n \cap B))}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup\limits_n A^\prime_n)}{\mathbb{P}(B)} = \sum\limits_n \frac{\mathbb{P}(A^\prime_n)}{\mathbb{P}(B)} = \sum\limits_n \frac{\mathbb{P}(A_n \cap B)}{\mathbb{P}(B)} = \sum\limits_n \mathbb{P}_B(A_n)$</li>
+</ul>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD thm 4.8 et 4.9 de &quot;probabilité pour les non probabilistes</p>
-</blockquote>
+<p>On a alors les deux propositions suivantes qui vont servir de cadre à l'utilisation du conditionnement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Formule des probabilités totales)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $(\Omega, \mathbb{P})$ est un espace probabilisé et $(B_n)$ un système complet d'évènements, on a pour tout évènement $A$ :</p>
+<div>
+$$
+\mathbb{P}(A) = \sum\limits_n(\mathbb{P}(B_n)\cdot \mathbb{P}(A \mid B_n))
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<div>
+$$
+\mathbb{P}(A) = \mathbb{P}(A \cap \Omega) = \mathbb{P}(A \cap (\bigcup_n B_n)) = \mathbb{P}( \bigcup_n (A \cap B_n)) = \sum\limits_n\mathbb{P}(A \cap B_n) = \sum\limits_n(\mathbb{P}(B_n)\cdot \mathbb{P}(A \mid B_n))
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Théorème de Bayes)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $(\Omega, \mathbb{P})$ est un espace probabilisé, pour tous évènements $A$ et $B$ de probabilités non nulles on a :</p>
+<div>
+$$
+\mathbb{P}(A \mid B) =\frac{\mathbb{P}(A)\cdot \mathbb{P}(B \mid A)}{\mathbb{P}(B)}
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Par définition :</p>
+<div>
+$$
+\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B \mid A) = \mathbb{P}(B) \cdot \mathbb{P}(A \mid B)
+$$
+</div>
+</div>
+</details>     
+</div>
 <h2>Variables aléatoires</h2>
-<p>Les événements se manifestent via des <strong><em>variable aléatoire</em></strong>. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.</p>
+<p>Les événements se manifestent via des <strong><em>variables aléatoires</em></strong>. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.</p>
 <h3>Définitions et notations</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -259,13 +356,13 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Une <strong><em>variable aléatoire</em></strong> $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :</p>
+<p>Une <strong><em>variable aléatoire</em></strong> $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($\mathcal{U}$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :</p>
 <ul>
-<li>$\mathbb{P}\{X = u\} \coloneqq \mathbb{P}(X^{-1}(\{u\}))$</li>
-<li>$\mathbb{P}\{X \in U\} \coloneqq \mathbb{P}(X^{-1}(U))$,</li>
-<li>$\mathbb{P}\{X \in U \, , \, Y \in V\} \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)</li>
+<li>${\Pr}[X = u] \coloneqq \mathbb{P}(X^{-1}(\{u\}))$</li>
+<li>$\Pr[X \in U] \coloneqq \mathbb{P}(X^{-1}(U))$,</li>
+<li>$\Pr[X \in U \, , \, Y \in V] \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)</li>
 </ul>
-<p>On dira que $X(\omega) = u$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\{X = u\}$.</p>
+<p>On dira que $X(\omega) = u$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\Pr[X = u]$.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -299,24 +396,85 @@ $$
 <div class="pl-8 mr-8">
 <div>
 $$
-{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \mathbb{P}\{(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1}(x)\}
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
 $$
 </div>
 </div>
 </div>
+<p>Si la notation ci-dessus est explicite elle est souvent lourde à écrire. On se permettra donc souvent les abus de notation suivants :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
 <p>S'il n'y a pas ambiguïté, on se permettra même d'écrire :</p>
 <ul>
 <li>${\Pr}[x = k]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$</li>
 <li>${\Pr}[X = k]$ si l'on veut expliciter la variable aléatoire $X$</li>
 </ul>
-<p>Nos notations permettent d'étendre le conditionnement aux variables aléatoires :</p>
+</div>
+</div>
+<p>Enfin, pour nos cas d'application on utilisera toujours ces types de variables aléatoires :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour deux expression $A$ et $B$ on définit le conditionnement come étant :</p>
+<p>Une variable aléatoire est dite :</p>
+<ul>
+<li><strong><em>réelle</em></strong> si elle prend ses valeurs dans $\mathbb{R}$</li>
+<li><strong><em>simple</em></strong> si elle prend un nombre fini de valeurs,</li>
+<li><strong><em>discrète</em></strong> si elle prend au plus un nombre dénombrable de valeurs.</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on parlera de :</p>
+<ul>
+<li>variable aléatoire dans le cours, elle sera réelle et simple.</li>
+<li>variable aléatoire discrète, elle sera de plus réelle.</li>
+</ul>
+</div>
+</div>
+<p>Les variables aléatoires discrètes s'écrivent trivialement comme une somme d'indicatrices :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire discrète de valeurs $(x_i)$ ($i \in \mathbb{N}$). On peut l'écrire sous la forme :</p>
+<div>
+$$
+X = \sum\limits_i x_i \mathbb{1}_{X = x_i}
+$$
+</div>
+<p>Réciproquement, si $(A_i)$ est un système complet d'évènements d'un espace probabilisé $(\Omega, \mathbb{P})$, et $(x_i)$ une suite dénombrable de réels (pas forcément distincts) alors la fonction :</p>
+<div>
+$$
+X = \sum\limits_i x_i \mathbb{1}_{A_i}
+$$
+</div>
+<p>est une variable aléatoire discrète.</p>
+</div>
+</div>
+<p>Nos notations permettent d'étendre les définitions des évènements aux variables aléatoires.</p>
+<h3>Conditionnement</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Pour deux expressions $A$ et $B$ on définit le <strong><em>conditionnement</em></strong> comme étant :</p>
 <div>
 $$
 {\Pr}[A \,\vert\, B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
@@ -331,7 +489,7 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Une variable aléatoire ets dite <strong><em>uniforme</em></strong> si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{U} \mathcal{U}$.</p>
+<p>Une variable aléatoire est dite <strong><em>uniforme</em></strong> si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{U} \mathcal{U}$.</p>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -340,7 +498,7 @@ $$
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>Deux variables aléatoires $X : \Omega \rightarrow \mathcal{U}$ et $Y : \Omega \rightarrow \mathcal{U}'$ sur le même espace probabilisé sont <strong><em>indépendantes</em></strong> si les évènements qui les dirigent sont eux mêmes indépendants, c'est à dire que $X^{-1}(U) \cap Y^{-1}(U') = \varnothing$ quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$.</p>
+<p>Deux variables aléatoires $X : \Omega \rightarrow \mathcal{U}$ et $Y : \Omega \rightarrow \mathcal{U}'$ sur le même espace probabilisé sont <strong><em>indépendantes</em></strong> si les évènements qui les dirigent sont eux-mêmes indépendants, c'est-à-dire que $\mathbb{P}(X^{-1}(U) \cap Y^{-1}(V)) = \mathbb{P}(X^{-1}(U)) \cdot \mathbb{P}(Y^{-1}(V))$ quels que soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$.</p>
 </div>
 </div>
 <p>Comme on a rarement accès à l'espace probabilisé sous-jacent, ce qui va nous intéresser lorsque deux variables aléatoires sont indépendantes c'est la conséquence suivante (triviale) :</p>
@@ -351,23 +509,14 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour deux variables aléatoires indépendantes $X$ et $Y$ prenant leurs valeurs dans $\mathcal{U}$ et $\mathcal{U}'$ respectivement, on a quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$ :</p>
+<p>Pour deux variables aléatoires indépendantes $X$ et $Y$ prenant leurs valeurs dans $\mathcal{U}$ et $\mathcal{U}'$ respectivement, on a quels que soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$ :</p>
 <div>
 $$
-\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']
+\Pr[X \in U, Y \in V] = \Pr[X \in U] \cdot \Pr[Y \in V]
 $$
 </div>
 </div>
 </div>
-<h3>Espérance</h3>
-<blockquote>
-<p>TBD espérance $\mathbb{E}[X]$ (vous verrez aussi $\mathbb{E}(X)$ ou même $\mathbb{E}X$. Nous on utilise les crochet pour rester cohérente avec notre notation pour les probabilités de variables aléatoires)</p>
-<ul>
-<li>linéarité de l'espérance</li>
-<li>il existe 1 qui vaut l'espérance
-E[X] = \sumP(x≥k) = \sum k P(X = k)</li>
-</ul>
-</blockquote>
 <h3>Exemple</h3>
 <p>En sécurité, on aura typiquement :</p>
 <ul>
@@ -375,7 +524,7 @@ E[X] = \sumP(x≥k) = \sum k P(X = k)</li>
 <li>probabilité uniforme</li>
 <li>la variable aléatoire associée est le chiffre : $E(k, m)$</li>
 </ul>
-<p>Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$ :</p>
+<p>Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueur $L$ :</p>
 <ul>
 <li>l'univers est tout ce qui arrive : $\Omega = \{0, 1\}^L \times \{0, 1\}^L$ et correspond aux deux mots</li>
 <li>probabilité uniforme</li>
@@ -386,20 +535,234 @@ E[X] = \sumP(x≥k) = \sum k P(X = k)</li>
 </ul>
 </li>
 </ul>
-<h2>Fonction génératrice</h2>
-<blockquote>
-<p>TBD utiliser les fct génératrice pour la combinatoire.</p>
-</blockquote>
-<h2>Méthode probabiliste</h2>
+<h2>Espérance</h2>
+<p>La notion d'espérance en probabilité généralise la notion de moyenne.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire de valeurs $x_i$ ($1\leq i \leq p$). <strong><em>L'espérance de $X$</em></strong> est définie telle que :</p>
+<div>
+$$
+\mathbb{E}[X] = \sum\limits_{i=1}^px_i\cdot \Pr[X=x_i]
+$$
+</div>
+</div>
+</div>
+<p>Cette définition se généralise <em>mutatis mutandis</em> aux variables aléatoires discrètes si la somme converge :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire discrète de valeurs $(x_i)$ ($i \in \mathbb{N}$).</p>
+<p>Si $\sum\limits_{i=0}^{+\infty} x_i\cdot \Pr[X=x_i]$ est définie, on l'appelle <strong><em>espérance de $X$</em></strong> et on la note $\mathbb{E}[X]$.</p>
+</div>
+</div>
+<p>Une conséquence immédiate, qui généralise un résultat similaire pour la moyenne, mais que l'on utilise souvent lorsque l'on fait des preuves par la méthode probabiliste est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour toute variable aléatoire $X$ (réelle et simple), si $\mathbb{E}[X] = M$, alors il existe une valeur de $X$ plus grande ou égale à $M$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si toutes les valeurs de $X$ étaient strictement plus petites que $M$, on aurait :</p>
+<div>
+$$
+\mathbb{E}[X] = \sum\limits_{i=1}^px_i\cdot \Pr[X=x_i] < \sum\limits_{i=1}^pM\cdot \Pr[X=x_i] = M \cdot \sum\limits_{i=1}^p \Pr[X=x_i] = M
+$$
+</div>
+<p>ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<h3>Partitionnement de l'espace</h3>
+<p>Les deux propositions suivantes sont très utilisées :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire (discrète admettant une espérance) que l'on écrit sous la forme $X = \sum_i a_i\mathbb{1}_{A_i}$ (les $a_i$ ne sont pas forcément distincts) où $(A_i)$ est une partition (système complet d'évènements) de $\Omega$. Alors :</p>
+<div>
+$$
+\mathbb{E}[X] = \sum\limits_{i} (a_i\cdot \mathbb{P}(A_i))
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si la partition $(A_i)$ est finie ou dénombrable on peut rassembler ceux qui ont même valeur pour former une partition $(A'_i)$ où toutes les valeurs sont distinctes.</p>
+</div>
+</details>     
+</div>
+<p>Une variation de la proposition précédente pour des variables aléatoires prenant des valeurs entières, très utilisée en pratique :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire (discrète admettant une espérance) prenant ses valeurs dans $\mathbb{N}$. On a :</p>
+<div>
+$$
+\mathbb{E}[X] = \sum\limits_{i \geq 0} i \cdot \Pr[X = i] = \sum\limits_{i \geq 1}\Pr[X \geq i]
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La première égalité est claire puisque les $X^{-1}(\{ i \})$ forment une partition de $\Omega$. Pour la seconde, on remarque que $i \cdot \Pr[X = i] = \sum_{1 \leq k \leq i} \Pr[X = i]$, et on échange les sommes : $\sum_{i \geq 0} \sum_{1 \leq k \leq i} \Pr[X = i] = \sum_{k \geq 1} \sum_{i \geq k} \Pr[X = i] = \sum_{k \geq 1}\Pr[X \geq k]$.</p>
+</div>
+</details>     
+</div>
+<h3>Linéarité de l'espérance</h3>
+<p>Sûrement la plus utilisée des propriétés de l'espérance. On ne démontrera ici que le cas qui nous est utile, à savoir pour les variables aléatoires simples, mais il se généralise au cas discret moyennant quelques résultats de convergence de séries infinies que nous ne verrons pas dans ce cours.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $X$ et $Y$ deux variables aléatoires. On a :</p>
+<div>
+$$
+\mathbb{E}[\alpha \cdot X + \beta\cdot Y] = \alpha \cdot \mathbb{E}[X] +\beta \cdot \mathbb{E}[Y]
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On note $X$ et $Y$ avec leurs fonctions indicatrices :</p>
 <ul>
-<li>simple</li>
-<li>avec alteration</li>
-<li>lemme local de Lova</li>
+<li>$X = \sum\limits_i x_i \mathbb{1}_{\{X = x_i\}}$</li>
+<li>$Y = \sum\limits_j y_j \mathbb{1}_{\{Y = y_j\}}$</li>
 </ul>
-<blockquote>
-<p>TBD trouver un exemple pas graphe.</p>
-</blockquote>
+<p>On a alors que la variable aléatoire :</p>
+<div>
+$$
+\alpha \cdot X = \sum\limits_i (\alpha\cdot x_i) \mathbb{1}_{\{X = x_i\}}
+$$
+</div>
+<p>est telle que :</p>
+<div>
+$$
+\mathbb{E}[\alpha \cdot X] = \alpha \cdot \mathbb{E}[X]
+$$
+</div>
+<p>Il nous reste à montrer que pour deux variables aléatoires $X$ et $Y$ telles que :</p>
+<ul>
+<li>$X = \sum\limits_i x_i \mathbb{1}_{\{X = x_i\}}$</li>
+<li>$Y = \sum\limits_j y_j \mathbb{1}_{\{Y = y_j\}}$</li>
+</ul>
+<p>On a bien $\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]$ pour conclure.</p>
+<p>Pour cela on considère la variable aléatoire $X+Y = \sum\limits_{i, j} (x_i + y_j) \mathbb{1}_{\{X = x_i\} \cap \{Y = y_j\}}$. C'est bien une variable aléatoire puisque les $\{X = x_i\} \cap \{Y = y_j\}$ forment une partition de l'univers. Les $x_i + y_j$ ne sont pas forcément distincts mais on a vu juste avant que ce n'est pas grave.</p>
+<p>On peut alors calculer son espérance :</p>
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}[X+Y] &=& \sum_{i, j}(x_i + y_j) \Pr[X = x_i, Y=y_j]\\
+&=& \sum_{i}\sum_{j}(x_i + y_j) \Pr[X = x_i, Y=y_j]\\
+&=& \sum_{i}(x_i \cdot (\sum_{j}\Pr[X = x_i, Y=y_j])) + \sum_{j}(y_j \cdot (\sum_{i}\Pr[X = x_i, Y=y_j]))\\
+&=& \sum_{i}(x_i \cdot \Pr[X = x_i]) + \sum_{j}(y_j \cdot \Pr[Y=y_j])\\
+&=& \mathbb{E}[X] + \mathbb{E}[Y]\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<!-- TBD à ajouter lorsque l'on en aura besoin
 
+## Fonction génératrice
+
+> TBD utiliser les fct génératrice pour la combinatoire.
+
+## Méthode probabiliste
+
+- simple
+- avec altération
+- lemme local de Lovász
+
+> TBD trouver un exemple pas graphe.
+ 
+ -->
 
 </article>
     </main>
