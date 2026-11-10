@@ -542,7 +542,7 @@ Soit $G$ un graphe aléatoire à $k$ sommets. Soit $X(G)$ la variable aléatoire
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(X) &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr(A \text{soit une clique}) + \Pr(A \text{soit un stable}))\\
+\mathbb{E}(X) &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr[A \text{soit une clique}] + \Pr[A \text{soit un stable}])\\
 &=& \sum\limits_{A \text{ ensemble de taille }n} 2 \cdot \frac{1}{2^{n(n-1)/2}}\\
 &=& \binom{k}{n} 2 \cdot {2^{1-n(n-1)/2}}\\
 \end{array}

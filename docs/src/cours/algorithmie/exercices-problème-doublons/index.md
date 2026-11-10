@@ -100,7 +100,7 @@ Créez une fonction python qui devra rendre une entrée du problème. Sa signatu
 doppelganger_entrée(n: int) → []int
 ```
 
-Vous ferez en sorte que la probabilité $\Pr(T[i] =  x)$ soit de $1/(n-1)$ quelques soient $x$ et $i$.
+Vous ferez en sorte que la probabilité $\Pr[T[i] =  x]$ soit de $1/(n-1)$ quelques soient $x$ et $i$.
 
 {% endfaire %}
 
