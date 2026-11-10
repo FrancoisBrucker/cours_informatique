@@ -886,10 +886,17 @@ $$
 </div>
 </details>     
 </div>
+<p>On peut maintenant s'atteler au calcul des complexités min, max et en moyenne de l'algorithme. Pour cela on note $X_k(T)$ le nombre d'opérations élémentaire effectué par l'exécution de <code class="language-">k_select(T, k)</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez la complexité minimale de l'algorithme <code class="language-">k_select(T: []int, k: int) → int</code> et des exemples pour lesquels elle est réalisée.</p>
+<p>Montrez que pour un tableau $T$ et un en entier $k$, s'il y a une récursion on a :</p>
+<div>
+$$
+X_k(T) = \Theta(T.\text{\small longueur}) + X_{k'}(T')
+$$
+</div>
+<p>Avec $T'$ un tableau tel que $T'.\text{\small longueur} &lt; T.\text{\small longueur}$ et $k' \leq k$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -909,7 +916,40 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La boucle affectant la variable <code class="language-">inf</code> ainsi que la création du tableau <code class="language-">T'</code> est en $\mathcal{O}(n)$ quels que soient <code class="language-">T</code> et <code class="language-">k</code>. La complexité min est ainsi plus grande que $\mathcal{O}(n)$.</p>
+<p>La boucle affectant la variable <code class="language-">inf</code> ainsi que la création du tableau <code class="language-">T'</code> est en $\Theta(T.\text{\small longueur})$ quels que soient <code class="language-">T</code> et <code class="language-">k</code>.</p>
+<p>Puis on effectue une récursion sur :</p>
+<ul>
+<li>un tableau de longueur strictement plus petit que $T$ puisque $T[0]$ n'y est pas</li>
+<li>un entier plus petit ou égal à $k$.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Cette équation nous permet de déduire les complexités minimales et maximales de l'algorithme :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la complexité minimale de l'algorithme <code class="language-">k_select(T: []int, k: int) → int</code>est en $\Theta(n)$ et donnez un exemple pour lequel elle est réalisée pour un $k$ donné.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La boucle affectant la variable <code class="language-">inf</code> ainsi que la création du tableau <code class="language-">T'</code> est en $\Theta(n)$ quels que soient <code class="language-">T</code> et <code class="language-">k</code>. La complexité min est ainsi plus grande que $\Theta(n)$.</p>
 <p>De plus si le tableau <code class="language-">T</code> contient exactement $k-1$ éléments strictement plus petits que <code class="language-">T[0]</code> il n'y a pas de récursion, c'est bien la complexité minimale.</p>
 <p>Un exemple simple pour lequel cette complexité arrive est lorsque $T[1:] = [2, 4, ... , 2p]$ et que $T[0] = 2k -1$.</p>
 </div>
@@ -918,13 +958,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que la complexité maximale de l'algorithme <code class="language-">k_select(T: []int, k: int) → int</code> $C(n, k)$ respecte l'équation suivante :</p>
-<div>
-$$
-C(n, k) = \mathcal{O}(n) + C(n', k')
-$$
-</div>
-<p>Avec $n' &lt; n$ et $k' \leq k$ les paramètres de la récursion.</p>
+<p>Montrez que la complexité maximale de l'algorithme <code class="language-">k_select(T: []int, k: int) → int</code> est en $\Theta(n^2)$ et donnez un exemple pour lequel elle est réalisée pour un $k$ donné.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -944,50 +978,16 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La boucle affectant la variable <code class="language-">inf</code> ainsi que la création du tableau <code class="language-">T'</code> est en $\mathcal{O}(n)$ quels que soient <code class="language-">T</code> et <code class="language-">k</code>. Le reste des opérations de l'algorithme est en $\mathcal{O}(1)$. La complexité de l'algorithme est alors en :</p>
-<div>
-$$
-C(n, k) = \mathcal{O}(n) + C(n', k')
-$$
-</div>
-<p>Avec $n' &lt; n$ et $k' \leq k$ les paramètres de la récursion.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Déduire de l'exercice précédent la complexité maximale de l'algorithme <code class="language-">k_select(T: []int, k: int) → int</code> et des exemples pour lesquels elle est réalisée.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La formule récursive précédente montre que la complexité $C(n, k)$ de l'algorithme sera la somme des longueurs des différents tableaux appelés récursivement. Comme cette longueur diminue strictement à chaque appel cette somme est en $\mathcal{O}(n^2)$.</p>
+<p>La formule récursive précédente montre que pur un tableau $T$ donné, $X(T, k)$ sera la somme des longueurs des différents tableaux appelés récursivement. Comme cette longueur diminue strictement à chaque appel cette somme est inférieure à $\sum_{i = n-1}^1\Theta(i) = \Theta(n^2)$.</p>
 <p>Un exemple simple pour lequel cette complexité arrive est lorsque $T[:-1] = [2p, 2(p-1), ... , 2]$ et que $T[-1] = 2k -1$.</p>
 </div>
 </details>     
 </div>
-<p>Notre algorithme est très utilisé en pratique car sa complexité en moyenne est très faible. Nous allons ici juste faire fonctionner notre intuition pour en estimer la complexité en moyenne.</p>
-<p>Pour ce calcul, on supposera (comme précédemment) que $T$ est une permutation aléatoire de $[1 .. n]$.</p>
+<p>Les complexité maximale et minimale ne dépendent que de la longueur $n$ du tableau, pas de $k$. On va montrer que ceci est aussi vrai lorsque l'on cherche la complexité en moyenne de l'algorithme. Pour les calculs en moyenne, on supposera (comme précédemment) que $T$ est une permutation aléatoire de $[1 .. n]$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Lorsque $T$ est une permutation aléatoire de $[1 .. n]$, montrez que la longueur moyenne du tableau de la récursion vaut :</p>
+<p>Lorsque $T$ est une permutation aléatoire de $[1 .. n]$, montrez que la moyenne de la longueur $n'$ du tableau de la récursion vaut :</p>
 <div>
 $$
 \mathbb{E}[n'] = \frac{n-1}{2} + \frac{(k-1)(n-k)}{n}
@@ -1015,7 +1015,7 @@ $$
 <p>La longueur $n'$ va dépendre de la valeur de <code class="language-">T[0]</code> :</p>
 <ul>
 <li>si <code class="language-">T[0] &lt; k</code> alors <code class="language-">n' = n - T[0]</code></li>
-<li>si <code class="language-">T[0] = k</code> alors <code class="language-">n' = 0</code></li>
+<li>si <code class="language-">T[0] = k</code> il n'y a pas de récursion</li>
 <li>si <code class="language-">T[0] &gt; k</code> alors <code class="language-">n' = T[0] - 1</code></li>
 </ul>
 <p>Comme $P(T[0] = i) = 1/n$ pour tout $i$ on a :</p>
@@ -1032,20 +1032,181 @@ $$
 </div>
 </details>     
 </div>
-<p>On déduit de l'exercice précédent que $E[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane.</p>
-<p>Si $C_{m}(n, k)$ est la complexité moyenne on a alors l'inégalité :</p>
+<p>On déduit de l'exercice précédent que $\mathbb{E}[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane, et vaut alors $\frac{3n}{4}$. Ceci nous donne une idée pour calculer la complexité en moyenne de notre algorithme. À $k$ fixé et pour notre modèle probabiliste, si on pose $C(n, k) \coloneqq \mathbb{E}(X_k)$ comme étant la complexité en moyenne à $k$ fixe pour une permutation de $[1 .. n]$. La remarque précédente nous incite à penser que :</p>
+<ul>
+<li>$C(n, k)$ va être maximum pour $k = n/2$</li>
+<li>qu'en moyenne la récursion va conserver un tableau de longueur $3n/4$.</li>
+</ul>
+<p>Posons $C(n) \coloneqq \max_k(C(n, k))$ et montrons le.</p>
+<p>On va commencer par démontrer deux résultats intermédiaires qui vont nous permettre de conclure rapidement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que $C(n)$ est une fonction croissante.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez commencer par montrer que $C(n+1, k) \geq C(n, k)$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a l'équation $X_k(T) = \Theta(T.\text{\small longueur}) + X_{k'}(T')$, mais on pourrait compter précisément le nombre d'opérations et avoir l'équation exacte : $X_k(T) = \alpha \cdot (T.\text{\small longueur}) + \beta + X_{k'}(T')$.</p>
+<p>De là :</p>
 <div>
 $$
-C_{m}(n, k) \leq \mathcal{O}(n) + C_{m}(3n/4, k')
+\begin{array}{lcl}
+C(n+1, k) &=  & \alpha \cdot (n+1) + \beta + \frac{1}{n+1}(\sum_{i = 1}^{k-1}C(n-i, k-i) + \sum_{i = k+1}^{n}C(i, k))\\
+&=& \alpha \cdot (n+1) + \beta + \frac{1}{n+1}(n \cdot (C(n, k) - \alpha \cdot (n) - \beta) + C(n, k))\\
+&=& \alpha \cdot (n+1) + \beta - \frac{n}{n+1} \alpha - \frac{1}{n+1} \cdot \beta + C(n, k)\\
+&=& \alpha \cdot n - \frac{1}{n+1} \alpha + \frac{n}{n+1} \cdot \beta + C(n, k)\\
+&\geq&  C(n, k)\\
+\end{array}
 $$
+</div>
+<p>Puis comme $C(n, k)= \max_k C(n, k)$, il existe $k^\star$ tel que $C(n)= C(n, k^\star)$ ce qui permet de conclure puisque : $C(n)= C(n, k^\star) \leq C(n+1, k^\star) \leq C(n+1)$</p>
+</div>
+</details>     
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Déduire de la question précédente que la complexité en moyenne de l'algorithme pour le calcul de la médiane respecte l'inégalité :</p>
+<p>Montrez que pour tout $1\leq k \leq n$ :</p>
 <div>
 $$
-C_{m}(n, k) = \mathcal{O}(n)
+\vert \{ n - i \leq \frac{3n}{4} \mid 1 \leq i \leq k - 1\} \vert + \vert \{ i \leq \frac{3n}{4} \mid k \leq i \leq n\} \vert \geq \frac{n}{2}
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>Si $k &lt; \frac{n}{4}$ ou $k &gt; \frac{3n}{4}$, alors tous les $i$ tels que $\frac{n}{4} \leq i \leq \frac{3n}{4}$ seront soit dans le premier ensemble soit dans le deuxième. Comme il y a $\frac{n}{2}$ possibles, la condition est vérifiée.</li>
+<li>Si $\frac{n}{4} \leq k \leq \frac{3n}{4}$ les $i$ tels que $\frac{n}{4} \leq i \leq k$ seront dans le premier ensemble et les $i$ tels que $k \leq i \leq \frac{3n}{4}$ seront dans le second.
+Comme il y a $\frac{n}{2}$ possibles, la condition est vérifiée.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>On peut maintenant montrer l'équation de récurrence principale :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Montrez que l'on a l'équation :</p>
+<div>
+$$
+C(n) \leq \Theta(n) + C(\frac{3n}{4})
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Reprenons la définition de $C(n, k)$ :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n, k) &=& \mathbb{E}(X_k)\\
+&=& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i, k-i) + \sum_{i = k+1}^{n-1}C(i, k))\\
+&\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k+1}^{n-1}C(i))\\
+&\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k}^{n}C(i))\\
+\end{array}
+$$
+</div>
+<p>Les deux résultats précédant nous montrent alors que :</p>
+<ul>
+<li>plus de la moitié des $n$ valeurs $C(n-i)$ ou $C(i)$ sont inférieures à $C(\frac{3n}{4})$,</li>
+<li>la moitié restante est inférieure à $C(n)$.</li>
+</ul>
+<p>Cette méga astuce nous permet d'écrire :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n, k) &\leq& \Theta(n) + \frac{1}{2}\cdot C(\frac{3n}{4}) + \frac{1}{2}\cdot C(n)\\
+\end{array}
+$$
+</div>
+<p>Cette équation étant vraie quelque soit $k$ on a :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &\leq& \Theta(n) + \frac{1}{2}\cdot C(\frac{3n}{4}) + \frac{1}{2}\cdot C(n)\\
+\end{array}
+$$
+</div>
+<p>Et donc :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &\leq& \Theta(n) + C(\frac{3n}{4})\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Et je vous laisse conclure ce (magnifique) exercice :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduire de la question précédente que  :</p>
+<div>
+$$
+C(n) = \Theta(n)
 $$
 </div>
 </div>
@@ -1071,19 +1232,14 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-C_{m}(n, k) &\leq& \mathcal{O}(n) + C_{m}(3n/4, k')\\
-&\leq& \mathcal{O}(n) +\mathcal{O}(3n/4) + C_{m}((3/4)^2n, k'')\\
-&\leq& \mathcal{O}(n) + \dots + \mathcal{O}(n\cdot(3/4)^i) + \dots + \mathcal{O}(n\cdot(3/4)^{\log_{4/3}(n)}) + C_{m}(1, 1)\\
-&\leq& \mathcal{O}(n\sum_{0 \leq i\leq \log_{4/3}(n)} (3/4)^i) \\
+C(n) &\leq& \Theta(n) + C(\frac{3n}{4})\\
+&\leq& \Theta(n) + \Theta(\frac{3n}{4}) + C(n\cdot (\frac{3}{4})^2)\\
+&\leq& \Theta(n) + \dots +\Theta(n\cdot (\frac{3}{4})^i)  + \dots + \Theta(n\cdot (\frac{3}{4})^{\log_{4/3}(n)}) + C(1)\\
+&\leq& \Theta(n\sum\limits_{i = 0}^{\log_{4/3}(n)} (3/4)^i) \\
 \end{array}
 $$
 </div>
-<p>On peut maintenant utiliser <a href="#s%C3%A9rie-g%C3%A9om%C3%A9trique">le résultat précédent</a> qui permet de borner par 4 la somme $\sum_{i = 0}^{\log_{4/3}(n)} (3/4)^i$ et de conclure que :</p>
-<div>
-$$
-C_{m}(n, k) \leq \mathcal{O}(n)
-$$
-</div>
+<p>On peut maintenant utiliser <a href="#s%C3%A9rie-g%C3%A9om%C3%A9trique">le résultat précédent</a> qui permet de borner par 4 la somme $\sum_{i = 0}^{\log_{4/3}(n)} (3/4)^i$ pour avoir : $C(n) \leq \Theta(n)$. Comme de plus $C(n) \geq \Theta(n)$ on a bien l'égalité demandée.</p>
 </div>
 </details>     
 </div>
@@ -1094,6 +1250,28 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est une autre histoire que l'on verra ensemble bien plus tard mais il est totalement possible de choisir judicieusement un élément du tableau pour garantir que même la complexité maximale soit linéaire en la taille du tableau.</p>
+</div>
+</div>
+<p>L'astuce de la preuve de la proposition précédente est magnifique car elle permet de se ramener à une somme que l'on sait calculer.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>La solution d'une équation de la forme suivante (avec $\alpha &lt; 1$) :</p>
+<div>
+$$
+C(n) = \theta(n) + C(\alpha \cdot n)
+$$
+</div>
+<p>est :</p>
+<div>
+$$
+C(n) = \theta(n)
+$$
+</div>
+<p>Les algorithmes récursifs pour lesquels on peut garantir cette relations pour leurs complexité maximale ou en moyenne sont donc très performant !</p>
 </div>
 </div>
 

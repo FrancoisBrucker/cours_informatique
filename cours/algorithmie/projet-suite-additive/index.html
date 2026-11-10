@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/">Complexité de problèmes algorithmiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/">Problèmes liés à l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/projet-suite-additive/">Projet Suite additive</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-suite-additive/">Projet Suite additive</a>
 
 </div>
 </div>
@@ -96,7 +96,7 @@
     
   
 
-  <p><a href="../projet-exponentiation/%C3%A9tude-algorithmique/#suite-multiplicative">Les suite multiplicatives</a> vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les <em>suite additives</em> :</p>
+  <p><a href="../%C3%A9tude-algorithmique/#suite-multiplicative">Les suite multiplicatives</a> vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les <em>suite additives</em> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -120,33 +120,118 @@
 <p>Comme les exposants se composent de manière additive, les problèmes des suites additives et multiplicatives sont identiques.</p>
 </div>
 </div>
-<p>Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici uniquement donner quelques propriétés de $l(n)$. Le lecteur curieux pourra se reporter volume 2 de <em>The Art of Programming</em> de Knuth pour une histoire détaillée de $l(n)$.</p>
-<p>Nous allons voir ici quelques algorithmes pour calculer des suites additives en implémentant nos algorithme en python.</p>
+<p>Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici utiliser l'approche constructive en créant des algorithmes permettant de générer toutes les possibilités. Le lecteur curieux pourra se reporter volume 2 de <em>The Art of Programming</em> de Knuth pour une histoire détaillée de $l(n)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On vous demandera ici toujours d'écrire du code python pour résoudre et tester vos problèmes. Le but de ce projet est d'expérimenter et de voir les différences entre la solution optimale et celle donnée par l'exponentiation indienne.</p>
+<p>Testez vos algorithmes en python. Le but de ce projet est d'expérimenter et de voir les différences entre la solution optimale et celle donnée par l'exponentiation indienne.</p>
 </div>
 </div>
 <h2>Utilitaires</h2>
 <h3>Vérification</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez une fonction qui prend une liste en paramètre et rend <code class="language-">True</code> si la liste en paramètre est additive et <code class="language-">False</code> sinon.</p>
-<p>Vous pourrez tester sur les suites suivantes :</p>
+<p>Écrivez un algorithme qui prend un tableau d'entiers en paramètre et rend <code class="language-">Vrai</code> s'il est additif et <code class="language-">Faux</code> sinon.</p>
+<p>Vous pourrez tester sur les tableaux suivants :</p>
 <ul>
-<li><code class="language-">[2, 4]</code> (non)</li>
-<li><code class="language-">[1, 2, 3, 4]</code> (oui)</li>
-<li><code class="language-">[1, 2, 4, 7]</code> (non)</li>
+<li><code class="language-">[2, 4]</code> : non car $T[1] \neq T[0] + T[0]$</li>
+<li><code class="language-">[1, 2, 3, 4]</code> : oui car :
+<ul>
+<li>$T[1] = T[0] + T[0]$,</li>
+<li>$T[2] = T[1] + T[0]$</li>
+<li>$T[3] = T[1] + T[1]$</li>
+</ul>
+</li>
+<li><code class="language-">[1, 2, 4, 7]</code> : non car $T[3]$ n'est la somme d'aucuns de ses prédécesseurs.</li>
 </ul>
 </div>
 </div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Un tableau $T$
+Il faut à chaque indice vérifier si on peut générer $T[i]$ en sommant deux valeurs d'indices précédent :</p>
+<div>
+$$
+T[i] = 
+\begin{cases}
+1 & \text{si }i = 0\\
+T[j] + T[k] \text{avec } j \leq k < i
+\end{cases}
+$$
+</div>
+<p>Ce qui peut se faire avec deux boucles <code class="language-">pour chaque</code> imbriquées :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">est_une_suite_additive</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">≠</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">ok</span> <span class="token type class-name">bool</span></span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> u<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">ok</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
+        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">i</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+            <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">k</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">j</span>  <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">i</span> <span class="token punctuation">[</span><span class="token punctuation">:</span>
+                Si <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">k</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    <span class="token variable parameter">ok</span> <span class="token operator">=</span> True
+
+        <span class="token keyword">si</span> <span class="token variable parameter">ok</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_suite_additive</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ok <span class="token operator">=</span> <span class="token boolean">False</span>
+        <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    ok <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token keyword">if</span> <span class="token keyword">not</span> ok<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">True</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Cet algorithme ne rend pas</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -161,8 +246,8 @@
 </ul>
 <p>Vous pourrez tester que la fonction rende :</p>
 <ul>
-<li>$[None, (0, 0), (0, 1), (0, 2)]$ pour $[1, 2, 3, 4]$</li>
-<li>$[None, (0, 0), (1, 1), (2, 2), (0, 0), (3, 4)]$ pour $[1, 2, 4, 8, 2, 10]$</li>
+<li><code class="language-">[None, (0, 0), (0, 1), (0, 2)]</code> pour <code class="language-">[1, 2, 3, 4]</code></li>
+<li><code class="language-">[None, (0, 0), (1, 1), (2, 2), (0, 0), (3, 4)]</code> pour <code class="language-">[1, 2, 4, 8, 2, 10]</code></li>
 </ul>
 </div>
 </div>
@@ -252,7 +337,6 @@
 </div>
 </div>
 <h2>Algorithme exact</h2>
-<h3>Agrandir une suite additive</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
