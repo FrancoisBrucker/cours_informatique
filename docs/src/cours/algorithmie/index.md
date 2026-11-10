@@ -19,10 +19,13 @@ eleventyComputed:
 
 <!-- TBD 
 
+- proba et espérance. Homogénéiser les notations.
+- proba dans complexité en moyenne. espérance définition et calculs
+
 Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
 
 dans la partie 4 :
-- un tableau est come un str. 
+- un tableau est comme un str. 
 - il faut ajouter un type adresse : pointeur.
 
 -->
@@ -63,6 +66,7 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 >   ne pas parler de complexité amortie. Juste faire calcul avec augmentation
 
 > Partie IV : structure de données linéaires
+> ajouter [suites additive](./projet-suite-additive/) comme projet sur les matrices et les listes de listes.
 > 
 > Partie V : complexité amortie
 > - complexité amortie
@@ -85,14 +89,6 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 > Partie VIII : Structure des problèmes algorithmique
 > TBD en chantier : les parties I et II migrent vers les liens ci-dessus
 
-
-### Problème du tri
-
-<!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
-
-{% aller %}
-[Problème du tri](./problème-tris)
-{% endaller %}
 
 
 ### Complexité d'un problème

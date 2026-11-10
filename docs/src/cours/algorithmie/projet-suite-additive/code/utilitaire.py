@@ -1,12 +1,12 @@
-def est_une_suite_additive(u):
+def est_une_suite_additive(T):
 
-    if u[0] != 1:
+    if T[0] != 1:
         return False
-    for i in range(1, len(u)):
+    for i in range(1, len(T)):
         ok = False
         for k in range(i):
             for l in range(k, i):
-                if u[i] == u[k] + u[l]:
+                if T[i] == T[k] + T[l]:
                     ok = True
 
         if not ok:

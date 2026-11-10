@@ -529,11 +529,37 @@ On suppose la propriété vraie pour une longueur de $n$ et on considère un tab
 
 {% enddetails %}
 
+On peut maintenant s'atteler au calcul des complexités min, max et en moyenne de l'algorithme. Pour cela on note $X_k(T)$ le nombre d'opérations élémentaire effectué par l'exécution de `k_select(T, k)`{.language-}. 
+
 {% exercice %}
-Donnez la complexité minimale de l'algorithme `k_select(T: []int, k: int) → int`{.language-} et des exemples pour lesquels elle est réalisée.
+Montrez que pour un tableau $T$ et un en entier $k$, s'il y a une récursion on a :
+
+<div>
+$$
+X_k(T) = \Theta(T.\text{\small longueur}) + X_{k'}(T')
+$$
+</div>
+
+Avec $T'$ un tableau tel que $T'.\text{\small longueur} < T.\text{\small longueur}$ et $k' \leq k$.
+
 {% endexercice %}
 {% details "corrigé" %}
-La boucle affectant la variable `inf`{.language-} ainsi que la création du tableau `T'`{.language-} est en $\mathcal{O}(n)$ quels que soient `T`{.language-} et `k`{.language-}. La complexité min est ainsi plus grande que $\mathcal{O}(n)$.
+La boucle affectant la variable `inf`{.language-} ainsi que la création du tableau `T'`{.language-} est en $\Theta(T.\text{\small longueur})$ quels que soient `T`{.language-} et `k`{.language-}. 
+
+Puis on effectue une récursion sur :
+
+- un tableau de longueur strictement plus petit que $T$ puisque $T[0]$ n'y est pas
+- un entier plus petit ou égal à $k$.
+
+{% enddetails %}
+
+Cette équation nous permet de déduire les complexités minimales et maximales de l'algorithme :
+
+{% exercice %}
+Montrez que la complexité minimale de l'algorithme `k_select(T: []int, k: int) → int`{.language-}est en $\Theta(n)$ et donnez un exemple pour lequel elle est réalisée pour un $k$ donné.
+{% endexercice %}
+{% details "corrigé" %}
+La boucle affectant la variable `inf`{.language-} ainsi que la création du tableau `T'`{.language-} est en $\Theta(n)$ quels que soient `T`{.language-} et `k`{.language-}. La complexité min est ainsi plus grande que $\Theta(n)$.
 
 De plus si le tableau `T`{.language-} contient exactement $k-1$ éléments strictement plus petits que `T[0]`{.language-} il n'y a pas de récursion, c'est bien la complexité minimale.
 
@@ -541,46 +567,19 @@ Un exemple simple pour lequel cette complexité arrive est lorsque $T[1:] = [2, 
 
 {% enddetails %}
 {% exercice %}
-Montrez que la complexité maximale de l'algorithme `k_select(T: []int, k: int) → int`{.language-} $C(n, k)$ respecte l'équation suivante :
-
-<div>
-$$
-C(n, k) = \mathcal{O}(n) + C(n', k')
-$$
-</div>
-
-Avec $n' < n$ et $k' \leq k$ les paramètres de la récursion. 
-
+Montrez que la complexité maximale de l'algorithme `k_select(T: []int, k: int) → int`{.language-} est en $\Theta(n^2)$ et donnez un exemple pour lequel elle est réalisée pour un $k$ donné.
 {% endexercice %}
 {% details "corrigé" %}
-La boucle affectant la variable `inf`{.language-} ainsi que la création du tableau `T'`{.language-} est en $\mathcal{O}(n)$ quels que soient `T`{.language-} et `k`{.language-}. Le reste des opérations de l'algorithme est en $\mathcal{O}(1)$. La complexité de l'algorithme est alors en :
-
-
-<div>
-$$
-C(n, k) = \mathcal{O}(n) + C(n', k')
-$$
-</div>
-
-Avec $n' < n$ et $k' \leq k$ les paramètres de la récursion. 
-{% enddetails %}
-{% exercice %}
-Déduire de l'exercice précédent la complexité maximale de l'algorithme `k_select(T: []int, k: int) → int`{.language-} et des exemples pour lesquels elle est réalisée.
-{% endexercice %}
-{% details "corrigé" %}
-La formule récursive précédente montre que la complexité $C(n, k)$ de l'algorithme sera la somme des longueurs des différents tableaux appelés récursivement. Comme cette longueur diminue strictement à chaque appel cette somme est en $\mathcal{O}(n^2)$.
-
+La formule récursive précédente montre que pur un tableau $T$ donné, $X(T, k)$ sera la somme des longueurs des différents tableaux appelés récursivement. Comme cette longueur diminue strictement à chaque appel cette somme est inférieure à $\sum_{i = n-1}^1\Theta(i) = \Theta(n^2)$.
 
 Un exemple simple pour lequel cette complexité arrive est lorsque $T[:-1] = [2p, 2(p-1), ... , 2]$ et que $T[-1] = 2k -1$.
 
 {% enddetails %}
 
-Notre algorithme est très utilisé en pratique car sa complexité en moyenne est très faible. Nous allons ici juste faire fonctionner notre intuition pour en estimer la complexité en moyenne.
-
-Pour ce calcul, on supposera (comme précédemment) que $T$ est une permutation aléatoire de $[1 .. n]$. 
+Les complexité maximale et minimale ne dépendent que de la longueur $n$ du tableau, pas de $k$. On va montrer que ceci est aussi vrai lorsque l'on cherche la complexité en moyenne de l'algorithme. Pour les calculs en moyenne, on supposera (comme précédemment) que $T$ est une permutation aléatoire de $[1 .. n]$. 
 
 {% exercice %}
-Lorsque $T$ est une permutation aléatoire de $[1 .. n]$, montrez que la longueur moyenne du tableau de la récursion vaut :
+Lorsque $T$ est une permutation aléatoire de $[1 .. n]$, montrez que la moyenne de la longueur $n'$ du tableau de la récursion vaut :
 
 <div>
 $$
@@ -593,7 +592,7 @@ $$
 La longueur $n'$ va dépendre de la valeur de `T[0]`{.language-} :
 
 - si `T[0] < k`{.language-} alors `n' = n - T[0]`{.language-}
-- si `T[0] = k`{.language-} alors `n' = 0`{.language-}
+- si `T[0] = k`{.language-} il n'y a pas de récursion
 - si `T[0] > k`{.language-} alors `n' = T[0] - 1`{.language-}
 
 Comme $P(T[0] = i) = 1/n$ pour tout $i$ on a :
@@ -611,22 +610,130 @@ $$
 
 {% enddetails %}
 
-On déduit de l'exercice précédent que $E[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane.
+On déduit de l'exercice précédent que $\mathbb{E}[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane, et vaut alors $\frac{3n}{4}$. Ceci nous donne une idée pour calculer la complexité en moyenne de notre algorithme. À $k$ fixé et pour notre modèle probabiliste, si on pose $C(n, k) \coloneqq \mathbb{E}(X_k)$ comme étant la complexité en moyenne à $k$ fixe pour une permutation de $[1 .. n]$. La remarque précédente nous incite à penser que :
 
-Si $C_{m}(n, k)$ est la complexité moyenne on a alors l'inégalité :
+- $C(n, k)$ va être maximum pour $k = n/2$
+- qu'en moyenne la récursion va conserver un tableau de longueur $3n/4$.
+
+Posons $C(n) \coloneqq \max_k(C(n, k))$ et montrons le.
+
+On va commencer par démontrer deux résultats intermédiaires qui vont nous permettre de conclure rapidement :
+
+{% exercice %}
+Montrez que $C(n)$ est une fonction croissante.
+{% endexercice %}
+{% info %}
+Vous pourrez commencer par montrer que $C(n+1, k) \geq C(n, k)$.
+{% endinfo %}
+{% details "corrigé" %}
+On a l'équation $X_k(T) = \Theta(T.\text{\small longueur}) + X_{k'}(T')$, mais on pourrait compter précisément le nombre d'opérations et avoir l'équation exacte : $X_k(T) = \alpha \cdot (T.\text{\small longueur}) + \beta + X_{k'}(T')$.
+
+De là :
 
 <div>
 $$
-C_{m}(n, k) \leq \mathcal{O}(n) + C_{m}(3n/4, k')
+\begin{array}{lcl}
+C(n+1, k) &=  & \alpha \cdot (n+1) + \beta + \frac{1}{n+1}(\sum_{i = 1}^{k-1}C(n-i, k-i) + \sum_{i = k+1}^{n}C(i, k))\\
+&=& \alpha \cdot (n+1) + \beta + \frac{1}{n+1}(n \cdot (C(n, k) - \alpha \cdot (n) - \beta) + C(n, k))\\
+&=& \alpha \cdot (n+1) + \beta - \frac{n}{n+1} \alpha - \frac{1}{n+1} \cdot \beta + C(n, k)\\
+&=& \alpha \cdot n - \frac{1}{n+1} \alpha + \frac{n}{n+1} \cdot \beta + C(n, k)\\
+&\geq&  C(n, k)\\
+\end{array}
 $$
 </div>
 
+Puis comme $C(n, k)= \max_k C(n, k)$, il existe $k^\star$ tel que $C(n)= C(n, k^\star)$ ce qui permet de conclure puisque : $C(n)= C(n, k^\star) \leq C(n+1, k^\star) \leq C(n+1)$
+{% enddetails %}
+
+
 {% exercice %}
-Déduire de la question précédente que la complexité en moyenne de l'algorithme pour le calcul de la médiane respecte l'inégalité :
+Montrez que pour tout $1\leq k \leq n$ :
 
 <div>
 $$
-C_{m}(n, k) = \mathcal{O}(n)
+\vert \{ n - i \leq \frac{3n}{4} \mid 1 \leq i \leq k - 1\} \vert + \vert \{ i \leq \frac{3n}{4} \mid k \leq i \leq n\} \vert \geq \frac{n}{2}
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+- Si $k < \frac{n}{4}$ ou $k > \frac{3n}{4}$, alors tous les $i$ tels que $\frac{n}{4} \leq i \leq \frac{3n}{4}$ seront soit dans le premier ensemble soit dans le deuxième. Comme il y a $\frac{n}{2}$ possibles, la condition est vérifiée.
+- Si $\frac{n}{4} \leq k \leq \frac{3n}{4}$ les $i$ tels que $\frac{n}{4} \leq i \leq k$ seront dans le premier ensemble et les $i$ tels que $k \leq i \leq \frac{3n}{4}$ seront dans le second. 
+Comme il y a $\frac{n}{2}$ possibles, la condition est vérifiée.
+
+{% enddetails %}
+On peut maintenant montrer l'équation de récurrence principale :
+{% note "**Proposition**" %}
+Montrez que l'on a l'équation :
+
+<div>
+$$
+C(n) \leq \Theta(n) + C(\frac{3n}{4})
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Reprenons la définition de $C(n, k)$ :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n, k) &=& \mathbb{E}(X_k)\\
+&=& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i, k-i) + \sum_{i = k+1}^{n-1}C(i, k))\\
+&\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k+1}^{n-1}C(i))\\
+&\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k}^{n}C(i))\\
+\end{array}
+$$
+</div>
+
+Les deux résultats précédant nous montrent alors que :
+
+- plus de la moitié des $n$ valeurs $C(n-i)$ ou $C(i)$ sont inférieures à $C(\frac{3n}{4})$,
+- la moitié restante est inférieure à $C(n)$.
+
+Cette méga astuce nous permet d'écrire :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n, k) &\leq& \Theta(n) + \frac{1}{2}\cdot C(\frac{3n}{4}) + \frac{1}{2}\cdot C(n)\\
+\end{array}
+$$
+</div>
+
+Cette équation étant vraie quelque soit $k$ on a :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &\leq& \Theta(n) + \frac{1}{2}\cdot C(\frac{3n}{4}) + \frac{1}{2}\cdot C(n)\\
+\end{array}
+$$
+</div>
+
+Et donc :
+<div>
+$$
+\begin{array}{lcl}
+C(n) &\leq& \Theta(n) + C(\frac{3n}{4})\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+
+Et je vous laisse conclure ce (magnifique) exercice :
+
+
+{% exercice %}
+Déduire de la question précédente que  :
+
+<div>
+$$
+C(n) = \Theta(n)
 $$
 </div>
 
@@ -638,28 +745,42 @@ Il suffit de réappliquer l'inégalité :
 <div>
 $$
 \begin{array}{lcl}
-C_{m}(n, k) &\leq& \mathcal{O}(n) + C_{m}(3n/4, k')\\
-&\leq& \mathcal{O}(n) +\mathcal{O}(3n/4) + C_{m}((3/4)^2n, k'')\\
-&\leq& \mathcal{O}(n) + \dots + \mathcal{O}(n\cdot(3/4)^i) + \dots + \mathcal{O}(n\cdot(3/4)^{\log_{4/3}(n)}) + C_{m}(1, 1)\\
-&\leq& \mathcal{O}(n\sum_{0 \leq i\leq \log_{4/3}(n)} (3/4)^i) \\
+C(n) &\leq& \Theta(n) + C(\frac{3n}{4})\\
+&\leq& \Theta(n) + \Theta(\frac{3n}{4}) + C(n\cdot (\frac{3}{4})^2)\\
+&\leq& \Theta(n) + \dots +\Theta(n\cdot (\frac{3}{4})^i)  + \dots + \Theta(n\cdot (\frac{3}{4})^{\log_{4/3}(n)}) + C(1)\\
+&\leq& \Theta(n\sum\limits_{i = 0}^{\log_{4/3}(n)} (3/4)^i) \\
 \end{array}
 $$
 </div>
 
-On peut maintenant utiliser [le résultat précédent](./#série-géométrique) qui permet de borner par 4 la somme $\sum_{i = 0}^{\log_{4/3}(n)} (3/4)^i$ et de conclure que :
-
-<div>
-$$
-C_{m}(n, k) \leq \mathcal{O}(n)
-$$
-</div>
+On peut maintenant utiliser [le résultat précédent](./#série-géométrique) qui permet de borner par 4 la somme $\sum_{i = 0}^{\log_{4/3}(n)} (3/4)^i$ pour avoir : $C(n) \leq \Theta(n)$. Comme de plus $C(n) \geq \Theta(n)$ on a bien l'égalité demandée.
 
 {% enddetails %}
-
-
-
 La complexité en moyenne de l'algorithme `k_select(T: []int, k: int) → int`{.language-} est donc linéaire en la longueur du tableau ! C'est optimal.
 
 {% info %}
 C'est une autre histoire que l'on verra ensemble bien plus tard mais il est totalement possible de choisir judicieusement un élément du tableau pour garantir que même la complexité maximale soit linéaire en la taille du tableau.
 {% endinfo %}
+
+L'astuce de la preuve de la proposition précédente est magnifique car elle permet de se ramener à une somme que l'on sait calculer.
+
+{% retenir %}
+La solution d'une équation de la forme suivante (avec $\alpha < 1$) :
+
+<div>
+$$
+C(n) = \theta(n) + C(\alpha \cdot n)
+$$
+</div>
+
+est :
+
+<div>
+$$
+C(n) = \theta(n)
+$$
+</div>
+
+Les algorithmes récursifs pour lesquels on peut garantir cette relations pour leurs complexité maximale ou en moyenne sont donc très performant !
+{% endretenir %}
+

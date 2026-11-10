@@ -12,16 +12,19 @@ eleventyComputed:
 
 <!-- TBD
 
-Séparer versions naïves + TP des méthodes optimales +  TP
+- Séparer versions naïves + TP des méthodes optimales +  TP
 
-voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>{.externe}
+- voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>{.externe}
 ajouter le bogus sort
+
+- tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort 
+
 -->
 
 
 Étude du problème du tri et implémentation de quelques algorithmes pour _voir_ les différentes façon de trier et leurs complexités.
 
-Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri){.externe}. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
+Les informaticiens adorent [les algorithmes de tri](https://fr.wikipedia.org/wiki/Algorithme_de_tri){.externe}. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
 
 {% info %}
 Les algorithmes de tri que nous verrons dans cette partie nous permettrons non seulement de mettre en oeuvre tout ce que nous avons vu sur les techniques de preuves et de calcul de complexités, mais également d'apprendre de nouveaux outils, comme le master theorem.

@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Les suite multiplicatives](../projet-exponentiation/étude-algorithmique/#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
+[Les suite multiplicatives](../étude-algorithmique/#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
 
 {% definition %}
 Une **_suite additive pour $n$_** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
@@ -25,28 +25,86 @@ On note **_$l(n)$_** la longueur minimale d'une chaîne additive pour $n$.
 Comme les exposants se composent de manière additive, les problèmes des suites additives et multiplicatives sont identiques.
 {% endinfo %}
 
-Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici uniquement donner quelques propriétés de $l(n)$. Le lecteur curieux pourra se reporter volume 2 de _The Art of Programming_ de Knuth pour une histoire détaillée de $l(n)$.
-
-Nous allons voir ici quelques algorithmes pour calculer des suites additives en implémentant nos algorithme en python. 
+Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici utiliser l'approche constructive en créant des algorithmes permettant de générer toutes les possibilités. Le lecteur curieux pourra se reporter volume 2 de _The Art of Programming_ de Knuth pour une histoire détaillée de $l(n)$.
 
 {% attention %}
-On vous demandera ici toujours d'écrire du code python pour résoudre et tester vos problèmes. Le but de ce projet est d'expérimenter et de voir les différences entre la solution optimale et celle donnée par l'exponentiation indienne.
+Testez vos algorithmes en python. Le but de ce projet est d'expérimenter et de voir les différences entre la solution optimale et celle donnée par l'exponentiation indienne.
 {% endattention %}
 
 ## Utilitaires
 
 ### Vérification
 
-{% faire %}
-Écrivez une fonction qui prend une liste en paramètre et rend `True`{.language-} si la liste en paramètre est additive et `False`{.language-} sinon.
+{% exercice %}
+Écrivez un algorithme qui prend un tableau d'entiers en paramètre et rend `Vrai`{.language-} s'il est additif et `Faux`{.language-} sinon.
 
-Vous pourrez tester sur les suites suivantes :
+Vous pourrez tester sur les tableaux suivants :
 
-- `[2, 4]`{.language-} (non)
-- `[1, 2, 3, 4]`{.language-} (oui)
-- `[1, 2, 4, 7]`{.language-} (non)
-  {% endfaire %}
+- `[2, 4]`{.language-} : non car $T[1] \neq T[0] + T[0]$
+- `[1, 2, 3, 4]`{.language-} : oui car :
+  - $T[1] = T[0] + T[0]$,  
+  - $T[2] = T[1] + T[0]$
+  - $T[3] = T[1] + T[1]$
+- `[1, 2, 4, 7]`{.language-} : non car $T[3]$ n'est la somme d'aucuns de ses prédécesseurs.
+{% endexercice %}
+{% details "corrigé" %}
 
+Un tableau $T$
+Il faut à chaque indice vérifier si on peut générer $T[i]$ en sommant deux valeurs d'indices précédent :
+
+<div>
+$$
+T[i] = 
+\begin{cases}
+1 & \text{si }i = 0\\
+T[j] + T[k] \text{avec } j \leq k < i
+\end{cases}
+$$
+</div>
+
+Ce qui peut se faire avec deux boucles `pour chaque`{.language-} imbriquées :
+
+```pseudocode
+algorithme est_une_suite_additive(T: []int) → bool:
+    si T[0] ≠ 1:
+        rendre Faux
+    ref ok bool
+    pour chaque i de [1 .. u.longueur[:
+        ok ← Faux
+        pour chaque j de [0 .. i[:
+            pour chaque k de [j  .. i [:
+                Si T[i] == T[j] + T[k]:
+                    ok = True
+
+        si ok est Faux:
+            rendre Faux
+
+    rendre Vrai
+```
+
+{% enddetails %}
+{% details "code python" %}
+
+```python
+def est_une_suite_additive(T):
+
+    if T[0] != 1:
+        return False
+    for i in range(1, len(u)):
+        ok = False
+        for k in range(i):
+            for l in range(k, i):
+                if T[i] == T[k] + T[l]:
+                    ok = True
+
+        if not ok:
+            return False
+
+    return True
+```
+{% enddetails %}
+
+Cet algorithme ne rend pas 
 {% faire %}
 Écrivez une fonction qui rende pour une suite additive $a$ une suite $b$ tel que $b[0] = \text{None}$ et $b[i] = (k, j)$ avec :
 
@@ -56,8 +114,8 @@ Vous pourrez tester sur les suites suivantes :
 
 Vous pourrez tester que la fonction rende :
 
-- $[None, (0, 0), (0, 1), (0, 2)]$ pour $[1, 2, 3, 4]$
-- $[None, (0, 0), (1, 1), (2, 2), (0, 0), (3, 4)]$ pour $[1, 2, 4, 8, 2, 10]$
+- `[None, (0, 0), (0, 1), (0, 2)]`{.language-} pour `[1, 2, 3, 4]`{.language-}
+- `[None, (0, 0), (1, 1), (2, 2), (0, 0), (3, 4)]`{.language-} pour `[1, 2, 4, 8, 2, 10]`{.language-}
 
 {% endfaire %}
 
@@ -110,8 +168,6 @@ Comparez les coefficients donnés pour la suite indienne classique et optimisée
 {% endfaire %}
 
 ## Algorithme exact
-
-### Agrandir une suite additive
 
 {% faire %}
 Créez une fonction qui à partir d'une suite additive strictement croissante $a$ à $n$ éléments rend une liste contenant toutes les suites strictement croissantes de la forme $a + [a[j] + a[k]]$ où $k \leq j < \mid a \mid$.

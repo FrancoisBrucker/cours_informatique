@@ -13,15 +13,14 @@ eleventyComputed:
 
 Calculer l'exponentiation $x^n$ de deux entiers $x$ et $n$ est un problème qui semble simple mathématiquement. Nous allons étudier ce calcul sous l'angle algorithmique et monter qu'on peut en dire bien des choses.
 
-## Problème de l'exponentiation
+## Étude algorithmique
 
 {% aller %}
-1. [Étude algorithmique](./étude-algorithmique)
-2. [Projet : implémentation des algorithmes](./implémentation-code)
+[Étude algorithmique](./étude-algorithmique)
 {% endaller %}
 
-## Suites additives
+## Implémentation et mesure de complexité
 
 {% aller %}
-[Les suites additives](./projet-suite-additive)
+[Projet : implémentation des algorithmes](./implémentation-code)
 {% endaller %}

@@ -22,7 +22,7 @@ Cette notion est centrale en algorithmie, nous l'avons déjà abordé en creux e
 
 ## Exemples
 
-On va illustrer la recherche de la complexité d'un problème via trois exemples paradigmatiques.
+On va illustrer la recherche de la complexité d'un problème via trois exemples paradigmatiques et de difficulté croissante.
 
 ### Problèmes de l'exponentiation
 
@@ -36,11 +36,10 @@ On va illustrer la recherche de la complexité d'un problème via trois exemples
 [Problème du tri](./tris)
 {% endaller %}
 
-
 ### Problème de l'enveloppe  convexe
 
 {% aller %}
-[Problème de l'enveloppe convexe](./tris)
+[Problème de l'enveloppe convexe](./enveloppe-convexe)
 {% endaller %}
 
 
