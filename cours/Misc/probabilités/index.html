@@ -171,7 +171,7 @@ $$
 </div>
 </div>
 <p>Notez que la définition dénombrable généralise bien la définition du cas fini puisqu'une suite finie $(A_n)_{1\leq n \leq N}$ d'éléments deux à deux disjoints peut s'écrire comme une suite infinie où $A_n =\emptyset$ pour tout $n &gt; N$.</p>
-<p>Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec $\mathbb{P}$ défini uniquement sur les entiers : $\mathbb{P}(\{n\}) = \frac{n}{2^{n+1}}$. On a alors $\mathbb{P}(A) = \sum_{x\in A} \mathbb{P}(\{x\})$. Cet exemple montre que, comme dans le cas fini, on n'a besoin que de peu d'évènements pour inférer toute la probabilité. Ce ne sont plus les singletons mais des suites que l'on appelle <strong>systèmes complets d'évènements</strong> :</p>
+<p>Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec $\mathbb{P}$ défini uniquement sur les entiers : $\mathbb{P}(\{n\}) = \frac{n}{2^{n+1}}$. On a alors $\mathbb{P}(A) = \sum_{x\in A} \mathbb{P}(\{x\})$. Cet exemple montre que, comme dans le cas fini, on n'a besoin que de peu d'évènements pour inférer toute la probabilité. Ce ne sont plus forcément des singletons mais des partitions de $\Omega$ que l'on appelle <strong>systèmes complets d'évènements</strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -362,7 +362,7 @@ $$
 <li>$\Pr[X \in U] \coloneqq \mathbb{P}(X^{-1}(U))$,</li>
 <li>$\Pr[X \in U \, , \, Y \in V] \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)</li>
 </ul>
-<p>On dira que $X(\omega) = u$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\Pr[X = u]$.</p>
+<p>On dira que $X(\omega) = x$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\Pr[X = u]$.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -373,44 +373,16 @@ $$
 <p>Ne confondez pas la variable aléatoire et ses réalisations.</p>
 </div>
 </div>
-<p>Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on utilisera souvent la notation suivante :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-<p>On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :</p>
-<ul>
-<li>prenant ses valeurs dans $\mathcal{U}$</li>
-<li>suivant la loi de probabilité $\mathbb{P}$</li>
-</ul>
-</div>
-</div>
-<p>Ce qui nous permet d'écrire de façon synthétique :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-<div>
-$$
-{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
-$$
-</div>
-</div>
-</div>
-<p>Si la notation ci-dessus est explicite elle est souvent lourde à écrire. On se permettra donc souvent les abus de notation suivants :</p>
+<p>Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on l'omettra la plupart du temps.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>S'il n'y a pas ambiguïté, on se permettra même d'écrire :</p>
+<p>S'il n'y a pas ambiguïté, on écrira :</p>
 <ul>
-<li>${\Pr}[x = k]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$</li>
+<li>${\Pr}[x = k]$ si l'on s'intéresse aux réalisations $X(\omega) = x$ de la variable aléatoire $X$</li>
 <li>${\Pr}[X = k]$ si l'on veut expliciter la variable aléatoire $X$</li>
 </ul>
 </div>
@@ -438,12 +410,30 @@ $$
 <div class="pl-8 mr-8">
 <p>Lorsque l'on parlera de :</p>
 <ul>
-<li>variable aléatoire dans le cours, elle sera réelle et simple.</li>
-<li>variable aléatoire discrète, elle sera de plus réelle.</li>
+<li><strong>variable aléatoire</strong> dans le cours, elle sera <strong>réelle et simple</strong>.</li>
+<li><strong>variable aléatoire discrète</strong>, elle sera de plus <strong>réelle</strong>.</li>
 </ul>
 </div>
 </div>
-<p>Les variables aléatoires discrètes s'écrivent trivialement comme une somme d'indicatrices :</p>
+<p>Les variables aléatoires discrètes s'écrivent trivialement comme une somme d'<a href="https://fr.wikipedia.org/wiki/Fonction_caract%C3%A9ristique_(th%C3%A9orie_des_ensembles)">indicatrices</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>La fonction $\mathbb{1}_{A}$ est appelée <strong><em>indicatrice</em></strong>, <strong><em>fonction indicatrice</em></strong> ou encore <strong><em>fonction caractéristique</em></strong> et est définie telle que :</p>
+<div>
+$$
+\mathbb{1}_{A}(x) = 
+\begin{cases}
+1 & \text{si } x \in A\\
+0 & \text{sinon}
+\end{cases}
+$$
+</div>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -454,7 +444,7 @@ $$
 <p>Soit $X$ une variable aléatoire discrète de valeurs $(x_i)$ ($i \in \mathbb{N}$). On peut l'écrire sous la forme :</p>
 <div>
 $$
-X = \sum\limits_i x_i \mathbb{1}_{X = x_i}
+X = \sum\limits_i x_i \mathbb{1}_{\{X = x_i\}}
 $$
 </div>
 <p>Réciproquement, si $(A_i)$ est un système complet d'évènements d'un espace probabilisé $(\Omega, \mathbb{P})$, et $(x_i)$ une suite dénombrable de réels (pas forcément distincts) alors la fonction :</p>
@@ -517,8 +507,42 @@ $$
 </div>
 </div>
 </div>
-<h3>Exemple</h3>
-<p>En sécurité, on aura typiquement :</p>
+<h3>Exemple : en sécurité</h3>
+<!-- TBD 
+
+utile ? 
+sûrement à étoffer 
+
+-->
+<p>En sécurité on utilisera souvent la notation suivante pour expliciter les variables aléatoires :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :</p>
+<ul>
+<li>prenant ses valeurs dans $\mathcal{U}$</li>
+<li>suivant la loi de probabilité $\mathbb{P}$</li>
+</ul>
+</div>
+</div>
+<p>Les lois de probabilités pouvant changer on les précisera si nécessaires en utilisant la notation suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<div>
+$$
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
+$$
+</div>
+</div>
+</div>
+<p>On aura typiquement :</p>
 <ul>
 <li>$\Omega = \{0, 1\}^n$ l'ensemble des clés</li>
 <li>probabilité uniforme</li>
@@ -535,8 +559,8 @@ $$
 </ul>
 </li>
 </ul>
-<h2>Espérance</h2>
-<p>La notion d'espérance en probabilité généralise la notion de moyenne.</p>
+<h2><span id="espérance">Espérance</span></h2>
+<p><a href="https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique" class="externe">La notion d'espérance</a> en probabilité généralise la notion de moyenne.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>

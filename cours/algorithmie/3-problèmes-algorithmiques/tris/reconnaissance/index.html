@@ -94,25 +94,6 @@
 
 
     
-      
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Prérequis</strong></div>
-<div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="/cours_informatique/cours/misc/probabilités/">/cours/misc/probabilités/</a>
-            </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
   <p>Définissions <a href="../../complexit%C3%A9-probl%C3%A8me/#d%C3%A9finition-probl%C3%A8me-d%C3%A9cision">le problème de décision</a> associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :</p>
@@ -157,7 +138,7 @@
 <p>L'algorithme <code class="language-">est_trie</code> est une solution au problème <em>&quot;est trié ?&quot;</em></p>
 </div>
 </div>
-<h3>Complexité</h3>
+<h2>Complexités de l'algorithme <code class="language-">est_trié</code></h2>
 <p>Ligne à ligne :</p>
 <ol>
 <li>définition de la fonction $\mathcal{O}(1)$</li>
@@ -168,7 +149,7 @@
 <li>un retour de fonction $\mathcal{O}(1)$</li>
 </ol>
 <p>Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$.</p>
-<h4>Cas le pire</h4>
+<h3>Cas le pire</h3>
 <p>Dans le cas le pire, on parcourt tout le tableau, donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -180,7 +161,7 @@
 <p>La complexité de l'algorithme <code class="language-">est_trie</code> est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.</p>
 </div>
 </div>
-<h4>Cas les meilleur</h4>
+<h3>Cas le meilleur</h3>
 <p>Dans le cas le meilleur, on s'arrête dès la première itération :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -192,161 +173,9 @@
 <p>La complexité minimale de l'algorithme <code class="language-">est_trie</code> est $\mathcal{O}(1)$ avec $n$ la taille du tableau en entrée.</p>
 </div>
 </div>
-<h4>Complexité en moyenne</h4>
-<p>La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :</p>
-<h5>Modèle du tableau aléatoire</h5>
-<p><span id="définition-modèle-tableau-aléatoire"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-<p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
-<ul>
-<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation" class="externe">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
-<li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
-</ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Dans un tableau aléatoire, toutes les valeurs sont différentes.</p>
-</div>
-</div>
-<p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :</p>
-<div>
-$$
-{\Pr}[T[i] = k] = \frac{1}{n}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Parmi les $n!$ permutations de $[0 \, ..\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.</p>
-</div>
-</details>     
-</div>
-<p>Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :</p>
-<div id="proba-k-tableau-aléatoire"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.</p>
-</div>
-</div>
-<p>Enfin, dernière propriété qui va être utile dans les calculs :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, on a :</p>
-<div>
-$$
-{\Pr}[T[i] > k] = \frac{n-1-k}{n}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
-&=& \sum\limits_{u > k}\frac{1}{n}\\
-&=& \frac{n-1-k}{n}\\
-\end{array}
-$$
-</div>
-</div>
-</details>     
-</div>
-<p>Ce modèle véhicule de nombreuse propriété l'on aimerait avoir pour un tableau de nombres quelconques :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
-<div>
-$$
-{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] &gt; T[v]] + {\Pr}[T[u] &lt; T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] &gt; T[v]$ que de tableaux pour lesquels $T[u] &lt; T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]]$.</p>
-<p>Des deux conditions précédentes on en déduit ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]] = \frac{1}{2}$.</p>
-</div>
-</details>     
-</div>
-<h5>Calcul de la complexité</h5>
-<p>Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :</p>
+<h3>Complexité en moyenne</h3>
+<p>Comme on a pas d'information relative à la répartition des nombre du tableau et que seul l'ordre interne des valeurs du tableau importe pour vérifier s'il est trié ou non, on utilise <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire">le modèle du tableau aléatoire</a> pour nos calculs de complexité en moyenne.</p>
+<p>Sous ce modèle pour $T$, la probabilité pour notre algorithme de reconnaissance fasse exactement :</p>
 <ul>
 <li>1 itération est $p_1 = {\Pr}[T[0] &gt; T[1]]$ et vaut $1/2$</li>
 <li>2 itérations est $p_2 = {\Pr}[(T[0] &lt; T[1]) \text{ et } (T[1] &gt; T[2])]$</li>
@@ -393,13 +222,13 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 \end{array}
 $$
 </div>
-<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../projet-sommes-classiques/#probl%C3%A8me-i/2%5Ei">on le démontrera</a>) donc :</p>
+<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../../interm%C3%A8de-1/sommes-classiques/#probl%C3%A8me-i/2%5Ei">on le démontrera</a>) donc :</p>
 <div>
 $$
 C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
 $$
 </div>
-<p>On a donc la proposition surprenante suivante :</p>
+<p>On a donc la proposition surprenante suivante (mais qu'on a déjà rencontré lors de la <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#sous-mot">recherche d'un sous-mot</a>) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -424,29 +253,6 @@ $$
 </ul>
 </div>
 </div>
-<p>Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
-<ul>
-<li>le $i+1$ ème élément n'est pas le plus grand</li>
-<li>les $i$ premiers éléments sont triées</li>
-</ul>
-<p>Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles pour une probabilité de $\frac{i}{(i+1)!}$. Le raisonnement est identique si on ne considère que les $i+1$ premiers éléments de tout tableau et donc $p_i = \frac{i}{(i+1)!}$ pour tout tableau de longueur $n\geq i+1$. On obtient alors :</p>
-<div>
-$$
-\begin{array}{lcl}
-C_\text{moy}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
- &=& \sum\limits_{i=1}^{n-1}(\mathcal{O}(\frac{i^2}{(i+1)!} \cdot i)) \\
- &=& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
-\end{array}
-$$
-</div>
-<p>Comme $i^2 \leq i(i+1)$ on a que :</p>
-<div>
-$$
-C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum\limits_{i=0}^{n-2}(\frac{1}{i!}))
-$$
-</div>
-<p>La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ (<a href="https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re" class="externe">$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$</a>) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$</p>
-<h5>Vérification expérimentale</h5>
 <p>Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -478,8 +284,24 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
 <span class="token keyword">print</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
+<p>On peut aussi comprendre ce résultat en cherchant une valeur exacte des $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
+<ul>
+<li>le $i+1$ ème élément n'est pas le plus grand</li>
+<li>les $i$ premiers éléments sont triées</li>
+</ul>
+<p>Il y en a très (très) peu : pour des tableaux de longueur $i$, il n'y en a que $i$ tableaux sur les $(i+1)!$ possibles. La probabilité $p_i = $\frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :</p>
+<ul>
+<li>$\frac{1}{2!} = 0.5$</li>
+<li>$\frac{2}{3!} \simeq 0.33$</li>
+<li>$\frac{3}{4!} = .125$</li>
+<li>$\frac{4}{5!} \simeq 0.003$</li>
+<li>...</li>
+<li>$\frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$</li>
+<li>...</li>
+<li>$\frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$</li>
+</ul>
 <h2>Complexité du problème de la reconnaissance</h2>
-<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
+<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

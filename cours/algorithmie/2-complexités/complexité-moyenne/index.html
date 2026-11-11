@@ -94,6 +94,25 @@
 
 
     
+      
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Prérequis</strong></div>
+<div class="pl-8 mr-8">
+
+
+      <ul>
+            <li>
+              <a href="/cours_informatique/cours/misc/probabilités/">/cours/misc/probabilités/</a>
+            </li></ul>
+      
+
+</div>
+</div>
+
+    
   
 
   <p>Lorsque le nombre d'opérations d'un algorithme varie fortement selon ses entrées ou que l'on veut mesurer physiquement le temps mis par un code pour être exécuté, on a coutume d'utiliser la mesure de complexité en moyenne qui permet de connaître le nombre d'opérations espéré pour un tableau quelconque de taille donnée :</p>
@@ -120,8 +139,14 @@
 <li>la complexité $C_\max(n)$ de l'algorithme vaut $C_\max(n) = \max \{N(e) \mid e \in \mathcal{E}_n\}$</li>
 <li>la complexité minimum $C_\min(n)$ de l'algorithme vaut $C_\min(n) = \min \{N(e) \mid e \in \mathcal{E}_n\}$</li>
 </ul>
-<p><a href="https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique" class="externe">L'espérance</a> de la complexité, c'est-à-dire la complexité <em>attendue</em> ou <em>normale</em> si l'algorithme est exécuté pour une entrée au hasard, est appelée <strong>complexité en moyenne</strong>.</p>
-<p>Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :</p>
+<p><a href="/cours_informatique/cours/misc/probabilit%C3%A9s/#esp%C3%A9rance">L'espérance</a> de la complexité, c'est-à-dire la complexité <em>attendue</em> ou <em>normale</em> si l'algorithme est exécuté pour une entrée au hasard, est appelée <strong>complexité en moyenne</strong>.</p>
+<p>Fixons nous les idées en supposant que l'on possède un algorithme $A(e)$ dont on connaît la complexité $C(n)$. Ceci signifie que : $C(n) = \max_{\mathcal{E}_n}(N(e))$ avec :</p>
+<ul>
+<li>$\mathcal{E}_n$ l'ensemble des entrées $p$ associées au paramètre $n$,</li>
+<li>$N(e)$ le nombre d'opérations effectuée lors de l'exécution de $A(e)$.</li>
+</ul>
+<p>La complexité en moyenne de l'algorithme est alors l'espérance de $\mathbb{E}[N]$ où $N(e)$ est la variable aléatoire qui à chaque entrée $e$ associée au paramètre $n$ de la complexité.</p>
+<p>On pour calculer une espérance il faut connaître la probabilité d'apparition de chaque valeur, on a alors la définition formelle suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -136,7 +161,7 @@ $$
 </div>
 <p>Avec :</p>
 <ul>
-<li>$\mathcal{E}_n$ l'ensemble des données de paramètre $n$,</li>
+<li>$\mathcal{E}_n$ l'ensemble fini des données de paramètre $n$,</li>
 <li>$p_n(e)$ la probabilité de choisir $e \in \mathcal{E}_n$ comme entrée de l'algorithme</li>
 <li>$N(e)$ le nombre d'opérations utilisées par l'algorithme pour se terminer avec l'entrée $e$.</li>
 </ul>
@@ -154,6 +179,12 @@ p_n(e) = \frac{1}{\vert \mathcal{E}_n \vert}
 $$
 </div>
 </div>
+</div>
+<p>Si l'ensemble $\mathcal{E}_n$ des entrées de paramètre $n$ est infini (mais tout de même dénombrable puisqu'on est en informatique), on utilise le fait que $N: \mathcal{E}_n \rightarrow \mathbb{N}$ est une variable aléatoire discrète et peut donc s'écrire pour une somme d'indicatrices :</p>
+<div>
+$$
+N = \sum_{i}i \mathbb{1}_{\{N = i\}}
+$$
 </div>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Reprenons l'exemple de <a href="../../1-algorithme/bases-th%C3%A9oriques/d%C3%A9finition/#algorithme-recherche">la recherche d'un élément dans un tableau</a> :</p>
@@ -198,7 +229,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :</p>
+<p>Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes dont les valeurs de complexités sont les mêmes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -255,7 +286,7 @@ $$
 <p>Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on n'a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ a la même probabilité d'être choisi et donc que la position de <code class="language-">x</code> dans le tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :</p>
 <div>
 $$
-C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
+C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
 $$
 </div>
 <p>Et comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :</p>

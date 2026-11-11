@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-sommes-classiques/">Calcul de sommes classiques</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/intermède-1/">Intermède I</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/intermède-1/sommes-classiques/">Calcul de sommes classiques</a>
 
 </div>
 </div>
@@ -97,7 +97,7 @@
   
 
   <p>Lors de calculs de complexité, on va de nombreuses fois avoir les mêmes sommes à estimer, voir à calculer.</p>
-<p>Cette série d'exercice va vous montrer les plus classiques et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.</p>
+<p>Cette série d'exercice va vous montrer les plus classiques (on en a d'ailleurs déjà vu certaines) et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -476,39 +476,24 @@ $$
 </details>     
 </div>
 <p>Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement <a href="https://fr.wikipedia.org/wiki/Polylogarithmique" class="externe">polylogarithmique</a>).</p>
-<p>Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on peut utiliser, on a pour tout entier $i&gt; 1$ :</p>
+<p><a href="../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#Hn-%C3%A9quivalent">On a déjà utilisé ce résultat</a>. On le remet ici pour référence.</p>
+<div id="Hn-équivalent"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <div>
 $$
-\frac{1}{i} \leq \int_{i-1}^{i}\frac{1}{x}dx
-$$
-</div>
-<p>Et a pour tout entier $i&gt; 0$ :</p>
-<div>
-$$
-\int_{i}^{i+1}\frac{1}{x}dx \leq \frac{1}{i}
-$$
-</div>
-<blockquote>
-<p>TBD il y a plus simple :</p>
-<ol>
-<li>ln(1 + x) ≤ x par étude de fonction.</li>
-<li>1/(k+1) ≤ ln((1+k)/k) ≤ 1/k</li>
-<li>série télescopique puisque ln((1+k)/k) = ln(1+k) - ln(k)</li>
-</ol>
-</blockquote>
-<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale" class="externe">la comparaison série-intégrale</a> pour en déduire que pour tout $n&gt; 0$ :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<div>
-$$
-\ln(n) \leq H(n) \leq \ln(n) + 1
+\ln(n + 1) \leq H(n) \leq \ln(n) + 1
 $$
 </div>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -517,22 +502,75 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
+<p>preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>L'inégalité de droite est claire en sommant de $i=2$ à $i=n$.</p>
-<p>Pour l'inégalité de gauche, la première inégalité donne en sommant de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.</p>
+<p>Soit $f(x) = \ln(1+x) - x$ définie sur $]-1, +\infty[$. Comme $f'(x) = \frac{1}{1+x} -1 = \frac{-x}{1+x}$, on a que $f$ atteint son minimum en 0 : $f(x) \geq f(0) = 0$ pour tout $x$ de $]-1, +\infty[$ : $x \geq \ln(1+x)$ sur $]-1, +\infty[$.</p>
+<p>De là pour tout entier $i &gt; 1$ :</p>
+<ul>
+<li>$-\frac{1}{i} \geq \ln(1-\frac{1}{i}) = \ln(i-1) - \ln(i)$</li>
+<li>$\frac{1}{i} \geq \ln(1+\frac{1}{i}) = \ln(i+1) - \ln(i)$</li>
+</ul>
+<p>Ce qui donne l'encadrement pour $i &gt; 1$ :</p>
+<div>
+$$
+\ln(i+1) - \ln(i) \leq \frac{1}{i} \leq \ln(i) - \ln(i-1)
+$$
+</div>
+<p>En sommant le tout on obtient une série télescopique :</p>
+<div>
+$$
+\begin{array}{c}
+\sum\limits_{2\leq i \leq n} (\ln(i+1) - \ln(i)) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \sum\limits_{2\leq i \leq n} (\ln(i) - \ln(i-1))
+\end{array}
+$$
+</div>
+<p>Qui se simplifie en :</p>
+<div>
+$$
+\begin{array}{c}
+\ln(n+1) - \ln(2) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \ln(n) - \ln(1)
+\end{array}
+$$
+</div>
+<p>On en déduit donc l'encadrement :</p>
+<div>
+$$
+\begin{array}{c}
+\ln(n+1) \leq \sum\limits_{i=1}^n\frac{1}{i} \leq \ln(n) + 1
+\end{array}
+$$
+</div>
 </div>
 </details>     
 </div>
-<p>Ce qui doit amener à :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
+<p>Ce qui amène directement à :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\sum\limits_{i=1}^{n} \frac{1}{i} \underset{+\infty}{\sim} \ln(n)
+$$
+</div>
+</div>
+</div>
+<p>Et à ça :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
 <div>
 $$
 H(n) = \Theta(\ln(n))
@@ -540,33 +578,12 @@ $$
 </div>
 </div>
 </div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 1$ <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent" class="externe">les deux fonctions sont donc équivalentes</a> en $+\infty$ (ce qui est plus fort que ce qu'on demande)</p>
-</div>
-</details>     
-</div>
 <h2><span id="problème-Bâle"></span>Problème de Bâle</h2>
 <!-- 
 
 > TBD <https://www.youtube.com/watch?v=CC2DG391HmA>{.externe} en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
 
-> TBD une démo <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
+> TBD une démonstration <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
  -->
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -579,18 +596,11 @@ $$
 <p>La somme suivante à un nom car le calcul exact de sa limite elle a résisté pendant plusieurs années avant qu'Euler n'en vienne à bout. Son résultat est diablement surprenant :</p>
 <div>
 $$
-\lim_{n \to {+\infty}}\sum_{i=1}^{n}\frac{1}{i^2} = \frac{\pi^2}{6}
+\lim\limits_{n \to {+\infty}}\sum_{i=1}^{n}\frac{1}{i^2} = \frac{\pi^2}{6}
 $$
 </div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=1hJji-zgS00" class="externe">5 preuves différentes du résultat</a> et les détails dans <a href="https://math.univ-lyon1.fr/irem/IMG/pdf/analysie.pdf" class="externe">voyage en Analystan</a></p>
-</div>
-</div>
-<p>On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.</p>
+<h3>Utilisation en algorithmie</h3>
+<p>On ne va pas ici démontrer la valeur exacte de la limite (regardez le premier lien si vous en voulez une), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -703,7 +713,182 @@ $$
 </div>
 </details>     
 </div>
-<p>Classiquement en analyse on aurait aussi utilisé <a href="https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale" class="externe">la comparaison série-intégrale</a> pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).</p>
+<h3>Preuve</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.math.uwaterloo.ca/~krdavids/M148/Papadimitriou.pdf">une preuve de Ioannis Papadimitriou</a></p>
+</div>
+</div>
+<p>On va donner la preuve du lien ci-dessus, que l'on doit à Papadimitriou (1973). Son intérêt est qu'elle n'a pas besoin d'intégrale ou de méthodes d'analyse, juste un petit polynôme et l'utilisation de fonction trigonométriques simple.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>proposition</p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout $0 &lt; x &lt; \frac{\pi}{2}$ on a :</p>
+<div>
+$$
+\sin(x) < x < \tan(x)
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soient les deux fonctions définies sur $[0, \frac{\pi}{2}[$ :</p>
+<ul>
+<li>$f(x) =  x- \sin(x)$,</li>
+<li>$g(x) =  \tan(x) - x$.</li>
+</ul>
+<p>On a :</p>
+<ul>
+<li>$f'(x) =  1 - cos(x) &gt; 0$ sur $]0, \frac{\pi}{2}[$ donc $f(x) &gt; f(0) = 0$ sur $]0, \frac{\pi}{2}[$</li>
+<li>$g'(x) =  (1+\tan^2(x)) -1 = \tan^2(x) &gt; 0$ sur $]0, \frac{\pi}{2}[$ $g(x) &gt; g(0)$ = 0 sur $]0, \frac{\pi}{2}[$.</li>
+</ul>
+<p>On en conclut que sur $]0, \frac{\pi}{2}[$ :</p>
+<ul>
+<li>$\sin(x) &lt; x$</li>
+<li>$x &lt; \tan(x)$</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>On a alors sur $]0, \frac{\pi}{2}[$ :</p>
+<div>
+$$
+\begin{align*}
+\sin(x) < x < \tan(x)\\
+\frac{1}{\sin(x)} > \frac{1}{x} > \frac{1}{\tan(x)}\\
+\frac{1}{\sin^2(x)} > \frac{1}{x^2} > \frac{1}{\tan^2(x)}\\
+\end{align*}
+$$
+</div>
+<p>Comme $1 + \cot^2(x) = \frac{1}{\sin^2(x)}$ ($\cot(x) = \frac{1}{tan(x)}$) sur $]0, \frac{\pi}{2}[$, l'encadrement précédent s'écrit :</p>
+<div>
+$$
+\begin{align*}
+\cot^2(x) < \frac{1}{x^2} < 1 + \cot^2(x)\\
+\end{align*}
+$$
+</div>
+<p>En posant $x_k = \frac{k\pi}{2n+1}$ pour $1\leq k \leq n$, on a $0&lt; x_k &lt;\frac{\pi}{2}$ et on l'injecter dans l'équation précédente :</p>
+<div>
+$$
+\begin{align*}
+\sum\limits_{k=1}^n\cot^2(x_k) < \frac{(2n+1)^2}{\pi^2}\sum\limits_{k=1}^n\frac{1}{k^2} < m + \sum\limits_{k=1}^n\cot^2(x_k)\\
+\end{align*}
+$$
+</div>
+<p>On utilise alors le fait que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>proposition</p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\sum\limits_{k=1}^n\cot^2(\frac{k\pi}{2n+1}) = \frac{n(2n-1)}{3}
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<div>
+$$
+\begin{array}{lcl}
+\cos(m\theta) + i\sin(m\theta) 
+&=& (e^{im\theta}) \\
+&=& (e^{i\theta})^m \\
+&=& (\cos(\theta) + i\sin(\theta))^m \\
+&=& \sin^m(\theta)\cdot (\cot(\theta) + i)^m\\
+&=& \sin^m(\theta)\cdot (\sum\limits_{k=0}^m(\binom{m}{k}i^k\cot^{m-k}(\theta))
+\end{array}{lcl}
+$$
+</div>
+<p>On pose maintenant $m = 2n + 1$ :</p>
+<div>
+$$
+\sin((2n+1)\theta) = \sin^{2n+1}(\theta)\cdot (\sum\limits_{k=0}^m(\binom{2n+1}{k}i^k\cot^{2n+1-k}(\theta))
+$$
+</div>
+<p>Et on n'en garde que la partie imaginaire pour obtenir :</p>
+<div>
+$$
+\sin((2n+1)\theta) = \sin(\theta)^{2n+1} \cdot (\sum\limits_{k=0}^{n}(\binom{2n+1}{2k + 1}(-1)^k\cot^{k}(\theta))
+$$
+</div>
+<p>Puisque $\sin(\theta) \neq 0$ pour $0 &lt; \theta &lt; \frac{\pi}{2}$, l'équation précédente prouve que les $n$ racines du polynôme $P(x) = \sum\limits_{i=0}^{n}(\binom{2n+1}{2i + 1}(-1)^ix^{i})$ sont les $n$ valeurs $\cot^2(x_k)$ avec $x_k = \frac{k\pi}{2n + 1}$, $1\leq k \leq n$.</p>
+<p>La somme des $n$ racines $r_i$ d'un polynôme $\sum\limits_{k=0}^{n}a_kx^k$ valant $-\frac{a_{n-1}}{a_n}$ (puisque $\sum\limits_{k=0}^{n}a_kz^k = \prod\limits_{k=1}^{n}(x-r_i)$) on en déduit la relation demandée :</p>
+<div>
+$$
+\sum\limits_{k=1}^{n}\cot^2(x_k) = \frac{n(2n -1)}{3}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Pour obtenir :</p>
+<div>
+$$
+\begin{align*}
+\frac{n(2n-1)}{3} < \frac{(2n+1)^2}{\pi^2}\sum\limits_{k=1}^n\frac{1}{k^2} < n + \frac{n(2n-1)}{3}\\
+\frac{\pi^2}{6}\frac{2n(2n-1)}{(2n+1)^2} < \sum\limits_{k=1}^n\frac{1}{k^2} < \frac{n}{(2n+1)^2} + \frac{\pi^2}{6}\frac{2n(2n-1)}{(2n+1)^2}\\
+\end{align*}
+$$
+</div>
+<p>Comme : $\lim\limits_{n\to +\infty} \frac{2n(2n-1)}{(2n+1)^2} = 1$ et $\lim\limits_{n\to +\infty} \frac{n}{(2n+1)^2} = 0$ on a bien le résultat attendu :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Théorème</p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\lim\limits_{n\to +\infty} \frac{1}{k^2} = \frac{\pi^2}{6}
+$$
+</div>
+</div>
+</div>
 
 
 </article>
