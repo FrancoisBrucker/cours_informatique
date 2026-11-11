@@ -73,7 +73,7 @@ Le couple $(\Omega, \mathbb{P})$ est appelé **_espace probabilisé_**. On dit a
 {% enddefinition %}
 Notez que la définition dénombrable généralise bien la définition du cas fini puisqu'une suite finie $(A_n)_{1\leq n \leq N}$ d'éléments deux à deux disjoints peut s'écrire comme une suite infinie où $A_n =\emptyset$ pour tout $n > N$.
 
-Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec $\mathbb{P}$ défini uniquement sur les entiers : $\mathbb{P}(\\{n\\}) = \frac{n}{2^{n+1}}$. On a alors $\mathbb{P}(A) = \sum_{x\in A} \mathbb{P}(\\{x\\})$. Cet exemple montre que, comme dans le cas fini, on n'a besoin que de peu d'évènements pour inférer toute la probabilité. Ce ne sont plus les singletons mais des suites que l'on appelle **systèmes complets d'évènements** :
+Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec $\mathbb{P}$ défini uniquement sur les entiers : $\mathbb{P}(\\{n\\}) = \frac{n}{2^{n+1}}$. On a alors $\mathbb{P}(A) = \sum_{x\in A} \mathbb{P}(\\{x\\})$. Cet exemple montre que, comme dans le cas fini, on n'a besoin que de peu d'évènements pour inférer toute la probabilité. Ce ne sont plus forcément des singletons mais des partitions de $\Omega$ que l'on appelle **systèmes complets d'évènements** :
 
 {% definition %}
 

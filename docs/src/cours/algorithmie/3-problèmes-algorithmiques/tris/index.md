@@ -76,6 +76,8 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 [Tri par insertion](./algorithme-insertion)
 {% endaller %}
 
+> TBD ici TD/TP avec les variantes simples
+> 
 ### Exercices : Variantes
 
 #### Tri à bulles

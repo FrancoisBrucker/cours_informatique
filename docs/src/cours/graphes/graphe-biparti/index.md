@@ -373,7 +373,7 @@ De là, en notant $\mathcal{G}'$ l'ensemble de tout ces sous-graphes possibles, 
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(E') &=& \frac{1}{\vert \mathcal{G}' \vert}\sum_{G'=(V, E') \in \mathcal{G}'}\vert E'\vert\\
+\mathbb{E}[E'] &=& \frac{1}{\vert \mathcal{G}' \vert}\sum_{G'=(V, E') \in \mathcal{G}'}\vert E'\vert\\
 & =& \frac{1}{\vert \mathcal{G}' \vert}\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert\\
 & = &\frac{\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert}{\vert \mathcal{G}' \vert} \\
 &= &\sum_{xy \in E}{\text{probabilité que } xy \text{ soit une arête}}\\
@@ -526,14 +526,14 @@ La preuve va consister à construire un graphe aléatoirement, puis à supprimer
 
 Soit $G$ à $n$ sommets construit tel que la probabilité d'avoir l'arête $xy$ vaut $p$ quelque soit l'arête (ces graphes sont appelés graphes aléatoire de Erdős-Rényi, on y revient plus tard dans ce cours). On choisira $p$ plus tard pour maximiser le nombre d'arêtes tout en conservant peux de copies de $H$ dans $G$.
 
-En notant $\sharp H$ le nombre de sous-graphes valant $H$ de $G$ on va calculer son espérance $\mathbb{E}(\sharp H)$.
+En notant $\sharp H$ le nombre de sous-graphes valant $H$ de $G$ on va calculer son espérance $\mathbb{E}[\sharp H]$.
 
 Pour cela il nous faut une autre donnée qui est le nombre d'[automorphisme de $H$](https://fr.wikipedia.org/wiki/Automorphisme_de_graphe){.externe} (les permutation de sommets conservant $H$), appelons le $\text{aut}(H)$, pour pouvoir écrire :
 
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(\sharp H) &=& \frac{n\cdot(n-1)\cdot \dots \cdot (n-v(H))}{\text{aut}(H)}\cdot p^{e(H)}\\
+\mathbb{E}[\sharp H] &=& \frac{n\cdot(n-1)\cdot \dots \cdot (n-v(H))}{\text{aut}(H)}\cdot p^{e(H)}\\
 \end{array}
 $$
 </div>
@@ -549,7 +549,7 @@ On en déduit l'inégalité :
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(\sharp H) &\leq& n^{v(H)}\cdot p^{e(H)}\\
+\mathbb{E}[\sharp H] &\leq& n^{v(H)}\cdot p^{e(H)}\\
 \end{array}
 $$
 </div>
@@ -558,16 +558,16 @@ D'un autre côté l'espérance du nombre d'arête de $G$ vaut :
 
 <div>
 $$
-\mathbb{E}(e(G)) = p \cdot \binom{n}{2}
+\mathbb{E}[e(G)] = p \cdot \binom{n}{2}
 $$
 </div>
 
-On veut que le nombre d'arête de $G$ soit le plus grand possible tout en minimisant le nombre de sous-graphes valant $H$ : on cherche à maximiser $\mathbb{E}(e(G) - \sharp H) = \mathbb{E}(e(G)) - \mathbb{E}(\sharp H)$.
+On veut que le nombre d'arête de $G$ soit le plus grand possible tout en minimisant le nombre de sous-graphes valant $H$ : on cherche à maximiser $\mathbb{E}[e(G) - \sharp H] = \mathbb{E}[e(G)] - \mathbb{E}[\sharp H]$.
 
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(e(G) - \sharp H) &\geq& p \cdot \binom{n}{2}[1-2p^{e(H)-1}\cdot \frac{n^{v(H)-1}}{n-1}]\\
+\mathbb{E}[e(G) - \sharp H]&\geq& p \cdot \binom{n}{2}[1-2p^{e(H)-1}\cdot \frac{n^{v(H)-1}}{n-1}]\\
 &\geq& p \cdot \binom{n}{2}[1-2p^{e(H)-1}\cdot {n^{v(H)-2}}]\\
 \end{array}
 $$
@@ -578,7 +578,7 @@ On peut maintenant trouver un $p$ qui va simplifier tout ça, par exemple $p = \
 <div>
 $$
 \begin{array}{lclr}
-\mathbb{E}(e(G) - \sharp H) &\geq& p \cdot \binom{n}{2}[1-2(\frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}})^{e(H)-1}\cdot {n^{v(H)-2}}]\\
+\mathbb{E}[e(G) - \sharp H] &\geq& p \cdot \binom{n}{2}[1-2(\frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}})^{e(H)-1}\cdot {n^{v(H)-2}}]\\
 &\geq& p \cdot \binom{n}{2}[1-\frac{1}{2^{e(H)-2}}]\\
 &\geq& p\cdot \binom{n}{2}\cdot \frac{1}{2} &\text{ puisque }e(H)\geq 3\\
 &\geq& \frac{1}{4} p\cdot (n(n-1))\\

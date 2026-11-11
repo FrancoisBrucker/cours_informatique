@@ -2,6 +2,10 @@
 layout: layout/post.njk
 title: Complexité en moyenne
 
+eleventyNavigation:
+  prerequis: 
+    - "/cours/misc/probabilités/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

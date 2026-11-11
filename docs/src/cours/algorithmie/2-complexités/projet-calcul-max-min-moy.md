@@ -610,7 +610,7 @@ $$
 
 {% enddetails %}
 
-On déduit de l'exercice précédent que $\mathbb{E}[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane, et vaut alors $\frac{3n}{4}$. Ceci nous donne une idée pour calculer la complexité en moyenne de notre algorithme. À $k$ fixé et pour notre modèle probabiliste, si on pose $C(n, k) \coloneqq \mathbb{E}(X_k)$ comme étant la complexité en moyenne à $k$ fixe pour une permutation de $[1 .. n]$. La remarque précédente nous incite à penser que :
+On déduit de l'exercice précédent que $\mathbb{E}[n']$ est maximum pour $k = n/2$, c'est-à-dire lorsque l'on recherche la médiane, et vaut alors $\frac{3n}{4}$. Ceci nous donne une idée pour calculer la complexité en moyenne de notre algorithme. À $k$ fixé et pour notre modèle probabiliste, si on pose $C(n, k) \coloneqq \mathbb{E}[X_k]$ comme étant la complexité en moyenne à $k$ fixe pour une permutation de $[1 .. n]$. La remarque précédente nous incite à penser que :
 
 - $C(n, k)$ va être maximum pour $k = n/2$
 - qu'en moyenne la récursion va conserver un tableau de longueur $3n/4$.
@@ -681,7 +681,7 @@ Reprenons la définition de $C(n, k)$ :
 <div>
 $$
 \begin{array}{lcl}
-C(n, k) &=& \mathbb{E}(X_k)\\
+C(n, k) &=& \mathbb{E}[X_k]\\
 &=& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i, k-i) + \sum_{i = k+1}^{n-1}C(i, k))\\
 &\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k+1}^{n-1}C(i))\\
 &\leq& \Theta(n) + \frac{1}{n}(\sum_{i = 1}^{k-1}C(n-i) + \sum_{i = k}^{n}C(i))\\

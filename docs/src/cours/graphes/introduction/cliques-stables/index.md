@@ -542,7 +542,7 @@ Soit $G$ un graphe aléatoire à $k$ sommets. Soit $X(G)$ la variable aléatoire
 <div>
 $$
 \begin{array}{lcl}
-\mathbb{E}(X) &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr[A \text{soit une clique}] + \Pr[A \text{soit un stable}])\\
+\mathbb{E}[X] &=& \sum\limits_{A \text{ ensemble de taille }n}(\Pr[A \text{soit une clique}] + \Pr[A \text{soit un stable}])\\
 &=& \sum\limits_{A \text{ ensemble de taille }n} 2 \cdot \frac{1}{2^{n(n-1)/2}}\\
 &=& \binom{k}{n} 2 \cdot {2^{1-n(n-1)/2}}\\
 \end{array}
@@ -551,7 +551,7 @@ $$
 
 Si l'on supprime du graphe un sommet (on peut supprimer plusieurs fois le même sommet) pour chacune de ses cliques et stable de taille $n$, le nouveau graphe ne contient plus ni clique ni stable de taille $n$ et aura au moins $k - X(G)$ sommets puisque l'on peut supprimer le même sommet plusieurs fois.
 
-De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}(N - X) = N - \mathbb{E}(X) = k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.
+De là, l'espérance du nombre de sommets du nouveau graphe est plus grande que $\mathbb{E}[N - X] = N - \mathbb{E}[X] = k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$. Comme c'est une espérance il existe des graphes ayant ce nombre de sommets ou plus après suppression et donc : $R(n) \geq k - \binom{k}{n} \cdot {2^{1-n(n-1)/2}}$ pour tout $k$.
 
 {% enddetails %}
 {% note "**Corollaire**" %}
