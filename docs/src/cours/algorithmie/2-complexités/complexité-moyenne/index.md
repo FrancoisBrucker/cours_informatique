@@ -29,9 +29,16 @@ Soit $A$ un algorithme dont on veut calculer la complexité par rapport au param
 - la complexité $C_\max(n)$ de l'algorithme vaut $C_\max(n) = \max \\{N(e) \mid e \in \mathcal{E}_n\\}$
 - la complexité minimum $C_\min(n)$ de l'algorithme vaut $C_\min(n) = \min \\{N(e) \mid e \in \mathcal{E}_n\\}$
 
-[L'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} de la complexité, c'est-à-dire la complexité _attendue_ ou _normale_ si l'algorithme est exécuté pour une entrée au hasard, est appelée **complexité en moyenne**.
+[L'espérance](/cours/misc/probabilités/#espérance) de la complexité, c'est-à-dire la complexité _attendue_ ou _normale_ si l'algorithme est exécuté pour une entrée au hasard, est appelée **complexité en moyenne**.
 
-Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître le modèle probabiliste associé aux données :
+Fixons nous les idées en supposant que l'on possède un algorithme $A(e)$ dont on connaît la complexité $C(n)$. Ceci signifie que : $C(n) = \max_{\mathcal{E}_n}(N(e))$ avec :
+
+- $\mathcal{E}_n$ l'ensemble des entrées $p$ associées au paramètre $n$,
+- $N(e)$ le nombre d'opérations effectuée lors de l'exécution de $A(e)$.
+ 
+La complexité en moyenne de l'algorithme est alors l'espérance de $\mathbb{E}[N]$ où $N(e)$ est la variable aléatoire qui à chaque entrée $e$ associée au paramètre $n$ de la complexité.
+
+On pour calculer une espérance il faut connaître la probabilité d'apparition de chaque valeur, on a alors la définition formelle suivante :
 
 {% definition %}
 La **_complexité en moyenne_** de l'algorithme $A$ pour une entrée de paramètre $n$ est :
@@ -44,7 +51,7 @@ $$
 
 Avec :
 
-- $\mathcal{E}_n$ l'ensemble des données de paramètre $n$, 
+- $\mathcal{E}_n$ l'ensemble fini des données de paramètre $n$, 
 - $p_n(e)$ la probabilité de choisir $e \in \mathcal{E}_n$ comme entrée de l'algorithme
 - $N(e)$ le nombre d'opérations utilisées par l'algorithme pour se terminer avec l'entrée $e$.
 
@@ -59,6 +66,14 @@ $$
 </div>
 
 {% endinfo %}
+
+Si l'ensemble $\mathcal{E}_n$ des entrées de paramètre $n$ est infini (mais tout de même dénombrable puisqu'on est en informatique), on utilise le fait que $N: \mathcal{E}_n \rightarrow \mathbb{N}$ est une variable aléatoire discrète et peut donc s'écrire pour une somme d'indicatrices :
+
+<div>
+$$
+N = \sum_{i}i \mathbb{1}_{\{N = i\}}
+$$
+</div>
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
@@ -88,7 +103,7 @@ Toutes les instructions de l'algorithme sont en $\mathcal{O}(1)$ (un test et un 
 
 {% enddetails %}
 
-Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes judicieusement choisies :
+Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes dont les valeurs de complexités sont les mêmes :
 
 {% retenir %}
 Pour calculer facilement une complexité en moyenne il faut pouvoir partitionner l'ensemble des entrées en un nombre fini de classes dont :
@@ -148,7 +163,7 @@ Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on 
 
 <div>
 $$
-C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
+C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
 $$
 </div>
 

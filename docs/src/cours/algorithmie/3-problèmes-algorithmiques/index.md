@@ -20,9 +20,9 @@ Cette notion est centrale en algorithmie, nous l'avons déjà abordé en creux e
 [Définitions](./définitions)
 {% endaller %}
 
-## Exemples
+## Deux Exemples
 
-On va illustrer la recherche de la complexité d'un problème via trois exemples paradigmatiques et de difficulté croissante.
+On va illustrer la recherche de la complexité d'un problème via deux exemples paradigmatiques à connaître.
 
 ### Problèmes de l'exponentiation
 
@@ -35,13 +35,6 @@ On va illustrer la recherche de la complexité d'un problème via trois exemples
 {% aller %}
 [Problème du tri](./tris)
 {% endaller %}
-
-### Problème de l'enveloppe  convexe
-
-{% aller %}
-[Problème de l'enveloppe convexe](./enveloppe-convexe)
-{% endaller %}
-
 
 ## On s'entraîne
 

@@ -11,7 +11,7 @@ eleventyComputed:
 
 Lors de calculs de complexité, on va de nombreuses fois avoir les mêmes sommes à estimer, voir à calculer.
 
-Cette série d'exercice va vous montrer les plus classiques et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.
+Cette série d'exercice va vous montrer les plus classiques (on en a d'ailleurs déjà vu certaines) et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.
 
 {% lien %}
 [Séries](https://fr.wikipedia.org/wiki/S%C3%A9rie_(math%C3%A9matiques)){.externe}
@@ -271,49 +271,82 @@ Si $H(n)$ converge, alors toute suite extraite également. Cela n'est donc pas p
 
 Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique){.externe}).
 
-Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on peut utiliser, on a pour tout entier $i> 1$ :
 
+[On a déjà utilisé ce résultat](../../2-complexités/projet-calcul-max-min-moy/#Hn-équivalent). On le remet ici pour référence.
+
+<div id="Hn-équivalent"></div>
+
+{% note "**Proposition**" %}
 <div>
 $$
-\frac{1}{i} \leq \int_{i-1}^{i}\frac{1}{x}dx
+\ln(n + 1) \leq H(n) \leq \ln(n) + 1
 $$
 </div>
 
-Et a pour tout entier $i> 0$ :
-<div>
-$$
-\int_{i}^{i+1}\frac{1}{x}dx \leq \frac{1}{i}
-$$
-</div>
+{% endnote %}
+{% details "preuve", "open"%}
 
-> TBD il y a plus simple :
-> 1. ln(1 + x) ≤ x par étude de fonction.
-> 2. 1/(k+1) ≤ ln((1+k)/k) ≤ 1/k
-> 3. série télescopique puisque ln((1+k)/k) = ln(1+k) - ln(k)
+Soit $f(x) = \ln(1+x) - x$ définie sur $]-1, +\infty[$. Comme $f'(x) = \frac{1}{1+x} -1 = \frac{-x}{1+x}$, on a que $f$ atteint son minimum en 0 : $f(x) \geq f(0) = 0$ pour tout $x$ de $]-1, +\infty[$ : $x \geq \ln(1+x)$ sur $]-1, +\infty[$.
 
+De là pour tout entier $i > 1$ : 
 
-On peut alors utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale){.externe} pour en déduire que pour tout $n> 0$ :
+- $-\frac{1}{i} \geq \ln(1-\frac{1}{i}) = \ln(i-1) - \ln(i)$
+- $\frac{1}{i} \geq \ln(1+\frac{1}{i}) = \ln(i+1) - \ln(i)$
 
-{% exercice %}
+Ce qui donne l'encadrement pour $i > 1$ : 
 
 <div>
 $$
-\ln(n) \leq H(n) \leq \ln(n) + 1
+\ln(i+1) - \ln(i) \leq \frac{1}{i} \leq \ln(i) - \ln(i-1)
 $$
 </div>
 
-{% endexercice %}
-{% details "corrigé" %}
+En sommant le tout on obtient une série télescopique :
 
-L'inégalité de droite est claire en sommant de $i=2$ à $i=n$.
+<div>
+$$
+\begin{array}{c}
+\sum\limits_{2\leq i \leq n} (\ln(i+1) - \ln(i)) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \sum\limits_{2\leq i \leq n} (\ln(i) - \ln(i-1))
+\end{array}
+$$
+</div>
 
-Pour l'inégalité de gauche, la première inégalité donne en sommant de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.
+Qui se simplifie en :
+<div>
+$$
+\begin{array}{c}
+\ln(n+1) - \ln(2) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \ln(n) - \ln(1)
+\end{array}
+$$
+</div>
+
+On en déduit donc l'encadrement :
+
+<div>
+$$
+\begin{array}{c}
+\ln(n+1) \leq \sum\limits_{i=1}^n\frac{1}{i} \leq \ln(n) + 1
+\end{array}
+$$
+</div>
 
 {% enddetails %}
 
-Ce qui doit amener à :
+Ce qui amène directement à :
 
-{% exercice %}
+{% note "**Corollaire**" %}
+<div>
+$$
+\sum\limits_{i=1}^{n} \frac{1}{i} \underset{+\infty}{\sim} \ln(n)
+$$
+</div>
+
+{% endnote %}
+
+Et à ça :
+
+
+{% note "**Corollaire**" %}
 
 <div>
 $$
@@ -321,11 +354,7 @@ H(n) = \Theta(\ln(n))
 $$
 </div>
 
-{% endexercice %}
-{% details "corrigé" %}
-
-L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 1$ [les deux fonctions sont donc équivalentes](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe} en $+\infty$ (ce qui est plus fort que ce qu'on demande)
-{% enddetails %}
+{% endnote %}
 
 ## <span id="problème-Bâle"></span>Problème de Bâle
 
@@ -333,7 +362,7 @@ L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 
 
 > TBD <https://www.youtube.com/watch?v=CC2DG391HmA>{.externe} en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
 
-> TBD une démo <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
+> TBD une démonstration <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
  -->
 
 
@@ -345,17 +374,13 @@ La somme suivante à un nom car le calcul exact de sa limite elle a résisté pe
 
 <div>
 $$
-\lim_{n \to {+\infty}}\sum_{i=1}^{n}\frac{1}{i^2} = \frac{\pi^2}{6}
+\lim\limits_{n \to {+\infty}}\sum_{i=1}^{n}\frac{1}{i^2} = \frac{\pi^2}{6}
 $$
 </div>
 
-{% lien %}
+### Utilisation en algorithmie
 
-[5 preuves différentes du résultat](https://www.youtube.com/watch?v=1hJji-zgS00){.externe} et les détails dans [voyage en Analystan](https://math.univ-lyon1.fr/irem/IMG/pdf/analysie.pdf){.externe}
-
-{% endlien %}
-
-On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.
+On ne va pas ici démontrer la valeur exacte de la limite (regardez le premier lien si vous en voulez une), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.
 
 {% exercice %}
 Montrez que :
@@ -420,4 +445,147 @@ $$
 La série est croissante et bornée, elle converge.
 {% enddetails %}
 
-Classiquement en analyse on aurait aussi utilisé [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale){.externe} pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).
+### Preuve
+
+{% lien %}
+
+[une preuve de Ioannis Papadimitriou](https://www.math.uwaterloo.ca/~krdavids/M148/Papadimitriou.pdf)
+
+{% endlien %}
+
+On va donner la preuve du lien ci-dessus, que l'on doit à Papadimitriou (1973). Son intérêt est qu'elle n'a pas besoin d'intégrale ou de méthodes d'analyse, juste un petit polynôme et l'utilisation de fonction trigonométriques simple.
+
+{% note "proposition" %}
+
+Pour tout $0 < x < \frac{\pi}{2}$ on a :
+<div>
+$$
+\sin(x) < x < \tan(x)
+$$
+</div>
+{% endnote %}
+{% details "preuve","open" %}
+
+Soient les deux fonctions définies sur $[0, \frac{\pi}{2}[$ :
+
+- $f(x) =  x- \sin(x)$,
+- $g(x) =  \tan(x) - x$.
+
+On a :
+
+- $f'(x) =  1 - cos(x) > 0$ sur $]0, \frac{\pi}{2}[$ donc $f(x) > f(0) = 0$ sur $]0, \frac{\pi}{2}[$
+- $g'(x) =  (1+\tan^2(x)) -1 = \tan^2(x) > 0$ sur $]0, \frac{\pi}{2}[$ $g(x) > g(0)$ = 0 sur $]0, \frac{\pi}{2}[$.
+
+On en conclut que sur $]0, \frac{\pi}{2}[$ :
+
+- $\sin(x) < x$
+- $x < \tan(x)$
+
+{% enddetails %}
+
+On a alors sur $]0, \frac{\pi}{2}[$ :
+
+<div>
+$$
+\begin{align*}
+\sin(x) < x < \tan(x)\\
+\frac{1}{\sin(x)} > \frac{1}{x} > \frac{1}{\tan(x)}\\
+\frac{1}{\sin^2(x)} > \frac{1}{x^2} > \frac{1}{\tan^2(x)}\\
+\end{align*}
+$$
+</div>
+
+Comme $1 + \cot^2(x) = \frac{1}{\sin^2(x)}$ ($\cot(x) = \frac{1}{tan(x)}$) sur $]0, \frac{\pi}{2}[$, l'encadrement précédent s'écrit :
+
+<div>
+$$
+\begin{align*}
+\cot^2(x) < \frac{1}{x^2} < 1 + \cot^2(x)\\
+\end{align*}
+$$
+</div>
+
+En posant $x_k = \frac{k\pi}{2n+1}$ pour $1\leq k \leq n$, on a $0< x_k <\frac{\pi}{2}$ et on l'injecter dans l'équation précédente :
+
+<div>
+$$
+\begin{align*}
+\sum\limits_{k=1}^n\cot^2(x_k) < \frac{(2n+1)^2}{\pi^2}\sum\limits_{k=1}^n\frac{1}{k^2} < m + \sum\limits_{k=1}^n\cot^2(x_k)\\
+\end{align*}
+$$
+</div>
+
+On utilise alors le fait que :
+
+{% note "proposition" %}
+
+<div>
+$$
+\sum\limits_{k=1}^n\cot^2(\frac{k\pi}{2n+1}) = \frac{n(2n-1)}{3}
+$$
+</div>
+{% endnote %}
+{% details "preuve","open" %}
+
+<div>
+$$
+\begin{array}{lcl}
+\cos(m\theta) + i\sin(m\theta) 
+&=& (e^{im\theta}) \\
+&=& (e^{i\theta})^m \\
+&=& (\cos(\theta) + i\sin(\theta))^m \\
+&=& \sin^m(\theta)\cdot (\cot(\theta) + i)^m\\
+&=& \sin^m(\theta)\cdot (\sum\limits_{k=0}^m(\binom{m}{k}i^k\cot^{m-k}(\theta))
+\end{array}{lcl}
+$$
+</div>
+
+On pose maintenant $m = 2n + 1$ :
+
+<div>
+$$
+\sin((2n+1)\theta) = \sin^{2n+1}(\theta)\cdot (\sum\limits_{k=0}^m(\binom{2n+1}{k}i^k\cot^{2n+1-k}(\theta))
+$$
+</div>
+
+Et on n'en garde que la partie imaginaire pour obtenir :
+
+<div>
+$$
+\sin((2n+1)\theta) = \sin(\theta)^{2n+1} \cdot (\sum\limits_{k=0}^{n}(\binom{2n+1}{2k + 1}(-1)^k\cot^{k}(\theta))
+$$
+</div>
+
+Puisque $\sin(\theta) \neq 0$ pour $0 < \theta < \frac{\pi}{2}$, l'équation précédente prouve que les $n$ racines du polynôme $P(x) = \sum\limits_{i=0}^{n}(\binom{2n+1}{2i + 1}(-1)^ix^{i})$ sont les $n$ valeurs $\cot^2(x_k)$ avec $x_k = \frac{k\pi}{2n + 1}$, $1\leq k \leq n$.
+
+La somme des $n$ racines $r_i$ d'un polynôme $\sum\limits_{k=0}^{n}a_kx^k$ valant $-\frac{a_{n-1}}{a_n}$ (puisque $\sum\limits_{k=0}^{n}a_kz^k = \prod\limits_{k=1}^{n}(x-r_i)$) on en déduit la relation demandée :
+
+<div>
+$$
+\sum\limits_{k=1}^{n}\cot^2(x_k) = \frac{n(2n -1)}{3}
+$$
+</div>
+
+{% enddetails %}
+
+Pour obtenir :
+
+<div>
+$$
+\begin{align*}
+\frac{n(2n-1)}{3} < \frac{(2n+1)^2}{\pi^2}\sum\limits_{k=1}^n\frac{1}{k^2} < n + \frac{n(2n-1)}{3}\\
+\frac{\pi^2}{6}\frac{2n(2n-1)}{(2n+1)^2} < \sum\limits_{k=1}^n\frac{1}{k^2} < \frac{n}{(2n+1)^2} + \frac{\pi^2}{6}\frac{2n(2n-1)}{(2n+1)^2}\\
+\end{align*}
+$$
+</div>
+
+Comme : $\lim\limits_{n\to +\infty} \frac{2n(2n-1)}{(2n+1)^2} = 1$ et $\lim\limits_{n\to +\infty} \frac{n}{(2n+1)^2} = 0$ on a bien le résultat attendu :
+
+{% note "Théorème" %}
+<div>
+$$
+\lim\limits_{n\to +\infty} \frac{1}{k^2} = \frac{\pi^2}{6}
+$$
+</div>
+
+{% endnote %}

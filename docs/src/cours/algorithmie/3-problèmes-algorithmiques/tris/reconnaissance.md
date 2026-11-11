@@ -2,10 +2,6 @@
 layout: layout/post.njk
 title: "Reconnaissance d'un tableau trié"
 
-eleventyNavigation:
-  prerequis:
-    - /cours/misc/probabilités/
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -53,7 +49,7 @@ La preuve de correction est tout aussi évidente. Si on arrive en ligne 5 c'est 
 L'algorithme `est_trie`{.language-} est une solution au problème _"est trié ?"_
 {% endnote %}
 
-### Complexité
+## Complexités de l'algorithme `est_trié`{.language-}
 
 Ligne à ligne :
 
@@ -66,7 +62,7 @@ Ligne à ligne :
 
 Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$.
 
-#### Cas le pire
+### Cas le pire
 
 Dans le cas le pire, on parcourt tout le tableau, donc :
 
@@ -74,7 +70,7 @@ Dans le cas le pire, on parcourt tout le tableau, donc :
 La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.
 {% endnote %}
 
-#### Cas les meilleur
+### Cas le meilleur
 
 Dans le cas le meilleur, on s'arrête dès la première itération :
 
@@ -82,104 +78,11 @@ Dans le cas le meilleur, on s'arrête dès la première itération :
 La complexité minimale de l'algorithme `est_trie`{.language-} est $\mathcal{O}(1)$ avec $n$ la taille du tableau en entrée.
 {% endnote %}
 
-#### Complexité en moyenne
+### Complexité en moyenne
 
-La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :
+Comme on a pas d'information relative à la répartition des nombre du tableau et que seul l'ordre interne des valeurs du tableau importe pour vérifier s'il est trié ou non, on utilise [le modèle du tableau aléatoire](../../../2-complexités/projet-calcul-max-min-moy/#définition-modèle-tableau-aléatoire) pour nos calculs de complexité en moyenne.
 
-##### Modèle du tableau aléatoire
-
-<span id="définition-modèle-tableau-aléatoire"></span>
-
-{% definition %}
-
-Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
-
-- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation){.externe} $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
-- $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
-{% enddefinition %}
-{% info %}
-Dans un tableau aléatoire, toutes les valeurs sont différentes.
-{% endinfo %}
-
-On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :
-
-{% note "**Proposition**" %}
-Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :
-
-<div>
-$$
-{\Pr}[T[i] = k] = \frac{1}{n}
-$$
-</div>
-{% endnote %}
-{% details "preuve", "open" %}
-
-Parmi les $n!$ permutations de $[0 \\, ..\\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
-
-{% enddetails %}
-
-Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :
-
-<div id="proba-k-tableau-aléatoire"></div>
-
-{% note "**Corollaire**" %}
-
-La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.
-
-{% endnote %}
-
-Enfin, dernière propriété qui va être utile dans les calculs :
-
-{% note "**Corollaire**" %}
-Si $T$ est un tableau aléatoire, on a :
-
-<div>
-$$
-{\Pr}[T[i] > k] = \frac{n-1-k}{n}
-$$
-</div>
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
-&=& \sum\limits_{u > k}\frac{1}{n}\\
-&=& \frac{n-1-k}{n}\\
-\end{array}
-$$
-</div>
-
-
-{% enddetails %}
-
-Ce modèle véhicule de nombreuse propriété l'on aimerait avoir pour un tableau de nombres quelconques :
-
-
-{% exercice %}
-Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :
-
-<div>
-$$
-{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
-$$
-</div>
-{% endexercice %}
-{% details "corrigé" %}
-
-Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] > T[v]] + {\Pr}[T[u] < T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] > T[v]$ que de tableaux pour lesquels $T[u] < T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]]$.
-
-Des deux conditions précédentes on en déduit ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}$.
-
-
-{% enddetails %}
-
-##### Calcul de la complexité
-
-Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :
-
+Sous ce modèle pour $T$, la probabilité pour notre algorithme de reconnaissance fasse exactement :
 
 - 1 itération est $p_1 = {\Pr}[T[0] > T[1]]$ et vaut $1/2$
 - 2 itérations est $p_2 = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])]$
@@ -218,7 +121,7 @@ p_2 \leq  {\Pr}[T[0] < T[1]] \;\cdot\; {\Pr}[T[1] > T[2]] = \frac{1}{2} \;\cdot\
 $$
 </div>
 
- Un raisonnement identique nous permet de minorer $p_i$ :
+Un raisonnement identique nous permet de minorer $p_i$ :
 
 <div>
 $$
@@ -238,7 +141,8 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 $$
 </div>
 
-Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../projet-sommes-classiques/#problème-i/2^i)) donc :
+
+Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../../intermède-1/sommes-classiques/#problème-i/2^i)) donc :
 
 <div>
 $$
@@ -246,7 +150,7 @@ C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mat
 $$
 </div>
 
-On a donc la proposition surprenante suivante :
+On a donc la proposition surprenante suivante (mais qu'on a déjà rencontré lors de la [recherche d'un sous-mot](../../../2-complexités/projet-calcul-max-min-moy/#sous-mot)) :
 
 {% note "**Proposition**" %}
 La complexité en moyenne du problème de la reconnaissance est en temps constant.
@@ -261,36 +165,6 @@ Ce résultat est remarquable :
 - Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente){.externe} est très utile pour démontrer qu'un algorithme est en temps constant.
 
 {% endretenir %}
-
-
-Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
-
-- le $i+1$ ème élément n'est pas le plus grand
-- les $i$ premiers éléments sont triées
-
-Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles pour une probabilité de $\frac{i}{(i+1)!}$. Le raisonnement est identique si on ne considère que les $i+1$ premiers éléments de tout tableau et donc $p_i = \frac{i}{(i+1)!}$ pour tout tableau de longueur $n\geq i+1$. On obtient alors :
-
-<div>
-$$
-\begin{array}{lcl}
-C_\text{moy}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
- &=& \sum\limits_{i=1}^{n-1}(\mathcal{O}(\frac{i^2}{(i+1)!} \cdot i)) \\
- &=& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
-\end{array}
-$$
-</div>
-
-Comme $i^2 \leq i(i+1)$ on a que :
-
-<div>
-$$
-C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum\limits_{i=0}^{n-2}(\frac{1}{i!}))
-$$
-</div>
-
-La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ ([$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$](https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re){.externe}) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$
-
-##### Vérification expérimentale
 
 Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :
 
@@ -324,10 +198,25 @@ print(max(nb))
 
 ```
 
+On peut aussi comprendre ce résultat en cherchant une valeur exacte des $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
+
+- le $i+1$ ème élément n'est pas le plus grand
+- les $i$ premiers éléments sont triées
+
+Il y en a très (très) peu : pour des tableaux de longueur $i$, il n'y en a que $i$ tableaux sur les $(i+1)!$ possibles. La probabilité $p_i = $\frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :
+
+- $\frac{1}{2!} = 0.5$
+- $\frac{2}{3!} \simeq 0.33$
+- $\frac{3}{4!} = .125$
+- $\frac{4}{5!} \simeq 0.003$
+- ...
+- $\frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$
+- ...
+- $\frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$
 
 ## Complexité du problème de la reconnaissance
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la _"recherche"_](../../complexité-problème/#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème _"est trié ?"_ est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-} est de $\mathcal{O}(n)$. On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la _"recherche"_](../complexité-problème/#complexité-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème _"est trié ?"_ est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-} est de $\mathcal{O}(n)$. On en conclut :
 
 {% note "**Proposition**" %}
 La complexité du problème _"est trié ?"_ est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.

@@ -61,7 +61,13 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 [Problèmes algorithmiques](./3-problèmes-algorithmiques/)
 {% endaller %}
 
-> TBD Intermède I : exercices/problèmes/sommes classiques
+
+### <span id="partie-3"></span>Intermède I
+
+{% aller %}
+[Intermède](./intermède-1/)
+{% endaller %}
+
 > TBD IV structure de données :
 >   ne pas parler de complexité amortie. Juste faire calcul avec augmentation
 
@@ -106,31 +112,7 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 {% endaller %}
 
 
-### On s'entraîne
 
-#### Complexité
-
-Comme exercice et pour référence, calcul de sommes classiques et utiles en complexité :
-
-<span id="sommes-classiques"></span>
-
-{% aller %}
-[Calcul de sommes classiques](./projet-sommes-classiques/)
-{% endaller %}
-
-{% aller %}
-[Calcul d'équations classiques](./projet-équations-classiques/)
-{% endaller %}
-
-#### Résolution d'algorithmes classiques
-
-{% aller %}
-[Algorithmes classiques](./projet-algorithmes-classiques)
-{% endaller %}
-
-#### On vérifie qu'on sait faire
-
-> TBD ajouter permutations ET MPCI 2025
 
 ## <span id="partie-2"></span>Partie II : structures de données linéaires
 

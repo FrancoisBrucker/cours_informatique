@@ -10,10 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les exercices ci-après sont fondamentaux pour le calcul de complexités, en particulier la complexité en moyenne. Apprenez leurs méthodes de résolution : elles vous permettront de vous en sortir pour une grande majorité des calculs qu'on vous demandera de faire.
+Les exercices ci-après sont fondamentaux pour le calcul de complexités, en particulier la complexité en moyenne. Apprenez leurs méthodes de résolution : elles vous permettront de vous en sortir pour une grande majorité des calculs que vous aurez besoin de faire.
 
 {% attention %}
-Ces exercices sont plus durs que ceux précédemment vus et sont de difficulté croissante. Faites et, surtout, comprenez bien les exercices précédents avant de vous lancer dans la résolution de ceux-ci.
+Ces exercices sont plus durs que ceux précédemment vus et sont de difficulté croissante. Donc :
+
+1. commencez par faire et intégrer les exercices précédents,
+2. faites ces exercices, quite à regarder les solutions, et comprenez les raisonnements fait. 
+3. ajoutez à votre besace de techniques et méthodes de calcul de complexité les différentes astuces et outils utilisés ici.
 {% endattention %}
 
 ## <span id="dichotomie"></span>Recherche dichotomique
@@ -207,7 +211,104 @@ La variable `m`{.language-} est affectée dans tous les cas au moins une fois. D
 
 {% enddetails  %}
 
-On s'intéresse à la complexité en moyenne de ce nombre d'affectations. Pour cela on va considérer que le tableau $T$ est une permutation aléatoire de [1 .. n].
+On s'intéresse à la complexité en moyenne de ce nombre d'affectations. Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. On peut alors utiliser le modèle classique du **_tableau aléatoire_** pour nos calculs
+
+### Définition et propriétés d'un tableau aléatoire
+
+<span id="définition-modèle-tableau-aléatoire"></span>
+
+{% definition %}
+
+Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
+
+- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation){.externe} $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
+- $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
+{% enddefinition %}
+{% info %}
+Dans un tableau aléatoire, toutes les valeurs sont différentes.
+{% endinfo %}
+
+On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler et convient pour les calculs de complexité en moyenne d'algorithme manipulant des tableaux d'entiers dont seuls les ordre relatifs entre valeurs importent (ce qui est presque toujours le cas) :
+
+{% retenir %}
+Si on a aucune information sur la répartition des nombres, on utilise par défaut le modèle du tableau aléatoire pour calculer des complexités en moyenne d'algorithmes manipulant des tableaux d'entiers tableaux d'entiers.
+{% endretenir %}
+
+Ce modèle possède de nombreuses propriétés :
+
+{% note "**Proposition**" %}
+Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :
+
+<div>
+$$
+{\Pr}[T[i] = k] = \frac{1}{n}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+Parmi les $n!$ permutations de $[0 \\, ..\\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
+
+{% enddetails %}
+
+Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :
+
+<div id="proba-k-tableau-aléatoire"></div>
+
+{% note "**Corollaire**" %}
+
+La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.
+
+{% endnote %}
+
+Ce modèle véhicule de nombreuses propriétés l'on aimerait avoir pour un tableau de nombres quelconques. Familiarisez vous avec le modèle en en démontrant deux :
+
+{% exercice %}
+
+Si $T$ est un tableau aléatoire, montrez que l'on a :
+
+<div>
+$$
+{\Pr}[T[i] > k] = \frac{n-1-k}{n}
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
+&=& \sum\limits_{u > k}\frac{1}{n}\\
+&=& \frac{n-1-k}{n}\\
+\end{array}
+$$
+</div>
+
+
+{% enddetails %}
+
+{% exercice %}
+Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :
+
+<div>
+$$
+{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] > T[v]] + {\Pr}[T[u] < T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] > T[v]$ que de tableaux pour lesquels $T[u] < T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]]$.
+
+Des deux conditions précédentes on en déduit ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}$.
+
+{% enddetails %}
+
+### Nombre moyen de mise à jours
+
+On va considérer que le tableau $T$ en paramètre est un tableau aléatoire de longueur $n$.
 
 {% exercice %}
 Donnez un argument pour lequel sous ce modèle la complexité en moyenne du nombre d'affectations est $\log_2(T.\mbox{\small longueur})$
@@ -223,7 +324,7 @@ Il est important de retenir cet argument. Il va servir à de nombreuses reprises
 L'argument précédent est souvent suffisant, mais, pour cette fois, faites-le proprement pour vous convaincre que l'argument est bon :
 
 {% exercice %}
-Démontrez que sous ce modèle, la probabilité que $T[i] = \max(T[:i])$ pour $0 \leq i < n$ vaut $\frac{1}{i+1}$.
+Démontrez que pour un tableau aléatoire $T$, la probabilité que $T[i] = \max(T[:i])$ pour $0 \leq i < n$ vaut $\frac{1}{i+1}$.
 {% endexercice %}
 {% info %}
 Vous pourrez lier cette complexité au nombre de fois où $T[i] = \max(T[:i])$ pour $0 \leq i < n$ et au fait ([démontré là](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique#%C3%89quivalent_de_Hn){.externe}) que $\sum_{1\leq i \leq n} \frac{1}{i}$ est équivalent à $\ln(n)$ en $+\infty$.
@@ -256,7 +357,11 @@ C_{\text{moy}}(n) &=& \mathbb{E}[X] \\
 $$
 </div>
 
-On peut maintenant utiliser le résultat classique suivant pour conclure :
+<div id="utilisation-Hn-équivalent"></div>
+
+On peut maintenant utiliser le résultat classique suivant ([démontré ici](../intermède-1/sommes-classiques/#Hn-équivalent)) pour conclure :
+
+
 
 {% note "**Proposition**" %}
 <div>
@@ -269,63 +374,16 @@ $$
 {% retenir %}
 Retenez ce résultat, cela est souvent utile.
 {% endretenir %}
-{% details "preuve", "open"%}
 
-Soit $f(x) = \ln(1+x) - x$ définie sur $]-1, +\infty[$. Comme $f'(x) = \frac{1}{1+x} -1 = \frac{-x}{1+x}$, on a que $f$ atteint son minimum en 0 : $f(x) \geq f(0) = 0$ pour tout $x$ de $]-1, +\infty[$ : $x \geq \ln(1+x)$ sur $]-1, +\infty[$.
-
-De là pour tout entier $i > 1$ : 
-
-- $-\frac{1}{i} \geq \ln(1-\frac{1}{i}) = \ln(i-1) - \ln(i)$
-- $\frac{1}{i} \geq \ln(1+\frac{1}{i}) = \ln(i+1) - \ln(i)$
-
-Ce qui donne l'encadrement pour $i > 1$ : 
-
-<div>
-$$
-\ln(i+1) - \ln(i) \leq \frac{1}{i} \leq \ln(i) - \ln(i-1)
-$$
-</div>
-
-En sommant le tout on obtient une série télescopique :
-
-<div>
-$$
-\begin{array}{c}
-\sum\limits_{2\leq i \leq n} (\ln(i+1) - \ln(i)) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \sum\limits_{2\leq i \leq n} (\ln(i) - \ln(i-1))
-\end{array}
-$$
-</div>
-
-Qui se simplifie en :
-<div>
-$$
-\begin{array}{c}
-\ln(n+1) - \ln(2) \leq \sum\limits_{2\leq i \leq n}\frac{1}{i} \leq \ln(n) - \ln(1)
-\end{array}
-$$
-</div>
-
-On en déduit donc l'encadrement :
-
-<div>
-$$
-\begin{array}{c}
-\ln(n+1) \leq \sum\limits_{i=1}^n\frac{1}{i} \leq \ln(n) + 1
-\end{array}
-$$
-</div>
-
-Ce qui montre que $\lim\limits_{+\infty}\frac{\sum\limits_{i=1}^n\frac{1}{i}}{\ln{n}} = 1$ et conclut la preuve.
-{% enddetails %}
 
 On en conclut que la complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?).
 
 
-## Recherche de sous-mots
+## <span id="sous-mot"></span> Recherche de sous-mots
 
 On va analyser un algorithme permettant de rechercher des sous-mots d'[un mot d'un alphabet $\mathcal{A}^\star$](../../1-algorithme/bases-théoriques/définition/#définition-mot). Si $m = m_0 \dots m_p$ est un mot de $\mathcal{A}^\star$, un mot $n = n_0\dots n_q$ est un sous-mot de $m$ s'il existe $0\leq i \leq p - q$ tel que $m_{i + k} = n_{k}$ pour tous $0\leq k \leq q$.
 
-<div id="sous-mot"></div>
+<div id="algorithme-sous-mot"></div>
 
 ```pseudocode/
 algorithme sous_mot(m: str, n: str)  → bool:
@@ -576,10 +634,10 @@ Un exemple simple pour lequel cette complexité arrive est lorsque $T[:-1] = [2p
 
 {% enddetails %}
 
-Les complexité maximale et minimale ne dépendent que de la longueur $n$ du tableau, pas de $k$. On va montrer que ceci est aussi vrai lorsque l'on cherche la complexité en moyenne de l'algorithme. Pour les calculs en moyenne, on supposera (comme précédemment) que $T$ est une permutation aléatoire de $[1 .. n]$. 
+Les complexité maximale et minimale ne dépendent que de la longueur $n$ du tableau, pas de $k$. On va montrer que ceci est aussi vrai lorsque l'on cherche la complexité en moyenne de l'algorithme. Pour les calculs en moyenne, on supposera (comme précédemment) que $T$ est un tableau aléatoire. 
 
 {% exercice %}
-Lorsque $T$ est une permutation aléatoire de $[1 .. n]$, montrez que la moyenne de la longueur $n'$ du tableau de la récursion vaut :
+Lorsque $T$ est un tableau aléatoire, montrez que la moyenne de la longueur $n'$ du tableau de la récursion vaut :
 
 <div>
 $$

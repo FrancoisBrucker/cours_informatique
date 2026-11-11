@@ -199,41 +199,18 @@ Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow \math
 - $\Pr[X \in U] \coloneqq \mathbb{P}(X^{-1}(U))$,
 - $\Pr[X \in U \\, , \\, Y \in V] \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)
 
-On dira que $X(\omega) = u$ est une **_réalisation_** de la variable aléatoire $X$. Cette réalisation est de probabilité $\Pr[X = u]$.
+On dira que $X(\omega) = x$ est une **_réalisation_** de la variable aléatoire $X$. Cette réalisation est de probabilité $\Pr[X = u]$.
 {% enddefinition %}
 {% attention %}
 Ne confondez pas la variable aléatoire et ses réalisations.
 {% endattention %}
 
-Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on utilisera souvent la notation suivante :
-
-{% definition %}
-
-On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
-
-- prenant ses valeurs dans $\mathcal{U}$
-- suivant la loi de probabilité $\mathbb{P}$
-
-{% enddefinition %}
-
-Ce qui nous permet d'écrire de façon synthétique :
-
-{% definition %}
-
-<div>
-$$
-{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
-$$
-</div>
-
-{% enddefinition %}
-
-Si la notation ci-dessus est explicite elle est souvent lourde à écrire. On se permettra donc souvent les abus de notation suivants :
+Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on l'omettra la plupart du temps.
 
 {% retenir %}
-S'il n'y a pas ambiguïté, on se permettra même d'écrire :
+S'il n'y a pas ambiguïté, on écrira :
 
-- ${\Pr}[x = k]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$
+- ${\Pr}[x = k]$ si l'on s'intéresse aux réalisations $X(\omega) = x$ de la variable aléatoire $X$
 - ${\Pr}[X = k]$ si l'on veut expliciter la variable aléatoire $X$
  
 {% endretenir %}
@@ -250,19 +227,34 @@ Une variable aléatoire est dite :
 {% retenir %}
 Lorsque l'on parlera de :
 
-- variable aléatoire dans le cours, elle sera réelle et simple. 
-- variable aléatoire discrète, elle sera de plus réelle.
+- **variable aléatoire** dans le cours, elle sera **réelle et simple**. 
+- **variable aléatoire discrète**, elle sera de plus **réelle**.
 
 {% endretenir %}
 
-Les variables aléatoires discrètes s'écrivent trivialement comme une somme d'indicatrices :
+Les variables aléatoires discrètes s'écrivent trivialement comme une somme d'[indicatrices](https://fr.wikipedia.org/wiki/Fonction_caract%C3%A9ristique_(th%C3%A9orie_des_ensembles)) :
+
+
+{% definition %}
+La fonction $\mathbb{1}_{A}$ est appelée **_indicatrice_**, **_fonction indicatrice_** ou encore **_fonction caractéristique_** et est définie telle que :
+
+<div>
+$$
+\mathbb{1}_{A}(x) = 
+\begin{cases}
+1 & \text{si } x \in A\\
+0 & \text{sinon}
+\end{cases}
+$$
+</div>
+{% enddefinition %}
 
 {% note "**Proposition**" %}
 Soit $X$ une variable aléatoire discrète de valeurs $(x_i)$ ($i \in \mathbb{N}$). On peut l'écrire sous la forme :
 
 <div>
 $$
-X = \sum\limits_i x_i \mathbb{1}_{X = x_i}
+X = \sum\limits_i x_i \mathbb{1}_{\{X = x_i\}}
 $$
 </div>
 
@@ -317,9 +309,39 @@ $$
 </div>
 {% endnote %}
 
-### Exemple
+### Exemple : en sécurité
 
-En sécurité, on aura typiquement :
+<!-- TBD 
+
+utile ? 
+sûrement à étoffer 
+
+-->
+
+En sécurité on utilisera souvent la notation suivante pour expliciter les variables aléatoires :
+
+{% definition %}
+
+On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
+
+- prenant ses valeurs dans $\mathcal{U}$
+- suivant la loi de probabilité $\mathbb{P}$
+
+{% enddefinition %}
+
+Les lois de probabilités pouvant changer on les précisera si nécessaires en utilisant la notation suivante :
+
+{% definition %}
+
+<div>
+$$
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
+$$
+</div>
+
+{% enddefinition %}
+
+On aura typiquement :
 
 - $\Omega = \\{0, 1\\}^n$ l'ensemble des clés
 - probabilité uniforme
@@ -333,9 +355,9 @@ Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueur $L$ 
   - $M_0 : \Omega \rightarrow \\{0, 1\\}^L$
   - $M_1 : \Omega \rightarrow \\{0, 1\\}^L$
 
-## Espérance
+## <span id="espérance">Espérance
 
-La notion d'espérance en probabilité généralise la notion de moyenne.
+[La notion d'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} en probabilité généralise la notion de moyenne.
 
 {% definition %}
 
