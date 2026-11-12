@@ -222,10 +222,25 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 \end{array}
 $$
 </div>
-<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../../interm%C3%A8de-1/sommes-classiques/#probl%C3%A8me-i/2%5Ei">on le démontrera</a>) donc :</p>
+<p>Comme $i \leq (\sqrt{2})^i$ pour tout $i \geq i$ on a :</p>
 <div>
 $$
-C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
+\begin{array}{lcl}
+C_{\text{moy}}(n)
+ &\leq& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+\end{array}
+$$
+</div>
+<p>Et on utilise <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#s%C3%A9rie-g%C3%A9om%C3%A9trique-limite">un résultat qu'on a déjà démontré</a> pour finir la majoration :</p>
+<div>
+$$
+\begin{array}{lcl}
+C_{\text{moy}}(n)
+ &\leq& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+ &\leq& \mathcal{O}(\sum\limits_{i=0}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+&\leq& \mathcal{O}(\frac{1}{1-\frac{1}{\sqrt{2}}})\\
+&\leq& \mathcal{O}(1)
+\end{array}
 $$
 </div>
 <p>On a donc la proposition surprenante suivante (mais qu'on a déjà rencontré lors de la <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#sous-mot">recherche d'un sous-mot</a>) :</p>
@@ -249,7 +264,6 @@ $$
 <ul>
 <li>Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !</li>
 <li>Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.</li>
-<li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente" class="externe">une série convergente</a> est très utile pour démontrer qu'un algorithme est en temps constant.</li>
 </ul>
 </div>
 </div>
@@ -284,21 +298,21 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
 <span class="token keyword">print</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>On peut aussi comprendre ce résultat en cherchant une valeur exacte des $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
+<p>On peut aussi comprendre ce résultat remarquant que les tableaux pour lesquels l'algorithme fait exactement $i$ iterations sont ceux pour lesquels :</p>
 <ul>
 <li>le $i+1$ ème élément n'est pas le plus grand</li>
 <li>les $i$ premiers éléments sont triées</li>
 </ul>
-<p>Il y en a très (très) peu : pour des tableaux de longueur $i$, il n'y en a que $i$ tableaux sur les $(i+1)!$ possibles. La probabilité $p_i = $\frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :</p>
+<p>Et il y en a très (très) peu : il n'y en a que $i$ tableaux de longueur $i$ sur les $(i+1)!$ possibles qui vérifient cette condition. La probabilité $p_i = \frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :</p>
 <ul>
-<li>$\frac{1}{2!} = 0.5$</li>
-<li>$\frac{2}{3!} \simeq 0.33$</li>
-<li>$\frac{3}{4!} = .125$</li>
-<li>$\frac{4}{5!} \simeq 0.003$</li>
+<li>$p_1 = \frac{1}{2!} = 0.5$</li>
+<li>$p_2 = \frac{2}{3!} \simeq 0.3$</li>
+<li>$p_3 = \frac{3}{4!} = .1$</li>
+<li>$p_4 = \frac{4}{5!} \simeq 0.003$</li>
 <li>...</li>
-<li>$\frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$</li>
+<li>$p_{9} = \frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$</li>
 <li>...</li>
-<li>$\frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$</li>
+<li>$p_{19} = \frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$</li>
 </ul>
 <h2>Complexité du problème de la reconnaissance</h2>
 <p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
