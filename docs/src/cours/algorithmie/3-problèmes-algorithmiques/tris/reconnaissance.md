@@ -141,12 +141,29 @@ C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1))
 $$
 </div>
 
-
-Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../../intermède-1/sommes-classiques/#problème-i/2^i)) donc :
+Comme $i \leq (\sqrt{2})^i$ pour tout $i \geq i$ on a :
 
 <div>
 $$
-C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
+\begin{array}{lcl}
+C_{\text{moy}}(n)
+ &\leq& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+\end{array}
+$$
+</div>
+
+Et on utilise [un résultat qu'on a déjà démontré](../../../2-complexités/projet-calcul-max-min-moy/#série-géométrique-limite) pour finir la majoration :
+
+
+<div>
+$$
+\begin{array}{lcl}
+C_{\text{moy}}(n)
+ &\leq& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+ &\leq& \mathcal{O}(\sum\limits_{i=0}^{n-1}(\frac{1}{\sqrt{2}})^i)\\
+&\leq& \mathcal{O}(\frac{1}{1-\frac{1}{\sqrt{2}}})\\
+&\leq& \mathcal{O}(1)
+\end{array}
 $$
 </div>
 
@@ -162,7 +179,6 @@ Ce résultat est remarquable :
 
 - Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !
 - Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
-- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente){.externe} est très utile pour démontrer qu'un algorithme est en temps constant.
 
 {% endretenir %}
 
@@ -198,21 +214,21 @@ print(max(nb))
 
 ```
 
-On peut aussi comprendre ce résultat en cherchant une valeur exacte des $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
+On peut aussi comprendre ce résultat remarquant que les tableaux pour lesquels l'algorithme fait exactement $i$ iterations sont ceux pour lesquels :
 
 - le $i+1$ ème élément n'est pas le plus grand
 - les $i$ premiers éléments sont triées
 
-Il y en a très (très) peu : pour des tableaux de longueur $i$, il n'y en a que $i$ tableaux sur les $(i+1)!$ possibles. La probabilité $p_i = $\frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :
+Et il y en a très (très) peu : il n'y en a que $i$ tableaux de longueur $i$ sur les $(i+1)!$ possibles qui vérifient cette condition. La probabilité $p_i = \frac{i}{(i+1)!}$ d'en attraper un tend très (très) vite vers 0 :
 
-- $\frac{1}{2!} = 0.5$
-- $\frac{2}{3!} \simeq 0.33$
-- $\frac{3}{4!} = .125$
-- $\frac{4}{5!} \simeq 0.003$
+- $p_1 = \frac{1}{2!} = 0.5$
+- $p_2 = \frac{2}{3!} \simeq 0.3$
+- $p_3 = \frac{3}{4!} = .1$
+- $p_4 = \frac{4}{5!} \simeq 0.003$
 - ...
-- $\frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$
+- $p_{9} = \frac{9}{10!} \simeq 2.5 \cdot 10^{-6}$
 - ...
-- $\frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$
+- $p_{19} = \frac{19}{20!} \simeq 7.8 \cdot 10^{-18}$
 
 ## Complexité du problème de la reconnaissance
 

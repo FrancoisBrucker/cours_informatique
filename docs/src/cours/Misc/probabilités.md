@@ -433,7 +433,13 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-La première égalité est claire puisque les $X^{-1}(\\{ i \\})$ forment une partition de $\Omega$. Pour la seconde, on remarque que $i \cdot \Pr[X = i] = \sum_{1 \leq k \leq i} \Pr[X = i]$, et on échange les sommes : $\sum_{i \geq 0} \sum_{1 \leq k \leq i} \Pr[X = i] = \sum_{k \geq 1} \sum_{i \geq k} \Pr[X = i] = \sum_{k \geq 1}\Pr[X \geq k]$.
+La première égalité est claire puisque les $X^{-1}(\\{ i \\})$ forment une partition de $\Omega$. Pour la seconde, on remarque que $i \cdot \Pr[X = i] = \sum_{1 \leq k \leq i} \Pr[X = i]$, et on échange les sommes : 
+
+<div>
+$$
+\sum_{i \geq 0} \sum_{1 \leq k \leq i} \Pr[X = i] = \sum_{k \geq 1} \sum_{i \geq k} \Pr[X = i] = \sum_{k \geq 1}\Pr[X \geq k]
+$$
+</div>
 
 {% enddetails %}
 

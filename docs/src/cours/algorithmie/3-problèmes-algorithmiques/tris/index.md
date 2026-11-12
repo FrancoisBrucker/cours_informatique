@@ -19,6 +19,8 @@ ajouter le bogus sort
 
 - tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort 
 
+- parler du bogus sort qui ne termine pas forcément, que en probabilité.
+- attention, pas dans le modèle : pas d'aléatoire dans l'informatique.
 -->
 
 

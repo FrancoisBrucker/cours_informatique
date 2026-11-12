@@ -45,18 +45,25 @@ Enfin, comment mesurer la complexité en pratique (et en python) :
 
 ## On s'entraîne
 
+### Vérification des acquis
+
+Deux séries d'exercices simples pour vérifier que le cours est acquis :
+
 {% aller %}
 1. [Projet : mesurer des complexités](projet-code)
 2. [Projet : calcul de complexités min et max](projet-calcul-max-min)
 {% endaller %}
 
-Exercices classiques de calcul de complexité à connaître :
+
+### Techniques de calcul
+
+Exercices classiques de calcul de complexité (en particulier complexité en moyenne). Ils sont **à connaître** car leurs méthodes de résolution sont utiles :
 
 {% aller %}
-[Projet : exercices classiques de calcul de complexités max, min et en moyenne](projet-calcul-max-min-moy)
+[Projet : exercices classiques de recherche d'éléments](projet-calcul-recherche)
 {% endaller %}
 
-On vérifie qu'on sait faire :
+### On vérifie qu'on sait faire
 
 {% aller %}
 [exercices non corrigés](./exercices-non-corrigés)

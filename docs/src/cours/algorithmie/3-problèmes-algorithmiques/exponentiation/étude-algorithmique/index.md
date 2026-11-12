@@ -251,7 +251,7 @@ Comme `c`{.language-} vaut initialement `n`{.language-}, le nombre de fois où l
 
 Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.
 
-[Cette complexité est très faible !](../../../2-complexités/projet-calcul-max-min-moy/#importance-log)
+[Cette complexité est très faible !](../../../2-complexités/complexité-moyenne/#importance-log)
 
 ## Complexité du problème
 

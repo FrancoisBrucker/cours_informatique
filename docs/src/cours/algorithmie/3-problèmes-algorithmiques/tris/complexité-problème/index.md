@@ -41,13 +41,127 @@ Il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les é
 
 ## Borne maximum
 
-Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas compte de l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
+Une première borne simple consiste à créer un algorithme qui calcule toutes les $n!$ permutations d'un tableau et vérifie (avec [notre algorithme `est_trié`{.language-}](../reconnaissance/#algorithme-est-trie)) pour chacune d'elle si elle est triée. 
 
-Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection) (que l'on analysera plus tard) dont la complexité est en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier. On en conclut :
+> TBD dire que c;est classique. On énumère toutes les possibilités esi on a un moyen de vérifier rapide.
+### Permutations
+
+Commençons par trouver toutes les permutations en utilisant l'algorithme suivant :
+
+```pseudocode/
+algorithme permutations_rec(T: []int, i: int):
+    si i ≥ T.longueur - 1:
+        affiche T
+        rendre ∅
+    pour chaque j de [i .. T.longueur-1]:
+        T[i], T[j] ← T[j], T[i]
+        permutations_rec(T, i + 1)
+        T[i], T[j] ← T[j], T[i]
+
+algorithme permutations(T: []int):
+    mélange_rec(T, 0)
+```
+{% details "code python" %}
+
+```python
+def permutation_rec(T, i):
+    if i >= len(T) - 1:
+        print(T)
+        return
+    for j in range(i, len(T)):
+        T[i], T[j] = T[j], T[i]
+        permutation_rec(T, i + 1)
+        T[i], T[j] = T[j], T[i]
+
+
+def permutations(T):
+    permutation_rec(T, 0)
+
+```
+{% enddetails %}
+
+Si j'exécute le code python de l'algorithme avec le tableau `[0, 1, 2, 3]`{.language-} en paramètre avec l'instruction `permutations(list(range(4)))`{.language-} j'obtiens :
+
+```text
+[0, 1, 2, 3]
+[0, 1, 3, 2]
+[0, 2, 1, 3]
+[0, 2, 3, 1]
+[0, 3, 2, 1]
+[0, 3, 1, 2]
+[1, 0, 2, 3]
+[1, 0, 3, 2]
+[1, 2, 0, 3]
+[1, 2, 3, 0]
+[1, 3, 2, 0]
+[1, 3, 0, 2]
+[2, 1, 0, 3]
+[2, 1, 3, 0]
+[2, 0, 1, 3]
+[2, 0, 3, 1]
+[2, 3, 0, 1]
+[2, 3, 1, 0]
+[3, 1, 2, 0]
+[3, 1, 0, 2]
+[3, 2, 1, 0]
+[3, 2, 0, 1]
+[3, 0, 2, 1]
+[3, 0, 1, 2]
+```
+
+Qui correspond bien à toutes les permutation du tableau en entrée. Maintenant que nous sommes convaincu que l'algorithme fonctionne, essayons de le prouver.
+
+> TBD à écrire plus précisément
+
+1. on prouve que le tableau est inchangé.
+2. il ne modifie pas T[:i]
+3. qu'il affiche toutes les permutation de T[i:]
+
+
+On peut maintenant ajouter notre :
+
+```pseudocode
+algorithme permutations_rec(T: []int, i: int):
+    si i ≥ T.longueur - 1:
+        si est_trié(T):
+            rendre T
+    pour chaque j de [i .. T.longueur-1]:
+        T[i], T[j] ← T[j], T[i]
+        permutations_rec(T, i + 1)
+        T[i], T[j] ← T[j], T[i]
+
+algorithme permutations(T: []int):
+    mélange_rec(T, 0)
+```
+{% details "code python" %}
+
+```python
+def tri_rec(T, i):
+    if i >= len(T) - 1:
+        print(T)
+        return
+    for j in range(i, len(T)):
+        T[i], T[j] = T[j], T[i]
+        permutation_rec(T, i + 1)
+        T[i], T[j] = T[j], T[i]
+
+
+def tri(T):
+    return tri_rec(T, 0)
+
+```
+{% enddetails %}
+
+### Tri maximum
+En ne tenant pas compte de l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
 
 {% note "**Proposition**" %}
-Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.
+Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n! \cdot n)$.
 {% endnote %}
+
+
+
+Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection) (que l'on analysera plus tard) dont la complexité est en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier. On en conclut :
 
 ## Borne minimum
 

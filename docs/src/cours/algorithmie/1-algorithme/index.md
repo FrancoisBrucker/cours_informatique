@@ -42,14 +42,17 @@ On peut maintenant définir une grammaire permettant de décrire des algorithmes
 
 ### <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
 
-Une série de problèmes algorithmiques à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris.
+Une série de problèmes algorithmiques à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris, donc soyez simple et explicite dans vos algorithmes.
+
+### Vérification des acquis
+
+Quelques exercices simples pour vérifier que le cours est acquis :
 
 {% aller %}
 [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet)
 {% endaller %}
 
-
-On vérifie qu'on sait faire :
+### On vérifie qu'on sait faire
 
 {% aller %}
 [exercices non corrigés](./exercices-non-corrigés)
