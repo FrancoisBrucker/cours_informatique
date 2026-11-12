@@ -72,7 +72,8 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 >   ne pas parler de complexité amortie. Juste faire calcul avec augmentation
 
 > Partie IV : structure de données linéaires
-> ajouter [suites additive](./projet-suite-additive/) comme projet sur les matrices et les listes de listes.
+> - ajouter [suites additive](./projet-suite-additive/) comme projet sur les matrices et les listes de listes.
+> - col de tableaux.
 > 
 > Partie V : complexité amortie
 > - complexité amortie
@@ -88,6 +89,7 @@ Briques de base que toute personne créant ou codant des algorithmes devrait con
 > - col de matrices
 > - union-find
 > - plus petit ancêtre commun en O(1) <https://www.youtube.com/watch?v=IePrsH3gU_A>
+> - algorithme permutation heap
 
 
 > Partie B
