@@ -11,6 +11,11 @@ eleventyComputed:
 ---
 
 <!-- 
+
+TBD partie sécurité en commentaire. Voir quand je ferai le cours s'il faut la remettre,
+
+
+
 > TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>{.externe}
 > chernoff bound, reverse markov inequality,
 > Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>{.externe}
@@ -77,7 +82,7 @@ Un exemple d'espace probabilisé pourrait être $(\mathbb{N}, \mathbb{P})$ avec 
 
 {% definition %}
 
-Soit $\Omega$ un ensemble dénombrable. Un **système complet d'évènements** est une suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$ telle que $\bigcup_n A_n = \Omega$.
+Soit $\Omega$ un ensemble dénombrable. Un **_système complet d'évènements_** est une **partition** $\Omega$, c'est à dire une suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$ telle que $\bigcup_n A_n = \Omega$.
 
 {% enddefinition %}
 
@@ -309,59 +314,28 @@ $$
 </div>
 {% endnote %}
 
-### Exemple : en sécurité
+## <span id="espérance">Espérance
 
-<!-- TBD 
+[La notion d'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} en probabilité généralise la notion de moyenne.
 
-utile ? 
-sûrement à étoffer 
-
--->
-
-En sécurité on utilisera souvent la notation suivante pour expliciter les variables aléatoires :
 
 {% definition %}
 
-On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
-
-- prenant ses valeurs dans $\mathcal{U}$
-- suivant la loi de probabilité $\mathbb{P}$
-
-{% enddefinition %}
-
-Les lois de probabilités pouvant changer on les précisera si nécessaires en utilisant la notation suivante :
-
-{% definition %}
+Soit $X$ $X : \Omega \rightarrow \mathbb{R}$ une variable aléatoire simple sur l'espace probabilisé $(\Omega, \mathbb{P})$. **_L'espérance de $X$_** est définie telle que :
 
 <div>
 $$
-{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
+\mathbb{E}[X] \coloneqq \sum\limits_{\omega \in \Omega}X(\omega)\mathbb{P}(\{\omega\})
 $$
 </div>
 
 {% enddefinition %}
 
-On aura typiquement :
+L'ensemble $\Omega$ étant (presque) tout le temps inconnu, on utilise plutôt la formule suivante, clairement équivalente à la définition, pour calculer l'espérance d'une variable aléatoire réelle simple :
 
-- $\Omega = \\{0, 1\\}^n$ l'ensemble des clés
-- probabilité uniforme
-- la variable aléatoire associée est le chiffre : $E(k, m)$
+{% note "**Proposition**" %}
 
-Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueur $L$ :
-
-- l'univers est tout ce qui arrive : $\Omega = \\{0, 1\\}^L \times \\{0, 1\\}^L$ et correspond aux deux mots
-- probabilité uniforme
-- les variables aléatoires :
-  - $M_0 : \Omega \rightarrow \\{0, 1\\}^L$
-  - $M_1 : \Omega \rightarrow \\{0, 1\\}^L$
-
-## <span id="espérance">Espérance
-
-[La notion d'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} en probabilité généralise la notion de moyenne.
-
-{% definition %}
-
-Soit $X$ une variable aléatoire de valeurs $x_i$ ($1\leq i \leq p$). **_L'espérance de $X$_** est définie telle que :
+Soit $X$ une variable aléatoire réelle simple de valeurs $x_i$ ($1\leq i \leq p$). Son espérance vaut :
 
 <div>
 $$
@@ -369,9 +343,9 @@ $$
 $$
 </div>
 
-{% enddefinition %}
+{% endnote %}
 
-Cette définition se généralise _mutatis mutandis_ aux variables aléatoires discrètes si la somme converge :
+Cette proposition se généralise _mutatis mutandis_ aux variables aléatoires discrètes si la somme converge et permet de donner une définition de l'espérance pour celle ci :
 
 {% definition %}
 
@@ -518,4 +492,48 @@ $$
 
 > TBD trouver un exemple pas graphe.
  
- -->
+ 
+
+## Exemple : en sécurité
+
+> TBD utile ?  sûrement à étoffer.
+
+
+En sécurité on utilisera souvent la notation suivante pour expliciter les variables aléatoires :
+
+{% definition %}
+
+On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
+
+- prenant ses valeurs dans $\mathcal{U}$
+- suivant la loi de probabilité $\mathbb{P}$
+
+{% enddefinition %}
+
+Les lois de probabilités pouvant changer on les précisera si nécessaires en utilisant la notation suivante :
+
+{% definition %}
+
+<div>
+$$
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \Pr[(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1} = x]
+$$
+</div>
+
+{% enddefinition %}
+
+On aura typiquement :
+
+- $\Omega = \\{0, 1\\}^n$ l'ensemble des clés
+- probabilité uniforme
+- la variable aléatoire associée est le chiffre : $E(k, m)$
+
+Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueur $L$ :
+
+- l'univers est tout ce qui arrive : $\Omega = \\{0, 1\\}^L \times \\{0, 1\\}^L$ et correspond aux deux mots
+- probabilité uniforme
+- les variables aléatoires :
+  - $M_0 : \Omega \rightarrow \\{0, 1\\}^L$
+  - $M_1 : \Omega \rightarrow \\{0, 1\\}^L$
+
+-->
