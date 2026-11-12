@@ -41,10 +41,13 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 [Go](golang)
 {% endaller %}
 
-## Probabilités discrètes
+## Aléatoire
 
 {% aller %}
-[Probabilités](probabilités)
+[Probabilités (discrètes)](./probabilités)
+{% endaller %}
+{% aller %}
+[Aléatoire en informatique](./aléatoire)
 {% endaller %}
 
 ## Entiers

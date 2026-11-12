@@ -156,14 +156,14 @@ Pour calculer facilement une complexité en moyenne il faut pouvoir partitionner
 
 Pour notre problème de recherche, cette partition va correspondre à l'endroit où se trouve la valeur à chercher `x`{.language-} dans le tableau `T`{.language-} : 
 
-- si `x`{.language-} est à l'indice $0$ du tableau, il faudra $\mathcal{O}(1)$ opération pour exécuter l'algorithme
-- si `x`{.language-} est à l'indice $1$ du tableau, il faudra deux fois plus d'opérations que s'il était à l'indice $0$, donc $2 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
-- si `x`{.language-} est à l'indice $2$ du tableau, il faudra trois fois plus d'opérations que s'il était à l'indice $0$, donc $3 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $0$ du tableau, il faudra $\Theta(1)$ opération pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $1$ du tableau, il faudra deux fois plus d'opérations que s'il était à l'indice $0$, donc $2 \cdot \Theta(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $2$ du tableau, il faudra trois fois plus d'opérations que s'il était à l'indice $0$, donc $3 \cdot \Theta(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `x`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc $(i+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc $(i+1) \cdot\Theta(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `x`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc $n \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
-- si `x`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc $(n+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc $n \cdot \Theta(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc $(n+1) \cdot \Theta(1)$ opérations pour exécuter l'algorithme
 
 L'ensemble $\mathcal{E}_n$ de tous les tableaux de longueur $n$ peut alors se segmenter en $n+1$ classes :
 
@@ -177,7 +177,7 @@ $$
 \begin{array}{lcl}
 C & = & \sum\limits_{e \in \mathcal{E}_n} p_n(e) \cdot C(e) \\
 &=& \sum\limits_{0 \leq i \leq n} (\sum\limits_{e \in \mathcal{E}^i_n} p_n(e) \cdot C(e)) \\
-&=& \sum\limits_{0 \leq i \leq n} ((\sum\limits_{e \in \mathcal{E}^i_n} p_n(e)) \cdot (i+1)\cdot \mathcal{O}(1)) \\
+&=& \sum\limits_{0 \leq i \leq n} ((\sum\limits_{e \in \mathcal{E}^i_n} p_n(e)) \cdot (i+1)\cdot \Theta(1)) \\
 \end{array}
 $$
 </div>
@@ -196,7 +196,7 @@ Ce qui donne :
 $$
 \begin{array}{lcl}
 C 
-& = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
+& = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \Theta(1)) \\
 \end{array}
 $$
 </div>
@@ -205,7 +205,7 @@ Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on 
 
 <div>
 $$
-C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
+C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \Theta(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\Theta(1)
 $$
 </div>
 
@@ -213,7 +213,7 @@ Et comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit qu
 
 <div>
 $$
-C = \frac{n+2}{2}\mathcal{O}(1) = \mathcal{O(n)}
+C = \frac{n+2}{2}\Theta(1) = \Theta(n)
 $$
 </div>
 
@@ -230,9 +230,7 @@ On utilisera souvent ce genre de raisonnement si les données sont équiprobable
 
 ## Algorithmie et aléatoire
 
-> TBD ici.
-
-Pour trouver la complexité en moyenne d'un algorithme il faut associer 
+Pour trouver la complexité en moyenne d'un algorithme il faut associer un modèle probabiliste à nos données 
 
 Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. On peut alors utiliser le modèle classique du **_tableau aléatoire_** pour nos calculs
 
