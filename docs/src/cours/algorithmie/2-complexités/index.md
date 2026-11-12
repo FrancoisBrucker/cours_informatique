@@ -60,7 +60,7 @@ Deux séries d'exercices simples pour vérifier que le cours est acquis :
 Exercices classiques de calcul de complexité (en particulier complexité en moyenne). Ils sont **à connaître** car leurs méthodes de résolution sont utiles :
 
 {% aller %}
-[Projet : exercices classiques de recherche d'éléments](projet-calcul-recherche)
+[Projet : exercices classiques de recherche d'éléments](projet-recherche-élément)
 {% endaller %}
 
 ### On vérifie qu'on sait faire

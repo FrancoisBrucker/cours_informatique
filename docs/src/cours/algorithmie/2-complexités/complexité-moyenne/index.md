@@ -115,21 +115,6 @@ La complexité en moyenne nous donne **_le nombre d'opérations attendu_** si on
 
 {% endretenir %}
 
-Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on n'a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ a la même probabilité d'être choisi et donc que la position de `x`{.language-} dans le tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :
-
-<div>
-$$
-C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
-$$
-</div>
-
-Et comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :
-
-<div>
-$$
-C = \frac{n+2}{2}\mathcal{O}(1) = \mathcal{O(n)}
-$$
-</div>
 
 ## <span id="exemple-recherche"></span> Exemple 1 : recherche d'un élément dans un tableau
 
@@ -212,17 +197,29 @@ $$
 \begin{array}{lcl}
 C 
 & = & \sum\limits_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
-& \leq & \sum\limits_{0 \leq i \leq n} (p_i \cdot (n+1)\cdot \mathcal{O}(1)) \\
-& \leq & \mathcal{O}(n) \cdot (\sum\limits_{0 \leq i \leq n} p_i \\
-& \leq & \mathcal{O}(n)
 \end{array}
+$$
+</div>
+
+Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on n'a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ a la même probabilité d'être choisi et donc que la position de `x`{.language-} dans le tableau est équiprobable : $p_i = \frac{1}{n + 1}$ pour tout $0 \leq i \leq n$. On a alors :
+
+<div>
+$$
+C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum\limits_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)
+$$
+</div>
+
+Et comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :
+
+<div>
+$$
+C = \frac{n+2}{2}\mathcal{O}(1) = \mathcal{O(n)}
 $$
 </div>
 
 {% note "**Proposition**" %}
 La **complexité en moyenne** de l'algorithme `recherche`{.language-} est la même que la complexité maximale.
 {% endnote %}
-
 
 On peut comprendre ce résultat ainsi : si notre modèle est équiprobable, `x`{.language-} va se trouver en moyenne au milieu de notre tableau, et donc il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `T`{.language-}, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
 
@@ -233,67 +230,18 @@ On utilisera souvent ce genre de raisonnement si les données sont équiprobable
 
 ## Algorithmie et aléatoire
 
+> TBD ici.
 
-### Tableau aléatoire
+Pour trouver la complexité en moyenne d'un algorithme il faut associer 
 
-> TBD reprendre le max d'un tableau. Exemple surprenant (ca ne marche pas aussi bien à chaque fois) et qui nous permettra de montrer un modèle classique, le tableau aléatoire
-> Tableau aléatoire parler de fisher-yates et du moyen de trouver des choses aléatoires en informatique. Notion de pseudo-aléatoire et de process physique pour l'aléatoire trouver des ref.
-
-### Fisher-Yates
-
-## Exemple 2 : nb max d'un tableau
+Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. On peut alors utiliser le modèle classique du **_tableau aléatoire_** pour nos calculs
 
 
+### Aléatoire
 
+> TBD pseudo-aléatoire (modulo et le démontrer) et aléatoire. On suppose qu'on a un truc aléatoire, genre /dev/random sous unix qui prend des paramètre extérieur pour générer de l'entropie.
 
-## <span id="max-tableau"></span> Maximum d'un tableau
-
-
-
-> TBD supprimer tableau aléatoire d'ici.
-
-On pourrait penser que l'on n'a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà [une version itérative](../../1-algorithme/problème-preuve/#algorithme-max-tableau-iter) et [une version récursive](../../1-algorithme/projet/#algorithme-max-tableau-rec)), mais si, si, il nous reste au moins un résultat intéressant à démontrer. 
-
-On va utiliser ici la version itérative de l'algorithme :
-
-```pseudocode
-algorithme maximum(T: []int) → int:
-    ref m ← T[0]
-    pour chaque x de T:
-        si m < x:
-            m ← x
-    rendre m
-```
-
-Un petit échauffement avant le vrai résultat :
-
-{% exercice %}
-Donnez les complexités minimale, maximale et en moyenne de l'algorithme `maximum([]int) → int`{.language-}
-
-{% endexercice %}
-{% details "corrigé" %}
-
-- complexité minimale et maximale $\mathcal{O}(n)$ puisqu'il faut parcourir chaque élément du tableau et que le reste des lignes est en $\mathcal{O}(1)$
-- la complexité moyenne étant forcément entre la complexité minimale et maximale elle est également en $\mathcal{O}(n)$.
-
-{% enddetails  %}
-
-Maintenant regardons combien de fois la variable `m`{.language-} est affectée :
-
-{% exercice %}
-Donnez les nombres minimaux et maximaux de fois où la variable `m`{.language-} est affectée.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-La variable `m`{.language-} est affectée dans tous les cas au moins une fois. De plus :
-
-- si le tableau est trié par ordre décroissant, `m`{.language-} n'est affectée qu'une fois
-- si le tableau est trié par ordre croissant, `m`{.language-} est affectée à chaque itération, donc la longueur du tableau fois.
-
-{% enddetails  %}
-
-On s'intéresse à la complexité en moyenne de ce nombre d'affectations. Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. On peut alors utiliser le modèle classique du **_tableau aléatoire_** pour nos calculs
+### FIsher-Yates
 
 ### Définition et propriétés d'un tableau aléatoire
 
@@ -390,6 +338,50 @@ Des deux conditions précédentes on en déduit ${\Pr}[T[u] > T[v]] = {\Pr}[T[u]
 ### Algorithme pour trouver une permutation aléatoire
 
 > TBD
+
+### Tableau aléatoire
+
+> TBD reprendre le max d'un tableau. Exemple surprenant (ca ne marche pas aussi bien à chaque fois) et qui nous permettra de montrer un modèle classique, le tableau aléatoire
+> Tableau aléatoire parler de fisher-yates et du moyen de trouver des choses aléatoires en informatique. Notion de pseudo-aléatoire et de process physique pour l'aléatoire trouver des ref.
+
+### Fisher-Yates
+
+## <span id="max-tableau"></span>Exemple 2 : Maximum d'un tableau
+
+On pourrait penser que l'on n'a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà [une version itérative](../../1-algorithme/problème-preuve/#algorithme-max-tableau-iter) et [une version récursive](../../1-algorithme/projet/#algorithme-max-tableau-rec)), mais si, si, il nous reste au moins un résultat intéressant à démontrer. 
+
+On va utiliser ici la version itérative de l'algorithme :
+
+```pseudocode
+algorithme maximum(T: []int) → int:
+    ref m ← T[0]
+    pour chaque x de T:
+        si m < x:
+            m ← x
+    rendre m
+```
+
+Un petit échauffement avant le vrai résultat :
+
+{% exercice %}
+Donnez les complexités minimale, maximale et en moyenne de l'algorithme `maximum([]int) → int`{.language-}
+
+{% endexercice %}
+{% details "corrigé" %}
+
+- complexité minimale et maximale $\mathcal{O}(n)$ puisqu'il faut parcourir chaque élément du tableau et que le reste des lignes est en $\mathcal{O}(1)$
+- la complexité moyenne étant forcément entre la complexité minimale et maximale elle est également en $\mathcal{O}(n)$.
+
+{% enddetails  %}
+
+Maintenant regardons combien de fois la variable `m`{.language-} est affectée. Elle est affectée dans tous les cas au moins une fois et :
+
+- si le tableau est trié par ordre décroissant, elle n'est plus jamais affectée ensuite,
+- si le tableau est trié par ordre croissant, elle est réaffectée à chaque itération.
+
+Ce différentiel important nous amène à nous intéresser à la complexité en moyenne de ce nombre d'affectations. 
+
+
 
 ### Nombre moyen de mise à jours
 

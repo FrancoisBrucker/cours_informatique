@@ -158,9 +158,11 @@ Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant
 
 {% enddetails  %}
 
-Cette complexité est vraiment très bonne ! La valeur de $\ln(n)$ est en effet très petite devant $n$. 
-> TBD rappelez vous (partie complexité en moyenne)
+Cette complexité est vraiment très bonne puisque la valeur de $\ln(n)$ est en effet très petite devant $n$ ([rappelez-vous l'ordre de grandeur qu'on a déjà vu](../complexité-moyenne/#importance-log)).
 
+{% retenir %}
+Si l'on manipule des tableaux triés, la recherche dichotomique est énormément plus performante que la recherche naïve.
+{% endretenir %}
 
 ## <span id="sous-mot"></span> Recherche de sous-mots
 
