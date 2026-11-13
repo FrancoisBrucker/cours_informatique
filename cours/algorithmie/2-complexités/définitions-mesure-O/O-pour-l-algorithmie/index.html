@@ -122,8 +122,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On a l'implication suivante :</p>
-<p>Si $f(n) = \mathcal{O}(g(n))$ et $g(n) = \mathcal{O}(h(n))$ alors $f(n) = \mathcal{O}(h(n))$</p>
+<p>Si $f(n)$ est en $\mathcal{O}(g(n))$ et $g(n)$ est en $\mathcal{O}(h(n))$ alors $f(n)$ est en $\mathcal{O}(h(n))$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -143,11 +142,22 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<ul>
+<li>Si $f(n)$ est en $\mathcal{O}(g(n))$ il existe $C_0$ et $N_0$ tels que pour tout $n\geq N_0$ on ait $f(n) \leq C_0 g(n)$</li>
+<li>Si $g(n)$ est en $\mathcal{O}(h(n))$ il existe $C'_0$ et $N'_0$ tels que pour tout $n\geq N'_0$ on ait $g(n) \leq C'_0 h(n)$</li>
+</ul>
+<p>Donc pour tout $n \geq \max(N_0, N'_0)$ on a $f(n) \leq C_0 \cot C'_0 h(n)$ : $f(N)$ est en $\mathcal{O}(h(n))$</p>
 </div>
 </details>     
+</div>
+<p>Comme on utilise les fonctions asymptotique dans le cadre de la complexité on se restreindra aux fonctions issues de la complexité. En particulier :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On considérera dans la suite de ce cours uniquement des fonctions plus grande que 1 à partir d'un certain rang.</p>
+</div>
 </div>
 <h2>Gérer les constantes additives et multiplicatives</h2>
 <p>Le plus grand intérêt dans le comptage de complexité algorithmique est la propriété suivante :</p>
