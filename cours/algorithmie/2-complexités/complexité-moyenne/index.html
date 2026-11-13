@@ -363,369 +363,7 @@ $$
 <p>On utilisera souvent ce genre de raisonnement si les données sont équiprobables : en moyenne il faut parcourir la moitié des possibilités avant de trouver la solution.</p>
 </div>
 </div>
-<h2>Algorithmie et aléatoire</h2>
-<p>Pour trouver la complexité en moyenne d'un algorithme il faut associer un modèle probabiliste à nos données</p>
-<p>Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. On peut alors utiliser le modèle classique du <strong><em>tableau aléatoire</em></strong> pour nos calculs</p>
-<h3>Aléatoire</h3>
-<blockquote>
-<p>TBD pseudo-aléatoire (modulo et le démontrer) et aléatoire. On suppose qu'on a un truc aléatoire, genre /dev/random sous unix qui prend des paramètre extérieur pour générer de l'entropie.</p>
-</blockquote>
-<h3>FIsher-Yates</h3>
-<h3>Définition et propriétés d'un tableau aléatoire</h3>
-<p><span id="définition-modèle-tableau-aléatoire"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
-<div class="pl-8 mr-8">
-<p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
-<ul>
-<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation" class="externe">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
-<li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
-</ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Dans un tableau aléatoire, toutes les valeurs sont différentes.</p>
-</div>
-</div>
-<p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler et convient pour les calculs de complexité en moyenne d'algorithme manipulant des tableaux d'entiers dont seuls les ordre relatifs entre valeurs importent (ce qui est presque toujours le cas) :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Si on a aucune information sur la répartition des nombres, on utilise par défaut le modèle du tableau aléatoire pour calculer des complexités en moyenne d'algorithmes manipulant des tableaux d'entiers tableaux d'entiers.</p>
-</div>
-</div>
-<p>Ce modèle possède de nombreuses propriétés :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :</p>
-<div>
-$$
-{\Pr}[T[i] = k] = \frac{1}{n}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Parmi les $n!$ permutations de $[0 \, ..\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.</p>
-</div>
-</details>     
-</div>
-<p>Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :</p>
-<div id="proba-k-tableau-aléatoire"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.</p>
-</div>
-</div>
-<p>Ce modèle véhicule de nombreuses propriétés l'on aimerait avoir pour un tableau de nombres quelconques. Familiarisez vous avec le modèle en en démontrant deux :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, montrez que l'on a :</p>
-<div>
-$$
-{\Pr}[T[i] > k] = \frac{n-1-k}{n}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
-&=& \sum\limits_{u > k}\frac{1}{n}\\
-&=& \frac{n-1-k}{n}\\
-\end{array}
-$$
-</div>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
-<div>
-$$
-{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
-$$
-</div>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] &gt; T[v]] + {\Pr}[T[u] &lt; T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] &gt; T[v]$ que de tableaux pour lesquels $T[u] &lt; T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]]$.</p>
-<p>Des deux conditions précédentes on en déduit ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]] = \frac{1}{2}$.</p>
-</div>
-</details>     
-</div>
-<h3>Algorithme pour trouver une permutation aléatoire</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<h3>Tableau aléatoire</h3>
-<blockquote>
-<p>TBD reprendre le max d'un tableau. Exemple surprenant (ca ne marche pas aussi bien à chaque fois) et qui nous permettra de montrer un modèle classique, le tableau aléatoire
-Tableau aléatoire parler de fisher-yates et du moyen de trouver des choses aléatoires en informatique. Notion de pseudo-aléatoire et de process physique pour l'aléatoire trouver des ref.</p>
-</blockquote>
-<h3>Fisher-Yates</h3>
-<h2><span id="max-tableau"></span>Exemple 2 : Maximum d'un tableau</h2>
-<p>On pourrait penser que l'on n'a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà <a href="../../1-algorithme/probl%C3%A8me-preuve/#algorithme-max-tableau-iter">une version itérative</a> et <a href="../../1-algorithme/projet/#algorithme-max-tableau-rec">une version récursive</a>), mais si, si, il nous reste au moins un résultat intéressant à démontrer.</p>
-<p>On va utiliser ici la version itérative de l'algorithme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
-    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
-        <span class="token keyword">si</span> <span class="token variable parameter">m</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
-            <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token variable parameter">x</span>
-    <span class="token keyword">rendre</span> <span class="token variable parameter">m</span></code></pre>
-<p>Un petit échauffement avant le vrai résultat :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Donnez les complexités minimale, maximale et en moyenne de l'algorithme <code class="language-">maximum([]int) → int</code></p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ul>
-<li>complexité minimale et maximale $\mathcal{O}(n)$ puisqu'il faut parcourir chaque élément du tableau et que le reste des lignes est en $\mathcal{O}(1)$</li>
-<li>la complexité moyenne étant forcément entre la complexité minimale et maximale elle est également en $\mathcal{O}(n)$.</li>
-</ul>
-</div>
-</details>     
-</div>
-<p>Maintenant regardons combien de fois la variable <code class="language-">m</code> est affectée. Elle est affectée dans tous les cas au moins une fois et :</p>
-<ul>
-<li>si le tableau est trié par ordre décroissant, elle n'est plus jamais affectée ensuite,</li>
-<li>si le tableau est trié par ordre croissant, elle est réaffectée à chaque itération.</li>
-</ul>
-<p>Ce différentiel important nous amène à nous intéresser à la complexité en moyenne de ce nombre d'affectations.</p>
-<h3>Nombre moyen de mise à jours</h3>
-<p>On va considérer que le tableau $T$ en paramètre est un tableau aléatoire de longueur $n$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Donnez un argument pour lequel sous ce modèle la complexité en moyenne du nombre d'affectations est $\log_2(T.\mbox{\small longueur})$</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Lorsque l'on met à jour $m$, c'est pour une valeur strictement plus grande. La probabilité que cette valeur soit $m+1$, $m+2$, ..., $T.\mbox{\small longueur}$ est la même, donc en moyenne elle sera de l'ordre de la moitié : $\frac{T.\mbox{\small longueur} + m}{2}$. À chaque affectation on divise par deux le nombre de valeurs plus grandes restantes : on le fait donc au maximum $\log_2(T.\mbox{\small longueur})$.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Il est important de retenir cet argument. Il va servir à de nombreuses reprises pour estimer des complexités en moyenne.</p>
-</div>
-</div>
-<p>L'argument précédent est souvent suffisant, mais, pour cette fois, faites-le proprement pour vous convaincre que l'argument est bon :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Démontrez que pour un tableau aléatoire $T$, la probabilité que $T[i] = \max(T[:i])$ pour $0 \leq i &lt; n$ vaut $\frac{1}{i+1}$.</p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pourrez lier cette complexité au nombre de fois où $T[i] = \max(T[:i])$ pour $0 \leq i &lt; n$ et au fait (<a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique#%C3%89quivalent_de_Hn" class="externe">démontré là</a>) que $\sum_{1\leq i \leq n} \frac{1}{i}$ est équivalent à $\ln(n)$ en $+\infty$.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour construire une permutation $T$ de $[1 .. n]$ telle que $T[i] = \max(T[:i])$ il faut :</p>
-<ol>
-<li>choisir les $i+1$ premiers éléments de $T$ : il y a $\binom{n}{i+1}$ choix possibles.</li>
-<li>placer le plus grand des éléments choisis en 1. à la position $T[i]$ : 1 choix possible</li>
-<li>placer les $i$ éléments restants aux $i$ premières places : $(i)!$ choix possibles</li>
-<li>placer les $n-i-1$ éléments restants aux $n-i-1$ dernières places : $(n-i-1)!$ choix possibles</li>
-</ol>
-<p>Il y a donc : $\binom{n}{i+1} \cdot 1 \cdot (i)! \cdot (n-i-1)! = \frac{n!}{(i+1)! \cdot (n-i-1)!} \cdot i! \cdot (n-i-1)! = \frac{n!}{i+1}$.</p>
-<p>On en conclut que la probabilité $p_i$ qu'une permutation $T$ soit telle que $T[i] = \max(T[:i-1])$ vaut $\frac{\frac{n!}{i+1}}{n!} = \frac{1}{i+1}$.</p>
-</div>
-</details>     
-</div>
-<p>De là, on peut définir $X_i$ la variable aléatoire telle que $X_i(T) = 1$ si $T[i] = \max(T[:i-1])$ et $X_i(T) = 0$ sinon. En notant $X(T) = \sum_{0\leq i &lt; n} X_i(T)$, la complexité en moyenne $C_{\text{moy}}(n)$ pour une longueur $n$ de tableau vaut son espérance $\mathbb{E}[X]$ et donc :</p>
-<div>
-$$
-\begin{array}{lclr}
-C_{\text{moy}}(n) &=& \mathbb{E}[X] \\
-&=& \mathbb{E}[\sum\limits_{0\leq i < n}X_i] \\
-&=& \sum\limits_{0\leq i < n}\mathbb{E}[X_i] &\text{par linéarité de l'espérance}\\
-&=& \sum\limits_{0\leq i < n} (p_i\cdot 1)& \text{par définition } E[Y] = \sum\limits_k P(Y = k)\cdot k \text{ pour toute variable aléatoire discrète }Y\\
-& =& \sum\limits_{1\leq i \leq n} \frac{1}{i}
-\end{array}
-$$
-</div>
-<div id="utilisation-Hn-équivalent"></div>
-<p>On peut maintenant utiliser le résultat classique suivant (<a href="../interm%C3%A8de-1/sommes-classiques/#Hn-%C3%A9quivalent">démontré ici</a>) pour conclure :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<div>
-$$
-\sum\limits_{i=1}^{n} \frac{1}{i} \underset{+\infty}{\sim} \ln(n)
-$$
-</div>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Retenez ce résultat, cela est souvent utile.</p>
-</div>
-</div>
-<p>On en conclut que la complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?).</p>
-<blockquote>
-<p>TBD log vs n :</p>
-</blockquote>
-<div id="importance-log"></div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
-<div class="pl-8 mr-8">
-<p>Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :</p>
-<ul>
-<li>$t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),</li>
-<li>$\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le <a href="https://fr.wikipedia.org/wiki/Prix_Ig-Nobel" class="externe">Ig Nobel</a> de physique en 2015)</li>
-</ul>
-</div>
-</div>
-<h2><span id="mesure"></span>En pratique</h2>
-<p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code. Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et on en fait la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
-<blockquote>
-<p>TBD algo aléatoires utilisés en python</p>
-</blockquote>
-<h3>Exemple 1</h3>
+<p>La figure suivante montre un exemple de mesure des trois complexités :</p>
 <p><img src="Figure_1.png" alt="figure"></p>
 <p>On voit bien que la complexité moyenne est entre la complexité minimale et maximale et est environ 2 fois plus petite.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -836,9 +474,279 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div>
 </div>
 </div>
-<h3>Exemple 2</h3>
+<h2>Modèle probabiliste</h2>
+<p>Pour trouver la complexité en moyenne d'un algorithme il faut associer un modèle probabiliste à nos données. Il faut que ce modèle soit assez large pour être réaliste tout en restant assez simple pour être calculable.</p>
+<p>Lorsque le paramètre d'un algorithme est un tableau d'entier très souvent seul l'ordre et l'égalité entre ses valeurs est important, pas les valeurs en elle même. Le modèle du tableau aléatoire est alors un modèle très utilisé pour le calcul de complexité en moyenne :</p>
+<p><span id="définition-modèle-tableau-aléatoire"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
+<ul>
+<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation" class="externe">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
+<li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un tableau aléatoire, toutes les valeurs sont différentes.</p>
+</div>
+</div>
+<p>Ce modèle possède de nombreuses propriétés :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $T$ est un tableau aléatoire de longueur $n$ alors :</p>
+<div>
+$$
+\begin{array}{lcr}
+{\Pr}[T[i] = k] = \frac{1}{n}&\text{ et }&{\Pr}[T[i] > k] = \frac{n-1-k}{n}
+\end{array}
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Parmi les $n!$ permutations de $[0 \, ..\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.</p>
+<p>La deuxième égalité s'obtient avec le calcul :</p>
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
+&=& \sum\limits_{u > k}\frac{1}{n}\\
+&=& \frac{n-1-k}{n}\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :</p>
+<div id="proba-k-tableau-aléatoire"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.</p>
+</div>
+</div>
+<p>Enfin, l'ordre entre les valeurs est également équiprobable :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
+<div>
+$$
+{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] &gt; T[v]] + {\Pr}[T[u] &lt; T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] &gt; T[v]$ que de tableaux pour lesquels $T[u] &lt; T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]]$.</p>
+<p>Des deux conditions précédentes on en déduit ${\Pr}[T[u] &gt; T[v]] = {\Pr}[T[u] &lt; T[v]] = \frac{1}{2}$.</p>
+</div>
+</details>     
+</div>
+<p>Les différentes propriétés du tableau aléatoire permettent, on va le voir avec le second exemple, de traiter indépendamment les valeurs du tableau et leurs positions et permettent de calculer efficacement la complexité en moyenne.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Si on a aucune information sur la répartition des nombres, on utilise par défaut le modèle du tableau aléatoire pour calculer des complexités en moyenne d'algorithmes manipulant des tableaux d'entiers tableaux d'entiers.</p>
+</div>
+</div>
+<h2><span id="max-tableau"></span>Exemple 2 : Maximum d'un tableau</h2>
+<p>On pourrait penser que l'on n'a plus rien à dire sur les algorithmes permettant de trouver le maximum d'un tableau d'entiers (on en a déjà <a href="../../1-algorithme/probl%C3%A8me-preuve/#algorithme-max-tableau-iter">une version itérative</a> et <a href="../../1-algorithme/projet/#algorithme-max-tableau-rec">une version récursive</a>), mais si, si, il nous reste au moins un résultat intéressant à démontrer.</p>
+<p>On va utiliser ici la version itérative de l'algorithme :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">x</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">m</span> <span class="token operator">&lt;</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">m</span> <span class="token operator">←</span> <span class="token variable parameter">x</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">m</span></code></pre>
+<p>Un petit échauffement avant le vrai résultat :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez les complexités minimale, maximale et en moyenne de l'algorithme <code class="language-">maximum([]int) → int</code></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>complexité minimale et maximale $\mathcal{O}(n)$ puisqu'il faut parcourir chaque élément du tableau et que le reste des lignes est en $\mathcal{O}(1)$</li>
+<li>la complexité moyenne étant forcément entre la complexité minimale et maximale elle est également en $\mathcal{O}(n)$.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Maintenant regardons combien de fois la variable <code class="language-">m</code> est affectée. Elle est affectée dans tous les cas au moins une fois et :</p>
+<ul>
+<li>si le tableau est trié par ordre décroissant, elle n'est plus jamais affectée ensuite,</li>
+<li>si le tableau est trié par ordre croissant, elle est réaffectée à chaque itération.</li>
+</ul>
+<p>Ce différentiel important nous amène à nous intéresser à la complexité en moyenne de ce nombre d'affectations. Pour cela il faut se fixer un modèle probabiliste. On a a priori aucune restriction sur les valeurs du tableau mais comme ils ne sont utilisés qu'en comparaisons des autres valeurs du tableau on a pas besoin de considérer une infinité de valeurs. Ceci justifie d'utiliser le modèle du tableau aléatoire pour notre calcul de complexité en moyenne.</p>
+<p>Notons $X_i$ la variable aléatoire telle que :</p>
+<div>
+$$
+X_i = 
+\begin{cases}
+1 & \text{si }T[i] = \max(T[:i-1])\\
+0 & \text{sinon}
+\end{cases}
+$$
+</div>
+<p>La complexité en moyenne $C_{\text{moy}}(n)$ pour une longueur $n$ de tableau vaut l'espérance $\mathbb{E}[\sum_{0\leq i &lt; n} X_i]$ et donc :</p>
+<div>
+$$
+\begin{array}{lclr}
+C_{\text{moy}}(n) 
+&=& \mathbb{E}[\sum\limits_{0\leq i < n}X_i] \\
+&=& \sum\limits_{0\leq i < n}\mathbb{E}[X_i] &\text{par linéarité de l'espérance}\\
+&=& \sum\limits_{0\leq i < n} (\Pr[X_i = 1] \cdot 1)& \text{par définition } E[Y] = \sum\limits_k P(Y = k)\cdot k \text{ pour toute variable aléatoire discrète }Y\\
+\end{array}
+$$
+</div>
+<p>Il nous faut maintenant calculer $\Pr[X_i = 1]$.</p>
+<p>Pour qu'une permutation $T$ de $[1 .. n]$ soit telle que $T[i] = \max(T[:i])$ il faut :</p>
+<ol>
+<li>choisir $i+1$ éléments de $\{1, ..., n\}$ : il y a $\binom{n}{i+1}$ choix possibles.</li>
+<li>placer le plus grand des éléments choisis précédemment à la position $T[i]$ : 1 choix possible</li>
+<li>placer les $i$ éléments restants aux $i$ premières places de $T$ : $(i)!$ choix possibles</li>
+<li>placer les $n-i-1$ éléments restants aux $n-i-1$ dernières places de $T$: $(n-i-1)!$ choix possibles</li>
+</ol>
+<p>Il y a donc : $\binom{n}{i+1} \cdot 1 \cdot (i)! \cdot (n-i-1)! = \frac{n!}{(i+1)! \cdot (n-i-1)!} \cdot i! \cdot (n-i-1)! = \frac{n!}{i+1}$ permutation possibles.</p>
+<p>On en conclut que la probabilité $\Pr[X_i = 1]$ qu'une permutation $T$ soit telle que $T[i] = \max(T[:i-1])$ vaut $\frac{\frac{n!}{i+1}}{n!} = \frac{1}{i+1}$ et donc :</p>
+<div>
+$$
+\begin{array}{lclr}
+C_{\text{moy}}(n)
+& =& \sum\limits_{1\leq i \leq n} \frac{1}{i}
+\end{array}
+$$
+</div>
+<div id="utilisation-Hn-équivalent"></div>
+<p>On peut maintenant utiliser le résultat classique suivant (<a href="../../interm%C3%A8de-1/sommes-classiques/#Hn-%C3%A9quivalent">démontré ici</a>) pour conclure :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\sum\limits_{i=1}^{n} \frac{1}{i} \underset{+\infty}{\sim} \ln(n)
+$$
+</div>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Retenez ce résultat, cela est souvent utile.</p>
+</div>
+</div>
+<p>On en conclut :</p>
+<div>
+$$
+\begin{array}{lclr}
+C_{\text{moy}}(n)
+& =& \sum\limits_{1\leq i \leq n} \frac{1}{i}
+& =& \Theta(n)
+\end{array}
+$$
+</div>
+<p>La complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?).</p>
+<div id="importance-log"></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :</p>
+<ul>
+<li>$t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),</li>
+<li>$\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le <a href="https://fr.wikipedia.org/wiki/Prix_Ig-Nobel" class="externe">Ig Nobel</a> de physique en 2015)</li>
+</ul>
+</div>
+</div>
+<h3><span id="mesure"></span>En pratique</h3>
+<h4>Exemple 2</h4>
 <blockquote>
-<p>TBD</p>
+<p>Complexité en moyenne. On utilise toujours ceux de longuage, on ne recode jamais fisher-yates... C'est surement mieux fait et optimisé.</p>
 </blockquote>
 
 

@@ -104,6 +104,9 @@
 <p><a href="https://fr.wikipedia.org/wiki/Comparaison_asymptotique" class="externe">comparaisons asymptotiques</a>.</p>
 </div>
 </div>
+<blockquote>
+<p>TBD dans le cours que O. Dire que aussi pour O et theta.</p>
+</blockquote>
 <p>Les comparaisons asymptotiques servent à comparer l'<em>allure</em> de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -297,75 +300,9 @@
 </details>     
 </div>
 <h3>Cas des constantes</h3>
-<p>La règle suivante va se révéler fort utile :</p>
-<p><span id="OA-constantes-additives"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Règle des constantes additives</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$ A = \Theta(1)$, avec $A$ une constante strictement positive.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) \leq c_0 \cdot A$.</p>
-<p>En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N &gt; N_0$. Donc : $f(N) = \mathcal{O}(1)$.</p>
-<p>Réciproquement, soit $f(N) = \mathcal{O}(1)$.</p>
-<p>Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N &gt; N_0$. Donc $f(N) = \mathcal{O}(A)$.</p>
-</div>
-</details>     
-</div>
-<p><span id="OA-constantes-multiplicatives"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Règle des constantes multiplicatives</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$ A\cdot f(N) = \Theta(f(N))$, avec $A$ une constante strictement positive.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour tout $N &gt; 0$, on a $A\cdot f(N) \leq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \mathcal{O}(f(N))$.</p>
-<p>De même, pour tout $N&gt;0$, $A\cdot f(N) \geq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \Omega(f(N))$.</p>
-</div>
-</details>     
-</div>
+<blockquote>
+<p>TBD thta et omega.</p>
+</blockquote>
 <h3><span id="arithmétique"></span>Arithmétique des fonctions asymptotiques</h3>
 <p>Enfin, les règles suivantes (si les fonctions sont positives) permettent de combiner les fonctions asymptotiquement comparables. Elles sont explicitées avec les $\mathcal{O}()$ mais fonctionnent également avec les $\Omega()$ et les $\Theta$ :
 <span id="OA-sommes"></span></p>
