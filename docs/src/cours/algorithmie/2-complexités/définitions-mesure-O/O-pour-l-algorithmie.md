@@ -26,16 +26,21 @@ Connaître le comportement en $\mathcal{O}$ de $C(n)$ nous donne un **majorant**
 
 
 {% note "**Proposition**" %}
-On a l'implication suivante :
-
-Si $f(n) = \mathcal{O}(g(n))$ et $g(n) = \mathcal{O}(h(n))$ alors $f(n) = \mathcal{O}(h(n))$
-
+Si $f(n)$ est en $\mathcal{O}(g(n))$ et $g(n)$ est en $\mathcal{O}(h(n))$ alors $f(n)$ est en $\mathcal{O}(h(n))$
 {% endnote %}
 {% details  "preuve", "open" %}
 
-> TBD
+- Si $f(n)$ est en $\mathcal{O}(g(n))$ il existe $C_0$ et $N_0$ tels que pour tout $n\geq N_0$ on ait $f(n) \leq C_0 g(n)$
+- Si $g(n)$ est en $\mathcal{O}(h(n))$ il existe $C'_0$ et $N'_0$ tels que pour tout $n\geq N'_0$ on ait $g(n) \leq C'_0 h(n)$
 
+Donc pour tout $n \geq \max(N_0, N'_0)$ on a $f(n) \leq C_0 \cot C'_0 h(n)$ : $f(N)$ est en $\mathcal{O}(h(n))$
 {% enddetails %}
+
+Comme on utilise les fonctions asymptotique dans le cadre de la complexité on se restreindra aux fonctions issues de la complexité. En particulier :
+
+{% attention %}
+On considérera dans la suite de ce cours uniquement des fonctions plus grande que 1 à partir d'un certain rang. 
+{% endattention %}
 
 ## Gérer les constantes additives et multiplicatives
 

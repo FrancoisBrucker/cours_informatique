@@ -26,7 +26,7 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 2. [Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie)
 {% endaller %}
 
-> TBD suite = formulaire ; merge le 2eme
+> TBD suite = formulaire/bréviaire ; merge le 2eme
 
 {% aller %}
 1. [Comparaisons asymptotiques](./comparaisons-asymptotiques)

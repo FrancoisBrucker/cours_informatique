@@ -29,6 +29,7 @@ Cours de diestel en 2 playlists :
 - <https://www.youtube.com/watch?v=7eHvglLMCK8&list=PL_qO0UBYKVJ1myNZdh3j27fniqRtHYifm&index=1>
 - <https://www.youtube.com/watch?v=AFMVsyHZP0w&list=PL_qO0UBYKVJ2bRPUn4iA1xQgD4O9PbJju> 
 
+Network science : <https://www.youtube.com/watch?v=1T5-BG6yngM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=1>
 -->
 
 Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
