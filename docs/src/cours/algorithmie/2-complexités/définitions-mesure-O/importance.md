@@ -12,8 +12,10 @@ eleventyComputed:
 
 Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité :
 
+<div id="allure"></div>
+
 {% definition %}
-On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe}) :
+On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que son **_allure_** est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe}) :
 
 - **_complexité constante_** si $C(n) \sim_{+\infty} K$
 - **_complexité logarithmique_** si $C(n) \sim_{+\infty} K\cdot \ln(n)$

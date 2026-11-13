@@ -21,6 +21,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+<!-- TBD 
+
+Cours de diestel en 2 playlists :
+
+- <https://www.youtube.com/watch?v=7eHvglLMCK8&list=PL_qO0UBYKVJ1myNZdh3j27fniqRtHYifm&index=1>
+- <https://www.youtube.com/watch?v=AFMVsyHZP0w&list=PL_qO0UBYKVJ2bRPUn4iA1xQgD4O9PbJju> 
+
+-->
+
 Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
 
 Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.

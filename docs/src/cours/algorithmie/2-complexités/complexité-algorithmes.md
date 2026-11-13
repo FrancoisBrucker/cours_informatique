@@ -10,464 +10,151 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va donner ici quelques règles de calcul de complexité pour que vous puissiez calculer rapidement la complexité d'un algorithme.
+> TBD 
+> recherche max/min
+> recherche dichotomique
+> plus longue sequence croissante
+> le piège de claude trois boucles imbiquées qui font n2
+>
 
-## Une boucle simple
+## <span id="dichotomie"></span>Recherche dichotomique
 
-{% retenir "**Quand utiliser**" %}
-Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.
-{% endretenir %}
+Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entiers trié.
 
-Par exemple :
+On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $T[\lfloor (a + b)/2 \rfloor]$ :
 
-```pseudocode
-tant que <condition>:
-    # bloc d'instructions
-```
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] = x$ on a trouvé l'élément
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] > x$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+  - $a$ inchangé
+  - $b = \\,\lfloor (a + b)/2 \rfloor\\, - 1$
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] < x$, l'indice recherché est forcément **après** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+  - $a = \lfloor (a + b)/2 \rfloor + 1$
+  - $b$ inchangé
 
-{% note "**Complexité d'une boucle tant que**" %}
+Ce principe donne l'algorithme suivant :
 
-<div>
-$$
-\mathcal{O}(\text{nombre de fois où la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité des instructions du bloc}))
-$$
-</div>
-{% endnote %}
-
-Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et on pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autres, pour une boucle `pour chaque`{.language-} :
-
-```pseudocode
-pour chaque e de <itérable>:
-    # bloc d'instructions
-```
-
-{% note "**Complexité d'une boucle pour chaque**" %}
-
-<div>
-$$
-\mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instructions})
-$$
-</div>
-{% endnote %}
-
-Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
-
-Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../1-algorithme/projet-itératif-récursif/#algorithme-nombre-occurrences) :
-
-```pseudocode/
-algorithme nombre(T: []int, x: int) → int:
-    ref nb ← 0
-    pour chaque e de T:
-        si e == x:
-            nb ← nb + 1
-    rendre nb
-```
-
-Lignes :
-
-1. une affectation : $\mathcal{O}(1)$ opérations
-2. une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations
-3. un test : $\mathcal{O}(1)$ opérations
-4. une affectation : $\mathcal{O}(1)$ opérations
-5. retour en $\mathcal{O}(1)$ opération
-
-Les lignes 2, 3 et 4 sont effectuées $T.\mbox{\small longueur}$ fois, la complexité totale est donc en :
-
-<div>
-$$
-\mathcal{O}(1) + T.\mbox{\small longueur} \cdot (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)
-$$
-</div>
-
-Ce qui donne une complexité totale de $\mathcal{O}(T.\mbox{\small longueur})$.
-
-{% attention "**À retenir**"%}
-Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égale au nombre de fois où l'on effectue la boucle.
-{% endattention %}
-
-### Boucles imbriquées indépendantes
-
-{% retenir "**Quand utiliser**" %}
-Lorsque l'on a plusieurs boucles imbriquées où le nombre de fois où l'on rentre dans chaque boucle est indépendant des autres. 
-{% endretenir %}
-
-Par exemple :
+<span id="algorithme-dichotomie"></span>
 
 ```pseudocode
-boucle 1 exécutée n1 fois:
-    boucle 2 exécutée n2 fois:
-        ...
-            boucle i exécutée ni fois:
-                # bloc d'instructions
+algorithme recherche_dichotomique(T: []int, x: int) → bool:
+  ref a, b ← 0, T.longueur - 1
+  ref m int
+
+  tant que a ≤ b:
+      m ← (a + b) // 2  # division entière
+
+      si (T[m] == x):
+          rendre Vrai
+      si (T[m] < x):
+          a ← m + 1
+      si (T[m] > x):
+          b ← m - 1
+
+  rendre Faux
+
 ```
 
-On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instructions) contenant elle-même une ou plusieurs boucles.
+Commençons par se persuader qu'il fonctionne (et commencer à se forger une intuition de son fonctionnement) avec de petits exemples :
 
-<div id="complexité-boucles-indépendantes"></div>
+{% faire %}
+Déroulez l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} pour ces différentes valeurs de `T`{.language-} et de `x`{.language-} :
 
-{% note "**Complexité de boucles imbriquées indépendantes**" %}
-La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
-{% endnote %}
+- `T = [1, 3, 7]`{.language-} et `x = 7`{.language-} ou `x = 8`{.language-} l'algorithme fonctionne
+- `T =[1, 3, 3, 7]`{.language-} et `x = 7`{.language-} ou `x = 9`{.language-} l'algorithme fonctionne
+{% endfaire %}
 
-Exemple le calcul de :
+On peut maintenant passer à sa preuve :
 
-<div>
-$$
-\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))
-$$
-</div>
+{% exercice %}
+Démontrez que l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} :
 
-```pseudocode
-ref total ← 0
-pour chaque i de [1 .. n]:
-    pour chaque j de [1 .. n]:
-        total ← i + j
-rendre total
-```
+- termine quelles que soient ses entrées,
+- est bien un algorithme de recherche.
+{% endexercice %}
+{% details "corrigé" %}
 
-La boucle en $i$ est exécutée $n$ fois ($i$ va de 1 à $n$) donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :
+- **finitude**. La quantité entière `b - a`{.language-} **décroît strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opérations et l'algorithme s'arrêtera.
+- **preuve** :
+  1. on montre trivialement l'invariant de boucle suivant : si `x`{.language-} est dans `T`{.language-}, alors sa position est plus grande ou égale à `a`{.language-} et plus petite ou égale à `b`{.language-}
+  2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `x`{.language-} ne peut être dans `T`{.language-}
 
-<p>
-\[
-\underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{ligne 5}}
- = \mathcal{O}(n^2)
-\]
-</p>
-
-{% retenir %}
-Compter le nombre d'itérations d'une boucle avec les $\mathcal{O}()$. Une boucle de $n-3$ exécutions pouvant être avantageusement remplacée par $\mathcal{O}(n)$
-
-{% endretenir %}
-
-### <span id="règle-croissance"></span>Boucles dépendantes mais monotones
-
-Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.
-
-Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :
-
-{% retenir "**Quand utiliser**" %}
-Lorsqu'une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (_respectivement_ décroissante).
-{% endretenir %}
-
-{% note "**Complexité de boucles dépendantes monotones**" %}
-Si une boucle s'exécute un nombre croissant (respectivement décroissant) de fois, on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre de son maximum et se ramener au cas [des boucles indépendantes](./#complexité-boucles-indépendantes).
-{% endnote %}
+Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} fonctionne.
+{% enddetails %}
 
 
-Exemple le calcul de (notez la dépendance de $j$ par rapport à $i$) :
+{% exercice %}
+Démontrez que la complexité de l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} vaut $\mathcal{O}(K)$ avec $K$ le nombre de fois où l'algorithme rentre dans la boucle `tant que`{.language-}
 
-<div>
-$$
-\sum\limits_{1\leq i \leq n}(\sum\limits_{i < j \leq n} (i+j))
-$$
-</div>
+{% endexercice %}
+{% details "corrigé" %}
 
-```pseudocode
-ref total ← 0
-pour chaque i de [1 .. n-1]:
-    pour chaque j de [i+1 .. n]:
-        total ← i + j
-affiche total
-```
+Étudions sa complexité. Ligne à ligne :
 
-Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
-
-Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :
-
-- ligne 1 : $\mathcal{O}(1)$
-- itération pour $i=1$:
-  - ligne 2 : une affectation $i=1$ : $\mathcal{O}(1)$
-  - boucle pour $j=1$:
-    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
-    - ligne 4 : $\mathcal{O}(1)$
-    - le tout $n-1$ fois
-- itération pour $i=2$:
-  - ligne 2 : une affectation $i=2$ : $\mathcal{O}(1)$
-  - boucle pour $j=2$:
-    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
-    - ligne 4 : $\mathcal{O}(1)$
-    - le tout $n-2$ fois
-- ...
-- itération pour $i=n-1$:
-  - ligne 2 : une affectation $i=n-1$ : $\mathcal{O}(1)$
-  - boucle pour $j=n-1$:
-    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
-    - ligne 4 : $\mathcal{O}(1)$
-    - le tout $1$ fois
-- ligne 5 : $\mathcal{O}(1)$
-
-Notre complexité totale est donc :
-
-<div>
-$$
-\begin{array}{lcr}
-    \mathcal{O}(1) &+ \\
-    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 1) \\
-    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 2) \\
-    \dots\\
-    (\mathcal{O}(1) + (n-i) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+  \\
-    \dots\\
-  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = n-1) \\
- \mathcal{O}(1)
-\end{array}
-$$
-</div>
-
-Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :
-
-<div>
-$$
-\begin{array}{lcr}
-    \mathcal{O}(1) &+ \\
-    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) &+ & (i = 1) \\
-    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) &+ & (i = 2) \\
-    \dots\\
-    (\mathcal{O}(1) + (n-i) \cdot \mathcal{O}(1)) &+  \\
-    \dots\\
-  (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) &+ & (i = n-1) \\
- \mathcal{O}(1)
-\end{array}
-$$
-</div>
-
-Ce qui donne :
-
-<div>
-$$
-\begin{array}{lcr}
-    \mathcal{O}(1) &+ \\
-    n \cdot \mathcal{O}(1) &+ & (i = 1) \\
-    (n-1) \cdot \mathcal{O}(1) &+ & (i = 2) \\
-    \dots\\
-    (n-i) \cdot \mathcal{O}(1) &+  \\
-    \dots\\
-    2 \cdot \mathcal{O}(1) &+ & (i = n-1) \\
- \mathcal{O}(1)
-\end{array}
-$$
-</div>
-
-et donc notre complexité vaut :
-
-<div>
-$$
-\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)
-$$
-</div>
-
-Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :
-
-<div>
-$$
-\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)
-$$
-</div>
-
-Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :
-
-<div>
-$$
-\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)
-$$
-</div>
-
-On retrouve bien le résultat attendu.
-
-### C<span id="règle-récursif"></span>omplexité d'algorithmes récursifs
-
-
-Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stoppe la récursion. 
-
-{% retenir "**Quand utiliser**" %}
-Pour calculer la complexité d'un algorithme récursif.
-{% endretenir %}
-
-
-
-{% note "**Complexité d'un algorithme récursif**" %}
-Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêt estimées, trouver $C(n)$ revient à résoudre une équation de récurrence.
-{% endnote %}
-
-Pour illustrer ce calcul, reprenons [le calcul récursif de la factorielle](../../1-algorithme/problème-preuve/#algorithme-factorielle-rec) :
-
-```pseudocode/
-algorithme factorielle(n: int) → int:
-    si n == 1:
-        rendre 1
-
-    ref f ← factorielle(n-1)
-    rendre n * f
-```
-
-On exécute cette fonction avec un entier $n$ comme paramètre initial. On sait que cet algorithme fonctionne (on l'a déjà prouvé) et on pose que sa complexité est $C(n)$. Son calcul effectif se fait en calculant $C(n)$ comme on le ferait avec un algorithme itératif, ligne à ligne :
-
-1. définition d'une fonction $\mathcal{O}(1)$
-2. une comparaison entre une constante et une variable : $\mathcal{O}(1)$
-3. retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$
+1. initiation de la fonction $\mathcal{O}(1)$
+2. affectation : $\mathcal{O}(1)$
+3. affectation : $\mathcal{O}(1)$
 4. —
-5. une affectation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$
-6. une multiplication et un retour de fonction : $\mathcal{O}(1)$
+5. boucle de $K$ itérations (pour l'instant, la valeur de $K$ est **inconnue**)
+6. affectation : $\mathcal{O}(1)$
+7. —
+8. test d'une valeur dans un tableau : $\mathcal{O}(1)$
+9. retour de fonction : $\mathcal{O}(1)$
+10. test d'une valeur dans un tableau : $\mathcal{O}(1)$
+11. addition plus une affectation : $\mathcal{O}(1)$
+12. —
+13. soustraction plus une affectation : $\mathcal{O}(1)$
+14. retour de fonction : $\mathcal{O}(1)$
 
-
-On a alors :
+Ce qui donne comme complexité :
 
 <div>
 $$
 \begin{array}{lcl}
-C(n) & = & \mathcal{O}(1) + \\
-&  & \mathcal{O}(1) + \\
-&  & \mathcal{O}(1) + \\
-&  & \mathcal{O}(1) + C(n-1) + \\
+C(n) & = & 3 \cdot \mathcal{O}(1) + \\
+& & K \cdot (6 \cdot \mathcal{O}(1)) + \\
 & & \mathcal{O}(1) \\
-& = & 6 \cdot \mathcal{O}(1) + C(n-1) \\
-& = & \mathcal{O}(1) + C(n-1) \\
+& = & \mathcal{O}(K)
 \end{array}
 $$
 </div>
+{% enddetails %}
 
+Avant de conclure, démontrons une petite proposition qui sera utile tout au long de ce cours :
 
-L'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$ peut se résoudre en y ajoutant notre condition d'arrêt (obtenue pour `n`{.language-} valant 1) qui va nous donner $C(1) = \mathcal{O}(1)$ comme condition limite :
+<div id="proposition-log"></div>
 
-<div>
-$$
-\left\{
-    \begin{array}{lcl}
-        C(n) & = & \mathcal{O}(1) + C(n-1)\\
-        C(1) & = & \mathcal{O}(1)
-    \end{array}
-\right.
-$$
-</div>
+{% note "**Proposition**" %}
+Le plus grand entier $k$ tel que $\frac{n}{p^k} \geq 1$ pour deux entiers $n\geq p$ vaut $k = \lfloor\log_p(n)\rfloor$.
+{% endnote %}
+{% details "preuve", "open" %}
 
-On résout le tout en appliquant itérativement l'équation :
+Le nombre $k$ recherché est tel que $p^k \leq n < p^{k + 1}$. On a alors :
 
 <div>
 $$
-\begin{array}{lcl}
-    C(n) & = & \mathcal{O}(1) + C(n-1) \\
-    & = & \mathcal{O}(1) + \mathcal{O}(1) + C(n-2) = 2 \cdot \mathcal{O}(1) + C(n-2)\\
-    & = & 3 \cdot \mathcal{O}(1) + C(n-3) \\
-    & = & \dots \\
-    & = & i \cdot \mathcal{O}(1) + C(n-i) \\
-    & = & \dots \\
-    & = & (n-1) \cdot \mathcal{O}(1) + C(1)\\
-    & = & \mathcal{O}(n) + C(1)\\
+\begin{array}{lcccl}
+    p^k &\leq &n &<& p^{k + 1}\\
+    \log_p(p^k) &\leq & \log_p(n) &< &\log_p(p^{k + 1}) \mbox{ (car la fonction $\log_p$ est croissante)} \\
+    k\cdot \log_p(p) &\leq & \log_p(n) &< &(k + 1)\cdot \log_p(p) \\
+    k &\leq &\log_p(n) &<& k + 1
 \end{array}
 $$
 </div>
+{% enddetails %}
 
-Et on conclut avec notre condition limite :
+La proposition précédente nous permet de conclure sur la complexité :
 
-<div>
-$$
-\begin{array}{lcl}
-    C(n) & = & \mathcal{O}(n) + C(1)\\
-    & = & \mathcal{O}(n) + \mathcal{O}(1)\\
-    & = & \mathcal{O}(n) \\
-\end{array}
-$$
-</div>
+{% exercice %}
+Démontrez que la complexité de l'algorithme `recherche_dichotomique(T: []int, x: int) → bool`{.language-} vaut $\mathcal{O}(\ln(T.\mbox{\small longueur}))$.
 
-On va pouvoir écrire la complexité de nombreux algorithmes récursifs sous cette forme, n'oubliez pas comment faire :
+{% endexercice %}
+{% details "corrigé" %}
+Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2, donc au plus $\log_2(T.\mbox{\small longueur}) + 1$ itérations. Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a bien la complexité recherchée.
+
+{% enddetails  %}
+
+Cette complexité est vraiment très bonne puisque la valeur de $\ln(n)$ est en effet très petite devant $n$ ([rappelez-vous l'ordre de grandeur qu'on a déjà vu](../complexité-moyenne/#importance-log)).
 
 {% retenir %}
-La solution aux équations de récursion :
-
-<div>
-$$
-\left\{
-    \begin{array}{lcl}
-        C(n) & = & \mathcal{O}(1) + C(n-1)\\
-        C(1) & = & \mathcal{O}(1)
-    \end{array}
-\right.
-$$
-</div>
-
-Est :
-
-<div>
-$$
-C(n) = \mathcal{O}(n)
-$$
-</div>
-
+Si l'on manipule des tableaux triés, la recherche dichotomique est énormément plus performante que la recherche naïve.
 {% endretenir %}
-
-## Cas le pire
-
-On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais comme le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des données engendrant le plus d'instructions.
-
-{% retenir "**Quand utiliser**" %}
-Lorsque l'on peut borner le nombre d'itérations et/ou de récursions d'un algorithme.
-{% endretenir %}
-
-
-Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.
-
-### Itératif
-
-Reprenons un de nos algorithmes fil rouge, [l'algorithme du pgcd itératif](../../1-algorithme/pseudo-code/récursifs-itératifs/#algorithme-pgcd) :
-
-```pseudocode/
-algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
-    tant que min(a, b) > 0:
-        a, b ← max(a, b) - min(a, b), min(a, b)
-    rendre max(a, b)
-```
-
-En notant $K$ le nombre d'itérations de la boucle tant que, comme toutes les lignes sont en $\mathcal{O}(1)$ opérations, la complexité $C(a, b)$ de l'algorithme vaut :
-
-<div>
-$$
-C(a, b) = K \cdot \mathcal{O}(1)
-$$
-</div>
-
-On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. À chaque itération soit $a$ soit $b$ va décroître strictement jusqu'à ce que $\min(a, b) = 0$ ce qui stoppera la boucle.
-
-Donc au bout de $K = \mathcal{O}(\max(a, b))$ itérations on aura forcément soit $a$ soit $b$ qui vaudra 0 (pas la peine d'être plus précis que cela) :
-
-<div>
-$$
-C(a, b) = \mathcal{O}(\max(a, b))
-$$
-</div>
-
-### Récursif
-
-Reprenons l'exemple de [l'algorithme du pgcd récursif](../../1-algorithme/pseudo-code/récursifs-itératifs/#algorithme-pgcd-rec) :
-
-```pseudocode
-algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
-    si min(a, b) == 0:
-        rendre max(a, b)
-    sinon:
-        rendre pgcd(max(a, b) - min(a, b), min(a, b))
-```
-
-La complexité de cet algorithme dépend de ses paramètres, notons-la : $C(a, b)$. Comme toutes les opérations hors récursion sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :
-
-<div>
-$$
-C(a, b) = \mathcal{O}(1) + C(\max(a, b) - \min(a, b), \min(a, b))
-$$
-</div>
-
-En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité de l'algorithme factorielle récursif on obtient :
-
-<div>
-$$
-C(a, b) = K(a, b) \cdot \mathcal{O}(1)
-$$
-</div>
-
-Où $K(a, b)$ est le nombre de récursions de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif soit $a$ soit $b$ va décroître strictement à chaque récursion, donc $K(a, b) \leq \max(a, b)$, ce qui implique :
-
-<div>
-$$
-C(a, b) = K(a, b) \cdot \mathcal{O}(1) \leq \max(a, b) \cdot \mathcal{O}(1) = \mathcal{O}(\max(a, b))
-$$
-</div>
-
-Comme les $\mathcal{O}$ sont des majorants, on a donc également $C(a, b) = \mathcal{O}(\max(a, b))$.

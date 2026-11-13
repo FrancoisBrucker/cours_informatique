@@ -14,7 +14,7 @@ eleventyComputed:
 [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe}.
 {% endlien %}
 
-
+> TBD dans le cours que O. Dire que aussi pour O et theta.
 
 Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.
 
@@ -111,34 +111,7 @@ Immédiat grâce à la définition de $\Theta()$ et à [la propriété liant $\O
 
 ### Cas des constantes
 
-La règle suivante va se révéler fort utile :
-
-<span id="OA-constantes-additives"></span>
-{% note "**Règle des constantes additives**" %}
-$ A = \Theta(1)$, avec $A$ une constante strictement positive.
-{% endnote %}
-{% details  "preuve", "open" %}
-
-Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
-
-En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
-
-Réciproquement, soit $f(N) = \mathcal{O}(1)$.
-
-Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
-
-{% enddetails %}
-
-<span id="OA-constantes-multiplicatives"></span>
-{% note "**Règle des constantes multiplicatives**" %}
-$ A\cdot f(N) = \Theta(f(N))$, avec $A$ une constante strictement positive.
-{% endnote %}
-{% details  "preuve", "open" %}
-
-Pour tout $N > 0$, on a $A\cdot f(N) \leq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \mathcal{O}(f(N))$.
-
-De même, pour tout $N>0$, $A\cdot f(N) \geq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \Omega(f(N))$.
-{% enddetails %}
+> TBD thta et omega.
 
 ### <span id="arithmétique"></span>Arithmétique des fonctions asymptotiques
 

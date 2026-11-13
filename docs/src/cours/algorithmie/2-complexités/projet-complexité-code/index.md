@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 ## Prérequis : fichiers du cours
 
 Commençons par faire en sorte d'avoir le code du cours sur [les mesures de complexités](../complexité-code/) qui fonctionne.
@@ -101,7 +100,6 @@ Vous prendrez comme paramètres :
 - `K = 10`{.language-}.
 
 {% endfaire %}
-
 
 ## Complexité d'un algorithme récursif
 

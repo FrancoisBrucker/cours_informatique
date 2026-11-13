@@ -11,23 +11,125 @@ eleventyComputed:
 ---
 
 
-Les comparaisons asymptotiques sont plutôt intéressantes en algorithmie car elles permettent de supprimer les effets négatifs du comptage explicite de la complexité. La comparaison la plus utilisée, et de loin, est le $\mathcal{O}$. Elle nous permettra de majorer par rapport à la taille $N$ de l'entrée de l'algorithme :
+Comme le compte exacte du nombre $C(n)$  d'instructions élémentaires effectuées lors de l'exécution d'un algorithme est souvent difficile à faire et qu'au final souvent seule son [allure générale](../importance/#allure) compte (logarithmique, linéaire, polynomiale ou exponentielle) on utilise un outil nommé [comparaison asymptotique](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe} qui va nous permettre de simplifier le calcul en ne conservant que l'allure de la complexité que l'on cherche à déterminer. Il existe plusieurs comparateur asymptotique, celui qui est le plus utilisé en algorithmie est le $\mathcal{O}$ :
 
-- le nombre d'opérations élémentaires effectuées par l'algorithme avant de s'arrêter
-- le temps mis par l'algorithme pour s'exécuter
-- la taille de la mémoire utilisée par l'algorithme
-
-Si le majorant n'est pas trop éloigné du compte exact, cela nous donne une **idée générale** de la valeur lorsque $N$ devient grand.
+{% definition %}
+Une fonction <span>$f(N)$</span> est en $\mathcal{O}(g(n))$ s'il existe 2 constantes $C_0$ et $N_0$ telles que $f(n) \leq C_0 \cdot g(n)$ pour tout $n > N_0$.
+{% enddefinition %}
 
 {% info %}
 C'est le grand informaticien D. Knuth qui a popularisé l'usage de ces fonctions dans le calcul de la complexité avec son célèbre article [BIG OMICRON AND BIG OMEGA AND BIG THETA](https://danluu.com/knuth-big-o.pdf){.fichier}
 {% endinfo %}
 
+Connaître le comportement en $\mathcal{O}$ de $C(n)$ nous donne un **majorant** de son _allure_ lorsque $n$ devient grand. Elle nous permettra de majorer par rapport au paramètre $n$ du calcul de complexité $C(n)$. Par exemple $C(n) = \mathcal{O}(n^2)$ pour une allure de complexité polynomiale de degré 2.
+
+
+
+{% note "**Proposition**" %}
+On a l'implication suivante :
+
+Si $f(n) = \mathcal{O}(g(n))$ et $g(n) = \mathcal{O}(h(n))$ alors $f(n) = \mathcal{O}(h(n))$
+
+{% endnote %}
+{% details  "preuve", "open" %}
+
+> TBD
+
+{% enddetails %}
+
 ## Gérer les constantes additives et multiplicatives
 
-Les constantes additives et multiplicatives ne changent pas l'allure de la complexité.
+Le plus grand intérêt dans le comptage de complexité algorithmique est la propriété suivante :
 
-Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../../pseudo-code/briques-de-base/) est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
+<span id="OA-constantes-additives-multiplicatives"></span>
+
+{% note "**Proposition**" %}
+On a l'équivalence suivante :
+
+<div>
+$$
+f(n) = \mathcal{O}(\alpha \cdot g(n) + \beta) \Leftrightarrow f(n) = \mathcal{O}(g(n))
+$$
+</div>
+
+{% endnote %}
+{% details  "preuve", "open" %}
+Si $f(n) = \mathcal{O}(\alpha \cdot g(n) + \beta)$, il existe $C_0$ et $N_0$ tels que pour tout $n\geq N_0$ on ait $f(n) \leq C_0 \cdot (\alpha \cdot g(n) + \beta) = C_0 \cdot \alpha \cdot g(n) + C_0 \cdot \beta$.
+
+Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
+
+En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
+
+Réciproquement, soit $f(N) = \mathcal{O}(1)$.
+
+Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
+
+{% enddetails %}
+
+> TBD conséquence :O(1) et algo sur l'age.
+
+{% note "**Règle des constantes additives**" %}
+$ A = \Theta(1)$, avec $A$ une constante strictement positive.
+{% endnote %}
+{% details  "preuve", "open" %}
+
+Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
+
+En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
+
+Réciproquement, soit $f(N) = \mathcal{O}(1)$.
+
+Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
+
+{% enddetails %}
+
+
+## Majorer le nombre d'itération
+
+> TBD +/- constante additive ou multiplicaive
+> TBD majorer par quelque chose qu'on peut calculer
+
+## Complexité max
+
+> TBD pour ne pas dépendre des entrées : recherche.
+
+## Autres 
+
+
+
+La règle suivante va se révéler fort utile :
+
+<span id="OA-constantes-additives"></span>
+{% note "**Règle des constantes additives**" %}
+$ A = \Theta(1)$, avec $A$ une constante strictement positive.
+{% endnote %}
+{% details  "preuve", "open" %}
+
+Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
+
+En posant $c'_0 = c_0 \cdot A$, on a $f(N) \leq c'_0 \cdot 1$ pour tout $N > N_0$. Donc : $f(N) = \mathcal{O}(1)$.
+
+Réciproquement, soit $f(N) = \mathcal{O}(1)$.
+
+Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot 1$. En posant $c'_0 = c_0 / A$, on a $f(N) \leq c'_0 \cdot A$ pour tout $N > N_0$. Donc $f(N) = \mathcal{O}(A)$.
+
+{% enddetails %}
+
+<span id="OA-constantes-multiplicatives"></span>
+{% note "**Règle des constantes multiplicatives**" %}
+$ A\cdot f(N) = \Theta(f(N))$, avec $A$ une constante strictement positive.
+{% endnote %}
+{% details  "preuve", "open" %}
+
+Pour tout $N > 0$, on a $A\cdot f(N) \leq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \mathcal{O}(f(N))$.
+
+De même, pour tout $N>0$, $A\cdot f(N) \geq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \Omega(f(N))$.
+{% enddetails %}
+
+
+> a f + b = f
+
+que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../../pseudo-code/briques-de-base/) est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
 
 {% retenir %}
 La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.
@@ -71,6 +173,10 @@ En revanche, faites attention, cela ne marche que pour les constantes !
 {% attention %}
 Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. **On ne peut pas simplifier les éléments variables**.
 {% endattention %}
+
+{% retenir %}
+Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives.
+{% endretenir %}
 
 ## Gérer des polynômes
 

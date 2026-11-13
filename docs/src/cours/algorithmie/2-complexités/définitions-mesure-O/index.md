@@ -22,12 +22,13 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 ## Outil de mesure de la complexité : les $\mathcal{O}$
 
 {% aller %}
-[Problème du comptage exhaustif](./problème-comptage-exhaustif)
+1. [Problème du comptage exhaustif](./problème-comptage-exhaustif)
+2. [Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie)
 {% endaller %}
 
-Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe}.
+> TBD suite = formulaire ; merge le 2eme
 
 {% aller %}
 1. [Comparaisons asymptotiques](./comparaisons-asymptotiques)
-2. [Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie)
+2. [regle pour les algorithmea](complexité-algorithmes-O)
 {% endaller %}

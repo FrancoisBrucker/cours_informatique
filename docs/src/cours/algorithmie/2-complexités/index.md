@@ -15,7 +15,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.
 
 {% lien %}
@@ -33,14 +32,15 @@ Cette partie s'intéresse à la notion de complexité d'un algorithme et donne l
 Utilisation pour calculer théoriquement et en pratique la complexité d'algorithmes :
 
 {% aller %}
-1. [Calcul de complexités avec des $\mathcal{O}$](./complexité-algorithmes)
+1. [Complexité max et min](./complexité-algorithmes)
 2. [Complexité en moyenne](./complexité-moyenne)
 {% endaller %}
 
 Enfin, comment mesurer la complexité en pratique (et en python) :
 
 {% aller %}
-[Mesurer la complexité d'un code](./complexité-code)
+1. [Algorithmie et aléatoire](./algorithme-aléatoire)
+2. [Mesurer la complexité d'un code](./complexité-code)
 {% endaller %}
 
 ## On s'entraîne
@@ -50,7 +50,7 @@ Enfin, comment mesurer la complexité en pratique (et en python) :
 Deux séries d'exercices simples pour vérifier que le cours est acquis :
 
 {% aller %}
-1. [Projet : mesurer des complexités](projet-code)
+1. [Projet : mesurer des complexités](projet-complexité-code)
 2. [Projet : calcul de complexités min et max](projet-calcul-max-min)
 {% endaller %}
 
@@ -60,7 +60,8 @@ Deux séries d'exercices simples pour vérifier que le cours est acquis :
 Exercices classiques de calcul de complexité (en particulier complexité en moyenne). Ils sont **à connaître** car leurs méthodes de résolution sont utiles :
 
 {% aller %}
-[Projet : exercices classiques de recherche d'éléments](projet-recherche-élément)
+1. [Projet : exercices classiques de recherche d'éléments](projet-recherche-élément)
+2. [Projet : vérifications expérimentales](projet-recherche-élément-code)
 {% endaller %}
 
 ### On vérifie qu'on sait faire

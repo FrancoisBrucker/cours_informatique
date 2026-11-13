@@ -138,7 +138,6 @@ L'instruction de bytecode `BINARY_OP` utilisée est un algorithme qui va prendre
 
 On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépendent de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.
 
-
 #### Instructions processeur
 
 Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des [processeurs CISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu){.externe} qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des [processeurs RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit){.externe} avec peu d'instructions.
