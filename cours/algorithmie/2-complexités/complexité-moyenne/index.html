@@ -240,42 +240,7 @@ $$
         <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-<p>Commençons par calculer ses complexités.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que, si $n$ est la longueur du tableau, on a que :</p>
-<ul>
-<li>la complexité (maximale) de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(n)$,</li>
-<li>la complexité minimale de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(1)$.</li>
-</ul>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Toutes les instructions de l'algorithme sont en $\mathcal{O}(1)$ (un test et un retour), sa complexité viendra du nombre de fois où ou la boucle tant que est exécutée :</p>
-<ul>
-<li>la complexité minimale sera atteinte si elle n'exécutée qu'une fois (si <code class="language-">x</code> est le premier élément du tableau) :  $\mathcal{O}(1)$</li>
-<li>la complexité (maximale) sera atteinte si on exécute la boucle $n$ fois (on parcourt tout le tableau sans trouver <code class="language-">x</code>) :  $\mathcal{O}(n)$</li>
-</ul>
-</div>
-</details>     
-</div>
+<p>Dont on a déjà calculé les complexités (<a href="../d%C3%A9finitions-et-mesure/comparaisons-asymptotiques/#complexit%C3%A9-max">max</a> et <a href="../d%C3%A9finitions-et-mesure/comparaisons-asymptotiques/#complexit%C3%A9-max">min</a>). Pour le calcul de sa complexité en moyenne il faut estimer le nombre moyen de fois où l'algorithme va rentrer dans la boucle <code class="language-">pour chaque</code>.</p>
 <p>Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes dont les valeurs de complexités sont les mêmes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -724,30 +689,98 @@ $$
 \begin{array}{lclr}
 C_{\text{moy}}(n)
 & =& \sum\limits_{1\leq i \leq n} \frac{1}{i}
-& =& \Theta(n)
+& =& \Theta(\ln(n))
 \end{array}
 $$
 </div>
-<p>La complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?).</p>
-<div id="importance-log"></div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+<p>La complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?), ce qui est, <a href="../complexit%C3%A9-algorithmes/#importance-log">rappelez-vous</a> une excellente complexité !</p>
+<p>La figure suivante montre un exemple de mesure des trois complexités :</p>
+<p><img src="Figure_2.png" alt="figure"></p>
+<p>On voit bien que la complexité moyenne est très faible malgré la taille de tableau pouvant aller à plus d'un million d'éléments.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :</p>
-<ul>
-<li>$t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),</li>
-<li>$\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le <a href="https://fr.wikipedia.org/wiki/Prix_Ig-Nobel" class="externe">Ig Nobel</a> de physique en 2015)</li>
-</ul>
+<p>Le code qui a permis de générer le graphique est ci-dessous. Il est en python et utilise les modules <a href="https://matplotlib.org/">https://matplotlib.org/</a> et <a href="https://numpy.org/">https://numpy.org/</a>. Nous allons faire un projet pour détailler tout ça.</p>
 </div>
 </div>
-<h3><span id="mesure"></span>En pratique</h3>
-<h4>Exemple 2</h4>
-<blockquote>
-<p>Complexité en moyenne. On utilise toujours ceux de longuage, on ne recode jamais fisher-yates... C'est surement mieux fait et optimisé.</p>
-</blockquote>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> gc
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+
+<span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
+            m <span class="token operator">=</span> x
+    <span class="token keyword">return</span> m
+
+<span class="token keyword">def</span> <span class="token function">maximum_compte</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    c <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
+            c <span class="token operator">+=</span> <span class="token number">1</span>
+            m <span class="token operator">=</span> x
+    <span class="token keyword">return</span> m<span class="token punctuation">,</span> c
+
+
+<span class="token keyword">def</span> <span class="token function">calcule_moyenne</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    t <span class="token operator">=</span> maximum_compte<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">+=</span> maximum_compte<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> t <span class="token operator">/</span> rep
+
+
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+n_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"calculs pour :"</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> x<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    n_moy<span class="token punctuation">.</span>append<span class="token punctuation">(</span>calcule_moyenne<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    "</span><span class="token punctuation">,</span> n_moy<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Maximum d'un tableau"</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"taille du tableau"</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"nombre de mise à jour moyenne"</span><span class="token punctuation">)</span>
+
+p1<span class="token punctuation">,</span> <span class="token operator">=</span>  ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> n_moy<span class="token punctuation">,</span> <span class="token string">'o-'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"moyenne"</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
 
 
 </article>

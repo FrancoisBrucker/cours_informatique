@@ -168,6 +168,19 @@ TBD ring oscillatro : <a href="https://www.youtube.com/watch?v=fwU8s1BMNlA" clas
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"hasard : "</span><span class="token variable"><span class="token variable">$(</span>base64 <span class="token operator">&lt;</span>/dev/random <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-c</span> <span class="token number">100</span><span class="token variable">)</span></span></code></pre>
 <p><a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5" class="externe">Sous windows</a> (attention pas cryptographique) :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">powershell <span class="token parameter variable">-command</span> <span class="token string">"[Convert]::ToBase64String<span class="token variable"><span class="token punctuation">((</span><span class="token number">1.</span><span class="token number">.64</span><span class="token operator">|</span><span class="token operator">%</span>{[byte]<span class="token punctuation">(</span>Get<span class="token operator">-</span>Random <span class="token operator">-</span>Max <span class="token number">256</span><span class="token punctuation">)</span>}<span class="token punctuation">))</span></span>"</span></code></pre>
+<h2>dans le processeur</h2>
+<ul>
+<li>latch bistable</li>
+<li>pour changer les imperfections on déplace les proba à chaque tirage : on ajoute de l'auto-correlation avec des capacités qui se chargent à gauche ou à droite. pour arriver à 50% de 1 et de 0.</li>
+<li>différence portes <a href="https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect9.pdf">https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect9.pdf</a></li>
+<li>supprimer l'autocorrelation : post-processing :
+<ul>
+<li>Von Neumann Corrector (Correcteur de Von Neumann) : Read bits in non-overlapping pairs. Discard 00 and 11, output 0 for 01, and output 1 for 10. Note: This removes bias and first-order serial correlation, though it reduces your bit rate by at least 75%.</li>
+<li>XOR Decimation (Décimation par XOR) : XOR consecutive bits together (e.g., (B_{out} = B_n \oplus B_{n-1}), or across multiple independent latches). If the serial correlation coefficient between adjacent bits is ρ, XORing k bits reduces the correlation exponentially to (\rho ^{k}).</li>
+<li>LFSR or Cryptographic Hashing (LFSR ou hachage) : Feed the raw bitstream into a Linear Feedback Shift Register (LFSR) or a lightweight hash function (like SHA-256 or Toeplitz hashing) to whiten the output and destroy temporal dependencies.</li>
+</ul>
+</li>
+</ul>
 
 
 </article>

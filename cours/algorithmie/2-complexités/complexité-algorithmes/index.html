@@ -96,14 +96,333 @@
     
   
 
-  <blockquote>
-<p>TBD
-recherche max/min
-recherche dichotomique
-plus longue sequence croissante
-le piège de claude trois boucles imbiquées qui font n2</p>
-</blockquote>
-<h2><span id="dichotomie"></span>Recherche dichotomique</h2>
+  <p>Le calcul de complexité d'un algorithme se fait via l'utilisation de fonctions asymptotiques qui nous permettent de donner son comportement lorsque les données deviennent grandes. C'est le seul cas qui nous intéresse puisque lorsque les données sont petites, l'algorithme ira vite quoi qu'il arrive. Les différentes formes de complexités qui nous intéresses sont les suivantes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>On cherchera à borner la complexité par une allure de complexité :</p>
+<ul>
+<li><em><strong>complexité constante</strong></em> en $\mathcal{O}(1)$</li>
+<li><em><strong>complexité logarithmique</strong></em> en $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$</li>
+<li><em><strong>complexité linéaire</strong></em> en $\mathcal{O}(n)$</li>
+<li><em><strong>complexité polynomiale</strong></em> en $\mathcal{O}(n^k)$ avec $k&gt;1$ constant le plus petit possible</li>
+<li><em><strong>complexité exponentielle</strong></em> en $\mathcal{O}(k^n)$ avec $k&gt;1$ constant le plus petit possible</li>
+</ul>
+</div>
+</div>
+<p>Si nos approximations ne sont pas disproportionnées (genre en disant que $\log_2(n) = \mathcal{O}(2^n)$) ou que l'on arrive à utiliser des $\Theta$ pour calculer nos complexités, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
+<p>Pour qu'un algorithme puisse avoir des complexité différentes selon les entrées il est <strong>nécessaire</strong> qu'il possède des boucles sinon on pourra toujours borner sa complexité par un $\mathcal{O}(1)$. Regardons un peu comment calculer rapidement ces complexités dans les cas simples où les boucles sont indépendantes.</p>
+<h2>Complexité blocs et boucles</h2>
+<h3>Complexité d'une boucle simple</h3>
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">tant que</span> <span class="token operator">&lt;</span>condition<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token comment"># bloc d'instructions</span></code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité d'une boucle tant que</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\mathcal{O}(\text{nombre de fois où la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité des instructions du bloc}))
+$$
+</div>
+</div>
+</div>
+<p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et on pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autres, pour une boucle <code class="language-">pour chaque</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token operator">&lt;</span><span class="token builtin">structure</span> <span class="token class-name">it</span>érable<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token comment"># bloc d'instructions</span></code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité d'une boucle pour chaque</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instructions})
+$$
+</div>
+</div>
+</div>
+<p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
+<p>Exemple le calcul de :</p>
+<div>
+$$
+\sum\limits_{1\leq i \leq n}i
+$$
+</div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>int <span class="token parameter variable">n</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">total</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token variable parameter">total</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> j</span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">total</span></span></code></pre>
+<p>Lignes à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>création et affectation d'une variables : $\mathcal{O}(1)$</li>
+<li>une boucle de $n$ itérations : $\mathcal{O}(n)$ itérations</li>
+<li>opération élémentaire et affectation : $\mathcal{O}(1)$</li>
+<li>retour d'algorithme : $\mathcal{O}(1)$</li>
+</ol>
+<p>On en conclut que la complexité totale de l'algorithme vaut :</p>
+<div>
+$$
+\underbracket{\mathcal{O}(1)}_{\mbox{ligne 1}} + \underbracket{\mathcal{O}(1)}_{\mbox{ligne 2}} + \underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{ligne 4}} + \underbracket{\mathcal{O}(1)}_{\mbox{ligne 5}}
+ = \mathcal{O}(1)
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égale au nombre de fois où l'on effectue la boucle.</p>
+</div>
+</div>
+<p>À vous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculez la complexité de <a href="../../1-algorithme/projet/#algorithme-nombre-occurrences">l'algorithme qui calcule le nombre d'occurrences</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> <span class="token variable parameter">e</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">nb</span></span></code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations</li>
+<li>un test : $\mathcal{O}(1)$ opérations</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>retour en $\mathcal{O}(1)$ opération</li>
+</ol>
+<p>Le bloc constitué des lignes 4 et 5 est effectué $T.\mbox{\small longueur}$ fois, la complexité totale est donc en :</p>
+<div>
+$$
+\underbracket{\mathcal{O}(1)}_{\mbox{ligne 1}} + \underbracket{\mathcal{O}(1)}_{\mbox{ligne 2}} + \underbracket{\mathcal{O}(T.\mbox{\small longueur})}_{\mbox{nombre d'itérations}} \cdot (\underbracket{\mathcal{O}(1)}_{\mbox{test}} + \underbracket{\mathcal{O}(1)}_{\mbox{ligne 5}}) + \underbracket{\mathcal{O}(1)}_{\mbox{ligne 6}} = \mathcal{O}(T.\mbox{\small longueur})
+$$
+</div>
+</div>
+</details>     
+</div>
+<h3>Boucles imbriquées indépendantes</h3>
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
+    boucle <span class="token number">2</span> exécutée n2 fois<span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            boucle i exécutée ni fois<span class="token punctuation">:</span>
+                <span class="token comment"># bloc d'instructions</span></code></pre>
+<p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instructions) contenant elle-même une ou plusieurs boucles :</p>
+<div id="complexité-boucles-indépendantes"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité de boucles imbriquées indépendantes</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
+</div>
+</div>
+<p>Exemple le calcul de :</p>
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{1\leq j \leq n} (i+j))
+$$
+</div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme2</span><span class="token punctuation">(</span>int <span class="token parameter variable">n</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">total</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token variable parameter">total</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">j</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">total</span></span></code></pre>
+<p>Faisons une dernière fois l'analyse ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>création et affectation d'une variables : $\mathcal{O}(1)$</li>
+<li>une boucle de $n$ itérations : $\mathcal{O}(n)$ itérations</li>
+<li>une boucle de $n$ itérations : $\mathcal{O}(n)$ itérations</li>
+<li>opération élémentaire et affectation : $\mathcal{O}(1)$</li>
+<li>retour d'algorithme : $\mathcal{O}(1)$</li>
+</ol>
+<p>On en conclut que la complexité totale de l'algorithme vaut :</p>
+<div>
+$$
+\underbracket{\mathcal{O}(1)}_{\mbox{lignes 1 et 2}} + \underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{bloc interne de la ligne 5}} + \underbracket{\mathcal{O}(1)}_{\mbox{lignes 6}}
+ = \mathcal{O}(n^2)
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Compter le nombre d'itérations d'une boucle avec les $\mathcal{O}()$. Une boucle de $n-3$ exécutions pouvant être avantageusement remplacée par $\mathcal{O}(n)$</p>
+</div>
+</div>
+<p>À vous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculez la complexité de l'algorithme suivant qui calcule le nombre de couples $(i, j)$ ayant une somme donnée :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre2</span><span class="token punctuation">(</span><span class="token parameter variable">T1</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">T2</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e1</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e2</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T2</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">si</span> <span class="token variable parameter">e1</span> <span class="token operator">+</span> <span class="token variable parameter">e2</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">nb</span></span></code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations</li>
+<li>une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations</li>
+<li>un test : $\mathcal{O}(1)$ opérations</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>retour en $\mathcal{O}(1)$ opération</li>
+</ol>
+<p>Le bloc constitué des lignes 3, 4 et 5 est effectué $T.\mbox{\small longueur}$ fois, et celui constitué des lignes 4 et 5 $T.\mbox{\small longueur}$ fois. La complexité totale est donc :</p>
+<div>
+$$
+\underbracket{\mathcal{O}(1)}_{\mbox{lignes hors itération}} + \underbracket{\mathcal{O}(T.\mbox{\small longueur})}_{\mbox{nombre d'itérations bloc externe}} \cdot \underbracket{\mathcal{O}(T.\mbox{\small longueur})}_{\mbox{nombre d'itération bloc interne}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{bloc intérieur}} = \mathcal{O}(T.\mbox{\small longueur}^2)
+$$
+</div>
+</div>
+</details>     
+</div>
+<h3>Règle des polynômes</h3>
+<p>Lorsque l'on travaille avec des blocs s'exécutant un nombre $n$ variable de fois, tout se passe comme si on travaillait avec des polynômes. Si le paramètre du calcul de la complexité vaut $n$ on peut voir :</p>
+<ul>
+<li>la complexité $C(n)$ d'un bloc comme un polynôme,</li>
+<li>le nombre $P(n)$ de fois où le bloc est exécuté est aussi un polynôme</li>
+</ul>
+<p>La complexité totale vaut le produit de polynôme $C(n) \cdot P(n)$.</p>
+<p>L'utilisation des comparaisons asymptotiques va encore une fois grandement nous aider car elles ont des propriétés très sympathiques pour les polynômes :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Règle des polynômes</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $p \leq q$</li>
+<li>$\Omega(N^q) \Rightarrow \Omega(N^p)$ pour $p \leq q$</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ne va faire la démonstration qu'avec les $\mathcal{O}$, le raisonnement est identique pour les $\Omega$.</p>
+<p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot N^p$ pour $N &gt; N_0$.</p>
+<p>Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p \leq N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$ et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
+</div>
+</details>     
+</div>
+<p>Et pour les $\Theta$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On a :</p>
+<div>
+$$
+\sum_{i=0}^na_i x^i = \Theta(x^n) \mbox{ si } a_n \neq 0
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $x^i = \mathcal{O}(x^{j})$ et $x^{j} = \Omega(x^i)$ pour tous $i \leq j$, on peut facilement montrer que $\Theta(x^i) + \Theta(x^{i + 1}) = \Theta((x^{i + 1}))$. En itérant l'égalité précédente on obtient $\sum_{i=0}^n\Theta(x^i) = \Theta(x^n)$ ce qui permet de conclure puisque $\sum_{i=0}^na_i x^i = \Theta(\sum_{i=0}^na_i x^i) = \sum_{i=0}^n\Theta(x^i)$.</p>
+</div>
+</details>     
+</div>
+<h2><span id="dichotomie"></span>Exemple 1 : Recherche dichotomique</h2>
 <p>Le principe de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique" class="externe">la recherche dichotomique</a> permet de savoir si un entier donné est dans un tableau d'entiers trié.</p>
 <p>On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $T[\lfloor (a + b)/2 \rfloor]$ :</p>
 <ul>
@@ -319,16 +638,582 @@ $$
 </div>
 </details>     
 </div>
-<p>Cette complexité est vraiment très bonne puisque la valeur de $\ln(n)$ est en effet très petite devant $n$ (<a href="../complexit%C3%A9-moyenne/#importance-log">rappelez-vous l'ordre de grandeur qu'on a déjà vu</a>).</p>
+<p>Cette complexité est vraiment très bonne puisque la valeur de $\ln(n)$ est en effet très petite devant $n$.</p>
+<div id="importance-log"></div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
-<p>Si l'on manipule des tableaux triés, la recherche dichotomique est énormément plus performante que la recherche naïve.</p>
+<p>Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :</p>
+<ul>
+<li>$t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),</li>
+<li>$\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le <a href="https://fr.wikipedia.org/wiki/Prix_Ig-Nobel" class="externe">Ig Nobel</a> de physique en 2015)</li>
+</ul>
 </div>
 </div>
+<p>En conclusion si l'on manipule des tableaux triés la recherche dichotomique est énormément plus performante que la recherche naïve.</p>
+<h2>Boucles imbriquées dépendantes</h2>
+<h3><span id="règle-croissance"></span>Boucles dépendantes mais monotones</h3>
+<p>Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.</p>
+<p>Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser : lorsqu'une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (<em>respectivement</em> décroissante). Par exemple (notez la dépendance de $j$ par rapport à $i$) :</p>
+<div>
+$$
+\sum\limits_{1\leq i \leq n}(\sum\limits_{i < j \leq n} (i+j))
+$$
+</div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme3</span><span class="token punctuation">(</span>int <span class="token parameter variable">n</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">total</span></span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">total</span> <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">j</span>
+    <span class="token keyword">affiche</span> <span class="token variable parameter">total</span></code></pre>
+<p>Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.</p>
+<p>Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :</p>
+<ul>
+<li>ligne 1 + 2 : $\mathcal{O}(1)$</li>
+<li>itération pour $i=1$:
+<ul>
+<li>ligne 3 : une affectation $i=1$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=1$:
+<ul>
+<li>ligne 4 : une affectation de $j$ : $\mathcal{O}(1)$</li>
+<li>ligne 5 : $\mathcal{O}(1)$</li>
+<li>le tout $n-1$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>itération pour $i=2$:
+<ul>
+<li>ligne 3 : une affectation $i=2$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=2$:
+<ul>
+<li>ligne 4 : une affectation de $j$ : $\mathcal{O}(1)$</li>
+<li>ligne 5 : $\mathcal{O}(1)$</li>
+<li>le tout $n-2$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>...</li>
+<li>itération pour $i=n-1$:
+<ul>
+<li>ligne 3 : une affectation $i=n-1$ : $\mathcal{O}(1)$</li>
+<li>boucle pour $j=n-1$:
+<ul>
+<li>ligne 4 : une affectation de $j$ : $\mathcal{O}(1)$</li>
+<li>ligne 5 : $\mathcal{O}(1)$</li>
+<li>le tout $1$ fois</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ligne 6 : $\mathcal{O}(1)$</li>
+</ul>
+<p>Notre complexité totale est donc :</p>
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = 2) \\
+    \dots\\
+    (\mathcal{O}(1) + (n-i) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) &+ & (i = n-1) \\
+ \mathcal{O}(1)
+\end{array}
+$$
+</div>
+<p>Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :</p>
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) &+ & (i = 1) \\
+    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) &+ & (i = 2) \\
+    \dots\\
+    (\mathcal{O}(1) + (n-i) \cdot \mathcal{O}(1)) &+  \\
+    \dots\\
+  (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) &+ & (i = n-1) \\
+ \mathcal{O}(1)
+\end{array}
+$$
+</div>
+<p>Ce qui donne :</p>
+<div>
+$$
+\begin{array}{lcr}
+    \mathcal{O}(1) &+ \\
+    n \cdot \mathcal{O}(1) &+ & (i = 1) \\
+    (n-1) \cdot \mathcal{O}(1) &+ & (i = 2) \\
+    \dots\\
+    (n-i) \cdot \mathcal{O}(1) &+  \\
+    \dots\\
+    2 \cdot \mathcal{O}(1) &+ & (i = n-1) \\
+ \mathcal{O}(1)
+\end{array}
+$$
+</div>
+<p>et donc notre complexité vaut :</p>
+<div>
+$$
+\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)
+$$
+</div>
+<p>Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :</p>
+<div>
+$$
+\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)
+$$
+</div>
+<p>Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :</p>
+<div>
+$$
+\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)
+$$
+</div>
+<p>Cet exemple se généralise :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité de boucles dépendantes monotones</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si une boucle s'exécute un nombre croissant (respectivement décroissant) de fois, on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre de son maximum et se ramener au cas <a href="#complexit%C3%A9-boucles-ind%C3%A9pendantes">des boucles indépendantes</a>.</p>
+</div>
+</div>
+<p>À vous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculez la complexité de l'algorithme suivant qui calcule le nombre de paires $\{i, j\}$ ayant une somme donnée :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre3</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        e1 <span class="token operator">=</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e2</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span> </span>
+<span class="highlight-line">            <span class="token keyword">si</span> e1 <span class="token operator">+</span> <span class="token variable parameter">e2</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">nb</span></span></code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Ligne à ligne :</p>
+<ol>
+<li>affectation des paramètres : $\mathcal{O}(1)$</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations</li>
+<li>un test : $\mathcal{O}(1)$ opérations</li>
+<li>une affectation : $\mathcal{O}(1)$ opérations</li>
+<li>retour en $\mathcal{O}(1)$ opération</li>
+</ol>
+<p>Les lignes 2, 3 et 4 sont effectuées $T.\mbox{\small longueur}$ fois, la complexité totale est donc en :</p>
+</div>
+</details>     
+</div>
+<h3>Cas général</h3>
+<p>Dans le cas général, on peut toujours utiliser notre approximation précédente et multiplier les nombres maximum d'itérations pour obtenir un majorant de notre complexité. Mais il se peut que l'on surestime grandement la complexité comme dans l'exemple suivant :</p>
+<div>
+$$
+\sum\limits_{i=1}^n\sum\limits_{j=1}^i\sum\limits_{k=1}^{n/i}(i+j+k)
+$$
+</div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme4</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> ref <span class="token type class-name">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable parameter">i</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">k</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">/</span> <span class="token variable parameter">i</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                nb <span class="token operator">←</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token variable parameter">j</span> <span class="token operator">+</span> <span class="token variable parameter">k</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> nb</span></code></pre>
+<p>Commençons par utiliser nos approximations :</p>
+<ul>
+<li>boucle en <code class="language-">i</code> $\mathcal{O}(n)$ itérations au maximum,</li>
+<li>boucle en <code class="language-">j</code> $\mathcal{O}(n)$ itérations au maximum, lorsque $i = 1$,</li>
+<li>boucle en <code class="language-">k</code> $\mathcal{O}(n)$ itérations au maximum, lorsque $i = 1$,</li>
+</ul>
+<p>On en conclut que la complexité de l'algorithme est en $\mathcal{O}(n^3)$. Ce résultat est <strong>forcément</strong> juste, mais peut-être pourrait-on trouver une meilleurs approximation.</p>
+<p>Examinons le nombre de fois où chaque boucle est exécutée selon la valeur de $i$ :</p>
+<ul>
+<li>$i = 1$ :
+<ul>
+<li>la boucle en $j$ est exécutée 1 fois</li>
+<li>la boucle en $k$ est exécutée $n$ fois</li>
+</ul>
+</li>
+<li>$i = 2$ :
+<ul>
+<li>la boucle en $j$ est exécutée 2 fois</li>
+<li>la boucle en $k$ est exécutée $\lfloor n / 2\rfloor$ fois</li>
+</ul>
+</li>
+<li>...</li>
+<li>$i$ :
+<ul>
+<li>la boucle en $j$ est exécutée $i$ fois</li>
+<li>la boucle en $k$ est exécutée $\lfloor n / i\rfloor$ fois</li>
+</ul>
+</li>
+<li>...</li>
+<li>$i = n$ :
+<ul>
+<li>la boucle en $j$ est exécutée $n$ fois</li>
+<li>la boucle en $k$ est exécutée $1$ fois</li>
+</ul>
+</li>
+</ul>
+<p>Comme la complexité de la ligne 6 est en $\mathcal{O}(1)$ on en déduit que la complexité $C(n)$ de notre algorithme vaut :</p>
+<div>
+$$
+C(n) = \sum\limits_{i=1}^n((i \cdot n/i) \cdot \mathcal{O}(1)) = \sum\limits_{i=1}^n( n \cdot \mathcal{O}(1)) = \sum\limits_{i=1}^n( \mathcal{O}(n)) = \mathcal{O}(n) \cdot \sum\limits_{i=1}^n 1 = \mathcal{O}(n^2)
+$$
+</div>
+<p>Lorsque le nombre d'itérations en $j$ augmente celle en $k$ diminue et leur produit est toujours de l'ordre de $\mathcal{O}(n)$ pour une complexité totale quadratique plutôt que cubique !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Pour calculer la complexité d'imbrication complexe de boucles, on écrit une à une toutes les instructions exécutés les une après les autres, comme s'il n'y a avait pas de boucles.</p>
+<p>On peut ensuite additionner ces complexités pour obtenir la complexité exacte de l'algorithme.</p>
+</div>
+</div>
+<p>À vous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculez la complexité de l'algorithme suivant qui calcule le nombre de paires $i \leq j$ telles que $\sum(T[i:j]) = x$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre4</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">nb</span></span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">s</span> <span class="token type class-name">int</span></span></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token variable parameter">s</span> <span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">            <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">e</span> <span class="token mot-boucle keyword">de</span></span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">:</span><span class="token variable parameter">j</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token variable parameter">s</span> <span class="token operator">←</span> <span class="token variable parameter">s</span> <span class="token operator">+</span> <span class="token variable parameter">e</span></span>
+<span class="highlight-line">            <span class="token keyword">si</span> <span class="token variable parameter">s</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token variable parameter">nb</span> <span class="token operator">←</span> <span class="token variable parameter">nb</span> <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">nb</span></span></code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le boucle en $e$ va s'exécuter 1 fois pour tous les intervalles de $[1 .. T.\text{\small longueur}]$ c'est à dire de l'ordre de $\mathcal{O}(T.\text{\small longueur}^2)$ fois.</p>
+<p>Comme les lignes 1 à 3 vont s'exécuter 1 fois et les lignes 6, 9 et 10 $\mathcal{O}(T.\text{\small longueur}^2)$ fois la complexité totale de l'algorithme vaut $\mathcal{O}(T.\text{\small longueur}^2)$.</p>
+</div>
+</details>     
+</div>
+<h2>Exemple 2 : plus longue sous-séquence croissante.</h2>
+<p>Pour illustrer les boucles imbriquées on va étudier l'algorithme suivant qui rend la longueur $k$ de la plus grande suite strictement positives d'indice $i_1 &lt; i_2 &lt; \dots &lt; i_k$ telle que $T[i_1] \leq \dots \leq T[i_j] \leq \dots \leq T[i_k]$.</p>
+<p>Par exemple si $T = [5, 2, 8, 6, 3, 6, 2, 9, 7]$, une plus longueur sous-suite strictement croissante vaut : $[2, 3, 6, 9]$, mais il y en a d'autres comme par exemple $[2, 3, 6, 7]$.</p>
+<p>On pourrait essayer de chercher toutes les sous-suites strictement croissantes puis de prendre la plus grande, mais il peut y en avoir beaucoup puisque si $T$ est déjà trié toute suite strictement croissante de $[1 .. n]$ va fonctionner et il y en a $\sum_{k=0}^n\binom{n}{k} = 2^n$ (puisque $(1 + 1)^n = \sum_{k=0}^n\binom{n}{k}1^{k}\cdot 1^{n-k}$).</p>
+<p>On peut en revanche se poser la question suivante : &quot;quelle est la longueur de la plus longue sous-séquence strictement croissante finissante en $T[-1]$ ?&quot;. Et ceci est bien plus facile à faire puisque ce problème satisfait la récursion suivante :</p>
+<ul>
+<li>soit $T$ est de longueur 1 et la réponse est 1</li>
+<li>soit la réponse correspond au maximum des des réponses pour les tableaux $T[:i+1]$ plus 1, pour tout $i$ tel que $T[i] &lt; T[-1]$.</li>
+</ul>
+<p>Ce s'écrit en pseudo-code ainsi :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">max_sous_séquence_fin</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token number">1</span>
+    
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">n</span></span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">temp</span> <span class="token type class-name">int</span></span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">temp</span> <span class="token operator">←</span> max_sous_séquence_fin<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">si</span> <span class="token variable parameter">temp</span> <span class="token operator">≥</span> <span class="token variable parameter">n</span><span class="token punctuation">:</span>
+                <span class="token variable parameter">n</span> <span class="token operator">←</span> <span class="token variable parameter">temp</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">n</span></code></pre>
+<p>Et on en déduit l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">max_sous_séquence</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">n</span></span> <span class="token operator">←</span> max_sous_séquence_fin<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">)</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">temp</span> <span class="token type class-name">int</span></span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">temp</span> <span class="token operator">←</span> max_sous_séquence_fin<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">si</span> <span class="token variable parameter">temp</span> <span class="token operator">≥</span> <span class="token variable parameter">n</span><span class="token punctuation">:</span>
+                <span class="token variable parameter">n</span> <span class="token operator">←</span> <span class="token variable parameter">temp</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">n</span></code></pre>
+<p>Mais cet algorithme est loin d'être optimal. Par exemple pour notre tableau : $T = [5, 2, 8, 6, 3, 6, 2, 9, 7]$ on va recalculer <code class="language-">max_sous_séquence_fin(T[:i+1])</code> pour $0\leq i \leq 6$ lors du calcul de <code class="language-">max_sous_séquence_fin(T[:7+1])</code> et de <code class="language-">max_sous_séquence_fin(T[:8+1])</code>. Et ce n'est pas la seule répétition !</p>
+<p>Pour éviter tous ces re-calculs on va utiliser <a href="https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation">la mémoïsation</a> : on stocke les valeurs déjà calculées ce qui permet d'écrire l'algorithme itératif suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">max_sous_séquence</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">memoisation</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token keyword">pour</span> _ dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">]</span> </span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">i</span><span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span><span class="token variable parameter">memoisation</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">></span> <span class="token variable parameter">memoisation</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token variable parameter">memoisation</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">memoisation</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">memoisation</span><span class="token punctuation">)</span></span></code></pre>
+<p>Toute notre analyse montre clairement que <code class="language-">memoisation[i] = max_sous_séquence_fin(T[:i+1])</code> ce qui prouve notre algorithme. Reste à en calculer la complexité.</p>
+<ul>
+<li>la ligne 2 de l'algorithme est en $\mathcal{O}(T.\text{small longueur})$ puisque l'on crée un tableau.</li>
+<li>on a deux boucle imbriquées mais monotones, <a href="#r%C3%A8gle-croissance">la règle de croissance monotone</a> nous indique que l'on va répéter $\mathcal{O}(T.\text{small longueur}) \cdot \mathcal{O}(T.\text{small longueur}) = \mathcal{O}(T.\text{small longueur}^2)$ fois le bloc intérieur</li>
+<li>le bloc intérieur est en $\mathcal{O}(1)$</li>
+<li>le retour intérieur est en $\mathcal{O}(n)$ puisqu'il faut prendre le max d'un tableau</li>
+</ul>
+<p>On en conclut que si $n$ est la longueur du tableau en entrée, la complexité de l'algorithme vaut :</p>
+<div>
+$$
+C(n) = \mathcal{O}(n) + \mathcal{O}(n^2) + \mathcal{O}(n) = \mathcal{O}(n^2)
+$$
+</div>
+<p>En stockant $n$ valeurs intermédiaires on a grandement accéléré l'algorithme.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>La <strong><em>mémoïsation</em></strong> est une illustration du <a href="https://simple.wikipedia.org/wiki/Space-time_tradeoff">principe du compromis temps-mémoire</a> qui fait gagner du temps en stockant les valeurs intermédiaires.</p>
+<p>Si l'on a peut de valeurs à stocker par rapport au gain, cela vaut le coup !</p>
+</div>
+</div>
+<h2><span id="règle-récursif"></span>Complexité d'algorithmes récursifs</h2>
+<p>Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stoppe la récursion.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Quand utiliser</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour calculer la complexité d'un algorithme récursif.</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Complexité d'un algorithme récursif</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêt estimées, trouver $C(n)$ revient à résoudre une équation de récurrence.</p>
+</div>
+</div>
+<p>Pour illustrer ce calcul, reprenons <a href="../../1-algorithme/probl%C3%A8me-preuve/#algorithme-factorielle-rec">le calcul récursif de la factorielle</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span> <span class="token variable parameter">n</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">f</span></span> <span class="token operator">←</span> factorielle<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">n</span> <span class="token operator">*</span> <span class="token variable parameter">f</span></span></code></pre>
+<p>On exécute cette fonction avec un entier $n$ comme paramètre initial. On sait que cet algorithme fonctionne (on l'a déjà prouvé) et on pose que sa complexité est $C(n)$. Son calcul effectif se fait en calculant $C(n)$ comme on le ferait avec un algorithme itératif, ligne à ligne :</p>
+<ol>
+<li>définition d'une fonction $\mathcal{O}(1)$</li>
+<li>une comparaison entre une constante et une variable : $\mathcal{O}(1)$</li>
+<li>retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$</li>
+<li>—</li>
+<li>une affectation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$</li>
+<li>une multiplication et un retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+<p>On a alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) & = & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + C(n-1) + \\
+& & \mathcal{O}(1) \\
+& = & 6 \cdot \mathcal{O}(1) + C(n-1) \\
+& = & \mathcal{O}(1) + C(n-1) \\
+\end{array}
+$$
+</div>
+<p>L'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$ peut se résoudre en y ajoutant notre condition d'arrêt (obtenue pour <code class="language-">n</code> valant 1) qui va nous donner $C(1) = \mathcal{O}(1)$ comme condition limite :</p>
+<div>
+$$
+\left\{
+    \begin{array}{lcl}
+        C(n) & = & \mathcal{O}(1) + C(n-1)\\
+        C(1) & = & \mathcal{O}(1)
+    \end{array}
+\right.
+$$
+</div>
+<p>On résout le tout en appliquant itérativement l'équation :</p>
+<div>
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(1) + C(n-1) \\
+    & = & \mathcal{O}(1) + \mathcal{O}(1) + C(n-2) = 2 \cdot \mathcal{O}(1) + C(n-2)\\
+    & = & 3 \cdot \mathcal{O}(1) + C(n-3) \\
+    & = & \dots \\
+    & = & i \cdot \mathcal{O}(1) + C(n-i) \\
+    & = & \dots \\
+    & = & (n-1) \cdot \mathcal{O}(1) + C(1)\\
+    & = & \mathcal{O}(n) + C(1)\\
+\end{array}
+$$
+</div>
+<p>Et on conclut avec notre condition limite :</p>
+<div>
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(n) + C(1)\\
+    & = & \mathcal{O}(n) + \mathcal{O}(1)\\
+    & = & \mathcal{O}(n) \\
+\end{array}
+$$
+</div>
+<p>On va pouvoir écrire la complexité de nombreux algorithmes récursifs sous cette forme, n'oubliez pas comment faire :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>La solution aux équations de récursion :</p>
+<div>
+$$
+\left\{
+    \begin{array}{lcl}
+        C(n) & = & \mathcal{O}(1) + C(n-1)\\
+        C(1) & = & \mathcal{O}(1)
+    \end{array}
+\right.
+$$
+</div>
+<p>Est :</p>
+<div>
+$$
+C(n) = \mathcal{O}(n)
+$$
+</div>
+</div>
+</div>
+<p>À vous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculez la complexité de <a href="../../1-algorithme/projet/#algorithme-nombre-occurrences">l'algorithme qui calcule le nombre d'occurrences</a> mais de façon récursive :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre_rec</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">i</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span> <span class="token variable parameter">i</span> <span class="token operator">≥</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">x</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span> <span class="token operator">+</span> nombre_rec<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> nombre_rec<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">i</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> nombre_rec<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">,</span> <span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></span></code></pre>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'équation de complexité de l'algorithme <code class="language-">nombre_rec</code> est :</p>
+<div>
+$$
+\left\{
+    \begin{array}{lcl}
+        C(n, i) & = & \mathcal{O}(1) + C(n, i+1)\\
+        C(n, n) & = & \mathcal{O}(1)
+    \end{array}
+\right.
+$$
+</div>
+<p>Elle va se résoudre comme l'équation $C_r(n) = \mathcal{O}(1) + C_r(n-1)$ puisque $i$ ne fait qu'augmenter. On obtient $C_r(n, i) = \mathcal{O}(n-i)$ et donc l'algorithme <code class="language-">nombre</code> est de complexité $C(n) = C_r(n, 0) = \mathcal{O}(n)$.</p>
+</div>
+</details>     
+</div>
+<h2>Exemple 3 : calcul du pgcd</h2>
+<p>On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais comme le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des données engendrant le plus d'instructions. Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.</p>
+<h3>Itératif</h3>
+<p>Reprenons un de nos algorithmes fil rouge, <a href="../../1-algorithme/pseudo-code/r%C3%A9cursifs-it%C3%A9ratifs/#algorithme-pgcd">l'algorithme du pgcd itératif</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span> <span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span></code></pre>
+<p>En notant $K$ le nombre d'itérations de la boucle tant que, comme toutes les lignes sont en $\mathcal{O}(1)$ opérations, la complexité $C(a, b)$ de l'algorithme vaut :</p>
+<div>
+$$
+C(a, b) = K \cdot \mathcal{O}(1)
+$$
+</div>
+<p>On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. À chaque itération soit $a$ soit $b$ va décroître strictement jusqu'à ce que $\min(a, b) = 0$ ce qui stoppera la boucle.</p>
+<p>Donc au bout de $K = \mathcal{O}(\max(a, b))$ itérations on aura forcément soit $a$ soit $b$ qui vaudra 0 (pas la peine d'être plus précis que cela) :</p>
+<div>
+$$
+C(a, b) = \mathcal{O}(\max(a, b))
+$$
+</div>
+<h3>Récursif</h3>
+<p>Reprenons l'exemple de <a href="../../1-algorithme/pseudo-code/r%C3%A9cursifs-it%C3%A9ratifs/#algorithme-pgcd-rec">l'algorithme du pgcd récursif</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd<span class="token punctuation">(</span>max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité de cet algorithme dépend de ses paramètres, notons-la : $C(a, b)$. Comme toutes les opérations hors récursion sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :</p>
+<div>
+$$
+C(a, b) = \mathcal{O}(1) + C(\max(a, b) - \min(a, b), \min(a, b))
+$$
+</div>
+<p>En itérant sur cette équation comme on l'a fait précédemment avec le calcul de la complexité de l'algorithme factorielle récursif on obtient :</p>
+<div>
+$$
+C(a, b) = K(a, b) \cdot \mathcal{O}(1)
+$$
+</div>
+<p>Où $K(a, b)$ est le nombre de récursions de l'algorithme avec les paramètres $a$ et $b$. De même que pour l'algorithme itératif soit $a$ soit $b$ va décroître strictement à chaque récursion, donc $K(a, b) \leq \max(a, b)$, ce qui implique :</p>
+<div>
+$$
+C(a, b) = K(a, b) \cdot \mathcal{O}(1) \leq \max(a, b) \cdot \mathcal{O}(1) = \mathcal{O}(\max(a, b))
+$$
+</div>
+<p>Comme les $\mathcal{O}$ sont des majorants, on a donc également $C(a, b) = \mathcal{O}(\max(a, b))$.</p>
 
 
 </article>
