@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD on a mis des choses dans </cours/algor>
 
 > TBD <https://en.wikipedia.org/wiki/Entropy_(information_theory)>{.externe}
 > TBD entropy : <https://www.youtube.com/watch?v=QjD3nvJLmbA>{.externe}
@@ -56,3 +57,4 @@ Et les lsfr il faut travailler.
 [_Pseudo Random Number Generator_](nombres-pseudo-aléatoires)
 
 {% endaller %}
+

@@ -492,4 +492,3 @@ $$
 
 Les algorithmes récursifs pour lesquels on peut garantir cette relations pour leurs complexité maximale ou en moyenne sont donc très performant !
 {% endretenir %}
-

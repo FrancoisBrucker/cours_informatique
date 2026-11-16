@@ -26,13 +26,13 @@ Cette partie s'intéresse à la notion de complexités pour un algorithme qui pe
 Cette partie s'intéresse à la notion de complexité d'un algorithme et donne les moyens de la calculer.
 
 {% aller %}
-[Définition et outil de mesure](./définitions-mesure-O)
+[Définition et outil de mesure](./définitions-et-mesure)
 {% endaller %}
 
 Utilisation pour calculer théoriquement et en pratique la complexité d'algorithmes :
 
 {% aller %}
-1. [Complexité max et min](./complexité-algorithmes)
+1. [Complexité maximale](./complexité-algorithmes)
 2. [Complexité en moyenne](./complexité-moyenne)
 {% endaller %}
 
@@ -54,14 +54,12 @@ Deux séries d'exercices simples pour vérifier que le cours est acquis :
 2. [Projet : calcul de complexités min et max](projet-calcul-max-min)
 {% endaller %}
 
-
 ### Techniques de calcul
 
-Exercices classiques de calcul de complexité (en particulier complexité en moyenne). Ils sont **à connaître** car leurs méthodes de résolution sont utiles :
+Exercices classiques de calcul de complexités (en particulier la complexité en moyenne). Ils sont **à connaître** car leurs méthodes de résolution sont utiles :
 
 {% aller %}
-1. [Projet : exercices classiques de recherche d'éléments](projet-recherche-élément)
-2. [Projet : vérifications expérimentales](projet-recherche-élément-code)
+[Projet : exercices classiques de recherche d'éléments](projet-recherche-élément)
 {% endaller %}
 
 ### On vérifie qu'on sait faire

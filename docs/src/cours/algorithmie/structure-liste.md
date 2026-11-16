@@ -96,7 +96,7 @@ La liste est une généralisation du tableau permettant de modifier sa longueur.
 
 <span id="type-list"></span>
 
-{% note "**Abus de notation : Type de Liste**" %}
+{% definition "**Abus de notation**" %}
 
 Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
@@ -114,7 +114,7 @@ On se permettra alors les abus de languages suivant pour remplacer l'initialisat
 - `x ← []int{}`{.language-}
 - `x ← []int{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
 
-{% endnote %}
+{% enddefinition %}
 
 
 ## Complexités

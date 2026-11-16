@@ -78,3 +78,13 @@ echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
 ```shell
 powershell -command "[Convert]::ToBase64String((1..64|%{[byte](Get-Random -Max 256)}))"
 ```
+
+## dans le processeur
+
+- latch bistable
+- pour changer les imperfections on déplace les proba à chaque tirage : on ajoute de l'auto-correlation avec des capacités qui se chargent à gauche ou à droite. pour arriver à 50% de 1 et de 0.
+- différence portes <https://pages.hmc.edu/harris/cmosvlsi/4e/lect/lect9.pdf>
+- supprimer l'autocorrelation : post-processing :
+  - Von Neumann Corrector (Correcteur de Von Neumann) : Read bits in non-overlapping pairs. Discard 00 and 11, output 0 for 01, and output 1 for 10. Note: This removes bias and first-order serial correlation, though it reduces your bit rate by at least 75%.
+  - XOR Decimation (Décimation par XOR) : XOR consecutive bits together (e.g., \(B_{out} = B_n \oplus B_{n-1}\), or across multiple independent latches). If the serial correlation coefficient between adjacent bits is ρ, XORing k bits reduces the correlation exponentially to \(\rho ^{k}\).
+  - LFSR or Cryptographic Hashing (LFSR ou hachage) : Feed the raw bitstream into a Linear Feedback Shift Register (LFSR) or a lightweight hash function (like SHA-256 or Toeplitz hashing) to whiten the output and destroy temporal dependencies.

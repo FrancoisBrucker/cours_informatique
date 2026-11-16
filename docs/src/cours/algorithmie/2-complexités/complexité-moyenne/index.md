@@ -128,21 +128,7 @@ algorithme recherche(T: []int, x: int) → bool:
     rendre Faux
 ```
 
-Commençons par calculer ses complexités.
-
-{% exercice %}
-Montrez que, si $n$ est la longueur du tableau, on a que :
-
-- la complexité (maximale) de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$,
-- la complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$.
-{% endexercice %}
-{% details "corrigé" %}
-Toutes les instructions de l'algorithme sont en $\mathcal{O}(1)$ (un test et un retour), sa complexité viendra du nombre de fois où ou la boucle tant que est exécutée :
-
-- la complexité minimale sera atteinte si elle n'exécutée qu'une fois (si `x`{.language-} est le premier élément du tableau) :  $\mathcal{O}(1)$ 
-- la complexité (maximale) sera atteinte si on exécute la boucle $n$ fois (on parcourt tout le tableau sans trouver `x`{.language-}) :  $\mathcal{O}(n)$ 
-
-{% enddetails %}
+Dont on a déjà calculé les complexités ([max](../définitions-et-mesure/comparaisons-asymptotiques/#complexité-max) et [min](../définitions-et-mesure/comparaisons-asymptotiques/#complexité-max)). Pour le calcul de sa complexité en moyenne il faut estimer le nombre moyen de fois où l'algorithme va rentrer dans la boucle `pour chaque`{.language-}.
 
 Si l'on note $\mathcal{E}_n$ l'ensemble de tous les tableaux de longueur $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu car il est impossible de trouver la probabilité de choisir 1 élément parmi une infinité. Pour résoudre ce problème il faut partitionner $\mathcal{E}_n$ en un nombre fini de classes dont les valeurs de complexités sont les mêmes :
 
@@ -494,8 +480,6 @@ C_{\text{moy}}(n)
 $$
 </div>
 
-
-
 <div id="utilisation-Hn-équivalent"></div>
 
 On peut maintenant utiliser le résultat classique suivant ([démontré ici](../../intermède-1/sommes-classiques/#Hn-équivalent)) pour conclure :
@@ -522,25 +506,80 @@ $$
 \begin{array}{lclr}
 C_{\text{moy}}(n)
 & =& \sum\limits_{1\leq i \leq n} \frac{1}{i}
-& =& \Theta(n)
+& =& \Theta(\ln(n))
 \end{array}
 $$
 </div>
 
-La complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?).
+La complexité en moyenne du nombre d'affectations est en $\Theta(\ln(T.\mbox{\small longueur}))$ (chouette résultat, non ?), ce qui est, [rappelez-vous](../complexité-algorithmes/#importance-log) une excellente complexité !
 
-<div id="importance-log"></div>
+ La figure suivante montre un exemple de mesure des trois complexités :
 
-{% retenir %}
-Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :
+![figure](./Figure_2.png)
 
-- $t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),
-- $\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel){.externe} de physique en 2015)
-{% endretenir %}
+On voit bien que la complexité moyenne est très faible malgré la taille de tableau pouvant aller à plus d'un million d'éléments.
 
-### <span id="mesure"></span>En pratique
+{% info %}
+Le code qui a permis de générer le graphique est ci-dessous. Il est en python et utilise les modules <https://matplotlib.org/> et <https://numpy.org/>. Nous allons faire un projet pour détailler tout ça.
+{% endinfo %}
+{% details "code python" %}
+
+```python
+from time import perf_counter_ns
+import random
+import gc
+import numpy as np
 
 
-#### Exemple 2
+def maximum(T):
+    m = T[0]
+    for x in T:
+        if m < x:
+            m = x
+    return m
 
-> Complexité en moyenne. On utilise toujours ceux de longuage, on ne recode jamais fisher-yates... C'est surement mieux fait et optimisé.
+def maximum_compte(T):
+    m = T[0]
+    c = 1
+    for x in T:
+        if m < x:
+            c += 1
+            m = x
+    return m, c
+
+
+def calcule_moyenne(n, rep=10):
+    T = list(range(n))
+    random.shuffle(T)
+    t = maximum_compte(T)[1]
+    for _ in range(rep-1):
+        t += maximum_compte(T)[1]
+    return t / rep
+
+
+x = np.linspace(1000, 1000000, 10)
+n_moy = []
+
+print("calculs pour :")
+for n in x:
+    print(n)
+    n_moy.append(calcule_moyenne(int(n), 20))
+    print("    ", n_moy[-1])
+print()
+
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(20, 5))
+
+ax.set_title("Maximum d'un tableau")
+ax.set_xlabel("taille du tableau")
+ax.set_ylabel("nombre de mise à jour moyenne")
+
+p1, =  ax.plot(x, n_moy, 'o-', label="moyenne")
+
+ax.legend(handles=(p1, ))
+
+plt.show()
+```
+{% enddetails %}

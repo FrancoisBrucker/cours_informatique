@@ -23,12 +23,5 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 
 {% aller %}
 1. [Problème du comptage exhaustif](./problème-comptage-exhaustif)
-2. [Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie)
-{% endaller %}
-
-> TBD suite = formulaire/bréviaire ; merge le 2eme
-
-{% aller %}
-1. [Comparaisons asymptotiques](./comparaisons-asymptotiques)
-2. [regle pour les algorithmea](complexité-algorithmes-O)
+2. [Compter via des fonctions asymptotiques](./comparaisons-asymptotiques)
 {% endaller %}
