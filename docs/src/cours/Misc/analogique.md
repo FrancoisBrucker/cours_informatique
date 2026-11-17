@@ -21,3 +21,8 @@ eleventyComputed:
 2. électronique : semi-conducteur NPN et PNP
 3. analogique : transistor avec base/collecteur/drain. résistance et courant
 4. numérique CMOS MOSFET NMOS et PMOS. Que des tensions.
+
+en français : <https://www.youtube.com/watch?v=31hyLr07obo>
+en anglais :
+- defs : <https://www.youtube.com/watch?v=HxfoFFK_zBc&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=1>
+- MOSFET : defs <https://www.youtube.com/watch?v=iF-fd_jDjEw&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=25>
