@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Bases physiques et analogiques
+title: Bases physiques et de l'électronique
 
 eleventyComputed:
   eleventyNavigation:
@@ -26,3 +26,5 @@ en français : <https://www.youtube.com/watch?v=31hyLr07obo>
 en anglais :
 - defs : <https://www.youtube.com/watch?v=HxfoFFK_zBc&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=1>
 - MOSFET : defs <https://www.youtube.com/watch?v=iF-fd_jDjEw&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=25>
+
+
