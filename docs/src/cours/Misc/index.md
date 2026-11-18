@@ -24,6 +24,7 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 ## Unités
 
 [unités et ordres de grandeur](./unités-ordres-grandeur)
+
 ## Fonction
 
 - ensembles, produit cartésiens et mots
@@ -40,6 +41,13 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 {% aller %}
 [Go](golang)
 {% endaller %}
+
+## Électronique
+
+{% aller %}
+[Électronique](./électronique/)
+{% endaller %}
+
 
 ## Aléatoire
 

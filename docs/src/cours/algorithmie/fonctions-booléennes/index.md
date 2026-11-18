@@ -11,6 +11,9 @@ eleventyComputed:
 
 > TBD chapeau
 > TBD voir [calculs arithmétiques](/cours/algorithmie/projet-complexité-problème/#arithmétique)
+> TBD ajouter formule vers DAG vers circuit.
+> TBD  Équilibrage (théorème de Spira, 1971). Toute formule de taille $s$ est équivalente à une formule de profondeur $O(\log s)$. On en déduit que taille de formule polynomiale et profondeur logarithmique sont équivalentes, donc $\mathrm{NC}^1$ est exactement la classe des familles de formules de taille polynomiale.
+> 
 
 [On a vu](../bases-théoriques/calculabilité/#algorithme-fonction) qu'un algorithme était une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$. Nous allons voir celles que l'on peut décrire par [un pseudo-code](../pseudo-code/).
 

@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Bases physiques et de l'électronique
+title: Électronique
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,23 +10,42 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-playlist complete : <https://www.youtube.com/watch?v=AfQxyVuLeCs&list=PL9F74AFA03AA06A11>
+On montrera ici juste le strict nécessaire pour se convaincre que l'on peut construire pour de vrai un ordinateur.
 
-## Transistors
+On va voir comment associer un signal électrique à des bits et les combiner sous la forme de formules logiques.
 
-1. <https://www.youtube.com/watch?v=docgmTprR5o>
-2. <https://www.youtube.com/watch?v=wGrkczNxEh0&list=PLQms29D1RqeKb21acQ481DRiDH28sE0vN&index=1>
-3. <https://www.youtube.com/watch?v=1rZyGL1K5QI>
-4. <https://www.youtube.com/watch?v=HjneAhCy2N4>
+{% lien %}
+- [CODE, de Charles Petzhold](https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/)
+- [Circuits and electronics (MIT 6.002)](https://www.youtube.com/watch?v=AfQxyVuLeCs&list=PL9F74AFA03AA06A11)
+{% endlien %}
 
-1. mécanique :relay
-2. électronique : semi-conducteur NPN et PNP
-3. analogique : transistor avec base/collecteur/drain. résistance et courant
-4. numérique CMOS MOSFET NMOS et PMOS. Que des tensions.
+On a vu que toutes les formules logiques peuvent s'écrire sous la forme d'un DAG où les sommets sont :
 
-en français : <https://www.youtube.com/watch?v=31hyLr07obo>
-en anglais :
-- defs : <https://www.youtube.com/watch?v=HxfoFFK_zBc&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=1>
-- MOSFET : defs <https://www.youtube.com/watch?v=iF-fd_jDjEw&list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&index=25>
+- les variables et alors il n'a pas de sommets entrant
+- la sortie et alors il n'a pas de sommets sortant
+- l'opération NON : une entrée et au une sortie
+- l'opération OU ou ET : deux entrée et une sortie
+- un nœud de transit avec au moins une entrée et au moins une sortie.
 
+On utilise ensuite l'intensité ou la tension pour les états :
 
+- $\leq K_0$ pour l'état 0
+- $\geq K_1$ pour l'état 1
+
+C'est Shannon qui a le premier montré la faisabilité  de créer un réseau booléen en utilisant des relais.
+
+{% lien %}
+[A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)](https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits)
+{% endlien %}
+
+## Bases physique
+
+{% aller %}
+[Bases physiques](./bases-physique/)
+{% endaller %}
+
+## Circuits
+
+{% aller %}
+[Circuits électroniques](./circuits/)
+{% endaller %}
