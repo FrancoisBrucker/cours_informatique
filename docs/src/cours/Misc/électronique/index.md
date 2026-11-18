@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+playlist complete : <https://www.youtube.com/watch?v=AfQxyVuLeCs&list=PL9F74AFA03AA06A11>
+
 ## Transistors
 
 1. <https://www.youtube.com/watch?v=docgmTprR5o>
