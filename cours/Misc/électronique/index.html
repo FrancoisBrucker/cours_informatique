@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bases physiques et de l&#39;électronique</title>
+    <title>Électronique</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Bases physiques et de l&#39;électronique</h1>
+  <h1>Électronique</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/">Misc</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/électronique/">Bases physiques et de l&#39;électronique</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/">Misc</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/électronique/">Électronique</a>
 
 </div>
 </div>
@@ -96,40 +96,59 @@
     
   
 
-  <p>playlist complete : <a href="https://www.youtube.com/watch?v=AfQxyVuLeCs&amp;list=PL9F74AFA03AA06A11">https://www.youtube.com/watch?v=AfQxyVuLeCs&amp;list=PL9F74AFA03AA06A11</a></p>
-<h2>Transistors</h2>
-<ol>
-<li>
-<p><a href="https://www.youtube.com/watch?v=docgmTprR5o">https://www.youtube.com/watch?v=docgmTprR5o</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=wGrkczNxEh0&amp;list=PLQms29D1RqeKb21acQ481DRiDH28sE0vN&amp;index=1">https://www.youtube.com/watch?v=wGrkczNxEh0&amp;list=PLQms29D1RqeKb21acQ481DRiDH28sE0vN&amp;index=1</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=1rZyGL1K5QI">https://www.youtube.com/watch?v=1rZyGL1K5QI</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=HjneAhCy2N4">https://www.youtube.com/watch?v=HjneAhCy2N4</a></p>
-</li>
-<li>
-<p>mécanique :relay</p>
-</li>
-<li>
-<p>électronique : semi-conducteur NPN et PNP</p>
-</li>
-<li>
-<p>analogique : transistor avec base/collecteur/drain. résistance et courant</p>
-</li>
-<li>
-<p>numérique CMOS MOSFET NMOS et PMOS. Que des tensions.</p>
-</li>
-</ol>
-<p>en français : <a href="https://www.youtube.com/watch?v=31hyLr07obo">https://www.youtube.com/watch?v=31hyLr07obo</a>
-en anglais :</p>
+  <p>On montrera ici juste le strict nécessaire pour se convaincre que l'on peut construire pour de vrai un ordinateur.</p>
+<p>On va voir comment associer un signal électrique à des bits et les combiner sous la forme de formules logiques.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ul>
-<li>defs : <a href="https://www.youtube.com/watch?v=HxfoFFK_zBc&amp;list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&amp;index=1">https://www.youtube.com/watch?v=HxfoFFK_zBc&amp;list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&amp;index=1</a></li>
-<li>MOSFET : defs <a href="https://www.youtube.com/watch?v=iF-fd_jDjEw&amp;list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&amp;index=25">https://www.youtube.com/watch?v=iF-fd_jDjEw&amp;list=PLXb3r5ny8_1X7Ph5vivwAmILwI42OVv94&amp;index=25</a></li>
+<li><a href="https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/">CODE, de Charles Petzhold</a></li>
+<li><a href="https://www.youtube.com/watch?v=AfQxyVuLeCs&amp;list=PL9F74AFA03AA06A11">Circuits and electronics (MIT 6.002)</a></li>
 </ul>
+</div>
+</div>
+<p>On a vu que toutes les formules logiques peuvent s'écrire sous la forme d'un DAG où les sommets sont :</p>
+<ul>
+<li>les variables et alors il n'a pas de sommets entrant</li>
+<li>la sortie et alors il n'a pas de sommets sortant</li>
+<li>l'opération NON : une entrée et au une sortie</li>
+<li>l'opération OU ou ET : deux entrée et une sortie</li>
+<li>un nœud de transit avec au moins une entrée et au moins une sortie.</li>
+</ul>
+<p>On utilise ensuite l'intensité ou la tension pour les états :</p>
+<ul>
+<li>$\leq K_0$ pour l'état 0</li>
+<li>$\geq K_1$ pour l'état 1</li>
+</ul>
+<p>C'est Shannon qui a le premier montré la faisabilité  de créer un réseau booléen en utilisant des relais.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits">A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)</a></p>
+</div>
+</div>
+<h2>Bases physique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="bases-physique/">Bases physiques</a></p>
+</div>
+</div>
+<h2>Circuits</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="circuits/">Circuits électroniques</a></p>
+</div>
+</div>
 
 
 </article>
