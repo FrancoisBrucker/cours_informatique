@@ -14,7 +14,7 @@ Un ordinateur et encore plus un algorithme est forcément déterministe : répé
 
 Il y a deux techniques qu'utilise un ordinateur peut proposer de l'aléatoire :
 
-- il demande de l'aide extérieur,
+- il demande de l'aide extérieure,
 - il fait semblant.
 
 On va montrer le principe des deux techniques dans ce qui suit. Ce ne sera cependant qu'une introduction le sujet est vaste et peut devenir vite (très) compliqué et contre intuitif. Donc dans le doute :
@@ -33,7 +33,7 @@ Ne recodez pas vos propres algorithmes pour gérer l'aléatoire : utilisez des b
 En informatique, un générateur aléatoire
 Il n'est pas nécessaire de pouvoir générer des réels en informatique, seul 1 bit suffit. 
 
-### Entropie et nombres aléatoires
+### TRNG : nombres aléatoires
 
 > TBD il suffit de générer soit 0 soit 1 de façon équiprobable puis on généralise aux nombres puis modulo (preuve homogène si génération homogène)
 
@@ -53,7 +53,7 @@ Il n'est pas nécessaire de pouvoir générer des réels en informatique, seul 1
 
 Et ces méthodes sont implémentées directement [sur le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random){.externe}
 
-### Nombres pseudo-aléatoires
+### PRNG : Nombres pseudo-aléatoires
 
 "Random numbers should not be generated with a method chosen at random. Some theory
 should be used.” (Donald Knuth, 1969)
@@ -64,10 +64,12 @@ should be used.” (Donald Knuth, 1969)
 > TBD pseudo-aléatoire (modulo et le démontrer) et aléatoire. On suppose qu'on a un truc aléatoire, genre /dev/random sous unix qui prend des paramètre extérieur pour générer de l'entropie.
 
 > fonctionne avec un seed puis une suite
->
-### Nombres pseudo-aléatoires cryptographiques
+> linéaire : uniforme mais prédictible (même si on ne sort qu'une partie des bits.)
 
-> TBD permutations. Pas du tout uniforme.
+### CSPRNG : Nombres pseudo-aléatoires cryptographiques
+
+> TBD permutations. Pas du tout uniforme. blum-blum sum : non linéaire. Pas utilisé en pratique car lent. On fait du chacha20 plutôt.
+> 
 
 ## Permutation et Tableaux aléatoires
 
