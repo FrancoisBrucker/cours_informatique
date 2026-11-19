@@ -99,18 +99,82 @@
   <p>Pour pouvoir</p>
 <h2>Relais</h2>
 <p>Mécatronique.</p>
+<p>Le O et le 1 dont on va avoir besoin va être du courant.</p>
 <p>Base d'un relais est un électro-aimant :</p>
 <p><img src="relais-1.1.png" alt="relais 1"></p>
-<p>On lui adjoint une diode pour dissiper la charge lorsque l'on coupe l'alimentation (le circuit se ferme alors sur la diode et permet de limiter la tension à la tension de la diode (typiquement .7V) et de dissiper l'énergie emmagasinée dans la bobine) :</p>
+<p>On lui adjoint une diode (voir plus bas pour ce que c'est) pour dissiper la charge lorsque l'on coupe l'alimentation (le circuit se ferme alors sur la diode et permet de limiter la tension à la tension de la diode (typiquement .7V) et de dissiper l'énergie emmagasinée dans la bobine) :</p>
 <p><img src="relais-1.2.png" alt="relais 1"></p>
 <p>Enfin le mécanisme de relais en lui-même :</p>
 <p><img src="relais-2.png" alt="relais 2"></p>
+<ul>
+<li>sans courant en A une barre de métal fait une connexion entre com et repos,</li>
+<li>si on alimente A, l'électro-aimant fait baisser la barre et elle connecte maintenant com à travail.</li>
+</ul>
+<p>Ingénieux, non ! C'est Shannon qui a le premier montré la faisabilité  de créer un réseau booléen en utilisant des relais.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits" class="externe">A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)</a></p>
+</div>
+</div>
+<p>Par exemple une porte NON (<em>NOT</em>) :</p>
+<ul>
+<li>générateur de courant en com</li>
+<li>entrée : A</li>
+<li>sortie : repos</li>
+</ul>
+<p>Ou une porte NON-ET (<em>NAND</em>) :</p>
+<ul>
+<li>entrées : com et A</li>
+<li>sortie : travail</li>
+</ul>
 <h2>Transistor à jonctions</h2>
-<p>électronique analogique</p>
-<h3>Semi-conducteurs</h3>
-<p>NP</p>
-<h3>Transistor à jonctions</h3>
-<p>PNP et NPN</p>
+<p>électronique analogique.</p>
+<p>N'étant pas électronicien et encore moins physicien, je vais rester à la surface de l'explication. Je suppose juste que vous savez ce qu'est une charge et une tension.</p>
+<h3>Semi-conducteurs : Diode PN</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=QHGcE1_NjBw" class="externe">La jonction PN expliquée avec des chiens de traîneaux</a></p>
+</div>
+</div>
+<p>La base de la jonction PN est un cristal de silicium dopé (avec ajout de) au Bore, Aluminium ou Gallium pour la couche P et au Phosphore, Arsenic ou Antimoine pour la couche N.</p>
+<p><img src="si-PN.png" alt="atomes"></p>
+<p>Comme vous le voyez, les atomes de Silicium ont 4 électrons sur leur couche de valence, les atomes de type N en ont 5 et ceux de type P, 3.</p>
+<p>Un cristal est formé d'atomes qui si partagent les électrons sur la couche de valence :</p>
+<p><img src="cristal.png" alt="cristal"></p>
+<p>Un couche de Valence aime avoir <a href="https://fr.wikipedia.org/wiki/R%C3%A8gle_de_l%27octet">8 électrons</a>. Si elle en a moins elle va avoir tendance à en attraper un autre, si elle en a trop elle aura envie de les donner. Pour nos cristaux :</p>
+<ul>
+<li>un atome de silicium entouré d'autres atomes de Silicium sera stable,</li>
+<li>un atome de type P entouré d'autres atomes de Silicium aura un électron en trop,</li>
+<li>un atome de type N entouré d'autres atomes de Silicium aura un électron en moins.</li>
+</ul>
+<p>De façon globale la charge d'un cristal est de 0.</p>
+<p>Lorsque l'on colle un cristal dopé en N avec un cristal dopé en P on obtient une diode :</p>
+<p><img src="diode-NP.png" alt="cristal"></p>
+<p>À la jonction entre le cristal N et le cristal P les électrons surnuméraires de la couche N se déplaceront vers les places libres des cristaux de la couche P. Ceci ne peut pas prendre tout le cristal car ajouter ou supprimer un électron à une couche pleine (8 électrons) est bien plus coûteux que d'aller d'une couche trop pleine à une couche trop vide.</p>
+<p>Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium).</p>
+<p>Si on met une tension, les électrons sont attirés vers les</p>
+<ul>
+<li>que dans un sens</li>
+</ul>
+<blockquote>
+<p>TBD principe des semi-conducteurs
+TBD jonction NP.</p>
+</blockquote>
+<h3>Transistors NPN</h3>
+<p>Un transistor à jonction est un amplificateur de courant.</p>
+<p>C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.</p>
+<blockquote>
+<p>TBD PNP et NPN</p>
+</blockquote>
+<blockquote>
+<p>TBD schéma en utilisant</p>
+</blockquote>
 <blockquote>
 <p>TBD résistance et courant</p>
 </blockquote>
