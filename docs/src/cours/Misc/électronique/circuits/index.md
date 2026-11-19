@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD 
-> TBD mosfet comme ohm pour générer des tensions
+> TBD les différentes portes 
 > TBD RAM
-> TBD générateur aléatoire
+> TBD générateur aléatoire (avec mosfet ohmique)
