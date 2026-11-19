@@ -32,12 +32,6 @@ On utilise ensuite l'intensité ou la tension pour les états :
 - $\leq K_0$ pour l'état 0
 - $\geq K_1$ pour l'état 1
 
-C'est Shannon qui a le premier montré la faisabilité  de créer un réseau booléen en utilisant des relais.
-
-{% lien %}
-[A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)](https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits)
-{% endlien %}
-
 ## Bases physique
 
 {% aller %}
@@ -45,6 +39,8 @@ C'est Shannon qui a le premier montré la faisabilité  de créer un réseau boo
 {% endaller %}
 
 ## Circuits
+
+> TBD que MOSFET
 
 {% aller %}
 [Circuits électroniques](./circuits/)

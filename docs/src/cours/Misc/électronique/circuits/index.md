@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Circuits
+title: Circuits MOSFET
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD portes,
+> TBD 
 > TBD mosfet comme ohm pour générer des tensions
 > TBD RAM
 > TBD générateur aléatoire
