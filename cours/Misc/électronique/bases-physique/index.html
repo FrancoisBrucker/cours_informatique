@@ -98,7 +98,14 @@
 
   <p>Pour pouvoir</p>
 <h2>Relais</h2>
-<p>Mécatronique.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Steampunk">Le steampunk</a> de l'informatique</p>
+</div>
+</div>
 <p>Le O et le 1 dont on va avoir besoin va être du courant.</p>
 <p>Base d'un relais est un électro-aimant :</p>
 <p><img src="relais-1.1.png" alt="relais 1"></p>
@@ -131,6 +138,14 @@
 <li>sortie : travail</li>
 </ul>
 <h2>Transistor à jonctions</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://giscardpunk.florentdeloison.fr/">Le Giscardpunk</a> de l'informatique</p>
+</div>
+</div>
 <p>électronique analogique.</p>
 <p>N'étant pas électronicien et encore moins physicien, je vais rester à la surface de l'explication. Je suppose juste que vous savez ce qu'est une charge et une tension.</p>
 <h3>Semi-conducteurs : Diode PN</h3>
@@ -139,34 +154,39 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=QHGcE1_NjBw" class="externe">La jonction PN expliquée avec des chiens de traîneaux</a></p>
+<p><a href="https://www.youtube.com/watch?v=QHGcE1_NjBw&amp;list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&amp;index=1" class="externe">La jonction PN expliquée avec des chiens de traîneaux</a></p>
 </div>
 </div>
 <p>La base de la jonction PN est un cristal de silicium dopé (avec ajout de) au Bore, Aluminium ou Gallium pour la couche P et au Phosphore, Arsenic ou Antimoine pour la couche N.</p>
 <p><img src="si-PN.png" alt="atomes"></p>
-<p>Comme vous le voyez, les atomes de Silicium ont 4 électrons sur leur couche de valence, les atomes de type N en ont 5 et ceux de type P, 3.</p>
-<p>Un cristal est formé d'atomes qui si partagent les électrons sur la couche de valence :</p>
+<p>Comme vous le voyez, les atomes de Silicium ont 4 électrons sur leur couche de valence, les atomes de type P en ont 3 et ceux de type n, 5. Un cristal est formé d'atomes qui si partagent les électrons sur la couche de valence :</p>
 <p><img src="cristal.png" alt="cristal"></p>
-<p>Un couche de Valence aime avoir <a href="https://fr.wikipedia.org/wiki/R%C3%A8gle_de_l%27octet">8 électrons</a>. Si elle en a moins elle va avoir tendance à en attraper un autre, si elle en a trop elle aura envie de les donner. Pour nos cristaux :</p>
+<p>Un couche de Valence aime avoir <a href="https://fr.wikipedia.org/wiki/R%C3%A8gle_de_l%27octet">8 électrons</a>. Si elle en a moins elle va avoir tendance à vouloir en attraper un autre, si elle en a trop elle aura envie de les donner. Pour nos cristaux :</p>
 <ul>
 <li>un atome de silicium entouré d'autres atomes de Silicium sera stable,</li>
-<li>un atome de type P entouré d'autres atomes de Silicium aura un électron en trop,</li>
-<li>un atome de type N entouré d'autres atomes de Silicium aura un électron en moins.</li>
+<li>un atome de type P entouré d'atomes de Silicium aura un électron en moins.</li>
+<li>un atome de type N entouré d'atomes de Silicium aura un électron en trop,</li>
 </ul>
 <p>De façon globale la charge d'un cristal est de 0.</p>
-<p>Lorsque l'on colle un cristal dopé en N avec un cristal dopé en P on obtient une diode :</p>
+<p>Lorsque l'on colle un cristal dopé en P avec un cristal dopé en N on obtient une diode :</p>
 <p><img src="diode-NP.png" alt="cristal"></p>
-<p>À la jonction entre le cristal N et le cristal P les électrons surnuméraires de la couche N se déplaceront vers les places libres des cristaux de la couche P. Ceci ne peut pas prendre tout le cristal car ajouter ou supprimer un électron à une couche pleine (8 électrons) est bien plus coûteux que d'aller d'une couche trop pleine à une couche trop vide.</p>
-<p>Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium).</p>
-<p>Si on met une tension, les électrons sont attirés vers les</p>
-<ul>
-<li>que dans un sens</li>
-</ul>
-<blockquote>
-<p>TBD principe des semi-conducteurs
-TBD jonction NP.</p>
-</blockquote>
+<p>À la jonction entre le cristal P et le cristal N les électrons surnuméraires de la couche N se déplacent vers les places libres des cristaux de la couche P. Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium). Ceci ne peut pas prendre tout le cristal car le potentiel - de la jonction P va repousser les électrons libre de la partie N.</p>
+<p>On peut agrandir ou diminuer cette tension via un générateur de tension :</p>
+<p><img src="diode-tension.png" alt="tension diode"></p>
+<p>Si la tension est négative la barrière augmente jusqu'à prendre toute la place. Dans le cas contraire, une tension positive, la barrière diminue jusqu'à disparaître lorsque la tension appliquée est la tension de seuil. À ce moment là la diode devient passante : un courant passe à travers le circuit.</p>
+<p><img src="diode-passante.png" alt="diode passante"></p>
+<p>Les électrons passent de la cathode à l'anode fournissant un courant positif de l'anode à la cathode. Notez que si la diode est passante, son intensité peut ˆ´tre aussi grande que l'on veut mais sa tension ne peut être supérieure à la tension de seuil.</p>
+<p>On utilise une diode pour bloquer la circulation du courant dans un sens (comme pour le relais).</p>
 <h3>Transistors NPN</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Zjw7Prg5244&amp;list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&amp;index=2" class="externe">Le transistor bipolaire</a></p>
+</div>
+</div>
+<p>Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux type de transistors à jonctions les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisé en électronique, mais le principe est le même pour les PNP.</p>
 <p>Un transistor à jonction est un amplificateur de courant.</p>
 <p>C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.</p>
 <blockquote>
@@ -179,9 +199,26 @@ TBD jonction NP.</p>
 <p>TBD résistance et courant</p>
 </blockquote>
 <h2>Transistor à effet de champ</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Cyberpunk">Le cyberpunk</a> de l'informatique</p>
+</div>
+</div>
 <p>numérique MOSFET : NMOS et PMOS</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Zjw7Prg5244&amp;list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&amp;index=3" class="externe">Le transistor MOSFET</a></p>
+</div>
+</div>
 <blockquote>
-<p>TBD ohmique si dans un circuit, saturation que dans les effets transitoirs
+<p>TBD le mosfet utilisé comme ohm pour générer des tensions
+TBD ohmique si dans un circuit, saturation que dans les effets transitoirs
 TBD que des tensions. Sans courant en régime stable</p>
 </blockquote>
 <ol>
