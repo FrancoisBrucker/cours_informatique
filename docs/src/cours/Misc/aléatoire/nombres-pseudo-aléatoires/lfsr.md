@@ -25,3 +25,4 @@ modulo pas crypto car on déduit a et b de deux variables.
 >
 > <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/3_FSR/FSR.pdf>{.externe}
 > 
+> <https://www.youtube.com/watch?v=Ks1pw1X22y4>

@@ -15,7 +15,7 @@ Pour pouvoir
 ## Relais
 
 {% note %}
-[Le steampunk](https://en.wikipedia.org/wiki/Steampunk) de l'informatique
+[Le steampunk](https://www.youtube.com/watch?v=WOfmZLnXY8w) de l'informatique
 {% endnote %}
 
 Le O et le 1 dont on va avoir besoin va être du courant.
@@ -56,7 +56,7 @@ Ou une porte NON-ET (_NAND_) :
 ## Transistor à jonctions
 
 {% note %}
-[Le Giscardpunk](https://giscardpunk.florentdeloison.fr/) de l'informatique
+[Le Giscardpunk](https://www.youtube.com/watch?v=KKhnDzRgsW8) de l'informatique
 {% endnote %}
 
 électronique analogique.
@@ -79,9 +79,9 @@ Comme vous le voyez, les atomes de Silicium ont 4 électrons sur leur couche de 
 
 Un couche de Valence aime avoir [8 électrons](https://fr.wikipedia.org/wiki/R%C3%A8gle_de_l%27octet). Si elle en a moins elle va avoir tendance à vouloir en attraper un autre, si elle en a trop elle aura envie de les donner. Pour nos cristaux :
 
-- un atome de silicium entouré d'autres atomes de Silicium sera stable,
-- un atome de type P entouré d'atomes de Silicium aura un électron en moins.
-- un atome de type N entouré d'atomes de Silicium aura un électron en trop,
+- un atome de silicium sera stable,
+- un atome de type P aura un électron en moins.
+- un atome de type N aura un électron en trop,
 
 
 De façon globale la charge d'un cristal est de 0. 
@@ -90,9 +90,9 @@ Lorsque l'on colle un cristal dopé en P avec un cristal dopé en N on obtient u
 
 ![cristal](./diode-NP.png)
 
-À la jonction entre le cristal P et le cristal N les électrons surnuméraires de la couche N se déplacent vers les places libres des cristaux de la couche P. Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium). Ceci ne peut pas prendre tout le cristal car le potentiel - de la jonction P va repousser les électrons libre de la partie N. 
+À la jonction entre le cristal P et le cristal N les électrons surnuméraires de la couche N se déplacent vers les places libres des cristaux de la couche P. Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium). Ceci ne peut pas prendre tout le cristal car à la jonction le potentiel négatif de la région P empêche les électron de passer naturellement.
 
-On peut agrandir ou diminuer cette tension via un générateur de tension :
+On peut en revanche agrandir ou diminuer ce potentiel via un générateur de tension qui va "pousser" ou tirer les électrons d'un côté ou de l'autre en passant de trou en trou, chaque trou laissé libre étant remplacé par un autre électron :
 
 ![tension diode](./diode-tension.png)
 
@@ -100,7 +100,7 @@ Si la tension est négative la barrière augmente jusqu'à prendre toute la plac
 
 ![diode passante](./diode-passante.png)
 
-Les électrons passent de la cathode à l'anode fournissant un courant positif de l'anode à la cathode. Notez que si la diode est passante, son intensité peut ˆ´tre aussi grande que l'on veut mais sa tension ne peut être supérieure à la tension de seuil.
+Les électrons passent de la cathode à l'anode fournissant un courant positif de l'anode à la cathode. Notez que si la diode est passante, son intensité peut être aussi grande que l'on veut mais sa tension ne peut être supérieure à la tension de seuil.
 
 On utilise une diode pour bloquer la circulation du courant dans un sens (comme pour le relais). 
 
@@ -110,13 +110,15 @@ On utilise une diode pour bloquer la circulation du courant dans un sens (comme 
 [Le transistor bipolaire](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=2){.externe}
 {% endlien %}
 
-Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux type de transistors à jonctions les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisé en électronique, mais le principe est le même pour les PNP.
+Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux type de transistors à jonctions les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisé en électronique, mais le principe est le même pour les PNP. Sa construction reprend celle de la diode, c'est un collage d'un cristal P entre deux cristaux N :
+
+![transistor NPN](./transistor-NPN.png)
 
 
 Un transistor à jonction est un amplificateur de courant.
 
 C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.
-> TBD PNP et NPN
+
 
 > TBD schéma en utilisant 
 
@@ -126,7 +128,7 @@ C'est le transistor utilisé pour les circuits. Les bascules se font en tension 
 ## Transistor à effet de champ
 
 {% note %}
-[Le cyberpunk](https://fr.wikipedia.org/wiki/Cyberpunk) de l'informatique
+[Le cyberpunk](https://www.youtube.com/watch?v=aIYp4ArokzE) de l'informatique
 {% endnote %}
 
 numérique MOSFET : NMOS et PMOS 
