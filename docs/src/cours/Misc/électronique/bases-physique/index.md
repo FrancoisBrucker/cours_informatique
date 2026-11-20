@@ -114,16 +114,26 @@ Un transistor à jonction utilise le principe de la diode en ajoutant une couche
 
 ![transistor NPN](./transistor-NPN.png)
 
-Le transistor à l'air symétrique mais son fonctionnement ne l'est pas c'est pourquoi l'émetteur à une petite flèche pour montrer le sens du courant.
+Le transistor à l'air symétrique mais son fonctionnement ne l'est pas c'est pourquoi l'émetteur à une petite flèche pour montrer le sens du courant. Tout comme une diode on va appliquer une tension pour diminuer la frontière qui bloque le passage des électrons. L'astuce est d'appliquer cette tension entre la base et l'émetteur :
 
-> TBD ici
+![transistors BE](./transistor-BE.png)
 
-Un transistor à jonction est un amplificateur de courant.
+Lorsque la tension est plus forte que la tension de contact on va créer un courant positif entre la base et l'émetteur (il suit la flèche sortant de l'émetteur). Comme le cristal P est très petit, il y a peu de place disponible dans les couches de valence, la plupart des électrons passant par ce cristal sont ainsi "libre". On peut alors en contraindre certains à passer le collecteur en appliquant une tension qui va augmenter la tension entre la base et le collecteur :
 
-C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.
+![transistors CE](./transistor-CE.png)
+
+Cette tension va attirer les électrons libres de la jonction P (en grand nombre à cause du courant) vers le collecteur créant un courant positif au collecteur. Le transistor permet de créer du courant au collecteur si on applique une tension entre sa base et son émetteur. Un transistor à jonction est un amplificateur de courant :
+
+![transistors ampli](./transistor-ampli.png)
+
+Le de la base $I_B$ contrôle le courant du collecteur $I_C = \beta \cdot I_B$. Comme $50 \leq \beta \leq 200$ le courant de l’émetteur vaut $I_E = I_B \simeq I_C$.
+
+Lorsqu'on l'utilise pour les circuits électroniques 
+
+ Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.
 
 
-> TBD résistance pull-up ou pull-down pour transformer le courant en tension plus simple pour les circuits. <https://www.youtube.com/watch?v=6eYfvvQhD1U>
+
 
 ## Transistor à effet de champ
 
