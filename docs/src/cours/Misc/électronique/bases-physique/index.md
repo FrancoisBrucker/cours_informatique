@@ -126,29 +126,38 @@ Cette tension va attirer les électrons libres de la jonction P (en grand nombre
 
 ![transistors ampli](./transistor-ampli.png)
 
-Le de la base $I_B$ contrôle le courant du collecteur $I_C = \beta \cdot I_B$. Comme $50 \leq \beta \leq 200$ le courant de l’émetteur vaut $I_E = I_B \simeq I_C$.
+Le de la base $I_B$ contrôle le courant du collecteur $I_C = \beta \cdot I_B$. Comme $50 \leq \beta \leq 200$ le courant de l’émetteur vaut $I_E = I_B + I_C \simeq I_C$.
 
-Lorsqu'on l'utilise pour les circuits électroniques 
+Lorsqu'on l'utilise pour les circuits électroniques Il va être utilisé comme un interrupteur :
 
- Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.
+- Si la tension entre la base et l'émetteur est inférieure à la tension de seuil ($\simeq 0.7V$ comme un diode) le transistor est bloqué : aucun courant ne peut passer entre le collecteur et l'émetteur,
+- Si la tension entre la base et l'émetteur est égale à la tension de seuil (comme une diode, la tension ne peut être supérieure à celle-ci), le courant $I_B$ va être amplifié pour donner un courant $I_C = \beta \cdot I_B$
 
+Les bascules se font en tension (+5V) mais doivent être converties en courant (via [des résistances de rappel](https://fr.wikipedia.org/wiki/R%C3%A9sistance_de_rappel){.externe}) puisque la commande d'un transistor à jonction est le courant de base.
 
+On peut alors faire des porte NON :
 
+![NON](./transistor-non.png)
+
+Ou des portes NON-ET :
+
+![NAND](./transistor-nand.png)
+
+Ces transistors ne sont plus utilisés pour les circuits électroniques car même en régime stable garantir une entrée 1 (+5V) va consommer du courant.
 
 ## Transistor à effet de champ
 
 {% note %}
 [Le cyberpunk](https://www.youtube.com/watch?v=aIYp4ArokzE) de l'informatique
 {% endnote %}
-
-numérique MOSFET : NMOS et PMOS 
-
 {% lien %}
 [Le transistor MOSFET](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=3){.externe}
 {% endlien %}
 
+Une 
+numérique MOSFET : NMOS et PMOS 
 > TBD le mosfet utilisé comme ohm pour générer des tensions
-> TBD ohmique si dans un circuit, saturation que dans les effets transitoirs
+> TBD ohmique si dans un circuit, saturation que dans les effets transitoires
 > TBD que des tensions. Sans courant en régime stable
 
 1. <https://www.youtube.com/watch?v=docgmTprR5o>
