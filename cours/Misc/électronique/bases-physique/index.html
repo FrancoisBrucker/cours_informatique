@@ -103,7 +103,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Steampunk">Le steampunk</a> de l'informatique</p>
+<p><a href="https://www.youtube.com/watch?v=WOfmZLnXY8w">Le steampunk</a> de l'informatique</p>
 </div>
 </div>
 <p>Le O et le 1 dont on va avoir besoin va être du courant.</p>
@@ -143,7 +143,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://giscardpunk.florentdeloison.fr/">Le Giscardpunk</a> de l'informatique</p>
+<p><a href="https://www.youtube.com/watch?v=KKhnDzRgsW8">Le Giscardpunk</a> de l'informatique</p>
 </div>
 </div>
 <p>électronique analogique.</p>
@@ -163,19 +163,19 @@
 <p><img src="cristal.png" alt="cristal"></p>
 <p>Un couche de Valence aime avoir <a href="https://fr.wikipedia.org/wiki/R%C3%A8gle_de_l%27octet">8 électrons</a>. Si elle en a moins elle va avoir tendance à vouloir en attraper un autre, si elle en a trop elle aura envie de les donner. Pour nos cristaux :</p>
 <ul>
-<li>un atome de silicium entouré d'autres atomes de Silicium sera stable,</li>
-<li>un atome de type P entouré d'atomes de Silicium aura un électron en moins.</li>
-<li>un atome de type N entouré d'atomes de Silicium aura un électron en trop,</li>
+<li>un atome de silicium sera stable,</li>
+<li>un atome de type P aura un électron en moins.</li>
+<li>un atome de type N aura un électron en trop,</li>
 </ul>
 <p>De façon globale la charge d'un cristal est de 0.</p>
 <p>Lorsque l'on colle un cristal dopé en P avec un cristal dopé en N on obtient une diode :</p>
 <p><img src="diode-NP.png" alt="cristal"></p>
-<p>À la jonction entre le cristal P et le cristal N les électrons surnuméraires de la couche N se déplacent vers les places libres des cristaux de la couche P. Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium). Ceci ne peut pas prendre tout le cristal car le potentiel - de la jonction P va repousser les électrons libre de la partie N.</p>
-<p>On peut agrandir ou diminuer cette tension via un générateur de tension :</p>
+<p>À la jonction entre le cristal P et le cristal N les électrons surnuméraires de la couche N se déplacent vers les places libres des cristaux de la couche P. Au total la charge du cristal est toujours nulle, mais dans la région du milieu ces déplacements d'électrons ont généré une différence de potentielle (une charge + lorsqu'un électron est parti et une charge - lorsqu'un électron est arrivé)qu'on appelle tension de seuil (typiquement 0.7V pour une diode au silicium). Ceci ne peut pas prendre tout le cristal car à la jonction le potentiel négatif de la région P empêche les électron de passer naturellement.</p>
+<p>On peut en revanche agrandir ou diminuer ce potentiel via un générateur de tension qui va &quot;pousser&quot; ou tirer les électrons d'un côté ou de l'autre en passant de trou en trou, chaque trou laissé libre étant remplacé par un autre électron :</p>
 <p><img src="diode-tension.png" alt="tension diode"></p>
 <p>Si la tension est négative la barrière augmente jusqu'à prendre toute la place. Dans le cas contraire, une tension positive, la barrière diminue jusqu'à disparaître lorsque la tension appliquée est la tension de seuil. À ce moment là la diode devient passante : un courant passe à travers le circuit.</p>
 <p><img src="diode-passante.png" alt="diode passante"></p>
-<p>Les électrons passent de la cathode à l'anode fournissant un courant positif de l'anode à la cathode. Notez que si la diode est passante, son intensité peut ˆ´tre aussi grande que l'on veut mais sa tension ne peut être supérieure à la tension de seuil.</p>
+<p>Les électrons passent de la cathode à l'anode fournissant un courant positif de l'anode à la cathode. Notez que si la diode est passante, son intensité peut être aussi grande que l'on veut mais sa tension ne peut être supérieure à la tension de seuil.</p>
 <p>On utilise une diode pour bloquer la circulation du courant dans un sens (comme pour le relais).</p>
 <h3>Transistors NPN</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -186,12 +186,10 @@
 <p><a href="https://www.youtube.com/watch?v=Zjw7Prg5244&amp;list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&amp;index=2" class="externe">Le transistor bipolaire</a></p>
 </div>
 </div>
-<p>Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux type de transistors à jonctions les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisé en électronique, mais le principe est le même pour les PNP.</p>
+<p>Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux type de transistors à jonctions les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisé en électronique, mais le principe est le même pour les PNP. Sa construction reprend celle de la diode, c'est un collage d'un cristal P entre deux cristaux N :</p>
+<p><img src="transistor-NPN.png" alt="transistor NPN"></p>
 <p>Un transistor à jonction est un amplificateur de courant.</p>
 <p>C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.</p>
-<blockquote>
-<p>TBD PNP et NPN</p>
-</blockquote>
 <blockquote>
 <p>TBD schéma en utilisant</p>
 </blockquote>
@@ -204,7 +202,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Cyberpunk">Le cyberpunk</a> de l'informatique</p>
+<p><a href="https://www.youtube.com/watch?v=aIYp4ArokzE">Le cyberpunk</a> de l'informatique</p>
 </div>
 </div>
 <p>numérique MOSFET : NMOS et PMOS</p>
