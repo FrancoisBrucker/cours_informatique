@@ -114,16 +114,16 @@ Un transistor à jonction utilise le principe de la diode en ajoutant une couche
 
 ![transistor NPN](./transistor-NPN.png)
 
+Le transistor à l'air symétrique mais son fonctionnement ne l'est pas c'est pourquoi l'émetteur à une petite flèche pour montrer le sens du courant.
+
+> TBD ici
 
 Un transistor à jonction est un amplificateur de courant.
 
 C'est le transistor utilisé pour les circuits. Les bascules se font en tension (+5V) mais doivent être converties en courant (via des résistances pull-up ou pull-down) puisque la commande d'un transistor à jonction est le courant de base.
 
 
-> TBD schéma en utilisant 
-
-
-> TBD résistance et courant
+> TBD résistance pull-up ou pull-down pour transformer le courant en tension plus simple pour les circuits. <https://www.youtube.com/watch?v=6eYfvvQhD1U>
 
 ## Transistor à effet de champ
 
