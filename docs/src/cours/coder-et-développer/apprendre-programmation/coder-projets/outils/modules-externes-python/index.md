@@ -82,7 +82,7 @@ Si je veux installer le module `matplotlib` par exemple, ma ligne de commande à
 /usr/bin/python3 -m pip install matplotlib
 ```
 
-Pour vous, ce sera peut-être différent car le `<nom du programme python>` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../../éditeur-vscode/python/#exécuter-programme).
+Pour vous, ce sera peut-être différent car le `<nom du programme python>` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../éditeur-vscode/python/#exécuter-programme).
 
 ## Exemple : installation du module matplotlib
 

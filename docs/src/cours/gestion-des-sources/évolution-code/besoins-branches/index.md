@@ -44,7 +44,7 @@ Une **_branche_** est une référence vers un commit donné. L'historique d'une 
 Un utilisateur accède à la structure de sauvegarde via les branches qui constituent les différentes évolutions du projet.
 {% enddefinition %}
 
-À la différence d'[un tag](../../dépôt/besoins-dépôt/#tag) qui référence un commit particulier, une branche représente une histoire :
+À la différence d'[un tag](../../besoins-dépôt/besoins-dépôt/#tag) qui référence un commit particulier, une branche représente une histoire :
 
 - le présent : la référence pointée par la branche,
 - le passé : ses ancêtres

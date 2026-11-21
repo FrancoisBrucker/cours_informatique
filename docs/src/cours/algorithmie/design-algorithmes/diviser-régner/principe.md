@@ -55,7 +55,7 @@ algorithme diviser_puis_combiner(données):
     rendre solution
 ```
 
-On a déjà vu ce design lorsque l'on a étudié [le tri fusion](../../problème-tris/algorithme-fusion/) ou [le tri rapide](../../problème-tris/algorithme-rapide/).
+On a déjà vu ce design lorsque l'on a étudié [le tri fusion](../../../3-problèmes-algorithmiques/tris/algorithme-fusion/) ou [le tri rapide](../../../3-problèmes-algorithmiques/tris/algorithme-rapide/).
 
 {% retenir %}
 On utilise le design **diviser pour régner** que lorsqu'il est _facile_ (et rapide) algorithmiquement de combiner des solutions partielles en une solution globale.

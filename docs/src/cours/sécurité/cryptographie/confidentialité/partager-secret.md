@@ -51,7 +51,7 @@ $ab$ permet bien d'obtenir tout nombre $q$ entre $0$ et $p-1$ car :
 
 ### Algorithme de transmission
 
-L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/) en utilisant le principe dit de "_square and multiply_" :
+L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/étude-algorithmique/) en utilisant le principe dit de "_square and multiply_" :
 
 ```pseudocode
 algorithme expo(x: int, y: int) → int:

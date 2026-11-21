@@ -272,7 +272,7 @@ Si $H(n)$ converge, alors toute suite extraite également. Cela n'est donc pas p
 Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique){.externe}).
 
 
-[On a déjà utilisé ce résultat](../../2-complexités/projet-calcul-max-min-moy/#Hn-équivalent). On le remet ici pour référence.
+[On a déjà utilisé ce résultat](#Hn-équivalent). On le remet ici pour référence.
 
 <div id="Hn-équivalent"></div>
 

@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Commencer par créer un nouveau projet en suivant si nécessaire [les instructions du précédent projet](../../dépôt/projet-dépot/#création) :
+Commencer par créer un nouveau projet en suivant si nécessaire [les instructions du précédent projet](../../besoins-dépôt/projet-dépot/#création) :
 
 {% faire %}
 Créez un nouveau projet sur le site de github que vous appellerez `hello-dev`.

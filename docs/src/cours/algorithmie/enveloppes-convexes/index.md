@@ -731,7 +731,7 @@ De là, l'enveloppe convexe des points est :
 Une fois le maximum des points trouvé (en $\mathcal{O}(\ln(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
 
 {% note %}
-Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que [la complexité du problème du tri](../problème-tris/complexité-problème/#complexité-problème) :
+Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que [la complexité du problème du tri](../3-problèmes-algorithmiques/tris/complexité-problème/#complexité-problème) :
 
 Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\ln(n))$ si les $n$ points sont sur l'enveloppe.
 {% endnote %}
@@ -1122,7 +1122,7 @@ C(n) = \underbracket{\sum_k C(n_k)}_{\text{solutions partielles}} + \underbracke
 $$
 </div>
 
-Dont la solution est donnée par [le master theorem](../problème-tris/algorithme-fusion/#master-theorem).
+Dont la solution est donnée par [le master theorem](../3-problèmes-algorithmiques/tris/algorithme-fusion/#master-theorem).
 
 Nous allons montrer deux méthodes et comparer leurs complexités.
 
@@ -1136,7 +1136,7 @@ $$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$
 
-[Le master theorem](../problème-tris/algorithme-fusion/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\ln(n)$.
+[Le master theorem](../3-problèmes-algorithmiques/tris/algorithme-fusion/#master-theorem) nous indique que cette complexité vaut : $C(n) = n\ln(n)$.
 
 Le tri initial des points (en $\mathcal{O}(n\ln(n))$ opérations) n'a pas dégradé la complexité :
 

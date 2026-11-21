@@ -22,7 +22,7 @@ Une chaîne de caractères peut être vue comme un conteneur de caractères. On 
 'c'
 ```
 
-Ou même utiliser des [slices de liste](../listes/#slice) :
+Ou même utiliser des [slices de liste](../conteneurs/listes/#slice) :
 
 ```python
 >>> "abcdefghijklmnopqrstuvwxyz"[2:15:4]
@@ -265,7 +265,7 @@ Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
 
 ### Slice
 
-Comme pour les listes, on peut [utiliser les _slices_](../listes/#slice) pour copier des parties de chaîne.
+Comme pour les listes, on peut [utiliser les _slices_](../conteneurs/listes/#slice) pour copier des parties de chaîne.
 
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 

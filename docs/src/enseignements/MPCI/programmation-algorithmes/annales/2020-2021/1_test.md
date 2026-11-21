@@ -9,7 +9,7 @@ authors:
 ## Sujet
 
 {% aller %}
-[Syracuse](/cours/coder-et-développer/projet-codes/#syracuse)
+[Syracuse](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/#syracuse)
 {% endaller %}
 
 ## Barème

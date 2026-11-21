@@ -98,12 +98,12 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Exercices d'entraînement**" %}
 
-[Petits programmes](/cours/coder-et-développer/projet-codes/)
+[Petits programmes](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/)
 
 {% endaller %}
 {% aller "**On vérifie son niveau**" %}
 
-[100 mono-lignes](/cours/coder-et-développer/mono-lignes/)
+[100 mono-lignes](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/)
 {% endaller %}
 
 ## Jour 2
@@ -113,10 +113,10 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 {% aller "**Cours**" %}
 
 1. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/)
-2. [Modules externes python](/cours/coder-et-développer/modules-externes-python/)
+2. [Modules externes python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/modules-externes-python/)
 3. Gestion des données :
-   1. [chaînes de caractères](/cours/coder-et-développer/encodage-unicode/)
-   2. [notion de fichier](/cours/coder-et-développer/fichiers/structure/) et [fichier texte](/cours/coder-et-développer/fichiers/fichiers-texte/)
+   1. [chaînes de caractères](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/encodage-unicode/)
+   2. [notion de fichier](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/structure/) et [fichier texte](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/fichiers-texte/)
 
 {% endaller %}
 
@@ -124,13 +124,13 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Exercices d'entraînement**" %}
 
-1. [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/)
-2. [Projet fichier texte](/cours/coder-et-développer/fichiers/projet-texte/)
+1. [Tutoriel matplotlib](/cours/coder-et-développer/apprendre-programmation/concepts/tutoriel-matplotlib/)
+2. [Projet fichier texte](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/projet-texte/)
 
 {% endaller %}
 {% aller "**On va plus loin**" %}
 
-[Données texte](/cours/coder-et-développer/fichiers/projet-données/)
+[Données texte](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/projet-données/)
 {% endaller %}
 
 ## Jour 3
@@ -140,16 +140,16 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 {% aller "**Cours**" %}
 
 1. [mettre ses sources à disposition](/cours/gestion-des-sources/#dépot)
-2. [déboguer son code](/cours/coder-et-développer/débogueur/)
-3. [tester son code](/cours/coder-et-développer/tests-unitaires/)
+2. [déboguer son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/)
+3. [tester son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/)
 4. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/)
 
 {% endaller %}
 {% aller "**TD**" %}
 
 1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/)
-2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages)
-3. [faites le TD déboguer son code](/cours/coder-et-développer/débogueur/)
+2. [Projet pourcentages](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages)
+3. [faites le TD déboguer son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/)
 
 {% endaller %}
 
@@ -157,12 +157,12 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 {% aller "**Exercices d'entraînement**" %}
 
-[On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/)
+[On s'entraîne en ajoutant des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/)
 
 {% endaller %}
 
 {% aller "**On vérifie son niveau**" %}
-[Exercices](/cours/coder-et-développer/exercices-tests/)
+[Exercices](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/)
 
 {% endaller %}
 

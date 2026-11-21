@@ -18,7 +18,7 @@ eleventyComputed:
 > TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.
 
 
-Le [pseudo-code](../écrire-algorithmes/pseudo-code/) permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
+Le [pseudo-code](../1-algorithme/pseudo-code/) permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 

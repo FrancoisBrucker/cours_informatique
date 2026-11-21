@@ -9,10 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux) et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
+Une liste est une amélioration de [la structure de tableau](../1-algorithme/pseudo-code/briques-de-base/#tableaux) et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
-Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/bases-programmation/conteneurs/listes/) du cours sur les bases du code.
+Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/apprendre-programmation/concepts/conteneurs/listes/) du cours sur les bases du code.
 {% endinfo %}
 
 ## <span id="structure"></span>Définition de la structure

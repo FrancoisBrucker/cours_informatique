@@ -139,7 +139,7 @@ Proposez une amélioration de l'algorithme du tri à bulles pour que sa complexi
 
 Pour que la complexité minimale soit en $\mathcal{O}(T.\mbox{\small longueur})$ il faut que l'on ne fasse au mieux qu'un nombre constant de fois la boucle intérieure dans le meilleur des cas, qui semble ici le cas où le tableau est déjà trié puisqu'on a pas besoin de fire remonter des valeurs.
 
-Ceci est possible car un tableau est trié si et seulement si $T[i] \leq T[i+1]$ pour tout $0\leq i < T.\mbox{\small longueur}$ (on utilisé ceci pour [le problème de la reconnaissance](../reconnaissance)), c'est a dire que le tableau est trié si le test de la boucle intérieure a toujours été faux !
+Ceci est possible car un tableau est trié si et seulement si $T[i] \leq T[i+1]$ pour tout $0\leq i < T.\mbox{\small longueur}$ (on utilisé ceci pour [le problème de la reconnaissance](./reconnaissance)), c'est a dire que le tableau est trié si le test de la boucle intérieure a toujours été faux !
 
 On obtient alors l'algorithme suivant :
 

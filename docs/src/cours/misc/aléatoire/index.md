@@ -23,7 +23,7 @@ Ca existe :
 - le modulo $x_{n+1} = a \cdot x_n + b \pmod p$ avec $p$ un nombre premier.
 
 Ou encore les décimales de pi à partir de la $k$ème
-voir des méthodes plus sophistiquée comme [les lsfr](./Rapport_de_Stage_Laura_Michelutti.pdf).
+voir des méthodes plus sophistiquée comme [les lsfr](../../sécurité/cryptographie/confidentialité/nombres-pseudo-aléatoires-cryptographiques/Rapport_de_Stage_Laura_Michelutti.pdf).
 
 
 Ces générateur (python, ou encore le modulo avec un entier premier) sont parfait pour prédire le monde physique, les sorties sont bien uniformes et indétectables de l'aléatoire, mais pour les applications crypto on veut en plus non-prédictible.

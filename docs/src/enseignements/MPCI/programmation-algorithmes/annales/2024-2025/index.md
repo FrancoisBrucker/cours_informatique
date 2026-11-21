@@ -18,7 +18,7 @@ Tests et examens pour l'année scolaire 2024/2025
 
 1. [DM 1 : Doublons](./dm-doublons)
 2. [DM 2 : Palindromes](../2023-2024/palindromes/) (c'est le DM1 de l'année dernière).
-3. [DM 3 : Bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/)
+3. [DM 3 : Bataille navale](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-bataille-navale/)
 4. [DM 4 : Snake](../2021-2022/ds_2_sujet/){.interne} (c'est le DS2 de l'année 2021/22).
 
 ## Devoirs Surveillés

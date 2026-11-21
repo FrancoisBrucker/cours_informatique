@@ -38,7 +38,7 @@ Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" d
 - de _cloner_ un projet qui nous intéresse
 - ...
 
-Un projet peut-être en lien avec de nombreuses copies distantes de celui-ci, que l'on appelle **_remote_**. Le projet y accède via son [url](/cours/web/anatomie-url/) (adresse internet ou dossier sur le même disque dur).
+Un projet peut-être en lien avec de nombreuses copies distantes de celui-ci, que l'on appelle **_remote_**. Le projet y accède via son [url](/cours/réseau/bases-réseau/anatomie-url/) (adresse internet ou dossier sur le même disque dur).
 
 ## Clone
 

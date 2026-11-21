@@ -12,7 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer comment combiner plusieurs machines entres-elles afin de réaliser des machines de plus en plus complexe et aura les mêmes structures de contrôle que le [pseudo-assembleur](../../../exécuter-code/pseudo-assembleur/) :
+Nous allons montrer comment combiner plusieurs machines entres-elles afin de réaliser des machines de plus en plus complexe et aura les mêmes structures de contrôle que le [pseudo-assembleur](../../exécuter-code/pseudo-assembleur/) :
 
 1. exécution séquentielle
 2. saut
@@ -135,7 +135,7 @@ La composition de machines de Turing permet d'écrire du code comme en pseudo-as
 - un saut à une ligne donné
 - un saut conditionnel à une ligne donné
 
-Utilisons cette formalisation pour refaire le [doublement de batons](../exemple-doublement-batons) que nous avons fait précédemment.
+Utilisons cette formalisation pour refaire le [doublement de batons](../../1-algorithme/thèse-church-turing/exemple-doublement-batons) que nous avons fait précédemment.
 
 On va décomposer la machine en plusieurs opérations _"élémentaires"_ :
 

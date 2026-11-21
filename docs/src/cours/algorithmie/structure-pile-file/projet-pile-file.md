@@ -163,7 +163,7 @@ L'enfilage sera toujours en $\mathcal{O}(1)$, mais le défilage peut prendre $\m
 ## Parenthésage
 
 {% info %}
-[On a déjà vu ce problème](../../exercices-itératif-récursif/#parenthésage) mais sans pile la complexité n'était pas linéaire.
+[On a déjà vu ce problème](../../1-algorithme/exercices-non-corrigés/#parenthésage) mais sans pile la complexité n'était pas linéaire.
 {% endinfo %}
 
 Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :

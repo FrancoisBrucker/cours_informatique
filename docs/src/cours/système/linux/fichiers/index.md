@@ -193,7 +193,7 @@ En revanche., le fichier stderr n'est pas bufferisé. Comme il doit traiter des 
 On peut contrôler les buffers des fichiers standards :
 
 - en shell avec la commande [stdbuf](https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation){.externe}.
-- en **C** en utilisant la fonction [setbuf](https://man7.org/linux/man-pages/man3/setbuf.3.html){.externe} si on a ouvert le fichier avec [fopen](../fichiers-C)
+- en **C** en utilisant la fonction [setbuf](https://man7.org/linux/man-pages/man3/setbuf.3.html){.externe} si on a ouvert le fichier avec [fopen](../../a-refactor/fichiers-C)
 
 Vider le buffer pour tout envoyer est appelé *flush*. On peut le faire explicitement en envoyant le signal EOF, mais cela peut parfois déconnecter la lecture/écriture. En **C**, on peut aussi explicitement le faire  en utilisant la commande [fflush](https://koor.fr/C/cstdio/fflush.wp){.externe}.
 

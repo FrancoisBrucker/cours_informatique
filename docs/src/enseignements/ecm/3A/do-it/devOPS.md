@@ -29,14 +29,14 @@ Support de cours : [Le cours de système et réseau](/cours/système-et-réseau)
 Base de Linux
 
 - Ordinateur
-  - [partie matériel](/cours/système-et-réseau/architecture-ordinateur/)
-  - [partie logicielle](/cours/système-et-réseau/système-exploitation/)
-- [Base de Linux](/cours/système-et-réseau/linux/bases-linux/)
+  - [partie matériel](/cours/système/a-refactor/architecture-ordinateur/)
+  - [partie logicielle](/cours/système/a-refactor/système-exploitation/)
+- [Base de Linux](/cours/système/linux/bases-linux/)
 
 ### A faire pour la prochaine fois
 
 {% faire %}
-[Exercices dans le terminal](/cours/système-et-réseau/linux/bases-linux/exercices/)
+[Exercices dans le terminal](/cours/système/linux/bases-linux/exercices/)
 
 Et m'envoyer un compte rendu par mail.
 {% endfaire %}
@@ -47,10 +47,10 @@ Et m'envoyer un compte rendu par mail.
 
 Système Linux et connexions distantes
 
-- [ssh](/cours/système-et-réseau/ssh/) :
+- [ssh](/cours/réseau/ssh/) :
   - principe
   - connexion à aioli
-- [bases de réseau](/cours/système-et-réseau/réseau/)
+- [bases de réseau](/cours/réseau/réseau/)
 
 ### A faire pour la prochaine fois
 
@@ -63,13 +63,13 @@ Système Linux et connexions distantes
 
 ## Cours 3
 
-- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/)
-- [le shell](/cours/système-et-réseau/linux/shell/) :
+- [organisation d'un système Linux](/cours/système/linux/système-exploitation-linux/)
+- [le shell](/cours/système/linux/shell/) :
   - sa configuration
   - scripting
 
 {% faire %}
-[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/)
+[Exercices de scripting](/cours/système/linux/shell/exercices/)
 {% endfaire %}
 
 - mise en production :

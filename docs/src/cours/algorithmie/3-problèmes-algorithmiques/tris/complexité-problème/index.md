@@ -165,7 +165,7 @@ Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cou
 
 ## Borne minimum
 
-En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n), on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété [du nombre de cas à distinguer](./#n-test-2n), on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
 {% note "**Proposition**" %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.

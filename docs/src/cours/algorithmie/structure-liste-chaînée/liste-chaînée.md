@@ -110,7 +110,7 @@ Les listes chaînées sont utilisées pour stocker des fichiers sur un disque ph
 
 ### Algorithmes récursifs
 
-C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../../projet-itératif-récursif/#algorithme-max-tableau-rec), vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
+C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../../1-algorithme/projet/#algorithme-max-tableau-rec), vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
 
 {% exercice %}
 Donnez un algorithme récursif et sa complexité de recherche de la valeur maximale dune liste chaînée d'entiers.

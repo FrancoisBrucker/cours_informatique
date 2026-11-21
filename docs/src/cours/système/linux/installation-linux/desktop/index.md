@@ -17,7 +17,7 @@ Lorsque l'on installe un nouveau système sur son ordinateur, **tout** peut arri
 
 Il faut donc être préparé à tout perdre : **SAUVEGARDEZ** vos données avant de tenter l'installation de Linux/Ubuntu.
 
-Lisez le [tutoriel d'installation d'un nouveau système](/tutoriels/ordinateur-développement/installation-nouveau-système) pour voir tout ce à quoi il faut penser.
+Lisez le [tutoriel d'installation d'un nouveau système](/cours/système/interagir-avec-système/installation-nouveau-système) pour voir tout ce à quoi il faut penser.
 {% endattention %}
 
 ## Système initial Windows 11

@@ -161,7 +161,7 @@ Commencez par télécharger installer la version current de <https://nodejs.org/
 <https://nodejs.org/>{.externe} s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
 
 {% aller %}
-[Utilisation du terminal](/cours/coder-et-développer/ordinateur-développement/terminal/)
+[Utilisation du terminal](/cours/système/interagir-avec-système/terminal/)
 {% endaller %}
 
 D'un terminal il vous suffit de taper `node` pour exécuter l'interpréteur :

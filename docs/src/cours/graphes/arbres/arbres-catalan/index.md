@@ -57,7 +57,7 @@ Ces algorithmes sont récursifs et utilisent le fait que nœud ou sous-arbre son
 
 Pour chaque parcours ci-après, donnez le résultat pour l'arbre ci-apres :
 
-![arbre planté](./arbre_plante.png)
+![arbre planté](../arbres-plantés/arbre_plante.png)
 
 On suppose que `Examen de la Racine` signifie : affiche le numéro de la racine à l'écran.
 

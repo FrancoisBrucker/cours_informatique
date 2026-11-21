@@ -134,7 +134,7 @@ Un exposé du proof from the book.
 
 {% aller %}
 
-1. [Rappels de complexité](/cours/algorithmie/complexité-calculs/importance/)
+1. [Rappels de complexité](/cours/algorithmie/2-complexités/définitions-et-mesure/importance/)
 2. [Réduction de Problèmes](/cours/algorithmie/problème-réduction/)
 3. [Classe de problème NP](/cours/algorithmie/problèmes-NP/)
 4. [CE est NP-C](/cours/algorithmie/problème-CE/)
@@ -181,8 +181,8 @@ Vous utiliserez la bibliothèque <<https://networkx.org>{.externe} pour dessiner
 {% aller %}
 
 1. Rappels :
-   1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/)
-   2. [importance de la complexité polynomiale](/cours/algorithmie/complexité-calculs/importance/)
+   1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/1-algorithme/pseudo-code/)
+   2. [importance de la complexité polynomiale](/cours/algorithmie/2-complexités/définitions-et-mesure/importance/)
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/)
 3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/)
 4. [Le problème SAT](/cours/algorithmie/problème-SAT/)
@@ -203,10 +203,10 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [Graphes bases](/cours/graphes/structure) :
+1. [Graphes bases](/cours/graphes/introduction/structure) :
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
-2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/)
+2. Rappel : [encodage d'un graphe](/cours/graphes/introduction/encodage/)
 3. 
 
 {% endaller %}
@@ -215,7 +215,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/)
+1. [chemins cycles et connexité](/cours/graphes/introduction/chemins-cycles-connexite/)
    1. chemin
    2. composante connexe
 2. [Parcours eulériens](/cours/graphes/parcours-eulériens/)
@@ -268,8 +268,8 @@ L'ET de l'année dernière :
     - [problème](/cours/graphes/couplages/problème/) et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/)
     - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/) et idée de la [généralisation aux graphes quelconques](/cours/graphes/couplages/couplage-cas-général/).
     - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/) (si on a le temps)
-3. [colorabilité des sommets d'un graphe](/cours/graphes/colorabilité/coloration-sommets/)
-4. [graphes planaires](/cours/graphes/graphes-planaires/)
+3. [colorabilité des sommets d'un graphe](/cours/graphes/introduction/coloration-sommets/)
+4. [graphes planaires](/cours/graphes/introduction/graphes-planaires/)
 
 {% endaller %}
 
@@ -387,12 +387,12 @@ N'hésitez pas à suivre et à faire également les exercices du cours suivant :
 {% endlien %}
 
 1. Cours 1 : Système et consequences pour le code
-   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général)
+   1. [architecture générale](/cours/système/a-refactor/architecture-ordinateur/#général)
    2. Mémoire :
-      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale)
+      1. [organisation système de la mémoire](/cours/système/a-refactor/système-exploitation/process/#forme-finale)
       2. différence entre pile et tas
-   3. [cours de C](/cours/système-et-réseau/langage-c/) : survole tout jusqu'aux exercices. A préparer chez vous
-2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices)
+   3. [cours de C](/cours/système/a-refactor/langage-c/) : survole tout jusqu'aux exercices. A préparer chez vous
+2. Cours 2 : [exercices en C](/cours/système/a-refactor/langage-c/exercices)
 
 {% faire "**DM**" %}
 Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet)

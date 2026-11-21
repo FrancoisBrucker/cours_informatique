@@ -82,7 +82,7 @@ Allons plus vite pour la complexité :
 - la boucle principale effectue $\mathcal{O}(n)$ itérations ($n-1$ exactement mais ce n'est pas important)
 - la boucle intérieure fait $n-i-1$ itérations
 
-Le nombre d'itérations de la boucle intérieure n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle intérieure n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../../2-complexités/complexité-algorithmes#règle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 

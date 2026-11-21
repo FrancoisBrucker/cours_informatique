@@ -477,7 +477,7 @@ Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une u
 On peut aussi utiliser des _list comprehension_ pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
 
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes avec une unique _list comprehension_. Il pourra être utile de se rappeler le [_AND/OR trick_](../../../principes/opérations#and-or-trick) avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique _list comprehension_. Il pourra être utile de se rappeler le [_AND/OR trick_](../../fondements-programmation/écrire-code/#and-or-trick) avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 

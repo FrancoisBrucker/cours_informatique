@@ -46,7 +46,7 @@ algorithme rapide(T: []int) → []int:
 
 {% details "code python" %}
 
-En utilisant [des list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension) de python, le code est plus compacte et plus clair que sa version en pseudocode :
+En utilisant [des list comprehension](/cours/coder-et-développer/apprendre-programmation/concepts/conteneurs/listes/#list-comprehension) de python, le code est plus compacte et plus clair que sa version en pseudocode :
 
 ```python
 def rapide(T):

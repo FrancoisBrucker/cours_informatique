@@ -272,7 +272,7 @@ programme lièvre_tortue(f: (int) → int,
 ```
 
 {% info %}
-Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/fonctions/#type).
+Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/1-algorithme/pseudo-code/algorithmes-fonctions/#type).
 {% endinfo %}
 
 #### III.2.3

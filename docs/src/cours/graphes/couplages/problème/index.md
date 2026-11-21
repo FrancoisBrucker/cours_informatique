@@ -100,7 +100,7 @@ Cet algorithme glouton montre que si l'on cherche rapidement une solution (l'alg
 
 ## <span id="couverture"></span>Couplage et couvertures
 
-Couplage maximum et [couverture minimale](../../cliques-stables/#problème-graphe-couverture) sont deux problèmes intimement liés. En effet :
+Couplage maximum et [couverture minimale](../../introduction/cliques-stables/#problème-graphe-couverture) sont deux problèmes intimement liés. En effet :
 
 {% note "**Proposition**" %}
 Si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.

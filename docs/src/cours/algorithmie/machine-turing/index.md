@@ -11,8 +11,8 @@ eleventyComputed:
 
 <!-- > TBD <https://www.youtube.com/watch?v=8JuWdXrCmWg>{.externe} -->
 
-La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} est une façon simple d'implémenter les [4 règles générales d'un algorithme](../../définition#définition-règles-générales), vous verrez que supprimer une des possibilités de la machine et plus rien ne fonctionne.
-Cependant,  Turing lui-même a montré que sa machine permettait exactement de calculer tout ce qu'on peut faire avec un [pseudo-code](../pseudo-code) (on en donnera une idée de preuve).
+La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} est une façon simple d'implémenter les [4 règles générales d'un algorithme](../1-algorithme/bases-théoriques/définition#définition-règles-générales), vous verrez que supprimer une des possibilités de la machine et plus rien ne fonctionne.
+Cependant,  Turing lui-même a montré que sa machine permettait exactement de calculer tout ce qu'on peut faire avec un [pseudo-code](../1-algorithme/pseudo-code) (on en donnera une idée de preuve).
 Enfin, toutes les tentatives de généralisation de son modèle se sont révélés infructueuses : on arrive pas à calculer plus de choses qu'avec la machine de Turing (c'est juste plus simple de le faire).
 
 {% lien %}
@@ -26,7 +26,7 @@ Enfin, toutes les tentatives de généralisation de son modèle se sont révél�
 {% endaller %}
 
 {% aller %}
-[Exemple du Doublement de batons](./exemple-doublement-batons)
+[Exemple du Doublement de batons](../1-algorithme/thèse-church-turing/exemple-doublement-batons)
 {% endaller %}
 
 ## Compositions de machines

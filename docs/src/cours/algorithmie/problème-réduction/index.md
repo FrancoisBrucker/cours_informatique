@@ -57,7 +57,7 @@ On fait exactement la même chose.
 Cette procédure permet non seulement de résoudre un problème à partir d'un autre mais donne également des bornes sur la complexité du problème. Dans notre cas la complexité du problème $\min(T)$ est inférieure à la somme des complexités de :
 
 1. transformer le tableau $T$ et $E(T)$, ici $\mathcal{O}(\vert T \vert)$,
-2. la complexité du problèmes du maximum, ici encore $\mathcal{O}(\vert T \vert)$ ([on l'a vu](../complexité-problème/#problème-max-tableau-complexité)),
+2. la complexité du problèmes du maximum, ici encore $\mathcal{O}(\vert T \vert)$ ([on l'a vu](../3-problèmes-algorithmiques/tris/complexité-problème/#problème-max-tableau-complexité)),
 3. la complexité du passage de la solution du second problème à une solution du premier problème, ici $\mathcal{O}(1)$.
 
 Comme la complexité de la recherche du minimum d'un tableau est au moins linéaire (il faut forcément regarder tous les éléments de $T$ avant de décider), on en déduit que sa complexité est bien linéaire.

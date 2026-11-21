@@ -28,7 +28,7 @@ La fonction de hachage va permettre de rajouter une indirection au tableau de st
 [Dictionnaires](dictionnaire)
 {% endaller %}
 
-Cette structure est intensivement utilisé en code, [en particulier en python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires).
+Cette structure est intensivement utilisé en code, [en particulier en python](/cours/coder-et-développer/apprendre-programmation/concepts/conteneurs/#ensembles-dictionnaires).
 
 ## Exercice : Structure Ensemble
 

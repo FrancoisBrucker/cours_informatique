@@ -484,7 +484,7 @@ J'obtiens ce graphe là (essayez d'obtenir le même) :
 {% faire %}
 Ce graphe est-il connexe ?
 
-Vous utiliserez l'algorithme [connexité](../chemins-cycles-connexite#algorithme-connexe-toutes) du cours pour déterminer les composantes connexes.
+Vous utiliserez l'algorithme [connexité](../introduction/chemins-cycles-connexite#algorithme-connexe-toutes) du cours pour déterminer les composantes connexes.
 {% endfaire %}
 {% details "solution" %}
 Non, la corse n'est pas attachée au continent avec une distance de 2. Les deux composantes connexes que l'on obtient sont :

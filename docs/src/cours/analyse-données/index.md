@@ -46,7 +46,7 @@ Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de donn
 ## <span id="packages-nécessaires"></span>Installation des modules pythons
 
 {% info %}
-Il pourra être utile d'installer les différents modules python dans [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/).
+Il pourra être utile d'installer les différents modules python dans [un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/).
 {% endinfo %}
 
 Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)
@@ -178,7 +178,7 @@ L'exercice suivant utilise vise à créer une distance entre texte puis à la re
 {% details "corrigé" %}
 
 1. [Henley et dépenses de l'état](./notebooks/notebooks-dataviz-données/2_2_corrigé_reduction_de_dimensions.ipynb){.fichier}
-2. [Analyse de textes](./notebooks-analyse/2_4_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
+2. [Analyse de textes](./notebooks/notebooks-dataviz-données/2_4_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
 
 {% enddetails %}
 
@@ -214,7 +214,7 @@ Les modules spécifiques aux données cartographiques :
 
 {% faire %}
 
-Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/requirements.txt){.fichier} pour créer [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/) contenant déjà tous les modules nécessaires.
+Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/requirements.txt){.fichier} pour créer [un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/) contenant déjà tous les modules nécessaires.
 
 {% endfaire %}
 
@@ -276,7 +276,7 @@ L'ensemble des notebooks est disponible à [cette adresse](https://github.com/Fr
 ### Partitionnement et hiérarchies
 
 1. [Méthode de partitionnement, les $k$-means](./notebooks/notebooks-analyse/4_2_cours_partitionnement.ipynb){.fichier} (téléchargez [les données](./notebooks/notebooks-analyse/ruspini.csv){.fichier})
-2. [Méthodes hiérarchiques](./notebooks/notebooks-analyse/4_4_cours_hierarchies.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/henley.mat){.fichier})
+2. [Méthodes hiérarchiques](./notebooks/notebooks-analyse/4_4_cours_hierarchies.ipynb){.fichier} (téléchargez [les données](./notebooks/notebooks-analyse/henley.mat){.fichier})
 
 {% exercice "A vous" %}
 
@@ -332,7 +332,7 @@ Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et
 
 > TBD les preuves
 
-1. [projection](./notebooks/notebooks-analyse/3_1_cours_projections.ipynb){.fichier} (télécharger [l'image 1](./notebooks-analyse/projection-opti.png){.fichier} et [l'image 2](./notebooks/notebooks-analyse/projection-données.png){.fichier} du notebook)
+1. [projection](./notebooks/notebooks-analyse/3_1_cours_projections.ipynb){.fichier} (télécharger [l'image 1](./notebooks/notebooks-analyse/projection-opti.png){.fichier} et [l'image 2](./notebooks/notebooks-analyse/projection-données.png){.fichier} du notebook)
 2. [ACP](./notebooks/notebooks-analyse/3_2_1_cours_acp.ipynb){.fichier}
 3. [On s'entraîne](./notebooks/notebooks-analyse/3_2_2_a_vous_dépenses_état.ipynb){.fichier} (téléchargez [les données](./notebooks/notebooks-analyse/dépense_état.csv){.fichier}) ([corrigé](./notebooks/notebooks-analyse/3_2_3_corrigé_dépenses_état.ipynb){.fichier})
 

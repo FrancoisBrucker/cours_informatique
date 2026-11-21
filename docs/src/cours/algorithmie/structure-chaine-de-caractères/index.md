@@ -70,7 +70,7 @@ On appelle **_langage_** d'un décideur $d$ l'ensemble $d^{-1}(1)$.
 On dira qu'un décideur $d$ **_accepte le langage_** $L$ si $L = d^{-1}(1)$ et qu'un langage $L$ est **_décidable_** s'il existe un algorithme pour l'accepter.
 {% enddefinition %}
 
-Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../../bases-théoriques/arrêt-rice/#algorithme-STOP)). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
+Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../1-algorithme/bases-théoriques/arrêt-rice/#algorithme-STOP)). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
 
 {% exercice %}
 Montrez que l'ensemble des palindromes d'un alphabet $\mathcal{A}$ est décidable.

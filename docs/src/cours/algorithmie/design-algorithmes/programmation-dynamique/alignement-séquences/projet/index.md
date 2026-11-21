@@ -4,7 +4,7 @@ title: "Projet"
 
 eleventyNavigation:
   prerequis:
-    - "/cours/coder-et-développer/programmation-objet/"
+    - "/cours/coder-et-développer/apprendre-programmation/programmation-objet/"
 
 eleventyComputed:
   eleventyNavigation:

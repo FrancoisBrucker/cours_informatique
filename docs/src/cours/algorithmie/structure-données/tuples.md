@@ -49,7 +49,7 @@ Un **_tuple_** est un regroupement fini et ordonné d'objets de types pouvant ê
 - Un tuple est **non mutable** : il est impossible de changer l'objet associé à un élément du tuple. 
 {% enddefinition %}
 
-Un tuple est un type utilisable par un algorithme. Par exemple, le type de [l'algorithme de la division euclidienne](../../prouver-un-algorithme/#algorithme-division-euclidienne) `algorithme division_euclidienne(a: int, b: int) → []int`{.language-} est bien plus explicite si on l'écrit :
+Un tuple est un type utilisable par un algorithme. Par exemple, le type de [l'algorithme de la division euclidienne](../../1-algorithme/projet/#algorithme-division-euclidienne) `algorithme division_euclidienne(a: int, b: int) → []int`{.language-} est bien plus explicite si on l'écrit :
 
 ```pseudocode
 algorithme division_euclidienne(a: int, b: int) → (int, int)

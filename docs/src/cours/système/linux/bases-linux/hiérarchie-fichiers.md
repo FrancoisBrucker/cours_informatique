@@ -135,7 +135,7 @@ Mais vous retrouverez très souvent les même informations partout :
 - `/var`{.fichier} : fichiers variables (logs, cache…)
 
 {% info %}
-Les `->` signifient que ces dossiers sont [des liens symboliques](../../../bases-système/bases/fichiers-navigation/#liens) vers d'autres dossiers du système. On voit par exemple que sur un système Ubuntu (et tous les systèmes modernes) les executables et le bibliothèques partagées sont toutes placées dans le dossier `/usr`{.fichier}. Ne sont laissés à la racine que des liens permettant la compatibilité.
+Les `->` signifient que ces dossiers sont [des liens symboliques](../../../interagir-avec-système/fichiers-dossiers/#liens) vers d'autres dossiers du système. On voit par exemple que sur un système Ubuntu (et tous les systèmes modernes) les executables et le bibliothèques partagées sont toutes placées dans le dossier `/usr`{.fichier}. Ne sont laissés à la racine que des liens permettant la compatibilité.
 {% endinfo %}
 
 Dans un système de type Unix, (pratiquement) tout est fichier :

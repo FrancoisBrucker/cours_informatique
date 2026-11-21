@@ -23,7 +23,7 @@ Nous allons dans cette partie redéfinir la notion de problème algorithmique vi
 
 ## Décision et algorithmes
 
-Rappelons qu'un algorithme est [dans toute sa généralité](../bases-théoriques/calculabilité/#algorithme-fonction) une fonction qui prend et rend un mot de $\\{0, 1\\}$. On peut lui associer de façon équivalente la fonction $v_f : \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$ ci-dessous :
+Rappelons qu'un algorithme est [dans toute sa généralité](../1-algorithme/bases-théoriques/calculabilité/#algorithme-fonction) une fonction qui prend et rend un mot de $\\{0, 1\\}$. On peut lui associer de façon équivalente la fonction $v_f : \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$ ci-dessous :
 
 $$
 v_f(n, m) = \left\\\{
@@ -141,8 +141,8 @@ La **_complexité d'un langage (décidable)_** est la complexité la plus faible
 
 Comme une machine de Turing prend en entrée un mot de $\\{0, 1\\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :
 
-- $C(\vert E \vert)$ sa [complexité](../complexité-calculs/définitions/#complexité).
-- $S(\vert E \vert)$ sa [complexité spatiale](../complexité-calculs/définitions/#complexité-spatiale),
+- $C(\vert E \vert)$ sa [complexité](../2-complexités/définitions-et-mesure/définitions/#complexité).
+- $S(\vert E \vert)$ sa [complexité spatiale](../2-complexités/définitions-et-mesure/définitions/#complexité-spatiale),
 
 On sait que la complexité spatiale d'une machine de Turing est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :
 

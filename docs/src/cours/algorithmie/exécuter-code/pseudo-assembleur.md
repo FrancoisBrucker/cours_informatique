@@ -113,7 +113,7 @@ Qui sera équivalent à `M[X:X+S] = 1011001` si $S=8$ et à `M[X:X+S] = 00000000
 
 ### Équivalence avec le pseudo-code
 
-On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../bases-théoriques/définition/#paramètres-binaires). Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.
+On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../1-algorithme/bases-théoriques/définition/#paramètres-binaires). Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.
 
 De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :
 

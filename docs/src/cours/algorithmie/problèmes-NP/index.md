@@ -15,7 +15,7 @@ En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing pui
 
 ## Problèmes utilisables en pratique
 
-Un [problème algorithmique](../#problème-algorithmique) implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov) par exemple), on peut commencer par se restreindre aux problèmes décidables :
+Un [problème algorithmique](../#problème-algorithmique) implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../1-algorithme/bases-théoriques/calculabilité/#complexité-Kolmogorov) par exemple), on peut commencer par se restreindre aux problèmes décidables :
 
 ![décidable](./NP-décidable.png)
 
@@ -31,12 +31,12 @@ L'ensemble des problèmes polynomiaux est nommé $P$.
 
 On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :
 
-- Trouver le maximum d'un tableau d'entiers dont [on a démontré que sa complexité était linéaire](../complexité-problème/#recherche),
-- Trier un tableau d'entiers dont [on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$](../problème-tris/complexité-problème) où $n$ est la taille du tableau,
+- Trouver le maximum d'un tableau d'entiers dont [on a démontré que sa complexité était linéaire](../3-problèmes-algorithmiques/tris/complexité-problème/#recherche),
+- Trier un tableau d'entiers dont [on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$](../3-problèmes-algorithmiques/tris/complexité-problème) où $n$ est la taille du tableau,
 
 ![décidable](./NP-P.png)
 
-Le cas du [problème de l'exponentiation](../projet-exponentiation/étude-algorithmique) est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.
+Le cas du [problème de l'exponentiation](../3-problèmes-algorithmiques/exponentiation/étude-algorithmique) est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.
 
 En informatique théorique l'unité d'information est le bit, la taille de l'entrée d'un algorithme est toujours égale au nombre de bits nécessaires pour la stocker. Pour un entier il s'agit donc du logarithme en base 2 de sa valeur et donc le problème de l'exponentiation est bien polynomiale, il est même linéaire en la taille de l'entrée...
 
@@ -112,7 +112,7 @@ algorithme vérification_3_SUM(T: []int, sol: (int, int, int)) → bool:
 
 ### Vérifieur efficace et algorithme de résolution
 
-Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur `stop(E: str, n: int) → bool`{.language-} qui rend vrai si le programme décrit par la chaîne de caractères `E`{.language-} s'arrête au bout de `n`{.language-} itération. Ce vérifieur correspond [au problème de l'arrêt](../bases-théoriques/arrêt-rice/) qui est indécidable.
+Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur `stop(E: str, n: int) → bool`{.language-} qui rend vrai si le programme décrit par la chaîne de caractères `E`{.language-} s'arrête au bout de `n`{.language-} itération. Ce vérifieur correspond [au problème de l'arrêt](../1-algorithme/bases-théoriques/arrêt-rice/) qui est indécidable.
 
 Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :
 

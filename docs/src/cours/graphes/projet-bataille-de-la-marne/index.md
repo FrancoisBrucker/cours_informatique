@@ -59,10 +59,10 @@ Le sommets spéciaux sont :
 
 ## Données
 
-On reprend le graphe des villes de plus de 10000 habitants en France métropolitaine, déjà utilisé lors du [projet : chemin de poids minimum](../projet-chemins-min/).
+On reprend le graphe des villes de plus de 10000 habitants en France métropolitaine, déjà utilisé lors du [projet : chemin de poids minimum](../introduction/chemins-valuation-min/projet-chemins-min/).
 
 {% faire %}
-Reprenez la [partie Données](../projet-chemins-min#données) du [projet : recherche de chemins de poids minimum](../projet-chemins-min/) et stockez :
+Reprenez la [partie Données](../introduction/chemins-valuation-min/projet-chemins-min#données) du [projet : recherche de chemins de poids minimum](../introduction/chemins-valuation-min/projet-chemins-min/) et stockez :
 
 * les données du fichier json dans la variable `villes`{.language-}
 * le graphe produit à partir des données brutes dans la variable `france`{.language-}

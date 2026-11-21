@@ -130,7 +130,7 @@ Créez un programme principal dans un fichier `main_I.py`{.fichier} permettant �
 
 
 {% info %}
-Vous pourrez utiliser [la technique présentée dans l'étude expérimentale du projet exponentiation](../projet-exponentiation/implémentation-code/#temporelle-comment-faire) pour mesurer le temps d'exécution de votre algorithme.
+Vous pourrez utiliser [la technique présentée dans l'étude expérimentale du projet exponentiation](../3-problèmes-algorithmiques/exponentiation/implémentation-code/#temporelle-comment-faire) pour mesurer le temps d'exécution de votre algorithme.
 {% endinfo %}
 
 ## II. Une première borne

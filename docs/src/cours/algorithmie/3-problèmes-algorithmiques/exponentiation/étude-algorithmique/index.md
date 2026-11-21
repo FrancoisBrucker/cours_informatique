@@ -241,7 +241,7 @@ On a donc que : **le nombre d'itérations où compteur est impair est au pire é
 
 #### Nombre de fois où le compteur est pair
 
-A chaque fois où compteur est pair, on le divise par 2. En reprenant [la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique](../../../2-complexités/projet-calcul-max-min-moy/#proposition-log) : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
+A chaque fois où compteur est pair, on le divise par 2. En reprenant [la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique](../../../2-complexités/complexité-algorithmes/#proposition-log) : **le nombre d'itérations où `c`{.language-} est pair est au pire égal à $\log_2(n)$**
 
 #### Nombre de fois où l'on rentre dans la boucle
 

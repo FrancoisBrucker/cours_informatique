@@ -265,7 +265,7 @@ Enfin, pour grouper ces constantes, vous pourrez :
 
 {% faire %}
 
-Créer deux autres constantes (on utilise donc [des tuples](../..//bases-programmation/conteneurs/tuples/)), qui rassemblent les couleurs et les valeurs entre elles :
+Créer deux autres constantes (on utilise donc [des tuples](../../concepts/conteneurs/tuples/)), qui rassemblent les couleurs et les valeurs entre elles :
 
 - `VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)`{.language-}
 - `COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)`{.language-}

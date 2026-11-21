@@ -33,7 +33,7 @@ De façon formelle :
 {% definition %}
 Un **_espace de nommage_** est constitué de deux parties :
 
-- une table de correspondance ([un dictionnaire](../conteneurs/dictionnaires)) associant des noms (les clés) à des objets (les valeurs). 
+- une table de correspondance ([un dictionnaire](../concepts/conteneurs/dictionnaires)) associant des noms (les clés) à des objets (les valeurs). 
 - un lien vers un espace de nommage **_parent_** (qui peut être vide)
 {% enddefinition %}
 

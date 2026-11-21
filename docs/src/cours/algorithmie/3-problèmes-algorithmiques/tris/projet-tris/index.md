@@ -77,18 +77,18 @@ def test_sélection_décroissant():
 
 Nous allons (enfin plutôt, vous allez) afficher les complexités temporelles des différents algorithmes de tri que vous avez codés.
 
-Pour faire cela, on utilisera ce que nous avons fait pendant [le projet exponentiation](../../projet-exponentiation/implémentation-code/). Donc :
+Pour faire cela, on utilisera ce que nous avons fait pendant [le projet exponentiation](../../exponentiation/implémentation-code/). Donc :
 
 {% aller %}
 
-Relisez [le projet exponentiation](../../projet-exponentiation/implémentation-code/) pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
+Relisez [le projet exponentiation](../../exponentiation/implémentation-code/) pour pouvoir rapidement trouver les informations nécessaires pour résoudre les questions suivantes.
 
 {% endaller %}
 
 Maintenant que vous êtes prêt, on peut commencer :
 
 {% faire %}
-Créez un fichier `mesure.py`{.fichier} et recodez-y la fonction `donne_pas` de [la partie mesure du temps](../../projet-exponentiation/implémentation-code/#mesure-temps) (vous n'oublierez pas ses tests).
+Créez un fichier `mesure.py`{.fichier} et recodez-y la fonction `donne_pas` de [la partie mesure du temps](../../exponentiation/implémentation-code/#mesure-temps) (vous n'oublierez pas ses tests).
 {% endfaire %}
 
 Pour étudier les complexités de ces deux tris, on va créer un fichier à part :
@@ -180,7 +180,7 @@ Pour connaître l'espérance de la complexité, il faut calculer la complexité 
 Créez dans le fichier `mesure.py`{.fichier} la fonction `tableau_aléatoire(n)`{.language-} qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/bases-programmation/conteneurs/listes/#listes-classiques) pour créer ces listes.
+Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/apprendre-programmation/concepts/conteneurs/listes/#listes-classiques) pour créer ces listes.
 {% endinfo %}
 
 Nous allons utiliser cette fonction pour mesurer le temps moyen du tri insertion :
@@ -196,7 +196,7 @@ Vérifiez que le rapport `mesures_temps_insertion_décroissant[i] / mesures_temp
 
 ### Graphiques
 
-Nous allons faire comme pour [le projet exponentiation](../../projet-exponentiation/implémentation-code/) et afficher nos mesures de temps. Si vous n'aviez pas fait la partie graphique de ce projet, commencez par lire [la partie consacré à Matplotlib](../../projet-exponentiation/implémentation-code/#Matplotlib) pour installer la bibliothèque et faire son tutoriel.
+Nous allons faire comme pour [le projet exponentiation](../../exponentiation/implémentation-code/) et afficher nos mesures de temps. Si vous n'aviez pas fait la partie graphique de ce projet, commencez par lire [la partie consacré à Matplotlib](../../exponentiation/implémentation-code/#Matplotlib) pour installer la bibliothèque et faire son tutoriel.
 
 {% exercice %}
 En utilisant le code du projet exponentiel, affichez sur un même graphique (l'abscisse est le tableau `taille_tableau`{.language-}) :

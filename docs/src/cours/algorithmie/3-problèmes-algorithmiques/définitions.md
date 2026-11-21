@@ -108,7 +108,7 @@ Nous illustrerons ici cette problématique avec deux exemples qui nous permettro
 Ce qu'on peut déjà dire de notre problème :
 
 - une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un entier
-- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../../2-complexités/projet-calcul-max-min-moy/#max-tableau)) résout le problème
+- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../../2-complexités/complexité-moyenne/#max-tableau)) résout le problème
 
 ```pseudocode
 algorithme maximum(T: []int) → int:
@@ -208,7 +208,7 @@ On va s'intéresser maintenant à un cas particulier de problème recherche, cel
 
 Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `recherche(T)`{.language-}.
 
-On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : [la recherche dichotomique](../../2-complexités/projet-calcul-max-min-moy/#dichotomie). Rappelons cet algorithme :
+On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : [la recherche dichotomique](../../2-complexités/complexité-algorithmes/#dichotomie). Rappelons cet algorithme :
 
 ```pseudocode
 algorithme recherche_dichotomique(T: []int, x: int) → bool:

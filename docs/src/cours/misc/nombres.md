@@ -22,7 +22,7 @@ eleventyComputed:
 
 L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.
 
-Rappelons l'[algorithme d'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/#algo-rapide) qui calcule $x^y$ :
+Rappelons l'[algorithme d'exponentiation indienne](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/étude-algorithmique/#algo-rapide) qui calcule $x^y$ :
 
 ```
 expo(x, y):

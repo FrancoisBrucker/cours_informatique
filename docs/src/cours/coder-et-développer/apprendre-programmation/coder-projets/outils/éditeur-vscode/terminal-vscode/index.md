@@ -21,7 +21,7 @@ Vous pouvez utiliser le terminal pour exécuter vos programmes python.
 Ouvrez ou refaite [le projet d'introduction vscode et python](../python)
 {% endfaire %}
 
-Remarquez que lorsque [vous exécutez le code](../éditeur-vscode/python/#exécuter-programme), vscode exécute une ligne de commande dans le terminal :
+Remarquez que lorsque [vous exécutez le code](../python/#exécuter-programme), vscode exécute une ligne de commande dans le terminal :
 
 ```txt
 <nom du programme python> <fichier à exécuter>
@@ -98,4 +98,4 @@ Exécutez le fichier `main.py`{.language-} via le terminal en respectant la form
 
 ## Palette de commande
 
-Si vous tapez `>terminal` dans [la palette de commande](../éditeur-vscode/prise-en-main#palette-de-commande), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : _Open New External Terminal_ qui ouvre un terminal dans le dossier de votre projet.
+Si vous tapez `>terminal` dans [la palette de commande](../prise-en-main#palette-de-commande), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : _Open New External Terminal_ qui ouvre un terminal dans le dossier de votre projet.

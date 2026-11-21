@@ -153,11 +153,11 @@ Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et Linux p
 
 ### Python avec un terminal normal
 
-Ouvrez un [terminal](../terminal) et tapez `python` sous windows et `python3` sous mac et Linux pour entrer dans un
+Ouvrez un [terminal](../../cours/système/interagir-avec-système/terminal) et tapez `python` sous windows et `python3` sous mac et Linux pour entrer dans un
 [interpréteur python](installation-python/interpréteur-id).
 
 {% attention %}
-Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../terminal-utilisation#modification-permanente-path) en ajoutant le dossier où se trouve python dans le path.
+Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../../cours/système/interagir-avec-système/terminal/utilisation/#modification-permanente-path) en ajoutant le dossier où se trouve python dans le path.
 {% endattention %}
 
 ## Installation de nouveaux modules

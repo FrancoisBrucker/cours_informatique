@@ -17,7 +17,7 @@ Les algorithmes présentés sont de plus pas forcément les meilleurs en terme d
 
 Le problème que nous voulons résoudre est la création d'un réseau ferré. On reprend les notations utilisées lors de la partie consacrée à la programmation dynamique :
 {% aller %}
-[Données du réseau ferré](/cours/algorithmie/programmation-dynamique/principe/#données)
+[Données du réseau ferré](/cours/algorithmie/design-algorithmes/programmation-dynamique/principe/#données)
 {% endaller %}
 
 Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.
@@ -51,7 +51,7 @@ Nous allons dans les exemples qui suivent utiliser le même jeu de données. Nou
 
 ![100 villes](100_points.png)
 {% details "code python" %}
-Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../structure-de-données/dictionnaire) :
+Code python pour générer les 100 villes que l'on stocke dans un [dictionnaire](../../../algorithmie/structure-dictionnaire/dictionnaire) :
 
 ```python
 import random
@@ -128,7 +128,7 @@ Un réseau ferré de villes est **_connexe_** si quelque soient deux villes $x$ 
 
 On reprend la relation $C$ du deuxième exemple de la partie consacrée à la programmation dynamique :
 {% aller %}
-[La relation *chemin*](/cours/algorithmie/programmation-dynamique/principe/#relation-C)
+[La relation *chemin*](/cours/algorithmie/design-algorithmes/programmation-dynamique/principe/#relation-C)
 {% endaller %}
 
 Le fait que la relation *chemin*  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).

@@ -15,7 +15,7 @@ eleventyComputed:
 > TBD  Équilibrage (théorème de Spira, 1971). Toute formule de taille $s$ est équivalente à une formule de profondeur $O(\log s)$. On en déduit que taille de formule polynomiale et profondeur logarithmique sont équivalentes, donc $\mathrm{NC}^1$ est exactement la classe des familles de formules de taille polynomiale.
 > 
 
-[On a vu](../bases-théoriques/calculabilité/#algorithme-fonction) qu'un algorithme était une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$. Nous allons voir celles que l'on peut décrire par [un pseudo-code](../pseudo-code/).
+[On a vu](../1-algorithme/bases-théoriques/calculabilité/#algorithme-fonction) qu'un algorithme était une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$. Nous allons voir celles que l'on peut décrire par [un pseudo-code](../1-algorithme/pseudo-code/).
 
 ## Fonctions booléennes vectorielles
 
@@ -303,10 +303,10 @@ Cette notation nous permettra d'écrire facilement des fonctions :
 
 ## Données booléennes
 
-[On a vu](../bases-théoriques/définition/#paramètres-binaires) qu'un algorithme pouvait ne manipuler que des bits. On peut donc redéfinir la notion de pseudo-code ainsi :
+[On a vu](../1-algorithme/bases-théoriques/définition/#paramètres-binaires) qu'un algorithme pouvait ne manipuler que des bits. On peut donc redéfinir la notion de pseudo-code ainsi :
 
 {% note "**Proposition**" %}
-On peut sans perte de généralité supposer qu'[un pseudo-code](../pseudo-code/briques-de-base/){.language-} ne peut manipuler que :
+On peut sans perte de généralité supposer qu'[un pseudo-code](../1-algorithme/pseudo-code/briques-de-base/){.language-} ne peut manipuler que :
 
 - des objets (uniquement) de type `bit`{.language-}
 - des tableaux de type `[]bit`{.language-}
@@ -688,7 +688,7 @@ Donnez un algorithme linéaire pour calculer la rotation. Il devra être de sign
 
 > TBD simple.
 
-On aurait aussi pu utiliser [l'exercice sur les permutations circulaires](../projet-algorithmes-classiques/chaine-caracteres/#permutation-circulaire) si on avait voulu faire un algorithme in place
+On aurait aussi pu utiliser [l'exercice sur les permutations circulaires](../projet-algorithmes-classiques/#permutation-circulaire) si on avait voulu faire un algorithme in place
 {% enddetails  %}
 
 ### Logiques
@@ -1056,7 +1056,7 @@ Calculer la division euclidienne de deux tableaux de bit se fait en temps quadra
 
 #### pgcd
 
-[On a déjà vu cet algorithme](../projet-algorithmes-classiques/pgcd/#algorithme-pgcd-binaire){.language-}, mais de façon récursive.
+[On a déjà vu cet algorithme](../projet-algorithmes-classiques/#algorithme-pgcd-binaire){.language-}, mais de façon récursive.
 
 {% exercice %}
 Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : `PGCD(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}.
@@ -1119,12 +1119,12 @@ algorithme NAND(x: [bit: n], y: [bit: n]) → [bit: n]
 La différence est que l'on utilise maintenant les opérations que l'on a défini pour les tableaux de bit ! Il n'y a plus d'entier, même dans les variables internes.
 
 {% note "**Proposition**" %}
-Un pseudo-code utilisant uniquement des variables de type bit ou []bit a la même expressivité que le pseudo-code utilisant [les types basiques](../pseudo-code/briques-de-base/#objets-basiquess).
+Un pseudo-code utilisant uniquement des variables de type bit ou []bit a la même expressivité que le pseudo-code utilisant [les types basiques](../1-algorithme/pseudo-code/briques-de-base/#objets-basiquess).
 {% endnote %}
 
 ### Opérations autorisées
 
-On voit que [toutes les opérations autorisées pour un pseudo-code](../pseudo-code/briques-de-base/#objets-basiquess) peuvent être créées uniquement avec des fonctions booléennes vectorielles et des instructions de contrôles (test et boucles). On peut même se restreindre à l'opération logique `NAND`{.language-} :
+On voit que [toutes les opérations autorisées pour un pseudo-code](../1-algorithme/pseudo-code/briques-de-base/#objets-basiquess) peuvent être créées uniquement avec des fonctions booléennes vectorielles et des instructions de contrôles (test et boucles). On peut même se restreindre à l'opération logique `NAND`{.language-} :
 
 {% note "**Proposition**" %}
 Un pseudo-code utilisant uniquement :
@@ -1136,7 +1136,7 @@ Un pseudo-code utilisant uniquement :
 - instruction de contrôle `si x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que si `x = 1`{.language-}
 - répétition : `tant que x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que tant que `x = 1`{.language-}.
 
-A la même expressivité que [le pseudo-code classique](../pseudo-code/).
+A la même expressivité que [le pseudo-code classique](../1-algorithme/pseudo-code/).
 {% endnote %}
 
 > TBD l'opération logique `NAND`{.language-} suffit.

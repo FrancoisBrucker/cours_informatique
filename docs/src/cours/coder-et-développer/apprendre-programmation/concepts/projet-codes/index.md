@@ -682,7 +682,7 @@ La majorité d'entre vous n'avez pas lu la documentation de la méthode `find`{.
 Vous ne perdez pas de temps à comprendre et lire de la documentation. Votre code sera plus clair, plus facile à utiliser et avec moins de bug si vous utilisez les fonctions et méthodes que python met à votre disposition. Apprendre à lire de la documentation vous fera gagner un temps fou !
 
 {% note %}
-Pour lire une documentation, en particulier savoir quels sont les paramètres d'une fonction lisez [cette partie du cours](/cours/coder-et-développer/bases-python/fonctions-méthodes/#paramètres).
+Pour lire une documentation, en particulier savoir quels sont les paramètres d'une fonction lisez [cette partie du cours](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/écrire-code/#paramètres).
 {% endnote %}
 
 Enfin, on utilise les fonctions testées dans le programme principal. On vous demande de coder des fonctions (et de les tester), ce n'est pas pour rien... Utilisez les !

@@ -242,7 +242,7 @@ Lorsque vous faites de l'exportation en html, les mathématiques sont représent
 
 ## Plugin Markdown vscode
 
-Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/) :
+Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec [vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/) :
 
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){.externe} qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).
 - [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint){.externe} qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)

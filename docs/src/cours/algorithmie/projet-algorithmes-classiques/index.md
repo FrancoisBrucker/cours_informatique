@@ -1112,7 +1112,7 @@ Quelle est la complexité de cet algorithme ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Le calcul de sa complexité se fait comme pour [l'exponentiation indienne](../projet-exponentiation/étude-algorithmique/#complexité-rapide) et permet de prouver qu'elle est en $\mathcal{O}(\max(a, b))$. L'intérêt de cette version est qu'elle se fait tres simplement en machine où les entiers sont codés par des tableaux de bits et où la multiplication et la division d'un nombre par 2 revient à décaler sa représentation binaire d'un bit vers la droite ou la gauche respectivement.
+Le calcul de sa complexité se fait comme pour [l'exponentiation indienne](../3-problèmes-algorithmiques/exponentiation/étude-algorithmique/#complexité-rapide) et permet de prouver qu'elle est en $\mathcal{O}(\max(a, b))$. L'intérêt de cette version est qu'elle se fait tres simplement en machine où les entiers sont codés par des tableaux de bits et où la multiplication et la division d'un nombre par 2 revient à décaler sa représentation binaire d'un bit vers la droite ou la gauche respectivement.
 
 Il n'y a pas à calculer le modulo, opération plus complexe.
 

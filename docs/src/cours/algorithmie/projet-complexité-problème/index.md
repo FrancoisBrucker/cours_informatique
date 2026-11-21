@@ -500,7 +500,7 @@ algorithme point_fixe_naïf(a: (int) → int) → int
             j ← j + 1
 ```
 
-Remarquez que le paramètre de l'algorithme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
+Remarquez que le paramètre de l'algorithme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/1-algorithme/pseudo-code/algorithmes-fonctions/#type).
 
 
 {% exercice %}

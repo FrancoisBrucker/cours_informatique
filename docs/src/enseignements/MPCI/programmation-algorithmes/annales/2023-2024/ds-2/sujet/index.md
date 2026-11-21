@@ -100,7 +100,7 @@ L'attribut `cases`{.language-} de la grille est une matrice de `Carré`{.languag
 {% info %}
 
 - [Classe `pyglet.shapes.Rectangle`{.language-}](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle){.externe}
-- [Comment créer une matrice](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#matrices)
+- [Comment créer une matrice](/cours/coder-et-développer/apprendre-programmation/concepts/conteneurs/listes/#matrices)
 
 {% endinfo %}
 

@@ -25,7 +25,7 @@ On suppose sans perte de généralité que nos programmes sont écrits en pseudo
 3. encore moins souvent ce texte, privé des derniers retours à la ligne est un programme écrit en pseudo-code.
 4. et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.
 
-Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code) et ceci est possible avec un [analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale){.externe} de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).
+Soit alors $d(E)$ un décideur tel que si $e$ satisfait la condition 4, alors $d(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../1-algorithme/pseudo-code) et ceci est possible avec un [analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale){.externe} de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert^2$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).
 
 Le décideur $d(e)$ est ainsi décidable avec une complexité $\mathcal{O}(\vert e \vert^2)$.
 
@@ -163,7 +163,7 @@ Il existe des problèmes de décision décidables qui ne sont pas dans $NP$.
 {% endnote %}
 {% details "preuve", "open" %}
 
-La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or [le théorème de la hiérarchie des complexité](../décideur-décision/#hiérarchie-complexité) nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.
+La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or [le théorème de la hiérarchie des complexité](#hiérarchie-complexité) nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.
 
 {% enddetails %}
 

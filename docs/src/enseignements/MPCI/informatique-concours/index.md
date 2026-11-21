@@ -123,7 +123,7 @@ Il ne reste presque plus de C, remplacé par du python dans les derniers QCM.
 Je ne sais pas si c'est utile de réviser pour le peu de questions qu'il y a, mais vous pouvez toujours jeter un œil à la partie C du cours _système et réseau_ :
 
 {% lien %}
-[langage C](/cours/système-et-réseau/langage-c/)
+[langage C](/cours/système/a-refactor/langage-c/)
 {% endlien %}
 
 #### Graphes

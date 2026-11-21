@@ -159,7 +159,7 @@ Remarques :
 - cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
 {% info %}
-Le cas général est un problème [du sac à dos](../../problème-sac-à-dos) (le _"prix"_ de chaque pièce vaut 1 et leur _"volume"_ est leur valeur).
+Le cas général est un problème [du sac à dos](../../../problème-sac-à-dos) (le _"prix"_ de chaque pièce vaut 1 et leur _"volume"_ est leur valeur).
 {% endinfo %}
 
 ## Optimalité d'un algorithme glouton

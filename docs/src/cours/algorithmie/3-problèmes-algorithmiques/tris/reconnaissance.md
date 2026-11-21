@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Définissions [le problème de décision](../../complexité-problème/#définition-problème-décision) associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :
+Définissions [le problème de décision](../complexité-problème/#définition-problème-décision) associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :
 
 {% note "**Problème de décision**" %}
 
@@ -80,7 +80,7 @@ La complexité minimale de l'algorithme `est_trie`{.language-} est $\mathcal{O}(
 
 ### Complexité en moyenne
 
-Comme on a pas d'information relative à la répartition des nombre du tableau et que seul l'ordre interne des valeurs du tableau importe pour vérifier s'il est trié ou non, on utilise [le modèle du tableau aléatoire](../../../2-complexités/projet-calcul-max-min-moy/#définition-modèle-tableau-aléatoire) pour nos calculs de complexité en moyenne.
+Comme on a pas d'information relative à la répartition des nombre du tableau et que seul l'ordre interne des valeurs du tableau importe pour vérifier s'il est trié ou non, on utilise [le modèle du tableau aléatoire](../../../2-complexités/complexité-moyenne/#définition-modèle-tableau-aléatoire) pour nos calculs de complexité en moyenne.
 
 Sous ce modèle pour $T$, la probabilité pour notre algorithme de reconnaissance fasse exactement :
 
@@ -152,7 +152,7 @@ C_{\text{moy}}(n)
 $$
 </div>
 
-Et on utilise [un résultat qu'on a déjà démontré](../../../2-complexités/projet-calcul-max-min-moy/#série-géométrique-limite) pour finir la majoration :
+Et on utilise [un résultat qu'on a déjà démontré](../../../2-complexités/projet-recherche-élément/#série-géométrique-limite) pour finir la majoration :
 
 
 <div>
@@ -167,7 +167,7 @@ C_{\text{moy}}(n)
 $$
 </div>
 
-On a donc la proposition surprenante suivante (mais qu'on a déjà rencontré lors de la [recherche d'un sous-mot](../../../2-complexités/projet-calcul-max-min-moy/#sous-mot)) :
+On a donc la proposition surprenante suivante (mais qu'on a déjà rencontré lors de la [recherche d'un sous-mot](../../../2-complexités/projet-recherche-élément/#sous-mot)) :
 
 {% note "**Proposition**" %}
 La complexité en moyenne du problème de la reconnaissance est en temps constant.

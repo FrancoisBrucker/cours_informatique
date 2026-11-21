@@ -323,7 +323,7 @@ Voyons  comment tout ceci peut se faire de façon sécurisée :
 
 Concaténer des blocs de messages chiffrés. On découpe le message à chiffrer $m$ en blocs $m_i$ de taille $t$ fixe que l'on traite séparément.
 
-Plutôt que d'utiliser un générateur on utilise une [fonction pseudo-aléatoire sécurisée](../nombres-pseudo-aléatoires-cryptographiques/#PRF) (ou une [permutation](../nombres-pseudo-aléatoires-cryptographiques/#PRP)) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.
+Plutôt que d'utiliser un générateur on utilise une [fonction pseudo-aléatoire sécurisée](./nombres-pseudo-aléatoires-cryptographiques/#PRF) (ou une [permutation](./nombres-pseudo-aléatoires-cryptographiques/#PRP)) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.
 
 On va utiliser le schéma suivant pour désigner une PRF (_resp._ une PRP) $F(k, \text{iv})$ :
 

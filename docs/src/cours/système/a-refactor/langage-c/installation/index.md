@@ -95,7 +95,7 @@ Ne pas oublier de cliquer OK partout, sinon ce n'est pas sauvegardé.
 
 {% enddetails %}
 
-On peut vérifier que le nouveau PATH est opérationnel en ouvrant [une nouvelle fenêtre powershell](/cours/coder-et-développer/ordinateur-développement/terminal/#powershell) et en tapant la commande :
+On peut vérifier que le nouveau PATH est opérationnel en ouvrant [une nouvelle fenêtre powershell](/cours/système/interagir-avec-système/terminal/#powershell) et en tapant la commande :
 
 ```shell
 clang -v

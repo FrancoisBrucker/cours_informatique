@@ -107,7 +107,7 @@ En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\s
 Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$
 {% endnote %}
 
-Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../complexités/amortie#compteur-binaire) : créer une fonction qui trouve le successeur d'un tableau.
+Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour [le compteur binaires](../projet-algorithmes-classiques/#compteur-binaire) : créer une fonction qui trouve le successeur d'un tableau.
 
 Pour cela, il nous faut :
 

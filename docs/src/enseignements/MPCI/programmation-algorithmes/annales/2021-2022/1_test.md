@@ -13,5 +13,5 @@ Enfin, faites aussi en sorte que votre code ait 0 défaut de style (le linter ne
 ## Sujet
 
 {% aller %}
-[Polynômes](/cours/coder-et-développer/projet-codes/#polynomes)
+[Polynômes](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/#polynomes)
 {% endaller %}

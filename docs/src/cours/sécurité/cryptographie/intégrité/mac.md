@@ -70,7 +70,7 @@ Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins 
 ### MAC pour message de taille fixe
 
 {% note "**MAC à taille fixe**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/chiffre-flux/#PRF), alors :
+Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRF), alors :
 
 - $S(k, m) = F(k, m)$
 - $V(k, m, t) = (F(k, m) = t)$

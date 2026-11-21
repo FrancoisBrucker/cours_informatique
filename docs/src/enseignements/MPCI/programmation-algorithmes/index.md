@@ -108,7 +108,7 @@ Notions abordées :
 - ce que ne peut pas faire un algorithme
 
 {% aller %}
-[bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques)
+[bases théoriques de l'algorithmie](/cours/algorithmie/1-algorithme/bases-théoriques)
 {% endaller %}
 
 
@@ -135,7 +135,7 @@ Notions abordées :
 - prouver un algorithme
 
 {% aller %}
-1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code)
+1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/1-algorithme/pseudo-code)
 2. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/)
 {% endaller %}
   
@@ -194,15 +194,15 @@ Notions abordées :
 - écrire du code python utilisable et maintenable
 
 {% aller %}
-1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/)
+1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/)
 2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/)
-3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/)
+3. [Modules externes python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/modules-externes-python/)
 {% endaller %}
 
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[Tutorial matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/)
+[Tutorial matplotlib](/cours/coder-et-développer/apprendre-programmation/concepts/tutoriel-matplotlib/)
 {% endaller %}
 
 <!-- TBD
@@ -216,9 +216,9 @@ Faire numpy
 > 2h
 
 {% aller %}
-1. [tester son code](/cours/coder-et-développer/tests-unitaires/)
+1. [tester son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/)
 2. [Développer un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/)
-3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages)
+3. [Projet pourcentages](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages)
 {% endaller %}
 
 <!-- TBD
@@ -231,14 +231,14 @@ Supprimer le linter du cours, mais insister sur black.
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[Petits programmes](/cours/coder-et-développer/projet-codes/) et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/)
+[Petits programmes](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/) et [on leur ajoute des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/)
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
 1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/)
-2. [déboguer son code](/cours/coder-et-développer/débogueur/)
+2. [déboguer son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/)
 {% endaller %}
 
 ### Semaine 3
@@ -308,7 +308,7 @@ Notions abordées :
 
 {% aller %}
 
-[Complexité d'un problème](/cours/algorithmie/complexité-problème/)
+[Complexité d'un problème](/cours/algorithmie/3-problèmes-algorithmiques/tris/complexité-problème/)
 
 {% endaller %}
 
@@ -342,14 +342,14 @@ Pour aller plus loin :
 
 {% aller %}
 
-[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/)
+[Problème de l'exponentiation](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/étude-algorithmique/)
 
 {% endaller %}
 
 Si on a le temps, on commencera le DM :
 
 {% faire %}
-DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/)
+DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/implémentation-code/)
 
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
@@ -380,7 +380,7 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% aller %}
 
-1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/)
+1. [Complexité en moyenne](/cours/algorithmie/2-complexités/complexité-moyenne/)
 2. [Problème du tri](/cours/algorithmie/problème-tris/)
 
 {% endaller %}
@@ -461,8 +461,8 @@ DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal al
 
 {% aller %}
 
-1. [Tout est objet en python](/cours/coder-et-développer/programmation-objet/introduction/)
-2. [Créer ses classes et leurs objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/)
+1. [Tout est objet en python](/cours/coder-et-développer/apprendre-programmation/programmation-objet/introduction/)
+2. [Créer ses classes et leurs objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/)
 3. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/)
 
 {% endaller %}
@@ -483,8 +483,8 @@ Au programme :
 
 {% aller %}
 
-- [Des dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/)
-- [Jeu de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/)
+- [Des dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés/)
+- [Jeu de cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/)
 
 {% endaller %}
 {% note %}
@@ -516,8 +516,8 @@ Test de 15min **sur papier** en début de cours sur les classes et les objets.
 Composer des objets entre-eux :
 
 {% aller %}
-1. [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/)
-2. [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation)
+1. [Améliorer ses objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/)
+2. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation)
 
 {% endaller %}
 
@@ -528,7 +528,7 @@ Composer des objets entre-eux :
 
 {% aller %}
 
-1. [Améliorer les dés](projet-objets-dés-amélioration)
+1. [Améliorer les dés](../../../cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-amélioration)
 2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés)
 {% endaller %}
 {% note %}
@@ -541,8 +541,8 @@ Composer des objets entre-eux :
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-amélioration/)
-2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes)
+1. [Améliorer les cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/)
+2. [Projet d'agrégation de cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes)
 
 {% endaller %}
 {% note %}
@@ -568,7 +568,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Héritage](/cours/coder-et-développer/programmation-objet/héritage)
+[Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage)
 
 {% endaller %}
 
@@ -579,7 +579,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Projet héritage](/cours/coder-et-développer/programmation-objet/projet-héritage)
+[Projet héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-héritage)
 
 {% endaller %}
 {% note %}
@@ -599,7 +599,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% aller %}
 
-[Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale)
+[Bataille Navale](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-bataille-navale)
 
 {% endaller %}
 {% note %}
@@ -727,9 +727,9 @@ Emportez votre ordinateur
 
 {% aller %}
 
-1. [gestion des dépendances](/cours/coder-et-développer/gestion-dépendances/)
+1. [gestion des dépendances](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/)
 2. [gestion du code source](/cours/gestion-des-sources/)
-   1. [Dépôt](/cours/gestion-des-sources/dépôt/besoins-dépôt/)
+   1. [Dépôt](/cours/gestion-des-sources/besoins-dépôt/besoins-dépôt/)
    2. [Gestion de l'évolution de son code source](/cours/gestion-des-sources/évolution-code/besoins-gestion-sources/)
    3. [Partager du code source](/cours/gestion-des-sources/partage/besoins-origin/)
    4. [Bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/) et [outils](/cours/gestion-des-sources/outils)
@@ -741,7 +741,7 @@ Emportez votre ordinateur
 
 {% aller %}
 
-1. Environnement virtuel. Vous allez utiliser [le TP de programmation évènementiel](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/) dont le code est là : [`Arkanoid.zip`{.fichier}](./Arkanoid.zip){.fichier}.
+1. Environnement virtuel. Vous allez utiliser [le TP de programmation évènementiel](/cours/coder-et-développer/apprendre-programmation/programmation-évènementielle/projet-arkanoid/) dont le code est là : [`Arkanoid.zip`{.fichier}](./Arkanoid.zip){.fichier}.
    1. dézippez le projet et créez-vous un environnement virtuel dans le dossier projet
    2. ajoutez les modules `pyglet` et `pytest` à cet environnement en utilisant `pip` basé sur l'interpréteur de votre environnement virtuel
    3. vérifiez que les tests passent et que le code fonctionne avec votre environnement
@@ -749,7 +749,7 @@ Emportez votre ordinateur
       - `requirements.txt`{.fichier} qui explicite les dépendances
       - `readme.md`{.fichier} qui explicite comment exécuter le programme et le lien vers le cours.
 2. Dépôt :
-   1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/) 
+   1. [créez vous un compte github](/cours/gestion-des-sources/besoins-dépôt/github-compte/) 
    2. projet mettez le projet en ligne sur github (ne mettez pas l'environnement virtuel ni le dossier `__pycache__`{.fichier} !)
 1. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/)
 2. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/)
@@ -761,7 +761,7 @@ Si on a le temps et puisque c'est la dernière séance, suivez le cours suivant 
 
 {% aller %}
 
-[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/)
+[Programmation évènementielle](/cours/coder-et-développer/apprendre-programmation/programmation-évènementielle/)
 
 {% endaller %}
 

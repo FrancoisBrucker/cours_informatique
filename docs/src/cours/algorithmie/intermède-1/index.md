@@ -30,7 +30,7 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 ## Algorithmes et problèmes classiques
 
 {% aller %}
-[Algorithmes classiques](./projet-algorithmes-classiques)
+[Algorithmes classiques](../projet-algorithmes-classiques)
 {% endaller %}
 > TBD ici enveloppe convexe
 

@@ -42,7 +42,7 @@ Les graphes bipartis sont une famille héréditaire, il est en effet clair que :
 
 {% note "**Proposition**" %}
 
-Tous [sous-graphe](../structure/#definition-sous-graphe) d'un graphe biparti est biparti.
+Tous [sous-graphe](../introduction/structure/#definition-sous-graphe) d'un graphe biparti est biparti.
 
 {% endnote  %}
 
@@ -135,7 +135,7 @@ Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](ht
 On retrouve les graphes bi-partis complets dans plein de champs de la théorie des graphes car ils ont plein de chouettes propriétés. Par exemple :
 
 {% exercice %}
-Montrez que si un graphe biparti est [hamiltonien](../parcours-hamiltoniens/#definition-graphe-hamiltonien), alors la taille des 2 stables est identique.
+Montrez que si un graphe biparti est [hamiltonien](../introduction/graphes-hamiltoniens/#definition-graphe-hamiltonien), alors la taille des 2 stables est identique.
 {% endexercice %}
 {% details "solution" %}
 
@@ -181,9 +181,9 @@ Terminons par un petit exercice pour appliquer tout ça :
 {% exercice %}
 Trouver toutes les valeurs entières de a, b, c telles que $0 < a ≤ b ≤ c$ et que le graphe 3-parti complet $K_{a,b,c}$ possède :
 
-- [un cycle eulérien](../parcours-eulériens/#definition-cycle-eulerien).
+- [un cycle eulérien](../introduction/graphes-eulériens/#definition-cycle-eulerien).
 
-- [un chemin eulérien](../parcours-eulériens/#definition-chemin-eulerien)
+- [un chemin eulérien](../introduction/graphes-eulériens/#definition-chemin-eulerien)
 {% endexercice %}
 {% details "solution" %}
 
@@ -355,7 +355,7 @@ Nous allons montrer des encadrements sur les graphe possédant, ou pas, des sous
 Le grand retour de la méthode probabiliste pour résoudre un problème à priori très compliqué.
 
 {% note "**Proposition**" %}
-Dans tout graphe $G=(V, E)$ à $m$ arêtes, il existe un [sous-graphe](../structure/#definition-sous-graphe) bi-parti $G'$ à au moins $\frac{m}{2}$ arêtes.
+Dans tout graphe $G=(V, E)$ à $m$ arêtes, il existe un [sous-graphe](../introduction/structure/#definition-sous-graphe) bi-parti $G'$ à au moins $\frac{m}{2}$ arêtes.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -412,7 +412,7 @@ Le problème MAX-CUT est NP-complet.
 
 {% endnote %}
 {% details "preuve", "open" %}
-On montre que [STABLE](../cliques-stables/#problème-stable) ≤ MAX-cut
+On montre que [STABLE](../introduction/cliques-stables/#problème-stable) ≤ MAX-cut
 
 Soit $(G, K)$ une instance du problème stable. On construit une instance de MAX-CUT en construisant le graphe $G'=(V', E')$ tel que :
 

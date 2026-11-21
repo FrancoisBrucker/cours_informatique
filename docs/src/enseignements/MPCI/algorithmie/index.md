@@ -103,7 +103,7 @@ Notions abordées :
 - ce que ne peut pas faire un algorithme
 
 {% aller %}
-[bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques)
+[bases théoriques de l'algorithmie](/cours/algorithmie/1-algorithme/bases-théoriques)
 {% endaller %}
 
 
@@ -130,7 +130,7 @@ Notions abordées :
 - prouver un algorithme
 
 {% aller %}
-1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code)
+1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/1-algorithme/pseudo-code)
 2. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/)
 {% endaller %}
   
@@ -166,10 +166,10 @@ prog sur l'année en 4 séquences alternée :
 
 {% prerequis %}
 
-1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/)
+1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/)
 2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/)
-3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/)
-4. [tester son code](/cours/coder-et-développer/tests-unitaires/)
+3. [Modules externes python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/modules-externes-python/)
+4. [tester son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/)
 5. [Développer un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/)
 
 {% endprerequis %}
@@ -237,7 +237,7 @@ Notions abordées :
 
 {% aller %}
 
-[Complexité d'un problème](/cours/algorithmie/complexité-problème/)
+[Complexité d'un problème](/cours/algorithmie/3-problèmes-algorithmiques/tris/complexité-problème/)
 
 {% endaller %}
 
@@ -271,14 +271,14 @@ Pour aller plus loin :
 
 {% aller %}
 
-[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/)
+[Problème de l'exponentiation](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/étude-algorithmique/)
 
 {% endaller %}
 
 Si on a le temps, on commencera le DM :
 
 {% faire %}
-DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/)
+DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/3-problèmes-algorithmiques/exponentiation/implémentation-code/)
 
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
@@ -309,7 +309,7 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% aller %}
 
-1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/)
+1. [Complexité en moyenne](/cours/algorithmie/2-complexités/complexité-moyenne/)
 2. [Problème du tri](/cours/algorithmie/problème-tris/)
 
 {% endaller %}

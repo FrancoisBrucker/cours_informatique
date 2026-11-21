@@ -15,7 +15,7 @@ Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un p
 - construire les différentes **façons d'interagir** avec avec ce type (en utilisant uniquement les moyens donnés par le processeur, c'est à dire la manipulation d'entiers)
 
 {% note %}
-Dans le [formalisme objet](../../code/programmation-objet) :
+Dans le [formalisme objet](../../../coder-et-développer/apprendre-programmation/programmation-objet) :
 
 - la structure de données est l'ensemble des attributs
 - les façons d'agir est les méthodes
@@ -30,8 +30,8 @@ Pour aider le développeur ou l'algorithmicien dans sa tâche, la plupart des la
 {% note %}
 On considère que l'on a à notre disposition :
 
-- [les 6 types basiques du pseudo-code](../pseudo-code#objets-basiques) : vide, booléens, entiers, réels, complexes, caractères
-- les conteneurs de la forme [chaînes de caractères](../structure-de-données/chaîne-de-caractères), [tableaux](../structure-de-données/tableau), [listes](../structure-de-données/liste) et [dictionnaires](../structure-de-données/dictionnaire)
+- [les 6 types basiques du pseudo-code](../../../algorithmie/1-algorithme/pseudo-code#objets-basiques) : vide, booléens, entiers, réels, complexes, caractères
+- les conteneurs de la forme [chaînes de caractères](../structure-de-données/chaîne-de-caractères), [tableaux](./tableau), [listes](../structure-de-données/liste) et [dictionnaires](../../../algorithmie/structure-dictionnaire/dictionnaire)
 
 {% endnote %}
 
@@ -39,7 +39,7 @@ On considère que l'on a à notre disposition :
 
 Une structure est composée d'une suite finie de champs composés chacun d'un type connu.
 
-Créer une structure et les méthodes permettant de la manipuler est donc identique à la création d'objet en [programmation objet](../../code/programmation-objet) mais vu sous l'angle algorithmique. On s'intéresse ici à créer les structures les plus efficaces possibles d'un point de vue complexité.
+Créer une structure et les méthodes permettant de la manipuler est donc identique à la création d'objet en [programmation objet](../../../coder-et-développer/apprendre-programmation/programmation-objet) mais vu sous l'angle algorithmique. On s'intéresse ici à créer les structures les plus efficaces possibles d'un point de vue complexité.
 
 Une structure de donnée peut être à visée très générale comme les listes ou les dictionnaires (on les considère d'ailleurs utilisable par défaut dans tout langage de programmation) ou uniquement créé pour résoudre un problème spécifique rapidement.
 
@@ -96,7 +96,7 @@ Pour arriver à facilement connaître les complexité ci-dessus, on procède ré
 ### Non ordonnés
 
 {% aller %}
-[dictionnaires](dictionnaire)
+[dictionnaires](../../../algorithmie/structure-dictionnaire/dictionnaire)
 {% endaller %}
 {% aller %}
 [ensembles](){.interne}

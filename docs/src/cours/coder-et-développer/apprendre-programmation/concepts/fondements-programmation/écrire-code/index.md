@@ -720,7 +720,7 @@ En incrémentant `x`{.language-} :
 x = x + 1
 ```
 
-On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du [ramasse-miettes](../variables/#ramasse-miettes) :
+On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du [ramasse-miettes](#ramasse-miettes) :
 
 ![nouvel objet](./nouvel-objet.png)
 

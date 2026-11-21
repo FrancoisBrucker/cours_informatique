@@ -112,7 +112,7 @@ Tout programme qui peut exécuter un fichier texte passé en paramètre fonction
 Une autre alternative courante est d'utiliser des commandes permettant de traiter des données comme sed ou encore awk  :
 
 {% aller %}
-[sed-awk](sed-awk)
+[sed-awk](../sed-awk)
 {% endaller %}
 
 ## Bibliographie

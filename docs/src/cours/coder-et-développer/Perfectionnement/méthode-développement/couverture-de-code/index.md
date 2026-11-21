@@ -276,6 +276,6 @@ Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python -m
 La commande `python -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language){.externe} avec la commande : `python -m pytest --cov=.  --cov-report xml:cov.xml`
 
 {% info %}
-Si le petit _watch_ n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../prise-en-main/#palette-de-commande)
+Si le petit _watch_ n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/#palette-de-commande)
 _Coverage Gutters: Display Coverage_.
 {% endinfo %}

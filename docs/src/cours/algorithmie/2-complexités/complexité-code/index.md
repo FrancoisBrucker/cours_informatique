@@ -383,7 +383,7 @@ Gardez-vous un fichier contenant les fonctions nécessaires à la mesure du temp
 
 ## Complexité maximum et minimum
 
-Le but est de pouvoir mesurer la complexité maximale, minimale et moyenne d'un algorithme codé. [La complexité dépendant d'un paramètre](../définitions-mesure-O/définitions/#complexité) il faudra le faire varier pour déterminer la courbe de complexité (pour notre exemple de l'algorithme recherche, le paramètre était la longueur du tableau). 
+Le but est de pouvoir mesurer la complexité maximale, minimale et moyenne d'un algorithme codé. [La complexité dépendant d'un paramètre](../définitions-et-mesure/définitions/#complexité) il faudra le faire varier pour déterminer la courbe de complexité (pour notre exemple de l'algorithme recherche, le paramètre était la longueur du tableau). 
 
 Pour que tout soit homogène, on crée alors deux fonctions dédiées prenant uniquement ce paramètre plutôt que les différents paramètres initiaux de l'algorithme :
 

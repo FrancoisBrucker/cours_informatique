@@ -51,7 +51,7 @@ On vérifie que l'on a les bases nécessaire en python :
 Vous serez amené à installer tout un tas de modules pour python. Donc ayez intégré comment on manipule un interpréteur :
 
 - [Installer un interpréteur python](/cours/coder-et-développer/installer-python/)
-- [travailler avec un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/)
+- [travailler avec un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/)
 
 {% endaller %}
 
@@ -94,7 +94,7 @@ Visualisation de cartes.
 
 Commencez par télécharger les différents notebooks puis on va créer un environnement virtuel.
 
-1. [création de l'environnement](/cours/coder-et-développer/environnements-virtuels/)
+1. [création de l'environnement](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/)
 2. installation des modules classiques
 3. installation des modules de data-viz
 

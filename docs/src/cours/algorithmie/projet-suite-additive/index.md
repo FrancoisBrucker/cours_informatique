@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Les suite multiplicatives](../étude-algorithmique/#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
+[Les suite multiplicatives](../3-problèmes-algorithmiques/exponentiation/étude-algorithmique/#suite-multiplicative) vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les _suite additives_ :
 
 {% definition %}
 Une **_suite additive pour $n$_** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
@@ -146,7 +146,7 @@ Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit 
 ### Suite additive naïve
 
 {% faire %}
-Adaptez [la suite multiplicative naïve](../projet-exponentiation/étude-algorithmique/#multiplicatif-naif) pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative naïve](../3-problèmes-algorithmiques/exponentiation/étude-algorithmique/#multiplicatif-naif) pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 {% endfaire %}
@@ -154,7 +154,7 @@ Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 ### Suite additive indienne
 
 {% faire %}
-Adaptez [la suite multiplicative indienne](../projet-exponentiation/étude-algorithmique/#multiplicatif-indienne) pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative indienne](../3-problèmes-algorithmiques/exponentiation/étude-algorithmique/#multiplicatif-indienne) pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=15 on obtienne : $[1, 2, 4, 8, 3, 7, 15]$
 {% endfaire %}

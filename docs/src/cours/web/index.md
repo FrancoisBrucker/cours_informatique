@@ -31,7 +31,7 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 Différence entre exécuter un fichier soit et sur un serveur.
 
 {% aller %}
-[Bases de réseau](/cours/système-et-réseau/bases-réseau/)
+[Bases de réseau](/cours/réseau/bases-réseau/)
 {% endaller %}
 
 ## <span id="trinité"><span>  Trinité html/css/js
@@ -115,7 +115,7 @@ Modifier votre page animal préféré avec bootstrap
 Avant de vous langer dans la création de serveurs web, commençons par dégrossir un peut la notion de réseau et de protocole.
 
 {% aller %}
-Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/système-et-réseau/réseau/)
+Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/réseau/réseau/)
 {% endaller %}
 
 {% faire %}

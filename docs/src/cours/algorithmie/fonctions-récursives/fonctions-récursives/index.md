@@ -4,7 +4,7 @@ title:  "Fonctions récursives"
 
 eleventyNavigation:
   prerequis:
-    - "../../bases-théoriques/calculabilité/récursive-primitive/"
+    - "../récursive-primitive/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -22,7 +22,7 @@ Nous allons montrer dans cette partie un modèle équivalent au pseudo-code nomm
 
 {% endlien %}
 
-On va vu que [les fonctions primitives récursives](../../bases-théoriques/calculabilité/récursive-primitive/) sont calculables mais qu'il existe des fonctions calculables non primitives récursives (comme [la fonction d'Ackermann](../../bases-théoriques/calculabilité/ackermann) par exemple).
+On va vu que [les fonctions primitives récursives](../récursive-primitive/) sont calculables mais qu'il existe des fonctions calculables non primitives récursives (comme [la fonction d'Ackermann](../../ackermann) par exemple).
 
 Un pseudo-code est composé d'une suite de blocs d'instructions à executer séquentiellement. Chaque bloc peut être vue comme des fonctions. Si par exemple deux blocs consécutifs utilisent et modifient les variables `x1` à `xn`, on peut écrire :
 
@@ -211,7 +211,7 @@ x = f(x1, ..., xn)
 g(x)
 ```
 
-Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../../bases-théoriques/calculabilité/récursive-primitive/#composition). En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
+Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../récursive-primitive/#composition). En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
 
 {% retenir %}
 La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f\circ g(x)$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.

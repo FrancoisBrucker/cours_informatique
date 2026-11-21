@@ -35,7 +35,7 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 ## Sujet
 
 {% aller %}
-[Le compte est bon](/cours/coder-et-développer/projet-codes/#compte-caractere)
+[Le compte est bon](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/#compte-caractere)
 {% endaller %}
 
 ## Barème

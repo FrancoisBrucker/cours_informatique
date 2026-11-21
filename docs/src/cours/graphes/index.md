@@ -216,7 +216,7 @@ Projets chemin (mettre de l'ordre)
 
 1. [Projet graphe géographique](projet-graphe-géographique)
 2. [Projet chemins avec hubs](projet-chemins-hub)
-3. [Projet chemin le plus long](chemin-le-plus-long)
+3. [Projet chemin le plus long](./introduction/chemin-le-plus-long)
 
 {% endaller %}
 

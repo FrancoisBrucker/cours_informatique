@@ -5,7 +5,7 @@ title: Cryptographie
 
 eleventyNavigation:
   prerequis:
-    - "/cours/Misc/probabilités/"
+    - "/cours/misc/probabilités/"
 
 eleventyComputed:
   eleventyNavigation:

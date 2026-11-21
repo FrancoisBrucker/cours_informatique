@@ -35,7 +35,7 @@ $$
 </div>
 
 {% info %}
-[On a déjà vu](../../exercices-calculs-compexités/#triangle-de-pascal) l'approche récursive. Passons à l'approche itérative. 
+[On a déjà vu](../../2-complexités/exercices-non-corrigés/#triangle-de-pascal) l'approche récursive. Passons à l'approche itérative. 
 {% endinfo %}
 
 ### Calcul de la matrice
@@ -133,7 +133,7 @@ algorithme binom(n: int, k:int) → int:
 
 La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction `binom_matrice(n: int) → [][]int`{.language-}.
 
-En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/complexité-algorithmes/#règle-croissance), cette complexité est en $\mathcal{O}(n^2)$.
+En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../2-complexités/complexité-algorithmes/#règle-croissance), cette complexité est en $\mathcal{O}(n^2)$.
 
 On en déduit que la complexité de l'algorithme `binom`{.language-} est en $\mathcal{O}(nk)$. Comme il faut de plus stocker toute la matrice triangulaire inférieure, sa complexité spatiale est en $\mathcal{O}(nk)$
 

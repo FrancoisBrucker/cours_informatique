@@ -156,7 +156,7 @@ Les matrices constituent le premier type composé que l'on peut utiliser sans d�
 ### Création de structures de données
 
 {% prerequis %}
-[Programmation objet](/cours/coder-et-développer/programmation-objet/)
+[Programmation objet](/cours/coder-et-développer/apprendre-programmation/programmation-objet/)
 {% endprerequis %}
 
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
@@ -187,7 +187,7 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 
 ### Listes
 
-La [structure de tableau](pseudo-code/briques-de-base/#tableaux) est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
+La [structure de tableau](./1-algorithme/pseudo-code/briques-de-base/#tableaux) est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
 
 La liste est un compromis très efficace pour réaliser les deux opérations au prix d'un coût négligeable en complexité.
 
@@ -314,7 +314,7 @@ Mais cette rapidité interne vient avec une complexité supplémentaire : la né
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
-On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité) (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance) le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.
+On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./1-algorithme/bases-théoriques/calculabilité) (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./2-complexités/définitions-et-mesure/importance) le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.
 
 ### Réductions : passer d'un problème à un autre
 

@@ -83,7 +83,7 @@ $K_{2n-1}$ possède $m = (2n-1)\cdot (n-1)$ arêtes. Comme tout sommet est de de
 
 {% enddetails %}
 
-Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui permet de borner notre problème :
+Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui permet de borner notre problème :
 
 {% note "**Proposition**" %}
 Pour tout graphe $G$ on a :
@@ -95,7 +95,7 @@ $$
 </div>
 {% endnote %}
 {% info %}
-Pour un graphe $G$, $\Delta(G)$ est [la valeur du plus grand degré](../../structure/#degré-max-min-graphe).
+Pour un graphe $G$, $\Delta(G)$ est [la valeur du plus grand degré](../../introduction/structure/#degré-max-min-graphe).
 {% endinfo %}
 
 {% details "preuve", "open" %}

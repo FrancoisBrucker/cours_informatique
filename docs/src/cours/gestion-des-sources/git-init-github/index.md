@@ -4,7 +4,7 @@ title: Installation et configuration de Git
 
 eleventyNavigation:
   prerequis:
-    - "/cours/système-et-réseau/bases-système/terminal/"
+    - "/cours/système/interagir-avec-système/terminal/"
 
 eleventyComputed:
   eleventyNavigation:

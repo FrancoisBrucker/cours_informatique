@@ -5,7 +5,7 @@ title: Environnements virtuels
 
 prerequis:
     - "../ordinateur-développement/fichiers-navigation/"
-    - "../ordinateur-développement/terminal/"
+    - "../../../../système/interagir-avec-système/terminal/"
 
 eleventyComputed:
   eleventyNavigation:

@@ -148,7 +148,7 @@ Dans le fichier `main_temps.py`{.fichier}, procédez comme dans le cours pour af
 Je trouve `N_max = 6553`{.language-} sur mon ordinateur.
 {% endinfo %}
 
-La courbe devrait être linéaire alors qu'elle ne l'est pas. [On a déjà vu ce phénomène](../../../2-complexités/projet-code/#nombres-gigantesques), corrigeons le :
+La courbe devrait être linéaire alors qu'elle ne l'est pas. [On a déjà vu ce phénomène](../../../2-complexités/projet-complexité-code/#nombres-gigantesques), corrigeons le :
 
 {% faire %}
 
