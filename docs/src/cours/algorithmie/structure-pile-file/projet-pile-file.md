@@ -199,7 +199,7 @@ algorithme parenthèse(C: str) → bool:
 ## Calcul d'une expression avec deux piles
 
 {% lien %}
-<https://youtu.be/2vBVvQTTdXg?t=549&si=Nj_co0n80r08YD_z>{.externe}
+<https://youtu.be/2vBVvQTTdXg?t=549&si=Nj_co0n80r08YD_z>
 {% endlien %}
 
 

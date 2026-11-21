@@ -143,13 +143,13 @@ On en conclut que pour tout $i$ $Y_i(k)$ est indiscernable de $Y_{i+1}(k)$, en p
 
 {% enddetails %}
 {% lien %}
-[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf){.externe}
+[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf)
 {% endlien %}
 
 ## Existence
 
 {% lien %}
-[Existence de générateur de nombres pseudo aléatoire cryptographique](https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators){.externe}
+[Existence de générateur de nombres pseudo aléatoire cryptographique](https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators)
 {% endlien %}
 
 L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.
@@ -286,7 +286,7 @@ $F$ est dite être une **fonction pseudo-aléatoire sécurisée** (_secure pseud
 On peut utiliser une fonction pseudo-aléatoire sécurisée pour modéliser un générateur de nombres pseudo-aléatoire sécurisé :
 
 {% note "**Proposition**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \\{0, 1\\}^t$ ($\text{iv}$ est appelé [vecteur d'initialisation](https://en.wikipedia.org/wiki/Initialization_vector){.externe}).
+Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \\{0, 1\\}^t$ ($\text{iv}$ est appelé [vecteur d'initialisation](https://en.wikipedia.org/wiki/Initialization_vector)).
 {% endnote %}
 
 {% details "preuve", "open" %}
@@ -383,10 +383,10 @@ Nous allons voir trois implémentations différentes :
 
 ### Chacha20
 
-> TBD <https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/>{.externe} <https://www.youtube.com/watch?v=G0O0VHVtNuM>{.externe}
+> TBD <https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/> <https://www.youtube.com/watch?v=G0O0VHVtNuM>
 
 {% lien %}
-[chacha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant){.externe}
+[chacha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
 {% endlien %}
 
 Nous étudierons plus tard ce protocole pour des tailles de messages variables. Mais juste pour terminer cette partie c'est un PRP très simple à taille fixe 256b.
@@ -397,14 +397,14 @@ Il implémente de nombreuses chose qu'on a vu dans ce cours :
 - il est de complexité linéaire (fonctionne sur des mots de 32b)
 - robuste à de nombreuses attaques :
   - time et side channel attack : toutes les opérations sont de même complexité
-  - opérations non linéaires pour éviter [la cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire){.externe}
+  - opérations non linéaires pour éviter [la cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire)
   - vol de l'état interne
 
 Nous allons uniquement survoler son principe, nous y reviendrons en détail lorsque nous étudierons son implémentation dns un chiffrement réel et complet.
 
 #### Principe
 
-Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était [salsa20](https://en.wikipedia.org/wiki/Salsa20){.externe}, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \\;\\|\\; \text{IV}) = Q(K \\;\\|\\; k \\;\\|\\; \text{IV})$.
+Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était [salsa20](https://en.wikipedia.org/wiki/Salsa20), un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \\;\\|\\; \text{IV}) = Q(K \\;\\|\\; k \\;\\|\\; \text{IV})$.
 
 Le chiffre final est obtenu en additionnant la permutation à l'entrée :
 <div>
@@ -422,7 +422,7 @@ Où :
 - $Q$ est une permutation de $\\{0, 1\\}^{512}$.
 
 {% lien %}
-[exemple de modifications](https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2){.externe}
+[exemple de modifications](https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2)
 {% endlien %}
 
 #### opérations ARX
@@ -436,7 +436,7 @@ Les opérations utilisés pour la permutation sont de type ARX sur 32b :
 Ces opérations sont suffisantes pour engendrer toutes les permutations et l'organisation de la permutation permet un parallélisme accrus.
 
 {% lien %}
-Suffisant pour faire toutes les rotations <https://eprint.iacr.org/2022/618.pdf>{.externe}
+Suffisant pour faire toutes les rotations <https://eprint.iacr.org/2022/618.pdf>
 {% endlien %}
 
 #### Robustesse
@@ -448,7 +448,7 @@ Suffisant pour faire toutes les rotations <https://eprint.iacr.org/2022/618.pdf>
 ### Blum Blum Shub
 
 {% lien %}
-[Blum Blum Shub](https://fr.wikipedia.org/wiki/Blum_Blum_Shub){.externe}
+[Blum Blum Shub](https://fr.wikipedia.org/wiki/Blum_Blum_Shub)
 {% endlien %}
 
 Le générateur est basé sur la récursion suivante :
@@ -465,21 +465,21 @@ $$
 Avec :
 
 - $M = p \cdot q$ et $p$ et $q$ premiers tels que :
-  - $p \bmod M = q \bmod M = 3\bmod 4$ (un liste [ici](http://villemin.gerard.free.fr/aNombre/TYPDIVIS/Blum.htm){.externe})
-  - $2p + 1$ et $2q +1$ doivent aussi être premiers ([nombres premiers de Sophie Germain](https://fr.wikipedia.org/wiki/Nombre_premier_de_Sophie_Germain){.externe}), [safe prime](https://en.wikipedia.org/wiki/Safe_and_Sophie_Germain_primes#Cryptography){.externe}
+  - $p \bmod M = q \bmod M = 3\bmod 4$ (un liste [ici](http://villemin.gerard.free.fr/aNombre/TYPDIVIS/Blum.htm))
+  - $2p + 1$ et $2q +1$ doivent aussi être premiers ([nombres premiers de Sophie Germain](https://fr.wikipedia.org/wiki/Nombre_premier_de_Sophie_Germain)), [safe prime](https://en.wikipedia.org/wiki/Safe_and_Sophie_Germain_primes#Cryptography)
 - la seed $x_0 > 1$ premier avec $M$
 - l'état interne du générateur est la suite $(x_i)_{i\geq 1}$ qui es secrète
 - la sortie du générateur est la suite $(g_i)_{i\geq 1}$
 
 Si la factorisation est une fonction à sens unique, alors l'algorithme Blum Blum Shub est un CPRNG. Il n'est pas utilisé en pratique car lent, mais il est marrant.
 
-Sa période vaut $\lambda(M)$ où $\lambda$ est la [fonction de Carmichael](https://en.wikipedia.org/wiki/Carmichael_function){.externe}.
+Sa période vaut $\lambda(M)$ où $\lambda$ est la [fonction de Carmichael](https://en.wikipedia.org/wiki/Carmichael_function).
 
 {% lien %}
 
-- <https://iczelia.net/posts/bbs-survey/>{.externe}
-- [Preuves](https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf){.externe}
-- <https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub>{.externe}
+- <https://iczelia.net/posts/bbs-survey/>
+- [Preuves](https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf)
+- <https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub>
 
 {% endlien %}
 
@@ -501,7 +501,7 @@ De toute façon il est lent et son intérêt est plutôt théorique.
 
 ### Cryptographie en python
 
-> TBD module [secrets](https://docs.python.org/fr/3/library/secrets.html#module-secrets){.externe}
+> TBD module [secrets](https://docs.python.org/fr/3/library/secrets.html#module-secrets)
 
 
 <!-- ## Attaques
@@ -512,7 +512,7 @@ De toute façon il est lent et son intérêt est plutôt théorique.
 
 ### Utiliser des PRNG à la place de CPRNG
 
-- <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>{.externe}
-- <https://www.schutzwerk.com/en/blog/attacking-a-rng/>{.externe}
+- <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>
+- <https://www.schutzwerk.com/en/blog/attacking-a-rng/>
  -->
 

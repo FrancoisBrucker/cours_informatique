@@ -14,7 +14,7 @@ eleventyComputed:
 
 - Séparer versions naïves + TP des méthodes optimales +  TP
 
-- voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>{.externe}
+- voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>
 ajouter le bogus sort
 
 - tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort 
@@ -26,7 +26,7 @@ ajouter le bogus sort
 
 Étude du problème du tri et implémentation de quelques algorithmes pour _voir_ les différentes façon de trier et leurs complexités.
 
-Les informaticiens adorent [les algorithmes de tri](https://fr.wikipedia.org/wiki/Algorithme_de_tri){.externe}. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
+Les informaticiens adorent [les algorithmes de tri](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
 
 {% info %}
 Les algorithmes de tri que nous verrons dans cette partie nous permettrons non seulement de mettre en oeuvre tout ce que nous avons vu sur les techniques de preuves et de calcul de complexités, mais également d'apprendre de nouveaux outils, comme le master theorem.
@@ -85,7 +85,7 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 #### Tri à bulles
 
 {% lien %}
-[Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles){.externe}
+[Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles)
 {% endlien %}
 
 Le tri à bulles est très aimé des étudiants mais inefficace. Son procédé est similaire au tri par sélection dans le sen où au bout de la $i$ème itération les $i$ plus grandes valeurs du tableaux sont à leur place. C'est un tri **in place**. Pour obtenir cela il va procédé par une série d'inversions :
@@ -166,11 +166,11 @@ algorithme bulles_naif(T) → ∅:
 Finissons cette partie par une bizarrerie algorithmique comme on les aime.
 
 {% lien %}
-[The Simplest Sorting Algorithm](https://www.youtube.com/watch?v=_W0yUJlscRA){.externe}
+[The Simplest Sorting Algorithm](https://www.youtube.com/watch?v=_W0yUJlscRA)
 {% endlien %}
 {% info %}
 
-[La chaîne Youtube Polylog](https://www.youtube.com/@PolylogCS){.externe} est très bien ! Son niveau moyen est pour l'instant au-dessus de ce que l'on connaît ou que l'on sait faire, mais on abordera petit à petit toutes les notions qu'ils abordent et à l'issue du cours vous serez à l'aise avec son contenu.
+[La chaîne Youtube Polylog](https://www.youtube.com/@PolylogCS) est très bien ! Son niveau moyen est pour l'instant au-dessus de ce que l'on connaît ou que l'on sait faire, mais on abordera petit à petit toutes les notions qu'ils abordent et à l'issue du cours vous serez à l'aise avec son contenu.
 
 {% endinfo %}
 
@@ -271,7 +271,7 @@ Le tri fusion utilise une technique de création d'algorithme classique nommée 
 
 ### Tri de python
 
-[L'algorithme timsort](https://en.wikipedia.org/wiki/Timsort){.externe} est l'algorithme utilisé par python pour trier des listes :
+[L'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) est l'algorithme utilisé par python pour trier des listes :
 
 ```python
 T = [1, 3, 2, 6, 4, 5]
@@ -283,7 +283,7 @@ print(T)
 Ce tri est **in place** et est un mix entre le tri fusion et le tri par insertion. C'est un tri très efficace puisque :
 
 {% note "**Complexités du timsort**" %}
-Pour un tableau de taille $n$, [l'algorithme timsort](https://en.wikipedia.org/wiki/Timsort){.externe} a :
+Pour un tableau de taille $n$, [l'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) a :
 
 - une complexité de $\mathcal{O}(n\ln(n))$
 - une complexité min de $\mathcal{O}(n)$ pour les tableaux (_presque_) trié

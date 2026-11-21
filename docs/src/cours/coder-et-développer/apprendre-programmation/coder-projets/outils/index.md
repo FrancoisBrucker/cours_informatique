@@ -28,7 +28,7 @@ Jusqu'à présent on a utilisé des interpréteurs externes pour exécuter notre
 
 ## IDE
 
-Une fois l'interpréteur installé, plutôt que de l'utiliser directement, on utilise un éditeur de texte spécialisé dans l'écriture de code : [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement){.externe}. Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode.
+Une fois l'interpréteur installé, plutôt que de l'utiliser directement, on utilise un éditeur de texte spécialisé dans l'écriture de code : [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement). Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode.
 
 {% aller %}
 [Éditeur vscode](éditeur-vscode)

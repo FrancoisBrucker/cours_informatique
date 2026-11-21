@@ -86,7 +86,7 @@ Bases de javascript
 Choisir un sujet et coder les pages
 
 {% lien %}
-[règles du décathlon](https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf){.externe}
+[règles du décathlon](https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf)
 {% endlien %}
 
 ### cours 6

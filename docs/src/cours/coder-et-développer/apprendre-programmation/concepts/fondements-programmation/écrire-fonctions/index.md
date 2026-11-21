@@ -309,7 +309,7 @@ La ligne 7 fonctionne alors comme suit :
 ## <span id="lambda"></span>Lambda
 
 {% lien "**Documentation**" %}
-<https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html>{.externe}
+<https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html>
 {% endlien %}
 
 Les lambda sont ue façon d'écrire rapidement une fonction avec une unique instruction.
@@ -350,7 +350,7 @@ print(calcul(lambda x, y: x * y, 8))
 ## Annotations de type
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3.10/library/typing.html>{.externe}
+<https://docs.python.org/fr/3.10/library/typing.html>
 {% endlien %}
 
 Les annotations de types permettent de renseigner le type des entrées et de la sortie d'une fonction python. Il n'est pas nécessaire de le faire, mais si vous avez besoin d'expliciter une signature de fonction comme on le ferait dans un langage compilé comme java, vous pouvez le faire en ajoutant :

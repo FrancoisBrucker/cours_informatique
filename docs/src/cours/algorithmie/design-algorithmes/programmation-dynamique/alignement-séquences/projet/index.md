@@ -140,7 +140,7 @@ Arrangez-vous pour conserver le plus de code possible entre les deux classes.
 ## Pour aller plus loin : étude biologique
 
 
-Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine){.externe} qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
+Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
 
 {% faire %}
 
@@ -149,7 +149,7 @@ Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la 
 
 {% endfaire %}
 
-La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM){.externe} :
+La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM) :
 
 ```python
 PROTEINS = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V", "B", "Z", "X"]

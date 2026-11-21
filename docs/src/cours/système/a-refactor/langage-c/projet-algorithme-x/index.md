@@ -25,7 +25,7 @@ Le projet doit contenir :
 
 ## Problème
 
-L'algorithme X permet de résoudre optimalement un problème NP-complet nommé [problème de la couverture exacte](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte){.externe}. Il admet une formulation ensembliste et une formulation matricielle.
+L'algorithme X permet de résoudre optimalement un problème NP-complet nommé [problème de la couverture exacte](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte). Il admet une formulation ensembliste et une formulation matricielle.
 
 {% note "**formulation ensembliste**" %}
 
@@ -126,7 +126,7 @@ Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercic
 - la fonction `int aleatoire_int(int min, int max)`{.language-} pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.
 - la fonction `int *aléatoire_01_tab(double proba)`{.language-} pour générer les lignes strictement plus grandes que $k$
 
-Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter [l'algorithme de Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates){.externe} pour trouver une permutation des lignes et/ou des colonnes).
+Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter [l'algorithme de Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates) pour trouver une permutation des lignes et/ou des colonnes).
 
 {% endinfo %}
 
@@ -189,7 +189,7 @@ Créez 3 exécutables prenant chacun un paramètre :
 A partir de quelle taille, le temps mis pour résoudre le problème devient trop grand ?
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/){.externe} pour mesurer le temps sous unix, ou [measure-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4){.externe} sous windows.
+Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/) pour mesurer le temps sous unix, ou [measure-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4) sous windows.
 {% endinfo %}
 
 ## Amélioration
@@ -197,7 +197,7 @@ Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-
 Notre algorithme est une variante grossière d'un algorithme de Knuth pour résoudre le problème :
 
 {% lien %}
-[Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth){.externe}
+[Algorithme X](https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth)
 {% endlien %}
 
 ### Colonne min

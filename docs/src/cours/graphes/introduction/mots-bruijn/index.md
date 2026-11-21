@@ -158,7 +158,7 @@ Donnez le graphe de Bruijn $B(2, 3)$
 Codez l'algorithme qui crée le graphe $B(n, p)$.
 {% endexercice %}
 {% info %}
-Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences){.externe} et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
+Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
 {% endinfo %}
 
 ### Propriétés

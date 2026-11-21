@@ -87,7 +87,7 @@ Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(e(G))$ opérati
 Cette complexité est identique à celle de la méthode utilisant les flot et l'algorithme de Ford et Fulkerson puisque la coupe contenant uniquement la source est de valuation bornée par $v(G)$ puisque toutes les capacités valent 1.
 {% endinfo %}
 
-Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm){.externe} qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
+Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm) qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
 
 ## Propriétés des couplage parfait et maximum dans un graphe biparti
 

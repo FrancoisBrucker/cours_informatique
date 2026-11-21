@@ -19,12 +19,12 @@ eleventyComputed:
 
 {% info %}
 
-Connectez vous [au réseau Éduroam](https://www.eduroam.fr/){.externe} qui est le réseau des université européennes pour vos travaux en TD/TP.
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes pour vos travaux en TD/TP.
 
 - login : votre adresse mail
 - mot de passe : celui de l'ent ECM
 
-Sous Linux suivez les instructions de : <https://cat.eduroam.org/>{.externe}
+Sous Linux suivez les instructions de : <https://cat.eduroam.org/>
 
 {% endinfo %}
 
@@ -61,7 +61,7 @@ Pour cela :
 {% endaller %}
 
 
-Pour terminer cette partie, utilisez [un interpréteur en ligne](https://console.basthon.fr/){.externe} ou [spyder](https://www.spyder-ide.org/){.externe} pour vous rafraîchir la mémoire en python :
+Pour terminer cette partie, utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou [spyder](https://www.spyder-ide.org/) pour vous rafraîchir la mémoire en python :
 
 {% aller %}
 [84 monolignes en python](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/)
@@ -143,7 +143,7 @@ Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur Moo
 Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/). 
 {% endfaire %}
 {% attention %}
- Le travail (code + réponse aux questions) est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523){.externe} **avant mercredi 16/09 à 8h00**.
+ Le travail (code + réponse aux questions) est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
 {% endattention %}
 {% info %}
 Vous rendrez un dossier contenant :
@@ -205,7 +205,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 [Projet Fractran](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-fractran/)
 {% endfaire %}
 {% attention %}
- Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523){.externe} **avant mercredi 23/09 à 8h00**.
+ Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/09 à 8h00**.
 {% endattention %}
 
 ## Partie III : Composition/agrégation et héritage
@@ -258,13 +258,13 @@ Rendre le projet [Bataille Navale](/cours/coder-et-développer/apprendre-program
 Les consignes sont :
 
 - le projet doit se trouver sur github
-- mettre de la couleur dans vos sorties en utilisant le module <https://github.com/termcolor/termcolor>{.externe}
+- mettre de la couleur dans vos sorties en utilisant le module <https://github.com/termcolor/termcolor>
 - il doit fonctionner avec un environnement virtuel : le fichier `requirements.txt`{.fichier} est requis
 
 
 {% endfaire %}
 {% attention %}
- Le travail est à rendre **sur github** et en mettant le lien vers le dépôt [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523){.externe} **avant mercredi 23/11 à 8h00**.
+ Le travail est à rendre **sur github** et en mettant le lien vers le dépôt [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/11 à 8h00**.
 {% endattention %}
 
 ## Pour aller plus loin

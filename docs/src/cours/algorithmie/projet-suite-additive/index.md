@@ -136,7 +136,7 @@ Enfin, si $a[i] = a[j] + a[k]$ avec $k \leq j < i$ on a $a[i] \geq \max(a[j], a[
 {% faire %}
 Écrivez et testez une fonction qui rend la suite passée en paramètre triée et sans doublons. Attention, la suite passée en paramètre ne **doit pas** être modifiée
 
-Vous pourrez utiliser la fonction [`sorted`{.language-}](https://docs.python.org/3/library/functions.html#sorted){.externe} de python pour cela.
+Vous pourrez utiliser la fonction [`sorted`{.language-}](https://docs.python.org/3/library/functions.html#sorted) de python pour cela.
 
 Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit rendre `[1, 2, 3, 4, 8, 11]`{.language-} sans modifier la liste en entrée)
 {% endfaire %}

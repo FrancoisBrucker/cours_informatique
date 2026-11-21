@@ -36,8 +36,8 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% lien %}
 
-- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf){.externe}
-- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK){.externe}
+- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf)
+- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK)
 
 {% endlien %}
 
@@ -168,9 +168,9 @@ Pour aller plus loin :
 - [ET 25/26](./ET-25-26/et.pdf)
 <!-- 
 
-Vous utiliserez la bibliothèque <<https://networkx.org>{.externe} pour dessiner des graphes.
-> <https://networkx.org/documentation/stable/reference/drawing.html>{.externe}
-> <https://networkx.org/documentation/stable/auto_examples/index.html>{.externe}
+Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graphes.
+> <https://networkx.org/documentation/stable/reference/drawing.html>
+> <https://networkx.org/documentation/stable/auto_examples/index.html>
 
 
 
@@ -383,7 +383,7 @@ Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
 
 N'hésitez pas à suivre et à faire également les exercices du cours suivant :
 
-<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>{.externe}
+<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>
 {% endlien %}
 
 1. Cours 1 : Système et consequences pour le code
@@ -405,7 +405,7 @@ A rendre pour le 18 octobre.
 > 1. les faire préparer le cours :
 >    1. lire le cours : (pseudo-assembleur si pas préparé avant), von Neumann et C avant
 >    2. faire le premier exercice
-> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html){.externe} qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
+> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
 --> -->
 

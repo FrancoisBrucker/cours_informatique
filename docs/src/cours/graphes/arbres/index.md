@@ -47,7 +47,7 @@ Explorer les propriétés et l'intérêt de l'arbre.
 ## Arbres plantés
 
 {% lien %}
-[Arbre pour l'algorithmique](https://chauvin.perso.math.cnrs.fr/book.pdf){.externe}
+[Arbre pour l'algorithmique](https://chauvin.perso.math.cnrs.fr/book.pdf)
 {% endlien %}
 
 {% aller %}
@@ -105,9 +105,9 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 >
 > isomorphisme Arbres planté :
 >
-> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>{.externe}
-> - <https://info.faidherbe.org/MPII/11.pdf>{.externe}
+> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
+> - <https://info.faidherbe.org/MPII/11.pdf>
 
 ### Arbres non plantés
 
-> TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf>{.externe} on peut le faire de façon linéaire.
+> TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf> on peut le faire de façon linéaire.

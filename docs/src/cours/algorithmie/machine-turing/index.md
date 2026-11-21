@@ -9,14 +9,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- > TBD <https://www.youtube.com/watch?v=8JuWdXrCmWg>{.externe} -->
+<!-- > TBD <https://www.youtube.com/watch?v=8JuWdXrCmWg> -->
 
-La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} est une façon simple d'implémenter les [4 règles générales d'un algorithme](../1-algorithme/bases-théoriques/définition#définition-règles-générales), vous verrez que supprimer une des possibilités de la machine et plus rien ne fonctionne.
+La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme](../1-algorithme/bases-théoriques/définition#définition-règles-générales), vous verrez que supprimer une des possibilités de la machine et plus rien ne fonctionne.
 Cependant,  Turing lui-même a montré que sa machine permettait exactement de calculer tout ce qu'on peut faire avec un [pseudo-code](../1-algorithme/pseudo-code) (on en donnera une idée de preuve).
 Enfin, toutes les tentatives de généralisation de son modèle se sont révélés infructueuses : on arrive pas à calculer plus de choses qu'avec la machine de Turing (c'est juste plus simple de le faire).
 
 {% lien %}
-[L'article où d'Allan Turing décrit cette machine](https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf){.externe}
+[L'article où d'Allan Turing décrit cette machine](https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf)
 {% endlien %}
 
 ## Définitions
@@ -31,7 +31,7 @@ Enfin, toutes les tentatives de généralisation de son modèle se sont révél�
 
 ## Compositions de machines
 
-Écrire un programme en machine de Turing (c'est à dire écrie des fonctions de transitions) peut être pénible, nous décrivons dans cette partie quelques [sucres syntaxiques](https://fr.wikipedia.org/wiki/Sucre_syntaxique){.externe} permettant d'obtenir toutes les structures de contrôle d'un pseudo-assembleur (séquentialité, saut et saut conditionnel) :
+Écrire un programme en machine de Turing (c'est à dire écrie des fonctions de transitions) peut être pénible, nous décrivons dans cette partie quelques [sucres syntaxiques](https://fr.wikipedia.org/wiki/Sucre_syntaxique) permettant d'obtenir toutes les structures de contrôle d'un pseudo-assembleur (séquentialité, saut et saut conditionnel) :
 
 {% aller %}
 [Composition de machines](./composition)

@@ -59,7 +59,7 @@ Il y a 4 fonctions différentes dont l'entrée est réduite à 1 bit :
 
 #### Fonctions à deux bits
 
-On les décrit avec leurs On les représentent via leurs [tables de vérité](https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9){.externe} :
+On les décrit avec leurs On les représentent via leurs [tables de vérité](https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9) :
 
 {% definition %}
 
@@ -182,7 +182,7 @@ Montrer que l'on peut expliciter la fonction $\text{NAND}(x, y)$ avec la fonctio
 Commençons par résoudre l'exercice suivant
 
 {% exercice %}
-En utilisant sa table de vérité, montrez que toute fonction booléenne peut s'écrire sous une [forme normale disjonctive](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive){.externe}.
+En utilisant sa table de vérité, montrez que toute fonction booléenne peut s'écrire sous une [forme normale disjonctive](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -203,7 +203,7 @@ On peut utiliser l'exercice précédent pour montrer que l'on peut aussi écrire
 <span id="proposition-CNF-fonction"></span>
 
 {% note "**Proposition**" %}
-Toute fonction booléenne $f$ de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire sous [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive){.externe} avec autant de clauses que de vecteurs $(x_1, \dots, x_n)$ tel que $f(x_1, \dots, x_n) = 0$.
+Toute fonction booléenne $f$ de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire sous [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive) avec autant de clauses que de vecteurs $(x_1, \dots, x_n)$ tel que $f(x_1, \dots, x_n) = 0$.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -312,7 +312,7 @@ On peut sans perte de généralité supposer qu'[un pseudo-code](../1-algorithme
 - des tableaux de type `[]bit`{.language-}
   {% endnote %}
 
-Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. Attention, l'ordre de représentation des listes fait croître les indices de gauche à droite, alors que [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire){.externe} va **de droite à gauche**. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
+Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. Attention, l'ordre de représentation des listes fait croître les indices de gauche à droite, alors que [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) va **de droite à gauche**. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
 
 ```text
 indice : 76543210
@@ -329,9 +329,9 @@ Pour éviter toute confusion entre les entiers on écrira :
 
 - $[0, 1, 1]$ pour un tableau de bits
 - $011 = 11$ pour l'entier 11 en base 10
-- $0b011 = b11$ pour l'entier 3 écrit en [base 2](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire){.externe}
-- $0o744$ pour l'entier 484 écrit en base 8 ([base octale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_octal){.externe})
-- $0xBBAADD$ pour l'entier 12298973 écrit en base 16 ([base hexadécimal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal){.externe})
+- $0b011 = b11$ pour l'entier 3 écrit en [base 2](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire)
+- $0o744$ pour l'entier 484 écrit en base 8 ([base octale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_octal))
+- $0xBBAADD$ pour l'entier 12298973 écrit en base 16 ([base hexadécimal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal))
 - $\mathbb{1}_n$ comme étant un tableau de $n$ bits valant tous 1
 - $\mathbb{0}_n$ comme étant un tableau de $n$ bits valant tous 0
 
@@ -416,7 +416,7 @@ algorithme INC(x: []bit) → []bit:
 
 #### <span id="complément-à-deux"></span>Opposé
 
-Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe}, qui revient à travailler modulo $2^n$.
+Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux), qui revient à travailler modulo $2^n$.
 
 Pour un tableau de bit $x$ on notera :
 
@@ -556,7 +556,7 @@ Les approximation de nombres réels sont encodées sur 64 bits.
 Nous ne parlerons pas plus de cet encodage ici, l'algorithmie ne s'intéressant que très peu aux nombres réels, mais certains algorithmes de magie noir sur l'utilisation astucieuse de ce format existent :
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Racine_carr%C3%A9e_inverse_rapide>{.externe} (voir aussi : <https://www.youtube.com/watch?v=Fm0vygzVXeE>{.externe})
+<https://fr.wikipedia.org/wiki/Racine_carr%C3%A9e_inverse_rapide> (voir aussi : <https://www.youtube.com/watch?v=Fm0vygzVXeE>)
 {% endlien %}
 
 > TBD montrer que r(x) < r(y) si u(x) < u(y) ce qui règle plein de problèmes.
@@ -566,10 +566,10 @@ Nous ne parlerons pas plus de cet encodage ici, l'algorithmie ne s'intéressant 
 Format UNICODE sur 21 bits permet d'encoder jusqu'à $2^{21} = 2097152$ informations. Actuellement seuls 154998 sont assignés, UNICODE appelle ces informations **_glyphes_**, permettant d'encoder plus de 150 langues :
 
 {% lien %}
-[Format UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe}
+[Format UNICODE](https://fr.wikipedia.org/wiki/Unicode)
 {% endlien %}
 
-Ne confondez pas la correspondance entre une glyphe (en gros un caractère) et un nombre qui est le format UNICODE et son implémentation informatique qui utilise la conversion [UTF-8](https://fr.wikipedia.org/wiki/UTF-8){.externe} qui permet d'écrire ces nombres sur un format allant de 8 à 32 bits.
+Ne confondez pas la correspondance entre une glyphe (en gros un caractère) et un nombre qui est le format UNICODE et son implémentation informatique qui utilise la conversion [UTF-8](https://fr.wikipedia.org/wiki/UTF-8) qui permet d'écrire ces nombres sur un format allant de 8 à 32 bits.
 
 ## Opérations
 
@@ -922,7 +922,7 @@ x-y \coloneqq x + (-y)
 $$
 </div>
 
-Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve){.externe}.
+Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve).
 
 {% retenir %}
 Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
@@ -934,7 +934,7 @@ Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniq
 > TBD voir ce qu'il faut modifier.
 
 
-On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication){.externe}. Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
+On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
 
 ```
        100101
@@ -998,7 +998,7 @@ Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\math
 
 #### Division euclidienne
 
-On utilise la [division posée](https://fr.wikipedia.org/wiki/Division_pos%C3%A9e){.externe}. Les nombres binaires simplifient grandement le calcul car il suffit de faire des soustractions.
+On utilise la [division posée](https://fr.wikipedia.org/wiki/Division_pos%C3%A9e). Les nombres binaires simplifient grandement le calcul car il suffit de faire des soustractions.
 
 La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
 

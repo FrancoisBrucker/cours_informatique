@@ -17,7 +17,7 @@ eleventyComputed:
 Nous allons améliorer la classé que nous avions crée lors du projet précédent (en prérequis).
 
 {% lien %}
-[Code de la classe Dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code){.externe}
+[Code de la classe Dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code)
 
 {% endlien %}
 
@@ -222,7 +222,7 @@ def test_valeur_sans_setter():
 
 ## min et max dans classe
 
-Notre classe `Dé`{.language-} contient 2 [magic numbers](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es){.externe} qui sont les bornes du lancé. Supprimons-les :
+Notre classe `Dé`{.language-} contient 2 [magic numbers](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es) qui sont les bornes du lancé. Supprimons-les :
 
 {% exercice %}
 Créez deux attributs de classes `MIN_VALEUR`{.language-} et `MAX_VALEUR`{.language-} qui vont permettre de supprimer les magics numbers de la méthode `Dé.lancer()`{.language-}
@@ -306,6 +306,6 @@ print(liste_d)
 ## Code final
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code){.externe}
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-compteur){.externe}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-compteur)
 {% endlien %}

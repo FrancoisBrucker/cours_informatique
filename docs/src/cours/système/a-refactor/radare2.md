@@ -12,8 +12,8 @@ eleventyComputed:
 
 Outil d'analyse système et de reverse engt
 
-<https://rada.re/n/>{.externe}
+<https://rada.re/n/>
 
 iaito pour l'interface graphique.
 
-- doc : <https://book.rada.re/>{.externe}
+- doc : <https://book.rada.re/>

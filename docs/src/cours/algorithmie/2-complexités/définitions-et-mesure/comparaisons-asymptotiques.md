@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique){.externe}.
+[comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique).
 {% endlien %}
 
 Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente. En gros on oublie les constantes multiplicatives et additives qui dépendent du langage de programmation ou sont sujettes à interprétation.

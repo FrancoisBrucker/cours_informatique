@@ -267,7 +267,7 @@ Si $u_i = v_j$ alors $u_i \dots u_k = v_j \dots v_l$ car sinon, comme $u_k = v_l
 Et $t$ est bien l'unique intersection des 3 chemins.
 {% enddetails %}
 {% info %}
-Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian){.externe}. Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)){.externe} en sont des exemples.
+Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian). Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)) en sont des exemples.
 {% endinfo %}
 
 ## Encodage

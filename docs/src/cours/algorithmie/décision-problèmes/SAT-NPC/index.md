@@ -22,8 +22,8 @@ Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machi
 
 {% lien %}
 
-- <https://www.youtube.com/watch?v=0LZ39iyLMog>{.externe}
-- <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>{.externe}
+- <https://www.youtube.com/watch?v=0LZ39iyLMog>
+- <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>
 
 {% endlien %}
 
@@ -330,7 +330,7 @@ $$
 
 ## Théorème de Cook-Levin
 
-On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook){.externe} :
+On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook) :
 
 {% note "**Théorème**" %}
 Pour problème de décision $D$ de la classe NP il existe une réduction polynomiale telle que $D \leq \text{SAT}$

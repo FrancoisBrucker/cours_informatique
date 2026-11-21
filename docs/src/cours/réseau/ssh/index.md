@@ -12,13 +12,13 @@ eleventyComputed:
 
 {% lien %}
 
-1. [ssh en 5 parties](https://www.youtube.com/watch?v=QGixbJ9prEc&list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6){.externe}
-2. [ssh crash course](https://www.youtube.com/watch?v=hQWRp-FdTpc){.externe}
-3. [deep dive](https://tusharf5.com/posts/ssh-deep-dive/){.externe}
+1. [ssh en 5 parties](https://www.youtube.com/watch?v=QGixbJ9prEc&list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6)
+2. [ssh crash course](https://www.youtube.com/watch?v=hQWRp-FdTpc)
+3. [deep dive](https://tusharf5.com/posts/ssh-deep-dive/)
 
 {% endlien %}
 
-Le nom [ssh](https://fr.wikipedia.org/wiki/Secure_Shell){.externe} (_Secure SHell_) permet de faire de la communication sécurisée et regroupe deux usages :
+Le nom [ssh](https://fr.wikipedia.org/wiki/Secure_Shell) (_Secure SHell_) permet de faire de la communication sécurisée et regroupe deux usages :
 
 - communication entre deux ordinateurs via une socket chiffrée
 - identification par paire de clés.
@@ -31,7 +31,7 @@ On supposera pour les exercices et les exemples que vous êtes étudiants de l'e
 
 <!-- TBD 
 
-voir comment les connexion ne peuvent pas se faire via un docker ou [un compte aws](https://www.youtube.com/watch?v=u2-2c_nY6lk){.externe} 
+voir comment les connexion ne peuvent pas se faire via un docker ou [un compte aws](https://www.youtube.com/watch?v=u2-2c_nY6lk) 
 
 -->
 
@@ -152,7 +152,7 @@ Comme `~`{.fichier} est un dossier, le fichier est copié dans ce repertoire.
 ## Identification
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique>{.externe}
+<https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique>
 {% endlien %}
 
 L'authentification d'une personne ou d'une machine s'effectue via l'interaction d'une paire de clé :
@@ -177,8 +177,8 @@ N'hésitez pas à aller jeter un coup d'œil au cours [de sécurité](/cours/sé
 
 {% lien %}
 
-- [Diffie-Hellman](https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman){.externe}
-- <https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process>{.externe}
+- [Diffie-Hellman](https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman)
+- <https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process>
 {% endlien %}
 
 > TBD :
@@ -204,7 +204,7 @@ This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
-On voit que la clé est de type [ED25519](https://fr.wikipedia.org/wiki/EdDSA){.externe} qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape `yes` et peut taper mon mot de passe pour me connecter.
+On voit que la clé est de type [ED25519](https://fr.wikipedia.org/wiki/EdDSA) qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape `yes` et peut taper mon mot de passe pour me connecter.
 
 Si la clé de la machine change cela peut-être à cause d'une attaque de type _man in the middle_ et ssh refuse de se connecter :
 
@@ -280,7 +280,7 @@ Utilisation (basique) du logiciel ssh. On va voir deux usages important :
 
 ### Agent
 
-La seule chose à possiblement faire est de mettre en place le [ssh-agent](https://en.wikipedia.org/wiki/Ssh-agent){.externe}. L'agent est un démon permettant de gérer sos clés pour vous.
+La seule chose à possiblement faire est de mettre en place le [ssh-agent](https://en.wikipedia.org/wiki/Ssh-agent). L'agent est un démon permettant de gérer sos clés pour vous.
 
 Pour savoir si vous avez un agent ssh opérationnel, tapez la commande :
 
@@ -301,10 +301,10 @@ C'est que vous n'avez pas d'agent, il va vous falloir en créer un.
 #### Création sous windows/wsl
 
 {% lien %}
-<https://davidaugustat.com/windows/windows-11-setup-ssh>{.externe}
+<https://davidaugustat.com/windows/windows-11-setup-ssh>
 {% endlien %}
 
-Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement){.externe}).
+Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement)).
 
 {% faire %}
 Ouvrez un fenêtre **powershell en mode administrateur** (clique droit sur le drapeau, puis choisissez _powershell (admin)_), puis tapez les commandes :
@@ -341,7 +341,7 @@ $ echo 'eval "$(ssh-agent -s)"' >> $HOME/.profile
 
 {% endfaire %}
 {% info %}
-Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : [ajout ssh-agent](https://gist.github.com/gabetax/3756756){.externe}
+Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
 {% endinfo %}
 
 ## Identification des utilisateurs
@@ -376,7 +376,7 @@ Regardez les droits de ces deux fichiers ainsi que du dossier `~/.ssh`.
 ### Hash de la clé
 
 {% lien %}
-[randomart](https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art){.externe}
+[randomart](https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art)
 {% endlien %}
 
 ```sh

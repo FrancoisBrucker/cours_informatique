@@ -147,7 +147,7 @@ Voyons quelques exemple de classes python et leurs usages.
 
 ### Chaîne de caractères
 
-Les chaines de caractères sont des objets de la classe ([str](https://docs.python.org/fr/3/library/string.html){.externe}) :
+Les chaines de caractères sont des objets de la classe ([str](https://docs.python.org/fr/3/library/string.html)) :
 
 ```python
 >>> type("une chaîne")
@@ -203,14 +203,14 @@ coucou
 
 ```
 
-Enfin, une méthode peut avoir des paramètres  comme la méthode [`str.center`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.center){.externe} :
+Enfin, une méthode peut avoir des paramètres  comme la méthode [`str.center`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.center) :
 
 ```python
 >>> print(s.center(25, "*"))
 **********coucou*********
 ```
 
-Et même rendre autre chose que son type d'origine comme la méthode [`str.count`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count){.externe}  :
+Et même rendre autre chose que son type d'origine comme la méthode [`str.count`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count)  :
 
 ```python
 >>> print(s.count("c"))
@@ -288,7 +288,7 @@ Les entiers et les chaînes de caractères sont [des objets **_immutable_**](../
 
 ```
 
-La liste `l`{.language-} est **modifiée** par la méthode [`list.extend`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#list.extend){.externe}. Le fait qu'une méthode modifie ou pas l'objet passé en paramètre n'est pas réglementé. Certaines le font d'autres non :
+La liste `l`{.language-} est **modifiée** par la méthode [`list.extend`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#list.extend). Le fait qu'une méthode modifie ou pas l'objet passé en paramètre n'est pas réglementé. Certaines le font d'autres non :
 
 
 ```python
@@ -343,7 +343,7 @@ Que produit le code suivant :
 
 {% endexercice %}
 {% details "corrigé" %}
-Là ça marche car le résultat de [`str.split`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.split){.externe} est une liste :
+Là ça marche car le résultat de [`str.split`{.language-}](https://docs.python.org/fr/3.14/library/stdtypes.html#str.split) est une liste :
 
 ```python
 >>> [1, 2, 3] + "nous irons au bois".split()

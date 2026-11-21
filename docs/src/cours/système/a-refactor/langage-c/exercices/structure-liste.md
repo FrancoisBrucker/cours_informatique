@@ -43,7 +43,7 @@ Dans un fichier `liste.c`, créez les fonctions :
 
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/){.externe} pour le dimensionnement du tableau lorsqu'il faut ajouter un élément à une liste pleine ou que l'on supprime un élément d'une liste dont le nombre d'éléments restant est deux fois plus petit que sa taille.
+Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/) pour le dimensionnement du tableau lorsqu'il faut ajouter un élément à une liste pleine ou que l'on supprime un élément d'une liste dont le nombre d'éléments restant est deux fois plus petit que sa taille.
 {% endinfo %}
 
 Quelques questions pour voir si vous avez compris (faites des tests et comprenez avant de regarder la réponse) :

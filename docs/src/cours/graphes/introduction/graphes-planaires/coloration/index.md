@@ -92,7 +92,7 @@ Trouver une chaîne de Kempe se fait linérairement, il suffit de prendre la res
 {% attention %}
 On serait tenté d'utiliser cette même technique en changer 2 fois une couleur pour passer de 5 à 4 couleurs. 
 
-[Cela ne fonctionne pas](https://www.youtube.com/watch?v=adZZv4eEPs8){.externe}.
+[Cela ne fonctionne pas](https://www.youtube.com/watch?v=adZZv4eEPs8).
 {% endattention %}
 
 ### Algorithme linéaire
@@ -222,10 +222,10 @@ algorithme coloration-5(G: Graphe) → [Sommet]Entier:
 
 {% lien %}
 
-- [Page d'un des auteurs](https://thomas.math.gatech.edu/FC/fourcolor.html){.externe}
-- [le papier](https://thomas.math.gatech.edu/PAP/fc.pdf){.externe} et [une version courte](https://thomas.math.gatech.edu/PAP/npfc.pdf){.externe}
-- [les 633 configurations inévitables](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf){.externe}
-- [comment prouver la preuve avec un ordinateur](https://inria.hal.science/hal-04034866/document){.externe} (c'est différent de faire un algorithme qui vérifie les cas)
+- [Page d'un des auteurs](https://thomas.math.gatech.edu/FC/fourcolor.html)
+- [le papier](https://thomas.math.gatech.edu/PAP/fc.pdf) et [une version courte](https://thomas.math.gatech.edu/PAP/npfc.pdf)
+- [les 633 configurations inévitables](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf)
+- [comment prouver la preuve avec un ordinateur](https://inria.hal.science/hal-04034866/document) (c'est différent de faire un algorithme qui vérifie les cas)
 
 {% endlien %}
 
@@ -236,7 +236,7 @@ Le théorème des 4 couleurs est le 1er théorème assisté par ordinateur qui v
 3. recherche de cycles cours (cycle de taille 3, 4 ou 5 avec au moins 1 sommet à l'intérieur pour les cycles de taille 3 ou 4 et au moins 2 sommets à l'intérieur pour les cycles de taille 5) :
    1. on peut récurser sur l'extérieur plus le cycle
    2. on peut récurser sur l'intérieur plus une adaptation du cycle
-4. Recherche d'une des [633 configurations réductibles inévitable](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf){.externe}
+4. Recherche d'une des [633 configurations réductibles inévitable](https://thomas.math.gatech.edu/OLDFTP/fcdir/unavoidable.pdf)
 5. Réduction : On isole cette configuration, puis on "simplifie" ou retire temporairement ces sommets du graphe $G$ pour obtenir un graphe plus petit $G'$ puis on récurse sur $G'$
 
 
@@ -310,7 +310,7 @@ Et 3-colorer le graphe $K_5$ devient équivalent à 3-colorer le graphe planaire
 
 ### Dans des problèmes
 
-3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>{.externe}
+3 colorable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
 
 ### Coloration de cartes de géographie
 
@@ -322,16 +322,16 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :
 
 > TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
 
-> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>{.externe}
+> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
 >
 {% lien %}
 
-- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc){.externe}
-- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf){.externe}
+- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
+- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
 
 {% endlien %}
 
-> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard){.externe}
+> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
 
 ### Algorithmes de coloration de listes
 
@@ -346,6 +346,6 @@ coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :
 
 > TBD Coloriabilité via le problème de la galerie d'art :
 > 
-> - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>{.externe}
-> - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>{.externe}
-> - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>{.externe}
+> - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+> - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
+> - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>

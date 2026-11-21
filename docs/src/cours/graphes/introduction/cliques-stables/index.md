@@ -332,7 +332,7 @@ Cette combinaison de cliques et de stable a été étudiée par Ramsey au début
 ## <span id="ramsey"></span>Théorème de Ramsey
 
 {% lien %}
-[Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey){.externe}
+[Théorème de Ramsey](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey)
 
 {% endlien %}
 
@@ -377,7 +377,7 @@ $$
 </div>
 {% endnote %}
 {% details "preuve", "open" %}
-Une récurrence triviale en utilisant la formule du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal){.externe}.
+Une récurrence triviale en utilisant la formule du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal).
 {% enddetails %}
 
 
@@ -424,7 +424,7 @@ Continuons sur notre lancée :
 Montrez que $R(3, 4) > 8$
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [le graphe de Wagner](https://fr.wikipedia.org/wiki/Graphe_de_Wagner){.externe}.
+Vous pourrez utiliser [le graphe de Wagner](https://fr.wikipedia.org/wiki/Graphe_de_Wagner).
 {% endinfo %}
 {% details "corrigé" %}
 Le graphe de Wagner ne possède ni clique de taille 3 ni stable de taille 4.
@@ -439,12 +439,12 @@ On peut alors supposer que $\delta(v) < 3$ et donc $9-\delta(v)> 6$ : le graphe 
 
 {% enddetails %}
 
-Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et [le graphe de Paley d'ordre 17](https://fr.wikipedia.org/wiki/Graphe_de_Paley){.externe} ne possède ni de clique ni de stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que 
+Ce qui est troublant c'est que passé 4 ($R(4) = 18$ car $R(3, 4) = 9$ et [le graphe de Paley d'ordre 17](https://fr.wikipedia.org/wiki/Graphe_de_Paley) ne possède ni de clique ni de stable de taille 4) on n'a plus de valeurs exacte. On sait par exemple juste que 
 $43 \leq R(5) \leq 48$. Et combien même vous prendriez un graphe de taille 50, on ne connaît pas d'algorithme efficace pour trouver une clique ou un stable de taille 5 : il faut tout essayer ce qui va prendre exponentiel lorsque la taille de la clique/stable à chercher augmente. On sait que ce cela existe mais c'est dur à trouver !
 
 
 {% lien %}
-[chercher une paille dans une meule de fois peut être aussi  dur que d'y trouver l'aiguille](https://www.youtube.com/watch?v=4weMmFZSBtI){.externe}
+[chercher une paille dans une meule de fois peut être aussi  dur que d'y trouver l'aiguille](https://www.youtube.com/watch?v=4weMmFZSBtI)
 {% endlien %}
 {% info %}
 Toutes les vidéos de cette chaîne Youtube sont très bonnes !
@@ -464,7 +464,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-On utilise [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling#%C3%89quivalent_du_coefficient_binomial_central){.externe} : $\binom{2p}{p} \sim \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
+On utilise [la formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling#%C3%89quivalent_du_coefficient_binomial_central) : $\binom{2p}{p} \sim \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
 
 Il existe alors une fonction négligeable en 1 lorsque $n$ tend vers l'infini, notée $f(n)$, telle que : $\binom{2p}{p} = (1 + f(n)) \frac{4^{n}}{\sqrt{\pi \cdot n}}$.
 En utilisant [la borne précédente](./#R_majoration) appliquée à $R(n,n)$ on a : $R(n, n) \leq \binom{2(n-1)}{n-1} = (1 + f(n)) \frac{4^{n-1}}{\sqrt{\pi \cdot (n-1)}}$ et comme $\frac{1}{\sqrt{n}} \sim \frac{1}{\sqrt{n-1}}$ en $+\infty$ on en déduit bien l'inégalité demandée.
@@ -591,7 +591,7 @@ C'est un encadrement très proche des bornes connues.
 
 {% lien %}
 
-[Des généralisations possibles](https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf){.externe}
+[Des généralisations possibles](https://perso.ens-lyon.fr/edwige.cyffers/projects/ramsey/tipeRamsey.pdf)
 
 {% endlien %}
 

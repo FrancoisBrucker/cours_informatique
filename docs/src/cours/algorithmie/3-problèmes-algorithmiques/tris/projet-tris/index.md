@@ -212,7 +212,7 @@ L'allure des 3 courbes est-elle conforme aux résultats théoriques de complexit
 ## Tri à bulles
 
 {% exercice %}
-Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles){.externe} dans le fichier `tris.py`{.fichier} (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`{.fichier}.
+Implémentez [le tri à bulle optimisé](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) dans le fichier `tris.py`{.fichier} (nommez l'algorithme `bulles`) et ses tests dans le fichier `test_tris.py`{.fichier}.
 
 {% endexercice %}
 
@@ -337,5 +337,5 @@ Les complexités des tris rapide et fusion sont identiques en moyenne.
 En utilisant ce que vous avez appris avec les tris simples, vérifiez que les complexités en moyennes des tris rapide et fusion sont similaires et correspondent bien à $\mathcal{n\ln(n)}$ où $n$ est la taille du tableau.
 {% endexercice %}
 {% info %}
-Vous pouvez suivre [ce tutoriel](https://www.pythoncentral.io/resetting-the-recursion-limit/){.externe} qui vous explique comment faire pour augmenter le nombre limite de récursions dans `main_rapide.py`{.fichier}.
+Vous pouvez suivre [ce tutoriel](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursions dans `main_rapide.py`{.fichier}.
 {% endinfo %}

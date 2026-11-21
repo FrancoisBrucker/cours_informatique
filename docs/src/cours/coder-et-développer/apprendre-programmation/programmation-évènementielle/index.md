@@ -12,7 +12,7 @@ eleventyComputed:
 ---
 
 
-La [programmation événementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle){.externe} est un paradigme de programmation très utiliser dans les interfaces graphiques et le web. Cette méthode consiste à réagir à des événements issus du programme ou de la page web comme de cliquer sur un bouton, appuyer sur une touche, etc.
+La [programmation événementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) est un paradigme de programmation très utiliser dans les interfaces graphiques et le web. Cette méthode consiste à réagir à des événements issus du programme ou de la page web comme de cliquer sur un bouton, appuyer sur une touche, etc.
 
 Le principe est le suivant :
 
@@ -21,7 +21,7 @@ Le principe est le suivant :
 
 ## Environnement python
 
-Nous allons mettre à profit ce que nous venons d'apprendre sur [la gestion des dépendances](../gestion-dépendances/) et mettre en place un environnement pour utiliser la bibliothèque <https://pyglet.org/>{.externe} :
+Nous allons mettre à profit ce que nous venons d'apprendre sur [la gestion des dépendances](../gestion-dépendances/) et mettre en place un environnement pour utiliser la bibliothèque <https://pyglet.org/> :
 
 {% aller %}
 [Créer un environnement virtuel](environnement-virtuel)

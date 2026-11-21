@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace){.externe} (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE){.externe} qui a publié le premier manuel d'algèbre connu à ce jour.
+On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE) qui a publié le premier manuel d'algèbre connu à ce jour.
 
 On va montrer quelques propriétés générales d'un programme et d'un algorithme.
 
@@ -19,7 +19,7 @@ On va montrer quelques propriétés générales d'un programme et d'un algorithm
 Un **_algorithme_** est un ensemble des règles opératoires propres à un _calcul_.
 {% enddefinition %}
 
-Qu'est-ce que ça veut dire ? Cherchons dans [le Petit Robert](https://dictionnaire.lerobert.com/fr/){.externe} :
+Qu'est-ce que ça veut dire ? Cherchons dans [le Petit Robert](https://dictionnaire.lerobert.com/fr/) :
 
 - **algorithme** : ensemble des règles opératoires propres à un **calcul**
 - **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
@@ -52,7 +52,7 @@ Règles de construction de l'algorithme utilisées :
 - afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme : l'algorithme continue de fonctionner après l'affichage
 
 {% retenir %}
-Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme#Quelques_d%C3%A9finitions_connexes){.externe} :
+Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme#Quelques_d%C3%A9finitions_connexes) :
 
 - **finitude** : Un algorithme doit toujours se terminer après un nombre fini d’étapes.
 - **définition précise** : Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas.
@@ -61,7 +61,7 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 - **rendement** : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.
 {% endretenir %}
 {% lien %}
-N'hésitez pas à regarder cette vidéo, [petite biographie de Donald Knuth](https://www.youtube.com/watch?v=d2a4MpY7I2w){.externe}, grand informaticien.
+N'hésitez pas à regarder cette vidéo, [petite biographie de Donald Knuth](https://www.youtube.com/watch?v=d2a4MpY7I2w), grand informaticien.
 {% endlien %}
 
 On peut en déduire la définition suivante : Un **_programme_** est une succession d'instructions simples et clairement définies. Ou, de façon équivalente :
@@ -230,7 +230,7 @@ Même si le programme ne s'arrête pas, chaque étape est bien finie :
 
 - `x` est toujours un entier que l'on peut décrire comme des mots de l'alphabet $\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$
 - écrire un nombre sur une feuille de papier est toujours possible et prendra un temps proportionnel au nombre de ses chiffres à écrire.
-- ajouter 1 à `x` est possible en posant l'addition et cela prendra un temps proportionnel à son nombre de chiffres et l'[on peut décrire le principe de l'addition en français](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul){.externe}, donc avec un nombre fini de symboles (les lettres, les chiffres et quelques symboles de ponctuation)
+- ajouter 1 à `x` est possible en posant l'addition et cela prendra un temps proportionnel à son nombre de chiffres et l'[on peut décrire le principe de l'addition en français](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul), donc avec un nombre fini de symboles (les lettres, les chiffres et quelques symboles de ponctuation)
 
 
 La conséquence fondamentale de ceci est que :
@@ -254,15 +254,15 @@ Un réel est une abstraction que l'on peut considérer soit comme une approximat
 {% endretenir %}
 
 
-Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80){.externe}, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on n'aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :
+Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on n'aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :
 
 - soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est-à-dire sans jamais connaître sa valeur
 - soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
 
-Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petites causes impliquent de petits effets) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique){.externe} en se fixant une précision ne gêne pas les calculs physiques.
+Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petites causes impliquent de petits effets) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gêne pas les calculs physiques.
 
 {% info %}
-Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petites causes produisent de grands effets](https://fr.wikipedia.org/wiki/Effet_papillon){.externe}, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dits de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique){.externe}.
+Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petites causes produisent de grands effets](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dits de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
 {% endinfo %}
 
 Or :
@@ -271,14 +271,14 @@ Or :
 
 {% note "**Proposition**" %}
 
-Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)){.externe} entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout alphabet $\mathcal{A}$.
+Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)) entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout alphabet $\mathcal{A}$.
 
 {% endnote %}
 {% details "preuve", "open" %}
 
 On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout alphabet $\mathcal{A}$ est triviale.
 
-On considère l'ensemble $\mathcal{U}$ de tous les caractères de toutes les langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode){.externe}. Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
+On considère l'ensemble $\mathcal{U}$ de tous les caractères de toutes les langues écrites actuelles ou passées. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode). Il est constitué de 159801 caractères (appelés glyphes) dont chacun est associé à un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
 
 Un mot $(c_i)_{0\leq i < n}$ de $\mathcal{U}$, on dit une chaîne de caractères, est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
 
@@ -315,7 +315,7 @@ On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i
 La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
 
 {% definition %}
-Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit){.externe}.
+Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit).
 {% enddefinition %}
 
 {% note "**Proposition**" %}
@@ -326,9 +326,9 @@ Cependant n'utiliser que des suites finies de bits pour nos programmes les rendr
 
 - un entier relatif :
   - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
-  - négatif en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe} de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
-- une approximation finie d'un réel en utilisant la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754){.externe}. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html){.externe})
-- une chaîne de caractères en utilisant le code utf-8. Par exemple "Yop !" correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html){.externe}) qui en binaire vaut : `0000010110010110111101110000001000000010`
+  - négatif en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
+- une approximation finie d'un réel en utilisant la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
+- une chaîne de caractères en utilisant le code utf-8. Par exemple "Yop !" correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
 - la vérité ou la fausseté
 - ...
 
@@ -346,7 +346,7 @@ Toute suite binaire est un nombre $n$ écrit en base 2. On peut donc représente
 Le second symbole n'est pas là pour coder la donnée mais pour la terminer ! Si l'on n'avait qu'un seul symbole, comment savoir lorsque la séquence est finie ? Il faut explicitement déterminer la fin de ce qu'on écrit.
 
 {% info %}
-Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing){.externe} qui représentent un ordinateur théorique minimal, les données de la machine sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs :
+Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) qui représentent un ordinateur théorique minimal, les données de la machine sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs :
 
 - `1` pour encoder les données,
 - ` ` (dit le symbole _blanc_) pour séparer les différentes entrées.
@@ -491,14 +491,14 @@ Il y a donc **beaucoup** d'algorithmes possibles... mais en réalité pas tant q
 
 ### Mais seulement une infinité dénombrable
 
-D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}. De là :
+D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode). De là :
 
 {% note "**Proposition**" %}
 
 Un **_programme_** est une suite finie $c_1 \dots c_n$ où :
 
 - $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
-- avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}, $\vert \mathcal{U} \vert \leq 150000$.
+- avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), $\vert \mathcal{U} \vert \leq 150000$.
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -623,7 +623,7 @@ Comme $f$ est une bijection de $A$ dans son image $f(A)$, $h^{-1} \circ f$ est u
 
 {% enddetails %}
 {% info %}
-[Référence](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration){.externe}
+[Référence](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration)
 {% endinfo %}
 
 Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitifs comme le résultat précédent qui montre qu'il peut y avoir autant d'éléments dans un ensemble et une partie de celui-ci. Par exemple nos injections précédentes montrent qu'il y a autant d'entiers pairs que d'entiers impairs que d'entiers !
@@ -677,12 +677,12 @@ On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de lo
 
 De façon plus précise on a la suite d'équivalences :
 
-1. faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. ([Aristote](https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme){.externe}, en -350 environ)
-2. (1) est équivalent à démontrer à l'aide d'une suite finie de déductions qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert){.externe}, début XXe siècle)
-3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del){.externe}, en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
-4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard){.externe}, en 1950 et 1980, montrent que (2) est équivalent à écrire en termes de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul){.externe}
-5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing){.externe} démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
-6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt){.externe}, ce qui est équivalent à (3))
+1. faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. ([Aristote](https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme), en -350 environ)
+2. (1) est équivalent à démontrer à l'aide d'une suite finie de déductions qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert), début XXe siècle)
+3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
+4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire en termes de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
+5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
+6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
 
 
 {% retenir %}

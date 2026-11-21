@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 
-Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur en utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}.
+Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur en utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 
@@ -25,14 +25,14 @@ La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plus
 Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.
 {% endnote %}
 {% lien %}
-[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church){.externe}.
+[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church).
 {% endlien %}
 
 La thèse de Church-Turing a été initialement formulée pour les machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
 
 {% lien %}
 
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws){.externe} pour une introduction en douceur à la problématique.
+Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur à la problématique.
 
 {% endlien %}
 
@@ -41,7 +41,7 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 Les programmes écrits sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dits **_Turing complet_** :
 
 {% definition %}
-Un système est dit [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet){.externe} si tout programme du système peut s'écrire en pseudo-code et réciproquement.
+Un système est dit [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) si tout programme du système peut s'écrire en pseudo-code et réciproquement.
 {% enddefinition %}
 
 Avoir un modèle Turing complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.
@@ -49,7 +49,7 @@ Avoir un modèle Turing complet nous assure, en suivant la thèse de Church-Turi
 ## Machine de Turing
 
 {% lien %}
-[Des machines de Turing et des castors](https://www.youtube.com/watch?v=kMHCl2PGloQ){.externe}
+[Des machines de Turing et des castors](https://www.youtube.com/watch?v=kMHCl2PGloQ)
 {% endlien %}
 
 Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :
@@ -70,7 +70,7 @@ Une **_machine de Turing_** est composée :
 {% enddefinition %}
 
 
-On peut représenter très simplement une machine de Turing par [un automate](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_automates){.externe}, par exemple [cette machine de Turing](https://bbchallenge.org/1RB1LB_1LA0LC_1RZ1LD_1RD0RA){.externe} (l'état initial est $A$) :
+On peut représenter très simplement une machine de Turing par [un automate](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_automates), par exemple [cette machine de Turing](https://bbchallenge.org/1RB1LB_1LA0LC_1RZ1LD_1RD0RA) (l'état initial est $A$) :
 
 
 |Départ || Arrivée |||
@@ -417,18 +417,18 @@ $$
 L'abstraction $\operatorname{dbl}$ peut être réduite par des entiers pour recréer d'autres entiers. En lambda calcul un type d'objet est une famille d'abstractions qui peut être appliquée à d'autres abstractions les acceptant. Définir des types, des objets et des algorithmes est donc identique : ce sont des abstractions.
 
 
-Cet exemple avec des entiers se généralise aux boucles, conditions et même à la récursion. On peut ainsi coder tout ce que l'on peut faire avec un pseudo-code, et cela s'implémente en pratique sous forme du paradigme de programmation appelé **_programmation fonctionnelle_**. Le tout premier langage de programmation, [le LISP](https://fr.wikipedia.org/wiki/Lisp){.externe} était d'ailleurs de ce type car faire un interpréteur pour ce type de programmation est "facile". Actuellement, les principaux représentants de ce style de programmation sont le [Haskell](https://www.haskell.org/){.externe} ou encore le [Ocaml](https://ocaml.org/){.externe}.
+Cet exemple avec des entiers se généralise aux boucles, conditions et même à la récursion. On peut ainsi coder tout ce que l'on peut faire avec un pseudo-code, et cela s'implémente en pratique sous forme du paradigme de programmation appelé **_programmation fonctionnelle_**. Le tout premier langage de programmation, [le LISP](https://fr.wikipedia.org/wiki/Lisp) était d'ailleurs de ce type car faire un interpréteur pour ce type de programmation est "facile". Actuellement, les principaux représentants de ce style de programmation sont le [Haskell](https://www.haskell.org/) ou encore le [Ocaml](https://ocaml.org/).
 
 {% lien %}
 
 Pour apprendre Haskell et les langages fonctionnels :
 
-1. <https://github.com/system-f/fp-course>{.externe}
-2. <https://haskell.mooc.fi/>{.externe}
-3. <https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3>{.externe}
-4. [introduction au langage Haskell](https://www.youtube.com/watch?v=UhM_H3lFk_Q){.externe} et au [lambda calcul](https://www.youtube.com/watch?v=_n4LIt2WPzE){.externe}
-5. [playlist](https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV){.externe}
-6. <https://learnyouahaskell.com/>{.externe}
+1. <https://github.com/system-f/fp-course>
+2. <https://haskell.mooc.fi/>
+3. <https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3>
+4. [introduction au langage Haskell](https://www.youtube.com/watch?v=UhM_H3lFk_Q) et au [lambda calcul](https://www.youtube.com/watch?v=_n4LIt2WPzE)
+5. [playlist](https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV)
+6. <https://learnyouahaskell.com/>
 
 {% endlien %}
 
@@ -436,16 +436,16 @@ Enfin, cette façon de programmer est très liée aux types et a permis quelques
 
 {% lien %}
 
-- [Catégories et types](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/){.externe}
-- [preuve de programme et types](https://ncatlab.org/nlab/show/computational+trilogy){.externe}
+- [Catégories et types](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+- [preuve de programme et types](https://ncatlab.org/nlab/show/computational+trilogy)
 {% endlien %}
 
 ## Automates cellulaires
 
-La plupart des [automates cellulaires](https://fr.wikipedia.org/wiki/Automate_cellulaire){.externe} sont Turing-complets. C'est le cas du célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie){.externe}, mais aussi d'automates bien plus simples :
+La plupart des [automates cellulaires](https://fr.wikipedia.org/wiki/Automate_cellulaire) sont Turing-complets. C'est le cas du célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie), mais aussi d'automates bien plus simples :
 
 {% lien %}
-L'exemple de système Turing complet le plus simple que je connaisse est l'automate unidimensionnel respectant la [règle 110](https://en.wikipedia.org/wiki/Rule_110){.externe}.
+L'exemple de système Turing complet le plus simple que je connaisse est l'automate unidimensionnel respectant la [règle 110](https://en.wikipedia.org/wiki/Rule_110).
 
 Jetez-y un coup d'œil, c'est assez bluffant.
 {% endlien %}
@@ -458,7 +458,7 @@ Comme le jeu de la vie est Turing complet, on peut coder le doublement de bâton
 Copiez/collez le code suivant dans <https://copy.sh/life/> pour tester par vous-même.
 {% details "code" %}
 
-Doublement de 3 bâtons au [format RLE](https://conwaylife.com/wiki/Run_Length_Encoded){.externe}.
+Doublement de 3 bâtons au [format RLE](https://conwaylife.com/wiki/Run_Length_Encoded).
 
 ```text
 #C Doubleur de batons : 3 planeurs NE -> 6 planeurs SW
@@ -474,11 +474,11 @@ Le code a été créé par Claude.
 {% enddetails %}
 {% endfaire %}
 
-Le mode de fonctionnement est très proche d'un ordinateur. On a deux générateurs de [planeurs](https://fr.wikipedia.org/wiki/Planeur_(jeu_de_la_vie)){.externe} (en haut à gauche et à droite) cadencés à la même fréquence. Notre entrée (les 3 planeurs en bas à gauche) va retarder le générateur de gauche pour ne produire que 6 planeurs en sortie (en bas à droite). C'est malin et se généralise à tout algorithme.
+Le mode de fonctionnement est très proche d'un ordinateur. On a deux générateurs de [planeurs](https://fr.wikipedia.org/wiki/Planeur_(jeu_de_la_vie)) (en haut à gauche et à droite) cadencés à la même fréquence. Notre entrée (les 3 planeurs en bas à gauche) va retarder le générateur de gauche pour ne produire que 6 planeurs en sortie (en bas à droite). C'est malin et se généralise à tout algorithme.
 
 ## Langages exotiques
 
-Si la plupart des langages informatiques sont clairement Turing complets, il existe des langages bizarres, nommés [langages de programmation exotiques](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique){.externe}, qui sont aussi Turing complets. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instructions comme le célèbre [Brainfuck](https://www.google.com/search?q=brainfuck){.externe}, à être marrants comme le [Piet](https://www.dangermouse.net/esoteric/piet.html){.externe} dont le but est de créer des programmes sous la forme d'un tableau de [Piet Mondrian](https://fr.wikipedia.org/wiki/Piet_Mondrian){.externe} ou encore à faire des ponts entre disciplines comme le [Fractran](https://www.youtube.com/watch?v=GIPtnEIQCBM){.externe}.
+Si la plupart des langages informatiques sont clairement Turing complets, il existe des langages bizarres, nommés [langages de programmation exotiques](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique), qui sont aussi Turing complets. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instructions comme le célèbre [Brainfuck](https://www.google.com/search?q=brainfuck), à être marrants comme le [Piet](https://www.dangermouse.net/esoteric/piet.html) dont le but est de créer des programmes sous la forme d'un tableau de [Piet Mondrian](https://fr.wikipedia.org/wiki/Piet_Mondrian) ou encore à faire des ponts entre disciplines comme le [Fractran](https://www.youtube.com/watch?v=GIPtnEIQCBM).
 
 
 En Fractran par exemple, le doublement de bâtons peut s'écrire avec l'algorithme $[\frac{9}{2}]$. Avec une entrée de type $2^n$, l'algorithme rendra une sortie de type $3^{2n}$.
@@ -491,9 +491,9 @@ Démontrez que notre algorithme de doublement de bâtons en Fractran fonctionne.
 
 De nombreuses applications ou jeux sont Turing-complets par inadvertence. Par exemple :
 
-- [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8){.externe}
-- [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8){.externe}
-- [Les trains de Factorio](https://www.youtube.com/watch?v=NCC2Fd8qxv4){.externe}
+- [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)
+- [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8)
+- [Les trains de Factorio](https://www.youtube.com/watch?v=NCC2Fd8qxv4)
 
 
 

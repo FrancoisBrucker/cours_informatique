@@ -15,7 +15,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Comment installer la [distribution anaconda](https://www.anaconda.com/){.externe} de python.
+Comment installer la [distribution anaconda](https://www.anaconda.com/) de python.
 
 <!-- fin résumé -->
 
@@ -25,13 +25,13 @@ Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'in
 
 ## Introduction
 
-[Anaconda](https://www.anaconda.com/){.externe} est une entreprise gérant des distributions python orientées data science. L'intérêt d'une telle distribution est qu'elle regroupe et met à disposition de nombreuses bibliothèques. Le côté négatif est que l'on ne maîtrise pas les bibliothèques installées et l'installation de paquets supplémentaires est parfois problématique.
+[Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientées data science. L'intérêt d'une telle distribution est qu'elle regroupe et met à disposition de nombreuses bibliothèques. Le côté négatif est que l'on ne maîtrise pas les bibliothèques installées et l'installation de paquets supplémentaires est parfois problématique.
 
-Cependant, pour une utilisation basique de python ou une utilisation via [Jupyter notebook](https://jupyter.org/){.externe}, c'est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.
+Cependant, pour une utilisation basique de python ou une utilisation via [Jupyter notebook](https://jupyter.org/), c'est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.
 
 ## Installation
 
-Il existe plusieurs distributions de python anaconda. Nous allons utiliser l'[édition individuelle](https://www.anaconda.com/products/individual){.externe} qui est open source.
+Il existe plusieurs distributions de python anaconda. Nous allons utiliser l'[édition individuelle](https://www.anaconda.com/products/individual) qui est open source.
 
 {% attention %}
 Si vous avez déjà une ancienne version d'anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer [le dossier contenant l'ancienne version](#ou-est-anaconda).
@@ -146,7 +146,7 @@ Vous devez avoir un unique environnement : *base (root)*. Un environnement est u
 Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle vert à droite de l'environnement *base (root)*, vous pouvez cliquer sur *open terminal*, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu'à gauche de l'invite de commande vous avez `(base)` d'écrit. Ceci montre quel environnement python vous avez.
 
 {% info %}
-Vous pouvez [connaître l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/){.externe}.
+Vous pouvez [connaître l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/).
 {% endinfo %}
 
 Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et Linux pour entrer dans un [interpréteur python](../installation-de-python/interpréteur-id).
@@ -165,7 +165,7 @@ Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../..
 Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d'autres, il y a deux solutions :
 
 * utiliser le gestionnaire de modules de python `python -m pip install <nom du module à installer>`
-* utiliser [`conda`](https://conda.io/projects/conda/en/latest/user-guide/index.html){.externe} qui est le gestionnaire de modules spécifique à anaconda.
+* utiliser [`conda`](https://conda.io/projects/conda/en/latest/user-guide/index.html) qui est le gestionnaire de modules spécifique à anaconda.
 
 {% info %}
 Si vous avez le choix, utilisez le gestionnaire de modules de python.

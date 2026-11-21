@@ -30,7 +30,7 @@ Mallory interceptant tous les messages entre Alice et Bob, en particulier l'éch
 
 Il faut trouver un moyen d'authentifier avec certitude le correspondant.
 
-Un moyen de parvenir à cela est la [cryptographie asymétrique](https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique){.externe} :
+Un moyen de parvenir à cela est la [cryptographie asymétrique](https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique) :
 
 {% definition %}
 La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple $(k, k')$ de clés d'avoir les deux conditions d'intégrité suivante, de façon sécurisée :
@@ -56,7 +56,7 @@ La clé publique est ...publique et permet à une autre personne :
 ## <span id="signature"></span> Signature électronique avec clé publique/clé privée
 
 {% lien %}
-[Certificat Électronique](https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique){.externe}
+[Certificat Électronique](https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique)
 {% endlien %}
 
 La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification en utilisant le couple $(k, k')$ de clé privée / publique :
@@ -70,7 +70,7 @@ Les rôles des clés sont connus :
 - la clé **publique**, connue de tous, permet de **vérifier** la signature
 
 {% info %}
-Comme fonction de hash on utilise souvent [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm){.externe}, préférez la version 2 à la version 1 qui n'est plus sécurisée pour des applications cryptographies.
+Comme fonction de hash on utilise souvent [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm), préférez la version 2 à la version 1 qui n'est plus sécurisée pour des applications cryptographies.
 {% endinfo %}
 
 Par exemple :
@@ -101,10 +101,10 @@ Si on ne connaît pas la clé publique de la personne qui nous a envoyé un mess
 - Tiers de confiance : certificat (pour le https, boot sécurisé)
 - Keyring : ensemble de clés publique de confiance (pour l'installation de packages de mainteneur connu par exemple)
 
-<https://wiki.archlinux.org/title/Pacman/Package_signing>{.externe}
+<https://wiki.archlinux.org/title/Pacman/Package_signing>
 
-- keyring ubuntu : <https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/>{.externe}
-- exemple vscode : <https://code.visualstudio.com/docs/setup/linux>{.externe}
+- keyring ubuntu : <https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/>
+- exemple vscode : <https://code.visualstudio.com/docs/setup/linux>
 
 ## Chiffrement des documents
 

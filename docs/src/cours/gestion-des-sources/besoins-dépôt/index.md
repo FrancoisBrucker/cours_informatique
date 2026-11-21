@@ -14,7 +14,7 @@ Nous allons voir les besoins minimum pour stocker et distribuer un code source. 
 
 ## Création d'un compte github
 
-Nous avons chois d'utiliser la plateforme [github](https://github.com/){.externe}, donc commençons par nous y créer un compte :
+Nous avons chois d'utiliser la plateforme [github](https://github.com/), donc commençons par nous y créer un compte :
 
 {% aller %}
 [Création d'un compte github](./github-compte)

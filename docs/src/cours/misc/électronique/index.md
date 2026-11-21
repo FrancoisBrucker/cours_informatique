@@ -15,8 +15,8 @@ On montrera ici juste le strict nécessaire pour se convaincre que l'on peut con
 On va voir comment associer un signal électrique à des bits et les combiner sous la forme de formules logiques.
 
 {% lien %}
-- [CODE, de Charles Petzold](https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/){.externe}
-- [Circuits and electronics (MIT 6.002)](https://www.youtube.com/watch?v=AfQxyVuLeCs&list=PL9F74AFA03AA06A11){.externe}
+- [CODE, de Charles Petzold](https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/)
+- [Circuits and electronics (MIT 6.002)](https://www.youtube.com/watch?v=AfQxyVuLeCs&list=PL9F74AFA03AA06A11)
 {% endlien %}
 
 On a vu que toutes les formules logiques peuvent s'écrire sous la forme d'un DAG où les sommets sont :

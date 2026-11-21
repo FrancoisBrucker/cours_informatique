@@ -139,8 +139,8 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% lien %}
 
-- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security){.externe}
-- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function){.externe}
+- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
+- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
 
 {% endlien %}
 
@@ -157,7 +157,7 @@ Classiquement ceci se formalise par la modélisation sous la forme d'un jeu.
 ### <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
 
 {% lien %}
-[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire){.externe}
+[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire)
 {% endlien %}
 
 La confidentialité peut s'écrire sous la forme d'un _jeu_ à deux joueurs :

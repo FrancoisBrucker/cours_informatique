@@ -17,10 +17,10 @@ eleventyComputed:
 
 Ce cours est dédié au code informatique. _Coder_, c'est passer d'un _algorithme papier_ (pseudo-code ou idées) à un programme informatique, appelé **code**. Par extension, on inclura dans cette partie la modification d'un code existant. Le **but** d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.
 
-Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe}. Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
+Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation). Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
 
 {% info %}
-Nous utilisons ici [le python](https://www.python.org/){.externe} car notre but est ici :
+Nous utilisons ici [le python](https://www.python.org/) car notre but est ici :
 
 - de coder des algorithmes classiques et python est très proche du pseudo-code.
 - d'apprendre les bonnes pratiques de développement et python est un langage qui permet de les apprendre simplement
@@ -98,7 +98,7 @@ La plupart des  projets informatiques ont besoin de modules extérieurs pour leu
 
 ### Partie V : Programmation évènementielle
 
-La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique){.externe}. Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
 
 {% aller %}
 [Programmation évènementielle](programmation-évènementielle)

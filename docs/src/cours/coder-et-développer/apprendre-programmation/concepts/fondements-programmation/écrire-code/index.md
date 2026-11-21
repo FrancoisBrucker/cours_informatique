@@ -58,7 +58,7 @@ Testez tous les exemples qui suivent dans un spyder, soit directement dans la co
 ## Commentaires
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/lexical_analysis.html#comments>{.externe}
+<https://docs.python.org/fr/3/reference/lexical_analysis.html#comments>
 {% endlien %}
 
 Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#`{.language-} n'est pas lu.
@@ -82,7 +82,7 @@ SyntaxError: invalid syntax
 ## Objets
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/stdtypes.html#built-in-types>{.externe}
+<https://docs.python.org/fr/3/library/stdtypes.html#built-in-types>
 {% endlien %}
 
 Les **_objets_** de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets.
@@ -351,7 +351,7 @@ L'instruction de la ligne 3 est identique aux deux précédentes : on associe un
 
 ![association nom variable 4](python-variables-objets-4.png)
 
-L'objet précédemment assigné à `y` n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle [le garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c){.externe}).
+L'objet précédemment assigné à `y` n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle [le garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c)).
 
 Le même mécanisme est à l'oeuvre si on a une variable à droite de l'opérateur d'affectation `=`. Considérons le programme suivant :
 
@@ -456,7 +456,7 @@ L'objet n'est plus accessible !
 ![suppression 3](suppression-3.png)
 
 <span id="ramasse-miettes"></span>
-Python utilise un mécanisme nommé [ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)){.externe} qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :
+Python utilise un mécanisme nommé [ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)) qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :
 
 ![suppression 4](suppression-4.png)
 
@@ -503,7 +503,7 @@ Affectez la valeur 2 à la variable `A`{.language-}, puis affichez à l'écran l
 2
 ```
 
-Les variables sont [sensibles à la casse](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse){.externe} : a est différent de A.
+Les variables sont [sensibles à la casse](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse) : a est différent de A.
 
 {% enddetails %}
 
@@ -758,7 +758,7 @@ Par exemple :
 >>> 
 ```
 
-Va exécuter la fonction `print`{.language-} de python qui affiche à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot){.externe} ce qui a pour effet d'aller à la ligne.
+Va exécuter la fonction `print`{.language-} de python qui affiche à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot) ce qui a pour effet d'aller à la ligne.
 
 {% definition %}
 De nombreuses fonctions peuvent être exécutées avec des **_paramètres_** qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
@@ -780,7 +780,7 @@ L'exécution de la fonction `print`{.language-} avec les trois paramètres `"cou
 
 Toutes les fonctions de python sont documentées. On peut y accéder :
 
-- via le site de python. L'aide de la fonction `print`{.language-} est là : <https://docs.python.org/fr/3/library/functions.html#print>{.externe}
+- via le site de python. L'aide de la fonction `print`{.language-} est là : <https://docs.python.org/fr/3/library/functions.html#print>
 - en console en utilisant la fonction `help`{.language-} : `help(print)`{.language-} donne l'aide de `print`{.language-}
 
 {% exercice %}
@@ -832,7 +832,7 @@ Le retour de l'exécution est un objet qui peut être stockée dans une variable
 
 {% enddefinition %}
 
-C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs){.externe}) :
+C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs)) :
 
 ```python
 >>> x = abs(-10)
@@ -862,7 +862,7 @@ Enfin, comme ici on exécute notre code directement dans l'interpréteur python,
 Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.
 {% endretenir %}
 
-En regardant [la documentation de la fonction `print`{.language-}](https://docs.python.org/fr/3/library/functions.html#print){.externe}, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
+En regardant [la documentation de la fonction `print`{.language-}](https://docs.python.org/fr/3/library/functions.html#print), on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
 
 {% definition %}
 Les paramètres sans valeurs par défaut sont **obligatoires** lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont **optionnels**.
@@ -922,7 +922,7 @@ En python les fonctions ne sont pas les seules objets pouvant être exécuté. E
 On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../objets-types), c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
 
 {% exercice %}
-En utilisant [`int()`{.language-}](https://docs.python.org/fr/3/library/functions.html#int){.externe} qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
+En utilisant [`int()`{.language-}](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
 {% endexercice %}
 {% details "solution" %}
 
@@ -938,7 +938,7 @@ On utilise le paramètre base de la classe `int`{.language-} :
 Allez, un dernier pour la route :
 
 {% exercice %}
-En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} donne le nombre de caractères de la chaîne (par exemple `len("abc")`{.language-} rend `3`{.language-}), et que l'exposant eb python s'écrit `**`{.language-} (par exemple `2**8`{.language-} rend `256`{.language-}) donnez le nombre de chiffre du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe}.
+En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} donne le nombre de caractères de la chaîne (par exemple `len("abc")`{.language-} rend `3`{.language-}), et que l'exposant eb python s'écrit `**`{.language-} (par exemple `2**8`{.language-} rend `256`{.language-}) donnez le nombre de chiffre du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -952,7 +952,7 @@ En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} d
 ### Fonctions usuelles
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html>{.externe}
+<https://docs.python.org/fr/3/library/functions.html>
 {% endlien %}
 
 Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
@@ -960,7 +960,7 @@ Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi l
 #### <span id="print"></span> Fonction `print`{.language-}
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#print>{.externe}
+<https://docs.python.org/fr/3/library/functions.html#print>
 {% endlien %}
 
 Affiche à l'écran ses paramètres.
@@ -968,7 +968,7 @@ Affiche à l'écran ses paramètres.
 #### Fonction `type`{.language-}
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#type>{.externe}
+<https://docs.python.org/fr/3/library/functions.html#type>
 {% endlien %}
 
 Donne le type d'un objet.
@@ -980,7 +980,7 @@ On l'a utilisée dans la partie [objets types et types d'objets](../objets-types
 #### <span id="len"></span> Fonction `len`{.language-}
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#len>{.externe}
+<https://docs.python.org/fr/3/library/functions.html#len>
 {% endlien %}
 
 Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../../conteneurs) que l'on verra plus tard).
@@ -1000,7 +1000,7 @@ Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
 #### <span id="input"></span> Fonction `input`{.language-}
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#input>{.externe}
+<https://docs.python.org/fr/3/library/functions.html#input>
 {% endlien %}
 
 Permet de demander une chaîne de caractère à un utilisateur. Par exemple :
@@ -1040,7 +1040,7 @@ Prenez le temps de regarder les différentes méthodes des classes de base de py
 
 Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera `None`{.language-} (comme beaucoup de méthodes de liste que l'on verra bientôt).
 
-Par exemple [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper){.externe} qui rend une nouvelle chaine en majuscule :
+Par exemple [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper) qui rend une nouvelle chaine en majuscule :
 
 ```python
 >>> "coucou !".upper()
@@ -1080,8 +1080,8 @@ Par exemple :
 
 L'exemple ci-dessus utilise :
 
-- [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper){.externe}
-- l[a méthode `count()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count){.externe}
+- [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper)
+- l[a méthode `count()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count)
 
 Ceci se généralise avec $n$ méthodes :
 

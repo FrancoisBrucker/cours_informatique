@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Vous aller coder ici une méthode de chiffrement/déchiffrement de texte : [le code de césar](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage){.externe}.
+Vous aller coder ici une méthode de chiffrement/déchiffrement de texte : [le code de césar](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage).
 
 ## Le projet
 
@@ -89,8 +89,8 @@ La manipulation précédente va très vite !
 3. le raccourci clavier pour afficher le terminal
 {% endinfo %}
 {% lien "**Documentation**" %}
-- <https://code.visualstudio.com/docs/configure/keybindings>{.externe}
-- [Raccourci sous windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf){.externe}
+- <https://code.visualstudio.com/docs/configure/keybindings>
+- [Raccourci sous windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 {% endlien %}
 
 ### Fonctions chiffre
@@ -154,4 +154,4 @@ C'est au développeur des fonctions de créer des tests pour elles de tel sorte 
 
 ## Corrigé
 
-Les différents fichiers sont disponible [ici](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/projet-code-c%C3%A9sar/chffre-cesar){.externe}
+Les différents fichiers sont disponible [ici](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/projet-code-c%C3%A9sar/chffre-cesar)

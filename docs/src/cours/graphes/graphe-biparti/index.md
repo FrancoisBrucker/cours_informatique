@@ -84,7 +84,7 @@ Il y a donc $2\cdot (2^{n-1}-1) + 1 = 2^n-1$ bipartitions à $n+1$ éléments (i
 >
 {% enddetails %}
 {% info %}
-Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles est appelé [nombre de Stirling de second espèce](https://fr.wikipedia.org/wiki/Nombre_de_Stirling#Nombre_de_Stirling_de_seconde_esp%C3%A8ce){.externe}
+Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles est appelé [nombre de Stirling de second espèce](https://fr.wikipedia.org/wiki/Nombre_de_Stirling#Nombre_de_Stirling_de_seconde_esp%C3%A8ce)
 {% endinfo %}
 
 En conclure :
@@ -128,7 +128,7 @@ Le graphe $K_{2, 3}$ est par exemple :
 ![$K_{2, 3}$](k23.png)
 
 {% info %}
-Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](https://fr.wikipedia.org/wiki/Graphe_biparti_complet){.externe}
+Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
 
 {% endinfo %}
 
@@ -173,7 +173,7 @@ On appelle **_graphe $k$-parti complet_** le graphe Le graphe $K_{p_1,\dots, p_k
 Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'œil à la page suivante :
 
 {% info %}
-<https://mathworld.wolfram.com/CompleteTripartiteGraph.html>{.externe}
+<https://mathworld.wolfram.com/CompleteTripartiteGraph.html>
 {% endinfo %}
 
 Terminons par un petit exercice pour appliquer tout ça :
@@ -233,7 +233,7 @@ On le verra tout au long de ce cours l'existence de cycles de longueurs impairs 
 Le problème de partition d'un graphe en graphes bipartis est un problème de communication réseau initialement posé (et résolu) par les deux chercheurs Graham et Pollak des laboratoires Bell dans les années 1970.
 
 {% lien %}
-[Problème de Graham-Pollak](https://www.youtube.com/watch?v=ZtXfGagSUlA){.externe}
+[Problème de Graham-Pollak](https://www.youtube.com/watch?v=ZtXfGagSUlA)
 {% endlien %}
 
 Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :
@@ -301,12 +301,12 @@ La preuve est atypique et ne parlera pas de graphes. De plus, on ne connaît pas
 
 Soit $K_n$ le graphe complet avec comme ensemble de sommets $V = \\{1, \dots, n\\}$. Soit $(B_k)_{1\leq k \leq m}$ une de ses décompositions en en $m$ graphes bipartis complets, et on note également $\\{U_k, V_k\\}$ les deux stables de $B_k$.
 
-Soient $x_1, \dots, x_n$, $n$ variables réelles. On considère alors [Le système d'équations linéaires](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27%C3%A9quations_lin%C3%A9aires){.externe} formé des $m+1$ équations suivantes :
+Soient $x_1, \dots, x_n$, $n$ variables réelles. On considère alors [Le système d'équations linéaires](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27%C3%A9quations_lin%C3%A9aires) formé des $m+1$ équations suivantes :
 
 - $\sum_{1\leq i \leq n}x_i = 0$
 - $\sum_{i \in U_k}x_i = 0$ pour tout $1\leq k \leq m$
 
-Si $m + 1 < n$ [ce système va posséder une solution non nulle](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27%C3%A9quations_lin%C3%A9aires#Nombre_de_solutions_d%E2%80%99un_syst%C3%A8me_d'%C3%A9quations){.externe} $(c_1, \dots, c_n)$ (il existe $i$ tel que $c_i \neq 0$). Nous allons montrer que ceci est impossible.
+Si $m + 1 < n$ [ce système va posséder une solution non nulle](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27%C3%A9quations_lin%C3%A9aires#Nombre_de_solutions_d%E2%80%99un_syst%C3%A8me_d'%C3%A9quations) $(c_1, \dots, c_n)$ (il existe $i$ tel que $c_i \neq 0$). Nous allons montrer que ceci est impossible.
 
 Comme pour tout $i \neq j$, il n'existe qu'un unique $k$ tel que $x_i \in U_k$ et $x_j \in V_k$, on a l'égalité :
 
@@ -387,7 +387,7 @@ $$
 On termine la preuve en remarquant que si le nombre moyen d'arête est $\frac{m}{2}$, il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ l'atteignant.
 {% enddetails %}
 
-Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste){.externe}. Cependant, ces preuves sont non constructives et dans notre cas trouver ce graphe bi-parti, ou tout du moins le plus grand n'est pas facile du tout. C'est en effet un effet un problème algorithmique classique :
+Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste). Cependant, ces preuves sont non constructives et dans notre cas trouver ce graphe bi-parti, ou tout du moins le plus grand n'est pas facile du tout. C'est en effet un effet un problème algorithmique classique :
 
 <span id="problème-MAX-CUT"></span>
 
@@ -502,8 +502,8 @@ Le théorème précédent nous donne donc une borne max du nombre d'arêtes : $\
 Les meilleurs bornes connues sont :
 
 - La meilleur borne max connu est $\mathcal{O}(n^{4/3})$ et est donnée dans [Unit distances in the Euclidean
-plane(Spencer, Szemerédi et Trotter, 1984)](https://trotter.math.gatech.edu/papers/44.pdf){.externe}
-- La meilleur borne min connue est $n^{1 + \mathcal{O}(1)/log(log(n))}$ et on la doit à Erdős dans [On sets of distances of n points (Erdős, 1946)](https://users.renyi.hu/~p_erdos/1946-03.pdf){.externe}.
+plane(Spencer, Szemerédi et Trotter, 1984)](https://trotter.math.gatech.edu/papers/44.pdf)
+- La meilleur borne min connue est $n^{1 + \mathcal{O}(1)/log(log(n))}$ et on la doit à Erdős dans [On sets of distances of n points (Erdős, 1946)](https://users.renyi.hu/~p_erdos/1946-03.pdf).
 
 {% endinfo %}
 
@@ -528,7 +528,7 @@ Soit $G$ à $n$ sommets construit tel que la probabilité d'avoir l'arête $xy$ 
 
 En notant $\sharp H$ le nombre de sous-graphes valant $H$ de $G$ on va calculer son espérance $\mathbb{E}[\sharp H]$.
 
-Pour cela il nous faut une autre donnée qui est le nombre d'[automorphisme de $H$](https://fr.wikipedia.org/wiki/Automorphisme_de_graphe){.externe} (les permutation de sommets conservant $H$), appelons le $\text{aut}(H)$, pour pouvoir écrire :
+Pour cela il nous faut une autre donnée qui est le nombre d'[automorphisme de $H$](https://fr.wikipedia.org/wiki/Automorphisme_de_graphe) (les permutation de sommets conservant $H$), appelons le $\text{aut}(H)$, pour pouvoir écrire :
 
 <div>
 $$
@@ -628,5 +628,5 @@ $$
 On peut trouver des encadrement plus fin en utilisant des méthodes plus sophistiquée, si cela vous intéresse, regardez la vidéo en lien.
 {% endinfo %}
 {% lien %}
-<https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>{.externe}
+<https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
 {% endlien %}

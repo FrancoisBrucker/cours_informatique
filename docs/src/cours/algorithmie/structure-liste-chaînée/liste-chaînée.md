@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e){.externe}
+[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
 {% endlien %}
 
 Les **_listes chaînées_** sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer ou ajouter un élément quelconque de cette liste en temps constant.
@@ -94,7 +94,7 @@ On utilise les listes chaînées lorsque l'on doit très souvent insérer ou sup
 Les listes chaînées sont utilisées pour stocker des fichiers sur un disque physique.
 
 {% lien %}
-[Systèmes d'Allocation de fichiers FAT](https://fr.wikipedia.org/wiki/FAT32){.externe}
+[Systèmes d'Allocation de fichiers FAT](https://fr.wikipedia.org/wiki/FAT32)
 {% endlien %}
 
 <!-- TBD

@@ -12,9 +12,9 @@ eleventyComputed:
 
 {% lien %}
 
-- [Graphes parfait avec Maria Chudnovsky](https://www.youtube.com/watch?v=C4Zr4cOVm9g){.externe}
-- [Une revue du problème par Chvatal](https://users.encs.concordia.ca/~chvatal/perfect/spgt.html){.externe}
-- [un cours détaillé](https://arxiv.org/pdf/1301.5149){.externe}
+- [Graphes parfait avec Maria Chudnovsky](https://www.youtube.com/watch?v=C4Zr4cOVm9g)
+- [Une revue du problème par Chvatal](https://users.encs.concordia.ca/~chvatal/perfect/spgt.html)
+- [un cours détaillé](https://arxiv.org/pdf/1301.5149)
 
 {% endlien %}
 
@@ -23,10 +23,10 @@ eleventyComputed:
 
 > TBD def
 >
-> TBD différence non bornée : <https://perso.ens-lyon.fr/edouard.bonnet/publi/tree-zykov.pdf>{.externe} et <https://math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf>{.externe}
+> TBD différence non bornée : <https://perso.ens-lyon.fr/edouard.bonnet/publi/tree-zykov.pdf> et <https://math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf>
 > TBD dessins de quelques graphes parfait
 >
-> NP complet en general mais poly en perfect graphs : <https://www.graphclasses.org/classes/gc_56.html>{.externe} et <https://en.wikipedia.org/wiki/Perfect_graph#Algorithms>{.externe}
+> NP complet en general mais poly en perfect graphs : <https://www.graphclasses.org/classes/gc_56.html> et <https://en.wikipedia.org/wiki/Perfect_graph#Algorithms>
 
 On en connaît déjà :
 
@@ -35,11 +35,11 @@ On en connaît déjà :
 
 Et il y en a plein d'autres :
 
-- [graphes cordées](https://fr.wikipedia.org/wiki/Graphe_cordal){.externe} (https://math.stackexchange.com/questions/4045122/why-are-chordal-graphs-always-perfect-graphs), donc aussi [les graphes d'intervalles](https://fr.wikipedia.org/wiki/Graphe_d%27intervalles){.externe}
-- [graphes de comparabilités](https://fr.wikipedia.org/wiki/Graphe_de_comparabilit%C3%A9){.externe}
+- [graphes cordées](https://fr.wikipedia.org/wiki/Graphe_cordal) (https://math.stackexchange.com/questions/4045122/why-are-chordal-graphs-always-perfect-graphs), donc aussi [les graphes d'intervalles](https://fr.wikipedia.org/wiki/Graphe_d%27intervalles)
+- [graphes de comparabilités](https://fr.wikipedia.org/wiki/Graphe_de_comparabilit%C3%A9)
 - ...
 
-> TBD exo : Threshold graphs are perfect : <https://en.wikipedia.org/wiki/Threshold_graph>{.externe}
+> TBD exo : Threshold graphs are perfect : <https://en.wikipedia.org/wiki/Threshold_graph>
 
 Il existe deux types d graphes fondamentaux qui ne sont pas parfait les cycles de longueur impair $C_{2p+1}$ avec $p>1$ - nommés _**odd holes**_ - et leurs complémentaires $\overline{C_{2p+1}}$, nommés _**odd antiholes**_ :
 
@@ -66,11 +66,11 @@ Un graphe $G$est parfait si et seulement pour tout sous graphe $H$ de $G$ à $V(
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD thm 3.1 <https://ahmadabdi.com/ltcc/lecture_2.pdf>{.externe}
+> TBD thm 3.1 <https://ahmadabdi.com/ltcc/lecture_2.pdf>
 
 {% enddetails %}
 
-> [Weak Perfect Graph Theorem](https://www.youtube.com/watch?v=Koc63QhxPgk){.externe}
+> [Weak Perfect Graph Theorem](https://www.youtube.com/watch?v=Koc63QhxPgk)
 
 {% note "**Théorème (Lovàsz, 1972)**" %}
 Un graphe est parfait si et seulement si son complémentaire est parfait.
@@ -83,12 +83,12 @@ Conséquence directe de la proposition précédente en remarquant que $\omega(G)
 
 {% enddetails %}
 
-[Strong Perfect Graph Theorem (179 pages sans un seul dessin)](https://annals.math.princeton.edu/wp-content/uploads/annals-v164-n1-p02.pdf){.externe}
+[Strong Perfect Graph Theorem (179 pages sans un seul dessin)](https://annals.math.princeton.edu/wp-content/uploads/annals-v164-n1-p02.pdf)
 
-Le théorème fort des graphes parfait permet de faire des algorithmes de reconnaissance polynomiaux : <https://algorithms.leeds.ac.uk/wp-content/uploads/sites/117/2017/09/FOCS03final.pdf>{.externe}
+Le théorème fort des graphes parfait permet de faire des algorithmes de reconnaissance polynomiaux : <https://algorithms.leeds.ac.uk/wp-content/uploads/sites/117/2017/09/FOCS03final.pdf>
 
 On les retrouves à des endroits inattendus :
 
 > TBD le line graph d'un graphe biparti est parfait.
-> TBD graphe auto complémentaire parfait : <https://mathoverflow.net/questions/452045/are-there-many-self-complementary-perfect-graphs>{.externe}
-> TBD problèmes de coloration facile du coup : <https://iuuk.mff.cuni.cz/~rakdver/kgii/lesson20-8.pdf>{.externe}
+> TBD graphe auto complémentaire parfait : <https://mathoverflow.net/questions/452045/are-there-many-self-complementary-perfect-graphs>
+> TBD problèmes de coloration facile du coup : <https://iuuk.mff.cuni.cz/~rakdver/kgii/lesson20-8.pdf>

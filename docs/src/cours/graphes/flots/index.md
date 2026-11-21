@@ -12,7 +12,7 @@ eleventyComputed:
 Modéliser des problèmes de robinets par la théorie des graphes.
 
 {% info %}
-Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudry [Introduction à l'optimisation continue et discrète](https://www.amazon.fr/Introduction-loptimisation-continue-discr%C3%A8te-exercices/dp/2746248638){.externe}.
+Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudry [Introduction à l'optimisation continue et discrète](https://www.amazon.fr/Introduction-loptimisation-continue-discr%C3%A8te-exercices/dp/2746248638).
 
 {% endinfo %}
 
@@ -39,7 +39,7 @@ Où est le goulot d'étranglement du réseau ?
 Notez que le goulot d'étranglement est le flot maximum.
 {% endnote %}
 
-C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons [utiliser la théorie des graphes](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum){.externe}. On verra aussi quelques cas d'applications où les flots apparaissent alors qu'on ne les attendait pas.
+C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons [utiliser la théorie des graphes](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum). On verra aussi quelques cas d'applications où les flots apparaissent alors qu'on ne les attendait pas.
 
 ## Définitions
 

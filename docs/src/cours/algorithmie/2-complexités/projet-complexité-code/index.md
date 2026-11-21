@@ -26,8 +26,8 @@ On présuppose que vous avez fait les prérequis du cours d'algorithmie, en part
 
 Il vous faudra aussi installer deux modules pour votre interpréteur python :
 
-- <https://matplotlib.org/>{.externe}
-- <https://numpy.org/>{.externe}
+- <https://matplotlib.org/>
+- <https://numpy.org/>
 
 {% faire %}
 [En utilisant le cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/modules-externes-python/), installez le module matplotlib pour votre interpréteur (ceci devrait aussi installer numpy).
@@ -36,7 +36,7 @@ Il vous faudra aussi installer deux modules pour votre interpréteur python :
 ### Code du cours
 
 {% faire %}
-1. téléchargez [les fichiers du cours](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/2-complexit%C3%A9s/complexit%C3%A9-code/code?filename=projet-code){.externe},
+1. téléchargez [les fichiers du cours](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/2-complexit%C3%A9s/complexit%C3%A9-code/code?filename=projet-code),
 2. créez un projet vscode dans ce dossier,
 3. exécutez le fichier `main.py`{.fichier} en faisant en sorte que tout fonctionne,
 4. exécutez [les tests unitaires](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/) (vous aurez bien au préalable installé le module <https://docs.pytest.org/en/stable/>) et vérifiez qu'ils passent.
@@ -63,9 +63,9 @@ Vous devriez obtenir une courbe qui ressemble à la fonction $y = x^2$ :
 
 ![figure n2](./Figure_n2_1.png)
 
-Pour en être sûr, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée [régression polynomiale](https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale){.externe} et qui est très facile à faire avec numpy.
+Pour en être sûr, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée [régression polynomiale](https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale) et qui est très facile à faire avec numpy.
 
-Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plus proche possible de $Y[i]$, on peut utiliser [`np.polyfit`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyfit.html){.externe} :
+Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plus proche possible de $Y[i]$, on peut utiliser [`np.polyfit`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyfit.html) :
 
 ```python
 import numpy as np
@@ -73,7 +73,7 @@ import numpy as np
 coefs = np.polyfit(X, Y, n)
 ```
 
-Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction [`np.polyval`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyval.html){.externe} :
+Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction [`np.polyval`{.language-}](https://numpy.org/devdocs/reference/generated/numpy.polyval.html) :
 
 ```python
 Y2 = np.polyval(coefs, X)
@@ -200,7 +200,7 @@ Montrez que les courbes $y = x^2$ et $y=x^2\ln(x)$ sont très proches en représ
 Montrez que ceci est toujours valable pour un algorithme itératif calculant la factorielle.
 {% endfaire %}
 
-En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et est même vrai si nos entiers sont petits (_ie._ plus petits que $2^{64}$ ce qui est quand même assez grand, voir [le problème de l'échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa){.externe}) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.
+En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et est même vrai si nos entiers sont petits (_ie._ plus petits que $2^{64}$ ce qui est quand même assez grand, voir [le problème de l'échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa)) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.
 
 
 {% retenir %}

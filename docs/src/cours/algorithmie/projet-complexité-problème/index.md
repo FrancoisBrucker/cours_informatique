@@ -236,7 +236,7 @@ Comme l'algorithme `trouve_vite(T)`{.language-} est de complexité $\mathcal{O}(
 > - **Utilité** : classique parmi les classique. La preuve que la complexité est minimale est à connaître
 > - **Difficulté** : moyen
 
-[Les _tours de Hanoï_](https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF){.externe} sont un célèbre casse tête inventé par Édouard Lucas.
+[Les _tours de Hanoï_](https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF) sont un célèbre casse tête inventé par Édouard Lucas.
 
 Il consiste à déplacer $n$ disques de diamètres différents d'une tour de _"départ"_ à une tour d' _"arrivée"_ en passant par une tour _"intermédiaire"_, tout en respectant les règles suivantes :
 
@@ -246,7 +246,7 @@ Il consiste à déplacer $n$ disques de diamètres différents d'une tour de _"d
 On suppose que cette dernière règle est également respectée dans la configuration de départ.
 
 {% lien %}
-[Une interface pour jouer aux tours de Hanoï](http://championmath.free.fr/tourhanoi.htm){.externe}.
+[Une interface pour jouer aux tours de Hanoï](http://championmath.free.fr/tourhanoi.htm).
 
 Déplacez les disques par glisser/déposer.
 {% endlien %}
@@ -558,7 +558,7 @@ Le lapin et la tortue sont sur la même valeur.
 
 {% enddetails %}
 
-L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet algorithme s'appelle [l'algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue){.externe} et est décrit ci-après :
+L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet algorithme s'appelle [l'algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue) et est décrit ci-après :
 
 ```pseudocode
 programme lièvre_tortue(a: (int) → int) → int:
@@ -960,7 +960,7 @@ Quelle est la complexité de cet algorithme. Peut-on faire mieux ?
 Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme la soustraction nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.
 {% enddetails %}
 
-La méthode utilisée permet de gérer les entiers positifs et négatifs, mais [on verra plus tard](../fonctions-booléennes/#complément-à-deux) un moyen plus efficace de le faire en utilisant [le complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux){.externe}
+La méthode utilisée permet de gérer les entiers positifs et négatifs, mais [on verra plus tard](../fonctions-booléennes/#complément-à-deux) un moyen plus efficace de le faire en utilisant [le complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
 
 ### Améliorations
 
@@ -1042,7 +1042,7 @@ Montrez que la complexité du problème de la multiplication de deux entiers sou
 Il faut au moins lire les données, ce qui nécessite au moins $\Omega(n)$ opérations.
 {% enddetails %}
 
-On ne connaît cependant pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleur algorithme connu est en $\mathcal{O}(n\ln(n))$, que l'on suppose être la complexité du problème. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de la multiplication posée que l'on apprend en primaire jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba){.externe} prouve le contraire en 1962.
+On ne connaît cependant pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleur algorithme connu est en $\mathcal{O}(n\ln(n))$, que l'on suppose être la complexité du problème. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de la multiplication posée que l'on apprend en primaire jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba) prouve le contraire en 1962.
 
 Le problème de la multiplication est intéressant à plus d'un titre :
 
@@ -1077,7 +1077,7 @@ On considérera par la suite que l'on a : $\text{puissance}(n, x) = u^{-1}(2^n \
 
 #### Naive
 
-On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication){.externe}. Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
+On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
 
 ```
        100101
@@ -1144,7 +1144,7 @@ La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 e
 #### <spin id="Karatsuba"></span>Karatsuba
 
 {% lien %}
-[optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba){.externe}
+[optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
 {% endlien %}
 
 On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on a des algorithmes optimaux pour écrire :
@@ -1405,11 +1405,11 @@ Vous le voyez, trouver mieux que l'algorithme naïf n'a pas été simple ! Mais 
 
 #### Peut-on mieux faire ?
 
-> TBD Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers>{.externe} et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>{.externe}
+> TBD Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
 
-> TBD <https://www.youtube.com/watch?v=qKcwuRK9n6U>{.externe} et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>{.externe}
+> TBD <https://www.youtube.com/watch?v=qKcwuRK9n6U> et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>
 >
-> FFT : <https://informatique.ens-lyon.fr/concours-info/2014/multiplication.pdf>{.externe}
+> FFT : <https://informatique.ens-lyon.fr/concours-info/2014/multiplication.pdf>
 
 ### Conclusion
 

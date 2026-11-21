@@ -46,10 +46,10 @@ Vérification expérimentale.
 ## liste chainee intrusives
 
 - comme un fat
-- [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/){.externe}
+- [listes chaînées intrusives](https://www.data-structures-in-practice.com/intrusive-linked-lists/)
 
 {% lien %}
-[Type opaque pour une liste chaînée](https://x0r.fr/blog/30){.externe}.
+[Type opaque pour une liste chaînée](https://x0r.fr/blog/30).
 {% endlien %}
 
 
@@ -62,14 +62,14 @@ Vérification expérimentale.
   
 {% faire %}
 
-- <https://en.wikipedia.org/wiki/Base64>{.externe}
-- <https://stackoverflow.com/questions/342409/how-do-i-base64-encode-decode-in-c>{.externe}
+- <https://en.wikipedia.org/wiki/Base64>
+- <https://stackoverflow.com/questions/342409/how-do-i-base64-encode-decode-in-c>
 
 {% endfaire %}
 
 ## Lecture et buffer
 
-<http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html>{.externe}
+<http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html>
 
 - scanf : attention buffer overflow
 - avec strcmp pour stopper (si vide)

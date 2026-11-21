@@ -19,11 +19,11 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de [commonMark](https://spec.commonmark.org/){.externe} (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.
+Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de [commonMark](https://spec.commonmark.org/) (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.
 
 <!-- fin résumé -->
 
-Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/cours_informatique/refs/heads/main/docs/src/tutoriels/possibilite-markdown-site/index.md){.externe}.
+Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/cours_informatique/refs/heads/main/docs/src/tutoriels/possibilite-markdown-site/index.md).
 
 ## titre `##`
 
@@ -279,7 +279,7 @@ Un texte après.
 
 ## Tables
 
-On utilise les possibilités de [multimarkdown](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html){.externe}
+On utilise les possibilités de [multimarkdown](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html)
 
 ### Tables de base
 

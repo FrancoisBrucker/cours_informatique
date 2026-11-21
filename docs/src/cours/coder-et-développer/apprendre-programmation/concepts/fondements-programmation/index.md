@@ -19,7 +19,7 @@ eleventyComputed:
 
 Nous allons voir dans cette partie tout ce qui est nécessaire pour exécuter et créer son propre code python. Tout ce que l'on verra ici est applicable pour tous les langages de programmation.
 
-_Python_ est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation){.externe} inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum){.externe}. C'est comme une langue mais en beaucoup plus simple car :
+_Python_ est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
 
 - il n'y a pas d'exception
 - il y a très peu de vocabulaire de base
@@ -38,7 +38,7 @@ Nous allons aborder tout ceci en 4 parties :
 
 ## <span id="partie-1"></span>Exécuter du code python
 
-On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle **_code_** ou **_programme_**) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine){.externe}, on passe par un intermédiaire, un programme nommé **_interpréteur python_**.
+On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle **_code_** ou **_programme_**) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine), on passe par un intermédiaire, un programme nommé **_interpréteur python_**.
 
 {% aller %}
 [Exécuter du code python](./exécuter-code/)

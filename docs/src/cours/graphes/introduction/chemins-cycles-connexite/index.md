@@ -450,10 +450,10 @@ def composante_connexe(G, origine):
 
 On utilise :
 
-- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists){.externe} :
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
   - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
   - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
-- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe} :
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
   - création avec les accolades
   - méthode `add`{.language-} qui ajoute un élément à l'ensemble
 
@@ -525,7 +525,7 @@ def les_composantes(G):
     return composantes
 ```
 
-Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops){.externe}.
+Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops).
 
 {% enddetails %}
 
@@ -558,11 +558,11 @@ def chemin(G, a, b):
 
 On utilise :
 
-- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists){.externe} :
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
   - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
   - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
   - le fait quel'on puisse accéder au dernier élément d'une liste avec un indice de `-1`{.language-}
-- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets){.externe} :
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
   - création avec les accolades
   - méthode `add`{.language-} qui ajoute un élément à l'ensemble
   - la soustraction de deux ensembles qui rend un nouvel ensemble contenant les éléments du premier ensemble non présent dans le second.

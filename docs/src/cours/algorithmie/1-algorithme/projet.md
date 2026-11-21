@@ -122,7 +122,7 @@ def division_euclidienne(a, b):
     return (q, r)
 ```
 
-Le retour de la fonction python est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences){.externe} à 2 éléments (c'est-à-dire un tableau à 2 éléments que l'on ne peut pas modifier).
+Le retour de la fonction python est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est-à-dire un tableau à 2 éléments que l'on ne peut pas modifier).
 {% enddetails %}
 
 Le retour de notre algorithme est un tableau à deux éléments.
@@ -632,7 +632,7 @@ Donnez et prouvez **un algorithme itératif** de signature :
 palindrome(s: str) → bool
 ```
 
-Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome){.externe}.
+Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -813,7 +813,7 @@ Enfin, `acc`{.language-} va contenir la factorielle comme le prouve une récursi
 
 {% enddetails %}
 
-La récursion terminale est un moyen efficace d'implémenter des [suites arithmétiques](https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique){.externe} ou [géométriques](https://fr.wikipedia.org/wiki/Suite_g%C3%A9om%C3%A9trique){.externe}. Montrez-le :
+La récursion terminale est un moyen efficace d'implémenter des [suites arithmétiques](https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique) ou [géométriques](https://fr.wikipedia.org/wiki/Suite_g%C3%A9om%C3%A9trique). Montrez-le :
 
 {% exercice %}
 
@@ -883,10 +883,10 @@ La technique de l'accumulateur (_ie._ l'ajout de variables) est fondamentale pou
 
 ## <span id="fonction-McCarty"></span>Fonction 91 de McCarthy
 
-Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarthy](https://fr.wikipedia.org/wiki/John_McCarthy){.externe}, informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp){.externe} en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation){.externe} au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran){.externe}.
+Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarthy](https://fr.wikipedia.org/wiki/John_McCarthy), informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran).
 
 {% lien %}
-[La fonction 91 de McCarthy](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy){.externe} :
+[La fonction 91 de McCarthy](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) :
 {% endlien %}
 
 Définition :

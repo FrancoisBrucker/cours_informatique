@@ -20,7 +20,7 @@ Numérologie partie 1 - niveau 1.
 
 On ne verra que le strict nécessaire pour pour faire fonctionner le code :
 
-* utilisation basique d'un éditeur de texte performant, ici [vscode](https://code.visualstudio.com/){.externe},
+* utilisation basique d'un éditeur de texte performant, ici [vscode](https://code.visualstudio.com/),
 * stricte minimum de html/css pour pouvoir mettre en oeuvre notre serveur web,
 * on tentera de s'amuser en javascript sans rentrer trop dans les détails de fonctionnement.
 

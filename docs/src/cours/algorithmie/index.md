@@ -34,7 +34,7 @@ dans la partie 4 :
 Cours d'algorithmie.
 
 {% info %}
-_L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra){.externe}
+_L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
@@ -270,7 +270,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 ## Autre structures
 
 - skip list
-- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>{.externe}
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
 
 
 
@@ -294,7 +294,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 ## <span id="partie-3"></span>Partie III : structures de données arborées
 
 >TBD transférer ici de la partie graphe.
-> TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s>{.externe} y sont.
+> TBD voir si les parties 2 et 3 voient toutes ces structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s> y sont.
 > 
 
 > TBD plan :
@@ -327,13 +327,13 @@ Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexit
 ### Classes de problèmes
 
 {% lien %}
-<https://hardness.mit.edu/>{.externe}
+<https://hardness.mit.edu/>
 {% endlien %}
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris) est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation) est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
 > TBD aborder NP via les formules logique et les pbs de décision. existe-t-il < k ?
-> TBD fact est dans NP cap conp et donc presque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>{.externe}
+> TBD fact est dans NP cap conp et donc presque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>
 > 
 {% aller %}
 [Problèmes NP](./problèmes-NP)
@@ -355,11 +355,11 @@ Le problème SAT est notre exemple de problème NP-complet. On va le voir sous d
 > Ne donner qu'une idée du fait qu'une formule donnée est un sat. Dire qu'on le verra plus tard (partie assembleur)
 > 
 > TBD  le truc de Pascal avec les probas.
-> bus : <https://www.youtube.com/watch?v=hFWFN46kaOo>{.externe} protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>{.externe}
+> bus : <https://www.youtube.com/watch?v=hFWFN46kaOo> protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>
 
 
 > TBD NP complet = réduction poly puisque résoluble expo
-> P complet = reduction poly mais en espace logarithmique. <https://fr.wikipedia.org/wiki/P-complet>{.externe} et <https://cs.stackexchange.com/questions/135088/why-does-lspacelog-space-complexity-class-exist-but-not-logtime>{.externe} <https://cs.stackexchange.com/questions/44259/is-l-closed-under-linear-time-reductions>{.externe} <https://en.wikipedia.org/wiki/Horn-satisfiability>{.externe}
+> P complet = reduction poly mais en espace logarithmique. <https://fr.wikipedia.org/wiki/P-complet> et <https://cs.stackexchange.com/questions/135088/why-does-lspacelog-space-complexity-class-exist-but-not-logtime> <https://cs.stackexchange.com/questions/44259/is-l-closed-under-linear-time-reductions> <https://en.wikipedia.org/wiki/Horn-satisfiability>
 > 
 ### Intermède : l'algorithme qui résout tout
 
@@ -404,7 +404,7 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 > TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
 > TBD faire un mix go : prendre une étoile devant les méthodes pour dire que c'est un pointeur qui est pris. Et notation flèche pour les attributs
 
-> TBD <https://research.swtch.com/godata>{.externe}
+> TBD <https://research.swtch.com/godata>
 > TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
 
 > TBD reprendre les objets de base et dire tous de taille fixe. Idem tableau = n * taille du type de sa structure + 1 entier.
@@ -460,9 +460,9 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 <!-- ### Jolis problèmes
 
 
-> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=3>{.externe}
+> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=3>
 
-> TBD strassen et fft <> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4>{.externe}
+> TBD strassen et fft <> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4>
 >
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
@@ -505,13 +505,13 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 >
 > et piece dans le cas pas super croissant.
 > 
-> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>{.externe}
+> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
 
 ### autre bidules
 > TBD rendu de pièces par programmation dynamique
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
-> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>{.externe}
+> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
 
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
@@ -519,7 +519,7 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 
 #### SUBSET SUM
 
-> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>{.externe}
+> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
 
 Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
  en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
@@ -548,12 +548,12 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 
 > TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
 > TBd en déduire 3-SUM ≤ SUBSET-SUM
-> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition){.externe}
+> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
 
 > TBD à montrer.
 >
-> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>{.externe} -->
-> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88>{.externe} avec pointeurs
+> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
+> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
 
 > TBD ici commence la parie C : avancé
 
@@ -614,7 +614,7 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 > TBD Modèle de Von Neumann
 > modèle de Von Neumann qui est implémenté dans tous les ordinateurs
-> TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>{.externe}
+> TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>
 > TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
 > on accede jamais a un bit spécifique
 >
@@ -670,7 +670,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Exemples de problèmes NP complets](./exemples-problèmes-NPC)
 {% endaller %}
 
-> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>{.externe}
+> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
 
 
 #### Chaînes de caractères
@@ -695,7 +695,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > Turing. Equivalent. hiérarchie des complexité
 
 > TBD parler de NP et  co-NP factorisation et discrete log.
-> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>{.externe}
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
 
 > TBD dire que circuit = taille fixée (voir conversion vers sat d'un problème. Dépend de la taille.)
 > TBD ici uniquement partie code avec assembleur.
@@ -707,8 +707,8 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > TBD puis montrer que Turing = logique = sat.
 
 
-> TBD NP/coNP par factorisation et discrete log. Dire que prime is polynomial (<https://en.wikipedia.org/wiki/AKS_primality_test>{.externe}).
-> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>{.externe}
+> TBD NP/coNP par factorisation et discrete log. Dire que prime is polynomial (<https://en.wikipedia.org/wiki/AKS_primality_test>).
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
 > TBD SAT dire que raisonnable puisque fct booléenne finie = SAT. Le côté dur est de montrer que ça reste vrai si l'entrée bouge.
 > TBD fonction calculable = binaire + boucles = pseudo-code.
 > TBD reléguer Turing à un modèle et tout faire avec le pseudo-code.
@@ -743,7 +743,7 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
 {% details "preuve", "open" %}
 
 - **On peut simuler une Machines de Turing avec du pseudo-assembleur** :
-  Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle en pseudo-code. Le site <https://turingmachine.io/>{.externe} en est un exemple.
+  Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle en pseudo-code. Le site <https://turingmachine.io/> en est un exemple.
 - **On peut simuler du pseudo-assembleur avec une Machines de Turing** :
   1. les [compositions de machines](./machine-turing/composition) montrent que l'on peut avoir les mêmes structures de contrôle qu'en pseudo-assembleur (exécution séquentielle et saut conditionnels)
   2. il est facile de faire une fonction de transition qui simule l'opération `NAND`{.language-}
@@ -776,8 +776,8 @@ Le calcul est donc quelque chose d’éminemment local : une tête de lecture et
 
 {% lien %}
 
-- <https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>{.externe}
-- <https://www.youtube.com/watch?v=jUnbX27jbvY>{.externe}
+- <https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>
+- <https://www.youtube.com/watch?v=jUnbX27jbvY>
 
 {% endlien %}
 
@@ -787,7 +787,7 @@ Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'i
 
 #### Turing complet
 
-Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet){.externe} c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
+Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
 
 {% definition %}
 Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'une machine de Turing peut faire.
@@ -813,35 +813,35 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 
 ## <span id="partie-6"></span>Partie VI : aléatoire
 
-> TBD hasard et algorithmes randomisés <https://www.youtube.com/watch?v=NPUc93dnUh4&list=PL0YFU3y0Z_gap24B-pBob7qk4rsEclGU2>{.externe}
-> TBD universal hashing et compagnie : <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->{.externe}
+> TBD hasard et algorithmes randomisés <https://www.youtube.com/watch?v=NPUc93dnUh4&list=PL0YFU3y0Z_gap24B-pBob7qk4rsEclGU2>
+> TBD universal hashing et compagnie : <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
 > 
-> TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>{.externe}
+> TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>
 <!-- 
 {% aller %}
 [Mélanger un tableau](./projet-mélange)
 {% endaller %} -->
 
-> TBD vérification probabiliste de la multiplication de 2 matrices : <https://fr.wikipedia.org/wiki/Algorithme_de_Freivalds>{.externe}
+> TBD vérification probabiliste de la multiplication de 2 matrices : <https://fr.wikipedia.org/wiki/Algorithme_de_Freivalds>
 > 
-> TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>{.externe}
+> TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>
 > TBD playlist sur algorithme randomisé :
-> - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>{.externe}
-> - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>{.externe}
-> - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>{.externe}
-> TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>{.externe}
-> TBD nombre aléatoires : <https://xkcd.com/221/>{.externe} et <https://imgur.com/random-number-generator-bwFWMqQ>{.externe}
+> - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
+> - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>
+> - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>
+> TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>
+> TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 
-> TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf>{.externe} <https://eranraviv.com/randomized-matrix-multiplication/>{.externe} <https://en.wikipedia.org/wiki/Freivalds%27_algorithm>{.externe} <https://www.youtube.com/watch?v=z0ykhV15wLw>{.externe}
+> TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf> <https://eranraviv.com/randomized-matrix-multiplication/> <https://en.wikipedia.org/wiki/Freivalds%27_algorithm> <https://www.youtube.com/watch?v=z0ykhV15wLw>
 
-> TBD <https://www.youtube.com/watch?v=LUCvSsx6-EU>{.externe} ?
+> TBD <https://www.youtube.com/watch?v=LUCvSsx6-EU> ?
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
-> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>{.externe}
-> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>{.externe}
-> TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>{.externe}
-> TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->{.externe}
+> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
+> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
+> TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>
+> TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
 > space-time tradeoff : 
->   - <https://cusack.hope.edu/Algorithms/Content/Techniques/Space-Time%20Tradeoff.html?path=Problems/Foundational/Sorting>{.externe}
+>   - <https://cusack.hope.edu/Algorithms/Content/Techniques/Space-Time%20Tradeoff.html?path=Problems/Foundational/Sorting>
 >   - sac à dos avec prog dynamique
 >   - bucket sort
->   - <https://www.cs.helsinki.fi/u/mkhkoivi/publications/soda-2010.pdf>{.externe}
+>   - <https://www.cs.helsinki.fi/u/mkhkoivi/publications/soda-2010.pdf>

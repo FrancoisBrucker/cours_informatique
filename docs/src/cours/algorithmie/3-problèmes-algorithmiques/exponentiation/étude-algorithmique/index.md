@@ -114,7 +114,7 @@ $$
 
 ## <span id="algo-rapide"></span> Exponentiation indienne
 
-Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide){.externe}, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :
+Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide), cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :
 
 <div>
 $$

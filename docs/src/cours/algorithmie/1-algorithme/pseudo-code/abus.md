@@ -251,7 +251,7 @@ pour chaque i de [0 .. T2.longueur[:
 ### Liste en compréhension
 
 {% lien %}
-[Liste en compréhension](https://www.docstring.fr/glossaire/comprehension-de-liste/){.externe}
+[Liste en compréhension](https://www.docstring.fr/glossaire/comprehension-de-liste/)
 {% endlien %}
 
 On pourra aussi utiliser les listes en compréhension (_list comprehension_) popularisées par python. De nombreux formats existent, du moment que c'est compréhensible :

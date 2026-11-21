@@ -21,7 +21,7 @@ En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l
 On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.
 
 {% lien "**Documentation**" %}
-[Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html){.externe}
+[Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html)
 {% endlien %}
 
 L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/) :

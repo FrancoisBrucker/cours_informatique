@@ -68,7 +68,7 @@ Ajoutons nos réflexions à la todo list (fichier `numérologie/todos/todos.md`{
 ```
 
 {% info %}
-Au passage, vous avez vu comment on a mis des maths dans du markdown ? Lorsque vous transformerez le markdown en html, [Mathjax](https://www.mathjax.org/){.externe} rendra ces équations toutes jolies.
+Au passage, vous avez vu comment on a mis des maths dans du markdown ? Lorsque vous transformerez le markdown en html, [Mathjax](https://www.mathjax.org/) rendra ces équations toutes jolies.
 {% endinfo %}
 
 Quel est l'item le plus simple à résoudre ? A mon avis c'est lui :

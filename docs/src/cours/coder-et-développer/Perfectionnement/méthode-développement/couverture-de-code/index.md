@@ -12,7 +12,7 @@ eleventyComputed:
 
 Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée. Les tests nous permette d'avoir confiance dans la qualité du code, mais il est parfois compliqué d'être sur que nos tests vérifient bien toutes les lignes écrites (testent-ils bien tous les blocs `si/alors/sinon`{.language-} ?).
 
-Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code){.externe}. On exécute les tests et on regarde, fichier par fichier, quelles sont les lignes qui ont été vues pour ces tests.
+Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier, quelles sont les lignes qui ont été vues pour ces tests.
 
 {% faire %}
 
@@ -240,12 +240,12 @@ python -m pip install pytest-cov
 
 Ce module python installe deux choses :
 
-- le module de couverture de code [coverage](https://coverage.readthedocs.io/en/7.4.1/){.externe}
-- l'utilisation de coverage avec pytest : [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/){.externe}
+- le module de couverture de code [coverage](https://coverage.readthedocs.io/en/7.4.1/)
+- l'utilisation de coverage avec pytest : [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/)
 
 ### Extension vscode
 
-Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters){.externe} dans le _menu affichage > extensions_.
+Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le _menu affichage > extensions_.
 
 ## <span id="code-coverage"></span> Avec vscode
 
@@ -259,7 +259,7 @@ En 2 temps :
 {% lien %}
 Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :
 
-<https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report>{.externe}
+<https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report>
 
 {% endlien %}
 
@@ -273,7 +273,7 @@ Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python -m
 
 ### Utilisation de l'extension \*_Coverage Gutters_
 
-La commande `python -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language){.externe} avec la commande : `python -m pytest --cov=.  --cov-report xml:cov.xml`
+La commande `python -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python -m pytest --cov=.  --cov-report xml:cov.xml`
 
 {% info %}
 Si le petit _watch_ n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/#palette-de-commande)

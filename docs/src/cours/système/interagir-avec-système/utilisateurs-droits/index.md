@@ -46,7 +46,7 @@ Il existe de nombreux groupes et utilisateurs utilisés par le système pour seg
 ### Utilisateur `root`
 
 {% lien %}
-[Le super-utilisateur](https://fr.wikipedia.org/wiki/Utilisateur_root){.externe}
+[Le super-utilisateur](https://fr.wikipedia.org/wiki/Utilisateur_root)
 {% endlien %}
 
 {% definition %}
@@ -59,7 +59,7 @@ Le super-utilisateur a ainsi tous les droits (peut aller partout, réserver auta
 ### Groupe des administrateurs systèmes
 
 {% lien %}
-[L'administrateur système](https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me){.externe}
+[L'administrateur système](https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me)
 {% endlien %}
 
 {% definition %}
@@ -69,7 +69,7 @@ Le super-utilisateur a ainsi tous les droits (peut aller partout, réserver auta
 Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root. Par exemple :
 
 - en utilisant le paramètre _exécuter en tant qu'administrateur_ sous Windows,
-- en utilisant [la commande sudo](https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers){.externe} sous Linux/macos.
+- en utilisant [la commande sudo](https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers) sous Linux/macos.
 
 ### Utilisateurs et groupes spéciaux
 

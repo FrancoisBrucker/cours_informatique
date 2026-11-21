@@ -28,8 +28,8 @@ permettant de rendre un entier aléatoire entre `min`{.language-} et `max`{.lang
 
 Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.fichier} :
 
-- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp){.externe} dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction `main`{.language-}, au tout début.
-- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp){.externe} qui rend un entier aléatoire entre 0 et et RAND_MAX
+- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction `main`{.language-}, au tout début.
+- [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}

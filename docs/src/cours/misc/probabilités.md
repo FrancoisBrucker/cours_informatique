@@ -16,22 +16,22 @@ TBD partie sécurité en commentaire. Voir quand je ferai le cours s'il faut la 
 
 
 
-> TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>{.externe}
+> TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>
 > chernoff bound, reverse markov inequality,
-> Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>{.externe}
-> Chebyshev inequality <https://en.wikipedia.org/wiki/Chebyshev%27s_inequality>{.externe}
-> <https://www.youtube.com/watch?v=lKkyxtzz4Uo>{.externe}
-> thm centrale limite : <https://www.youtube.com/watch?v=FGIxzMGE01A>{.externe} et <https://www.youtube.com/watch?v=axA1-yR-KDw>{.externe}
-> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM>{.externe} et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6>{.externe} 
+> Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>
+> Chebyshev inequality <https://en.wikipedia.org/wiki/Chebyshev%27s_inequality>
+> <https://www.youtube.com/watch?v=lKkyxtzz4Uo>
+> thm centrale limite : <https://www.youtube.com/watch?v=FGIxzMGE01A> et <https://www.youtube.com/watch?v=axA1-yR-KDw>
+> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM> et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6> 
 > 
 -->
 
 {% lien %}
 
-- [proba discrete](https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability){.externe}
-- [Probabilités pour les non-probabilistes](https://www.amazon.fr/Probabilit%C3%A9s-pour-probabilistes-Walter-Appel/dp/2351412982){.externe}
-- <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf>{.externe}
-- <http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf>{.externe}
+- [proba discrete](https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability)
+- [Probabilités pour les non-probabilistes](https://www.amazon.fr/Probabilit%C3%A9s-pour-probabilistes-Walter-Appel/dp/2351412982)
+- <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf>
+- <http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf>
 
 {% endlien %}
 
@@ -316,7 +316,7 @@ $$
 
 ## <span id="espérance">Espérance
 
-[La notion d'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique){.externe} en probabilité généralise la notion de moyenne.
+[La notion d'espérance](https://fr.wikipedia.org/wiki/Esp%C3%A9rance_math%C3%A9matique) en probabilité généralise la notion de moyenne.
 
 
 {% definition %}

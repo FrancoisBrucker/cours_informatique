@@ -101,7 +101,7 @@ Placez les différentes constantes relatives aux valeurs et aux couleur des cart
 
 {% endfaire %}
 
-Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition [les Enum](https://docs.python.org/fr/3/library/enum.html){.externe}. 
+Cependant, pour spécifier à l'utilisateur les valeurs et couleurs possibles, utilisez des constantes et des tuples n'est cependant pas optimal. Pour gérer les énumérations, python met à disposition [les Enum](https://docs.python.org/fr/3/library/enum.html). 
 
 On pourrait ainsi gérer les couleurs ainsi :
 

@@ -369,8 +369,8 @@ $$
 
 La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.
 
-Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique){.externe},
-et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent){.externe} à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../projet-sommes-classiques/)).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
+Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../projet-sommes-classiques/)).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
 
 $$
 A(n) = \mathcal{O}(\ln(n))

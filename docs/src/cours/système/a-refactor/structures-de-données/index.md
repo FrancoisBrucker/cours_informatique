@@ -11,7 +11,7 @@ eleventyComputed:
 
 Dans un ordinateur, tout n'est qu'une suite de bits (valant 0 ou 1) et pour un processeur le seul type de données reconnue est l'entier de taille 64 bits (allant de 0 à $2^{64}-1 = 18446744073709551615$). Dès lors que l'on veut manipuler autre chose (comme des approximation de réels, des caractères, etc) il faut :
 
-- **représenter** ce type avec des entiers de taille 64 bits, nommée [structure de données](https://fr.wikipedia.org/wiki/Structure_de_données){.externe}
+- **représenter** ce type avec des entiers de taille 64 bits, nommée [structure de données](https://fr.wikipedia.org/wiki/Structure_de_données)
 - construire les différentes **façons d'interagir** avec avec ce type (en utilisant uniquement les moyens donnés par le processeur, c'est à dire la manipulation d'entiers)
 
 {% note %}
@@ -65,7 +65,7 @@ Pour arriver à facilement connaître les complexité ci-dessus, on procède ré
 
 ### Fraction
 
-> TBD exemple de la fraction creation comme 2 element ou un tableau a deux éléments, suppression, irréductible ([euclide](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide){.externe})
+> TBD exemple de la fraction creation comme 2 element ou un tableau a deux éléments, suppression, irréductible ([euclide](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide))
 
 ### Champs de bits
 

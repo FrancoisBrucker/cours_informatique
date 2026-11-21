@@ -151,7 +151,7 @@ Déduire de l'exercice précédent que si $(G, f)$ est un graphe connexe valué,
 ## Algorithme de Kruskal
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>{.externe}
+<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
 {% endlien %}
 
 > TBD Kruskal. On le fait :
@@ -198,7 +198,7 @@ Algorithme :
 2. Prouver que $T$ est **un arbre couvrant de poids minimal** pour $G$.
    {% endexercice %}
    {% details "solution" %}
-   Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim){.externe}. Tout y est très bien expliqué.
+   Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim). Tout y est très bien expliqué.
    {% enddetails %}
 
 Maintenant qu'on est sur que ça marche :

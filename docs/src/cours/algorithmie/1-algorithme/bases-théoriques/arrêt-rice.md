@@ -54,7 +54,7 @@ Programme :
         dire à voix haute : "L'informatique c'est magnifique !"
 ```
 
-Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){.externe}, on ne sait pas vraiment (on n'a pas de démonstration) s'il s'arrête tout le temps :
+Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse), on ne sait pas vraiment (on n'a pas de démonstration) s'il s'arrête tout le temps :
 
 ```text
 Nom : syracuse
@@ -73,8 +73,8 @@ Programme :
 
 De nombreux travaux ont été faits pour mieux comprendre ce problème. Vous pouvez aller jeter un coup d'œil aux liens suivants pour (beaucoup) plus d'informations :
 
-- <https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf>{.externe}
-- <https://hal.science/hal-01593181v3/document>{.externe}
+- <https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf>
+- <https://hal.science/hal-01593181v3/document>
 
 {% endlien %}
 
@@ -101,7 +101,7 @@ syracuse(x)
 Le problème de l'arrêt d'un programme n'est donc pas simple. On ne peut pas le vérifier expérimentalement puisqu'attendre un temps infini avant de conclure n'est pas possible.
 
 {% lien %}
-Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  [calculatrice ancienne tentant de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg){.externe}
+Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  [calculatrice ancienne tentant de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg)
 {% endlien %}
 
 Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le `stop`{.language-}. Il prendrait en paramètre un entier représentant un programme ([on sait qu'on peut le faire](../définition/#proposition-encodage-algorithme)) et rendrait 1 si le programme en paramètre est un algorithme et 0 sinon :
@@ -117,7 +117,7 @@ Sortie :
     rend 0 sinon
 ```
 
-Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide car si ce dernier ne s'arrête pas `stop`{.language-} ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est [Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing){.externe} lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est [le problème de l'arrêt de la machine de Turing](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt){.externe}) :
+Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide car si ce dernier ne s'arrête pas `stop`{.language-} ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est [Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing) lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est [le problème de l'arrêt de la machine de Turing](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt)) :
 
 {% note "**Théorème (Turing, 1936)**" %}
 L'algorithme `stop`{.language-} n'existe pas.
@@ -154,7 +154,7 @@ Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'ar
 ## Que calcule un algorithme
 
 {% lien %}
-Cette partie est consacrée au [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice){.externe}
+Cette partie est consacrée au [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice)
 {% endlien %}
 
 S'il est impossible de savoir a priori si un programme s'arrête ou pas, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une _propriété_ donnée, et ce, quelle que soit celle-ci.
@@ -175,8 +175,8 @@ Un algorithme $A$ **_satisfait la propriété_** $P$ s'il existe $A'\in P$ tel q
 La notion de propriété permet de rendre compte du sens des algorithmes, de ce qu'ils font : les programmes faisant la même chose font partie de la même propriété.  Par exemple :
 
 - l'ensemble des algorithmes calculant le double d'un entier passé en paramètre est une propriété :
-  - il existe des algorithmes permettant de le faire (on peut utiliser [l'algorithme de l'addition posée](https://fr.wikipedia.org/wiki/Technique_de_l%27addition){.externe} des cours de primaire en additionnant deux fois le même nombre)
-  - il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser [un de ces algorithmes](https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers){.externe} avec 2 et le nombre comme paramètres)
+  - il existe des algorithmes permettant de le faire (on peut utiliser [l'algorithme de l'addition posée](https://fr.wikipedia.org/wiki/Technique_de_l%27addition) des cours de primaire en additionnant deux fois le même nombre)
+  - il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser [un de ces algorithmes](https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers) avec 2 et le nombre comme paramètres)
 - l'ensemble des algorithmes de valeurs de retour bornées par $K$ est une propriété :
   - l'algorithme constant rendant $K$ satisfait la propriété
   - l'algorithme constant rendant $K+1$ ne satisfait pas la propriété

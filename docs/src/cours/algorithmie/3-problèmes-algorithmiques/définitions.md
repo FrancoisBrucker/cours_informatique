@@ -41,7 +41,7 @@ Lorsque la sortie est un booléen, on parlera alors plutôt de problèmes de dé
 La **_Un problème de décision_** est un problème algorithmique dont la sortie est un booléen. Plutôt qu'une sortie, on parle pour ces problèmes de **_question_**.
 {% enddefinition %}
 {% info %}
-[Les problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision){.externe} sont très important en informatique théorique. On le verra (bien) plus tard.
+[Les problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision) sont très important en informatique théorique. On le verra (bien) plus tard.
 {% endinfo %}
 
 Par exemple :

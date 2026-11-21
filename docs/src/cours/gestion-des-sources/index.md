@@ -23,8 +23,8 @@ Comment gérer le code source d'un projet des principes au repository github.
 
 {% lien "**Introductions**" %}
 
-- [Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E){.externe}
-- [Utilité de git pour tous](https://www.atlassian.com/fr/git/tutorials/why-git){.externe}
+- [Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
+- [Utilité de git pour tous](https://www.atlassian.com/fr/git/tutorials/why-git)
 
 {% endlien %}
 
@@ -61,8 +61,8 @@ Gérer les évolutions de son code.
 
 {% lien %}
 
-- [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs){.externe}  (et le 11ème il s'est reposé)
-- [Une histoire de git en français](https://www.youtube.com/watch?v=LDy6Rv0kU1Q){.externe}
+- [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs)  (et le 11ème il s'est reposé)
+- [Une histoire de git en français](https://www.youtube.com/watch?v=LDy6Rv0kU1Q)
 
 {% endlien %}
 
@@ -113,7 +113,7 @@ Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelq
 ### Sha
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/SHA-1>{.externe}
+<https://fr.wikipedia.org/wiki/SHA-1>
 {% endlien %}
 
 À tout objet de git est associé un nombre écrit en hexadécimal correspondant à son hash avec [la fonction de hachage](/cours/algorithmie/structure-dictionnaire/fonctions-hash/) sha-1.
@@ -125,14 +125,14 @@ Ceci permet de retrouver de façon unique (au moins en probabilité et sûrement
 ### Diff
 
 > TBD faire un exemple avec la commande diff au terminal : deux fichiers (lignes ≠) et deux dossiers (deux fichiers ≠)
-> TBD sous windows <https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility>{.externe} ou <https://www.git-tower.com/blog/diff-tools-windows>{.externe}
+> TBD sous windows <https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility> ou <https://www.git-tower.com/blog/diff-tools-windows>
 
 On a déjà vu le diff des fichiers lors de nos commits et en particulier lorsque l'on a résolu un conflit de fusion. Cela vaut le coût de connaître le format utilisé :
 
 {% lien %}
 
-- [format diff](https://www.math.utah.edu/docs/info/diff_3.html){.externe}
-- [résumé en français](https://www.linuxtricks.fr/wiki/diff-et-patch-sous-linux){.externe}
+- [format diff](https://www.math.utah.edu/docs/info/diff_3.html)
+- [résumé en français](https://www.linuxtricks.fr/wiki/diff-et-patch-sous-linux)
 
 {% endlien %}
 
@@ -142,8 +142,8 @@ Notez que l'on peut faire nous même des diff au terminal :
 
 Commande diff au terminal :
 
-- [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8){.externe}
-- [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk){.externe}
+- [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
+- [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
 
 {% endlien %}
 
@@ -151,8 +151,8 @@ Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'
 
 {% lien %}
 
-- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>{.externe}
-- <https://ably.com/blog/practical-guide-to-diff-algorithms>{.externe}
+- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
+- <https://ably.com/blog/practical-guide-to-diff-algorithms>
 
 {% endlien %}
 
@@ -188,10 +188,10 @@ couper en parties
 > TBD utiliser switch et pas checkout pour passer de branches en branches (checkout pour les commits particulier: headless ?)
 > TBD : index = staging area.
 > TBD diff format et différents algos
-> TBD <https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things>{.externe}
+> TBD <https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things>
 
 > TBD reflog.
-> TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d>{.externe} et <https://graphite.dev/guides/git-hash>{.externe}. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>{.externe}
+> TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d> et <https://graphite.dev/guides/git-hash>. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 
@@ -199,8 +199,8 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 
 > TBD :
 >
-> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>{.externe}
-> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>{.externe} 
+> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
+> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk> 
 
 -->
 
@@ -208,88 +208,88 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 
 ### Cours
 
-- [Learning Git](https://github.com/gitlearningjourney/learning-git){.externe}
-- [Version control with git 3rd edition](https://www.amazon.fr/Version-Control-Git-Collaborative-Development/dp/1492091197){.externe}
-- [the book](https://git-scm.com/book/en/v2){.externe}
+- [Learning Git](https://github.com/gitlearningjourney/learning-git)
+- [Version control with git 3rd edition](https://www.amazon.fr/Version-Control-Git-Collaborative-Development/dp/1492091197)
+- [the book](https://git-scm.com/book/en/v2)
 
 ### Références
 
-- <https://git-scm.com/>{.externe}
-- <https://comprendre-git.com/fr/>{.externe}
+- <https://git-scm.com/>
+- <https://comprendre-git.com/fr/>
 
 ### Misc
 
-- <https://learngitbranching.js.org/>{.externe}
-- <https://tonyg.github.io/revctrl.org/index.html>{.externe}
-- <https://ohshitgit.com/>{.externe}
-- - [s'entraîner avec des commandes git](https://git-school.github.io/visualizing-git/){.externe}
+- <https://learngitbranching.js.org/>
+- <https://tonyg.github.io/revctrl.org/index.html>
+- <https://ohshitgit.com/>
+- - [s'entraîner avec des commandes git](https://git-school.github.io/visualizing-git/)
 
 ## Histoire
 
 {% lien %}
 
-- <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>{.externe}
-- <https://blog.tarynmcmillan.com/a-history-of-version-control>{.externe}
+- <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
+- <https://blog.tarynmcmillan.com/a-history-of-version-control>
 
 {% endlien %}
 
 <!-- TBD
 
-> - git rebase avec des merges : <https://www.jnielson.com/git-rebase-with-merges>{.externe}
-> - git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <https://stackoverflow.com/a/74355550>{.externe}
+> - git rebase avec des merges : <https://www.jnielson.com/git-rebase-with-merges>
+> - git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <https://stackoverflow.com/a/74355550>
 > - force-push : expliquer ce que c'est.
 > - mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.
-> - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>{.externe}
+> - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
 > - rebase les différentes commandes ?
 >
->   - detached head : <https://www.cloudbees.com/blog/git-detached-head>{.externe}
->   - tous les commits : `git reflog` même ceux pas dans une branche (detached head). On peut les retrouver puis cherry pick <https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state>{.externe}
+>   - detached head : <https://www.cloudbees.com/blog/git-detached-head>
+>   - tous les commits : `git reflog` même ceux pas dans une branche (detached head). On peut les retrouver puis cherry pick <https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state>
 >   - commit non attaché à une branche (dangling commits): `git fsck --lost-found`
 >   - `git cat-files <hash>` pour voir les parents
 >
 > - remote :
 >   - branches.
 >   - ssh / https
->   - fetch et push différents : <https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different>{.externe}
->   - pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/>{.externe}
+>   - fetch et push différents : <https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different>
+>   - pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/>
 > - merge :
->   - meilleur ancêtre commun <https://git-scm.com/docs/git-merge-base>{.externe} <https://stackoverflow.com/a/73171967>{.externe}
-> - conflits : <https://githowto.com/resolving_conflicts>{.externe}
-> - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>{.externe}
-> - réécrire l'histoire : <https://www.atlassian.com/git/tutorials/rewriting-history>{.externe}
+>   - meilleur ancêtre commun <https://git-scm.com/docs/git-merge-base> <https://stackoverflow.com/a/73171967>
+> - conflits : <https://githowto.com/resolving_conflicts>
+> - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>
+> - réécrire l'histoire : <https://www.atlassian.com/git/tutorials/rewriting-history>
 > - pour aller plus loin :
 >   - squash commit ?
->   - stash : <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>{.externe}, <https://www.youtube.com/watch?v=BSLzA8oCT7g>{.externe} pour les mdp, etc
->   - worktree <https://www.youtube.com/watch?v=ntM7utSjeVU>{.externe}
+>   - stash : <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>, <https://www.youtube.com/watch?v=BSLzA8oCT7g> pour les mdp, etc
+>   - worktree <https://www.youtube.com/watch?v=ntM7utSjeVU>
 >   - sous-projet
 >   - git vscode
->   - bisect : <https://www.youtube.com/watch?v=Q-kqm0AgJZ8>{.externe}
->   - cherry pick : <https://www.youtube.com/watch?v=i657Bg_HAWI>{.externe} (attention : <https://www.youtube.com/watch?v=WPCxtFkLa7g>{.externe})
+>   - bisect : <https://www.youtube.com/watch?v=Q-kqm0AgJZ8>
+>   - cherry pick : <https://www.youtube.com/watch?v=i657Bg_HAWI> (attention : <https://www.youtube.com/watch?v=WPCxtFkLa7g>)
 >
 >
-> - pull --rebase sinon merge à repetition : <https://www.youtube.com/watch?v=xN1-2p06Urc>{.externe} ; <https://www.youtube.com/watch?v=DkWDHzmMvyg>{.externe}
-> - merge conflict : <https://www.youtube.com/watch?v=DloR0BOGNU0>{.externe}
-> - cherry-pick attention ! : <https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014>{.externe}
-> - <https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/>{.externe} et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository>{.externe}
-> - uncompress utilitaire : `pigz` <https://stackoverflow.com/a/3178638>{.externe}
-> - internals git commit <https://pawelszczygielski.pl/2021/02/23/git-how-to-commit-without-git-commit/>{.externe}
-> - tree object format : <https://stackoverflow.com/questions/14790681/what-is-the-internal-format-of-a-git-tree-object>{.externe}
-> - internal objects: <https://shafiul.github.io/gitbook/1_the_git_object_model.html>{.externe} <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects>{.externe}. Faire le code en python et pas en ruby. <https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a>{.externe}
-> - git tag object avec du code en python <https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha>{.externe}
-> - git index format : <https://git-scm.com/docs/index-format>{.externe} ; `git ls-files --stage` (attention: different de staged ); `git diff-index HEAD` et filetype <https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean>{.externe}. Que quelques possibilités. Donc peut-être juste les lister.
-> - commit jamais vraiment perdu <https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1>{.externe}. Faire test avec rebase et on les retrouve.
+> - pull --rebase sinon merge à repetition : <https://www.youtube.com/watch?v=xN1-2p06Urc> ; <https://www.youtube.com/watch?v=DkWDHzmMvyg>
+> - merge conflict : <https://www.youtube.com/watch?v=DloR0BOGNU0>
+> - cherry-pick attention ! : <https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014>
+> - <https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository>
+> - uncompress utilitaire : `pigz` <https://stackoverflow.com/a/3178638>
+> - internals git commit <https://pawelszczygielski.pl/2021/02/23/git-how-to-commit-without-git-commit/>
+> - tree object format : <https://stackoverflow.com/questions/14790681/what-is-the-internal-format-of-a-git-tree-object>
+> - internal objects: <https://shafiul.github.io/gitbook/1_the_git_object_model.html> <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects>. Faire le code en python et pas en ruby. <https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a>
+> - git tag object avec du code en python <https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha>
+> - git index format : <https://git-scm.com/docs/index-format> ; `git ls-files --stage` (attention: different de staged ); `git diff-index HEAD` et filetype <https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean>. Que quelques possibilités. Donc peut-être juste les lister.
+> - commit jamais vraiment perdu <https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1>. Faire test avec rebase et on les retrouve.
 >
 > biblio :
 >
-> - ~ et ^ pour les ancêtres <https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git>{.externe}
+> - ~ et ^ pour les ancêtres <https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git>
 >
-> - cours (BIEN): <https://www.youtube.com/watch?v=rH3zE7VlIMs>{.externe}, <https://www.boot.dev/teachers/the-primeagen>{.externe}
->   internals (TROP BIEN le debut puis devient trop chiant) : <https://www.youtube.com/watch?v=fWMKue-WBok&list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7>{.externe}
-> - <https://womanonrails.com/git-rebase-onto>{.externe}
-> - <https://jwiegley.github.io/git-from-the-bottom-up/>{.externe}
-> - <https://tutorial.gitlabpages.inria.fr/git/>{.externe}
-> - <https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain>{.externe}
-> - créer son propre sha : <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects>{.externe} <https://gist.github.com/masak/2415865>{.externe} et <https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725>{.externe}
-> - <https://gitirc.eu/gitrevisions.html>{.externe}
-> - interactive stage <https://www.youtube.com/watch?v=UJ5fpaeZWsI>{.externe} <https://www.youtube.com/watch?v=8st1NhaKDCA>{.externe}
+> - cours (BIEN): <https://www.youtube.com/watch?v=rH3zE7VlIMs>, <https://www.boot.dev/teachers/the-primeagen>
+>   internals (TROP BIEN le debut puis devient trop chiant) : <https://www.youtube.com/watch?v=fWMKue-WBok&list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7>
+> - <https://womanonrails.com/git-rebase-onto>
+> - <https://jwiegley.github.io/git-from-the-bottom-up/>
+> - <https://tutorial.gitlabpages.inria.fr/git/>
+> - <https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain>
+> - créer son propre sha : <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects> <https://gist.github.com/masak/2415865> et <https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725>
+> - <https://gitirc.eu/gitrevisions.html>
+> - interactive stage <https://www.youtube.com/watch?v=UJ5fpaeZWsI> <https://www.youtube.com/watch?v=8st1NhaKDCA>
  -->

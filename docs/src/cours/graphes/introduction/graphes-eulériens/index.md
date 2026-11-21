@@ -13,9 +13,9 @@ Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, 
 
 ## Le problème concret ou _"comment ne pas aller se promener"_
 
-C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg){.externe}, qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler){.externe} d'inventer la théorie des graphes pour éviter d'aller se balader.
+C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg), qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler) d'inventer la théorie des graphes pour éviter d'aller se balader.
 
-La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça ([cliquez pour voir les 7 ponts en vrai](https://www.google.com/maps/d/viewer?msa=0&mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&ll=54.708383%2C20.508084000000014&z=15){.externe}):
+La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça ([cliquez pour voir les 7 ponts en vrai](https://www.google.com/maps/d/viewer?msa=0&mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&ll=54.708383%2C20.508084000000014&z=15)):
 
 ![ponts de Königsberg](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png)
 
@@ -206,7 +206,7 @@ $$
 >
 > TBD écrire algo cycle partant de x
 
-On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer){.externe} qui implémente l'idée précédente mais l'optimise.
+On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer) qui implémente l'idée précédente mais l'optimise.
 
 Il fonctionne via cet algorithme :
 

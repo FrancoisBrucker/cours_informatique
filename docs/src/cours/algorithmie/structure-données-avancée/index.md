@@ -9,12 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88>{.externe} avec pointeurs
+> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
 
 
 
 
-> TBD <https://www.youtube.com/watch?v=TdtNViWk45I>{.externe} implémentation go
+> TBD <https://www.youtube.com/watch?v=TdtNViWk45I> implémentation go
 
 ## hash 2.0 améliorations
 
@@ -24,7 +24,7 @@ eleventyComputed:
   - universal
 
 {% lien %}
-[Universal & Perfect Hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g){.externe}
+[Universal & Perfect Hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g)
 {% endlien %}
 
 > TBD circulaire + Knutheries.
@@ -37,7 +37,7 @@ Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés o
 
 ### perfect hashing
 
-> - <https://en.wikipedia.org/wiki/Dynamic_perfect_hashing>{.externe}
->  - chichelli : <https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf>{.externe}
->  - <https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf>{.externe} 
+> - <https://en.wikipedia.org/wiki/Dynamic_perfect_hashing>
+>  - chichelli : <https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf>
+>  - <https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf> 
 

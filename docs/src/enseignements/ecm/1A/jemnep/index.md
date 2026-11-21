@@ -18,9 +18,9 @@ eleventyComputed:
 
 Le premier d'une série de 3 enseignements orienté développement et axé autour de 3 thèmes :
 
-- le développement : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530){.externe})
+- le développement : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
 - le système : là où sera exécuté le code
-- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM){.externe})
+- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
 
 {% info %}
 [La trilogie](/enseignements/ecm/#mdd)
@@ -168,7 +168,7 @@ faire les exercices du cours avec eux. Découper le cours en atelier où on comm
 
 ## Projet à rendre
 
-Choisissez un exercice du <https://adventofcode.com/>{.externe} actuel et résolvez le. On vous demande de rendre :
+Choisissez un exercice du <https://adventofcode.com/> actuel et résolvez le. On vous demande de rendre :
 
 - un fichier `main.py`{.fichier} pour votre programme principal
 - un fichier `fonction.py`{.fichier} pour vos fonctions
@@ -177,7 +177,7 @@ Choisissez un exercice du <https://adventofcode.com/>{.externe} actuel et résol
 
 Ainsi que la preuve que votre exercice est réussi.
 
-Vous devrez rendre votre travail [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1231){.externe} avant le 24 décembre 23h59.
+Vous devrez rendre votre travail [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1231) avant le 24 décembre 23h59.
 
 {% info %}
 Si vous rendez le code sous la forme d'un lien vers un projet github, vous aurez toute ma considération.

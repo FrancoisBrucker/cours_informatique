@@ -158,7 +158,7 @@ On verra dans ce cours que c'est polynomialement facile à faire même si l'algo
 ### <span id="championnat-sport"></span>Championnat de sport
 
 {% lien %}
-[Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes){.externe}
+[Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes)
 {% endlien %}
 
 Dans un championnat de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.

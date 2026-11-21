@@ -97,7 +97,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 ### Algorithme de Horner
 
 {% lien %}
-[Méthode de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner){.externe}
+[Méthode de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner)
 {% endlien %}
 
 ```pseudocode
@@ -129,7 +129,7 @@ Donnez, en utilisant la notation $\mathcal{O}$ avec comme paramètre la longueur
 
 ## <span id="triangle-de-pascal"></span>Triangle de Pascal
 
-Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal){.externe}, avec $1\leq k \leq n$ :
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
 
 <div>
 $$

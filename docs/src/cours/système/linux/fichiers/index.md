@@ -64,10 +64,10 @@ L'utilisation d'un fichier est identique quelque soit le type de fichier :
 3. une fois terminé, on clôt le fichier en utilisant la méthode **close**.
 
 {% lien %}
-[The file abstraction in Linux](https://www.youtube.com/watch?v=UJBr211etS4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=19){.externe}
+[The file abstraction in Linux](https://www.youtube.com/watch?v=UJBr211etS4&list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&index=19)
 {% endlien %}
 
-Un système unix ouvre constamment de très nombreux fichiers. Vous pouvez les voir en utilisant la commande [`lsof` `ls` open file](https://www.redhat.com/sysadmin/analyze-processes-lsof){.externe}
+Un système unix ouvre constamment de très nombreux fichiers. Vous pouvez les voir en utilisant la commande [`lsof` `ls` open file](https://www.redhat.com/sysadmin/analyze-processes-lsof)
 
 {% exercice %}
 Combien de fichier sont ouvert sur votre système ?
@@ -97,7 +97,7 @@ $ lsof | wc -l
 ### EOF
 
 {% lien %}
-[EOF](https://www.baeldung.com/linux/eof){.externe}
+[EOF](https://www.baeldung.com/linux/eof)
 {% endlien %}
 
 Lorsque l'on est entrain d'écrire dans un fichier, on peut envoyer le signal `EOF` (*End Of File*) pur indiquer que l'on a plus rien à écrire, au moins pour l'instant.
@@ -126,13 +126,13 @@ Le signal EOF est une information envoyé au process qui lit le fichier comme qu
 
 {% endfaire %}
 {% info %}
-Cette technique est très utilisée lorsque l'on veut visualiser en direct le comportement d'un serveur web par exemple via son [fichier de log](https://en.wikipedia.org/wiki/Logging_(computing)){.externe}.
+Cette technique est très utilisée lorsque l'on veut visualiser en direct le comportement d'un serveur web par exemple via son [fichier de log](https://en.wikipedia.org/wiki/Logging_(computing)).
 {% endinfo %}
 
 ### Buffers
 
 {% lien %}
-[buffers de stdin/out/err](https://www.pixelbeat.org/programming/stdio_buffering/){.externe}
+[buffers de stdin/out/err](https://www.pixelbeat.org/programming/stdio_buffering/)
 {% endlien %}
 
 La plupart des fichiers sont *bufferisés*, c'est à dire qu'ils n'envoient leurs données que par paquet, et ce pour des raisons de performances ou de praticité.
@@ -192,10 +192,10 @@ En revanche., le fichier stderr n'est pas bufferisé. Comme il doit traiter des 
 
 On peut contrôler les buffers des fichiers standards :
 
-- en shell avec la commande [stdbuf](https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation){.externe}.
-- en **C** en utilisant la fonction [setbuf](https://man7.org/linux/man-pages/man3/setbuf.3.html){.externe} si on a ouvert le fichier avec [fopen](../../a-refactor/fichiers-C)
+- en shell avec la commande [stdbuf](https://www.gnu.org/software/coreutils/manual/html_node/stdbuf-invocation.html#stdbuf-invocation).
+- en **C** en utilisant la fonction [setbuf](https://man7.org/linux/man-pages/man3/setbuf.3.html) si on a ouvert le fichier avec [fopen](../../a-refactor/fichiers-C)
 
-Vider le buffer pour tout envoyer est appelé *flush*. On peut le faire explicitement en envoyant le signal EOF, mais cela peut parfois déconnecter la lecture/écriture. En **C**, on peut aussi explicitement le faire  en utilisant la commande [fflush](https://koor.fr/C/cstdio/fflush.wp){.externe}.
+Vider le buffer pour tout envoyer est appelé *flush*. On peut le faire explicitement en envoyant le signal EOF, mais cela peut parfois déconnecter la lecture/écriture. En **C**, on peut aussi explicitement le faire  en utilisant la commande [fflush](https://koor.fr/C/cstdio/fflush.wp).
 
 ### En shell
 

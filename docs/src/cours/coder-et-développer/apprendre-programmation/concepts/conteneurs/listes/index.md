@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/tutorial/introduction.html#lists>{.externe}
+<https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endlien %}
 
 Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder à son contenu un à un.
@@ -216,7 +216,7 @@ for i in range(10):
 ### <span id="list-comprehension"></span> Avec une _list comprehension_
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>{.externe}
+<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
 {% endlien %}
 
 ```python
@@ -278,7 +278,7 @@ Créez avec une _list comprehension_ une liste contenant toutes les sommes $i + 
 ### Avec une évaluation
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#eval>{.externe}
+<https://docs.python.org/fr/3/library/functions.html#eval>
 {% endlien %}
 
 La fonction `eval`{.language-} évalue une chaîne de caractères comme si c'était une instruction python. Il est donc totalement possible d'écrire ce code :
@@ -322,7 +322,7 @@ Quelques listes sont souvent demandées. Voici les moyens en python de les crée
 
 ### Listes d'entiers successifs
 
-On utilise [La fonction `range`{.language-}](../../fondements-programmation/structure-code/#range) en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list){.externe} qui peut prendre un itérable en paramètre.
+On utilise [La fonction `range`{.language-}](../../fondements-programmation/structure-code/#range) en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
 
 Par exemple pour la liste des 10 premiers entiers :
 
@@ -378,7 +378,7 @@ Mais souvent, on utilise la méthode des listes reverse qui renverse une liste :
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 ```
 
-A noter qu'il existe aussi la [fonction `reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed){.externe} qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
+A noter qu'il existe aussi la [fonction `reversed`{.language-}](https://docs.python.org/fr/3/library/functions.html#reversed) qui rend un itérateur sur les éléments d'un itérable en paramètre, du dernier au premier. On peut donc aussi l'utiliser pour créer une liste duale d'une liste donnée :
 
 ```python
 >>> L = list(reversed(range(10)))
@@ -566,7 +566,7 @@ Le _slicing_ permet aussi de remplacer directement la partie de liste si on proc
 ### Méthodes des listes
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists>{.externe}
+<https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists>
 {% endlien %}
 
 Les méthodes de listes, comme les méthodes de chaînes de caractères, sont très utiles. A défaut de les apprendre par cœur, sachez retrouver la documentation pour voir si ce que vous cherchez à faire n'est pas déjà fait.
@@ -584,7 +584,7 @@ Que font-elles ?
 {% endexercice %}
 {% details "solution" %}
 
-La réponse se trouve dans [la documentation](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists){.externe} :
+La réponse se trouve dans [la documentation](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
 
 - `remove`{.language-} supprime le **premier** élément trouvé, pas tous
 - `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
@@ -644,7 +644,7 @@ print(L)
 
 ### Lambda et listes
 
-Les fonction lambda permettent d'être utilisée directement dans des méthodes de liste. Par exemple avec [le paramètre `key`{.language-} de la méthode de liste `sort`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list.sort){.externe}. Considérons la liste `l`{.language-} :
+Les fonction lambda permettent d'être utilisée directement dans des méthodes de liste. Par exemple avec [le paramètre `key`{.language-} de la méthode de liste `sort`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list.sort). Considérons la liste `l`{.language-} :
 
 ```python
 l = [["au revoir", 2], ["bonjour", 1]]

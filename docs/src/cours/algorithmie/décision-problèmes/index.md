@@ -15,9 +15,9 @@ Nous allons dans cette partie redéfinir la notion de problème algorithmique vi
 
 {% lien %}
 
-- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>{.externe}
-- <https://www.youtube.com/watch?v=s9l6QTX9n0Q&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt>{.externe}
-- <https://www.youtube.com/watch?v=KydXVE9Su5g&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH>{.externe}
+- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>
+- <https://www.youtube.com/watch?v=s9l6QTX9n0Q&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt>
+- <https://www.youtube.com/watch?v=KydXVE9Su5g&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH>
 
 {% endlien %}
 
@@ -76,8 +76,8 @@ D'un point de vue théorique on peut donc uniquement considérer la version déc
 
 {% lien %}
 
-- <https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf>{.externe}
-- <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf>{.externe}
+- <https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf>
+- <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf>
 
 {% endlien %}
 

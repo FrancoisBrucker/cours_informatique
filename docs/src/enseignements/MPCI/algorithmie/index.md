@@ -15,7 +15,7 @@ eleventyComputed:
 ---
 
 
-Ce cours intitulé _Algorithmie_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120){.externe}).
+Ce cours intitulé _Algorithmie_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120)).
 
 ## Note
 
@@ -283,7 +283,7 @@ DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/3
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation){.externe}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation)
 {% endinfo %}
 
 
@@ -314,7 +314,7 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% endaller %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris){.externe}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris)
 {% endinfo %}
 
 <!-- TBD 2026/2027
@@ -462,12 +462,12 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 - complexité en moyenne
 
 
-- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>{.externe}
-- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>{.externe}
-- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>{.externe}
-- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>{.externe}
-- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>{.externe}
-- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>{.externe}
+- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>
+- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>
+- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>
+- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>
+- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>
+- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>
 
 {% info %}
 [Suivre le tutoriel Markdown](/tutoriels/format-markdown/)

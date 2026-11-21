@@ -27,7 +27,7 @@ Par exemple, la chaîne $s=\text{"Zeus a été à Suez."}$ est une phrase palind
 Les phrases palindromes donnent bien de plus de liberté et donne des choses comme `élu par cette crapule` , `c'est sec ?` ou encore `À l'étape, épate-la !`.
 
 {% lien %}
-[Une liste de palindromes](https://fr.wiktionary.org/wiki/Annexe:Liste_de_palindromes_français){.externe}
+[Une liste de palindromes](https://fr.wiktionary.org/wiki/Annexe:Liste_de_palindromes_français)
 {% endlien %}
 
 La partie algorithmie se concentrera sur les palindromes et la partie code sur les phrases palindromes.

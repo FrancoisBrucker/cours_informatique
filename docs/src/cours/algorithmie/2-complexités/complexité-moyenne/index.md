@@ -322,7 +322,7 @@ Lorsque le paramètre d'un algorithme est un tableau d'entier très souvent seul
 
 Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
-- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation){.externe} $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
+- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
 - $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
 {% enddefinition %}
 {% info %}

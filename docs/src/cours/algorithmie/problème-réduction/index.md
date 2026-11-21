@@ -27,7 +27,7 @@ La formalisation de cette opération s'appelle [une réduction](<https://fr.wiki
 2. calculer ou estimer des complexités
 
 {% info %}
-Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction){.externe}, trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)){.externe} dont nous ne parlerons pas dans ce cours d'algorithmie.
+Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
 Commençons par deux exemples.
@@ -415,7 +415,7 @@ Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que $T'''[i] + T''
 
 #### Problèmes de géométrie algébrique
 
-3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique){.externe}. Considérons par exemple le problème suivant :
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
 
 {% note "**Problème**" %}
 
@@ -486,12 +486,12 @@ Montrer que 3-SUM = GEOBASE pour l'ordre des réductions linéaires.
 Clair puisque 3-SUM = 3-SUM' = GEOBASE
 {% enddetails %}
 
-> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness>{.externe} Peut-on-ton le résoudre mieux que n^2 ?
+> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness> Peut-on-ton le résoudre mieux que n^2 ?
 Si ce genre de problème de géométrie solvable algébriquement, n'hésitez pas à jeter un coup d'œil aux liens suivants :
 
 {% lien %}
 
-- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>{.externe}
-- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>{.externe}
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
 
 {% endlien %}

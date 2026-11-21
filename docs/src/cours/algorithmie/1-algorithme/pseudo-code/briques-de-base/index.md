@@ -74,8 +74,8 @@ En algorithmie on a également coutume de se doter d'un élément vide `∅`{.la
 La plupart des objets basiques sont de taille fixe :
 
 - un booléen a une taille de 1bit (`0` pour faux, `1` pour vrai)
-- un caractère a une taille de 32bit puisqu'on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode){.externe}
-- un réel a une taille de 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754){.externe}
+- un caractère a une taille de 32bit puisqu'on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
+- un réel a une taille de 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
 
 D'autres n'ont pas de limite fixée :
 
@@ -92,7 +92,7 @@ On considérera toujours que l'on possède assez de mémoire pour pouvoir exécu
 
 {% info "**Implémentation**" %}
 
-En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée **tas**. Chaque case du tas peut contenir [1 byte](https://fr.wikipedia.org/wiki/Byte){.externe} qui correspond à 8 bits.
+En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée **tas**. Chaque case du tas peut contenir [1 byte](https://fr.wikipedia.org/wiki/Byte) qui correspond à 8 bits.
 
 ![tas](tas.png)
 
@@ -151,7 +151,7 @@ Les opérations correspondent au second moyen de créer des objets. Par exemple 
 - pour les caractères :
   - logique : égalité (avec le signe `==`{.language-})
 - pour les chaînes de caractères :
-  - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-}) en utilisant l'[ordre du dictionnaire](https://fr.wikipedia.org/wiki/Ordre_lexicographique){.externe}
+  - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-}) en utilisant l'[ordre du dictionnaire](https://fr.wikipedia.org/wiki/Ordre_lexicographique)
   - opération de concaténation (avec l'opérateur `+`{.language-}) : `"comment vas-tu" + " yau d’poêle ?"`{.language-} vaut la chaîne de caractères `"comment vas-tu yau d’poêle ?"`{.language-}
 - opérations sur les bits et les booléens :
   - "négation logique" (non, `NON`{.language-}, `NOT`{.language-} ou encore $\neg$),

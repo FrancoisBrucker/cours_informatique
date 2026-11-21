@@ -21,7 +21,7 @@ Commençons par installer un interpréteur indépendant de l'application utilis�
 Utilisez le Microsoft store.
 
 {% lien %}
-[Python sur le windows store](https://apps.microsoft.com/search?query=python&hl=fr-FR&gl=FR){.externe}
+[Python sur le windows store](https://apps.microsoft.com/search?query=python&hl=fr-FR&gl=FR)
 {% endlien %}
 
 Puis installez le via le store.
@@ -53,7 +53,7 @@ xcode-select --install
 
 <!-- 
 
-les *Apple developer tools*, en particulier [xcode](https://developer.apple.com/xcode/resources/){.externe}
+les *Apple developer tools*, en particulier [xcode](https://developer.apple.com/xcode/resources/)
  -->
 
 

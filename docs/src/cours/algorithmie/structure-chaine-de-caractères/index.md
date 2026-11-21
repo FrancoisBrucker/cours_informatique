@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://www.youtube.com/watch?v=ENKT0Z3gldE>{.externe}
+> TBD <https://www.youtube.com/watch?v=ENKT0Z3gldE>
 
 Une chaîne de caractères est dans toute sa généralité définie comme un **_mot_** produit par un **_alphabet_** :
 

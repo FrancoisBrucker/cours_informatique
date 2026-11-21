@@ -26,7 +26,7 @@ On ne montrera pas ici comment utiliser git en ligne de commande.
 {% details "sous Linux" %}
 
 {% lien %}
-<https://git-scm.com/download/linux>{.externe}
+<https://git-scm.com/download/linux>
 {% endlien %}
 
 ```shell
@@ -48,7 +48,7 @@ brew install git
 {% details "Windows" %}
 
 {% lien %}
-<https://learn.microsoft.com/fr-fr/windows/package-manager/winget/>{.externe}
+<https://learn.microsoft.com/fr-fr/windows/package-manager/winget/>
 {% endlien %}
 
 ```shell
@@ -59,25 +59,25 @@ winget install --id Git.Git -e --source winget
 
 ### Github cli
 
-Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande : [github CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli){.externe}.
+Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande : [github CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli).
 
 {% info %}
 CLI signifie Command Line Interface.
 {% endinfo %}
 
-Nous ne l'utiliserons pas ici, mais je vous invite à lire [sa documentation](https://cli.github.com/manual/){.externe}, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.
+Nous ne l'utiliserons pas ici, mais je vous invite à lire [sa documentation](https://cli.github.com/manual/), il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.
 
 ### Vscode
 
-Il existe de nombreux plugins possibles pour [l'éditeur vscode](https://code.visualstudio.com/){.externe}. Nous en utiliserons 2, en plus du plugin par défaut :
+Il existe de nombreux plugins possibles pour [l'éditeur vscode](https://code.visualstudio.com/). Nous en utiliserons 2, en plus du plugin par défaut :
 
-- [git history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory){.externe}
-- [git ignore](https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore){.externe}
+- [git history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+- [git ignore](https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore)
 
 ## Configuration
 
 {% lien %}
-[configuration de git](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git){.externe}
+[configuration de git](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git)
 {% endlien %}
 
 Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.
@@ -126,7 +126,7 @@ Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasés par d
 
 Pour être cohérent avec github, on va dire que tout nouveau projet commence avec la branche `main`.
 
-Par défaut c'est `master` (et ça [fait des histoires](https://github.com/github/renaming?tab=readme-ov-file){.externe}).
+Par défaut c'est `master` (et ça [fait des histoires](https://github.com/github/renaming?tab=readme-ov-file)).
 
 {% faire "**Dans un terminal, tapez la commande**" %}
 

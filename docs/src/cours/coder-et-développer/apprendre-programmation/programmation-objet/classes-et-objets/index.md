@@ -78,7 +78,7 @@ Formalisation cette notion de besoin avec l'UML.
 Pour représenter les différentes possibilités offertes par une classe on utilise l'[Unified Modeling Language (UML)](<https://fr.wikipedia.org/wiki/UML_(informatique)>)
 
 {% lien %}
-Vous pouvez suivre ce petit [tutoriel UML](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html){.externe} pour comprendre sa notation et son utilité.
+Vous pouvez suivre ce petit [tutoriel UML](https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html) pour comprendre sa notation et son utilité.
 {% endlien %}
 
 L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :
@@ -90,8 +90,8 @@ Un diagramme UML est une boite qui décrit une classe. Elle contient 4 informati
 
 - `<nom de la classe>` qui sera un nom sans espace. En python ce nom sera avec une majuscule.
 - une case pour y placer **les différents attributs**. on précisera le _type_ (entier, chaîne de caractères, une classe particulière d'objet, ...) de chaque attribut
-- **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
-- une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction){.externe} complète.
+- **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
+- une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
 
 {% enddefinition %}
 
@@ -140,7 +140,7 @@ Pour créer un diagramme UML :
 La modélisation UML ne nous indique pas l'implémentation des différentes méthodes, il nous indique juste comment on peut les utiliser. Pour exécuter et utiliser notre compteur, il faut le coder.
 
 {% lien %}
-N'hésitez pas à jeter un coup d'œil au [tutoriel de python sur ses classes](https://docs.python.org/fr/3/tutorial/classes.html){.externe}. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
+N'hésitez pas à jeter un coup d'œil au [tutoriel de python sur ses classes](https://docs.python.org/fr/3/tutorial/classes.html). Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
 {% endlien %}
 
 
@@ -312,6 +312,6 @@ Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-cod
 ## Code Python de la classe Compteur
 
 {% lien %}
-- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur){.externe}
-- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?filename=projet-compteur){.externe}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?filename=projet-compteur)
 {% endlien %}

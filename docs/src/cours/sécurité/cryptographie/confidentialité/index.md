@@ -97,7 +97,7 @@ Formalisons ce concept avec la notion de fonctions à sens unique.
 ### Fonctions à sens unique
 
 {% lien %}
-[One way function](https://en.wikipedia.org/wiki/One-way_function){.externe}
+[One way function](https://en.wikipedia.org/wiki/One-way_function)
 {% endlien %}
 
 En gros, une fonction $f$ est à sens unique s'il est :
@@ -310,12 +310,12 @@ On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.
 
 <!-- 
 
-> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>{.externe}
+> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
 
  -->
 
 {% attention %}
-Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/){.externe}
+Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/)
 
 {% endattention %}
 
@@ -399,9 +399,9 @@ Cette construction permet également de chiffrer **et** déchiffrer rapidement l
 
 ## Nonce
 
-Le vecteur d'initialisation est souvent utilisé comme [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce){.externe}, qui comme son nom l'indique est utilisé une unique fois.
+Le vecteur d'initialisation est souvent utilisé comme [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce), qui comme son nom l'indique est utilisé une unique fois.
 
-De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les [attaque par rejeu](https://fr.wikipedia.org/wiki/Attaque_par_rejeu){.externe}. Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.
+De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les [attaque par rejeu](https://fr.wikipedia.org/wiki/Attaque_par_rejeu). Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.
 
 ```
     Alice     |         |     Bob
@@ -453,13 +453,13 @@ En utilisant le chirrfre de Vernam, la transmission sécurisée ressemble finale
 ----          |         |    
 ```
 
-On appelle ce type de transmission [chiffrement de flux](https://fr.wikipedia.org/wiki/Chiffrement_de_flux){.externe}, qui est la norme actuellement. Il permet :
+On appelle ce type de transmission [chiffrement de flux](https://fr.wikipedia.org/wiki/Chiffrement_de_flux), qui est la norme actuellement. Il permet :
 
 - des clés de petites tailles par rapport au message à faire passer
 - des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.
 
-On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack){.externe}, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
+On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
 
 {% lien %}
-[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/){.externe}
+[recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
 {% endlien %}

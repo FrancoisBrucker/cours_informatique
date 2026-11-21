@@ -96,10 +96,10 @@ Sur aioli
    2. node basique et vérifier que tout fonctionne
 3. survivre à la déconnexion :
    1. nohup
-   2. tmux <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html>{.externe} ou screen `/usr/bin/screen -d -m -S node node exemple.js`
+   2. tmux <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html> ou screen `/usr/bin/screen -d -m -S node node exemple.js`
 4. npm en front
 5. script d'installation :
    1. sur aioli
-   2. chez soit qui pousse le tout avec un scp/git et configure là-bas (<https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command>{.externe})
-   3. env dev et prod : <https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>{.externe}
+   2. chez soit qui pousse le tout avec un scp/git et configure là-bas (<https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command>)
+   3. env dev et prod : <https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>
 6. redirection de ports

@@ -20,20 +20,20 @@ eleventyComputed:
 
 > TBD limité à 1 connection. En avoir plusieurs possible avec un fork. Le faire
 
-- [domain socket vs tcp socket](https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets){.externe}
-- [code client/serveur simple (unix domain socket)](https://beej.us/guide/bgipc/html/#unixsock){.externe}
-- [code client/serveur complet](https://beej.us/guide/bgnet/){.externe}
-- [fork](https://www.youtube.com/watch?v=cex9XrZCU14){.externe}
-- [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s){.externe}
+- [domain socket vs tcp socket](https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets)
+- [code client/serveur simple (unix domain socket)](https://beej.us/guide/bgipc/html/#unixsock)
+- [code client/serveur complet](https://beej.us/guide/bgnet/)
+- [fork](https://www.youtube.com/watch?v=cex9XrZCU14)
+- [socket et fichier](https://www.youtube.com/watch?v=il4N6KjVQ-s)
 - sur la même machine :
-  - parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <https://stackoverflow.com/questions/14170647/fork-parent-child-communication>{.externe}
-  - [unix domain socket](https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec){.externe}
+  - parent/enfant issu de fork. Comme copie les file descriptor, ce sont les mêmes et on peut utiliser des pipe <https://stackoverflow.com/questions/14170647/fork-parent-child-communication>
+  - [unix domain socket](https://copyconstruct.medium.com/file-descriptor-transfer-over-unix-domain-sockets-dcbbf5b3b6ec)
 
 ## Connexion internet
 
 ### socket Client / serveur
 
-la commande [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash){.externe} permet d'établir une connexion TCP à un serveur ou de créer un serveur.
+la commande [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash) permet d'établir une connexion TCP à un serveur ou de créer un serveur.
 
 Serveur :
 
@@ -61,7 +61,7 @@ nc localhost 9090
 
 Les stdin/out sont liés.
 
-Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : [socat](https://www.redhat.com/sysadmin/getting-started-socat){.externe} :
+Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : [socat](https://www.redhat.com/sysadmin/getting-started-socat) :
 
 ```sh
 #! /bin/sh
@@ -83,11 +83,11 @@ done
 ## outil de connexion
 
 {% lien %}
-<https://www.redhat.com/sysadmin/getting-started-socat>{.externe}
+<https://www.redhat.com/sysadmin/getting-started-socat>
 {% endlien %}
 
-- [nc](https://www.varonis.com/blog/netcat-commands){.externe}
-- [shell server avec nc](https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/){.externe}
+- [nc](https://www.varonis.com/blog/netcat-commands)
+- [shell server avec nc](https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/)
 
 ### echo serveur
 
@@ -207,19 +207,19 @@ python -m http.serveur 8080
 
 > TBD en écrire un.
 
-> <https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg>{.externe}
+> <https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg>
 
-> <https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html>{.externe}
+> <https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html>
 
-- [web minimal](https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9){.externe}
-- <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>{.externe}
-- <https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES>{.externe}
+- [web minimal](https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9)
+- <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>
+- <https://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES>
 
 ## bibliographie
 
-- [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html){.externe}
-- [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/){.externe}
-- <https://opensource.com/article/19/4/interprocess-communication-linux-networking>{.externe}
+- [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
+- [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/)
+- <https://opensource.com/article/19/4/interprocess-communication-linux-networking>
 
 ## client serveur
 
@@ -234,17 +234,17 @@ python -m http.serveur 8080
    4. un js dedans qui appelle la fonction à calculer avec un /api/calcul
 3. deux route en hop. Ramener le port 9090 de roucas sur localhost en suivant la route : localhost <-> ovh <-> sas1 <-> roucas101.
 
-- <https://github.com/denehs/unix-domain-socket-example/blob/master/client.c>{.externe}
+- <https://github.com/denehs/unix-domain-socket-example/blob/master/client.c>
 - tcp socket
-- <https://www.tala-informatique.fr/wiki/index.php/C_socket>{.externe}
-- [ntp client](https://seriot.ch/projects/tiny_ntp_client.html){.externe}
-- [iphone firewall](https://www.nstec.com/how-to-disable-firewall-iphone-hotspot/){.externe}
+- <https://www.tala-informatique.fr/wiki/index.php/C_socket>
+- [ntp client](https://seriot.ch/projects/tiny_ntp_client.html)
+- [iphone firewall](https://www.nstec.com/how-to-disable-firewall-iphone-hotspot/)
 
 ## tbd
 
-> en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>{.externe}
+> en python : <https://www.youtube.com/watch?v=Ftg8fjY_YWU>
 
-<https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/>{.externe}
+<https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/>
 
 ### cours web
 
@@ -252,7 +252,7 @@ remplacer screen par tmux.
 
 Utiliser un shell que l'on sauve. Comme ça on peut y revenir, par exemple si virtualenv.
 
-faire un exemple complet avec [virtualenv](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html){.externe}
+faire un exemple complet avec [virtualenv](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html)
 
 faire plusieurs petits serveurs avec :
 

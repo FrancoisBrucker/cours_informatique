@@ -30,7 +30,7 @@ Il vous faudra peut-être cliquer-droit puis choisir `enregistrer le lien sous..
 
 ## <span id="données"></span> Données
 
-Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation){.externe} et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :
+Si vous ouvrez ces fichier dans un éditeur de texte, on voit que le fichier est totalement lisible. Il est au format [json](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) et est un dictionnaire où les clés sont les noms des villes de la métropole ayant plus de 10000 habitants et les valeurs des dictionnaires regroupant leurs propriétés :
 
 ```python
 {
@@ -85,7 +85,7 @@ for clé, valeur in villes["Marseille"].items():
     print(clé, valeur)
 ```
 
-On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir [la doc](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques){.externe})
+On a utilisé la méthode items() des dictionnaires pour itérer sur les cls et les valeurs d'un dictionnaire (voir [la doc](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques))
 
 {% enddetails %}
 

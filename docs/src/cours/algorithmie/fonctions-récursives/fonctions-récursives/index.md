@@ -17,8 +17,8 @@ Nous allons montrer dans cette partie un modèle équivalent au pseudo-code nomm
 
 {% lien %}
 
-- [playlist sur les fonctions récursives](https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5){.externe}
-- [un cours](https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html){.externe}
+- [playlist sur les fonctions récursives](https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5)
+- [un cours](https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html)
 
 {% endlien %}
 
@@ -42,7 +42,7 @@ Avant de nous attaquer à chaque type de bloc, commençons par résoudre le prem
 
 ## Couplage de Cantor
 
-[La fonction de couplage de Cantor](https://fr.wikipedia.org/wiki/Fonction_de_couplage){.externe} est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$ :
+[La fonction de couplage de Cantor](https://fr.wikipedia.org/wiki/Fonction_de_couplage) est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$ :
 
 {% note "**Proposition**" %}
 La fonction $f: \mathbb{N}^2 \rightarrow\mathbb{N}$ telle que : $\pi(x, y) = (x + y + 1)(x+y)/2 + y$ est appelée **_fonction de couplage de Cantor_** et est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$.
@@ -266,7 +266,7 @@ $$
 ## Récursives Primitives  et fonction `pour chaque`
 
 {% info %}
-On doit ce résultat à [Meyer et Ritchie en 1966](https://people.csail.mit.edu/meyer/meyer-ritchie.pdf){.externe} dans le cadre [des langages loop](https://en.wikipedia.org/wiki/LOOP_(programming_language)){.externe}. Nous en donnons ici une preuve pour le pseudo-code.
+On doit ce résultat à [Meyer et Ritchie en 1966](https://people.csail.mit.edu/meyer/meyer-ritchie.pdf) dans le cadre [des langages loop](https://en.wikipedia.org/wiki/LOOP_(programming_language)). Nous en donnons ici une preuve pour le pseudo-code.
 {% endinfo %}
 
 Nous allons montrer dans cette partie que toutes les fonctions récursives primitives sont exactement les fonctions calculables uniquement en utilisant des blocs de répétition `pour chaque`.

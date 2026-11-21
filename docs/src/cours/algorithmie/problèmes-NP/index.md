@@ -180,7 +180,7 @@ Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur 
 
 De façon extrêmement surprenante lorsqu'on y pense, il existe un problème de $NP$, SAT, qui majore tous les autres problèmes. Nous démontrerons ceci précisément plus tard, admettons donc (pour l'instant) le théorème suivant :
 
-{% note "**Théorème ([Cook & Levin en 1971](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook){.externe})**" %}
+{% note "**Théorème ([Cook & Levin en 1971](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook))**" %}
 
 Pour tout problème $A$ de $NP$ il existe une **réduction polynomiale** de $A$ vers le problème SAT : $A \leq SAT$
 
@@ -306,7 +306,7 @@ Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorith
 
 Le théorème de Cook et Leven stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.
 
-Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin){.externe} (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.
+Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.
 
 Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.
 
@@ -504,7 +504,7 @@ algorithme somme_binaire(x: []bit,
     rendre somme
 ```
 
-L'algorithme ci-dessus est une implémentation binaire de [l'addition posée](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul){.externe} que l'on apprend au primaire. L'addition des nombres `x = 1011` et `y = 0111` donne `somme = 10011` :
+L'algorithme ci-dessus est une implémentation binaire de [l'addition posée](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul) que l'on apprend au primaire. L'addition des nombres `x = 1011` et `y = 0111` donne `somme = 10011` :
 
 ```text
    1011  = 11     x
@@ -588,7 +588,7 @@ Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.
 
 {% endnote %}
 
-[Par Exemple](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description){.externe} : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$
+[Par Exemple](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description) : $(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)$
 
 On peut facilement passer d'une instance de SAT à une instance de 3-SAT par la transformation linéaire suivante qui transforme chaque clause en une successions de clauses à 3 littéraux :
 
@@ -625,9 +625,9 @@ Remarquez que notre transformation ne permet pas de passer de SAT à 2-SAT puisq
 
 ### Que signifie NP-complet
 
-Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, [Karp démontrait en 1972](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems){.externe} qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.
+Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, [Karp démontrait en 1972](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems) qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.
 
-Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont _universels_. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, [il n'y a pas de balle en argent](https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent){.externe} pour résoudre magiquement le problème. Il faut tout essayer.
+Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont _universels_. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, [il n'y a pas de balle en argent](https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent) pour résoudre magiquement le problème. Il faut tout essayer.
 
 {% retenir %}
 
@@ -649,7 +649,7 @@ Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes
 Si les problèmes de $P$ sont inclus dans $NP$, on ne sait pas si l'inclusion est stricte. On a implicitement supposé que les problèmes NP-complets ne sont pas dans P, mais en vrai on en sait rien : la question est ouverte ! Certains se demandent même si cette question est décidable (_ie._ démontrable).
 
 {% info %}
-Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc){.externe} et n'a jamais été réévaluée...).
+Il existe même un prix d'un million de dollars pour qui donnerait une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
 {% endinfo %}
 
 ![décidable](./NP-NP-3.png)
@@ -673,7 +673,7 @@ Par exemple pour notre addition :
 Donc si je connais le pseudo-code de cet, je peux en écrire sa formule SAT associée et je peux déterminer ses entrées à partir d'une sortie en temps polynomial. Pour une addition cela ne porte pas vraiment à conséquence mais si l'algorithme en question est un chiffrement (comme le chiffrement RSA dont la base est la supposition qu'il est difficile de trouver le produit de deux nombres premiers) ?
 
 {% lien %}
-[Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question](https://www.youtube.com/watch?v=6OPsH8PK7xM){.externe}
+[Regardez cette excellente vidéo de la non moins excellente chaîne polylog sur cette question](https://www.youtube.com/watch?v=6OPsH8PK7xM)
 {% endlien %}
 
 Bref :
@@ -698,7 +698,7 @@ Pour ne rien rendre simple, il existe de nombreux problèmes pour lesquels on ne
 > TBD renvoyer à la partie graphe.
 
 {% lien %}
-[Les définitions d'une excellente chaîne d'informatique](https://www.youtube.com/watch?v=21bMUXO-QYQ){.externe}
+[Les définitions d'une excellente chaîne d'informatique](https://www.youtube.com/watch?v=21bMUXO-QYQ)
 {% endlien %}
 
 
@@ -735,7 +735,7 @@ Les différentes contraintes sont alors :
 Regrouper toutes ces contraintes forme bien un ensemble de contraintes polynomial dans la taille des graphes $G_1$ et $G_2$ qui, si elles sont toutes satisfaites garantissent l'isomorphie.
 {% enddetails %}
 
-Même si le statut de l'isomorphie de graphe est inconnue, [il est très fortement suspecté](https://en.wikipedia.org/wiki/Graph_isomorphism_problem#Complexity_class_GI){.externe} qu'il ne soit ni sans P ni dans NPC. Il existe de nombreux autres problèmes dans ce cas là comme [le problème de la factorisation](https://fr.wikipedia.org/wiki/Factorisation){.externe} (alors que savoir si un nombre est premier ou pas [est polynomial](https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf){.externe}. Mais cela dépasse de loin le cadre de ce cours introductif) ou [le logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret){.externe} à la base des algorithmes de chiffrement.
+Même si le statut de l'isomorphie de graphe est inconnue, [il est très fortement suspecté](https://en.wikipedia.org/wiki/Graph_isomorphism_problem#Complexity_class_GI) qu'il ne soit ni sans P ni dans NPC. Il existe de nombreux autres problèmes dans ce cas là comme [le problème de la factorisation](https://fr.wikipedia.org/wiki/Factorisation) (alors que savoir si un nombre est premier ou pas [est polynomial](https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf). Mais cela dépasse de loin le cadre de ce cours introductif) ou [le logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret) à la base des algorithmes de chiffrement.
 
 ## Autres classes
 
@@ -746,5 +746,5 @@ Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souv
 - ...
 
 {% lien %}
-Le lecteur intéresser pourra consulter [la page Wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9){.externe} qui en liste certaines.
+Le lecteur intéresser pourra consulter [la page Wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9) qui en liste certaines.
 {% endlien %}

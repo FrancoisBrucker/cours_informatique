@@ -378,7 +378,7 @@ Grace à Tsteitin on peut l'écrire sous la forme CNF et donc :
 >
 > TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.
 > 
-> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>{.externe}
+> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>
 >
 >
 

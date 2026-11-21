@@ -22,22 +22,22 @@ Dans un terminal, vous pouvez tapez les commandes :
 
 ## Paquets utiles à installer
 
-- [graphicsMagic](http://www.graphicsmagick.org/){.externe}
+- [graphicsMagic](http://www.graphicsmagick.org/)
   - gestion de tous les types d'images permet manipuler, convertir, redimensionner tout type d'image en ligne de commande.
   - `sudo apt install graphicsmagick`
-- [gimp](https://www.gimp.org/){.externe}
+- [gimp](https://www.gimp.org/)
   - création et manipulation d'images
   - `sudo snap install gimp`
-- [chrome](https://www.google.com/chrome/){.externe}
+- [chrome](https://www.google.com/chrome/)
   - navigateur populaire. Version Chromium pour Linux.
   - `sudo snap install chromium`
-- [inkscape](https://inkscape.org/fr/){.externe}
+- [inkscape](https://inkscape.org/fr/)
   - dessins vectoriels
   - `sudo apt  install inkscape`
-- [mpv](https://mpv.io/){.externe} ou [vlc](https://www.videolan.org/){.externe}
+- [mpv](https://mpv.io/) ou [vlc](https://www.videolan.org/)
   - lecteur multimedia, le premier est à la mode le second l'a été
   - `sudo apt install mpv` ou `sudo apt install vlc-bin`
-- [git](https://git-scm.com/){.externe}
+- [git](https://git-scm.com/)
   - gestion des sources. Vous en aurez besoin tôt ou tard.
   - `sudo apt install git`
 
@@ -63,5 +63,5 @@ C'est une notion avancée, mais il est parfois utile d'ajouter des sites lorsque
 
 Ci-après deux tutoriels avancés pour comprendre comment faire :
 
-- [dossiers de sites ubuntu](https://automateinfra.com/2021/04/14/how-to-work-with-ubuntu-repository/){.externe}
-- [signature électronique des sites](https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04){.externe}
+- [dossiers de sites ubuntu](https://automateinfra.com/2021/04/14/how-to-work-with-ubuntu-repository/)
+- [signature électronique des sites](https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04)

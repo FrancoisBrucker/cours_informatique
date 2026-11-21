@@ -52,20 +52,20 @@ On en a déjà vu quelques-une pendant ce cours, à vous de les retrouver.
 
 Les fonctions suivantes vous seront utiles :
 
-- [`divmod`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#divmod){.externe}
-- [`input`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#input){.externe}
-- [`chr`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#chr){.externe} et [`ord`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#ord){.externe}
-- [`sum`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#sum){.externe}
+- [`divmod`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#divmod)
+- [`input`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#input)
+- [`chr`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#chr) et [`ord`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#ord)
+- [`sum`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#sum)
 
 Les méthodes des :
 
-- [listes](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists){.externe}
-- [chaînes de caractères](https://docs.python.org/fr/3.14/library/string.html#module-string){.externe}
+- [listes](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+- [chaînes de caractères](https://docs.python.org/fr/3.14/library/string.html#module-string)
 
 {% enddetails %}
 
-1. Évaluer [le nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk){.externe}: $10^{80}$
-2. Aﬀecter le 23e [nombre premier de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier){.externe} ($2^{11213}-1$) à une variable `m23`{.language-}.
+1. Évaluer [le nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk): $10^{80}$
+2. Aﬀecter le 23e [nombre premier de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) ($2^{11213}-1$) à une variable `m23`{.language-}.
 3. Incrémenter `m23`{.language-}.
 4. Décrémenter `m23`{.language-} (on retrouve le 23e nombre de Mersenne)
 5. Évaluer 1000/7.
@@ -147,7 +147,7 @@ Les méthodes des :
 73. Supprimer un élément arbitraire du répertoire tout en renvoyant sa valeur.
 74. Calculer la liste des inverses des entiers naturels positifs inférieurs à 10.
 75. Même question pour une borne supérieure saisie par l’utilisateur.
-76. Aﬃcher la liste des grains de blé à placer sur [l’échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa){.externe}.
+76. Aﬃcher la liste des grains de blé à placer sur [l’échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa).
 77. Évaluer le nombre total de grains de blé à placer.
 78. Concaténer dans l’ordre tous les caractères de codes Unicode entre 32 et 126.
 79. Calculer la liste des diviseurs de $170170$.
@@ -155,7 +155,7 @@ Les méthodes des :
 81. Calculer la liste $[[1], [1,2], [1,2,3], \dots, [1,2,3,...,100]]$.
 82. Calculer la liste $[\sum_{i=1}^{1}i, \sum_{i=1}^{2}i, \sum_{i=1}^{3}i, \dots, \sum_{i=1}^{100}i]$ (s’aider de l’exercice 45).
 83. Calculer l'ensemble $\\{ i \cdot j \mid 1 \leq i, j\leq 10 \\}$.
-84. Calculer une liste de listes contenant [les tables de Pythagore](https://fr.wikipedia.org/wiki/Table_de_multiplication#Table_usuelle){.externe} de 1 à 10.
+84. Calculer une liste de listes contenant [les tables de Pythagore](https://fr.wikipedia.org/wiki/Table_de_multiplication#Table_usuelle) de 1 à 10.
 
 ## Corrigé
 

@@ -19,7 +19,7 @@ Il vous faudra exécuter des commandes via le terminal. Windows et macos n'aimen
 {% attention "sous Windows" %}
 Il faut vous permettre d'exécuter des scripts.
 
-[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4){.externe} sous windows.
+[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) sous windows.
 
 Pour la connaître :
 
@@ -42,17 +42,17 @@ Il faut vous permettre d;ajouter des modules au programme python du système : i
 ## Le module pip
 
 {% lien %}
-<https://pypi.org/project/pip/>{.externe}
+<https://pypi.org/project/pip/>
 {% endlien %}
 
 `pip` est le Python Installer Package, c'est un module permettant d'installer d'autres modules. Il existe un multitude de modules python permettant de réaliser presque toutes les opérations que l'on souhaite. Citons par exemple :
 
-- traitement des images avec [pillow](https://pillow.readthedocs.io/en/stable/){.externe}
-- outils numériques avec [numpy](https://numpy.org/){.externe}
-- graphiques avec [matplotlib](https://matplotlib.org/){.externe} ou [seaborn](https://seaborn.pydata.org/){.externe}
-- analyse des données avec [pandas](https://pandas.pydata.org/){.externe}
-- musique avec [librosa](https://librosa.org/doc/latest/index.html){.externe}
-- serveur web avec [flask](https://flask.palletsprojects.com/en/stable/){.externe} ou [fastapi](https://fastapi.tiangolo.com/){.externe}
+- traitement des images avec [pillow](https://pillow.readthedocs.io/en/stable/)
+- outils numériques avec [numpy](https://numpy.org/)
+- graphiques avec [matplotlib](https://matplotlib.org/) ou [seaborn](https://seaborn.pydata.org/)
+- analyse des données avec [pandas](https://pandas.pydata.org/)
+- musique avec [librosa](https://librosa.org/doc/latest/index.html)
+- serveur web avec [flask](https://flask.palletsprojects.com/en/stable/) ou [fastapi](https://fastapi.tiangolo.com/)
 - ...
 
 {% info %}
@@ -86,7 +86,7 @@ Pour vous, ce sera peut-être différent car le `<nom du programme python>` sera
 
 ## Exemple : installation du module matplotlib
 
-Supposons que l'on vienne d'installer un nouvel interpréteur sur notre système et qu'on en profite pour installer [le module matplotlib](https://matplotlib.org/){.externe} parce que l'on va en avoir besoin plus tard.
+Supposons que l'on vienne d'installer un nouvel interpréteur sur notre système et qu'on en profite pour installer [le module matplotlib](https://matplotlib.org/) parce que l'on va en avoir besoin plus tard.
 
 ### Création du projet
 

@@ -11,9 +11,9 @@ eleventyComputed:
 
 Un _module_ (aussi appelé _bibliothèque_ ou _library_) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Python vient avec de nombreux modules, par exemple :
 
-- [math](https://docs.python.org/fr/3.14/library/math.html){.externe} qui contient les fonctions mathématiques courantes,
-- [random](https://docs.python.org/fr/3.14/library/random.html){.externe} qui permet de générer toutes sortes de nombres aléatoires,
-- [pathlib](https://docs.python.org/3/library/pathlib.html){.externe} pour naviguer dans l'arborescence du disque dur,
+- [math](https://docs.python.org/fr/3.14/library/math.html) qui contient les fonctions mathématiques courantes,
+- [random](https://docs.python.org/fr/3.14/library/random.html) qui permet de générer toutes sortes de nombres aléatoires,
+- [pathlib](https://docs.python.org/3/library/pathlib.html) pour naviguer dans l'arborescence du disque dur,
 - ...
 
 {% retenir %}
@@ -21,7 +21,7 @@ Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de
 est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de nombreux via sa bibliothèque standard.
 {% endretenir %}
 {% lien %}
-[Bibliothèque standard de python](https://docs.python.org/fr/3.14/library/index.html){.externe}
+[Bibliothèque standard de python](https://docs.python.org/fr/3.14/library/index.html)
 {% endlien %}
 
 ## Espace de nommage
@@ -180,7 +180,7 @@ import random as r
 
 ## Exercices
 
-Un module très utile dans python est le module [random](https://docs.python.org/fr/3/library/random.html){.externe}
+Un module très utile dans python est le module [random](https://docs.python.org/fr/3/library/random.html)
 
 Utilisez le pour répondre aux questions suivantes :
 
@@ -189,7 +189,7 @@ Générez un entier aléatoire entre 10 et 234.
 {% endexercice %}
 {% details "solution" %}
 
-On utilise la fonction [`randrange`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange){.externe} :
+On utilise la fonction [`randrange`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) :
 
 ```python
 >>> import random
@@ -204,7 +204,7 @@ Générez un nombre réel uniformément dans $[0, 1[$
 {% endexercice %}
 {% details "solution" %}
 
-On utilise la fonction [`random`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random){.externe} :
+On utilise la fonction [`random`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) :
 
 ```python
 >>> import random
@@ -219,7 +219,7 @@ Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orang
 {% endexercice %}
 {% details "solution" %}
 
-On utilise la fonction [`choices`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices){.externe} :
+On utilise la fonction [`choices`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) :
 
 ```python
 >>> import random
@@ -234,7 +234,7 @@ Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orang
 {% endexercice %}
 {% details "solution" %}
 
-On utilise la fonction [`sample`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample){.externe} :
+On utilise la fonction [`sample`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) :
 
 ```python
 >>> import random
@@ -245,7 +245,7 @@ On utilise la fonction [`sample`{.language-} du module `random`{.language-}](htt
 {% enddetails %}
 
 {% exercice %}
-Utilisez la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle){.externe} pour mélanger la liste  `["pomme", "abricot", "orange", "cerise"]`{.language-}.
+Utilisez la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) pour mélanger la liste  `["pomme", "abricot", "orange", "cerise"]`{.language-}.
 {% endexercice %}
 {% details "solution" %}
 
@@ -263,7 +263,7 @@ Notez que la fonction  ne rend rien. Elle mélange la liste passée en paramètr
 {% enddetails %}
 
 {% exercice %}
-Créez une liste de 20 entiers entre 0 et 9 en utilisant [la fonction `random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange){.externe} 
+Créez une liste de 20 entiers entre 0 et 9 en utilisant [la fonction `random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) 
 
 {% endexercice %}
 {% details "solution" %}

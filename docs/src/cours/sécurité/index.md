@@ -20,19 +20,19 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 <!-- TBD
 
-> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU>{.externe} avec le xor pour expliquer diffie hellman.
+> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU> avec le xor pour expliquer diffie hellman.
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
-> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>{.externe}
-> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU>{.externe} double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>{.externe}). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>{.externe}
+> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
+> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
 
 > Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
 > Ajourer des TPs.
 
 à lire :
 
-- <https://www.youtube.com/@yousrajaved/videos>{.externe}
-- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>{.externe}
-- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>{.externe}
+- <https://www.youtube.com/@yousrajaved/videos>
+- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
+- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
 
 Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)
 
@@ -65,10 +65,10 @@ Le protocole derrière toute communication sécurisée
 ### https
 
 {% lien %}
-[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN){.externe}
+[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
 {% endlien %}
 
-[Certificats X.509](https://fr.wikipedia.org/wiki/X.509){.externe} :
+[Certificats X.509](https://fr.wikipedia.org/wiki/X.509) :
 
 1. certifiant (*issuer*) :
    1. nom

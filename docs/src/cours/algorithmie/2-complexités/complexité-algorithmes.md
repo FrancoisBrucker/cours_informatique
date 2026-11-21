@@ -279,7 +279,7 @@ Comme $x^i = \mathcal{O}(x^{j})$ et $x^{j} = \Omega(x^i)$ pour tous $i \leq j$, 
 
 ## <span id="dichotomie"></span>Exemple 1 : Recherche dichotomique
 
-Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique){.externe} permet de savoir si un entier donné est dans un tableau d'entiers trié.
+Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entiers trié.
 
 On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $T[\lfloor (a + b)/2 \rfloor]$ :
 
@@ -420,7 +420,7 @@ Cette complexité est vraiment très bonne puisque la valeur de $\ln(n)$ est en 
 Pour se fixer les idées, et comme tous les log sont proportionnels, pensez à la différence entre :
 
 - $t = 4.35 \cdot 10^{17}$ secondes qui est l'âge estimé de l'univers ($1.38 \cdot 10^8$ siècles),
-- $\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel){.externe} de physique en 2015)
+- $\log_{10}(t) \simeq 17.65$ secondes qui est la durée moyenne que prend un mammifère pour faire pipi (on peut en effet estimer cette durée à 21s±13s selon une étude menée par Yang et Hu en 2014 et qui a été récompensée par le [Ig Nobel](https://fr.wikipedia.org/wiki/Prix_Ig-Nobel) de physique en 2015)
 {% endretenir %}
 
 En conclusion si l'on manipule des tableaux triés la recherche dichotomique est énormément plus performante que la recherche naïve.

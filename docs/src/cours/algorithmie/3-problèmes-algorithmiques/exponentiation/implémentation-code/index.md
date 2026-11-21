@@ -177,7 +177,7 @@ Mettez les mesures pour l'algorithme naïf et rapide sur le même graphique
 Le temps mis par l'exponentiation rapide est très inférieur à celui effectué par l'algorithme d'exponentiation naif, on ne le voit pratiquement pas (la courbe semble toute plate).
 
 {% faire %}
-Utilisez le code de [ce lien](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines){.externe} pour utiliser `ax.twinx`{.language-} qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.
+Utilisez le code de [ce lien](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines) pour utiliser `ax.twinx`{.language-} qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.
 
 Vous pourrez également changer la couleur d'un des dessins en ajoutant le paramètre `color="orange"`{.language-} d'un des 2 plot par pour dessiner en orange.
 

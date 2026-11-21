@@ -136,7 +136,7 @@ Clair si le hash est cryptographique.
 ## HMAC
 
 {% lien %}
-[Hash-based MAC](https://fr.wikipedia.org/wiki/HMAC){.externe}
+[Hash-based MAC](https://fr.wikipedia.org/wiki/HMAC)
 {% endlien %}
 
 La façon la plus simple de créer un mac est d'utiliser un hash :
@@ -182,10 +182,10 @@ Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (
 
 Ces macs sont très simple à mettre en œuvre, mais ils sont, comme le code de Vernam très sensibles à la clé : il ne faut pas la réutiliser.
 
-Ils sont basés sur les [fonctions de hash universelles](https://fr.wikipedia.org/wiki/Hachage_universel){.externe}, dont nous n'allons pas plus parler ici. Pour plus d'info :
+Ils sont basés sur les [fonctions de hash universelles](https://fr.wikipedia.org/wiki/Hachage_universel), dont nous n'allons pas plus parler ici. Pour plus d'info :
 
 {% lien %}
-[Universal hash function](https://www.youtube.com/watch?v=z0lJ2k0sl1g){.externe}
+[Universal hash function](https://www.youtube.com/watch?v=z0lJ2k0sl1g)
 {% endlien %}
 
 Comme le message $m$ est une suite de 0 et de 1, on peut très bien le considérer comme un nombre. On va se placer dans le corps $\mathbb{Z}/p\mathbb{Z}$, avec $p$ premier.
@@ -242,7 +242,7 @@ $$
 </div>
 
 {% lien %}
-exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf){.externe}
+exemple tiré de [ce texte](https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf)
 {% endlien %}
 
 ### Faire grossir un MAC à taille fixe

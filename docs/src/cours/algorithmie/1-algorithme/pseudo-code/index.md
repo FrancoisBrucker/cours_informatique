@@ -14,7 +14,7 @@ eleventyComputed:
 Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni pour l'interprétation : tout doit y être rigoureusement défini et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
 {% lien %}
-[On the foolishness of "_natural language programming_"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html){.externe}
+[On the foolishness of "_natural language programming_"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html)
 {% endlien %}
 
 Ce n'est pas non plus un langage informatique dont le but est d'être exécuté par un ordinateur.  Le but d'un pseudo-code est d'être compris par d'autres humains et doit être vu comme une démonstration mathématique : un algorithme prouve à d'autres humains qu'un problème est solvable par un ordinateur.
@@ -28,7 +28,7 @@ Un **_pseudo-code_** est une succession de lignes qui seront exécutées **_en s
 - chaque instruction est clairement définie et est réalisable par un humain muni d'un papier et d'un crayon
 {% enddefinition %}
 
-Si le but premier d'un pseudo-code est d'être compris par un humain, les langages de programmation classiques comme [python](https://www.python.org/){.externe}, [go](https://go.dev/){.externe} ou encore [rust](https://www.rust-lang.org/fr){.externe} se transcrivent aisément en pseudo-code et réciproquement (ce sont deux notions équivalentes).
+Si le but premier d'un pseudo-code est d'être compris par un humain, les langages de programmation classiques comme [python](https://www.python.org/), [go](https://go.dev/) ou encore [rust](https://www.rust-lang.org/fr) se transcrivent aisément en pseudo-code et réciproquement (ce sont deux notions équivalentes).
 
 {% retenir %}
 

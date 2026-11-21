@@ -79,7 +79,7 @@ Lorsque l'on construit un algorithme itératif, il faut faire attention au fait 
 
 {% enddefinition %}
 
-Pour le calcul du $\operatorname{pgcd}$ on va utiliser [l'algorithme binaire de Stein](https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD){.externe} :
+Pour le calcul du $\operatorname{pgcd}$ on va utiliser [l'algorithme binaire de Stein](https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD) :
 
 ```pseudocode/
 algorithme pgcd(a: int, b: int) → int:  # a, b ≥ 0
@@ -120,7 +120,7 @@ def pgcd(a, b):
 
 {% enddetails %}
 
-À chaque récursion soit $a$ soit $b$ ([ou les deux](https://www.youtube.com/watch?v=mIUwEoG7ssM&t=59s){.externe}) diminue strictement : à chaque itération on se rapproche donc des deux cas sans récursion qui mettent fin à l'algorithme.
+À chaque récursion soit $a$ soit $b$ ([ou les deux](https://www.youtube.com/watch?v=mIUwEoG7ssM&t=59s)) diminue strictement : à chaque itération on se rapproche donc des deux cas sans récursion qui mettent fin à l'algorithme.
 
 Notre algorithme effectue 5 récursions avant de terminer pour calculer le pgcd entre 8 et 6 :
 
@@ -162,7 +162,7 @@ L'algorithme effectue plusieurs cas que nous allons examiner :
 ## <span id="récursion-terminale"></span>Récursion terminale
 
 {% lien %}
-[Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale){.externe}
+[Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale)
 {% endlien %}
 
 La récursion terminale est un algorithme écrit sous une forme récursive pouvant facilement se mettre sous forme itérative :

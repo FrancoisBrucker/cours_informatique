@@ -18,7 +18,7 @@ eleventyComputed:
 Cette partie s'intéresse à la notion de complexités pour un algorithme qui permet de mesurer ses performances.
 
 {% lien %}
-[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12){.externe}
+[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
 {% endlien %}
 
 ## Complexité d'un algorithme

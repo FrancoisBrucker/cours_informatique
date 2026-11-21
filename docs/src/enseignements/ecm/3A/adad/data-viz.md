@@ -24,7 +24,7 @@ Le cours est basé sur le cours suivant :
 Chaque semaine de cours, un travail est à rendre pour la semaine de cours prochaine (environ un mois après) les rendus sont à rendre sur moodle :
 
 {% attention %}
-[adresse des rendus moodle](https://moodle.centrale-med.fr/course/view.php?id=1221){.externe}
+[adresse des rendus moodle](https://moodle.centrale-med.fr/course/view.php?id=1221)
 {% endattention %}
 
 ## Semaine 1

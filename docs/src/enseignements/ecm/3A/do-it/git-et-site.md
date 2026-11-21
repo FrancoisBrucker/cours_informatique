@@ -26,11 +26,11 @@ Le but de ce cours est que vous puissiez :
 
 - comprendre la problématique de la gestion des sources
 - gérer efficacement un projet à plusieurs
-- contribuer [au parcours Do_It](https://francoisbrucker.github.io/do-it/){.externe}
+- contribuer [au parcours Do_It](https://francoisbrucker.github.io/do-it/)
 
 ### Comment
 
-On utilise git et github pour montrer comment tout ça fonctionne. On fera ça sur un projet existant : [le projet do-it](https://github.com/FrancoisBrucker/do-it){.externe}.
+On utilise git et github pour montrer comment tout ça fonctionne. On fera ça sur un projet existant : [le projet do-it](https://github.com/FrancoisBrucker/do-it).
 
 1. [création d'un compte github](/cours/gestion-des-sources#compte-github)
 2. Ajout en tant que collaborateur
@@ -66,7 +66,7 @@ On utilise git et github pour montrer comment tout ça fonctionne. On fera ça s
 2. ajouter ses pok et mon du temps 1.
 
 {% info %}
-[Aide markdown du site Do_It](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/){.externe}
+[Aide markdown du site Do_It](https://francoisbrucker.github.io/do-it/cs/contribuer-au-site/)
 {% endinfo %}
 
 ## Pour aller plus loin

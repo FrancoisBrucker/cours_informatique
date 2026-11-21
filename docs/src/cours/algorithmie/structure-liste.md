@@ -259,13 +259,13 @@ La plupart des implémentations des listes ont cette implémentation, ceci en fa
 Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :
 
 {% lien %}
-<https://www.youtube.com/watch?v=GZPqDvG615k>{.externe}
+<https://www.youtube.com/watch?v=GZPqDvG615k>
 {% endlien %}
 
 > TBD à écrire propre
 > TBD faire une expérimentation
 
-1. pour un seul tableau : <https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor>{.externe} (qui mène à : <https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/>{.externe}). Sauvent 1.5 est pris. $S + FS ≥ F^3S$. 
+1. pour un seul tableau : <https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor> (qui mène à : <https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/>). Sauvent 1.5 est pris. $S + FS ≥ F^3S$. 
 2. Attention, ce n'est plus vrai si on alloue plus d'un seul tableau... pour 2 tableaux le second peux commencer dans la place laissée par l'autre.
 
 

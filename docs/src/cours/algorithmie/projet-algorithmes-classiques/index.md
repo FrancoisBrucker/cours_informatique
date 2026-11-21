@@ -20,7 +20,7 @@ Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de j
 > - **Difficulté** : facile pour la création et la complexité de base
 
 
-[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci){.externe} est définie par l'équation de récurrence :
+[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci) est définie par l'équation de récurrence :
 
 <div>
 $$
@@ -68,7 +68,7 @@ $$
 
 {% enddetails %}
 
-En utilisant le fait que la suite de Fibonacci est [une suite récurrente linéaire](https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire){.externe}, on peut même donner une valeur explicite de chaque valeur. Démontrons le :
+En utilisant le fait que la suite de Fibonacci est [une suite récurrente linéaire](https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire), on peut même donner une valeur explicite de chaque valeur. Démontrons le :
 
 {% exercice %}
 En utilisant le fait que les deux racines du polynôme $P(X) = X^2 -X-1$ sont $\phi_+ = \frac{1 + \sqrt{5}}{2}$ et $\phi_- = \frac{1 - \sqrt{5}}{2}$, montrez que pour $n>0$ :
@@ -550,7 +550,7 @@ Les tris spéciaux ont des complexités inférieures à $\mathcal{O}(n\ln(n))$, 
 ### <span id="tri-paquets"></span>Tri par paquets (bucket sort)
 
 {% lien %}
-[Tri par paquets](https://fr.wikipedia.org/wiki/Tri_par_paquets){.externe}
+[Tri par paquets](https://fr.wikipedia.org/wiki/Tri_par_paquets)
 {% endlien %}
 
 
@@ -645,8 +645,8 @@ Rappelez-vous du tri par paquet, on s'en sert parfois dans des problèmes algori
 ### <span id="tri-base"></span>Tri par base (radix sort)
 
 {% lien %}
-- [Tri par base](https://fr.wikipedia.org/wiki/Tri_par_base){.externe}
-- [Vidéo de polylog (pour la base 10)](https://www.youtube.com/watch?v=Y95a-8oNqps){.externe}
+- [Tri par base](https://fr.wikipedia.org/wiki/Tri_par_base)
+- [Vidéo de polylog (pour la base 10)](https://www.youtube.com/watch?v=Y95a-8oNqps)
 {% endlien %}
 
 
@@ -981,7 +981,7 @@ algorithme pgcd_mod(a: int, b: int) → int:  # a, b ≥ 0
 {% enddetails %}
 
 
-Knuth analyse en détails cet algorithme dans le tome 2 (partie 3.5.2) de [the art of computer programming](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming){.externe}. Comme à chaque fois avec Knuth : les résultats sont précis, intéressants et très bien écrits. Je ne peux que vous conseiller d'allez y jeter un coup d'œil nous ne ferons en effet ici qu'effleurer le sujet.
+Knuth analyse en détails cet algorithme dans le tome 2 (partie 3.5.2) de [the art of computer programming](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming). Comme à chaque fois avec Knuth : les résultats sont précis, intéressants et très bien écrits. Je ne peux que vous conseiller d'allez y jeter un coup d'œil nous ne ferons en effet ici qu'effleurer le sujet.
 
 ### Complexité
 
@@ -1068,16 +1068,16 @@ Comme $F(n) = \mathcal{O}(2^n)$ on en déduit que le nombre de récursions et do
 Si cela vous intéresse, vous pouvez jeter un petit coup d'œil au lien suivant qui liste quelques propriétés liées au pgcd des nombres de la suite de Fibonacci :
 
 {% lien %}
-<https://proofwiki.org/wiki/GCD_of_Fibonacci_Numbers>{.externe}
+<https://proofwiki.org/wiki/GCD_of_Fibonacci_Numbers>
 {% endlien %}
 
 ### pgcd binaire
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD>{.externe}
+<https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD>
 {% endlien %}
 
-Cet algorithme, répertorié dès le 1er siècle (Knuth cite le [九章算术](https://fr.wikipedia.org/wiki/Les_Neuf_Chapitres_sur_l%27art_math%C3%A9matique){.externe} chapitre 1 section 6) puis publié dans sa forme actuelle en 1967 par Stein.
+Cet algorithme, répertorié dès le 1er siècle (Knuth cite le [九章算术](https://fr.wikipedia.org/wiki/Les_Neuf_Chapitres_sur_l%27art_math%C3%A9matique) chapitre 1 section 6) puis publié dans sa forme actuelle en 1967 par Stein.
 
 <span id="algorithme-pgcd-binaire"></span>
 

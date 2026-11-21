@@ -95,7 +95,7 @@ while True:
 ## <span id="test"></span>Instructions conditionnelles
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>{.externe}
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>
 {% endlien %}
 
 Permet d'exécuter un bloc si une condition logique est vraie :
@@ -189,7 +189,7 @@ Deux types de boucles existent en python : les boucles _tant que_ (`while`{.lang
 ### <span id="while"></span>Bloc `while`{.language-} : boucle tant que
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement>{.externe}
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement>
 {% endlien %}
 
 ```python
@@ -282,7 +282,7 @@ while b < a:
 ### <span id="for"></span>Bloc `for`{.language-} : boucle pour chaque
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-for-statement>{.externe}
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-for-statement>
 {% endlien %}
 
 ```python
@@ -339,7 +339,7 @@ print(s2)
 
 
 {% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/stdtypes.html#range>{.externe}
+<https://docs.python.org/fr/3/library/stdtypes.html#range>
 {% endlien %}
 
 L'itérateur le plus utilisé pour les boucle `for`{.language-} est le résultat de la fonction `range`{.language-} qui crée un itérateur de nombres.
@@ -461,7 +461,7 @@ for x in range(5, -1, -1):
 {% enddetails %}
 
 {% exercice %}
-Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){.externe} pour les 100 premiers entiers.
+Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers.
 {% endexercice %}
 {% details "solution" %}
 

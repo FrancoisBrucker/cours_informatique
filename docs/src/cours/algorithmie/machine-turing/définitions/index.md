@@ -94,15 +94,15 @@ Que fait cette machine ?
 Voir une machine de Turing s'exécuter est très gratifiant, surtout lorsqu'on a passé du temps à la créer. Il existe de nombreux sites permettant de visualiser l'exécution d'une machine, nous allons utiliser celui-ci :
 
 {% lien %}
-<https://turingmachine.io/>{.externe}
+<https://turingmachine.io/>
 {% endlien %}
 
-Il utilise une définition plus générale d'une machine de Turing (c'est celle - classique - de [Wikipedia](https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle){.externe}) mais nous pouvons tout à fait utiliser notre définition.
+Il utilise une définition plus générale d'une machine de Turing (c'est celle - classique - de [Wikipedia](https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle)) mais nous pouvons tout à fait utiliser notre définition.
 
 Reprenons notre exemple et vérifions que nous avons bien compris son fonctionnement.
 
 {% faire %}
-Copiez/coller le code ci-dessous dans la fenêtre de texte de la page <https://turingmachine.io/>{.externe} , puis cliquez sur le bouton `load machine`.
+Copiez/coller le code ci-dessous dans la fenêtre de texte de la page <https://turingmachine.io/> , puis cliquez sur le bouton `load machine`.
 
 ```text
 blank: 0
@@ -418,7 +418,7 @@ Par exemple, supposons que l'on veuille exécuter la machine [oscillateur](./#ex
 Qui laisse le ruban avec les données `···01010···` et le curseur sur le `0` le plus à gauche.
 
 {% exercice %}
-Codez la machine ci-dessus sur sur <https://turingmachine.io/>{.externe} et vérifiez son fonctionnement.
+Codez la machine ci-dessus sur sur <https://turingmachine.io/> et vérifiez son fonctionnement.
 {% endexercice %}
 {% details "solution" %}
 
@@ -475,7 +475,7 @@ la fonction de transition complète de cette nouvelle machine serait, en respect
 - $\delta(\text{R1}, 0) = (\text{STOP}, 1, \leftarrow)$
 
 {% exercice %}
-Combinez le code de la machine qui initialise et l'oscillateur pour tester le résultat sur <https://turingmachine.io/>{.externe}
+Combinez le code de la machine qui initialise et l'oscillateur pour tester le résultat sur <https://turingmachine.io/>
 {% endexercice %}
 {% details "solution" %}
 
@@ -560,7 +560,7 @@ Remarquez bien que :
 - l'entrée est **finie** puisqu'elle résulte de l'exécution d'une machine. Il est donc impossible d'initialiser un ruban avec un nombre infini de `1`.
 
 {% exercice %}
-En utilisant le code <https://turingmachine.io/>{.externe} de l'[oscillateur infini](./#exemple-oscillation-infini), ajoutez la chaîne `01110111` comme paramètre d'entrée avec le mot clé `input:`{.language-}
+En utilisant le code <https://turingmachine.io/> de l'[oscillateur infini](./#exemple-oscillation-infini), ajoutez la chaîne `01110111` comme paramètre d'entrée avec le mot clé `input:`{.language-}
 {% endexercice %}
 {% details "solution" %}
 

@@ -77,7 +77,7 @@ Puis scrollez jusqu'à la partie sur les pull request pour cocher les diverses o
 ![préférences](./préférences-rebase.png)
 
 {% lien %}
-[documentation github](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-rebasing-for-pull-requests){.externe}
+[documentation github](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-rebasing-for-pull-requests)
 {% endlien %}
 
 > TBD faire un modification (demander à un élève de le faire et de prendre n screen de la modif effectuée)

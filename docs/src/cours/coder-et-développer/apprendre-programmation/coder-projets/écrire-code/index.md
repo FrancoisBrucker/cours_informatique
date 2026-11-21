@@ -12,7 +12,7 @@ eleventyComputed:
 ---
 
 
-Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d'implémenter des algorithmes (c'est ce que l'on appelle [le refactoring](https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code){.externe}).
+Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d'implémenter des algorithmes (c'est ce que l'on appelle [le refactoring](https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code)).
 
 Il en découle que :
 

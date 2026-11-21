@@ -12,7 +12,7 @@ eleventyComputed:
 Comment lire ou écrire des fichiers en python.
 
 {% lien %}
-[Documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files){.externe}
+[Documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files)
 {% endlien %}
 
 Nous utiliserons dans cette partie le fichier exemple suivant :
@@ -36,7 +36,7 @@ La plupart des fichiers que vous créerez en python seront des fichiers textes.
 En python, on utilise les fichiers _via_ un objet `file`{.language-}. On manipule les fichiers en 3 temps :
 
 1. ouverture : `f = open("haiku.txt", "r", encoding="utf-8")`{.language-}
-   Ces objets sont créés par la commande [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open){.externe} qui ouvre un fichier. Elle a deux paramètres obligatoires :
+   Ces objets sont créés par la commande [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open) qui ouvre un fichier. Elle a deux paramètres obligatoires :
 
    - le nom du fichier,
    - la façon dont on veut l'ouvrir :
@@ -112,7 +112,7 @@ f.close()
 
 Notez la ligne vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne, auquel en est ajouté un automatiquement à la fin de l'instruction `print`.
 
-Pour éviter cela, souvent on va stocker les lignes **sans** le retour à la ligne. Une façon simple de faire ceci est d'utiliser la méthode [`strip`{.language-} des chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#str.strip){.externe} :
+Pour éviter cela, souvent on va stocker les lignes **sans** le retour à la ligne. Une façon simple de faire ceci est d'utiliser la méthode [`strip`{.language-} des chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) :
 
 ```python
 f = open("haiku.txt", "r", encoding="utf-8")
@@ -149,7 +149,7 @@ f.close()
 
 On ajoute un retour à la ligne, puis les dates de naissance et de mort de Basho.
 
-Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait partie des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le){.externe} comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
+Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait partie des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
 
 {% attention %}
 Lorsque vous écrivez des fichier, il faut s'assurer que le format d'écriture est en utf8, ceci se fait en ajoutant le paramètre `encoding="utf-8"`{.language-} à `open`{.language-}.

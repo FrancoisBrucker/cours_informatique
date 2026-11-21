@@ -47,7 +47,7 @@ De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudi�
 ### Fonction convexe
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Fonction_convexe>{.externe}
+<https://fr.wikipedia.org/wiki/Fonction_convexe>
 {% endlien %}
 
 {% definition %}
@@ -69,7 +69,7 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 ### Ensemble convexe
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Ensemble_convexe>{.externe}
+<https://fr.wikipedia.org/wiki/Ensemble_convexe>
 {% endlien %}
 
 {% definition %}
@@ -119,7 +119,7 @@ Les ensembles convexes ont de multiples propriétés mathématiques sympathiques
 ### Polygone convexe
 
 {% lien %}
-<https://fr.wikipedia.org/wiki/Polygone_convexe>{.externe}
+<https://fr.wikipedia.org/wiki/Polygone_convexe>
 {% endlien %}
 
 En informatique (et dans la vie réelle), les ensembles convexes se rencontrent uniquement sous la forme de polygones convexes.
@@ -127,11 +127,11 @@ En informatique (et dans la vie réelle), les ensembles convexes se rencontrent 
 #### Définition
 
 {% definition %}
-Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone){.externe} est une suite finie de points $[p_1, \dots, p_h]$ :
+Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[p_1, \dots, p_h]$ :
 
 ![exemple polygones](./exemple-polygones.png)
 
-Le polygone de droite est dit **_croisé_** ou **_complexe_** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [**_simple_**](https://fr.wikipedia.org/wiki/Polygone_simple){.externe}.
+Le polygone de droite est dit **_croisé_** ou **_complexe_** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [**_simple_**](https://fr.wikipedia.org/wiki/Polygone_simple).
 {% enddefinition %}
 
 Un polygone simple est une surface :
@@ -179,14 +179,14 @@ Les polygones convexes sont très utilisés en infographie car ils permettent de
 - un polygone convexe et une droite, ce qui est crucial en _raytracing_
 - deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D
 
-Enfin, les problèmes d'[optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire){.externe} se résolvent facilement car cela revient à trouver un maximum dans un polygone convexe.
+Enfin, les problèmes d'[optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) se résolvent facilement car cela revient à trouver un maximum dans un polygone convexe.
 
 Par exemple :
 
 {% exercice %}
 Je veux faire le tour du monde en ballon. Il faut donc que j'emporte dans ma montgolfière le plus de nourriture possible **mais** il y a des contraintes :
 
-- j'ai l'estomac fragile et ne mange que des noisettes ([628 calories pour 100g](https://www.infocalories.fr/calories/calories-noisettes.php){.externe}) et de la gelée de framboise ([328 calories pour 100g](https://fr.openfoodfacts.org/produit/3701164000079/gelee-de-framboise){.externe})
+- j'ai l'estomac fragile et ne mange que des noisettes ([628 calories pour 100g](https://www.infocalories.fr/calories/calories-noisettes.php)) et de la gelée de framboise ([328 calories pour 100g](https://fr.openfoodfacts.org/produit/3701164000079/gelee-de-framboise))
 - je n'ai que 2000€ sur mon compte en banque et :
   - 100g de noisettes coûte 3€
   - 100g de gelée de framboise coûte 5.65€
@@ -206,7 +206,7 @@ On peut montrer que le maximum est obtenu lorsque cette droite objectif est tang
 {% enddetails %}
 
 {% info %}
-Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^n$. On parle alors de [polytope](https://fr.wikipedia.org/wiki/Polytope){.externe} et non plus de polygone convexe, mais la résolution est identique.
+Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^n$. On parle alors de [polytope](https://fr.wikipedia.org/wiki/Polytope) et non plus de polygone convexe, mais la résolution est identique.
 {% endinfo %}
 
 ### Enveloppe convexe
@@ -478,7 +478,7 @@ On a utilisé l'opérateur `%`{.language-} qui est le reste de la division enti�
 
 {% enddetails %}
 {% info %}
-Il existe un algorithme en $\mathcal{O}(h)$ opérations pour reconnaître si un polygone est simple. En revanche l'algorithme est loin de l'être, simple (il utilise une [triangulation de Chazelle](https://www.cs.princeton.edu/~chazelle/pubs/polygon-triang.pdf){.externe}) nous ne le montrerons donc pas ici.
+Il existe un algorithme en $\mathcal{O}(h)$ opérations pour reconnaître si un polygone est simple. En revanche l'algorithme est loin de l'être, simple (il utilise une [triangulation de Chazelle](https://www.cs.princeton.edu/~chazelle/pubs/polygon-triang.pdf)) nous ne le montrerons donc pas ici.
 {% endinfo %}
 
 #### Polygone simple convexe
@@ -629,7 +629,7 @@ Soit $\mathcal{P}$ en ensemble fini de $n$ points de $\mathcal{R}^2$.
 Trouver $P = [p_1, \dots, p_h]$ l'enveloppe convexe de $\mathcal{P}$.
 {% endnote  %}
 
-Pour alléger les algorithmes, on considérera que tous les points de $\mathcal{P}$ sont [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale){.externe}, c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.
+Pour alléger les algorithmes, on considérera que tous les points de $\mathcal{P}$ sont [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale), c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.
 
 ### Reconnaissance
 
@@ -647,7 +647,7 @@ savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de
 ### Marche de Jarvis
 
 {% lien %}
-[Marche de Jarvis](https://fr.wikipedia.org/wiki/Marche_de_Jarvis){.externe}, 1973
+[Marche de Jarvis](https://fr.wikipedia.org/wiki/Marche_de_Jarvis), 1973
 {% endlien %}
 
 Le principe de la marche de Jarvis est simple : **construire l'enveloppe convexe de façon gloutonne**. Il utilise pour cela la proposition suivante :
@@ -747,7 +747,7 @@ Notez que notre transformation admet d'autres bornes possibles si on prend en co
 ### Parcours de Graham
 
 {% lien %}
-[Parcours de Graham](https://fr.wikipedia.org/wiki/Parcours_de_Graham){.externe}, 1972.
+[Parcours de Graham](https://fr.wikipedia.org/wiki/Parcours_de_Graham), 1972.
 {% endlien %}
 
 Le parcours de Graham fonctionne en deux temps. Il commence par ordonner les points pour construire un polygone simple particulier. Ce polygone sera ensuite raffiné pour obtenir un polygone convexe.
@@ -820,10 +820,10 @@ La complexité de la simplification de Sklansky est $\mathcal{O}(n)$ où $n$ est
 À chaque retour, un sommet est supprimé, on ne peut donc effectuer en tout que $n$ retours. On examine donc au maximum $2\cdot n$ points et chaque examen est en $\mathcal{O}(1)$ opérations.
 {% enddetails %}
 
-La simplification de Sklansky était à l'origine un algorithme proposé pour trouver l'enveloppe convexe d'un polygone simple. Il a cependant rapidement été prouvé faux. Il existe des algorithme linéaires pour trouver l'enveloppe convexe d'un polygone simple (comme [l'algorithme de Melkan](https://maxgoldste.in/melkman/){.externe}) mais ils sont bien plus ardu à implémenter. Autant s'en passer si la simplification de Sklansky fonctionne (on le rappelle, elle ne fonctionne qui si on ne produit jamais de croisements).
+La simplification de Sklansky était à l'origine un algorithme proposé pour trouver l'enveloppe convexe d'un polygone simple. Il a cependant rapidement été prouvé faux. Il existe des algorithme linéaires pour trouver l'enveloppe convexe d'un polygone simple (comme [l'algorithme de Melkan](https://maxgoldste.in/melkman/)) mais ils sont bien plus ardu à implémenter. Autant s'en passer si la simplification de Sklansky fonctionne (on le rappelle, elle ne fonctionne qui si on ne produit jamais de croisements).
 
 {% info %}
-Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'œil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>{.externe}. C'est une histoire pleine de rebondissements.
+Si l'histoires des algorithmes linéaires pour trouver l'enveloppe convexe d'un polygone simple vous intéresse, allez jeter un coup d'œil à ce site : <http://cgm.cs.mcgill.ca/~athens/cs601/>. C'est une histoire pleine de rebondissements.
 {% endinfo %}
 
 #### <span id="graham-complexité"></span> Complexité
@@ -846,7 +846,7 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## <span id="division-préa"></span>Les divisions de Préa
 
-On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull){.externe}. Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
+On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull). Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
 
 ```pseudocode/
 algorithme convexe(P):
@@ -1152,12 +1152,12 @@ $$
 C(n) = \mathcal{O}(n\ln(n)) + 2\cdot C(\frac{n}{2})
 $$
 
-[L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral){.externe} nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
+[L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral) nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
 
 ## Algorithme _optimal_
 
 {% lien %}
-[Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan){.externe}, 1996.
+[Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan), 1996.
 {% endlien %}
 
 L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\ln(h))$ où $n$ est le nombre de points et $h$ la taille de l'enveloppe convexe résultante.
@@ -1165,7 +1165,7 @@ L'algorithme que allons maintenant présenter est de complexité $\mathcal{O}(n\
 Cette complexité est la meilleure complexité connue.
 
 {% info %}
-Le premier algorithme de complexité $\mathcal{O}(n\ln(h))$ connu est celui de [Kirkpatrick et Seidel](https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm){.externe} en 1986. Il est cependant plus ardu à comprendre.
+Le premier algorithme de complexité $\mathcal{O}(n\ln(h))$ connu est celui de [Kirkpatrick et Seidel](https://en.wikipedia.org/wiki/Kirkpatrick%E2%80%93Seidel_algorithm) en 1986. Il est cependant plus ardu à comprendre.
 {% endinfo %}
 
 1. partitionnez les $n$ points en $\frac{n}{m}$ paquets de $m$ points. Coût de cette étape : $\mathcal{O}(n)$

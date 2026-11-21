@@ -36,7 +36,7 @@ Par exemple :
 
 {% endnote %}
 
-Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov), ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11){.externe} ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4){.externe}), on se restreindra ici aux problèmes algorithmiques :
+Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov), ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
 
 <span id="problème-algorithmique"></span>
 
@@ -220,7 +220,7 @@ Pour prouver un algorithme on cherchera à prouver ce que fait chaque boucle ou 
 
 1. une relation évidente caractérisant le but de la boucle
 2. une équation de récurrence plus une condition d'arrêt pour prouver une boucle itérative pouvant être écrite sous forme récursive
-3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle){.externe}. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle). Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
 {% endretenir %}
 

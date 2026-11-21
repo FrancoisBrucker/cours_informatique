@@ -26,7 +26,7 @@ La dernière condition n'est pas restrictive puisqu'on peut toujours modifier d'
 Une **_courbe_** est une fonction $\gamma$ continue de $[0, 1]$ dans $\mathbb{R}^2$ telle que $\gamma(s) \neq \gamma(t)$ si $s\neq t$ et $\\{s, t\\} \neq \\{0, 1\\}$.
 {% enddefinition %}
 
-Par exemple le dessin ci-dessous des [graphes de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen){.externe} et de $K_4$ :
+Par exemple le dessin ci-dessous des [graphes de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen) et de $K_4$ :
 
 ![dessin 1](dessin-1.png)
 
@@ -116,7 +116,7 @@ On va ici supposer que l'on a un dessin planaire d'un graphe $G$.
 
 ### Courbe de Jordan
 
-Un outil géométrique important pour étudier les graphes planaires est [la courbe de Jordan](https://www.bibmath.net/dico/index.php?action=affiche&quoi=./c/courbejordan.html){.externe} et son [célèbre théorème associé](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Jordan){.externe} :
+Un outil géométrique important pour étudier les graphes planaires est [la courbe de Jordan](https://www.bibmath.net/dico/index.php?action=affiche&quoi=./c/courbejordan.html) et son [célèbre théorème associé](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Jordan) :
 
 {% definition %}
 Une **_courbe de Jordan_** est une courbe $\gamma$ telle que $\gamma(0) = \gamma(1)$.
@@ -225,7 +225,7 @@ On se place dans le plan complexe.
 
 On suppose que le cycle ne borde pas la face infinie et on  et on choisi un point $z_0$ à l'intérieur.
 
-En appliquant [la transformation de Möbius](https://fr.wikipedia.org/wiki/Transformation_de_M%C3%B6bius){.externe} suivante :
+En appliquant [la transformation de Möbius](https://fr.wikipedia.org/wiki/Transformation_de_M%C3%B6bius) suivante :
 
 <div>
 $$
@@ -234,7 +234,7 @@ $$
 </div>
 
 
-La transformation de Möbius est [un homéomorphisme](https://fr.wikipedia.org/wiki/Hom%C3%A9omorphisme){.externe} :
+La transformation de Möbius est [un homéomorphisme](https://fr.wikipedia.org/wiki/Hom%C3%A9omorphisme) :
 
 - c'est une bijection, donc elle ne produira pas de croisement de courbes,
 - elle conserve la continuité : les courbes resteront continues

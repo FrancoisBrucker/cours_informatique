@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD vérifier que switch est bien utilisé et mettre restore <https://www.infoq.com/news/2019/08/git-2-23-switch-restore/>{.externe}
+> TBD vérifier que switch est bien utilisé et mettre restore <https://www.infoq.com/news/2019/08/git-2-23-switch-restore/>
 
 Les commandes git indispensables à connaître
 
@@ -32,7 +32,7 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
  on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
 {% endnote %}
 
-C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le [projet crée sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo){.externe}
+C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le [projet crée sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo)
 
 {% note "**Commandes**" %}
 
@@ -42,7 +42,7 @@ git clone <url>
 
 {% endnote %}
 {% lien %}
-<https://git-scm.com/docs/git-clone>{.externe}
+<https://git-scm.com/docs/git-clone>
 {% endlien %}
 
 `<url>` sera ce qui est copié depuis la page du projet :
@@ -52,7 +52,7 @@ git clone <url>
 Et aura deux formes :
 
 * `git@github.com:<USER>/<mon projet>.git`. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.
-* par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token){.externe}.
+* par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ### Initialiser un nouveau projet
 
@@ -69,7 +69,7 @@ En quatre étapes :
 
 #### Création du répertoire sur Github
 
-Pour cette première étape, opérez depuis un [navigateur](https://github.com/new){.externe} ([tuto sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo){.externe}) :
+Pour cette première étape, opérez depuis un [navigateur](https://github.com/new) ([tuto sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo)) :
 
 * donnez un nom à votre répertoire
 * choisissez un répertoire public
@@ -99,7 +99,7 @@ git init
 
 {% endnote %}
 {% lien %}
-<https://git-scm.com/docs/git-init>{.externe}
+<https://git-scm.com/docs/git-init>
 {% endlien %}
 
 #### Liaisons
@@ -107,7 +107,7 @@ git init
 Si vous voulez vous connecter, il y a deux possibilités :
 
 * par SSH : `git remote add origin git@github.com:<USER>/<mon projet>.git`. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.
-* par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token){.externe}.
+* par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 Votre premier push devra aussi définir la branche de l'origin : `git push --set-upstream.origin main`. Vous pourrez ensuite utiliser simplement `git push`
 
@@ -134,7 +134,7 @@ git pull --rebase=merges
 
 {% endnote %}
 {% lien %}
-<https://git-scm.com/docs/git-pull>{.externe}
+<https://git-scm.com/docs/git-pull>
 {% endlien %}
 
 
@@ -160,8 +160,8 @@ git switch ma_nouvelle_branche
 
 {% endnote %}
 {% lien %}
-- <https://git-scm.com/docs/git-switch>{.externe}
-- <https://git-scm.com/docs/git-branch>{.externe}
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-branch>
 {% endlien %}
 
 ### Pousser une branche (nouvelle) locale sur le serveur distant
@@ -186,8 +186,8 @@ git push -u origin <branche>
 
 {% endnote %}
 {% lien %}
-- <https://git-scm.com/docs/git-switch>{.externe}
-- <https://git-scm.com/docs/git-push>{.externe}
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-push>
 {% endlien %}
 
 ### Pousser ses modifications sur le serveur
@@ -218,8 +218,8 @@ git commit -am "<mon message décrivant le commit>"
 
 {% endnote %}
 {% lien %}
-- <https://git-scm.com/docs/git-add>{.externe}
-- <https://git-scm.com/docs/git-commit>{.externe}
+- <https://git-scm.com/docs/git-add>
+- <https://git-scm.com/docs/git-commit>
 {% endlien %}
 
 En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier `.gitignore`{.fichier}. Donc, souvent, on va vouloir tout ajouter dans l'index pour tout commit :
@@ -247,15 +247,15 @@ git commit -am "<mon message décrivant le commit>"
 
 {% endnote %}
 {% lien %}
-- <https://git-scm.com/docs/git-add>{.externe}
-- <https://git-scm.com/docs/git-commit>{.externe}
+- <https://git-scm.com/docs/git-add>
+- <https://git-scm.com/docs/git-commit>
 {% endlien %}
 
 {% info %}
 `git status` est très utile pour voir ce qui est dans l'index et ce qui n'y est pas encore. Abusez-en !
 {% endinfo %}
 {% lien %}
-<https://git-scm.com/docs/git-status>{.externe}
+<https://git-scm.com/docs/git-status>
 {% endlien %}
 
 #### Pousser sur le serveur
@@ -270,7 +270,7 @@ git push
 
 {% endnote %}
 {% lien %}
-<https://git-scm.com/docs/git-push>{.externe}
+<https://git-scm.com/docs/git-push>
 {% endlien %}
 
 Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait [ça](#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant).
@@ -294,10 +294,10 @@ git branch -d branche
 
 {% endnote %}
 {% lien %}
-- <https://git-scm.com/docs/git-rebase>{.externe}
-- <https://git-scm.com/docs/git-switch>{.externe}
-- <https://git-scm.com/docs/git-merge>{.externe}
-- <https://git-scm.com/docs/git-branch>{.externe}
+- <https://git-scm.com/docs/git-rebase>
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-merge>
+- <https://git-scm.com/docs/git-branch>
 {% endlien %}
 
 ## <span id="cheatsheet"></span>Cheatsheet

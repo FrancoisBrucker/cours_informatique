@@ -63,12 +63,12 @@ Modifions donc leur code dans le fichier `numérologie/index.html`{.fichier} en 
 ```
 
 {% info %}
-Voyez comment les [commentaires html](https://www.w3schools.com/html/html_comments.asp){.externe} sont différents des autres commentaires.
+Voyez comment les [commentaires html](https://www.w3schools.com/html/html_comments.asp) sont différents des autres commentaires.
 {% endinfo %}
 
 ### Console javascript
 
-Ouvrez les [outils de développement](https://developer.chrome.com/docs/devtools/open/){.externe} de chrome et choisissez le panel [*console*](https://developer.chrome.com/docs/devtools/console/){.externe}.
+Ouvrez les [outils de développement](https://developer.chrome.com/docs/devtools/open/) de chrome et choisissez le panel [*console*](https://developer.chrome.com/docs/devtools/console/).
 
 Cette console est l'interpréteur javascript de la page. On peut y écrire du javascript comme dans du node, mais l'intérêt principal est qu'il possède des objets et des attributs permettant de manipuler l'arbre DOM :
 
@@ -84,15 +84,15 @@ Changez la valeur de l'input et vérifiez que la ligne précédente donne un aut
 
 Comment avons-nous réalisé ce prodige ?
 
-* [`document.querySelector`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector){.externe} qui permet de retrouver un élément de l'arbre DOM par son identifiant (il faut mettre un `#`{.language-} devant l'identifiant)
-* l'attribut [`value`{.language-} d'un input](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value){.externe} qui donne sa valeur.
+* [`document.querySelector`{.language-}](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector) qui permet de retrouver un élément de l'arbre DOM par son identifiant (il faut mettre un `#`{.language-} devant l'identifiant)
+* l'attribut [`value`{.language-} d'un input](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value) qui donne sa valeur.
 
 Il faut maintenant réussir à faire ça lorsque l'on clique sur un bouton.
 
 ### Événements
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events>{.externe}
+<https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events>
 {% endlien %}
 
 Dès qu'il se passe quelque chose sur la page, un évènement est lancé. Ici, pour le bouton, c'est lorsque l'on clique dessus. On va donc se greffer à cet évènement. Tapez dans la console :
@@ -113,7 +113,7 @@ Le code se comprend comme ça :
 1. on récupère (comme avant) le bouton.
 2. on ajoute une fonction qui fa être exécuté lors de l'évènement "click"
 
-La notation [`(param) => {code}`{.language-} crée une fonction javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions#utiliser_une_expression_de_fonction_fl%C3%A9ch%C3%A9e_){.externe}.
+La notation [`(param) => {code}`{.language-} crée une fonction javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions#utiliser_une_expression_de_fonction_fl%C3%A9ch%C3%A9e_).
 
 La ligne `event.preventDefault()`{.language-} est importante, elle empêche le comportement par défaut de l'évènement click qui recharge la page. Supprimez cette ligne pour voir le résultat.
 
@@ -233,7 +233,7 @@ Par défaut, on a mis un chiffre de `"?"`{.language-} puisque le prénom est vid
 Il nous reste à changer le chiffre lorsque l'on appuie sur le bouton. Il faut pouvoir modifier le contenu du paragraphe. Pour cela :
 
 * on donne un identifiant unique au paragraphe à modifier
-* on regarde la doc pour savoir quelle attribut modifier : ici c'est [textContent](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent){.externe}
+* on regarde la doc pour savoir quelle attribut modifier : ici c'est [textContent](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent)
 
 Le fichier html `numérologie/index.html`{.fichier} final est alors :
 

@@ -14,9 +14,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120){.externe}). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682){.externe}).
+Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682)).
 
-Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme){.externe} devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' 🙂) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
+Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' 🙂) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
 
 L'informatique est une science incarnée : elle nécessite à la fois de solides connaissances théoriques pour concevoir des algorithmes efficaces et des capacités d'expérimentation et de rigueur pour les mettre en oeuvre et les faire fonctionner sur un ordinateur.
 
@@ -354,7 +354,7 @@ DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/3
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation){.externe}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation)
 {% endinfo %}
 
 
@@ -385,7 +385,7 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% endaller %}
 {% info %}
-[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris){.externe}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris)
 {% endinfo %}
 
 <!-- TBD 2026/2027
@@ -473,10 +473,10 @@ DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal al
 >
 
 {% info %}
-Je vous conseille très fortement de faire la séance de code en [pair-programming](https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me){.externe}. **Lisez** le lien ci-après avant vendredi.
+Je vous conseille très fortement de faire la séance de code en [pair-programming](https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me). **Lisez** le lien ci-après avant vendredi.
 {% endinfo %}
 {% lien %}
-[comment coder en pair-programming](https://martinfowler.com/articles/on-pair-programming.html){.externe}
+[comment coder en pair-programming](https://martinfowler.com/articles/on-pair-programming.html)
 {% endlien %}
 
 Au programme :
@@ -488,8 +488,8 @@ Au programme :
 
 {% endaller %}
 {% note %}
-- [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code){.externe}
-- [corrigé projet cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code){.externe}
+- [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code)
+- [corrigé projet cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code)
 
 {% endnote %}
 
@@ -532,8 +532,8 @@ Composer des objets entre-eux :
 2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés)
 {% endaller %}
 {% note %}
-- [corrigé d'amélioration des dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-dés-amélioration/code){.externe}
-- [corrigé composition de dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-dés/code){.externe}
+- [corrigé d'amélioration des dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-dés-amélioration/code)
+- [corrigé composition de dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-dés/code)
 
 {% endnote %}
 
@@ -546,8 +546,8 @@ Si on a le temps, sinon à faire chez soit :
 
 {% endaller %}
 {% note %}
-- [corrigé d'amélioration des cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-amélioration/code){.externe}
-- [corrigé agrégation de cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agrégation-cartes/code){.externe}
+- [corrigé d'amélioration des cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-amélioration/code)
+- [corrigé agrégation de cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agrégation-cartes/code)
 
 {% endnote %}
 
@@ -583,7 +583,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% endaller %}
 {% note %}
-[corrigé projet héritage](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage){.externe}
+[corrigé projet héritage](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
 
 {% endnote %}
 
@@ -603,7 +603,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% endaller %}
 {% note %}
-[corrigé projet bataille navale](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code){.externe}
+[corrigé projet bataille navale](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code)
 
 {% endnote %}
 
@@ -781,12 +781,12 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 - complexité en moyenne
 
 
-- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>{.externe}
-- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>{.externe}
-- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>{.externe}
-- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>{.externe}
-- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>{.externe}
-- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>{.externe}
+- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>
+- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>
+- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>
+- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>
+- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>
+- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>
 
 {% info %}
 [Suivre le tutoriel Markdown](/tutoriels/format-markdown/)

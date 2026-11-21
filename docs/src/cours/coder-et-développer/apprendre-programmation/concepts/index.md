@@ -49,7 +49,7 @@ Les chaines de caractères ne sont pas _sticto sensu_ des conteneurs puisqu'elle
 
 ## <span id="modules"></span>Modules et espace de nommage
 
-Les [modules](https://docs.python.org/fr/3/tutorial/modules.html){.externe} pythons sont des regroupement de fonctions utiles. 
+Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont des regroupement de fonctions utiles. 
 
 {% aller %}
 [Modules et espace de nommages python](utilisation-modules)
@@ -62,7 +62,7 @@ Il existe quelques modules externes à python très utilisés. Ils ne sont pas p
 Python vient avec tout un tas de modules très utiles. Ils sont décrit dans le document ci-après :
 
 {% lien %}
-[La bibliothèque standard de Python](https://docs.python.org/fr/3.14/library/index.html){.externe}
+[La bibliothèque standard de Python](https://docs.python.org/fr/3.14/library/index.html)
 {% endlien %}
 
 Il n'est pas nécessaire de les connaître tous par cœur, mais avant de coder quelque chose, vérifiez que ce n'est pas déjà présent.
@@ -76,7 +76,7 @@ Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout
 [Tutoriel Matplotlib](tutoriel-matplotlib)
 {% endaller %}
 
-Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/){.externe} pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
+Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
 ### module `numpy`{.language-}
 
@@ -92,7 +92,7 @@ Le module numpy est très utilisé pour les calculs scientifique, en particulier
 Terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu, parfois de façon plus détaillée :
 
 {% lien %}
-<https://docs.python.org/fr/3/tutorial/index.html>{.externe}
+<https://docs.python.org/fr/3/tutorial/index.html>
 {% endlien %}
 
 ## <span id='exercices-fin'></span>On vérifie qu'on a compris

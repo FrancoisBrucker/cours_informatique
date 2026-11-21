@@ -87,6 +87,10 @@ a.interne:visited,
   @apply underline decoration-purple-500 text-purple-800 decoration-2 hover:text-purple-500 hover:decoration-purple-800 active:decoration-4;
 }
 
+a[href^="http://"],
+a[href^="http://"]:visited,
+a[href^="https://"],
+a[href^="https://"]:visited,
 a.externe,
 a.externe:visited,
 .externe a,

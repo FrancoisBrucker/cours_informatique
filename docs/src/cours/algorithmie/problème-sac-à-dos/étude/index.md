@@ -16,7 +16,7 @@ Nous avons déjà rencontré le problème du sac à dos de quantité nutritive s
 ## Sac à dos fractionnel
 
 {% lien %}
-[sac à dos fractionnel](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues){.externe}
+[sac à dos fractionnel](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues)
 {% endlien %}
 
 Commençons par une version simplifiée du problème, dit du **_sac à dos fractionnel_** :
@@ -180,7 +180,7 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 ## Problème du sac à dos
 
 {% lien %}
-[Problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos){.externe}
+[Problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
 {% endlien %}
 
 Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :
@@ -266,7 +266,7 @@ On associe à cette instance un sac à dos :
 - de poids total $K = \sum_{1 \leq i \leq n}(m+1)^{i}$.
 
 {% exercice %}
-Transformez [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2){.externe} :
+Transformez [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) :
 
 - $U = \\{1, 2, 3, 4, 5, 6, 7\\}$
 - $\mathcal{S} = \\{ \\{1, 4, 7\\}, \\{1, 4\\}, \\{4, 5, 7\\},\\{3, 5, 6\\},\\{2, 3, 6, 7\\},\\{2, 7\\}  \\}$
@@ -293,7 +293,7 @@ Cette construction utilise le fait que $m \cdot (m+1)^k < (m+1)^{k+1}$ pour en d
 - un sac à dos de valeur $\sum_{1 \leq i \leq n}(m+1)^{i}$ ne peut être atteint que si les objets choisis forment une solution du problème initial CE (on ne peut avoir deux fois le même objet).
 
 {% exercice %}
-Montrez que pour [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2){.externe} transformé en sac à dos, une de ses solution correspond bien à un sac à dos optimal.
+Montrez que pour [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) transformé en sac à dos, une de ses solution correspond bien à un sac à dos optimal.
 {% endexercice %}
 {% details "solution" %}
 
@@ -500,13 +500,13 @@ La complexité de l'algorithme par programmation dynamique dépend de $n$ et de 
 La remarque ci-dessus implique qu'on va avoir tendance à utiliser cette méthode pour des sac à dos donc la taille est petite (ou polynomiale) par rapport aux objets à y mettre. Dans le cas où l'on a de gros sac à dos et plein de petits objets, on pourra préférer la prochaine solution qui énumère toutes les solutions possibles.
 
 {% info %}
-Si on cherche à calculer la complexité par rapport à la taille des données, comme $K$ est stocké sur $\log_2(K)$ bits, l'algorithme de programmation dynamique peut être considéré comme exponentielle ! Comme c'est un cas limite et que souvent les valeurs entières sont bornées, on appelle [pseudo-polynomiale](https://fr.wikipedia.org/wiki/Temps_de_calcul_pseudo-polynomial){.externe} ce genre de complexité qui dépendent de **la valeurs d'entiers**.
+Si on cherche à calculer la complexité par rapport à la taille des données, comme $K$ est stocké sur $\log_2(K)$ bits, l'algorithme de programmation dynamique peut être considéré comme exponentielle ! Comme c'est un cas limite et que souvent les valeurs entières sont bornées, on appelle [pseudo-polynomiale](https://fr.wikipedia.org/wiki/Temps_de_calcul_pseudo-polynomial) ce genre de complexité qui dépendent de **la valeurs d'entiers**.
 
 {% endinfo %}
 
 ## Solutions par énumération
 
-Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un [problème d'optimisation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers){.externe} :
+Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un [problème d'optimisation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) :
 
 {% note "**Problème du sac à dos sous la forme d'un problème de programmation linéaire**" %}
 
@@ -560,7 +560,7 @@ def énumération(produits, K):
 Si vous faites `affectation_max = affectation`{.language-} plutôt que `affectation_max = list(affectation)`{.language-} vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste `affectation`{.language-} ce qui est problématique puisque `successeur`{.language-} la modifie.
 {% endattention %}
 {% info %}
-On a utilisé [la fonction `zip`{.language-} de python](https://docs.python.org/fr/3/library/functions.html#zip){.externe} qu'il est très utile de connaitre.
+On a utilisé [la fonction `zip`{.language-} de python](https://docs.python.org/fr/3/library/functions.html#zip) qu'il est très utile de connaitre.
 {% endinfo %}
 
 La complexité de l'algorithme est la somme de :
@@ -594,7 +594,7 @@ Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximale
 ### Branch and bound
 
 {% lien %}
-[Lien Wikipédia sur le _Branch and Bound_](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation){.externe}
+[Lien Wikipédia sur le _Branch and Bound_](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation)
 {% endlien %}
 
 La méthode du **_Branch and Bound_** (ou **_Séparation et évaluation_** en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.
@@ -775,14 +775,14 @@ L'utilisation du principe du branch and bound est donc profitable au problème d
 
 > TBD voir :
 >
-> - <https://www.youtube.com/watch?v=MacVqujSXWE>{.externe}
-> - <https://leria-info.univ-angers.fr/~jeanmichel.richer/uco_opt_combi_sac_a_dos.php>{.externe} (6.2)
+> - <https://www.youtube.com/watch?v=MacVqujSXWE>
+> - <https://leria-info.univ-angers.fr/~jeanmichel.richer/uco_opt_combi_sac_a_dos.php> (6.2)
 
 ## Pour ne pas conclure
 
 Le problème du sac à dos est un joli problème pouvant se résoudre de multiples manières, tant approchées avec une performance garantie qu'exact si les données le permettent (que l'exponentiel théorique n'est pas atteint). Il permet aussi de toucher du doigt un problème de complexité fin : les algorithmes dont on mesure la complexité avec des valeurs sont exponentiels par rapport à la taille de stockage de la valeur.
 
-De plus, le problème du sac à dos est un problème très courant en pratique puisqu'il est à la base de nombreux problèmes en [recherche opérationnelle](https://fr.wikipedia.org/wiki/Recherche_op%C3%A9rationnelle){.externe} comme :
+De plus, le problème du sac à dos est un problème très courant en pratique puisqu'il est à la base de nombreux problèmes en [recherche opérationnelle](https://fr.wikipedia.org/wiki/Recherche_op%C3%A9rationnelle) comme :
 
 - les problèmes de découpe (on maximise le nombre de pièces de dimensions fixés que l'on peut produire à partir d'un tissu)
 - les problèmes d'équilibrage de charge
@@ -790,4 +790,4 @@ De plus, le problème du sac à dos est un problème très courant en pratique p
 
 Et il se généralise à plusieurs dimensions.
 
-Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire){.externe} d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers){.externe} d'autre part (dont on ne connaît pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.
+Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) d'autre part (dont on ne connaît pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.

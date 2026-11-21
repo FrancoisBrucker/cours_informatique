@@ -53,7 +53,7 @@ Différence entre exécuter un fichier soit et sur un serveur.
 7. [Projet css](./projet-css)
 8. flex + grid (TBD)
 
-> - ajouter animations et fin css de ce cours <https://web.dev/learn/css/>{.externe}
+> - ajouter animations et fin css de ce cours <https://web.dev/learn/css/>
 > - TBD à présenter :
 >   - flex + grid
 >   - bootstrap
@@ -61,7 +61,7 @@ Différence entre exécuter un fichier soit et sur un serveur.
 ### Gestion des fichiers
 
 {% lien %}
-<https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>{.externe}
+<https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files>
 {% endlien %}
 
 Ayez :
@@ -76,7 +76,7 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ### Bibliothèques css
 
-<https://getbootstrap.com/>{.externe}
+<https://getbootstrap.com/>
 
 Comment :
 
@@ -85,7 +85,7 @@ Comment :
 - node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
 
 Si vous avez des soucis avec l'exécution des scripts powershell :
-<https://www.it-connect.fr/autoriser-lexecution-de-scripts-powershell/>{.externe}
+<https://www.it-connect.fr/autoriser-lexecution-de-scripts-powershell/>
 
 Modifier votre page animal préféré avec bootstrap
 
@@ -100,7 +100,7 @@ Modifier votre page animal préféré avec bootstrap
 {% endfaire %}
 
 > - à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso
-> - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>{.externe}
+> - éxo à présenter : js avec node. <https://www.w3schools.com/js/js_graphics_d3js.asp>
 
 ## Projet front
 
@@ -119,7 +119,7 @@ Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/réseau/
 {% endaller %}
 
 {% faire %}
-Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wireshark.org/){.externe} et regardez le flux réseau sur le loopback.
+Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wireshark.org/) et regardez le flux réseau sur le loopback.
 {% endfaire %}
 
 ### Créer un serveur web
@@ -184,9 +184,9 @@ Les projets de cette partie ont vocation à :
 ### A vous : Décathlon
 
 - règles :
-  - sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>{.externe}
-  - en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>{.externe}
-- supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>{.externe}
+  - sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
+  - en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
+- supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 Choisissez un sport et faite toute la partie jet de dés côté serveur pour éviter la triche.
 Ne stockez pas de données côté serveur.

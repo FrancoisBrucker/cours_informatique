@@ -30,7 +30,7 @@ Ces deux éléments communiquent via un bus permettant de transmettre 64b en par
 [Anatomie d'un bus](./bus)
 {% endaller %}
 
-Chaque [core](https://fr.wikipedia.org/wiki/Core_(microarchitecture)){.externe} est une unité de calcul dont le but est d'exécuter des instructions.
+Chaque [core](https://fr.wikipedia.org/wiki/Core_(microarchitecture)) est une unité de calcul dont le but est d'exécuter des instructions.
 
 {% aller %}
 [Anatomie d'un core](./core)

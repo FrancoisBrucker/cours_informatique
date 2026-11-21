@@ -14,7 +14,7 @@ Lors de calculs de complexité, on va de nombreuses fois avoir les mêmes sommes
 Cette série d'exercice va vous montrer les plus classiques (on en a d'ailleurs déjà vu certaines) et leur usage dans les calculs de complexité. On aura presque jamais besoin de les calculer explicitement, seul les équivalence en $\Theta$ ou en $\mathcal{O}$ vont nous intéresser.
 
 {% lien %}
-[Séries](https://fr.wikipedia.org/wiki/S%C3%A9rie_(math%C3%A9matiques)){.externe}
+[Séries](https://fr.wikipedia.org/wiki/S%C3%A9rie_(math%C3%A9matiques))
 {% endlien %}
 
 ## Séries des premiers entiers
@@ -125,7 +125,7 @@ La première égalité est uniquement une application numérique et la seconde r
 
 {% enddetails %}
 {% info %}
-La seconde série a [une interprétation géométrique](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF){.externe}
+La seconde série a [une interprétation géométrique](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)
 {% endinfo %}
 
 Une variation classique de la série géométrique, vue par exemple dans le calcul du tri rapide pour $r=2$ est :
@@ -229,7 +229,7 @@ Surprenant, non ?
 
 ## Série harmonique
 
-On définie [la série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique){.externe} comme :
+On définie [la série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique) comme :
 
 <div>
 $$
@@ -269,7 +269,7 @@ Si $H(n)$ converge, alors toute suite extraite également. Cela n'est donc pas p
 
 {% enddetails %}
 
-Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique){.externe}).
+Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique)).
 
 
 [On a déjà utilisé ce résultat](#Hn-équivalent). On le remet ici pour référence.
@@ -360,14 +360,14 @@ $$
 
 <!-- 
 
-> TBD <https://www.youtube.com/watch?v=CC2DG391HmA>{.externe} en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
+> TBD <https://www.youtube.com/watch?v=CC2DG391HmA> en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
 
-> TBD une démonstration <https://www.youtube.com/watch?v=JZiDuryIMQE>{.externe}
+> TBD une démonstration <https://www.youtube.com/watch?v=JZiDuryIMQE>
  -->
 
 
 {% lien %}
-[Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le){.externe}
+[Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le)
 {% endlien %}
 
 La somme suivante à un nom car le calcul exact de sa limite elle a résisté pendant plusieurs années avant qu'Euler n'en vienne à bout. Son résultat est diablement surprenant :

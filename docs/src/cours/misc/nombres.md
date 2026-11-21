@@ -96,7 +96,7 @@ expo(x, y):
   rendre r
 ```
 
-> TBD exercice pour l'écrire dans l'autre sens voir <https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf>{.externe}
+> TBD exercice pour l'écrire dans l'autre sens voir <https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf>
 
 ## <span id="logarithme-discret">Logarithme discret
 
@@ -123,7 +123,7 @@ Comme :
 
 On peut remonter de proche en proche jusqu'à obtenir une équation du type : $\text{pgcd}(a, b) = u\cdot a + v\cdot b$
 
-De façon surprenante, cet enchaînement s'écrit très bien sous la forme de [pseudo code](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code){.externe} si o peut assigner 6 variables en même temps :
+De façon surprenante, cet enchaînement s'écrit très bien sous la forme de [pseudo code](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code) si o peut assigner 6 variables en même temps :
 
 ```python/
 (r, u, v, ) = (a, 1, 0, b, 0, 1)
@@ -175,14 +175,14 @@ Le temps pris sera de l'ordre de $\mathcal{O}(\log_2(N))$ boucles tant que, avec
       1001111  
 ```
 
-On est pas obligé d'élever au carré à chaque fois, on peut s'en sortir juste avec des shift et des additions en stockant judicieusement des variables intermédiaires, voir [wikipedia](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Binary_numeral_system_(base_2)){.externe}. On arrive à une formulation en $\mathcal{O}(n^2)$
+On est pas obligé d'élever au carré à chaque fois, on peut s'en sortir juste avec des shift et des additions en stockant judicieusement des variables intermédiaires, voir [wikipedia](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Binary_numeral_system_(base_2)). On arrive à une formulation en $\mathcal{O}(n^2)$
 
 > TBD expliciter les variables
 
 ## Factorisation
 
 {% lien %}
-[integer factorization](https://en.wikipedia.org/wiki/Integer_factorization){.externe}
+[integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)
 {% endlien %}
 
 > TBD : problème : sachant $n$, trouver $p$ et $q$ $n=pq$.
@@ -192,13 +192,13 @@ Pas d'algorithmes connu pour faire rapidement le calcul.
 
 > TBD :
 >
-> - <https://gaati.org/bisson/tea/pepites-fact.pdf>{.externe}
-> - <https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html>{.externe}
+> - <https://gaati.org/bisson/tea/pepites-fact.pdf>
+> - <https://webusers.imj-prg.fr/~pascal.molin/cours/crypto/cours_factorisation.html>
 
 ### Factorisation de Fermat
 
 {% lien %}
-[Factorisation de Fermat](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_factorisation_de_Fermat){.externe}
+[Factorisation de Fermat](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_factorisation_de_Fermat)
 {% endlien %}
 
 Marche bien si $p$ est proche de $q$
@@ -209,6 +209,6 @@ Donc pour RSA, il faut bien choisir deux nombres premiers indépendamment. Si vo
 
 > TBD :
 >
-> - <https://en.wikipedia.org/wiki/Generation_of_primes>{.externe}
-> - [algos](https://www.baeldung.com/cs/prime-number-algorithms){.externe}
+> - <https://en.wikipedia.org/wiki/Generation_of_primes>
+> - [algos](https://www.baeldung.com/cs/prime-number-algorithms)
 > 4.5.4 Knuth

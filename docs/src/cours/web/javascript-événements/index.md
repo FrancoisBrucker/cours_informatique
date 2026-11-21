@@ -21,7 +21,7 @@ Gestion des événements en javascript.
 ## Un timer
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/en-US/docs/Web/API/setInterval>{.externe}
+<https://developer.mozilla.org/en-US/docs/Web/API/setInterval>
 {% endlien %}
 
 Pas à proprement parlé un événement, mais le principe que nous utiliserons ici sera identique pour eux.
@@ -62,14 +62,14 @@ Un timer exécute la fonction en paramètre toute les secondes.
 
 {% lien "**Documentation**" %}
 
-* <https://developer.mozilla.org/fr/docs/Web/API/Element#%C3%A9v%C3%A8nements>{.externe}
-* <https://developer.mozilla.org/fr/docs/Web/API/HTMLElement#%C3%A9v%C3%A8nements>{.externe}
+* <https://developer.mozilla.org/fr/docs/Web/API/Element#%C3%A9v%C3%A8nements>
+* <https://developer.mozilla.org/fr/docs/Web/API/HTMLElement#%C3%A9v%C3%A8nements>
 
 {% endlien %}
 
 Il existe de nombreux événements que l'on peut associer à un `Element`{.language-} ou à un `HTMLElement`{.language-}. La façon la plus simple de les utiliser est d'associer une fonction à la propriété associé.
 
-Par exemple, en regardant la [documentation de l'événement `click`](https://developer.mozilla.org/fr/docs/Web/API/Element/click_event){.externe}, on voit que la propriété associées est `onclick`.
+Par exemple, en regardant la [documentation de l'événement `click`](https://developer.mozilla.org/fr/docs/Web/API/Element/click_event), on voit que la propriété associées est `onclick`.
 
 {% faire %}
 Créez un fichier `événement-click.html`{.fichier} contenant le code suivant :
@@ -149,7 +149,7 @@ Créez un fichier html qui change la couleur d'un paragraphe de lorem ipsum lors
 ## Des fonctions associées à un événement
 
 {% lien "**Documentation**" %}
-<https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers>{.externe}
+<https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers>
 {% endlien %}
 
-Dans les cas complexe, avoir une unique fonction associée à un événement est limitant. Pour avoir plusieurs fonctions associées à un même événement, on utilise la méthode [`addEventListener`{.language-}](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener){.externe} pour ajouter une fonction et [`removeEventListener`{.language-}](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener){.externe} pour le supprimer.
+Dans les cas complexe, avoir une unique fonction associée à un événement est limitant. Pour avoir plusieurs fonctions associées à un même événement, on utilise la méthode [`addEventListener`{.language-}](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) pour ajouter une fonction et [`removeEventListener`{.language-}](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) pour le supprimer.

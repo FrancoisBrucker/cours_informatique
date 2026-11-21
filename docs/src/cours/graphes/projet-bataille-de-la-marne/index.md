@@ -15,7 +15,7 @@ Un exercice de modélisation complexe.
 
 <!-- end résumé -->
 
-On va optimiser l'arrivée des [taxis à la bataille de la marne de 1914](https://fr.wikipedia.org/wiki/Taxis_de_la_Marne){.externe}.
+On va optimiser l'arrivée des [taxis à la bataille de la marne de 1914](https://fr.wikipedia.org/wiki/Taxis_de_la_Marne).
 
 On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes), décrites dans un graphe non orienté $G$.
 
@@ -113,7 +113,7 @@ Créez une liste `distances_villes`{.language-} contenant tous les couples **uni
 {% faire %}
 Triez la liste `distances_villes`{.language-} par distance.
 
-Vous pourrez utiliser pour cela la fonction `d_GPS(uv)`{.language-} que vous avez créée et l'[attribut `key`{.language-}](https://docs.python.org/fr/3/howto/sorting.html#key-functions){.externe} de la méthode de liste `sort`{.language-}
+Vous pourrez utiliser pour cela la fonction `d_GPS(uv)`{.language-} que vous avez créée et l'[attribut `key`{.language-}](https://docs.python.org/fr/3/howto/sorting.html#key-functions) de la méthode de liste `sort`{.language-}
 {% endfaire %}
 
 Enfin :
@@ -231,7 +231,7 @@ ax.plot(
 ```
 
 {% faire %}
-En utilisant [les cercles en matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html){.externe} :
+En utilisant [les cercles en matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html) :
 
 ```python
 circle = plt.Circle((x, y), r)
@@ -242,7 +242,7 @@ Ajoutez à un instant donné les taxis. Sur le graphique.
 {% endfaire %}
 
 {% faire %}
-<https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation>{.externe}
+<https://courspython.com/animation-matplotlib.html#animation-sans-le-module-animation>
 
 Vous donne une idée d'animation de vos graphiques.
 

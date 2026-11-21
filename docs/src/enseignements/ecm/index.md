@@ -31,9 +31,9 @@ $
 
 une série de 2 enseignements orientés développement et axé autour de 3 thèmes :
 
-- le développement proprement dit : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530){.externe})
+- le développement proprement dit : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
 - le système : là où sera exécuté le code
-- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM){.externe})
+- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
 
 Chaque année est bâtie sur la précédente mais peut très bien être abordée en autonomie.
 
@@ -59,7 +59,7 @@ S7 MIE :
 
 #### 3A
 
-Temps 1 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/){.externe}
+Temps 1 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
 {% aller %}
 [Méthode de développement](3A/do-it/mdd/)
@@ -67,7 +67,7 @@ Temps 1 du [parcours d'approfondissement Do_It](https://docs.google.com/document
 
 ### Linux
 
-Temps 3 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/){.externe}
+Temps 3 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
 {% aller %}
 [Linux et système](3A/do-it/linux/)
@@ -105,7 +105,7 @@ Commencez par choisir une université partenaire offrant des master en informati
 
 Une fois que vous commencerez à progresser, **faites attention à** :
 
-- [L'effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger){.externe} qui fait qu'on se croit meilleurs que ce qu'on est. Vous n'êtes presque sûrement que borgne dans une école d'aveugles (au moins en informatique)
+- [L'effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger) qui fait qu'on se croit meilleurs que ce qu'on est. Vous n'êtes presque sûrement que borgne dans une école d'aveugles (au moins en informatique)
 - L'illusion de croire que tout peut s'apprendre avec un tuto. Sans prof pour des sujets pour lesquels vous n'avez aucune compétence/connaissances, vous irez moins loin; en plus longtemps et sans être sûr d'y être
 - Vous reposer sur du code assisté (voir généré) par IA sans avoir les connaissances algorithmiques, système ou de développement associées pour le comprendre lui et ses implications sur le reste du système. Bien que ce soit un outil puissant, utilisé sans conscience il produira du code certainement non maintenable et dont vous ne serez pas sûr qu'il fonctionne.
 
@@ -115,7 +115,7 @@ Une liste d'ouvrages assez anciens mais fondamentaux (je suis vieux, certes, mai
 
 Pour certains, ils pourraient avoir été écrit demain tellement ils sont encore d'actualité. Il parle de la place de l'informaticien dans son travail, dans les projets auxquels il participe et dans sa progression personnelle.
 
-- [la seule chose qu'il faut que vous sachiez en gestion de projet IT](https://agilemanifesto.org/){.externe}
+- [la seule chose qu'il faut que vous sachiez en gestion de projet IT](https://agilemanifesto.org/)
 - The Pragmatic Programmer: Your Journey to Mastery
 - Extreme Programming Explained: Embrace Change
 - Test Driven Development: By Example

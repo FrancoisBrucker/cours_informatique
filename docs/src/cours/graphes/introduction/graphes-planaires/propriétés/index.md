@@ -131,11 +131,11 @@ Si tous les sommets avaient un degré strictement plus grand que 5 on aurait : $
 > TBD si toutes les faces sont des triangles alors.
 > TBD c'est facile à faire on triangule les faces des composantes 2-connexes. et ce sera tres utile ensuite. 
 
-> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>{.externe}
+> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
 
 Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !
 
-> TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>{.externe}
+> TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
 
 
 > TBD quasi-triangulé si toutes les faces sauf la face infinie est triangulée.
@@ -229,7 +229,7 @@ On utilise des graphe de degré minimal au moins 5 car cette technique a été d
 ## Nombre minimum de croisements de graphes non planaires
 
 {% lien %}
-<https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>{.externe}
+<https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
 {% endlien %}
 
 Enfin, une dernière propriété sur les graphes nom planaires.

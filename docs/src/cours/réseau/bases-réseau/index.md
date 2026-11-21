@@ -36,4 +36,4 @@ eleventyComputed:
 ![Web local](./web-local.png)
 
 > TBD avec python et http pour un serveur bête en localhost
-> TBD <https://realpython.com/python-http-server/>{.externe}
+> TBD <https://realpython.com/python-http-server/>

@@ -17,7 +17,7 @@ Par l'exemple lors de l'utilisation de structures complexes où les instructions
 Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)
 
 {% lien %}
-<https://www.youtube.com/watch?v=3MpzavN3Mco>{.externe}
+<https://www.youtube.com/watch?v=3MpzavN3Mco>
 {% endlien %}
 
 ## Définitions

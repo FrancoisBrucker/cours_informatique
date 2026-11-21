@@ -79,7 +79,7 @@ Faite le TD de TDD dans un environnement virtuel.
 Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tests unitaires. Voir par exemple le lien suivant pour une introduction aux différents tests utilisés :
 
 {% lien %}
-[Différents types de tests](https://www.youtube.com/watch?v=gnrBqLbj1_Q){.externe}
+[Différents types de tests](https://www.youtube.com/watch?v=gnrBqLbj1_Q)
 {% endlien %}
 
 
@@ -88,7 +88,7 @@ Entraînez vous :
 {% faire %}
 
 - [exercice de code](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/)
-- [advent of code](https://adventofcode.com/){.externe}
+- [advent of code](https://adventofcode.com/)
 
 {% endfaire %}
 
@@ -100,8 +100,8 @@ Pour la prochaine fois, quatre groupes :
 {% attention "**Travail à préparer**" %}
 
 
-- [poetry](https://python-poetry.org/){.externe}
-- [uv](https://docs.astral.sh/uv/){.externe}
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
 - tests dans d'autres langages (java, js ou ts, ...)
 - mock et tests
 
@@ -118,8 +118,8 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 > Design Pattern
 
 {% lien %}
-- [design pattern](https://refactoring.guru/design-patterns){.externe}
-- [refactoring pattern](https://refactoring.guru/refactoring){.externe}
+- [design pattern](https://refactoring.guru/design-patterns)
+- [refactoring pattern](https://refactoring.guru/refactoring)
 {% endlien %}
 
 
@@ -156,8 +156,8 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 <!-- 
 ## Outils python de gestion de package
 
-- [poetry](https://python-poetry.org/){.externe}
-- [uv](https://docs.astral.sh/uv/){.externe}
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
  
  ->
 
@@ -170,6 +170,6 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 
 <!-- TBD 
 
-> 3a docker <https://www.youtube.com/watch?v=b0HMimUb4f0>{.externe} 
+> 3a docker <https://www.youtube.com/watch?v=b0HMimUb4f0> 
 
 -->

@@ -36,7 +36,7 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 ## Formule logique et SAT
 
 {% definition %}
-[Une formule logique](https://fr.wikipedia.org/wiki/Formule_logique){.externe} est soit :
+[Une formule logique](https://fr.wikipedia.org/wiki/Formule_logique) est soit :
 
 - une variable booléenne
 - si $\phi$ est une formule alors $\overline{\phi}$ en est une également
@@ -129,10 +129,10 @@ On a les propriétés suivantes :
 > TBD on peut faire mieux
 
 {% lien %}
-[Transformation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM){.externe}
+[Transformation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM)
 {% endlien %}
 
-> TBD p26 <https://perso.ensta-paris.fr/~chapoutot/teaching/master-logic/slides/lecture1.pdf>{.externe}
+> TBD p26 <https://perso.ensta-paris.fr/~chapoutot/teaching/master-logic/slides/lecture1.pdf>
 on peut associer une valeur de vérité à chaque formule et les combiner de façon linéaire
 
 > TBD :
@@ -145,7 +145,7 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 > TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)
 > 
 > 
-Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable){.externe} pour convertir les formules
+Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable) pour convertir les formules
 
 ## <span id="algorithme-SAT"></span>Algorithme et SAT
 
@@ -163,13 +163,13 @@ Un cas particulier important du problème `SAT` est le problème `3-SAT` ou tout
 
 > résolution 3-sat par backtracking
 >
-> TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>{.externe}
+> TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
 >
 
 ### <span id="3-sat-exemple"></span>Exemple
 
 {% lien %}
-[Exemple de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description){.externe}
+[Exemple de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description)
 {% endlien %}
 
 <div>
@@ -272,17 +272,17 @@ Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir san
 > 
 ### 3-SAT ≤ NAE-3-SAT
 
-> TBD variante <https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability>{.externe} semble plus comtrainte mais en fait non, c'est plus général.
-> TBD montrer 3-SAT ≤ NAE-4-SAT ≤ NAE-3-SAT (cf <https://math.stackexchange.com/a/2828390>{.externe} pour un résumé et <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf>{.externe} pour la version longue)
+> TBD variante <https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability> semble plus comtrainte mais en fait non, c'est plus général.
+> TBD montrer 3-SAT ≤ NAE-4-SAT ≤ NAE-3-SAT (cf <https://math.stackexchange.com/a/2828390> pour un résumé et <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf> pour la version longue)
 
 ## Et 2-SAT ?
 
 > Réduction ne fonctionne pas. Autre problème
 > 
-> Algo poly par limited backtracking : <https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking>{.externe}
+> Algo poly par limited backtracking : <https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking>
 > limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.
-> 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>{.externe}
+> 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
 
 On vérifie les conséquences de chaque choix. Une fois tous les obligés fait si pas de contradiction on a un sous ensemble stable et on peut supprimer les clauses ayant ces affectations. Sous cas et on recommence. Si contradiction, on prend l'affectation contraire et on reteste. Si ça rate encore alors affectation impossible.
 
-> TBD refaire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>{.externe}
+> TBD refaire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>

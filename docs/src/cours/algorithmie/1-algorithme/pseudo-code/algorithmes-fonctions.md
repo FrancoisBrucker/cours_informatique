@@ -71,7 +71,7 @@ La définition du bloc algorithme (jusqu'aux `:`{.language-}) est constituée :
 Si on a besoin d'informations supplémentaires pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un `#`{.language-}.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doivent suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrée.
 
 {% lien %}
-La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>{.externe}
+La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>
 {% endlien %}
 
 Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction `rendre`{.language-}. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra **toujours** 42 :

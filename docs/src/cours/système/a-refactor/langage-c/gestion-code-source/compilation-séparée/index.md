@@ -137,7 +137,7 @@ return 0;
 
 Qui inclut bien deux fois dans le même fichier le fichier `celcius.h`{.fichier}.
 
-POur éviter ceci on ajoute [une astuce](https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html){.externe} qui utilise le préprocesseur. Le fichier `celcius.h`{.fichier} sera écrit :
+POur éviter ceci on ajoute [une astuce](https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html) qui utilise le préprocesseur. Le fichier `celcius.h`{.fichier} sera écrit :
 
 ```c
 #ifndef FILE_CELCIUS

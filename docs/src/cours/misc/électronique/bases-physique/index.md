@@ -36,7 +36,7 @@ Enfin le mécanisme de relais en lui-même :
 Ingénieux, non ! C'est Shannon qui a, le premier, montré qu'il était possible de créer un réseau booléen en utilisant des relais.
 
 {% lien %}
-[A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)](https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits){.externe}
+[A Symbolic Analysis of Relay and Switching Circuits (Shannon, 1938)](https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits)
 {% endlien %}
 
 Par exemple une porte NON (_NOT_) :
@@ -63,7 +63,7 @@ N'étant pas électronicien et encore moins physicien, je vais rester à la surf
 ### Semi-conducteurs : Diode PN
 
 {% lien %}
-[La jonction PN expliquée avec des chiens de traîneaux](https://www.youtube.com/watch?v=QHGcE1_NjBw&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=1){.externe}
+[La jonction PN expliquée avec des chiens de traîneaux](https://www.youtube.com/watch?v=QHGcE1_NjBw&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=1)
 {% endlien %}
 
 La base de la jonction PN est un cristal de silicium dopé (avec ajout de) au bore, à l'aluminium ou au gallium pour la couche P et au phosphore, à l'arsenic ou à l'antimoine pour la couche N.
@@ -103,7 +103,7 @@ On utilise une diode pour bloquer la circulation du courant dans un sens (comme 
 ### Transistors NPN
 
 {% lien %}
-[Le transistor bipolaire](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=2){.externe}
+[Le transistor bipolaire](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=2)
 {% endlien %}
 
 Un transistor à jonction utilise le principe de la diode en ajoutant une couche supplémentaire. Il existe ainsi deux types de transistors à jonction : les PNP et les NPN. Nous allons montrer le principe pour les NPN utilisés en électronique, mais le principe est le même pour les PNP. Sa construction reprend celle de la diode, c'est un collage d'un cristal P entre deux cristaux N :
@@ -133,7 +133,7 @@ Dans les circuits électroniques, il va être utilisé comme un interrupteur :
 - si la tension entre la base et l'émetteur est inférieure à la tension de seuil ($\simeq 0.7V$ comme une diode), le transistor est bloqué : aucun courant ne peut passer entre le collecteur et l'émetteur,
 - si la tension entre la base et l'émetteur est égale à la tension de seuil (comme pour une diode, la tension ne peut être supérieure à celle-ci), le courant $I_B$ va être amplifié pour donner un courant $I_C = \beta \cdot I_B$ si on applique une tension entre le collecteur et l'émetteur.
 
-Les bascules se font en tension (+5V) mais doivent être converties en courant (via [des résistances de rappel](https://fr.wikipedia.org/wiki/R%C3%A9sistance_de_rappel){.externe}) puisque la commande d'un transistor à jonction est le courant de base.
+Les bascules se font en tension (+5V) mais doivent être converties en courant (via [des résistances de rappel](https://fr.wikipedia.org/wiki/R%C3%A9sistance_de_rappel)) puisque la commande d'un transistor à jonction est le courant de base.
 
 On peut alors faire des portes NON :
 
@@ -151,10 +151,10 @@ Ces transistors ne sont plus utilisés pour les circuits électroniques car, mê
 [Le cyberpunk](https://www.youtube.com/watch?v=aIYp4ArokzE) de l'informatique
 {% endnote %}
 
-Comme pour les transistors à jonction, il existe deux types de transistors à effet de champ ([MOSFET](https://fr.wikipedia.org/wiki/Transistor_%C3%A0_effet_de_champ_%C3%A0_grille_m%C3%A9tal-oxyde){.externe}), les NMOS et les PMOS. Les deux sont utilisés en électronique et fonctionnent à l'opposé. Comme pour le transistor à jonction, nous allons montrer le NMOS.
+Comme pour les transistors à jonction, il existe deux types de transistors à effet de champ ([MOSFET](https://fr.wikipedia.org/wiki/Transistor_%C3%A0_effet_de_champ_%C3%A0_grille_m%C3%A9tal-oxyde)), les NMOS et les PMOS. Les deux sont utilisés en électronique et fonctionnent à l'opposé. Comme pour le transistor à jonction, nous allons montrer le NMOS.
 
 {% lien %}
-[Le transistor MOSFET](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=3){.externe}
+[Le transistor MOSFET](https://www.youtube.com/watch?v=Zjw7Prg5244&list=PLKV-I2qagq68bc0Aq9Ivy0Dh-A-ma08Oz&index=3)
 {% endlien %}
 
 Dans un transistor à jonction, c'est le courant $I_B$ qui donne les électrons nécessaires pour rendre le transistor passant entre le collecteur et l'émetteur. Dans les transistors MOSFET, c'est un champ :

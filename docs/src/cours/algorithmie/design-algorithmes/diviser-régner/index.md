@@ -21,7 +21,7 @@ eleventyComputed:
 > TBD
 > naif
 > comme fusion
-> vérification à la fin : <https://perso.ens-lyon.fr/frederic.vivien/Enseignement/Algo-2001-2002/Corrige-TD04.pdf>{.externe}
+> vérification à la fin : <https://perso.ens-lyon.fr/frederic.vivien/Enseignement/Algo-2001-2002/Corrige-TD04.pdf>
 
 
 ## Exemple du calcul de la médiane

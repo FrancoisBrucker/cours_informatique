@@ -59,8 +59,8 @@ En mode logique on a alors soit :
 ## Portes logiques
 
 {% lien %}
-- [MOSFET en logique](https://www.youtube.com/watch?v=wGrkczNxEh0&list=PLQms29D1RqeKb21acQ481DRiDH28sE0vN&index=1){.externe}
-- [Construire les portes logiques](https://www.youtube.com/watch?v=1rZyGL1K5QI){.externe}
+- [MOSFET en logique](https://www.youtube.com/watch?v=wGrkczNxEh0&list=PLQms29D1RqeKb21acQ481DRiDH28sE0vN&index=1)
+- [Construire les portes logiques](https://www.youtube.com/watch?v=1rZyGL1K5QI)
 {% endlien %}
 
 On combine les comportements opposés des deux types de transistors pour former des portes logiques selon les entrées.
@@ -103,7 +103,7 @@ On ajoute des NOT au OR :
 
 {% lien %}
 Toutes les vidéos de cette chaîne sont incroyables et je ne peux que vous enjoindre de toutes les regarder. Celle concernant la RAM est là :
-<https://www.youtube.com/watch?v=rM9BjciBLmg&list=PL9vTTBa7QaQOoMfpP3ztvgyQkPWDPfJez&index=2>{.externe}
+<https://www.youtube.com/watch?v=rM9BjciBLmg&list=PL9vTTBa7QaQOoMfpP3ztvgyQkPWDPfJez&index=2>
 {% endlien %}
 
 > TBD

@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/){.externe} avec python. [On a déjà vu](/cours/système/interagir-avec-système/terminal/bases/#vscode) rapidement comment utiliser le terminal dans vscode, nous allons voir ici comment l'utiliser pour exécuter du code python.
+Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/) avec python. [On a déjà vu](/cours/système/interagir-avec-système/terminal/bases/#vscode) rapidement comment utiliser le terminal dans vscode, nous allons voir ici comment l'utiliser pour exécuter du code python.
 
 
 ## Exécuter du python via le terminal
@@ -62,7 +62,7 @@ Déterminer votre `nom-du-programme-python`, puis exécutez le dans un autre ter
 
 ![interpréteur](python-interpreteur.png)
 
-Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande){.externe}) :
+Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)) :
 
 {% faire %}
 Tapez :

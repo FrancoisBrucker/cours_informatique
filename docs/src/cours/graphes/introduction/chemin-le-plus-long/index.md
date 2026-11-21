@@ -313,7 +313,7 @@ Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \v
 > TBD DFS et Problème d’ordonnancements
 >
 
-Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement){.externe} peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
+Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement) peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
 
 {% exercice %}
 Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?

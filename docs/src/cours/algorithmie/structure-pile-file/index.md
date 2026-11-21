@@ -55,7 +55,7 @@ La pile est la structure de données qui rend toujours la donné la plus **ancie
 
 ## Deques
 
-Souvent, la pile et la file sont réunies en une seule structure : [le **_deque_** (_"doubled ended queue"_)](https://en.wikipedia.org/wiki/Double-ended_queue){.externe} :
+Souvent, la pile et la file sont réunies en une seule structure : [le **_deque_** (_"doubled ended queue"_)](https://en.wikipedia.org/wiki/Double-ended_queue) :
 
 ```pseudocode
 structure Deque<T>:
@@ -109,7 +109,7 @@ méthode (d: Deque<T>) dépile() → T:
 C'est souvent la structure de Deque qui est utilisée par défaut et remplace les structures de pile et file car elle combine les deux structures sans perte de complexité.
 
 {% info %}
-En python, c'est [la classe deque](https://docs.python.org/fr/3.13/library/collections.html#collections.deque){.externe} du module [collections](https://docs.python.org/fr/3.13/library/collections.html){.externe} qui contient une série de classes implémentant des structures de données utiles.
+En python, c'est [la classe deque](https://docs.python.org/fr/3.13/library/collections.html#collections.deque) du module [collections](https://docs.python.org/fr/3.13/library/collections.html) qui contient une série de classes implémentant des structures de données utiles.
 
 {% endinfo %}
 

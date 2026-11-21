@@ -19,7 +19,7 @@ Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu
 
 1. les instructions basiques durent un temps similaire,
 2. l'on ait un moyen efficace de mesurer le temps
-3. le système ne doit exécuter que l'algorithme et n'avoir aucun autre [processus concurrent](https://fr.wikipedia.org/wiki/Programmation_concurrente){.externe} (en temps partagé) (voir prérequis système)
+3. le système ne doit exécuter que l'algorithme et n'avoir aucun autre [processus concurrent](https://fr.wikipedia.org/wiki/Programmation_concurrente) (en temps partagé) (voir prérequis système)
 4. les paramètres d'entrée doivent :
   - réaliser le maximum si on cherche à mesurer la complexité (maximum),
   - réaliser le minimum si on cherche à mesurer la complexité minimum,
@@ -56,8 +56,8 @@ def recherche(T, x):
 
 Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langage, le code source est :
 
-- soit converti en [bytecode](https://fr.wikipedia.org/wiki/Bytecode){.externe} (comme [le python](https://www.python.org/){.externe} ou [le java](https://www.java.com/fr/){.externe}), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur
-- soit directement converti en langage machine (comme [le go](https://go.dev/){.externe} ou encore [le rust](https://rust-lang.org/fr/){.externe}), c'est-à-dire en [instructions processeurs](https://fr.wikipedia.org/wiki/Jeu_d%27instructions){.externe},
+- soit converti en [bytecode](https://fr.wikipedia.org/wiki/Bytecode) (comme [le python](https://www.python.org/) ou [le java](https://www.java.com/fr/)), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur
+- soit directement converti en langage machine (comme [le go](https://go.dev/) ou encore [le rust](https://rust-lang.org/fr/)), c'est-à-dire en [instructions processeurs](https://fr.wikipedia.org/wiki/Jeu_d%27instructions),
 
 Ces deux approches nécessitent une étape de conversion :
 
@@ -68,7 +68,7 @@ Enfin, la première approche permet de créer un code portable, seul l'interpré
 
 #### Instruction python
 
-Pour voir le bytecode python, on peut utiliser [le module `dis`{.language-}](https://docs.python.org/fr/3.15/library/dis.html){.externe} :
+Pour voir le bytecode python, on peut utiliser [le module `dis`{.language-}](https://docs.python.org/fr/3.15/library/dis.html) :
 
 ```python
 import dis
@@ -124,7 +124,7 @@ Les instructions élémentaires de python ne sont donc pas celles du pseudo-code
 
 ```
 
-L'instruction de bytecode `BINARY_OP` utilisée est un algorithme qui va prendre un temps proportionnel au nombre de chiffres de ses paramètres. Pour le vérifier on peut utiliser [le module `timeit`{.language-}](https://docs.python.org/fr/3.15/library/timeit.html){.externe} qui va mesurer le temps mis pour exécuter du code python `number`{.language-} fois :
+L'instruction de bytecode `BINARY_OP` utilisée est un algorithme qui va prendre un temps proportionnel au nombre de chiffres de ses paramètres. Pour le vérifier on peut utiliser [le module `timeit`{.language-}](https://docs.python.org/fr/3.15/library/timeit.html) qui va mesurer le temps mis pour exécuter du code python `number`{.language-} fois :
 
 ```python
 >>> import timeit
@@ -140,9 +140,9 @@ On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et
 
 #### Instructions processeur
 
-Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des [processeurs CISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu){.externe} qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des [processeurs RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit){.externe} avec peu d'instructions.
+Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des [processeurs CISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu) qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des [processeurs RISC](https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit) avec peu d'instructions.
 
-Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour un test booléen, quelques dizaines de cycles pour une division de deux nombres codés sur 64 bits à plusieurs millions de cycles pour [l'instruction `WBINVD`](https://www.felixcloutier.com/x86/wbinvd){.externe}. 
+Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour un test booléen, quelques dizaines de cycles pour une division de deux nombres codés sur 64 bits à plusieurs millions de cycles pour [l'instruction `WBINVD`](https://www.felixcloutier.com/x86/wbinvd). 
 
 #### En pratique
 
@@ -166,9 +166,9 @@ On dispose de deux outils pour mesurer le temps :
 - une horloge : <https://docs.python.org/fr/3.15/library/datetime.html>
 - un chronomètre : <https://docs.python.org/fr/3.15/library/time.html#time.perf_counter_ns>
 
-Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du [fuseau horaire](https://fr.wikipedia.org/wiki/Fuseau_horaire){.externe} et finalement moins précise (à la microseconde près) qu'un chronomètre (à la nanoseconde près).
+Le premier va rendre une date (ce que l'on cherche est un temps et faire des différences de date est compliqué), dépendante du [fuseau horaire](https://fr.wikipedia.org/wiki/Fuseau_horaire) et finalement moins précise (à la microseconde près) qu'un chronomètre (à la nanoseconde près).
 
-On a déjà vu un exemple de mesure d'un code python avec le module `timeit`{.language-}. Il n'est cependant pas pratique car il faut mettre le code sous la forme d'une chaîne à exécuter ou d'une fonction sans paramètre. Il est plus simple d'utiliser le chronomètre [du module `time`{.language-}](https://docs.python.org/fr/3.15/library/time.html){.externe}.
+On a déjà vu un exemple de mesure d'un code python avec le module `timeit`{.language-}. Il n'est cependant pas pratique car il faut mettre le code sous la forme d'une chaîne à exécuter ou d'une fonction sans paramètre. Il est plus simple d'utiliser le chronomètre [du module `time`{.language-}](https://docs.python.org/fr/3.15/library/time.html).
 
 ```python
 from time import perf_counter_ns
@@ -278,7 +278,7 @@ Notez qu'on a initialisé le temps à `None`{.language-} pour toujours prendre l
 
 #### Isoler de python
 
-Maintenant que notre programme est isolé du reste du système, une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'appelle [le ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)){.externe} et est un mécanisme fondamental qui permet de minimiser la mémoire utilisée. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise [le module `gc`{.language-}](https://docs.python.org/fr/3.15/library/gc.html) qui nous permet de contrôler ce mécanisme.
+Maintenant que notre programme est isolé du reste du système, une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'appelle [le ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)) et est un mécanisme fondamental qui permet de minimiser la mémoire utilisée. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise [le module `gc`{.language-}](https://docs.python.org/fr/3.15/library/gc.html) qui nous permet de contrôler ce mécanisme.
 
 Le code devient maintenant :
 
@@ -358,7 +358,7 @@ def calcul(f, f_params, rep=10):
 ```
 
 {% info %}
-On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec [la notation `*args`{.language-}](https://believemy.com/fr/glossaires/python/args){.externe}.
+On utilise la possibilité qu'offre python d'utiliser une liste comme suite de paramètres d'une fonction avec [la notation `*args`{.language-}](https://believemy.com/fr/glossaires/python/args).
 {% endinfo %}
 
 On pourra l'utiliser ainsi :
@@ -431,7 +431,7 @@ print("Pour un dixième de seconde N_max =", N_max)
 
 ```
 
-On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise [la fonction `linspace`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html){.externe} du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en `K`{.language-} points d'un intervalle allant de `N_min`{.language-} à `N_max`{.language-}, en gardant le fait que ce sont des entiers :
+On ne peut pas se permettre de mesurer le temps pris pour tous les tableaux de taille 1 à N_max = 16777216, cela prendrait trop de temps et serait inutile. On utilise [la fonction `linspace`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html) du module numpy qui rend un découpage d'un intervalle donné. Si on veut un découpage en `K`{.language-} points d'un intervalle allant de `N_min`{.language-} à `N_max`{.language-}, en gardant le fait que ce sont des entiers :
 
 ```python
 import numpy as np
@@ -503,7 +503,7 @@ Les derniers calculs peuvent prendre du temps puisque l'on fait 10 fois un calcu
 
 ## Complexité en moyenne
 
-Pour calculer la complexité en moyenne, il faut chercher un entier quelconque du tableau ou pas. On peut par exemple utiliser le code suivant, utilisant la fonction `randrange`{.language-} [du module random](https://docs.python.org/fr/3/library/random.html){.externe} :
+Pour calculer la complexité en moyenne, il faut chercher un entier quelconque du tableau ou pas. On peut par exemple utiliser le code suivant, utilisant la fonction `randrange`{.language-} [du module random](https://docs.python.org/fr/3/library/random.html) :
 
 ```python
 import random

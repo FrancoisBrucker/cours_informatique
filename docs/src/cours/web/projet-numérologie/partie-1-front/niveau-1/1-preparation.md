@@ -24,8 +24,8 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 
 D'après les prérequis du projet, vous avez :
 
-* [vscode](https://code.visualstudio.com/){.externe}
-* [node](https://nodejs.org/en/){.externe} que vous pouvez exécuter dans [un terminal](/cours/système/interagir-avec-système/terminal/)
+* [vscode](https://code.visualstudio.com/)
+* [node](https://nodejs.org/en/) que vous pouvez exécuter dans [un terminal](/cours/système/interagir-avec-système/terminal/)
 
 ## Projet
 
@@ -42,7 +42,7 @@ Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les n
 
 On va créer notre premier fichier javascript : *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom `mes_tests.js`{.fichier}.
 
-Vscode à compris que c'était du javascript, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface){.externe}). Commençons notre voyage dans le monde merveilleux de la programmation web serveur, en écrivant notre premier programme javascript dans le fichier `numérologie/"mes_tests.js`{.fichier} :
+Vscode à compris que c'était du javascript, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)). Commençons notre voyage dans le monde merveilleux de la programmation web serveur, en écrivant notre premier programme javascript dans le fichier `numérologie/"mes_tests.js`{.fichier} :
 
 ```javascript
 let nom = "monde"

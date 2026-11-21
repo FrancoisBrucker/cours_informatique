@@ -132,7 +132,7 @@ Notre user story dit que la police de caractère du chiffre doit être *rigolote
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-Si on est pas riche à millions pour acheter une font propriétaire, choisir une fonte spéciale peut se faire facilement grâce à : <https://fonts.google.com/>{.externe}.
+Si on est pas riche à millions pour acheter une font propriétaire, choisir une fonte spéciale peut se faire facilement grâce à : <https://fonts.google.com/>.
 
 Cela fonctionne de façon assez finaude. Une fois la font choisie et ses styles choisis, google nous donne un lien à mettre dans notre balise head. Ici :
 
@@ -154,7 +154,7 @@ p {
 ```
 
 {% info %}
-Remarquez comme la marque des [commentaires en css](https://developer.mozilla.org/fr/docs/Web/CSS/Comments){.externe} est différentes de ceux en javascript. UN peut de patience, nous verrons comment sont les commentaires html dans la prochaine partie...
+Remarquez comme la marque des [commentaires en css](https://developer.mozilla.org/fr/docs/Web/CSS/Comments) est différentes de ceux en javascript. UN peut de patience, nous verrons comment sont les commentaires html dans la prochaine partie...
 {% endinfo %}
 
 ## Todos finaux

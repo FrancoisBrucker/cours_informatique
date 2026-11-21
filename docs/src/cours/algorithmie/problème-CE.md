@@ -27,7 +27,7 @@ Nous allons montrer que le problème Couverture Exacte est NP-complet
 - l'intersection de deux éléments différents de $\mathcal{P}$ est vide.
   {% endinfo %}
 
-Illustrons ce problème en reprenant [un exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2){.externe} :
+Illustrons ce problème en reprenant [un exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) :
 
 - $U = \\{1, 2, 3, 4, 5, 6, 7\\}$
 - $\mathcal{S} = \\{ \\{1, 4, 7\\}, \\{1, 4\\}, \\{4, 5, 7\\},\\{3, 5, 6\\},\\{2, 3, 6, 7\\},\\{2, 7\\}  \\}$

@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 {% lien %}
-[Algorithme de Busacker et Gowen](https://fr.wikipedia.org/wiki/Algorithme_de_Busacker_et_Gowen){.externe}
+[Algorithme de Busacker et Gowen](https://fr.wikipedia.org/wiki/Algorithme_de_Busacker_et_Gowen)
 {% endlien %}
 
 {% attention %}
@@ -68,4 +68,4 @@ Comme on augmente un flot de coût minimum, on a plus de garantie de polynomiali
 La complexité de l'algorithme de Buscker-Gowen est en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.
 {% endnote %}
 
-Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de [programmation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire){.externe}, mais ceci sort du cadre d'un court de graphe.
+Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de [programmation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire), mais ceci sort du cadre d'un court de graphe.

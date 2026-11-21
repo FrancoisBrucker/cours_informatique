@@ -41,7 +41,7 @@ Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérable
 [Ensembles](ensembles)
 {% endaller %}
 
-Le pendant non mutable d'un ensemble est le [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset){.externe}. Par exemple :
+Le pendant non mutable d'un ensemble est le [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset). Par exemple :
 
 ```python
 
@@ -57,4 +57,4 @@ qui transforme l'ensemble `{1, 2, 3}`{.language-} en un `frozenset`{.language-}.
 [Dictionnaires](dictionnaires)
 {% endaller %}
 
-Les dictionnaires possèdent [depuis python 3.15](https://docs.python.org/3.15/whatsnew/3.15.html#whatsnew315-frozendict){.externe} leur pendant non mutable sous la forme d'un `frozendict`{.language-}
+Les dictionnaires possèdent [depuis python 3.15](https://docs.python.org/3.15/whatsnew/3.15.html#whatsnew315-frozendict) leur pendant non mutable sous la forme d'un `frozendict`{.language-}

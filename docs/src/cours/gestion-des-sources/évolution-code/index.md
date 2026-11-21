@@ -20,7 +20,7 @@ Comment gérer l'évolution de son code source au quotidien, sans avoir peur de 
 - comment ajouter des membres à un projet
 
 {% info %}
-L'[aide de github](https://docs.github.com/en/get-started){.externe} est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
+L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
 

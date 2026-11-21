@@ -11,12 +11,12 @@ eleventyComputed:
 
 Ce qui différencie une machine de Turing d'une autre c'est la fonction de transition.
 
-Un des résultats les plus surprenant de Turing est qu'en fait on ne peut construire qu'**une seule machine** qui simulera toutes les autres. Cette machine est appelée [Machine de Turing universelle](https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle){.externe} et possède deux paramètres, le premier, $M$ représentant le programme d'une machine de Turing et le second $E$ une entrée.
+Un des résultats les plus surprenant de Turing est qu'en fait on ne peut construire qu'**une seule machine** qui simulera toutes les autres. Cette machine est appelée [Machine de Turing universelle](https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle) et possède deux paramètres, le premier, $M$ représentant le programme d'une machine de Turing et le second $E$ une entrée.
 
 Nous allons dans cette partie faire deux choses :
 
 1. encoder une machine de Turing sous la forme d'une suite de `0` et de `1`
-2. écrire une machine, nommée [Machine de Turing Universelle](https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle){.externe} (MTU), qui prend ses encodages en paramètre et les exécute
+2. écrire une machine, nommée [Machine de Turing Universelle](https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle) (MTU), qui prend ses encodages en paramètre et les exécute
 
 {% info %}
 Nous utiliserons ici dès que nous le pourrons et sans perte de généralité les [Machines de Turing `01#`](../définitions-alternatives/#MT-01#) ce qui nous permettra, entre autres, d'avoir plusieurs paramètres d'entrée.
@@ -289,6 +289,6 @@ On peut encoder toute machine de Turing $M$ par une chaîne $\<M\>$ composée de
 
 {% endnote %}
 
-La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique){.externe} : une machine qui permet de simuler efficacement toutes les autres machine.
+La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique) : une machine qui permet de simuler efficacement toutes les autres machine.
 
 Il suffit de construire une seule machine pour avoir toutes les machines de Turing possible via leur encodage.

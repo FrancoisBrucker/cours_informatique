@@ -94,8 +94,8 @@ Tout ce fait de façon polynomiale puisque :
 
 {% lien %}
 
-- [Méthode hongroise](https://www.youtube.com/watch?v=fMAmtE0UyzI){.externe}
-- [Algorithme hongrois](https://fr.wikipedia.org/wiki/Algorithme_hongrois){.externe}
+- [Méthode hongroise](https://www.youtube.com/watch?v=fMAmtE0UyzI)
+- [Algorithme hongrois](https://fr.wikipedia.org/wiki/Algorithme_hongrois)
 
 {% endlien %}
 
@@ -113,7 +113,7 @@ Si l'on cherche à maximiser des préférences rangées dans une matrice $n \tim
 
 {% info %}
 
-On reprend ici [l'algorithme décrit ici](https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf){.externe}.
+On reprend ici [l'algorithme décrit ici](https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf).
 
 {% endinfo %}
 

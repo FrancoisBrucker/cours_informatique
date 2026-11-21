@@ -14,18 +14,18 @@ eleventyComputed:
 ---
 
 
-> TBD voir <http://aral.iut-rodez.fr/fr/sanchis/enseignement/bash/>{.externe}
+> TBD voir <http://aral.iut-rodez.fr/fr/sanchis/enseignement/bash/>
 >
-> TBD variable substitution : <https://www.ibm.com/docs/en/aix/7.1.0?topic=shell-parameter-substitution-in-korn-posix>{.externe}
+> TBD variable substitution : <https://www.ibm.com/docs/en/aix/7.1.0?topic=shell-parameter-substitution-in-korn-posix>
 >
-> POSIX shell documentation : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html>{.externe}
+> POSIX shell documentation : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html>
 >
-> TBD shell string manipulation <https://www.youtube.com/watch?v=kkH7IoRfw9I>{.externe}
+> TBD shell string manipulation <https://www.youtube.com/watch?v=kkH7IoRfw9I>
 {% lien %}
 
-- [quelques liens](https://www.youtube.com/watch?v=Jllnhid7O7w){.externe}
-- [Cheat sheet par type](https://github.com/lazyoracle/linux-cheatsheet){.externe}
-- [Cheat sheet terminal et liste commandes](https://cheatography.com/davechild/cheat-sheets/linux-command-line/){.externe}
+- [quelques liens](https://www.youtube.com/watch?v=Jllnhid7O7w)
+- [Cheat sheet par type](https://github.com/lazyoracle/linux-cheatsheet)
+- [Cheat sheet terminal et liste commandes](https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
 
 {% endlien %}
 
@@ -39,10 +39,10 @@ Le shell est ce via quoi on exécute des commandes.
 > globing *
 > $(), $(())
 > redirection entrée/sortie/erreur
-> TBD lien <https://matthieu-moy.fr/spip/IMG/pdf/sh.pdf>{.externe}
+> TBD lien <https://matthieu-moy.fr/spip/IMG/pdf/sh.pdf>
 >
-> utilisation du [process substitution](https://tldp.org/LDP/abs/html/process-sub.html){.externe} : <https://www.youtube.com/watch?v=2A4bs40scSo>{.externe}
-> à mettre dans les pipe et named pipe car c'est en fait ça. Voir la même chose en sh avec des named pipe : <https://stackoverflow.com/questions/38796224/posix-shell-equivalent-to>{.externe} ou wvec des fichiers <https://www.shellcheck.net/wiki/SC3001>{.externe}
+> utilisation du [process substitution](https://tldp.org/LDP/abs/html/process-sub.html) : <https://www.youtube.com/watch?v=2A4bs40scSo>
+> à mettre dans les pipe et named pipe car c'est en fait ça. Voir la même chose en sh avec des named pipe : <https://stackoverflow.com/questions/38796224/posix-shell-equivalent-to> ou wvec des fichiers <https://www.shellcheck.net/wiki/SC3001>
 
 ## Variables d'environnement
 
