@@ -27,7 +27,7 @@ Ne recodez pas vos propres algorithmes pour gérer l'aléatoire : utilisez des b
 ## Nombres aléatoire et pseudo-aléatoires
 
 {% lien %}
-[Différences entre les différents générateur pseudo-aléatoires](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/stream-ciphers/stream-ciphers-random-numbers-and-the-one-time-pad/examination-review-stream-ciphers-random-numbers-and-the-one-time-pad/what-are-the-key-differences-between-true-random-number-generators-trngs-pseudorandom-number-generators-prngs-and-cryptographically-secure-pseudorandom-number-generators-csprngs/){.externe}
+[Différences entre les différents générateur pseudo-aléatoires](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/stream-ciphers/stream-ciphers-random-numbers-and-the-one-time-pad/examination-review-stream-ciphers-random-numbers-and-the-one-time-pad/what-are-the-key-differences-between-true-random-number-generators-trngs-pseudorandom-number-generators-prngs-and-cryptographically-secure-pseudorandom-number-generators-csprngs/)
 {% endlien %}
 
 En informatique, un générateur aléatoire
@@ -48,10 +48,10 @@ Il n'est pas nécessaire de pouvoir générer des réels en informatique, seul 1
 > TBD coûteux en temps.
 
 {% lien %}
-<https://www.random.org/>{.externe}
+<https://www.random.org/>
 {% endlien %}
 
-Et ces méthodes sont implémentées directement [sur le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random){.externe}
+Et ces méthodes sont implémentées directement [sur le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random)
 
 ### PRNG : Nombres pseudo-aléatoires
 
