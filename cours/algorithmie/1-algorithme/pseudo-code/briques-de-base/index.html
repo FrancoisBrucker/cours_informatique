@@ -156,8 +156,8 @@
 <p>La plupart des objets basiques sont de taille fixe :</p>
 <ul>
 <li>un booléen a une taille de 1bit (<code>0</code> pour faux, <code>1</code> pour vrai)</li>
-<li>un caractère a une taille de 32bit puisqu'on utilise <a href="https://fr.wikipedia.org/wiki/Unicode" class="externe">les caractères Unicode</a></li>
-<li>un réel a une taille de 64bit si on utilise <a href="https://fr.wikipedia.org/wiki/IEEE_754" class="externe">la norme IEEE 754 double précision</a></li>
+<li>un caractère a une taille de 32bit puisqu'on utilise <a href="https://fr.wikipedia.org/wiki/Unicode">les caractères Unicode</a></li>
+<li>un réel a une taille de 64bit si on utilise <a href="https://fr.wikipedia.org/wiki/IEEE_754">la norme IEEE 754 double précision</a></li>
 </ul>
 <p>D'autres n'ont pas de limite fixée :</p>
 <ul>
@@ -181,7 +181,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Implémentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p>En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée <strong>tas</strong>. Chaque case du tas peut contenir <a href="https://fr.wikipedia.org/wiki/Byte" class="externe">1 byte</a> qui correspond à 8 bits.</p>
+<p>En réalité, les objets sont stockés dans une partie de la mémoire de l'ordinateur nommée <strong>tas</strong>. Chaque case du tas peut contenir <a href="https://fr.wikipedia.org/wiki/Byte">1 byte</a> qui correspond à 8 bits.</p>
 <p><img src="tas.png" alt="tas"></p>
 <p>Notez que le tas peut contenir des &quot;trous&quot;, c'est-à-dire des endroits sans objets. Enfin, dans cette implémentation réelle un entier sera stocké sur plusieurs bytes et donc plusieurs cases mémoire.</p>
 </div>
@@ -240,7 +240,7 @@
 </li>
 <li>pour les chaînes de caractères :
 <ul>
-<li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>) en utilisant l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique" class="externe">ordre du dictionnaire</a></li>
+<li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>) en utilisant l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre du dictionnaire</a></li>
 <li>opération de concaténation (avec l'opérateur <code class="language-">+</code>) : <code class="language-">&quot;comment vas-tu&quot; + &quot; yau d’poêle ?&quot;</code> vaut la chaîne de caractères <code class="language-">&quot;comment vas-tu yau d’poêle ?&quot;</code></li>
 </ul>
 </li>

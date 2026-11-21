@@ -148,7 +148,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision" class="externe">Les problèmes de décision</a> sont très important en informatique théorique. On le verra (bien) plus tard.</p>
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision">Les problèmes de décision</a> sont très important en informatique théorique. On le verra (bien) plus tard.</p>
 </div>
 </div>
 <p>Par exemple :</p>
@@ -222,7 +222,7 @@ $$</p>
 <p>Ce qu'on peut déjà dire de notre problème :</p>
 <ul>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un entier</li>
-<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#max-tableau">on a déjà calculé la complexité</a>) résout le problème</li>
+<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../../2-complexit%C3%A9s/complexit%C3%A9-moyenne/#max-tableau">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
@@ -352,7 +352,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </div>
 </div>
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">recherche(T)</code>.</p>
-<p>On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : <a href="../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#dichotomie">la recherche dichotomique</a>. Rappelons cet algorithme :</p>
+<p>On a cependant vu un algorithme permettant d'aller plus vite dans ce cas : <a href="../../2-complexit%C3%A9s/complexit%C3%A9-algorithmes/#dichotomie">la recherche dichotomique</a>. Rappelons cet algorithme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
   <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span></span> <span class="token operator">←</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
   <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span> <span class="token type class-name">int</span></span>

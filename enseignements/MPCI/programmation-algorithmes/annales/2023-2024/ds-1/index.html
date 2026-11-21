@@ -431,7 +431,7 @@
 <blockquote>
 <p>Déduisez-en que la complexité du problème de l'élément majoritaire est en $\Omega(n)$, avec $n$ la taille du tableau (il n'existe pas d'algorithme permettant de résoudre le problème de l'élément majoritaire en strictement moins de $n$ opérations pour tout $n &gt; N_0$).</p>
 </blockquote>
-<p>On procède comme dans le cours pour démontrer <a href="/cours_informatique/cours/algorithmie/complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la recherche</a>.</p>
+<p>On procède comme dans le cours pour démontrer <a href="/cours_informatique/cours/algorithmie/3-probl%C3%A8mes-algorithmiques/tris/complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche">la complexité du problème de la recherche</a>.</p>
 <p>On suppose qu'il existe un algorithme prenant strictement moins que $n$ opérations pour trouver l'élément majoritaire de tout tableau de taille $n &gt; N_0$. Prenons un tableau $T$ comme dans la question précédente. On a alors deux cas :</p>
 <ul>
 <li>soit l'algorithme a parcouru toutes les cases de $T$ possédant l'élément majoritaire et il a eu besoin d'au moins $\frac{n}{2} + 1 = \Omega(n)$ opérations,</li>
@@ -493,7 +493,7 @@
 <blockquote>
 <p>Donnez le nom d'un algorithme de tri ayant une complexité de $\mathcal{O}(n\ln(n))$ avec $n$ la taille du tableau à trier. Vous expliciterez son fonctionnement en quelques phrases.</p>
 </blockquote>
-<p>L'algorithme vu en cours qui a cette complexité est <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-tris/algorithme-fusion">le tri fusion</a> il utilise le principe algorithmique <em>diviser pour régner</em>. L'idée est de composer une liste triée à partir de deux listes elles même triées. L'algorithme est le suivant :</p>
+<p>L'algorithme vu en cours qui a cette complexité est <a href="/cours_informatique/cours/algorithmie/3-probl%C3%A8mes-algorithmiques/tris/algorithme-fusion">le tri fusion</a> il utilise le principe algorithmique <em>diviser pour régner</em>. L'idée est de composer une liste triée à partir de deux listes elles même triées. L'algorithme est le suivant :</p>
 <ol>
 <li>on scinde la liste en 2 parties égale que l'on trie en utilisant la récursion</li>
 <li>on crée une liste triée à partir des deux sous-listes triées (ceci peut se faire en $\mathcal{O}(n)$ opérations)</li>
@@ -544,7 +544,7 @@
 <blockquote>
 <p>Expliciter le principe algorithmique de <em>diviser pour régner</em></p>
 </blockquote>
-<p>Le principe algorithmique <em>diviser pour régner</em> est décrit dans le cours <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-tris/algorithme-fusion/#diviser-pour-r%C3%A9gner">ici</a> :</p>
+<p>Le principe algorithmique <em>diviser pour régner</em> est décrit dans le cours <a href="/cours_informatique/cours/algorithmie/3-probl%C3%A8mes-algorithmiques/tris/algorithme-fusion/#diviser-pour-r%C3%A9gner">ici</a> :</p>
 <p>Un algorithme de la forme <strong><em>diviser pour régner</em></strong> fonctionne en deux parties :</p>
 <ol>
 <li><strong>résoudre</strong> $k$ sous-problèmes du problème initial</li>

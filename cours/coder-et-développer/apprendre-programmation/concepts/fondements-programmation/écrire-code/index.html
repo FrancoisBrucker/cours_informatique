@@ -155,7 +155,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/reference/lexical_analysis.html#comments" class="externe">https://docs.python.org/fr/3/reference/lexical_analysis.html#comments</a></p>
+<p><a href="https://docs.python.org/fr/3/reference/lexical_analysis.html#comments">https://docs.python.org/fr/3/reference/lexical_analysis.html#comments</a></p>
 </div>
 </div>
 <p>Commençons par ne <strong>pas</strong> écrire du python. Dans une ligne de code python, tout ce qui suit un <code class="language-">#</code> n'est pas lu.</p>
@@ -175,7 +175,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/stdtypes.html#built-in-types" class="externe">https://docs.python.org/fr/3/library/stdtypes.html#built-in-types</a></p>
+<p><a href="https://docs.python.org/fr/3/library/stdtypes.html#built-in-types">https://docs.python.org/fr/3/library/stdtypes.html#built-in-types</a></p>
 </div>
 </div>
 <p>Les <strong><em>objets</em></strong> de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets.</p>
@@ -531,7 +531,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p>Notez bien que les objets mis en relations ne sont pas les mêmes, ce sont deux objets de type entier valant 1.</p>
 <p>L'instruction de la ligne 3 est identique aux deux précédentes : on associe un objet à une variable. Que cette variables était précédemment <strong>n'a pas d'importance</strong> : on l'associe à l'objet à droite de l'opérateur d'affectation <code>=</code> :</p>
 <p><img src="python-variables-objets-4.png" alt="association nom variable 4"></p>
-<p>L'objet précédemment assigné à <code>y</code> n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle <a href="https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c" class="externe">le garbage collector</a>).</p>
+<p>L'objet précédemment assigné à <code>y</code> n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle <a href="https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c">le garbage collector</a>).</p>
 <p>Le même mécanisme est à l'oeuvre si on a une variable à droite de l'opérateur d'affectation <code>=</code>. Considérons le programme suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">x <span class="token operator">=</span> <span class="token number">1</span></span>
 <span class="highlight-line">y <span class="token operator">=</span> <span class="token number">1</span></span>
@@ -619,7 +619,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>L'objet n'est plus accessible !</p>
 <p><img src="suppression-3.png" alt="suppression 3"></p>
 <p><span id="ramasse-miettes"></span>
-Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)" class="externe">ramasse-miettes</a> qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :</p>
+Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse-miettes</a> qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :</p>
 <p><img src="suppression-4.png" alt="suppression 4"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -717,7 +717,7 @@ Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramas
 <span class="token number">6</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
 <span class="token number">2</span></code></pre>
-<p>Les variables sont <a href="https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse" class="externe">sensibles à la casse</a> : a est différent de A.</p>
+<p>Les variables sont <a href="https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse">sensibles à la casse</a> : a est différent de A.</p>
 </div>
 </details>     
 </div>
@@ -1013,7 +1013,7 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 <p><img src="nouvel-objet-0.png" alt="nouvel objet"></p>
 <p>En incrémentant <code class="language-">x</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span></code></pre>
-<p>On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du <a href="../variables/#ramasse-miettes">ramasse-miettes</a> :</p>
+<p>On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du <a href="#ramasse-miettes">ramasse-miettes</a> :</p>
 <p><img src="nouvel-objet.png" alt="nouvel objet"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1044,7 +1044,7 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token operator">>></span><span class="token operator">></span> </code></pre>
-<p>Va exécuter la fonction <code class="language-">print</code> de python qui affiche à l'écran le caractère <a href="https://fr.wikipedia.org/wiki/Retour_chariot" class="externe">retour à la ligne</a> ce qui a pour effet d'aller à la ligne.</p>
+<p>Va exécuter la fonction <code class="language-">print</code> de python qui affiche à l'écran le caractère <a href="https://fr.wikipedia.org/wiki/Retour_chariot">retour à la ligne</a> ce qui a pour effet d'aller à la ligne.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -1061,7 +1061,7 @@ coucou les gens !</code></pre>
 <p>L'exécution de la fonction <code class="language-">print</code> avec les trois paramètres <code class="language-">&quot;coucou&quot;</code>, <code class="language-">&quot;les gens&quot;</code> et <code class="language-">&quot;!&quot;</code> affichera à l'écran les 3 paramètres espacé d'un caractère (séparé par un caractère espace &quot; &quot;) puis ira à la ligne.</p>
 <p>Toutes les fonctions de python sont documentées. On peut y accéder :</p>
 <ul>
-<li>via le site de python. L'aide de la fonction <code class="language-">print</code> est là : <a href="https://docs.python.org/fr/3/library/functions.html#print" class="externe">https://docs.python.org/fr/3/library/functions.html#print</a></li>
+<li>via le site de python. L'aide de la fonction <code class="language-">print</code> est là : <a href="https://docs.python.org/fr/3/library/functions.html#print">https://docs.python.org/fr/3/library/functions.html#print</a></li>
 <li>en console en utilisant la fonction <code class="language-">help</code> : <code class="language-">help(print)</code> donne l'aide de <code class="language-">print</code></li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -1121,7 +1121,7 @@ coucou
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom de variable> = &lt;nom de la fonction>(&lt;paramètre 1>, &lt;paramètre 2>, ..., &lt;paramètre n>)</code></pre>
 </div>
 </div>
-<p>C'est parfois utile (comme <a href="https://docs.python.org/3/library/functions.html#abs" class="externe">abs</a>) :</p>
+<p>C'est parfois utile (comme <a href="https://docs.python.org/3/library/functions.html#abs">abs</a>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token number">10</span></code></pre>
@@ -1146,7 +1146,7 @@ coucou
 <p>Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.</p>
 </div>
 </div>
-<p>En regardant <a href="https://docs.python.org/fr/3/library/functions.html#print" class="externe">la documentation de la fonction <code class="language-">print</code></a>, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (<code class="language-">sep</code>, <code class="language-">end</code>, <code class="language-">file</code>, <code class="language-">flush</code>) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut <code>sep</code> vaut <code class="language-">&quot; &quot;</code>).</p>
+<p>En regardant <a href="https://docs.python.org/fr/3/library/functions.html#print">la documentation de la fonction <code class="language-">print</code></a>, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (<code class="language-">sep</code>, <code class="language-">end</code>, <code class="language-">file</code>, <code class="language-">flush</code>) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut <code>sep</code> vaut <code class="language-">&quot; &quot;</code>).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -1237,7 +1237,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="https://docs.python.org/fr/3/library/functions.html#int" class="externe"><code class="language-">int()</code></a> qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011</p>
+<p>En utilisant <a href="https://docs.python.org/fr/3/library/functions.html#int"><code class="language-">int()</code></a> qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1267,7 +1267,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant le fait que la fonction <code class="language-">len(chaîne_de_caractères)</code> donne le nombre de caractères de la chaîne (par exemple <code class="language-">len(&quot;abc&quot;)</code> rend <code class="language-">3</code>), et que l'exposant eb python s'écrit <code class="language-">**</code> (par exemple <code class="language-">2**8</code> rend <code class="language-">256</code>) donnez le nombre de chiffre du 23ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier" class="externe">nombre de Mersenne premier</a>.</p>
+<p>En utilisant le fait que la fonction <code class="language-">len(chaîne_de_caractères)</code> donne le nombre de caractères de la chaîne (par exemple <code class="language-">len(&quot;abc&quot;)</code> rend <code class="language-">3</code>), et que l'exposant eb python s'écrit <code class="language-">**</code> (par exemple <code class="language-">2**8</code> rend <code class="language-">256</code>) donnez le nombre de chiffre du 23ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1300,7 +1300,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/functions.html" class="externe">https://docs.python.org/fr/3/library/functions.html</a></p>
+<p><a href="https://docs.python.org/fr/3/library/functions.html">https://docs.python.org/fr/3/library/functions.html</a></p>
 </div>
 </div>
 <p>Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.</p>
@@ -1312,7 +1312,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/functions.html#print" class="externe">https://docs.python.org/fr/3/library/functions.html#print</a></p>
+<p><a href="https://docs.python.org/fr/3/library/functions.html#print">https://docs.python.org/fr/3/library/functions.html#print</a></p>
 </div>
 </div>
 <p>Affiche à l'écran ses paramètres.</p>
@@ -1324,7 +1324,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/functions.html#type" class="externe">https://docs.python.org/fr/3/library/functions.html#type</a></p>
+<p><a href="https://docs.python.org/fr/3/library/functions.html#type">https://docs.python.org/fr/3/library/functions.html#type</a></p>
 </div>
 </div>
 <p>Donne le type d'un objet.</p>
@@ -1344,7 +1344,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/functions.html#len" class="externe">https://docs.python.org/fr/3/library/functions.html#len</a></p>
+<p><a href="https://docs.python.org/fr/3/library/functions.html#len">https://docs.python.org/fr/3/library/functions.html#len</a></p>
 </div>
 </div>
 <p>Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'<a href="../../conteneurs">un conteneur</a> que l'on verra plus tard).</p>
@@ -1384,7 +1384,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/functions.html#input" class="externe">https://docs.python.org/fr/3/library/functions.html#input</a></p>
+<p><a href="https://docs.python.org/fr/3/library/functions.html#input">https://docs.python.org/fr/3/library/functions.html#input</a></p>
 </div>
 </div>
 <p>Permet de demander une chaîne de caractère à un utilisateur. Par exemple :</p>
@@ -1424,7 +1424,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div>
 <p>Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaînes de caractères et les listes.</p>
 <p>Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera <code class="language-">None</code> (comme beaucoup de méthodes de liste que l'on verra bientôt).</p>
-<p>Par exemple <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper" class="externe">la méthode <code class="language-">upper()</code> des chaines de caractères</a> qui rend une nouvelle chaine en majuscule :</p>
+<p>Par exemple <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper">la méthode <code class="language-">upper()</code> des chaines de caractères</a> qui rend une nouvelle chaine en majuscule :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou !"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
 COUCOU !</code></pre>
 <p>On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
@@ -1447,8 +1447,8 @@ COUCOU !</code></pre>
 <span class="token number">2</span></code></pre>
 <p>L'exemple ci-dessus utilise :</p>
 <ul>
-<li><a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper" class="externe">la méthode <code class="language-">upper()</code> des chaines de caractères</a></li>
-<li>l<a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.count" class="externe">a méthode <code class="language-">count()</code> des chaines de caractères</a></li>
+<li><a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper">la méthode <code class="language-">upper()</code> des chaines de caractères</a></li>
+<li>l<a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.count">a méthode <code class="language-">count()</code> des chaines de caractères</a></li>
 </ul>
 <p>Ceci se généralise avec $n$ méthodes :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>(). ... .&lt;nom de la méthode n>()</code></pre>

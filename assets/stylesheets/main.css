@@ -1640,6 +1640,10 @@ a.interne:visited:active,
   text-decoration-thickness: 4px;
 }
 
+a[href^="http://"],
+a[href^="http://"]:visited,
+a[href^="https://"],
+a[href^="https://"]:visited,
 a.externe,
 a.externe:visited,
 .externe a,
@@ -1651,6 +1655,10 @@ a.externe:visited,
   text-decoration-thickness: 2px;
 }
 
+a[href^="http://"]:hover,
+a[href^="http://"]:visited:hover,
+a[href^="https://"]:hover,
+a[href^="https://"]:visited:hover,
 a.externe:hover,
 a.externe:visited:hover,
 .externe a:hover,
@@ -1660,6 +1668,10 @@ a.externe:visited:hover,
   text-decoration-color: #065f46;
 }
 
+a[href^="http://"]:active,
+a[href^="http://"]:visited:active,
+a[href^="https://"]:active,
+a[href^="https://"]:visited:active,
 a.externe:active,
 a.externe:visited:active,
 .externe a:active,

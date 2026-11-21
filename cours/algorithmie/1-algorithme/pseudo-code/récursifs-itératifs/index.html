@@ -176,7 +176,7 @@
 <p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptation aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrée un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong> pour stopper la récursion). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrée.</p>
 </div>
 </div>
-<p>Pour le calcul du $\operatorname{pgcd}$ on va utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD" class="externe">l'algorithme binaire de Stein</a> :</p>
+<p>Pour le calcul du $\operatorname{pgcd}$ on va utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD">l'algorithme binaire de Stein</a> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> min<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> max<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">)</span></span>
@@ -227,7 +227,7 @@
 </div>
 </details>     
 </div>
-<p>À chaque récursion soit $a$ soit $b$ (<a href="https://www.youtube.com/watch?v=mIUwEoG7ssM&amp;t=59s" class="externe">ou les deux</a>) diminue strictement : à chaque itération on se rapproche donc des deux cas sans récursion qui mettent fin à l'algorithme.</p>
+<p>À chaque récursion soit $a$ soit $b$ (<a href="https://www.youtube.com/watch?v=mIUwEoG7ssM&amp;t=59s">ou les deux</a>) diminue strictement : à chaque itération on se rapproche donc des deux cas sans récursion qui mettent fin à l'algorithme.</p>
 <p>Notre algorithme effectue 5 récursions avant de terminer pour calculer le pgcd entre 8 et 6 :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pgcd(8, 6) = 2 * pgcd(4, 3)
                  pgcd(4, 3) = pgcd(2, 3)
@@ -289,7 +289,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale" class="externe">Récursion terminale</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale">Récursion terminale</a></p>
 </div>
 </div>
 <p>La récursion terminale est un algorithme écrit sous une forme récursive pouvant facilement se mettre sous forme itérative :</p>

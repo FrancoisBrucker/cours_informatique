@@ -115,8 +115,8 @@
 </div>
 <p>Il vous faudra aussi installer deux modules pour votre interpréteur python :</p>
 <ul>
-<li><a href="https://matplotlib.org/" class="externe">https://matplotlib.org/</a></li>
-<li><a href="https://numpy.org/" class="externe">https://numpy.org/</a></li>
+<li><a href="https://matplotlib.org/">https://matplotlib.org/</a></li>
+<li><a href="https://numpy.org/">https://numpy.org/</a></li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -135,7 +135,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>téléchargez <a href="https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/2-complexit%C3%A9s/complexit%C3%A9-code/code?filename=projet-code" class="externe">les fichiers du cours</a>,</li>
+<li>téléchargez <a href="https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/2-complexit%C3%A9s/complexit%C3%A9-code/code?filename=projet-code">les fichiers du cours</a>,</li>
 <li>créez un projet vscode dans ce dossier,</li>
 <li>exécutez le fichier <code class="fichier">main.py</code> en faisant en sorte que tout fonctionne,</li>
 <li>exécutez <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/tests-unitaires/">les tests unitaires</a> (vous aurez bien au préalable installé le module <a href="https://docs.pytest.org/en/stable/">https://docs.pytest.org/en/stable/</a>) et vérifiez qu'ils passent.</li>
@@ -161,12 +161,12 @@
 </div>
 <p>Vous devriez obtenir une courbe qui ressemble à la fonction $y = x^2$ :</p>
 <p><img src="Figure_n2_1.png" alt="figure n2"></p>
-<p>Pour en être sûr, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée <a href="https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale" class="externe">régression polynomiale</a> et qui est très facile à faire avec numpy.</p>
-<p>Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plus proche possible de $Y[i]$, on peut utiliser <a href="https://numpy.org/devdocs/reference/generated/numpy.polyfit.html" class="externe"><code class="language-">np.polyfit</code></a> :</p>
+<p>Pour en être sûr, on va afficher également le polynôme de degré 2 le plus proche de nos mesures. On utilise pour cela une méthode nommée <a href="https://fr.wikipedia.org/wiki/R%C3%A9gression_polynomiale">régression polynomiale</a> et qui est très facile à faire avec numpy.</p>
+<p>Si l'on suppose que l'on a deux tableaux $X$ et $Y$ de même taille et que l'on cherche les coefficients d'un polynôme $P$ de degré $n$ tel que $P(X[i])$ soit le plus proche possible de $Y[i]$, on peut utiliser <a href="https://numpy.org/devdocs/reference/generated/numpy.polyfit.html"><code class="language-">np.polyfit</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
 coefs <span class="token operator">=</span> np<span class="token punctuation">.</span>polyfit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> Y<span class="token punctuation">,</span> n<span class="token punctuation">)</span></code></pre>
-<p>Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction <a href="https://numpy.org/devdocs/reference/generated/numpy.polyval.html" class="externe"><code class="language-">np.polyval</code></a> :</p>
+<p>Qui nous permet facilement de calculer le tableau $Y2$ tel que $Y2[i] = P(X[i])$ avec la fonction <a href="https://numpy.org/devdocs/reference/generated/numpy.polyval.html"><code class="language-">np.polyval</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">Y2 <span class="token operator">=</span> np<span class="token punctuation">.</span>polyval<span class="token punctuation">(</span>coefs<span class="token punctuation">,</span> X<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -328,7 +328,7 @@ $$
 <p>Montrez que ceci est toujours valable pour un algorithme itératif calculant la factorielle.</p>
 </div>
 </div>
-<p>En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et est même vrai si nos entiers sont petits (<em>ie.</em> plus petits que $2^{64}$ ce qui est quand même assez grand, voir <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa" class="externe">le problème de l'échiquier de Sissa</a>) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.</p>
+<p>En règle générale supposer que la multiplication est en $\mathcal{O}(1)$ ne pose pas de problème et est même vrai si nos entiers sont petits (<em>ie.</em> plus petits que $2^{64}$ ce qui est quand même assez grand, voir <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa">le problème de l'échiquier de Sissa</a>) : nous n'avons pas vu ce phénomène avant de traiter des factorielles.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>

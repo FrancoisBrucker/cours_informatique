@@ -133,7 +133,7 @@ Entrée :
 Programme :
     tant que n est strictement plus grand que 0:
         dire à voix haute : "L'informatique c'est magnifique !"</code></pre>
-<p>Mais si on prend le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse" class="externe">la célèbre conjecture de Syracuse</a>, on ne sait pas vraiment (on n'a pas de démonstration) s'il s'arrête tout le temps :</p>
+<p>Mais si on prend le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">la célèbre conjecture de Syracuse</a>, on ne sait pas vraiment (on n'a pas de démonstration) s'il s'arrête tout le temps :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : syracuse
 Entrée :
     n : un entier strictement positif
@@ -151,8 +151,8 @@ Programme :
 <div class="pl-8 mr-8">
 <p>De nombreux travaux ont été faits pour mieux comprendre ce problème. Vous pouvez aller jeter un coup d'œil aux liens suivants pour (beaucoup) plus d'informations :</p>
 <ul>
-<li><a href="https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf" class="externe">https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf</a></li>
-<li><a href="https://hal.science/hal-01593181v3/document" class="externe">https://hal.science/hal-01593181v3/document</a></li>
+<li><a href="https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf">https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf</a></li>
+<li><a href="https://hal.science/hal-01593181v3/document">https://hal.science/hal-01593181v3/document</a></li>
 </ul>
 </div>
 </div>
@@ -183,7 +183,7 @@ syracuse<span class="token punctuation">(</span>x<span class="token punctuation"
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  <a href="https://www.youtube.com/watch?v=JU9ICaPZUCg" class="externe">calculatrice ancienne tentant de diviser par zéro</a></p>
+<p>Si vous voulez voir en vrai un programme qui ne s'arrête pas, regardez cette  <a href="https://www.youtube.com/watch?v=JU9ICaPZUCg">calculatrice ancienne tentant de diviser par zéro</a></p>
 </div>
 </div>
 <p>Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer. Supposons que l'on puisse automatiser le processus de vérification. Il existerait alors un algorithme permettant de le faire, nommons-le <code class="language-">stop</code>. Il prendrait en paramètre un entier représentant un programme (<a href="../d%C3%A9finition/#proposition-encodage-algorithme">on sait qu'on peut le faire</a>) et rendrait 1 si le programme en paramètre est un algorithme et 0 sinon :</p>
@@ -194,7 +194,7 @@ Entrée :
 Sortie :
     rend 1 si le programme en entrée est un algorithme
     rend 0 sinon</code></pre>
-<p>Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide car si ce dernier ne s'arrête pas <code class="language-">stop</code> ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est <a href="https://fr.wikipedia.org/wiki/Alan_Turing" class="externe">Alan Turing</a> lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt" class="externe">le problème de l'arrêt de la machine de Turing</a>) :</p>
+<p>Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide car si ce dernier ne s'arrête pas <code class="language-">stop</code> ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme. C'est <a href="https://fr.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">le problème de l'arrêt de la machine de Turing</a>) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -256,7 +256,7 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette partie est consacrée au <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice" class="externe">Théorème de Rice</a></p>
+<p>Cette partie est consacrée au <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">Théorème de Rice</a></p>
 </div>
 </div>
 <p>S'il est impossible de savoir a priori si un programme s'arrête ou pas, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une <em>propriété</em> donnée, et ce, quelle que soit celle-ci.</p>
@@ -280,8 +280,8 @@ Programme :
 <ul>
 <li>l'ensemble des algorithmes calculant le double d'un entier passé en paramètre est une propriété :
 <ul>
-<li>il existe des algorithmes permettant de le faire (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Technique_de_l%27addition" class="externe">l'algorithme de l'addition posée</a> des cours de primaire en additionnant deux fois le même nombre)</li>
-<li>il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers" class="externe">un de ces algorithmes</a> avec 2 et le nombre comme paramètres)</li>
+<li>il existe des algorithmes permettant de le faire (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Technique_de_l%27addition">l'algorithme de l'addition posée</a> des cours de primaire en additionnant deux fois le même nombre)</li>
+<li>il existe des algorithmes qui ne calculent pas le double de leur entrée (on peut utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers">un de ces algorithmes</a> avec 2 et le nombre comme paramètres)</li>
 </ul>
 </li>
 <li>l'ensemble des algorithmes de valeurs de retour bornées par $K$ est une propriété :

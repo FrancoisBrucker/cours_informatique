@@ -199,7 +199,7 @@ C&=& \mathcal{O}(n)\\
 $$
 </div>
 <h2><span id="algo-rapide"></span> Exponentiation indienne</h2>
-<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide" class="externe">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :</p>
+<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $n$ :</p>
 <div>
 $$
 x^n = \left\{
@@ -314,7 +314,7 @@ $$
 <p>Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car <code class="language-">c' = c - 1</code> dans ce cas là.</p>
 <p>On a donc que : <strong>le nombre d'itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
 <h4>Nombre de fois où le compteur est pair</h4>
-<p>A chaque fois où compteur est pair, on le divise par 2. En reprenant <a href="../../../2-complexit%C3%A9s/projet-calcul-max-min-moy/#proposition-log">la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique</a> : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
+<p>A chaque fois où compteur est pair, on le divise par 2. En reprenant <a href="../../../2-complexit%C3%A9s/complexit%C3%A9-algorithmes/#proposition-log">la proposition on a vu lorsque l'on a vu lors de l'étude de la recherche dichotomique</a> : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
 <h4>Nombre de fois où l'on rentre dans la boucle</h4>
 <p>Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(c)$ pour la valeur initiale de compteur.</p>
 <p>Comme <code class="language-">c</code> vaut initialement <code class="language-">n</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$ (puisque $\log_2(n) = \ln(n)/\ln(2)$).</p>
