@@ -56,6 +56,17 @@ En mode logique on a alors soit :
 - $V_{GS}$ vaut le 0 logique (0V) et alors $V_{DS}$ vaut le 1 logique ($V_{CC}$),
 - $V_{GS}$ vaut le 1 logique ($V_{CC}$) et alors $V_{DS}$ est déterminée par le reste du circuit.
 
+### Régime transitoire
+
+En régime stable les transistors NMOS et PMOS seront soit ouvert soit en mode ohmique sans courant. Le régime saturé n'arrive que lors des transitions, c'est à dire lorsque l'on fait passer les tensions de grille de 0 à 1 logique ou réciproquement. Ce temps de commutation va contraindre la vitesse d'exécution des circuits.
+
+### Régime stable
+
+Si l'on ne considère que les régime stables, les transistors NMOS et PMOS utilisés en circuit (source branchée à la masse pour un NMOS et à $V_{CC}$ pour un PMOS) sont alors soit :
+
+- des interrupteurs ouverts lorsqu'ils sont bloqués,
+- des (petites) résistances (déterminées par $V_{GS}) lorsqu'ils sont en mode passant ohmique.
+
 ## Portes logiques
 
 {% lien %}
@@ -69,7 +80,7 @@ On combine les comportements opposés des deux types de transistors pour former 
 Tout circuit logique peut ainsi se fabriquer avec une combinaison de ces portes même si souvent on peut diminuer le nombre de transistors en regardant la formule dans son ensemble.
 {% endinfo %}
 
-### NOT
+### <span id="NOT"></span>NOT
 
 ![NOT](./NOT.png)
 
