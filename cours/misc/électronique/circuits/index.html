@@ -135,6 +135,14 @@
 <li>$V_{GS}$ vaut le 0 logique (0V) et alors $V_{DS}$ vaut le 1 logique ($V_{CC}$),</li>
 <li>$V_{GS}$ vaut le 1 logique ($V_{CC}$) et alors $V_{DS}$ est déterminée par le reste du circuit.</li>
 </ul>
+<h3>Régime transitoire</h3>
+<p>En régime stable les transistors NMOS et PMOS seront soit ouvert soit en mode ohmique sans courant. Le régime saturé n'arrive que lors des transitions, c'est à dire lorsque l'on fait passer les tensions de grille de 0 à 1 logique ou réciproquement. Ce temps de commutation va contraindre la vitesse d'exécution des circuits.</p>
+<h3>Régime stable</h3>
+<p>Si l'on ne considère que les régime stables, les transistors NMOS et PMOS utilisés en circuit (source branchée à la masse pour un NMOS et à $V_{CC}$ pour un PMOS) sont alors soit :</p>
+<ul>
+<li>des interrupteurs ouverts lorsqu'ils sont bloqués,</li>
+<li>des (petites) résistances (déterminées par $V_{GS}) lorsqu'ils sont en mode passant ohmique.</li>
+</ul>
 <h2>Portes logiques</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -156,7 +164,7 @@
 <p>Tout circuit logique peut ainsi se fabriquer avec une combinaison de ces portes même si souvent on peut diminuer le nombre de transistors en regardant la formule dans son ensemble.</p>
 </div>
 </div>
-<h3>NOT</h3>
+<h3><span id="NOT"></span>NOT</h3>
 <p><img src="NOT.png" alt="NOT"></p>
 <h3>NOR</h3>
 <p><img src="NOR.png" alt="NOR"></p>
