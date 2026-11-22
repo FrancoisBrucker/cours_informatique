@@ -96,7 +96,7 @@ $$
 
 {% enddetails %}
 
-### entier quelconque
+### Entier quelconque
 
 L'algorithme précédent se généralise pour trouver un entier, que l'on va montrer uniforme, dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :
 
@@ -113,13 +113,67 @@ algorithme uniforme(n: int) → int:
 
 Prouver qu'il fonctionne va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.
 
-> TBD attention proba = 1 ne signifie pas qu'il n'existe pas des suite qui ne fonctionnent pas, juste que leurs proba est nulle.
+{% note "Proposition" %}
+Soit $K_n$ la variable aléatoire qui associe à une exécution de l'algorithme `uniforme(n)`{.language-} le nom,bre d'entiers générés avant d'en générer un strictement inférieur à $n$. On a :
 
-> TBD et pour toute sortie proba ok.
+<div>
+$$
+\Pr[K_n > k] < \frac{1}{2^k}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
 
-> différent de s'arrête pour toute suite infinie de random
-> donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus que K opérations.
+À chaque boucle `tant que`{.language-} on génère un entier $x$ tiré uniformément entre $0$ et $2^p-1\geq n -1$. La probabilité qu'il soit inférieur strictement à $n$ est donc de $= \Pr[(X < x) = \frac{n}{2^p} = \alpha$. En notant $\beta = 1- \alpha = \Pr[(X ≥ x)$ on a que la probabilité que l'algorithme génère exactement $k\geq 1$ nombre avant de s'arrêter  vaut :
+
+<div>
+$$
+\Pr[K_n = k] = \beta^{k-1}\cdot \alpha
+$$
+</div>
+
+De la, la probabilité qu'il en génère au plus $k$ vaut :
+
+<div>
+$$
+\Pr[K_n ≤ k] = \sum_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
+$$
+</div>
+
+Et donc : $\Pr[K_n > k] = \beta^k$. On conclut en remarquant que comme $p = \rceil \log_2(n) \lceil$ on a $2^p \leq 2^{\log_2(n) + 1} = 2n$ et donc $1- \frac{n}{2^p} \leq \frac{1}{2}$.
+
+{% enddetails  %}
+
+Le résultat précédent s'explique bien puisque si $n = 2^m+1$, on a $p=m+1$ et prêt de la moitié des entiers généré seront strictement plus grand que $n$. Mais la principale conséquence de cet algorithme est que :
+ 
+{% retenir %}
+La probabilité que notre algorithme s'arrête vaut 1 quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n > k] = 0$.
+{% endretenir %}
+
+Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle `tant que`{.language-}
+
+> TBD ici proba non nul DONC ça existe. ex $n = 2^m+1$ et on génère la suite qui commence par $k \log_2(n)$ 1 consécutif. Les seuls $n$ pour lesquels ça marche c'est ceux où $\log_2(n)$ est un entier donc les puissance de 2.
+>
+> TBD on ne peux donc que calculer la complexité moyenne qui vaut $\Theta(\mathbb{E}[K_n] \cdot \log_2(n))$
+>
 > 
+On peut maintenant 
+> 
+> TBD attention proba = 1 ne signifie pas qu'il n'existe pas des suite qui ne fonctionnent pas, juste que leurs proba est nulle.  
+> 
+> D'ailleurs la proba d'une suite infinie = 0 (comme pour les réels)
+
+> TBD et pour toute sortie proba ok. Attention : On prend partie entière supérieure.
+
+
+> différent de s'arrête pour toute suite infinie de random. Donner thm. a une complexité = borné <=> s'arrête sur toute suite infini.
+> donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus que K opérations.
+
+> enfin, il n'existe pas d'algo qui marche avec une complexité sauf pour les puissance de 2. Si on veut ce genre de chose il faut soit tricher soit ruser. Commençons par tricher, ie. presque équiprobable.
+
+### Approximation bornée
+
+
 {% note "Proposition" %}
 Si `random() → int`{.language-} est un générateur uniforme de bit, alors l'algorithme `uniforme(n: int) → int` rend un entier uniforme entre 0 et $n-1$
 
@@ -253,6 +307,12 @@ Vous le voyez, générer des entier aléatoire :
 2. assez, voir très lent
 
 La solution couramment utilisée est de ruser, voir de faire semblant. C'est ce que l'on appelle les nombres pseudo-aléatoires.
+
+
+## Complexité et aléatoire
+
+on est allé un peut vite
+> Ici borne = s'arrête tout le temps
 
 ## Nombres pseudo-aléatoires
 
