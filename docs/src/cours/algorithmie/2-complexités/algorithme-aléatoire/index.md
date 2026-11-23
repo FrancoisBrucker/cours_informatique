@@ -103,7 +103,7 @@ L'algorithme précédent se généralise pour trouver un entier, que l'on va mon
 ```pseudocode
 algorithme uniforme(n: int) → int:
     ref x ← n
-    ref p ← ⌈log_2(n)⌉                         # partie entière supérieur 
+    ref p ← ⌈log_2(n)⌉                         # partie entière supérieure 
     tant que X ≥ n:
         x ← 0
         pour chaque _ de [0 .. p]:   
@@ -114,11 +114,11 @@ algorithme uniforme(n: int) → int:
 Prouver qu'il fonctionne va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.
 
 {% note "Proposition" %}
-Soit $K_n$ la variable aléatoire qui associe à une exécution de l'algorithme `uniforme(n)`{.language-} le nom,bre d'entiers générés avant d'en générer un strictement inférieur à $n$. On a :
+Soit $K_n$ la variable aléatoire qui associe à une exécution de l'algorithme `uniforme(n)`{.language-} le nombre d'entiers générés avant d'en générer un strictement inférieur à $n$. On a :
 
 <div>
 $$
-\Pr[K_n > k] < \frac{1}{2^k}
+\Pr[K_n > k] \leq \frac{1}{2^k}
 $$
 </div>
 {% endnote %}
@@ -140,37 +140,64 @@ $$
 $$
 </div>
 
-Et donc : $\Pr[K_n > k] = \beta^k$. On conclut en remarquant que comme $p = \rceil \log_2(n) \lceil$ on a $2^p \leq 2^{\log_2(n) + 1} = 2n$ et donc $1- \frac{n}{2^p} \leq \frac{1}{2}$.
+Et donc : $\Pr[K_n > k] = \beta^k$. On conclut en remarquant que comme $p = \lceil \log_2(n) \rceil \leq \log_2(n) + 1$ on a $2^p \leq 2^{\log_2(n) + 1} = 2n$ et donc $1- \frac{n}{2^p} \leq \frac{1}{2}$.
 
 {% enddetails  %}
 
 Le résultat précédent s'explique bien puisque si $n = 2^m+1$, on a $p=m+1$ et prêt de la moitié des entiers généré seront strictement plus grand que $n$. Mais la principale conséquence de cet algorithme est que :
  
 {% retenir %}
-La probabilité que notre algorithme s'arrête vaut 1 quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n > k] = 0$.
+L'algorithme `uniforme(n: int) → int`{.language-} s'arrête presque sûrement (avec une probabilité de 1)
+ quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n > k] = 0$.
 {% endretenir %}
 
-Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle `tant que`{.language-}
+Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle `tant que`{.language-} et si $n$ n'est pas une puissance de 2 alors si `random()`{.language-} rend 1 pour les $K$ premiers appels (la probabilité qu'une suite commence pas $K$ 1 vaut $1/2^K$) l'algorithme sera en $\Omega(K)$. Comme $K$ peut être aussi grand que l'on veut : sa complexité n'est pas bornée pour tout $n$ qui n'est pas une puissance de 2. 
 
-> TBD ici proba non nul DONC ça existe. ex $n = 2^m+1$ et on génère la suite qui commence par $k \log_2(n)$ 1 consécutif. Les seuls $n$ pour lesquels ça marche c'est ceux où $\log_2(n)$ est un entier donc les puissance de 2.
->
-> TBD on ne peux donc que calculer la complexité moyenne qui vaut $\Theta(\mathbb{E}[K_n] \cdot \log_2(n))$
->
-> 
-On peut maintenant 
-> 
-> TBD attention proba = 1 ne signifie pas qu'il n'existe pas des suite qui ne fonctionnent pas, juste que leurs proba est nulle.  
-> 
-> D'ailleurs la proba d'une suite infinie = 0 (comme pour les réels)
+En revanche en moyenne le nombre d'entiers généré est faible :
 
-> TBD et pour toute sortie proba ok. Attention : On prend partie entière supérieure.
+{% note "Proposition" %}
+Le nombre moyen de génération de nombre pour l'algorithme `random()`{.language-} vaut :
 
+<div>
+$$
+\mathbb{E}[K_n] \leq 2
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+Come $K_n$ est une variable aléatoire entière on a :
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}[K_n] 
+&=& \sum_{k\geq 1}\Pr[K_n \geq k]\\
+&=& \sum_{k\geq 0}\Pr[K_n > k]\\
+&\leq& \sum_{k\geq 0}\frac{1}{2^k}\\
+&\leq& 2\\
+\end{array}
+$$
+</div>
+{% enddetails %}
 
-> différent de s'arrête pour toute suite infinie de random. Donner thm. a une complexité = borné <=> s'arrête sur toute suite infini.
-> donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus que K opérations.
+Donc la complexité en moyenne est très bonne :
 
-> enfin, il n'existe pas d'algo qui marche avec une complexité sauf pour les puissance de 2. Si on veut ce genre de chose il faut soit tricher soit ruser. Commençons par tricher, ie. presque équiprobable.
+{% note "Proposition" %}
+Le complexité en moyenne de l'algorithme `uniforme(n)`{.language-} vaut :
 
+<div>
+$$
+C(n) = \Theta(\log_2(n))
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+On a $C(n) = \theta(\mathbb{E}[K_n] \log_2(n))$ et $\mathbb{E}[K_n] < 2$.
+
+{% enddetails  %}
+
+Avoir un algorithme de complexité non bornée peut sembler non optimal. 
+> TBD random(3) marche pas.
 ### Approximation bornée
 
 
@@ -309,11 +336,6 @@ Vous le voyez, générer des entier aléatoire :
 La solution couramment utilisée est de ruser, voir de faire semblant. C'est ce que l'on appelle les nombres pseudo-aléatoires.
 
 
-## Complexité et aléatoire
-
-on est allé un peut vite
-> Ici borne = s'arrête tout le temps
-
 ## Nombres pseudo-aléatoires
 
 > TBD PRNG
@@ -350,3 +372,14 @@ on est allé un peut vite
 > TBD Fisher-Yates
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code. Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et on en fait la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).
+
+## Complexité et aléatoire
+
+Terminons cette partie par un résultat qui démontre lorsqu'un algorithme utilisant l'aléatoire est borné.
+> TBD toute suite infinie fixée est de proba 0, mais toutes celles qui commencent par est > 0 (c'est une partition de l'espace) donc s'il existe une suite qui ne fini jamais on peut grandir notre algo aussi longtemps que l'on veut.
+on est allé un peut vite
+> Ici borne = s'arrête tout le temps
+> différent de s'arrête pour toute suite infinie de random. Donner thm. a une complexité = borné <=> s'arrête sur toute suite infini.
+> donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus que K opérations.
+
+> enfin, il n'existe pas d'algo qui marche avec une complexité sauf pour les puissance de 2. Si on veut ce genre de chose il faut soit tricher soit ruser. Commençons par tricher, ie. presque équiprobable.
