@@ -551,7 +551,16 @@ Exécutez le fichier <span class="token code-snippet code keyword">`main.py`</sp
       links.push(a);
     });
 
-    nav.append(button, list);
+    // les flèches haut/bas de l'entête sont déplacées à droite du bouton du sommaire
+    const bar = document.createElement("div");
+    bar.id = "toc-bar";
+    bar.append(button);
+    document.querySelectorAll("header button[onclick]").forEach((b) => {
+      b.classList.add("toc-arrow");
+      bar.append(b);
+    });
+
+    nav.append(bar, list);
     document.body.appendChild(nav);
 
     const wide = window.matchMedia("(min-width: 1700px)");
@@ -559,8 +568,7 @@ Exécutez le fichier <span class="token code-snippet code keyword">`main.py`</sp
       nav.classList.toggle("open", open);
       button.setAttribute("aria-expanded", String(open));
     }
-    setOpen(wide.matches);
-    wide.addEventListener("change", (e) => setOpen(e.matches));
+    setOpen(false);
     button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
     list.addEventListener("click", (e) => {
       if (e.target.closest("a") && !wide.matches) setOpen(false);
