@@ -3,4 +3,3 @@ dist
 node_modules
 .ipynb_checkpoints
 lfw_home
-cache
