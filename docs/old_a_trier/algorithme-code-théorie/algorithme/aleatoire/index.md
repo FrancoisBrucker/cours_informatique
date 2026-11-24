@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD à retravailler pour aller dans la partie aléatoire de la partie II du cours d'algorithmie.
+
 D. Knuth cite dans le volume 2 de [Art of computer programming](https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/) près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de [générateurs aléatoires physiques](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel) ou encore l'utilisation de [tables](https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires), l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.
 
 {% lien %}
@@ -195,58 +197,8 @@ Le risque de première espèce vaut $8 \cdot 10^{-12}$, on rejette l'hypothèse 
 
 ## Pseudo-aléatoire
 
-Un suite finie ne peut être considérée aléatoire qu'à l'aune d'un ensemble déterminé de tests qu'elle satisfait. De plus, on veut pouvoir générer des suite avec des algorithmes efficaces (*ie.* polynomiaux). On obtient alors la définition générale suivante :
 
-{% note "**Définition**" %}
-Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est ***[pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire)*** si elle :
 
-- est générée par un algorithme polynomial à un paramètre, noté ***graine*** (***seed*** en anglais)
-- elle ne peut être distinguée d'une suite aléatoire via un ensemble de tests statistiques.
-{% endnote %}
-{% info %}
-On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
-{% endinfo %}
-
-Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
-
-Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :
-
-- simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés
-- cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.
-
-N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si vous faites de la cryptographie utilisez des générateurs fait pour ça.
-
-### En python
-
-Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.
-
-#### Usage courant
-
-La fonction `random.random()`{.language-} génère un nombre pseudo-aléatoire. Si vous exécutez deux fois cette fonction, elle doit donner deux réels différents avec une énorme probabilité :
-
-```python
-import random
-print(random.random())
-print(random.random())
-```
-
-La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.
-
-On peut la réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed).
-
-Le code suivant doit donner deux fois le même rel :
-
-```python
-random.seed(0)
-print(random.random())
-random.seed(0)
-print(random.random())
-```
-
-Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que lorsque vous relancer le programme, les résultats vont être différents. Lorsque l'on veut corriger un programme utilisant de l'aléatoire il peut être intéressant d'utiliser une graine donnée pour obtenir le mêe résultats à chaque lancement :
-
-1. lorsque l'on relancera le programme on aura les même valeurs
-2. au cours du programme les valeurs ont l'air aléatoires
 
 #### Cryptographie
 

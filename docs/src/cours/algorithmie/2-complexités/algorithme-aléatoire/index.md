@@ -254,7 +254,7 @@ Pour tout couple d'entiers positifs $(a, b)$, il existe un unique couple $(q, r)
 $$
 \begin{cases}
 r < b\\
-a = q \times b + r
+a = q \cdot b + r
 \end{cases}
 $$
 </div>
@@ -286,9 +286,9 @@ $$
 
 {% endretenir %}
 
-Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ le résultat peut aller jusqu'au double avec $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$.
+Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ proches, les probabilités peuvent être le double l'une de l'autre. Par exemple si $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$, alors $\Pr[X <\frac{n}{2}] = \frac{2}{3}$ et $\Pr[X <\frac{n}{2}] = \frac{1}{3}$. Pour que cette approximation soit valable il est ainsi important que $n$ soit petit devant $2^p$. Ce qui va d'autant augmenter la complexité de l'algorithme comme on va le voir.
 
-On peut maintenant s'atteler à sa complexité. Elle va entièrement dépendre du calcul du modulo qui peut se faire ainsi (c'est l'adaptation au cas binaire de [la méthode décimale](https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale)) :
+En effet, la complexité de l'algorithme dépend entièrement du calcul du modulo et l'algorithme ci-après le calcule  (qui est l'adaptation au cas binaire de [la méthode décimale](https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale)) en $\Theta(p)$ :
 
 <div id="algorithme-division-euclidienne-binaire"></div>
 
@@ -312,7 +312,9 @@ algorithme uniforme_approché(n: int, p: int) → int:
 L'algorithme `modulo(a: []bit, b: int) → int`{.language-} calcule $\sum\limits_ia[i]2^i \bmod b$ en $\theta(a.\texttt{longueur})$ pour $\log_2(b) \leq a.\texttt{longueur}$.
 {% endnote %}
 {% details "preuve", "open" %}
-La complexité est évidente. Le fait que l'algorithme fonctionne vient [l'invariant de boucle](../../1-algorithme/problème-preuve/#invariant-boucle) suivant à la fin de chaque itération :
+La complexité est évidente. 
+
+Son exactitude vient de [l'invariant de boucle](../../1-algorithme/problème-preuve/#invariant-boucle) suivant, vérifié à la fin de chaque itération :
 
 <div>
 $$
@@ -357,6 +359,65 @@ La complexité de notre algorithme approché est donc beaucoup plus grande que l
 La solution habituellement utilisée est de faire semblant, en ne générant que très peut d'entiers réellement aléatoires.
 
 ## Nombres pseudo-aléatoires
+
+La plupart des algorithme générant des nombre "_aléatoires_" en informatique sont en fait seulement [pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire) :
+
+
+{% definition %}
+Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_pseudo-aléatoire_** si elle :
+
+- est générée par un algorithme de complexité polynomiale à un paramètre, noté **_graine_** (**_seed_** en anglais)
+- elle ne peut être distinguée d'une suite aléatoire via un ensemble de [tests statistiques](https://fr.wikipedia.org/wiki/Test_statistique).
+{% enddefinition %}
+{% info %}
+On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
+{% endinfo %}
+
+
+Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
+
+Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :
+
+- simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés
+- cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.
+
+N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si vous faites de la cryptographie utilisez des générateurs fait pour ça.
+
+### En python
+
+Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.
+
+#### Usage courant
+
+La fonction `random.random()`{.language-} génère un nombre pseudo-aléatoire. Si vous exécutez deux fois cette fonction, elle doit donner deux réels différents avec une énorme probabilité :
+
+```python
+import random
+print(random.random())
+print(random.random())
+```
+
+La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.
+
+On peut la réinitialiser avec la fonction [`random.seed`{.language-}](https://docs.python.org/fr/3/library/random.html#random.seed).
+
+Le code suivant doit donner deux fois le même rel :
+
+```python
+random.seed(0)
+print(random.random())
+random.seed(0)
+print(random.random())
+```
+
+Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que lorsque vous relancer le programme, les résultats vont être différents. Lorsque l'on veut corriger un programme utilisant de l'aléatoire il peut être intéressant d'utiliser une graine donnée pour obtenir le mêe résultats à chaque lancement :
+
+1. lorsque l'on relancera le programme on aura les même valeurs
+2. au cours du programme les valeurs ont l'air aléatoires
+
+
+
+
 
 > TBD PRNG
 > TBD 2 sortes selon ce que l'on veut.
