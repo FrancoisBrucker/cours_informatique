@@ -79,7 +79,7 @@ algorithme uniforme_2p(p: int) → int:
     rendre x
 ```
 
-L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.
+L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.
 
 {% note %}
 Si $X$ est une variable aléatoire uniforme sur $\\{0, 1\\}$ alors $Y = X_1\times \dots \times X_p$ avec $X_i = X$ est une variable aléatoire uniforme sur $\\{0, 1\\}^p$
@@ -136,7 +136,7 @@ De la, la probabilité qu'il en génère au plus $k$ vaut :
 
 <div>
 $$
-\Pr[K_n ≤ k] = \sum_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
+\Pr[K_n ≤ k] = \sum\limits_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum\limits_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
 $$
 </div>
 
@@ -151,12 +151,37 @@ L'algorithme `uniforme(n: int) → int`{.language-} s'arrête presque sûrement 
  quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n > k] = 0$.
 {% endretenir %}
 
-Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle `tant que`{.language-} et si $n$ n'est pas une puissance de 2 alors si `random()`{.language-} rend 1 pour les $K$ premiers appels (la probabilité qu'une suite commence pas $K$ 1 vaut $1/2^K$) l'algorithme sera en $\Omega(K)$. Comme $K$ peut être aussi grand que l'on veut : sa complexité n'est pas bornée pour tout $n$ qui n'est pas une puissance de 2. 
 
-En revanche en moyenne le nombre d'entiers généré est faible :
+On peut maintenant démontrer sa véracité :
 
 {% note "Proposition" %}
-Le nombre moyen de génération de nombre pour l'algorithme `random()`{.language-} vaut :
+Si `random() → int`{.language-} est un générateur uniforme de bit, alors l'algorithme `uniforme(n: int) → int`{.language-} rend un entier uniforme entre 0 et $n-1$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Toutes les sorties sont resté un nombre fini de fois dans la boucle `tant que`{.language-} de l'algorithme. On en déduit que la probabilité $\Pr[\mathtt{uniforme}(n) = m]$ que le nombre final soit égale à $0\leq m < n$ vaut :
+
+<div>
+$$
+\begin{array}{lcl}
+Pr[\mathtt{uniforme}(n) = m] &=& \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \Pr[(x = m) \mid (x < n)]\\
+&=&  \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \frac{\Pr[(x = m) \text{ ET } (x < n)]}{\Pr[x < n]}\\
+&=& \lim\limits_{k\to +\infty} (\frac{1}{n} \cdot (1-\beta^k)) \\
+&=& \frac{1}{n}
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+
+
+Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle `tant que`{.language-} et si $n$ n'est pas une puissance de 2 alors si `random()`{.language-} rend 1 pour les $K$ premiers appels (la probabilité qu'une suite commence par $K$ 1 vaut $1/2^K$) l'algorithme sera en $\Omega(K)$. Comme $K$ peut être aussi grand que l'on veut, sa complexité n'est bornée que lorsque $n$ vaut une puissance de 2. 
+
+En revanche on peut calculer sa complexité en moyenne et elle est faible :
+
+{% note "Proposition" %}
+Le nombre moyen d'itérations de  la boucle `tant que`{.language-} dans l'algorithme `random()`{.language-} vaut :
 
 <div>
 $$
@@ -170,16 +195,16 @@ Come $K_n$ est une variable aléatoire entière on a :
 $$
 \begin{array}{lcl}
 \mathbb{E}[K_n] 
-&=& \sum_{k\geq 1}\Pr[K_n \geq k]\\
-&=& \sum_{k\geq 0}\Pr[K_n > k]\\
-&\leq& \sum_{k\geq 0}\frac{1}{2^k}\\
+&=& \sum\limits_{k\geq 1}\Pr[K_n \geq k]\\
+&=& \sum\limits_{k\geq 0}\Pr[K_n > k]\\
+&\leq& \sum\limits_{k\geq 0}\frac{1}{2^k}\\
 &\leq& 2\\
 \end{array}
 $$
 </div>
 {% enddetails %}
 
-Donc la complexité en moyenne est très bonne :
+Ce qui donne :
 
 {% note "Proposition" %}
 Le complexité en moyenne de l'algorithme `uniforme(n)`{.language-} vaut :
@@ -196,104 +221,98 @@ On a $C(n) = \theta(\mathbb{E}[K_n] \log_2(n))$ et $\mathbb{E}[K_n] < 2$.
 
 {% enddetails  %}
 
-Avoir un algorithme de complexité non bornée peut sembler non optimal. 
-> TBD random(3) marche pas.
+Avoir un algorithme de complexité non bornée peut sembler non optimal mais on ne peut pas faire mieux. Supposons en effet qu'il existe un algorithme borné, disons qu'il effectue au maximum $K$ instructions, permettant de rendre un entier de façon uniforme de $[0 .. n[$ pour un entier $n$. 
+
+Cet algorithme exécute donc également au pire $K$ appels à `random()`{.language-}, et on peut même supposer sans perte de généralité qu'il fait toujours $K$ appels quite à ne pas utiliser les derniers. Ces $K$ appels forment $2^K$ suites $\omega_1 \dots\omega_K$ de $K$ bits menant chacune à un entier entre $0$ et $n-1$. Comme l'algorithme est déterministe et les nombres uniformes, le nombre de suites $\omega_1 \dots\omega_K$ menant à un entier donné est la même quelque soit l'entier : il y en a donc exactement $\frac{2^K}{n}$. 
+
+Or $\frac{2^K}{n}$ ne peut être entier si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :
+
+{% retenir %}
+Un algorithme utilisant `random()`{.language-} générant des entiers de de $[0 .. n[$ de façon uniforme ne peut être de complexité bornée que si $n$ est une puissance de 2.
+{% endretenir %}
+
+Pour pallier ce problème on est donc obligé de se contenter d'une approximation (mais cela ne va pas aller sans mal).
+
 ### Approximation bornée
 
+La façon la plus simple de trouver un entier entre $[0 .. n[$ de façon aléatoire est d'utiliser le modulo :
 
-{% note "Proposition" %}
-Si `random() → int`{.language-} est un générateur uniforme de bit, alors l'algorithme `uniforme(n: int) → int` rend un entier uniforme entre 0 et $n-1$
+```pseudocode
+algorithme uniforme_approché(n: int, p: int) → int:
+    ref x ← uniforme_2p(p)
+    rendre x mod n
+```
 
+> TBD preuve exactitude approchée.
+>
+
+> TBD Complexité
+
+<div id="algorithme-division-euclidienne-binaire"></div>
+
+```pseudocode
+fonction modulo(x: []bit, n: int) → int:
+    ref r ← 0
+    # ref q ← [0 pour chaque _ de [0 .. p[ ]
+    pour chaque i de [x.longueur-1 .. 0]:
+        r ← 2 * r + x[i]
+        si r ≥ n:
+            x ← x - n
+            # q[i] ← 1
+    rendre r
+
+algorithme uniforme_approché(n: int, p: int) → int:
+    ref x ← [random() pour chaque _ de [0 .. p[ ]
+    rendre modulo(x, n) → int:
+```
+
+{% note %}
+L'algorithme `modulo(x: []bit, n: int) → int`{.language-} calcule $\sum\limits_ix[i]2^i \pmod n$ en $\theta(n)$ pour $n \leq =2^p$
 {% endnote %}
 {% details "preuve", "open" %}
-
-À la fin d'une boucle `tant que`{.language-} on a un nombre $x$ tiré uniformément entre $0$ et $2^p-1\geq n -1$. La probabilité qu'il soit aussi inférieur strictement à $n$ est donc de $\frac{n}{2^p} = \alpha$ et $1- \alpha =\beta$ celle qu'il soit plus grand que $n$ . De là, on en déduit que la probabilité que l'algorithme fasse exactement $k\geq 1$ fois la boucle `tant que`{.language-} vaut $\beta^{k-1}\cdot \alpha$ et donc la probabilité qu'il fasse au plus $k$ fois la boucle `tant que`{.language-} soit :
+La complexité est évidente. Le fait que l'algorithme fonctionne vient du fait que l'on a l'invariant de boucle suivant à la fin de chaque itération :
 
 <div>
 $$
-B_k = \sum_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
+\begin{cases}
+r < n\\
+\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} = n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) + r
+\end{cases}
 $$
 </div>
 
-Ceci montre que la probabilité que l'algorithme fasse au plus $k$ fois la boucle `tant que`{.language-} puis rende $m < n$ vaut :
+La première condition est vraie puisque si $r < n$ au début de la boucle on a $2r +1 < n + n-1 +1 = 2n$ et $r' < n$ à la fin de la boucle. 
+
+La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $\sum\limits_{j\geq i}(x[j]\cdot 2^{j-i} - n \cdot q[j](\cdot 2^{j-i}) = r$ alors :
 
 <div>
 $$
-P_k = B_k \cdot \Pr[(x = m) \mid (x < n)] = B_k \cdot \frac{\Pr[(x = m) \text{ ET } (x < n)]}{\Pr[x < n]} =  B_k \cdot \frac{\Pr[x = m]}{\alpha} = B_k \cdot \frac{1/2^p}{\alpha} = \frac{1}{n} \cdot (1-\beta^k)
-$$
-</div>
-
-Comme  on ne connaît pas le nombre d'itérations de la boucle tant que on a :
-
-<div>
-$$
-Pr[\mathtt{uniforme}(n) = m] = \lim\limits_{k\to +\infty} P_k = \lim\limits_{k\to +\infty} (\frac{1}{n} \cdot (1-\beta^k)) = \frac{1}{n}
-$$
-</div>
-{% enddetails %}
-
-
-> TBD c'est bien équiprobable le. Mais quelle est la complexité de cet algo ? 
-La preuve précédente nous indique également le nombre moyen de boucle tant que effectuée. En notant $I$ le nombre d'itérations effectué on a : 
-
-<div>
-$$
-\begin{array}{lcl}
-\mathbb{E}[I]
-&=& \sum_{k = 0}^{+\infty} \Pr[I\geq k]\\
-&=& \sum_{k = 0}^{+\infty} (1-\Pr[I\leq k])\\
-&=& \sum_{k = 0}^{+\infty} \beta^k\\
-&=& \sum_{k = 0}^{+\infty} \beta^k\\
-&=& \frac{1}{1- \beta}\\
-&=& \cdot \frac{1}{\alpha}\\
-&=& \frac{2^p}{n}
+\begin{array}{c}
+2 \cdot \sum\limits_{j\geq i}(x[j] - n \cdot q[j](\cdot 2^{j-i}) + x[i-1] = 2r + x[i-1]\\
+\sum\limits_{j\geq i-1}x[j]\cdot 2^{j-i+1}  - \sum\limits_{j\geq i} (n \cdot q[j]\cdot 2^{j-i+1}) = 2r + x[i-1]\\
+\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} - n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) = r'
 \end{array}
 $$
 </div>
 
-Comme $p = \lceil \log_2(n)\rceil$, on a $2^p \leq 2 n$ et donc le nombre moyen de tout dans la boucle `tant que`{.language-} est 2. On ne peut en revanche pas borner la complexité puisqu'il peut exister des instances à autant d'itérations que l'on veut. Les seuls entiers pour lesquels on peut calculer la complexité sont les puissance de 2 puisqu'il n'y aura toujours qu'une seule itération.
 
-> TBD si proche par exes d'une puissance de 2 la moitié des entiers générés va rater.
+L'invariant est vrai à la fin de de la boucle et à ce moment là :
 
-> TBD dire que c'est un thm. N'a une complexité que si puissance de 2.
->
+<div>
+$$
+\begin{cases}
+r < n\\
+\sum\limits_{j\geq 0}x[j]\cdot 2^{j} = n \cdot (\sum\limits_{j\geq 0}q[j]\cdot 2^{j}) + r
+\end{cases}
+$$
+</div>
 
-{% note "**Proposition**" %}
-Il n'existe pas d'algorithme utilisant `random()`{.language-} qui puisse rendre de manière uniforme 0, 1 ou 2.
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-> TBD
-
+Qui est bien la définition de la division euclidienne.
 {% enddetails %}
 
-La proposition  précédente montre que tout algorithme utilisant des bits aléatoire pour générer des nombres avec une propriété uniforme.
+> TBD borné et petit si on augmente le nombre de bits mais du coup bien plus important que la complexité en moyenne... Bref on a rien sans rien.
 
-
-
-
-> TBD si aléatoire alors soit pas de complexité max et on ne peut parler que de complexité en moyenne soit borné.
-
-$A()$ utilise `random()`{.language-} et s'arrête tout le temps. Pour chaque exécution possible de $A()$ on note alors la suite finie $(x_1, \dots, x_K)$ d'élément successif demandé à random avant arrêt. S'l n'y a qu'un nombre finie de possibilité alors l'exécution est bornée par le max. Sinon il existe une infinité de suite, donc : il existe une infinité de suite qui commence soit par 0 soit par 1. Par récurrence, il existe existe alors une infinité de suite qui commencent par $(x^\star_1, \dots, x^\star_n)$ et donc soit une infinité de suite qui commencent par $(x^\star_1, \dots, x^\star_n, 0)$ soit par $(x^\star_1, \dots, x^\star_n, 1)$. On construit ainsi de proche en proche une suite qui ne fait pas finir l'algorithme.
-
-
-### presque uniforme
-
-> TBD ensuite on compte les baton pour fair
-> 
-> TBD on peut alors facilement calculer uiformément des puissance de 2. 
-> TBD prop
-> TBD masi des nom,bre quelconque c'estplus compliqué.
-> Proba uniforme mais pas de complxité
-> Proba pas uniforme mais complexité réduite.
-
-
-
-
-doncon ruse.
-> 
-Notez que la boucle `tant que`{.language-} n'est pas nécessaire si $n = 2^p$. On aurait alors tendance vouloir utiliser le modulo : $\text{uniforme}(2^p) \pmod n$ pour générer un nombre. La probabilité n'est pas uniforme mais est assez proche :
+La probabilité n'est pas uniforme mais est assez proche si $2^p >> 1$ :
 
 {% exercice %}
 Soit $X$ une variable aléatoire uniforme de $[0 .. 2^p[$. Montrez que $Y = X \pmod n$ (avec $n \leq 2^p$)  est une variable aléatoire de $[0 .. n[$ telle que $\vert \Pr[Y = a] - \Pr[Y = b] \vert \leq \frac{1}{2^p}$.
@@ -305,29 +324,9 @@ Soit $X$ une variable aléatoire uniforme de $[0 .. 2^p[$. Montrez que $Y = X \p
 
 {% enddetails %}
 
-
-Et en déduire une procédure pour générer uniformément un entier entre 0 et $n$, quelque soit $n$ :
-
-
-{% note "Proposition" %}
-Si $X$ est une variable aléatoire uniforme sur $[0 .. 2^1-1]$, alors 
-
-> TBD algo suivant ok
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-> TBD
-{% enddetails %}
-
-> TBD attention pas le modulo pour tout entier $n < 2^p$ on a que la variable aléatoire $Y = X \pmod n$ est uniforme. car pas le même nombre. Faire exo pour lequel pas bon. Mais montrer que plus n augmente moins c'est impoertant.
-> TBD prop si bit aléatoire, tout est aléatoire.
-> 
-En informatique, un générateur aléatoire
-Il n'est pas nécessaire de pouvoir générer des réels en informatique, seul 1 bit suffit. 
-
-
-
+> TBD mais attention si on prend log(n) c'est tres proche puisque la div entiere faire 0 ou 1. C'esr juste < 1.n. Peut etre x2 si moitie.
+>
+> TBD exo k*log = n^k.
 Vous le voyez, générer des entier aléatoire :
 
 1. ce n'est pas évident pour des entiers quelconques
