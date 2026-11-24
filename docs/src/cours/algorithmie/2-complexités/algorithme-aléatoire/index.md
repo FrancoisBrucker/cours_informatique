@@ -244,7 +244,6 @@ algorithme uniforme_approché(n: int, p: int) → int:
 ```
 
 > TBD preuve exactitude approchée.
->
 
 > TBD Complexité
 
