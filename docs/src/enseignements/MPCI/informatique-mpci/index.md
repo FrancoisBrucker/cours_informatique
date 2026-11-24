@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "Informatique en licence MPCI"
 
 eleventyNavigation:
-  order: 0
+  order: -2
 
 eleventyComputed:
   eleventyNavigation:

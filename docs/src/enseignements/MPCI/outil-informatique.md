@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "S1 : Ordinateur comme outil"
 
 eleventyNavigation:
-  order: 1
+  order: -1
 
 eleventyComputed:
   eleventyNavigation:
