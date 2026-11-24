@@ -243,20 +243,63 @@ algorithme uniforme_approché(n: int, p: int) → int:
     rendre x mod n
 ```
 
-> TBD preuve exactitude approchée.
+Avant de calculer la complexité, attardons nous sur son fonctionnement. Il est basé sur la division euclidienne :
 
-> TBD Complexité
+<div id="division-euclidienne"></div>
+
+{% note "**Proposition (Division Euclidienne)**" %}
+Pour tout couple d'entiers positifs $(a, b)$, il existe un unique couple $(q, r)$ d'entiers positifs tels que :
+
+<div>
+$$
+\begin{cases}
+r < b\\
+a = q \times b + r
+\end{cases}
+$$
+</div>
+
+- Le **_reste_** $r$ de la division euclidienne est noté $a \bmod b$.
+- Le **_quotient_** $q$ de la division euclidienne est noté $a \operatorname{/\\!/} b$.
+{% endnote %}
+{% details "preuve" %}
+
+Commençons par montrer l'existence de $q$ et $r$. On a deux cas :
+- si $a < b$ alors $q, r = 0, a$,
+- si $a \geq b$,  l'ensemble des entiers $m$ tel que $a - m\cdot b \geq 0$ est non vide (il y a 0) et fini il contient un entier maximal que l'on nomme $q$. Comme $q$ est max on a $a - (q + 1)\cdot b < 0$ et donc $0 \leq r = a - q\cdot b < b$.
+
+S'il existait un autre couple $(q', r')$ on aurait forcément $q \neq q'$ et $r \neq r'$. On peut alors supposer que $q = q' + \alpha$, avec $\alpha> 0$, mais dans ce cas $a = (q +\alpha)\cdot b + r' = q\cdot b + (r'+\alpha \cdot b)$ et $r = r'+\alpha \cdot b \geq b$ ce qui est impossible.
+{% enddetails %}
+
+L'algorithme `uniforme_approché(n: int, p: int) → int`{.language-} rend alors des entiers $x$ avec comme probabilité :
+
+- $\frac{2^p \operatorname{/\\!/} n + 1}{2^p}$ pour $x \leq 2^p \bmod n$
+- $\frac{2^p \operatorname{/\\!/} n}{2^p}$ pour $x > 2^p \bmod n$
+
+{% retenir %}
+Si $X_{n, p}$ est la variable aléatoire associée aux retours de l'algorithme `uniforme_approché(n: int, p: int) → int`{.language-}, alors :
+<div>
+$$
+\vert \Pr[X_{n, p} = a] - \Pr[X_{n, p} = b] \vert \leq \frac{1}{2^p}
+$$
+</div>
+
+{% endretenir %}
+
+Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ le résultat peut aller jusqu'au double avec $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$.
+
+On peut maintenant s'atteler à sa complexité. Elle va entièrement dépendre du calcul du modulo qui peut se faire ainsi (c'est l'adaptation au cas binaire de [la méthode décimale](https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale)) :
 
 <div id="algorithme-division-euclidienne-binaire"></div>
 
 ```pseudocode
-fonction modulo(x: []bit, n: int) → int:
+fonction modulo(a: []bit, b: int) → int:
     ref r ← 0
     # ref q ← [0 pour chaque _ de [0 .. p[ ]
-    pour chaque i de [x.longueur-1 .. 0]:
-        r ← 2 * r + x[i]
-        si r ≥ n:
-            x ← x - n
+    pour chaque i du retournement de [0 .. a.longueur[:
+        r ← 2 * r + a[i]
+        si r ≥ b:
+            x ← x - b
             # q[i] ← 1
     rendre r
 
@@ -265,31 +308,31 @@ algorithme uniforme_approché(n: int, p: int) → int:
     rendre modulo(x, n) → int:
 ```
 
-{% note %}
-L'algorithme `modulo(x: []bit, n: int) → int`{.language-} calcule $\sum\limits_ix[i]2^i \pmod n$ en $\theta(n)$ pour $n \leq =2^p$
+{% note "**Proposition**" %}
+L'algorithme `modulo(a: []bit, b: int) → int`{.language-} calcule $\sum\limits_ia[i]2^i \bmod b$ en $\theta(a.\texttt{longueur})$ pour $\log_2(b) \leq a.\texttt{longueur}$.
 {% endnote %}
 {% details "preuve", "open" %}
-La complexité est évidente. Le fait que l'algorithme fonctionne vient du fait que l'on a l'invariant de boucle suivant à la fin de chaque itération :
+La complexité est évidente. Le fait que l'algorithme fonctionne vient [l'invariant de boucle](../../1-algorithme/problème-preuve/#invariant-boucle) suivant à la fin de chaque itération :
 
 <div>
 $$
 \begin{cases}
-r < n\\
-\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} = n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) + r
+r < b\\
+\sum\limits_{j\geq i}a[j]\cdot 2^{j-i} = b \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) + r
 \end{cases}
 $$
 </div>
 
-La première condition est vraie puisque si $r < n$ au début de la boucle on a $2r +1 < n + n-1 +1 = 2n$ et $r' < n$ à la fin de la boucle. 
+La première condition est vraie puisque si $r < b$ au début de la boucle on a $2r +1 < b + b-1 +1 = 2b$ et $b' < n$ à la fin de la boucle. 
 
-La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $\sum\limits_{j\geq i}(x[j]\cdot 2^{j-i} - n \cdot q[j](\cdot 2^{j-i}) = r$ alors :
+La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $\sum\limits_{j\geq i}(a[j]\cdot 2^{j-i} - b \cdot q[j](\cdot 2^{j-i}) = r$ alors :
 
 <div>
 $$
 \begin{array}{c}
-2 \cdot \sum\limits_{j\geq i}(x[j] - n \cdot q[j](\cdot 2^{j-i}) + x[i-1] = 2r + x[i-1]\\
-\sum\limits_{j\geq i-1}x[j]\cdot 2^{j-i+1}  - \sum\limits_{j\geq i} (n \cdot q[j]\cdot 2^{j-i+1}) = 2r + x[i-1]\\
-\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} - n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) = r'
+2 \cdot \sum\limits_{j\geq i}(a[j] - n \cdot q[j] \cdot 2^{j-i}) + a[i-1] = 2r + a[i-1]\\
+\sum\limits_{j\geq i-1}a[j]\cdot 2^{j-i+1}  - \sum\limits_{j\geq i} (b \cdot q[j]\cdot 2^{j-i+1}) = 2r + x[i-1]\\
+\sum\limits_{j\geq i'}a[j]\cdot 2^{j-i'} - b \cdot (\sum\limits_{j\geq i'}q[j]\cdot 2^{j-i'}) = r'
 \end{array}
 $$
 </div>
@@ -300,8 +343,8 @@ L'invariant est vrai à la fin de de la boucle et à ce moment là :
 <div>
 $$
 \begin{cases}
-r < n\\
-\sum\limits_{j\geq 0}x[j]\cdot 2^{j} = n \cdot (\sum\limits_{j\geq 0}q[j]\cdot 2^{j}) + r
+r < b\\
+\sum\limits_{j\geq 0}a[j]\cdot 2^{j} = b \cdot (\sum\limits_{j\geq 0}q[j]\cdot 2^{j}) + r
 \end{cases}
 $$
 </div>
@@ -309,30 +352,9 @@ $$
 Qui est bien la définition de la division euclidienne.
 {% enddetails %}
 
-> TBD borné et petit si on augmente le nombre de bits mais du coup bien plus important que la complexité en moyenne... Bref on a rien sans rien.
+La complexité de notre algorithme approché est donc beaucoup plus grande que la complexité en moyenne de l'algorithme exacte... Cela ne vaut donc presque jamais le coup de l'utiliser à par dans des cas extrême où il est crucial d'avoir une borne en nombre d'instruction. Enfin, ce qui prend du temps c'est la génération aléatoire des bits car elle dépend de phénomènes physique dont les constantes de temps sont souvent supérieures à l'horloge interne de l'ordinateur.
 
-La probabilité n'est pas uniforme mais est assez proche si $2^p >> 1$ :
-
-{% exercice %}
-Soit $X$ une variable aléatoire uniforme de $[0 .. 2^p[$. Montrez que $Y = X \pmod n$ (avec $n \leq 2^p$)  est une variable aléatoire de $[0 .. n[$ telle que $\vert \Pr[Y = a] - \Pr[Y = b] \vert \leq \frac{1}{2^p}$.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-
-> TBD mais attention si on prend log(n) c'est tres proche puisque la div entière faire 0 ou 1. C'esr juste < 1.n. Peut être *2 si moitie.
->
-> TBD exo k*log = n^k. mais là plus utile car la complexité max devient bien supérieure à la complexité en moyenne de la méthode exacte. A quoi bon tout ralentir pour des cas qui n'arrivent presque jamais ? (idem que rajouter des regles pour les cas particulier qui gene tous les cas majoritaire)
-Vous le voyez, générer des entier aléatoire :
-
-1. ce n'est pas évident pour des entiers quelconques
-2. assez, voir très lent
-
-La solution couramment utilisée est de ruser, voir de faire semblant. C'est ce que l'on appelle les nombres pseudo-aléatoires.
-
+La solution habituellement utilisée est de faire semblant, en ne générant que très peut d'entiers réellement aléatoires.
 
 ## Nombres pseudo-aléatoires
 

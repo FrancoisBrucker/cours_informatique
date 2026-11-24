@@ -285,6 +285,10 @@ algorithme factorielle(n: int) → int:
     rendre r
 ```
 
+
+<div id="invariant-boucle"></div>
+
+
 {% note "**Schéma de preuve des algorithmes itératifs par invariant :**" %}
 Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiée, même si on modifie des variables. Une fois l'invariant trouvé on commence par le démontrer :
 

@@ -660,10 +660,12 @@ La boucle `pour chaque`{.language-} peut s'écrire avec la boucle `tant que`{.la
 
 Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :
 
-- `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide) par incrément de +1,
-- `[a .. b[`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
-- `]a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
-- `]a .. b[`{.language-} pour représenter l'intervalle formé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide),
+- `[a .. b]`{.language-} pour représenter le tableau formé des entiers allant de `a`{.language-} à `b`{.language-} par incrément de +1 (cet intervalle peut être vide),
+- `[a .. b[`{.language-} pour représenter le tableau formé des entiers allant de `a`{.language-} à `b-1`{.language-} (cet intervalle peut être vide),
+- `]a .. b]`{.language-} pour représenter le tableau formé des entiers allant de `a + 1`{.language-} à `b`{.language-} (cet intervalle peut être vide),
+- `]a .. b[`{.language-} pour représenter le tableau formé des entiers allant de `a + 1`{.language-} à `b -1`{.language-} (cet intervalle peut être vide),
+- `retournement de I`{.language-} pour représenter le tableau formé des éléments de `I`{.language-} allant du plus grand indice au plus petit
+
 
 On peut alors écrire, par exemple :
 
