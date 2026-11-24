@@ -225,7 +225,7 @@ Avoir un algorithme de complexité non bornée peut sembler non optimal mais on 
 
 Cet algorithme exécute donc également au pire $K$ appels à `random()`{.language-}, et on peut même supposer sans perte de généralité qu'il fait toujours $K$ appels quite à ne pas utiliser les derniers. Ces $K$ appels forment $2^K$ suites $\omega_1 \dots\omega_K$ de $K$ bits menant chacune à un entier entre $0$ et $n-1$. Comme l'algorithme est déterministe et les nombres uniformes, le nombre de suites $\omega_1 \dots\omega_K$ menant à un entier donné est la même quelque soit l'entier : il y en a donc exactement $\frac{2^K}{n}$. 
 
-Or $\frac{2^K}{n}$ ne peut être entier si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :
+Or $\frac{2^K}{n}$ ne peut être entier **que** si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :
 
 {% retenir %}
 Un algorithme utilisant `random()`{.language-} générant des entiers de de $[0 .. n[$ de façon uniforme ne peut être de complexité bornée que si $n$ est une puissance de 2.
@@ -323,9 +323,9 @@ Soit $X$ une variable aléatoire uniforme de $[0 .. 2^p[$. Montrez que $Y = X \p
 
 {% enddetails %}
 
-> TBD mais attention si on prend log(n) c'est tres proche puisque la div entiere faire 0 ou 1. C'esr juste < 1.n. Peut etre x2 si moitie.
+> TBD mais attention si on prend log(n) c'est tres proche puisque la div entière faire 0 ou 1. C'esr juste < 1.n. Peut être *2 si moitie.
 >
-> TBD exo k*log = n^k.
+> TBD exo k*log = n^k. mais là plus utile car la complexité max devient bien supérieure à la complexité en moyenne de la méthode exacte. A quoi bon tout ralentir pour des cas qui n'arrivent presque jamais ? (idem que rajouter des regles pour les cas particulier qui gene tous les cas majoritaire)
 Vous le voyez, générer des entier aléatoire :
 
 1. ce n'est pas évident pour des entiers quelconques
