@@ -97,7 +97,7 @@ Nous allons pour cela montrer que l'on peut simuler une machine à 2 curseurs pa
 
 ### Simulation d'une machine à $k$ curseurs par une machine simple
 
-Le principe de cette conversion est d'associer à chaque case du ruban de la machine à deux curseurs, une $(k+2)-case composé de $k+2$ cases de la machine à 1 curseur.
+Le principe de cette conversion est d'associer à chaque case du ruban de la machine à deux curseurs, une $(k+2)$-case composé de $k+2$ cases de la machine à 1 curseur.
 
 Chaque paquet est décomposé ainsi :
 

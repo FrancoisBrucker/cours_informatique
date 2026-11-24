@@ -14,7 +14,7 @@ authors:
 
 ### récursion
 
-Attention la ligne `return n * factorielle(n-1)`{.language-} n'est **PAS** en $\mathcal{O}(K * C(n-1))$ (avec $C(n)$ la complexité de l'algorithme), c'est en \mathcal{O}(K + C(n-1))$. En effet cette ligne est :
+Attention la ligne `return n * factorielle(n-1)`{.language-} n'est **PAS** en $\mathcal{O}(K * C(n-1))$ (avec $C(n)$ la complexité de l'algorithme), c'est en $\mathcal{O}(K + C(n-1))$. En effet cette ligne est :
 
 * une multiplication : $\mathcal{O}(1)$
 * un appel de fonction en $C(n-1)$ opérations.

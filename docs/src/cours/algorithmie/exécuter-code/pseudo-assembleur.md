@@ -74,7 +74,7 @@ Une _**variable**_ est un nom auquel est associé une référence à un objet.
 La mémoire étant finie, la référence à un objet est toujours codée sur $S = \log_2(N)$ bits.
 
 {% definition %}
-La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$$, la taille (entière et en bit) du codage binaire d'une adresse.
+La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$, la taille (entière et en bit) du codage binaire d'une adresse.
 {% enddefinition %}
 
 Ceci permet de définir rigoureusement un tableau :

@@ -8,6 +8,7 @@ import filtersConfig from "./config/filters.js";
 
 import postCompilation from "./config/post-build.js";
 import typstConfig from "./config/typst.js";
+import searchConfig from "./config/search.js";
 import pseudocode, { installerHooks } from "./config/pseudocode.js";
 
 export default function(eleventyConfig) {
@@ -22,6 +23,7 @@ export default function(eleventyConfig) {
 
   postCompilation(eleventyConfig); // tailwind
   typstConfig(eleventyConfig)
+  searchConfig(eleventyConfig); // index de recherche Pagefind
   
   eleventyConfig.addPlugin(syntaxHighlight, {
     

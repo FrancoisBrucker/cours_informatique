@@ -70,7 +70,7 @@ Il y a deux appels possibles, comme on l'a vu dans la partie OS :
 
 Une interruption est une demande d'action initiée par un matériel. Le core gère les interruptions en associant à chaque interruption une [Table des interruptions](https://wiki.osdev.org/Interrupt_Descriptor_Table#Structure_on_x86-64) de 16B qui détermine l'action à mener (essentiellement l'adresse de la fonction du noyau qui va la gérer).
 
-Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16B = $ \text{KiB}$, nommé [Interrupt vector table](https://en.wikipedia.org/wiki/Interrupt_vector_table) stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.
+Comme il y a 256 instructions possible, la gestion des interruptions tient dans un tableau de $256 \cdot 16\,\text{B} = 4\,\text{KiB}$, nommé [Interrupt vector table](https://en.wikipedia.org/wiki/Interrupt_vector_table) stocké en mémoire. Le core ne connaît que l'adresse du début de ce tableau qu'il stocke dans un registre spécialisé.
 
 ### Appel système
 

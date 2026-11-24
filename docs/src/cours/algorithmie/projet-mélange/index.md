@@ -173,7 +173,7 @@ Nous allons montrer que $S^\star$ est le successeur de $S_i$. En effet, soit $S_
 - $S'[k] = S_i[j]$ avec $j > k$
 - $S_i[k] < S'[k]$
 - $k < i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant
-- Si $k < i_1$ alors S^\star < S'$
+- Si $k < i_1$ alors $S^\star < S'$
 - Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
   - soit $S^\star[i_1] < S'[i_1]$ et $S^\star < S'$
   - soit $S^\star[i_1] = S'[i_1]$ et comme $S^\star[i^\star:]$ est rangé par ordre croissant et contient les mêmes éléments que $S'[i^\star:]$, $S^\star \leq S'$

@@ -304,7 +304,7 @@ Si l'on utilise deux fois la même clé, si deux portions de messages sont ident
 - $m_1 = b_1b_2$
 - $m_2 = b_1b_1$
 
-On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.
+On reconnaîtra $m_1$ de $m_2$ avec un avantage de 1.
 
 {% enddetails %}
 

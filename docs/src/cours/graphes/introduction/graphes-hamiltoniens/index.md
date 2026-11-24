@@ -425,7 +425,7 @@ f_1(\{u \}, u) = (1u \in E(G))
 $$
 </div>
 
-Et $G$ possède cycle hamiltonien si $f_1(S,u) = 1$ pour un des éléments de N^{-}(1)$.
+Et $G$ possède cycle hamiltonien si $f_1(S,u) = 1$ pour un des éléments de $N^{-}(1)$.
 
 La fonction de récurrence donne un algorithme pour calculer $f_1(S,u)$ pour tout sous-ensemble S de [2 .. n] :
 

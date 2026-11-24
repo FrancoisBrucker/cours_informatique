@@ -101,7 +101,7 @@ Pour garantir l'existence de solutions à l'équation $g^x =y \bmod p$, il suffi
 Explicitons les termes :
 
 1. dans $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un groupe (abélien) si et seulement si $p$ est premier
-2. Le groupe $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est cyclique, c'est à dire qu'il existe $g$ tel que $g^n = 1$ et g^{n-1} \neq 1$.
+2. Le groupe $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est cyclique, c'est à dire qu'il existe $g$ tel que $g^n = 1$ et $g^{n-1} \neq 1$.
 
 {% note "**Proposition**" %}
 Si $p$ est premier, $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est cyclique.

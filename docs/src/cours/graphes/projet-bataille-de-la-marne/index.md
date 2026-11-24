@@ -156,7 +156,7 @@ C'est la somme des flots $f[(u, (v, t))]$.
 {% faire %}
 Codez une fonction `taxi_dans_ville_a_t(v, t)`{.language-} qui rend le nombre de taxi dans la ville $v$ au temps $t$.
 
-Vous aurez certainement besoin de coder le graphe $G'$, opposé à $G$ ($xy$ est un arc de *G'$ si et seulement si $yx$ est un arc de $G$).
+Vous aurez certainement besoin de coder le graphe $G'$, opposé à $G$ ($xy$ est un arc de $G'$ si et seulement si $yx$ est un arc de $G$).
 {% endfaire %}
 
 ### Nombre de taxi en transit sur une route

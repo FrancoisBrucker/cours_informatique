@@ -114,7 +114,7 @@ Soit alors la suite de division euclidienne définies telles que:
 - $a_i = q_i \cdot b_i + r_i$
 - $a_{i+1} = b_i$ ; $b_{i+1} = r_i$
 
-Jusqu'à trouver $b_{i} = 0$, et donc $a_i = $\text{pgcd}(a, b)$.
+Jusqu'à trouver $b_{i} = 0$, et donc $a_i = \text{pgcd}(a, b)$.
 
 Comme :
 
@@ -159,7 +159,7 @@ def racine(N):
       l = m + 1
 ```
 
-Le temps pris sera de l'ordre de $\mathcal{O}(\log_2(N))$ boucles tant que, avec une multiplication par boucle. La complexité totale sera donc de l'ordre de $\mathcal{O}(n^3)$ où $n4 est la taille de $N$ en bits.
+Le temps pris sera de l'ordre de $\mathcal{O}(\log_2(N))$ boucles tant que, avec une multiplication par boucle. La complexité totale sera donc de l'ordre de $\mathcal{O}(n^3)$ où $n$ est la taille de $N$ en bits.
 
 ### Bit à bit
 

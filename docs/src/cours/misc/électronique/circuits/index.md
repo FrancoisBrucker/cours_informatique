@@ -65,7 +65,7 @@ En régime stable les transistors NMOS et PMOS seront soit ouvert soit en mode o
 Si l'on ne considère que les régime stables, les transistors NMOS et PMOS utilisés en circuit (source branchée à la masse pour un NMOS et à $V_{CC}$ pour un PMOS) sont alors soit :
 
 - des interrupteurs ouverts lorsqu'ils sont bloqués,
-- des (petites) résistances (déterminées par $V_{GS}) lorsqu'ils sont en mode passant ohmique.
+- des (petites) résistances (déterminées par $V_{GS}$) lorsqu'ils sont en mode passant ohmique.
 
 ## Portes logiques
 

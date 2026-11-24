@@ -900,7 +900,7 @@ algorithme retournement(S: []char) → ∅:
 {% enddetails %}
 
 {% exercice %}
-Montrez que, si on note $L = AB$, où $B$ est de longueur $k$ (par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, $A =\text{LongtempsJeMeSuisCouchéDeBonneH}$ et $B =\text{eure}$), alors \text{Permut}(L, k) = (A^RB^R)^R$.
+Montrez que, si on note $L = AB$, où $B$ est de longueur $k$ (par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, $A =\text{LongtempsJeMeSuisCouchéDeBonneH}$ et $B =\text{eure}$), alors $\text{Permut}(L, k) = (A^RB^R)^R$.
 {% endexercice %}
 {% details "corrigé" %}
 

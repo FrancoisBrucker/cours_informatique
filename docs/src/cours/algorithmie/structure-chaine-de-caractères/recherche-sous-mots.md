@@ -441,7 +441,7 @@ Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible
 
 Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :
 
-On débute une recherche en comparant $a[i + 0]$ à $b[0] :
+On débute une recherche en comparant $a[i + 0]$ à $b[0]$ :
 
 ```text
              i

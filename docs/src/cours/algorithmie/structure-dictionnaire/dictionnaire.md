@@ -406,7 +406,7 @@ La structure de dictionnaire est donc une structure très efficace le cas le pir
 {% retenir %}
 La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
 
-La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.
+La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés dans la structure.
 {% endretenir %}
 
 ## Utilisation

@@ -470,7 +470,7 @@ Si $L[0] \neq L[1]$, $L[0]$ est le 1er élément de la liste triée sans doublon
 * tous les éléments de $L[1:]$ sont strictement plus grand que $L[0]$
 * par hypothèse de récurrence, `doublons(L[1:])`{.language-} rendra la liste sans doublons de la liste triée $L[1:]$
 
-La liste triée sans doublons issue de $L$ est bien égale à $[L[0]] + doublons(L[1:]).
+La liste triée sans doublons issue de $L$ est bien égale à $[L[0]] + doublons(L[1:])$.
 
 Si $L[0] \neq L[1]$ la liste triée sans doublons de $L$ est égale à la liste triée sans doublons de la liste $L$ privée de son élément $L[1]$. Ok
 

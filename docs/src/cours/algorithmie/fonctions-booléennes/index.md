@@ -226,7 +226,7 @@ Toute fonction booléenne vectorielle $f$ de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^m$ 
 {% endnote %}
 {% details "preuve", "open" %}
 
-La fonction booléenne vectorielle $f$ peut s'écrire comme $m$ fonction booléennes $f_i$ de de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ tel que f(x) = (f_1(x), \dots, f_m(x))$. En utilisant le théorème précédent, on a que :
+La fonction booléenne vectorielle $f$ peut s'écrire comme $m$ fonction booléennes $f_i$ de de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ tel que $f(x) = (f_1(x), \dots, f_m(x))$. En utilisant le théorème précédent, on a que :
 
 <div>
 $$

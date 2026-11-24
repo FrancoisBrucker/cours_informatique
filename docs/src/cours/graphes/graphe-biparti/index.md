@@ -267,7 +267,7 @@ Combien faut-il au minimum de graphes bipartis (complets) pour partitionner $K_n
 Comme il faut minimiser le nombre d'éléments de la partition et que chaque arête du graphe complet doit être utilisé, les graphes bi-partis sont forcément complets.
 {% endinfo %}
 
-Remarquons tout de suite que ce problème admet une solution, il en faut moins de $n(n-1)/2$ puisque les graphes G_{i,j} = (\\{i, j\\}, \\{ij\\})$ sont tous bipartis.
+Remarquons tout de suite que ce problème admet une solution, il en faut moins de $n(n-1)/2$ puisque les graphes $G_{i,j} = (\\{i, j\\}, \\{ij\\})$ sont tous bipartis.
 
 On peut bien sur faire mieux, comme le montre l'exemple suivant qui partitionne $K_6$ en 6 graphes bi-partis complets :
 

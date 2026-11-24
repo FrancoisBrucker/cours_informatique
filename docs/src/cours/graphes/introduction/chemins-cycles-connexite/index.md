@@ -152,7 +152,7 @@ Pur tout entier $n$ on note :
     - $E = \\{x_ix_{i+1 \pmod n} \mid 1\leq i \leq n\\}$
 {% enddefinition %}
 
-Enfin, on dira qu'un chemin (_resp._ cycle) est induit pour graphe $G$ si la restriction de $G$ aux $n'$ sommets de ce chemin (_resp._ cycle) est $P_{n'}$ (_resp._ $C_{n'}).
+Enfin, on dira qu'un chemin (_resp._ cycle) est induit pour graphe $G$ si la restriction de $G$ aux $n'$ sommets de ce chemin (_resp._ cycle) est $P_{n'}$ (_resp._ $C_{n'}$).
 
 ### <span id="induit"></span>Chemins et cycles induits
 

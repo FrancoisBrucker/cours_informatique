@@ -121,8 +121,8 @@ Le second item se démontre exactement de la même manière.
 On a finalement trois cas possible :
 
 1. P = NP = co-NP = NP-complet = co-NP-complet. Ce cas est hautement improbable, en tous les cas la quasi totalité des informaticien n'y croient pas.
-2. P $\subsetneq$ NP = co-NP$. Dans ce cas NP-complet = co-NP-complet. Ce cas est très improbable, en tous les cas la très grande majorité des informaticiens n'y croient pas non plus.
-3. P $\subsetneq$ NP ≠ co-NP$ qui est le cas admis par la quasi totalité des informaticiens. On se retrouve dans le schéma ci-après.
+2. P $\subsetneq$ NP = co-NP. Dans ce cas NP-complet = co-NP-complet. Ce cas est très improbable, en tous les cas la très grande majorité des informaticiens n'y croient pas non plus.
+3. P $\subsetneq$ NP ≠ co-NP qui est le cas admis par la quasi totalité des informaticiens. On se retrouve dans le schéma ci-après.
 
 ![npc et conpc](npc-conpc.png)
 

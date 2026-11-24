@@ -305,7 +305,7 @@ Mais pour que deux sommets qu ne sont pas sur le même chemin jusqu'à la racine
 Seule la partie 2-connexe planté plus haut que $x$ peut être sur plusieurs branches, toutes les autres sont liées à $x$ par une seule arête. On a alors la proposition suivante qui fait fonctionner le tout :
 
 {% note "**Conséquence**" %}
-Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS. Si #u$ est la racine d'un tel sous-arbre , alors seule un de ses successeur y est également.
+Les composantes 2-connexes de $G$ sont des sous-arbres partiels de l'arbre de DFS. Si $u$ est la racine d'un tel sous-arbre , alors seule un de ses successeur y est également.
 {% endnote %}
 
 La conséquence précédente nous montre que l'algorithme fonctionne, si `low[v] ≥ pos[u]`{.language-} :

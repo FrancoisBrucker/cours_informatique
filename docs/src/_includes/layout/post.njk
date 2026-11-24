@@ -2,10 +2,10 @@
 layout: layout/base.njk
 ---
 
-<article>
+<article data-pagefind-body>
 
   <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>
-  <div {% if tags or authors %}class="mb-4"{% endif %}>
+  <div data-pagefind-ignore {% if tags or authors %}class="mb-4"{% endif %}>
     {% if tags %}
       <div class=" px-4 flex items-center">
         {% if tags | length > 1 %}
@@ -38,6 +38,7 @@ layout: layout/base.njk
   </div>
 
   {% if eleventyNavigation and eleventyNavigation.key %}
+  <div data-pagefind-ignore>
 
     {% chemin %}
     {%- for post in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true, allowMissing: false  }) -%}
@@ -70,6 +71,7 @@ layout: layout/base.njk
       </ul>
       {% endprerequis %}
     {% endif %}
+  </div>
   {% endif %}
 
   {{ content | safe }}
