@@ -398,7 +398,7 @@ $$
 </div>
 <p>Avoir un algorithme de complexité non bornée peut sembler non optimal mais on ne peut pas faire mieux. Supposons en effet qu'il existe un algorithme borné, disons qu'il effectue au maximum $K$ instructions, permettant de rendre un entier de façon uniforme de $[0 .. n[$ pour un entier $n$.</p>
 <p>Cet algorithme exécute donc également au pire $K$ appels à <code class="language-">random()</code>, et on peut même supposer sans perte de généralité qu'il fait toujours $K$ appels quite à ne pas utiliser les derniers. Ces $K$ appels forment $2^K$ suites $\omega_1 \dots\omega_K$ de $K$ bits menant chacune à un entier entre $0$ et $n-1$. Comme l'algorithme est déterministe et les nombres uniformes, le nombre de suites $\omega_1 \dots\omega_K$ menant à un entier donné est la même quelque soit l'entier : il y en a donc exactement $\frac{2^K}{n}$.</p>
-<p>Or $\frac{2^K}{n}$ ne peut être entier si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :</p>
+<p>Or $\frac{2^K}{n}$ ne peut être entier <strong>que</strong> si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -526,8 +526,8 @@ $$
 </details>     
 </div>
 <blockquote>
-<p>TBD mais attention si on prend log(n) c'est tres proche puisque la div entiere faire 0 ou 1. C'esr juste &lt; 1.n. Peut etre x2 si moitie.</p>
-<p>TBD exo k*log = n^k.
+<p>TBD mais attention si on prend log(n) c'est tres proche puisque la div entière faire 0 ou 1. C'esr juste &lt; 1.n. Peut être *2 si moitie.</p>
+<p>TBD exo k*log = n^k. mais là plus utile car la complexité max devient bien supérieure à la complexité en moyenne de la méthode exacte. A quoi bon tout ralentir pour des cas qui n'arrivent presque jamais ? (idem que rajouter des regles pour les cas particulier qui gene tous les cas majoritaire)
 Vous le voyez, générer des entier aléatoire :</p>
 </blockquote>
 <ol>
