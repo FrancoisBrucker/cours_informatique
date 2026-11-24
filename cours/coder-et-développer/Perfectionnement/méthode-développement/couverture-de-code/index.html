@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Couverture de code</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée. Les tests nous permette d'avoir confiance dans la qualité du code, mais il est parfois compliqué d'être sur que nos tests vérifient bien toutes les lignes écrites (testent-ils bien tous les blocs <code class="language-">si/alors/sinon</code> ?).</p>
@@ -115,7 +117,7 @@
 <p>Dans vos futurs projets, faites en sorte d'avoir toujours 100% de couverture de code.</p>
 </div>
 </div>
-<h2>Fichiers exemple</h2>
+<h2 id="fichiers-exemple">Fichiers exemple</h2>
 <p>Pour les besoin de cet exemple, prenons <a href="../programmation-objet/coder-ses-objets/">le compteur (final) du cours coder ses objets</a> du cours sur les classes et les objets.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
@@ -159,7 +161,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>c1 <span class="token operator">&lt;</span> c2<span class="token punctuation">)</span>
 </code></pre>
-<h2>Utilisation directe</h2>
+<h2 id="utilisation-directe">Utilisation directe</h2>
 <p>Le fonctionnement de la couverture de code est le suivant :</p>
 <ol>
 <li>on exécute un fichier dans le terminal via le module coverage : <code>python -m coverage run main.py</code></li>
@@ -224,7 +226,7 @@ TOTAL            23      2    91%
 <p>Vérifiez que vous avez la même chose pour votre projet.</p>
 </div>
 </div>
-<h2>Utilisation via <code>pytest</code></h2>
+<h2 id="utilisation-via-pytest">Utilisation via <code>pytest</code></h2>
 <p>L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests. Exécutons les tests en même temps que coverage avec le l'extension <code>pytest-cov</code> que nous venons d'installer :</p>
 <ol>
 <li>on exécute les tests dans le terminal en ajoutant l'extension coverage <code>python -m pytest --cov=.</code></li>
@@ -314,11 +316,11 @@ TOTAL                 26     13    50%
 </div>
 </details>     
 </div>
-<h2><span id="installation-coverage"></span> Installation pour vscode</h2>
+<h2 id="installation-pour-vscode"><span id="installation-coverage"></span> Installation pour vscode</h2>
 <blockquote>
 <p>TBD à remanier. Des choses sont en doublon avec ce qui précède</p>
 </blockquote>
-<h3>Coverage pour pytest</h3>
+<h3 id="coverage-pour-pytest">Coverage pour pytest</h3>
 <p>On va utiliser le <em>code coverage</em> de pytest :</p>
 <pre><code>python -m pip install pytest-cov
 </code></pre>
@@ -327,10 +329,10 @@ TOTAL                 26     13    50%
 <li>le module de couverture de code <a href="https://coverage.readthedocs.io/en/7.4.1/">coverage</a></li>
 <li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a></li>
 </ul>
-<h3>Extension vscode</h3>
+<h3 id="extension-vscode">Extension vscode</h3>
 <p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
-<h2><span id="code-coverage"></span> Avec vscode</h2>
-<h3>Utiliser coverage sans pytest</h3>
+<h2 id="avec-vscode"><span id="code-coverage"></span> Avec vscode</h2>
+<h3 id="utiliser-coverage-sans-pytest">Utiliser coverage sans pytest</h3>
 <p>En 2 temps :</p>
 <ul>
 <li>exécution de la couverture de code : <code>python -m coverage run [mon_fichier]</code>. Cette exécution crée un fichier <code class="fichier">.coverage</code> qui contient le rapport d'exécution</li>
@@ -345,11 +347,11 @@ TOTAL                 26     13    50%
 <p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
 </div>
 </div>
-<h3>Couverture de code avec pytest</h3>
+<h3 id="couverture-de-code-avec-pytest">Couverture de code avec pytest</h3>
 <p>Dans un terminal tapez <code>python -m pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code>.</code>) avec le coverage qui sera retourné au format texte.</p>
 <p>Si l'on veut les ligne manquantes, on peut utiliser la commande : <code>--cov-report term-missing</code></p>
 <p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code>python -m pytest --cov=. --cov-report html</code>.</p>
-<h3>Utilisation de l'extension *<em>Coverage Gutters</em></h3>
+<h3 id="utilisation-de-l-extension-coverage-gutters">Utilisation de l'extension *<em>Coverage Gutters</em></h3>
 <p>La commande <code>python -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code>python -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -363,6 +365,92 @@ TOTAL                 26     13    50%
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -373,6 +461,7 @@ TOTAL                 26     13    50%
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Étude : mélanger un tableau</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <blockquote>
@@ -149,7 +151,7 @@
 <p>Il n'existe pas d'aléatoire au sens mathématique en informatique. On ne peut atteindre que des nombre <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoires</a>, mais c'est une autre histoire.</p>
 </div>
 </div>
-<h2>Remarques préliminaires</h2>
+<h2 id="remarques-preliminaires">Remarques préliminaires</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -195,7 +197,7 @@
 <p>Codez cette méthode (on a utilisé la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.</p>
 </div>
 </div>
-<h2>Borne min du problème</h2>
+<h2 id="borne-min-du-probleme">Borne min du problème</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -223,17 +225,17 @@
 </div>
 </details>     
 </div>
-<h2>Existence d'un algorithme</h2>
+<h2 id="existence-d-un-algorithme">Existence d'un algorithme</h2>
 <p>Avant de chercher plus loin commençons par montrer qu'il existe un algorithme pour résoudre le problème. Si l'on possède une liste de toutes les permutations possibles, l'algorithme suivant fonctionne :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">soit P un tableau contenant chaque permutation de T une fois
 
 i = randrange(n!)
 rendre P[i]</code></pre>
 <p>Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.</p>
-<h2><span id="algo-toutes-permutations"></span>Toutes les permutations</h2>
+<h2 id="toutes-les-permutations"><span id="algo-toutes-permutations"></span>Toutes les permutations</h2>
 <p>Remarquez que dans le cas général, trouver toutes les permutations d'un tableau d'entier de taille $n$ revient à trouver toutes les bijections de $[0 .. n-1]$, donc toutes les permutations de $S = [0, 1, \dots, n-1]$.</p>
 <p>En effet, il est clair que pour tout tableau d'entiers $T$, $\sigma(T)[i] = T[\sigma(S)[i]]$ pour tout $0 \leq i &lt; n$. Nous allons donc nous concentrer sur le problème suivant :</p>
-<h3>Toutes les permutuations de $[0, 1, \dots, n-1]$</h3>
+<h3 id="toutes-les-permutuations-de-0-1-dots-n-1">Toutes les permutuations de $[0, 1, \dots, n-1]$</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -347,7 +349,7 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 <li>$S'[k] = S_i[j]$ avec $j &gt; k$</li>
 <li>$S_i[k] &lt; S'[k]$</li>
 <li>$k &lt; i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant</li>
-<li>Si $k &lt; i_1$ alors S^\star &lt; S'$</li>
+<li>Si $k &lt; i_1$ alors $S^\star &lt; S'$</li>
 <li>Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
 <ul>
 <li>soit $S^\star[i_1] &lt; S'[i_1]$ et $S^\star &lt; S'$</li>
@@ -429,7 +431,7 @@ $$</p>
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
 $$</p>
 <p>Comme pour le compteur binaire, on remarque que la complexité de l'énumération de toutes les permutations est de l'ordre du nombre de permutations et qu'en moyenne $n-i^\star$ vaut 2.</p>
-<h3>Toutes les permutations de $T$</h3>
+<h3 id="toutes-les-permutations-de-t">Toutes les permutations de $T$</h3>
 <p>Si l'énumération de toutes les permutations est de l'ordre du nombre de permutations, si l'on veut toutes les stocker il va falloir dupliquer la liste rendue par <code class="language-">successeur</code> car cet algorithme <strong>modifie</strong> la liste qui lui est passée en paramètre. La complexité devient alors $\mathcal{O}(n\cdot n!)$.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">permutations</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -462,7 +464,7 @@ $$</p>
 <li>le dernier élément du tableau de sortie est l'inverse du tableau initial</li>
 <li>que sont placés en premier les permutations ne changeant pas le 1er élément, puis celle où le 2nd élément est le premier, et ainsi de suite jusqu'à placer toutes les permutations où le dernier élément est le premier.</li>
 </ul>
-<h2>Un premier algorithme</h2>
+<h2 id="un-premier-algorithme">Un premier algorithme</h2>
 <p>Un algorithme de mélange utilisant <code class="language-">permutations</code> est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
@@ -472,7 +474,7 @@ $$</p>
     <span class="token keyword">return</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 </code></pre>
 <p>Si la la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> de python rend un nombre aléatoire équiprobable <code>mélange</code> doit bien rendre chaque permutation de façon équiprobable.</p>
-<h3>Expérimentations</h3>
+<h3 id="experimentations">Expérimentations</h3>
 <p>Vérifions expérimentalement que notre algorithme rend bien une permutation équiprobable.</p>
 <p>On va compter le nombre de fois où chaque permutation apparaît :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> compte_mélange<span class="token punctuation">(</span>taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -540,7 +542,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Pour une exécution de <code class="language-">graphique_mélange(6, 10000)</code>, j'obtiens le résultat suivant :</p>
 <p><img src="m%C3%A9lange_1.png" alt="mélange"></p>
 <p>Les permutations semblent bien équiprobables.</p>
-<h3>Complexité</h3>
+<h3 id="complexite">Complexité</h3>
 <p>Notre algorithme est bien une solution au problème, mais sa complexité est cependant prohibitive.</p>
 <p>Comme on a considéré que la complexité de <code class="language-">randrange</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-">mélange</code> est de l'ordre de la complexité de <code class="language-">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code>T</code>. L'algorithme <code class="language-">mélange</code> n'est pas utilisable en pratique car <a href="../complexit%C3%A9s/max-min#n_factoriel">n! est trop gros</a></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -551,7 +553,7 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>L'intérêt de <code class="language-">mélange</code> est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).</p>
 </div>
 </div>
-<h2><span id="algorithme-fisher-yates"></span> Algorithme de Fisher-Yates ou de Knuth</h2>
+<h2 id="algorithme-de-fisher-yates-ou-de-knuth"><span id="algorithme-fisher-yates"></span> Algorithme de Fisher-Yates ou de Knuth</h2>
 <p>L'algorithme que l'on va montrer maintenant, dit de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">fisher-yates ou encore de Knuth</a>, va également résoudre le problème &quot;permutation&quot;, mais de façon bien plus élégante.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -586,9 +588,9 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Notez que la boucle for pourrait aussi s'écrire <code class="language-">for i in range(len(T2) - 1, -1, -1)</code> sans perte de généralité.</p>
 </div>
 </div>
-<h3><span id="finitude-Knuth"></span> Finitude</h3>
+<h3 id="finitude"><span id="finitude-Knuth"></span> Finitude</h3>
 <p>Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.</p>
-<h3><span id="complexité-Knuth"></span> Complexité</h3>
+<h3 id="complexite-1"><span id="complexité-Knuth"></span> Complexité</h3>
 <p>Comme <code class="language-">randrange</code> est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :</p>
 <ol>
 <li>—</li>
@@ -610,7 +612,7 @@ C(n) & = & \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1
 \end{array}
 $$
 </div>
-<h3><span id="vérification-expérimentale"></span> Vérification expérimentale</h3>
+<h3 id="verification-experimentale"><span id="vérification-expérimentale"></span> Vérification expérimentale</h3>
 <p>Si, en exécutant l'algorithme on se rend bien compte qu'il <em>mélange</em> le tableau en entrée, ce n'est pas très clair à première vue que toutes les permutations sont équiprobables.</p>
 <p>On va le vérifier expérimentalement en regardant les permutations du tableau <code class="language-">[1, 2, 3, 4, 5, 6]</code>. On va compter combien de fois apparaît chaque permutation (il y en a $6! = 720$) pour un grand nombre de tirage.</p>
 <p>On pourrait reprendre le code précédent et l'adapter pour notre mélange, mais il y aurait beaucoup de duplication de code. En fait seule le nom de la permutation changerait.</p>
@@ -676,14 +678,14 @@ $$
 <p>Pour vérifier que notre résultat est bien conforme à un tirage aléatoire, on devrait <a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Test_du_%CF%872_d'ind%C3%A9pendance">fair un test du chi2 d'indépendance</a>, mais cela nous éloignerait trop d'un cours d'algorithmie.</p>
 </div>
 </div>
-<h3>Preuve de programme</h3>
+<h3 id="preuve-de-programme">Preuve de programme</h3>
 <p>On suppose que le tableau d'entrée possède $n$ éléments.</p>
 <p>On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :</p>
 <ul>
 <li>qu'une fois un élément choisi, il n'est plus jamais déplacé</li>
 <li>tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisit un élément à chaque itération)</li>
 </ul>
-<h4>Preuve par probabilités</h4>
+<h4 id="preuve-par-probabilites">Preuve par probabilités</h4>
 <p>On va calculer la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelque soient $i$ et $j$.</p>
 <p>Pour que cela arrive, il faut que :</p>
 <ul>
@@ -696,10 +698,10 @@ $$
 <p>De là, la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme est :</p>
 <p>$$\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot \ ...\  \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} = \frac{1}{n}$$</p>
 <p>C'est bien équiprobable !</p>
-<h4>Preuve par dénombrement</h4>
+<h4 id="preuve-par-denombrement">Preuve par dénombrement</h4>
 <p>A la $i$ème itération on choisit un élément parmi $n-i+1$, et comme $i$ croit de $1$ à $n-1$, on a $n!$ parcours différents de l'algorithme.</p>
 <p>L'algorithme choisit donc bien 1 permutation parmi $n!$, toutes différentes : il y a bien équiprobabilité des choix.</p>
-<h4>Preuve par récurrence</h4>
+<h4 id="preuve-par-recurrence">Preuve par récurrence</h4>
 <ol>
 <li>lors de la première itération, on choisit un entier $k$ entre $0$ et $n-1$ et on échange l'élément d'indice $k$ avec celui d'indice $n-1$. Cet élément ne sera <strong>plus jamais changé</strong> dans la suite de l'algorithme. On en conclut que chaque élément du tableau d'entrée à la même chance d'être en dernière place de la permutation de sortie.</li>
 <li>une fois la première itération terminée, tout se passe comme si on exécutait l'algorithme avec un tableau de taille $n-1$ contenant tous les éléments du tableau de départ sauf celui placé lors de la 1ère itération.</li>
@@ -714,7 +716,7 @@ $$
 <p>Cette preuve permet aussi de montrer que l'algorithme ne peut pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.</p>
 </div>
 </div>
-<h2>Méthodes de python</h2>
+<h2 id="methodes-de-python">Méthodes de python</h2>
 <p>Python utilise la méthode <a href="https://docs.python.org/fr/3/library/random.html#random.shuffle">shuffle</a> du module random pour mélanger une liste.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -752,14 +754,14 @@ $$
 </div>
 </details>     
 </div>
-<h2>Attention</h2>
+<h2 id="attention">Attention</h2>
 <p>On va montrer trois écueils du mélange :</p>
 <ul>
 <li>le premier lié à un mauvais choix d'algorithme (mais pas évident à voir) : atteindre toutes les permutations n'est pas une garanti d'équiprobabilité.</li>
 <li>le second montre que si votre algorithme dépend d'un autre, il faut aussi analyser ses performances.</li>
 <li>le troisième lié aux biais cognitifs humains qui ne voient pas l'aléatoire comme ce qu'il est réellement.</li>
 </ul>
-<h3>A trop mélanger on ne mélange pas bien</h3>
+<h3 id="a-trop-melanger-on-ne-melange-pas-bien">A trop mélanger on ne mélange pas bien</h3>
 <p>Si vous implémentez un algorithme de mélange mais qu'il peut obtenir plusieurs fois la même permutation avec des opérations différentes, alors vous risquez fort de ne pas être équiprobable. Illustrons ceci par un exemple.</p>
 <p>On sait que toute permutation d'un tableau peut être atteinte en échangeant itérativement une paire d'éléments (on appelle ça une <a href="https://fr.wikipedia.org/wiki/Permutation#D%C3%A9composition_en_produit_de_transpositions">décomposition en produit de transpositions</a>). On peut même montrer qu'il suffit d'en faire au plus la taille du tableau moins 1.</p>
 <p>On en déduit l'algorithme de mélange suivant :</p>
@@ -852,7 +854,7 @@ $$</p>
 <p>Le fait que l'on ne soit pas équiprobable vient du fait que l'on procède à exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable.</p>
 </div>
 </div>
-<h3><code class="language-">randrange</code> doit être puissant</h3>
+<h3 id="randrange-doit-etre-puissant"><code class="language-">randrange</code> doit être puissant</h3>
 <p>En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
 <p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
 <p>Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$</p>
@@ -872,7 +874,7 @@ $$</p>
 <p>La partie <em>A Shortage Of Random Numbers!</em> du lien suivant <a href="https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html">https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html</a> qui explique cela.</p>
 </div>
 </div>
-<h3>Attention aux humains</h3>
+<h3 id="attention-aux-humains">Attention aux humains</h3>
 <p>La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biais de confirmation</a> tend à se rappeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
 <ul>
 <li>Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">ils répondent le plus souvent 7</a>.</li>
@@ -886,7 +888,7 @@ $$</p>
 <p>Lisez l'article de <a href="https://draftsim.com/mtg-arena-shuffler/">https://draftsim.com/mtg-arena-shuffler/</a> qui montre cela avec le mélangeur de <a href="https://magic.wizards.com/fr/mtgarena">MTGA</a>.</p>
 </div>
 </div>
-<h2>Autres références</h2>
+<h2 id="autres-references">Autres références</h2>
 <p>Quelques autres articles sur le sujet :</p>
 <ul>
 <li><a href="https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/">https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/</a></li>
@@ -896,6 +898,92 @@ $$</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -906,6 +994,7 @@ $$</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

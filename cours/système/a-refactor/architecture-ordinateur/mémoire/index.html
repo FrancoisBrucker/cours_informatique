@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Mémoire</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,17 +95,18 @@
 
 
     
+  </div>
   
 
   <p>Les contraintes et choix matériels vont avoir des conséquence sur le code. En particulier pour la mémoire qui est au cœur du système</p>
-<h2>Type de mémoire</h2>
+<h2 id="type-de-memoire">Type de mémoire</h2>
 <ul>
 <li>DDR5 : <a href="https://fr.wikipedia.org/wiki/DDR5_SDRAM">https://fr.wikipedia.org/wiki/DDR5_SDRAM</a></li>
 <li>fonctionnement : <a href="https://fr.wikipedia.org/wiki/Double_data_rate">https://fr.wikipedia.org/wiki/Double_data_rate</a></li>
 </ul>
 <p>La vitesse d'accès et de transfert augmente.</p>
-<h2>Valeurs</h2>
-<h3>Endianness</h3>
+<h2 id="valeurs">Valeurs</h2>
+<h3 id="endianness">Endianness</h3>
 <p>On l'a vu, la valeur d'un byte dépend de son contexte.  C'est encore pire lorsque l'on considère des valeurs sur plusieurs adresses consécutives :</p>
 <pre><code>Indice   :        1       2
 Valeur b : 0000110010010001
@@ -143,7 +145,7 @@ Valeur b : 0000110010010001
 <p>L'Endianness est un exemple parmi tant d'autre que s'il existe une convention vous pouvez être sur que les deux choix seront choisis (écrire de gauche à droite, nord vers le haut, etc)</p>
 </div>
 </div>
-<h3>Padding</h3>
+<h3 id="padding">Padding</h3>
 <p>La quasi totalité des données manipulées par un processeur sont sur 64b (8B), parfois moins moins, mais quasi tout le temps strictement plus qu'un byte. Les transferts de données entre la mémoire et le processeurs sont optimisées pour une taille de 8B : si l'on cherche à lire à l'adresse A de la mémoire, la mémoire transférera les valeurs des cases A à A + 8.</p>
 <p>Pour des raisons de coût, il est cependant impossible d'avoir ce comportement à toutes les adresses. La lecture des données se fait <strong>toutes les 8 adresses</strong> et non à chaque adresse. Si les données à lire ne sont pas sur un multiple de sa taille de lecture, il faudra faire deux lectures avant de rassembler les données. Par exemple pour une taille de lecture de 8B :</p>
 <pre><code>Adresse         : 012345670123456701234567
@@ -166,7 +168,7 @@ recollage bus   : 0000XXXX
 </code></pre>
 <p>C'est ce que l'on appelle les <a href="https://fr.wikipedia.org/wiki/Alignement_en_m%C3%A9moire">problèmes d'alignement</a>. Il faut s'arranger pour que nos données soient alignées avec la mémoire pour que la lecture se fasse en 1 cycle et non 2.</p>
 <p>Ceci se fait habituellement pour nous, les compilateurs vont s'arranger pour les stocker chaque donnée à des multiples de leur taille en mémoire quite à perdre un peu de place (c'est ce que l'on appelle le padding). Les données sont alors dites <em>bien alignées</em>.</p>
-<h2>Adressage logique et physique</h2>
+<h2 id="adressage-logique-et-physique">Adressage logique et physique</h2>
 <p>Dans les OS actuels, la mémoire s'adresse sur 64b. C'est à dire qu'il est théoriquement possible d'adresser $2^{64}$ byte, c'est à dire 16<a href="https://fr.wikipedia.org/wiki/Pr%C3%A9fixe_binaire#Tableaux_des_pr%C3%A9fixes_binaires_et_d%C3%A9cimaux">EiB</a> et donc 16777216 TiB.</p>
 <p>Cette limite est actuellement inatteignable en pratique, c'est pourquoi pour limiter la complexité de l'adressage les processeurs actuels autorise moins d'adresse. Pour un (<a href="https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details">https://en.wikipedia.org/wiki/X86-64#Virtual_address_space_details</a>) par exemple (pour un ARM, c'est pareil):</p>
 <ul>
@@ -184,6 +186,92 @@ recollage bus   : 0000XXXX
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -194,6 +282,7 @@ recollage bus   : 0000XXXX
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

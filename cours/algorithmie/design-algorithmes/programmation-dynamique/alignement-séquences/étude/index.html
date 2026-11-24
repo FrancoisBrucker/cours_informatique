@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Étude</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,10 +95,11 @@
 
 
     
+  </div>
   
 
   <p>Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la <a href="https://fr.wikipedia.org/wiki/Distance_de_Levenshtein">distance d'édition</a>, très utilisée.</p>
-<h2>Distance entre chaines ?</h2>
+<h2 id="distance-entre-chaines">Distance entre chaines ?</h2>
 <p>Soient $a$ et $b$ deux chaines de caractères définies sur un alphabet $\mathcal{A}$. Commençons par supposer qu'elles sont de même longueur (disons $n$). On peut compter les différences entre $a$ et $b$ :</p>
 <div>
 $$
@@ -202,7 +204,7 @@ MARLOU       MARLOU-</code></pre>
 </li>
 </ol>
 <p>Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'<strong>alignement</strong> entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.</p>
-<h2>Alignement</h2>
+<h2 id="alignement">Alignement</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -219,7 +221,7 @@ MARLOU       MARLOU-</code></pre>
 </div>
 </div>
 <p>On remarque que : $\max(n, m) \leq L &lt; n + m$.</p>
-<h3>Distance</h3>
+<h3 id="distance">Distance</h3>
 <p>Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance de Hamming :</p>
 <div>
 $$
@@ -232,7 +234,7 @@ $$
 \delta(a^\star_i, b^\star_i) = \begin{cases} 0 & \text{si } a^\star_i = b^\star_i\\ 1 & \text{sinon}\end{cases}
 $$
 </div>
-<h3>Evolution d'une séquence en l'autre</h3>
+<h3 id="evolution-d-une-sequence-en-l-autre">Evolution d'une séquence en l'autre</h3>
 <p>Un alignement permet de simuler le passage d'une séquence à l'autre. Par exemple en considérant l'alignement suivant :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">MER-OUS
 | | ||
@@ -248,8 +250,8 @@ MARLOU-</code></pre>
 <li><strong>MARLOU</strong>S (identité)</li>
 <li><strong>MARLOU</strong> (<strong>suppression</strong> de S)</li>
 </ol>
-<h3>Nombre d'alignements</h3>
-<h4>Formule</h4>
+<h3 id="nombre-d-alignements">Nombre d'alignements</h3>
+<h4 id="formule">Formule</h4>
 <p>Il peut y avoir beaucoup (beaucoup) d'alignements possibles entre 2 séquences.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -348,7 +350,7 @@ $$
 <p><a href="https://www.youtube.com/watch?v=hIpSCJLNqtk">Calcul du nombre d'atomes dans l'univers</a></p>
 </div>
 </div>
-<h4>Calcul</h4>
+<h4 id="calcul">Calcul</h4>
 <p>Comme il est impossible d'énumérer tous les alignements car il y en a trop, il faut ruser pour calculer le nombre $f(n, m)$ pour $1 \leq n, m$.</p>
 <p>On remarque que pour calculer $f(n, m)$ on a besoin que de $f(n-1, m-1)$, $f(n-1, m)$ et $f(n, m-1)$. Si l'on a stocké ces 3 valeurs, le calcul de $f(n, m)$ devient aisé.</p>
 <p>On peut représenter ces dépendances de façon matricielle :</p>
@@ -528,7 +530,7 @@ f_nm <span class="token operator">=</span> ligne_précédente<span class="token 
 </div>
 </details>     
 </div>
-<h2>Distance d'édition</h2>
+<h2 id="distance-d-edition">Distance d'édition</h2>
 <p>L'alignement entre 2 séquences nous permet de définir, à partir d'une distance pour alignement, une distance pour séquences :</p>
 <div>
 $$
@@ -536,7 +538,7 @@ D(a, b) = \min \{ H(a^\star, b^\star) \mid \text{pour tous les alignements } (a^
 $$
 </div>
 <p>Comme il est impossible de trouver tous les alignements possibles, il faut ruser pour calculer cette distance sans faire exploser la complexité.</p>
-<h3>Calcul pour la distance élémentaire</h3>
+<h3 id="calcul-pour-la-distance-elementaire">Calcul pour la distance élémentaire</h3>
 <p>Reprenons le calcul de la distance pour un alignement donné :</p>
 <div>
 $$
@@ -695,7 +697,7 @@ M[i][j + 1] + 1&\\
 $$
 </div>
 <p>La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernière colonne de la matrice (en $M[-1][-1]$).</p>
-<h3>Exemple pour la distance élémentaire</h3>
+<h3 id="exemple-pour-la-distance-elementaire">Exemple pour la distance élémentaire</h3>
 <p>Distance de <code>ACTGATT</code> (horizontal) à <code>GCTAATCG</code> (vertical).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1133,7 +1135,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Alignement et distance d'édition</h3>
+<h3 id="alignement-et-distance-d-edition">Alignement et distance d'édition</h3>
 <p>Avec la matrice d'édition, il est facile de retrouver un alignement qui a réalisé la distance minimale en <em>remontant</em> dans la matrice.</p>
 <ol>
 <li>on pose $i=-1$ et $j=-1$</li>
@@ -1426,7 +1428,7 @@ GCTAATCG</code></pre>
 </div>
 </details>     
 </div>
-<h2>cas général</h2>
+<h2 id="cas-general">cas général</h2>
 <p>Pour l'instant notre distance élémentaire est définie telle que :</p>
 <p>Avec la <strong>distance élémentaire</strong> $\delta$ :</p>
 <div>
@@ -1461,7 +1463,7 @@ $$
 <li>$d(-, x)$ est appelé <strong>coût d'insertion</strong> et est égal à $d(x, -)$</li>
 <li>$d(x, y)$ est nommé <strong>coût de substitution</strong></li>
 </ul>
-<h3>définition du cas général</h3>
+<h3 id="definition-du-cas-general">définition du cas général</h3>
 <p>Tout ce qu'on a fait précédemment est toujours applicable !</p>
 <p>Sachant un coût $d$, on peut définir la distance $S_d$ pour un alignement $(a^\star, b^\star)$:</p>
 <div>
@@ -1489,7 +1491,7 @@ $$
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                       M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span><span class="token operator">-</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                       M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<h3>exemple du cas général</h3>
+<h3 id="exemple-du-cas-general">exemple du cas général</h3>
 <p>Considérons le coût :</p>
 <table>
 <thead>
@@ -1976,6 +1978,92 @@ $$
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -1986,6 +2074,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

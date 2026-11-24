@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Corrigé Test 5 : Algorithmes glouton</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -147,12 +147,12 @@
 <li>écart-type : 4.26/20 (1.06/4)</li>
 <li>médiane : 14/20 (3.5/4)</li>
 </ul>
-<h2>Bilan</h2>
+<h2 id="bilan">Bilan</h2>
 <p>Encore une fois je suis globalement content de vous (attention, je vais commencer à m'y habituer :)). Je suis aussi content de moi puisque ma correction correspond à peut prêt aux votre.</p>
 <p>J'ai mis en commentaire de votre récapitulatif les 2 notes que vous avez eu avec la correction par vos camarades, mais votre note correspond à la mienne. Notez que dans la très grande majorité des cas, la deuxième correction correspond au niveau réel de votre copie et est souvent 1/4 de point inférieure à ma propre notation.</p>
-<h2>Question 1</h2>
+<h2 id="question-1">Question 1</h2>
 <p>Répondez en une phrase maximum et le plus clairement possible.</p>
-<h3>1.1</h3>
+<h3 id="1-1">1.1</h3>
 <blockquote>
 <p>Quelle est la différence entre une fonction et une méthode ?</p>
 </blockquote>
@@ -160,7 +160,7 @@
 <li>Création : une méthode est définie dans une classe.</li>
 <li>Appel : le premier paramètre d'une méthode est l'objet à gauche du point.</li>
 </ol>
-<h3>1.2</h3>
+<h3 id="1-2">1.2</h3>
 <blockquote>
 <p>Quelle est la différence entre une composition et une agrégation ?</p>
 </blockquote>
@@ -168,7 +168,7 @@
 <li>une composition est un attribut crée par l'objet</li>
 <li>une agrégation est un attribut dont l'objet n'a pas été créé par l'objet</li>
 </ul>
-<h3>1.3</h3>
+<h3 id="1-3">1.3</h3>
 <blockquote>
 <p>Qu'est-ce qu'un espace de nom ? À quoi cela sert-il ? Explicitez son usage dans l’appel d’une méthode.</p>
 </blockquote>
@@ -179,7 +179,7 @@
 <li>l'espace de nom de chaque objet utilisable grâce à la notation pointée et qui permet de stocker les noms de ses attributs.</li>
 </ul>
 <p>Lorsqu'un nom n'est pas trouvé dans l'espace de nom de l'objet, il est cherché dans l'espace de nom de la classe.</p>
-<h2>Question 2</h2>
+<h2 id="question-2">Question 2</h2>
 <p>Le but des questions suivantes est de vérifier que vous savez :</p>
 <ul>
 <li>écrire une description UML avec des attributs, des méthodes et leurs signatures</li>
@@ -187,7 +187,7 @@
 <li>chaque classe a un constructeur</li>
 <li>les liens entre les classes (composition et agrégation) sont correctement déclarés</li>
 </ul>
-<h3>2.1</h3>
+<h3 id="2-1">2.1</h3>
 <blockquote>
 <p>Dessinez-moi un mouton en UML (il faudra qu'il ait un constructeur, au moins deux attributs et trois méthodes).</p>
 </blockquote>
@@ -198,7 +198,7 @@
 <li>un ou plusieurs attributs (cohérents)</li>
 <li>une ou plusieurs méthodes</li>
 </ul>
-<h3>2.2</h3>
+<h3 id="2-2">2.2</h3>
 <blockquote>
 <p>Créez une classe boîte (en UML) pour ranger le Mouton dedans.  Quelle est la relation entre cette classe et la classe mouton ? On rappelle que cette boîte-là comporte trois trous pour que le mouton respire.</p>
 </blockquote>
@@ -210,6 +210,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -220,6 +306,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

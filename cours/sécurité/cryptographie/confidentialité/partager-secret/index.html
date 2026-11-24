@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Partage de secret</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Comment se partager un secret alors que tout le monde nous espionne ? Le protocole <a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a> est une solution à ce problème, aidé par le fait que l'on ne sait pas tout faire en algorithmie.</p>
@@ -105,7 +107,7 @@
 <p><a href="https://www.youtube.com/watch?v=NmM9HA2MQGI&amp;list=RDCMUC9-y-6csu5WGm29I7JiwpnA">le problème en quelques vidéos</a></p>
 </div>
 </div>
-<h2>Protocole Diffie-Hellman</h2>
+<h2 id="protocole-diffie-hellman">Protocole Diffie-Hellman</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -135,20 +137,20 @@
 <p>Au final, Alice et Bob partagent un nombre $K$ compris entre $0$ et $p-1$.</p>
 </div>
 </div>
-<h2>Pourquoi ça marche</h2>
+<h2 id="pourquoi-ca-marche">Pourquoi ça marche</h2>
 <ol>
 <li>si $n$ est premier, <a href="/cours_informatique/cours/misc/corps-ZpZ/#groupe-cyclique">$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique</a></li>
 <li>il est très facile de faire <a href="/cours_informatique/cours/misc/corps-ZpZ/#exponentiation-modulaire">l'exponentiation modulaire</a> dans le cas général et encore plus rapide en notation binaire</li>
 <li><a href="/cours_informatique/cours/misc/corps-ZpZ/#logarithme-discret">le logarithme discret</a> est une opération coûteuse</li>
 </ol>
-<h3>Existence</h3>
+<h3 id="existence">Existence</h3>
 <p>Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$</p>
 <p>$ab$ permet bien d'obtenir tout nombre $q$ entre $0$ et $p-1$ car :</p>
 <ul>
 <li>soit $q$ n'est pas premier et $q=ab$ avec $a$ et $b$ plus petit que $p$</li>
 <li>soit $q$ est premier et $p+q$ est pair, donc composé, et il existe $a$ et $b$ plus petit que $p$ tel que $ab = p + q$.</li>
 </ul>
-<h3>Algorithme de transmission</h3>
+<h3 id="algorithme-de-transmission">Algorithme de transmission</h3>
 <p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/3-probl%C3%A8mes-algorithmiques/exponentiation/%C3%A9tude-algorithmique/">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">y</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -169,7 +171,7 @@
 </div>
 </div>
 <p>Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.</p>
-<h3>Problème du logarithme discret</h3>
+<h3 id="probleme-du-logarithme-discret">Problème du logarithme discret</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -269,9 +271,9 @@
 <p>Voir <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> ou encore <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a> pour d'autres algorithmes de résolution.</p>
 </div>
 </div>
-<h2>Attaque</h2>
+<h2 id="attaque">Attaque</h2>
 <p>Il existe beaucoup de types d'attaques possibles. Explicitons-en quelques unes.</p>
-<h3>Brute force</h3>
+<h3 id="brute-force">Brute force</h3>
 <p>La meilleure attaque connue est l'attaque brute force en utilisant <a href="https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes">l'algorithme du crible général</a> qui est une méthode de factorisation.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -283,7 +285,7 @@
 </div>
 <p>Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.</p>
 <p>On préconise donc une taille de clé de 4096b actuellement. Voir <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile">ce doc p35</a>.</p>
-<h3>Man in the middle</h3>
+<h3 id="man-in-the-middle">Man in the middle</h3>
 <p>On ne cherche pas à décrypter le code, on se place en intermédiaire de la conversation :</p>
 <pre><code>    Alice    |     Mallory       |     Bob
     privé    |      public       |    privé
@@ -301,7 +303,7 @@
 </code></pre>
 <p>Tout se passe comme si Alice parlait à Bob mais ils parlent tous les deux à Mallory qui fait l'intermédiaire : il se fait passer pour Bob auprès d'Alice et d'Alice auprès de Bob.</p>
 <p>Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne possède pas un mécanisme d'authentification.</p>
-<h3><span id="side-channel-attack"></span>Side channel attack</h3>
+<h3 id="side-channel-attack"><span id="side-channel-attack"></span>Side channel attack</h3>
 <p>L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe <a href="/cours_informatique/cours/misc/nombres/#exponentiation">MULTIPLY and SQUARE</a>.</p>
 <pre><code>algorithme expo(x: []int, y: []int) → []int:
   ref r []int
@@ -339,7 +341,7 @@
 </ul>
 </div>
 </div>
-<h2>Utilisation de courbes elliptiques</h2>
+<h2 id="utilisation-de-courbes-elliptiques">Utilisation de courbes elliptiques</h2>
 <p>Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.</p>
 <blockquote>
 <p>TBD à étoffer !</p>
@@ -356,6 +358,92 @@ pour la def et les propriétés basiques d'une courbe elliptique.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -366,6 +454,7 @@ pour la def et les propriétés basiques d'une courbe elliptique.</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

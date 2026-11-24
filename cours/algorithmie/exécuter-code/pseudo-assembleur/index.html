@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Pseudo-assembleur</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,13 +95,14 @@
 
 
     
+  </div>
   
 
   <blockquote>
 <p>TBD ici dire qu'on peut augmenter la taille.</p>
 </blockquote>
 <p>Nous allons présenter une version <em>&quot;minimale&quot;</em> de pseudo-code que nous appellerons pseudo-assembleur. Cet assembleur idéal et théorique nous permettra de faire le lien entre pseudo-code et le langage machine qui est effectivement exécuté.</p>
-<h2>Objet et variables</h2>
+<h2 id="objet-et-variables">Objet et variables</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -172,7 +174,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 </svg>
 <div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
 <div class="pl-8 mr-8">
-<p>La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$$, la taille (entière et en bit) du codage binaire d'une adresse.</p>
+<p>La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$, la taille (entière et en bit) du codage binaire d'une adresse.</p>
 </div>
 </div>
 <p>Ceci permet de définir rigoureusement un tableau :</p>
@@ -193,7 +195,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <li>à la complexité : le temps mis/nb d'instruction effectué est T(sum i/2^i) = 2T. Voir universal search</li>
 </ul>
 </blockquote>
-<h3>Objets entiers</h3>
+<h3 id="objets-entiers">Objets entiers</h3>
 <p>L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :</p>
 <ul>
 <li>$u: \{0, 1\}^{S}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire</li>
@@ -209,7 +211,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <pre><code>M[X:X+S] = b(212)
 </code></pre>
 <p>Qui sera équivalent à <code>M[X:X+S] = 1011001</code> si $S=8$ et à <code>M[X:X+S] = 000000001011001</code> si $S=16$.</p>
-<h3>Équivalence avec le pseudo-code</h3>
+<h3 id="equivalence-avec-le-pseudo-code">Équivalence avec le pseudo-code</h3>
 <p>On l'a vu, <a href="../../1-algorithme/bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires">un programme ne peut manipuler que des suites finies de <code>0</code> et de <code>1</code></a>. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.</p>
 <p>De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -222,7 +224,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <p>Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des objets.</p>
 </div>
 </div>
-<h2>Fonctions et appel de fonctions</h2>
+<h2 id="fonctions-et-appel-de-fonctions">Fonctions et appel de fonctions</h2>
 <p>En pseudo-code, on appelle les fonctions via des paramètres :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ma_fonction<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">)</span></code></pre>
 <p>En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau à $n$ adresses telle que :</p>
@@ -287,9 +289,9 @@ p
 <p>Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des fonctions.</p>
 </div>
 </div>
-<h2>Structures de contrôles</h2>
+<h2 id="structures-de-controles">Structures de contrôles</h2>
 <p>On associe à chaque ligne du programme en pseudo-assembleur un <strong><em>label</em></strong>, qui correspond à son numéro de ligne. Cet ajout va permettre de gérer les structures de contrôles et les tests sans blocs : uniquement avec des sauts.</p>
-<h3>Saut</h3>
+<h3 id="saut">Saut</h3>
 <p>On ajoute au pseudo-assembleur une instruction de saut :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">GOTO label</code></pre>
 <p>L'instruction <code>GOTO</code> (&quot;go to&quot; : &quot;aller à&quot;) <em>saute</em> à l'instruction de label <code>label</code>. Par exemple le programme suivant qui est une version itérative (et infinie) de la factorielle :</p>
@@ -348,7 +350,7 @@ GOTO <span class="token number">11</span></code></pre>
 <p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
 </div>
 </div>
-<h3>Test</h3>
+<h3 id="test">Test</h3>
 <p>Les tests en pseudo-code sont de deux types :</p>
 <ul>
 <li>arithmétiques, comme $a &lt; b$</li>
@@ -391,7 +393,7 @@ GOTO <span class="token number">11</span></code></pre>
 <p>On peut créer les mêmes tests en pseudo-assembleur et en pseudo-code.</p>
 </div>
 </div>
-<h3>Saut conditionnel</h3>
+<h3 id="saut-conditionnel">Saut conditionnel</h3>
 <p>Enfin, pour permettre de construire les structures de contrôle du pseudo-code, on ajoute les <strong><em>sauts conditionnels</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -428,7 +430,7 @@ GOTO <span class="token number">11</span></code></pre>
 <p>On peut créer les mêmes structure de contrôles et les boucles en pseudo-assembleur et en pseudo-code.</p>
 </div>
 </div>
-<h2>Opérations</h2>
+<h2 id="operations">Opérations</h2>
 <p>Les opérations autorisées en pseudo-code sont de deux ordres : logique et arithmétiques. Les autres opérations (concaténation de chaines de caractères, manipulation d'approximation de réels, ...) se déduisent de ces deux catégories. Les opérations logiques et arithmétiques fonctionnent toutes de la même manière :</p>
 <ul>
 <li>elles prennent au plus 2 paramètres</li>
@@ -451,7 +453,7 @@ GOTO <span class="token number">11</span></code></pre>
 </div>
 </div>
 <p>Les paramètres d'entrées et la sortie sont stockés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a> qui sont des variables spéciales.</p>
-<h3>Registres</h3>
+<h3 id="registres">Registres</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -481,9 +483,9 @@ GOTOIF ZÉRO <span class="token number">3</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
-<h3>Types d'opérations</h3>
+<h3 id="types-d-operations">Types d'opérations</h3>
 <p>Les opérations d'un pseudo-assembleur, comme pour un pseudo-code sont essentiellement arithmétique</p>
-<h4>Logiques</h4>
+<h4 id="logiques">Logiques</h4>
 <p>On en conclut donc qu'il suffit que le pseudo-assembleur ne doit posséder que la fonction $\text{NAND}(x, y)$ pour 1bit pour pouvoir effectuer toutes les opérations logiques. D'où la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -497,7 +499,7 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
 </div>
 </div>
-<h4>Arithmétiques</h4>
+<h4 id="arithmetiques">Arithmétiques</h4>
 <p>Pour générer toutes les opérations arithmétiques sur les entiers relatifs, il suffit de posséder les opérations d'addition et de soustraction. En utilisant le complément à deux pour noter les entiers négatifs, addition et soustractions sont équivalents :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -538,7 +540,7 @@ M<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
 </div>
 </div>
-<h4>Autres opérations</h4>
+<h4 id="autres-operations">Autres opérations</h4>
 <p>Les autres opérations possibles par un pseudo-code (gestion des réels, concaténation de chaines, etc) sont facilement codable avec les opérations logique et arithmétiques sur les entiers.</p>
 <p>La factorielle finale serait alors quelque chose du genre, en supposant que l'on ait les opérations de somme et de multiplications :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
@@ -550,7 +552,7 @@ ADD $<span class="token number">2</span> <span class="token operator">-</span><s
 GOTOIF ZÉRO <span class="token number">3</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 <p>La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération <code>NAND</code>. Tout le reste peut être construit grâce à du code.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -561,9 +563,9 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <p>Les structure de contrôles, les variables en mémoire et l'unique opération <code>NAND</code> permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.</p>
 </div>
 </div>
-<h2>I/O</h2>
+<h2 id="i-o">I/O</h2>
 <p><a href="https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie">Les entrées/sorties</a> ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.</p>
-<h2>Pseudo-assembleur minimal</h2>
+<h2 id="pseudo-assembleur-minimal">Pseudo-assembleur minimal</h2>
 <p>On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que faire du pseudo-code :</p>
 <ol>
 <li>Mémoire de taille fixe $N = 2^S$ cases</li>
@@ -592,6 +594,92 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -602,6 +690,7 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

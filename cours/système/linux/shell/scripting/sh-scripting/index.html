@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Shell scripting</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <ul>
@@ -150,8 +152,8 @@
 </div>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh -</span>
 </code></pre>
-<h2>Variables d'environnement</h2>
-<h3>python</h3>
+<h2 id="variables-d-environnement">Variables d'environnement</h2>
+<h3 id="python">python</h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"PATH"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"PORT"</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -159,7 +161,7 @@
 <p>Puis :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python variables.py
 $ <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">1456</span> python variables.py</code></pre>
-<h3>node</h3>
+<h3 id="node">node</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -170,7 +172,7 @@ $ <span class="token assign-left variable">PORT</span><span class="token operato
 </div>
 <pre class="language-js" tabindex="0" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PATH</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span></code></pre>
-<h3>env file</h3>
+<h3 id="env-file">env file</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -186,7 +188,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><a href="https://github.com/motdotla/dotenv">https://github.com/motdotla/dotenv</a></li>
 <li><code>set -a &amp;&amp; source .env &amp;&amp; set +a</code> voir : <a href="https://gist.github.com/mihow/9c7f559807069a03e302605691f85572">shell</a></li>
 </ul>
-<h2>Gestion des paramètres</h2>
+<h2 id="gestion-des-parametres">Gestion des paramètres</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -195,7 +197,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p><a href="https://coderwall.com/p/85jnpq/bash-built-in-variables">Gestion des paramètres d'un script</a></p>
 </div>
 </div>
-<h2>Fonctions</h2>
+<h2 id="fonctions">Fonctions</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -208,8 +210,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 </div>
 <p>Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. Pour le reste effectuez vos sorties sur la sortie standard (avec <code>echo</code>).</p>
-<h2>Structures de contrôle</h2>
-<h3>if/then</h3>
+<h2 id="structures-de-controle">Structures de contrôle</h2>
+<h3 id="if-then">if/then</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span> 
 commandes
 <span class="token keyword">then</span>
@@ -285,7 +287,7 @@ commandes
 <p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
 </div>
 </div>
-<h3>boucles for/while/until</h3>
+<h3 id="boucles-for-while-until">boucles for/while/until</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -316,8 +318,8 @@ done
   <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
 <span class="token keyword">done</span> <span class="token operator">&lt;</span> <span class="token string">"<span class="token variable">${1<span class="token operator">:-</span><span class="token operator">/</span>dev<span class="token operator">/</span>stdin}</span>"</span></code></pre>
 <p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de sh pour <a href="https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion">gérer les variables</a>.</p>
-<h2>Variables</h2>
-<h3>Métacaractères</h3>
+<h2 id="variables">Variables</h2>
+<h3 id="metacaracteres">Métacaractères</h3>
 <p>On a déjà vu <a href="../../bases-linux/commandes#meta-caracteres">les métacaractères du shell</a>, ils commencent par <code>$</code> et peuvent être utilisés dans les scripts :</p>
 <ul>
 <li><code>$?</code> : le code de sortie de la dernière commande</li>
@@ -326,7 +328,7 @@ done
 <li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
 <li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
 </ul>
-<h3>Variables internes</h3>
+<h3 id="variables-internes">Variables internes</h3>
 <p>Des variables créés par le shell et pouvant être utilisé dans les scripts. A utiliser avec parcimonie car cela rend vos scripts spécifiques à bash.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -336,7 +338,7 @@ done
 <p><a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></p>
 </div>
 </div>
-<h2>Process et shell</h2>
+<h2 id="process-et-shell">Process et shell</h2>
 <blockquote>
 <p>TBD mieux faire</p>
 </blockquote>
@@ -367,11 +369,11 @@ $ <span class="token builtin class-name">exec</span> ./pid.sh
 <span class="token number">705824</span>
 $ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
 <span class="token number">704757</span></code></pre>
-<h2>Getopt</h2>
+<h2 id="getopt">Getopt</h2>
 <blockquote>
 <p>TBD <a href="https://labex.io/fr/tutorials/shell-bash-getopt-391993">https://labex.io/fr/tutorials/shell-bash-getopt-391993</a></p>
 </blockquote>
-<h2>Bash scripting</h2>
+<h2 id="bash-scripting">Bash scripting</h2>
 <blockquote>
 <p>TBD étoffer et vérifier que je ne raconte pas de bêtises.
 TBD dans les systèmes actuels sh = bash</p>
@@ -379,7 +381,7 @@ TBD dans les systèmes actuels sh = bash</p>
 <ul>
 <li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/">un cours</a></li>
 </ul>
-<h2>on s'amuse avec rot13</h2>
+<h2 id="on-s-amuse-avec-rot13">on s'amuse avec rot13</h2>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
 COUCOU
 ❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
@@ -417,6 +419,92 @@ COECOUA
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -427,6 +515,7 @@ COECOUA
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

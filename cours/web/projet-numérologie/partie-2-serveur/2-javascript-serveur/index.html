@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Projet numérologie : partie 2 / javascript serveur</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <!-- début résumé -->
@@ -114,7 +116,7 @@
 </code></pre>
 <p>Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format <a href="https://www.json.org/json-fr.html">json</a> qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.</p>
 <p>Dans cette partie, retenez donc juste que l'on transfère (via le format json) des dictionnaires depuis le serveur vers le client.</p>
-<h2>Route avec paramètres</h2>
+<h2 id="route-avec-parametres">Route avec paramètres</h2>
 <p>Pour passer les données au serveur, nous allons utiliser les <a href="/cours_informatique/cours_informatique/cours/web/serveur-web/routes-param%C3%A8tres#query">routes avec query du cours</a>. Pour notre projet, on veut qu'une fois que l'utilisateur a rempli le formulaire il appuie sur le bouton d'envoi qui demande au serveur le numéro associé au prénom. Une fois que l'on a reçu la réponse du serveur on met à jour la page.</p>
 <p>Commençons par traiter le plus simple, la réponse du serveur. Il doit répondre à la requête avec paramètres (<a href="http://127.0.0.1:3000/chaine/Fran%C3%A7ois">http://127.0.0.1:3000/chaine/François</a> ou <a href="http://localhost:3000/prenom?valeur=fran%C3%A7ois">http://localhost:3000/prenom?valeur=françois</a> selon la méthode choisie) par un dictionnaire contenant les réponses :</p>
 <pre class="language-json" tabindex="0" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
@@ -122,7 +124,7 @@
   chiffre<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre>
 <p>On va procéder en 2 temps. On commence par créer la route, puis on va y intégrer la logique de conversion</p>
-<h3>Route</h3>
+<h3 id="route">Route</h3>
 <p>Ce dictionnaire est envoyé au client sous la forme d'un objet objet <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">json</a>. Avant de donner une véritable valeur en utilisant <code class="fichier">numérologie.js</code> occupons nous d'envoyer notre dictionnaire au format json. Nous avons chois d'utiliser la méthode avec query :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
@@ -138,7 +140,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment">// ...</span></code></pre>
-<h3>Logique de conversion</h3>
+<h3 id="logique-de-conversion">Logique de conversion</h3>
 <p>Pour associer un numéro spécifique à chaque prénom, on reprend le fichier <code class="fichier">static/numérologie.js</code> qu'il faut pouvoir intégrer au serveur. Pour cela, on va commencer par le placer dans un dossier particulier : <code class="fichier">numérologie/back/numérologie.js</code> puis il faut le modifier pour le transformer en module ES6 :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">
 <span class="token keyword">function</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter">chaîne</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -208,7 +210,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <p>Les imports qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par <code>./</code>.</p>
 </div>
 </div>
-<h2>Réception des données par le client</h2>
+<h2 id="reception-des-donnees-par-le-client">Réception des données par le client</h2>
 <p>Pour récupérer les données côté client, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.</p>
 <p>Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, très pratique, qui permet de récupérer des choses sur internet avec des <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesses</a> :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -278,7 +280,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>On a aussi supprimé l'appel au fichier <code class="fichier">numérologie.js</code> qui est maintenant inutile.</p>
-<h2>Url et utf8</h2>
+<h2 id="url-et-utf8">Url et utf8</h2>
 <p>Vous avez sûrement remarqué que nos routes ne sont pas du vrai français :</p>
 <ol>
 <li><a href="http://localhost:3000/chaine/fran%C3%A7ois">http://localhost:3000/chaine/françois</a> à la place de <a href="http://localhost:3000/cha%C3%AEne/fran%C3%A7ois">http://localhost:3000/chaîne/françois</a></li>
@@ -317,6 +319,92 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -327,6 +415,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Projet git</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,16 +95,17 @@
 
 
     
+  </div>
   
 
   <p>Bases de l'utilisation de git. On va utiliser git/github grâce à un petit projet web et en profiter pour expliquer le fonctionnement interne de git.</p>
-<h2>Création du projet git</h2>
+<h2 id="creation-du-projet-git">Création du projet git</h2>
 <p>Munissez vous d'un terminal et placez vous dans un dossier vierge :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> mon_projet_web
 <span class="token builtin class-name">cd</span> mon_projet_web</code></pre>
 <p>On peut maintenant initialiser un projet git :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> init</code></pre>
-<h2>le dossier <code class="fichier">.git</code></h2>
+<h2 id="le-dossier-git">le dossier <code class="fichier">.git</code></h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -161,10 +163,10 @@
 <li><code class="fichier">objects/</code> : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.</li>
 <li><code class="fichier">refs/</code> : contient les commit. Pour l'instant il n'y a rien.</li>
 </ul>
-<h2>Fonctionnement de git</h2>
+<h2 id="fonctionnement-de-git">Fonctionnement de git</h2>
 <p>Le but de git est de garder un historique d'un projet, en conservant les fichiers du projets et leurs modifications au cours du temps. Cet historique est composé de <strong>commit</strong> qui stock l'état d'un projet à un instant donné. Plus précisément il stocke la différence en l'état précédent et le nouvel état, formant un graphe direct et acyclique (si je jargonne)</p>
 <p>Pour démarrer cet historique faisons notre premier commit.</p>
-<h3>Premier commit</h3>
+<h3 id="premier-commit">Premier commit</h3>
 <p>Pour cela, il faut que l'on ait quelque chose à stocker. Créons un petit fichier <code class="fichier">index.html</code> à la racine de notre projet (donc ne soyez plus dans le dossier <code class="fichier">.git</code>) :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
@@ -198,7 +200,7 @@ Author: François Brucker <span class="token operator">&lt;</span>francois.bruck
 Date:   Sat Sep <span class="token number">19</span> <span class="token number">14</span>:35:41 <span class="token number">2020</span> +0200
 
     First commit <span class="token operator">!</span></code></pre>
-<h3>Les objets</h3>
+<h3 id="les-objets">Les objets</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -243,10 +245,10 @@ Date:   Sat Sep <span class="token number">19</span> <span class="token number">
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>C'est notre fichier html ! Les autres objets correspondent à l'arborescence de projet (pour l'instant un unique nœud, notre commit) et le commit en lui même. Il aura un autre nom chez vous, mais chez moi c'est celui de nom <code class="fichier">3b/8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code> (c'est le numéro donné dans le commit).</p>
-<h3>Les références</h3>
+<h3 id="les-references">Les références</h3>
 <p>Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée <code>main</code> commit des différentes branches. En regardant ce qu'il y a dans le fichier <code>refs/heads/main</code> je retrouve bien le numéro de commit.</p>
 <p>On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro <code>3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, je peux taper <code>git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, <code>git log 3b8c</code> ou encore <code>git log 3b8c0a8</code></p>
-<h2>Avancer dans l'arbre</h2>
+<h2 id="avancer-dans-l-arbre">Avancer dans l'arbre</h2>
 <p>Modifions notre fichier <code class="fichier">index.html</code> :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
@@ -273,7 +275,7 @@ aucune modification n'a été ajoutée à la validation <span class="token punct
 <p>On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour juste afficher le message et le numéro du commit) : <code>git log --pretty=oneline</code>. J'obtiens :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">11f5564cda69451538ff8036c1eb92834a585884 <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> main<span class="token punctuation">)</span> <span class="token function">add</span> french
 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 First commit <span class="token operator">!</span></code></pre>
-<h3>Ajout de fichiers</h3>
+<h3 id="ajout-de-fichiers">Ajout de fichiers</h3>
 <p>Ajoutons un fichier css à notre projet et faisons les liens avec le fichier html.</p>
 <p>Fichier <code class="fichier">main.css</code> :</p>
 <pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">h1</span> <span class="token punctuation">{</span>
@@ -329,10 +331,10 @@ aucune modification n'a été ajoutée à la validation <span class="token punct
 </div>
 <p>Un <code>git log --oneline</code> nous montre que l'on a 3 commits (notez que l'option <code>--oneline</code> ne garde que les 7 premiers chiffres de chaque commit).</p>
 <p>diff avant le commit pour voir la diff avec ce qui a été enregistré.</p>
-<h3>Historique</h3>
+<h3 id="historique">Historique</h3>
 <p>Vous pouvez voir ce qu'il y avait dans chaque commit, <a href="https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations">cette doc</a> vous montre plein de chouettes exemples.</p>
 <p>En particulier : <code>git log -p</code> qui montre ce que l'on a fait avec chaque commit. Le <a href="https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html">format de git diff</a> est un format étonnamment lisible qui montre distinctement les différences entre les versions.</p>
-<h3>Diff</h3>
+<h3 id="diff">Diff</h3>
 <p>On peut également voir les différences entre le dernier commit et ce que l'on a fait en utilisant la commande <a href="https://git-scm.com/docs/git-diff/fr"><code>git diff</code></a>.</p>
 <p>Commençons par modifiez nos fichiers <code class="fichier">main.css</code> et <code class="fichier">index.html</code> :</p>
 <p>On ajoute une règle pur les <code>&lt;h2&gt;</code> dans <code class="fichier">main.css</code> :</p>
@@ -404,7 +406,7 @@ index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token
 <p>La commande <code>git diff --cached</code> permet de faire le diff en prenant en compte l'index. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.</p>
 </div>
 </div>
-<h3>Modifier le dernier commit</h3>
+<h3 id="modifier-le-dernier-commit">Modifier le dernier commit</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -416,7 +418,7 @@ index 4a4e8ca<span class="token punctuation">..</span>aca9293 <span class="token
 </div>
 </div>
 <p>Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le <code>git status</code> n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument <code>--amend</code> à commit qui vous permet de modifier le dernier commit que vous avez fait.</p>
-<h2>Fichier <code class="fichier">.gitignore</code></h2>
+<h2 id="fichier-gitignore">Fichier <code class="fichier">.gitignore</code></h2>
 <p>Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&amp;sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :</p>
 <ul>
 <li>les fichiers <code class="fichier">.DS_STORE</code> des macs,</li>
@@ -440,7 +442,7 @@ Modifications qui seront validées <span class="token builtin class-name">:</spa
   <span class="token punctuation">(</span>utilisez <span class="token string">"git restore --staged &lt;fichier>..."</span> pour désindexer<span class="token punctuation">)</span>
   nouveau fichier <span class="token builtin class-name">:</span> .gitignore</code></pre>
 <p>On fini par l'ajouter au projet par un commit : <code>git commit -m&quot;add .gitignore&quot;</code>.</p>
-<h2>Branches</h2>
+<h2 id="branches">Branches</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -464,7 +466,7 @@ Modifications qui seront validées <span class="token builtin class-name">:</spa
 <li>une branche qui contient le build d'un site web statique par exemple.</li>
 </ul>
 <p>La commande <code>git branch</code> nous indique les branches que nous avons. Pour l'instant nous n'avons que la branche par défaut : <code>main</code>.</p>
-<h3>Créer une branche</h3>
+<h3 id="creer-une-branche">Créer une branche</h3>
 <p>Nous allons créer une branche pour voir s'il est possible d'ajouter du javascript à notre projet : <code>git branch js</code>.</p>
 <p>Si l'on refait la commande <code>git branch</code>, on voit qu'on a deux branches et qu'on est toujours sur la branche <code>main</code>. Allons vers la branche <code>js</code> avec la commande : <code>git switch js</code></p>
 <p>On peut maintenant tranquillement ajouter du js à notre projet :</p>
@@ -517,7 +519,7 @@ paragraph<span class="token punctuation">.</span><span class="token function">ad
 a3c3fdc <span class="token function">add</span> css and <span class="token function">link</span> to html
 11f5564 <span class="token function">add</span> french
 3b8c0a8 First commit <span class="token operator">!</span></code></pre>
-<h3>Voir des branches</h3>
+<h3 id="voir-des-branches">Voir des branches</h3>
 <p>Si l'on revient à la branche <code>main</code> avec la commande <code>git switch main</code> on voit que le fichier <code class="fichier">main.js</code> a disparu et que le fichier <code class="fichier">index.html</code> est remis à sa position sans le js.</p>
 <p>Faisons une modification du fichier <code class="fichier">index.html</code> de la branche <code>main</code> en ajoutant une phrase au paragraphe :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -553,7 +555,7 @@ a3c3fdc <span class="token function">add</span> css and <span class="token funct
 * a3c3fdc <span class="token function">add</span> css and <span class="token function">link</span> to html
 * 11f5564 <span class="token function">add</span> french
 * 3b8c0a8 First commit <span class="token operator">!</span></code></pre>
-<h3>Réconcilier les branches</h3>
+<h3 id="reconcilier-les-branches">Réconcilier les branches</h3>
 <p>Si l'on veut maintenant mettre notre branche expérimentale (<code>js</code>) dans la branche <code>main</code>, il va falloir réconcilier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du <a href="https://www.miximum.fr/blog/git-rebase/">rebase</a></p>
 <p>Nous allons donc procéder comme suit :</p>
 <ol>
@@ -561,7 +563,7 @@ a3c3fdc <span class="token function">add</span> css and <span class="token funct
 <li>on va &quot;<em>merger</em>&quot; la branche <code>js</code> à la suite de la branche <code>main</code>.</li>
 </ol>
 <p>On aura donc à la fin un joli historique qui fait comme si j'avais ajouter mon <code>js</code> à la suite du <code>main</code> sans autres branches.</p>
-<h4>Git rebase</h4>
+<h4 id="git-rebase">Git rebase</h4>
 <p>Sur la branche <code>js</code> on exécute la commande : <code>git rebase main</code> et on obtient le résultat :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Fusion automatique de index.html
 CONFLIT (contenu) : Conflit de fusion dans index.html
@@ -632,7 +634,7 @@ impossible d'appliquer f7907be... add js</conflicted_files></code></pre>
 <li>on fusionne la branche <code>js</code> sur <code>main</code> : <code>git merge js</code></li>
 </ol>
 <p>Un <code>it log --oneline --all --graph</code> montre que les deux branches sont identique, on peut maintenant supprimer la branche <code>js</code> : <code>git branch -d js</code></p>
-<h4>Merge</h4>
+<h4 id="merge">Merge</h4>
 <p>&quot;<em>Merger</em>&quot; revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">A---B---C---D ← main
          \
@@ -647,7 +649,7 @@ impossible d'appliquer f7907be... add js</conflicted_files></code></pre>
              \
               E---F ← js</code></pre>
 <p>Rendant l'historique lisible et le merge facile (c'est le rebase qui pourra être compliqué)</p>
-<h2>Revenir en arrière dans l'historique</h2>
+<h2 id="revenir-en-arriere-dans-l-historique">Revenir en arrière dans l'historique</h2>
 <p>Il arrive parfois qu'on a complètement raté un truc et que l'on veuille revenir en arrière dans le projet. C'est super car c'est justement là où git est fort.</p>
 <p>Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.</p>
 <p>Je ne vais ici que résumer les possibilités. Allez voir sur
@@ -701,7 +703,7 @@ a3c3fdc add css and link to html
 <li>remettre un seul fichier à un état antérieur : <code>git switch 7d2fd72 index.html</code> prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans l'idex, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du <code>main</code> : <code>git switch main index.html</code></li>
 <li>undo un commit : <code>git revert 7d2fd72</code> va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.</li>
 </ul>
-<h2>vscode</h2>
+<h2 id="vscode">vscode</h2>
 <blockquote>
 <p>TBD à étoffer.</p>
 </blockquote>
@@ -712,6 +714,92 @@ a3c3fdc add css and link to html
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -722,6 +810,7 @@ a3c3fdc add css and link to html
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>openssl</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <!-- TBD
@@ -108,7 +110,7 @@
 <blockquote>
 <p>TBD <a href="https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl">https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl</a></p>
 </blockquote>
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -120,11 +122,11 @@
 <p>On utilise la version 3 d'openssl :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ openssl <span class="token parameter variable">--version</span>
 OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</span> Oct <span class="token number">2025</span> <span class="token punctuation">(</span>Library: OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</span> Oct <span class="token number">2025</span><span class="token punctuation">)</span></code></pre>
-<h3>Linux</h3>
+<h3 id="linux">Linux</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssl</code></pre>
-<h3>Macos</h3>
+<h3 id="macos">Macos</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ brew <span class="token function">install</span> openssl</code></pre>
-<h3>Windows</h3>
+<h3 id="windows">Windows</h3>
 <p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
 <ol>
 <li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
@@ -135,7 +137,7 @@ OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</sp
 <li>commencez par trouver l'endroit où est installé openssl (qui moi c'est<code class="fichier">C:\Program Files\OpenSSL-Win64\bin\</code>)</li>
 <li>utilisez <a href="https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/">ce tutoriel</a> pour l'ajouter aux chemins d'exécution</li>
 </ol>
-<h2>Clés du chiffrement asymétrique</h2>
+<h2 id="cles-du-chiffrement-asymetrique">Clés du chiffrement asymétrique</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -194,7 +196,7 @@ OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</sp
 </ul>
 </div>
 </div>
-<h2>Clé du chiffrement symétrique</h2>
+<h2 id="cle-du-chiffrement-symetrique">Clé du chiffrement symétrique</h2>
 <p>Créons une clé de 32B = 256b pour être utilisée par chacha20.</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl rand <span class="token parameter variable">-hex</span> <span class="token parameter variable">-out</span> symmetric_key <span class="token number">32</span></code></pre>
 <p>Le fichier <code class="fichier">symmetric_key.pem</code> contient la clé.</p>
@@ -231,7 +233,7 @@ OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</sp
 </div>
 </details>     
 </div>
-<h2>Chiffrement symétrique</h2>
+<h2 id="chiffrement-symetrique">Chiffrement symétrique</h2>
 <p>On écrit un petit message à envoyer :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token builtin class-name">echo</span> <span class="token string">"Un coucou chiffré."</span> <span class="token operator">></span> msg.txt</code></pre>
 <p>On commence par compresser ce fichier (on utilise ici zip, mais vous pouvez utiliser ce que vous voulez) :</p>
@@ -253,45 +255,131 @@ On a utilisé ici des clés explicites. On peut aussi passer <em>via</em> des pa
 <blockquote>
 <p>TBD faire avec K et IV sans -p</p>
 </blockquote>
-<h2>Chiffrement asymétrique de la clé symétrique</h2>
+<h2 id="chiffrement-asymetrique-de-la-cle-symetrique">Chiffrement asymétrique de la clé symétrique</h2>
 <blockquote>
 <p>TBD faire avec sign then encrypt. Comme ça on cache l'expéditeur
 puis zip les trois fichiers à envoyer.</p>
 </blockquote>
-<h3>Signature</h3>
+<h3 id="signature">Signature</h3>
 <p>On signe un hash. OpenSSL propose plein de fonction de hash différente :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"> openssl dgst <span class="token parameter variable">-list</span></code></pre>
 <p>On va utiliser sha256 pour signer le message chiffré avec notre clé privée :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl dgst <span class="token parameter variable">-sha256</span> <span class="token parameter variable">-sign</span> private_key.pem <span class="token parameter variable">-out</span> msg.txt.zip.encrypted.sign.sha256 msg.txt.zip.encrypted</code></pre>
-<h3>Chiffrement de la clé</h3>
+<h3 id="chiffrement-de-la-cle">Chiffrement de la clé</h3>
 <p>Chiffrons la clé symétrique avec la clé publique de notre interlocuteur :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl pkeyutl <span class="token parameter variable">-encrypt</span> <span class="token parameter variable">-in</span> symmetric_key <span class="token parameter variable">-pubin</span> <span class="token parameter variable">-inkey</span> public_key.pem <span class="token parameter variable">-out</span> symmetric_key.encrypted</code></pre>
-<h2>Envoi du message</h2>
+<h2 id="envoi-du-message">Envoi du message</h2>
 <p>Il faut envoyer :</p>
 <ol>
 <li>le message chiffré : <code class="fichier">msg.txt.zip.encrypted</code></li>
 <li>la signature du message chiffré : <code class="fichier">msg.txt.zip.encrypted.sign.sha256</code></li>
 <li>la clé symétrique chiffrée avec la clé publique de l'interlocuteur : <code class="fichier">symmetric_key.encrypted</code></li>
 </ol>
-<h2>Déchiffrement</h2>
+<h2 id="dechiffrement">Déchiffrement</h2>
 <p>Vous devez avoir :</p>
 <ol>
 <li>la clé publique de l'envoyeur</li>
 <li>votre clé privée</li>
 </ol>
-<h3>Vérification de la signature</h3>
+<h3 id="verification-de-la-signature">Vérification de la signature</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl dgst <span class="token parameter variable">-verify</span> public_key.pem <span class="token parameter variable">-signature</span> msg.txt.zip.encrypted.sign.sha256 msg.txt.zip.encrypted    </code></pre>
 <p>Si tout s'est bien passé vous devriez voir <code>Verified OK</code> comme réponse (sinons vous auriez eu <code>Verification failure</code> comme réponse).</p>
-<h3>Déchiffrement de la clé symétrique</h3>
+<h3 id="dechiffrement-de-la-cle-symetrique">Déchiffrement de la clé symétrique</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl pkeyutl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-inkey</span> private_key.pem <span class="token parameter variable">-in</span> symmetric_key.encrypted <span class="token parameter variable">-out</span> symmetric_key</code></pre>
-<h3>Déchiffrement du message</h3>
+<h3 id="dechiffrement-du-message">Déchiffrement du message</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl enc <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token parameter variable">-chacha20</span> <span class="token parameter variable">-in</span> msg.txt.zip.encrypted <span class="token parameter variable">-kfile</span> symmetric_key <span class="token parameter variable">-pbkdf2</span> <span class="token parameter variable">-out</span> msg.txt.zip</code></pre>
-<h3>Dézippage du message</h3>
+<h3 id="dezippage-du-message">Dézippage du message</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">unzip</span> msg.txt.zip</code></pre>
 <p>Et normalement, vous devriez avoir le fichier initial !</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -302,6 +390,7 @@ puis zip les trois fichiers à envoyer.</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

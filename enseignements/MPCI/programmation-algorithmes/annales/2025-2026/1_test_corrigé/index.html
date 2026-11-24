@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">sujet Test 1 : algorithmie et preuve</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -91,7 +91,7 @@
 
   
 
-  <h2>Barème</h2>
+  <h2 id="bareme">Barème</h2>
 <p>Suite à une erreur de ma part, les étudiants n'ont eu que les pages impaires du sujet (photocopies non recto verso du sujet initial) il ne restait donc que les 2 questions de la page 3.</p>
 <p>La note du test est sur 5 points répartis comme suit :</p>
 <ul>
@@ -163,19 +163,19 @@
 </ul>
 <p>Un test est brutal. On peut vite avoir une très bonne note comme une note très basse. Ceux qui ont raté ce test ne désespérez pas et révisez/apprenez bien pour les prochains. Cela se rattrape.</p>
 <p>Au global, je trouve que vous n'avez pas assez travaillé pour le test et êtes restés sur vos acquis du premier semestre : cela ne suffit pas. Si ce test sonne comme un signal d'alarme pour vous, c'est bien. Vous savez que je suis là pour répondre à vos questions et vous aider à progresser : il ne faut pas hésiter à me solliciter pendant un cours pour des précisions ou individuellement avant/après un cours.</p>
-<h2>Erreurs fréquemment rencontrées</h2>
-<h3>Trop vite</h3>
+<h2 id="erreurs-frequemment-rencontrees">Erreurs fréquemment rencontrées</h2>
+<h3 id="trop-vite">Trop vite</h3>
 <p>Vous ne réfléchissez pas assez à ce qu'on vous demande de faire. Il y avait un piège par question est vous êtes pour beaucoup tombé dans les deux.</p>
-<h3>Pas assez révisé</h3>
+<h3 id="pas-assez-revise">Pas assez révisé</h3>
 <p>Près de la moitié des étudiants qui n'ont pas vraiment révisé, ce qui se voit tout de suite :</p>
 <ul>
 <li>à la question 1 où vous vous trompez sur des propositions du cours</li>
 <li>à la question 2 où vous n'écrivez pas du pseudocode syntaxiquement correct.</li>
 </ul>
-<h3>Question 1 : nombre d'algorithmes</h3>
+<h3 id="question-1-nombre-d-algorithmes">Question 1 : nombre d'algorithmes</h3>
 <p>Il y a un nombre dénombrable d'algorithmes ce qui signifie qu'il y en a autant que tout ensemble en bijection avec les entiers. En particuliers tous les multiples de $\pi$ fonctionnent puisque la fonction $f: n \mapsto n \cdot \pi$ est une bijection de $\mathbb{N}$ dans l'ensemble des multiples de $\pi$. C'était le piège.</p>
 <p>Les autres réponses sont fausses, c'est du cours. En particulier, j'ai montré en cours qu'il y a autant de fonction de $\mathbb{N}$ dans $\mathbb{N}$ que de réels ! C'est justement un résultat fondamental : un algorithme est une fonction de $\mathbb{N}$ dans $\mathbb{N}$ mais toutes les fonctions de $\mathbb{N}$ dans $\mathbb{N}$ ne sont pas des algorithmes.</p>
-<h3>Question 2 : algorithme de remplacement</h3>
+<h3 id="question-2-algorithme-de-remplacement">Question 2 : algorithme de remplacement</h3>
 <p>Trois fautes courantes :</p>
 <ol>
 <li>vous ne respectez pas la signature demandée : l'algorithme n'est pas sensé rendre quelque chose (et c'est normal puisque le tableau est modifié)</li>
@@ -191,7 +191,7 @@
 <li>pour pouvoir écrire <code class="language-">T[e]</code> il faut que <code class="language-">e</code> soit un indice (un entier de <code class="language-">[0 .. T.longueur[</code>)</li>
 <li>la boucle <code class="language-">pour chaque</code> itère sur les valeurs de <code class="language-">T</code>. Écrire <code class="language-">pour chaque e de T:</code> est équivalent à écrire <code class="language-">pour chaque e de [T[0] .. T[T.longueur -1]]:</code> et donc écrire <code class="language-">T[e]</code>  est une aberration dans la plupart des cas.</li>
 </ul>
-<h2>Corrigé</h2>
+<h2 id="corrige">Corrigé</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -203,6 +203,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -213,6 +299,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

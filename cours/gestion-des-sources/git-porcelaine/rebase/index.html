@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">git rebase, la tronçonneuse magique</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -90,6 +90,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -105,6 +106,7 @@
 
 
     
+  </div>
   
 
   <!-- début résumé -->
@@ -117,13 +119,13 @@
 <a href="#usage">Cas d'usage</a> |
 Récapitulatif des commandes |
 <a href="#sources">Sources et ressources</a> |</p>
-<h2><span id="pourquoi"></span> Pourquoi</h2>
+<h2 id="pourquoi"><span id="pourquoi"></span> Pourquoi</h2>
 <p>Pourquoi donc s'embêter à utiliser une commande comme <code>rebase</code>, souvent perçue comme obscure, même pour certains vétérans du git, alors qu'il existe quelque chose de simple et de connu comme <code>git merge</code> ? Pour deux raisons principales, que nous détaillerons par la suite :</p>
 <ol>
 <li>En fait, contrairement à ce qu'on peut penser, <code>git rebase</code> n'est pas obscure du tout</li>
 <li>Et c'est même souvent mieux qu'une bonne vieille fusion, pour plein de raisons.</li>
 </ol>
-<h2><span id="quoi"></span> Quoi</h2>
+<h2 id="quoi"><span id="quoi"></span> Quoi</h2>
 <p>Tout d'abord, que fait exactement la commande <code>git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <code>main</code>, avec la commande suivante :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase master <span class="token operator">&lt;</span>ma branche<span class="token operator">></span></code></pre>
 <p>Mais pourquoi donc s'embêter à faire ça ? Voyons sur un petit exemple : j'ai créée une branche <code>ma branche</code> à partir de <code>main</code>, et je souhaite maintenait amener les modifications effectuées dans <code>ma branche</code> sur <code>main</code>.</p>
@@ -154,9 +156,9 @@ Récapitulatif des commandes |
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> branch <span class="token parameter variable">-d</span> ma branche</code></pre>
 <p>On obtient donc un historique linéaire, clair, là où auparavant on aurait eu des diverticules :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">A---B---C---D---E---F---G ← main</code></pre>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>Tout cela est bien joli, mais à quoi est-ce que ça sert de découper une branche pour la recoller à la fin avant de fusionner sur <code>main</code> ? Cela peut en effet sembler être une perte de temps, dans la mesure où les problèmes (notamment les conflits) qui se déclarent habituellement lors d'un merge se déclareront lors du rebase. Petit panorama de l'utilité du rebase.</p>
-<h3>Un historique propre</h3>
+<h3 id="un-historique-propre">Un historique propre</h3>
 <p>En découpant les branches pour les recoller plus loin, <code>git rebase</code> permet de conserver un historique de modification plus clair, qu'on décide ensuite de fusionner la branche fille à <code>main</code> ou non.</p>
 <p>On peut ainsi décider de fusionner une branche peu importante, comme une simple correction de bug par exemple, sans que celle-ci n'apparaisse comme une excroissance de la branche principale. Pour se faire, on commence par re-baser la branche de correction de bug (appelée <em>bug</em>) sur <code>main</code>, puis on merge, et enfin on supprime la branche :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase master bug
@@ -190,7 +192,7 @@ A---B---E---H---I---L ← main
 <span class="token function">git</span> switch master
 <span class="token function">git</span> merge fonctionnalité2 --no-ff
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> fonctionnalité2</code></pre>
-<h3>Corriger des erreurs</h3>
+<h3 id="corriger-des-erreurs">Corriger des erreurs</h3>
 <p>Git rebase permet également de réparer certaines boulettes, particulièrement celles que l'on a tendance à commettre tôt le matin ou tard le soir. L'une d'elles consiste par exemple à créer une nouvelle branche à partir d'une branche fille plutôt qu'à partir de master :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">A---B---H---I ← main
      <span class="token punctuation">\</span>
@@ -205,16 +207,16 @@ A---B---H---I ← production
      <span class="token punctuation">\</span>
       C---D---G ← bug1</code></pre>
 <p>Où B, pour rappel, est l'étiquette d'un commit (<code>e73f3d6</code> par exemple).</p>
-<h3>Diviser pour mieux régner</h3>
+<h3 id="diviser-pour-mieux-regner">Diviser pour mieux régner</h3>
 <p>Parfois, on peut se traîner pendant de longues semaines la branche d'une fonctionnalité particulièrement longue à développer. Pendant ce temps, la branche <code>main</code> a le temps de connaître de nombreuses évolutions, et on risque donc de passer toute une demi-journée à résoudre des conflits lors de la fusion de notre branche avec <code>main</code>. Sauf si ...</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">A---B---H---I--- … ---J---E---F ← main
       <span class="token punctuation">\</span>
        C---D---G--- … ---H---I ← longue_fonctionnalite</code></pre>
 <p>Sauf si on a pris le temps, tous les matins par exemple, de re-baser notre branche sur <code>main</code> pour prendre en compte les dernières modifications et corriger régulièrement les conflits, plutôt que tous à la fois à la fin.</p>
 <p>Après, il y a peut-être deux écoles, comme entre ceux qui préfèrent faire la vaisselle après chaque repas, et ceux qui donnent un bon coup à la fin de la semaine.</p>
-<h3>Le jardinage de commits (rebase interactif)</h3>
+<h3 id="le-jardinage-de-commits-rebase-interactif">Le jardinage de commits (rebase interactif)</h3>
 <p>Le rebase interactif (<code>git rebase -i</code>) est très utile dans le cadre de l'utilisation de commits atomiques, afin de réorganiser l'historique et de fusionner plusieurs commits entre eux. Pour plus de détails, voir le tuto détaillé sur les commits atomiques.</p>
-<h2>Bibliographie</h2>
+<h2 id="bibliographie">Bibliographie</h2>
 <ul>
 <li>Ce superbe <a href="https://www.miximum.fr/blog/git-rebase/">tuto</a> réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.</li>
 <li><a href="https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges">https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges</a> qui montre l'utilité de <code>git --rebase=merges</code> qui préserve les merges locaux s'il y en a.</li>
@@ -222,6 +224,92 @@ A---B---H---I ← production
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -232,6 +320,7 @@ A---B---H---I ← production
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

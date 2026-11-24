@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">corrigé Test 2 : complexité et preuve</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -91,7 +91,7 @@
 
   
 
-  <h2>Barème</h2>
+  <h2 id="bareme">Barème</h2>
 <p>La note est sur 4.</p>
 <ol>
 <li>complexité recherche + complexité autres fonctions : 3pt</li>
@@ -144,10 +144,10 @@
 </tbody>
 </table>
 <p>Pour une moyenne de 3.5 et un écart-type de 0.7.</p>
-<h2>Erreurs fréquemment rencontrées</h2>
+<h2 id="erreurs-frequemment-rencontrees">Erreurs fréquemment rencontrées</h2>
 <p>Attention, $k$ fait partie des données de l'algorithme. Pour une taille de tableau de $n$, Donner une complexité de $\mathcal{O}(kn)$ dans la question 1 est donc plus précis qu'une complexité de $\mathcal{O}(n^2)$, $k$ pouvant varier de $1$ à $n$.</p>
-<h2>1</h2>
-<h3>Complexité maximum et minimum</h3>
+<h2 id="1">1</h2>
+<h3 id="complexite-maximum-et-minimum">Complexité maximum et minimum</h3>
 <p>Les deux algorithmes ne varient que de 1 test, les deux complexités sont donc égales. On ne calculera que la complexité de <code class="language-">maximum</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    m <span class="token operator">=</span> <span class="token number">0</span></span>
@@ -181,7 +181,7 @@ C(n) &=& \mathcal{O}(1) + \\
 $$
 </div>
 <p>On en conclut que la complexité des algorithmes <code class="language-">maximum</code> et <code class="language-">minimum</code> ne dépendent que de la taille de <code class="language-">T</code> et vaut $\mathcal{O}(n)$</p>
-<h3>Complexité de <code class="language-">copie</code></h3>
+<h3 id="complexite-de-copie">Complexité de <code class="language-">copie</code></h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    nouveau <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span>
 <span class="highlight-line">    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span></span>
@@ -211,7 +211,7 @@ C(n) &=& \mathcal{O}(1) + \\
 $$
 </div>
 <p>On en conclut que la complexité des algorithmes <code class="language-">copie</code> ne dépend que de la taille de <code class="language-">T</code> et vaut $\mathcal{O}(n)$</p>
-<h3>Complexité de <code class="language-">recherche</code></h3>
+<h3 id="complexite-de-recherche">Complexité de <code class="language-">recherche</code></h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    max_value <span class="token operator">=</span> T<span class="token punctuation">[</span>maximum<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">]</span></span>
 <span class="highlight-line"></span>
@@ -275,25 +275,111 @@ C(n) &=& \mathcal{O}(k) + \\
 \end{array}
 $$
 </div>
-<h2>2</h2>
+<h2 id="2">2</h2>
 <p>On utilise l'algorithme <code class="language-">copie</code> pour ne pas modifier les données initiales (on change les valeurs du tableau en ligne 70)</p>
-<h2>3</h2>
-<h3>copie</h3>
+<h2 id="3">3</h2>
+<h3 id="copie">copie</h3>
 <p>On peut utiliser l'invariant de boucle : <em>au bout de la $k$ème itération, <code class="language-">nouveau</code> contient les $i$ premiers éléments de <code>T</code></em> pour démontrer que <code class="language-">nouveau</code> continent tous les éléments du tableau passé en paramètre.</p>
-<h3>maximum et minimum</h3>
+<h3 id="maximum-et-minimum">maximum et minimum</h3>
 <p>On peut utiliser l'invariant de boucle : <em>au bout de chaque itération <code class="language-">m</code> contient l'<strong>indice</strong> de l'élément maximum (respectivement minimum) des $i$ premières cases de <code class="language-">T</code></em> pour démontrer que <code class="language-">maximum</code> (respectivement <code class="language-">minimum</code>) rendra l'indice du plus grand (respectivement plus petit) élément de <code class="language-">T</code>.</p>
-<h3>recherche</h3>
+<h3 id="recherche">recherche</h3>
 <p>L'invariant suivant peut être démontré :</p>
 <p>Au bout de chaque itération :</p>
 <ul>
 <li>les cases des $i+1$ plus petits éléments de <code class="language-">T</code> contiennent la valeur <code class="language-">max_value + 1</code> pour <code class="language-">T_copie</code>,</li>
 <li>les valeurs des autres cases de <code class="language-">T_copie</code> sont identiques à celles de <code class="language-">T</code></li>
 </ul>
-<h2>4</h2>
+<h2 id="4">4</h2>
 <p>La médiane d'un tableau revient à chercher le $\frac{n}{2}$ ème plus petit élément d'un tableau de taille $n$ : c'est le résultat de <code class="language-">recherche(T, len(T)//2)</code> et est de complexité : $\mathcal{O}(n^2)$</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -304,6 +390,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

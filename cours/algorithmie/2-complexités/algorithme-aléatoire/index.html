@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Algorithmie et aléatoire</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Un ordinateur et encore plus un algorithme est forcément déterministe : répéter un algorithme avec les mêmes entrées doit rendre la même sortie. Alors comment expliquer que python fournisse <a href="https://docs.python.org/fr/3.15/library/random.html">le module random</a> qui génère des nombres aléatoires (<a href="https://docs.python.org/fr/3.15/library/random.html#random.random"><code class="language-">random.random</code></a>) ou mélange des tableaux (<a href="https://docs.python.org/fr/3.15/library/random.html#random.shuffle"><code class="language-">random.shuffle</code></a>) ?</p>
@@ -124,7 +126,7 @@ should be used.</em>&quot; (Donald Knuth, 1969)</p>
 </div>
 </div>
 <p>En informatique la seule quantité que l'on peut manipuler est le bit. Commençons donc par voir comment créer un générateur de bit uniforme <code>random() → bit</code></p>
-<h2>Bit aléatoire</h2>
+<h2 id="bit-aleatoire">Bit aléatoire</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -144,7 +146,7 @@ should be used.</em>&quot; (Donald Knuth, 1969)</p>
 <p>Si on veut contrôler ce générateur via une horloge, on peur utiliser ce schéma :</p>
 <p><img src="random-horloge.png" alt="horloge"></p>
 <p>Il ne fonctionne que si le temps de transition est inférieur à l'horloge ce qui est en fait un processus assez lent pour générer un unique bit mais on a pas de processus plus rapide.</p>
-<h2>Nombres aléatoires</h2>
+<h2 id="nombres-aleatoires">Nombres aléatoires</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -155,13 +157,13 @@ should be used.</em>&quot; (Donald Knuth, 1969)</p>
 </div>
 <p>Ces méthodes sont implémentées directement <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&amp;cats=Random">sur le processeur</a> et utilisent des algorithmes qui utilise un générateur aléatoire de bits, comme on vient de voir.</p>
 <p>On suppose donc ici que l'on possède une fonction <code class="language-">random() → bit</code> qui rend 0 ou 1 avec une probabilité 1/2. On considérera pas la suite que cette instruction est élémentaire.  Il est alors très simple de créer des nombres plus petit qu'une puissance de 2 donné de façon uniforme.</p>
-<h3>Puissance de 2</h3>
+<h3 id="puissance-de-2">Puissance de 2</h3>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme_2p</span><span class="token punctuation">(</span><span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">_</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">p</span><span class="token punctuation">]</span><span class="token punctuation">:</span>   
         <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> <span class="token operator">+</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment"># random() → bit : générateur uniforme</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">x</span></code></pre>
-<p>L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.</p>
+<p>L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -196,7 +198,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Entier quelconque</h3>
+<h3 id="entier-quelconque">Entier quelconque</h3>
 <p>L'algorithme précédent se généralise pour trouver un entier, que l'on va montrer uniforme, dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token variable parameter">n</span>
@@ -248,7 +250,7 @@ $$
 <p>De la, la probabilité qu'il en génère au plus $k$ vaut :</p>
 <div>
 $$
-\Pr[K_n ≤ k] = \sum_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
+\Pr[K_n ≤ k] = \sum\limits_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum\limits_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
 $$
 </div>
 <p>Et donc : $\Pr[K_n &gt; k] = \beta^k$. On conclut en remarquant que comme $p = \lceil \log_2(n) \rceil \leq \log_2(n) + 1$ on a $2^p \leq 2^{\log_2(n) + 1} = 2n$ et donc $1- \frac{n}{2^p} \leq \frac{1}{2}$.</p>
@@ -266,8 +268,7 @@ $$
 quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n &gt; k] = 0$.</p>
 </div>
 </div>
-<p>Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle <code class="language-">tant que</code> et si $n$ n'est pas une puissance de 2 alors si <code class="language-">random()</code> rend 1 pour les $K$ premiers appels (la probabilité qu'une suite commence pas $K$ 1 vaut $1/2^K$) l'algorithme sera en $\Omega(K)$. Comme $K$ peut être aussi grand que l'on veut : sa complexité n'est pas bornée pour tout $n$ qui n'est pas une puissance de 2.</p>
-<p>En revanche en moyenne le nombre d'entiers généré est faible :</p>
+<p>On peut maintenant démontrer sa véracité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -275,7 +276,50 @@ quelque soit l'entrée $n$ puisque $\lim\limits_{k\to +\infty}\Pr[K_n &gt; k] = 
 <div class="pl-8 mb-2 mr-8">
 <p>Proposition</p>
 </div><div class="pl-8 mr-8">
-<p>Le nombre moyen de génération de nombre pour l'algorithme <code class="language-">random()</code> vaut :</p>
+<p>Si <code class="language-">random() → int</code> est un générateur uniforme de bit, alors l'algorithme <code class="language-">uniforme(n: int) → int</code> rend un entier uniforme entre 0 et $n-1$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Toutes les sorties sont resté un nombre fini de fois dans la boucle <code class="language-">tant que</code> de l'algorithme. On en déduit que la probabilité $\Pr[\mathtt{uniforme}(n) = m]$ que le nombre final soit égale à $0\leq m &lt; n$ vaut :</p>
+<div>
+$$
+\begin{array}{lcl}
+Pr[\mathtt{uniforme}(n) = m] &=& \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \Pr[(x = m) \mid (x < n)]\\
+&=&  \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \frac{\Pr[(x = m) \text{ ET } (x < n)]}{\Pr[x < n]}\\
+&=& \lim\limits_{k\to +\infty} (\frac{1}{n} \cdot (1-\beta^k)) \\
+&=& \frac{1}{n}
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Mais s'arrêter tout le temps (en probabilité) ne veut pas dire borné. En effet, la complexité de l'algorithme est clairement en $\Theta(k \cdot \log_2(n))$ avec $k$ le nombre d'itération dans la boucle <code class="language-">tant que</code> et si $n$ n'est pas une puissance de 2 alors si <code class="language-">random()</code> rend 1 pour les $K$ premiers appels (la probabilité qu'une suite commence par $K$ 1 vaut $1/2^K$) l'algorithme sera en $\Omega(K)$. Comme $K$ peut être aussi grand que l'on veut, sa complexité n'est bornée que lorsque $n$ vaut une puissance de 2.</p>
+<p>En revanche on peut calculer sa complexité en moyenne et elle est faible :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Proposition</p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre moyen d'itérations de  la boucle <code class="language-">tant que</code> dans l'algorithme <code class="language-">random()</code> vaut :</p>
 <div>
 $$
 \mathbb{E}[K_n] \leq 2
@@ -305,9 +349,9 @@ $$
 $$
 \begin{array}{lcl}
 \mathbb{E}[K_n] 
-&=& \sum_{k\geq 1}\Pr[K_n \geq k]\\
-&=& \sum_{k\geq 0}\Pr[K_n > k]\\
-&\leq& \sum_{k\geq 0}\frac{1}{2^k}\\
+&=& \sum\limits_{k\geq 1}\Pr[K_n \geq k]\\
+&=& \sum\limits_{k\geq 0}\Pr[K_n > k]\\
+&\leq& \sum\limits_{k\geq 0}\frac{1}{2^k}\\
 &\leq& 2\\
 \end{array}
 $$
@@ -315,7 +359,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Donc la complexité en moyenne est très bonne :</p>
+<p>Ce qui donne :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -352,19 +396,50 @@ $$
 </div>
 </details>     
 </div>
-<p>Avoir un algorithme de complexité non bornée peut sembler non optimal.</p>
+<p>Avoir un algorithme de complexité non bornée peut sembler non optimal mais on ne peut pas faire mieux. Supposons en effet qu'il existe un algorithme borné, disons qu'il effectue au maximum $K$ instructions, permettant de rendre un entier de façon uniforme de $[0 .. n[$ pour un entier $n$.</p>
+<p>Cet algorithme exécute donc également au pire $K$ appels à <code class="language-">random()</code>, et on peut même supposer sans perte de généralité qu'il fait toujours $K$ appels quite à ne pas utiliser les derniers. Ces $K$ appels forment $2^K$ suites $\omega_1 \dots\omega_K$ de $K$ bits menant chacune à un entier entre $0$ et $n-1$. Comme l'algorithme est déterministe et les nombres uniformes, le nombre de suites $\omega_1 \dots\omega_K$ menant à un entier donné est la même quelque soit l'entier : il y en a donc exactement $\frac{2^K}{n}$.</p>
+<p>Or $\frac{2^K}{n}$ ne peut être entier si $n$ est une puissance de 2. La conclusion est inattendu mais implacable :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
+<div class="pl-8 mr-8">
+<p>Un algorithme utilisant <code class="language-">random()</code> générant des entiers de de $[0 .. n[$ de façon uniforme ne peut être de complexité bornée que si $n$ est une puissance de 2.</p>
+</div>
+</div>
+<p>Pour pallier ce problème on est donc obligé de se contenter d'une approximation (mais cela ne va pas aller sans mal).</p>
+<h3 id="approximation-bornee">Approximation bornée</h3>
+<p>La façon la plus simple de trouver un entier entre $[0 .. n[$ de façon aléatoire est d'utiliser le modulo :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme_approché</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> uniforme_2p<span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">x</span> mod <span class="token variable parameter">n</span></code></pre>
 <blockquote>
-<p>TBD random(3) marche pas.</p>
+<p>TBD preuve exactitude approchée.</p>
 </blockquote>
-<h3>Approximation bornée</h3>
+<blockquote>
+<p>TBD Complexité</p>
+</blockquote>
+<div id="algorithme-division-euclidienne-binaire"></div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">modulo</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">,</span> <span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token comment"># ref q ← [0 pour chaque _ de [0 .. p[ ]</span>
+    <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">x</span><span class="token punctuation">.</span>longueur<span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token variable parameter">r</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">r</span> <span class="token operator">+</span> <span class="token variable parameter">x</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span>
+        <span class="token keyword">si</span> <span class="token variable parameter">r</span> <span class="token operator">≥</span> <span class="token variable parameter">n</span><span class="token punctuation">:</span>
+            <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token variable parameter">x</span> <span class="token operator">-</span> <span class="token variable parameter">n</span>
+            <span class="token comment"># q[i] ← 1</span>
+    <span class="token keyword">rendre</span> <span class="token variable parameter">r</span>
+
+<span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme_approché</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
+    <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token punctuation">[</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">_</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">p</span><span class="token punctuation">[</span> <span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> modulo<span class="token punctuation">(</span><span class="token variable parameter">x</span><span class="token punctuation">,</span> <span class="token variable parameter">n</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span><span class="token punctuation">:</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p>Proposition</p>
-</div><div class="pl-8 mr-8">
-<p>Si <code class="language-">random() → int</code> est un générateur uniforme de bit, alors l'algorithme <code>uniforme(n: int) → int</code> rend un entier uniforme entre 0 et $n-1$</p>
+<div class="pl-8 mr-8">
+<p>L'algorithme <code class="language-">modulo(x: []bit, n: int) → int</code> calcule $\sum\limits_ix[i]2^i \pmod n$ en $\theta(n)$ pour $n \leq =2^p$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -384,102 +459,43 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>À la fin d'une boucle <code class="language-">tant que</code> on a un nombre $x$ tiré uniformément entre $0$ et $2^p-1\geq n -1$. La probabilité qu'il soit aussi inférieur strictement à $n$ est donc de $\frac{n}{2^p} = \alpha$ et $1- \alpha =\beta$ celle qu'il soit plus grand que $n$ . De là, on en déduit que la probabilité que l'algorithme fasse exactement $k\geq 1$ fois la boucle <code class="language-">tant que</code> vaut $\beta^{k-1}\cdot \alpha$ et donc la probabilité qu'il fasse au plus $k$ fois la boucle <code class="language-">tant que</code> soit :</p>
+<p>La complexité est évidente. Le fait que l'algorithme fonctionne vient du fait que l'on a l'invariant de boucle suivant à la fin de chaque itération :</p>
 <div>
 $$
-B_k = \sum_{i=1}^{k}\beta^{i-1}\cdot \alpha =\alpha \cdot (\sum_{i=0}^{k-1}\beta^{i}) = \alpha \cdot \frac{1-\beta^k}{1-\beta} = 1-\beta^k
+\begin{cases}
+r < n\\
+\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} = n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) + r
+\end{cases}
 $$
 </div>
-<p>Ceci montre que la probabilité que l'algorithme fasse au plus $k$ fois la boucle <code class="language-">tant que</code> puis rende $m &lt; n$ vaut :</p>
+<p>La première condition est vraie puisque si $r &lt; n$ au début de la boucle on a $2r +1 &lt; n + n-1 +1 = 2n$ et $r' &lt; n$ à la fin de la boucle.</p>
+<p>La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $\sum\limits_{j\geq i}(x[j]\cdot 2^{j-i} - n \cdot q[j](\cdot 2^{j-i}) = r$ alors :</p>
 <div>
 $$
-P_k = B_k \cdot \Pr[(x = m) \mid (x < n)] = B_k \cdot \frac{\Pr[(x = m) \text{ ET } (x < n)]}{\Pr[x < n]} =  B_k \cdot \frac{\Pr[x = m]}{\alpha} = B_k \cdot \frac{1/2^p}{\alpha} = \frac{1}{n} \cdot (1-\beta^k)
-$$
-</div>
-<p>Comme  on ne connaît pas le nombre d'itérations de la boucle tant que on a :</p>
-<div>
-$$
-Pr[\mathtt{uniforme}(n) = m] = \lim\limits_{k\to +\infty} P_k = \lim\limits_{k\to +\infty} (\frac{1}{n} \cdot (1-\beta^k)) = \frac{1}{n}
-$$
-</div>
-</div>
-</details>     
-</div>
-<blockquote>
-<p>TBD c'est bien équiprobable le. Mais quelle est la complexité de cet algo ?
-La preuve précédente nous indique également le nombre moyen de boucle tant que effectuée. En notant $I$ le nombre d'itérations effectué on a :</p>
-</blockquote>
-<div>
-$$
-\begin{array}{lcl}
-\mathbb{E}[I]
-&=& \sum_{k = 0}^{+\infty} \Pr[I\geq k]\\
-&=& \sum_{k = 0}^{+\infty} (1-\Pr[I\leq k])\\
-&=& \sum_{k = 0}^{+\infty} \beta^k\\
-&=& \sum_{k = 0}^{+\infty} \beta^k\\
-&=& \frac{1}{1- \beta}\\
-&=& \cdot \frac{1}{\alpha}\\
-&=& \frac{2^p}{n}
+\begin{array}{c}
+2 \cdot \sum\limits_{j\geq i}(x[j] - n \cdot q[j](\cdot 2^{j-i}) + x[i-1] = 2r + x[i-1]\\
+\sum\limits_{j\geq i-1}x[j]\cdot 2^{j-i+1}  - \sum\limits_{j\geq i} (n \cdot q[j]\cdot 2^{j-i+1}) = 2r + x[i-1]\\
+\sum\limits_{j\geq i}x[j]\cdot 2^{j-i} - n \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) = r'
 \end{array}
 $$
 </div>
-<p>Comme $p = \lceil \log_2(n)\rceil$, on a $2^p \leq 2 n$ et donc le nombre moyen de tout dans la boucle <code class="language-">tant que</code> est 2. On ne peut en revanche pas borner la complexité puisqu'il peut exister des instances à autant d'itérations que l'on veut. Les seuls entiers pour lesquels on peut calculer la complexité sont les puissance de 2 puisqu'il n'y aura toujours qu'une seule itération.</p>
-<blockquote>
-<p>TBD si proche par exes d'une puissance de 2 la moitié des entiers générés va rater.</p>
-</blockquote>
-<blockquote>
-<p>TBD dire que c'est un thm. N'a une complexité que si puissance de 2.</p>
-</blockquote>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Il n'existe pas d'algorithme utilisant <code class="language-">random()</code> qui puisse rendre de manière uniforme 0, 1 ou 2.</p>
+<p>L'invariant est vrai à la fin de de la boucle et à ce moment là :</p>
+<div>
+$$
+\begin{cases}
+r < n\\
+\sum\limits_{j\geq 0}x[j]\cdot 2^{j} = n \cdot (\sum\limits_{j\geq 0}q[j]\cdot 2^{j}) + r
+\end{cases}
+$$
 </div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Qui est bien la définition de la division euclidienne.</p>
 </div>
 </details>     
 </div>
-<p>La proposition  précédente montre que tout algorithme utilisant des bits aléatoire pour générer des nombres avec une propriété uniforme.</p>
 <blockquote>
-<p>TBD si aléatoire alors soit pas de complexité max et on ne peut parler que de complexité en moyenne soit borné.</p>
+<p>TBD borné et petit si on augmente le nombre de bits mais du coup bien plus important que la complexité en moyenne... Bref on a rien sans rien.</p>
 </blockquote>
-<p>$A()$ utilise <code class="language-">random()</code> et s'arrête tout le temps. Pour chaque exécution possible de $A()$ on note alors la suite finie $(x_1, \dots, x_K)$ d'élément successif demandé à random avant arrêt. S'l n'y a qu'un nombre finie de possibilité alors l'exécution est bornée par le max. Sinon il existe une infinité de suite, donc : il existe une infinité de suite qui commence soit par 0 soit par 1. Par récurrence, il existe existe alors une infinité de suite qui commencent par $(x^\star_1, \dots, x^\star_n)$ et donc soit une infinité de suite qui commencent par $(x^\star_1, \dots, x^\star_n, 0)$ soit par $(x^\star_1, \dots, x^\star_n, 1)$. On construit ainsi de proche en proche une suite qui ne fait pas finir l'algorithme.</p>
-<h3>presque uniforme</h3>
-<blockquote>
-<p>TBD ensuite on compte les baton pour fair</p>
-<p>TBD on peut alors facilement calculer uiformément des puissance de 2.
-TBD prop
-TBD masi des nom,bre quelconque c'estplus compliqué.
-Proba uniforme mais pas de complxité
-Proba pas uniforme mais complexité réduite.</p>
-</blockquote>
-<p>doncon ruse.</p>
-<blockquote></blockquote>
-<p>Notez que la boucle <code class="language-">tant que</code> n'est pas nécessaire si $n = 2^p$. On aurait alors tendance vouloir utiliser le modulo : $\text{uniforme}(2^p) \pmod n$ pour générer un nombre. La probabilité n'est pas uniforme mais est assez proche :</p>
+<p>La probabilité n'est pas uniforme mais est assez proche si $2^p &gt;&gt; 1$ :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -509,61 +525,22 @@ Proba pas uniforme mais complexité réduite.</p>
 </div>
 </details>     
 </div>
-<p>Et en déduire une procédure pour générer uniformément un entier entre 0 et $n$, quelque soit $n$ :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p>Proposition</p>
-</div><div class="pl-8 mr-8">
-<p>Si $X$ est une variable aléatoire uniforme sur $[0 .. 2^1-1]$, alors</p>
 <blockquote>
-<p>TBD algo suivant ok</p>
+<p>TBD mais attention si on prend log(n) c'est tres proche puisque la div entiere faire 0 ou 1. C'esr juste &lt; 1.n. Peut etre x2 si moitie.</p>
+<p>TBD exo k*log = n^k.
+Vous le voyez, générer des entier aléatoire :</p>
 </blockquote>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<blockquote>
-<p>TBD attention pas le modulo pour tout entier $n &lt; 2^p$ on a que la variable aléatoire $Y = X \pmod n$ est uniforme. car pas le même nombre. Faire exo pour lequel pas bon. Mais montrer que plus n augmente moins c'est impoertant.
-TBD prop si bit aléatoire, tout est aléatoire.</p>
-</blockquote>
-<p>En informatique, un générateur aléatoire
-Il n'est pas nécessaire de pouvoir générer des réels en informatique, seul 1 bit suffit.</p>
-<p>Vous le voyez, générer des entier aléatoire :</p>
 <ol>
 <li>ce n'est pas évident pour des entiers quelconques</li>
 <li>assez, voir très lent</li>
 </ol>
 <p>La solution couramment utilisée est de ruser, voir de faire semblant. C'est ce que l'on appelle les nombres pseudo-aléatoires.</p>
-<h2>Nombres pseudo-aléatoires</h2>
+<h2 id="nombres-pseudo-aleatoires">Nombres pseudo-aléatoires</h2>
 <blockquote>
 <p>TBD PRNG
 TBD 2 sortes selon ce que l'on veut.</p>
 </blockquote>
-<h3>Uniformes</h3>
+<h3 id="uniformes">Uniformes</h3>
 <blockquote>
 <p>TBD  :</p>
 </blockquote>
@@ -580,7 +557,7 @@ TBD soucis du vrai aléatoire c'est que c'est lent. L'idée est de le simuler en
 <blockquote>
 <p>TBD attention à ce qu'on prend comme seed ex. netscape</p>
 </blockquote>
-<h3>Cryptographiques</h3>
+<h3 id="cryptographiques">Cryptographiques</h3>
 <blockquote>
 <p>TBD CSPRNG</p>
 </blockquote>
@@ -592,7 +569,7 @@ et c'est un problème en crypto. On ne veut pas que ce soit uniforme on veut que
 <p>TBD : pour ça pas linéaire. Ex du blum-blum sum.
 Lui aussi Pas utilisé en pratique car lent. On fait du chacha20 plutôt.</p>
 </blockquote>
-<h2>Permutation et Tableaux aléatoires</h2>
+<h2 id="permutation-et-tableaux-aleatoires">Permutation et Tableaux aléatoires</h2>
 <blockquote>
 <p>Tableau aléatoire parler de fisher-yates et du moyen de trouver des choses aléatoires en informatique. Notion de pseudo-aléatoire et de process physique pour l'aléatoire trouver des ref.</p>
 </blockquote>
@@ -600,7 +577,7 @@ Lui aussi Pas utilisé en pratique car lent. On fait du chacha20 plutôt.</p>
 <p>TBD Fisher-Yates</p>
 </blockquote>
 <p>La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code. Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et on en fait la moyenne (c'est <a href="https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y">un estimateur sans biais de la moyenne théorique</a>).</p>
-<h2>Complexité et aléatoire</h2>
+<h2 id="complexite-et-aleatoire">Complexité et aléatoire</h2>
 <p>Terminons cette partie par un résultat qui démontre lorsqu'un algorithme utilisant l'aléatoire est borné.</p>
 <blockquote>
 <p>TBD toute suite infinie fixée est de proba 0, mais toutes celles qui commencent par est &gt; 0 (c'est une partition de l'espace) donc s'il existe une suite qui ne fini jamais on peut grandir notre algo aussi longtemps que l'on veut.
@@ -615,6 +592,92 @@ donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus 
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -625,6 +688,7 @@ donc ici juste complexité en moyenne qui est utile + proba que ça prenne plus 
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

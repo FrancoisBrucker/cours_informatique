@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Bonnes pratiques</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -92,6 +92,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -107,6 +108,7 @@
 
 
     
+  </div>
   
 
   <p>La gestion des sources est un outil formidable pour travailler au quotidien. Cependant, beaucoup de connaissance et un peu de pratique sont nécessaires pour que son utilisation soit fluide. Si vous ne faites pas l'effort de comprendre ce que vous faite ou (surtout) de chercher dans la documentation les commandes pour réaliser ce que vous avez envie de faire, utiliser un système de gestion des sources va vous sembler lourd et fastidieux (et vous ne l'utiliserez plus) ou magique (et vous allez faire plein d'erreurs qui peuvent coûter très cher en temps de développement).</p>
@@ -117,20 +119,20 @@
 <li>naviguer dans l'historique du projet</li>
 </ul>
 <p>Sans les trois conditions ci-dessus, utiliser un SCM n'est pas vraiment utile et vous fera perdre plus de temps qu'en gagner.</p>
-<h2>Identité</h2>
+<h2 id="identite">Identité</h2>
 <p>Pour que le processus de gestion des sources soit efficace il est nécessaire que tout commit soit bien :</p>
 <ul>
 <li>identifié : l'auteur du commit doit pouvoir être retrouvé</li>
 <li>documenté : le message accompagnant le commit doit être descriptif.</li>
 </ul>
-<h3>Profil</h3>
+<h3 id="profil">Profil</h3>
 <p>Ayez votre profil à jour :</p>
 <ul>
 <li>nom et prénom ou pseudo identifiable</li>
 <li>adresse mail à jour</li>
 </ul>
 <p>Il vous est facile d'avoir une identité par défaut (liée à votre compte) et une identité par projet (dans la configuration du projet). Ceci permet de différentier les projet pro des projets perso sans avoir à faire de grandes manipulations.</p>
-<h3>Message de commits</h3>
+<h3 id="message-de-commits">Message de commits</h3>
 <p>Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit. Par défaut c'est <a href="https://fr.wikipedia.org/wiki/Vi">vi</a>, éditeur historique et présent sur toute machine unix qui est utilisé, mais qui n'est pas forcément votre éditeur de prédilection.</p>
 <p>Un message de commit contient forcément <strong>1 ligne</strong> décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).</p>
 <!-- TBD 
@@ -138,7 +140,7 @@
 à étoffer (faire un exemple) en utilisant les liens précédent 
 
 -->
-<h3>Fichier à ignorer</h3>
+<h3 id="fichier-a-ignorer">Fichier à ignorer</h3>
 <p>La liste des fichiers à ignorer est contenue dans un fichier nommé <code class="fichier">.gitignore</code> à la racine du projet ou dans un sous-dossier de celui-ci. Ses directives sont appliquées au dossier auquel il appartient et ses sous-dossiers.
 Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauvegarde.</p>
 <p>La syntaxe des fichiers <code class="fichier">.gitignore</code> est simple à comprendre mais je vous conseille tout de même de lire les liens ci-dessous :</p>
@@ -153,16 +155,16 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 </ul>
 </div>
 </div>
-<h2>Actions courantes</h2>
-<h3>Travailler en local</h3>
+<h2 id="actions-courantes">Actions courantes</h2>
+<h3 id="travailler-en-local">Travailler en local</h3>
 <ul>
 <li>commitez souvent pour pouvoir revenir en arrière si nécessaire</li>
 <li>créez des branches temporaires locales pour vos expérimentations et n'hésitez pas à revenir en arrière</li>
 <li>utilisez un <a href="https://docs.github.com/en/get-started/git-basics/ignoring-files">fichier <code>.gitignore</code></a> pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.</li>
 </ul>
-<h3>Récupérer l'état de l'origine</h3>
+<h3 id="recuperer-l-etat-de-l-origine">Récupérer l'état de l'origine</h3>
 <p>Utilisez la commande <code>fetch</code> pour voir l'état de l'origine pour les branches que vous suivez. Cela vous montrera l'avancé de vos collègues et les votre et vous dira quand faire un commit sur le serveur.</p>
-<h3>Récupérer les commits de l'origine</h3>
+<h3 id="recuperer-les-commits-de-l-origine">Récupérer les commits de l'origine</h3>
 <p>Lorsque vous récupérez des données de l'origine faites le avec un <code>rebase</code> pour qu'ils se placent avant vos commit linéairement. Ne créez pas de fusions de branches inutiles.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -173,12 +175,12 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 </div>
 </div>
 <p>N'ayez pas peur de gérer les conflits. Une fois qu'on a l'habitude cela se fait aisément.</p>
-<h3>Envoyer ses modification à l'origine</h3>
+<h3 id="envoyer-ses-modification-a-l-origine">Envoyer ses modification à l'origine</h3>
 <ul>
 <li>Mettez vos fichiers sur l'origine régulièrement (une fois une fonctionnalité terminée par exemple) avec un <code>push</code>. Cela permet de montrer vos avancées aux collègue et n'induira pas de mise en commun fastidieuses.</li>
 <li>Ne modifiez <strong>jamais</strong> l'état de l'origine : ne faites que des ajouts. S'il faut revenir en arrière utilisez un <code>revert</code> qui ajoute un nouveau commit.</li>
 </ul>
-<h2>Nommer ses commits</h2>
+<h2 id="nommer-ses-commits">Nommer ses commits</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -259,14 +261,14 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 </div>
 </div>
 <p>Vous pouvez vous même rédiger votre tableau dans votre <strong>CONTRIBUTING</strong> ! (On en parle plus bas)</p>
-<h2>Branches partagées</h2>
+<h2 id="branches-partagees">Branches partagées</h2>
 <p>Il existe de nombreuses méthodes pour organiser les branches d'un projet. Chacune ayant ses pour et ses contre. Si vous arrivez dans un projet déjà existant adaptez-vous mais si vous créez un nouveau projet, voici quelques façon de faire qui vous ferons gagner du temps. Il y a deux grandes familles :</p>
 <ul>
 <li>les méthodes avec de nombreuses branches bien spécifiées</li>
 <li>les méthodes sans branches</li>
 </ul>
 <p>Chacune à ses pour et ses contre et viennent avec leurs propre contraintes. A vous de voir celle que vous préférez avec votre projet.</p>
-<h3>Feature branching</h3>
+<h3 id="feature-branching">Feature branching</h3>
 <p>La première idée est de consacrer une branche par feature à développer. Une fois cette branche terminée elle s'intègre à la branche principale par un merge. Cette méthode, appelé <strong><em>feature branching</em></strong> peut générer de nombreuses branches si l'équipe de développement est importante. C'est pourquoi, certaines adaptations ont vu le jour comme <a href="https://leanpub.com/git-flow/read">Git flow</a> (si vous utilisez cette méthode, il existe <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html">un plugin git</a>) ou encore <a href="https://githubflow.github.io/">Github flow</a> (qui préconise de n'avoir qu'une unique branche de développement pour une synchronisation plus claire entre les développeurs) pour préciser et nommer les différentes branches d'un projet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -288,7 +290,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <li><code>release/&lt;nom release&gt;</code>. Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.</li>
 </ul>
 <p>Le principal soucis, outre son formalisme stricte, est la multiplicité des branches qui fait qu'on peut facilement s'y perdre.</p>
-<h3>Continuous Integration</h3>
+<h3 id="continuous-integration">Continuous Integration</h3>
 <p>La continuous integration prend le contre-pied des méthodes précédentes et préconise de minimiser le nombre et la durée des branches au stricte maximum tout en commitant souvent sur la branche principale. Le but ultime de cette méthode est d'avoir le workflow suivant :</p>
 <p><img src="git_flow_1.png" alt="CI"></p>
 <p>Cette méthode, très prisée actuellement, fonctionne. Le lien suivant décrit l'idée :</p>
@@ -312,11 +314,11 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <blockquote>
 <p>TBD à étoffer</p>
 </blockquote>
-<h2>Gestion du projet</h2>
-<h3>Documentation</h3>
+<h2 id="gestion-du-projet">Gestion du projet</h2>
+<h3 id="documentation">Documentation</h3>
 <p>Il est important de bien documenter son repository sur GitHub afin d'aider à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l'équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.</p>
 <p>Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compréhension du projet.</p>
-<h4>Readme</h4>
+<h4 id="readme">Readme</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -336,7 +338,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <li>des visuels</li>
 </ul>
 <p>Vous pouvez vous inspirer du <a href="https://github.com/atom/atom#readme">readme d'Atom</a></p>
-<h4><span id="contributing"></span> Contributing</h4>
+<h4 id="contributing"><span id="contributing"></span> Contributing</h4>
 <p>Il est d'usage aussi de réaliser un fichier markdown <code class="fichier">CONTRIBUTING.md</code> afin d'expliquer à toutes personnes participant au code/projet comment :</p>
 <ul>
 <li>bien faire leur commits dans ce projet</li>
@@ -348,7 +350,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <p>Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.</p>
 <p><a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom_contributing</a>
 <a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">Godot_contributing</a></p>
-<h3>Versioning - sémantique des versions</h3>
+<h3 id="versioning-semantique-des-versions">Versioning - sémantique des versions</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -372,10 +374,10 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 <li>un <strong>LABEL</strong> facultatif: Pour apporter des précisions sur le type de version
 (ex: beta/alpha/stable)</li>
 </ul>
-<h2>Participer à un projet</h2>
+<h2 id="participer-a-un-projet">Participer à un projet</h2>
 <p>Si vous contribuez à un projet avec plusieurs développeurs, ou si vous trouvez et corrigez un problème d'un projet qui n'est pas le votre, une façon courtoise de demander l'ajout d'intégration de vos travaux est d'effectuer une <strong><em>pull request</em></strong>.</p>
 <p>Une pull request est une proposition de commit qui pourra être accepté, amendé ou parfois rejeté par l'équipe de développement. Cette méthode permet aussi de facilement travailler avec une équipe de niveau hétérogène où les commits des développeurs les moins expérimentés sont inspecté par les lead développeurs avant acceptation.</p>
-<h3><span id="pull-request"></span>Pull Request (PR)</h3>
+<h3 id="pull-request-pr"><span id="pull-request"></span>Pull Request (PR)</h3>
 <p>Voici un exemple de pull request :</p>
 <p><img src="pull_request.png" alt="Versioning"></p>
 <p>Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :</p>
@@ -386,7 +388,7 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 <li>Lier des <strong>issues</strong> qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet</li>
 </ul>
 <p>Cet outil permet ainsi d'&quot;empaqueter&quot; des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.</p>
-<h3>Issues</h3>
+<h3 id="issues">Issues</h3>
 <p>De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :</p>
 <ul>
 <li>l'ajout d'une fonctionnalité</li>
@@ -415,6 +417,92 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -425,6 +513,7 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

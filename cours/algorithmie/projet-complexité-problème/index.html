@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Projets : complexités de problèmes algorithmiques</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,10 +95,11 @@
 
 
     
+  </div>
   
 
   <p>Nous montrerons ici quelques problème ainsi que des algorithmes permettant d'atteindre leur complexité.</p>
-<h2>Col de tableaux</h2>
+<h2 id="col-de-tableaux">Col de tableaux</h2>
 <blockquote>
 <ul>
 <li><strong>Utilité</strong> : à connaître car un classique des concours (on le donne sans indications...)</li>
@@ -119,7 +121,7 @@
 </ul>
 </div>
 </div>
-<h3>Existence</h3>
+<h3 id="existence">Existence</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -144,10 +146,10 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>On donne trois preuves possibles.</p>
-<h4>En reprenant la définition</h4>
+<h4 id="en-reprenant-la-definition">En reprenant la définition</h4>
 <p>Si la première condition ($i=0$) est vérifiée, le tableau contient un col. On la suppose donc non vérifiée : $T[0] &gt; T[1]$. De même, si la seconde condition ($i=n-1$) est vérifiée, le tableau contient également un col. Supposons la donc également non vérifiée : $T[n-2] &lt; T[n-1]$.</p>
 <p>Les deux conditions précédentes montrent qu'il existe $n-1 &gt; i^\star &gt; 0$ le plus petit indice tel que $T[i^\star] \leq T[i^\star +1]$. On a alors : $T[i^\star -1] &gt; T[i^\star ] \leq T[i^\star +1]$ et $i^\star$ est un col.</p>
-<h4>On utilise une astuce</h4>
+<h4 id="on-utilise-une-astuce">On utilise une astuce</h4>
 <p>Un tableau d'entier possède forcément un élément minimum. Il existe donc $i^\star$ tel que $T[i^\star] \leq T[i]$ pour tout $0 \leq i &lt; n$. De là :</p>
 <ul>
 <li>soit $i^\star = 0$ et $T[i^\star] \leq T[1]$</li>
@@ -155,7 +157,7 @@
 <li>soit $0 &lt; i^\star &lt; n-1$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$</li>
 </ul>
 <p>Simple et efficace, non ?</p>
-<h4>Par récurrence</h4>
+<h4 id="par-recurrence">Par récurrence</h4>
 <p>On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un col.</p>
 <ol>
 <li>Initialisation. Si $n=2$ soit $T[0] \leq T[1]$ soit $T[0] \geq T[1]$ (ce qui est équivalent pour $n=2$ à $T[n-1] \leq T[n-2]$). Ces deux cas correspondent aux deux premières possibilités pour un col</li>
@@ -176,7 +178,7 @@
 </div>
 </details>     
 </div>
-<h3>Découverte</h3>
+<h3 id="decouverte">Découverte</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -246,7 +248,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<h3>Rapidité</h3>
+<h3 id="rapidite">Rapidité</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -378,7 +380,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<h3>Complexité du problème</h3>
+<h3 id="complexite-du-probleme">Complexité du problème</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -407,7 +409,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<h2>Tours de Hanoï</h2>
+<h2 id="tours-de-hanoi">Tours de Hanoï</h2>
 <blockquote>
 <ul>
 <li><strong>Utilité</strong> : classique parmi les classique. La preuve que la complexité est minimale est à connaître</li>
@@ -431,7 +433,7 @@ $$</p>
 </div>
 </div>
 <p>Essayons de résoudre ce problème de façon optimale.</p>
-<h3>Algorithme récursif</h3>
+<h3 id="algorithme-recursif">Algorithme récursif</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -595,7 +597,7 @@ Hanoi<span class="token punctuation">(</span><span class="token builtin">len</sp
 </div>
 </details>     
 </div>
-<h3>Complexité du problème</h3>
+<h3 id="complexite-du-probleme-1">Complexité du problème</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -647,7 +649,7 @@ $$
 </div>
 </details>     
 </div>
-<h2><span id="point-fixe"></span>Algorithme de recherche de point fixe</h2>
+<h2 id="algorithme-de-recherche-de-point-fixe"><span id="point-fixe"></span>Algorithme de recherche de point fixe</h2>
 <blockquote>
 <ul>
 <li><strong>Utilité</strong> : exercice classique des concours relevés donc donné sans trop d'explications</li>
@@ -688,7 +690,7 @@ $$
 <li>l'algorithme optimal est tout simple mais sa démonstration ne l'est pas.</li>
 </ul>
 <p>L'exercice est difficile mais sa beauté vaut le coût qu'on s'y arrache (un peu) les cheveux (si on en a).</p>
-<h3>Analyse préliminaire</h3>
+<h3 id="analyse-preliminaire">Analyse préliminaire</h3>
 <p>Une suite  ultimement périodique ressemble à un $\rho$ (rho) :</p>
 <p><img src="rho.png" alt="rho"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -776,7 +778,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Algorithme naïf</h3>
+<h3 id="algorithme-naif">Algorithme naïf</h3>
 <p>Résoudre le problème du point fixe va nécessiter un de travail. Commençons par étudier cet algorithme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">point_fixe_naïf</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name"><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">→</span> int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">i</span></span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -857,7 +859,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Algorithme optimal</h3>
+<h3 id="algorithme-optimal">Algorithme optimal</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -1062,7 +1064,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Application</h3>
+<h3 id="application">Application</h3>
 <p>L'algorithme du lièvre et de la tortue est très utilisé pour trouver des points fixes de fonctions.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1163,7 +1165,7 @@ $$
 </div>
 </details>     
 </div>
-<h2><span id="arithmétique"></span>Algorithmes arithmétique</h2>
+<h2 id="algorithmes-arithmetique"><span id="arithmétique"></span>Algorithmes arithmétique</h2>
 <blockquote>
 <ul>
 <li><strong>Utilité</strong> : pour la culture générale et si vous voulez faire de l'informatique plus tard</li>
@@ -1194,7 +1196,7 @@ $$
 <li>$u_8^{-1}(10) = [0, 1, 0, 1, 0, 0, 0, 0]$ (de notation binaire $0\text{\tt b}00001010$)</li>
 </ul>
 <p>Nous allons voir dans la suite les complexités des opération de somme et de multiplications pour des algorithmes prenants des tableaux de bits en entrées. Pour éviter les cas particuliers embêtant et qui n'apportent pas grand chose algorithmiquement :</p>
-<h3>Bijection</h3>
+<h3 id="bijection">Bijection</h3>
 <p>Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1283,7 +1285,7 @@ $$
 </div>
 </details>     
 </div>
-<h3><span id="somme"></span>Addition</h3>
+<h3 id="addition"><span id="somme"></span>Addition</h3>
 <p>Vous allez implémenter l'algorithme de la somme posée (<a href="../exercices-it%C3%A9ratif-r%C3%A9cursif/#somme">on y a déjà réfléchit en base 10</a>) pour des nombres codées sous leur forme binaire.</p>
 <p>Sur deux entiers :</p>
 <pre><code>  100101
@@ -1385,7 +1387,7 @@ retenue somme[i]
 </div>
 </details>     
 </div>
-<h3>Soustraction</h3>
+<h3 id="soustraction">Soustraction</h3>
 <p>On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1483,7 +1485,7 @@ retenue différence[i]
 </details>     
 </div>
 <p>La méthode utilisée permet de gérer les entiers positifs et négatifs, mais <a href="../fonctions-bool%C3%A9ennes/#compl%C3%A9ment-%C3%A0-deux">on verra plus tard</a> un moyen plus efficace de le faire en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à 2</a></p>
-<h3>Améliorations</h3>
+<h3 id="ameliorations">Améliorations</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -1559,7 +1561,7 @@ retenue différence[i]
 <li>$\text{addition}(x, y) = u^{-1}(u(x) + u(y))$ et on la notera $x + y$</li>
 <li>$\text{soustraction}(x, y) = u^{-1}(u(x) - u(y))$ si $u(x) \geq u(y)$ et on la notera $x - y$</li>
 </ul>
-<h3>Multiplication</h3>
+<h3 id="multiplication">Multiplication</h3>
 <p>La multiplication de deux tableaux de bits</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1595,7 +1597,7 @@ retenue différence[i]
 <li>on ne connaît pas la complexité du problème mais on a de fortes présomptions</li>
 <li>les algorithmes les plus efficaces ne sont pas utilisés en pratique car il ne sont efficaces que pour des nombres astronomiquement grand. En pratique dans les ordinateurs c'est une version optimisé de l'algorithme naïf qui est utilisé pour des nombre de tailles fixés (64b).</li>
 </ul>
-<h4>Puissances de 2</h4>
+<h4 id="puissances-de-2">Puissances de 2</h4>
 <p>Commençons par étudier un cas particulier de la multiplication, celui où un des deux no,bre est une puissance de 2.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1657,7 +1659,7 @@ TBD algo</p>
 </details>     
 </div>
 <p>On considérera par la suite que l'on a : $\text{puissance}(n, x) = u^{-1}(2^n \cdot u(y))$ et on la notera $2^n \cdot y$</p>
-<h4>Naive</h4>
+<h4 id="naive">Naive</h4>
 <p>On utilise la <a href="https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication">multiplication posée</a>. Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.</p>
 <pre><code>       100101
      * 001011
@@ -1752,7 +1754,7 @@ TBD algo</p>
 </div>
 </details>     
 </div>
-<h4><spin id="Karatsuba">Karatsuba</spin></h4>
+<h4 id="karatsuba"><spin id="Karatsuba">Karatsuba</spin></h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -2208,7 +2210,7 @@ $$
 </details>     
 </div>
 <p>Vous le voyez, trouver mieux que l'algorithme naïf n'a pas été simple ! Mais c'est possible. La question brûlante est alors, peut-on faire encore mieux ?</p>
-<h4>Peut-on mieux faire ?</h4>
+<h4 id="peut-on-mieux-faire">Peut-on mieux faire ?</h4>
 <blockquote>
 <p>TBD Strassen nlog(n) conjecture. et de l'optimal <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers">https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d'entiers</a> et <a href="https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf">https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf</a></p>
 </blockquote>
@@ -2216,7 +2218,7 @@ $$
 <p>TBD <a href="https://www.youtube.com/watch?v=qKcwuRK9n6U">https://www.youtube.com/watch?v=qKcwuRK9n6U</a> et <a href="https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/">https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/</a></p>
 <p>FFT : <a href="https://informatique.ens-lyon.fr/concours-info/2014/multiplication.pdf">https://informatique.ens-lyon.fr/concours-info/2014/multiplication.pdf</a></p>
 </blockquote>
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 <blockquote>
 <p>conjecture
 nb tres tres grand pour que ca marche
@@ -2228,6 +2230,92 @@ en pratique on fixe la taille</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -2238,6 +2326,7 @@ en pratique on fixe la taille</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

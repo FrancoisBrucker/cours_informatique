@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">corrigé Test 3 : preuve</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -91,22 +91,22 @@
 
   
 
-  <h2>barème</h2>
+  <h2 id="bareme">barème</h2>
 <ul>
 <li>1pt pour la complexité et 1pt pour la preuve par algorithme</li>
 </ul>
-<h2>1. suppression de valeur</h2>
-<h3>complexité algorithme 1</h3>
+<h2 id="1-suppression-de-valeur">1. suppression de valeur</h2>
+<h3 id="complexite-algorithme-1">complexité algorithme 1</h3>
 <p>On considère que la création d'une liste et l'ajout d'un élément en fin de liste sont des opérations en $\mathcal{O}(1)$ opérations. De là, notre algorithme est en $\mathcal{O}(n)$ opérations où $n$ st la taille de la liste <code class="language-">L</code>.</p>
-<h3>preuve algorithme 1</h3>
+<h3 id="preuve-algorithme-1">preuve algorithme 1</h3>
 <p>L'algorithme va parcourir la liste et ajouter un à un à L2 tous les éléments de <code class="language-">L</code> différents de <code class="language-">val</code>. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ L2 est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>.</p>
 <ul>
 <li><strong>initialisation</strong> : à la fin de la première itération ($i=1$), <code class="language-">L2</code> est vide si <code class="language-">x = L[0]</code> vaut <code class="language-">val</code> et vaut <code class="language-">[x]</code> sinon. Ok.</li>
 <li><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. L'itération $i+1$ a considéré $x = L[i]$. Notons <code class="language-">L2'</code> la valeur de <code class="language-">L2</code> à la fin de l'itération $i+1$. Au début de l'itération $i+1$, par hypothèse de récurrence, <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>. La restriction de  <code class="language-">L[:i+1]</code> aux valeurs différentes de <code class="language-">val</code> est alors soit égal à <code class="language-">L2</code> si <code class="language-">L[i] = val</code> soit <code class="language-">L2 + L[i]</code> sinon. C'est exactement ce que vaut <code class="language-">L2'</code>.</li>
 </ul>
 <p>A la fin de la dernière itération, <code class="language-">L2</code> vaut donc la restriction de <code class="language-">L[:n]</code> (avec <code class="language-">n = len(L)</code>) aux valeurs différentes de val.</p>
-<h2>2. suppression de doublon</h2>
-<h3>complexité algorithme 2</h3>
+<h2 id="2-suppression-de-doublon">2. suppression de doublon</h2>
+<h3 id="complexite-algorithme-2">complexité algorithme 2</h3>
 <p>Commençons par compter le nombre de fois où la boucle <code class="language-">tant que</code> sera exécutée. <code class="language-">L</code> est modifiée à chaque fin de boucle <code class="language-">L = algorithme-1(L, x)</code> avec <code class="language-">x = L[0]</code>.  Comme l'algorithme de la question 1 rend la restriction de de <code class="language-">L</code> aux valeurs différentes de <code class="language-">x</code>, elle va forcément être strictement plus petite (puisque <code class="language-">x=L[0]</code> il est forcément dans la liste)  : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de <code class="language-">L</code> initiale fois.</p>
 <p>La seule ligne de l'algorithme qui n'est pas de complexité $\mathcal{O}(1)$ est : <code class="language-">L = algorithme-1(L, x)</code>. Sa complexité est égale à une affectation ($\mathcal{O}(1)$) plus la complexité de l'algorithme de la question 1, qui vaut de l'ordre de la taille de la liste passée en entrée.</p>
 <p>Cette taille diminue strictement à chaque itération : on peut utiliser l'astuce du cours pour ne garder que la complexité la plus importante, c'est à dire $\mathcal{O}(len(L))$ avec <code class="language-">L</code> la liste initiale.</p>
@@ -116,7 +116,7 @@
 <li>B est la complexité maximale de l'algorithme de la question 1 : $\mathcal{O}(len(L))$</li>
 </ul>
 <p>Notre algorithme est de complexité : $\mathcal{O}(len(L)^2)$</p>
-<h3>preuve algorithme 2</h3>
+<h3 id="preuve-algorithme-2">preuve algorithme 2</h3>
 <p>La liste <code class="language-">L</code> contient $k$ valeurs différentes que l'on note $v_1, \dots v_k$ dans l'ordre de la liste (le 1er indice où l'on rencontre $v_i$ est strictement plus petit que le 1er indice où l'on rencontre $v_j$ si $i &lt; j$).</p>
 <p>Notre invariant de boucle sera : au bout de la $i$ème itération :</p>
 <ul>
@@ -137,6 +137,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -147,6 +233,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

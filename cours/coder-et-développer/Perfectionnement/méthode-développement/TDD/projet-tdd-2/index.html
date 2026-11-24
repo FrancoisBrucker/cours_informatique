@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Partie 2 / 3</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,10 +95,11 @@
 
 
     
+  </div>
   
 
   <p>Seconde partie du projet TDD.</p>
-<h2>Principe du TDD</h2>
+<h2 id="principe-du-tdd">Principe du TDD</h2>
 <p>On rappelle le principe du TDD :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -130,7 +132,7 @@
 </div>
 <p>Cela va être bien présent dans cette partie ou l'on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera <strong>tout en conservant le vert</strong>.</p>
 <p>Cela permet, en plus d'avoir un feedback immédiat en cas d'erreur (les tests ne passent plus on est <strong>rouge</strong>), d'avoir confiance dans ce que l'on code (si c'est vert c'est quo'n a rien cassé).</p>
-<h2>Todo list et code</h2>
+<h2 id="todo-list-et-code">Todo list et code</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -146,10 +148,10 @@
 <li>[ ] <code class="language-">== None</code></li>
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 </ul>
-<h2>6 -  les Francs</h2>
+<h2 id="6-les-francs">6 -  les Francs</h2>
 <p>Le seul item dans la todo list qui ne soit pas de l'optimisation est : \$5 + 2.5CHF = \$10 si le taux de change est 1:.5.</p>
 <p>Cela semble bien trop ambitieux pour une seule étape. On va la découper, en commençant par introduire les CHF.</p>
-<h3><span id="todo-list-6.1"></span> Todo list</h3>
+<h3 id="todo-list"><span id="todo-list-6.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -157,7 +159,7 @@
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 <li><strong>[-] 5 CHF * 2 = 10CHF</strong></li>
 </ul>
-<h3><span id="faire-6.1"></span> Faire</h3>
+<h3 id="faire"><span id="faire-6.1"></span> Faire</h3>
 <p>On est habitué depuis la première partie, on commence par faire un test. Ici, on ne va pas trop s'embêter : on va dupliquer le test des dollars pour les Francs.</p>
 <ul>
 <li>heureusement qu'on a un peu modifié les tests avant, non ?</li>
@@ -220,7 +222,7 @@
 </div>
 </details>     
 </div>
-<h3><span id="todo-list-6.2"></span> Todo list</h3>
+<h3 id="todo-list-1"><span id="todo-list-6.2"></span> Todo list</h3>
 <p>Tous les péchés qui ont été commis pour faire passer le test doivent être expiés. Pour s'en rappeler, on rajoute  ce qu'il faut corriger dans la todo list.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -233,8 +235,8 @@
 <li>[ ] <code class="language-">*</code> presque identique</li>
 </ul>
 <p>Notez que même s'il n'y pas de duplication proprement dite entre les deux méthode <code class="language-">__mul__</code> elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la todo list pour voir si à un moment donné il ne faudra pas les unifier.</p>
-<h2>7 - même <code class="language-">==</code>  pour tous</h2>
-<h3><span id="todo-list-7.1"></span> Todo list</h3>
+<h2 id="7-meme-pour-tous">7 - même <code class="language-">==</code>  pour tous</h2>
+<h3 id="todo-list-2"><span id="todo-list-7.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -245,7 +247,7 @@
 <li><strong>[-] même <code class="language-">==</code> (code identique dans 2 classes différentes)</strong></li>
 <li>[ ] <code>*</code> presque identique</li>
 </ul>
-<h3><span id="faire-7.1"></span> Faire</h3>
+<h3 id="faire-1"><span id="faire-7.1"></span> Faire</h3>
 <p>Pour avoir le même égal on va essayer d'avoir une unique classe qui la contienne. On pourrait faire hériter une monnaie réelle de l'autre mais c'est pas super (qui serait la classe principale ?).</p>
 <p>Autant faire une classe abstraite qui les englobe tous les 2. On va ajouter pas à pas une classe mère aux deux classes <code class="language-">Franc</code> et <code class="language-">Dollar</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -402,7 +404,7 @@
 <p>Ajoutez la comparaison entre franc et dollar dans la todo list</p>
 </div>
 </div>
-<h3><span id="todo-list-7.2"></span> Todo list</h3>
+<h3 id="todo-list-3"><span id="todo-list-7.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -414,7 +416,7 @@
 <li>[ ] <code class="language-">*</code> presque identique</li>
 <li>[ ] compare <code class="language-">Franc</code> et <code class="language-">Dollar</code></li>
 </ul>
-<h3><span id="faire-7.2"></span> Faire</h3>
+<h3 id="faire-2"><span id="faire-7.2"></span> Faire</h3>
 <p>Tout est prêt pour finaliser notre item :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -459,7 +461,7 @@
 </div>
 </details>     
 </div>
-<h3><span id="todo-list-7.3"></span> Todo list</h3>
+<h3 id="todo-list-4"><span id="todo-list-7.3"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -471,9 +473,9 @@
 <li>[ ] <code class="language-">*</code> presque identique</li>
 <li>[ ] compare <code class="language-">Franc</code> et <code class="language-">Dollar</code></li>
 </ul>
-<h2>8 -  Franc et Dollar</h2>
+<h2 id="8-franc-et-dollar">8 -  Franc et Dollar</h2>
 <p>On peut maintenant s'occuper de la tâche que l'on vient de rajouter.</p>
-<h3><span id="todo-list-8.1"></span> Todo list</h3>
+<h3 id="todo-list-5"><span id="todo-list-8.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -485,7 +487,7 @@
 <li>[ ] <code class="language-">*</code> presque identique</li>
 <li><strong>[-] compare <code class="language-">Franc</code> et <code class="language-">Dollar</code></strong></li>
 </ul>
-<h3><span id="faire-8.1"></span> Faire</h3>
+<h3 id="faire-3"><span id="faire-8.1"></span> Faire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -578,7 +580,7 @@
 </div>
 </div>
 <p>On rajoute donc un item dans la todo list pour montrer que cela nous embête tout de même un peu.</p>
-<h3><span id="todo-list-8.2"></span> Todo list</h3>
+<h3 id="todo-list-6"><span id="todo-list-8.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -591,8 +593,8 @@
 <li>[X] compare <code class="language-">Franc</code> et <code class="language-">Dollar</code></li>
 <li>[ ] utilisation de devises plutôt que de classes ?</li>
 </ul>
-<h3>9 -  Duplication Franc/Dollar</h3>
-<h3><span id="todo-list-9.1"></span> Todo list</h3>
+<h3 id="9-duplication-franc-dollar">9 -  Duplication Franc/Dollar</h3>
+<h3 id="todo-list-7"><span id="todo-list-9.1"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -605,7 +607,7 @@
 <li>[X] compare <code class="language-">Franc</code> et <code class="language-">Dollar</code></li>
 <li>[ ] utilisation de devises plutôt que de classes ?</li>
 </ul>
-<h3><span id="faire-9.1"></span> Faire</h3>
+<h3 id="faire-4"><span id="faire-9.1"></span> Faire</h3>
 <p>Les 2 implémentations de <code class="language-">__mul__</code> sont très semblables : la seule chose qui les sépare est leurs retours (un <code class="language-">Franc</code> ou un <code class="language-">Dollar</code>).</p>
 <p>C'est même la seule chose qui diffère entre <code class="language-">Dollar</code> et <code class="language-">Franc</code>... L'existence des 2 classes est sujette à caution : est-il vraiment utile d'avoir 2 classes juste pour une comparaison ?</p>
 <p><strong>On ne va garder qu'une seule classe</strong>.</p>
@@ -639,7 +641,7 @@
 </div>
 <p>POur supprimer des bout de code, il ne faut pas qu'ils soient utilisés. Pour supprimer les classes <code class="language-">Franc</code> et <code class="language-">Dollar</code>, on va ainsi commencer par gommer leurs existences dans les tests (dans l'utilisation du code).</p>
 <p>Une fois l'utilisation des classes masquées dans les tests, on pourra les supprimer tranquillement du code en gardant du vert.</p>
-<h3><span id="faire-9.2"></span> Faire</h3>
+<h3 id="faire-5"><span id="faire-9.2"></span> Faire</h3>
 <p>Gommer supprimer l'utilisation des classes, on va utiliser un design pattern :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -721,7 +723,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 </details>     
 </div>
 <p>Et hop ! Les tests passent : on est sur du vert. On va pouvoir modifier massivement nos tests.</p>
-<h3><span id="faire-9.3"></span> Faire</h3>
+<h3 id="faire-6"><span id="faire-9.3"></span> Faire</h3>
 <p>Maintenant que notre <em>factory</em> fonctionne (on est sur du vert), on remplace toute référence à <code class="language-">Dollar</code> en <code class="language-">monnaie.dollar</code> dans les tests.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -788,7 +790,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 </details>     
 </div>
 <p>Avant de faire la même chose pour <code class="language-">Franc</code>, posons nous la question de l'utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu'une seule classe, mais dons le doute on les conserve, mais on l'ajoute à la todo list.</p>
-<h3><span id="todo-list-9.2"></span> Todo list</h3>
+<h3 id="todo-list-8"><span id="todo-list-9.2"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -802,7 +804,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 <li>[ ] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h3><span id="faire-9.4"></span> Faire</h3>
+<h3 id="faire-7"><span id="faire-9.4"></span> Faire</h3>
 <p>Maintenant que notre <em>factory</em> fonctionne (on est sur du vert), on remplace toute référence à <code class="language-">Franc</code> en <code class="language-">monnaie.franc</code> dans les tests.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -890,7 +892,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 </div>
 </div>
 <p>On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.</p>
-<h3><span id="todo-list-9.3"></span> Todo list</h3>
+<h3 id="todo-list-9"><span id="todo-list-9.3"></span> Todo list</h3>
 <p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -905,9 +907,9 @@ test_monnaie.py:6: AttributeError</code></pre>
 <li>[ ] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h2>10 - devises</h2>
+<h2 id="10-devises">10 - devises</h2>
 <p>Pour pouvoir supprimer les deux classes <code class="language-">Franc</code> et <code class="language-">Dollar</code>, il va nous falloir un moyen de les distinguer. Donc autant travailler sur l'ajout d'une devise.</p>
-<h3><span id="todo-list-10.1"></span> Todo list</h3>
+<h3 id="todo-list-10"><span id="todo-list-10.1"></span> Todo list</h3>
 <p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -922,7 +924,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 <li><strong>[-] utilisation de devises plutôt que de classes ?</strong></li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h3><span id="faire-10.1"></span> Faire</h3>
+<h3 id="faire-8"><span id="faire-10.1"></span> Faire</h3>
 <p>La classe <code class="language-">Devise</code> que l'on veut créer doit avoir un attribut qui nous permettra de distinguer les <code class="language-">Franc</code> des <code class="language-">Dollar</code>.</p>
 <p>Faisons un test pour implémenter cette idée :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
@@ -983,7 +985,7 @@ test_monnaie.py:6: AttributeError</code></pre>
 </details>     
 </div>
 <p>On peut maintenant travailler à faire monter les devise au niveau de la classe <code class="language-">Monnaie</code>.</p>
-<h3><span id="faire-10.2"></span> Faire</h3>
+<h3 id="faire-9"><span id="faire-10.2"></span> Faire</h3>
 <p>L'idée est ici de placer la bonne devise lors de la création de l'objet dans <code class="language-">Monnaie</code>. Pour faire cela dans les règle de l'art on va utiliser un <a href="https://martinfowler.com/books/refactoring.html">pattern de refactoring</a> qui permet de modifier le code sans problème.</p>
 <p>On va utiliser :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1157,7 +1159,7 @@ monnaie.py:19: TypeError</code></pre>
 </details>     
 </div>
 <p>Et nos tests passent ! Félicitations, vous avez réussi votre premier refactoring pattern.</p>
-<h3><span id="faire-10.3"></span> Faire</h3>
+<h3 id="faire-10"><span id="faire-10.3"></span> Faire</h3>
 <p>Pour supprimer les classes, il faut créer nos objets avec la classe <code class="language-">Monnaie</code>. Notre problème est encore un problème de refactoring :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1347,7 +1349,7 @@ monnaie.py:31: TypeError</code></pre>
 </div>
 </details>     
 </div>
-<h3><span id="faire-10.4"></span> Faire</h3>
+<h3 id="faire-11"><span id="faire-10.4"></span> Faire</h3>
 <p>Maintenant que les signatures des constructeurs sont les mêmes, pour finir le travail il faut que le corps des fonctions soient égales.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1475,7 +1477,7 @@ monnaie.py:31: TypeError</code></pre>
 </details>     
 </div>
 <p>Les testes passent : tout est prêt pour maintenant supprimer les sous-classes.</p>
-<h3><span id="todo-list-10.2"></span> Todo list</h3>
+<h3 id="todo-list-11"><span id="todo-list-10.2"></span> Todo list</h3>
 <p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -1490,9 +1492,9 @@ monnaie.py:31: TypeError</code></pre>
 <li>[X] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h3>11 - unification de <code class="language-">*</code></h3>
+<h3 id="11-unification-de">11 - unification de <code class="language-">*</code></h3>
 <p>Tout est prêt pour unifier les <code class="language-">__mul__</code> et ainsi faire disparaître les dernières différences entre les 2 classes.</p>
-<h3><span id="todo-list-11.1"></span> Todo list</h3>
+<h3 id="todo-list-12"><span id="todo-list-11.1"></span> Todo list</h3>
 <p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -1507,7 +1509,7 @@ monnaie.py:31: TypeError</code></pre>
 <li>[X] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h3><span id="faire-11.1"></span> Faire</h3>
+<h3 id="faire-12"><span id="faire-11.1"></span> Faire</h3>
 <p>Les deux <code class="language-">__mul__</code> ne changent que par le factory utilisé.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1771,7 +1773,7 @@ monnaie.py:31: TypeError</code></pre>
 </details>     
 </div>
 <p>Jusqu'à présent tout va bien. On est toujours vert.</p>
-<h3><span id="todo-list-11.2"></span> Todo list</h3>
+<h3 id="todo-list-13"><span id="todo-list-11.2"></span> Todo list</h3>
 <p>On a fini un item (<code class="language-">__mul__</code>) et on peut directement enchaîner sur le suivant :</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -1786,7 +1788,7 @@ monnaie.py:31: TypeError</code></pre>
 <li>[X] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h3><span id="faire-11.2"></span> Faire</h3>
+<h3 id="faire-13"><span id="faire-11.2"></span> Faire</h3>
 <p>On se sent en confiance.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1835,7 +1837,7 @@ monnaie.py:31: TypeError</code></pre>
 <p>Supprimez les classes <code class="language-">Dollar</code> et <code class="language-">Franc</code>.</p>
 </div>
 </div>
-<h3><span id="todo-list-11.3"></span> Todo list</h3>
+<h3 id="todo-list-14"><span id="todo-list-11.3"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -1849,7 +1851,7 @@ monnaie.py:31: TypeError</code></pre>
 <li>[X] utilisation de devises plutôt que de classes ?</li>
 <li>[ ] supprimer les tests de `Franc{.language-} ?</li>
 </ul>
-<h2>Fin de Partie</h2>
+<h2 id="fin-de-partie">Fin de Partie</h2>
 <p>Maintenant les tests d'égalité et de multiplication des <code class="language-">Franc</code> sont vraiment inutiles puisque le code est le même que celui de dollar :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1904,7 +1906,7 @@ monnaie.py:31: TypeError</code></pre>
 </div>
 </details>     
 </div>
-<h3><span id="todo-list-fin"></span> Todo list</h3>
+<h3 id="todo-list-15"><span id="todo-list-fin"></span> Todo list</h3>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
 <li>[ ] gestion des arrondis (lorsque les montants seront des réels)</li>
@@ -1918,10 +1920,10 @@ monnaie.py:31: TypeError</code></pre>
 <li>[X] utilisation de devises plutôt que de classes ?</li>
 <li>[X] supprimer les tests de <code class="language-">Franc</code> ?</li>
 </ul>
-<h2><span id="fin"></span> Bilan</h2>
+<h2 id="bilan"><span id="fin"></span> Bilan</h2>
 <p>Vous voyez le développement organique en TDD. On a commencé par deux classes distinctes, puis en codant, on s'est rendu compte qu'elles étaient inutiles et on les a petit à petit supprimées.</p>
 <p>Si vous aviez codés sans tests, cela aurait été impossible de réaliser cette opérations en un temps aussi court. De plus, vous n'auriez pas été tenté de le faire car les conséquences auraient pu être dramatique en effet de bord sur le code.</p>
-<h3>Élagage de la todo list</h3>
+<h3 id="elagage-de-la-todo-list">Élagage de la todo list</h3>
 <p>En supprimant les items effectués, il nous reste à faire ;</p>
 <ul>
 <li>[ ] \$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
@@ -1929,8 +1931,8 @@ monnaie.py:31: TypeError</code></pre>
 <li>[ ] <code class="language-">== None</code></li>
 <li>[ ] <code class="language-">==</code> avec autre chose qu'un <code class="language-">Dollar</code></li>
 </ul>
-<h3>Code</h3>
-<h4><code class="fichier">test_monnaie.py</code></h4>
+<h3 id="code">Code</h3>
+<h4 id="test-monnaie-py"><code class="fichier">test_monnaie.py</code></h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> monnaie
 
 
@@ -1957,7 +1959,7 @@ monnaie.py:31: TypeError</code></pre>
     <span class="token keyword">assert</span> <span class="token string">"USD"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
     <span class="token keyword">assert</span> <span class="token string">"CHF"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
 </code></pre>
-<h4><code class="fichier">monnaie.py</code></h4>
+<h4 id="monnaie-py"><code class="fichier">monnaie.py</code></h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
 
@@ -1980,6 +1982,92 @@ monnaie.py:31: TypeError</code></pre>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -1990,6 +2078,7 @@ monnaie.py:31: TypeError</code></pre>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

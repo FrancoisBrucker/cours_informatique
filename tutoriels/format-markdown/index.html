@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Format Markdown</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
       <div class=" px-4 flex items-center">
         
@@ -103,6 +103,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -118,6 +119,7 @@
 
 
     
+  </div>
   
 
   <!-- début résumé -->
@@ -133,7 +135,7 @@
 <p>Pour écrire confortablement du markdown. Installez un plugin pour votre éditeur préféré. Si vous avez suivi les prés-requis, vous avez déjà du installer l'extension pour vscode.</p>
 </div>
 </div>
-<h2>Syntaxe</h2>
+<h2 id="syntaxe">Syntaxe</h2>
 <p>Le markdown est un format très simple. Il permet de structurer minimalement un texte, ce qui est suffisant pour la plupart des rapports/documentations de code.</p>
 <p>Le texte ci-après est un exemple de ce que l'on peut écrire en markdown.</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text"># Un petit peu de Markdown
@@ -158,9 +160,9 @@ On peut aussi écrire des blocs de code, comme :
 1. des équations en latex
 2. du code python
 3. du texte brut</code></pre>
-<h3>Balise à connaître</h3>
+<h3 id="balise-a-connaitre">Balise à connaître</h3>
 <p>Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">cette liste</a>.</p>
-<h4>Sections</h4>
+<h4 id="sections">Sections</h4>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text"># titre du document
 
 ## section
@@ -168,9 +170,9 @@ On peut aussi écrire des blocs de code, comme :
 ### sous-section
 
 #### sous-sous-section</code></pre>
-<h4>Paragraphes</h4>
+<h4 id="paragraphes">Paragraphes</h4>
 <p>Un saut de ligne est nécessaire pour commencer un nouveau paragraphe. Aller à la ligne sera équivalent à un espace.</p>
-<h4>Style inline</h4>
+<h4 id="style-inline">Style inline</h4>
 <p>Dans le flot du texte, on peut mettre en exergue des parties de texte :</p>
 <ul>
 <li><em>en italique</em> : <code class="language-">*texte*</code></li>
@@ -180,7 +182,7 @@ On peut aussi écrire des blocs de code, comme :
 <li><code>code</code> : <code class="language-">`texte`</code></li>
 <li>équations : <code class="language-">$\LaTeX$</code></li>
 </ul>
-<h4>Style bloc</h4>
+<h4 id="style-bloc">Style bloc</h4>
 <p>En markdown, un bloc commence et finit par une ligne vide.</p>
 <p>Plusieurs symboles peuvent être utilisées :</p>
 <ul>
@@ -199,7 +201,7 @@ ls -la
 <p>\$\$ \\frac{1}{2} \$\$</p>
 </li>
 </ul>
-<h4>Listes</h4>
+<h4 id="listes">Listes</h4>
 <p>Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :</p>
 <ul>
 <li>
@@ -215,14 +217,14 @@ ls -la
 </ol>
 </li>
 </ul>
-<h3>Liens</h3>
+<h3 id="liens">Liens</h3>
 <p>Il y a plusieurs possibilités :</p>
 <ul>
 <li>via un nom : <code class="language-">[nom](lien)</code>. Par exemple <code class="language-">[LMGTFY](https://www.google.fr)</code> qui se compile en : <a href="https://www.google.fr">LMGTFY</a></li>
 <li>lien direct : <code class="language-">&lt;https://www.google.fr&gt;</code> qui se compile en : <a href="https://www.google.fr">https://www.google.fr</a>.</li>
 </ul>
 <p>On utilise les liens pour les images, il suffit de rajouter un <code>!</code> avant. Par exemple <code class="language-">![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)</code> qui se compile en : <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg" alt="ada lovelace"></p>
-<h2>Tableaux</h2>
+<h2 id="tableaux">Tableaux</h2>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">| nom colonne 1 | nom colonne 2 | nom colonne 3 |
 |---------------|---------------|---------------|
 |   m (1, 1)    | m (1, 2)      | m (1, 3)      |
@@ -258,7 +260,7 @@ ls -la
 <p>Il existe des extensions de markdown, comme <a href="https://spec.commonmark.org/">commonMark</a> utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.</p>
 </div>
 </div>
-<h2>Code</h2>
+<h2 id="code">Code</h2>
 <p>Il y a deux façon d'écrire du code en markdown :</p>
 <ul>
 <li>en mettant le caractère &quot;`&quot; avant et après le code :<code>print(&quot;du code&quot;)</code>. Le code écrit de cette façon s'insère dans la phrase</li>
@@ -282,9 +284,9 @@ print(&quot;Donnez moi un :&quot;, l, &quot;!&quot;)
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token string">"MPCI"</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Donnez moi un :"</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">)</span></code></pre>
 <p>Préférez toujours cette dernière façon d'écrire du code. C'est plus clair à la lecture et plus joli à la compilation</p>
-<h2>Formules mathématiques</h2>
+<h2 id="formules-mathematiques">Formules mathématiques</h2>
 <p>Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.</p>
-<h3><span id="latex"></span> Formules en Latex</h3>
+<h3 id="formules-en-latex"><span id="latex"></span> Formules en Latex</h3>
 <p>Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -305,7 +307,7 @@ $$
 <li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">résumé</a> des possibilités</li>
 <li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
 </ul>
-<h3>Formules en markdown</h3>
+<h3 id="formules-en-markdown">Formules en markdown</h3>
 <p>On peut écrire en markdown les équations latex.</p>
 <ul>
 <li>pour une équation dans le texte, on dit <em>inline</em> on entoure notre équation  par des <code class="language-">$</code></li>
@@ -318,7 +320,7 @@ $$
 3+2
 $$</span></code></pre>
 <p>Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque <a href="https://www.mathjax.org/">Mathjax</a>.</p>
-<h2>Plugin Markdown vscode</h2>
+<h2 id="plugin-markdown-vscode">Plugin Markdown vscode</h2>
 <p>Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown avec <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/%C3%A9diteur-vscode/">vscode</a> :</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).</li>
@@ -326,14 +328,14 @@ $$</span></code></pre>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=goessner.mdmath">Markdown+Math</a> pour gérer les maths avec Markdown</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode">Prettier</a> pour la mise en forme du code.</li>
 </ul>
-<h2>Pour aller plus loin</h2>
-<h3>Guides</h3>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<h3 id="guides">Guides</h3>
 <ul>
 <li>base markdown et latex : <a href="https://ashki23.github.io/markdown-latex.html">https://ashki23.github.io/markdown-latex.html</a></li>
 <li>base markdown : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</li>
 <li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">Mathjax et latex</a></li>
 </ul>
-<h3>Variantes de markdown</h3>
+<h3 id="variantes-de-markdown">Variantes de markdown</h3>
 <p>Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses possibilités. Deux d'entre elles sont devenus des standard de fait :</p>
 <ul>
 <li><a href="https://spec.commonmark.org/">commonMark</a> utilisé pour ce site.</li>
@@ -343,6 +345,92 @@ $$</span></code></pre>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -353,6 +441,7 @@ $$</span></code></pre>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Parcours Eulériens</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,10 +95,11 @@
 
 
     
+  </div>
   
 
   <p>Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.</p>
-<h2>Le problème concret ou <em>&quot;comment ne pas aller se promener&quot;</em></h2>
+<h2 id="le-probleme-concret-ou-comment-ne-pas-aller-se-promener">Le problème concret ou <em>&quot;comment ne pas aller se promener&quot;</em></h2>
 <p>C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg">7 ponts de Königsberg</a>, qui permit à <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Euler</a> d'inventer la théorie des graphes pour éviter d'aller se balader.</p>
 <p>La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça (<a href="https://www.google.com/maps/d/viewer?msa=0&amp;mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&amp;ll=54.708383%2C20.508084000000014&amp;z=15">cliquez pour voir les 7 ponts en vrai</a>):</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png" alt="ponts de Königsberg"></p>
@@ -108,7 +110,7 @@
 <p><img src="graphe_7_ponts.png" alt="graphe_7_ponts"></p>
 <p>C'est un multi-graphe non orienté et est une modélisation du problème, les sommets $A$, $B$, $C$ et $D$ représentant les quatre berges de la ville et les arêtes les 7 ponts.</p>
 <p>Le problème revient maintenant de trouver un cycle qui passe par toutes les arêtes du multi-graphe.</p>
-<h2>Problème de graphe</h2>
+<h2 id="probleme-de-graphe">Problème de graphe</h2>
 <div id="definition-cycle-eulerien"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -127,10 +129,10 @@
 <p>Comme les arêtes d'un cycle n'y apparaissent qu'une seule fois, un cycle eulérien passe exactement une fois par toutes les arêtes du graphe.</p>
 </div>
 </div>
-<h3>C'est impossible dans l'exemple</h3>
+<h3 id="c-est-impossible-dans-l-exemple">C'est impossible dans l'exemple</h3>
 <p>Avec notre graphe c'est <strong>impossible</strong> car il faut pouvoir repartir d'un sommet après en être arrivé. Si $u_0\dots u_m$ était un tel cycle ($u_0 = u_m$) alors pour tout $u_i$ on aurait que $u_{i-1}u_i$ (pour $0&lt; i$) et $u_iu_{i+1}$ (pour $i &lt; m$) seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête toutes les arêtes de $u_i$ sont dans le cycle et on en conclut que $\delta(u_i)$ est paire.</p>
 <p>Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulérien dans notre graphe.</p>
-<h3>Une implication</h3>
+<h3 id="une-implication">Une implication</h3>
 <p>La remarque précédente nous donne une implication importante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -142,7 +144,7 @@
 <p><strong>S'il existe</strong> un cycle eulérien pour un multi-graphe non-orienté $G$, <strong>alors</strong> tout sommet de ce graphe est de degré pair.</p>
 </div>
 </div>
-<h3>La réciproque sur un exemple ?</h3>
+<h3 id="la-reciproque-sur-un-exemple">La réciproque sur un exemple ?</h3>
 <p>Le graphe suivant a tous ses degrés pair :</p>
 <p><img src="possible_eulerien.png" alt="est-ce possible"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -174,7 +176,7 @@
 </div>
 </details>     
 </div>
-<h2>Equivalence</h2>
+<h2 id="equivalence">Equivalence</h2>
 <p>Ce qui est très beau c'est que la réciproque complète est vraie. On a le théorème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -236,11 +238,11 @@
 </div>
 </details>     
 </div>
-<h2>Trouver un cycle Eulérien</h2>
+<h2 id="trouver-un-cycle-eulerien">Trouver un cycle Eulérien</h2>
 <p>On va se restreindre aux graphes non-orienté. Pour cela, notre codage par dictionnaire fonctionne tout à fait. Prenons par exemple le graphe :</p>
 <p><img src="euler_exemple_1.png" alt="exemple Euler"></p>
 <p>Nous n'allons pas encore nous préoccuper d'encodage du graphe pour les algorithmes : on utilisera celui (ou ceux !) qui impliquera la plus petite complexité.</p>
-<h3><span id="principe-algorithme"></span> Principe de l'Algorithme</h3>
+<h3 id="principe-de-l-algorithme"><span id="principe-algorithme"></span> Principe de l'Algorithme</h3>
 <p>La démonstration de la réciproque nous donne un algorithme de construction d'un cycle Eulérien pour un graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">cycles = []
 tant que G est non vide:
@@ -250,17 +252,17 @@ tant que G est non vide:
     supprimer les sommets de degré 0 dans G
 
 on concatène les cycles de la liste en un seul cycle qui est eulérien</code></pre>
-<h4>1ère itération</h4>
+<h4 id="1ere-iteration">1ère itération</h4>
 <p>En prenant $1231$ comme premier cycle :</p>
 <p><img src="euler_exemple_2.png" alt="exemple Euler"></p>
-<h4>2ème itération</h4>
+<h4 id="2eme-iteration">2ème itération</h4>
 <p>En prenant $35243$ comme second cycle :</p>
 <p><img src="euler_exemple_3.png" alt="exemple Euler"></p>
-<h4>3ème itération</h4>
+<h4 id="3eme-iteration">3ème itération</h4>
 <p>Enfin, le troisième cycle est $4564$ :</p>
 <p><img src="euler_exemple_4.png" alt="exemple Euler"></p>
 <p>Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.</p>
-<h3>Gestion des cycles</h3>
+<h3 id="gestion-des-cycles">Gestion des cycles</h3>
 <p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.</p>
 <p>Après itération des cycles, j'obtient la liste de cycles :</p>
 <div>
@@ -298,7 +300,7 @@ $$
 [1, 2, 5, 3, 1] \oplus [4, 2, 3, 6, 5, 4] = [ 3, 1, 2, 5, 3] \oplus [3, 6, 5, 4, 2, 3] = [3, 1, 2, 5, 4, 6, 5, 3, 4, 2, 3]
 $$
 </div>
-<h2>Algorithme optimal</h2>
+<h2 id="algorithme-optimal">Algorithme optimal</h2>
 <blockquote>
 <p>TBD à finir.</p>
 <p>TBD écrire algo cycle partant de x</p>
@@ -371,9 +373,9 @@ tant que i &lt; |E|:
     i += 1
 </code></pre>
 <p>puis on concatène petit à petit en ajoutant un à un les élément de la liste i et on stope si on trouve un élément non encore vu : on ajoute tout ses éléments ceci se fait aussi en m si on utilise des liste chaînées par exemple.</p>
-<h2>Généralisations</h2>
+<h2 id="generalisations">Généralisations</h2>
 <p>Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois : les chemins eulériens, les circuits eulériens des graphes orientés et les cycles Eulérien des graphes mixtes.</p>
-<h3>Chemin eulérien</h3>
+<h3 id="chemin-eulerien">Chemin eulérien</h3>
 <div id="definition-chemin-eulerien"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -420,7 +422,7 @@ tant que i &lt; |E|:
 </div>
 </details>     
 </div>
-<h3>Graphes orientés</h3>
+<h3 id="graphes-orientes">Graphes orientés</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -463,7 +465,7 @@ tant que i &lt; |E|:
 </div>
 </details>     
 </div>
-<h3>Graphes mixtes</h3>
+<h3 id="graphes-mixtes">Graphes mixtes</h3>
 <p>Le cas d'intérêt pratique des circuit eulérien est lorsque l'on utilise des multi-graphes mixtes puisqu'ils permettent de modéliser un réseau routier avec des routes à sens unique ou à double sens et plusieurs routes menant à des mêmes croisements.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -522,6 +524,92 @@ $$</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -532,6 +620,7 @@ $$</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

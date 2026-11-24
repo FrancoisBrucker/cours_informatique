@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Problèmes NP</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,15 +95,16 @@
 
 
     
+  </div>
   
 
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, ici on considérera que les algorithmes sont écrit en pseudo-code.</p>
-<h2>Problèmes utilisables en pratique</h2>
+<h2 id="problemes-utilisables-en-pratique">Problèmes utilisables en pratique</h2>
 <p>Un <a href="../#probl%C3%A8me-algorithmique">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../1-algorithme/bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : <strong>la résolution</strong>.</p>
-<h3>Résolution efficace</h3>
+<h3 id="resolution-efficace">Résolution efficace</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -131,7 +133,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).</p>
 </div>
 </div>
-<h3>Vérification efficace</h3>
+<h3 id="verification-efficace">Vérification efficace</h3>
 <p>Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiaux pour les résoudre mais la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement, grace à un algorithme efficace de vérification nommé <strong><em>vérifieur</em></strong>, voir si proposition de solution en est une ou pas.</p>
 <div id="définition-vérifieur"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -215,7 +217,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 </details>     
 </div>
-<h3>Vérifieur efficace et algorithme de résolution</h3>
+<h3 id="verifieur-efficace-et-algorithme-de-resolution">Vérifieur efficace et algorithme de résolution</h3>
 <p>Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur <code class="language-">stop(E: str, n: int) → bool</code> qui rend vrai si le programme décrit par la chaîne de caractères <code class="language-">E</code> s'arrête au bout de <code class="language-">n</code> itération. Ce vérifieur correspond <a href="../1-algorithme/bases-th%C3%A9oriques/arr%C3%AAt-rice/">au problème de l'arrêt</a> qui est indécidable.</p>
 <p>Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -250,7 +252,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 </details>     
 </div>
-<h3>La classe de Problèmes NP</h3>
+<h3 id="la-classe-de-problemes-np">La classe de Problèmes NP</h3>
 <p>Les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -320,7 +322,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 </details>     
 </div>
-<h2>Structure de NP</h2>
+<h2 id="structure-de-np">Structure de NP</h2>
 <p>Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : <a href="../probl%C3%A8me-r%C3%A9duction/#d%C3%A9finition-r%C3%A9duction-polynomiale">la réduction polynomiale</a>.</p>
 <p>De façon extrêmement surprenante lorsqu'on y pense, il existe un problème de $NP$, SAT, qui majore tous les autres problèmes. Nous démontrerons ceci précisément plus tard, admettons donc (pour l'instant) le théorème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -334,7 +336,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 </div>
 <p>C'est en effet surprenant qu'il n'y ait pas plusieurs élément maximaux de l'ordre induit par la réduction polynomiale.</p>
-<h3><span id="SAT"></span>Le problème SAT</h3>
+<h3 id="le-probleme-sat"><span id="SAT"></span>Le problème SAT</h3>
 <p>Le problème SAT cherche à vérifier si une formule logique spéciale peut-être satisfaite. Formalisons ça en commençant par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
 <div id="définition-clauses"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -366,7 +368,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div>
 </div>
-<h4>Exemple</h4>
+<h4 id="exemple">Exemple</h4>
 <p><span id="exemple-SAT"></span>
 Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :</p>
 <div>
@@ -381,7 +383,7 @@ $$
 <li>$x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ fonctionne</li>
 </ul>
 <p>La formule précédente est satisfiable !</p>
-<h4>SAT est dans NP</h4>
+<h4 id="sat-est-dans-np">SAT est dans NP</h4>
 <p>Pour montrer que le problème SAT est dans NP, il faut exhiber un vérifieur polynomial c'est à dire un algorithme. Il faut donc pouvoir transformer une instance <em>&quot;papier&quot;</em> de SAT en une entrée d'un programme. Il y a plusieurs façon de faire, nous allons en montrer une simple à mettre en oeuvre.</p>
 <p>Une instance de SAT est composée :</p>
 <ul>
@@ -481,7 +483,7 @@ $$
 <p>Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorithme efficace pour le résoudre.</p>
 </div>
 </div>
-<h3>Réduction vers SAT</h3>
+<h3 id="reduction-vers-sat">Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
 <p>Nous ne démontrerons pas ici ce théorème (on le fera plus tard) mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental. Intuitivement exécuter un programme sur un ordinateur c'est exécuter successions de tests logiques et d'affectations de variables booléennes et on peut assembler toutes ces instructions en une grosse formule logique. Un programme n'est alors qu'une grosse formule logique à résoudre et comme on peut transformer toute formule logique en une disjonction de clauses de taille proportionnelle à la formule de départ grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> (que nous étudierons un peu plus tard) il y a équivalence, au moins intuitivement,  entre un programme et une formule SAT.</p>
 <p>Fixons nous les idées avec quelques exemples pour que vous puissiez voir que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code.</p>
@@ -493,7 +495,7 @@ $$
 <p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clauses, on se contentera de formules logiques que l'on sait pouvoir transformer polynomialement en conjonction de clauses.</p>
 </div>
 </div>
-<h4>MAX</h4>
+<h4 id="max">MAX</h4>
 <p>Montrons que l'on peut le faire pour <a href="../#probl%C3%A8me-max-tableau">le problème MAX (trouver le maximum d'un tableau)</a>. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
 <li>l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i = y^i) \coloneqq (x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$. La formule logique est  n'vrai que si les deux variables booléennes sont égales.</li>
@@ -544,7 +546,7 @@ $$
 $$
 </div>
 <p>Puisque l'équation logique ci-dessus vérifie si $T[i]$ est le plus grand des éléments du tableaux pour tout $i$.</p>
-<h4>Addition de 2 bits</h4>
+<h4 id="addition-de-2-bits">Addition de 2 bits</h4>
 <p>L'exemple précédent était éclairant mais pas forcément bluffant : le problème MAX pouvant se représenter facilement comme une succession de tests logiques. Nous allons donc aller un peu plus loin et transformer un algorithme, la somme de deux nombres binaires en une conjonction de clause.</p>
 <p>Commençons par quelque chose de simple, l'addition de 2 bits :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">bit</span><span class="token punctuation">,</span>
@@ -657,7 +659,7 @@ $$
 </div>
 </details>     
 </div>
-<h4>Addition de 2 entiers</h4>
+<h4 id="addition-de-2-entiers">Addition de 2 entiers</h4>
 <p>Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaires en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :</p>
 <p><span id="algorithme-somme_binaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span><span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">,</span>
@@ -731,7 +733,7 @@ $$
 \end{array}
 $$
 </div>
-<h2>Problèmes NP-Complet</h2>
+<h2 id="problemes-np-complet">Problèmes NP-Complet</h2>
 <p>Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes <em>universels</em>, on les appelle <strong><em>NP-complet</em></strong>, dont tous les autres problèmes ne sont que des cas particuliers :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -745,7 +747,7 @@ $$
 <p>Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :</p>
 <p><img src="NP-NP-2a.png" alt="décidable"></p>
 <p>Mais SAT est loin d'être tout seul ! Fixons nous les idées en en exhibant un.</p>
-<h3>3-SAT ≤ SAT</h3>
+<h3 id="3-sat-sat">3-SAT ≤ SAT</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -783,7 +785,7 @@ $$
 <p>On a trouvé un deuxième élément à la classe des problèmes NP-complets !</p>
 <p><img src="NP-NP-2b.png" alt="décidable"></p>
 <p>Remarquez que notre transformation ne permet pas de passer de SAT à 2-SAT puisqu'il faut chaîner les clauses de strictement plus de 3 littéraux.</p>
-<h3>Que signifie NP-complet</h3>
+<h3 id="que-signifie-np-complet">Que signifie NP-complet</h3>
 <p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
 <p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -805,7 +807,7 @@ $$
 <p>Les problèmes NP-complet sont universels. Ils peuvent être tous les problèmes possibles.</p>
 </div>
 </div>
-<h3>P et NP</h3>
+<h3 id="p-et-np">P et NP</h3>
 <p>Si les problèmes de $P$ sont inclus dans $NP$, on ne sait pas si l'inclusion est stricte. On a implicitement supposé que les problèmes NP-complets ne sont pas dans P, mais en vrai on en sait rien : la question est ouverte ! Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -855,7 +857,7 @@ $$
 <p>P = NP ne ferait pas que des heureux.</p>
 </div>
 </div>
-<h3>Pas dans P ni NPC ?</h3>
+<h3 id="pas-dans-p-ni-npc">Pas dans P ni NPC ?</h3>
 <p>Pour ne rien rendre simple, il existe de nombreux problèmes pour lesquels on ne connaît pas d'algorithme polynomiaux mais que l'on arrive pas à démontrer NP-complet. Par exemple le problème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -940,7 +942,7 @@ $$
 </details>     
 </div>
 <p>Même si le statut de l'isomorphie de graphe est inconnue, <a href="https://en.wikipedia.org/wiki/Graph_isomorphism_problem#Complexity_class_GI">il est très fortement suspecté</a> qu'il ne soit ni sans P ni dans NPC. Il existe de nombreux autres problèmes dans ce cas là comme <a href="https://fr.wikipedia.org/wiki/Factorisation">le problème de la factorisation</a> (alors que savoir si un nombre est premier ou pas <a href="https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf">est polynomial</a>. Mais cela dépasse de loin le cadre de ce cours introductif) ou <a href="https://fr.wikipedia.org/wiki/Logarithme_discret">le logarithme discret</a> à la base des algorithmes de chiffrement.</p>
-<h2>Autres classes</h2>
+<h2 id="autres-classes">Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
 <li>la classe des problèmes de complexité poly-logarithmique $\mathcal{O}(\log^k(n))$</li>
@@ -958,6 +960,92 @@ $$
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -968,6 +1056,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

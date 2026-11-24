@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">S2 : Algorithmie 1 (bases)</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
       <div class=" px-4 flex items-center">
         
@@ -92,6 +92,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -107,10 +108,11 @@
 
 
     
+  </div>
   
 
   <p>Ce cours intitulé <em>Algorithmie</em> est donné au second semestre de la licence MPCI (<a href="https://ametice.univ-amu.fr/course/view.php?id=129120">lien AMeTICE AMU Informatique S2</a>).</p>
-<h2>Note</h2>
+<h2 id="note">Note</h2>
 <p>La note de  l'UE résulte de cette formule :</p>
 <p>$$
 \max (\frac{CC+ DS + ET}{3}, ET)
@@ -126,7 +128,7 @@ $$</p>
 <li>$DS$ est la note du devoir surveillé</li>
 <li>$ET$ est l'examen terminal</li>
 </ul>
-<h2>Prérequis</h2>
+<h2 id="prerequis">Prérequis</h2>
 <p>Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours, en particulier vos cours d'informatique du S1 qui vous permettrons de coder en python les différents algorithme que ous allons étudier.</p>
 <p>Tout ce dont vous aurez besoin est également disponible dans le cours cours ci-après :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
@@ -148,9 +150,9 @@ $$</p>
 <p><a href="/cours_informatique/enseignements/MPCI/outil-informatique/#eduroam">Utilisez le réseau EDUROAM</a></p>
 </div>
 </div>
-<h2>Cours</h2>
+<h2 id="cours">Cours</h2>
 <p>Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou aux divers prérequis que vous aurez à préparer avant le cours.</p>
-<h2>Plan</h2>
+<h2 id="plan">Plan</h2>
 <p>Ce cours est composée de plusieurs parties :</p>
 <ul>
 <li>Notion d'algorithmie</li>
@@ -182,8 +184,8 @@ Cours en 4 parties et 4 DM :
 5. cours algo (structures de données) et DM code (bataille navale)
 
 -->
-<h3>Semaine 1</h3>
-<h4>Mercredi : qu'est-ce qu'un algorithme</h4>
+<h3 id="semaine-1">Semaine 1</h3>
+<h4 id="mercredi-qu-est-ce-qu-un-algorithme">Mercredi : qu'est-ce qu'un algorithme</h4>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -217,7 +219,7 @@ Utilisations de :
 
 Avec de petits algos
 -->
-<h4>Vendredi : écrire des algorithmes</h4>
+<h4 id="vendredi-ecrire-des-algorithmes">Vendredi : écrire des algorithmes</h4>
 <blockquote>
 <p>4h</p>
 </blockquote>
@@ -270,7 +272,7 @@ prog sur l'année en 4 séquences alternée :
 3. code et DM algo  ET de l'année passée
 4. algo et DM code  ET de l'année passée
 -->
-<h3>Semaine 2</h3>
+<h3 id="semaine-2">Semaine 2</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -286,7 +288,7 @@ prog sur l'année en 4 séquences alternée :
 </ol>
 </div>
 </div>
-<h4>Mercredi matin : complexité</h4>
+<h4 id="mercredi-matin-complexite">Mercredi matin : complexité</h4>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -314,7 +316,7 @@ prog sur l'année en 4 séquences alternée :
 <p><a href="/cours_informatique/cours/algorithmie/complexit%C3%A9-calculs/">Complexité d'un algorithme</a></p>
 </div>
 </div>
-<h4>mercredi après-midi : exercices</h4>
+<h4 id="mercredi-apres-midi-exercices">mercredi après-midi : exercices</h4>
 <blockquote>
 <p>4h</p>
 </blockquote>
@@ -338,12 +340,12 @@ Faire une séance de code en pair programming pour mettre en place les mesures d
 3- max et min : voir la différence physique mais pas en courbe
 
 -->
-<h3>Semaine 4</h3>
+<h3 id="semaine-4">Semaine 4</h3>
 <blockquote>
 <p>16/02 au 20/02
 Algorithmie</p>
 </blockquote>
-<h4>Mercredi : complexité d'un problème</h4>
+<h4 id="mercredi-complexite-d-un-probleme">Mercredi : complexité d'un problème</h4>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -386,7 +388,7 @@ Algorithmie</p>
 <p><a href="/cours_informatique/cours/algorithmie/exercices-probl%C3%A8me-doublons/">exercices sur le problème du doublon</a></p>
 </div>
 </div>
-<h4>Jeudi : problème de l'exponentiation</h4>
+<h4 id="jeudi-probleme-de-l-exponentiation">Jeudi : problème de l'exponentiation</h4>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -433,12 +435,12 @@ Algorithmie</p>
 <p><a href="/cours_informatique/cours/algorithmie/projet-suite-additive/">Suite additives</a></p>
 </div>
 </div>
-<h3>Semaine 5</h3>
+<h3 id="semaine-5">Semaine 5</h3>
 <blockquote>
 <p>09/02 au 13/02
 Algorithmie</p>
 </blockquote>
-<h4>Mercredi : tris</h4>
+<h4 id="mercredi-tris">Mercredi : tris</h4>
 <blockquote>
 <p>4h</p>
 </blockquote>
@@ -480,7 +482,7 @@ Algorithmie</p>
   - 1h sur les tris rapide et fusion 
 
  -->
-<h4>Vendredi : correction du DM</h4>
+<h4 id="vendredi-correction-du-dm">Vendredi : correction du DM</h4>
 <blockquote>
 <p>2+h</p>
 </blockquote>
@@ -493,7 +495,7 @@ Algorithmie</p>
 </div>
 </div>
 <p>Séance facultative. Venez si vous voulez voir la correction du DM et/ou avez des questions d'ordre algorithmique/code.</p>
-<h3>Semaine 6</h3>
+<h3 id="semaine-6">Semaine 6</h3>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -527,7 +529,7 @@ Algorithmie</p>
 </div>
 </div>
 <p>Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des années précédentes dans <a href="#annales">les annales</a>. Comme toujours, faites les exercices avant de regarder les corrigés et qui sait vous allez peut-être même y prendre du plaisir, certains exercices étant diablement jolis.</p>
-<h3>Semaine 11</h3>
+<h3 id="semaine-11">Semaine 11</h3>
 <blockquote>
 <p>6/04 au 10/04
 Algorithmie</p>
@@ -549,7 +551,7 @@ Algorithmie</p>
 <p>DM3 : faire l'ET de programmation de l'année dernière : <a href="/cours_informatique/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf">sujet examen terminal programmation 2025</a></p>
 </div>
 </div>
-<h4>Jeudi : structures de données</h4>
+<h4 id="jeudi-structures-de-donnees">Jeudi : structures de données</h4>
 <blockquote>
 <p>2h</p>
 </blockquote>
@@ -561,7 +563,7 @@ Algorithmie</p>
 <p><a href="/cours_informatique/cours/algorithmie/structure-matricielle/">Structures matricielles</a></p>
 </div>
 </div>
-<h4>Vendredi : structures linéaires</h4>
+<h4 id="vendredi-structures-lineaires">Vendredi : structures linéaires</h4>
 <blockquote>
 <p>4h</p>
 </blockquote>
@@ -577,7 +579,7 @@ Algorithmie</p>
 </ol>
 </div>
 </div>
-<h3>Semaine 12</h3>
+<h3 id="semaine-12">Semaine 12</h3>
 <blockquote>
 <p>13/04 au 17/04
 Algorithmie</p>
@@ -590,7 +592,7 @@ Algorithmie</p>
 <p>La séance facultative de correction du DM prévue le 17 avril (à 13h30) est annulée.</p>
 </div>
 </div>
-<h4>Mercredi : Listes</h4>
+<h4 id="mercredi-listes">Mercredi : Listes</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -602,7 +604,7 @@ Algorithmie</p>
 </ol>
 </div>
 </div>
-<h4>Vendredi : Dictionnaires</h4>
+<h4 id="vendredi-dictionnaires">Vendredi : Dictionnaires</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -623,7 +625,7 @@ Algorithmie</p>
 <p><a href="/cours_informatique/cours/algorithmie/projet-liste-dictionnaire/">Projet Liste et dictionnaires</a></p>
 </div>
 </div>
-<h3>Semaine 13</h3>
+<h3 id="semaine-13">Semaine 13</h3>
 <blockquote>
 <p>27/04 au 1/05
 Programmation</p>
@@ -667,7 +669,7 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 
 
 -->
-<h2>Annales</h2>
+<h2 id="annales">Annales</h2>
 <p>Le cours était lié au cours de programmation. Les annales concernent donc les 2 matières. Prenez celle qui concerne l'algorithmie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -705,6 +707,92 @@ Cours en 4 parties et 4 DM :
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -715,6 +803,7 @@ Cours en 4 parties et 4 DM :
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

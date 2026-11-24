@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Algorithmes gloutons</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
@@ -102,7 +104,7 @@
 TBD comme c'est discret des étapes et pas de dérivées.
 TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.</p>
 </blockquote>
-<h2>Définition</h2>
+<h2 id="definition">Définition</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -154,7 +156,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </div>
 </div>
 <p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
-<h2>Comment concevoir un algorithme glouton</h2>
+<h2 id="comment-concevoir-un-algorithme-glouton">Comment concevoir un algorithme glouton</h2>
 <p>Pour construire un algorithme glouton on procède par étapes :</p>
 <ol>
 <li>écrire le problème comme un problème d'optimisation</li>
@@ -162,7 +164,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <li>on construit la solution incrémentalement à chaque étape en optimisant un critère local</li>
 </ol>
 <p>Pour se fixer les idées regardons comment appliquer ces différentes étapes dans le cas d'un problème concret : le rendu de monnaie avec un nombre minimum de pièces de 1, 2 et 5 pokédollars.</p>
-<h3>Problème du rendu de pièces</h3>
+<h3 id="probleme-du-rendu-de-pieces">Problème du rendu de pièces</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -182,13 +184,13 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ul>
 </div>
 </div>
-<h3>Design de l'algorithme rendu</h3>
+<h3 id="design-de-l-algorithme-rendu">Design de l'algorithme rendu</h3>
 <ol>
 <li><strong>écrire le problème comme un problème d'optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
 <li><strong>découper le problème en une succession d'étapes</strong> : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
 <li><strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
 </ol>
-<h3>Algorithme : rendu de pièce</h3>
+<h3 id="algorithme-rendu-de-piece">Algorithme : rendu de pièce</h3>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">rendu</span><span class="token punctuation">(</span><span class="token parameter variable">R</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name"><span class="token punctuation">(</span>int<span class="token punctuation">,</span> int<span class="token punctuation">,</span> int<span class="token punctuation">)</span></span></span><span class="token punctuation">:</span>
     V <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># les pièces sont triées par ordre décroissant</span>
     P <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># liste vide</span>
@@ -235,7 +237,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </div>
 </details>     
 </div>
-<h3>Optimalité de l'algorithme rendu</h3>
+<h3 id="optimalite-de-l-algorithme-rendu">Optimalité de l'algorithme rendu</h3>
 <p>On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.</p>
 <p>Considérons une solution optimale. Elle ne <strong>peut pas</strong> contenir :</p>
 <ul>
@@ -245,7 +247,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p>Enfin, cette solution optimale ne <strong>peut pas avoir exactement 2 pièces de 2 et une pièce de 1</strong>, sinon on les échangeraient pour une pièce de 5...</p>
 <p>On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.</p>
 <p>Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.</p>
-<h3>Généralisation à un système de pièces quelconque ?</h3>
+<h3 id="generalisation-a-un-systeme-de-pieces-quelconque">Généralisation à un système de pièces quelconque ?</h3>
 <p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
 <ul>
 <li>exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.</li>
@@ -264,7 +266,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p>Le cas général est un problème <a href="../../../probl%C3%A8me-sac-%C3%A0-dos">du sac à dos</a> (le <em>&quot;prix&quot;</em> de chaque pièce vaut 1 et leur <em>&quot;volume&quot;</em> est leur valeur).</p>
 </div>
 </div>
-<h2>Optimalité d'un algorithme glouton</h2>
+<h2 id="optimalite-d-un-algorithme-glouton">Optimalité d'un algorithme glouton</h2>
 <p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
 <li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coût tout en maximisant la qualité totale des pièces</li>
@@ -286,14 +288,14 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </div>
 </div>
 <p>Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">un matroïde</a>, dont la principale propriété est d'être stable par échange.</p>
-<h3>Schéma de preuve d'optimalité par construction</h3>
+<h3 id="schema-de-preuve-d-optimalite-par-construction">Schéma de preuve d'optimalité par construction</h3>
 <p>En reprenant le <a href="#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a>, on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
 <ul>
 <li>si <code class="language-">S + [x_i]</code> était une solution possible alors <code class="language-">x_i</code> est aussi dans la solution optimale considérée</li>
 <li>si <code class="language-">S + [x_i]</code> n'était pas une solution possible alors <code class="language-">x_i</code> n'est pas dans la solution optimale considérée</li>
 </ul>
 <p>Ce qui prouvera l'optimalité de notre algorithme glouton.</p>
-<h3>Schéma de preuve d'optimalité par l'absurde</h3>
+<h3 id="schema-de-preuve-d-optimalite-par-l-absurde">Schéma de preuve d'optimalité par l'absurde</h3>
 <p>Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :</p>
 <ol>
 <li>on suppose que la solution donnée par l'algorithme glouton n'est pas optimale</li>
@@ -311,7 +313,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </li>
 <li>On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.</li>
 </ol>
-<h3>Problème du recouvrement de nombres réels</h3>
+<h3 id="probleme-du-recouvrement-de-nombres-reels">Problème du recouvrement de nombres réels</h3>
 <p>Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -340,7 +342,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ul>
 <p>Notez qu'il existe de nombreuses solutions possibles. Par exemple $I = [[-.4, .6], [.5, 1.5], [1.99, 2.99]]$ ou $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$ en sont deux autres.</p>
 <p>C'est un cas courant en optimisation discrète : il existe de nombreuses solutions optimales et sont toutes équivalentes.</p>
-<h3>Algorithme de recouvrement</h3>
+<h3 id="algorithme-de-recouvrement">Algorithme de recouvrement</h3>
 <p>On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">recouvrement</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]float</span><span class="token punctuation">)</span></span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     trie <span class="token variable parameter">T</span> par ordre croissant<span class="token punctuation">.</span>
@@ -361,7 +363,7 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </ul>
 <p>Enfin, il est clair que tous les éléments de $T$ sont couvert par un intervalle de $I$. Il nous reste à montrer qu'il possède un nombre minimal d'intervalle pour montrer qu'il est bien une solution au problème recouvrement.</p>
 <p>Nous allons prouver cette optimalité des deux façons préconisées : par construction et par l'absurde. Vous verrez qu'elles utilisent toutes deux exactement les mêmes arguments.</p>
-<h3>Optimalité par construction</h3>
+<h3 id="optimalite-par-construction">Optimalité par construction</h3>
 <p>On va considérer deux solutions :</p>
 <ul>
 <li>$I$, la solution rendue par l'algorithme glouton</li>
@@ -385,7 +387,7 @@ $$
 </ul>
 <p>Comme $I^{\star\star}$ a le même nombre d'intervalles que $I^{\star}$ c'est une solution optimale ! Et comme $I^{\star\star}[:i+1] = I[:i + 1]$, elle coïncide plus longtemps avec $I$ que $I^{\star}$.</p>
 <p>On peut alors réitérer ce process pour transformer notre solution optimale en $I$, ce qui va prouver que $I$ a bien un nombre minimum d'intervalles.</p>
-<h3>Optimalité par l'absurde</h3>
+<h3 id="optimalite-par-l-absurde">Optimalité par l'absurde</h3>
 <p>Pour ce type de preuve, on va supposer que $I$ n'est pas optimal.</p>
 <p>On peut alors considérer une solution optimale $I^{\star}$ faisant les même choix que le glouton le plus longtemps possible. Une telle solution optimale existe (car il y a un nombre fini de choix) et est différente de $I$ par hypothèse.</p>
 <p>Dans le cas de l'algorithme <code class="language-">recouvrement</code> on considère alors la première itération, disons $i$, où $I^{\star}$ à fait un choix différent de l'algorithme, c'est à dire la première itération où le glouton à créé un intervalle, $I[i]$, qui n'est pas dans $I^{\star}$.</p>
@@ -393,7 +395,7 @@ $$
 <p>On procède alors exactement de la même façon que pour la preuve constructive en créant la solution $I^{\star\star}$ où l'on a remplacé $[u, u+1]$ par $I[i]$ dans $I^\star$.</p>
 <p>Cette solution est optimale car elle couvre tous les éléments de $T$ et a le même nombre d'intervalle que $I^\star$. Mais ceci est impossible car elle coïncide avec $I$ plus longtemps que $I$ (elle possède tous les intervalles de $I[:i+1]$ alors que $I^\star$ me possède pas $I[i]$) alors que hypothèse de non optimalité de $I$ impliquait l'existence de $I^\star$,  solution optimale coïncidant le plus longtemps possible avec $I$.</p>
 <p>Notre hypothèse de départ était fausse : $I$ est optimale.</p>
-<h2>Performances garanties d'un glouton</h2>
+<h2 id="performances-garanties-d-un-glouton">Performances garanties d'un glouton</h2>
 <p>Très souvent un algorithme glouton ne va trouver une solution optimale au problème proposé, mais dans certains cas, on peut démontrer que sa solution n'est pas trop éloigné du maximum.</p>
 <p>Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.</p>
 <p><span id="définition-performance-garantie"></span></p>
@@ -406,7 +408,7 @@ $$
 <p>Un algorithme est <strong><em>à performance garantie</em></strong> si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.</p>
 </div>
 </div>
-<h3>Problème du <em>bin packing</em></h3>
+<h3 id="probleme-du-bin-packing">Problème du <em>bin packing</em></h3>
 <p>Pour illustrer cette problématique on va utiliser <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing">le problème du <em>bin packing</em></a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -466,7 +468,7 @@ $$
 </ul>
 <p>On distingue cependant les deux problèmes car le problème d'optimisation n'est pas vraiment dans NP, c'est à dire vérifiable en temps polynomial, car il faudrait avoir toutes les solutions pour comparer.</p>
 <p>Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale par un algorithme glouton, de complexité polynomiale. Mais dans le cas du <em>bin packing</em> on peut designer un algorithme glouton à performance garantie.</p>
-<h3>Algorithme glouton pour résoudre le <em>bin packing</em></h3>
+<h3 id="algorithme-glouton-pour-resoudre-le-bin-packing">Algorithme glouton pour résoudre le <em>bin packing</em></h3>
 <p>Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">bin_packing</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[][]int</span></span>
     Es <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -497,7 +499,7 @@ $$
 <p>On ne veut pas ordonner les éléments a priori car cela correspond à un algorithme online où les éléments &quot;arrivent&quot; les uns après les autres comme dans un déménagement ou un flux de marchandises.</p>
 </div>
 </div>
-<h3>Performance garantie</h3>
+<h3 id="performance-garantie">Performance garantie</h3>
 <p>Pour prouver qu'un algorithme a une performance garantie sans connaître la valeur de la solution optimale, il faut ruser.</p>
 <p>On va chercher des propriétés de la solution optimale que l'on pourra rapprocher de propriétés de la solution gloutonne.</p>
 <p>Commençons par une propriété de la solution optimale :</p>
@@ -707,9 +709,9 @@ $$
 <p>On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant <strong>par volume décroissant</strong>. <a href="https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis">Il a en effet été prouvé</a> que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.</p>
 </div>
 </div>
-<h2>Heuristique gloutonne</h2>
+<h2 id="heuristique-gloutonne">Heuristique gloutonne</h2>
 <p>Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme <a href="https://fr.wikipedia.org/wiki/Heuristique">une heuristique</a>.</p>
-<h3>Méthode de design d'un algorithme glouton comme heuristique</h3>
+<h3 id="methode-de-design-d-un-algorithme-glouton-comme-heuristique">Méthode de design d'un algorithme glouton comme heuristique</h3>
 <ol>
 <li>créer un glouton pour résoudre le problème</li>
 <li>rendre l'ordonnancement aléatoire</li>
@@ -721,7 +723,7 @@ $$
 <li>il faut pouvoir garder la meilleur solution : on doit pouvoir ordonner les solution pour prendre la meilleure (ce qui est le cas pour un problème d'optimisation)</li>
 <li>il faut que les bonnes solutions ne soient pas rares sinon l'aléatoire n'aidera pas à trouver une bonne solution (il est parfois nécessaire de faire un prétraitement sur les entrées)</li>
 </ul>
-<h3>Problème de la chaîne de montage</h3>
+<h3 id="probleme-de-la-chaine-de-montage">Problème de la chaîne de montage</h3>
 <p>Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer <a href="https://www.csplib.org/Problems/prob001/">le problème de la chaîne de montage</a>.</p>
 <p>Pour créer une voiture on la déplace sur une chaîne de montage pour qu'elle puisse passer par chaque atelier. La figure suivante montre le schéma :</p>
 <p><img src="chaine-montage.png" alt="chaîne de montage"></p>
@@ -956,7 +958,7 @@ $$
 </tr>
 </tbody>
 </table>
-<h3>Algorithme glouton</h3>
+<h3 id="algorithme-glouton">Algorithme glouton</h3>
 <p>Pour la résolution gloutonne et heuristique d'un problème NP-difficile, on a coutume de créer l'ordre au fur et à mesure du déroulement de l'algorithme. L'algorithme reste glouton car une fois choisi on ne revient pas sur le choix.</p>
 <p>L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissés au lecteur) est alors la suivante :</p>
 <blockquote>
@@ -992,7 +994,7 @@ calcul complexité.</li>
 <blockquote>
 <p>TBD coder en python pour tester.</p>
 </blockquote>
-<h3>Glouton aléatoire</h3>
+<h3 id="glouton-aleatoire">Glouton aléatoire</h3>
 <p>Si on laisse l'algorithme ainsi il va trouver une solution qu'on espère acceptable : son fonctionnement interne est bon. Comme sa complexité est faible, on peut le relancer plusieurs fois en modifiant les paramètres pour augmenter nos chances d'obtenir une meilleure solution.</p>
 <p>Ce qu'on peut améliorer :</p>
 <ol>
@@ -1012,6 +1014,92 @@ calcul complexité.</li>
 
 
 </div></div></article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -1022,6 +1110,7 @@ calcul complexité.</li>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

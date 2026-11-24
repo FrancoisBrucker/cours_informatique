@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">commit atomiques</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -90,6 +90,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -105,28 +106,29 @@
 
 
     
+  </div>
   
 
   <p>Ce tuto vise à apporter <strong>une</strong> réponse (parmi tant d'autres) à la séculaire question : &quot;Mais du coup, quand est-ce que je commit ?&quot;.</p>
-<h2>Présentation</h2>
+<h2 id="presentation">Présentation</h2>
 <p>Lorsqu'on débute avec Git, ou même lorsqu'on est un utilisateur plus confirmé, cette question relative à la fréquence de <em>commit</em> revient régulièrement sur la table, notamment lors d'un travail collectif. Disons-le d'emblée, il n'y a pas vraiment de <em>bonne réponse</em> à cette question, si ce n'est peut-être celle-ci : utilisez git de la manière la plus efficace et intuitive pour vous et votre workflow personnel, tant que cela ne nuit pas au reste du groupe. Facile, non ?</p>
 <p>Ce petit tuto prend toutefois le partie de présenter un mode de fonctionnement spécifique, celui des <strong>commits atomiques</strong>. C'est une méthode assez répandue parmi les développeurs, en particulier dans le monde de l'<em>open source</em>. Mais ça ne signifie pas forcément qu'elle vous conviendra. Prêt(e) ? C'est parti !</p>
-<h2>L'idée générale</h2>
+<h2 id="l-idee-generale">L'idée générale</h2>
 <p>Globalement, l'idée est la suivante : on va découper les modifications apportées au code en tout petits morceaux élémentaires (des <em>atomes</em>, du grec ἄτομος [átomos], « insécable » ) que l'on <em>commit</em> au fur et à mesure. Une nouvelle fonction écrite ? Un commit. Une correction faite en passant ? Un commit. Etc, etc. Bien sûr, le niveau de granularité de ce découpage arbitraire dépend des goûts et des couleurs de chacun. Là encore, il faut se laisser guider par son <em>workflow</em> personnel, et ne pas oublier que git est un outil au service du développeur, et pas l'inverse.</p>
 <p>Ensuite, on va souvent vouloir retravailler un peu son historique git pour le rendre plus lisible. En effet, avec tous ces petits <em>commits</em> atomiques, un relecteur peut vite être perdu dans la masse.</p>
 <p>Mais à quoi bon faire ces petits <em>commits</em> si c'est pour ensuite retravailler l'historique ? Imaginons que je travaille sur l'ajout d'une nouvelle fonctionnalité. J'écris de nouvelles lignes de code pour y parvenir et, au passage, je tombe sur une ligne déjà écrite qui aura bien besoin d'une petite correction. Deux options : soit je me la note sur une todo list et j'y reviendrai plus tard, soit je m'en occupe tout de suite. Certains sont plutôt partisan de la première option, car elle permet de rester focus sur la tache en cours. Son principal défaut, cependant, est que la correction prendra ensuite plus de temps, parce qu'il faudra revenir plus tard à la todo-list, rouvrir le fichier, retrouver la ligne, comprendre ce qui ne va pas et qui était si évident quelques heures plus tôt mais ne l'est plus forcément.</p>
 <p>Si la modification est rapide à faire (une quinzaine de secondes), nous dit la seconde école, autant la faire tout de suite. Chip, chop, je change le type de cette variable, et me voilà reparti sur ma fonctionnalité principale. Sauf que, si je n'y prends pas garde, ma petite correction va être ajoutée au milieu de tout le reste une fois que j'aurai poussé le code de la nouvelle fonctionnalité, ce qui peut perturber la relecture, parfois grandement. On pourrait l'indiquer dans le commentaire du <em>commit</em> ou la <em>pull request</em> mais, là encore, on risque d’accroître la confusion plus qu'autre chose.</p>
-<h2>Le commit atomique à la rescousse</h2>
+<h2 id="le-commit-atomique-a-la-rescousse">Le commit atomique à la rescousse</h2>
 <p>C'est là que le <em>commit</em> atomique intervient. Chip, chop, je change le type d'une variable, et je commit directement cette toute petite modification. Je peux ensuite revenir à ma tache principale l'esprit tranquille. En tout, cette petite digression n'aura duré que quelques secondes, le temps de changer une ligne et de la <em>commit</em>.</p>
 <p>Mais à force, je risque à la fin d'avoir un gloubi-boulga dantesque de commits consécutifs, certains relatifs à la nouvelle fonctionnalité en cours d'ajout, et d'autres de simple petites modifications annexes réalisées à la volée. Pas tellement plus lisible que si on faisait un seul gros <em>commit</em>.</p>
 <p>C'est pour ça qu'une fois qu'on a planté tous nos petits <em>commit</em> au fur et à mesure, il est bon, une fois qu'on a tout fini, de revenir dessus pour les jardiner. Git permet en effet de déplacer les commits pour les réordonner, et également de fusionner des <em>commits</em> entre eux pour qu'ils n'en forment plus qu'un seul. Je peux donc, par exemple, réunir en un seul <em>commit</em> toutes mes petites modifications éparses, et un autre les réels ajouts signifiants et utiles à la nouvelle fonctionnalité en cours de développement. Il suffit ensuite de préciser en une ligne de commentaire, lors de la publication, que la partie d'intérêt se trouve dans tel <em>commit</em>. Vos relecteurs, incluant votre futur moi, vous en seront très reconnaissants !</p>
-<h2>Chouette, mais comment on fait ?</h2>
+<h2 id="chouette-mais-comment-on-fait">Chouette, mais comment on fait ?</h2>
 <p>Il y a plusieurs petits <em>tricks</em> à connaître et à articuler ensemble pour parvenir au résultat escompté :</p>
 <ol>
 <li>Comment <em>commit</em> un petit bout de fichier (une ligne par exemple)</li>
 <li>Comment &quot;jardiner&quot; ses <em>commits</em> (les déplacer et les fusionner)</li>
 </ol>
-<h3>Ajouter un 'tit bout</h3>
+<h3 id="ajouter-un-tit-bout">Ajouter un 'tit bout</h3>
 <p>Pour n'ajouter qu'un morceau de mon fichier index.html (par exemple), on commencer par :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token parameter variable">-p</span> index.html</code></pre>
 <p>Cela va ouvrir dans le shell une interface permettant de dire à git, petit bout par petit bout, si l'on souhaite le commit ou pas. Une sorte de <em>chatbot</em> avant l'heure. Git réalise de lui-même un découpage en petits morceaux, et il vous soumet les morceaux pour analyse un par un. A vous de lui dire ce que vous voulez en faire, simplement en répondant :</p>
@@ -137,7 +139,7 @@
 <li><code>e</code> pour ouvrir l'éditeur (vim par exemple) et enlever manuellement (en les supprimant) les passages qu'on ne souhaite pas <em>commit</em>.</li>
 </ul>
 <p>On s'en rend compte, c'est un outil très puissant, permettant d'aller vite en répondant petit bout par petit bout, et autorisant une granularité aussi fine que possible grâce au mode manuel <code>e</code>.</p>
-<h3>Jardinage</h3>
+<h3 id="jardinage">Jardinage</h3>
 <p>Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un peu tout ça pour plus de clarté (notamment à la relecture). Pour cela, on va déplacer les <em>commits</em> pour mettre ensemble (côte-à-côte) les <em>commits</em> de fonctionnalité, et ensemble ceux qui concernent des fioritures ou de petites modifications éparses. Si j'ai 10 *commits&quot; à réorganiser, il suffit pour commencer d'utiliser :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase <span class="token parameter variable">-i</span> HEAD~10</code></pre>
 <p>L'option <code>-i</code> signifiant &quot;interactif&quot;, et pour cause : la commande nous a ouvert vim, où les 10 derniers commits s'offrent à nous :</p>
@@ -187,11 +189,97 @@ squash 289eb2a <span class="token function">add</span> <span class="token functi
 43d2f7e <span class="token function">add</span> atomic commits tuto
 d2eb036 update td gloutons
 40900b9 refactor old tutos</code></pre>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Les commits atomiques sont un excellent moyen de réorganiser l'historique git, en particulier pour le rendre plus clair pour des relecteurs (ce qui est particulièrement utile sur de gros projets, qu'ils soient internes ou <em>open source</em>). Comme on l'a vu, ce n'est absolument pas synonyme de &quot;je pousse plein de petits commits tout le temps&quot;, puisque la pratique du commit atomique s'accompagne d'une réorganisation de ces-derniers (encore une fois, pour plus de clarté). Même si cela peut sembler fastidieux à mettre en pratique au début, cela devient rapidement très efficace et rapide à utiliser, une fois qu'on s'est familiarisé avec les outils, et peut réellement augmenter la lisibilité de vos publications et votre clarté mentale.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -202,6 +290,7 @@ d2eb036 update td gloutons
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

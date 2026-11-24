@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>OpenPGP</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <!-- TBD
@@ -127,7 +129,7 @@
 <p>Ne signez les clés publique que des personnes que vous connaissez.</p>
 </div>
 </div>
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -159,18 +161,18 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 <li><code>AES256</code> comme algorithme de chiffrement</li>
 <li><code>SHA512</code>comme algorithme de hash</li>
 </ol>
-<h3>Linux</h3>
+<h3 id="linux">Linux</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssl</code></pre>
-<h3>Macos</h3>
+<h3 id="macos">Macos</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ brew <span class="token function">install</span> openssl</code></pre>
-<h3>Windows</h3>
+<h3 id="windows">Windows</h3>
 <p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
 <ol>
 <li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
 <li>on utilise le paquet <a href="https://winget.run/pkg/GnuPG/GnuPG"><code>GnuPG.GnuPG</code></a></li>
 </ol>
 <p>Une fois le parquet installé, il devrait être disponible dans une <strong>nouvelle</strong> fenêtre de powershell.</p>
-<h3>Dossier de configuration/clés</h3>
+<h3 id="dossier-de-configuration-cles">Dossier de configuration/clés</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -184,7 +186,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 <li><code class="fichier">~/.gnupg</code> sous linux/macos</li>
 <li><code class="fichier">C:\Users\&lt;nom utilisateur&gt;\AppData\Roaming\gnupg</code> sous windows</li>
 </ul>
-<h2>Chiffrer et déchiffrer des fichiers</h2>
+<h2 id="chiffrer-et-dechiffrer-des-fichiers">Chiffrer et déchiffrer des fichiers</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -197,7 +199,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 <p>TBD comme chiffrement/déchiffrement  avec passphrase.
 tui puis en ligne de commande.</p>
 </blockquote>
-<h2>Création de clés</h2>
+<h2 id="creation-de-cles">Création de clés</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -363,7 +365,7 @@ sn+OWXHkAP9t7qt97FO6kuSHrY8Hz+drPWmtHJjzFFK7SM9XMlSxuQEAmLMFLW/H
 <p>Placez le fichier de révocation de votre clé dans un endroit séparé. Si vous vous faites voler votre clé, vous pourrez ainsi la révoquer et éviter que des inconnus se fassent passer pour vous.</p>
 </div>
 </div>
-<h3>Lister ses clés</h3>
+<h3 id="lister-ses-cles">Lister ses clés</h3>
 <p>Vous pouvez voir vos clés :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --list-keys
 gpg: checking the trustdb
@@ -402,7 +404,7 @@ ssb   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 
 </code></pre>
 <p>Pour l'instant, ce sont les pendant privés de la clé principale et secondaire. Lorsque vous ajouterez des clés publiques pour communiquer ces deux listes vont différer.</p>
-<h3>Exporter ses clés</h3>
+<h3 id="exporter-ses-cles">Exporter ses clés</h3>
 <p>Votre clé publique est :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>key id<span class="token operator">></span></code></pre>
 <p>Pour la clé crée juste avant :</p>
@@ -457,7 +459,7 @@ mDMEaPUWEhYJKwYBBAHaRw8BAQdANlrHTZ04G9fbWXz7E1iWSN2VBOBN9VLR16cP6tGnD1u0NEZyYW7D
 000001b0: 35b3 f204 25b2 <span class="token number">9696</span> c98e be5a e269 8d00  <span class="token number">5</span><span class="token punctuation">..</span>.%<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>Z.i<span class="token punctuation">..</span></code></pre>
 <p>Et si vous voulez la sauver dans un fichier <code class="fichier">pub.gpg</code> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--output</span> pub.gpg <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
-<h3>Importer des clés</h3>
+<h3 id="importer-des-cles">Importer des clés</h3>
 <p>Pour pouvoir envoyer des messages à quelqu'un, il vous faut avoir sa clé publique.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -510,7 +512,7 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 </div>
 </details>     
 </div>
-<h3>Signer des clés</h3>
+<h3 id="signer-des-cles">Signer des clés</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -652,7 +654,7 @@ Please decide how far you trust this user to correctly verify other <span class=
 
 Your decision? <span class="token number">5</span>
 Do you really want to <span class="token builtin class-name">set</span> this key to ultimate trust? <span class="token punctuation">(</span>y/N<span class="token punctuation">)</span> y</code></pre>
-<h2>Utilisation</h2>
+<h2 id="utilisation">Utilisation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -661,7 +663,7 @@ Do you really want to <span class="token builtin class-name">set</span> this key
 <p><a href="https://www.youtube.com/watch?v=eLKOIjNFwVs">comfy guide to gpg</a></p>
 </div>
 </div>
-<h3>Chiffrement/déchiffrement</h3>
+<h3 id="chiffrement-dechiffrement">Chiffrement/déchiffrement</h3>
 <p>Chiffrement. <code>&lt;recipient mail&gt;</code> doit être le mail associé à la clé que vous avez ajouté. :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient mail<span class="token operator">></span> msg.txt</code></pre>
 <p>Chiffrement <strong>et</strong> signature du message :</p>
@@ -679,7 +681,7 @@ Do you really want to <span class="token builtin class-name">set</span> this key
 <p>Envoyez un message chiffré à votre correspondant.</p>
 </div>
 </div>
-<h3>Signature</h3>
+<h3 id="signature">Signature</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--clearsign</span>
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
@@ -727,7 +729,7 @@ zlJYun0nDYelMc26nXClw+ZDn8LpjQg<span class="token operator">=</span>
 </ol>
 </div>
 </div>
-<h3>Vérification</h3>
+<h3 id="verification">Vérification</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--sign</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--verify</span>
 gpg: Signature made Sun Oct <span class="token number">19</span> <span class="token number">20</span>:55:32 <span class="token number">2025</span> CEST
 gpg:                using EDDSA key 1746B97A12A97C32CB74C6157D305414B27F8E59
@@ -741,7 +743,7 @@ gpg: Good signature from <span class="token string">"François Brucker &lt;franc
 <p>Vérifiez le message que vous a envoyé votre correspondant.</p>
 </div>
 </div>
-<h2>utilitaire</h2>
+<h2 id="utilitaire">utilitaire</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -750,8 +752,8 @@ gpg: Good signature from <span class="token string">"François Brucker &lt;franc
 <p><a href="https://github.com/orhun/gpg-tui">GPG TUI</a></p>
 </div>
 </div>
-<h2>Gestion des clés</h2>
-<h3>Modifier sa clé</h3>
+<h2 id="gestion-des-cles">Gestion des clés</h2>
+<h3 id="modifier-sa-cle">Modifier sa clé</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --edit-key <span class="token operator">&lt;</span>key id<span class="token operator">></span></code></pre>
 <p>On entre dans un mode d'édition (utilisez la commande <code>help</code>). Par exemple pour changer d'utilisateur :</p>
 <ol>
@@ -822,7 +824,7 @@ gpg<span class="token operator">></span> save
 <p>N'oubliez pas de sauver vos modifications !</p>
 </div>
 </div>
-<h3>Préférences de clés</h3>
+<h3 id="preferences-de-cles">Préférences de clés</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --edit-key <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
 <p>L'identifiant de la clé pouvant être l'adresse mail associée ou son numéro.</p>
 <p>Vous vous retrouvez devant un prompt. Vous pouvez taper <code>help</code> pour l'aide. Tapez <code>setpref</code> et regardez vos préférences. Vous devriez y voir les différents algorithmes utilisés :</p>
@@ -836,7 +838,7 @@ Définir la liste de préférences en <span class="token builtin class-name">:</
 Faut-il vraiment mettre à jour les préférences ? <span class="token punctuation">(</span>o/N<span class="token punctuation">)</span> n</code></pre>
 <p>Vous pouvez ensuite taper <code>quit</code> pour quitter l'interface.</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> quit</code></pre>
-<h3>Gestion des clés GPG</h3>
+<h3 id="gestion-des-cles-gpg">Gestion des clés GPG</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -851,7 +853,7 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <blockquote>
 <p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
 </blockquote>
-<h2>Serveur de clés</h2>
+<h2 id="serveur-de-cles">Serveur de clés</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -877,6 +879,92 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -887,6 +975,7 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

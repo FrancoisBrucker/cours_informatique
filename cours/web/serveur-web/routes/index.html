@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Gestion des routes</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -90,6 +90,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -105,6 +106,7 @@
 
 
     
+  </div>
   
 
   <!-- début résumé -->
@@ -121,7 +123,7 @@
 </div>
 <p>Certaines routes vont nécessiter du travail comme faire une requête en base de données, calculer des choses, etc, et d'autres consisteront seulement à rendre (on dit <strong>servir</strong>) un fichier html, css ou encore javascript qui sera exécuté par le navigateur.</p>
 <p>Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifier et l'agrandir facilement.</p>
-<h2>Préparation</h2>
+<h2 id="preparation">Préparation</h2>
 <p>Reprenons le serveur de la <a href="../minimal">partie précédente</a> :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">"http"</span><span class="token punctuation">;</span>
 
@@ -140,7 +142,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Et lançons notre serveur avec la commande :</p>
 <pre><code>node index.js
 </code></pre>
-<h2>Racine du site</h2>
+<h2 id="racine-du-site">Racine du site</h2>
 <p>Modifions le code du serveur pour qu'il lise un fichier html :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">"http"</span><span class="token punctuation">;</span>
 
@@ -190,7 +192,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Si vous utilisez le navigateur chrome, à chaque chargement de page, il demande en plus une requête <a href="https://www.w3schools.com/html/html_favicon.asp">flavicon</a> 0 la suite de la première requête.</p>
 </div>
 </div>
-<h2>404</h2>
+<h2 id="404">404</h2>
 <p>Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html. Si on tape n'importe quelle autre route que <code>/</code> on obtient tout dem même notre fichier html... Remédions à ça en créant rendant un <a href="https://http.cat/404">statut 404</a> si l'url demandée n'est pas une route valide :</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
@@ -231,7 +233,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Le <code>res.end()</code> est indispensable dans la gestion du 404, sinon le navigateur attendra la réponse du serveur jusqu'à la fin des temps (ou un timeout).</p>
 </div>
 </div>
-<h2>Fichiers statiques</h2>
+<h2 id="fichiers-statiques">Fichiers statiques</h2>
 <p>Les fichier statiques sont les fichiers qui seront pris directement sur le disque dur du serveur et envoyés au navigateur sont appelées <strong>fichiers statiques</strong>. Comme notre fichier <code class="fichier">index.html</code>.</p>
 <p>Plus un serveur a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas au cours du temps. On peut utiliser sur eux des méthodes de <a href="https://fr.wikipedia.org/wiki/Cache_web">cache</a> (côté client et serveur) ou encore de <a href="https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge">load-balancing</a> pour accélérer le résultat (le réseau coûte toujours du temps).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -243,7 +245,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>De là, on maximisera les fichiers statiques remplis de javascript qui construiront la page côté client ou qui ne feront des appels serveur pour récupérer ou transmettre des données.</p>
 </div>
 </div>
-<h3>Servir des fichiers statiques</h3>
+<h3 id="servir-des-fichiers-statiques">Servir des fichiers statiques</h3>
 <p>L'usage veut que tous les fichiers statiques soient servies à partir d'une url reconnaissable. Dans notre cas, nous allons faire commencer toutes les url servant un fichier statique par <code>/static/</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -308,7 +310,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Accédez au fichier <code class="fichier">index.html</code> des deux façons possibles.</p>
 </div>
 </div>
-<h3>Redirection</h3>
+<h3 id="redirection">Redirection</h3>
 <p>Le code ci-après effectue une redirection pour que l'adresse <code>/</code> du serveur permette d'afficher l'index situé à l'adresse <code>/static/index.html</code>.</p>
 <pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">"http"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">"fs"</span><span class="token punctuation">;</span>
@@ -357,9 +359,9 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Faire l'expérience de la redirection en demandant depuis un navigateur la route <code>http://127.0.0.1:3000</code> et voir dans la console du serveur les deux appels : la requête initiale et la redirection.</p>
 </div>
 </div>
-<h3>headers</h3>
+<h3 id="headers">headers</h3>
 <p>On peut utiliser <code>res.writeHead(200,  {'Content-Type': 'text/html'})</code> pour écrire en une fois le status et le type de la réponse.</p>
-<h2>Jardinons un peu le code</h2>
+<h2 id="jardinons-un-peu-le-code">Jardinons un peu le code</h2>
 <p>La version ci-après du serveur est une version améliorée du précédent qui :</p>
 <ul>
 <li>raccourcit et factorise les routes</li>
@@ -404,7 +406,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3>Localisation des fichiers</h3>
+<h3 id="localisation-des-fichiers">Localisation des fichiers</h3>
 <p>La localisation d'un fichier sur le disque dur est une opération :</p>
 <ul>
 <li>non triviale</li>
@@ -421,7 +423,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <p>Il ne faut donc pas prendre comme référence le dossier courant mais le dossier où est <code class="fichier">index.js</code></p>
 <p>Node nous permet de faire ça en définissant les constantes <code class="language-">__filename</code> et <code class="language-">__dirname</code> en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.</p>
 <p>Enfin, on ne concatène <strong>jamais</strong> des fichiers à la main. On utilise <strong>toujours</strong> une bibliothèque pour cela (sinon c'est <em>bad karma</em> : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la <a href="https://nodejs.org/api/path.html">bibliothèque path</a> qui s'occupe de ça.</p>
-<h3>A vous</h3>
+<h3 id="a-vous">A vous</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -473,6 +475,92 @@ server<span class="token punctuation">.</span><span class="token function">liste
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -483,6 +571,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

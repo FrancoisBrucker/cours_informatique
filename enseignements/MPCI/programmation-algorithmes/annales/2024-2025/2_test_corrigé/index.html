@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>sujet Test 2 : code</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -80,7 +80,7 @@
 
   
 
-  <h2>Barème</h2>
+  <h2 id="bareme">Barème</h2>
 <p>Une note sur 9 répartie comme suit :</p>
 <ul>
 <li>3pt pour la question 1.1</li>
@@ -151,8 +151,8 @@
 <li>écart-type : 4.3/20</li>
 <li>médiane : 11.48/20</li>
 </ul>
-<h2>Erreurs fréquemment rencontrées</h2>
-<h3>Avoir un code fonctionnel</h3>
+<h2 id="erreurs-frequemment-rencontrees">Erreurs fréquemment rencontrées</h2>
+<h3 id="avoir-un-code-fonctionnel">Avoir un code fonctionnel</h3>
 <ol>
 <li>Votre code <strong>doit</strong> fonctionner. Au pire vous commentez le code non fonctionnel et expliquez, également en commentaire, le problème.</li>
 <li>un test ne doit pas faire semblant de tester... Si la fonction à tester ne marche pas, il <strong>faut</strong> que le test rate.</li>
@@ -161,13 +161,13 @@
 <p>En code il faut avancer petit à petit et tout doit toujours fonctionner. Plein de code qui ne fonctionne qu'à moitié vaudra toujours moins que moins de code mais fonctionnel.</p>
 <p><strong>Le correcteur</strong> ne va pas faire l'effort de corriger votre code pour qu'il fonctionne, ni le lire attentivement comme on le ferait avec un algorithme. Mais plus important encore, <strong>vous</strong> serez plus confiant en bâtissant sur quelque chose qui fonctionne.</p>
 <p>Coder sans exécuter son code c'est coder les yeux bandés : cela ne peut pas fonctionner.</p>
-<h3>Erreur de longueur</h3>
+<h3 id="erreur-de-longueur">Erreur de longueur</h3>
 <p>Dans la question 1.1 alterner les 2 caractères a posé des problèmes, l'erreur la plus courante  été de ne rendre que des chaines de longueur paires.</p>
-<h3>Erreur d'affichage</h3>
+<h3 id="erreur-d-affichage">Erreur d'affichage</h3>
 <p>L'affichage de la question 1.2  a posé de nombreux problèmes. L'erreur la plus courante, outre le fait de tout afficher sur une ligne, a éte de ne pas alterner les 0 et les 1 en début de chaîne.</p>
-<h2>Corrigé</h2>
-<h3>Question 1</h3>
-<h4>Code</h4>
+<h2 id="corrige">Corrigé</h2>
+<h3 id="question-1">Question 1</h3>
+<h4 id="code">Code</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">alternante</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     s <span class="token operator">=</span> <span class="token string">""</span>
 
@@ -178,14 +178,14 @@
             s <span class="token operator">+=</span> b
 
     <span class="token keyword">return</span> s</code></pre>
-<h4>Test</h4>
+<h4 id="test">Test</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante
 
 
 <span class="token keyword">def</span> <span class="token function">test_alternante</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> alternante<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"0101"</span>
     <span class="token keyword">assert</span> alternante<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"z"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"1z1z1z1"</span></code></pre>
-<h4>Programme principal</h4>
+<h4 id="programme-principal">Programme principal</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
 
 n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -195,7 +195,7 @@ n <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">while</span> n <span class="token operator">&lt;</span> n_init<span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>n<span class="token punctuation">:</span>n<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     n <span class="token operator">+=</span> <span class="token number">5</span></code></pre>
-<h4>Code alternatif</h4>
+<h4 id="code-alternatif">Code alternatif</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">alternante_bis</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     s <span class="token operator">=</span> <span class="token string">""</span>
 
@@ -204,7 +204,7 @@ n <span class="token operator">=</span> <span class="token number">0</span>
         a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
 
     <span class="token keyword">return</span> s</code></pre>
-<h4>Programme principal alternatif</h4>
+<h4 id="programme-principal-alternatif">Programme principal alternatif</h4>
 <p>En refaisant à chaque fois une chaîne :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante
 
@@ -222,8 +222,8 @@ n <span class="token operator">=</span> n_init
 <span class="token keyword">if</span> n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>alternante<span class="token punctuation">(</span>n<span class="token punctuation">,</span> début<span class="token punctuation">,</span> fin<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<h3>Question 2</h3>
-<h4>Code</h4>
+<h3 id="question-2">Question 2</h3>
+<h4 id="code-1">Code</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">croissante_alternante</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
     s <span class="token operator">=</span> <span class="token string">""</span>
 
@@ -235,7 +235,7 @@ n <span class="token operator">=</span> n_init
             c <span class="token operator">=</span> <span class="token number">1</span>
 
     <span class="token keyword">return</span> s</code></pre>
-<h4>Test</h4>
+<h4 id="test-1">Test</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> croissante_alternante
 
 
@@ -243,7 +243,7 @@ n <span class="token operator">=</span> n_init
     <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"567"</span>
     <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"4567891234567"</span>
     <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"1234567891234567891"</span></code></pre>
-<h4>Programme principal</h4>
+<h4 id="programme-principal-1">Programme principal</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
 
 n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -260,7 +260,7 @@ n <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>n<span class="token punctuation">:</span>n<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     n <span class="token operator">+=</span> <span class="token number">5</span>
 </code></pre>
-<h4>Code alternatif</h4>
+<h4 id="code-alternatif-1">Code alternatif</h4>
 <p>On n'utilise un modulo (comme on n'utilise pas l'itérateur de boucle, python permet de l'exprimer en le remplaçant par <code class="language-">_</code>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">croissante_alternante_bis</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
     s <span class="token operator">=</span> <span class="token string">""</span>
@@ -280,7 +280,7 @@ n <span class="token operator">=</span> <span class="token number">0</span>
 <p>Et qui permet, en utilisant des list comprehension et la méthode <a href="https://docs.python.org/fr/3.13/library/stdtypes.html#str.join"><code class="language-">join</code></a> des chaînes de caractères, de simplifier drastiquement le code en l'<a href="https://fr.wikipedia.org/wiki/Uniligne">unilignant</a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">croissante_alternante_ultime</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">9</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> c<span class="token operator">+</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-<h4>Programme principal alternatif</h4>
+<h4 id="programme-principal-alternatif-1">Programme principal alternatif</h4>
 <p>En refaisant à chaque fois une chaîne :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
 
@@ -317,6 +317,92 @@ c <span class="token operator">=</span> <span class="token number">1</span>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -327,6 +413,7 @@ c <span class="token operator">=</span> <span class="token number">1</span>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

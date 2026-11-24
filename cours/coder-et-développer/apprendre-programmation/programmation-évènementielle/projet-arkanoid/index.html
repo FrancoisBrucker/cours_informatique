@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Projet : programmation évènementielle</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <!-- début résumé -->
@@ -105,7 +107,7 @@
 <p>Pour ne pas passer des heures à coder sans résultats, découpez votre programme en plusieurs parties, toutes réalisables en environ 1/2 heure.</p>
 <p>Prenez le temps de modéliser proprement vos objets et classes pour que tout votre programme ne soit qu'une imbrication de classes qui interagissent les unes avec les autres.</p>
 <p>Pour chaque classe il faudra bien sur ses tests qui permettent de certifier que les méthodes fonctionnent. Il faut faire en sorte que chaque méthode soit testable sans <code>pyglet</code>, juste en simulant une partie.</p>
-<h2>Mise en place</h2>
+<h2 id="mise-en-place">Mise en place</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -119,7 +121,7 @@
 </ol>
 </div>
 </div>
-<h2>Entités du projet</h2>
+<h2 id="entites-du-projet">Entités du projet</h2>
 <p>A priori, les objets dont vous aurez besoin sont :</p>
 <ul>
 <li>la fenêtre qui gère les différents événements du projet.</li>
@@ -139,7 +141,7 @@
 <p>Lister les différentes classes et événements que vous devrez gérer pour mener à bien le projet. et essayer de construire un premier jet du modèle UML du projet. Ce modèle n'a pas besoin d'être précis, il doit servir de guide à votre découpage en tâche.</p>
 </div>
 </div>
-<h2>Découpage du projet en tâche</h2>
+<h2 id="decoupage-du-projet-en-tache">Découpage du projet en tâche</h2>
 <p>Commencez par découper le projet en classes et déterminez leurs attributs et méthodes. Une fois ceci fait, décrivez votre 1ère tâche : quelle fonctionnalité du jeu est la plus simple à créer tout en ayant un jeu fonctionnel (même incomplet)</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -174,7 +176,7 @@
 </div>
 </div>
 <p>Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. <strong>Ne passez pas 1 heure à coder quelque chose sans l'utiliser !</strong></p>
-<h2>Déroulé</h2>
+<h2 id="deroule">Déroulé</h2>
 <p>Conservez en plus de votre projet un fichier Markdown dans le quel vous décrirez chaque tâche que vous voulez implémenter, ainsi que l'heure de début et l'heure de fin de la tâche. Si vous voyez que votre tâche prend trop de temps à être créer, scindez votre tâche en tâches plus petites. Au bout de quelques tâches vous devriez être rodé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -191,7 +193,7 @@
 </div>
 <p>Pour débuter le projet, si vous n'avez pas d'idée de déroulé, vous pouvez suivre celui ci-après. Il vous mènera jusqu'au début de l'implémentation des briques.</p>
 <p>Ici nous créerons une classe <code class="language-">Fenetre</code> qui contiendra notre interface. On ne testera pas l'interface (donc la classe <code class="language-">Fenetre</code>), mais tout le reste devra être testé.</p>
-<h2>Tâche 1</h2>
+<h2 id="tache-1">Tâche 1</h2>
 <p>Création d'une fenêtre de 640x480 non redimensionnable avec :</p>
 <ul>
 <li>un label du nombre de vie (2 par défaut), en bas à gauche</li>
@@ -217,7 +219,7 @@ window <span class="token operator">=</span> Fenêtre<span class="token punctuat
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C'est fini !"</span><span class="token punctuation">)</span>
 </code></pre>
-<h2>Tâche 2</h2>
+<h2 id="tache-2">Tâche 2</h2>
 <ul>
 <li>ajout du sol : une <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line">ligne pyglet</a> à hauteur $50$</li>
 <li>ajout du plafond : une <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line">ligne pyglet</a> à hauteur $480-50$</li>
@@ -231,10 +233,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p><img src="tache-2.png" alt="fenêtre aire de jeu"></p>
 <p>Le diagramme UML de la classe <code class="language-">Fenêtre</code> devrait maintenant être quelque chose du genre :</p>
 <p><img src="tache-2-UML.png" alt="fenêtre"></p>
-<h2>Tâche 3</h2>
+<h2 id="tache-3">Tâche 3</h2>
 <p>Faire déplacer le vaisseau de gauche à droite sans cogner les bords.</p>
 <p>Comme la gestion des déplacement doit être interne au vaisseau, il faut qu'il puisse avoir sa classe à lui. On va donc réaliser cette tâche en 2 temps.</p>
-<h3>Tache 3.1</h3>
+<h3 id="tache-3-1">Tache 3.1</h3>
 <p>Création de la classe :</p>
 <ul>
 <li>classe : <code class="language-">Vaisseau</code> (dans le fichier <code class="fichier">vaisseau.py</code>)</li>
@@ -256,7 +258,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>la valeur de <code class="language-">vaisseau.forme.y</code> à la hauteur du sol</li>
 </ul>
 <p><img src="tache-31-UML.png" alt="fenêtre"></p>
-<h3>Tâche 3.2</h3>
+<h3 id="tache-3-2">Tâche 3.2</h3>
 <p>Ajout des méthodes et des attributs permettant de déplacer le vaisseau.</p>
 <p>Il nous faut côté <code class="language-">Fenetre</code> :</p>
 <ol>
@@ -290,7 +292,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </div>
 </div>
 <p><img src="tache-32-UML.png" alt="fenêtre"></p>
-<h2>Tâche 4</h2>
+<h2 id="tache-4">Tâche 4</h2>
 <p>Création et gestion de la bille :</p>
 <ul>
 <li>la bille apparaît au milieu de l'écran avec une vitesse initiale.</li>
@@ -304,7 +306,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </li>
 </ul>
 <p>Pour réaliser tout ça on va travailler par morceaux.</p>
-<h3>Tache 4.1</h3>
+<h3 id="tache-4-1">Tache 4.1</h3>
 <p>Création d'une bille et de ses bornes de jeu. Pour cela, il nous faut commencer à créer une classe bille avec un cercle comme dessin.</p>
 <p>Création de la classe :</p>
 <ul>
@@ -325,7 +327,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Ajoutez la bille à l'interface :</p>
 <p><img src="tache-41.png" alt="bille"></p>
 <p><img src="tache-41-UML.png" alt="fenêtre"></p>
-<h3>Tâche 4.2</h3>
+<h3 id="tache-4-2">Tâche 4.2</h3>
 <p>Ajoutons une première version du déplacement de la bille :</p>
 <ul>
 <li>ajoutez un attribut <code class="language-">vitesse</code> qui est un vecteur à 2 dimension à la classe <code class="language-">Bille</code></li>
@@ -334,10 +336,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Les tests de la bille seront fait dans le fichier <code class="fichier">Arkanoid/test_bille.py</code>. Pour tester la méthode <code class="language-">bouge</code>, vous pourrez faire 1 test <code class="language-">test_bouge()</code> qui vérifie que pour <code class="language-">dt=2</code> et une vitesse <code class="language-">(2, 5)</code>, le déplacement de la bille est bien correct. N'hésitez pas à changer directement les attributs dans votre test.</p>
 <p>Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -100)</p>
 <p><img src="tache-42-UML.png" alt="fenêtre"></p>
-<h3>Tâche 4.3</h3>
+<h3 id="tache-4-3">Tâche 4.3</h3>
 <p>Ajoutons le fait que si la bille sort de la fenêtre par le bas (sa position <code class="language-">y</code> est inférieure à la hauteur du sol),  elle réapparait au milieu de l'écran avec la même vitesse.</p>
 <p>Testez cette fonctionnalité.</p>
-<h3>Tâche 4.4</h3>
+<h3 id="tache-4-4">Tâche 4.4</h3>
 <p>Faite maintenant rebondir la bille sur les murs. Cela peut se faire en changeant la direction d'une des coordonnées du vecteur vitesse (cette coordonnée change selon le mur) dans la méthode <code class="language-">bouge</code> de la bille si celle-ci devait dépasser le mur.</p>
 <p>Testez ces fonctionnalités avec un test par mur en :</p>
 <ol>
@@ -345,10 +347,10 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li>effectuez une méthode <code class="language-">update</code></li>
 <li>vérifier que la vitesse de la  bille a bien changé et que sa position est bien à nouveau dans les bornes de la fenêtre.</li>
 </ol>
-<h2>Tâche 5</h2>
+<h2 id="tache-5">Tâche 5</h2>
 <p>Le vaisseau doit se comporter comme un mur lorsque la bille le touche. Pour cela il faut gérer les collisions entre éléments du jeu.</p>
 <p>Nous allons gérer ceci en plusieurs temps.</p>
-<h3>Tâche 5.1</h3>
+<h3 id="tache-5-1">Tâche 5.1</h3>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> au vaisseau. Cette méthode doit répondre <code class="language-">True</code> si la bille touche le vaisseau, et <code>False</code> sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision_disque_rectangle</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> hauteur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         dist_x <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>
@@ -372,20 +374,20 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
             <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span></code></pre>
 <p>Testez cette méthode.</p>
 <p><img src="tache-51-UML.png" alt="fenêtre"></p>
-<h3>Tâche 5.2</h3>
+<h3 id="tache-5-2">Tâche 5.2</h3>
 <p>Après la mise à jour des position dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et le vaisseau. Si oui, faite rebondir la bille.</p>
-<h2>Tâche 6</h2>
+<h2 id="tache-6">Tâche 6</h2>
 <p>Gestion de la vie et du score.</p>
-<h3>Tâche 6.1</h3>
+<h3 id="tache-6-1">Tâche 6.1</h3>
 <p>Lorsqu'il y a collision entre le vaisseau et la bille, le score augmente de 1.</p>
-<h3>Tâche 6.2</h3>
+<h3 id="tache-6-2">Tâche 6.2</h3>
 <p>Lorsque la la bille tombe dans le sol, on l'a faite réapparaitre au milieu de l'écran avec la même vitesse (tâche 4.3).</p>
 <p>Pour gérer facilement la vie vous pouvez :</p>
 <ul>
 <li>faire réapparaître la bille avec une position nulle</li>
 <li>après la mise à jour des positions, si la vitesse de la bille est nulle c'est que l'on est mort. Décrémentez alors le nombre de vie. Si ce nombre reste positif, redonner de la vitesse à la bille.</li>
 </ul>
-<h2>Tâche 7</h2>
+<h2 id="tache-7">Tâche 7</h2>
 <p>Une brique doit se comporter comme le vaisseau lorsque la bille la touche (elle rebondit), puis disparaître. Commençons par dessiner les briques</p>
 <p>Création de la classe :</p>
 <ul>
@@ -401,7 +403,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 <p>Dans <code class="language-">Fenetre</code> créez une liste <code class="language-">self.briques</code> et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.</p>
 <p><img src="tache-7-UML.png" alt="fenêtre"></p>
-<h2>Tâche 8</h2>
+<h2 id="tache-8">Tâche 8</h2>
 <p>Pour finir, il reste à mettre en place la gestion des collisions entre a bille et les briques. Il n'y a presque rien à faire car tout va se passer comme pour le vaisseau.</p>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> à la classe <code class="language-">Brique</code>. Cette méthode doit répondre <code class="language-">True</code> si la bille touche la brique, et <code class="language-">False</code> sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille, tout comme pour le vaisseau).</p>
 <p>Après la mise à jour des positions dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et une brique. Si oui, augmentez le score de 5, faite rebondir la bille et supprimez cette brique de la liste des briques.</p>
@@ -409,6 +411,92 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -419,6 +507,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

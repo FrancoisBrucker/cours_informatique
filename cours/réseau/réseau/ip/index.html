@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Routage IP</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <!-- 
@@ -112,7 +114,7 @@
 </ul>
 </div>
 </div>
-<h2>Adresse IP</h2>
+<h2 id="adresse-ip">Adresse IP</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -223,7 +225,7 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 <p>Les messages ping sont envoyés en utilisant le protocole <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a>, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/">attaques DDos</a></p>
 </div>
 </div>
-<h2>Routage</h2>
+<h2 id="routage">Routage</h2>
 <p>Cette notion de sous-réseau est importante pour l'organisation des machines sur le réseau. On considère que des machines de numéro proches donc d'un même sous-réseau, sont aussi proche physiquement et peuvent être routé par le même routeur.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -283,18 +285,18 @@ E       4    2
 <li>il faut <em>en gros</em> qu'un routeur route son sous-réseau.</li>
 <li>il faut que des ordinateurs d'adresses proches soient proche physiquement</li>
 </ul>
-<h2>Structure d'internet</h2>
+<h2 id="structure-d-internet">Structure d'internet</h2>
 <p>Du petit réseau géré de façon ad-hoc, internet est devenu un réseau mondial composé d'une myriade de petites area interconnectées entre elle.</p>
-<h3>LAN</h3>
+<h3 id="lan">LAN</h3>
 <ul>
 <li>LAN : <strong>Local Area Network</strong>. Le réseau de la maison où toutes les machines sont connectée les unes au autres. Ce réseau ne possède qu'une porte de d'entrée/sortie, son routeur (la box).
 Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d'une LAN car chaque machine peut communiquer directement avec une autre. La nécessité d'un routeur vient lorsque l'on veut faire sortir ou entrer des paquet dans la LAN. Le routeur est ainsi connecté à0 deux réseaux, celui de la LAN et l'extérieur.</li>
 </ul>
 <p>Ce réseau extérieur est de notre provider internet, et plus vraisemblablement à une partie de celui-ci (celui de notre région).</p>
-<h3>Réseau ad-hoc</h3>
+<h3 id="reseau-ad-hoc">Réseau ad-hoc</h3>
 <p>Un réseau ad-hoc est un réseau qui s'auto-configure et ne repose sur aucune unité centralisée. C'est pour ça que le réseau initial (<a href="https://fr.wikipedia.org/wiki/ARPANET">ARPANET</a>) a été crée. Il devait survivre à une attaque nucléaire qui détruirait tout réseau centralisé.</p>
 <p>Le protocole RIP de configuration des tables de routage en est issu.</p>
-<h3>Internet</h3>
+<h3 id="internet">Internet</h3>
 <p>De nombreux réseaux connectés ensembles. Des routeurs se chargeant de gérer le traffic interne au réseau et les interconnections. De grosses entités autonomes liées entre elle par des GGP. Chaque entité autonome étant à son tour formées d'aires elles mêmes encore subdivisées en sous-aires.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -305,7 +307,7 @@ Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d
 </div>
 </div>
 <p>Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.</p>
-<h4>Area et AS</h4>
+<h4 id="area-et-as">Area et AS</h4>
 <p>Le réseau géré par notre provider est une région (area.1) relié à un <em>backbone</em> reliant un ensemble de région formant une <strong><em>région autonome (Autonomous System)</em></strong> d'internet. Disons, l'internet Français. Une <a href="https://fr.wikipedia.org/wiki/Autonomous_System">région autonome</a> est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :</p>
 <pre><code>  LAN                            ...
    |                              |
@@ -335,7 +337,7 @@ area.1   area.2   .....     area.i
 </li>
 </ol>
 <p>L'accès à chaque aire et sous-aire est faite via un routeur qui autorise les entrée et gère le routage à l'intérieur de son aire et liens avec ses sous-aires.</p>
-<h4>BGP</h4>
+<h4 id="bgp">BGP</h4>
 <p>Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a>
 Impossible de tout garder dans les réseaux actuel. On segmente le réseau en régions autonomes liées par des routeurs spécialisés. Routeurs BGP (O) entre AS :</p>
 <pre><code>AS-O-----O-AS-O-AS
@@ -346,7 +348,7 @@ Impossible de tout garder dans les réseaux actuel. On segmente le réseau en r�
    AS-O-AS
 </code></pre>
 <p>Ces différentes structuration de routage assurent une fluidité du routage sans surcharger les tables des routeurs qui la constitue. Un peu comme un réseau routier.</p>
-<h2>paquets IP</h2>
+<h2 id="paquets-ip">paquets IP</h2>
 <blockquote>
 <p>TBD : structure paquet</p>
 </blockquote>
@@ -354,25 +356,111 @@ Impossible de tout garder dans les réseaux actuel. On segmente le réseau en r�
 <li>si choix alors le plus court et sinon, random : routage de toutes les adresses Et donne direction 1 hop (prog dynamique)</li>
 <li>255 hop = discard</li>
 </ul>
-<h2>Mise à jour des tables de routage</h2>
+<h2 id="mise-a-jour-des-tables-de-routage">Mise à jour des tables de routage</h2>
 <p>mise à jour des table grace à des <a href="https://en.wikipedia.org/wiki/Routing_protocol">protocole de routage</a> :</p>
-<h3>Protocole RIP</h3>
+<h3 id="protocole-rip">Protocole RIP</h3>
 <ul>
 <li>réseau petit ou très changeant : <a href="https://en.wikipedia.org/wiki/Routing_Information_Protocol">RIP</a></li>
 <li>métrique du hop.</li>
 </ul>
 <p>Chemin calculé avec . Toutes les 30s, chaque routeur reçoit la table de routage de sous ses voisins (il envoie également la sienne à ses voisins) avec la métrique du nombre de hop. Il peut alors mettre à jour sa propre table en utilisant l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford">Bellman ford</a>.</p>
-<h3>Protocole OSPF</h3>
+<h3 id="protocole-ospf">Protocole OSPF</h3>
 <ul>
 <li>moyen (autonomous system) : <a href="https://fr.wikipedia.org/wiki/Open_Shortest_Path_First">OSPF</a></li>
 <li>autre métrique que hop</li>
 </ul>
 <p>Dijkstra</p>
-<h3>Protocole BGP</h3>
+<h3 id="protocole-bgp">Protocole BGP</h3>
 <p>Relie des gros réseaux entre eux : <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a></p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -383,6 +471,7 @@ Impossible de tout garder dans les réseaux actuel. On segmente le réseau en r�
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

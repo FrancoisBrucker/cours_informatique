@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Chiffre de Vernam</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>La version informatisée du <a href="../codes-historiques">OTP</a> est appelée <a href="https://www.cryptage.org/vernam.html">chiffre de Vernam</a>.</p>
@@ -107,7 +109,7 @@
 <p><a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a></p>
 </div>
 </div>
-<h2>Définition</h2>
+<h2 id="definition">Définition</h2>
 <div>
 $$
 \left\{
@@ -130,7 +132,7 @@ message
 ❯ </code></pre>
 <p>Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).</p>
 <p>En conséquence, un attaquant devant un message crypté de peut le décrypter s'il ne connaît pas $k$ puisque $m$ pouvant être tout élément de $\{0, 1\}^L$</p>
-<h2>Confidentialité parfaite</h2>
+<h2 id="confidentialite-parfaite">Confidentialité parfaite</h2>
 <p>Formalisons cette intuition.</p>
 <p><span id="uniforme"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -246,7 +248,7 @@ $$
 </details>     
 </div>
 <p>Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = c \oplus m$.</p>
-<h2>Confidentialité parfaite et taille de clé</h2>
+<h2 id="confidentialite-parfaite-et-taille-de-cle">Confidentialité parfaite et taille de clé</h2>
 <p>La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -291,9 +293,9 @@ $$
 <p>Il faudra s'assurer que cette information ne puisse pas être exploitée facilement par un adversaire.</p>
 </div>
 </div>
-<h2>Attention aux conditions d'utilisation</h2>
+<h2 id="attention-aux-conditions-d-utilisation">Attention aux conditions d'utilisation</h2>
 <p>Le code de Vernam est à confidentialité parfaite mais il y a des conditions d'utilisation très stricte pour que ce soit vrai. Nous allons montrer ici que si on ne les respecte pas, les conséquences peuvent être désastreuses.</p>
-<h3>xor-trick</h3>
+<h3 id="xor-trick">xor-trick</h3>
 <p>Attention aux propriétés cachées du $\oplus$. Supposons que $x$ et $y$ soit deux mots de $\{0, 1\}^n$ et observez la séquence suivante :</p>
 <div>
 $$
@@ -321,7 +323,7 @@ $$
 <p><a href="https://florian.github.io/xor-trick/">https://florian.github.io/xor-trick/</a></p>
 </div>
 </div>
-<h3>Ne répétez pas la clé</h3>
+<h3 id="ne-repetez-pas-la-cle">Ne répétez pas la clé</h3>
 <p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
 <pre><code>  Je suis très bien protégé
 + Il mangeait des escargots
@@ -354,7 +356,7 @@ $$
 <a href="https://fr.wikipedia.org/wiki/Projet_Venona">Projet Venona</a></p>
 </div>
 </div>
-<h3><span id="Vernam-intégrité"></span>Intégrité</h3>
+<h3 id="integrite"><span id="Vernam-intégrité"></span>Intégrité</h3>
 <p>Si le message est inviolable, il n'est pas infalsifiable.</p>
 <pre><code>  Je donne 12 euros à François
 + XXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -386,7 +388,7 @@ $$
 </code></pre>
 <p>Ce qui est super Sympa de votre part !</p>
 <p>Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ <code>FROM</code> et un champ <code>TO</code>, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.</p>
-<h3>Authentification</h3>
+<h3 id="authentification">Authentification</h3>
 <p>Rien ne garanti que c'est bien l'expéditeur voulu qui a envoyé le message :</p>
 <pre><code>           cle k                   cle k'
 Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
@@ -396,6 +398,92 @@ Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -406,6 +494,7 @@ Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

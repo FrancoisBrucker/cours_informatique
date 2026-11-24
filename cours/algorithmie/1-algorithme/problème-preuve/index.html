@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Problème algorithmique et preuve d&#39;algorithme</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,10 +95,11 @@
 
 
     
+  </div>
   
 
   <p>Un algorithme est censé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme.</p>
-<h2>Problème algorithmique</h2>
+<h2 id="probleme-algorithmique">Problème algorithmique</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -144,7 +146,7 @@
 </div>
 </div>
 <p>Il est clair qu'un problème algorithmique est <a href="../bases-th%C3%A9oriques/arr%C3%AAt-rice/#d%C3%A9finition-propri%C3%A9t%C3%A9">une propriété</a>, il n'existe donc aucun moyen automatique de savoir si un algorithme donné résout un problème : il faut le prouver à chaque fois.</p>
-<h2>Preuve d'algorithme</h2>
+<h2 id="preuve-d-algorithme">Preuve d'algorithme</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -189,7 +191,7 @@
 <p>$$
 n! \coloneqq \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
 $$</p>
-<h2>Preuve d'algorithmes récursifs</h2>
+<h2 id="preuve-d-algorithmes-recursifs">Preuve d'algorithmes récursifs</h2>
 <p>Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :</p>
 <div>
 $$
@@ -232,7 +234,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Finitude</h3>
+<h3 id="finitude">Finitude</h3>
 <p>Un programme récursif est un algorithme s'il n'existe pas de récursion infinie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -260,7 +262,7 @@ $$
 </div>
 </div>
 <p>Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :</p>
-<h3>Correction</h3>
+<h3 id="correction">Correction</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -275,7 +277,7 @@ $$
 </div>
 </div>
 <p>Ne vous lancez pas dans des démonstrations par récurrence interminables et besogneuses si la récursion est évidente ! Notre algorithme récursif retranscrit directement la définition récurrente de la factorielle, il est donc évidemment correct.</p>
-<h2>Preuve d'algorithmes itératifs</h2>
+<h2 id="preuve-d-algorithmes-iteratifs">Preuve d'algorithmes itératifs</h2>
 <p>Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $(n + 1)! = (n!) \cdot (n + 1)$ :</p>
 <div id="algorithme-factorielle-iter"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
@@ -314,7 +316,7 @@ $$
 </details>     
 </div>
 <p>On voit que la forme d'un algorithme itératif est inversée par rapport à un algorithme récursif.</p>
-<h3>Finitude</h3>
+<h3 id="finitude-1">Finitude</h3>
 <p>Un programme itératif est un algorithme s'il n'existe pas de boucle infinie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -326,7 +328,7 @@ $$
 </div>
 </div>
 <p>Notre algorithme va forcément s'arrêter puisque $i$ croît strictement à chaque itération.</p>
-<h3>Correction</h3>
+<h3 id="correction-1">Correction</h3>
 <p>Démontrer la correction d'un algorithme itératif est souvent plus compliqué que celle d'un algorithme récursif. Une méthode qui se révèle souvent efficace consiste à trouver des propriétés qui sont conservées à chaque itération.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -344,7 +346,7 @@ $$
 </div>
 <p>À part les recommandations ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seules l'expérience et l'étude des algorithmes classiques vous permettront de trouver facilement comment prouver un algorithme.</p>
 <p>Nous allons montrer les 3 façons de faire avec notre algorithme.</p>
-<h4>Correction par relation évidente</h4>
+<h4 id="correction-par-relation-evidente">Correction par relation évidente</h4>
 <p>L'algorithme suivant est une réécriture directe de la version <code class="language-">tant que</code> de factorielle précédente :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>  <span class="token comment"># n ≥ 1</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">produit</span></span> <span class="token operator">←</span> <span class="token number">1</span>
@@ -353,7 +355,7 @@ $$
 
     <span class="token keyword">rendre</span> <span class="token variable parameter">produit</span></code></pre>
 <p>La preuve d'exactitude est alors évidente puisque l'on a juste réécrit la définition de $n!$.</p>
-<h4>Correction par une équation de récurrence</h4>
+<h4 id="correction-par-une-equation-de-recurrence">Correction par une équation de récurrence</h4>
 <p>Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se réécrire de cette façon :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">1</span>                 
@@ -370,7 +372,7 @@ $$
 
     <span class="token keyword">rendre</span> <span class="token variable parameter">r</span></code></pre>
 <p>On retrouve la boucle de <code class="language-">factorielle(n-1)</code> dans <code class="language-">factorielle(n)</code> ce qui montre que si <code class="language-">factorielle(n-1)</code> fonctionne et rend $(n-1)!$ alors <code class="language-">factorielle(n)</code> rendra bien $n\cdot (n-1)! = n!$. On est ramené à une preuve par récurrence, comme pour le cas récursif.</p>
-<h4>Correction par invariant</h4>
+<h4 id="correction-par-invariant">Correction par invariant</h4>
 <p>Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrence, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.</p>
 <p>Refaisons la preuve précédente en utilisant un invariant de boucle pour montrer comment tout ceci peut se faire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
@@ -485,7 +487,7 @@ $$
 </details>     
 </div>
 <p>L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. À ce moment-là on a $i=n+1$ et donc $r = n!$ : notre algorithme calcule bien la factorielle de son entrée.</p>
-<h2>Trouver des invariants de boucles</h2>
+<h2 id="trouver-des-invariants-de-boucles">Trouver des invariants de boucles</h2>
 <p>Trouver un invariant de boucle est souvent intimidant pour des débutants. Nous allons nous entraîner un peu pour acquérir quelques automatismes. L'idée principale pour trouver un invariant est de procéder par étapes :</p>
 <ol>
 <li>comprendre l'algorithme</li>
@@ -538,13 +540,13 @@ $$
 </div>
 </details>     
 </div>
-<h3>1. Comprendre l'algorithme</h3>
+<h3 id="1-comprendre-l-algorithme">1. Comprendre l'algorithme</h3>
 <p>L'algorithme va itérer sur chaque élément du tableau et conserver dans la variable <code class="language-">m</code> la plus grande des valeurs vues jusqu'à présent.</p>
-<h3>2. Comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucles on refait l'analyse pour chaque boucle)</h3>
+<h3 id="2-comprendre-l-interet-de-la-boucle-le-constituant-s-il-y-a-plusieurs-boucles-on-refait-l-analyse-pour-chaque-boucle">2. Comprendre l'intérêt de la boucle le constituant (s'il y a plusieurs boucles on refait l'analyse pour chaque boucle)</h3>
 <p>Il faut parcourir tous les éléments du tableau pour connaître la plus grande des valeurs.</p>
-<h3>3. Voir comment on pourrait prouver l'algorithme</h3>
+<h3 id="3-voir-comment-on-pourrait-prouver-l-algorithme">3. Voir comment on pourrait prouver l'algorithme</h3>
 <p>Il faut montrer que la variable <code class="language-">m</code> contient la valeur maximale pour tous les éléments de <code class="language-">t</code> vus jusqu'à présent. Comme à la fin de l'algorithme on aura vu toutes les valeurs de <code class="language-">t</code> on aura prouvé que <code class="language-">m</code> est bien le maximum.</p>
-<h3>4. Utiliser cette idée de preuve pour créer un invariant</h3>
+<h3 id="4-utiliser-cette-idee-de-preuve-pour-creer-un-invariant">4. Utiliser cette idée de preuve pour créer un invariant</h3>
 <p>Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableau (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle <code class="language-">pour chaque</code>. On modifie alors notre algorithme pour rendre $i$ explicite :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
@@ -585,7 +587,7 @@ $$
 <blockquote>
 <p><strong>Invariant de boucle :</strong>  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers éléments du tableau.</p>
 </blockquote>
-<h4>5. Prouver l'invariant</h4>
+<h4 id="5-prouver-l-invariant">5. Prouver l'invariant</h4>
 <p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=T[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.</p>
 <p>On suppose l'invariant vrai à la fin d'une itération. À la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=T[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :</p>
 <ul>
@@ -594,11 +596,97 @@ $$
 </ul>
 <p>On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.</p>
 <p>Notre invariant est vérifié.</p>
-<h4>6. Prouver la correction de l'algorithme</h4>
+<h4 id="6-prouver-la-correction-de-l-algorithme">6. Prouver la correction de l'algorithme</h4>
 <p>Cette partie-là est facile si on a le bon invariant. Il suffit de regarder la valeur de l'invariant à la fin de la boucle. Dans notre cas $m$ vaut le maximum de tous les éléments du tableau, c'est le maximum.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -609,6 +697,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

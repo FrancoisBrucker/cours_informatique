@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Corrigé Test 2 : complexité et preuve</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -91,7 +91,7 @@
 
   
 
-  <h2>Barème</h2>
+  <h2 id="bareme">Barème</h2>
 <p>Une note sur 5 répartie comme suit :</p>
 <ol>
 <li>sur 1 point (plus un bonus de 1/4 pour ceux ayant répondu parfaitement)</li>
@@ -228,7 +228,7 @@
 <li>écart-type : 4.58/20 (0.76/5)</li>
 <li>médiane : 7/20 (1.17/5)</li>
 </ul>
-<h2>Erreurs fréquemment rencontrées</h2>
+<h2 id="erreurs-frequemment-rencontrees">Erreurs fréquemment rencontrées</h2>
 <p>Vous n'êtes globalement pas très à l'aise avec les preuves d'algorithmes (et c'est un euphémisme), comme le prouve vos notes. Il vous faut les travailler encore et encore jusqu'à ce que ça rentre. En effet :</p>
 <ul>
 <li>La partie algorithmique de l'informatique au concours se fera presque exclusivement au tableau ou sur feuille, on jugera donc essentiellement vos capacités à écrire et expliciter vos algorithmes (<em>ie</em> à les prouver), plutôt que vos capacités à écrire du code.</li>
@@ -248,7 +248,7 @@
 </ul>
 </div>
 </div>
-<h3>Preuve</h3>
+<h3 id="preuve">Preuve</h3>
 <p>Beaucoup n'essaient même pas de prouver l'existence d'un col. C'est dommage car les algorithmes que l'on vous demande de coder ou de comprendre ensuite reposent sur cette compréhension.</p>
 <p>D'autres se perdent dans les récurrences, mais ce n'est pas très grave, cela viendra avec la répétition de ce genre de preuve.</p>
 <p>Enfin, certains dégoupillent les fumigènes et utilisent les célèbres :</p>
@@ -260,8 +260,8 @@
 <p>Suivi d'un CQFD péremptoire qui ne démontre rien.</p>
 <p>Évitez ce genre d'astuces comme la peste, cela énerve le correcteur. Il sera d'autant plus suspicieux quand à vos arguments futurs et ne vous laissera plus le bénéfice du doute. Au final, vous perdez des points à la place d'en gagner. Il est <strong>toujours plus avantageux</strong> de dire qu'on ne sais plus continuer et donc qu'on admettra ce résultat puis de poursuivre la preuve.</p>
 <p>Rien ne vous empêche de revenir plus tard pour prouver correctement le résultat.</p>
-<h3>Algorithme de la question 2</h3>
-<h4>Écrire un algorithme</h4>
+<h3 id="algorithme-de-la-question-2">Algorithme de la question 2</h3>
+<h4 id="ecrire-un-algorithme">Écrire un algorithme</h4>
 <p>Consiste <strong>toujours</strong> en trois parties :</p>
 <ol>
 <li>le pseudo-code</li>
@@ -270,7 +270,7 @@
 </ol>
 <p>Même si vous ne donnez que des éléments de preuves ou de complexité, c'est préférable à ne rien mettre.</p>
 <p>Attention cependant. Une personne m'a écrit un calcul de complexité alors qu'elle n'avait pas écrit d'algorithme... Je n'ai pas compté de points, cela va sans dire.</p>
-<h4>Pseudo-code</h4>
+<h4 id="pseudo-code">Pseudo-code</h4>
 <p>Vous tentez parfois de faire compliqué, et du coup ça rate. PENSEZ SIMPLE ! Une action par ligne. Dans le cas de cette question, on procède par ordre :</p>
 <ol>
 <li>cas i=0</li>
@@ -279,7 +279,7 @@
 </ol>
 <p>et on sort de la fonction dèq qu'on peut.</p>
 <p>Lisez aussi l'énoncé. On vous demande de rendre l'<strong>indice</strong> d'un col, pas s'il en existe un ou non (retour d'un booléen). Surtout que la question 1 montre qu'il en existe toujours un, vous auriez pu vous douter que votre algorithme ne répondait pas à la question.</p>
-<h4>Retour de fonction</h4>
+<h4 id="retour-de-fonction">Retour de fonction</h4>
 <p>Le pattern :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
@@ -316,7 +316,7 @@
 <p>Ne mettez pas de condition s'il n'y en a pas besoin. Ca alourdit le code et le rend moins compréhensible.</p>
 </div>
 </div>
-<h3>On ne modifie pas les itérateurs de boucles</h3>
+<h3 id="on-ne-modifie-pas-les-iterateurs-de-boucles">On ne modifie pas les itérateurs de boucles</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -334,7 +334,7 @@
 
 <span class="token comment"># ...</span></code></pre>
 <p>Ca ne marche pas. Au début de la prochaine boucle, $i$ sera à nouveau égal à $i+1$.</p>
-<h3>Question 4</h3>
+<h3 id="question-4">Question 4</h3>
 <p>Cela vaut le coup de connaître et de reconnaître une dichotomie (on coupe le tableau en 2 à chaque fois) <strong>et</strong> sa complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$ opérations.</p>
 <p>Cela vous sera utile :</p>
 <ul>
@@ -342,14 +342,14 @@
 <li>tenter d'améliorer vos algorithme en passant un d'une complexité linéaire à une complexité logarithmique.</li>
 </ul>
 <p>Quand une question vous demande d'améliorer un algorithme linéaire, c'est quasi-tout le temps une dichotomie qui fonctionne.</p>
-<h3>Question 5</h3>
+<h3 id="question-5">Question 5</h3>
 <p>Le cours donne une borne min d'un algorithme faisant $n$ choix ($\log_2(n)$ tests sont nécessaire). Gardez cette remarque du cours dans la poche, cela sert plus souvent qu'on ne le pense.</p>
-<h2>Corrigé de la question 1. Existence</h2>
+<h2 id="corrige-de-la-question-1-existence">Corrigé de la question 1. Existence</h2>
 <p>La première preuve est celle que j'attendais. Elle reprend la définition est la travaille pour obtenir le résultat. La seconde est bien plus simple, mais encore faut-il voir l'astuce (une personne l'a trouvée). Enfin la troisième preuve par récurrence fonctionne aussi si l'on justifie bien comment passer de $n$ à $n+1$.</p>
-<h3>En reprenant la définition</h3>
+<h3 id="en-reprenant-la-definition">En reprenant la définition</h3>
 <p>Si la première condition ($i=0$) est vérifiée, le tableau contient un col. On la suppose donc non vérifiée : $T[0] &gt; T[1]$. De même, si la seconde condition ($i=n-1$) est vérifiée, le tableau contient également un col. Supposons la donc également non vérifiée : $T[n-2] &lt; T[n-1]$.</p>
 <p>Les deux conditions précédentes montrent qu'il existe $n-1 &gt; i^\star &gt; 0$ le plus petit indice tel que $T[i^\star] \leq T[i^\star +1]$. On a alors : $T[i^\star -1] &gt; T[i^\star ] \leq T[i^\star +1]$ et $i^\star$ est un col.</p>
-<h3>Une astuce</h3>
+<h3 id="une-astuce">Une astuce</h3>
 <p>Un tableau d'entier possède forcément un élément minimum. Il existe donc $i^\star$ tel que $T[i^\star] \leq T[i]$ pour tout $0 \leq i &lt; n$. De là :</p>
 <ul>
 <li>soit $i^\star = 0$ et $T[i^\star] \leq T[1]$</li>
@@ -357,7 +357,7 @@
 <li>soit $0 &lt; i^\star &lt; n-1$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$</li>
 </ul>
 <p>Simple et efficace, non ?</p>
-<h3>Par récurrence</h3>
+<h3 id="par-recurrence">Par récurrence</h3>
 <p>On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un col.</p>
 <ol>
 <li>Initialisation. Si $n=2$ soit $T[0] \leq T[1]$ soit $T[0] \geq T[1]$ (ce qui est équivalent pour $n=2$ à $T[n-1] \leq T[n-2]$). Ces deux cas correspondent aux deux premières possibilités pour un col</li>
@@ -375,7 +375,7 @@
 </ol>
 </li>
 </ol>
-<h2>Corrigé de la question 2. Découverte</h2>
+<h2 id="corrige-de-la-question-2-decouverte">Corrigé de la question 2. Découverte</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -428,7 +428,7 @@ $$</p>
         <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> i
 </code></pre>
-<h2>Corrigé de la question 3. Rapidité</h2>
+<h2 id="corrige-de-la-question-3-rapidite">Corrigé de la question 3. Rapidité</h2>
 <p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$  tel que $k$ soit un col de la matrice.</p>
 <p>L'invariant de boucle de la boucle <code class="language-">while</code> est alors :</p>
 <blockquote>
@@ -451,14 +451,100 @@ $$</p>
 </ul>
 <p>La même démonstration fonctionne à l'identique à la fin de l'itération $i+1$ si l'invariant est vrai à la fin de l'itération $i$.</p>
 <p>Comme <code>fin - début &gt;= 0</code> et diminue strictement à chaque itération de la boucle <code class="language-">while</code>, il arrivera <strong>forcément</strong> un moment où <code class="language-">milieu</code> sera un col.</p>
-<h2>Corrigé de la question 4. Complexité</h2>
+<h2 id="corrige-de-la-question-4-complexite">Corrigé de la question 4. Complexité</h2>
 <p>La procédure de la boucle <code class="language-">while</code> est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme <code class="language-">trouve_vite(T)</code> est également en $\mathcal{O}(\ln(n))$ opérations.</p>
-<h2>Corrigé de la question 5. complexité du problème</h2>
+<h2 id="corrige-de-la-question-5-complexite-du-probleme">Corrigé de la question 5. complexité du problème</h2>
 <p>Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i &lt; n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.</p>
 <p>Comme l'algorithme <code class="language-">trouve_vite(T)</code> est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -469,6 +555,7 @@ $$</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

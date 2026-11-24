@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>DS 1</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -91,7 +91,7 @@
 <p>Durée du contrôle : 3h.</p>
 </div>
 </div>
-<h2>Barème</h2>
+<h2 id="bareme">Barème</h2>
 <table>
 <thead>
 <tr>
@@ -139,9 +139,9 @@
 <li>max : 22/20</li>
 </ul>
 <p>Vous êtes globalement une bonne promotion, avec 26 étudiants sur 46 entre 10 et 14. Quatre étudiants doivent cependant vraiment apprendre le cours (il était possible d'avoir 7 uniquement avec les questions de cours) et rien n'est perdu pour ceux qui ont entre 8 et 10, il ne manque vraiment pas grand chose (un peu de rigueur et/ou de rapidité) pour accrocher la moyenne. Enfin, comme l'examen était noté sur plus de 20 points, deux étudiants ont eu plus strictement plus que 20.</p>
-<h3>Répartition des points par exercice</h3>
+<h3 id="repartition-des-points-par-exercice">Répartition des points par exercice</h3>
 <p>L'examen était noté sur 25 points.</p>
-<h4>Exercice 1</h4>
+<h4 id="exercice-1">Exercice 1</h4>
 <p>Sur 7 points au total.</p>
 <table>
 <thead>
@@ -209,7 +209,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Exercice 2</h4>
+<h4 id="exercice-2">Exercice 2</h4>
 <p>Sur 6,5 points au total.</p>
 <table>
 <thead>
@@ -259,7 +259,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Exercice 3</h4>
+<h4 id="exercice-3">Exercice 3</h4>
 <p>Sur 6,5 points au total.</p>
 <table>
 <thead>
@@ -309,7 +309,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Exercice 4</h4>
+<h4 id="exercice-4">Exercice 4</h4>
 <p>Sur 6 points au total.</p>
 <table>
 <thead>
@@ -383,8 +383,8 @@
 </tr>
 </tbody>
 </table>
-<h2>Corrigé</h2>
-<h3>Remarques générales</h3>
+<h2 id="corrige">Corrigé</h2>
+<h3 id="remarques-generales">Remarques générales</h3>
 <p>Beaucoup de personnes perdent bêtement des points sur les quesions de cours. Il y avant plus de 6 points à prendre uniquement sur elles ! Il faut que vous connaissiez :</p>
 <ul>
 <li>la définition de la complexité d'un problème</li>
@@ -395,23 +395,23 @@
 </ul>
 <p>Parfois, vos arguments deviennent un peu vaseux quand ce n'est pas clair. La plupart du temps en algorithmie, il suffit de peu de mots bien choisi pour expliciter ce qu'on fait. Si vous avez besoin de plusieurs paragraphes c'est que soit ce n'est pas clair, soit c'est faux.</p>
 <p>Lorsque l'on vous demande de voir ce que fait un algorithme sur des exemples, faites le ! Beaucoup décrivent ce qu'ils pensent que leur algorithme fait et pas ce qu'il fait réellement... Il faut prendre ces questions comme une opportunité de vérifier que ce que vous avez fait est juste.</p>
-<h3>Exercice 1 : encadrement du problème</h3>
-<h4>1.1</h4>
+<h3 id="exercice-1-encadrement-du-probleme">Exercice 1 : encadrement du problème</h3>
+<h4 id="1-1">1.1</h4>
 <blockquote>
 <p>Combien d'éléments majoritaires peut avoir un tableau ? Prouvez-le rigoureusement</p>
 </blockquote>
 <p>Il ne peut y avoir qu'un seul élément majoritaire car il contient strictement plus de la moitié des éléments. S'il y en avait 2 avec respectivement $n_1$ et $n_2$ éléments on aurait $n = n_1 + n_2 \geq (E(n / 2) + 1) + (E(n / 2) + 1) \geq n + 1$ ce qui est impossible ($E()$ désignant la partie entière).</p>
-<h4>1.2.1</h4>
+<h4 id="1-2-1">1.2.1</h4>
 <blockquote>
 <p>Montrez que quelle que soit la taille $n &gt; 2$ du tableau et quel que soit $0 \leq i &lt; n$, il existe un tableau $T$ d'élément majoritaire $e$ tel que $T[i] \neq e$.</p>
 </blockquote>
 <p>Pour tout $n &gt; 2$ on a $\frac{n}{2} + 1 &lt; n$, on peut donc créer un tableau de taille $n$ ayant un deux valeurs distinctes une pour tous les $T[j]$ avec $j\neq i$ (qui sera donc l'élément majoritaire) et l'autre pour $T[i]$.</p>
-<h4>1.2.2</h4>
+<h4 id="1-2-2">1.2.2</h4>
 <blockquote>
 <p>Montrez que quelle que soit la taille $n \geq 1$ du tableau et quel que soit $0 \leq i &lt; n$, il existe un tableau $T$ d'élément majoritaire $e$ tel que $T[i] = e$.</p>
 </blockquote>
 <p>Le tableau avec une unique valeur répond trivialement à la question.</p>
-<h4>1.2.3</h4>
+<h4 id="1-2-3">1.2.3</h4>
 <blockquote>
 <p>Montrez que quels que soient $n&gt;2$ et $0 \leq i &lt; n$, il existe toujours deux tableaux d'entiers $T$ et $T'$ de taille $n$ tels que :</p>
 <ul>
@@ -427,7 +427,7 @@
 <li>$T'[i]$ vaut l'élément majoritaire de $T$</li>
 </ul>
 <p>Répond à la question.</p>
-<h4>1.2.4</h4>
+<h4 id="1-2-4">1.2.4</h4>
 <blockquote>
 <p>Déduisez-en que la complexité du problème de l'élément majoritaire est en $\Omega(n)$, avec $n$ la taille du tableau (il n'existe pas d'algorithme permettant de résoudre le problème de l'élément majoritaire en strictement moins de $n$ opérations pour tout $n &gt; N_0$).</p>
 </blockquote>
@@ -437,7 +437,7 @@
 <li>soit l'algorithme a parcouru toutes les cases de $T$ possédant l'élément majoritaire et il a eu besoin d'au moins $\frac{n}{2} + 1 = \Omega(n)$ opérations,</li>
 <li>soit il n'a pas parcouru toutes les cases de $T$ possédant l'élément majoritaire, disons $T[i]$, et on crée le tableau $T'$ identique à $T$ sauf pour la case d'indice $i$ : $T'$ ne possède pas d'élément majoritaire mais l'algorithme va donner la même réponse que pour $T$. Contradiction.</li>
 </ul>
-<h4>1.3.1</h4>
+<h4 id="1-3-1">1.3.1</h4>
 <blockquote>
 <p>Donnez le pseudo-code et la preuve d'une fonction <code class="language-">compte</code> de complexité $\mathcal{O}(n)$ telle que <code class="language-">compte(T, x)</code> est le nombre d'occurrences de $x$ dans $T$ (si $x\notin T$, <code class="language-">compte(T, x)</code> vaut 0).</p>
 </blockquote>
@@ -460,7 +460,7 @@
 <li>si l'invariant est vérifié à la fin de la $i$ ème itération, , comme la $i+1$ itération vérifie si <code class="language-">x == T[i]</code> et ajoute 1 à <code class="language-">nombre</code> si c'est le cas, l'invariant est toujours vérifié à la fin de la $i + 1$ ème itération.</li>
 <li>l'invariant est vrai en sortie de boucle, c'est à dire après avoir parcouru tous les éléments de $T$ : <code class="language-">nombre</code> vaut bien le nombre de fois où <code class="language-">x</code> est présent dans $T$.</li>
 </ol>
-<h4>1.3.2</h4>
+<h4 id="1-3-2">1.3.2</h4>
 <blockquote>
 <p>Utilisez la question précédente pour créer algorithme en $\mathcal{O}(n^2)$ qui prend un tableau d'entiers en paramètre et rend un élément majoritaire de ce tableau s'il existe, ou <code>None</code> sinon.</p>
 </blockquote>
@@ -477,19 +477,19 @@
 <li>si l'invariant est vérifié à la fin de la $i$ ème itération, comme la $i+1$ itération vérifie si <code class="language-">T[i]</code> est un élément majoritaire, l'invariant est toujours vérifié à la fin de la $i + 1$ ème itération.</li>
 <li>l'invariant est vrai en sortie de boucle, c'est à dire après avoir parcouru tous les éléments de $T$ : si on arrive en ligne 6, c'est que $T$ n'a pas d'élément majoritaire. Si l'on s'arrête à la fin de la $i$ ème itération c'est que <code class="language-">T[i-1]</code> est l'élément majoritaire de $T$.</li>
 </ol>
-<h4>1.3.3</h4>
+<h4 id="1-3-3">1.3.3</h4>
 <blockquote>
 <p>Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
 </blockquote>
 <p>En utilisant le premier tableau, la fonction va parcourir tous les éléments de $T$ et pour chacun effectuer la fonction <code class="language-">compte</code> sans trouver d'élément présent 5 fois ou plus.</p>
 <p>En utilisant le premier tableau, la fonction sortir au bout de la première itération puisque 2 est l'élément majoritaire de $T$.</p>
-<h4>1.3.4</h4>
+<h4 id="1-3-4">1.3.4</h4>
 <blockquote>
 <p>En déduire que la complexité du problème de l'élément majoritaire est en $\mathcal{O}(n^2)$</p>
 </blockquote>
 <p>L'algorithme de la question 1.3.2 résoud le problème de la recherche d'un élément majoritaire, sa complexité est donc un majorant de la complexité du problème.</p>
-<h3>Exercice 2 : Tris</h3>
-<h4>2.1.1</h4>
+<h3 id="exercice-2-tris">Exercice 2 : Tris</h3>
+<h4 id="2-1-1">2.1.1</h4>
 <blockquote>
 <p>Donnez le nom d'un algorithme de tri ayant une complexité de $\mathcal{O}(n\ln(n))$ avec $n$ la taille du tableau à trier. Vous expliciterez son fonctionnement en quelques phrases.</p>
 </blockquote>
@@ -500,12 +500,12 @@
 <li>on rend la liste finale triée</li>
 </ol>
 <p>La complexité nous est donnée par le master théorème.</p>
-<h4>2.1.2</h4>
+<h4 id="2-1-2">2.1.2</h4>
 <blockquote>
 <p>Justifiez en quelques phrases que le problème du tri est en $\Omega(n\ln(n))$.</p>
 </blockquote>
 <p>Il faut pouvoir distinguer parmi tous les ordres possibles et il y en a $n!$. Il faut donc au moins $\Omega(\ln(n!))$ tests pour disinguer tous les cas. On conclut en remarquant que $\Omega(\ln(n!)) = \Omega(n\ln(n))$.</p>
-<h4>2.1.3</h4>
+<h4 id="2-1-3">2.1.3</h4>
 <blockquote>
 <p>Déduisez-en que le problème du tri est en $\Theta(n\ln(n))$.</p>
 </blockquote>
@@ -514,12 +514,12 @@
 <li>On sait qu'il faut au moins $\Omega(n\ln(n))$ opérations</li>
 </ol>
 <p>Les deux conditions ci-dessus montrent, par définiton, que le problème du tri est en $\Theta(n\ln(n))$.</p>
-<h4>2.2.1</h4>
+<h4 id="2-2-1">2.2.1</h4>
 <blockquote>
 <p>Si $T$ est trié, démontrez l'existence d'un indice $i$ (que vous expliciterez) tel que, si $T$ admet un élément majoritaire $x$, alors $x=T[i]$.</p>
 </blockquote>
 <p>Si le tableau <code class="language-">T</code> est trié et qu'il contient un élément majoritaire, alors c'est l'élément à la position <code class="language-">len(T) // 2</code> (<code class="language-">//</code> est la division entière). Supposons en effet que <code class="language-">T[len(T) // 2]</code> ne soit pas un élément majoritaire de <code class="language-">T</code>. Comme les éléments de <code class="language-">T</code> strictement plus grand (<em>resp.</em> strictement plus petit) que <code class="language-">T</code> sont tous d'indices strictement plus grand (<em>resp.</em> strictement plus petit) que <code class="language-">len(T) // 2</code> il y en a au plus <code class="language-">len(T) // 2</code> : ils ne peuvent pas être majoritaire. Ainsi si <code class="language-">T[len(T) // 2]</code> n'est pas un élément majoritaire de <code class="language-">T</code>, le tableau ne possède pas d'éléments majoritaire.</p>
-<h4>2.2.2</h4>
+<h4 id="2-2-2">2.2.2</h4>
 <blockquote>
 <p>Déduisez-en un algorithme itératif, dont vous donnerez le pseudo-code et la preuve, plus efficace que celui de l'exercice 1.3.2 pour résoudre le problème de l'élément majoritaire.</p>
 </blockquote>
@@ -531,7 +531,7 @@
     <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
 <p>L'algorithme commence par trier le tableau et compte le nombre d'occurence de l'élément au milieu. Ci cette occurence est majoritaire, on a trouvé notre  élément majoritaire et si elle ne l'est pas, la question 2.2.1 montre que le tableau ne peut avoir d'élément majoritaire,</p>
 <p>Sa complexité est ramené à la complexité du tri plus une fois la complexité de <code class="language-">compte</code> : la complexité est donc en $\mathcal{O}(len(T) \ln(len(T)))$.</p>
-<h4>2.2.3</h4>
+<h4 id="2-2-3">2.2.3</h4>
 <blockquote>
 <p>Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
 </blockquote>
@@ -539,8 +539,8 @@
 <li>En utilisant le premier tableau, son tri va donner le tableau <code class="language-">T = [2, 4, 4, 4, 4, 4, 5, 5, 5]</code> et son milieu <code class="language-">T[4]</code> vaut 4 qui est majoritaire.</li>
 <li>En utilisant le second tableau, son tri va donner le tableau <code class="language-">T = [2, 2, 2, 2, 2, 2, 3, 3, 3, 3,  4, 6]</code> et son milieu <code class="language-">T[6]</code> vaut 3 n'est pas majoritaire : le tableau n'a pas d'élément majoritaire.</li>
 </ul>
-<h3>Exercice 3 : Diviser pour régner</h3>
-<h4>3.1</h4>
+<h3 id="exercice-3-diviser-pour-regner">Exercice 3 : Diviser pour régner</h3>
+<h4 id="3-1">3.1</h4>
 <blockquote>
 <p>Expliciter le principe algorithmique de <em>diviser pour régner</em></p>
 </blockquote>
@@ -550,12 +550,12 @@
 <li><strong>résoudre</strong> $k$ sous-problèmes du problème initial</li>
 <li><strong>combiner</strong> les $k$ solutions des sous-problèmes en une solution du problème initial</li>
 </ol>
-<h4>3.2.1</h4>
+<h4 id="3-2-1">3.2.1</h4>
 <blockquote>
 <p>Montrez que si $T$ admet un élément majoritaire $x$, alors $x$ est un élément majoritaire de $T_1$ ou $T_2$.</p>
 </blockquote>
 <p>On suppose que $T$ de taille $n$ contient un élément majoritaire $x$. Si $x$ n'est pas majoritaire dans $T_1$, c'est qu'il est présent $\frac{n}{4}$ fois ou moins dans $T_1$. On le retrouve donc au moins $\frac{n}{4}+1$ fois dans $T_2$ : c'est un élément majoritaire de $T_2$.</p>
-<h4>3.2.2</h4>
+<h4 id="3-2-2">3.2.2</h4>
 <blockquote>
 <p>Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$, si $x$ est un élément majoritaire de $T$.</p>
 </blockquote>
@@ -568,7 +568,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
 <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x</code></pre>
-<h4>3.2.3</h4>
+<h4 id="3-2-3">3.2.3</h4>
 <blockquote>
 <p>Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice 1.3.2, pour résoudre le problème.</p>
 </blockquote>
@@ -589,19 +589,19 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <p>La condition d'arrêt est pour des tailles de tableaux égales à $1 = 2^0$. Pour laquelle on trouve bien l'élément majoritaire.</p>
 <p>On suppose alors par récurrence que l'algoerithme fonctionne pour $n = 2^i$ et on vérifie qu'il continue de fnctionner pour $n'=2^{i+1}$. Ceci est évidant car on applique directement la condition de 3.2.2</p>
 <p>La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de <code class="language-">compte</code> est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\ln(n))$.</p>
-<h4>3.3.1</h4>
+<h4 id="3-3-1">3.3.1</h4>
 <blockquote>
 <p>Reprenez cet exercice sans supposer que $n$ est une puissance de 2. Que faut-il changer pour que l'algorithme continue de fonctionner ?</p>
 </blockquote>
 <p>La taille de $T_1$ peut maintenant être différente de la taille de $T_2$. Cette différence ne peut cependant pas être plus importante que 1 et cela ne change rien pour leurs éléments majoritaires. Il ne faut donc rien changer, l'algorithme continue de fonctionner.</p>
-<h4>3.3.2</h4>
+<h4 id="3-3-2">3.3.2</h4>
 <blockquote>
 <p>Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
 </blockquote>
 <p>Pour le premier exemple, le tableau <code class="language-">[2, 4, 5, 4, 5, 4, 5, 4, 4]</code> va être découpé en <code class="language-">[2, 4, 5, 4]</code> et en <code class="language-">[5, 4, 5, 4, 4]</code>. Le second tableau à un élément majoriaire, 4, qui est aussi un élément majoritaire du tableau initial.</p>
 <p>Pour le second exemple, le tableau <code class="language-">[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]</code> va être découpé en <code class="language-">[2, 2, 3, 6, 4, 3]</code> et en <code class="language-">[2, 2, 3, 3, 2, 2]</code>.</p>
-<h3>Exercice 4 : Piles</h3>
-<h4>4.1</h4>
+<h3 id="exercice-4-piles">Exercice 4 : Piles</h3>
+<h4 id="4-1">4.1</h4>
 <blockquote>
 <p>Coder avec des listes de python la structure de pile. Vous coderez les fonctions :</p>
 <ul>
@@ -626,12 +626,12 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token boolean">None</span>
 </code></pre>
-<h4>4.2.1</h4>
+<h4 id="4-2-1">4.2.1</h4>
 <blockquote>
 <p>La valeur de $y$ à la ligne 6 est-elle une valeur de $P_1$ ? Et si oui, laquelle ?</p>
 </blockquote>
 <p>Si $y$ est <code class="language-">None</code> c'est que la pile $P_1$ est vide et sinon $y$ vaut le dernier élément empilé.</p>
-<h4>4.2.2</h4>
+<h4 id="4-2-2">4.2.2</h4>
 <blockquote>
 <p>Montrez qu'à chaque itération de la boucle for, $x$ est empilé soit dans $P_1$, soit dans $P_2$.</p>
 </blockquote>
@@ -643,7 +643,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <li>soit $y = x$, la pile $P_2$ est non vide et on la dépile en $z$ et $z = x$ : $z$puis $x$ sont empilés dans $P_2$</li>
 <li>soit $y = x$, la pile $P_2$ est non vide et on la dépile en $z$ et $z \neq x$ : $z$ puis $x$ sont empilés dans $P_1$</li>
 </ul>
-<h4>4.2.3</h4>
+<h4 id="4-2-3">4.2.3</h4>
 <blockquote>
 <p>Donnez le contenu des deux piles $P_1$ et $P_2$ <strong>à la fin de l'algorithme</strong> si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
 </blockquote>
@@ -661,17 +661,17 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 </ul>
 </li>
 </ul>
-<h4>4.2.4</h4>
+<h4 id="4-2-4">4.2.4</h4>
 <blockquote>
 <p>Quelle est la complexité de l'algorithme ?</p>
 </blockquote>
 <p>Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.</p>
-<h4>4.2.5</h4>
+<h4 id="4-2-5">4.2.5</h4>
 <blockquote>
 <p>Montrez que tous les éléments de la pile $P_2$ sont identiques à la fin de l'algorithme.</p>
 </blockquote>
 <p>On empile dans $P_2$ que si la pile était vide (le cas <code class="language-">z == None</code>) ou si le dernier élément de la pile est égal au nouvel élément (<code class="language-">z == x</code>). Tous les éléments de $P_2$ sont identiques.</p>
-<h4>4.2.6</h4>
+<h4 id="4-2-6">4.2.6</h4>
 <blockquote>
 <p>Montrez qu'à la fin de l'algorithme, deux éléments consécutifs de la pile $P_1$ sont toujours différents.</p>
 </blockquote>
@@ -680,7 +680,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <li>dans le premier <code class="language-">if</code>. dans ce cas là, soit la pile était vide soit le dernier élément de la pile ($y$) est différent de $x$</li>
 <li>dans le second <code class="language-">else</code>. Dans ce cas là le denier élément de la pile ($y$) est différent de $x$ car on est dans le premier else et $z$ est différent de $x$ puisqu'on est dans le second else. On a donc $y \neq x \neq z$ et la proprété est vérifiée.</li>
 </ul>
-<h4>4.2.7</h4>
+<h4 id="4-2-7">4.2.7</h4>
 <blockquote>
 <p>Déduisez-en qu'un élément majoritaire, s'il en existe, ne peut être que le dernier élément stocké dans $P_2$ ou le dernier élément stocké dans $P_1$.</p>
 </blockquote>
@@ -695,7 +695,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <li>soit l'élément de $P_2$ si $P_2$ est non vide,</li>
 <li>soit le dernier élément de $P_1$ si $P_2$ est vide.</li>
 </ul>
-<h4>4.3.1</h4>
+<h4 id="4-3-1">4.3.1</h4>
 <blockquote>
 <p>Déduisez de la partie précédente un algorithme linéaire en la taille du tableau en entrée pour résoudre le problème de l'élément majoritaire.</p>
 </blockquote>
@@ -711,7 +711,7 @@ Programme :
     return x
 </code></pre>
 <p>L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme <code class="language-">Majorité</code> plus celle de <code class="language-">compte</code> plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.</p>
-<h4>4.3.2</h4>
+<h4 id="4-3-2">4.3.2</h4>
 <blockquote>
 <p>Quelle est la complexité du problème de l'élément majoritaire ?</p>
 </blockquote>
@@ -719,6 +719,92 @@ Programme :
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -729,6 +815,7 @@ Programme :
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

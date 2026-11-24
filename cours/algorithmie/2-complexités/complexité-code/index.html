@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Mesurer la complexité d&#39;un code</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -114,6 +115,7 @@
 </div>
 
     
+  </div>
   
 
   <p>Un moyen efficace de mesurer la complexité d'un code est de mesurer le temps qu'il met à être exécuté. Pour que la mesure soit conforme à la complexité il faut que :</p>
@@ -128,7 +130,7 @@
 <li>réaliser le minimum si on cherche à mesurer la complexité minimum,</li>
 <li>être aléatoires et uniformes si on cherche à mesurer la complexité moyenne.</li>
 </ul>
-<h2>Code python</h2>
+<h2 id="code-python">Code python</h2>
 <p>On présuppose que vous avez fait les prérequis du cours d'algorithmie, en particulier que vous savez coder en python et/ou que vous avez suivi <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/">le cours d'introduction à python</a>. Selon <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/fondements-programmation/%C3%A9crire-code/#convention-exemples/#convention-exemples">notre convention</a>, les exemples de code qui commencent par <code>&gt;&gt;&gt;</code> ont été exécutés directement dans un interpréteur.</p>
 <p>On utilisera deux modules très utiles :</p>
 <ul>
@@ -143,7 +145,7 @@
 <p>On vous fera installer tout ça dans un projet juste après. Essayez ici de comprendre la logique de ce code.</p>
 </div>
 </div>
-<h2>Comment mesurer la complexité</h2>
+<h2 id="comment-mesurer-la-complexite">Comment mesurer la complexité</h2>
 <p>Reprenons les 4 conditions que l'on vient d'expliciter.</p>
 <p>Nous allons utiliser <a href="../complexit%C3%A9-moyenne/#mesure">les mesures de l'algorithme</a> recherche que l'on a déjà vues :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -151,7 +153,7 @@
         <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
-<h3>1. durée d'une instruction basique</h3>
+<h3 id="1-duree-d-une-instruction-basique">1. durée d'une instruction basique</h3>
 <p>Le code source d'un programme ne correspond pas aux instructions qui sont effectivement effectuées sur l'ordinateur. Selon le type de langage, le code source est :</p>
 <ul>
 <li>soit converti en <a href="https://fr.wikipedia.org/wiki/Bytecode">bytecode</a> (comme <a href="https://www.python.org/">le python</a> ou <a href="https://www.java.com/fr/">le java</a>), qui sont des instructions compréhensibles par un interpréteur qui les exécute sur l'ordinateur</li>
@@ -163,7 +165,7 @@
 <li>la seconde est plus rapide à l'exécution mais plus longue à la conversion</li>
 </ul>
 <p>Enfin, la première approche permet de créer un code portable, seul l'interpréteur doit être prévu pour le système (windows, Linux ou mac) et le type de processeur utilisé (x86 ou arm essentiellement).</p>
-<h4>Instruction python</h4>
+<h4 id="instruction-python">Instruction python</h4>
 <p>Pour voir le bytecode python, on peut utiliser <a href="https://docs.python.org/fr/3.15/library/dis.html">le module <code class="language-">dis</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> dis
 
@@ -216,10 +218,10 @@
 <span class="token operator">>></span><span class="token operator">></span> timeit<span class="token punctuation">.</span>timeit<span class="token punctuation">(</span><span class="token string">"a + b"</span><span class="token punctuation">,</span> setup<span class="token operator">=</span><span class="token string">"a, b = 10**100000, 10**100000"</span><span class="token punctuation">,</span> number<span class="token operator">=</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token number">1.1451560839777812</span></code></pre>
 <p>On ne peut donc pas mesurer le temps mis pour chaque instruction du byte-code et sommer le tout car leurs durées dépendent de leurs paramètres. Ce qui n'est pas le cas des instructions du processeur.</p>
-<h4>Instructions processeur</h4>
+<h4 id="instructions-processeur">Instructions processeur</h4>
 <p>Une instruction du processeur va durer un certain nombre de cycles processeur (1 cycle correspond à la vitesse du processeur) fixe pour chaque instruction. Le problème est que chaque type de processeur va avoir son propre jeu d'instructions. Les processeurs x86 (en gros les PC) sont ainsi des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_%C3%A9tendu">processeurs CISC</a> qui possèdent des instructions complexes et les processeurs ARM (portables, tablettes et mac) sont a contrario des <a href="https://fr.wikipedia.org/wiki/Processeur_%C3%A0_jeu_d%27instructions_r%C3%A9duit">processeurs RISC</a> avec peu d'instructions.</p>
 <p>Enfin, si les instructions ARM sont faites pour toutes durer 1 cycle, les instructions x86 vont varier grandement, de 1 cycle pour un test booléen, quelques dizaines de cycles pour une division de deux nombres codés sur 64 bits à plusieurs millions de cycles pour <a href="https://www.felixcloutier.com/x86/wbinvd">l'instruction <code>WBINVD</code></a>.</p>
-<h4>En pratique</h4>
+<h4 id="en-pratique">En pratique</h4>
 <p>En pratique ceci importe peu puisque :</p>
 <ol>
 <li>on veut de toute façon avoir le code le plus rapide possible,</li>
@@ -236,7 +238,7 @@
 </div>
 </div>
 <p>Trouver un bon algorithme peut faire gagner un ordre de grandeur, optimiser le code ne va faire gagner qu'un facteur au mieux multiplicatif. On ne cherchera à optimiser le code processeur qu'après avoir choisi le bon algorithme et, surtout, on ne le fera jamais directement : on laissera le compilateur faire.</p>
-<h3>2. mesure du temps</h3>
+<h3 id="2-mesure-du-temps">2. mesure du temps</h3>
 <p>On dispose de deux outils pour mesurer le temps :</p>
 <ul>
 <li>une horloge : <a href="https://docs.python.org/fr/3.15/library/datetime.html">https://docs.python.org/fr/3.15/library/datetime.html</a></li>
@@ -262,8 +264,8 @@ t <span class="token operator">=</span> fin <span class="token operator">-</span
 <p>Ce qui donne chez moi :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 50458 ns</code></pre>
 <p>L'exécution de la fonction <code class="language-">perf_counter_ns()</code> rend un entier qui augmente de 1 toutes les nanosecondes. Si on exécute cette méthode juste avant et juste après l'exécution de la fonction <code class="language-">recherche</code> sa différence nous donne le temps d'exécution en nanosecondes.</p>
-<h3>3. Isoler l'algorithme du système</h3>
-<h4>Isoler des autres programmes</h4>
+<h3 id="3-isoler-l-algorithme-du-systeme">3. Isoler l'algorithme du système</h3>
+<h4 id="isoler-des-autres-programmes">Isoler des autres programmes</h4>
 <p>Si vous relancez le code précédent plusieurs fois, vous constaterez que le temps mis n'est pas une constante :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 
@@ -330,7 +332,7 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>Notez qu'on a initialisé le temps à <code class="language-">None</code> pour toujours prendre la première mesure qui donnera une valeur entière à <code class="language-">t</code></p>
 </div>
 </div>
-<h4>Isoler de python</h4>
+<h4 id="isoler-de-python">Isoler de python</h4>
 <p>Maintenant que notre programme est isolé du reste du système, une dernière amélioration serait de l'isoler de python lui-même. En effet, python fait épisodiquement un état des lieux des différentes variables pour supprimer celles qui ne sont plus utilisées. Ce mécanisme s'appelle <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">le ramasse-miettes</a> et est un mécanisme fondamental qui permet de minimiser la mémoire utilisée. En règle générale il ne faut pas l'enlever mais dans notre cas cela peut être utile de voir uniquement la complexité de la fonction. Pour cela on utilise <a href="https://docs.python.org/fr/3.15/library/gc.html">le module <code class="language-">gc</code></a> qui nous permet de contrôler ce mécanisme.</p>
 <p>Le code devient maintenant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
@@ -372,7 +374,7 @@ t <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>Qui donne chez moi :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">l'exécution de la fonction a duré : 459 ns</code></pre>
 <p>On gagne un petit peu. Vous verrez que plus la taille du tableau augmente, plus on gagnera (et plus il est important de conserver ce mécanisme en temps normal puisqu'il permet de libérer de la mémoire non utilisée...)</p>
-<h2>Une fonction de mesure</h2>
+<h2 id="une-fonction-de-mesure">Une fonction de mesure</h2>
 <p>Comme on va utiliser intensivement cette mesure de calcul, on va en faire une fonction qui sera facile à utiliser :</p>
 <p><span id="calcul"></span></p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
@@ -423,7 +425,7 @@ t <span class="token operator">=</span> calcul<span class="token punctuation">(<
 <p>Gardez-vous un fichier contenant les fonctions nécessaires à la mesure du temps. Cela vous permettra de l'inclure dans tous les projets ultérieurs où nous aurons besoin de mesurer la complexité.</p>
 </div>
 </div>
-<h2>Complexité maximum et minimum</h2>
+<h2 id="complexite-maximum-et-minimum">Complexité maximum et minimum</h2>
 <p>Le but est de pouvoir mesurer la complexité maximale, minimale et moyenne d'un algorithme codé. <a href="../d%C3%A9finitions-et-mesure/d%C3%A9finitions/#complexit%C3%A9">La complexité dépendant d'un paramètre</a> il faudra le faire varier pour déterminer la courbe de complexité (pour notre exemple de l'algorithme recherche, le paramètre était la longueur du tableau).</p>
 <p>Pour que tout soit homogène, on crée alors deux fonctions dédiées prenant uniquement ce paramètre plutôt que les différents paramètres initiaux de l'algorithme :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcule_max</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -529,7 +531,7 @@ taille 134217728
 </ul>
 </div>
 </div>
-<h2>Complexité en moyenne</h2>
+<h2 id="complexite-en-moyenne">Complexité en moyenne</h2>
 <p>Pour calculer la complexité en moyenne, il faut chercher un entier quelconque du tableau ou pas. On peut par exemple utiliser le code suivant, utilisant la fonction <code class="language-">randrange</code> <a href="https://docs.python.org/fr/3/library/random.html">du module random</a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
@@ -618,7 +620,7 @@ taille 134217728
 </ul>
 </div>
 </div>
-<h2>Représentation graphique</h2>
+<h2 id="representation-graphique">Représentation graphique</h2>
 <p>Enfin, on peut représenter graphiquement les résultats. Pour cela, il faut commencer par stocker les résultats de nos mesures et pas juste les afficher :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c_min <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 c_moy <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -650,14 +652,14 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
     ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h2>Fichiers finaux</h2>
+<h2 id="fichiers-finaux">Fichiers finaux</h2>
 <p>On a séparé notre code en 3 fichiers :</p>
 <ul>
 <li><code class="language-">algorithmes.py</code> qui contient le code à mesurer et <code class="language-">test_algorithmes.py</code> qui contient les tests,</li>
 <li><code class="language-">mesure_temps.py</code> qui contient les fonctions utiles pour les mesures,</li>
 <li><code class="language-">main.py</code> qui est le programme principal.</li>
 </ul>
-<h3><code class="language-">algorithmes.py</code></h3>
+<h3 id="algorithmes-py"><code class="language-">algorithmes.py</code></h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 <span class="token keyword">from</span> mesure_temps <span class="token keyword">import</span> calcul
@@ -685,7 +687,7 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
     <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rep<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         t <span class="token operator">+=</span> calcul<span class="token punctuation">(</span>recherche<span class="token punctuation">,</span> <span class="token punctuation">(</span>T<span class="token punctuation">,</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rep<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> t <span class="token operator">/</span> rep</code></pre>
-<h3><span id="fichier-mesure-temps"></span> <code class="language-">mesure_temps.py</code></h3>
+<h3 id="mesure-temps-py"><span id="fichier-mesure-temps"></span> <code class="language-">mesure_temps.py</code></h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> perf_counter_ns
 <span class="token keyword">import</span> gc
 
@@ -735,7 +737,7 @@ c_max <span class="token operator">=</span> <span class="token punctuation">[</s
     ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>handles<span class="token operator">=</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h3><code class="language-">main.py</code></h3>
+<h3 id="main-py"><code class="language-">main.py</code></h3>
 <p>Avec une réduction du nombre de répétitions et un temps max de 1 centième de seconde :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
@@ -768,6 +770,92 @@ affiche_complexité<span class="token punctuation">(</span>Ns<span class="token 
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -778,6 +866,7 @@ affiche_complexité<span class="token punctuation">(</span>Ns<span class="token 
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

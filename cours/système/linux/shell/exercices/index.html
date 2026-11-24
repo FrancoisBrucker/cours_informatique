@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Exercices de scripting</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,14 +95,15 @@
 
 
     
+  </div>
   
 
   <p>Quelques exercices de base de scripting shell.</p>
-<h2>Téléchargements de fichiers</h2>
+<h2 id="telechargements-de-fichiers">Téléchargements de fichiers</h2>
 <p>Le <a href="https://www.gutenberg.org/">projet Gutenberg</a> contient de nombreux ouvrages libres de droits. Vous allez y récupérer des fichiers avec du scripting shell</p>
-<h3>Récupération du fichier</h3>
+<h3 id="recuperation-du-fichier">Récupération du fichier</h3>
 <p>Essayez de faire les différentes question de cette partie en une seule ligne de shell.</p>
-<h4>Url</h4>
+<h4 id="url">Url</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -111,13 +113,13 @@
 </div>
 </div>
 <p>En utilisant la commande <code>curl</code> (au pire installez là), téléchargez <a href="https://www.gutenberg.org/ebooks/search/?query=Le+comte+de+Monte-Cristo">le 1er tome du Comte de Monte-Cristo</a> au format utf-8 (récupérez son adresse sur le site) et affichez le résultat dans stdout.</p>
-<h4>Sauvegarde</h4>
+<h4 id="sauvegarde">Sauvegarde</h4>
 <p>Sauvegardez le contenu de l'url dans un fichier dont vous choisirez le nom en utilisant la redirection de stdout vers un fichier.</p>
-<h3>Métrologie</h3>
+<h3 id="metrologie">Métrologie</h3>
 <p>Vous utiliserez le fichier de la question précédente pour faire cette partie. La encore, vous devriez pouvoir répondre à toutes les questions en une seule chaîne de commandes, mais ne vous forcez pas à y arriver si vous ne trouver la pas la solution.</p>
-<h4>Nombres</h4>
+<h4 id="nombres">Nombres</h4>
 <p>en Utilisant <code>wc</code>, rendez le nombre de lignes, de mots et de caractères de ce fichier.</p>
-<h4>Entête du Roman</h4>
+<h4 id="entete-du-roman">Entête du Roman</h4>
 <ol>
 <li>A quelle ligne commence effectivement le Roman ?</li>
 <li>. Quelle option de <code>grep</code> permet de donner la ligne contenant le pattern à chercher ?</li>
@@ -126,26 +128,26 @@
 <li>Combinez la recherche précédente avec la commande <code>cut</code> pour avoir <strong>uniquement</strong> le numéro de ligne</li>
 <li>Comptez le nombre de lignes, de mots et de caractères de ce fichier à partir du début du roman</li>
 </ol>
-<h4>Marseille</h4>
+<h4 id="marseille">Marseille</h4>
 <ol>
 <li>Quelle est la différence entre <code>grep</code> et <code>grep -E</code> ?</li>
 <li>En utilisant <a href="https://www.redhat.com/sysadmin/find-text-files-using-grep">la commande <code>grep -E</code></a>, comptez le nombre de fois où l'on parle de Marseille ou de Marseillais dans ce Tome.</li>
 </ol>
-<h3>Stockage</h3>
+<h3 id="stockage">Stockage</h3>
 <p>On vous demande de créer un script pour répondre aux questions suivantes</p>
-<h4><span id="tout-le-comte"></span>Tout le comte</h4>
+<h4 id="tout-le-comte"><span id="tout-le-comte"></span>Tout le comte</h4>
 <ol>
 <li>Créez un script qui crée sort sur stdout le contenu à la suite des 4 tomes du comte de monté Cristo</li>
 <li>affinez le résultat en ne prenant pas les entêtes des 4 romans</li>
 </ol>
 <p>Vous utiliserez une boucle for pour télécharger les 4 tomes à la suite des autres, à partir d'un tableau dans lequel vous aurez au préalable stocké les 4 urls.</p>
-<h4>Le comte est bon</h4>
+<h4 id="le-comte-est-bon">Le comte est bon</h4>
 <p>Sauvez avec une redirection le contenu du roman dans un fichier. Utilisez ce fichier pour :</p>
 <ol>
 <li>Refaire la partie métrologie pour le roman entier.</li>
 <li>calculez le nombre moyen de mot par ligne (divisez le nombre de mots par rapport au nombre de lignes)</li>
 </ol>
-<h3>Script final</h3>
+<h3 id="script-final">Script final</h3>
 <p>Créez un script qui :</p>
 <ol>
 <li>crée le fichier <code class="fichier">comte-monte-cristo.txt</code> uniquement s'il n'existe pas déjà dans le dossier courant.</li>
@@ -163,7 +165,7 @@
 </ol>
 </li>
 </ol>
-<h2>Poubelle</h2>
+<h2 id="poubelle">Poubelle</h2>
 <p>La commande <code>rm</code> ne fait aucune sauvegarde d'un fichier avant de le supprimer. On vous demande de :</p>
 <ol>
 <li>créer une commande <code>poubelle</code> qui prend un unique paramètre. Vous placerez cette commande dans <code>$HOME/.local/bin</code> et ferez en sorte que la commande soit accessible en changeant le PATH.</li>
@@ -203,6 +205,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -213,6 +301,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

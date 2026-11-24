@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Nombres pseudo-aléatoires cryptographique</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Pour qu'Alice et Bob puissent générer la clé $K$ à $t$ bits à partir de la clé partagée à $s &lt;t$ bits aléatoire, il est nécessaire d'avoir un algorithme déterministe permettant de générer (au moins) $t$ bits à partir des $s$ bits de $k$.</p>
@@ -108,7 +110,7 @@
   |   t bits    |      # G(k)
   --------------
 </code></pre>
-<h2>Définition</h2>
+<h2 id="definition">Définition</h2>
 <p>Pour que l'algorithme de Vernam fonctionne il faut que $K$ le plus uniforme possible, ce qui impose la définition suivante :</p>
 <div id="CPRNG"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -175,7 +177,7 @@
 <p>Son avantage est donc $1-1/2^{t-s}$ qui peut être énorme si $t&gt;&gt;s$</p>
 <p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
 Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas efficace.</p>
-<h2>Non prédictabilité</h2>
+<h2 id="non-predictabilite">Non prédictabilité</h2>
 <p>Si l'on utilise notre générateur pour une transmission avec un chiffre de Vernam il est nécessaire que l'on ne puisse pas déterminer la fin de $G(k)$ en ayant son début. En effet, si un attaquant peut envoyer des messages à chiffrer, ou au moins une partie du message, il peut envoyer des 0 :</p>
 <pre><code>  kkkkkkk
 ⊕ 0000000
@@ -284,7 +286,7 @@ $$
 <p><a href="https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf">Article originel de Yao, 1982</a></p>
 </div>
 </div>
-<h2>Existence</h2>
+<h2 id="existence">Existence</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -294,7 +296,7 @@ $$
 </div>
 </div>
 <p>L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.</p>
-<h3><span id="construction-incrémentale"></span> Incrémentale</h3>
+<h3 id="incrementale"><span id="construction-incrémentale"></span> Incrémentale</h3>
 <p>Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ pour tout $m\geq 1$.</p>
 <p><span id="chiffre-CPRNG-incrémental"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -392,7 +394,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Fonctions à sens unique</h3>
+<h3 id="fonctions-a-sens-unique">Fonctions à sens unique</h3>
 <p>Terminons cette partie en montrant que l'existence de générateur de nombres pseudo-aléatoire sécurisé est lié à l'existence de fonctions à sens unique.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -445,7 +447,7 @@ $$
 </div>
 </details>     
 </div>
-<h2>Construction</h2>
+<h2 id="construction">Construction</h2>
 <p>On a vu que l'on ne connaît aucun générateur de nombres pseudo-aléatoire sécurisés. Les moyens actuels de construire ce que l'on pense être une bonne solution passe par des moyens détournés que nous allons maintenant voir.</p>
 <p>L'idée est d'utiliser des permutations de $\{0, 1\}^t$ qui sont faciles à implémenter et dont la robustesse semble avérée. Mais avant de donner un exemple de permutation montrons que cette construction est valide.</p>
 <p>Nous allons procéder en deux temps :</p>
@@ -454,7 +456,7 @@ $$
 <li>monter que l'on peut utiliser des permutations pour approximer des fonctions</li>
 <li>donner un exemple de permutation</li>
 </ol>
-<h3>Fonctions et générateurs pseudo-aléatoires</h3>
+<h3 id="fonctions-et-generateurs-pseudo-aleatoires">Fonctions et générateurs pseudo-aléatoires</h3>
 <div id="PRF"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -522,7 +524,7 @@ $$
 </details>     
 </div>
 <p>Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, \text{iv})$ que l'on peut prendre indépendamment.</p>
-<h3>Fonctions et permutations</h3>
+<h3 id="fonctions-et-permutations">Fonctions et permutations</h3>
 <div id="PRP"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -594,14 +596,14 @@ $$
 <li>on utilise la clé pour mélanger l'entrée</li>
 </ol>
 <p>Comme on doit être efficace, on ne va parcourir qu'un tout petit nombre de bijections possibles, mais si on fait un mélange qu'on espère uniforme on va bien avoir des comportement très différent quelque soit la clé utilisée.</p>
-<h2>Implémentations</h2>
+<h2 id="implementations">Implémentations</h2>
 <p>Nous allons voir trois implémentations différentes :</p>
 <ol>
 <li>avec un PRP comme désigné précédemment. On reverra ce code plus tard</li>
 <li>avec un générateur type modulo qui se base sur des fonctions à sens unique</li>
 <li>avec un générateur qui s'implémente très bien sur des circuit</li>
 </ol>
-<h3>Chacha20</h3>
+<h3 id="chacha20">Chacha20</h3>
 <blockquote>
 <p>TBD <a href="https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/">https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/</a> <a href="https://www.youtube.com/watch?v=G0O0VHVtNuM">https://www.youtube.com/watch?v=G0O0VHVtNuM</a></p>
 </blockquote>
@@ -627,7 +629,7 @@ $$
 </li>
 </ul>
 <p>Nous allons uniquement survoler son principe, nous y reviendrons en détail lorsque nous étudierons son implémentation dns un chiffrement réel et complet.</p>
-<h4>Principe</h4>
+<h4 id="principe">Principe</h4>
 <p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \;\|\; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
 <p>Le chiffre final est obtenu en additionnant la permutation à l'entrée :</p>
 <div>
@@ -651,7 +653,7 @@ $$
 <p><a href="https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2">exemple de modifications</a></p>
 </div>
 </div>
-<h4>opérations ARX</h4>
+<h4 id="operations-arx">opérations ARX</h4>
 <p>Les opérations utilisés pour la permutation sont de type ARX sur 32b :</p>
 <ul>
 <li>Addition modulaire <code>+</code></li>
@@ -667,13 +669,13 @@ $$
 <p>Suffisant pour faire toutes les rotations <a href="https://eprint.iacr.org/2022/618.pdf">https://eprint.iacr.org/2022/618.pdf</a></p>
 </div>
 </div>
-<h4>Robustesse</h4>
+<h4 id="robustesse">Robustesse</h4>
 <ul>
 <li>ARX pour time attack</li>
 <li>non linéarité (l'addition)</li>
 <li>vol de l'état interne (la dernière addition permet de cacher la clé car la permutation est inversible)</li>
 </ul>
-<h3>Blum Blum Shub</h3>
+<h3 id="blum-blum-shub">Blum Blum Shub</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -723,7 +725,7 @@ $$
 <li>soit ne respecte pas Kerskoff.</li>
 </ul>
 <p>De toute façon il est lent et son intérêt est plutôt théorique.</p>
-<h3>Registre à décalage cryptographique</h3>
+<h3 id="registre-a-decalage-cryptographique">Registre à décalage cryptographique</h3>
 <blockquote>
 <p>TBD renvoyer vers aléatoire et le gros TP
 TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt; du coup marche plus quand le nb de clés doit augmenter.</p>
@@ -736,7 +738,7 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
 <p><a href="Rapport_de_Stage_Laura_Michelutti.pdf">Rapport Laura</a></p>
 </div>
 </div>
-<h3>Cryptographie en python</h3>
+<h3 id="cryptographie-en-python">Cryptographie en python</h3>
 <blockquote>
 <p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets">secrets</a></p>
 </blockquote>
@@ -754,6 +756,92 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -764,6 +852,7 @@ TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

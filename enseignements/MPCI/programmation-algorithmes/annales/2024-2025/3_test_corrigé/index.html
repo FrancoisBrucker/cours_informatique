@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>corrigé Test 3 : complexité</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -80,7 +80,7 @@
 
   
 
-  <h2>Barème</h2>
+  <h2 id="bareme">Barème</h2>
 <p>Une note sur 7 répartie comme suit :</p>
 <ul>
 <li>1pt pour la question 1.1</li>
@@ -150,14 +150,14 @@
 <li>écart-type : 3.15/20</li>
 <li>médiane : 10.80/20</li>
 </ul>
-<h2>Erreurs fréquemment rencontrées</h2>
+<h2 id="erreurs-frequemment-rencontrees">Erreurs fréquemment rencontrées</h2>
 <ul>
 <li>algorithme = finitude ; correction pas obligé</li>
 <li>complexité : on passe toujours dans le /2</li>
 <li>attention aux bornes du 2.3</li>
 </ul>
-<h2>Corrigé</h2>
-<h3>1 un algorithme de multiplication</h3>
+<h2 id="corrige">Corrigé</h2>
+<h3 id="1-un-algorithme-de-multiplication">1 un algorithme de multiplication</h3>
 <p>On suppose que les entiers sont positifs.</p>
 <p>Cet algorithme doit vous rappeler très fortement l'algorithme de l'exponentiation rapide. Il est basé sur le même principe et tout ce qu'on a fait pour l'un (complexité et preuve) marche pour l'autre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -168,11 +168,11 @@
 <p>L'algorithme est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Technique_de_multiplication_dite_russe">multiplication russe, ou encore multiplication du paysan russe</a>.</p>
 </div>
 </div>
-<h4>1.1</h4>
+<h4 id="1-1">1.1</h4>
 <p>Le programme <code class="language-">mul</code> est un algorithme car la variable <code class="language-">x</code> décroît strictement à chaque itération en restant positive (donc elle vaudra 0 à un moment).</p>
-<h4>1.2</h4>
+<h4 id="1-2">1.2</h4>
 <p>Á chaque étape on divise la variable <code class="language-">x</code> par 2. L'argument est alors le même que pour la factorisation rapide : il y a au plus $\log_2(x)$ itérations de l'algorithme. Comme toutes les autres opérations sont en $\mathcal{O}(1)$, on en déduit que la complexité totale de l'algorithme est en $\mathcal{O}(\ln(x))$.</p>
-<h4>1.3</h4>
+<h4 id="1-3">1.3</h4>
 <p>Pour démontrez que <code class="language-">mul(x, y) = x * y</code> on utilise l'invariant : <code class="language-">X * Y = r + x * y</code> avec <code class="language-">X</code> et <code class="language-">Y</code> les paramètres initiaux.</p>
 <p>C'est invariant est quasiment le même que celui de l'exponentiation indienne. On vérifie aisément qu'il fonctionne.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -183,16 +183,16 @@
 <p>La variable <code class="language-">x</code> est <strong>toujours</strong> divisée par 2 : c'est ce qui fait la différence avec l'exponentiation indienne.</p>
 </div>
 </div>
-<h3>2 représentation binaire des nombres</h3>
-<h4>2.1</h4>
+<h3 id="2-representation-binaire-des-nombres">2 représentation binaire des nombres</h3>
+<h4 id="2-1">2.1</h4>
 <p>L'entier $n$ est pair si et seulement si $T_n[0] = 0$</p>
-<h4>2.2</h4>
-<h5>2.2.1</h5>
+<h4 id="2-2">2.2</h4>
+<h5 id="2-2-1">2.2.1</h5>
 <p>Une unique boucle de $\mathcal{O}(T.\mbox{\tiny longueur})$ et le reste des lignes est en $\mathcal{O}(1)$ : l'algorithme est de complexité $\mathcal{O}(T.\mbox{\tiny longueur})$.</p>
-<h5>2.2.2</h5>
+<h5 id="2-2-2">2.2.2</h5>
 <p>Si $n = \sum_{0\leq i &lt; T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $2n \sum_{1\leq i \leq T.\mbox{\tiny longueur}}2^i\cdot T[i-1]$ ce qui correspond à ce que fait l'algorithme.</p>
 <p>Le fait que $T[i-1] = 0$ permet de dire que le tableau représentant $2n$ peut avoir la même taille que $T$.</p>
-<h5>2.3</h5>
+<h5 id="2-3">2.3</h5>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">div2</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">)</span></span><span class="token punctuation">:</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">i</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
         <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
@@ -200,10 +200,10 @@
 <p>Le raisonnement est identique que pour  prouver <code class="language-">mul2(T: []bit)</code> :</p>
 <p>Si $n = \sum_{0\leq i &lt; T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $n/2 = \sum_{0 \leq i &lt; T.\mbox{\tiny longueur} - 1}2^i\cdot T[i+1]$ ce qui correspond à ce que fait l'algorithme.</p>
 <p>Le fait que $T[0] = 0$ permet d'assurer le fait que l'entier représenté par $T$ soit pair et donc divisible par 2.</p>
-<h4>2.4</h4>
+<h4 id="2-4">2.4</h4>
 <p>La taille doit être égale à $T_x.\mbox{\tiny longueur} + T_y.\mbox{\tiny longueur}$.</p>
-<h3>3 adaptation de l'algorithme</h3>
-<h4>3.1</h4>
+<h3 id="3-adaptation-de-l-algorithme">3 adaptation de l'algorithme</h3>
+<h4 id="3-1">3.1</h4>
 <p>On suppose que l'on a une méthode <code class="language-">add(Tx, Ty)</code> qui fait l'addition <code class="language-">x+y</code> et la réaffecte dans le tableau <code class="language-">Tx</code>. Sa complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur})$</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token parameter variable">Tx</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">,</span> <span class="token parameter variable">Ty</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]bit</span></span><span class="token punctuation">:</span>
     Ty' <span class="token operator">←</span> un tableau de taille <span class="token variable parameter">Tx</span><span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token variable parameter">Ty</span><span class="token punctuation">.</span>longueur
@@ -224,7 +224,7 @@
         mul2<span class="token punctuation">(</span>T'y<span class="token punctuation">)</span>
     
     <span class="token keyword">rendre</span> R</code></pre>
-<h4>3.2</h4>
+<h4 id="3-2">3.2</h4>
 <p>La complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur} \cdot Ty.\mbox{\tiny longueur})$.</p>
 <!--
 
@@ -250,6 +250,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -260,6 +346,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

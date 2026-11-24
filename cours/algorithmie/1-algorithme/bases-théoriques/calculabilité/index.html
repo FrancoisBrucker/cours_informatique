@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Calculabilité</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>On va s'intéresser ici à deux types de choses que peut (ou ne peut pas) calculer un algorithme : des fonctions et des nombres. Cette introduction à ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_la_calculabilit%C3%A9">calculabilité</a> en informatique théorique doit vous permettre de comprendre qu'un algorithme ne peut pas tout faire.</p>
@@ -105,7 +107,7 @@
 <p>Vous pouvez <a href="https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf">consulter ce lien</a> sur l'émergence en mathématiques de la notion de calculabilité.</p>
 </div>
 </div>
-<h2>Algorithmes et nombres</h2>
+<h2 id="algorithmes-et-nombres">Algorithmes et nombres</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -119,7 +121,7 @@
 </ul>
 </div>
 </div>
-<h3>Nombres entiers et rationnels</h3>
+<h3 id="nombres-entiers-et-rationnels">Nombres entiers et rationnels</h3>
 <p>On a donc immédiatement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -197,7 +199,7 @@ Programme :
 </details>     
 </div>
 <p>En revanche, ça s'arrête là.</p>
-<h3>Nombres réels</h3>
+<h3 id="nombres-reels">Nombres réels</h3>
 <p>Tous les réels ne sont pas calculables. Ceci est dû au résultat suivant :</p>
 <p><span id="diagonale-cantor"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -367,7 +369,7 @@ Programme :
 <p>Attention cependant à ne pas confondre le réel en tant que tel (non utilisable dans un algorithme puisqu'il possède une infinité de décimales), son symbole utilisé en calcul formel et son approximation que l'on peut utiliser dans les calculs.</p>
 </div>
 </div>
-<h2>Algorithmes et fonctions</h2>
+<h2 id="algorithmes-et-fonctions">Algorithmes et fonctions</h2>
 <p>On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :</p>
 <p><span id="algorithme-fonction"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -456,7 +458,7 @@ On suppose alors qu'il y en a autant, donc qu'il existe une bijection entre les 
 <p>Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.</p>
 </div>
 </div>
-<h3>Exemple de fonction calculable</h3>
+<h3 id="exemple-de-fonction-calculable">Exemple de fonction calculable</h3>
 <p>La plupart des fonctions connues sont calculables. Prenons la plus connue d'entre elles, la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entiers positifs $a$ et $b$.</p>
 <p><span id="algorithme-euclide"></span></p>
 <p>Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur ($\operatorname{pgcd}$) de deux nombres ainsi :</p>
@@ -556,9 +558,9 @@ $$
 <p>Si vous pensez à une fonction il y a toutes les chances qu'elle soit calculable.</p>
 </div>
 </div>
-<h3>Cas limites</h3>
+<h3 id="cas-limites">Cas limites</h3>
 <p>Il existe tout un tas de cas limites rigolos. Nous allons en voir deux.</p>
-<h4>Fonctions calculables sans algorithme connu</h4>
+<h4 id="fonctions-calculables-sans-algorithme-connu">Fonctions calculables sans algorithme connu</h4>
 <p>Il existe aussi des fonctions que l'on sait calculables mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : 5-consécutifs
 Entrées :
@@ -595,7 +597,7 @@ Programme :
 <p>Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire.</p>
 </div>
 </div>
-<h4>Fonction écran de fumée</h4>
+<h4 id="fonction-ecran-de-fumee">Fonction écran de fumée</h4>
 <p><span id="fonction-Takeuchi"></span></p>
 <p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -767,10 +769,10 @@ $$
 <p>Lorsque vous essayez de résoudre un problème avec un algorithme, essayez toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt que la version simple.</p>
 </div>
 </div>
-<h2><span id="non-calculable"></span>Non calculabilité</h2>
+<h2 id="non-calculabilite"><span id="non-calculable"></span>Non calculabilité</h2>
 <p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire. Mais ces objets existent puisqu'il y a strictement plus de fonctions et de réels que d'algorithmes.</p>
 <p>Nous allons donner un exemple de chaque ci-après.</p>
-<h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
+<h3 id="un-nombre-non-calculable-omega-de-chaitin">Un nombre non calculable : $\Omega$ de Chaitin</h3>
 <p>Nous allons montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non calculable.</p>
 <p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
 <p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimale soit :</p>
@@ -779,7 +781,7 @@ $$
 <li>égale à 0 si le programme $P_i$ ne s'arrête pas</li>
 </ul>
 <p>Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice">le problème de l'arrêt</a> serait décidable.</p>
-<h3><span id="complexité-Kolmogorov"></span> Une fonction non calculable : la complexité de Kolmogorov</h3>
+<h3 id="une-fonction-non-calculable-la-complexite-de-kolmogorov"><span id="complexité-Kolmogorov"></span> Une fonction non calculable : la complexité de Kolmogorov</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -891,6 +893,92 @@ affiche n à l'écran</code></pre>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -901,6 +989,7 @@ affiche n à l'écran</code></pre>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

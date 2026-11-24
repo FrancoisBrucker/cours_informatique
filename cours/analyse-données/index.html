@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Analyse de données</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
       <div class=" px-4 flex items-center">
         
@@ -107,6 +107,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -122,13 +123,14 @@
 
 
     
+  </div>
   
 
   <blockquote>
 <p>TBD en chantier...</p>
 </blockquote>
 <p>Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse <em>classique</em> de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.</p>
-<h2>Utiliser des notebooks</h2>
+<h2 id="utiliser-des-notebooks">Utiliser des notebooks</h2>
 <blockquote>
 <p>TBD mettre ici cours sur les notebooks. <a href="utiliser-notebooks/">utiliser des notebook</a></p>
 </blockquote>
@@ -154,7 +156,7 @@
 <p>Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/">le cours de développement</a></p>
 </div>
 </div>
-<h2><span id="packages-nécessaires"></span>Installation des modules pythons</h2>
+<h2 id="installation-des-modules-pythons"><span id="packages-nécessaires"></span>Installation des modules pythons</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -219,7 +221,7 @@
 <p>Si vous avez des &quot;sauts&quot; dans la fenêtre Jupiter lorsque vous faites défiler votre écran : <code>Settings → Settings Editor → Notebook → Windowing mode → Defer.</code></p>
 </div>
 </div>
-<h2><span id="pandas"></span>Utilisation de pandas</h2>
+<h2 id="utilisation-de-pandas"><span id="pandas"></span>Utilisation de pandas</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -277,7 +279,7 @@
 </div>
 </details>     
 </div>
-<h2><span id="data-viz-pas-carto"></span>Visualisation de données</h2>
+<h2 id="visualisation-de-donnees"><span id="data-viz-pas-carto"></span>Visualisation de données</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -287,7 +289,7 @@
 <p>Vous pouvez utiliser cette url <a href="https://download-directory.github.io/">https://download-directory.github.io/</a> pour télécharger le dossier.</p>
 </div>
 </div>
-<h3>Graphiques</h3>
+<h3 id="graphiques">Graphiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -316,7 +318,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 > - <https://www.oreilly.com/library/view/visualisation-de-donnees/9798341620735/>
 > 
 -->
-<h3><span id="data-viz-2D"></span>Réduction de dimension</h3>
+<h3 id="reduction-de-dimension"><span id="data-viz-2D"></span>Réduction de dimension</h3>
 <p>Représenter ses données en 2 dimensions.</p>
 <p><a href="notebooks/notebooks-dataviz-donn%C3%A9es/1_cours_reduction_de_dimensions.ipynb" class="fichier">Réduction de dimensions</a></p>
 <p>L'exercice suivant utilise vise à créer une distance entre texte puis à la représenter en 2-dimensions.</p>
@@ -353,7 +355,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </div>
 </details>     
 </div>
-<h2><span id="data-viz"></span>Visualisation de données cartographiques</h2>
+<h2 id="visualisation-de-donnees-cartographiques"><span id="data-viz"></span>Visualisation de données cartographiques</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -397,7 +399,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <p>Utilisez ce <a href="notebooks/notebooks-dataviz-cartes/requirements.txt" class="fichier">fichier <code>requirement.txt</code></a> pour créer <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/gestion-d%C3%A9pendances/environnements-virtuels/">un environnement virtuel</a> contenant déjà tous les modules nécessaires.</p>
 </div>
 </div>
-<h3><span id="data-viz-bases"></span>Base de la cartographie</h3>
+<h3 id="base-de-la-cartographie"><span id="data-viz-bases"></span>Base de la cartographie</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -453,7 +455,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <p>Créez une carte chloroplète de la réunion avec le nombre d'habitants par canton.</p>
 </div>
 </div>
-<h3><span id="data-viz-OSM"></span>Données géographiques</h3>
+<h3 id="donnees-geographiques"><span id="data-viz-OSM"></span>Données géographiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -473,9 +475,9 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <p><a href="notebooks/notebooks-dataviz-OSM/1_2_a_vous_donn%C3%A9es_et_cartes.ipynb" class="fichier">Données cartographiques</a>.</p>
 </div>
 </div>
-<h3><span id="data-viz-OSM"></span>Chemins</h3>
+<h3 id="chemins"><span id="data-viz-OSM"></span>Chemins</h3>
 <p><a href="notebooks/notebooks-dataviz-OSM/2_1_cours_OSM_r%C3%A9seau_routier.ipynb" class="fichier">réseau routier</a></p>
-<h2>Méthodes d'analyse des données</h2>
+<h2 id="methodes-d-analyse-des-donnees">Méthodes d'analyse des données</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -484,7 +486,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse">cette adresse</a></p>
 </div>
 </div>
-<h3>Partitionnement et hiérarchies</h3>
+<h3 id="partitionnement-et-hierarchies">Partitionnement et hiérarchies</h3>
 <ol>
 <li><a href="notebooks/notebooks-analyse/4_2_cours_partitionnement.ipynb" class="fichier">Méthode de partitionnement, les $k$-means</a> (téléchargez <a href="notebooks/notebooks-analyse/ruspini.csv" class="fichier">les données</a>)</li>
 <li><a href="notebooks/notebooks-analyse/4_4_cours_hierarchies.ipynb" class="fichier">Méthodes hiérarchiques</a> (téléchargez <a href="notebooks/notebooks-analyse/henley.mat" class="fichier">les données</a>)</li>
@@ -560,7 +562,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </div>
 </details>     
 </div>
-<h3>Statistiques descriptives</h3>
+<h3 id="statistiques-descriptives">Statistiques descriptives</h3>
 <ol start="0">
 <li>jeu de données utilisé <a href="notebooks/notebooks-analyse/%C3%A9preuve.txt" class="fichier">épreuve d'analyse des données</a></li>
 <li><a href="notebooks/notebooks-analyse/2_1_1_cours_statistiques_descriptives.ipynb" class="fichier">Statistiques descriptives</a></li>
@@ -607,7 +609,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 </div>
 </details>     
 </div>
-<h3>Analyse en composantes principales</h3>
+<h3 id="analyse-en-composantes-principales">Analyse en composantes principales</h3>
 <blockquote>
 <p>TBD les preuves</p>
 </blockquote>
@@ -667,6 +669,92 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -677,6 +765,7 @@ Voir si le livre ci-dessous ne fonctionnerait pas aussi.
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

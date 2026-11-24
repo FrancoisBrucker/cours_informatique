@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Couplages de poids maximum bi-parti</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Le problème que l'on veut maintenant résoudre est de trouver un couplage maximum de poids maximum dans les graphes bi-partis. Par exemple en reprenant l'exemple du transport amoureux, on peut quantifier l'amour entre les différents héros de roman et chercher, par tous les couplages maximaux ceux qui maximisent le contentement.</p>
@@ -110,7 +112,7 @@
 </div>
 </div>
 <p>Notez que l'on sait déjà résoudre ce problème par une modélisation part flot et en cherchant un flot max de coût maximum. Nous allons voir ici une autre méthode appelé primal/dual qui va se généraliser aux graphes quelconques.</p>
-<h2>Dualité couverture/couplage</h2>
+<h2 id="dualite-couverture-couplage">Dualité couverture/couplage</h2>
 <p>On va généraliser ici <a href="../couplage-bi-parti/#K%C3%B6nig-Egerv%C3%A1ry">le théorème de König-Egerváry</a> pour montrer que couverture de poids minimal va être égal à couplage de poids maximal. Cette dualité rappelle la dualité coupe minimale et flot maximum.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -159,10 +161,10 @@ $$
 </details>     
 </div>
 <p>On en conclut que s'il existe une couverture valuée dont la valeur est égale au couplage alors le couplage est forcément maximum. La partie suivante montre la réciproque en donnant un algorithme permettant de trouver un couplage maximum de poids maximum.</p>
-<h2>Résolution par Primal/Dual</h2>
+<h2 id="resolution-par-primal-dual">Résolution par Primal/Dual</h2>
 <p>Le principe de l'algorithme que l'on va utiliser pour résoudre le problème utilise le principe de dualité entre couverture et couplage pour les graphes bipartis et implémente une méthode fondamentale en optimisation appelée primal/dual (très utilisée en programmation linéaire et qui s'applique à de nombreux autres cas, comme ici) : une solution augmente pendant que l'autre diminue, la solution étant trouvée lorsque les deux coïncident.</p>
 <p>L'algorithme va petit à petit augmenter un couplage en diminuant une couverture valuée jusqu'à arriver à une valuation égale ce qui prouvera l'optimalité.</p>
-<h3>Algorithme</h3>
+<h3 id="algorithme">Algorithme</h3>
 <ul>
 <li>Donnée : une valuation $p$ du graphe biparti complet $K_{n,n} =(A\cup B, E)$ (avec $A$ et $B$ ses 2 stables)</li>
 <li>algorithme
@@ -192,20 +194,20 @@ $$
 <blockquote>
 <p>TBD on utilise l'algorithme de la partie précédente pour trouver et le couplage et la couverture associée</p>
 </blockquote>
-<h3>Optimalité</h3>
+<h3 id="optimalite">Optimalité</h3>
 <p>L'algorithme va forcément trouver un couplage parfait car à chaque étape $G[c]$ va avoir strictement plus d'arête :</p>
 <ul>
 <li>si $c(x) + c(y) - p(xy) = 0$ à une étape donné c'est vrai aussi à l'étape suivante</li>
 <li>à l'étape 5. aucune arête $xy$ avec $x\in A\backslash A'$ et $y \in B\backslash B'$ n'est dans $G[c]$, ce qui implique que $\lambda &gt; 0$</li>
 </ul>
 <p>De plus, à la fin on a clairement que $c(A\cup B) = p(M)$ ce qui montre que le couplage est bien de poids maximum et la couverture valuée de poids minimum.</p>
-<h3>Complexité</h3>
+<h3 id="complexite">Complexité</h3>
 <p>Tout ce fait de façon polynomiale puisque :</p>
 <ul>
 <li>l'on peut trouver polynomialement un couplage de taille maximum dans un graphe bi-parti</li>
 <li>l'on peut trouver polynomialement une couverture de taille minimum dans un graphe bi-parti à partir d'un de ses couplages de taille maximum</li>
 </ul>
-<h2>Méthode hongroise</h2>
+<h2 id="methode-hongroise">Méthode hongroise</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -230,7 +232,7 @@ $$
 </div>
 <p>Ce problème s'écrit facilement comme la recherche d'un couplage parfait dans $K_{n, n}$ à coût minimal.</p>
 <p>Si l'on cherche à maximiser des préférences rangées dans une matrice $n \times n$ $P = (p_{i, j})$, il suffit de considérer la matrice  $n \times n$ $C = (K - p_{i, j})$ avec $K = \sum_{u, v}p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $n\cdot K-\sum_{i, j \in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.</p>
-<h3>Algorithme de la méthode hongroise</h3>
+<h3 id="algorithme-de-la-methode-hongroise">Algorithme de la méthode hongroise</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -256,7 +258,7 @@ $$
 \end{array}
 $$
 </div>
-<h4>0. Créations de zéros</h4>
+<h4 id="0-creations-de-zeros">0. Créations de zéros</h4>
 <ol>
 <li>pour chaque ligne de $C$, prendre le plus petit élément et le soustraire à l’ensemble de la ligne.</li>
 <li>pour chaque colonne de $C$, prendre le plus petit élément et le soustraire à l’ensemble de la colonne.</li>
@@ -306,7 +308,7 @@ $$
 \end{array}
 $$
 </div>
-<h4>1. Encadrer des zéros</h4>
+<h4 id="1-encadrer-des-zeros">1. Encadrer des zéros</h4>
 <p>On utilise la marque <strong><em>encadrer</em></strong> pour des 0 de la matrice.</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque 0 de la matrice:
    si aucun 0 de sa ligne et de sa colonne ne sont encadrés:
@@ -371,7 +373,7 @@ b&\cellcolor{gray}0&\cancel{0}\\
 \end{array}
 $$
 </div>
-<h4>2. Marquer des lignes et des colonnes et des 0</h4>
+<h4 id="2-marquer-des-lignes-et-des-colonnes-et-des-0">2. Marquer des lignes et des colonnes et des 0</h4>
 <p>On va utiliser une nouvelle marque <strong><em>sélectionner</em></strong> que l'on va pouvoir appliquer aux :</p>
 <ul>
 <li>les lignes et colonnes de la matrice</li>
@@ -407,7 +409,7 @@ X&&&X&X&\\
 \end{array}
 $$
 </div>
-<h4>3. Ajustement des 0 encadrés si nécessaire</h4>
+<h4 id="3-ajustement-des-0-encadres-si-necessaire">3. Ajustement des 0 encadrés si nécessaire</h4>
 <p>On utilise cette étape s'il existe un 0 non couvert sans 0 encadré sur sa ligne. Ceci signifie que l'on a pas sélectionné le nombre maximum de 0 : notre couplage n'est pas maximum.</p>
 <p>Construire une suite de 0 en alternants zéros sélectionnés et zéros encadrés de la manière suivante :</p>
 <ol>
@@ -471,7 +473,7 @@ b&\cellcolor{gray}0&{0}&\\
 \end{array}
 $$
 </div>
-<h4>4. Mise à jour</h4>
+<h4 id="4-mise-a-jour">4. Mise à jour</h4>
 <p>Une fois arrivé là, tous les 0 sont couvert : on a un couplage maximum.</p>
 <p>On sépare les cases de la matrices en 3 :</p>
 <ul>
@@ -510,7 +512,7 @@ $$
 \end{array}
 $$
 </div>
-<h4>5. retour</h4>
+<h4 id="5-retour">5. retour</h4>
 <p>On supprime toutes les marques (de cases, de lignes et de colonnes) et on recommence à l'étape 1 avec la nouvelle matrice</p>
 <p>Dans notre exemple, la prochaine étape 2 va s'arrêter sur :</p>
 <div>
@@ -548,7 +550,7 @@ $$
 \end{array}
 $$
 </div>
-<h3>Complexité totale de la méthode hongroise</h3>
+<h3 id="complexite-totale-de-la-methode-hongroise">Complexité totale de la méthode hongroise</h3>
 <p>Chaque étape se fait en $\mathcal{O}(n^2)$ opérations  et il faut au pire les répéter $\mathcal{O}(n^2)$ fois (jusqu'à ce qu'il n'y ait plus que des 0). La complexité totale est donc en $\mathcal{O}(n^4)$, qui est quadratique par rapport à la taille des données (une matrice $n\times n$).</p>
 <blockquote>
 <p>TBD comparer la complexité avec l'algorithme de Busacker-Gowen appliqué au couplage.
@@ -557,6 +559,92 @@ complexité identique. O(mn) = O(n^3) pour une augmentation et n itérations qui
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -567,6 +655,7 @@ complexité identique. O(mn) = O(n^3) pour une augmentation et n itérations qui
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

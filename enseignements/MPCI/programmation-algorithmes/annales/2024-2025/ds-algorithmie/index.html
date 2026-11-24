@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>DS Algorithmie</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -91,7 +91,7 @@
 <p>Durée du contrôle : 2h.</p>
 </div>
 </div>
-<h2>Barème</h2>
+<h2 id="bareme">Barème</h2>
 <p>Le sujet était l'épreuve commune d'informatique pour X/ENS en 2024. C'est l'informatique commune à tous les concours (ce n'est donc <strong>pas</strong> l'épreuve uniquement réservée aux informaticiens), mais c'est tout de même un sujet long à faire en 2 heures et d'un niveau assez relevé.</p>
 <p>L'idée est de faire au mieux, quite à choisir ses questions ou à ajouter des hypothèses si on en a besoin.</p>
 <p>J'ai noté uniquement les questions 1 à 9 pour un total de 20 points. Une seule personne a abordé la question 10. Ce qui donne une note sur 25 répartie comme suit :</p>
@@ -120,7 +120,7 @@
 </div>
 </div>
 <p>Pour vous comparer, vous pouvez consulter : <a href="https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf">rapport de l'épreuve 2024</a>. Vous voyez qu'en moyenne les élèves ont répondus à plus de questions que vous (vous 9 questions et eux 11). Il faut donc que vous gagniez en rapidité, car vous avez été noté sur 25 et non sur 20.</p>
-<h3>Ventilation des notes</h3>
+<h3 id="ventilation-des-notes">Ventilation des notes</h3>
 <table>
 <thead>
 <tr>
@@ -151,17 +151,17 @@
 <li>médiane : 11.13/20</li>
 </ul>
 <p>Je suis globalement satisfait, vous avez quasi tous la moyenne. Vous êtes encore beaucoup entre 10 et 11, si vous continuez sur cette lancée et gardez votre travail régulier vous ne pourrez que progresser et avoir une meilleure note à l'ET.</p>
-<h3>Erreurs fréquentes</h3>
+<h3 id="erreurs-frequentes">Erreurs fréquentes</h3>
 <ul>
 <li>2 : la complexité est celle la complexité de <code class="language-">case_noires</code></li>
 <li>4.1 : on suppose que les entrées sont correctes, donc sol est une liste de liste d'entiers valant 0 ou 1.</li>
 <li>6 : ne passez pas trop de temps à essayer de faire une question visiblement très dure.</li>
 <li>7 : question facile mais presque personne ne l'a tentée.</li>
 </ul>
-<h2>Corrigé</h2>
+<h2 id="corrige">Corrigé</h2>
 <p>Nous allons écrire toutes les fonctions demandées en python.</p>
-<h3>Partie I</h3>
-<h4>Question 1</h4>
+<h3 id="partie-i">Partie I</h3>
+<h4 id="question-1">Question 1</h4>
 <p>On somme chaque élément de la liste de listes d'entiers passé en paramètre.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cases_noires</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span><span class="token punctuation">:</span>
     total <span class="token operator">=</span> <span class="token number">0</span>
@@ -181,7 +181,7 @@
 <p>Qui est de même complexité car la complexité de la fonction <code class="language-">sum([]int) -&gt; int</code> de python est de l'ordre de la taille de la liste passée en paramètre.</p>
 </div>
 </div>
-<h4>Question 2</h4>
+<h4 id="question-2">Question 2</h4>
 <p>La plus simple des fonction est :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compatibles</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">,</span> cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> cases_noires<span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span> <span class="token operator">==</span> cases_noires<span class="token punctuation">(</span>cle_c<span class="token punctuation">)</span></code></pre>
@@ -199,13 +199,13 @@
         <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 </div>
 </div>
-<h4>Question 3</h4>
+<h4 id="question-3">Question 3</h4>
 <p>On compte toute les cases noires et on ajoute les cases blanches nécessaires :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">taille_minimale</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token builtin">len</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <p>Notez que l'hypothèse selon laquelle le tableau est nom vide est importante, sinon le code de la fonction précédente est faux.</p>
 <p>La complexité de la fonction est de l'ordre de celle de la fonction <code class="language-">sum([]int) -&gt; int</code>, c'est à dire de la taille de la liste passée en paramètre.</p>
-<h4>Question 4</h4>
+<h4 id="question-4">Question 4</h4>
 <p>Pour arriver ligne 13 il faut que :</p>
 <ol>
 <li>le <code>if</code> de la ligne 8 soit vrai</li>
@@ -220,8 +220,8 @@
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> i_bloc <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p>Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le nombre de cases noires de la solution est identique à celui de la clé :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>sol<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-<h3>Partie II</h3>
-<h4>Question 5</h4>
+<h3 id="partie-ii">Partie II</h3>
+<h4 id="question-5">Question 5</h4>
 <p>Les constantes $n_c$ et $n_l$ font parti du problème on peut donc les utiliser.</p>
 <p>On a dans l'exemple suivant $n_c = 6$, $n_l = 4$ et $n = 15$ (d'où $k = 2$ et $l=3$) :</p>
 <pre><code>xxxxxx
@@ -234,7 +234,7 @@ xxx...
 <li>$n \div n_c = k$ ($15 \div 6 = 2$)</li>
 <li>$n \bmod n_c = l$ ($15 \bmod 6 = 3$)</li>
 </ul>
-<h4>Question 6</h4>
+<h4 id="question-6">Question 6</h4>
 <p>Commençons par supposer que la fonction auxiliaire <code class="language-">liste_solution_aux</code> est créée.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">liste_solutions</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">,</span> cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
     solutions_valides <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -265,11 +265,11 @@ C(n) = \mathcal{O}(1) + 2 \cdot C(n + 1)
 $$
 </div>
 <p>et $C(n_c \cdot n_l) = \mathcal{O}(n_c \cdot n_l)$. On en déduit que $C(0) = 2^{n_c \cdot n_l} C(n_c \cdot n_l)= 2^{n_c \cdot n_l} \cdot n_c \cdot n_l$ et donc que la complexité de <code class="language-">liste_solution</code> vaut $C(0) + \mathcal{O}(1) = \mathcal{O}(n_c \cdot n_l \cdot 2^{n_c \cdot n_l})$</p>
-<h4>Question 7</h4>
+<h4 id="question-7">Question 7</h4>
 <p>Pour tous les $n$ multiple de $n_c$, on vérifie que la dernière ligne a le bon nombre de cases noires (on utilise <code class="language-">verif_ligne</code>) avant de lancer la récursion.</p>
 <p>De même, on peut également compter le nombre de cases noire de chaque colonne jusqu'à $n \div n_c$ et stopper la récursion s'il y a déjà trop de cases noires.</p>
-<h3>Partie III</h3>
-<h4>Question 8</h4>
+<h3 id="partie-iii">Partie III</h3>
+<h4 id="question-8">Question 8</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">conflit</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span> <span class="token comment"># énoncé</span>
 
@@ -288,7 +288,7 @@ $$
     
     <span class="token keyword">return</span> nc</code></pre>
 <p>La complexité est clairement en $\mathcal{O}(s)$ et l'algorithme vérifie bien les 3 cas de conflit possible.</p>
-<h4>Question 9</h4>
+<h4 id="question-9">Question 9</h4>
 <p>On utilise itérativement <code class="language-">conflit</code> jusqu'à trouver la solution ou dépasser la ligne :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">prochain</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span> <span class="token comment"># énoncé</span>
@@ -305,13 +305,99 @@ $$
     
     <span class="token keyword">return</span> c</code></pre>
 <p>Comme on ne revient jamais en arrière, chaque case de la ligne est examinée 1 fois : la complexité est bien en $\mathcal{O}(nc)$.</p>
-<h3>Partie IV</h3>
+<h3 id="partie-iv">Partie IV</h3>
 <blockquote>
 <p>TBD à faire</p>
 </blockquote>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -322,6 +408,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

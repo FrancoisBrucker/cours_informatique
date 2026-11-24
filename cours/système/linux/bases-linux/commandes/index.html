@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Commande</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <blockquote>
@@ -223,7 +225,7 @@ TBD  <a href="https://github.com/RehanSaeed/Bash-Cheat-Sheet">liste des instruct
 <p>Stopper une commande avec ctrl+C qui envoie le signal <code>SIGINT</code></p>
 </div>
 </div>
-<h2>Commandes classiques</h2>
+<h2 id="commandes-classiques">Commandes classiques</h2>
 <p>Linux/Ubuntu possède une grande variété de commandes par défaut (tous les fichiers du dossier <code>/usr/bin</code>). Certaines demandent des droit d'administrations mais la plupart sont utilisables par tous les utilisateurs.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -233,7 +235,7 @@ TBD  <a href="https://github.com/RehanSaeed/Bash-Cheat-Sheet">liste des instruct
 <p><a href="https://haydenjames.io/linux-commands-frequently-used-by-linux-sysadmins-part-1/">https://haydenjames.io/linux-commands-frequently-used-by-linux-sysadmins-part-1/</a></p>
 </div>
 </div>
-<h3>Indispensables</h3>
+<h3 id="indispensables">Indispensables</h3>
 <p>Un certains nombre de commandes sont indispensable à connaître (pas à maîtriser).</p>
 <ul>
 <li><code>man</code></li>
@@ -306,7 +308,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 </div>
 </details>     
 </div>
-<h3>Utiles</h3>
+<h3 id="utiles">Utiles</h3>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=APtOavXTv5M&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=9">curl</a></li>
 <li><a href="https://www.youtube.com/watch?v=hsDxcJhCRLI">dd</a></li>
@@ -321,7 +323,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 <p>Il est possible que certaines de ces commandes n'existent pas chez vous. Installez-les.</p>
 </div>
 </div>
-<h2>Retour d'une commande</h2>
+<h2 id="retour-d-une-commande">Retour d'une commande</h2>
 <p>Lorsqu'une commande unix ne rend aucun retour visible, c'est que tout s'est bien passé.</p>
 <p>Chaque commande va rendre un entier, appelé <em><strong>code de sortie</strong></em>, par défaut invisible sur la ligne de commande. Cet entier vaut :</p>
 <ul>
@@ -437,7 +439,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 </div>
 </details>     
 </div>
-<h2>Grouper des commandes</h2>
+<h2 id="grouper-des-commandes">Grouper des commandes</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -488,7 +490,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 </details>     
 </div>
 <p>La création d'un shell enfant pour exécuter des commandes est un principe fondamental en unix. Il permet de compartimenter les exécutions de commandes comme on la vue dans l'exercice précédent.</p>
-<h2><scan id="meta-caracteres">Interactions avec le shell</scan></h2>
+<h2 id="interactions-avec-le-shell"><scan id="meta-caracteres">Interactions avec le shell</scan></h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -536,7 +538,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 <p>J'ai tendance à préférer cette dernière notation qui est selon moi plus clair. On a déjà assez à faire avec <code>&quot;</code> et <code>'</code></p>
 </div>
 </div>
-<h2>I/O</h2>
+<h2 id="i-o">I/O</h2>
 <blockquote>
 <p>TBD en faire plus. Car les <code>|</code>, <code>&gt;</code> et <code>&gt;&gt;</code> c'est pas clair.</p>
 </blockquote>
@@ -561,10 +563,10 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
                  \
                   -&gt; stderr
 </code></pre>
-<h3>Lecture de l'entrée standard</h3>
+<h3 id="lecture-de-l-entree-standard">Lecture de l'entrée standard</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">wc</span></code></pre>
 <p>Il lit l'entrée standard. Stopper la commande avec ctrl+C arrêter tout et interrompt la commande. Il faut terminer l'entrée standard en lui faisant lire la séquence de contrôle EOF ctrl+D.</p>
-<h3>Redirection de la sortie vers une autre commande</h3>
+<h3 id="redirection-de-la-sortie-vers-une-autre-commande">Redirection de la sortie vers une autre commande</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -582,7 +584,7 @@ ls: impossible d<span class="token string">'accéder à '</span>/usr/bin/cd': Au
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /etc/passwd <span class="token operator">|</span> <span class="token function">less</span></code></pre>
 <p>Ou plus compliqué :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /etc/passwd <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span> <span class="token builtin class-name">:</span> <span class="token parameter variable">-f</span> <span class="token number">1</span> <span class="token operator">|</span> lolcat</code></pre>
-<h3>Pipe et tee</h3>
+<h3 id="pipe-et-tee">Pipe et tee</h3>
 <blockquote>
 <p>TBD créer ses propres pipe avec <code>mkfifo</code>
 TBD faire mieux. Mettre dans une partie à part. Un peu comme un cheveux sur la soupe là.
@@ -602,7 +604,7 @@ TBD dire que la sortie de l'un va dans l'autre.</p>
                               \
                                 -&gt; fichier
 </code></pre>
-<h3>redirection de la sortie vers un fichier</h3>
+<h3 id="redirection-de-la-sortie-vers-un-fichier">redirection de la sortie vers un fichier</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -625,14 +627,14 @@ TBD dire que la sortie de l'un va dans l'autre.</p>
 </div>
 </div>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"toto"</span> <span class="token operator">>></span> truc</code></pre>
-<h3>Redirection de l'erreur</h3>
+<h3 id="redirection-de-l-erreur">Redirection de l'erreur</h3>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> /truc <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">|</span> lolcat</code></pre>
 <p><a href="https://linuxize.com/post/linux-tee-command/">tee</a> pour :</p>
 <ul>
 <li>sauver un résultat intermédiaire dans une chaîne</li>
 <li>sauver et voir le stdout</li>
 </ul>
-<h3>car particulier de l'affichage à l'écran</h3>
+<h3 id="car-particulier-de-l-affichage-a-l-ecran">car particulier de l'affichage à l'écran</h3>
 <p>Souvent les commandes savent si leur stdout est dirigé vers un terminal (doit être affiché à l'écran) ou un fichier, et vont se comporter différemment selon le cas.</p>
 <p>Par exemple va lister les fichier les uns à la suite ds autres pour une sortie écran et un par ligne pour une sortie fichier ou pipe</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span>
@@ -669,7 +671,7 @@ temp
 truc
 Vidéos
 </code></pre>
-<h2>Exercice</h2>
+<h2 id="exercice">Exercice</h2>
 <blockquote>
 <p>TBD en faire des petits commandes à suivre.</p>
 </blockquote>
@@ -688,6 +690,92 @@ Vidéos
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -698,6 +786,7 @@ Vidéos
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

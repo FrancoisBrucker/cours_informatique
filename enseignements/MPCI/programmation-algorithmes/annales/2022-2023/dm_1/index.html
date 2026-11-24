@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>DM 1 : Suite de nombres</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -121,7 +121,7 @@ $$
 <p>Ce DM a pour but de vous faire travailler vos démonstrations et il mettra à épreuve votre capacité à écrire des boucles, créer des listes et à faire très attentions aux indices que vous manipulez.</p>
 </div>
 </div>
-<h2>Rapport à rendre</h2>
+<h2 id="rapport-a-rendre">Rapport à rendre</h2>
 <p>Le DM est à rendre sous forme électronique. Il doit contenir :</p>
 <ol>
 <li>Un fichier markdown contenant les réponses aux questions (suivez ce <a href="/cours_informatique/cours_informatique/tutoriels/format-markdown" class="interne">tutoriel</a> pour savoir écrire en markdown) et une version convertie en html de celui-ci</li>
@@ -138,17 +138,17 @@ $$
 </ul>
 </li>
 </ol>
-<h2>Des mots</h2>
-<h3>Décrire</h3>
+<h2 id="des-mots">Des mots</h2>
+<h3 id="decrire">Décrire</h3>
 <p>Donner tous les mots $\mathcal{L}$ de longueur 1, 2 et 3.</p>
-<h3>Longueur paire</h3>
+<h3 id="longueur-paire">Longueur paire</h3>
 <p>Montrer que pour toute suite $v = (v_0, \dots, v_{n-1})$ telle que $n$ est paire et $v_i \in \{-1, 1\}$ pour tout $i$, la somme $\sum_{i &lt; n} v_i$ est paire.</p>
 <p>En déduire qu'il n'existe pas de chaîne de longueur paire dans $\mathcal{L}$</p>
-<h3>Python : vérification</h3>
+<h3 id="python-verification">Python : vérification</h3>
 <p>Écrire une fonction qui indique si un mot est dans $\mathcal{L}$. Cette fonction devra être de complexité $\mathcal{O}(n)$ (que l'on justifiera) où $n$ est la longueur du mot en entrée.</p>
-<h2>Décomposition</h2>
+<h2 id="decomposition">Décomposition</h2>
 <p>Soit $s \in \mathcal{L}$ de longueur $n \geq 3$</p>
-<h3>Valeurs spéciales</h3>
+<h3 id="valeurs-speciales">Valeurs spéciales</h3>
 <p>Que valent $s[0]$ et $s[-1]$ ?</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -158,7 +158,7 @@ $$
 <p>Comme en python, on considérera que le dernier caractère de $s$ est noté $s[-1]$ et vaut $s_{n-1}$.</p>
 </div>
 </div>
-<h3>Constatation</h3>
+<h3 id="constatation">Constatation</h3>
 <p>Montrez que si $s_1$ et $s_2$ sont dans $\mathcal{L}$ alors le mot $+ \oplus s_1 \oplus s_2$ l'est aussi.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -168,7 +168,7 @@ $$
 <p>On note $\oplus$ l'opérateur de concaténation de deux chaînes.</p>
 </div>
 </div>
-<h3>Début de mot</h3>
+<h3 id="debut-de-mot">Début de mot</h3>
 <p>Montrez que si $0 \leq m' &lt; n$, $s[:m']$ ne peut être dans $\mathcal{L}$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -178,10 +178,10 @@ $$
 <p>Comme en python, pour une chaîne de caractères $s$, $s[:k]$ correspond à la chaîne $s_0\dots s_{k-1}$ formée des $k$ premiers éléments de $s$.</p>
 </div>
 </div>
-<h3>Sommes</h3>
+<h3 id="sommes">Sommes</h3>
 <p>Que vaut $\sum_{0 \leq i &lt; n -1} u(s)_i$ ?</p>
 <p>En déduire qu'il existe $m$ le plus petit entier tel que $\sum_{0 \leq i &lt; m} u(s)_i = 0$</p>
-<h3>Un sous-mot</h3>
+<h3 id="un-sous-mot">Un sous-mot</h3>
 <p>Soit $m$ le plus petit entier tel que $\sum_{i &lt; m} u(s)_i = 0$.
 Montrez que :</p>
 <ul>
@@ -200,19 +200,19 @@ Montrez que :</p>
 </ul>
 </div>
 </div>
-<h3>Le sous-mot</h3>
+<h3 id="le-sous-mot">Le sous-mot</h3>
 <p>Déduire de ce qui précède que pour tout $s \in \mathcal{L}$ de longueur $n \geq 3$, il existe un <strong>unique</strong> entier $m$ tel que $s[1:m]$ et $s[m:]$ sont dans $\mathcal{L}$.</p>
-<h3>Python : décomposition</h3>
+<h3 id="python-decomposition">Python : décomposition</h3>
 <p>Écrire une fonction qui, à partir d'un mot $s \in \mathcal{L}$ de longueur supérieure ou égale à 3 rend les deux mots $s_1$ et $s_2$ de $\mathcal{L}$ tels que $s = + \oplus s_1 \oplus s_2$</p>
-<h2>Tous les mots</h2>
+<h2 id="tous-les-mots">Tous les mots</h2>
 <p>En utilisant ce qui précède, écrire une fonction python qui rend une liste de tous les mots de $\mathcal{L}$ de taille plus petit qu'en entier <code>n</code> donné en paramètre.</p>
 <p>Essayez de ne pas recalculer des mots déjà utilisés.</p>
-<h2>Conjugaison</h2>
-<h3>Permutation</h3>
+<h2 id="conjugaison">Conjugaison</h2>
+<h3 id="permutation">Permutation</h3>
 <p>Montrer que si $s \in \mathcal{L}$ est un mot de longueur $n$, alors pour tout $0 &lt; m &lt; n$, $s[m:] \oplus s[:m]$ ne peut être dans $\mathcal{L}$.</p>
-<h3>Unique permutation</h3>
+<h3 id="unique-permutation">Unique permutation</h3>
 <p>Montrer que si pour une chaîne de caractères $c$ composée uniquement de $+$ et de $-$ (elle n'est pas forcément dans $\mathcal{L}$), il existe un entier $m$ tel que $c[m:] \oplus c[:m]$ est dans $\mathcal{L}$, alors il est unique.</p>
-<h3>Existence de la permutation</h3>
+<h3 id="existence-de-la-permutation">Existence de la permutation</h3>
 <p>Soit $c$ une chaîne de caractères composée uniquement de $+$ et de $-$ telle que $\sum_{0 \leq i &lt; n}u(c)_i = -1$.</p>
 <p>En utilisant le fait que pour tout $p &lt; q &lt; n$ on a (clairement) :</p>
 <div>
@@ -228,39 +228,125 @@ $$
 </div>
 <p>Alors $c[p:] \oplus c[:p]$ est dans $\mathcal{L}$.</p>
 <p>En déduire qu'il existe un <strong>unique</strong> $m$ tel que $c[m:] \oplus c[:m]$ est dans $\mathcal{L}$. Ce mot est appelé <em><strong>conjugué</strong></em> de c</p>
-<h3>Python : conjugaison</h3>
+<h3 id="python-conjugaison">Python : conjugaison</h3>
 <p>Écrire une fonction qui rend le conjugué d'une une chaîne de caractères $c$ composée uniquement de $+$ et de $-$ telle que $\sum_{0 \leq i &lt; n}u(c)_i = -1$.</p>
-<h3>Résultat intermédiaire</h3>
+<h3 id="resultat-intermediaire">Résultat intermédiaire</h3>
 <p>Montrez que si pour deux chaînes non vides $u$ et $v$ on a $u \oplus v = v \oplus u$ alors il existe une chaîne $w$ et deux entiers $k$ et $l$ tels que :</p>
 <ul>
 <li>$u$ est la concaténation de $k$ fois la chaîne $w$</li>
 <li>$v$ est la concaténation de $l$ fois la chaîne $w$</li>
 </ul>
-<h3>Permutations de $\mathcal{L}$</h3>
+<h3 id="permutations-de-mathcal-l">Permutations de $\mathcal{L}$</h3>
 <p>En utilisant le résultat précédent, montrer que si $s$ est dans $\mathcal{L}$ alors $s[m_1:] \oplus s[:m_1]$ est différent de $s[m_2:] \oplus s[:m_2]$ pour tout $m_1$ différent de $m_2$.</p>
-<h3>Dénombrement</h3>
+<h3 id="denombrement">Dénombrement</h3>
 <p>Combien y a-t-il de mots de longueur $2n + 1$ composés uniquement de $+$ et de $-$ tels que $\sum_{0 \leq i &lt; 2n+1}u(c)_i = -1$ ?</p>
-<h3>Dénombrement de $\mathcal{L}$</h3>
+<h3 id="denombrement-de-mathcal-l">Dénombrement de $\mathcal{L}$</h3>
 <p>Déduire de ce qui précède le nombre de mots de $\mathcal{L}$ de longueur $2n + 1$.</p>
-<h2>Capsules</h2>
+<h2 id="capsules">Capsules</h2>
 <p>On appelle <em><strong>capsule</strong></em> la chaîne de caractère $+--$</p>
 <p>On note $\rho(s)$ la fonction qui prend en entrée une chaîne de caractère $s=s_0\dots s_{n-1}$ et rend en sortie :</p>
 <ul>
 <li>$s$ si $s$ ne contient pas de capsule</li>
 <li>$s_0 \dots s_{i-1}s_{i+2} \dots s_{n-1}$ si $s_is_{i+1}s_{i+2}$ est la première capsule contenue dans $s$.</li>
 </ul>
-<h3>Python : capsule</h3>
+<h3 id="python-capsule">Python : capsule</h3>
 <p>Écrire une fonction qui calcule $\rho(s)$ pour une chaîne de caractère donnée en entrée.</p>
-<h3>Limite</h3>
+<h3 id="limite">Limite</h3>
 <p>Montrez que pour toute chaîne de caractère $s$, il existe une valeur $n$ telle que $\rho^{n+1}(s) = \rho^n(s)$. La chaîne de caractère limite $\rho^{n+1}(s)$ est notée $\rho^*(s)$.</p>
-<h3>Python capsules (le retour)</h3>
+<h3 id="python-capsules-le-retour">Python capsules (le retour)</h3>
 <p>Écrire une fonction qui calcule $\rho^*(s)$ pour une chaîne de caractère donnée en entrée.</p>
-<h3>Tout ça pour ça</h3>
+<h3 id="tout-ca-pour-ca">Tout ça pour ça</h3>
 <p>Montrez qu'une chaîne de caractère $s$ est dans $\mathcal{L}$ si et seulement si $\rho^*(s)$ vaut $-$</p>
 <p>Écrivez une fonction python qui rend un mot de $\mathcal{L}$ <em>aléatoire</em> de taille $2n+1$.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -271,6 +357,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

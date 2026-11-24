@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Projet Doppelganger</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -106,23 +106,23 @@
 </ul>
 </div>
 </div>
-<h2>Rendu</h2>
+<h2 id="rendu">Rendu</h2>
 <p>Le projet comporte deux partie : l'une algorithmique et l'autre dédiée au code.</p>
 <p>Il faudra rendre la partie algorithmique sous la forme d'un fichier markdown et la partie développement sous la forme d'un projet informatique.</p>
-<h3>Ordre des questions</h3>
+<h3 id="ordre-des-questions">Ordre des questions</h3>
 <p>Le but du projet est de faire les questions dans l'ordre. Non seulement les questions se suivent, mais elles racontent une histoire. La suivre vous permettra, j'espère, de passer un bon moment algorithmique.</p>
-<h3>Partie algorithmique</h3>
+<h3 id="partie-algorithmique">Partie algorithmique</h3>
 <p>Tout algorithme doit être donné en pseudocode et être démontré (finitude et correction).</p>
-<h3>Partie code</h3>
+<h3 id="partie-code">Partie code</h3>
 <p>Toute fonction devra être testée.</p>
-<h2>I. Prélude</h2>
+<h2 id="i-prelude">I. Prélude</h2>
 <p>Commençons par montrer que notre problème est bien défini et algorithmique.</p>
-<h3>I.1 Existence</h3>
-<h4>I.1.1</h4>
+<h3 id="i-1-existence">I.1 Existence</h3>
+<h4 id="i-1-1">I.1.1</h4>
 <p>Démontrez que l'entier $v$ du problème <em>Doppelganger</em> existe toujours.</p>
-<h4>I.1.2</h4>
+<h4 id="i-1-2">I.1.2</h4>
 <p>Démontrez que le problème <em>Doppelganger</em> peut admettre plusieurs solutions.</p>
-<h3>I.2 Algorithme</h3>
+<h3 id="i-2-algorithme">I.2 Algorithme</h3>
 <p>Montrez que l'algorithme suivant permet de résoudre le problème <em>Doppelganger</em> avec comme complexités :</p>
 <ul>
 <li>temporelle en $\mathcal{O}(n^2)$</li>
@@ -133,56 +133,56 @@
         <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">j</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">j</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span></code></pre>
-<h3>I.3 Complexité du problème</h3>
+<h3 id="i-3-complexite-du-probleme">I.3 Complexité du problème</h3>
 <p>Le but du problème est de trouver une solution optimale au problème. Commençons par donner des bornes à celui-ci.</p>
-<h4>I.3.1</h4>
+<h4 id="i-3-1">I.3.1</h4>
 <p>Montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Omega(n)$ et en $\mathcal{O}(n^2)$.</p>
-<h4>I.3.2</h4>
+<h4 id="i-3-2">I.3.2</h4>
 <p>Montrer que la complexité spatiale du problème <em>Doppelganger</em> est en $\mathcal{O}(1)$ (sans compter l'entrée).</p>
-<h3>I.4 Simulation</h3>
+<h3 id="i-4-simulation">I.4 Simulation</h3>
 <p>On vous demande de  créer un projet vscode dans le dossier <code class="fichier">doppelganger</code>. Ce projet contiendra :</p>
 <ul>
 <li>un fichier <code class="fichier">doppelganger.py</code></li>
 <li>un fichier <code class="fichier">test_doppelganger.py</code> qui contiendra les tests des fonctions du fichier <code class="fichier">doppelganger.py</code></li>
 <li>autant de programmes principaux que demandé dans la suite du projet.</li>
 </ul>
-<h4>I.4.1 Vérification</h4>
+<h4 id="i-4-1-verification">I.4.1 Vérification</h4>
 <p>Créez une fonction python vérifiera qu'un tableau passé en paramètre est une entrée valide du problème doppelganger Qui devra rendre une entrée du problème. Sa signature doit être :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_valide<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token builtin">bool</span></code></pre>
-<h4>I.4.2 Entrée</h4>
+<h4 id="i-4-2-entree">I.4.2 Entrée</h4>
 <p>Créez une fonction python Qui devra rendre une entrée du problème. Sa signature doit être :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_entrée<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span></code></pre>
 <p>Vous ferez en sorte que la probabilité que T[i] soit égal à x soit de 1/(n-1) quelque soient x et i.</p>
-<h4>I.4.3 Sortie</h4>
+<h4 id="i-4-3-sortie">I.4.3 Sortie</h4>
 <p>Implémentez l'algorithme du I.2 dans une fonction de signature :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_naif<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
-<h4>I.4.4 programme principal</h4>
+<h4 id="i-4-4-programme-principal">I.4.4 programme principal</h4>
 <p>Créez un programme principal dans un fichier <code class="fichier">main_I.py</code> permettant à un utilisateur de rentrer une taille de tableau. Le programme devra :</p>
 <ol>
 <li>rendre une sortie du problème Doppelganger</li>
 <li>donner le temps mis par l'algorithme pour s'exécuter</li>
 </ol>
-<h2>II. Une première borne</h2>
+<h2 id="ii-une-premiere-borne">II. Une première borne</h2>
 <p>Affinons un peu la complexité de notre problème.</p>
-<h3>II.1 Trié</h3>
-<h4>II.1.1</h4>
+<h3 id="ii-1-trie">II.1 Trié</h3>
+<h4 id="ii-1-1">II.1.1</h4>
 <p>Montrer que si le tableau en entrée du problème est trié, on peut résoudre le problème Doppelganger en temps linéaire.</p>
-<h4>II.1.2</h4>
+<h4 id="ii-1-2">II.1.2</h4>
 <p>Déduire de la question précédente un algorithme modifiant le tableau en entrée et résolvant le problème Doppelganger avec une complexité :</p>
 <ul>
 <li>temporelle en $\mathcal{O}(n\ln(n))$</li>
 <li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
 </ul>
-<h4>II.1.3</h4>
+<h4 id="ii-1-3">II.1.3</h4>
 <p>Implémentez l'algorithme du II.1.2 dans une fonction de signature :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_tri<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
-<h4>II.1.4</h4>
+<h4 id="ii-1-4">II.1.4</h4>
 <p>Créez un programme principal dans un fichier <code class="fichier">main_II.py</code> permettant à un utilisateur de rentrer une taille de tableau. Le programme devra :</p>
 <ol>
 <li>rendre une sortie du problème Doppelganger</li>
 <li>comparer les temps d'exécution des deux algorithmes <code class="language-">doppelganger_tri</code> et <code class="language-">doppelganger_naif</code></li>
 </ol>
-<h4>II.1.5</h4>
+<h4 id="ii-1-5">II.1.5</h4>
 <p>Expérimentalement, votre algorithme naif doit très souvent aller plus vite que votre algorithme qui tri au préalable votre tableau. Si cela n'arrive pas, faite une amélioration de votre algorithme naif pour que cela arrive.</p>
 <p>Pourquoi ?</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -193,23 +193,23 @@
 <p>Vous pourrez utiliser le fait que $\lim_{n\to +\infty}(1-1/n)^n = 1/e$.</p>
 </div>
 </div>
-<h4>II.1.6</h4>
+<h4 id="ii-1-6">II.1.6</h4>
 <p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf et vérifiez le expérimentalement en ajoutant ce tableau à <code class="fichier">main_II.py</code>.</p>
-<h3>II.2</h3>
+<h3 id="ii-2">II.2</h3>
 <p>Utilisons le fait que les entiers dont sont composés le tableau pour lequel il faut trouver le doublon sont entre 0 et n-1, soit les indices d'un tableau de taille $n$.</p>
-<h4>II.2.1</h4>
+<h4 id="ii-2-1">II.2.1</h4>
 <p>Montrez qu'en utilisant un tableau <code class="language-">B</code> de taille $n$ de booléens, on peut créer un algorithme permettant de résoudre le problème Doppelganger avec une complexité :</p>
 <ul>
 <li>temporelle en $\mathcal{O}(n)$</li>
 <li>spatiale en $\mathcal{O}(n)$ (sans compter l'entrée)</li>
 </ul>
-<h4>II.2.2</h4>
+<h4 id="ii-2-2">II.2.2</h4>
 <p>Implémentez l'algorithme du II.2.1 dans une fonction de signature :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_bool<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
 <p>Ajoutez au programme principal du fichier <code class="fichier">main_II.py</code> le temps d'exécution de l'algorithme <code class="language-">doppelganger_bool</code>.</p>
-<h4>II.2.3</h4>
+<h4 id="ii-2-3">II.2.3</h4>
 <p>L'algorithme <code class="language-">doppelganger_bool</code> est-il effectivement le plus rapide ?</p>
-<h3>II.3</h3>
+<h3 id="ii-3">II.3</h3>
 <p>Utilisez la question II.2.3 pour montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Theta(n)$ et la complexité spatiale de $\mathcal{O}(1)$ (sans compter l'entrée).</p>
 <p>Quelle est (pour l'instant) la complexité spatiale de l'algorithme en $\mathcal{O}(n)$ et la complexité temporelle de l'algorithme de complexité spatiale $\mathcal{O}(1)$ ?</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -221,7 +221,7 @@
 <p>Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible ?</p>
 </div>
 </div>
-<h2>III. Interlude</h2>
+<h2 id="iii-interlude">III. Interlude</h2>
 <p>Prenons un petit moment pour analyser un autre problème.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -242,7 +242,7 @@
 </ul>
 </div>
 </div>
-<h3>III.1 Existence</h3>
+<h3 id="iii-1-existence">III.1 Existence</h3>
 <p>Une suite $(a_i)_{0\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
 <ul>
 <li>les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes</li>
@@ -250,24 +250,24 @@
 </ul>
 <p>Une suite  ultimement périodique ressemble à un $\rho$ (rho) :</p>
 <p><img src="rho.png" alt="rho"></p>
-<h4>III.1.1</h4>
+<h4 id="iii-1-1">III.1.1</h4>
 <p>Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.</p>
-<h4>III.1.2</h4>
+<h4 id="iii-1-2">III.1.2</h4>
 <p>Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
-<h4>III.1.3</h4>
+<h4 id="iii-1-3">III.1.3</h4>
 <p>Montrez que si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ et $x \in [\![ 1, n]\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :</p>
 <ul>
 <li>$a_0 = x$</li>
 <li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
 </ul>
 <p>est ultimement périodique.</p>
-<h4>III.1.4</h4>
+<h4 id="iii-1-4">III.1.4</h4>
 <p>Donnez une fonction $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ telle que la suite ultimement périodique associée (comme en III.1.3) avec $a_0 = 1$ a le même $\rho$ que la figure.</p>
-<h3>III.2</h3>
+<h3 id="iii-2">III.2</h3>
 <p>Soit $(a_i)_{i\geq 0}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.</p>
-<h4>III.2.1</h4>
+<h4 id="iii-2-1">III.2.1</h4>
 <p>Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
-<h4>III.2.2</h4>
+<h4 id="iii-2-2">III.2.2</h4>
 <p>Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">programme</span> <span class="token function">lièvre_tortue</span><span class="token punctuation">(</span><span class="token parameter variable">f</span><span class="token punctuation">:</span> <span class="token type class-name"><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">→</span> int</span><span class="token punctuation">,</span>
                         <span class="token parameter variable">x</span><span class="token punctuation">:</span> <span class="token type class-name">int</span>
@@ -288,15 +288,15 @@
 <p>Vous aurez remarqué qu'un des paramètres du programme est une fonction. <a href="/cours_informatique/cours/algorithmie/1-algorithme/pseudo-code/algorithmes-fonctions/#type">Le type d'une fonction est sa signature</a>.</p>
 </div>
 </div>
-<h4>III.2.3</h4>
+<h4 id="iii-2-3">III.2.3</h4>
 <p>Montrez que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ ?</p>
-<h3>III.3</h3>
+<h3 id="iii-3">III.3</h3>
 <p>Nous allons chercher ici $a_\mu$ qui est le début du cycle. Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
-<h4>III.3.1</h4>
+<h4 id="iii-3-1">III.3.1</h4>
 <p>Montrez que $m$ est un multiple de $\lambda$.</p>
-<h4>III.3.2</h4>
+<h4 id="iii-3-2">III.3.2</h4>
 <p>Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.</p>
-<h4>III.3.3</h4>
+<h4 id="iii-3-3">III.3.3</h4>
 <p>Déduire de ce qui précède un algorithme de complexité temporelle $\mathcal{O}(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -306,9 +306,9 @@
 <p>Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?</p>
 </div>
 </div>
-<h3>III.4</h3>
+<h3 id="iii-4">III.4</h3>
 <p>Nous allons coder cette partie. Pour cela, créez deux fichiers, <code class="language-">point_fixe.py</code> et <code class="language-">test_point_fixe.py</code>, dans lesquels vous créerez les fonctions demandées.</p>
-<h4>III.4.1</h4>
+<h4 id="iii-4-1">III.4.1</h4>
 <p>Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">lièvre_tortue<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span></code></pre>
 <p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
@@ -316,7 +316,7 @@
 <li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
 <li>$x = T[0]$</li>
 </ul>
-<h4>III.4.2</h4>
+<h4 id="iii-4-2">III.4.2</h4>
 <p>Codez l'algorithme de la question IV.3.3. Cet algorithme devra être de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">mu<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span></code></pre>
 <p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
@@ -324,21 +324,21 @@
 <li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
 <li>$x = T[0]$</li>
 </ul>
-<h4>III.4.3</h4>
+<h4 id="iii-4-3">III.4.3</h4>
 <p>Dans un nouveau programme principal <code class="fichier">main_III.py</code>, demandez à un utilisateur de rentrer une taille $n$ de tableau. Le programme devra :</p>
 <ol>
 <li>afficher un tableau créé aléatoirement avec <code class="language-">doppelganger_entrée(n + 1)</code></li>
 <li>afficher la sortie de l'algorithme <code class="language-">lièvre_tortue</code></li>
 <li>affiche la période de la suite ultimement périodique associée au tableau commençant avec $a_\mu$</li>
 </ol>
-<h2>IV. Solution optimale</h2>
+<h2 id="iv-solution-optimale">IV. Solution optimale</h2>
 <p>Nous allons montrer dans cette partie que l'on peut résoudre le problème <em>Doppelganger</em> avec un algorithme de complexité :</p>
 <ul>
 <li>temporelle en $\mathcal{O}(n)$</li>
 <li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
 </ul>
 <p>Cet algorithme sera alors optimal et en temps et en espace !</p>
-<h3>IV.1</h3>
+<h3 id="iv-1">IV.1</h3>
 <p>Soit ${(a_i)}_{i\geq 0}$ une suite ultimement périodique de paramètres $\mu &gt; 0$ et $\lambda$.</p>
 <p>Montrez que $f(a_{\mu - 1}) = f(a_{\mu + \lambda - 1})$ et en déduire que $a_\mu$ est une solution au problème <em>Doppelganger</em> pour le tableau $T$ tel que :</p>
 <ul>
@@ -346,19 +346,19 @@
 <li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
 <li>$a_{i+1} = f(a_i)$</li>
 </ul>
-<h3>IV.2</h3>
+<h3 id="iv-2">IV.2</h3>
 <p>Déduire de ce qui précède un algorithme permettant de résoudre le problème <em>Doppelganger</em> avec un algorithme de complexité :</p>
 <ul>
 <li>temporelle en $\mathcal{O}(n)$</li>
 <li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
 </ul>
-<h3>IV.3</h3>
+<h3 id="iv-3">IV.3</h3>
 <p>On termine ce projet en implémentant tout ça !</p>
-<h4>IV.3.1</h4>
+<h4 id="iv-3-1">IV.3.1</h4>
 <p>Ajoutez dans le fichier <code class="fichier">doppelganger.py</code> un algorithme de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_optimal<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span></code></pre>
 <p>Qui résout de façon optimale en temps et en espace le problème <em>Doppelganger</em>.</p>
-<h4>IV.3.2</h4>
+<h4 id="iv-3-2">IV.3.2</h4>
 <p>Créez un programme principal dans un fichier <code class="fichier">main_IV.py</code> qui compare le temps mis pour résoudre le problème Doppelganger avec la version naive, triée et optimale pour une taille de tableau donnée par l'utilisateur et en utilisant 2 tableaux :</p>
 <ul>
 <li>un crée par <code class="language-">doppelganger_entrée</code></li>
@@ -377,6 +377,92 @@
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -387,6 +473,7 @@
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

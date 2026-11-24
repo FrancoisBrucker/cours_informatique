@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">DS : Corrigé</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -91,7 +91,7 @@
 
   
 
-  <h2>Introduction</h2>
+  <h2 id="introduction">Introduction</h2>
 <p>La moyenne générale a été de 12,15, avec un écart type de 3,72.</p>
 <p>La note moyenne (en pourcentage) pour chaque question était :</p>
 <table>
@@ -121,7 +121,7 @@
 </tbody>
 </table>
 <p>J'ai mis un corrigé de tout l'examen pour que vous puissiez vous entraîner. Ce sujet est parfait car il n'est pas trop compliqué au début (mais du coup il faut aller vite) et permet de s'entraîner avec les listes. Toutes les subtilités des listes et de leurs indices y sont en effet présentes. Et en plus, et c'est certainement le plus important, il est marrant et agréable à faire (enfin si on aime un peu l'algorithmie bien sûr (mais comment pourrait-on ne pas ?)).</p>
-<h2>Question 1</h2>
+<h2 id="question-1">Question 1</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">creerGrille</span><span class="token punctuation">(</span>largeur<span class="token punctuation">,</span> hauteur<span class="token punctuation">)</span><span class="token punctuation">:</span>
     grille <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -140,7 +140,7 @@
 <li>ne mettez pas plusieurs fois la même liste dans grille. un truc du genre : <code class="language-">l= [1, 2]</code> et <code class="language-">grille = [l, l]</code> ne fonctionnera pas car c'est la <strong>même</strong> liste qui sera là, pas deux colonnes différentes (pour vous en rendre compte écrivant <code class="language-">grille[0][1] = '?'</code> puis affichez la grille. Les deux colonnes sont modifiées car c'st la <strong>même</strong> colonne)</li>
 <li>attention à la ligne <code class="language-">colonne = []</code> est est <strong>dans</strong> la boucle et pas au dessus. Il faut qu'elle soit recréée à chaque fois.</li>
 </ul>
-<h2>Question 2</h2>
+<h2 id="question-2">Question 2</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">afficherGrille</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -176,7 +176,7 @@
 <li>hauteur doit décroître et largeur croître</li>
 <li>l'ordre des boucle imbriqué est important</li>
 </ul>
-<h2>Question 3</h2>
+<h2 id="question-3">Question 3</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">grilleLibre</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -211,7 +211,7 @@
 <li>on cherche si une colonne est disponible. Il ne faut pas s'arrêter si une colonne ne fonctionne pas. Le <code class="language-">return False</code> n'est présent que si l'on a regardé toutes les colonne et aucune ne marche. En revanche, on peut sortir avec un <code class="language-">return True</code> dès la première colonne qui fonctionne</li>
 <li>la complexité est $\mathcal{O}(largeur\times k)$ et non $\mathcal{O}(largeur \times hauteur)$ : $k$ est une entrée de notre problème, on doit donc l'utiliser si on peut. La première réponse n'est pas fausse (puisque $hauteur &gt; k$) mais elle est moins précise</li>
 </ul>
-<h2>Question 4</h2>
+<h2 id="question-4">Question 4</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">descente</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -234,7 +234,7 @@
 <li>on ne descend que <strong>d'une seule case</strong></li>
 <li>attention au dernier élément qu'il faut placer à vide une fois le barreau descendu</li>
 </ul>
-<h2>Question 5</h2>
+<h2 id="question-5">Question 5</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">deplacerBarreau</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -266,7 +266,7 @@
 <li>comme on demande de ne pas modifier le barreau si on ne peut pas le déplacer, on sépare les 2 actions : 1- on vérifie que c'est bon 2- on modifie grille. C'est plus simple que remettre les valeurs d'origine si on se rend compte au milieu de l'algorithme que ça ne marche pas</li>
 <li>on peut factoriser les 2 directions en une seule boucle</li>
 </ul>
-<h2>Question 6</h2>
+<h2 id="question-6">Question 6</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">permuterBarreau</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -277,7 +277,7 @@
     grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> premier_element
 </code></pre>
 <p>On est obligé de sauver le premier élément (l'élément le plus haut) pour le placer à la fin au dernier élément du barreau (à la position y).  Puis on parcourt le barreau du deuxième</p>
-<h2>Question 7</h2>
+<h2 id="question-7">Question 7</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">descenteRapide</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
     descente <span class="token operator">=</span> y
@@ -288,7 +288,7 @@
         grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>descente <span class="token operator">+</span> position<span class="token punctuation">]</span> <span class="token operator">=</span> grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span>
         grille<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">+</span> position<span class="token punctuation">]</span> <span class="token operator">=</span> VIDE</code></pre>
 <p>On commence par trouver la hauteur maximale de descente du barreau, puis on téléporte le barreau à cette place. Comme on ne déplace le barreau qu'une seule fois la complexité demandée est bien atteinte. Comme le barreau est <em>téléporté</em> de bas en haut il n'est pas effacé si l'on descend de moins de <em>k</em> lignes.</p>
-<h2>Question 8</h2>
+<h2 id="question-8">Question 8</h2>
 <p>Position initiale :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">...B..  
 ...R..  
@@ -367,7 +367,7 @@ N..J.V
 NNJI.V
 VNJB.J</code></pre>
 <p>Plus aucun positifs, d'où un total de 8pts.</p>
-<h2>Question 9</h2>
+<h2 id="question-9">Question 9</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">detecteAlignement</span><span class="token punctuation">(</span>rangee<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -411,7 +411,7 @@ H<span class="token punctuation">:</span>    <span class="token keyword">for</sp
 <li>marque <code class="language-">H</code> : à la fin de l'itération, on fini la dernière couleur.</li>
 </ul>
 <p>On peut noter que la complexité de cette fonction est en $\mathcal{O}(\mbox{len(rangee)})$.</p>
-<h2>Question 10</h2>
+<h2 id="question-10">Question 10</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> scoreRangée<span class="token punctuation">(</span>grille<span class="token punctuation">,</span> g<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">)</span><span class="token punctuation">:</span>
 A<span class="token punctuation">:</span>  rangee <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -433,7 +433,7 @@ C<span class="token punctuation">:</span>  <span class="token keyword">for</span
 <li>B: on crée les alignements.</li>
 <li>C: on met à jour la grille g en supprimant les cases où <code class="language-">rangee</code> est <code class="language-">True</code></li>
 </ul>
-<h2>Question 11</h2>
+<h2 id="question-11">Question 11</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">effaceAlignement</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -467,7 +467,7 @@ E<span class="token punctuation">:</span>  <span class="token keyword">for</span
 <li>D: on regarde les diagonales qui <em>&quot;montent&quot;</em>. Attention, pour ne pas compter 2 fois les même diagonales, la deuxième itération commence à 1</li>
 <li>E: on regarde les diagonales qui <em>&quot;descendent&quot;</em>. Attention, pour ne pas compter 2 fois les même diagonales, la deuxième itération fini à hauteur - 2.</li>
 </ul>
-<h2>Question 12</h2>
+<h2 id="question-12">Question 12</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">tassementGrille</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -481,7 +481,7 @@ E<span class="token punctuation">:</span>  <span class="token keyword">for</span
                 libre <span class="token operator">+=</span> <span class="token number">1</span></code></pre>
 <p>Tasser un élément revient à le mettre au premier élément vide de la colonne que l'on considère. Si l'on parcourt une colonne de bas en haut, cet élément vide sera vu avant l' élément à tasser.
 De là on parcourt chaque colonne de haut en bas et garder un pointeur vers la première place libre (lorsque <code class="language-">(libre == None) and grille[i][j] == VIDE</code>). A partir de cet indice <code class="language-">j</code> on a que <code class="language-">libre != None</code>. Un élément à tasser vérifiera la condition <code class="language-">(libre != None)  and grille[i][j] != VIDE</code>.</p>
-<h2>Question 13</h2>
+<h2 id="question-13">Question 13</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">calculScore</span><span class="token punctuation">(</span>grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -497,7 +497,7 @@ De là on parcourt chaque colonne de haut en bas et garder un pointeur vers la p
     
     <span class="token keyword">return</span> score_total</code></pre>
 <p>Tant que le score est strictement positif on met à jour la matrice (comme la fonction ne rend pas de grille, il faut modifier la grille initiale) et on calcul le nouveau score que l'on ajoute au score total.</p>
-<h2>Question 14</h2>
+<h2 id="question-14">Question 14</h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">tailleRegionUnicolore</span><span class="token punctuation">(</span>grille<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -520,7 +520,7 @@ De là on parcourt chaque colonne de haut en bas et garder un pointeur vers la p
 </code></pre>
 <p>L'algorithme fonctionne ainsi. On commence par vérifier que la case n'est pas vide. Si ce n'est pas le cas, on vide la case pour s'assurer de ne pas repasser plusieurs fois par cette case lors de la récursion.</p>
 <p>Puis, si c'est possible (on reste dans la grille et la case adjacente est de la même couleur), on relance l'algorithme sur les 4 cases à côté. Les résultats des algorithmes appelés sont ajoutés au score courant.</p>
-<h2>Question 15</h2>
+<h2 id="question-15">Question 15</h2>
 <p>La stratégie proposée ne fonctionne pas. En effet, la méthode <code class="language-">exploreVertical</code> ne regarde que la colonne courante et la méthode <code class="language-">exploreHorizontal</code> ne fait appel qu'à <code class="language-">exploreVertical</code> puis se décale dans même direction. De là une région qui fait un <em>escargot</em> ne sera pas trouvée puisqu'il faudrait aller horizontalement dans les 2 directions :</p>
 <p>Exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">XRR
@@ -530,6 +530,92 @@ RRR</code></pre>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -540,6 +626,7 @@ RRR</code></pre>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

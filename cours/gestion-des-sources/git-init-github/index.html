@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Installation et configuration de Git</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -114,6 +115,7 @@
 </div>
 
     
+  </div>
   
 
   <p>Installation et configuration de git pour github.</p>
@@ -125,8 +127,8 @@
 <p>On ne montrera pas ici comment utiliser git en ligne de commande.</p>
 </div>
 </div>
-<h2>Installation</h2>
-<h3>Git</h3>
+<h2 id="installation">Installation</h2>
+<h3 id="git">Git</h3>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -207,7 +209,7 @@
 </div>
 </details>     
 </div>
-<h3>Github cli</h3>
+<h3 id="github-cli">Github cli</h3>
 <p>Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande : <a href="https://docs.github.com/en/github-cli/github-cli/about-github-cli">github CLI</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -218,7 +220,7 @@
 </div>
 </div>
 <p>Nous ne l'utiliserons pas ici, mais je vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.</p>
-<h2>Configuration</h2>
+<h2 id="configuration">Configuration</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -235,7 +237,7 @@
 <li>au niveau de chaque projet. Par défaut le fichier de configuration de git est <code class="fichier">.git/config</code> à la racine du projet</li>
 </ol>
 <p>On mettra les informations générales dans le fichier de configuration du compte (identité et comportement général de git) avec la commande <code>git config --global &lt;variable&gt; &lt;valeur&gt;</code> et les informations spécifiques pouvant changer dans la configuration du projet (les origines par exemple) avec la commande <code>git config &lt;variable&gt; &lt;valeur&gt;</code>.</p>
-<h3>Info personnelles</h3>
+<h3 id="info-personnelles">Info personnelles</h3>
 <p>Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -249,7 +251,7 @@
 <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"your_email@example.com"</span></code></pre>
 </div>
 </div>
-<h3>Rebase comme fusion par défaut</h3>
+<h3 id="rebase-comme-fusion-par-defaut">Rebase comme fusion par défaut</h3>
 <p>On définie tout de suite la stratégie de fusion.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -268,7 +270,7 @@
 <li>de préserver les merge (fusion) de branches déjà présentes (et qui donc, si elles existent, ont une fonction <em>sémantique</em> dans votre projet)</li>
 </ul>
 <p>Vous pourrez ensuite faire des <code>git pull</code> tout seul et ils seront rebasés par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.</p>
-<h3>Branche par défaut</h3>
+<h3 id="branche-par-defaut">Branche par défaut</h3>
 <p>Pour être cohérent avec github, on va dire que tout nouveau projet commence avec la branche <code>main</code>.</p>
 <p>Par défaut c'est <code>master</code> (et ça <a href="https://github.com/github/renaming?tab=readme-ov-file">fait des histoires</a>).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -282,7 +284,7 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> init.defaultBranch <span class="token string">"main"</span></code></pre>
 </div>
 </div>
-<h3>Éditeur de messages</h3>
+<h3 id="editeur-de-messages">Éditeur de messages</h3>
 <p>On va mettre vscode comme éditeur par défaut pour renseigner les commits.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -304,7 +306,7 @@
 <p>Par défaut l'éditeur est <code>vi</code>. Il sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit sur un système unix (genre un serveur distant). Attention cet éditeur fonctionne de façon totalement différente que ce dont on a l'habitude.</p>
 </div>
 </div>
-<h3>Configurations optionnelles</h3>
+<h3 id="configurations-optionnelles">Configurations optionnelles</h3>
 <p>On met de la couleur dans le terminal par défaut.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -338,7 +340,7 @@
 <p>On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant l'argument de git <code>--no-pager</code>, par exemple :<code>git --no-pager log</code>. Notez que <code>--no-pager</code> est un argument de git, pas de sa commande <code>log</code>, il est donc placé avant celle-ci.</p>
 </div>
 </div>
-<h2>Initialiser un projet pour github</h2>
+<h2 id="initialiser-un-projet-pour-github">Initialiser un projet pour github</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -349,7 +351,7 @@
 <p><a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories">https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories</a></p>
 </div>
 </div>
-<h3>Cloner un projet existant</h3>
+<h3 id="cloner-un-projet-existant">Cloner un projet existant</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -406,7 +408,7 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <p>On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre compte, donc  utilisez le clonage utilisant le protocole <code>ssh</code>.</p>
 </div>
 </div>
-<h4>Clonage ssh</h4>
+<h4 id="clonage-ssh">Clonage ssh</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -441,7 +443,7 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 </li>
 </ul>
 <p>On voit que le protocole d’authentification n'est <strong>pas</strong> <code>https://</code>, il faut avoir lié une clé ssh à son compte github.</p>
-<h4>Clonage https</h4>
+<h4 id="clonage-https">Clonage https</h4>
 <ol>
 <li>dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi <code class="fichier">~/Documents/git-projets/</code></li>
 <li>tapez la commande : <code>git clone [le nom du projet]</code>. Dans mon cas, le menu déroulant <em>&quot;clone&quot;</em> m'indique qu'il faut taper la commande : <code>git clone https://github.com/Test-cours-ecm/animaux.git</code></li>
@@ -467,10 +469,10 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <li>github est identifié comme la branche <code>origin</code> et son protocole de communication est <code>https://</code></li>
 <li>la branche <code>main</code> est disponible sur l'origin.</li>
 </ul>
-<h4>Clonage github CLI</h4>
+<h4 id="clonage-github-cli">Clonage github CLI</h4>
 <p>Il faut d'abord s'identifier (<code>gh auth login</code>) avant de pouvoir cloner le repo : <code>gh repo clone Test-cours-ecm/animaux</code>.</p>
 <p>Ensuite, tout se passe comme précédemment. L'intérêt d'utiliser le <code>github CLI</code> est de pouvoir gérer directement les spécificités de github comme les pull request par exemple.</p>
-<h3>Créer un nouveau projet et l'envoyer sur github</h3>
+<h3 id="creer-un-nouveau-projet-et-l-envoyer-sur-github">Créer un nouveau projet et l'envoyer sur github</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -542,6 +544,92 @@ drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="to
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -552,6 +640,7 @@ drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="to
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

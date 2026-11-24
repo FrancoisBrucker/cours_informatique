@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Espace de nommage</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Nous avons déjà abordé la notion d'espace de nommage lorsque :</p>
@@ -157,7 +159,7 @@
 </div>
 </div>
 <p>Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.</p>
-<h2>Rappel sur les variables et les objets</h2>
+<h2 id="rappel-sur-les-variables-et-les-objets">Rappel sur les variables et les objets</h2>
 <p>Commençons par quelques rappels et précisions sur les variables et leurs liens avec les objets :</p>
 <ul>
 <li>tout ce que manipule un programme est appelé objet.</li>
@@ -176,7 +178,7 @@
 </ul>
 </div>
 </div>
-<h3>Objets</h3>
+<h3 id="objets">Objets</h3>
 <p>Un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
 <ul>
 <li>des données</li>
@@ -193,7 +195,7 @@
 <p>Tout est objet dans un langage objet.</p>
 </div>
 </div>
-<h3>Variables</h3>
+<h3 id="variables">Variables</h3>
 <p>Les variables sont des références aux objets. Pour ce faire, on utilise l’opérateur d’affectation <code class="language-">=</code> :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">variable = objet</code></pre>
 <p>A gauche de l’opérateur <code class="language-">=</code> se trouve une <strong>variable</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.</p>
@@ -208,7 +210,7 @@
 </div>
 <p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
 <p>Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
-<h2><span id="espace-variable"></span> Espaces des variables</h2>
+<h2 id="espaces-des-variables"><span id="espace-variable"></span> Espaces des variables</h2>
 <p>L'espace des variables peut-être vu comme un espace de nom particulier : c'est celui qui est créé au début de l'exécution de l'interpréteur.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -298,7 +300,7 @@ je suis un véritable hacker<span class="token punctuation">.</span></code></pre
 <p>L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder à tous les objets via celui-ci.</p>
 </div>
 </div>
-<h2><span id="espace-modules"></span> Espaces de nommage des modules</h2>
+<h2 id="espaces-de-nommage-des-modules"><span id="espace-modules"></span> Espaces de nommage des modules</h2>
 <p>On a vu qu'un module contenait <a href="../principes/modules/#d%C3%A9finition-espace-nommage">un espace de nommage</a> auquel on pouvait accéder via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e">la notation pointée</a>. Tout comme l'espace des variables, cet espace ne contient pas de parent.</p>
 <p>Tout comme la fonction <code class="language-">globals()</code> permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet <code class="language-">o</code> (en particulier d'un module) en utilisant <a href="https://docs.python.org/fr/3.14/library/functions.html#vars">la fonction <code class="language-">vars(o)</code></a>.</p>
 <p>Testons cela en regardant si <code class="language-">print</code> est dans le module <code class="language-">__builtins__</code> :</p>
@@ -420,7 +422,7 @@ mon_module<span class="token punctuation">.</span>autre_variable <span class="to
 <span class="token keyword">import</span> math
 
 math<span class="token punctuation">.</span>pi <span class="token operator">=</span> <span class="token number">3.2</span></code></pre>
-<h2><span id="espace-variable"></span> Espaces de nommage courant</h2>
+<h2 id="espaces-de-nommage-courant"><span id="espace-variable"></span> Espaces de nommage courant</h2>
 <p>L'exécution de fonction nécessite l'utilisation d'espaces de nommages pour
 compartimenter l'usage des variables.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -445,7 +447,7 @@ compartimenter l'usage des variables.</p>
 <li>lors de l'exécution de fonction l'espace de nommage courant est l'espace créé pour son exécution.</li>
 </ul>
 <p>Fixons nous les idées en examinant plusieurs cas.</p>
-<h3>Espace des variables</h3>
+<h3 id="espace-des-variables">Espace des variables</h3>
 <p>Au démarrage d'un interpréteur l'espace de nommage courant est l'espace des variables. Vérifions le :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python
 Python <span class="token number">3.14</span>.3 <span class="token punctuation">(</span>main, Feb  <span class="token number">3</span> <span class="token number">2026</span>, <span class="token number">15</span>:32:20<span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">17.0</span>.0 <span class="token punctuation">(</span>clang-1700.6.3.2<span class="token punctuation">)</span><span class="token punctuation">]</span> on darwin
@@ -455,7 +457,7 @@ True
 <span class="token operator">>></span><span class="token operator">></span> locals<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'__name__'</span><span class="token punctuation">]</span>
 <span class="token string">'__main__'</span>
 </code></pre>
-<h3>Espaces créés pour les modules</h3>
+<h3 id="espaces-crees-pour-les-modules">Espaces créés pour les modules</h3>
 <p>Lors de l'import d'un module l'espace de nommage courant est celui du module lors de son exécution. Pour vérifier cela créons un fichier nommé <code class="fichier">mon_module.py</code> et mettons y le code :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"affichage depuis le module :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"__name__"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p>Puis créons un fichier <code class="fichier">main.py</code> qui va importer notre module :</p>
@@ -473,7 +475,7 @@ affichage depuis le main <span class="token builtin class-name">:</span> __main_
 <li>l'espace de nom courant change pendant l'exécution du module (la variable <code class="language-">__main__</code> est différente)</li>
 <li>l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module (la le paramètre de la fonction <code class="language-">print</code> du module est affichée, donc exécutée)</li>
 </ul>
-<h3>Espace créés pour les fonctions</h3>
+<h3 id="espace-crees-pour-les-fonctions">Espace créés pour les fonctions</h3>
 <p><a href="../creation-fonctions/#espace-nommage">Un espace de nommage est créé pour chaque fonction lors de son exécution</a>, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -510,7 +512,7 @@ espace des variables <span class="token builtin class-name">:</span> dict_keys<s
 <p>Pour <code class="language-">fact(5)</code> produira l'imbrication des différents espaces de nommages :</p>
 <p><img src="rec.png" alt="rec"></p>
 <p>La variable <code class="language-">n</code> existe dans <strong>tous</strong> les espaces de nommages, une fois par appel de la fonction.</p>
-<h2>Hiérarchie des espaces de nommages</h2>
+<h2 id="hierarchie-des-espaces-de-nommages">Hiérarchie des espaces de nommages</h2>
 <p>L'espace de nommage parent permet de hiérarchiser la recherche de noms :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -581,6 +583,92 @@ la variable x: 42
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -591,6 +679,7 @@ la variable x: 42
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

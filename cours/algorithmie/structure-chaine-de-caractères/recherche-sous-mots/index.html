@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Recherche de sous chaines</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <blockquote>
@@ -135,7 +137,7 @@ b[j] = a[i + j]
 $$</p>
 </div>
 </div>
-<h2>Algorithme naïf</h2>
+<h2 id="algorithme-naif">Algorithme naïf</h2>
 <p>La première idée pour résoudre le problème de <em>la recherche d'une sous-chaîne</em> est de vérifier pour pour tout $0 \leq i &lt; n$ si la définition est correcte :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
@@ -146,14 +148,14 @@ $$</p>
 <span class="highlight-line">        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
 <span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
-<h3>Pièges</h3>
+<h3 id="pieges">Pièges</h3>
 <p>L'algorithme semble une application directe de la définition, et pourtant... Attention aux multiples pièges de ce genre d'algorithme. Il faut <strong>toujours</strong> vérifier très consciencieusement :</p>
 <ul>
 <li>les limites de boucles</li>
 <li>les conditions d'arrêt</li>
 </ul>
 <p>Essayez de comprendre pourquoi les solutions suivantes ne fonctionnent pas en exhibant un contre-exemple.</p>
-<h4>Limites de boucles</h4>
+<h4 id="limites-de-boucles">Limites de boucles</h4>
 <p>Attention aux limites des boucles <code class="language-">for</code> ! Il faut <strong>toujours</strong> vérifier les bornes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -228,7 +230,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<h4>Conditions d'arrêt</h4>
+<h4 id="conditions-d-arret">Conditions d'arrêt</h4>
 <p>Une erreur classique :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -299,8 +301,8 @@ $$</p>
 </div>
 </details>     
 </div>
-<h3>Complexité</h3>
-<h4>Complexité maximale</h4>
+<h3 id="complexite">Complexité</h3>
+<h4 id="complexite-maximale">Complexité maximale</h4>
 <p>Calculons la complexité ligne à ligne :</p>
 <ol>
 <li>définition d'un fonction : $\mathcal{O}(1)$ opérations</li>
@@ -314,9 +316,9 @@ $$</p>
 <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
 </ol>
 <p>On en conclut que la complexité totale se niche dans l'exécution des deux boucles <code class="language-">for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.</p>
-<h4>Complexité minimale</h4>
+<h4 id="complexite-minimale">Complexité minimale</h4>
 <p>La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i=0$. Dans ce cas là, il aura fallu $\mathcal{O}(m)$ opérations.</p>
-<h4>Complexité en moyenne</h4>
+<h4 id="complexite-en-moyenne">Complexité en moyenne</h4>
 <p>On pourrait envisager deux calculs possibles :</p>
 <ul>
 <li>complexité en moyenne lorsque $b$ est une sous-chaine de $a$</li>
@@ -324,7 +326,7 @@ $$</p>
 </ul>
 <p>Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la <em>structure</em> de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'applications où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)</p>
 <p>Le second cas est le cas le pire et à un nombre constant d'opérations : $\mathcal{O}(nm)$.</p>
-<h4>Attention</h4>
+<h4 id="attention">Attention</h4>
 <p>Attention ! L'algorithme suivant, qui utilise la comparaison de listes en python, n'est <strong>pas</strong> de complexité inférieure.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -332,7 +334,7 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>En effet, la complexité de l'égalité entre deux liste est égale à la taille de la plus petite des listes.</p>
-<h3>Une amélioration subtile</h3>
+<h3 id="une-amelioration-subtile">Une amélioration subtile</h3>
 <p>La boucle en $j$ (lignes 4-6) de l'algorithme <code class="language-">sous_chaine_naif</code> pourrait être améliorée en l'arrêtant dès que <code class="language-">trouvé</code> est mis à <code>False</code>.</p>
 <p>On peut pour cela utiliser l'instruction <code class="language-">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
 <p>On a alors l'algorithme suivant :</p>
@@ -347,7 +349,7 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.</p>
-<h4><code class="language-">break</code>, <code class="language-">continue</code> et <code class="language-">while</code></h4>
+<h4 id="break-continue-et-while"><code class="language-">break</code>, <code class="language-">continue</code> et <code class="language-">while</code></h4>
 <p>L'instruction <code class="language-">break</code> de l'algorithme <code class="language-">sous_chaine_naif_amélioré</code> aurait très bien pu s'écrire avec une boucle <code class="language-">while</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré_sans_break<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -390,7 +392,7 @@ $$</p>
 <p>L'utilisation de <code>break</code> et de <code>continue</code> permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
 </div>
 </div>
-<h4>Calcul de la complexité en moyenne</h4>
+<h4 id="calcul-de-la-complexite-en-moyenne">Calcul de la complexité en moyenne</h4>
 <p>On suppose que l'on est dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.</p>
 <p>A $i$ fixé, on a alors :</p>
 <ol>
@@ -472,7 +474,7 @@ $$</p>
 </div>
 </div>
 <p>Un simple <code class="language-">break</code> a rendu linéaire la complexité en moyenne de l'algorithme.</p>
-<h3>Trouver toutes les sous-chaines</h3>
+<h3 id="trouver-toutes-les-sous-chaines">Trouver toutes les sous-chaines</h3>
 <p>Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_tous</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -512,7 +514,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<h2>Améliorations</h2>
+<h2 id="ameliorations">Améliorations</h2>
 <p>it autour de la boucle <code class="language-">for</code> en <code class="language-">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.</p>
 <p>Par exemple si on cherche la chaine <code class="language-">b=CGT</code> dans la chaine <code class="language-">a=CGACGACGACGA</code> $i+j$ vaudra :</p>
 <ol>
@@ -527,7 +529,7 @@ $$</p>
 </ol>
 <p>Chaque élément de $a$ sera vu $m$ fois.</p>
 <p>Accélérer l'algorithme revient à faire en sorte que le nombre $i+j$ soit croissant le plus souvent possible.</p>
-<h3>Prétraitement utilisant $a$</h3>
+<h3 id="pretraitement-utilisant-a">Prétraitement utilisant $a$</h3>
 <p>Une première idée que l'on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l'index $i$ si $a[i] \neq b[0]$.</p>
 <p>Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant <code class="language-">sous_chaine_naif_tous(a, b[0])</code>. On utilise ensuite ces indices dans notre algorithme accéléré :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -547,10 +549,10 @@ $$</p>
 <p>Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver.
 L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.</p>
 <p>Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.</p>
-<h3>Prétraitement sur $b$</h3>
+<h3 id="pretraitement-sur-b">Prétraitement sur $b$</h3>
 <p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne travaillant que sur $b$ ?</p>
 <p>Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :</p>
-<p>On débute une recherche en comparant $a[i + 0]$ à $b[0] :</p>
+<p>On débute une recherche en comparant $a[i + 0]$ à $b[0]$ :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             i
 a:     ...aaa?aaaaaaaa....
 b:           bbbbbb
@@ -648,7 +650,7 @@ b:             bbbbbb
 </ul>
 <p>Plus il y a de 0 dans $T_b$ plus les décalages seront importants</p>
 <p>Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition.</p>
-<h3>Amélioration de l'amélioration</h3>
+<h3 id="amelioration-de-l-amelioration">Amélioration de l'amélioration</h3>
 <p>L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p &gt; 0$ tel que $b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            i
 a:     .....abbbaa?aaa....
@@ -712,10 +714,10 @@ Alors en notant :</p>
 </div>
 <p>Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ <strong>et</strong> $j$ de sorte que la somme $i+j$ soit croissante.</p>
 <p>C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.</p>
-<h2>Algorithme de Knuth-Morris-Pratt</h2>
+<h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 <p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.</p>
 <p>Nous allons procéder par étape pour essayer de le comprendre.</p>
-<h3>Décalage adapté</h3>
+<h3 id="decalage-adapte">Décalage adapté</h3>
 <p>L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
 <p>Ce tableau permet également d'avancer $i$ plus que l'algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">0123456789    : index
@@ -763,7 +765,7 @@ ACGAGACGACT   : la chaîne b
 
     <span class="token keyword">return</span> T_b</code></pre>
 <p>La complexité de cet algorithme est cependant assez grande, puisqu'elle est en $\mathcal{O}(m^3)$.</p>
-<h3>Algorithme</h3>
+<h3 id="algorithme">Algorithme</h3>
 <p>Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l'optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.</p>
 <p>Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i + j :         v
@@ -818,7 +820,7 @@ i/j:           i j</code></pre>
 </div>
 </div>
 <p>Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction <code>cree_tableau(b)</code></p>
-<h3>Création de la table de décalage</h3>
+<h3 id="creation-de-la-table-de-decalage">Création de la table de décalage</h3>
 <p>L'algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n'est pas vraiment optimal. L'algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu'il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !</p>
 <p>Décrivons l'idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$</p>
 <p>On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
@@ -890,7 +892,7 @@ i/j:           i j</code></pre>
 <p>La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
 </div>
 </div>
-<h2>Autres algorithmes</h2>
+<h2 id="autres-algorithmes">Autres algorithmes</h2>
 <p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp">Rabin-Karp</a>. Cet algorithme est intéressant car :
@@ -905,6 +907,92 @@ i/j:           i j</code></pre>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -915,6 +1003,7 @@ i/j:           i j</code></pre>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

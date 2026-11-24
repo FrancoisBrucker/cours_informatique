@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Hash cryptographiques</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -114,6 +115,7 @@
 </div>
 
     
+  </div>
   
 
   <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -159,8 +161,8 @@
 </div>
 </div>
 <p>La résistance à la seconde pré-image condition étant plus restrictive que la résistance à la pré-image.</p>
-<h2>Usage</h2>
-<h3>Intégrité non sécurisée</h3>
+<h2 id="usage">Usage</h2>
+<h3 id="integrite-non-securisee">Intégrité non sécurisée</h3>
 <p>On accole le hash au message envoyé : $m || H(m)$</p>
 <p>Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. On peut alors associer un couple $(S, V)$ <strong><em>signe et vérifie</em></strong> :</p>
 <ul>
@@ -175,7 +177,7 @@
 <p>Rien n'empêche un attaquant de modifier et $m$ et son hash. Cette technique est uniquement preuve de transmission correct d'un message dans un canal pouvant être bruité, mais pas susceptible d'être attaqué.</p>
 </div>
 </div>
-<h3>Stockage sécurisé</h3>
+<h3 id="stockage-securise">Stockage sécurisé</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -185,13 +187,13 @@
 </div>
 </div>
 <p>Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un <em>sel</em> aléatoire. Voyons pourquoi.</p>
-<h4>Ne pas faire</h4>
+<h4 id="ne-pas-faire">Ne pas faire</h4>
 <ol>
 <li>Stockage en clair dans un fichier : pas sécurisé du tout</li>
 <li>Stockage en clair dans un fichier accessible par un seul utilisateur : si vol de l'ordinateur pas sécurisé</li>
 <li>Mot de passe chiffré : le mot de passe est potentiellement connu de plusieurs autres personnes, dont l'administrateur.</li>
 </ol>
-<h4>Utilisation d'un hash</h4>
+<h4 id="utilisation-d-un-hash">Utilisation d'un hash</h4>
 <p>A priori <strong>personne</strong> à part l'utilisateur n'à à connaître son mot de passe. On peut arriver à ceci en utilisant une fonction de hash :</p>
 <ol>
 <li>on stocke dans la base le hash d'un mot de passe</li>
@@ -207,7 +209,7 @@
 </div>
 </div>
 <p>Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (<em>ie.</em> pas assez long ou sur par assez de caractères différents).</p>
-<h5>Brute force</h5>
+<h5 id="brute-force">Brute force</h5>
 <p>L'attaque <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque">Brute force si faible nombre de possibilités</a> fonctionne assez bien car :</p>
 <ul>
 <li>si uniquement des caractères minuscules $2^{128} = 26^x$ donne $x = 28$ ce qui est trop long</li>
@@ -215,10 +217,10 @@
 <li>si tout le clavier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.</li>
 <li>si base 64, il faut $128/7 \simeq 18$ pour obtenir pour obtenir jun mot de passe sécurisé brute force.</li>
 </ul>
-<h5>Dictionnaire</h5>
+<h5 id="dictionnaire">Dictionnaire</h5>
 <p>On peut accélérer le processus en utilisant un dictionnaire des mots de passes les plus utilisés (des mots ou des combinaisons de mots français) et en les choisissant en priorité. Et on les choisis par ordre aléatoires.</p>
 <p>Par exemple chercher les hash identiques dans la base signifiera que le mot de passe est basique car utilisé par beaucoup de personnes, ce qui accélérera grandement la recherche.</p>
-<h4>Salage du hash</h4>
+<h4 id="salage-du-hash">Salage du hash</h4>
 <p>Enfin, stocker les hash et pas les mots de passes en clair hash n'aide pas vraiment :</p>
 <ul>
 <li>on peut utiliser des tables de hash déjà faites</li>
@@ -238,7 +240,7 @@
 <p><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0">argon2</a></p>
 </div>
 </div>
-<h3>Clés</h3>
+<h3 id="cles">Clés</h3>
 <p>La non collision permet de rechercher les hash plutôt que les valeurs exactes dans une liste stockant toutes les données. C'est la technique utilisée par Git pour gérer les ajouts, suppressions et modifications de code dans un projet.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -248,7 +250,7 @@
 <p>Git utilise par défaut la fonction de hash <a href="https://fr.wikipedia.org/wiki/SHA-1">SHA-1</a>.</p>
 </div>
 </div>
-<h2>Construction</h2>
+<h2 id="construction">Construction</h2>
 <p>Il existe de nombreux hash. Testez les différences pour voir :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -259,13 +261,13 @@
 </div>
 </div>
 <p>Nous allons voir deux constructions. La première utilisée actuellement, la seconde qui vient.</p>
-<h3>Construction courante</h3>
+<h3 id="construction-courante">Construction courante</h3>
 <blockquote>
 <p>TBD comme pour le chiffrement. Un bloc
 puis on lie de façon sécurisée.</p>
 </blockquote>
 <p>Il faut pouvoir associer un hash a un bloc de taille fixe et lier chaque blocs pour faire un hash prenant en compte tout le message. On utilise pour cela un <a href="../../confidentialit%C3%A9/nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRP">une permutation pseudo-aléatoire sécurisée</a>, tout comme pour le chiffrement.</p>
-<h4>Hash de un bloc de donnée</h4>
+<h4 id="hash-de-un-bloc-de-donnee">Hash de un bloc de donnée</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -334,7 +336,7 @@ m---|&gt;  P  |   |
 <p>La preuve nécessite un PRP, mais comme on est pas sur que cela existe, les algorithmes mettant en oeuvre ce principe doivent être conçus pour très bien mélanger les bits tout en étant non prédictif (il faut le faire de façon &quot;<em>compliquée</em>&quot;).</p>
 <p>Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées <a href="https://fr.wikipedia.org/wiki/Shacal">shacal-1 et shacal-2</a>. Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.</p>
 <p>Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut <strong>pas</strong> échanger clé et message.</p>
-<h4>Extension à plusieurs blocs</h4>
+<h4 id="extension-a-plusieurs-blocs">Extension à plusieurs blocs</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -431,7 +433,7 @@ $$
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-blake2b512</span> <span class="token parameter variable">-c</span>
 BLAKE2B-512<span class="token punctuation">(</span>stdin<span class="token punctuation">)</span><span class="token operator">=</span> d7:51:79:bf:82:77:b6:9c:cb:5e:30:64:d4:3b:d6:b7:ac:7b:ff:93:de:9d:0a:53:07:d0:85:4d:2e:68:52:b1:d5:04:49:0e:5f:7b:91:a3:b9:9f:9b:4c:40:c3:b9:39:4c:56:7c:45:4b:e3:ab:39:a3:f2:cb:59:60:f6:3d:05</code></pre>
 <p>En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.</p>
-<h3>Construction en éponge</h3>
+<h3 id="construction-en-eponge">Construction en éponge</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -449,13 +451,13 @@ BLAKE2B-512<span class="token punctuation">(</span>stdin<span class="token punct
 <li><a href="https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf">https://summerschool-croatia.cs.ru.nl/2017/slides/introduction to permutation-based cryptography.pdf</a></li>
 </ul>
 </blockquote>
-<h3>Construction en arbre binaire</h3>
+<h3 id="construction-en-arbre-binaire">Construction en arbre binaire</h3>
 <blockquote>
 <p>TBD blake3 <a href="https://www.youtube.com/watch?v=nk4nefmguZk">https://www.youtube.com/watch?v=nk4nefmguZk</a>
 TBD pour le parallélisme
 TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html">https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html</a></p>
 </blockquote>
-<h2>Attaque</h2>
+<h2 id="attaque">Attaque</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -467,7 +469,7 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html">
 </ul>
 </div>
 </div>
-<h3>Attaque des anniversaires</h3>
+<h3 id="attaque-des-anniversaires">Attaque des anniversaires</h3>
 <p>L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.</p>
 <p>Grace au <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires">paradoxe des anniversaires</a>, on sait qu'il suffit de $2^{n/2}$ mots de $\{0, 1\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.</p>
 <p>Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :</p>
@@ -532,7 +534,7 @@ TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html">
 <p>Il faut toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.</p>
 </div>
 </div>
-<h3>Brute force par Rainbow tables</h3>
+<h3 id="brute-force-par-rainbow-tables">Brute force par Rainbow tables</h3>
 <p>On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <a href="https://en.wikipedia.org/wiki/Rainbow_table">https://en.wikipedia.org/wiki/Rainbow_table</a> (voir aussi <a href="https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5">https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5</a>) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -550,7 +552,7 @@ TBD expliquer et faire exemple.</p>
 <p>TBD on est assuré que les chaines sont différentes. On ne va pas retomber sur des choses déjà vues.</p>
 <p>Donner complexité en temps et en mémoire</p>
 </blockquote>
-<h3>Length extension attack</h3>
+<h3 id="length-extension-attack">Length extension attack</h3>
 <p>Pour des construction Merkel-Damgard on peut continuer la procédure et étendre le hash. Tout se passe comme si on avait un message plus grand. Si le protocole en face n'est pas propre ce la peut mener à des catastrophes :</p>
 <pre><code>
 ...
@@ -567,7 +569,7 @@ versement : 100 euros
 versement : 1000000 euros
 </code></pre>
 <p>On peut continuer le hash sans connaître le message initial.</p>
-<h3>Differential Analysis</h3>
+<h3 id="differential-analysis">Differential Analysis</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -590,6 +592,92 @@ versement : 1000000 euros
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -600,6 +688,7 @@ versement : 1000000 euros
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

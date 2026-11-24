@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Dictionnaires</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,11 +95,12 @@
 
 
     
+  </div>
   
 
   <p>Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le dictionnaire (<em>hash map</em>) aussi appelé le tableau associatif.</p>
 <p>Cette structure utilise de façon sous-jacente une <a href="../fonctions-hash">fonctions de hachage</a>.</p>
-<h2>Fonction de hachage utilisée</h2>
+<h2 id="fonction-de-hachage-utilisee">Fonction de hachage utilisée</h2>
 <p>On supposera l'existence de fonction de hachage :</p>
 <div>
 $$
@@ -124,7 +126,7 @@ $$
 </div>
 </div>
 </div>
-<h2>Principe</h2>
+<h2 id="principe">Principe</h2>
 <p>Le squelette de la structure de dictionnaire est la suivante :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token variable parameter">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]V</span><span class="token operator">&lt;</span>longueur<span class="token punctuation">:</span> m<span class="token operator">></span>  <span class="token operator">←</span> <span class="token punctuation">[</span>∅ <span class="token punctuation">.</span><span class="token punctuation">.</span> ∅<span class="token punctuation">]</span>  <span class="token comment"># tableau de m entrées toutes vides</span>
@@ -171,7 +173,7 @@ $$
 
 <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">couleur</span></span> <span class="token operator">←</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> <span class="token variable parameter">rgb</span><span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">8</span> <span class="token operator">*</span> <span class="token variable parameter">rgb</span><span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token variable parameter">rgb</span><span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span></code></pre>
 <p>On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si <code class="language-">Dictionnaire.f(&quot;bleu&quot;)</code> =  <code class="language-">Dictionnaire.f(&quot;rouge&quot;)</code> le code précédent ne fonctionnera pas.</p>
-<h2>Première implémentation réelle</h2>
+<h2 id="premiere-implementation-reelle">Première implémentation réelle</h2>
 <p>Si $m$ est très grand devant le nombre d'objet que l'on veut stocker la probabilité de collisions est tellement faible qu'on peut la considérer comme nulle, mais :</p>
 <ul>
 <li>si on veut garder des tailles de structure raisonnables et donc réduire $m$ au maximum,</li>
@@ -253,7 +255,7 @@ $$
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"vert"</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                    <span class="token comment"># indice 0</span>
        <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                                <span class="token comment"># indice 1</span>
        <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"rouge"</span><span class="token punctuation">,</span> <span class="token number">230</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"bleu"</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">]</span>   <span class="token comment"># indice 2</span></code></pre>
-<h2>Complexité de la recherche d'une clé</h2>
+<h2 id="complexite-de-la-recherche-d-une-cle">Complexité de la recherche d'une clé</h2>
 <p>La complexité de la méthode <code class="language-">Dictionnaire.get</code> vaut la somme de ces différentes opérations :</p>
 <ol>
 <li>Calcul de $f(\mbox{clé})$</li>
@@ -270,7 +272,7 @@ $$
 <p>La recherche et l'affectation dans un dictionnaire est en $\mathcal{O}$ du nombre maximum de clé stockés avec la même valeur de hash.</p>
 </div>
 </div>
-<h2>Taille de la structure</h2>
+<h2 id="taille-de-la-structure">Taille de la structure</h2>
 <p>Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a>, la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.</p>
 <p>Pour résoudre ce problème on va encore une fois utiliser <a href="#th%C3%A9or%C3%A8me-fondamental-d%C3%A9veloppement-logiciel">le TFDL</a> et ajouter une indirection.</p>
 <p>On utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :</p>
@@ -291,7 +293,7 @@ $$
 <p>Une <strong><em>fonction d'adressage</em></strong> est une famille $f_m$ de fonctions : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$ définis pour tout entier $m$.</p>
 </div>
 </div>
-<h3>Taille fixe</h3>
+<h3 id="taille-fixe">Taille fixe</h3>
 <p>La version finale de la structure de dictionnaire est alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter variable">clé</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
 <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m0</span> <span class="token type class-name">int</span></span>                     <span class="token comment"># capacité par défaut d'un dictionnaire</span>
@@ -335,7 +337,7 @@ $$
 </code></pre>
 <p>La fonction d'adressage permet de choisir une taille de tableau qui correspond à nos besoins. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.</p>
 <p>Cette version permet d'avoir une structure dont la taille est proportionnelle au nombre de valeurs stockées mais dont le nombre de collisions va augmenter plus on stocke de valeurs. On peut améliorer ça en utilisant la même technique que pour les listes.</p>
-<h3>Taille dynamique</h3>
+<h3 id="taille-dynamique">Taille dynamique</h3>
 <p>Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée dictionnaire et correspond à la structure :</p>
 <p><span id="structure-dictionnaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter variable">clé</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
@@ -394,7 +396,7 @@ $$
             <span class="token keyword">rendre</span> ∅
 </code></pre>
 <p>Tout comme les listes, une fois que le nombre d'élément stocké dépasse la capacité ou double la capacité. Dans notre cas cela revient à changer de fonction d'adressage et de tout restocker.</p>
-<h2>Complexités des méthodes</h2>
+<h2 id="complexites-des-methodes">Complexités des méthodes</h2>
 <p>En supposant que la fonction d'adressage est une fonction de hash utile,
 On va estimer la complexité des opérations suivantes :</p>
 <ul>
@@ -405,7 +407,7 @@ On va estimer la complexité des opérations suivantes :</p>
 <li>suppression d'un élément à la structure</li>
 </ul>
 <p>On utilisera ici la structure finale et dynamique du dictionnaire.</p>
-<h3>Création de la structure</h3>
+<h3 id="creation-de-la-structure">Création de la structure</h3>
 <p>La taille initiale est nulle donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -415,7 +417,7 @@ On va estimer la complexité des opérations suivantes :</p>
 <p>La création d'un dictionnaire prend $\mathcal{O}(1)$ opérations.</p>
 </div>
 </div>
-<h3>Suppression de la structure</h3>
+<h3 id="suppression-de-la-structure">Suppression de la structure</h3>
 <p>La suppression du dictionnaire implique la suppression de toutes les listes stockées :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -425,7 +427,7 @@ On va estimer la complexité des opérations suivantes :</p>
 <p>La suppression d'un dictionnaire $d$ prend $\mathcal{O}(d.\mbox{\small capacité})$ opérations.</p>
 </div>
 </div>
-<h3>Ajout/recherche et suppression d'un élément</h3>
+<h3 id="ajout-recherche-et-suppression-d-un-element">Ajout/recherche et suppression d'un élément</h3>
 <p>Les complexités sont identiques car cela revient à chercher si la clé $c$ est déjà stockée ou non dans la structure.</p>
 <p>Cette complexité peut aller de :</p>
 <ul>
@@ -452,10 +454,10 @@ On va estimer la complexité des opérations suivantes :</p>
 <div class="pl-8 mb-2 mr-8"><strong>À retenir</strong></div>
 <div class="pl-8 mr-8">
 <p>La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.</p>
-<p>La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.</p>
+<p>La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés dans la structure.</p>
 </div>
 </div>
-<h2>Utilisation</h2>
+<h2 id="utilisation">Utilisation</h2>
 <p>Tableaux associatifs et dictionnaire sont deux synonymes. On utilisera cependant plus volontiers le terme de dictionnaire en code (popularisé par python qui en fait un usage intensif) que de tableau associatif plus daté.</p>
 <p>Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoin d'une indirection.</p>
 <p>Par exemple :</p>
@@ -484,6 +486,92 @@ On va estimer la complexité des opérations suivantes :</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -494,6 +582,7 @@ On va estimer la complexité des opérations suivantes :</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

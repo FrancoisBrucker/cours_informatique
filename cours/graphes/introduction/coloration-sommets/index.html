@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Coloration des sommets d&#39;un graphe</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -149,7 +151,7 @@
 </details>     
 </div>
 <p>Notez que l'on a déjà vu un problème de coloration. En effet <a href="../cliques-stables/#ramsey">les nombres de Ramsey</a> correspondent à la recherche de cliques de tailles donnée dans la 2-coloration d'un graphe complet.</p>
-<h2>Problème</h2>
+<h2 id="probleme">Problème</h2>
 <p>Continuons notre exploration en essayant de chercher le nombre minimum de couleurs possible pour colorer les sommets d'un graphe. Les cycles paires admettent une 2-coloration (mais pas une 1-coloration puisqu'ils ont une arête) et les cycles impaires quant à eux uniquement une 3-coloration :</p>
 <p><img src="cycles-sommet.png" alt="cycles sommets"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -323,7 +325,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>$k$-colorabilité ≤ $k+1$-colorabilité</h3>
+<h3 id="k-colorabilite-k-1-colorabilite">$k$-colorabilité ≤ $k+1$-colorabilité</h3>
 <p>Cela se gâte pour $k&gt;2$. On va maintenant montrer la NP-complétude du problème de $k$-colorabilité pour $k&gt;2$.</p>
 <p>On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes 2-colorable et pour les graphes 1-colorable (c'est le graphe discret). De plus, vous aller le montrer, on peut facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -353,7 +355,7 @@ $$
 </div>
 </details>     
 </div>
-<h3><span id="3-col"></span>3-colorable est NP-Complet</h3>
+<h3 id="3-colorable-est-np-complet"><span id="3-col"></span>3-colorable est NP-Complet</h3>
 <p>Pour terminer, il nous reste à montrer que <code>3-colorable</code> est NP-complet.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -452,7 +454,7 @@ $$
 <p><img src="npc-ex-g.png" alt="ex G"></p>
 <p>Ce graphe est 3-colorable (on a associé une couleur à chaque stable) :</p>
 <p><img src="npc-ex-G-colorie.png" alt="ex G 3-stable"></p>
-<h2>Graphes bi-parti</h2>
+<h2 id="graphes-bi-parti">Graphes bi-parti</h2>
 <p>Le problème de la 2-colorabilité définit une classe très importante de graphe, les graphes bi-partis :</p>
 <p><span id="définition-biparti"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -632,7 +634,7 @@ Boucle principale <span class="token punctuation">:</span>
 </details>     
 </div>
 <p>Les graphes bi-parti sont une classe de graphes très générale. On les retrouve un peu partout dans des preuves, en support à des algorithmes généraux, etc car de nombreux problèmes NP-complets en général sont polynomiaux pour eux (par exemple la coloration...).</p>
-<h2><span id="algorithme-glouton"></span>Un algorithme glouton</h2>
+<h2 id="un-algorithme-glouton"><span id="algorithme-glouton"></span>Un algorithme glouton</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -739,7 +741,7 @@ $$
 </details>     
 </div>
 <p>Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et, on le montrera plus tard, c'est les seuls fois.</p>
-<h3>Algorithme de Welch-Powel</h3>
+<h3 id="algorithme-de-welch-powel">Algorithme de Welch-Powel</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -817,7 +819,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Algorithme DSATUR</h3>
+<h3 id="algorithme-dsatur">Algorithme DSATUR</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -870,7 +872,7 @@ $$
 </tr>
 </tbody>
 </table>
-<h3>Ordre aléatoire</h3>
+<h3 id="ordre-aleatoire">Ordre aléatoire</h3>
 <p>Quelque soit l'optimisation il n'est pas à performance garantie, on peut forger des exemples qui rendent une coloration non optimale. De là comme l'algorithme va vite utiliser plusieurs ordre aléatoire puis prendre le meillleur donne souvent de bon résultats.  Ceci est lié à un résultat curieux que nous ne démontrerons pas :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -890,7 +892,7 @@ $$
 <p>Les pires nombre de couleurs sont appelé  les <a href="https://en.wikipedia.org/wiki/Grundy_number">&quot;<em>grundy numbers</em>&quot;</a>.</p>
 </div>
 </div>
-<h2>Coloration par composition de graphes</h2>
+<h2 id="coloration-par-composition-de-graphes">Coloration par composition de graphes</h2>
 <p>La coloration des sommets d'un graphe étant lié aux arêtes voisines commençons par une proposition qui va nous permettre de ne considérer par la suite que des graphes connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1043,7 +1045,7 @@ $$
 </details>     
 </div>
 <p>Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.</p>
-<h3>$G_1 + G_2$</h3>
+<h3 id="g-1-g-2">$G_1 + G_2$</h3>
 <p>Commençons par la plus simple, qui ne rajoute aucune arête entre les deux graphes que l'on compose :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1152,7 +1154,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>$G_1 \vee G_2$</h3>
+<h3 id="g-1-vee-g-2">$G_1 \vee G_2$</h3>
 <p>On peut aussi utiliser l'approche opposée, qui consiste à ajouter toutes les arêtes possibles entre les deux graphes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1261,7 +1263,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>$G_1 \square G_2$</h3>
+<h3 id="g-1-square-g-2">$G_1 \square G_2$</h3>
 <p>Enfin, de façon plus subtile :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1504,7 +1506,7 @@ $$
 <p><a href="https://www.youtube.com/watch?v=Tnu_Ws7Llo4">https://www.youtube.com/watch?v=Tnu_Ws7Llo4</a> et <a href="https://arxiv.org/pdf/1905.02167">https://arxiv.org/pdf/1905.02167</a></p>
 </div>
 </div>
-<h2>Applications</h2>
+<h2 id="applications">Applications</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -1514,7 +1516,7 @@ $$
 <p>Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation et pour résoudre des problèmes ou l'on cherche à minimiser les incompatibilités.</p>
 </div>
 </div>
-<h3>Résoudre des sudoku</h3>
+<h3 id="resoudre-des-sudoku">Résoudre des sudoku</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -1523,17 +1525,17 @@ $$
 <p><a href="https://fr.wikipedia.org/wiki/Graphe_du_sudoku">le graphe du sudoku</a></p>
 </div>
 </div>
-<h3>Faire des plans de table</h3>
+<h3 id="faire-des-plans-de-table">Faire des plans de table</h3>
 <blockquote>
 <p>TBD ou résoudre des problèmes d'emploi du temps.
 p45 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 </blockquote>
-<h3>Optimiser la compilation de programmes</h3>
+<h3 id="optimiser-la-compilation-de-programmes">Optimiser la compilation de programmes</h3>
 <blockquote>
 <p>p4 <a href="http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf">http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf</a>
 et p49 <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 </blockquote>
-<h3>Attention</h3>
+<h3 id="attention">Attention</h3>
 <blockquote>
 <p>TBD à ne pas tout modéliser par des couleurs.
 à 5min45 <a href="https://www.youtube.com/watch?v=y4RAYQjKb5Y">https://www.youtube.com/watch?v=y4RAYQjKb5Y</a></p>
@@ -1543,6 +1545,92 @@ Ca arrive plus souvent qu'pon ne le pense, doc faite attention lorsque vous mod�
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -1553,6 +1641,7 @@ Ca arrive plus souvent qu'pon ne le pense, doc faite attention lorsque vous mod�
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

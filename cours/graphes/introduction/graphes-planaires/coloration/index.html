@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Coloration de graphes planaires</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,11 +95,12 @@
 
 
     
+  </div>
   
 
   <p>Colorer les sommets d'un graphe planaire est similaire à colorer des faces d'une représentation graphique.  En effet, comme chaque arête du graphe est liée à seulement 2 faces on peut facilement créer un graphe dont les faces sont les sommets et on met une arêtes entre deux faces si leurs frontières partagent une arête. Ce graphe est également planaire car on peut facilement déduire une de ses représentations graphique :</p>
 <p><img src="planaire-face.png" alt="planaire face"></p>
-<h2>6-colorable</h2>
+<h2 id="6-colorable">6-colorable</h2>
 <p>On peut utiliser notre <a href="../../coloration-sommets/#algorithme-glouton">algorithme glouton de coloration</a> en prenant un ordre spécial : celui où le sommet à colorier à toujours au plus 5 de ses voisins coloré avant lui.</p>
 <p>Ceci est possible puisqu'on a vu qu'<a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5">un graphe planaire possède toujours au moins un sommet de degré inférieur ou égal à 5</a>. L'algorithme suivant en est une application directe de complexité clairement linéaire $\mathcal{O}(n+m)$.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
@@ -126,8 +128,8 @@
 		<span class="token variable parameter">c</span><span class="token punctuation">[</span><span class="token variable parameter">x</span><span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">6</span><span class="token punctuation">}</span> \ <span class="token punctuation">{</span><span class="token variable parameter">c</span><span class="token punctuation">[</span><span class="token variable parameter">y</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token variable parameter">y</span> ∈ <span class="token variable parameter">G</span><span class="token punctuation">[</span><span class="token variable parameter">x</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>   <span class="token comment"># au plus 5 voisins colorés</span>
 
 	<span class="token keyword">rendre</span> <span class="token variable parameter">c</span></code></pre>
-<h2>5-colorable</h2>
-<h3>Preuve par chaîne de Kempe</h3>
+<h2 id="5-colorable">5-colorable</h2>
+<h3 id="preuve-par-chaine-de-kempe">Preuve par chaîne de Kempe</h3>
 <p>La preuve de la proposition suivante va nous permettre de déduire un algorithme de 5-coloration.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -190,11 +192,11 @@
 <p><a href="https://www.youtube.com/watch?v=adZZv4eEPs8">Cela ne fonctionne pas</a>.</p>
 </div>
 </div>
-<h3>Algorithme linéaire</h3>
+<h3 id="algorithme-lineaire">Algorithme linéaire</h3>
 <p>La démonstration du théorème des 5 couleurs donne un algorithme quadratique pour 5 colorer. On procède comme dans l'algorithme des 6 couleurs et lorsque les 5 voisins d'un sommet ont des couleurs différente on utilise des chaîne de Kempe pour réduire ce nombre à 4 couleurs, ce qui laisse toujours une 5ème couleur de disponible.</p>
 <p>On peut cependant faire mieux !</p>
 <p>Commençons par donner l'idée générale de l'algorithme puis regardons comment elle peut être implémentée efficacement.</p>
-<h4>Idée de l'algorithme</h4>
+<h4 id="idee-de-l-algorithme">Idée de l'algorithme</h4>
 <p>Prenons un représentation planaire d'un graphe et un sommet de degré 5 et effectuons les deux opérations de mineurs suivante :</p>
 <ol>
 <li>on supprime le sommet</li>
@@ -205,7 +207,7 @@
 <p><img src="lin-5-col-2.png" alt="lin 5 col 1"></p>
 <p>Ceci fonctionne car en regardant l'orientation planaire du sommet de degré 5, soit les sommets 1 et 3 soit les sommets 2 et 4 ne sont pas voisins :</p>
 <p><img src="lin-5-col-3.png" alt="lin 5 col 1"></p>
-<h4>Implémentation</h4>
+<h4 id="implementation">Implémentation</h4>
 <p>L'idée de l'algorithme fonctionne mais savoir si un voisin d'un sommet de degré 5 est voisin d'un autre voisin prend son degré opérations qui peut être aussi grand qu'on veut...</p>
 <p>... Sauf si on se rappelle de notre propriété : <a href="../propri%C3%A9t%C3%A9s/#degr%C3%A9-5-6">il existe un sommet de degré 5 qui est voisin d'un sommet de degré 6 ou plus</a> :</p>
 <p>on peut alors vérifier si un sommet de degré au plus 6 (disons le voisin 1 de la figure précédente) est voisin du sommet 3 en temps constant et s'ils sont voisins alors les voisins 2 et 4 ne le sont pas.</p>
@@ -283,7 +285,7 @@
 			<span class="token variable parameter">c</span><span class="token punctuation">[</span><span class="token variable parameter">v</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">c</span><span class="token punctuation">[</span><span class="token variable parameter">uv</span><span class="token punctuation">]</span>
 			
 	<span class="token keyword">rendre</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token variable parameter">c</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">|</span> x ∈ V<span class="token punctuation">(</span><span class="token variable parameter">G</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre>
-<h2>Théorème des 4 couleurs</h2>
+<h2 id="theoreme-des-4-couleurs">Théorème des 4 couleurs</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -311,7 +313,7 @@
 <li>Réduction : On isole cette configuration, puis on &quot;simplifie&quot; ou retire temporairement ces sommets du graphe $G$ pour obtenir un graphe plus petit $G'$ puis on récurse sur $G'$</li>
 </ol>
 <p>Ce qui est fort et nécessite un ordinateur pour tout vérifier est qu'il est toujours possible après récursion d'ajuster les couleurs des sommets ajouté. Ceci se fait parfois en testant toutes les inversions possibles via des chaînes de Kempe (il y a pour chaque cas un nombre constant de choix, même si ce nombre peut être gros) afin de libérer une couleur valide pour les sommets réinsérés.</p>
-<h2>3-Colorable est NP-complet pur les graphes planaires</h2>
+<h2 id="3-colorable-est-np-complet-pur-les-graphes-planaires">3-Colorable est NP-complet pur les graphes planaires</h2>
 <p>Le théorème des 4 couleurs et son algorithme de coloriage en $\mathcal{O}(n^2)$ montre évidemment que le problème de 4-colorer un graphe planaire est polynomial. Mais quand est-t-il de sa 3-coloration ?</p>
 <p>On sait déjà  que <a href="../../coloration-sommets/#3-col">le problème de 3-coloration</a> d'un graphe est NP-complet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -439,13 +441,13 @@
 </div>
 </details>     
 </div>
-<h2>Applications</h2>
-<h3>Dans des problèmes</h3>
+<h2 id="applications">Applications</h2>
+<h3 id="dans-des-problemes">Dans des problèmes</h3>
 <p>3 colorable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
-<h3>Coloration de cartes de géographie</h3>
+<h3 id="coloration-de-cartes-de-geographie">Coloration de cartes de géographie</h3>
 <p>coloration de cartes de géographie (pourquoi souvent 6 couleurs ?) :</p>
 <p><img src="pays-planaire.png" alt="pays graphe planaire"></p>
-<h3>Coloration et partage de secrets</h3>
+<h3 id="coloration-et-partage-de-secrets">Coloration et partage de secrets</h3>
 <blockquote>
 <p>TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.</p>
 </blockquote>
@@ -466,16 +468,16 @@
 <blockquote>
 <p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry-Howard correspondance</a></p>
 </blockquote>
-<h3>Algorithmes de coloration de listes</h3>
+<h3 id="algorithmes-de-coloration-de-listes">Algorithmes de coloration de listes</h3>
 <blockquote>
 <p>5 liste colorable.</p>
 </blockquote>
-<h3>Variantes</h3>
+<h3 id="variantes">Variantes</h3>
 <blockquote>
 <p>TBD pays non connexes
 TBD colonies lunaires</p>
 </blockquote>
-<h3>Dans les démonstrations</h3>
+<h3 id="dans-les-demonstrations">Dans les démonstrations</h3>
 <blockquote>
 <p>TBD Coloriabilité via le problème de la galerie d'art :</p>
 <ul>
@@ -487,6 +489,92 @@ TBD colonies lunaires</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -497,6 +585,7 @@ TBD colonies lunaires</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Héritage</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -92,6 +92,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -107,10 +108,11 @@
 
 
     
+  </div>
   
 
   <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère.</p>
-<h2>Définitions</h2>
+<h2 id="definitions">Définitions</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -151,7 +153,7 @@
 </ul>
 </li>
 </ul>
-<h3>UML</h3>
+<h3 id="uml">UML</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -209,7 +211,7 @@
 </ul>
 <p>L'exemple du personnel de l'université a pour diagramme UML :</p>
 <p><img src="personnel_universit%C3%A9_UML.png" alt="personnel de l'université"></p>
-<h3>Python</h3>
+<h3 id="python">Python</h3>
 <p>L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant <a href="../classes-et-objets/#espace-nommage">un espace de nommage</a>.</p>
 <p>En reprenant l'exemple du personnel de l'université, on peut d'ore et déjà écrire la classe mère :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
@@ -286,7 +288,7 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <li>il remonte alors d'un étage dans la hiérarchie et regarde si le nom <code class="language-">donne_age</code> est présent dans la classe de <code class="language-">prof_info</code>, <code class="language-">EnseignantChercheur</code> : ce n'est toujours pas le cas</li>
 <li>on peut encore remonter d'un cran et regarder la classe mère de <code class="language-">EnseignantChercheur</code>, <code class="language-">Personne</code>. Bingo : le nom <code class="language-">donne_age</code> est présent et il est exécuté.</li>
 </ol>
-<h2>Utilisation de l'héritage</h2>
+<h2 id="utilisation-de-l-heritage">Utilisation de l'héritage</h2>
 <p>Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères. L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
 <ol>
 <li>soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille</li>
@@ -298,7 +300,7 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <li>lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.</li>
 </ul>
 <p>La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
-<h2>Hiérarchie des classes</h2>
+<h2 id="hierarchie-des-classes">Hiérarchie des classes</h2>
 <p>Dans un langage objet, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (en python elle s'appelle <code>object</code>).</p>
 <p><img src="h%C3%A9ritage-classes.png" alt="classes héritage"></p>
 <p>Dans la figure précédente :</p>
@@ -351,7 +353,7 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
 AttributeError<span class="token punctuation">:</span> <span class="token string">'EnseignantChercheur'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'mro'</span></code></pre>
-<h2>Exemple : héritage simple</h2>
+<h2 id="exemple-heritage-simple">Exemple : héritage simple</h2>
 <p>L'héritage est une technique objet qui n'est pas utilisée indépendamment du reste. On l'utilise souvent en combinaison d'autres techniques comme la composition.</p>
 <p>On va ici manipuler des polygones. On veut pouvoir :</p>
 <ul>
@@ -359,7 +361,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 <li>calculer l'aire du polygone</li>
 <li>calculer le périmètre du polygone</li>
 </ul>
-<h3>classes Point et Polygone</h3>
+<h3 id="classes-point-et-polygone">classes Point et Polygone</h3>
 <p>Pour cela, on va créer une classe <code class="language-">Point</code> et une classe <code class="language-">Polygone</code> :</p>
 <ul>
 <li>classe <code class="language-">Point</code> :
@@ -378,7 +380,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 </li>
 </ul>
 <p>On va supposer que le <a href="https://fr.wikipedia.org/wiki/Polygone_simple">polygone est simple</a> pour simplifier le calcul de l'aire...</p>
-<h4>Uml</h4>
+<h4 id="uml-1">Uml</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -389,7 +391,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 </div>
 <p>Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :</p>
 <p><img src="h%C3%A9ritage_point_poly.png" alt="point polygone"></p>
-<h4>Code python</h4>
+<h4 id="code-python">Code python</h4>
 <p>On peut alors avoir le code python suivant pour créer les classes :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> sqrt
 
@@ -445,14 +447,14 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 polygone <span class="token operator">=</span> Polygone<span class="token punctuation">(</span>points<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>polygone<span class="token punctuation">.</span>périmètre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>polygone<span class="token punctuation">.</span>aire<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<h3>Un polygone particulier</h3>
+<h3 id="un-polygone-particulier">Un polygone particulier</h3>
 <p>Comment modéliser une classe triangle ?</p>
 <p>Comme un triangle <strong>est un</strong> polygone simple, on peut utiliser l'héritage pour cela.</p>
-<h4>Modélisation UML</h4>
+<h4 id="modelisation-uml">Modélisation UML</h4>
 <p>Elle est très simple :</p>
 <p><img src="h%C3%A9ritage_triangle.png" alt="triangle"></p>
 <p>Notez que pour l'héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.</p>
-<h4>Code python du Triangle</h4>
+<h4 id="code-python-du-triangle">Code python du Triangle</h4>
 <p>La classe <code class="language-">Triangle</code> hérite de <code class="language-">Polygon</code>, on appelle donc le constructeur de ce dernier lors de la création d'un <code class="language-">Triangle</code>.</p>
 <p>Ceci est explicite en python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Triangle</span><span class="token punctuation">(</span>Polygone<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -483,9 +485,9 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <span class="token operator">>></span><span class="token operator">></span></code></pre>
 </div>
 </div>
-<h2><span id="exemple-D&D"></span> Exemple : donjons et dragons</h2>
+<h2 id="exemple-donjons-et-dragons"><span id="exemple-D&D"></span> Exemple : donjons et dragons</h2>
 <p>On va simuler des personnage d'<em>heroic fantasy</em>. Pour cela, on commence par créer une classe <code class="language-">Personnage</code> qui sera particularisée petit à petit.</p>
-<h3>Classe Personnage</h3>
+<h3 id="classe-personnage">Classe Personnage</h3>
 <p>Le personnage générique doit :</p>
 <ul>
 <li>avoir un score d'attaque</li>
@@ -494,9 +496,9 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <li>taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d'attaque)</li>
 <li>se faire taper par un autre personnage</li>
 </ul>
-<h4>UML du personnage</h4>
+<h4 id="uml-du-personnage">UML du personnage</h4>
 <p><img src="h%C3%A9ritage_personnage.png" alt="personnage"></p>
-<h4>Code python du personnage</h4>
+<h4 id="code-python-du-personnage">Code python du personnage</h4>
 <p>On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peu du code python ce qui est normal, chaque langage ayant ses spécificités.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -509,13 +511,13 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
     <span class="token keyword">def</span> <span class="token function">taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
         personnage<span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>self<span class="token punctuation">)</span></code></pre>
 <p>Voyez comment on a utilisé la méthode <code class="language-">se_faire_taper</code> pour définir la méthode <code class="language-">taper</code>.</p>
-<h3>La classe guerrière</h3>
+<h3 id="la-classe-guerriere">La classe guerrière</h3>
 <p>La guerrière dispose d'un score de blocage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque.</p>
-<h4>Modèle UML de la guerrière</h4>
+<h4 id="modele-uml-de-la-guerriere">Modèle UML de la guerrière</h4>
 <p>c'est un personnage, on peut donc utiliser l'héritage.</p>
 <p><img src="h%C3%A9ritage_guerri%C3%A8re.png" alt="Guerrière"></p>
 <p>On ne met que les méthodes qui changent, donc le constructeur et se faire taper.</p>
-<h4>Code python de la guerrière</h4>
+<h4 id="code-python-de-la-guerriere">Code python de la guerrière</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">import</span> random
@@ -544,12 +546,12 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p>On utilise <strong>toujours</strong> le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, <code class="language-">se_faire_taper</code> ne fonctionnerait pas puisque vie et attaque ne seraient pas définies</p>
 </div>
 </div>
-<h3>Le magicien</h3>
+<h3 id="le-magicien">Le magicien</h3>
 <p>Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort.</p>
-<h4>Modèle UML du magicien</h4>
+<h4 id="modele-uml-du-magicien">Modèle UML du magicien</h4>
 <p>On ajoute une nouvelle méthode qui n'existe pas dans la classe mère :</p>
 <p><img src="h%C3%A9ritage_magicien.png" alt="Magicien"></p>
-<h4>Code python du magicien</h4>
+<h4 id="code-python-du-magicien">Code python du magicien</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Magicien</span><span class="token punctuation">(</span>Personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">,</span> attaque_magique<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span>
@@ -557,7 +559,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
     <span class="token keyword">def</span> <span class="token function">lancer_sort</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
         personnage<span class="token punctuation">.</span>vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique</code></pre>
-<h2>Héritage multiple</h2>
+<h2 id="heritage-multiple">Héritage multiple</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -593,9 +595,9 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <span class="highlight-line">        self<span class="token punctuation">.</span>enseignant_chercheur <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span></span>
 <span class="highlight-line"></span></code></pre>
 <p>L'exemple précédent nécessitera toutefois de redéfinir toutes les méthodes, et -- surtout -- le nom et le prénom sont dupliqués. Lorsque ce genre de chose arrive c'est souvent le signe qu'il faut redesigner notre programme et déconstruire ses classes pour séparer clairement les responsabilités et supprimer les duplications.</p>
-<h2>On vérifie qu'on a compris</h2>
+<h2 id="on-verifie-qu-on-a-compris">On vérifie qu'on a compris</h2>
 <p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu'on a bien compris.</p>
-<h3>Héritage de méthodes</h3>
+<h3 id="heritage-de-methodes">Héritage de méthodes</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -679,7 +681,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div>
 </details>     
 </div>
-<h3>Attribut de classe</h3>
+<h3 id="attribut-de-classe">Attribut de classe</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -717,7 +719,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div>
 </details>     
 </div>
-<h3>Combinaison de méthodes</h3>
+<h3 id="combinaison-de-methodes">Combinaison de méthodes</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -781,6 +783,92 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -791,6 +879,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

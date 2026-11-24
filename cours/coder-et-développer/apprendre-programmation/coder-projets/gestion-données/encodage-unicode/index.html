@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Encodage des caractères</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'ont donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.</p>
@@ -105,8 +107,8 @@
 <p>On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)</p>
 </div>
 </div>
-<h2>Codage des caractères</h2>
-<h3>ASCII et avatars</h3>
+<h2 id="codage-des-caracteres">Codage des caractères</h2>
+<h3 id="ascii-et-avatars">ASCII et avatars</h3>
 <p>Le premier codage utilisé était le code <a href="http://fr.wikipedia.org/wiki/ASCII">ASCII</a> dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage <a href="http://fr.wikipedia.org/wiki/ISO_8859-1">ISO-8859-1</a> où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.</p>
 <p>Il y en a eu une foultitude d'autres jusqu'à arriver au standard actuel.</p>
 <p>A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères &quot;j'écris en Français&quot; se code :</p>
@@ -125,7 +127,7 @@
 <p>Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut de votre éditeur de texte.</p>
 </div>
 </div>
-<h2>Unicode</h2>
+<h2 id="unicode">Unicode</h2>
 <p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.</p>
 <p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul">Khuzdul</a> dans Unicode)</p>
 <p>Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) près de 150000 caractères possibles. À chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).</p>
@@ -155,11 +157,11 @@
 </div>
 </div>
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
-<h2><span id="utf8"></span>Encodage utf-8</h2>
+<h2 id="encodage-utf-8"><span id="utf8"></span>Encodage utf-8</h2>
 <p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.</p>
 <p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
 <p>Il existe plusieurs format utf, mais c'est <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui s'est imposé.</p>
-<h3>Organisation du code</h3>
+<h3 id="organisation-du-code">Organisation du code</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -186,7 +188,7 @@
 </li>
 </ul>
 <p>Les autres bits des octets de codes raboutés entre eux donnent le code Unicode du caractère utilisé.</p>
-<h3>Exemple du <code>é</code> en python</h3>
+<h3 id="exemple-du-e-en-python">Exemple du <code>é</code> en python</h3>
 <p>Le symbole <code>é</code> est par exemple de code : <code>U+00E9</code>.</p>
 <ol>
 <li>code Unicode : <code>0xE9 = 233</code>. On l'obtient en python avec la commande <code>ord('é')</code></li>
@@ -208,7 +210,7 @@
 </ul>
 </div>
 </div>
-<h2>Python et chaînes de caractères</h2>
+<h2 id="python-et-chaines-de-caracteres">Python et chaînes de caractères</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -220,7 +222,7 @@
 <p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peut être considérée comme un tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
 <p>En python, la concaténation est symbolisée par l'opérateur <code language-="">+</code>.</p>
 <p>On peut faire de nombreuses choses avec des chaînes de caractères en python, n'hésitez pas à aller voir <a href="https://docs.python.org/3/library/stdtypes.html#textseq">la documentation</a> si vous voulez faire une opération sur les chaînes, elle est souvent déjà implémentée.</p>
-<h3>Texte vers types</h3>
+<h3 id="texte-vers-types">Texte vers types</h3>
 <p>Toute chose tapée au clavier par un utilisateur sera considérée comme du texte :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'entrez un nombre :'</span><span class="token punctuation">)</span></code></pre>
 <p>Dans le bout de code ci-dessus, <code class="language-">x</code> est une chaîne de caractères. Pour la convertir en entier, on fera : <code class="language-">int(x)</code> qui rendra la conversion de <code class="language-">x</code> en entier.</p>
@@ -232,7 +234,7 @@
 <p><strong>Toujours</strong> convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.</p>
 </div>
 </div>
-<h3><code class="language-">byte</code> et <code class="language-">str</code></h3>
+<h3 id="byte-et-str"><code class="language-">byte</code> et <code class="language-">str</code></h3>
 <p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code> des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
 <p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code class="language-">str</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token string">"ma chaîne de caractères"</span>
@@ -240,14 +242,14 @@ x_en_byte <span class="token operator">=</span> x<span class="token punctuation"
 re_x <span class="token operator">=</span> x_en_byte<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span></code></pre>
 <p>Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des <code>byte</code> qu'il faudra re-écrire en <code>utf8</code>.</p>
 <p>Les différents encoding possibles sont disponibles <a href="https://docs.python.org/3/library/codecs.html#standard-encodings">dans la documentation</a>.</p>
-<h2>Supprimer les accents</h2>
+<h2 id="supprimer-les-accents">Supprimer les accents</h2>
 <p>Il est parfois utile de pouvoir transformer une chaîne Unicode en ASCII, ce qui revient en Français à supprimer les accents/cédilles. Par exemple :</p>
 <ul>
 <li>François devient Francois</li>
 <li>Cécile devient Cecile</li>
 <li>Éléonore devient Eleonore</li>
 </ul>
-<h3>Solution simple à utiliser par défaut</h3>
+<h3 id="solution-simple-a-utiliser-par-defaut">Solution simple à utiliser par défaut</h3>
 <p>La réponse la plus simple pour faire cela en python est d'utiliser un module qui fait cela pour nous :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -257,7 +259,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <p><a href="https://pypi.org/project/Unidecode/">Module unidecode</a></p>
 </div>
 </div>
-<h3>Solution compliquée mais qui permet de comprendre des choses</h3>
+<h3 id="solution-compliquee-mais-qui-permet-de-comprendre-des-choses">Solution compliquée mais qui permet de comprendre des choses</h3>
 <p>Une autre solution plus artisanale mais qui à l'intérêt de plonger un peu plus dans l'encodage Unicode est changer la façon dont est codé la chaîne.</p>
 <p>Prenons le cas du français comme exemple. On l'a vu, le caractère <code>é</code> Unicode  correspond à la glyphe numéro <code>U+00E9</code>. Mais on peut aussi voir ce caractère comme l'accentuation du caractère <code>e</code>. Dans ce cas, <code>é</code> n'est plus un unique caractère, mais il est formé de la combinaison de <code>e</code> (glyphe <code>U+0065</code>) et de <code>\'</code> (glyphe <code>U+0301</code>). On appelle ces caractères <a href="https://www.cnrtl.fr/definition/diacritique">diacritiques</a>. Il y a de multiples possibilités de combinaison :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -333,6 +335,92 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -343,6 +431,7 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

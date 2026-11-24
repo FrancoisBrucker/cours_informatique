@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>La liste</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Une liste est une amélioration de <a href="../1-algorithme/pseudo-code/briques-de-base/#tableaux">la structure de tableau</a> et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
@@ -105,7 +107,7 @@
 <p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/conteneurs/listes/">la partie consacrée aux listes</a> du cours sur les bases du code.</p>
 </div>
 </div>
-<h2><span id="structure"></span>Définition de la structure</h2>
+<h2 id="definition-de-la-structure"><span id="structure"></span>Définition de la structure</h2>
 <p><span id="structure-liste"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Liste</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token variable parameter">longueur</span><span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -206,9 +208,9 @@
 </ul>
 </div>
 </div>
-<h2>Complexités</h2>
+<h2 id="complexites">Complexités</h2>
 <p>Examinons les complexités des méthodes de listes.</p>
-<h3>Création</h3>
+<h3 id="creation">Création</h3>
 <p>A la création de la liste, on crée un tableau de longueur $K$, une constante ni trop petite, ni trop grande :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -218,7 +220,7 @@
 <p>La complexité de la création d'une liste est $\mathcal{O}(1)$.</p>
 </div>
 </div>
-<h3>Ajout d'un élément</h3>
+<h3 id="ajout-d-un-element">Ajout d'un élément</h3>
 <p>L'ajout d'un élément en fin de liste $l$ va être de complexité $\mathcal{O}(l.\mbox{\small capacité})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).</p>
 <p><strong>Cependant</strong>, on va y revenir plus tard, si l'on vient de créer un nouveau tableau, il ne sera qu'à moitié plein : les $l.\mbox{\small capacité} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$ opérations !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -238,7 +240,7 @@
 <p>La complexité de l'<strong>insertion d'un élément à une position quelconque</strong> dans une liste $l$ avec <code class="language-">Liste.insert</code>  est en $\mathcal{O}(l.\mbox{\small longueur})$.</p>
 </div>
 </div>
-<h3>Suppression d'un élément</h3>
+<h3 id="suppression-d-un-element">Suppression d'un élément</h3>
 <p>Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -257,7 +259,7 @@
 <p>La complexité de la suppression d'un élément à une position quelconque dans une liste $l$ avec <code class="language-">Liste.delete</code>  est en $\mathcal{O}(l.\mbox{\small longueur})$.</p>
 </div>
 </div>
-<h2>Complexité d'ajout de $N$ éléments à la fin de la structure</h2>
+<h2 id="complexite-d-ajout-de-n-elements-a-la-fin-de-la-structure">Complexité d'ajout de $N$ éléments à la fin de la structure</h2>
 <p>Ajouter un élément à la fin de la structure peut très mal tomber : cela peut être juste au moment où l'on doit doubler la taille de la structure. C'est donc de complexité $\mathcal{O}(n)$ opérations s'il y avait $n$ élément dans la liste au moment de l'ajout... Mais ensuite, les $n-1$ suivants ajout vont <strong>forcément</strong> bien se passer et auront tous une complexité de $\mathcal{O}(1)$ opérations.</p>
 <p>On a le résultat suivant :</p>
 <div id="preuve-liste-ajout"></div>
@@ -351,7 +353,7 @@ $$
 <p>Dans nos calculs de complexité on utilisera $\mathcal{O}(1)$ comme complexité d'<strong>ajout d'un élément en fin de liste</strong> puisque c'est sa <em>complexité amortie</em>.</p>
 </div>
 </div>
-<h2>Bilan</h2>
+<h2 id="bilan">Bilan</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -363,8 +365,8 @@ $$
 </div>
 </div>
 <p>La complexité des opérations de la liste commune avec un tableau (lecture écriture à index fixé) est de même complexité et on peut ajouter/supprimer des éléments se fait en $\mathcal{O}(1)$ en amorti.</p>
-<h2>Améliorations possibles</h2>
-<h3>Gérer la suppression</h3>
+<h2 id="ameliorations-possibles">Améliorations possibles</h2>
+<h3 id="gerer-la-suppression">Gérer la suppression</h3>
 <p>Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la longueur du tableau si après la suppression du dernier élément de la liste, sa longueur $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.</p>
 <p>Même si l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -399,7 +401,7 @@ $$
 </details>     
 </div>
 <p>La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.</p>
-<h3>De combien augmenter la longueur ?</h3>
+<h3 id="de-combien-augmenter-la-longueur">De combien augmenter la longueur ?</h3>
 <p>Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -417,7 +419,7 @@ TBD faire une expérimentation</p>
 <li>pour un seul tableau : <a href="https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor">https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor</a> (qui mène à : <a href="https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/">https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/</a>). Sauvent 1.5 est pris. $S + FS ≥ F^3S$.</li>
 <li>Attention, ce n'est plus vrai si on alloue plus d'un seul tableau... pour 2 tableaux le second peux commencer dans la place laissée par l'autre.</li>
 </ol>
-<h2>Utilisation</h2>
+<h2 id="utilisation">Utilisation</h2>
 <p>L'intérêt d'une liste par rapport à un tableau est que l'on peut modifier sa longueur en ajoutant et supprimant des éléments.</p>
 <p>Si l'ajout et la suppression d'un élément en fin de liste est de complexité $\mathcal{O}(1)$, ce n'est pas garantie si on doit ajouter/supprimer des éléments en milieu de liste.</p>
 <p>Nous allons voir ici différentes stratégies selon que l'ordre des éléments stockés nous intéresse ou non. Notez que l'ajoute d'un élément en milieu de liste se fait de la même manière.</p>
@@ -579,6 +581,92 @@ TBD faire une expérimentation</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -589,6 +677,7 @@ TBD faire une expérimentation</p>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

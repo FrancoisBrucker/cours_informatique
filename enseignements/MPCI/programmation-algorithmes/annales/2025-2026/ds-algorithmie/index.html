@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>DS Algorithmie</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
@@ -99,14 +99,14 @@
 <p>Il y avait deux petites erreurs dans l'énoncé originel. J'en ai bien sur tenu compte lors de la correction. Elles sont corrigés dans le sujet ci-dessus qui devrait être exempt d'erreurs.</p>
 </div>
 </div>
-<h2>Barème</h2>
+<h2 id="bareme">Barème</h2>
 <p>Chaque exercice était noté sur 10 points :</p>
 <ul>
 <li>exercice 1 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts</li>
 <li>exercice 2 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts</li>
 <li>exercice 3 : partie 1 sur 2pts ; partie 2 sur 3pts ; partie 3 sur 5pts</li>
 </ul>
-<h3>Ventilation des notes</h3>
+<h3 id="ventilation-des-notes">Ventilation des notes</h3>
 <table>
 <thead>
 <tr>
@@ -137,10 +137,10 @@
 <li>médiane : 10.25/20</li>
 </ul>
 <p>Je suis un peu déçu. Il y a beaucoup d'imprécisions dans vos réponses et en encore beaucoup trop d'enfumage (des &quot;donc&quot; mal à propos ; des &quot;il est évident que&quot; qui ne le sont pas du tout (voir souvent franchement faux) ; voir deux trois tentatives de fraudes caractérisées). Enfin, pour la plupart vous ne parvenez pas encore à donner l'argument simple et clair qui fait que l'algorithme fonctionne.</p>
-<h2>Corrigé</h2>
-<h3>Exercice 1</h3>
-<h4>1.1 Algorithme python</h4>
-<h5>1.1.1</h5>
+<h2 id="corrige">Corrigé</h2>
+<h3 id="exercice-1">Exercice 1</h3>
+<h4 id="1-1-algorithme-python">1.1 Algorithme python</h4>
+<h5 id="1-1-1">1.1.1</h5>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">est_sous_chaîne</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">str</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">str</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">bool</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">trouvé</span> <span class="token type class-name">bool</span></span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">j</span> <span class="token type class-name">int</span></span>
@@ -155,14 +155,14 @@
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
     <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 </code></pre>
-<h5>1.1.2</h5>
+<h5 id="1-1-2">1.1.2</h5>
 <ul>
 <li>au minimum on ne fait qu'une seule itération pour la boucle <code class="language-">pour chaque</code>. On ne peut sortir de l'algorithme que si <code class="language-">trouvé</code> est vrai en sortie de la boucle <code class="language-">tant que</code> on a alors fait $\mathcal{O}(b.\text{\small longueur})$ itérations de cette dernière. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(b.\text{\small longueur})$. Ceci arrive si <code class="language-">a</code> commence par <code class="language-">b</code>.</li>
 <li>Dans le pire des cas, on fait $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ itérations de la boucle <code class="language-">pour chaque</code> et $\mathcal{O}(b.\text{\small longueur})$ itération de la boucle <code class="language-">tant que</code>. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$. Ceci arrive si <code class="language-">a = x .. x</code> et <code class="language-">b = x ... xy</code>.</li>
 </ul>
-<h5>1.1.3</h5>
+<h5 id="1-1-3">1.1.3</h5>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sous_chaîne<span class="token punctuation">(</span><span class="token variable parameter">a</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token variable parameter">b</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">int</span></code></pre>
-<h5>1.1.4</h5>
+<h5 id="1-1-4">1.1.4</h5>
 <p>Il faut rendre un indice, pas juste un booléen :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">sous_chaîne</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">str</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">str</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">trouvé</span> <span class="token type class-name">bool</span></span>
@@ -178,8 +178,8 @@
             <span class="token keyword">rendre</span> <span class="token variable parameter">i</span>
     <span class="token keyword">rendre</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
 <p>La boucle <code class="language-">pour chaque</code> va faire varier $i$ pour toutes ses positions de sous-chaînes possibles et la variable <code class="language-">trouvé</code> ne peut valoir <code>Vrai</code> à la sortie de la boucle <code class="language-">tant que</code> que si $b[j] == a[i + j]$ pour tout $0 \leq j &lt; b.\text{\small longueur}$, donc que si $b$ est une sous-chaîne de $a$</p>
-<h4>1.2 Bornes</h4>
-<h5>1.2.1</h5>
+<h4 id="1-2-bornes">1.2 Bornes</h4>
+<h5 id="1-2-1">1.2.1</h5>
 <p>Il faut au minimum lire les données, c'est à dire vérifier tous les caractères de $a$ et de $b$, la complexité du problème est en $\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.</p>
 <p>On peut être plus précis en analysant des algorithmes fictifs :</p>
 <ul>
@@ -187,16 +187,16 @@
 <li>s'il existe un algorithme résolvant le problème qui regarde strictement moins de $a.\text{\small longueur} - b.\text{\small longueur}$ caractères de $a$ on prend <code>b = yxxxx</code> et <code>a = xxxxx</code> et si l'algorithme regarde moins de $n-m$ caractères de <code>a</code> on change le plus à gauche des caractères non regardés en <code>y</code></li>
 </ul>
 <p>Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  \Omega(a.\text{\small longueur} + b.\text{\small longueur})$</p>
-<h5>1.2.2</h5>
+<h5 id="1-2-2">1.2.2</h5>
 <p>Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :</p>
 <ul>
 <li>$\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.</li>
 <li>$\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$</li>
 </ul>
-<h4>1.3 Complexité en moyenne</h4>
-<h5>1.3.1</h5>
+<h4 id="1-3-complexite-en-moyenne">1.3 Complexité en moyenne</h4>
+<h5 id="1-3-1">1.3.1</h5>
 <p>Si les caractères sont équiprobables alors la position dans la chaîne de caractères importe peu. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
-<h5>1.3.2</h5>
+<h5 id="1-3-2">1.3.2</h5>
 <p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P^i_k = p^{k}(1-p)$. De plus, si $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$, l'algorithme fera $k+1$ itérations de la boucle <code class="language-">tant que</code>, et comme l'exécution d'une itération de la boucle se fait en $\mathcal{O}(1)$, la complexité de ce traitement sera égal à : $C^i_k = (k+1)\mathcal{O}(1)$. De là la complexité en moyenne à $i$ fixé vaut :</p>
 <div>
 $$
@@ -209,9 +209,9 @@ $$
 \sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}}(\sum_{k=0}^{b.\text{\small longueur}-1}P^i_k \cdot C^i_k)  \leq \sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}} \mathcal{O}(1) = \mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})
 $$
 </div>
-<h3>Exercice 2</h3>
-<h4>2.1 Principe</h4>
-<h5>2.1.1</h5>
+<h3 id="exercice-2">Exercice 2</h3>
+<h4 id="2-1-principe">2.1 Principe</h4>
+<h5 id="2-1-1">2.1.1</h5>
 <p>Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j &lt; m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon soit :</p>
 <ol>
 <li>$a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' &lt; i + m$</li>
@@ -251,9 +251,9 @@ aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa
           j                               j         
 
 </code></pre>
-<h5>2.1.2</h5>
+<h5 id="2-1-2">2.1.2</h5>
 <p>Contrairement à l'algorithme naïf l'indice $i$ peut augmenter de plus que 1 unité. Il peut même augmenter de $m$ si le dernier élément de $a$ n'est pas dans $b$.</p>
-<h5>2.2.1</h5>
+<h5 id="2-2-1">2.2.1</h5>
 <p>Le décalage pour l'indice $i$ de $a$ ne dépend que des caractères de $b$ et de leurs positions :</p>
 <ul>
 <li>si le caractère n'est pas dans $b$ on décale de $m$</li>
@@ -268,11 +268,11 @@ aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa
         <span class="token variable parameter">T</span><span class="token punctuation">[</span>ord<span class="token punctuation">(</span><span class="token variable parameter">b</span><span class="token punctuation">[</span><span class="token variable parameter">k</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">m</span> <span class="token operator">-</span> <span class="token variable parameter">k</span> <span class="token operator">-</span> <span class="token number">1</span>
 
     <span class="token keyword">rendre</span> <span class="token variable parameter">T</span></code></pre>
-<h5>2.2.2</h5>
+<h5 id="2-2-2">2.2.2</h5>
 <p>L'algorithme a deux boucles la première possède $\mathcal{O}(L)$ itérations et la seconde $\mathcal{O}(b.\text{longueur})$ itérations. Comme la fonction <code class="language-">ord</code> est de complexité $\mathcal{O}(1)$ la complexité de l'algorithme est $\mathcal{O}(b.\text{longueur} + L)$.</p>
 <p>Comme le nombre de caractères pouvant à priori être aussi grand qu'on veut, $L$ dépend du problème (4, pour de l'ADN, 20 pour des protéines et $2^{28}$ pour des chaînes de caractères Unicode) et ne peut être assimilé à une constante.</p>
-<h4>2.3 Recherche</h4>
-<h5>2.3.1</h5>
+<h4 id="2-3-recherche">2.3 Recherche</h4>
+<h5 id="2-3-1">2.3.1</h5>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">décalage</span><span class="token punctuation">(</span><span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">str</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">m</span></span> <span class="token operator">←</span> <span class="token variable parameter">b</span><span class="token punctuation">.</span>longueur
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">T</span></span> <span class="token operator">←</span> <span class="token type class-name">[]int</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> L<span class="token punctuation">}</span>
@@ -292,16 +292,16 @@ aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa
         <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">b</span><span class="token punctuation">[</span><span class="token variable parameter">k</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span><span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">b</span><span class="token punctuation">[</span><span class="token variable parameter">k</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable parameter">m</span> <span class="token operator">-</span> <span class="token variable parameter">k</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> <span class="token variable parameter">T</span></code></pre>
-<h5>2.3.2</h5>
+<h5 id="2-3-2">2.3.2</h5>
 <p>Dans le pire des cas on se comportera comme l'algorithme naïf. Par exemple si a = &quot;aaaaaaaaaaaaaaaaaa&quot; et b = &quot;baaa&quot; on incrémentera toujours l'indice <code class="language-">i</code> de 1 et l'indice <code class="language-">j</code> ira de $m$ à 0 pour tout indice $i$. Dans ce cas là la complexité sera de $\mathcal{O}(b.\text{longueur} + L + a.\text{longueur} \cdot b.\text{longueur})$.</p>
 <p>Dans le meilleur des cas, on augmente $i$ de $m$ a chaque itération, par exemple si a = &quot;aaaaaaaaaaaaaaaaaa&quot; et b = &quot;bbbb&quot;. Dans ce cas là la complexité sera de $\mathcal{O}(b.\text{longueur} + L + a.\text{longueur} / b.\text{longueur})$.</p>
-<h5>2.3.3</h5>
+<h5 id="2-3-3">2.3.3</h5>
 <p>La complexité spatiale sera égale a la taille du tableau <code class="language-">T</code> c'est à dire : $\mathcal{O}(L)$ (qui peut être gigantesque).</p>
-<h5>2.3.4</h5>
+<h5 id="2-3-4">2.3.4</h5>
 <p>On utiliserait cet algorithme lorsque $L$ est petit. Dans ce cas là, l'algorithme ira plus vite que l'algorithme naïf puisque sa complexité minimale sera en $\mathcal{O}(b.\text{longueur} + a.\text{longueur} / b.\text{longueur})$.</p>
-<h3>Exercice 3</h3>
-<h4>3.1 Complexité de l'algorithme</h4>
-<h5>3.1.1</h5>
+<h3 id="exercice-3">Exercice 3</h3>
+<h4 id="3-1-complexite-de-l-algorithme">3.1 Complexité de l'algorithme</h4>
+<h5 id="3-1-1">3.1.1</h5>
 <p>En analysant les cas de l'algorithme, on a soit :</p>
 <ul>
 <li><code class="language-">j ← j + 1</code> et :
@@ -323,14 +323,14 @@ aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa
 </ul>
 </li>
 </ul>
-<h5>3.1.2</h5>
+<h5 id="3-1-2">3.1.2</h5>
 <p>Les variables $i$ et $i+j$ sont croissantes et l'un des deux augmente strictement à chaque itérations de la boucle <code class="language-">tant que</code>. De là comme :</p>
 <ul>
 <li>après $n$ augmentations de $i$ $i+j \geq n$</li>
 <li>après $n$ augmentations de $i+j$ on a aussi $i+j \geq n$</li>
 </ul>
 <p>Il y a au mieux $n + n$ itérations de la boucle <code class="language-">tant que</code>. Comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$ la complexité totale de l'exécution de la boucle <code class="language-">tant que</code> est en $\mathcal{O}(n)$ et donc la complexité totale de l'algorithme en $\mathcal{O}(n + f(m))$</p>
-<h4>3.2 Preuve de l'algorithme</h4>
+<h4 id="3-2-preuve-de-l-algorithme">3.2 Preuve de l'algorithme</h4>
 <p>Supposons que l'on soit dans le cas ci-après :</p>
 <pre><code>          i
 a : aaaaaaaaaaaaXaaaaaaaaaaaaaa
@@ -349,17 +349,17 @@ b :          BBBbbbYbbbbbb
                 j
 </code></pre>
 <p>alors on a aussi $b[k] = b[j + i' - i + k]$ pour $0\leq k &lt; j + i'-i$. Le plus petit indice $i'$ est donné par la fonction de décalage ! Comme au pire $i' = i + j$ si aucun autre décalage n'est possible on progresse dans la recherche de la sous-chaîne comme le fait l'algorithme.</p>
-<h4>3.3</h4>
-<h5>3.3.1</h5>
+<h4 id="3-3">3.3</h4>
+<h5 id="3-3-1">3.3.1</h5>
 <p>On montre par une récurrence triviale qu'au début de chaque itération :</p>
 <ul>
 <li>$0 \leq T[l] &lt; l$ pour tout $l&gt;0$ et $T[0] = 0$,</li>
 <li>$k  &lt; j - 1 &lt; i$</li>
 </ul>
 <p>De là, les conditions sur $k$ sont également vérifiées.</p>
-<h5>3.3.2</h5>
+<h5 id="3-3-2">3.3.2</h5>
 <p>La variable $i$ est croissante. Lorsque $i$ n'augmente pas c'est $k$ qui diminue strictement et $k$ ne peut augmenter que si $i$ croit strictement. De là $i$ ne peut rester constant qu'au plus le nombre d'itération ou il a crût strictement : il y a au mieux $2m$ iterations.</p>
-<h5>3.3.3</h5>
+<h5 id="3-3-3">3.3.3</h5>
 <p>L'idée est de procéder itérativement. Si on suppose que l'on a toutes les valeurs de $T[l]$ pour $l &lt; i$, on peut trouver $T[l]$ en procédant ainsi :</p>
 <ul>
 <li>si $b[T[i-1]] = b[i-1]$ alors $T[i] = T[i-1] + 1$ puisque l'on peut prolonger la sous-chaîne</li>
@@ -372,13 +372,13 @@ b :          BBBbbbYbbbbbb
 </li>
 </ul>
 <p>C'est exactement ce que fait l'algorithme.</p>
-<h3>Exercice 4</h3>
+<h3 id="exercice-4">Exercice 4</h3>
 <ul>
 <li>on a $\Omega(n+m)$ question 1.2.1</li>
 <li>et KMP en $\mathcal{O}(n+m)$</li>
 </ul>
-<h3>Code python</h3>
-<h4>Naïf</h4>
+<h3 id="code-python">Code python</h3>
+<h4 id="naif">Naïf</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> naïf<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -392,7 +392,7 @@ b :          BBBbbbYbbbbbb
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> i
     <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
-<h4>BMH</h4>
+<h4 id="bmh">BMH</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -420,7 +420,7 @@ b :          BBBbbbYbbbbbb
             j <span class="token operator">-=</span> <span class="token number">1</span>
     <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
 </code></pre>
-<h4>KMP</h4>
+<h4 id="kmp">KMP</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage_KMP<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T_b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
 
@@ -466,7 +466,7 @@ b :          BBBbbbYbbbbbb
                 i <span class="token operator">+=</span> l
                 j <span class="token operator">-=</span> l
     <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
-<h4>Affichages</h4>
+<h4 id="affichages">Affichages</h4>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affiche</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> algo<span class="token punctuation">)</span><span class="token punctuation">:</span>
     i <span class="token operator">=</span> algo<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
@@ -487,6 +487,92 @@ b :          BBBbbbYbbbbbb
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -497,6 +583,7 @@ b :          BBBbbbYbbbbbb
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

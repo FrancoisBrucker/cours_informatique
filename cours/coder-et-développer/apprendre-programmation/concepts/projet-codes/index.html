@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>On s&#39;entraîne à coder de petits projets</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Quelques exercices pour se mettre le code dans les pattes. Pour chacun des projets vous ferez 2 fichiers :</p>
@@ -117,9 +119,9 @@
 </ol>
 </div>
 </div>
-<h2><span id="syracuse"></span>Syracuse</h2>
+<h2 id="syracuse"><span id="syracuse"></span>Syracuse</h2>
 <p>On essaye d'écrire un programme qui teste la <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">conjecture de Syracuse</a> pour des entiers.</p>
-<h3>Questions</h3>
+<h3 id="questions">Questions</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -312,12 +314,12 @@ n <span class="token operator">=</span> <span class="token builtin">int</span><s
 </div>
 </details>     
 </div>
-<h3>Erreurs courantes à éviter</h3>
+<h3 id="erreurs-courantes-a-eviter">Erreurs courantes à éviter</h3>
 <p>Après un input vous aurez <strong>toujours</strong> une chaîne de caractère. Il faut la convertir dans ce que va demander vos fonctions, ici des entiers.</p>
 <p>Ne faites <strong>PAS</strong> de conversion de type dans vos fonctions. Si elles demandent des entrées entiers supposez que c'est le cas (par de <code>int(x) % 2</code> par exemple dans la fonction <code>syracuse</code>). Tôt ou tard ce genre chose va vous sauter à la figure car un jour vous votre programme va planter sans que vous compreniez pourquoi ni où est le soucis.</p>
-<h2><span id="pendu"></span>Jeu du pendu</h2>
+<h2 id="jeu-du-pendu"><span id="pendu"></span>Jeu du pendu</h2>
 <p>On essaye d'écrire un programme qui joue au <a href="https://fr.wikipedia.org/wiki/Pendu_(jeu)">jeu du pendu</a>.</p>
-<h3>Questions</h3>
+<h3 id="questions-1">Questions</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -626,13 +628,13 @@ nombre_essai <span class="token operator">=</span> <span class="token number">0<
 </div>
 </details>     
 </div>
-<h3>Erreurs courantes à éviter</h3>
-<h4>Description d'une fonction</h4>
+<h3 id="erreurs-courantes-a-eviter-1">Erreurs courantes à éviter</h3>
+<h4 id="description-d-une-fonction">Description d'une fonction</h4>
 <p>La description d'une fonction (entre <code class="language-">&quot;&quot;&quot;</code>) est inutile. Le code <strong>doit</strong> se suffire à lui-même pour être lisible et compris. Si ce n'est pas le cas, c'est que vous avez mal codé !</p>
 <p>La description de chaque fonction n'est utile que si vous faire une bibliothèque (une suite de fonctions qui devront être utilisées par d'autres sans qu'ils aient à connaître leurs codes). Ici, vous faite du code qui sera exécuté ou utilisé par vous et les autres membres de l'équipe de développement (ou le correcteur, ici moi) : la description ou les commentaires <strong>doivent</strong> être inutiles : faites du code lisible.</p>
-<h4>Listes</h4>
+<h4 id="listes">Listes</h4>
 <p>On préférera toujours utiliser <code class="language-">L.append(i)</code> plutôt que <code class="language-">L = L + [i]</code> car <code class="language-">append</code> est une méthode en $\mathcal{O}(1)$ opérations alors <code>+</code> crée une nouvelle liste et est donc en $\mathcal{O}(n)$ où $n$ est la taille de la liste <code class="language-">L</code>.</p>
-<h4>Comparaison de booléens</h4>
+<h4 id="comparaison-de-booleens">Comparaison de booléens</h4>
 <p>On ne teste pas si un booléen est vrai ou faux, on utilise directement sa valeur.</p>
 <ul>
 <li>On écrit : <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code></li>
@@ -646,11 +648,11 @@ sinon:
     return Faux</code></pre>
 <p>écrivez :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">return f()</code></pre>
-<h4>Variable différent d'une chaîne de caractère</h4>
+<h4 id="variable-different-d-une-chaine-de-caractere">Variable différent d'une chaîne de caractère</h4>
 <p>Ne confondez pas la variable ou le paramètre d'une fonction <code class="language-">x</code> avec une chaîne de caractères contenant le caractère x, notée <code class="language-">'x'</code>.</p>
-<h2><span id="compte-caractère"></span>Le compte est bon</h2>
+<h2 id="le-compte-est-bon"><span id="compte-caractère"></span>Le compte est bon</h2>
 <p>Le programme consiste à demander à l'utilisateur une chaîne de caractères et un caractère. On cherchera à savoir combien de fois apparaît le caractère dans la chaîne. On va créer le programme en ajoutant petit à petit des fonctionnalités au programme.</p>
-<h3>Questions</h3>
+<h3 id="questions-2">Questions</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -1026,13 +1028,13 @@ chaîne_entrée <span class="token operator">=</span> <span class="token string"
 </div>
 </details>     
 </div>
-<h3>Erreurs courantes à éviter</h3>
+<h3 id="erreurs-courantes-a-eviter-2">Erreurs courantes à éviter</h3>
 <p>Attention aux erreurs de débutant :</p>
 <ul>
 <li>une mauvaise compréhension des mécanismes : ça se travaille et vient avec l'expérience</li>
 <li>croire que l'on peut produire du code de qualité et qui marche sans l'exécuter : l'humilité s'apprend aussi avec l'expérience</li>
 </ul>
-<h4>Recoder des fonctions</h4>
+<h4 id="recoder-des-fonctions">Recoder des fonctions</h4>
 <p>La majorité d'entre vous n'avez pas lu la documentation de la méthode <code class="language-">find</code>. Du coup vous l'avez recodé, le plus souvent avec des erreurs...</p>
 <p>Vous ne perdez pas de temps à comprendre et lire de la documentation. Votre code sera plus clair, plus facile à utiliser et avec moins de bug si vous utilisez les fonctions et méthodes que python met à votre disposition. Apprendre à lire de la documentation vous fera gagner un temps fou !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1044,14 +1046,14 @@ chaîne_entrée <span class="token operator">=</span> <span class="token string"
 </div>
 </div>
 <p>Enfin, on utilise les fonctions testées dans le programme principal. On vous demande de coder des fonctions (et de les tester), ce n'est pas pour rien... Utilisez les !</p>
-<h4>Utiliser le typage des fonctions</h4>
+<h4 id="utiliser-le-typage-des-fonctions">Utiliser le typage des fonctions</h4>
 <p>Préférez définir vos fonctions sans le typage :</p>
 <ul>
 <li>on préférera écrire ça : <code class="language-">def donne_prochain_indice(chaîne, indice):</code> puis le reste de la définition de la fonction</li>
 <li>à ça : <code class="language-">def donne_prochain_indice(chaîne: str, indice: int) -&gt; int:</code> qui est plus lourd et n'apporte pas grand chose à la lisibilité.</li>
 </ul>
 <p>Le typage a bien sur son utilité dans la documentation ou lorsque l'on veut définir précisément les paramètres (pour un test ou en algorithmie par exemple), mais dans le code où la fonction va être utilisée tout de suite après c'est inutile et rend la définition plus dure à lire.</p>
-<h4>Erreurs rares</h4>
+<h4 id="erreurs-rares">Erreurs rares</h4>
 <p>Mais qu'il faut tout de suite arrêter de faire :</p>
 <ul>
 <li>pas de <code>from fonctions import *</code> dans le programme principal car on ne sait pas ce qu'on importe</li>
@@ -1060,6 +1062,92 @@ chaîne_entrée <span class="token operator">=</span> <span class="token string"
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -1070,6 +1158,7 @@ chaîne_entrée <span class="token operator">=</span> <span class="token string"
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,10 +69,10 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1 class="mb-1">Encodage de graphes</h1>
-  <div class="mb-4">
+  <div data-pagefind-ignore="" class="mb-4">
     
 
     
@@ -90,6 +90,7 @@
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -105,6 +106,7 @@
 
 
     
+  </div>
   
 
   <blockquote>
@@ -135,7 +137,7 @@ avec :</p>
 <p>Les différentes implémentations sont faites en python.</p>
 </div>
 </div>
-<h2>Opérations à implémenter</h2>
+<h2 id="operations-a-implementer">Opérations à implémenter</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -181,9 +183,9 @@ avec :</p>
 <p>L'encodage utilisé pour exécuter un algorithme va dépendre des opérations qu'il va effectuer sur la structure.</p>
 </div>
 </div>
-<h2><span id="liste"></span> Encodage par une liste</h2>
+<h2 id="encodage-par-une-liste"><span id="liste"></span> Encodage par une liste</h2>
 <p>Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs).</p>
-<h3><span id="exemple-liste"></span> Construction</h3>
+<h3 id="construction"><span id="exemple-liste"></span> Construction</h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
         <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
@@ -214,7 +216,7 @@ avec :</p>
 <li>suppression d'un sommet : $\mathcal{O}(n)$ dans le cas général car on ne sait pas la position du sommet à supprimer dans la liste $V$</li>
 <li>suppression d'un arc : $\mathcal{O}(m)$ dans le cas général car on ne sait pas la position de l'arc à supprimer dans la liste $E$</li>
 </ul>
-<h3><span id="prop-liste"></span> Opérations</h3>
+<h3 id="operations"><span id="prop-liste"></span> Opérations</h3>
 <p>Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :</p>
 <ul>
 <li>manipulation de la structure :
@@ -250,9 +252,9 @@ avec :</p>
 <p>Ce n'est pas parce qu'en python on peut écrire <code class="language-">'a' in V</code> que sa complexité est $\mathcal{O}(1)$... Il <strong>faut</strong> parcourir toute la liste <code class="language-">V</code> pour savoir si <code class="language-">'a'</code> y est.</p>
 </div>
 </div>
-<h2><span id="liste-adjacence"></span> Encodage par une liste d'adjacence</h2>
+<h2 id="encodage-par-une-liste-d-adjacence"><span id="liste-adjacence"></span> Encodage par une liste d'adjacence</h2>
 <p>Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h3><span id="exemple-liste-adj"></span> Construction</h3>
+<h3 id="construction-1"><span id="exemple-liste-adj"></span> Construction</h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">  V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
   E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>Dans $E$ chaque sommet est désigné par son indice dans $V$ et $E[i]$ est le voisinage sortant du sommet $i$.</p>
@@ -289,7 +291,7 @@ avec :</p>
 <p>On utilise souvent une variante de cette structure qui utilise des <a href="https://fr.wikipedia.org/wiki/Tableau_associatif">tableaux associatifs</a> à la place des listes. Voir par exemple <a href="https://www.python.org/doc/essays/graphs/">l'implémentation en python</a>. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.</p>
 </div>
 </div>
-<h3><span id="prop-liste-adj"></span> Opérations</h3>
+<h3 id="operations-1"><span id="prop-liste-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que certaines opérations sont optimisées :</p>
 <ul>
 <li>manipulation de la structure :
@@ -322,9 +324,9 @@ avec :</p>
 </ul>
 </li>
 </ul>
-<h2><span id="mat-adj"></span> Encodage par matrice d'adjacence</h2>
+<h2 id="encodage-par-matrice-d-adjacence"><span id="mat-adj"></span> Encodage par matrice d'adjacence</h2>
 <p>Tout comme la liste d'adjacence, cette structure nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
-<h3><span id="exemple-mat-adj"></span> Construction</h3>
+<h3 id="construction-2"><span id="exemple-mat-adj"></span> Construction</h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">V <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span>
 E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
      <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
@@ -360,7 +362,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <p>Cet encodage permet de traiter les <em><strong>graphes valués</strong></em> (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).</p>
 </div>
 </div>
-<h3><span id="prop-mat-adj"></span> Opérations</h3>
+<h3 id="operations-2"><span id="prop-mat-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
 <ul>
 <li>manipulation de la structure :
@@ -393,9 +395,9 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </ul>
 </li>
 </ul>
-<h2><span id="dict"></span> Encodage par dictionnaire</h2>
+<h2 id="encodage-par-dictionnaire"><span id="dict"></span> Encodage par dictionnaire</h2>
 <p>C'est le <a href="https://www.python.org/doc/essays/graphs/">codage canonique des graphes en python</a>. Il ressemble fortement au codage par liste d'adjacence, mais ne nécessite pas de ré-encodage des sommets.</p>
-<h3><span id="exemple-dict"></span> Construction</h3>
+<h3 id="construction-3"><span id="exemple-dict"></span> Construction</h3>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -412,7 +414,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <p>On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.</p>
 </div>
 </div>
-<h3><span id="prop-prop"></span> Opérations</h3>
+<h3 id="operations-3"><span id="prop-prop"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que l'on arrive à obtenir le meilleurs des deux mondes <strong>en moyenne</strong>.</p>
 <ul>
 <li>manipulation de la structure :
@@ -445,10 +447,10 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </ul>
 </li>
 </ul>
-<h2>Quand utiliser quoi ?</h2>
+<h2 id="quand-utiliser-quoi">Quand utiliser quoi ?</h2>
 <p>Selon ce qu'on a besoin de faire, on utilisera plutôt une structure de donnée qu'une autre, voir changera de structure si le passage d'une structure de données à l'autre est simple.</p>
 <p>On remarque tout de suite que les trois premières structures sont  mauvaise pour ajouter et/ou supprimer un sommet dans un graphe. On ne pourra donc pas les utiliser dans des applications où le graphe a un nombre variable de sommets au court du temps. Heureusement, ce genre d'application est peu courante. La dernière structure est optimale, mais seulement en moyenne. Si l'on cherche la performance garantie, ce n'est donc pas vers ce genre de structure qu'il faut s'orienter.</p>
-<h3>Utilisation de l'encodage en liste</h3>
+<h3 id="utilisation-de-l-encodage-en-liste">Utilisation de l'encodage en liste</h3>
 <ul>
 <li>positif :
 <ul>
@@ -489,7 +491,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
-<h3>Utilisation de l'encodage par liste d'adjacence</h3>
+<h3 id="utilisation-de-l-encodage-par-liste-d-adjacence">Utilisation de l'encodage par liste d'adjacence</h3>
 <ul>
 <li>positif :
 <ul>
@@ -531,7 +533,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
-<h3>Utilisation de l'encodage par matrice d'adjacence</h3>
+<h3 id="utilisation-de-l-encodage-par-matrice-d-adjacence">Utilisation de l'encodage par matrice d'adjacence</h3>
 <ul>
 <li>positif :
 <ul>
@@ -573,7 +575,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </div>
 </details>     
 </div>
-<h3>Utilisation de l'encodage par dictionnaire</h3>
+<h3 id="utilisation-de-l-encodage-par-dictionnaire">Utilisation de l'encodage par dictionnaire</h3>
 <ul>
 <li>positif :
 <ul>
@@ -621,11 +623,97 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <p>Dans la suite de ce cours on utilisera toujours cet encodage par défaut car elle est efficace globalement et facile à implémenter (elle ne nécessite pas de ré-encodage).</p>
 </div>
 </div>
-<h2>Bibliothèques</h2>
+<h2 id="bibliotheques">Bibliothèques</h2>
 <p>Il existe plusieurs bibliothèques de gestion de graphes en python. <a href="https://wiki.python.org/moin/PythonGraphLibraries">Cette page</a> en cite trois, activement maintenues.</p>
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -636,6 +724,7 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

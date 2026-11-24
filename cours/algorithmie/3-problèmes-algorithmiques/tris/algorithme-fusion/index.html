@@ -46,11 +46,11 @@
     <header class="border-b-2 border-gray-200 mb-4">
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-between items-center">
-          <a class="mx-2" href="/cours_informatique/">Home</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>Home</a>
         </div>
 
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
-          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <a class="mx-2 inline-flex items-center gap-1" href="/cours_informatique/recherche/" title="Rechercher dans le site"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>Recherche</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -69,16 +69,17 @@
 
     <main class="max-w-[1200px] mx-auto px-4">
       
-<article>
+<article data-pagefind-body="">
 
   <h1>Algorithme de tri fusion</h1>
-  <div>
+  <div data-pagefind-ignore="">
     
 
     
   </div>
 
   
+  <div data-pagefind-ignore="">
 
     
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
@@ -94,6 +95,7 @@
 
 
     
+  </div>
   
 
   <p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme <a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">de diviser pour régner</a> :</p>
@@ -112,7 +114,7 @@
 
     <span class="token keyword">rendre</span> solution</code></pre>
 <p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'algorithme l'est également.</p>
-<h2>Combiner</h2>
+<h2 id="combiner">Combiner</h2>
 <p>Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on tri, le but de la fonction <code class="language-">combiner</code> est de créer un tableau trié à partir de tableaux <strong>triés</strong>.</p>
 <p>L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">combiner</span><span class="token punctuation">(</span><span class="token parameter variable">T1</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">,</span> <span class="token parameter variable">T2</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]int</span></span><span class="token punctuation">:</span></span>
@@ -134,7 +136,7 @@
 <span class="highlight-line">            <span class="token variable parameter">T</span><span class="token punctuation">[</span><span class="token variable parameter">i</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token variable parameter">T2</span><span class="token punctuation">[</span><span class="token variable parameter">i2</span><span class="token punctuation">]</span></span>
 <span class="highlight-line">            <span class="token variable parameter">i2</span> <span class="token operator">←</span> <span class="token variable parameter">i2</span> <span class="token operator">+</span> <span class="token number">1</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token variable parameter">T</span></span></code></pre>
-<h3><span id="fonctionnement-colle"></span> Fonctionnement</h3>
+<h3 id="fonctionnement"><span id="fonctionnement-colle"></span> Fonctionnement</h3>
 <p>On vérifie pour deux petits tableaux <strong>triés</strong>. Les indices <code class="language-">i1</code> et <code class="language-">i2</code> marquent les positions possibles du prochain élément à ajouter dans <code class="language-">T</code>. Par exemple pour <code class="language-">T1=[1, 4, 7]</code> et <code class="language-">T2=[0, 2, 3, 98]</code>. <code class="language-">T</code> vaudra :</p>
 <ol>
 <li><code class="language-">[0]</code> après la 1ère itération (<code class="language-">i1=0</code> et <code class="language-">i2=1</code>)</li>
@@ -145,12 +147,12 @@
 <li><code class="language-">[0, 1, 2, 3, 4, 7]</code> après la 6ème itération (<code class="language-">i1=3</code> et <code class="language-">i2=3</code>)</li>
 <li><code class="language-">[0, 1, 2, 3, 4, 7, 98]</code> après la 7ème itération (<code class="language-">i1=3</code> et <code class="language-">i2=4</code>)</li>
 </ol>
-<h3><span id="preuve-colle"></span> Preuve</h3>
+<h3 id="preuve"><span id="preuve-colle"></span> Preuve</h3>
 <p>À chaque itération de la boucle, soit <code class="language-">i1</code> soit <code class="language-">i2</code> augmente. Au bout des <code class="language-">T.longueur</code> itérations on aura <code class="language-">i1</code> = <code class="language-">T1.longueur</code> et <code class="language-">i2</code> = <code class="language-">T2.longueur</code>. Les indices <code class="language-">i1</code> et <code class="language-">i2</code> marquant les positions possibles du prochain élément à ajouter dans <code class="language-">T</code>, l'invariant de boucle que l'on peut facilement prouver est :</p>
 <blockquote>
 <p><strong>Invariant de boucle :</strong> À la fin de chaque itération, <code class="language-">T[:i]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
 </blockquote>
-<h3><span id="complexités-colle"></span> Complexités</h3>
+<h3 id="complexites"><span id="complexités-colle"></span> Complexités</h3>
 <p>Allons un peu plus vite :</p>
 <ul>
 <li>on a une boucle <code class="language-">pour chaque</code> de <code class="language-">T1.longueur + T2.longueur</code> itérations</li>
@@ -210,7 +212,7 @@
 </div>
 </details>     
 </div>
-<h2>Pseudo-code</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <p>Avec notre fonction <code class="language-">combiner(T1, T2)</code> le pseudo code de l'algorithme fusion est :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">fusion</span><span class="token punctuation">(</span><span class="token parameter variable">T</span><span class="token punctuation">:</span> <span class="token type class-name">[]int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">[]int</span></span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> <span class="token variable parameter">T</span><span class="token punctuation">.</span>longueur <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
@@ -228,9 +230,9 @@
 
         <span class="token keyword">rendre</span> <span class="token variable parameter">T_trié</span>
 </code></pre>
-<h2><span id="preuve-fusion"></span> Preuve</h2>
+<h2 id="preuve-1"><span id="preuve-fusion"></span> Preuve</h2>
 <p>Comme <code class="language-">milieu &lt; T.longueur</code> si <code class="language-">T.longueur &gt; 1</code>, l'algorithme va bien converger et s'arrêter. De plus, comme l'algorithme <code class="language-">combiner</code> est démontré, <code class="language-">fusion</code> est bien un algorithme de tri.</p>
-<h2><span id="complexités-fusion"></span> Complexités</h2>
+<h2 id="complexites-1"><span id="complexités-fusion"></span> Complexités</h2>
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est (avec $n$ la taille du tableau passé en entrée) :</p>
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$</p>
 <p>Où :</p>
@@ -297,6 +299,92 @@ $$
 
 
 </article>
+
+
+<script>
+  (function () {
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((h) => !h.closest("details"));
+    if (headings.length < 2) return;
+
+    const used = new Set(Array.from(document.querySelectorAll("[id]"), (e) => e.id));
+    function slug(text) {
+      let base = text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "section";
+      let id = base, i = 2;
+      while (used.has(id)) id = base + "-" + i++;
+      used.add(id);
+      return id;
+    }
+
+    const nav = document.createElement("nav");
+    nav.id = "toc";
+    nav.setAttribute("aria-label", "Sommaire");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "toc-toggle";
+    button.title = "Sommaire";
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg><span>Sommaire</span>';
+
+    const list = document.createElement("ol");
+    list.id = "toc-list";
+
+    const links = [];
+    headings.forEach((h) => {
+      if (!h.id) h.id = slug(h.textContent);
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.className = "toc-link";
+      // copie du contenu du titre (formules comprises), sans liens imbriqués
+      const clone = h.cloneNode(true);
+      clone.querySelectorAll("a").forEach((inner) => inner.replaceWith(...inner.childNodes));
+      a.append(...clone.childNodes);
+      li.appendChild(a);
+      list.appendChild(li);
+      links.push(a);
+    });
+
+    nav.append(button, list);
+    document.body.appendChild(nav);
+
+    const wide = window.matchMedia("(min-width: 1700px)");
+    function setOpen(open) {
+      nav.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    setOpen(wide.matches);
+    wide.addEventListener("change", (e) => setOpen(e.matches));
+    button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    list.addEventListener("click", (e) => {
+      if (e.target.closest("a") && !wide.matches) setOpen(false);
+    });
+
+    // mise en évidence de la section courante
+    function update() {
+      let current = 0;
+      headings.forEach((h, i) => {
+        if (h.getBoundingClientRect().top < 100) current = i;
+      });
+      links.forEach((a, i) => a.classList.toggle("active", i === current));
+    }
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
     </main>
 
     <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
@@ -307,6 +395,7 @@ $$
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
           <button onclick="goTop()" id="myBtn" title="Go to top">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
