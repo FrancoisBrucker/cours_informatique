@@ -2,7 +2,8 @@
   Sommaire flottant : construit côté client à partir des titres h2/h3 de l'article.
   - ajoute un id aux titres qui n'en ont pas (pour pouvoir y faire des liens) ;
   - ignore les titres placés dans des blocs repliables (<details>) ;
-  - n'affiche rien s'il y a moins de deux titres.
+  - n'affiche rien s'il y a moins de deux titres (les flèches restent alors dans l'entête) ;
+  - déplace les flèches haut/bas de l'entête à droite du bouton du sommaire.
   Le script s'exécute avant MathJax : les formules des titres sont donc aussi rendues dans le sommaire.
 #}
 <script>
@@ -55,7 +56,16 @@
       links.push(a);
     });
 
-    nav.append(button, list);
+    // les flèches haut/bas de l'entête sont déplacées à droite du bouton du sommaire
+    const bar = document.createElement("div");
+    bar.id = "toc-bar";
+    bar.append(button);
+    document.querySelectorAll("header button[onclick]").forEach((b) => {
+      b.classList.add("toc-arrow");
+      bar.append(b);
+    });
+
+    nav.append(bar, list);
     document.body.appendChild(nav);
 
     const wide = window.matchMedia("(min-width: 1700px)");
@@ -63,8 +73,7 @@
       nav.classList.toggle("open", open);
       button.setAttribute("aria-expanded", String(open));
     }
-    setOpen(wide.matches);
-    wide.addEventListener("change", (e) => setOpen(e.matches));
+    setOpen(false);
     button.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
     list.addEventListener("click", (e) => {
       if (e.target.closest("a") && !wide.matches) setOpen(false);
