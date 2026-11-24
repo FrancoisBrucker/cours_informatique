@@ -40,6 +40,7 @@ docs/
 ├── src/                  # Input (markdown + templates)
 │   ├── _includes/
 │   │   ├── layout/       # base.njk (HTML shell, MathJax), post.njk (content pages), index.njk
+│   │   ├── toc.njk       # Floating table of contents (included by post.njk)
 │   │   └── tree.njk      # Tree listing (used by tutoriels/index.njk)
 │   ├── assets/           # CSS (stylesheets/main.css), JS, images
 │   ├── cours/            # Course content by topic
@@ -117,6 +118,10 @@ Other markdown-it-attrs classes:
 ### Code blocks
 
 A custom Prism language `pseudocode` (in `config/pseudocode.js`) is registered for algorithm pseudocode with French keywords (`algorithme`, `si/sinon`, `tant que`, `pour`, etc.). Use it with a ```` ```pseudocode ```` fenced block.
+
+### Table of contents
+
+`src/_includes/toc.njk` (included at the end of `post.njk`) builds a floating "Sommaire" client-side from the article's `h2`/`h3` headings, ignoring headings inside `<details>`, and adds an `id` to headings that lack one. It is fixed top-left, closed by default, and toggled by its button; the active section is highlighted on scroll. It also moves the header's scroll-to-top/bottom arrow buttons to the right of the "Sommaire" button. Pages with fewer than two headings get no TOC, and the arrows stay in the header. Styles are under `#toc` in `src/assets/stylesheets/main.css`.
 
 ### Math
 
