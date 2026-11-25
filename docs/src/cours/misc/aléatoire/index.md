@@ -15,7 +15,7 @@ eleventyComputed:
 > TBD <https://en.wikipedia.org/wiki/Entropy_(information_theory)>
 > TBD entropy : <https://www.youtube.com/watch?v=QjD3nvJLmbA>
 > TBD <https://sortingsearching.com/2023/11/25/random.html>
-
+> TBD loi aléatoire, genre Poisson : <https://www.youtube.com/shorts/Ofg_S9Lk20E>
 
 Ca existe :
 
@@ -44,7 +44,8 @@ Et les lsfr il faut travailler.
 > - les décimales de pi :
 >   - <https://www.youtube.com/watch?v=FDXf1XxCXAk>
 >   - sont aléatoires si tu ne sais pas que c'est elles.
->   - prendre les bits de la représentation binaire des décimales de pi et leur faire passer des tests d'aléatoire. -->
+>   - prendre les bits de la représentation binaire des décimales de pi et leur faire passer des tests d'aléatoire. 
+> -->
 > 
 {% aller %}
 

@@ -61,15 +61,14 @@ Il ne fonctionne que si le temps de transition est inférieur à l'horloge ce qu
 
 ## Nombres aléatoires
 
-{% lien %}
-<https://www.random.org/>
-{% endlien %}
+On suppose donc ici que l'on possède une fonction `random() → bit`{.language-} qui rend 0 ou 1 avec une probabilité 1/2. On considérera pas la suite que cette instruction est élémentaire.  
 
-Ces méthodes sont implémentées directement [sur le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random) et utilisent des algorithmes qui utilise un générateur aléatoire de bits, comme on vient de voir.
+Utiliser directement le flux de bit aléatoire sortant de notre générateur est malaisé car en pratique on va toujours manipuler les manipuler par paquet de multiple de 8 bits (1 Byte, qui correspond à un emplacement mémoire), le plus souvent 64b (8 bytes) qui est la taille des [registres du processeur](https://fr.wikipedia.org/wiki/Registre_de_processeur). Le problème revient alors à utiliser `random() → bit`{.language-} pour générer des entiers tenant sur un no,bre fixé de bits.
 
-On suppose donc ici que l'on possède une fonction `random() → bit`{.language-} qui rend 0 ou 1 avec une probabilité 1/2. On considérera pas la suite que cette instruction est élémentaire.  Il est alors très simple de créer des nombres plus petit qu'une puissance de 2 donné de façon uniforme.
 
 ### Puissance de 2
+
+On peut coder $2^p$ entiers sur un tableau $T$ de $p$ bits, de 0 (que des 0) à $2^p-1$ (que des 1) en utilisant la notation binaire (l'entier $\sum_iT[i]\cdot 2^i$ est associé bijectivement à un tableau $T$ de bits). Générer des entiers sur $p$ bits revient donc à créer des entiers positifs plus petit qu'une puissance de 2 donnée et ce, de manière uniforme. C'est ce que permet l'algorithme suivant :
 
 ```pseudocode
 algorithme uniforme_2p(p: int) → int:
@@ -79,7 +78,7 @@ algorithme uniforme_2p(p: int) → int:
     rendre x
 ```
 
-L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.
+Il crée clairement un entier de  $[0 .. 2^p[$ en $\Theta(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$ et correspond donc à l'utilisation de `random() → bit`{.language-} pour chaque position de son encodage sous la forme d'un `[]bit`{.language-}. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.
 
 {% note %}
 Si $X$ est une variable aléatoire uniforme sur $\\{0, 1\\}$ alors $Y = X_1\times \dots \times X_p$ avec $X_i = X$ est une variable aléatoire uniforme sur $\\{0, 1\\}^p$
@@ -96,9 +95,45 @@ $$
 
 {% enddetails %}
 
+Ces méthodes sont implémentées directement sur le processeur (pour les [x64 d'intel](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random) et pour [les processeurs ARM](https://support.arm.com/documentation/107997/0001/Random-number-generator-support-)) puis utilisées via le [système d'exploitation](https://en.wikipedia.org/wiki//dev/random).
+
+{% details "sous Linux/mac" %}
+Terminal unix :
+
+C'est le pseudo-fichier `/dev/random/`{.fichier} qui crée des nombres aléatoire :
+
+```shell
+xxd -b -c1 </dev/random
+```
+
+Que l'on peut ensuite transformer en suite de  0 et de 1 :
+
+```shell
+xxd -b -c1 </dev/random | cut -d" " -f2 | tr -d "\n"
+```
+
+Ou encore en utilisant [le codage base64](https://fr.wikipedia.org/wiki/Base64) pour que ce soit un peut plus  "lisible" :
+
+```shell
+echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
+```
+{% enddetails %}
+{% details "sous Windows" %}
+[Avec une commande powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5) (attention pas cryptographique) :
+
+```shell
+powershell -command "[Convert]::ToBase64String((1..64|%{[byte](Get-Random -Max 256)}))"
+```
+{% enddetails %}
+
 ### Entier quelconque
 
-L'algorithme précédent se généralise pour trouver un entier, que l'on va montrer uniforme, dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :
+{% lien %}
+<https://www.random.org/>
+{% endlien %}
+
+
+L'algorithme précédent se généralise pour trouver un entier dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :
 
 ```pseudocode
 algorithme uniforme(n: int) → int:
@@ -111,7 +146,12 @@ algorithme uniforme(n: int) → int:
     rendre x
 ```
 
-Prouver qu'il fonctionne va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.
+Prouver qu'il fonctionne, c'est à dire :
+
+1. qu'il va s'arrêter,
+2. qu'il produit bien des entiers de $[0 .. n[$ de manière uniforme.
+ 
+va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.
 
 {% note "Proposition" %}
 Soit $K_n$ la variable aléatoire qui associe à une exécution de l'algorithme `uniforme(n)`{.language-} le nombre d'entiers générés avant d'en générer un strictement inférieur à $n$. On a :
@@ -235,7 +275,7 @@ Pour pallier ce problème on est donc obligé de se contenter d'une approximatio
 
 ### Approximation bornée
 
-La façon la plus simple de trouver un entier entre $[0 .. n[$ de façon aléatoire est d'utiliser le modulo :
+La façon la plus simple de trouver un entier entre $[0 .. n[$ à partir d'un entier dans $[0 .. 2^p[$ avec $n < 2^p$ est d'utiliser le modulo :
 
 ```pseudocode
 algorithme uniforme_approché(n: int, p: int) → int:
@@ -243,7 +283,7 @@ algorithme uniforme_approché(n: int, p: int) → int:
     rendre x mod n
 ```
 
-Avant de calculer la complexité, attardons nous sur son fonctionnement. Il est basé sur la division euclidienne :
+Il est clair que cet algorithme est borné puisque `uniforme_2p(p: int) → int`{.language-} l'est et qu'il existe plusieurs algorithmes pour calculer le modulo, puisque c'est le reste de [la division euclidienne](https://fr.wikipedia.org/wiki/Division_euclidienne) de 2 nombres.
 
 <div id="division-euclidienne"></div>
 
@@ -270,8 +310,11 @@ Commençons par montrer l'existence de $q$ et $r$. On a deux cas :
 
 S'il existait un autre couple $(q', r')$ on aurait forcément $q \neq q'$ et $r \neq r'$. On peut alors supposer que $q = q' + \alpha$, avec $\alpha> 0$, mais dans ce cas $a = (q +\alpha)\cdot b + r' = q\cdot b + (r'+\alpha \cdot b)$ et $r = r'+\alpha \cdot b \geq b$ ce qui est impossible.
 {% enddetails %}
+{% info %}
+La preuve de la division euclidienne nous donne un algorithme (pas forcément efficace) pour calculer le reste et le quotient de la division euclidienne de tout couple d'entiers.
+{% endinfo %}
 
-L'algorithme `uniforme_approché(n: int, p: int) → int`{.language-} rend alors des entiers $x$ avec comme probabilité :
+Mais avant de calculer précisément la complexité, attardons nous sur son fonctionnement. L'algorithme `uniforme_approché(n: int, p: int) → int`{.language-} rend clairement des entiers $x$ avec comme probabilité :
 
 - $\frac{2^p \operatorname{/\\!/} n + 1}{2^p}$ pour $x \leq 2^p \bmod n$
 - $\frac{2^p \operatorname{/\\!/} n}{2^p}$ pour $x > 2^p \bmod n$
@@ -357,7 +400,6 @@ Qui est bien la définition de la division euclidienne.
 La complexité de notre algorithme approché est donc beaucoup plus grande que la complexité en moyenne de l'algorithme exacte... Cela ne vaut donc presque jamais le coup de l'utiliser à par dans des cas extrême où il est crucial d'avoir une borne en nombre d'instruction. Enfin, ce qui prend du temps c'est la génération aléatoire des bits car elle dépend de phénomènes physique dont les constantes de temps sont souvent supérieures à l'horloge interne de l'ordinateur.
 
 La solution habituellement utilisée est de faire semblant, en ne générant que très peut d'entiers réellement aléatoires.
-
 ## Nombres pseudo-aléatoires
 
 La plupart des algorithme générant des nombre "_aléatoires_" en informatique sont en fait seulement [pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire) :

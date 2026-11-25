@@ -238,8 +238,6 @@ On utilise un registre à décalage pour générer une suite de bits.
 
 > TBD : Mersenne twister
 
-
-
 [Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
 
 - différence entre

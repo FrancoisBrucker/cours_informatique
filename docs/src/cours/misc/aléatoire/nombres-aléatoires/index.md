@@ -53,31 +53,8 @@ Cependant créer un nombre aléatoire est un processus coûteux en temps et en �
 > 1. <https://www.youtube.com/watch?v=YvH53vJM69E&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=38>
 > 2. des preuves : <https://people.seas.harvard.edu/~salil/pseudorandomness/extractors.pdf>
 
-## Implémentation
 
-Implémentations :
 
-{% lien %}
-<https://www.random.org/>
-{% endlien %}
-
-Et ces méthodes sont implémentées directement [sur le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random) ou via le [système d'exploitation](https://en.wikipedia.org/wiki//dev/random) :
-
-```shell
-xxd < /dev/random
-```
-
-Ou de façon plus "lisible" :
-
-```shell
-echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
-```
-
-[Sous windows](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5) (attention pas cryptographique) :
-
-```shell
-powershell -command "[Convert]::ToBase64String((1..64|%{[byte](Get-Random -Max 256)}))"
-```
 
 ## dans le processeur
 
