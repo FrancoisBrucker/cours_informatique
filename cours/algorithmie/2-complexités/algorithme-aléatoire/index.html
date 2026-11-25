@@ -147,23 +147,16 @@ should be used.</em>&quot; (Donald Knuth, 1969)</p>
 <p><img src="random-horloge.png" alt="horloge"></p>
 <p>Il ne fonctionne que si le temps de transition est inférieur à l'horloge ce qui est en fait un processus assez lent pour générer un unique bit mais on a pas de processus plus rapide.</p>
 <h2 id="nombres-aleatoires">Nombres aléatoires</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.random.org/">https://www.random.org/</a></p>
-</div>
-</div>
-<p>Ces méthodes sont implémentées directement <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&amp;cats=Random">sur le processeur</a> et utilisent des algorithmes qui utilise un générateur aléatoire de bits, comme on vient de voir.</p>
-<p>On suppose donc ici que l'on possède une fonction <code class="language-">random() → bit</code> qui rend 0 ou 1 avec une probabilité 1/2. On considérera pas la suite que cette instruction est élémentaire.  Il est alors très simple de créer des nombres plus petit qu'une puissance de 2 donné de façon uniforme.</p>
+<p>On suppose donc ici que l'on possède une fonction <code class="language-">random() → bit</code> qui rend 0 ou 1 avec une probabilité 1/2. On considérera pas la suite que cette instruction est élémentaire.</p>
+<p>Utiliser directement le flux de bit aléatoire sortant de notre générateur est malaisé car en pratique on va toujours manipuler les manipuler par paquet de multiple de 8 bits (1 Byte, qui correspond à un emplacement mémoire), le plus souvent 64b (8 bytes) qui est la taille des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres du processeur</a>. Le problème revient alors à utiliser <code class="language-">random() → bit</code> pour générer des entiers tenant sur un no,bre fixé de bits.</p>
 <h3 id="puissance-de-2">Puissance de 2</h3>
+<p>On peut coder $2^p$ entiers sur un tableau $T$ de $p$ bits, de 0 (que des 0) à $2^p-1$ (que des 1) en utilisant la notation binaire (l'entier $\sum_iT[i]\cdot 2^i$ est associé bijectivement à un tableau $T$ de bits). Générer des entiers sur $p$ bits revient donc à créer des entiers positifs plus petit qu'une puissance de 2 donnée et ce, de manière uniforme. C'est ce que permet l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme_2p</span><span class="token punctuation">(</span><span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">_</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">p</span><span class="token punctuation">]</span><span class="token punctuation">:</span>   
         <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> <span class="token operator">+</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment"># random() → bit : générateur uniforme</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">x</span></code></pre>
-<p>L'algorithme suivant crée un entier de  $[0 .. 2^p[$ en $\mathcal{O}(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.</p>
+<p>Il crée clairement un entier de  $[0 .. 2^p[$ en $\Theta(p)$ opérations. En utilisant la notation binaire, on voit que cet entier s'écrit : $\sum\limits_i 2^i * \mathtt{random}()$ et correspond donc à l'utilisation de <code class="language-">random() → bit</code> pour chaque position de son encodage sous la forme d'un <code class="language-">[]bit</code>. La proposition suivante assure ainsi que la sortie est bien un entier uniforme de $[0 .. 2^p[$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -198,8 +191,66 @@ $$
 </div>
 </details>     
 </div>
+<p>Ces méthodes sont implémentées directement sur le processeur (pour les <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&amp;cats=Random">x64 d'intel</a> et pour <a href="https://support.arm.com/documentation/107997/0001/Random-number-generator-support-">les processeurs ARM</a>) puis utilisées via le <a href="https://en.wikipedia.org/wiki//dev/random">système d'exploitation</a>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Linux/mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Terminal unix :</p>
+<p>C'est le pseudo-fichier <code class="fichier">/dev/random/</code> qui crée des nombres aléatoire :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">xxd <span class="token parameter variable">-b</span> <span class="token parameter variable">-c1</span> <span class="token operator">&lt;</span>/dev/random</code></pre>
+<p>Que l'on peut ensuite transformer en suite de  0 et de 1 :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">xxd <span class="token parameter variable">-b</span> <span class="token parameter variable">-c1</span> <span class="token operator">&lt;</span>/dev/random <span class="token operator">|</span> <span class="token function">cut</span> -d<span class="token string">" "</span> <span class="token parameter variable">-f2</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span></code></pre>
+<p>Ou encore en utilisant <a href="https://fr.wikipedia.org/wiki/Base64">le codage base64</a> pour que ce soit un peut plus  &quot;lisible&quot; :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"hasard : "</span><span class="token variable"><span class="token variable">$(</span>base64 <span class="token operator">&lt;</span>/dev/random <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-c</span> <span class="token number">100</span><span class="token variable">)</span></span></code></pre>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Windows</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5">Avec une commande powershell</a> (attention pas cryptographique) :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">powershell <span class="token parameter variable">-command</span> <span class="token string">"[Convert]::ToBase64String<span class="token variable"><span class="token punctuation">((</span><span class="token number">1.</span><span class="token number">.64</span><span class="token operator">|</span><span class="token operator">%</span>{[byte]<span class="token punctuation">(</span>Get<span class="token operator">-</span>Random <span class="token operator">-</span>Max <span class="token number">256</span><span class="token punctuation">)</span>}<span class="token punctuation">))</span></span>"</span></code></pre>
+</div>
+</details>     
+</div>
 <h3 id="entier-quelconque">Entier quelconque</h3>
-<p>L'algorithme précédent se généralise pour trouver un entier, que l'on va montrer uniforme, dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.random.org/">https://www.random.org/</a></p>
+</div>
+</div>
+<p>L'algorithme précédent se généralise pour trouver un entier dans $[0 .. n[$. L'idée est simple, si l'entier généré est supérieur ou égal à $n$, on recommence :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> <span class="token variable parameter">n</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">p</span></span> <span class="token operator">←</span> ⌈log_2<span class="token punctuation">(</span><span class="token variable parameter">n</span><span class="token punctuation">)</span>⌉                         <span class="token comment"># partie entière supérieure </span>
@@ -208,7 +259,12 @@ $$
         <span class="token boucle"><span class="token mot-boucle keyword">pour chaque</span> <span class="token variable parameter">_</span> <span class="token mot-boucle keyword">de</span></span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token variable parameter">p</span><span class="token punctuation">]</span><span class="token punctuation">:</span>   
             <span class="token variable parameter">x</span> <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token variable parameter">x</span> <span class="token operator">+</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment"># random() → bit : générateur uniforme</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">x</span></code></pre>
-<p>Prouver qu'il fonctionne va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.</p>
+<p>Prouver qu'il fonctionne, c'est à dire :</p>
+<ol>
+<li>qu'il va s'arrêter,</li>
+<li>qu'il produit bien des entiers de $[0 .. n[$ de manière uniforme.</li>
+</ol>
+<p>va être un peu plus compliqué. Commençons par montrer que la probabilité que l'algorithme s'arrête est 1.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -410,11 +466,11 @@ $$
 </div>
 <p>Pour pallier ce problème on est donc obligé de se contenter d'une approximation (mais cela ne va pas aller sans mal).</p>
 <h3 id="approximation-bornee">Approximation bornée</h3>
-<p>La façon la plus simple de trouver un entier entre $[0 .. n[$ de façon aléatoire est d'utiliser le modulo :</p>
+<p>La façon la plus simple de trouver un entier entre $[0 .. n[$ à partir d'un entier dans $[0 .. 2^p[$ avec $n &lt; 2^p$ est d'utiliser le modulo :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">algorithme</span> <span class="token function">uniforme_approché</span><span class="token punctuation">(</span><span class="token parameter variable">n</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">,</span> <span class="token parameter variable">p</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">x</span></span> <span class="token operator">←</span> uniforme_2p<span class="token punctuation">(</span><span class="token variable parameter">p</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> <span class="token variable parameter">x</span> mod <span class="token variable parameter">n</span></code></pre>
-<p>Avant de calculer la complexité, attardons nous sur son fonctionnement. Il est basé sur la division euclidienne :</p>
+<p>Il est clair que cet algorithme est borné puisque <code class="language-">uniforme_2p(p: int) → int</code> l'est et qu'il existe plusieurs algorithmes pour calculer le modulo, puisque c'est le reste de <a href="https://fr.wikipedia.org/wiki/Division_euclidienne">la division euclidienne</a> de 2 nombres.</p>
 <div id="division-euclidienne"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -428,7 +484,7 @@ $$
 $$
 \begin{cases}
 r < b\\
-a = q \times b + r
+a = q \cdot b + r
 \end{cases}
 $$
 </div>
@@ -464,7 +520,15 @@ $$
 </div>
 </details>     
 </div>
-<p>L'algorithme <code class="language-">uniforme_approché(n: int, p: int) → int</code> rend alors des entiers $x$ avec comme probabilité :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La preuve de la division euclidienne nous donne un algorithme (pas forcément efficace) pour calculer le reste et le quotient de la division euclidienne de tout couple d'entiers.</p>
+</div>
+</div>
+<p>Mais avant de calculer précisément la complexité, attardons nous sur son fonctionnement. L'algorithme <code class="language-">uniforme_approché(n: int, p: int) → int</code> rend clairement des entiers $x$ avec comme probabilité :</p>
 <ul>
 <li>$\frac{2^p \operatorname{/\!/} n + 1}{2^p}$ pour $x \leq 2^p \bmod n$</li>
 <li>$\frac{2^p \operatorname{/\!/} n}{2^p}$ pour $x &gt; 2^p \bmod n$</li>
@@ -483,8 +547,8 @@ $$
 </div>
 </div>
 </div>
-<p>Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ le résultat peut aller jusqu'au double avec $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$.</p>
-<p>On peut maintenant s'atteler à sa complexité. Elle va entièrement dépendre du calcul du modulo qui peut se faire ainsi (c'est l'adaptation au cas binaire de <a href="https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale">la méthode décimale</a>) :</p>
+<p>Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ proches, les probabilités peuvent être le double l'une de l'autre. Par exemple si $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$, alors $\Pr[X &lt;\frac{n}{2}] = \frac{2}{3}$ et $\Pr[X &lt;\frac{n}{2}] = \frac{1}{3}$. Pour que cette approximation soit valable il est ainsi important que $n$ soit petit devant $2^p$. Ce qui va d'autant augmenter la complexité de l'algorithme comme on va le voir.</p>
+<p>En effet, la complexité de l'algorithme dépend entièrement du calcul du modulo et l'algorithme ci-après le calcule  (qui est l'adaptation au cas binaire de <a href="https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale">la méthode décimale</a>) en $\Theta(p)$ :</p>
 <div id="algorithme-division-euclidienne-binaire"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token signature"><span class="token builtin">fonction</span> <span class="token function">modulo</span><span class="token punctuation">(</span><span class="token parameter variable">a</span><span class="token punctuation">:</span> <span class="token type class-name">[]bit</span><span class="token punctuation">,</span> <span class="token parameter variable">b</span><span class="token punctuation">:</span> <span class="token type class-name">int</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token type class-name">int</span></span><span class="token punctuation">:</span>
     <span class="token definition"><span class="token ref keyword">ref</span> <span class="token variable parameter">r</span></span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -526,7 +590,8 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La complexité est évidente. Le fait que l'algorithme fonctionne vient <a href="../../1-algorithme/probl%C3%A8me-preuve/#invariant-boucle">l'invariant de boucle</a> suivant à la fin de chaque itération :</p>
+<p>La complexité est évidente.</p>
+<p>Son exactitude vient de <a href="../../1-algorithme/probl%C3%A8me-preuve/#invariant-boucle">l'invariant de boucle</a> suivant, vérifié à la fin de chaque itération :</p>
 <div>
 $$
 \begin{cases}
@@ -562,6 +627,54 @@ $$
 <p>La complexité de notre algorithme approché est donc beaucoup plus grande que la complexité en moyenne de l'algorithme exacte... Cela ne vaut donc presque jamais le coup de l'utiliser à par dans des cas extrême où il est crucial d'avoir une borne en nombre d'instruction. Enfin, ce qui prend du temps c'est la génération aléatoire des bits car elle dépend de phénomènes physique dont les constantes de temps sont souvent supérieures à l'horloge interne de l'ordinateur.</p>
 <p>La solution habituellement utilisée est de faire semblant, en ne générant que très peut d'entiers réellement aléatoires.</p>
 <h2 id="nombres-pseudo-aleatoires">Nombres pseudo-aléatoires</h2>
+<p>La plupart des algorithme générant des nombre &quot;<em>aléatoires</em>&quot; en informatique sont en fait seulement <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoire</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8"><strong>Définition</strong></div>
+<div class="pl-8 mr-8">
+<p>Une séquence finie $(x_i)_{0 \leq i &lt; n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est <strong><em>pseudo-aléatoire</em></strong> si elle :</p>
+<ul>
+<li>est générée par un algorithme de complexité polynomiale à un paramètre, noté <strong><em>graine</em></strong> (<strong><em>seed</em></strong> en anglais)</li>
+<li>elle ne peut être distinguée d'une suite aléatoire via un ensemble de <a href="https://fr.wikipedia.org/wiki/Test_statistique">tests statistiques</a>.</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.</p>
+</div>
+</div>
+<p>Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.</p>
+<p>Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :</p>
+<ul>
+<li>simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés</li>
+<li>cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.</li>
+</ul>
+<p>N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si vous faites de la cryptographie utilisez des générateurs fait pour ça.</p>
+<h3 id="en-python">En python</h3>
+<p>Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.</p>
+<h4 id="usage-courant">Usage courant</h4>
+<p>La fonction <code class="language-">random.random()</code> génère un nombre pseudo-aléatoire. Si vous exécutez deux fois cette fonction, elle doit donner deux réels différents avec une énorme probabilité :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>La graine du générateur de nombres pseudo-aléatoire est déterminée lors de l'import. Chaque appel à la fonction random rend le nombre suivant de la suite de nombres générée par cette graine.</p>
+<p>On peut la réinitialiser avec la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.seed"><code class="language-">random.seed</code></a>.</p>
+<p>Le code suivant doit donner deux fois le même rel :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que lorsque vous relancer le programme, les résultats vont être différents. Lorsque l'on veut corriger un programme utilisant de l'aléatoire il peut être intéressant d'utiliser une graine donnée pour obtenir le mêe résultats à chaque lancement :</p>
+<ol>
+<li>lorsque l'on relancera le programme on aura les même valeurs</li>
+<li>au cours du programme les valeurs ont l'air aléatoires</li>
+</ol>
 <blockquote>
 <p>TBD PRNG
 TBD 2 sortes selon ce que l'on veut.</p>
