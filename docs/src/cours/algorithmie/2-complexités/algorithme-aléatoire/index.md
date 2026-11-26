@@ -97,35 +97,6 @@ $$
 
 Ces méthodes sont implémentées directement sur le processeur (pour les [x64 d'intel](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random) et pour [les processeurs ARM](https://support.arm.com/documentation/107997/0001/Random-number-generator-support-)) puis utilisées via le [système d'exploitation](https://en.wikipedia.org/wiki//dev/random).
 
-{% details "sous Linux/mac" %}
-Terminal unix :
-
-C'est le pseudo-fichier `/dev/random/`{.fichier} qui crée des nombres aléatoire :
-
-```shell
-xxd -b -c1 </dev/random
-```
-
-Que l'on peut ensuite transformer en suite de  0 et de 1 :
-
-```shell
-xxd -b -c1 </dev/random | cut -d" " -f2 | tr -d "\n"
-```
-
-Ou encore en utilisant [le codage base64](https://fr.wikipedia.org/wiki/Base64) pour que ce soit un peut plus  "lisible" :
-
-```shell
-echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
-```
-{% enddetails %}
-{% details "sous Windows" %}
-[Avec une commande powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5) (attention pas cryptographique) :
-
-```shell
-powershell -command "[Convert]::ToBase64String((1..64|%{[byte](Get-Random -Max 256)}))"
-```
-{% enddetails %}
-
 ### Entier quelconque
 
 {% lien %}
@@ -302,7 +273,7 @@ $$
 - Le **_reste_** $r$ de la division euclidienne est noté $a \bmod b$.
 - Le **_quotient_** $q$ de la division euclidienne est noté $a \operatorname{/\\!/} b$.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Commençons par montrer l'existence de $q$ et $r$. On a deux cas :
 - si $a < b$ alors $q, r = 0, a$,
@@ -311,12 +282,12 @@ Commençons par montrer l'existence de $q$ et $r$. On a deux cas :
 S'il existait un autre couple $(q', r')$ on aurait forcément $q \neq q'$ et $r \neq r'$. On peut alors supposer que $q = q' + \alpha$, avec $\alpha> 0$, mais dans ce cas $a = (q +\alpha)\cdot b + r' = q\cdot b + (r'+\alpha \cdot b)$ et $r = r'+\alpha \cdot b \geq b$ ce qui est impossible.
 {% enddetails %}
 {% info %}
-La preuve de la division euclidienne nous donne un algorithme (pas forcément efficace) pour calculer le reste et le quotient de la division euclidienne de tout couple d'entiers.
+La preuve de la division euclidienne nous donne un algorithme  pour calculer le reste et le quotient de la division euclidienne de tout couple d'entiers. Nous allons en montrer un bien plus efficace.
 {% endinfo %}
 
 Mais avant de calculer précisément la complexité, attardons nous sur son fonctionnement. L'algorithme `uniforme_approché(n: int, p: int) → int`{.language-} rend clairement des entiers $x$ avec comme probabilité :
 
-- $\frac{2^p \operatorname{/\\!/} n + 1}{2^p}$ pour $x \leq 2^p \bmod n$
+- $\frac{(2^p \operatorname{/\\!/} n) + 1}{2^p}$ pour $x \leq 2^p \bmod n$
 - $\frac{2^p \operatorname{/\\!/} n}{2^p}$ pour $x > 2^p \bmod n$
 
 {% retenir %}
@@ -329,9 +300,7 @@ $$
 
 {% endretenir %}
 
-Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ proches, les probabilités peuvent être le double l'une de l'autre. Par exemple si $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$, alors $\Pr[X <\frac{n}{2}] = \frac{2}{3}$ et $\Pr[X <\frac{n}{2}] = \frac{1}{3}$. Pour que cette approximation soit valable il est ainsi important que $n$ soit petit devant $2^p$. Ce qui va d'autant augmenter la complexité de l'algorithme comme on va le voir.
-
-En effet, la complexité de l'algorithme dépend entièrement du calcul du modulo et l'algorithme ci-après le calcule  (qui est l'adaptation au cas binaire de [la méthode décimale](https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale)) en $\Theta(p)$ :
+Il est donc d'autant plus précis que $p$ est grand devant $\log_2(n)$. Pour des valeurs de $n$ et de $\log_2(n)$ proches, la différence entre les 2 probabilité va être grande en proportion jusqu'à un facteur 2. Par exemple si $p = \lceil \log_2(n)\rceil$ et $2^p \bmod n = n/2$, alors $\Pr[X \leq\frac{n}{2}] = \frac{2}{3}$ et $\Pr[X >\frac{n}{2}] = \frac{1}{3}$. Pour que notre algorithme soit utilisable il est ainsi important que $n$ soit petit devant $2^p$. Ce qui va d'autant augmenter la complexité de l'algorithme puisque celle-ci dépend entièrement du calcul du modulo qui, on va le voir, peut se calculer en $\Theta(p)$ :
 
 <div id="algorithme-division-euclidienne-binaire"></div>
 
@@ -351,6 +320,8 @@ algorithme uniforme_approché(n: int, p: int) → int:
     rendre modulo(x, n) → int:
 ```
 
+Cet algorithme est une variante binaire de [la méthode décimale](https://fr.wikipedia.org/wiki/Division_euclidienne#M%C3%A9thode_d%C3%A9cimale) qui calcule la division euclidienne :
+
 {% note "**Proposition**" %}
 L'algorithme `modulo(a: []bit, b: int) → int`{.language-} calcule $\sum\limits_ia[i]2^i \bmod b$ en $\theta(a.\texttt{longueur})$ pour $\log_2(b) \leq a.\texttt{longueur}$.
 {% endnote %}
@@ -363,25 +334,38 @@ Son exactitude vient de [l'invariant de boucle](../../1-algorithme/problème-pre
 $$
 \begin{cases}
 r < b\\
-\sum\limits_{j\geq i}a[j]\cdot 2^{j-i} = b \cdot (\sum\limits_{j\geq i}q[j]\cdot 2^{j-i}) + r
+A_i = b \cdot Q_i + r\\
 \end{cases}
 $$
 </div>
 
-La première condition est vraie puisque si $r < b$ au début de la boucle on a $2r +1 < b + b-1 +1 = 2b$ et $b' < n$ à la fin de la boucle. 
+Avec :
 
-La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $\sum\limits_{j\geq i}(a[j]\cdot 2^{j-i} - b \cdot q[j](\cdot 2^{j-i}) = r$ alors :
+
+<div>
+$$
+\begin{cases}
+A_i = \frac{1}{2^i}\cdot \sum\limits_{j\geq i}a[j]\cdot 2^{j}\\
+Q_i = \frac{1}{2^i}\cdot \sum\limits_{j\geq i}q[j]\cdot 2^{j}\\
+\end{cases}
+$$
+</div>
+
+
+La première condition est vraie puisque si $r < b$ au début de la boucle on a $2\cdot r +1 < b + b-1 +1 = 2b$ et $b' < n$ à la fin de la boucle. 
+
+La seconde condition est trivialement vraie après la première itération et si à la fin d'une itération $i$ on a $A_i - b \cdot Q_i = r$ alors :
 
 <div>
 $$
 \begin{array}{c}
-2 \cdot \sum\limits_{j\geq i}(a[j] - n \cdot q[j] \cdot 2^{j-i}) + a[i-1] = 2r + a[i-1]\\
-\sum\limits_{j\geq i-1}a[j]\cdot 2^{j-i+1}  - \sum\limits_{j\geq i} (b \cdot q[j]\cdot 2^{j-i+1}) = 2r + x[i-1]\\
-\sum\limits_{j\geq i'}a[j]\cdot 2^{j-i'} - b \cdot (\sum\limits_{j\geq i'}q[j]\cdot 2^{j-i'}) = r'
+2 \cdot (A_i - b \cdot Q_i) + a[i-1] = 2\cdot r + a[i-1]\\
+A_{i-1}  - 2b \cdot Q_i = 2r + a[i-1]\\
+A_{i-1}  - 2b \cdot Q_i = q[i-1] + r'\\
+A_{i-1} - b \cdot Q_{i-1} = r'
 \end{array}
 $$
 </div>
-
 
 L'invariant est vrai à la fin de de la boucle et à ce moment là :
 
@@ -389,21 +373,21 @@ L'invariant est vrai à la fin de de la boucle et à ce moment là :
 $$
 \begin{cases}
 r < b\\
-\sum\limits_{j\geq 0}a[j]\cdot 2^{j} = b \cdot (\sum\limits_{j\geq 0}q[j]\cdot 2^{j}) + r
+A_0 = b \cdot Q_0 + r
 \end{cases}
 $$
 </div>
 
-Qui est bien la définition de la division euclidienne.
+Et comme $A_0 = \sum\limits_ia[i]2^i$, on a bien la division euclidienne attendue.
 {% enddetails %}
 
-La complexité de notre algorithme approché est donc beaucoup plus grande que la complexité en moyenne de l'algorithme exacte... Cela ne vaut donc presque jamais le coup de l'utiliser à par dans des cas extrême où il est crucial d'avoir une borne en nombre d'instruction. Enfin, ce qui prend du temps c'est la génération aléatoire des bits car elle dépend de phénomènes physique dont les constantes de temps sont souvent supérieures à l'horloge interne de l'ordinateur.
+La complexité de notre algorithme approché, $\Theta(p)$ est donc plus grande que la complexité en moyenne $\Theta(\ln(n))$ de l'algorithme exact... Cela ne vaut donc presque jamais le coup de l'utiliser puisque les cas où le nombre d'opération de l'algorithme exact va être supérieure à notre algorithme est de probabilité tres faible.
 
-La solution habituellement utilisée est de faire semblant, en ne générant que très peut d'entiers réellement aléatoires.
+Enfin, ce qui prend du temps c'est la génération aléatoire des bits car elle dépend de phénomènes physique dont les constantes de temps sont souvent supérieures à l'horloge interne de l'ordinateur. Donc utiliser notre méthode, qu'elle soit exacte ou approchée à chaque fois que l'on veut un nombre aléatoire serait bien trop coûteuse, il faut ruser et ne générer que très peu d'entiers réellement aléatoires.
+
 ## Nombres pseudo-aléatoires
 
 La plupart des algorithme générant des nombre "_aléatoires_" en informatique sont en fait seulement [pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire) :
-
 
 {% definition %}
 Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_pseudo-aléatoire_** si elle :
@@ -415,6 +399,7 @@ Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur st
 On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
 {% endinfo %}
 
+> TBD seule la graine est réellement aléatoire le reste utilise un algorithme linéaire pour aller vite.
 
 Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
 
@@ -424,6 +409,21 @@ Chaque générateur pseudo-aléatoire est créé selon des critères particulier
 - cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.
 
 N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si vous faites de la cryptographie utilisez des générateurs fait pour ça.
+
+### PRNG
+
+> TBD physique. On cherche l'uniformité.
+
+
+
+### CPRNG
+
+> TBD crypto. On cherche la non-prédictabilité
+
+
+## Approche mixte
+
+> Avec entropie
 
 ### En python
 
@@ -458,10 +458,10 @@ Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que l
 2. au cours du programme les valeurs ont l'air aléatoires
 
 
+- en shell : <https://www.geeksforgeeks.org/linux-unix/random-shell-variable-in-linux-with-examples/>
 
 
 
-> TBD PRNG
 > TBD 2 sortes selon ce que l'on veut.
 
 ### Uniformes
@@ -495,6 +495,18 @@ Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que l
 > TBD Fisher-Yates
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code. Pour estimer la complexité en moyenne d'un algorithme codé, on mesure le temps pris par l'algorithme pour s'exécuter avec des données aléatoires et on en fait la moyenne (c'est [un estimateur sans biais de la moyenne théorique](<https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y>)).
+
+Linux/mac :
+
+```shell
+> shuf -i 1-10
+```
+
+Powershell :
+
+```shell
+1..10 | Get-Random -Shuffle
+```
 
 ## Complexité et aléatoire
 

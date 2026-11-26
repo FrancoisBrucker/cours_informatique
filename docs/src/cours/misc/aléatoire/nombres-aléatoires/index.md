@@ -44,6 +44,7 @@ Il existe des moyens de générer des nombres aléatoire, on appelle ces génér
 > TBD présenter niquist
 > TBD quantique, etc.
 > TBD ring oscillatro : <https://www.youtube.com/watch?v=fwU8s1BMNlA> <https://www-verimag.imag.fr/~async/CCIS/talk_12/Lubicz_talk.pdf> et <https://pqshield.com/wp-content/uploads/2022/02/2021-1363.pdf>
+
 ## Entropie
 
 Cependant créer un nombre aléatoire est un processus coûteux en temps et en énergie. On utilisera alors souvent des processus approchés pour extraire de l'aléatoire : générer $n$ bits presque aléatoires à partir de $m < n$ bits vraiment aléatoires.
@@ -71,3 +72,95 @@ Cependant créer un nombre aléatoire est un processus coûteux en temps et en �
   - LFSR or Cryptographic Hashing (LFSR ou hachage) : Feed the raw bitstream into a Linear Feedback Shift Register (LFSR) or a lightweight hash function (like SHA-256 or Toeplitz hashing) to whiten the output and destroy temporal dependencies.
 - équiprobabilité :
   - Von Neumann Corrector (Correcteur de Von Neumann) : Read bits in non-overlapping pairs. Discard 00 and 11, output 0 for 01, and output 1 for 10. Note: This removes bias and first-order serial correlation, though it reduces your bit rate by at least 75%.
+
+## La méthode de Lemire
+
+> TBD faire une preuve moins Claudesque.
+
+$L=64$, $X$ uniforme sur $[0,2^L[$, et $r=2^L \bmod n$.
+
+```pseudocode
+X ← 64 bits aléatoires
+m ← X · n                      # produit sur 128 bits
+l ← m mod 2^64                 # partie basse (gratuite)
+si l < n:                      # test bon marché, rarement vrai
+    t ← (2^64 − n) mod n       # = r : seule division, rarement exécutée
+    tant que l < t:
+        X ← 64 bits aléatoires
+        m ← X · n
+        l ← m mod 2^64
+renvoyer ⌊m / 2^64⌋            # partie haute (gratuite)
+```
+
+### Complexité
+
+- **Probabilité de rejet par tour** : $r/2^L < n/2^L$.
+- **Nombre moyen de tours** : $\dfrac{1}{1-r/2^L}\le \dfrac{1}{1-n/2^{64}}$, donc pratiquement 1. Par exemple, pour $n=10^6$, la probabilité de faire un second tour est inférieure à $2^{-44}$.
+- **Probabilité de calculer la division** : c'est celle de l'événement $l<n$, qui vaut moins de $n/2^{64}$ par tour.
+
+En espérance, le coût est donc d'environ une multiplication et une comparaison, alors que le modulo coûte une division à chaque fois. Les deux consomment le même nombre de bits aléatoires, 64 par tour.
+
+Pourquoi le caractère non borné ne gêne pas :
+
+- **Le pire cas infini n'arrive jamais en pratique** : la probabilité de faire plus de $t$ tours est inférieure à $(n/2^{64})^t$.
+- **Les deux contraintes sont indépendantes** : le théorème oblige un algorithme exact à avoir un pire cas non borné, mais rien n'empêche que son coût moyen soit très faible.
+
+Le modulo n'est rapide que comparé au rejet naïf de la première réponse. Celui-ci tire $k=\lceil\log_2 n\rceil$ bits et rejette avec une probabilité qui peut approcher $1/2$, donc il peut faire jusqu'à 2 tours en moyenne. L'astuce de Lemire est de travailler sur 64 bits, ce qui rend le rejet très rare, et de n'appeler la division que dans ces cas rares.
+
+### Véracité
+
+On montre que, parmi les $2^L$ valeurs possibles de $X$, chaque sortie $h\in\{0,\dots,n-1\}$ est produite par exactement le même nombre de valeurs acceptées. L'uniformité en découle ensuite comme pour le rejet ordinaire.
+
+Notations :
+- $N=2^L$, et $X$ uniforme sur $\{0,\dots,N-1\}$.
+- On écrit le produit $Xn$ par division euclidienne par $N$ : $Xn = hN + l$ avec $0\le l<N$. Ainsi $h=\lfloor Xn/N\rfloor$ est la partie haute, c'est-à-dire la sortie, et $l=Xn \bmod N$ est la partie basse.
+- On écrit aussi $N = qn + r$ avec $q=\lfloor N/n\rfloor$ et $0\le r<n$.
+
+Comme $0\le X<N$, on a $0\le Xn<nN$, donc $h\in\{0,\dots,n-1\}$.
+
+Étape 0 : ce que teste réellement l'algorithme
+
+L'algorithme accepte $X$ si et seulement si $l\ge r$.
+
+Le seuil calculé est $t=(2^L-n)\bmod n$, avec une soustraction faite sur $L$ bits puisque $2^L$ ne tient pas dans un mot. Comme $2^L-n\equiv 2^L \pmod n$, on a $t = N\bmod n = r$.
+Le test préliminaire « $l<n$ » n'est qu'un raccourci. Puisque $r<n$, l'inégalité $l<r$ entraîne $l<n$. Si $l\ge n$, on a donc forcément $l\ge r$, et on peut accepter sans calculer $r$.
+Étape 1 : chaque sortie a exactement $q$ antécédents acceptés
+
+Lemme. Pour tout réel $a$ et tout entier $q\ge0$, l'intervalle $[a,\,a+qn[$ contient exactement $q$ multiples de $n$.
+
+Preuve. On a $a\le jn<a+qn$ si et seulement si $a/n\le j<a/n+q$. Un intervalle semi-ouvert de longueur $q$ contient exactement $q$ entiers, à savoir $\lceil a/n\rceil,\dots,\lceil a/n\rceil+q-1$. $\square$
+
+Proposition. Pour tout $h\in\{0,\dots,n-1\}$, il y a exactement $q$ valeurs de $X$ acceptées et de sortie $h$.
+
+Preuve. « $X$ accepté et de sortie $h$ » signifie que $Xn=hN+l$ avec $r\le l<N$. Autrement dit,
+
+$$Xn\in[\,hN+r,\;(h+1)N\,[.$$
+
+Cet intervalle a pour longueur $N-r=qn$. Par le lemme, il contient exactement $q$ multiples de $n$, soit $jn$ pour $q$ entiers $j$.
+
+Chacun de ces multiples provient d'une seule valeur admissible de $X$, à savoir $X=j$. En effet, l'intervalle est inclus dans $[0,nN[$, donc $0\le j<N$. Il y a donc exactement $q$ valeurs de $X$ concernées. $\square$
+
+Conséquence. En tout, $nq$ valeurs de $X$ sont acceptées et $N-nq=r$ sont rejetées.
+
+Étape 2 : uniformité de la sortie
+
+Un tour accepte avec probabilité $nq/N$ et rejette avec probabilité $r/N<1$. Les tours sont indépendants. On obtient donc
+
+$$\Pr[\text{sortie}=h]=\sum_{t\ge1}\Big(\frac rN\Big)^{t-1}\frac{q}{N}=\frac{q/N}{1-r/N}=\frac{q}{N-r}=\frac{q}{qn}=\frac1n.\qquad\square$$
+Intuition
+
+Sans le rejet, $\lfloor Xn/N\rfloor$ est la méthode biaisée vue plus haut. Chaque intervalle $[hN,(h+1)N[$ contient $q$ ou $q+1$ multiples de $n$, selon les cas.
+
+Le rejet retire les multiples qui tombent dans la tranche initiale $[hN,\,hN+r[$. Cette tranche a une longueur $r<n$, donc elle contient au plus un multiple. On retire ainsi exactement un multiple aux intervalles qui en avaient $q+1$, et aucun aux autres. Tous se retrouvent avec $q$ multiples.
+
+Exemple : $L=2$, donc $N=4$, et $n=3$
+
+On a $4=1\cdot3+1$, donc $q=1$ et $r=1$.
+
+$X$	$Xn$	$h=\lfloor Xn/4\rfloor$	$l=Xn\bmod 4$	$l\ge r=1$ ?
+0	0	0	0	rejeté
+1	3	0	3	accepté → 0
+2	6	1	2	accepté → 1
+3	9	2	1	accepté → 2
+
+Chaque sortie a exactement $q=1$ antécédent accepté. Sans le rejet, la sortie 0 aurait eu deux antécédents, $X=0$ et $X=1$ : c'est exactement le biais que le rejet supprime.

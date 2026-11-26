@@ -265,6 +265,44 @@ Il utilise une méthode purement aléatoire pour générer une graine, heure cou
 [Générateur de Linux : `/dev/random`{.fichier}](https://en.wikipedia.org/wiki//dev/random)
 {% endlien %}
 
+### En shell
+
+> TBD avec apport d'entropie.
+
+{% details "sous Linux/mac" %}
+
+{% lien %}
+<https://heitorpb.github.io/bla/bash-random-numbers/>
+{% endlien %}
+
+Terminal unix :
+
+C'est le pseudo-fichier `/dev/random/`{.fichier} qui crée des nombres aléatoire :
+
+```shell
+xxd -b -c1 </dev/random
+```
+
+Que l'on peut ensuite transformer en suite de  0 et de 1 :
+
+```shell
+xxd -b -c1 </dev/random | cut -d" " -f2 | tr -d "\n"
+```
+
+Ou encore en utilisant [le codage base64](https://fr.wikipedia.org/wiki/Base64) pour que ce soit un peut plus  "lisible" :
+
+```shell
+echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
+```
+{% enddetails %}
+{% details "sous Windows" %}
+[Avec une commande powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.5) (attention pas cryptographique) :
+
+```shell
+powershell -command "[Convert]::ToBase64String((1..64|%{[byte](Get-Random -Max 256)}))"
+```
+{% enddetails %}
+
 ## Générateurs de nombres pseudo-aléatoires
 
 Nous allons voir trois exemples de générateurs de nombres aléatoire et en étudier les propriétés.

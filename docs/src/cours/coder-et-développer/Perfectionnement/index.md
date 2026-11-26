@@ -38,3 +38,7 @@ Dernière partie en python avant d'apprendre un nouveau langage. On montre comme
 > aussi cache et bus pour les transferts. On doit pouvoir controler le tout.
 > qu'est un entier python sous cette nomenclature ? Un tableau d'int64 
 > sauf que longueur au max int64. Si on veut plus = liste chaînée int64 = taille et si taille = max, le prochain int64 est l'adresse du suivant.
+> TBD python v2 :
+> - <https://www.youtube.com/watch?v=IOYtguqoaYw>
+> - décorateur
+> - itérateurs
