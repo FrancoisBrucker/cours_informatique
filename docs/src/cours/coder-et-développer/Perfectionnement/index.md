@@ -42,3 +42,4 @@ Dernière partie en python avant d'apprendre un nouveau langage. On montre comme
 > - <https://www.youtube.com/watch?v=IOYtguqoaYw>
 > - décorateur
 > - itérateurs
+> - opérateurs comme ?? 

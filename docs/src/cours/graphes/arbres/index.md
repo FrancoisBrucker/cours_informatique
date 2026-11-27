@@ -46,6 +46,9 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 ## Arbres plantés
 
+> TBD mettre ça en algorithmie das structures arborées.
+> TBD Huffman : <https://www.youtube.com/watch?v=RFWJM8JMXBs> 
+
 {% lien %}
 [Arbre pour l'algorithmique](https://chauvin.perso.math.cnrs.fr/book.pdf)
 {% endlien %}

@@ -177,7 +177,7 @@ Toutes les sorties sont resté un nombre fini de fois dans la boucle `tant que`{
 $$
 \begin{array}{lcl}
 Pr[\mathtt{uniforme}(n) = m] &=& \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \Pr[(x = m) \mid (x < n)]\\
-&=&  \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \frac{\Pr[(x = m) \text{ ET } (x < n)]}{\Pr[x < n]}\\
+&=&  \lim\limits_{k\to +\infty} \Pr[K_n \leq k]\cdot \frac{\Pr[x = m, x < n]}{\Pr[x < n]}\\
 &=& \lim\limits_{k\to +\infty} (\frac{1}{n} \cdot (1-\beta^k)) \\
 &=& \frac{1}{n}
 \end{array}
@@ -392,18 +392,24 @@ La plupart des algorithme générant des nombre "_aléatoires_" en informatique 
 {% definition %}
 Une séquence finie $(x_i)_{0 \leq i < n}$ de $n$ entiers positifs inférieur strictement à $m$ d'entiers est **_pseudo-aléatoire_** si elle :
 
-- est générée par un algorithme de complexité polynomiale à un paramètre, noté **_graine_** (**_seed_** en anglais)
+- est générée par un algorithme `pseudo_random(x: int) → int`{.language-} de complexité polynomiale à un paramètre telle que :
+  - $x_0$ est donné. On l'appelle la **_graine_** (**_seed_** en anglais)
+  - $x_{i+1} = \mathtt{PRNG}(x_i)$ pour tout $i\geq 0$.
 - elle ne peut être distinguée d'une suite aléatoire via un ensemble de [tests statistiques](https://fr.wikipedia.org/wiki/Test_statistique).
 {% enddefinition %}
 {% info %}
 On laisse à dessein le soin à l'utilisateur de déterminer quels tests doit satisfaire les suites, ils seront différents selon les applications souhaitées.
 {% endinfo %}
 
-> TBD seule la graine est réellement aléatoire le reste utilise un algorithme linéaire pour aller vite.
+Seule la graine est réellement aléatoire, tous les autres éléments de la suite sont déterministes et calculé la plupart du temps par des algorithmes de complexité $\mathcal{O}(\log_2(x))$, c'est à dire linéaire dans le nombre de bits nécessaire pour encoder le paramètre. Ceci garanti la rapidité de la génération.
 
-Nous verrons dans la suite deux exemples d'algorithmes permettant de générer des nombres pseudo-aléatoires et déterminerons les propriétés attendues. Ces propriétés pourront être théoriques ou pratiques.
+Enfin, comme on ne dépend que d'une seule graine aléatoire on peut répéter tout le processus si on sauvegarde la graine. C'est ce principe qui est utilisé dans les jeux vidéo pour sauvegarder toute une carte via un unique nombre ou sauvegarder une partie sans retenir tout ce qui s'est passé.
 
-Chaque générateur pseudo-aléatoire est créé selon des critères particuliers. On va distinguer deux usages principaux des générateurs de nombres aléatoires :
+{% info %}
+Si vous chercher à déboguer un programme aléatoire utilisez tout le temps la même seed pour qu'il soit déterministe.
+{% endinfo %}
+
+Selon l'usage que l'on veut faire on utilisera un algorithme ou l'autre. On va distinguer deux usages principaux des générateurs de nombres aléatoires :
 
 - simulation physique : on s'attachera à l'uniformité des résultats selon de nombreux critères testables. Correspond à la grande majorité des générateurs utilisés
 - cryptographie : on s'attachera à rendre non prédictible le résultat. Ce sont des générateurs spécialisés.
@@ -412,24 +418,79 @@ N'utilisez pas de générateurs non prévus pour l'usage que vous en ferez : si 
 
 ### PRNG
 
-> TBD physique. On cherche l'uniformité.
+{% lien %}
+[Intro, exemples et tests pour la validité de PRNG](https://www.mi.fu-berlin.de/inf/groups/ag-tech/teaching/2012_SS/L_19540_Modeling_and_Performance_Analysis_with_Simulation/06.pdf)
+{% endlien %}
+
+Les [PRNG](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires), ou générateur de no,bre pseudo-aléatoire regroupent une vaste gamme d'algorithmes, allant du plus simple (le modula qu'on va voir) au plus compliqué (le [Mersenne Twister](https://fr.wikipedia.org/wiki/Mersenne_Twister) utilisé par python).
+
+Le but de ces modèles est toujours même :
+
+{% retenir %}
+Le but des modèles PRNG est donner l'"_impression_" que les nombres donnés sont uniformément réparti et aléatoires (ce qu'ils ne peuvent être puisque déterministe).
+{% endretenir %}
 
 
+> TBD quelle garanti ? [test statistique](https://fr.wikipedia.org/wiki/Test_statistique).
+> Voir si facile pour modulo. Genre période et uniforme. Et proba xi+1 pr rapport a xi ?
 
-### CPRNG
+> 
+> TBD validité : <http://math.univ-lyon1.fr/~jberard/genunif-www.pdf>
 
-> TBD crypto. On cherche la non-prédictabilité
+#### Linear Congruential Method
+
+> TBD longueur période garantie l'impression d'aléatoire
+Pour générer une suite de nombres entre 0 et $m-1$, on a coutume d'utiliser la formule :
+
+<div>
+$$
+x_{i+1} = a \cdot x_i + c \mathbin{\small\\%}{m}
+$$
+</div>
+
+La graine est le nombre $x_0$.
+
+{% note "**proposition**" %}
+Montrer que la suite $(x_i)_{i \geq 0}$ telle que $x_{i+1} = a \cdot x_i + c \mathbin{\small\\%}{m}$ est périodique quelque soient $a$, $c$, $m$ et $x_0$ et que sa période est au plus $m$
+{% endnote %}
+{% details "preuve", "open" %}
+
+{% enddetails %}
+
+ > avec le modulo
+
+- théoriques :
+  - choix de a,c , m pour une longue séquence
+  - pr(xi > xi+1)
+
+Ne pas faire n'importe quoi. A écrit dans the art of computer programming (vol 2.) :
+
+> Random numbers should not be generated with a method chosen at random.
+
+> $x_{i+1} = ax_i + c mod m$
+
+- propriétés théoriques :
+  - une longue séquence
+  - pr(xi > xi+1)
+- pratiques :
+  - chi 2 : proba et indépendance séquences.
+
+> TBD uniforme pas suffisant : 0000000111111111 est bien uniforme
+> TBD xi > x(i+1) : théorique
+
+> 1. faire avec des modulo [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator). Voir aussi <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/1_Classic/>
+> Utiliser des merserne prime pour les [Lehmer LCG](https://en.wikipedia.org/wiki/Lehmer_random_number_generator)
 
 
-## Approche mixte
+#### En python
 
-> Avec entropie
+> TBD : Mersenne twister
+> TBD fonctionne avec un seed = heure par défaut
 
-### En python
+LGC -> registre à décalage -> Mersenne twister.
 
-Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.
-
-#### Usage courant
+- [mersenne twister et LCG](https://cs.stackexchange.com/questions/154287/what-is-the-connection-between-the-mersenne-twister-and-linear-congruential-gene)
+- [twisted generalized feedback shift register](https://cs.au.dk/~ivan/PRGPract)
 
 La fonction `random.random()`{.language-} génère un nombre pseudo-aléatoire. Si vous exécutez deux fois cette fonction, elle doit donner deux réels différents avec une énorme probabilité :
 
@@ -458,34 +519,31 @@ Par défaut, la graine est initialisée avec l'heure courante, ce qui fait que l
 2. au cours du programme les valeurs ont l'air aléatoires
 
 
-- en shell : <https://www.geeksforgeeks.org/linux-unix/random-shell-variable-in-linux-with-examples/>
+### CPRNG
 
+> TBD [CPRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator)
 
+> TBD crypto. On cherche la non-prédictabilité
 
-> TBD 2 sortes selon ce que l'on veut.
-
-### Uniformes
-
-> TBD  : 
-
-> TBD Prédire le monde physique (uniforme) = uniforme.
-> TBD soucis du vrai aléatoire c'est que c'est lent. L'idée est de le simuler en utilisant une fonction qui semble aléatoire. Ici uniforme.
-
-
-> TBD pseudo-aléatoire (modulo et le démontrer) et aléatoire. 
-
-> fonctionne avec un seed  vraiment aléatoire, genre /dev/random sous unix qui prend des paramètre extérieur pour générer de l'entropie.
-
+> TBD shum shum. 
 > TBD attention à ce qu'on prend comme seed ex. netscape
-### Cryptographiques
-
-> TBD CSPRNG
-
 > TBD soucis c'est que c'est uniforme mais prévisible : le montrer avec le modulo et du gauss. Et ça, même si on ne prend que quelques bit.
 > et c'est un problème en crypto. On ne veut pas que ce soit uniforme on veut que ce soit non prédictible.
 
 > TBD : pour ça pas linéaire. Ex du blum-blum sum.
 > Lui aussi Pas utilisé en pratique car lent. On fait du chacha20 plutôt.
+
+#### En python
+
+Python utilise deux générateurs de nombres différents selon que l'on veuille faire une simulation physique (usage courant) ou de la cryptographie.
+
+> TBD module [secrets](https://docs.python.org/fr/3/library/secrets.html#module-secrets)
+## Approche mixte
+
+> Avec entropie
+
+> TBD 2 sortes selon ce que l'on veut.
+> genre /dev/random sous unix qui prend des paramètre extérieur pour générer de l'entropie.
 
 
 ## Permutation et Tableaux aléatoires
